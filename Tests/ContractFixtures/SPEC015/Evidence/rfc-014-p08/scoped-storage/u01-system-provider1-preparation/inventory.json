@@ -1,0 +1,357 @@
+{
+  "acquisitions": 0,
+  "cache_extractions": 0,
+  "cache_family": [
+    {
+      "bytes": 573440,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e",
+      "reported_image_UUID_byte_occurrences": {
+        "libswiftCore.dylib": [
+          125272
+        ],
+        "libsystem_c.dylib": [
+          117752
+        ]
+      },
+      "sha256": "7a024959c8c14d46e2964f975f2256b3f9efc2da950a31067d26ac7ac16498d4"
+    },
+    {
+      "bytes": 1715355648,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "reported_image_UUID_byte_occurrences": {
+        "libswiftCore.dylib": [
+          331121672
+        ],
+        "libsystem_c.dylib": [
+          3168616
+        ]
+      },
+      "sha256": "2130d36b0a4a034cec46d44b9205e08d5bceca280509f90defe3d0ac3891496e"
+    },
+    {
+      "bytes": 234569728,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "dc6bf44cce543831717e158914166bffc8a98f7015e38c5b2ea50bb2566dc541"
+    },
+    {
+      "bytes": 127057920,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "9e5d46f5e4b5f3f719264c766910d523559dbee992322b21f684a89ba1884943"
+    },
+    {
+      "bytes": 601341952,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "0a403732b86c08b39daf6669532c3f5bb10bb12ef288b597e366a06f1b981b0b"
+    },
+    {
+      "bytes": 1819885568,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "bfcb33596a2bde568376c39ba179f3666becddbda2153cc7e48e0ffd21237aa4"
+    },
+    {
+      "bytes": 237125632,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "996039f29c5f41941922ca54e7cfc249b707bcc1cfa4d9654945417027864e17"
+    },
+    {
+      "bytes": 7290880,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "a9c6dd008245e2d4e024dd54875f95a33c4b488680f7e3b3e825cfa79dac7550"
+    },
+    {
+      "bytes": 617381888,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "d9d696f6624da68fb4df4dca0f3ea1a5b4c76a7de1a2e6d107d1e36cee9e75dc"
+    },
+    {
+      "bytes": 182812672,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "99344558cc98e4155262495ba2f2132aaf1331a02a8e7d6a129c7cf0a31e72c5"
+    },
+    {
+      "bytes": 23199744,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "fb7f328058ad6f118592c1b7d81d67d431d8e73e4ed8ed3239de20eb65bd0e98"
+    },
+    {
+      "bytes": 32768,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "be38a6ebbd6b0a5cf4692e23e683f53dcbb478725aac5b1e0b8cfe02ac9edc5e"
+    },
+    {
+      "bytes": 254345216,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit",
+      "reported_image_UUID_byte_occurrences": {
+        "libswiftCore.dylib": [
+          88994488
+        ],
+        "libsystem_c.dylib": [
+          88842328
+        ]
+      },
+      "sha256": "f61b8530e5697eaa744b3f36ea1c1a26a2da1a469f1f5f0395162c2e172b8625"
+    },
+    {
+      "bytes": 2372801,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.atlas",
+      "reported_image_UUID_byte_occurrences": {
+        "libswiftCore.dylib": [
+          654464
+        ],
+        "libsystem_c.dylib": [
+          678480
+        ]
+      },
+      "sha256": "ad196c5e2c1c0a3be152007906f1892861edaca96cbf4a8aa3bc581e07d684e2"
+    },
+    {
+      "bytes": 1338214,
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map",
+      "reported_image_UUID_byte_occurrences": {},
+      "sha256": "9486c0f76e880803a785925771d601d064fee8a7bec4279bd54c059db92adddd"
+    }
+  ],
+  "cache_membership": [
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.atlas",
+    "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map"
+  ],
+  "cache_total_bytes": 5824684071,
+  "consumed_markers_unchanged": {
+    "p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ]
+  },
+  "current_OS": {
+    "ProductBuildVersion": "25G83",
+    "ProductVersion": "26.6.2",
+    "bytes": 603,
+    "exists": true,
+    "path": "/System/Library/CoreServices/SystemVersion.plist",
+    "sha256": "6151cb883e5b48d43a33d4d41956405a1cd502e0c8622319388d943e2cb804a1"
+  },
+  "historical_negative_artifact": {
+    "bytes": 6670080,
+    "exists": true,
+    "matches_frozen_receipt": true,
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative",
+    "reported_UUID_literal_byte_offsets": [
+      2808
+    ],
+    "sha256": "4c5b43de56613cb448d0772ae2e0e8ce4cd3496fb0a6538f719a79cfa5397cd1"
+  },
+  "historical_negative_log": {
+    "bytes": 1447,
+    "exists": true,
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/so06-native-exclusivity-negative-execute.log",
+    "sha256": "e277a9c7eb12c0500ac32091d68a7657d9d4afe62901c56c60c74c9abad00f5f"
+  },
+  "historical_supplemental_report": {
+    "bytes": 7394,
+    "exists": true,
+    "path": "/Users/eugene/Library/Logs/DiagnosticReports/so06-native-exclusivity-negative-2026-10-19-131150.ips",
+    "selected_fields": {
+      "header": {
+        "app_name": "so06-native-exclusivity-negative",
+        "bug_type": "309",
+        "os_version": "macOS 26.6.2 (25G83)",
+        "slice_uuid": "634a7b5f-1800-3c84-ad42-d09276ca5562",
+        "timestamp": "2026-10-19 13:11:50.00 +0200"
+      },
+      "images": [
+        {
+          "arch": "arm64",
+          "base": 4310450176,
+          "name": "so06-native-exclusivity-negative",
+          "path": "/Users/USER/*/so06-native-exclusivity-negative",
+          "size": 2473984,
+          "uuid": "634a7b5f-1800-3c84-ad42-d09276ca5562"
+        },
+        {
+          "arch": "arm64e",
+          "base": 6488182784,
+          "name": "libsystem_c.dylib",
+          "path": "/usr/lib/system/libsystem_c.dylib",
+          "size": 528872,
+          "uuid": "d77ceb62-aff6-3cec-ba9b-4f057fbe2eb5"
+        },
+        {
+          "arch": "arm64e",
+          "base": 6816133120,
+          "name": "libswiftCore.dylib",
+          "path": "/usr/lib/swift/libswiftCore.dylib",
+          "size": 5908480,
+          "uuid": "83794fb3-de9b-3d23-ab5e-2c1d5d30f134"
+        },
+        {
+          "arch": "arm64e",
+          "base": 6485590016,
+          "name": "dyld",
+          "path": "/usr/lib/dyld",
+          "size": 734464,
+          "uuid": "74e52480-c2bd-3c8d-812d-95fe2b74a096"
+        }
+      ],
+      "ordinary_counter_process": false,
+      "previously_in_counter_manifest": false,
+      "report": {
+        "captureTime": "2026-10-19 13:11:49.7076 +0200",
+        "cpuType": "ARM-64",
+        "osVersion": {
+          "build": "25G83",
+          "releaseType": "User",
+          "train": "macOS 26.6.2"
+        },
+        "procLaunch": "2026-10-19 13:11:49.2272 +0200",
+        "procName": "so06-native-exclusivity-negative",
+        "procPath": "/Users/USER/*/so06-native-exclusivity-negative",
+        "sharedCache": {
+          "base": 6484459520,
+          "size": 6010847232,
+          "uuid": "f2e86c53-6052-388b-ba71-5a0c9b569413"
+        },
+        "translated": false
+      }
+    },
+    "sha256": "f15190c81d022debc91037c07a4064a9d9d3f78e4130afffad65ce0cba420203"
+  },
+  "historical_to_current_map_correspondence": [
+    {
+      "common_slide_candidate": "0x2810000",
+      "map_text_base": "0x18038D000",
+      "map_text_end": "0x18040E1E8",
+      "path": "/usr/lib/system/libsystem_c.dylib",
+      "reported_base": "0x182b9d000"
+    },
+    {
+      "common_slide_candidate": "0x2810000",
+      "map_text_base": "0x193C4F000",
+      "map_text_end": "0x1941F1800",
+      "path": "/usr/lib/swift/libswiftCore.dylib",
+      "reported_base": "0x19645f000"
+    }
+  ],
+  "linked_review_baseline": "8e3c74694f75a233221b32fe179ddfde9cf00fcb",
+  "method": "Existing file/text/JSON/plist/SHA-256 and literal UUID-byte inventory only; no decoder/controller/runtime/acquisition.",
+  "missing": [
+    "Direct ordinary-counter historical loaded-image/UUID receipt; supplemental crash report is a different process",
+    "Independently decoded path/architecture/image UUID identity for the proposed cache-backed virtual images",
+    "Historical libSystem/platform image UUIDs observed directly in this supplemental crash report",
+    "Exact selected system Swift source revision/type-layout header or populated Error metadata/value-witness size",
+    "Selected cold runtime, memcpy/resolver/canary implementation/body/cost and complete feasible transitive attribution"
+  ],
+  "ordinary_counter_runtime_applicability_complete": false,
+  "primary_header": {
+    "first_4096_sha256": "89f31fdf04c11a14ed115bfde032da2bbeee2335217aaf77521ebe47c3ffe97f",
+    "format_qualification": "Literal known UUID bytes occur at 0x58; this inventory does not invoke a cache-format decoder. Independent review/provider gate must validate field semantics.",
+    "magic_literal_bytes": "64796c645f7631202061726d36346500",
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e",
+    "reported_shared_cache_UUID_literal_byte_offsets": [
+      88
+    ]
+  },
+  "prior_direct_inputs_verified": 180,
+  "prior_linked_evidence": [
+    {
+      "bytes": 14243,
+      "exists": true,
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/README.md",
+      "sha256": "45166412a61e675f1319fe2187d31342c94fe8518b4d92a6cc9b775b213c9b75"
+    },
+    {
+      "bytes": 39120,
+      "exists": true,
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/inspection.json",
+      "sha256": "d184e9b4f6cdd96f246d9e23560a291be2b40aca607badc3d82115613eacca22"
+    },
+    {
+      "bytes": 19995,
+      "exists": true,
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/retained-excerpts.txt",
+      "sha256": "f2d0c74cce6f783e0e0bd80a0a079ecf63f99f0fe5f9f7026beb4ae5d2569a7d"
+    },
+    {
+      "bytes": 6744,
+      "exists": true,
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-linked-provider-interpretation1-result/independent-review.md",
+      "sha256": "fa92927b0acad2527e91a5a7cdd116830b9d32961c913d58f53390b963daac59"
+    }
+  ],
+  "production_tools_launched": 0,
+  "proposed_output_absent": "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1",
+  "source42_five_dirty_cache_preserved": true,
+  "strict_cold_eligible": false,
+  "system_ABI_source_candidates": [
+    {
+      "exists": false,
+      "path": "/usr/include/swift/ABI/Metadata.h"
+    },
+    {
+      "exists": false,
+      "path": "/usr/include/swift/Runtime/ExistentialContainer.h"
+    },
+    {
+      "exists": false,
+      "path": "/usr/lib/swift/Swift.swiftmodule/arm64e-apple-macos.swiftinterface"
+    }
+  ],
+  "tool": {
+    "bytes": 354688,
+    "exists": true,
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+    "sha256": "af56890ce0c564d0df60929914018f484a75db2a42011acda629b39ce2c66aeb"
+  },
+  "tool_manual": {
+    "bytes": 3608,
+    "exists": true,
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/man1/dyld_info.1",
+    "sha256": "73021b3c978396cb8193962278736844d6c7b533fb9ddea32edbfbf03c9f19fe"
+  },
+  "virtual_system_images": [
+    {
+      "exists": false,
+      "path": "/usr/lib/swift/libswiftCore.dylib"
+    },
+    {
+      "exists": false,
+      "path": "/usr/lib/libSystem.B.dylib"
+    },
+    {
+      "exists": false,
+      "path": "/usr/lib/system/libsystem_c.dylib"
+    },
+    {
+      "bytes": 514032,
+      "exists": true,
+      "path": "/usr/lib/system/libsystem_platform.dylib",
+      "sha256": "0e4588f3c7e7f855acbfc0e540b9517b318545e8d60ccf5c31ddd04966fc791c"
+    }
+  ]
+}

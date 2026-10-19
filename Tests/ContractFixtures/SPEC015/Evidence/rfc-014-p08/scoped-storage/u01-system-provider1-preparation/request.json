@@ -1,0 +1,147 @@
+{
+  "R01_R02_R03_R04_complete": false,
+  "budgets": {
+    "acquisitions": 0,
+    "aggregate_seconds_including_authentication_gate": 240,
+    "attempts_proposed": 1,
+    "attempts_used": 0,
+    "cache_extractions": 0,
+    "controller_bootstrap_proposed_separately": 1,
+    "controller_bootstrap_used": 0,
+    "decoder_commands_max": 3,
+    "network_fetches": 0,
+    "per_command_seconds": 60,
+    "repairs": 0,
+    "retries": 0,
+    "runtime_compiler_build_test_launches": 0,
+    "total_retained_output_bytes_max": 335544320
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+        "-arch",
+        "arm64e",
+        "-uuid",
+        "-platform",
+        "-linked_dylibs",
+        "-exports",
+        "-imports",
+        "-function_starts",
+        "-function_variants",
+        "/usr/lib/swift/libswiftCore.dylib",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/system/libsystem_c.dylib",
+        "/usr/lib/system/libsystem_platform.dylib"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+        "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "system-image-identities",
+      "max_combined_output_bytes": 16777216,
+      "max_wall_seconds": 60,
+      "stage": "I",
+      "tool": {
+        "bytes": 354688,
+        "exists": true,
+        "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+        "sha256": "af56890ce0c564d0df60929914018f484a75db2a42011acda629b39ce2c66aeb"
+      }
+    },
+    {
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+        "-arch",
+        "arm64e",
+        "-disassemble",
+        "-all_sections_bytes",
+        "/usr/lib/swift/libswiftCore.dylib"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+        "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "system-swift-body-data",
+      "max_combined_output_bytes": 201326592,
+      "max_wall_seconds": 60,
+      "stage": "S",
+      "tool": {
+        "bytes": 354688,
+        "exists": true,
+        "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+        "sha256": "af56890ce0c564d0df60929914018f484a75db2a42011acda629b39ce2c66aeb"
+      }
+    },
+    {
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+        "-arch",
+        "arm64e",
+        "-disassemble",
+        "-all_sections_bytes",
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/system/libsystem_c.dylib",
+        "/usr/lib/system/libsystem_platform.dylib"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "environment": {
+        "DYLD_FALLBACK_FRAMEWORK_PATH": "/System/Library/Frameworks",
+        "DYLD_FALLBACK_LIBRARY_PATH": "/usr/lib",
+        "HOME": "/Users/eugene",
+        "LC_CTYPE": "C.UTF-8",
+        "LOGNAME": "eugene",
+        "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+        "TMPDIR": "/private/tmp",
+        "USER": "eugene"
+      },
+      "executed": false,
+      "id": "system-c-body-data",
+      "max_combined_output_bytes": 67108864,
+      "max_wall_seconds": 60,
+      "stage": "S",
+      "tool": {
+        "bytes": 354688,
+        "exists": true,
+        "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dyld_info",
+        "sha256": "af56890ce0c564d0df60929914018f484a75db2a42011acda629b39ce2c66aeb"
+      }
+    }
+  ],
+  "input_authentication": "Pin inventory/request/code/environment externally after review. Reauthenticate all 15 cache-family member hashes/membership, report/artifact/log, linked evidence, tool/manual and applicable prior complete interpreter/Xcode loader roots/aliases, source42 and dirty/cache identities before launch and each command.",
+  "next_prerequisite": "Independent Strong preparation review, then concrete externally pinned controller/gate/readiness and explicit authorization before any proposed decoder command. No controller is prepared or launched here.",
+  "old_B_retargeted": false,
+  "output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1",
+  "provider_gate": {
+    "before_S": "I must identify each exact install path/arm64e image; Swift UUID83794fb3-de9b-3d23-ab5e-2c1d5d30f134 and C UUIDd77ceb62-aff6-3cec-ba9b-4f057fbe2eb5 must match the existing historical supplemental report. Validate current cache UUID field against reported f2e86c53-6052-388b-ba71-5a0c9b569413 and OS25G83 before relying on cache membership. Static linked providers must remain system Swift/libSystem. No name/version/map-only release.",
+    "failure": "Immediate STOP; all S commands skipped. No human wait/reset inside aggregate budget, no tool/provider substitution or cache extraction.",
+    "ordinary_process_limit": "These joins establish matching historical supplemental/cache candidates, not direct ordinary-counter loaded-image observation. Body capture may contribute conditional static evidence only; R03 ordinary-process applicability cannot be marked complete by this gate."
+  },
+  "receipts": "New request-specific permanent attempt marker before child, durable exact argv/environment/authentication/claim/start/raw stdout/stderr/actual exit/hash/cap/timeout and skipped-command records. Raw caps must stop/kill owned process groups, not truncate into PASS. No historical marker/attempt reuse.",
+  "scope": "U01 R01-R04 selected system-provider static cache-backed evidence; new request, old B unchanged/inapplicable",
+  "status": "PREPARATION_ONLY_independent_review_required_no_execution_authorized",
+  "stop_conditions": [
+    "Any source/tool/loader/report/cache membership/hash drift",
+    "Unsupported cache-path/architecture/flag format, nonzero exit, empty/missing UUID/provider/body records, timeout/output cap",
+    "Historical/current UUID/build/provider correspondence fails or field semantics remain unauthenticated",
+    "Exact Error size, transitive implementation/resolver or ordinary-counter image applicability remains missing: preserve residual, no automatic new operation",
+    "Need for extraction, downloading source/tool, runtime metadata/loader observation, warm-up/heap/ownership/privacy/bound/scope exception"
+  ],
+  "strict_cold_eligible": false
+}
