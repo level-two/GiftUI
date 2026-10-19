@@ -1,13 +1,15 @@
 # RFC-014 task context guide
 
-Current P08 metadata preparation — **exact smart-HTTPS Git candidate-ref route prepared; independent review pending; network execution not ready**.
+Current P08 metadata preparation — **exact smart-HTTPS Git candidate-ref route independently reviewed: STOP / readiness NOT READY**.
 The [separate route preparation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/README.md)
 pins the Apple distribution Git remote and only candidate `refs/tags/macos-2662`
 plus its peeled form. No network request ran. Candidate existence, 25G83/build
 association, dyld revision and cache applicability remain unproved. The proposed
 two-request/1-MiB acceptance limits need a concrete enforced execution envelope;
-bare Git does not supply those hard caps. Independent review must resolve that
-prerequisite before launch; no object/header/parser/controller follow is cleared.
+bare Git does not supply those hard caps. The [independent Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/independent-review.md)
+requires an enforcing controller and explicit repository-config isolation: an
+empty descendant directory still permits parent Git discovery. Both block
+launch; no object/header/parser/controller follow is cleared.
 The five dirty files/cache and three 1/1 markers remain unchanged, repairs/retries
 0. S and old B remain closed; U01/R01–R04, strict cold and P08/R07/T8.1 stay open.
 

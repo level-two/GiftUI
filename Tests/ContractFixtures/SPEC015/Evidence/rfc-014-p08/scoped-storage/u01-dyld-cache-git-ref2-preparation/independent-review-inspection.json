@@ -1,0 +1,112 @@
+{
+  "cache_files": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
+      "matches_preparation": true,
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  },
+  "cache_membership_matches_preparation": true,
+  "dirty_files": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
+      "matches_preparation": true,
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": {
+      "matches_preparation": true,
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": {
+      "matches_preparation": true,
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    "scripts/nrf52840/build.sh": {
+      "matches_preparation": true,
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    "scripts/raspberry-pi/build.sh": {
+      "matches_preparation": true,
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  },
+  "markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+      "identity": [
+        16777234,
+        29640436
+      ],
+      "matches_preparation": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+      "identity": [
+        16777234,
+        29650609
+      ],
+      "matches_preparation": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+      "identity": [
+        16777234,
+        29652748
+      ],
+      "matches_preparation": true
+    }
+  },
+  "packet_blobs": {
+    "README.md": {
+      "bytes": 2846,
+      "matches_reviewed_git_blob": true,
+      "sha256": "d4cb6bbe6509475acd17448db7d1f2fde8baac52f17191e90707cfd95feb907b"
+    },
+    "inspection.json": {
+      "bytes": 2778,
+      "matches_reviewed_git_blob": true,
+      "sha256": "b458b2f4151e92d3f041e27eff495b44a6c493886100ca7c4f1f82f932019c8a"
+    },
+    "request.json": {
+      "bytes": 1877,
+      "matches_reviewed_git_blob": true,
+      "sha256": "14fea99f53f20cbda5c120b89ff7157f537187ed9a6c77844075181393c57505"
+    },
+    "request.md": {
+      "bytes": 6399,
+      "matches_reviewed_git_blob": true,
+      "sha256": "fa09988b9dbabd50fa3606063ad31774eea83cdc41488dd363a8b73269830a87"
+    }
+  },
+  "repository_discovery_probe": {
+    "argv": [
+      "git",
+      "-C",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "stdout": "/Users/eugene/work/GiftUI"
+  },
+  "retained_metadata": {
+    "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.headers": {
+      "bytes": 1021,
+      "matches_preparation": true,
+      "sha256": "d643282007c6eaacbc7190e8d5a59f7b990ffac8f9b69f1915cc2e6d754f4b21"
+    },
+    "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.json": {
+      "bytes": 279,
+      "matches_preparation": true,
+      "sha256": "16b605b4b536a18a4158a564f5f2f836d47da19bb8c3c5b201a226d528c20b15"
+    },
+    "u01-dyld-cache-schema-source1-preparation/distribution-tags.headers": {
+      "bytes": 1478,
+      "matches_preparation": true,
+      "sha256": "0882476addc240934a7db06052073bc05633e2570422bee52a949be9023d8a6f"
+    },
+    "u01-dyld-cache-schema-source1-preparation/distribution-tags.json": {
+      "bytes": 55838,
+      "matches_preparation": true,
+      "sha256": "8e52205de326cf31289a8443ae889bc44b0a16c39e867247a0bad828ee435105"
+    }
+  },
+  "review_header_bytes_read": 0,
+  "review_header_candidates_selected": 0,
+  "review_network_requests": 0,
+  "reviewed_commit": "8250f8ece37bc2ebc458c13cdb31251d4dbad646"
+}

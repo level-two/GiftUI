@@ -40,5 +40,9 @@ four-profile ABI/resources, P08/R07/T8.1 and conformance remain open. No new
 deferred discovery or actual contract/scope choice arose; any relaxation goes
 upstream for the requested Astra Medium decision.
 
-Independent review is pending at this commit. No network/source/header/parser/
-controller/runtime/compiler/build/test, acquisition, repair or retry is cleared.
+[Independent Strong review](independent-review.md) confirms **STOP / readiness
+NOT READY**. B01 requires a concrete enforcing request/byte/time/receipt
+controller; B02 requires explicit isolation from parent repository configuration.
+The proposed empty descendant Git directory does not itself provide isolation.
+No network/source/header/parser/controller/runtime/compiler/build/test,
+acquisition, repair or retry is cleared.
