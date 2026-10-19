@@ -11,7 +11,8 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from readiness import (actual, sha, tree_entries, verify_trees, verify_receipt,
                        verify_stage_captures, verify_reviewed_packet,
-                       verify_context, qualify_schema4, qualify_counter, verify_archive)
+                       verify_context, qualify_schema4, qualify_counter, verify_archive,
+                       import_directory_entries, verify_import_directory)
 
 ROOT = Path('/Users/eugene/work/GiftUI')
 PACKET = Path(__file__).resolve().parent
@@ -187,6 +188,42 @@ class FilesystemTests(unittest.TestCase):
             identity=subprocess.run(command[:-4]+['-c',"import pathlib,sys,json;print(json.dumps(dict(executable=sys.executable,prefix=sys.prefix,path=sys.path,isolated=sys.flags.isolated,no_site=sys.flags.no_site,cache=sys.pycache_prefix)))"],cwd=root,env=poison,capture_output=True)
             self.assertEqual(identity.returncode,0,identity.stderr.decode());facts=json.loads(identity.stdout)
             self.assertEqual(facts['executable'],interpreter);self.assertEqual(facts['isolated'],1);self.assertEqual(facts['no_site'],1);self.assertEqual(facts['cache'],'/dev/null');self.assertNotIn(str(root),facts['path'])
+
+
+    def test_import_packages_cannot_shadow_helper_or_subprocess(self):
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temp:
+            root=Path(temp);scripts=root/'scripts/contracts';scripts.mkdir(parents=True)
+            (scripts/'p08_check_collection.py').write_bytes(actual(ROOT/'scripts/contracts/p08_check_collection.py'))
+            driver=scripts/'import_modules.py';driver.write_text("import p08_check_collection\nimport subprocess\nprint('IMPORTS_COMPLETE')\n")
+            expected=import_directory_entries(scripts);verify_import_directory(scripts,expected)
+            recipe=json.loads(actual(PACKET/'recipe.json'));argv=['python3',str(driver)]
+            baseline=subprocess.run(argv,executable=recipe['python_executable'],env=recipe['environment'],cwd=root,capture_output=True)
+            self.assertEqual(baseline.returncode,0,baseline.stderr.decode());self.assertNotIn(b'PACKAGE_SHADOW_',baseline.stdout)
+            for module in ('p08_check_collection','subprocess'):
+                package=scripts/module;package.mkdir();(package/'__init__.py').write_text("print('PACKAGE_SHADOW_"+module+"')\n")
+                # The exact gate now rejects the package before a real launch.
+                with self.assertRaises(ValueError):verify_import_directory(scripts,expected)
+            attack=subprocess.run(argv,executable=recipe['python_executable'],env=recipe['environment'],cwd=root,capture_output=True)
+            self.assertEqual(attack.returncode,0,attack.stderr.decode());self.assertEqual(attack.stdout.count(b'PACKAGE_SHADOW_'),2)
+
+    def test_import_directory_extensions_links_and_inert_cache(self):
+        with tempfile.TemporaryDirectory(dir='/private/tmp') as temp:
+            root=Path(temp);cache=root/'__pycache__';cache.mkdir();(root/'helper.py').write_text('sealed = True\n')
+            expected=import_directory_entries(root);verify_import_directory(root,expected)
+            # Cache contents are outside the consumed /dev/null cache namespace.
+            (cache/'anything.pyc').write_bytes(b'inert');(cache/'package').mkdir();(cache/'package/__init__.py').write_text('inert = True')
+            verify_import_directory(root,expected)
+            for name in ('helper.so','subprocess.cpython-39-darwin.so','sitecustomize.py','usercustomize.py','namespace'):
+                path=root/name
+                if name=='namespace':path.mkdir()
+                else:path.write_bytes(b'new import entry')
+                with self.assertRaises(ValueError):verify_import_directory(root,expected)
+                path.rmdir() if path.is_dir() else path.unlink()
+            (root/'linked-package').symlink_to(cache/'package')
+            with self.assertRaises(ValueError):verify_import_directory(root,expected)
+            (root/'linked-package').unlink()
+            moved=root/'moved-cache';cache.rename(moved);cache.symlink_to(moved)
+            with self.assertRaises(ValueError):verify_import_directory(root,expected)
 
 
 if __name__=='__main__':

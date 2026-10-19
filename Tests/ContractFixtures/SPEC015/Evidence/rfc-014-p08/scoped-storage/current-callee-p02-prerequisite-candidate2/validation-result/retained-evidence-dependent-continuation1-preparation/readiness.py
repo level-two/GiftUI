@@ -180,6 +180,7 @@ def verify_context(root, packet, recipe):
     freeze = json.loads(actual(packet / 'source-freeze.json'))
     verify_files(root, freeze, json.loads(actual(packet / 'frozen-links.json')))
     verify_inventory(root, json.loads(actual(packet / 'source-inventory.json')))
+    verify_import_directory(root / 'scripts/contracts', json.loads(actual(packet / 'import-directory.json')))
     verify_tools(root, json.loads(actual(packet / 'tools.json')))
     # Full roots include caches and prevent extra imported *.o / *.swiftmodule.
     # SDK roots include links, directories, headers, overlays and module bytes.
@@ -301,3 +302,30 @@ def verify_archive(root, directory, commit):
         require(hashlib.sha1(b'blob '+str(len(content)).encode()+b'\0'+content).hexdigest() == oid.decode(), 'archived byte identity')
         expected.add(name.decode())
     require({str(p.relative_to(directory)) for p in directory.rglob('*') if p.is_file() or p.is_symlink()} == expected, 'archive membership')
+
+
+def import_directory_entries(base):
+    """Seal every import-directory entry; only the null-prefix cache is inert."""
+    import os
+    base = Path(base)
+    require(base.is_dir() and base.resolve() == base, 'import directory root alias')
+    result = {}
+    for directory, directories, files in os.walk(base, followlinks=False):
+        for name in directories + files:
+            path = Path(directory) / name
+            require(not path.is_symlink(), 'import directory symlink')
+            key = str(path.relative_to(base))
+            if path.parent == base and name == '__pycache__':
+                require(path.is_dir(), 'inert cache must be a real directory')
+                result[key] = dict(kind='inert-cache-directory')
+                directories.remove(name)
+            elif path.is_dir():
+                result[key] = dict(kind='directory')
+            else:
+                content = actual(path)
+                result[key] = dict(kind='file', bytes=len(content), sha256=sha(content))
+    return result
+
+
+def verify_import_directory(base, expected):
+    require(import_directory_entries(base) == expected, 'complete import directory membership/bytes')
