@@ -1,5 +1,13 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
+**Independent result review: PASS / further P08 activity STOP.**
+The [exact c081a421 review](result-independent-review.md) independently verifies
+all 20 raw files, 19 terminal hashes/sizes, exact requests/protocol/framing,
+195 accepted body bytes, actual exit 0 and preserved state. Only no exact
+refs/tags/macos-2662 advertised at lookup time is established. Session/API 1/1,
+requests 2/2, repairs/retries 0 and all P08 gates remain unchanged; no automatic
+follow/retry. Earlier packaging/preparation checkpoints below are historical.
+
 **Current disposition: STOP / one-shot result observed; independent result review pending.**
 The [separate outcome record](result-README.md) and [inspection](result-inspection.json)
 package the unchanged fixed result: two HTTP 200 responses, exact empty ls-refs

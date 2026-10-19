@@ -1,0 +1,591 @@
+{
+  "P08_R07_T8_1": "open",
+  "accepted_body_bytes": 195,
+  "allowances": {
+    "header_candidates": "0/3",
+    "prior_API_GET": "1/1 consumed",
+    "ref2_requests": "2/2",
+    "ref2_session": "1/1 consumed",
+    "repairs": 0,
+    "retries": 0,
+    "source_header_bytes": 0
+  },
+  "capabilities": [
+    "version 2",
+    "agent=git/github-41cc7379a75f-Linux",
+    "ls-refs=unborn",
+    "fetch=shallow wait-for-done filter",
+    "server-option",
+    "object-format=sha1"
+  ],
+  "disposition": "PASS for bounded retained result integrity/interpretation; STOP for further P08 activity",
+  "elapsed_monotonic_seconds": 0.8790235826745629,
+  "file_count": 20,
+  "interpretation": "Only no exact refs/tags/macos-2662 advertised at retained lookup time. No release/source-absence or official 26.6.2/25G83/distribution/dyld/loaded-cache association conclusion.",
+  "launch": {
+    "aggregate_body_cap": 1048576,
+    "argv": [
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/controller.py",
+      "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a",
+      "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374"
+    ],
+    "controller_sha256": "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374",
+    "deadline_monotonic": 2674692.8354115,
+    "environment": {
+      "LANG": "C",
+      "LC_ALL": "C",
+      "TZ": "UTC",
+      "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x3D"
+    },
+    "max_requests": 2,
+    "pid": 1430,
+    "runtime_lock_sha256": "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a",
+    "start_monotonic": 2674662.8354115,
+    "status": "CONSUMED before emission"
+  },
+  "manifest_format": "sorted filename TAB decimal byte count TAB SHA256 LF, UTF-8",
+  "manifest_sha256": "3b9add5645d84bcfb889f92ac4918a9f92ee369618671c1cd5cdfac38304fdf4",
+  "manual_all_raw_content_inspection": "No credentials, cookies, authorization material or private keys observed; public peer/certificate/request identifiers and local paths retained",
+  "method": "Independent offline standard-library byte/hash/stat/protocol/JSON checks; controller source read only, never imported/executed; no network/build/test/compiler/target or marker/raw mutation",
+  "pins": {
+    "controller.py": "9125e13998120ae2f15d71948110b5141c0915e7939955595c6f41076057a374",
+    "request.json": "7f527096c16712ea7f13fcb9f04a84bb45413a7b29aa909ac63065b61a7f02a5",
+    "runtime-lock.json": "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a"
+  },
+  "preservation": {
+    "cache_files": {
+      "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
+        "matches_baseline": true,
+        "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+      }
+    },
+    "cache_membership_matches": true,
+    "dirty_files": {
+      "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
+        "matches_baseline": true,
+        "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+      },
+      "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": {
+        "matches_baseline": true,
+        "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+      },
+      "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": {
+        "matches_baseline": true,
+        "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+      },
+      "scripts/nrf52840/build.sh": {
+        "matches_baseline": true,
+        "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+      },
+      "scripts/raspberry-pi/build.sh": {
+        "matches_baseline": true,
+        "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+      }
+    },
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+        "consumption": "1/1",
+        "identity": [
+          16777234,
+          29640436
+        ],
+        "matches_baseline": true
+      },
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+        "consumption": "1/1",
+        "identity": [
+          16777234,
+          29650609
+        ],
+        "matches_baseline": true
+      },
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+        "consumption": "1/1",
+        "identity": [
+          16777234,
+          29652748
+        ],
+        "matches_baseline": true
+      }
+    },
+    "retained_metadata": {
+      "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.headers": {
+        "bytes": 1021,
+        "sha256": "d643282007c6eaacbc7190e8d5a59f7b990ffac8f9b69f1915cc2e6d754f4b21"
+      },
+      "u01-dyld-cache-macos-2662-ref1-result/macos-2662-ref.json": {
+        "bytes": 279,
+        "sha256": "16b605b4b536a18a4158a564f5f2f836d47da19bb8c3c5b201a226d528c20b15"
+      },
+      "u01-dyld-cache-schema-source1-preparation/distribution-tags.headers": {
+        "bytes": 1478,
+        "sha256": "0882476addc240934a7db06052073bc05633e2570422bee52a949be9023d8a6f"
+      },
+      "u01-dyld-cache-schema-source1-preparation/distribution-tags.json": {
+        "bytes": 55838,
+        "sha256": "8e52205de326cf31289a8443ae889bc44b0a16c39e867247a0bad828ee435105"
+      }
+    }
+  },
+  "raw_directory": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-result",
+  "raw_directory_identity": [
+    16777234,
+    29659426
+  ],
+  "raw_files": {
+    "1-accounting.json": {
+      "bytes": 187,
+      "ctime_ns": 1792433395573999356,
+      "device": 16777234,
+      "inode": 29659527,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395573999356,
+      "nlink": 1,
+      "sha256": "c2b591f3a37e3d67eb1f6cbc9ca12ebb9f16384dd7cd00376ec75a6bd7a3ca62"
+    },
+    "1-intent.json": {
+      "bytes": 148,
+      "ctime_ns": 1792433395213397455,
+      "device": 16777234,
+      "inode": 29659431,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395213397455,
+      "nlink": 1,
+      "sha256": "55eed005f2e3fa3f5f8197d1872c2ebfd5e46bb6f46a84be1222e253852f9711"
+    },
+    "1-request.http": {
+      "bytes": 271,
+      "ctime_ns": 1792433395213183830,
+      "device": 16777234,
+      "inode": 29659430,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395213183830,
+      "nlink": 1,
+      "sha256": "0d7464a5e556ad3a7c3b9a7dc9398505a14b2bd1fb10567aeb7ecca35668bfba"
+    },
+    "1-response.body": {
+      "bytes": 191,
+      "ctime_ns": 1792433395573634898,
+      "device": 16777234,
+      "inode": 29659433,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395573634898,
+      "nlink": 1,
+      "sha256": "51ee7f2c18a0792864a92d6aa371081dd75bdce4132f49207db91521f07733d1"
+    },
+    "1-response.framing": {
+      "bytes": 11,
+      "ctime_ns": 1792433395573706940,
+      "device": 16777234,
+      "inode": 29659434,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395573706940,
+      "nlink": 1,
+      "sha256": "31aaf4f4e385527cd035c45a3c4b5836d4d6e9a7446b83696e1c4df486484401"
+    },
+    "1-response.headers": {
+      "bytes": 529,
+      "ctime_ns": 1792433395573379399,
+      "device": 16777234,
+      "inode": 29659432,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395573379399,
+      "nlink": 1,
+      "sha256": "6ee83b2de570ab770e331245ea466d37e3122caa363d80a3b4f6796e4175083b"
+    },
+    "1-tls.json": {
+      "bytes": 241,
+      "ctime_ns": 1792433395343489968,
+      "device": 16777234,
+      "inode": 29659449,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395343489968,
+      "nlink": 1,
+      "sha256": "d97be10d0da9c0908d4d7b3ff6eca9804353536405bb6bc97029275f2dfe4510"
+    },
+    "2-accounting.json": {
+      "bytes": 185,
+      "ctime_ns": 1792433395907222401,
+      "device": 16777234,
+      "inode": 29659537,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395907222401,
+      "nlink": 1,
+      "sha256": "1c70650ca7e5683b55ec9b760cf139ae81ab557d17e7f6aaba4ba2a6715e3d9d"
+    },
+    "2-intent.json": {
+      "bytes": 148,
+      "ctime_ns": 1792433395574728728,
+      "device": 16777234,
+      "inode": 29659530,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395574728728,
+      "nlink": 1,
+      "sha256": "296174ae914d42503af161d5f703fbc750f111ef06b0b4122e25067b20538806"
+    },
+    "2-request.http": {
+      "bytes": 416,
+      "ctime_ns": 1792433395574610770,
+      "device": 16777234,
+      "inode": 29659529,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395574610770,
+      "nlink": 1,
+      "sha256": "8a23cb40adb4c9d5c773261b8e64de4471cb2675e3ee2b106172ee77761db905"
+    },
+    "2-response.body": {
+      "bytes": 4,
+      "ctime_ns": 1792433395905911281,
+      "device": 16777234,
+      "inode": 29659532,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395905911281,
+      "nlink": 1,
+      "sha256": "9af15b336e6a9619928537df30b2e6a2376569fcf9d7e773eccede65606529a0"
+    },
+    "2-response.framing": {
+      "bytes": 10,
+      "ctime_ns": 1792433395906555445,
+      "device": 16777234,
+      "inode": 29659533,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395906555445,
+      "nlink": 1,
+      "sha256": "f4729d57a5bcbd83f6d49cd462ae9baeff1234d2c0d28f9c2212a515ed8d2673"
+    },
+    "2-response.headers": {
+      "bytes": 522,
+      "ctime_ns": 1792433395905635699,
+      "device": 16777234,
+      "inode": 29659531,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395905635699,
+      "nlink": 1,
+      "sha256": "2be73158161180cd5cae0192c8b2425cee6d02084ca62e151e92cf237c80bc16"
+    },
+    "2-tls.json": {
+      "bytes": 241,
+      "ctime_ns": 1792433395675334644,
+      "device": 16777234,
+      "inode": 29659534,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395675334644,
+      "nlink": 1,
+      "sha256": "d97be10d0da9c0908d4d7b3ff6eca9804353536405bb6bc97029275f2dfe4510"
+    },
+    "capabilities.json": {
+      "bytes": 162,
+      "ctime_ns": 1792433395574501437,
+      "device": 16777234,
+      "inode": 29659528,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395574501437,
+      "nlink": 1,
+      "sha256": "f3242b2d6282d5941618f4884c608c8ea037c2ba874e6408a6a5549a5e9b7647"
+    },
+    "child-result.json": {
+      "bytes": 689,
+      "ctime_ns": 1792433395908347480,
+      "device": 16777234,
+      "inode": 29659538,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395908347480,
+      "nlink": 1,
+      "sha256": "daab9419d582bf7eb5a912a0c58d1c9f1350eaf40d02ad6de009ec95495ef60b"
+    },
+    "launch.json": {
+      "bytes": 810,
+      "ctime_ns": 1792433395211325546,
+      "device": 16777234,
+      "inode": 29659427,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395211325546,
+      "nlink": 1,
+      "sha256": "51ccc13294137404a0691c9e1fda4daab9e1e4b25b01d2bf220f0fe230486697"
+    },
+    "stderr": {
+      "bytes": 0,
+      "ctime_ns": 1792433395211789794,
+      "device": 16777234,
+      "inode": 29659429,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395211777086,
+      "nlink": 1,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 0,
+      "ctime_ns": 1792433395211727211,
+      "device": 16777234,
+      "inode": 29659428,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "matches_terminal": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395211704711,
+      "nlink": 1,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "terminal.json": {
+      "bytes": 2817,
+      "ctime_ns": 1792433395917843237,
+      "device": 16777234,
+      "inode": 29659539,
+      "matches_committed_blob": true,
+      "matches_packaging_stat_hash": true,
+      "mode": "0o100600",
+      "mtime_ns": 1792433395917843237,
+      "nlink": 1,
+      "sha256": "88246868150de21bd61991f7c47cf8871e2b8330bf6a13fa7c6a58be82a51d50"
+    }
+  },
+  "request_checks": {
+    "1": {
+      "exact_expected_bytes": true,
+      "intent": {
+        "monotonic": 2674663.010144458,
+        "request_number": 1,
+        "request_sha256": "0d7464a5e556ad3a7c3b9a7dc9398505a14b2bd1fb10567aeb7ecca35668bfba"
+      },
+      "post_packets": null,
+      "request_bytes": 271,
+      "request_sha256": "0d7464a5e556ad3a7c3b9a7dc9398505a14b2bd1fb10567aeb7ecca35668bfba"
+    },
+    "2": {
+      "exact_expected_bytes": true,
+      "intent": {
+        "monotonic": 2674663.371555833,
+        "request_number": 2,
+        "request_sha256": "8a23cb40adb4c9d5c773261b8e64de4471cb2675e3ee2b106172ee77761db905"
+      },
+      "post_packets": [
+        {
+          "payload": "command=ls-refs\n"
+        },
+        {
+          "payload": "object-format=sha1\n"
+        },
+        {
+          "control": 1
+        },
+        {
+          "payload": "peel\n"
+        },
+        {
+          "payload": "ref-prefix refs/tags/macos-2662\n"
+        },
+        {
+          "control": 0
+        }
+      ],
+      "request_bytes": 416,
+      "request_sha256": "8a23cb40adb4c9d5c773261b8e64de4471cb2675e3ee2b106172ee77761db905"
+    }
+  },
+  "response_framing_bytes": 21,
+  "response_headers_bytes": 1051,
+  "responses": [
+    {
+      "accounting": {
+        "aggregate_body_bytes": 191,
+        "body_bytes": 191,
+        "error": null,
+        "framing_bytes": 11,
+        "framing_complete": true,
+        "headers_bytes": 529,
+        "request_number": 1,
+        "status": 200
+      },
+      "chunk_size": 191,
+      "framing_hex": "42460d0a0d0a300d0a0d0a",
+      "headers": {
+        "cache-control": "no-cache, max-age=0, must-revalidate",
+        "connection": "close",
+        "content-security-policy": "default-src 'none'; sandbox",
+        "content-type": "application/x-git-upload-pack-advertisement",
+        "date": "Mon, 19 Oct 2026 18:09:55 GMT",
+        "expires": "Fri, 01 Jan 1980 00:00:00 GMT",
+        "pragma": "no-cache",
+        "server": "GitHub-Babel/3.0",
+        "strict-transport-security": "max-age=31536000",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-frame-options": "DENY",
+        "x-github-edge-region": "fra",
+        "x-github-request-id": "D488:81872:3E46855:4E57AEC:6AD65CF3"
+      },
+      "packets": [
+        {
+          "payload": "# service=git-upload-pack\n"
+        },
+        {
+          "control": 0
+        },
+        {
+          "payload": "version 2\n"
+        },
+        {
+          "payload": "agent=git/github-41cc7379a75f-Linux\n"
+        },
+        {
+          "payload": "ls-refs=unborn\n"
+        },
+        {
+          "payload": "fetch=shallow wait-for-done filter\n"
+        },
+        {
+          "payload": "server-option\n"
+        },
+        {
+          "payload": "object-format=sha1\n"
+        },
+        {
+          "control": 0
+        }
+      ],
+      "request_number": 1,
+      "tls": {
+        "cipher": [
+          "TLS_AES_128_GCM_SHA256",
+          "TLSv1.3",
+          128
+        ],
+        "peer": [
+          "140.82.121.3",
+          443
+        ],
+        "peer_certificate_sha256": "46b601ee08b418cf8a3a1ebfe670ba5ce43bb05a917fa8b2dd087a30471cfc63",
+        "version": "TLSv1.3"
+      }
+    },
+    {
+      "accounting": {
+        "aggregate_body_bytes": 195,
+        "body_bytes": 4,
+        "error": null,
+        "framing_bytes": 10,
+        "framing_complete": true,
+        "headers_bytes": 522,
+        "request_number": 2,
+        "status": 200
+      },
+      "chunk_size": 4,
+      "framing_hex": "340d0a0d0a300d0a0d0a",
+      "headers": {
+        "cache-control": "no-cache, max-age=0, must-revalidate",
+        "connection": "close",
+        "content-security-policy": "default-src 'none'; sandbox",
+        "content-type": "application/x-git-upload-pack-result",
+        "date": "Mon, 19 Oct 2026 18:09:55 GMT",
+        "expires": "Fri, 01 Jan 1980 00:00:00 GMT",
+        "pragma": "no-cache",
+        "server": "GitHub-Babel/3.0",
+        "strict-transport-security": "max-age=31536000",
+        "transfer-encoding": "chunked",
+        "vary": "Accept-Encoding",
+        "x-frame-options": "DENY",
+        "x-github-edge-region": "fra",
+        "x-github-request-id": "D489:A06A6:3DDF0C5:4DEC2D5:6AD65CF3"
+      },
+      "packets": [
+        {
+          "control": 0
+        }
+      ],
+      "request_number": 2,
+      "tls": {
+        "cipher": [
+          "TLS_AES_128_GCM_SHA256",
+          "TLSv1.3",
+          128
+        ],
+        "peer": [
+          "140.82.121.3",
+          443
+        ],
+        "peer_certificate_sha256": "46b601ee08b418cf8a3a1ebfe670ba5ce43bb05a917fa8b2dd087a30471cfc63",
+        "version": "TLSv1.3"
+      }
+    }
+  ],
+  "review_execution_counts": {
+    "compiler_build_test_target": 0,
+    "controller_import_execution": 0,
+    "network": 0,
+    "object_source_header_follow": 0
+  },
+  "reviewed_commit": "c081a421d404f26bc9345607384d3c4fb18c0abf",
+  "secret_hits": [],
+  "secret_patterns": [
+    "(?i)(?:authorization|proxy-authorization|cookie|set-cookie)\\s*:",
+    "-----BEGIN (?:[A-Z ]*PRIVATE KEY|OPENSSH)",
+    "(?i)\\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[A-Z0-9]{16})",
+    "https?://[^/\\s:@]+:[^/\\s@]+@"
+  ],
+  "terminal_streams_independently_verified": 19,
+  "terminal_summary": {
+    "actual_exit": 0,
+    "actual_wait_status": 0,
+    "end_monotonic": 2674663.714435083,
+    "full_retained_streams": [],
+    "missing_child_result_is_incomplete_accounting": false,
+    "status": "OBSERVED",
+    "timed_out": false,
+    "wire_byte_limit_claimed": false
+  },
+  "total_bytes": 7582
+}

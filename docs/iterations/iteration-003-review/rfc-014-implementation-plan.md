@@ -1,5 +1,15 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current P08 Git-ref2 independent result review — **PASS / further activity STOP**.
+The [exact c081a421 review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-independent-review.md)
+independently verifies all 20 raw files/19 terminal hashes, exact requests/framing,
+195 accepted body bytes, actual exit 0 and preservation. Only no exact candidate
+advertised at lookup time follows; build/source/cache conclusions remain unproved.
+Session/API 1/1, requests 2/2, repairs/retries 0, five dirty files/cache and three
+1/1 markers preserved. U01/R01–R04/U02–U05 and P08/R07/T8.1 remain open;
+separate bounded preparation/review before further evidence, no automatic follow/retry.
+Earlier checkpoints below are historical.
+
 Current P08 Git-ref2 result — **STOP / bounded observation; independent result review pending**.
 The [packaged result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-README.md)
 retains two HTTP 200 responses, exact empty ls-refs flush, 195 accepted body bytes,
