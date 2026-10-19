@@ -25,7 +25,7 @@ package struct CycleRoot: View {
     }
 }
 package struct CycleScene: View {
-    package let show: Bool
+    @usableFromInline package let show: Bool
     package init(show: Bool) { self.show = show }
     package var body: some View {
         if show { CycleRoot() } else { Text("gone") }
