@@ -1,6 +1,9 @@
 # P08 complete current-callee preparation 1 — 2026-10-19
 
-Status: **compiler-free preparation; independent applicability review pending**.
+Status: **compiler-free preparation independently reviewed; execution blocked**.
+The [independent Strong review](independent-review.md) passes applicability and the
+bounded recipe; a complete controller/environment packet and independent readiness
+review remain required before production.
 No compiler, build, test, decoder or runtime command ran. This packet supplies
 fixed collection data and review requirements; it does not supply a production
 launcher or claim launch readiness. The output
@@ -133,8 +136,11 @@ one SIL), **zero automatic source/tooling repairs**, **zero retries**. These are
 bounds for independent review under the current P08 instruction, not a reset of
 any earlier budget. Existing two-unproductive and all historical stop rules apply.
 
-The exact next dependency is an **independent Strong applicability/minimal-recipe
-review** of this committed packet. It must resolve the items below before launch:
+The [independent Strong applicability/minimal-recipe review](independent-review.md)
+of preparation commit `0bc382b4` is complete. The exact next dependency is a
+**concrete controller/environment packet and independent Strong readiness review**.
+The original preparation requirements below remain production launch conditions;
+authenticated inputs and producer joins must still be rechecked at launch:
 
 - Check complete retained producer/receipt/source/compiler/flag/artifact joins,
   including input exclusions and retained evidence's precise safety limits.
