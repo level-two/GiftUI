@@ -4,8 +4,9 @@ Current P08 boundary — **collection-only PASS; bounded current-callee/safety i
 The [interpretation result and exact edge inventories](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md)
 resolve selected Static constructor/reset/helper paths but retain ordinary Text
 cold metadata, callback/value-witness attribution and complete safety obligations.
-`strict_cold_eligible` remains false. Independent interpretation review and
-compiler-free attribution of the named retained edges are next; no compiler,
+`strict_cold_eligible` remains false. [Independent interpretation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md)
+confirms this STOP; the first compiler-free attribution slice is U01 against
+the same retained bytes. No compiler,
 runtime, strict-cold, source repair or new collection allowance follows.
 Collection1/1 is consumed, repairs0/retries0; P08/R07/T8.1 and all remaining gates
 stay open. The collection marker and historical budgets remain unchanged.

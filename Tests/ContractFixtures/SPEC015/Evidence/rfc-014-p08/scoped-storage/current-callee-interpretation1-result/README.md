@@ -5,6 +5,11 @@ incomplete. `strict_cold_eligible` is false.** This is a completed bounded
 interpretation with identified open edges, not a completed callee/cost/safety
 qualification. The collection itself retains its independent PASS.
 
+[Independent Strong review](independent-review.md) confirms the bounded
+interpretation and STOP at `9159017a`: no blocking packet finding; complete
+callee/safety PASS remains unestablished. The smallest next attribution slice
+is U01 against the same retained bytes, with no new execution allowance.
+
 Reviewed baseline: `0572d004c1761989aabd3d452e1101a5139d4514`, including the
 [collection archive](../current-callee-collection1-result/README.md) and its
 [independent review](../current-callee-collection1-result/independent-review.md).
