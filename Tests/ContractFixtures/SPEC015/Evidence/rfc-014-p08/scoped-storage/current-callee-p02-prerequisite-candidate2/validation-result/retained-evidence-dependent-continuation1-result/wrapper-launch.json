@@ -1,0 +1,932 @@
+{
+  "status": "STOP",
+  "source_candidates": 1,
+  "retries": 0,
+  "automatic_repairs": 0,
+  "reviewed_commit": "41911d2ae75d30bf0e0699cb3a1eee3dcc6304f9",
+  "started_ns": 1792389276240116000,
+  "stages": [
+    {
+      "name": "schema4",
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-015-schema4.py",
+        "--runtime-build",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+        "--activation-join"
+      ],
+      "started_ns": 1792389288418212000,
+      "before": {
+        "p08-analyzer-abi-continuation-campaign11": [
+          16777234,
+          29582800
+        ],
+        "p08-private-count-diagnostic-policy-static-successor": [
+          16777234,
+          29511960
+        ],
+        "p08-analyzer-abi-continuation-campaign10": [
+          16777234,
+          29550116
+        ],
+        "p08-a7-diagnostic-policy-static-successor": [
+          16777234,
+          29482808
+        ],
+        "spec-006-rfc-014-swift64": [
+          16777234,
+          29464818
+        ],
+        "p08-private-helper-continuation-diagnostic-policy-static-successor": [
+          16777234,
+          29520080
+        ],
+        "p08-analyzer-abi-continuation-campaign2": [
+          16777234,
+          29460491
+        ],
+        "p08-analyzer-abi-continuation-campaign5": [
+          16777234,
+          29494122
+        ],
+        "p08-analyzer-abi-continuation-campaign4": [
+          16777234,
+          29483568
+        ],
+        "p08-analyzer-abi-continuation-campaign3": [
+          16777234,
+          29475556
+        ],
+        "p08-a8-diagnostic-policy-static-successor": [
+          16777234,
+          29492546
+        ],
+        "p08-armv6-a4-diagnostic-policy-static-successor": [
+          16777234,
+          29545869
+        ],
+        "spec-013-runtime-cycle": [
+          16777234,
+          29592707
+        ],
+        "p08-armv6-a4-binding-static-successor": [
+          16777234,
+          29549578
+        ],
+        "p08-analyzer-abi-continuation-campaign6": [
+          16777234,
+          29505097
+        ],
+        "p08-analyzer-abi-continuation-campaign8": [
+          16777234,
+          29522424
+        ],
+        "p08-analyzer-abi-diagnostic-discovery-sweep": [
+          16777234,
+          29562980
+        ],
+        "p08-retained-evidence-dependent-continuation1": [
+          16777234,
+          29608134
+        ],
+        "p08-analyzer-abi-continuation-campaign9": [
+          16777234,
+          29536414
+        ],
+        "p08-private-storage-diagnostic-policy-static-successor": [
+          16777234,
+          29504649
+        ],
+        "p08-a4-diagnostic-policy-static-successor": [
+          16777234,
+          29473695
+        ],
+        "p08-analyzer-abi-continuation-campaign7": [
+          16777234,
+          29512384
+        ],
+        "p08-private-helper-leading-diagnostic-policy-static-successor": [
+          16777234,
+          29534517
+        ],
+        "spec-006-records": [
+          16777234,
+          29466767
+        ],
+        "p08-p07-cyclescene-correction-probe1": [
+          16777234,
+          29604400
+        ]
+      },
+      "exit": 0,
+      "finished_ns": 1792389376183448000,
+      "after": {
+        "p08-analyzer-abi-continuation-campaign11": [
+          16777234,
+          29582800
+        ],
+        "p08-private-count-diagnostic-policy-static-successor": [
+          16777234,
+          29511960
+        ],
+        "p08-analyzer-abi-continuation-campaign10": [
+          16777234,
+          29550116
+        ],
+        "p08-a7-diagnostic-policy-static-successor": [
+          16777234,
+          29482808
+        ],
+        "p08-scoped-host-7gj3vxnl": [
+          16777234,
+          29608150
+        ],
+        "spec-006-rfc-014-swift64": [
+          16777234,
+          29464818
+        ],
+        "p08-private-helper-continuation-diagnostic-policy-static-successor": [
+          16777234,
+          29520080
+        ],
+        "p08-analyzer-abi-continuation-campaign2": [
+          16777234,
+          29460491
+        ],
+        "p08-analyzer-abi-continuation-campaign5": [
+          16777234,
+          29494122
+        ],
+        "p08-analyzer-abi-continuation-campaign4": [
+          16777234,
+          29483568
+        ],
+        "p08-analyzer-abi-continuation-campaign3": [
+          16777234,
+          29475556
+        ],
+        "p08-a8-diagnostic-policy-static-successor": [
+          16777234,
+          29492546
+        ],
+        "p08-armv6-a4-diagnostic-policy-static-successor": [
+          16777234,
+          29545869
+        ],
+        "spec-013-runtime-cycle": [
+          16777234,
+          29592707
+        ],
+        "p08-armv6-a4-binding-static-successor": [
+          16777234,
+          29549578
+        ],
+        "p08-analyzer-abi-continuation-campaign6": [
+          16777234,
+          29505097
+        ],
+        "p08-analyzer-abi-continuation-campaign8": [
+          16777234,
+          29522424
+        ],
+        "p08-analyzer-abi-diagnostic-discovery-sweep": [
+          16777234,
+          29562980
+        ],
+        "p08-retained-evidence-dependent-continuation1": [
+          16777234,
+          29608134
+        ],
+        "p08-analyzer-abi-continuation-campaign9": [
+          16777234,
+          29536414
+        ],
+        "p08-private-storage-diagnostic-policy-static-successor": [
+          16777234,
+          29504649
+        ],
+        "p08-a4-diagnostic-policy-static-successor": [
+          16777234,
+          29473695
+        ],
+        "p08-analyzer-abi-continuation-campaign7": [
+          16777234,
+          29512384
+        ],
+        "p08-private-helper-leading-diagnostic-policy-static-successor": [
+          16777234,
+          29534517
+        ],
+        "spec-006-records": [
+          16777234,
+          29466767
+        ],
+        "p08-p07-cyclescene-correction-probe1": [
+          16777234,
+          29604400
+        ]
+      },
+      "raw_logs": {
+        "stdout": "3e06af8060d892832cba85ee2be24f76a5ac4ae13d48453309334dd4afe2f3c8",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+      "files": {
+        "cache": {
+          "kind": "directory"
+        },
+        "generator-controls": {
+          "kind": "directory"
+        },
+        "missing-requiredPayloadBytesPerBank.log": {
+          "kind": "file",
+          "bytes": 2686,
+          "sha256": "4c230fec4db86bd9fdc0c431da65a19b164adb6826d7ac8efc89b3e782f934ae"
+        },
+        "GiftUICapabilities.swiftdoc": {
+          "kind": "file",
+          "bytes": 384,
+          "sha256": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7"
+        },
+        "GiftUIBackendIntegration.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "activation-constant-callback.log": {
+          "kind": "file",
+          "bytes": 8945,
+          "sha256": "3c8a6cbea67059f14c3b31419b7d899435200a953c8f514449277bab4946e5da"
+        },
+        "missing-requiredPathChildFanout.swift": {
+          "kind": "file",
+          "bytes": 5109,
+          "sha256": "54cd2ae3dfb22b0e6dc547dca8d32e448b514f621a11f825c5c2ad138c655112"
+        },
+        "missing-requiredPayloadBytesPerBank.swift": {
+          "kind": "file",
+          "bytes": 5109,
+          "sha256": "bfb6cc0d88f0c38d755385fa9a55899791a6f3a963cfdfc2470852098446d2be"
+        },
+        "missing-requiredPathDepth.swift": {
+          "kind": "file",
+          "bytes": 5121,
+          "sha256": "723a45cbd6cff0f4f6d6320216f16500ae8a7fa56baec44d5595ba3094c0743a"
+        },
+        "GiftUIRasterCore.o": {
+          "kind": "file",
+          "bytes": 128424,
+          "sha256": "95c0429c3fc91ef30b69b52930ad2ec9bf050ca9bffe68cfb74175b117c4b7cf"
+        },
+        "escape-host.log": {
+          "kind": "file",
+          "bytes": 634,
+          "sha256": "26e19a6ff479da609119d53e256d1e8420ef963150d7b84b8c3abe3ca0c61d6d"
+        },
+        "copy-host.swift": {
+          "kind": "file",
+          "bytes": 152,
+          "sha256": "c1678afc17d2a56372e91176bd33bb8761de12d79b7cdbb16c5a56d3c1e15224"
+        },
+        "scalar-workload-freshness.log": {
+          "kind": "file",
+          "bytes": 105,
+          "sha256": "9809e7a45ac30b6f91ba830b34fc27dd0399350496e366fe2ba4ca52c27c4db6"
+        },
+        "GiftUISurfaceCore.swiftdoc": {
+          "kind": "file",
+          "bytes": 384,
+          "sha256": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804"
+        },
+        "missing-requiredInteractionIdentityComponents.log": {
+          "kind": "file",
+          "bytes": 2682,
+          "sha256": "be67442352ba0f71eb8e856e7265e2623c7f85174d79a440f12e2d2ef66c9ad4"
+        },
+        "P08ScopedHostProbe.o": {
+          "kind": "file",
+          "bytes": 52712,
+          "sha256": "74912930b142903ca87f38d5917199670483cb797b4c6c04f138daa8c4f59091"
+        },
+        "activation-copy.log": {
+          "kind": "file",
+          "bytes": 10118,
+          "sha256": "a3d3b022067ea3fe5e1c3f1144dec878051195a66f543c2e0a981c5f4b545564"
+        },
+        "result.json": {
+          "kind": "file",
+          "bytes": 87487,
+          "sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0"
+        },
+        "GiftUIDisplayCore.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "activation-backing.log": {
+          "kind": "file",
+          "bytes": 9567,
+          "sha256": "4dfc2fdaf7c8a444ac77300e66ed46629480cb3600a91f749adcd2b41af3cd7a"
+        },
+        "GiftUIRasterCore.swiftdoc": {
+          "kind": "file",
+          "bytes": 380,
+          "sha256": "a7eee3aee99992439e6e7ed7de698e1f8bf9139a1fecf3064686ef561be50f6d"
+        },
+        "generator-missing-models.maximum_model_capture_banks.log": {
+          "kind": "file",
+          "bytes": 80,
+          "sha256": "c90910d8f66085502796e77d4d9c72c73f22beee0195cde2bb7883ec4e05b8e1"
+        },
+        "generator-missing-records.maximum_path_depth.log": {
+          "kind": "file",
+          "bytes": 72,
+          "sha256": "74dffc2915c2d685f914bc7243227c10e811f89da4e1badfb235dc8c08056a59"
+        },
+        "RuntimeCycleProbe.swiftdoc": {
+          "kind": "file",
+          "bytes": 384,
+          "sha256": "4d515838ad0ea4af52058c8bd3a76db02e89c2cea90da011c303ef8105a79b5c"
+        },
+        "GiftUISurfaceCore.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 6372,
+          "sha256": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f"
+        },
+        "GiftUIHostConfiguration.log": {
+          "kind": "file",
+          "bytes": 15479,
+          "sha256": "6437586b465ed2e7736756f462346b90db9371207bf50a37b038e47082e8bde1"
+        },
+        "generator-missing-records.maximum_identity_components_per_key.log": {
+          "kind": "file",
+          "bytes": 89,
+          "sha256": "745a6036391f8ae8a85409b12177aa3980acc6443b82609062b1b2c30457bf34"
+        },
+        "generator-wide-payload.log": {
+          "kind": "file",
+          "bytes": 120,
+          "sha256": "7ccdf7f17f04c19d59be6a56ed129ecf6b118eabc89beed599216bc13346bb53"
+        },
+        "P08ScopedHostProbe.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "GiftUIFailureCore.swiftdoc": {
+          "kind": "file",
+          "bytes": 384,
+          "sha256": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf"
+        },
+        "generator-missing-models.maximum_owning_tickets.log": {
+          "kind": "file",
+          "bytes": 75,
+          "sha256": "cc784af26b31bcf9d09e1e04c83286c1498ec50df05c0130a1e9ddadf55a5a53"
+        },
+        "GiftUIDisplayCore.o": {
+          "kind": "file",
+          "bytes": 23896,
+          "sha256": "7b6997af450252fc1dd59ac3e22f38d24f772d999a71de436baabdc51df992aa"
+        },
+        "GiftUIBackendIntegration.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 33552,
+          "sha256": "1079047880ce90fb4292031fc6f67dab4a1da18ba152ca594a54bdc87d3a2978"
+        },
+        "GiftUIHostConfiguration.swiftdoc": {
+          "kind": "file",
+          "bytes": 784,
+          "sha256": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0"
+        },
+        "generator-payload-overflow.log": {
+          "kind": "file",
+          "bytes": 94,
+          "sha256": "6ffb4dba8968233da1c37e2256db88dcc782882b04c8ec9685d1490e2862f630"
+        },
+        "generator-missing-models.maximum_frame_pins.log": {
+          "kind": "file",
+          "bytes": 71,
+          "sha256": "1f490baed5e56e0d87a875ad5f96478a72dc16b1de55ce14705c472f49f64597"
+        },
+        "GiftUIHostConfiguration.swiftmodule": {
+          "kind": "file",
+          "bytes": 553092,
+          "sha256": "d672c74375745254d91c70a05e005ffaf35df05c51c72170d6aff925c301d282"
+        },
+        "GiftUIBackendIntegration.swiftdoc": {
+          "kind": "file",
+          "bytes": 1280,
+          "sha256": "0cce2bc0737aedbe37bba83cc6c16f427c5b904b03f177f17bbfaed6af511f57"
+        },
+        "RuntimeCycleProbe.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 152388,
+          "sha256": "37f20e92f3b6d6783c145fe1a0aace67c1d765430746caf7d90887f200a64fff"
+        },
+        "scoped-host": {
+          "kind": "file",
+          "bytes": 5665768,
+          "sha256": "30a045480705d5fd9008fd2afc46fee70b0bfcd16472c32a391c49db37ea06c8"
+        },
+        "RuntimeCycleProbe.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "missing-requiredIdentityComponentsPerKey.swift": {
+          "kind": "file",
+          "bytes": 5091,
+          "sha256": "0d583b1e90ebe034c0cf8b93883a370e4ee9d006311821684ae2535a4ef502fa"
+        },
+        "RuntimeCycleProbe.o": {
+          "kind": "file",
+          "bytes": 1224952,
+          "sha256": "68b47008fe663ad1b0efcba68c3713f71392ec691e9762304fcfe97ea51d88bc"
+        },
+        "P08ScopedHostProbe.swiftdoc": {
+          "kind": "file",
+          "bytes": 384,
+          "sha256": "8cca50703e7932dc546750a6e7f91d5af5a16e89aa492f8eec46f54cfee69624"
+        },
+        "execute.log": {
+          "kind": "file",
+          "bytes": 5536,
+          "sha256": "499b09af9db29921cad3b266770b81fa47829e35911b3eb9e6ae4c759ef698e0"
+        },
+        "GiftUIFailureCore.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "GiftUIBackendIntegration.o": {
+          "kind": "file",
+          "bytes": 153080,
+          "sha256": "724d1d0de5bc9bdced7ef331f21765ce20e51f134acd2e60986d6f94573e750e"
+        },
+        "GiftUIHostConfiguration.o": {
+          "kind": "file",
+          "bytes": 731488,
+          "sha256": "c88308cd6e257093f9c177f68195e6e7debdf7b55f7855c7d3d6927c0a6e2011"
+        },
+        "copy-host.log": {
+          "kind": "file",
+          "bytes": 466,
+          "sha256": "58aaf39ffcb3c2b70a14d541d7a7c0418f2705dabc5d41e0a1e966cbdc0a4568"
+        },
+        "scoped-host-probe.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "missing-requiredPathEntries.swift": {
+          "kind": "file",
+          "bytes": 5125,
+          "sha256": "9dd734752e14e999d30bf814b3b2153aab2d389ef34d55a20009bfa28b1f4eb6"
+        },
+        "GiftUIHostConfiguration.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "GiftUIDisplayCore.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 11736,
+          "sha256": "81592e5e7d331b660b374b866fe990de4d841dfb8b14830343f5198f2f672592"
+        },
+        "activation-callback.log": {
+          "kind": "file",
+          "bytes": 8903,
+          "sha256": "2ffc50f650dbab00d4463e4bca108d4cf6dd23af72cbd770ce7aa1fb1432dca7"
+        },
+        "generator-missing-records.maximum_path_child_fanout.log": {
+          "kind": "file",
+          "bytes": 79,
+          "sha256": "6af5d41ba645e716216614b6bbaa87cc67ddaa089f7010344cdd54c49f60efd0"
+        },
+        "generator-missing-records.maximum_path_entries.log": {
+          "kind": "file",
+          "bytes": 74,
+          "sha256": "eccb22c6deb9e5dbb9d23edebf4b25d10b2022f9a1e247eb648ab881c94c75c9"
+        },
+        "GiftUICapabilities.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 47936,
+          "sha256": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a"
+        },
+        "missing-requiredPathEntries.log": {
+          "kind": "file",
+          "bytes": 2649,
+          "sha256": "53345fe28bc69784c54f380ada89f04d922bf14d3658d5039b6156bb54d3a916"
+        },
+        "generator-missing-models.maximum_model_slots.log": {
+          "kind": "file",
+          "bytes": 72,
+          "sha256": "423cc506f5da6b88183aa2c44326025e2a0b15cfe7884ec47090cf4695a715d8"
+        },
+        "GiftUIDisplayCore.swiftmodule": {
+          "kind": "file",
+          "bytes": 46672,
+          "sha256": "48a141edee55477ebf6fa2617e1aac66cf054a595c9384c0b5f9ca5d81edd014"
+        },
+        "GiftUIBackendIntegration.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "GiftUISurfaceCore.swiftmodule": {
+          "kind": "file",
+          "bytes": 32204,
+          "sha256": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1"
+        },
+        "GiftUICapabilities.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "activation-join.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "GiftUIDisplayCore.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "missing-requiredPathChildFanout.log": {
+          "kind": "file",
+          "bytes": 2702,
+          "sha256": "e797f1b8804ab7de2fea93264e12f3d97580b1a7f879b1b363dc6eea648e2f82"
+        },
+        "RuntimeCycleProbe.swiftmodule": {
+          "kind": "file",
+          "bytes": 652376,
+          "sha256": "dc01f82913a895098847cc876301238c4c3e3e8611253a73c83f4d5d0b2fa5e7"
+        },
+        "commands.txt": {
+          "kind": "file",
+          "bytes": 48995,
+          "sha256": "39dd2e3c4ad68513771f9c5916a17fd19f77219347fa84a4912e81a5dd0190dc"
+        },
+        "GiftUIRasterCore.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 38368,
+          "sha256": "00f68d5d4c33fd62869fa6ade9416ea31745c2ee33ee226be74d09be8d989f18"
+        },
+        "escape-host.swift": {
+          "kind": "file",
+          "bytes": 123,
+          "sha256": "40d263c7289b9c7ad9dba0c77cd157a12ed77924e09b4742bd32c8f69bb3d89a"
+        },
+        "GiftUIRasterCore.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "GiftUIFailureCore.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 30748,
+          "sha256": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1"
+        },
+        "GiftUICapabilities.o": {
+          "kind": "file",
+          "bytes": 226576,
+          "sha256": "e98b19e45be7d01036c429f5a204127e1c4b2f93406d464ba5611d20980e4613"
+        },
+        "Main.swift": {
+          "kind": "file",
+          "bytes": 261,
+          "sha256": "9fceda7ae0b55ab2ad6569c26c09a3619e4862502c9561a171b52c5bf51f294e"
+        },
+        "GiftUICapabilities.swiftmodule": {
+          "kind": "file",
+          "bytes": 320112,
+          "sha256": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf"
+        },
+        "P08ScopedHostProbe.swiftmodule": {
+          "kind": "file",
+          "bytes": 67304,
+          "sha256": "9170fe636cb37fdfa326777687ba905b0f2673e10549fdfb1ad8d1720366bc07"
+        },
+        "generator-missing-records.maximum_payload_bytes_per_bank.log": {
+          "kind": "file",
+          "bytes": 84,
+          "sha256": "3b49a4af313d7c294b071489d82096781e3aaf9cec65eb1e0b03fe5228aed95a"
+        },
+        "GiftUIHostConfiguration.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 147868,
+          "sha256": "44b9ece02aae285e1ab3de2a7083bf9905b062ef98fd53b4d804ca15e714bbe6"
+        },
+        "missing-requiredPathDepth.log": {
+          "kind": "file",
+          "bytes": 2695,
+          "sha256": "afaffcdc528133fba7ae854239f3eee6eebf140b888b6e7fe629dbb758e37ec7"
+        },
+        "generator-missing-records.maximum_interaction_identity_components.log": {
+          "kind": "file",
+          "bytes": 93,
+          "sha256": "ab945fb43663136500436da1b897e096d36fdbff3482b2901f090d4603c321f9"
+        },
+        "GiftUISurfaceCore.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "GiftUIDisplayCore.swiftdoc": {
+          "kind": "file",
+          "bytes": 384,
+          "sha256": "b8966a9094804b51db0fc90c9e785961c89b0a9f5f4a90587370efd2739089ca"
+        },
+        "missing-requiredInteractionIdentityComponents.swift": {
+          "kind": "file",
+          "bytes": 5089,
+          "sha256": "8682e1f744c73d4068974c1135e127d30dd0f894d3941fb7a4d6f55f4cf3d93e"
+        },
+        "generator-path-overflow.log": {
+          "kind": "file",
+          "bytes": 84,
+          "sha256": "75cdca8c9a6c70f1e2e92d601c72605d45a8c31894dce27fd47ada54517c65c5"
+        },
+        "GiftUICapabilities.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "GiftUIBackendIntegration.swiftmodule": {
+          "kind": "file",
+          "bytes": 132748,
+          "sha256": "ced85e7082ae50be7163664c39d904e552e4718b934c8d7f23595a78b669ec83"
+        },
+        "link.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "GiftUISurfaceCore.o": {
+          "kind": "file",
+          "bytes": 12144,
+          "sha256": "f22cbd684f69378a9e99bb1b0f93111109803fd022776db1c2dc8e60e2ceb82c"
+        },
+        "P08ScopedHostProbe.swiftsourceinfo": {
+          "kind": "file",
+          "bytes": 10176,
+          "sha256": "b864848aa473096dfecd945069d3e240ba05cc0f3739dcbb567344705cbc1517"
+        },
+        "GiftUIFailureCore.swiftmodule": {
+          "kind": "file",
+          "bytes": 179604,
+          "sha256": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465"
+        },
+        "GiftUIFailureCore.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "GiftUIRasterCore.swiftmodule": {
+          "kind": "file",
+          "bytes": 146232,
+          "sha256": "c907425f15ddf034389d40c6f1b7672c0e851820894c5c4889c7fbcc22f9e4af"
+        },
+        "GiftUIFailureCore.o": {
+          "kind": "file",
+          "bytes": 127672,
+          "sha256": "14fec38758243fa9a9c78cc715149fbd88567d062532aae18c625f207b3647f9"
+        },
+        "GiftUISurfaceCore.log": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "GiftUIRasterCore.abi.json": {
+          "kind": "file",
+          "bytes": 149,
+          "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+        },
+        "missing-requiredIdentityComponentsPerKey.log": {
+          "kind": "file",
+          "bytes": 2743,
+          "sha256": "19e5684a591d7064d5edb42a00f68030acfde1ead1e3501ef065788f7ce18ee5"
+        },
+        "cache/71QIQMNC0J8X": {
+          "kind": "directory"
+        },
+        "cache/modules.timestamp": {
+          "kind": "file",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm": {
+          "kind": "file",
+          "bytes": 40840,
+          "sha256": "0270a9d5474bf5aacdd0552c3af86a264cac64922ec7e6f1a8c2ed943e473a36"
+        },
+        "cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm": {
+          "kind": "file",
+          "bytes": 177912,
+          "sha256": "b46ca2a906475f495ebeaef4aeda14c402b887994746627f9d8527e303fcebae"
+        },
+        "generator-controls/Tests": {
+          "kind": "directory"
+        },
+        "generator-controls/scripts": {
+          "kind": "directory"
+        },
+        "generator-controls/Sources": {
+          "kind": "directory"
+        },
+        "generator-controls/Tests/ContractFixtures": {
+          "kind": "directory"
+        },
+        "generator-controls/Tests/ContractFixtures/SPEC015": {
+          "kind": "directory"
+        },
+        "generator-controls/Tests/ContractFixtures/SPEC015/Generated": {
+          "kind": "directory"
+        },
+        "generator-controls/Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv": {
+          "kind": "file",
+          "bytes": 2516,
+          "sha256": "701bccecee5adf8e435796b31ad7c02d5998eeb8d537b04a0e8a430789b0c46b"
+        },
+        "generator-controls/Tests/ContractFixtures/SPEC015/Generated/runtime-limit-leaves.generated.tsv": {
+          "kind": "file",
+          "bytes": 18630,
+          "sha256": "bb4a9f3e1380edf516d3af89e81b24fcd46f2db3c59f0d225132d8d9ba141856"
+        },
+        "generator-controls/Tests/ContractFixtures/SPEC015/Generated/nrf52840_static.workload.generated.tsv": {
+          "kind": "file",
+          "bytes": 1244,
+          "sha256": "33c3b0631878ce0241b91d7d787e4807dcbf9313899ee311da2e151de51eddf2"
+        },
+        "generator-controls/Tests/ContractFixtures/SPEC015/Generated/raspberry_pi_dynamic.workload.generated.tsv": {
+          "kind": "file",
+          "bytes": 1249,
+          "sha256": "8ab48873689eff586419091981cecd7874967c5b678fa8b06c99dbce60d181c4"
+        },
+        "generator-controls/Tests/ContractFixtures/SPEC015/Generated/macos_dynamic.workload.generated.tsv": {
+          "kind": "file",
+          "bytes": 1255,
+          "sha256": "679400b2ce9615a7f74089cc14077c258ddd305b6deabb809f8a2810bac964bd"
+        },
+        "generator-controls/Tests/ContractFixtures/SPEC015/Generated/macos_static.workload.generated.tsv": {
+          "kind": "file",
+          "bytes": 1251,
+          "sha256": "229c27d0cb593b5f446c0ea77eeaf4afcbc1274f19eb2db8c929203e0aee893c"
+        },
+        "generator-controls/scripts/contracts": {
+          "kind": "directory"
+        },
+        "generator-controls/scripts/contracts/generate-spec-015-workload.rb": {
+          "kind": "file",
+          "bytes": 27804,
+          "sha256": "b33b2a7dc8cecac90b4cbc8773769336a252b76b60520a2bbffadc8182adad2f"
+        },
+        "generator-controls/Sources/SignalAnalyzerTargetHost": {
+          "kind": "directory"
+        },
+        "generator-controls/Sources/GiftUIHostConfiguration": {
+          "kind": "directory"
+        },
+        "generator-controls/Sources/SignalAnalyzerTargetHost/Generated": {
+          "kind": "directory"
+        },
+        "generator-controls/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModelDescriptor.generated.swift": {
+          "kind": "file",
+          "bytes": 580,
+          "sha256": "2fcd047657a8a8c1ed13b50a411f89d8b8f389558fca828a5e1d27fcf1867195"
+        },
+        "generator-controls/Sources/GiftUIHostConfiguration/Generated": {
+          "kind": "directory"
+        },
+        "generator-controls/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": {
+          "kind": "file",
+          "bytes": 11584,
+          "sha256": "36cbb9efc1e0dd6657cc26020ca1dabc2824fcd6995310f82c1e4b36aaa9344e"
+        }
+      }
+    },
+    {
+      "name": "counter384",
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--profile",
+        "macos-static",
+        "--runtime-build",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+        "--host-build",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+        "--collect-failures"
+      ],
+      "started_ns": 1792389402105228000,
+      "before": {
+        "p08-analyzer-abi-continuation-campaign11": [
+          16777234,
+          29582800
+        ],
+        "p08-private-count-diagnostic-policy-static-successor": [
+          16777234,
+          29511960
+        ],
+        "p08-analyzer-abi-continuation-campaign10": [
+          16777234,
+          29550116
+        ],
+        "p08-a7-diagnostic-policy-static-successor": [
+          16777234,
+          29482808
+        ],
+        "p08-scoped-host-7gj3vxnl": [
+          16777234,
+          29608150
+        ],
+        "spec-006-rfc-014-swift64": [
+          16777234,
+          29464818
+        ],
+        "p08-private-helper-continuation-diagnostic-policy-static-successor": [
+          16777234,
+          29520080
+        ],
+        "p08-analyzer-abi-continuation-campaign2": [
+          16777234,
+          29460491
+        ],
+        "p08-analyzer-abi-continuation-campaign5": [
+          16777234,
+          29494122
+        ],
+        "p08-analyzer-abi-continuation-campaign4": [
+          16777234,
+          29483568
+        ],
+        "p08-analyzer-abi-continuation-campaign3": [
+          16777234,
+          29475556
+        ],
+        "p08-a8-diagnostic-policy-static-successor": [
+          16777234,
+          29492546
+        ],
+        "p08-armv6-a4-diagnostic-policy-static-successor": [
+          16777234,
+          29545869
+        ],
+        "spec-013-runtime-cycle": [
+          16777234,
+          29592707
+        ],
+        "p08-armv6-a4-binding-static-successor": [
+          16777234,
+          29549578
+        ],
+        "p08-analyzer-abi-continuation-campaign6": [
+          16777234,
+          29505097
+        ],
+        "p08-analyzer-abi-continuation-campaign8": [
+          16777234,
+          29522424
+        ],
+        "p08-analyzer-abi-diagnostic-discovery-sweep": [
+          16777234,
+          29562980
+        ],
+        "p08-retained-evidence-dependent-continuation1": [
+          16777234,
+          29608134
+        ],
+        "p08-analyzer-abi-continuation-campaign9": [
+          16777234,
+          29536414
+        ],
+        "p08-private-storage-diagnostic-policy-static-successor": [
+          16777234,
+          29504649
+        ],
+        "p08-a4-diagnostic-policy-static-successor": [
+          16777234,
+          29473695
+        ],
+        "p08-analyzer-abi-continuation-campaign7": [
+          16777234,
+          29512384
+        ],
+        "p08-private-helper-leading-diagnostic-policy-static-successor": [
+          16777234,
+          29534517
+        ],
+        "spec-006-records": [
+          16777234,
+          29466767
+        ],
+        "p08-p07-cyclescene-correction-probe1": [
+          16777234,
+          29604400
+        ]
+      }
+    }
+  ],
+  "working_tree_before": " M Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift\n M Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift\n M firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt\n M scripts/nrf52840/build.sh\n M scripts/raspberry-pi/build.sh\n?? scripts/contracts/__pycache__/\n"
+}

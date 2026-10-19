@@ -1,0 +1,82 @@
+{
+  "archive": {
+    "bytes": 20138528,
+    "members": 1688,
+    "path": "raw-output-roots.tar.gz",
+    "root_members": [
+      "._p08-counter-tu_d8qq1",
+      "._p08-retained-evidence-dependent-continuation1",
+      "._p08-scoped-host-7gj3vxnl",
+      "p08-counter-tu_d8qq1",
+      "p08-retained-evidence-dependent-continuation1",
+      "p08-scoped-host-7gj3vxnl"
+    ],
+    "sha256": "73c3e685b58610f383811ac97ced95ded4439d8c7f7547b25e282a0533185807"
+  },
+  "automatic_repairs": 0,
+  "counter_check_running": "so06-carrier-dynamic-generic-active-host-committedHitRegions-positive",
+  "counter_checks_passed": 317,
+  "counter_checks_recorded": 318,
+  "counter_collection_complete": false,
+  "extracted_receipts": [
+    {
+      "archived": "wrapper-launch.json",
+      "bytes": 32222,
+      "sha256": "9144d7d484555cba75d843757463bc4038639447b629388fe32464a7c71e3f33",
+      "source": ".build/contracts/p08-retained-evidence-dependent-continuation1/launch.json"
+    },
+    {
+      "archived": "wrapper-schema4.stdout",
+      "bytes": 5625,
+      "sha256": "3e06af8060d892832cba85ee2be24f76a5ac4ae13d48453309334dd4afe2f3c8",
+      "source": ".build/contracts/p08-retained-evidence-dependent-continuation1/schema4.stdout"
+    },
+    {
+      "archived": "wrapper-schema4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-retained-evidence-dependent-continuation1/schema4.stderr"
+    },
+    {
+      "archived": "wrapper-counter384.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-retained-evidence-dependent-continuation1/counter384.stdout"
+    },
+    {
+      "archived": "wrapper-counter384.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": ".build/contracts/p08-retained-evidence-dependent-continuation1/counter384.stderr"
+    },
+    {
+      "archived": "schema4-result.json",
+      "bytes": 87487,
+      "sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+      "source": ".build/contracts/p08-scoped-host-7gj3vxnl/result.json"
+    },
+    {
+      "archived": "counter384-checks.json",
+      "bytes": 4306563,
+      "sha256": "9f6e3c1082b3cc181c4c3605efc2ba56c763a9ea7b32da87cf5913bdcba4ef7c",
+      "source": ".build/contracts/p08-counter-tu_d8qq1/checks.json"
+    },
+    {
+      "archived": "counter384-commands.txt",
+      "bytes": 1660360,
+      "sha256": "c427b13cb1857187396967f29bfb111a203b70a4a54ecc823bd84876e57c4234",
+      "source": ".build/contracts/p08-counter-tu_d8qq1/commands.txt"
+    },
+    {
+      "archived": "counter384-so06-carrier-dynamic-generic-active-host-committedHitRegions-positive.swift",
+      "bytes": 256971,
+      "sha256": "42f7158f8deb4cbc4e1c17f521c9df983f8f82f8391cf1a21260ecd108311ce1",
+      "source": ".build/contracts/p08-counter-tu_d8qq1/so06-carrier-dynamic-generic-active-host-committedHitRegions-positive.swift"
+    }
+  ],
+  "retries": 0,
+  "reviewed_commit": "41911d2ae75d30bf0e0699cb3a1eee3dcc6304f9",
+  "schema4_checks_passed": 37,
+  "source_candidates": 1,
+  "status": "STOP_incomplete_counter_collection_process_absent_no_terminal_receipt"
+}
