@@ -1,0 +1,63 @@
+{
+  "baseline_commit": "f45edee87362572fb62826befaf5768c5d201110",
+  "five_dirty_files": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
+      "bytes": 9440,
+      "sha256": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": {
+      "bytes": 2048,
+      "sha256": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3"
+    },
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": {
+      "bytes": 26018,
+      "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
+    },
+    "scripts/nrf52840/build.sh": {
+      "bytes": 10914,
+      "sha256": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72"
+    },
+    "scripts/raspberry-pi/build.sh": {
+      "bytes": 6433,
+      "sha256": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+    }
+  },
+  "five_dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+  "source42_count": 42,
+  "source42_hashes_match": true,
+  "cache_files": {
+    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
+      "bytes": 44198,
+      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+    }
+  },
+  "cache_membership_exact": true,
+  "markers": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
+      "consumption": "1/1",
+      "identity": [
+        16777234,
+        29640436
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": {
+      "consumption": "1/1",
+      "identity": [
+        16777234,
+        29650609
+      ],
+      "matches_baseline": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": {
+      "consumption": "1/1",
+      "identity": [
+        16777234,
+        29652748
+      ],
+      "matches_baseline": true
+    }
+  },
+  "result_destination_absent": true,
+  "preparation_method": "hash/blob/source-manifest equality and inventory copying only; raw SIL/object/source semantic bytes not inspected"
+}

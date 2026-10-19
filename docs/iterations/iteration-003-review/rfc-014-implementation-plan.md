@@ -1,5 +1,12 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+Current P08 U02 preparation — **NOT READY / separate Strong review pending**.
+The [bounded retained-evidence packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/README.md)
+freezes 79 inputs, three actual root memberships and all 56 external-symbol /
+1,892-site groups, initially unresolved. Preparation authenticates/copies only;
+no attribution or execution allowance follows. U01–U05/P08/R07/T8.1 and all
+consumed limits/STOP remain; no contract, scope or lifecycle change.
+
 Current P08 next-step triage — **U02 preparation recommended; activity STOP**.
 The [88b57086 decision record](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-next-step-after-git-ref2.md)
 selects one separately reviewed retained-evidence Static-feasibility preparation;
