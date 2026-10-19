@@ -1,6 +1,18 @@
 # U01 exact Git ref route 2 preparation — 2026-10-19
 
-**Current disposition: GO / independent readiness PASS** for exact correction
+**Current disposition: STOP / failed pre-marker launch; no automatic retry.**
+The [offline diagnostic](failed-launch-diagnostic.md) reproduces an extra
+`__CF_USER_TEXT_ENCODING` entry in the exact clean Python invocation, causing
+the strict environment check to fail before the marker. The reported tool exit
+1/empty output does not establish process start or its actual exception. Result
+directory remains absent, so this controller cannot have emitted under its
+preserved marker policy; no ref2 HTTP allowance was consumed. Next prerequisite
+is an offline frozen startup-environment revision and fresh independent readiness
+review before a separately authorized launch. Controller/request/lock and prior
+allowances/dirty files/cache/markers remain unchanged. Earlier checkpoints below
+are historical.
+
+**Prior disposition: GO / independent readiness PASS** for exact correction
 `e9c7a059` and the external hashes frozen in the
 [independent re-review](full-stream-independent-review.md). Full GET equality
 now stops before parsing/POST; B01/B02 and all runtime/preservation checks pass.

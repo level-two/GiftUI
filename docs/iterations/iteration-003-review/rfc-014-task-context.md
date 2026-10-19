@@ -1,6 +1,17 @@
 # RFC-014 task context guide
 
-Current P08 controller re-review — **GO / independent readiness PASS**.
+Current P08 launch boundary — **STOP / failed pre-marker attempt; no retry**.
+The [offline diagnostic](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/failed-launch-diagnostic.md)
+reproduces an extra runtime environment entry failing the exact check before
+mkdir. Reported tool exit 1/empty output does not prove process start/exception.
+Result absent; this controller cannot emit without its permanent marker under
+normal filesystem/OS trust, so ref2 HTTP allowance is unconsumed. Prior API 1/1,
+three 1/1 markers, five dirty files/cache and repairs/retries 0 remain preserved.
+Next: offline frozen startup-environment revision and fresh independent readiness
+review, then separate launch authorization. No source/header/object follow or
+P08/contract/scope acceptance. Readiness checkpoints below are historical.
+
+Prior P08 controller re-review — **GO / independent readiness PASS**.
 The [exact e9c7a059 re-review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/full-stream-independent-review.md)
 freezes controller/lock hashes and resolves B01 full-stream STOP before POST;
 B02 and the two-request/1MiB accepted-body/30s envelope remain verified.
