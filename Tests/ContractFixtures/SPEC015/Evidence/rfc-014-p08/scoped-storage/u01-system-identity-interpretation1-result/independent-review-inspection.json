@@ -1,0 +1,322 @@
+{
+  "S_released": false,
+  "archive_files_equal_baseline_sha256": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/README.md": "7011711a4ed57c7ce7b38fec6c324a735ab6d632988e5aff52d28cf7e147906f",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/attempt-consumed.json": "bbaed3ddb765de7835b231417be85b545e6cd45684dbdfdd7857651af5aae685",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/independent-review-inspection.json": "045e98f7daaad3f530f4f3530a788371156e117a7b12768ce679c16f80195d42",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/independent-review.md": "bba7163ed7c4b7551a9512d61000c9a6454d93aaf80771a69a55089de61fe795",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/manifest.json": "b07135b29c042f2f6428d331a98395d9ee4793a50432bda61777be394a87c53f",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/prelaunch-authentication.json": "5b8a632633c347b1bdf11b846ea0e8cf5716bc42c2a19933c052e30c0d6aec5b",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/provider-gate.json": "0c92562bed54d6f7c59f217985e0fca5a39a11560d8204474551d5f0d0d6174e",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-c-body-data.exit.json": "0e637393d0470ef8217a5f1d32d6a3657faf1f19f407412e24be43f3ed2bcdca",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-image-identities-authentication.json": "7112be489343b1c883b46036249edddf7cace651e0b352abfafbf5591ffd3d2e",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-image-identities.claim.json": "054f85ad167276ec53f49c4e81de7b766d020ac00fc37ba1421106c2ff77ad96",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-image-identities.exit.json": "eb0c61077b7fbef239c0dc6ec575eb0456a7b197245b11cf82906e6b0d0ca3c1",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-image-identities.record-check.json": "612754b5bb35abff682514792427100bf50a1bfc8172e5c2d30ebccb81c75777",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-image-identities.start.json": "852fbe263d006ccbcf66c4821e3811bdfd3bda9a2cc81752692a5489a1c287e2",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-image-identities.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-image-identities.stdout": "3c05b9f22facbe4e624915e637e13dfc9ba6bed21e92f89413db7f5a69f88cba",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-swift-body-data.exit.json": "16a580cde4970fb8ce059cfea3bfebd365ebdfd43b184d84f6dfdc18f3641161",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/terminal.json": "f69e78cd43dfcee1689cb477d1bd082f9e88e0ce0544748a553b390b774d6319"
+  },
+  "cache_file_sha256": {
+    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
+  },
+  "cache_members_verified": 15,
+  "cache_schema_authenticated": false,
+  "consumed_marker_identities": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+      16777234,
+      29640436
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+      16777234,
+      29650609
+    ],
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+      16777234,
+      29652748
+    ]
+  },
+  "direct_files_verified": 203,
+  "exact_display_excerpt_lines_verified": 133,
+  "focused_selected_import_and_offset_relationships_match": true,
+  "method": "Independent standard-library text/JSON/hash/plist/count/offset and read-only Git checks; author extractor read, not executed/imported; no decoder/controller/runtime/acquisition.",
+  "old_B_reused": false,
+  "ordinary_counter_loaded_identity_complete": false,
+  "packet_sha256": {
+    "README.md": "073ab978a0423a7db3d4c78846bbe9792c206343d7f21a24e15f42c20fd6f330",
+    "inspect.py": "e1dd3159c127e45396ad6bbc32160ef20d9c1ce17a78da558bf693e307bc4dc8",
+    "inspection.json": "58d745a97d7d2fd075e3a985816861a267668dd990874c23c3dced203560ade7",
+    "retained-excerpts.txt": "3e337c9bde81c6a16a4491c68681cf7fbb83648575120219b5860d0a4a77d35d"
+  },
+  "preserved_dirty_file_sha256": {
+    "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": "3fb70f54bd585245addac912b66eaff17e8754e434ff85af64493adaf3132581",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": "4086748a1d7b7e7818ecab266b0c69bfd2daf30aa7dd433d55dcd87aedd45cc3",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
+    "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
+    "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
+  },
+  "raw_stdout_bytes": 2944589,
+  "raw_stdout_lines": 41534,
+  "records": [
+    {
+      "UUID": "83794FB3-DE9B-3D23-AB5E-2C1D5D30F134",
+      "arch": "arm64e",
+      "dependencies": 7,
+      "dynamic_resolver_exports": [],
+      "exports": 15042,
+      "first_line": 1,
+      "function_starts": 22057,
+      "imports": 246,
+      "last_line": 37364,
+      "path": "/usr/lib/swift/libswiftCore.dylib",
+      "selected_rows": [
+        {
+          "annotation": "",
+          "line": 10510,
+          "offset_or_reexport": "0x5C0FC8C0",
+          "section": "exports",
+          "symbol": "_$ss5ErrorWS"
+        },
+        {
+          "annotation": "",
+          "line": 14843,
+          "offset_or_reexport": "0x0009B7A4",
+          "section": "exports",
+          "symbol": "_swift_getTypeByMangledNameInContext2"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libSystem",
+          "line": 15111,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "___stack_chk_fail"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libSystem",
+          "line": 15112,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "___stack_chk_guard"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libSystem",
+          "line": 15217,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "_memcpy"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libSystem",
+          "line": 15218,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "_memmove"
+        },
+        {
+          "address_as_printed": "0x193CEA7A4",
+          "line": 18862,
+          "section": "function_starts",
+          "symbol": "_swift_getTypeByMangledNameInContext2"
+        }
+      ]
+    },
+    {
+      "UUID": "4FED5EE2-5D3E-35B1-A170-9859C4B683BB",
+      "arch": "arm64e",
+      "dependencies": 39,
+      "dynamic_resolver_exports": [],
+      "exports": 3,
+      "first_line": 37365,
+      "function_starts": 22,
+      "imports": 77,
+      "last_line": 37517,
+      "path": "/usr/lib/libSystem.B.dylib",
+      "selected_rows": []
+    },
+    {
+      "UUID": "D77CEB62-AFF6-3CEC-BA9B-4F057FBE2EB5",
+      "arch": "arm64e",
+      "dependencies": 16,
+      "dynamic_resolver_exports": [],
+      "exports": 1321,
+      "first_line": 37518,
+      "function_starts": 1880,
+      "imports": 271,
+      "last_line": 41017,
+      "path": "/usr/lib/system/libsystem_c.dylib",
+      "selected_rows": [
+        {
+          "annotation": "",
+          "line": 37704,
+          "offset_or_reexport": "0x00078A94",
+          "section": "exports",
+          "symbol": "___stack_chk_fail"
+        },
+        {
+          "annotation": "",
+          "line": 37705,
+          "offset_or_reexport": "0x6CBBB4E0",
+          "section": "exports",
+          "symbol": "___stack_chk_guard"
+        },
+        {
+          "annotation": "(__platform_memmove from libsystem_platform)",
+          "line": 38307,
+          "offset_or_reexport": "[re-export]",
+          "section": "exports",
+          "symbol": "_memcpy"
+        },
+        {
+          "annotation": "(__platform_memmove from libsystem_platform)",
+          "line": 38309,
+          "offset_or_reexport": "[re-export]",
+          "section": "exports",
+          "symbol": "_memmove"
+        },
+        {
+          "attributes": "",
+          "from_as_printed": "libsystem_platform",
+          "line": 38926,
+          "ordinal_as_printed": null,
+          "section": "imports",
+          "symbol": "__platform_memmove"
+        },
+        {
+          "address_as_printed": "0x180405A94",
+          "line": 40977,
+          "section": "function_starts",
+          "symbol": "___stack_chk_fail"
+        }
+      ]
+    },
+    {
+      "UUID": "EDB83A19-EC17-32DE-9350-6145970A85D6",
+      "arch": "arm64e",
+      "dependencies": 1,
+      "dynamic_resolver_exports": [
+        {
+          "annotation": "[dynamic-resolver=0x00007900]",
+          "line": 41051,
+          "offset_or_reexport": "0x00001030",
+          "symbol": "_OSAtomicDequeue"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x0000790C]",
+          "line": 41123,
+          "offset_or_reexport": "0x00000920",
+          "symbol": "__platform_strcmp"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x00007918]",
+          "line": 41128,
+          "offset_or_reexport": "0x000009B4",
+          "symbol": "__platform_strncmp"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x00007924]",
+          "line": 41168,
+          "offset_or_reexport": "0x00006874",
+          "symbol": "_os_apt_msg_async_task_running_4swift"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x00007930]",
+          "line": 41169,
+          "offset_or_reexport": "0x000069E4",
+          "symbol": "_os_apt_msg_async_task_stopped_4swift"
+        },
+        {
+          "annotation": "[dynamic-resolver=0x0000793C]",
+          "line": 41170,
+          "offset_or_reexport": "0x00006AD4",
+          "symbol": "_os_apt_msg_async_task_waiting_on_4swift"
+        }
+      ],
+      "exports": 185,
+      "first_line": 41018,
+      "function_starts": 279,
+      "imports": 40,
+      "last_line": 41534,
+      "path": "/usr/lib/system/libsystem_platform.dylib",
+      "selected_rows": [
+        {
+          "annotation": "",
+          "line": 41082,
+          "offset_or_reexport": "0x00006E9C",
+          "section": "exports",
+          "symbol": "___sme_memcpy"
+        },
+        {
+          "annotation": "",
+          "line": 41083,
+          "offset_or_reexport": "0x00006F7C",
+          "section": "exports",
+          "symbol": "___sme_memmove"
+        },
+        {
+          "annotation": "",
+          "line": 41117,
+          "offset_or_reexport": "0x00003360",
+          "section": "exports",
+          "symbol": "__platform_memmove"
+        },
+        {
+          "address_as_printed": "0x00003360",
+          "line": 41341,
+          "section": "function_starts",
+          "symbol": "__platform_memmove"
+        },
+        {
+          "address_as_printed": "0x00003640",
+          "line": 41342,
+          "section": "function_starts",
+          "symbol": "__platform_memmove+736"
+        },
+        {
+          "address_as_printed": "0x00006E9C",
+          "line": 41496,
+          "section": "function_starts",
+          "symbol": "___sme_memcpy"
+        },
+        {
+          "address_as_printed": "0x00006F7C",
+          "line": 41497,
+          "section": "function_starts",
+          "symbol": "___sme_memmove"
+        }
+      ]
+    }
+  ],
+  "report_and_standalone_joins": [
+    {
+      "matches_supplemental_report": true,
+      "path": "/usr/lib/swift/libswiftCore.dylib",
+      "standalone_exists": false
+    },
+    {
+      "matches_supplemental_report": false,
+      "path": "/usr/lib/libSystem.B.dylib",
+      "standalone_exists": false
+    },
+    {
+      "matches_supplemental_report": true,
+      "path": "/usr/lib/system/libsystem_c.dylib",
+      "standalone_exists": false
+    },
+    {
+      "matches_supplemental_report": false,
+      "path": "/usr/lib/system/libsystem_platform.dylib",
+      "standalone_exists": true
+    }
+  ],
+  "reviewed_commit": "3365ccda8b588062c65c6e6312aa357828440b70",
+  "source42_hashes_match": true,
+  "source_packet_members_verified": 13,
+  "strict_cold_eligible": false,
+  "verdict": "PASS_bounded_retained_identity_interpretation_and_STOP_disposition"
+}

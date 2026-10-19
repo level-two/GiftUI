@@ -1,13 +1,17 @@
 # RFC-014 task context guide
 
-Current P08 boundary — **retained U01 four-image identity interpretation recorded; independent review pending; full callee/safety STOP**.
+Current P08 boundary — **retained U01 four-image identity interpretation independently PASS within bounds; full callee/safety STOP**.
 The [retained identity result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-identity-interpretation1-result/README.md)
 delimits four arm64e records, joins Swift/C UUIDs to the supplemental different
 process, and maps cold-entry/ErrorWS exports plus C memcpy/platform and canary
 records. No variant table is emitted; platform's standalone/cache identity and
 ordinary-counter loaded identity remain unproved. Cache-header schema, numeric
-Error size, implementation bodies and R01–R04 costs stay open. Next is independent
-Strong interpretation review, then at most a separately prepared schema request.
+Error size, implementation bodies and R01–R04 costs stay open. The [independent
+Strong interpretation review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-identity-interpretation1-result/independent-review.md)
+passes exact records/counts/UUID/symbol/standalone distinctions. Next is a
+preparation-only inventory of three exact cache-format header candidates,
+16MiB/60s maximum, standard-library/Git reads only; no parser/schema qualification
+or broader execution allowance follows.
 The [independently reviewed I archive](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/independent-review.md)
 retains capture-only PASS/STOP_cache_schema_unestablished. No decoder/controller/
 runtime/compiler/build/test/acquisition/repair/retry ran; S and old B remain closed.
