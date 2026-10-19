@@ -1,5 +1,11 @@
 # RFC-014 task context guide
 
+Current P08 next-step triage — **U02 preparation recommended; activity STOP**.
+The [88b57086 decision record](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-next-step-after-git-ref2.md)
+selects one separately reviewed retained-evidence Static-feasibility preparation;
+U01 exact provenance needs new bounded external evidence. No execution, allowance,
+contract/scope change or gate closure follows; U01–U05/P08/R07/T8.1 stay open.
+
 Current P08 Git-ref2 independent result review — **PASS / further activity STOP**.
 The [exact c081a421 review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-independent-review.md)
 independently verifies all 20 raw files/19 terminal hashes, exact requests/framing,
