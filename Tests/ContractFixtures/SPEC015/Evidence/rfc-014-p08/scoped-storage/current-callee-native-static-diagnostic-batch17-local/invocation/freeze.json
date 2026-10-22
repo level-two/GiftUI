@@ -1,0 +1,25 @@
+{
+  "frozen_utc": "2026-10-22T06:04:35.605436+00:00",
+  "helper_sha256": "b7424b79d19c097f10a1e80be91dde48fa910978cb4269f4464f5449cde921ba",
+  "delivery_sha256": "0cc6357bf4e0232feac1b9a073c83693407efff11a5772094fa16e549f564580",
+  "requests_sha256": "b9c1d75ffb844bc03654cb23c69253cfc6ba44b1e83a1ec202d4a1ddff86fe93",
+  "refresh_sha256": "bb0d42d13bfba6b63071f8d52771935d149d3f01321116fb48146c661f22c868",
+  "alias_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-native-static-diagnostic-batch17-local/deliver.py",
+  "expected_HEAD": "e00f0972612f54fd700510d78ae20a9760676166",
+  "preflight_processing_upper_bytes": 33554432,
+  "whole_package_prior_clock_certified": false,
+  "prior_cache_check": {
+    "sandbox_failure": "Python py_compile attempted normal user cache write and was denied",
+    "escalation": "Exact py_compile require_escalated request aborted by user after1611.4s; no childexit/session reported",
+    "redundant_check_not_retried": true
+  },
+  "pre_record_helper_elapsed": "UNKNOWN; package-start05:32:37 record is not full coordination clock",
+  "session_caps": {
+    "seconds": 7200,
+    "group_seconds": 90,
+    "processing_bytes": 536870912,
+    "output_bytes": 8388608,
+    "counted_transcript": 10000
+  },
+  "counting": "Exact UTF8 request code plus canonical nested args and deliberate payload before emission; platform envelope excluded; request self-attestation not independent audit"
+}

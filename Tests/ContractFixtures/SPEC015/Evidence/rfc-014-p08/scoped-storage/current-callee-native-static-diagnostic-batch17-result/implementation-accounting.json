@@ -1,0 +1,13 @@
+{
+  "finalized_utc": "2026-10-22T08:38:54.443897+00:00",
+  "first_known_package_record": "2026-10-22T05:32:37.864082Z",
+  "pre_record_elapsed": "UNKNOWN",
+  "full_package_timing_certified": false,
+  "absolute_validation_deadline": "2026-10-22T09:32:37.864082+00:00",
+  "terminal_before_deadline": true,
+  "full_runtime_seconds": 7882.845297,
+  "output_limit_bytes": 536870912,
+  "measured_retained_before_accounting": 473784342,
+  "final_reserve_bytes": 1048576,
+  "aggregate_IO_tool_envelope_certification": false
+}

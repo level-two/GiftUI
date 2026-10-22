@@ -1,0 +1,42 @@
+{
+  "preauth_pycompile": {
+    "cmd": "python3 -m py_compile Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-native-static-diagnostic-batch17-local/inspect.py",
+    "initial_error": "PermissionError: [Errno1] Operation not permitted: '/Users/eugene/Library/Caches/com.apple.python/Users/eugene/work/GiftUI/Tests'",
+    "escalation_args": {
+      "cmd": "python3 -m py_compile Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-native-static-diagnostic-batch17-local/inspect.py",
+      "sandbox_permissions": "require_escalated",
+      "justification": "Allow Python's normal cache write to finish the batch17 helper syntax check?",
+      "max_output_tokens": 1000
+    },
+    "returned": "aborted by user after1611.4s",
+    "child_exit": null,
+    "session": null,
+    "recovery": "Coordinator confirmed redundant check already superseded by successful actual helper controls; no rerun/cache workaround"
+  },
+  "u02_attempt": {
+    "auth_exit": 0,
+    "group_exit": 2,
+    "close_exit": 0,
+    "finish_exit": 0,
+    "error": "checked payload exceeds reserved transcript",
+    "model_examined": false,
+    "no_retry": true,
+    "recorded_four_request_transcript": 567,
+    "collaboration_tool_arguments_outside_four_request_ledger": true,
+    "all_tool_transcript_certification": false
+  },
+  "source_generator_before_mutation": {
+    "exit": 1,
+    "error": "ObservableStateError case parser accidentally included initializer switch cases; assertion stopped before maintained source write",
+    "repair": "Only enum declaration cases at four-space indentation selected; finite generator then succeeded"
+  },
+  "control_attempt1": {
+    "path": ".build/contracts/p08-native-static-diagnostic-batch17/paired-controls.json",
+    "actual_exit_each": -5,
+    "cause": "RunCycleSummary initializer rejected mutually exclusive backpressure/retryable flags; no product failure",
+    "preserved": true,
+    "incorrect_initial_success_condition": "Compared both outcomes but omitted explicit exit0/marker requirement; raw numeric\u22125 remained recorded",
+    "corrected_attempt": ".build/contracts/p08-native-static-diagnostic-batch17/format-control2/paired-controls.json",
+    "correction": "Legal operational flag2; explicit exit0 and exact continuation marker assertions"
+  }
+}

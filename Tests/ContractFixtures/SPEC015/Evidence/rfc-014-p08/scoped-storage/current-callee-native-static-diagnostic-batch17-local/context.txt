@@ -1,0 +1,174 @@
+NODE 0x4bc78 _$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF L92673
+92674: 4bc78:      	mov	x1, x30
+92675: 4bc7c:      	bl	0x4bc7c <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x4>
+92676: 000000000004bc7c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1016
+92677: 4bc80:      	mov	x30, x1
+92678: 4bc84:      	stp	x29, x30, [sp, #0x50]
+92679: 4bc88:      	add	x29, sp, #0x50
+92680: 4bc8c:      	sub	sp, sp, #0x1e, lsl #12  ; =0x1e000
+92681: 4bc90:      	sub	sp, sp, #0x950
+92682: 4bc94:      	str	x0, [sp, #0x20]
+92683: 4bc98:      	mov	w21, #0x0               ; =0
+92684: 4bc9c:      	mov	x22, #0x0               ; =0
+92685: 4bca0:      	mov	w23, #0x0               ; =0
+92686: 4bca4:      	mov	w1, #0x0                ; =0
+92687: 4bca8:      	bl	0x4bca8 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x30>
+92688: 000000000004bca8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_186
+92689: 4bcac:      	stur	x8, [x29, #-0x60]
+92690: 4bcb0:      	add	x24, sp, #0x578
+92691: 4bcb4:      	mov	w8, #0x5538             ; =21816
+92692: 4bcb8:      	add	x25, x24, x8
+92693: 4bcbc:      	mov	w8, #0x5558             ; =21848
+92694: 4bcc0:      	add	x26, x24, x8
+92695: 4bcc4:      	mov	w8, #0x1                ; =1
+92696: 4bcc8:      	adrp	x27, 0x4b000 <_$s17P08CounterRuntime20p08PrepareStaticHost33_480B1BD841D053AE4FCDC18507668536LL5outer5owner17GiftUIRuntimeCore0C12StorageAuditV5audit_AA0bG8AssemblyV8assemblytAA0aF9OuterViewACLLV_AA0A17TypedBackingOwnerACLLVztF+0xc8>
+92697: 000000000004bcc8:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVz_AA0A15StaticOuterViewAPLLVtXEfU_TA
+92698: 4bccc:      	add	x27, x27, #0x0
+92699: 000000000004bccc:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVz_AA0A15StaticOuterViewAPLLVtXEfU_TA
+92700: 4bcd0:      	tbz	w8, #0x0, 0x4bd4c <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xd4>
+92701: 4bcd4:      	adds	w20, w1, #0x1
+92702: 4bcd8:      	cset	w19, hs
+92703: 4bcdc:      	csel	w28, wzr, w20, hs
+92704: 4bce0:      	add	x8, sp, #0x578
+92705: 4bce4:      	mov	x0, x21
+92706: 4bce8:      	bl	0x4bce8 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x70>
+92707: 000000000004bce8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A11StaticOuter33_480B1BD841D053AE4FCDC18507668536LLV10modelOwner08semanticL0AD21GiftUIObservableState015ObservableModelL8IdentityV_0N14UISemanticCore014SemanticRecordlS0VtcfC
+92708: 4bcec:      	add	x0, sp, #0x9c
+92709: 4bcf0:      	add	x1, sp, #0x578
+92710: 4bcf4:      	bl	0x4bcf4 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x7c>
+92711: 000000000004bcf4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_613
+92712: 4bcf8:      	strb	w23, [sp, #0x150]
+92713: 4bcfc:      	add	x8, sp, #0x140
+92714: 4bd00:      	stp	x27, x8, [sp, #0x10]
+92715: 4bd04:      	mov	w8, #0x5338             ; =21304
+92716: 4bd08:      	add	x0, x24, x8
+92717: 4bd0c:      	add	x1, sp, #0x578
+92718: 4bd10:      	add	x2, sp, #0x9c
+92719: 4bd14:      	bl	0x4bd14 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x9c>
+92720: 000000000004bd14:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2102
+92721: 4bd18:      	stp	x25, x26, [sp]
+92722: 4bd1c:      	mov	w8, #0x2f38             ; =12088
+92723: 4bd20:      	add	x7, x24, x8
+92724: 4bd24:      	bl	0x4bd24 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xac>
+92725: 000000000004bd24:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5
+92726: 4bd28:      	adds	x22, x22, x0
+92727: 4bd2c:      	b.vs	0x4bea0 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x228>
+92728: 4bd30:      	cmp	w21, #0x8
+92729: 4bd34:      	b.eq	0x4bd74 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xfc>
+92730: 4bd38:      	add	w23, w23, #0x1
+92731: 4bd3c:      	eor	w8, w19, #0x1
+92732: 4bd40:      	add	w21, w21, #0x1
+92733: 4bd44:      	mov	x1, x28
+92734: 4bd48:      	tbnz	w8, #0x0, 0x4bcd4 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x5c>
+92735: 4bd4c:      	mov	w8, #0x1                ; =1
+92736: 4bd50:      	strb	w8, [sp, #0x578]
+92737: 4bd54:      	bl	0x4bd54 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xdc>
+92738: 000000000004bd54:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+92739: 4bd58:      	bl	0x4bd58 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xe0>
+92740: 000000000004bd58:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1720
+92741: 4bd5c:      	add	x0, sp, #0x578
+92742: 4bd60:      	bl	0x4bd60 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xe8>
+92743: 000000000004bd60:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1829
+92744: 4bd64:      	adrp	x0, 0x4b000 <_$s17P08CounterRuntime20p08PrepareStaticHost33_480B1BD841D053AE4FCDC18507668536LL5outer5owner17GiftUIRuntimeCore0C12StorageAuditV5audit_AA0bG8AssemblyV8assemblytAA0aF9OuterViewACLLV_AA0A17TypedBackingOwnerACLLVztF+0xc8>
+92745: 000000000004bd64:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+92746: 4bd68:      	ldr	x0, [x0]
+92747: 000000000004bd68:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+92748: 4bd6c:      	bl	0x4bd6c <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xf4>
+92749: 000000000004bd6c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_897
+92750: 4bd70:      	brk	#0x1
+92751: 4bd74:      	tbnz	w19, #0x0, 0x4bd4c <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xd4>
+92752: 4bd78:      	adds	w21, w20, #0x1
+92753: 4bd7c:      	b.hs	0x4bd4c <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0xd4>
+92754: 4bd80:      	cmp	w20, w21
+92755: 4bd84:      	b.eq	0x4bea4 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x22c>
+92756: 4bd88:      	adrp	x0, 0x4b000 <_$s17P08CounterRuntime20p08PrepareStaticHost33_480B1BD841D053AE4FCDC18507668536LL5outer5owner17GiftUIRuntimeCore0C12StorageAuditV5audit_AA0bG8AssemblyV8assemblytAA0aF9OuterViewACLLV_AA0A17TypedBackingOwnerACLLVztF+0xc8>
+92757: 000000000004bd88:  ARM64_RELOC_PAGE21	l_.str.16.reuse.namespaces
+92758: 4bd8c:      	add	x0, x0, #0x0
+92759: 000000000004bd8c:  ARM64_RELOC_PAGEOFF12	l_.str.16.reuse.namespaces
+92760: 4bd90:      	mov	w19, #0xa               ; =10
+92761: 4bd94:      	bl	0x4bd94 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x11c>
+92762: 000000000004bd94:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2207
+92763: 4bd98:      	mov	x5, x20
+92764: 4bd9c:      	mov	x6, x21
+92765: 4bda0:      	bl	0x4bda0 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x128>
+92766: 000000000004bda0:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF
+92767: 4bda4:      	add	x0, sp, #0x3c0
+92768: 4bda8:      	bl	0x4bda8 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x130>
+92769: 000000000004bda8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B14ProducedActionVSgWOi0_
+92770: 4bdac:      	add	x23, sp, #0x140
+92771: 4bdb0:      	add	x0, sp, #0x140
+92772: 4bdb4:      	add	x1, sp, #0x3c0
+92773: 4bdb8:      	bl	0x4bdb8 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x140>
+92774: 000000000004bdb8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_890
+92775: 4bdbc:      	mov	w8, #0x3                ; =3
+92776: 4bdc0:      	str	xzr, [sp, #0x308]
+92777: 4bdc4:      	add	x9, x23, #0x1d8
+92778: 4bdc8:      	str	x8, [sp, #0x2f8]
+92779: 4bdcc:      	str	xzr, [sp, #0x300]
+92780: 4bdd0:      	str	wzr, [sp, #0x310]
+92781: 4bdd4:      	movi.2d	v0, #0000000000000000
+92782: 4bdd8:      	stp	q0, q0, [x9]
+92783: 4bddc:      	str	q0, [x9, #0x20]
+92784: 4bde0:      	mov	w8, #0x700              ; =1792
+92785: 4bde4:      	strh	w8, [sp, #0x348]
+92786: 4bde8:      	mov	w8, #0x200              ; =512
+92787: 4bdec:      	str	x8, [sp, #0x350]
+92788: 4bdf0:      	add	x8, x23, #0x218
+92789: 4bdf4:      	str	wzr, [sp, #0x3a4]
+92790: 4bdf8:      	bl	0x4bdf8 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x180>
+92791: 000000000004bdf8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_485
+92792: 4bdfc:      	mov	w8, #0x1                ; =1
+92793: 4be00:      	strb	w8, [sp, #0x3a8]
+92794: 4be04:      	str	xzr, [sp, #0x3b0]
+92795: 4be08:      	add	x24, sp, #0x578
+92796: 4be0c:      	add	x8, sp, #0x578
+92797: 4be10:      	mov	w0, #0x9                ; =9
+92798: 4be14:      	mov	x1, x20
+92799: 4be18:      	bl	0x4be18 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x1a0>
+92800: 000000000004be18:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A11StaticOuter33_480B1BD841D053AE4FCDC18507668536LLV10modelOwner08semanticL0AD21GiftUIObservableState015ObservableModelL8IdentityV_0N14UISemanticCore014SemanticRecordlS0VtcfC
+92801: 4be1c:      	add	x0, sp, #0x28
+92802: 4be20:      	add	x1, sp, #0x578
+92803: 4be24:      	bl	0x4be24 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x1ac>
+92804: 000000000004be24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_613
+92805: 4be28:      	ldr	x8, [sp, #0x20]
+92806: 4be2c:      	stp	x8, x23, [sp, #0x120]
+92807: 4be30:      	str	w19, [sp, #0x130]
+92808: 4be34:      	str	w21, [sp, #0x134]
+92809: 4be38:      	mov	w8, #0x5538             ; =21816
+92810: 4be3c:      	add	x8, x24, x8
+92811: 4be40:      	mov	w9, #0x5558             ; =21848
+92812: 4be44:      	add	x9, x24, x9
+92813: 4be48:      	mov	w10, #0x2f38            ; =12088
+92814: 4be4c:      	mov	w11, #0x5338            ; =21304
+92815: 4be50:      	add	x12, sp, #0x110
+92816: 4be54:      	adrp	x13, 0x4b000 <_$s17P08CounterRuntime20p08PrepareStaticHost33_480B1BD841D053AE4FCDC18507668536LL5outer5owner17GiftUIRuntimeCore0C12StorageAuditV5audit_AA0bG8AssemblyV8assemblytAA0aF9OuterViewACLLV_AA0A17TypedBackingOwnerACLLVztF+0xc8>
+92817: 000000000004be54:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtFSiSpyAA0aE15ReuseTranscript33_480B1BD841D053AE4FCDC18507668536LLVGXEfU0_SiAA0A17TypedBackingOwnerAPLLVz_AA0A15StaticOuterViewAPLLVtXEfU_TA
+92818: 4be58:      	add	x13, x13, #0x0
+92819: 000000000004be58:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtFSiSpyAA0aE15ReuseTranscript33_480B1BD841D053AE4FCDC18507668536LLVGXEfU0_SiAA0A17TypedBackingOwnerAPLLVz_AA0A15StaticOuterViewAPLLVtXEfU_TA
+92820: 4be5c:      	stp	x13, x12, [sp, #0x10]
+92821: 4be60:      	stp	x8, x9, [sp]
+92822: 4be64:      	add	x0, x24, x11
+92823: 4be68:      	add	x1, sp, #0x578
+92824: 4be6c:      	add	x2, sp, #0x28
+92825: 4be70:      	bl	0x4be70 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x1f8>
+92826: 000000000004be70:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2102
+92827: 4be74:      	add	x7, x24, x10
+92828: 4be78:      	bl	0x4be78 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x200>
+92829: 000000000004be78:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5
+92830: 4be7c:      	adds	x0, x22, x0
+92831: 4be80:      	b.vs	0x4bea8 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x230>
+92832: 4be84:      	ldur	x8, [x29, #-0x60]
+92833: 4be88:      	bl	0x4be88 <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x210>
+92834: 000000000004be88:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_62
+92835: 4be8c:      	b.ne	0x4beac <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x234>
+92836: 4be90:      	add	sp, sp, #0x1e, lsl #12  ; =0x1e000
+92837: 4be94:      	add	sp, sp, #0x950
+92838: 4be98:      	ldp	x29, x30, [sp, #0x50]
+92839: 4be9c:      	b	0x4be9c <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x224>
+92840: 000000000004be9c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_16
+92841: 4bea0:      	brk	#0x1
+92842: 4bea4:      	brk	#0x1
+92843: 4bea8:      	brk	#0x1
+92844: 4beac:      	bl	0x4beac <_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x234>
+92845: 000000000004beac:  ARM64_RELOC_BRANCH26	___stack_chk_fail
+92846: 

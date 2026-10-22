@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-22T06:11:21.563499+00:00",
+  "before_sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d",
+  "after_unformatted_sha256": "50137d48ba446b8dc0c1b2f642635cf846543566d9313e67af3884f68f04131a",
+  "concrete_overloads_added": 11,
+  "generic_fallback_native_static": false,
+  "full_prior_package_clock_certification": false,
+  "scope": "Ordinary implementation; failed U02 proof not requalified"
+}

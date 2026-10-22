@@ -1,0 +1,38 @@
+{
+  "processing_recorded_final": 507707798,
+  "counted_four_request_exchange_recorded": 567,
+  "output_upper_recorded": 2244732,
+  "group": {
+    "U02-X28": {
+      "started_utc": "2026-10-22T06:04:55.316021+00:00",
+      "status": "CLOSED",
+      "context_emitted": false,
+      "model_examined": false,
+      "ended_utc": "2026-10-22T06:05:16.957183+00:00",
+      "elapsed_UTC_seconds": 21.641162
+    }
+  },
+  "errors": [
+    "RuntimeError: checked payload exceeds reserved transcript"
+  ],
+  "rooted_trace_functions_extracted_unexamined": 0,
+  "other_trace_functions_unexamined": 11,
+  "raw_context_bytes": 14513,
+  "source_locator_json_bytes": 1036,
+  "identity_label_json_bytes": 1570,
+  "actual_child_exits": {
+    "auth": {
+      "exit": 0
+    },
+    "group": {
+      "exit": 2
+    },
+    "close": {
+      "exit": 0
+    },
+    "finish": {
+      "exit": 0
+    }
+  },
+  "scope": "Structural quantities only; no selected semantic content interpreted during this closeout"
+}

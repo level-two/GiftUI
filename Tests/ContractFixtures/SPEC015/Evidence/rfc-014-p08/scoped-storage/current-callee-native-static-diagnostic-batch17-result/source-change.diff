@@ -1,0 +1,695 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+index b152f064..5398edda 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+@@ -765,12 +765,15 @@ private func counterActionIsEnabled(_ ref: SemanticRecordReference, bank: borrow
+     }
+     return true
+ }
++#if !os(macOS) || GIFTUI_COUNTER_ROUTE_DYNAMIC || hasFeature(Embedded)
+ func counterTrace<T>(_ label: StaticString, _ value: T) {
+ #if !hasFeature(Embedded)
+ print(label, value)
+ #endif
+ }
+ 
++#endif
++
+ #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+     // Preserve this finite native trace's spelling with bounded fragments instead
+     // of the variadic print call's Any storage.
+@@ -793,6 +796,674 @@ print(label, value)
+         counterTraceWrite("))\n")
+     }
+ 
++    // Finite Native Static trace shapes. The generic print fallback is unavailable
++    // in this profile, so new call-site types require an explicit bounded writer.
++    // The captured-key InlineArray spelling mirrors this pinned compiler's opaque
++    // reflection output; key values are not reconstructed from that placeholder.
++    private func counterTraceName(_ value: RuntimeCompletePipelineStage) -> StaticString {
++        switch value {
++        case .admissionAndSeal: return "admissionAndSeal"
++        case .applyAdmittedWork: return "applyAdmittedWork"
++        case .freezeObservableMutation: return "freezeObservableMutation"
++        case .observableCandidateAndSemanticExpansion:
++            return "observableCandidateAndSemanticExpansion"
++        case .layout: return "layout"
++        case .canvasInvocationAndPlan: return "canvasInvocationAndPlan"
++        case .combinedRenderPreflight: return "combinedRenderPreflight"
++        case .interactionCandidate: return "interactionCandidate"
++        case .semanticAndObservablePublication: return "semanticAndObservablePublication"
++        case .candidateAllocation: return "candidateAllocation"
++        case .offerAndProduction: return "offerAndProduction"
++        }
++    }
++
++    private func counterTraceName(_ value: RuntimeCleanupAction) -> StaticString {
++        switch value {
++        case .releaseCanvasCallable: return "releaseCanvasCallable"
++        case .discardInteractionCandidate: return "discardInteractionCandidate"
++        case .commitInteractionCandidate: return "commitInteractionCandidate"
++        case .resetRenderWorkspace: return "resetRenderWorkspace"
++        case .resetDrawingPlan: return "resetDrawingPlan"
++        case .resetLayoutCandidate: return "resetLayoutCandidate"
++        case .discardSemanticCandidate: return "discardSemanticCandidate"
++        case .discardObservableCandidate: return "discardObservableCandidate"
++        case .resetAttemptStorage: return "resetAttemptStorage"
++        }
++    }
++
++    private func counterTraceName(_ value: ExecutionPhase) -> StaticString {
++        switch value {
++        case .idle: return "idle"
++        case .admitting: return "admitting"
++        case .mutating: return "mutating"
++        case .deriving: return "deriving"
++        case .publishing: return "publishing"
++        case .offering: return "offering"
++        case .finalizing: return "finalizing"
++        }
++    }
++
++    private func counterTraceWrite(_ value: ExecutionPhase) {
++        counterTraceWrite("GiftUIExecution.ExecutionPhase.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: SemanticCycleDisposition) -> StaticString {
++        switch value {
++        case .unchanged: return "unchanged"
++        case .published: return "published"
++        case .dirty: return "dirty"
++        }
++    }
++
++    private func counterTraceWrite(_ value: SemanticCycleDisposition) {
++        counterTraceWrite("GiftUIExecution.SemanticCycleDisposition.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: ExecutionOperational) -> StaticString {
++        switch value {
++        case .noChange: return "noChange"
++        case .backpressured: return "backpressured"
++        case .retryableRefusal: return "retryableRefusal"
++        case .superseded: return "superseded"
++        case .deferredToLaterAdmission: return "deferredToLaterAdmission"
++        }
++    }
++
++    private func counterTraceWrite(_ value: ExecutionOperational) {
++        counterTraceWrite("GiftUIExecution.ExecutionOperational.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: PresentationIntentState) -> StaticString {
++        switch value {
++        case .satisfied: return "satisfied"
++        case .pending: return "pending"
++        case .unavailable: return "unavailable"
++        }
++    }
++
++    private func counterTraceWrite(_ value: PresentationIntentState) {
++        counterTraceWrite("GiftUIExecution.PresentationIntentState.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: ExecutionError) -> StaticString {
++        switch value {
++        case .invalidValue: return "invalidValue"
++        case .arithmeticOverflow: return "arithmeticOverflow"
++        case .capacityExhausted: return "capacityExhausted"
++        case .identityExhausted: return "identityExhausted"
++        case .invalidProvenance: return "invalidProvenance"
++        case .invalidPhase: return "invalidPhase"
++        case .reentrancyViolation: return "reentrancyViolation"
++        case .requiredFacilityUnavailable: return "requiredFacilityUnavailable"
++        case .invariantViolation: return "invariantViolation"
++        }
++    }
++
++    private func counterTraceWrite(_ value: ExecutionError) {
++        counterTraceWrite("GiftUIExecution.ExecutionError.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: LogicalFrameDisposition) -> StaticString {
++        switch value {
++        case .notProduced: return "notProduced"
++        case .committed: return "committed"
++        case .aborted: return "aborted"
++        }
++    }
++
++    private func counterTraceWrite(_ value: LogicalFrameDisposition) {
++        counterTraceWrite("GiftUIExecution.LogicalFrameDisposition.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: FrameOfferFailure) -> StaticString {
++        switch value {
++        case .invalidEnvelope: return "invalidEnvelope"
++        case .insufficientCapacity: return "insufficientCapacity"
++        case .producerFailed: return "producerFailed"
++        case .contractViolation: return "contractViolation"
++        }
++    }
++
++    private func counterTraceWrite(_ value: FrameOfferFailure) {
++        counterTraceWrite("GiftUIExecution.FrameOfferFailure.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: FrameRefusalOrigin) -> StaticString {
++        switch value {
++        case .renderProducer: return "renderProducer"
++        case .endpoint: return "endpoint"
++        }
++    }
++
++    private func counterTraceWrite(_ value: FrameRefusalOrigin) {
++        counterTraceWrite("GiftUIExecution.FrameRefusalOrigin.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: ExecutionAdmissionResult) -> StaticString {
++        switch value {
++        case .queued: return "queued"
++        case .capacityRefused: return "capacityRefused"
++        case .unavailable: return "unavailable"
++        case .invalidValue: return "invalidValue"
++        case .invalidProvenance: return "invalidProvenance"
++        }
++    }
++
++    private func counterTraceWrite(_ value: ExecutionAdmissionResult) {
++        counterTraceWrite("GiftUIExecution.ExecutionAdmissionResult.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: ObservableStateError) -> StaticString {
++        switch value {
++        case .locationCapacityExhausted: return "locationCapacityExhausted"
++        case .registrationCapacityExhausted: return "registrationCapacityExhausted"
++        case .associationStagingCapacityExhausted: return "associationStagingCapacityExhausted"
++        case .replacementStagingCapacityExhausted: return "replacementStagingCapacityExhausted"
++        case .registrationGenerationExhausted: return "registrationGenerationExhausted"
++        case .duplicateOwner: return "duplicateOwner"
++        case .incompatibleAssociation: return "incompatibleAssociation"
++        case .staleAttachment: return "staleAttachment"
++        case .invalidPhaseContained: return "invalidPhaseContained"
++        case .invalidPhaseSafetyNotProven: return "invalidPhaseSafetyNotProven"
++        case .reentrancyViolation: return "reentrancyViolation"
++        case .invariantViolation: return "invariantViolation"
++        case .modelCapacityExhausted: return "modelCapacityExhausted"
++        case .ownerCapacityExhausted: return "ownerCapacityExhausted"
++        case .retainedModel: return "retainedModel"
++        case .modelGenerationExhausted: return "modelGenerationExhausted"
++        case .staleModel: return "staleModel"
++        case .modelReadOutOfBounds: return "modelReadOutOfBounds"
++        }
++    }
++
++    private func counterTraceWrite(_ value: ObservableStateError) {
++        counterTraceWrite("GiftUIObservableState.ObservableStateError.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: InteractionError) -> StaticString {
++        switch value {
++        case .capacityExhausted: return "capacityExhausted"
++        case .invalidIdentity: return "invalidIdentity"
++        case .invalidGeometry: return "invalidGeometry"
++        case .invalidPhase: return "invalidPhase"
++        case .reentrancyViolation: return "reentrancyViolation"
++        case .invariantViolation: return "invariantViolation"
++        case .incompatibleActionDomain: return "incompatibleActionDomain"
++        case .invalidActionValue: return "invalidActionValue"
++        case .missingModelTarget: return "missingModelTarget"
++        }
++    }
++
++    private func counterTraceWrite(_ value: InteractionError) {
++        counterTraceWrite("GiftUIInteraction.InteractionError.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: DrawingProductionError) -> StaticString {
++        switch value {
++        case .invalidValue: return "invalidValue"
++        case .invalidPathState: return "invalidPathState"
++        case .arithmeticOverflow: return "arithmeticOverflow"
++        case .capacityExhausted: return "capacityExhausted"
++        case .invalidScope: return "invalidScope"
++        case .invalidPhase: return "invalidPhase"
++        case .reentrancyViolation: return "reentrancyViolation"
++        case .operationCapacityExhausted: return "operationCapacityExhausted"
++        case .invariantViolation: return "invariantViolation"
++        case .invalidModelAccess: return "invalidModelAccess"
++        }
++    }
++
++    private func counterTraceWrite(_ value: DrawingProductionError) {
++        counterTraceWrite("GiftUIDrawing.DrawingProductionError.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: LayoutError) -> StaticString {
++        switch value {
++        case .invalidDeclaration: return "invalidDeclaration"
++        case .arithmeticOverflow: return "arithmeticOverflow"
++        case .capacityExhausted: return "capacityExhausted"
++        case .reentrancyViolation: return "reentrancyViolation"
++        case .invariantViolation: return "invariantViolation"
++        }
++    }
++
++    private func counterTraceWrite(_ value: LayoutError) {
++        counterTraceWrite("GiftUILayout.LayoutError.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: SemanticExpansionError) -> StaticString {
++        switch value {
++        case .capacityExhausted: return "capacityExhausted"
++        case .invalidIdentity: return "invalidIdentity"
++        case .reentrancyViolation: return "reentrancyViolation"
++        case .invariantViolation: return "invariantViolation"
++        }
++    }
++
++    private func counterTraceWrite(_ value: SemanticExpansionError) {
++        counterTraceWrite("GiftUISemanticCore.SemanticExpansionError.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceName(_ value: RenderProductionError) -> StaticString {
++        switch value {
++        case .invalidInput: return "invalidInput"
++        case .arithmeticOverflow: return "arithmeticOverflow"
++        case .capacityExhausted: return "capacityExhausted"
++        case .incompatibleTextResource: return "incompatibleTextResource"
++        case .sinkRefused: return "sinkRefused"
++        case .reentrancyViolation: return "reentrancyViolation"
++        case .invariantViolation: return "invariantViolation"
++        }
++    }
++
++    private func counterTraceWrite(_ value: RenderProductionError) {
++        counterTraceWrite("GiftUIRenderCore.RenderProductionError.")
++        counterTraceWrite(counterTraceName(value))
++    }
++
++    private func counterTraceWrite(_ value: ObservableModelOwnership.Phase) {
++        counterTraceWrite("GiftUIObservableState.ObservableModelOwnership.Phase.")
++        switch value {
++        case .mutating: counterTraceWrite("mutating")
++        case .writing: counterTraceWrite("writing")
++        case .reading: counterTraceWrite("reading")
++        case .discovering: counterTraceWrite("discovering")
++        case .replacing: counterTraceWrite("replacing")
++        case .retired: counterTraceWrite("retired")
++        }
++    }
++
++    private func counterTraceWrite(_ value: Bool) {
++        if value { counterTraceWrite("true") } else { counterTraceWrite("false") }
++    }
++
++    private func counterTraceWrite(_ value: UInt16) {
++        counterTraceWrite(UInt32(value))
++    }
++
++    private func counterTraceWrite(_ value: UInt8) {
++        counterTraceWrite(UInt32(value))
++    }
++
++    private func counterTraceWrite(_ value: Int) {
++        if value < 0 { counterTraceWrite("-") }
++        counterTraceWriteUnsigned(value.magnitude)
++    }
++
++    private func counterTraceWriteUnsigned(_ value: UInt) {
++        let low = BoundedText(Int32(value % 1_000_000_000))
++        if value >= 1_000_000_000 {
++            counterTraceWriteUnsigned(value / 1_000_000_000)
++            for _ in Int(low.utf8ByteCount) ..< 9 { _ = putchar(48) }
++        }
++        counterTraceWrite(low)
++    }
++
++    private func counterTraceWrite(_ value: RunCycleID) {
++        counterTraceWrite("GiftUIExecution.RunCycleID(rawValue: ")
++        counterTraceWrite(value.rawValue)
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: RunCycleID?) {
++        if let value {
++            counterTraceWrite("Optional(")
++            counterTraceWrite(value)
++            counterTraceWrite(")")
++        } else {
++            counterTraceWrite("nil")
++        }
++    }
++
++    private func counterTraceWrite(_ value: SemanticRevision) {
++        counterTraceWrite("GiftUIExecution.SemanticRevision(rawValue: ")
++        counterTraceWrite(value.rawValue)
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: SemanticRevision?) {
++        if let value {
++            counterTraceWrite("Optional(")
++            counterTraceWrite(value)
++            counterTraceWrite(")")
++        } else {
++            counterTraceWrite("nil")
++        }
++    }
++
++    private func counterTraceWrite(_ value: CandidateFrameID) {
++        counterTraceWrite("GiftUIExecution.CandidateFrameID(rawValue: ")
++        counterTraceWrite(value.rawValue)
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: CandidateFrameID?) {
++        if let value {
++            counterTraceWrite("Optional(")
++            counterTraceWrite(value)
++            counterTraceWrite(")")
++        } else {
++            counterTraceWrite("nil")
++        }
++    }
++
++    private func counterTraceWrite(_ value: ActionGeneration) {
++        counterTraceWrite("GiftUIExecution.ActionGeneration(rawValue: ")
++        counterTraceWrite(value.rawValue)
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: ActionGeneration?) {
++        if let value {
++            counterTraceWrite("Optional(")
++            counterTraceWrite(value)
++            counterTraceWrite(")")
++        } else {
++            counterTraceWrite("nil")
++        }
++    }
++
++    private func counterTraceWrite(_ value: PresentationRevision) {
++        counterTraceWrite("GiftUI.PresentationRevision(rawValue: ")
++        counterTraceWrite(value.rawValue)
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: PresentationRevision?) {
++        if let value {
++            counterTraceWrite("Optional(")
++            counterTraceWrite(value)
++            counterTraceWrite(")")
++        } else {
++            counterTraceWrite("nil")
++        }
++    }
++
++    private func counterTraceWrite(_ value: ExecutionContext) {
++        counterTraceWrite("GiftUIExecution.ExecutionContext(cycle: ")
++        counterTraceWrite(value.cycle)
++        counterTraceWrite(", semanticRevision: ")
++        counterTraceWrite(value.semanticRevision)
++        counterTraceWrite(", candidateFrame: ")
++        counterTraceWrite(value.candidateFrame)
++        counterTraceWrite(", phase: ")
++        counterTraceWrite(value.phase)
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: ExecutionOperational?) {
++        if let value {
++            counterTraceWrite("Optional("); counterTraceWrite(value); counterTraceWrite(")")
++        } else {
++            counterTraceWrite("nil")
++        }
++    }
++
++    private func counterTraceWrite(_ value: PresentationPendingIntent?) {
++        if let value {
++            counterTraceWrite(
++                "Optional(GiftUIExecution.PresentationPendingIntent(semanticRevision: ")
++            counterTraceWrite(value.semanticRevision)
++            counterTraceWrite(", retryableRefusalCount: ")
++            counterTraceWrite(value.retryableRefusalCount)
++            counterTraceWrite("))")
++        } else {
++            counterTraceWrite("nil")
++        }
++    }
++
++    private func counterTraceWrite(_ value: RuntimePipelineDisposition, nested: Bool) {
++        if nested { counterTraceWrite("GiftUIRuntimeCore.") }
++        counterTraceWrite("RuntimePipelineDisposition(semanticDisposition: ")
++        counterTraceWrite(value.semanticDisposition)
++        counterTraceWrite(", logicalFrameDisposition: ")
++        counterTraceWrite(value.logicalFrameDisposition)
++        counterTraceWrite(", presentationIntentState: ")
++        counterTraceWrite(value.presentationIntentState)
++        counterTraceWrite(", wakeReasons: GiftUIExecution.ExecutionWakeReasons(rawValue: ")
++        counterTraceWrite(value.wakeReasons.rawValue)
++        counterTraceWrite("), commitsInteractionCandidate: ")
++        counterTraceWrite(value.commitsInteractionCandidate)
++        counterTraceWrite(", preservesPublishedSemanticRevision: ")
++        counterTraceWrite(value.preservesPublishedSemanticRevision)
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: RuntimePipelinePublication) {
++        counterTraceWrite("GiftUIRuntimeCore.RuntimePipelinePublication(semanticRevision: ")
++        counterTraceWrite(value.semanticRevision)
++        counterTraceWrite(", changed: "); counterTraceWrite(value.changed); counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: RuntimePipelinePublication?) {
++        if let value {
++            counterTraceWrite("Optional("); counterTraceWrite(value); counterTraceWrite(")")
++        } else {
++            counterTraceWrite("nil")
++        }
++    }
++
++    private func counterTraceWrite(_ value: RuntimeOwnerFailure) {
++        counterTraceWrite("GiftUIRuntimeCore.RuntimeOwnerFailure.")
++        switch value {
++        case .semantic(let error): counterTraceWrite("semantic("); counterTraceWrite(error)
++        case .layout(let error): counterTraceWrite("layout("); counterTraceWrite(error)
++        case .observableState(let error):
++            counterTraceWrite("observableState("); counterTraceWrite(error)
++        case .interaction(let error): counterTraceWrite("interaction("); counterTraceWrite(error)
++        case .drawing(let error): counterTraceWrite("drawing("); counterTraceWrite(error)
++        }
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: RunCycleFailure<RuntimeOwnerFailure>) {
++        counterTraceWrite("GiftUIExecution.RunCycleFailure<GiftUIRuntimeCore.RuntimeOwnerFailure>.")
++        switch value {
++        case .execution(let error): counterTraceWrite("execution("); counterTraceWrite(error)
++        case .renderProduction(let error):
++            counterTraceWrite("renderProduction("); counterTraceWrite(error)
++        case .frameOffer(let error): counterTraceWrite("frameOffer("); counterTraceWrite(error)
++        case .nonRetryableRefusal(let error):
++            counterTraceWrite("nonRetryableRefusal("); counterTraceWrite(error)
++        case .focusedOwner(let error): counterTraceWrite("focusedOwner("); counterTraceWrite(error)
++        }
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: RuntimeCompletePipelineResult<RuntimeOwnerFailure>) {
++        switch value {
++        case .completed(let completion):
++            counterTraceWrite("completed(GiftUIRuntimeCore.RuntimePipelineCompletion(publication: ")
++            counterTraceWrite(completion.publication)
++            counterTraceWrite(", committedPresentationRevision: ");
++            counterTraceWrite(completion.committedPresentationRevision)
++            counterTraceWrite(", operational: "); counterTraceWrite(completion.operational)
++            counterTraceWrite(", disposition: ");
++            counterTraceWrite(completion.disposition, nested: true)
++            counterTraceWrite("))")
++        case .failed(let record):
++            counterTraceWrite(
++                "failed(GiftUIRuntimeCore.RuntimePipelineFailureRecord<GiftUIRuntimeCore.RuntimeOwnerFailure>(stage: GiftUIRuntimeCore.RuntimeCompletePipelineStage."
++            )
++            counterTraceWrite(counterTraceName(record.stage))
++            counterTraceWrite(", failure: "); counterTraceWrite(record.failure)
++            counterTraceWrite(", publication: "); counterTraceWrite(record.publication)
++            counterTraceWrite(", disposition: ");
++            counterTraceWrite(record.disposition, nested: true)
++            counterTraceWrite("))")
++        }
++    }
++
++    private func counterTraceWrite(_ value: CapturedAction<SemanticCompleteIdentity>) {
++        counterTraceWrite(
++            "GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>(identity: GiftUISemanticCore.SemanticCompleteIdentity(components: Swift.InlineArray<34, GiftUISemanticCore.SemanticPathComponent>(_storage: (Unknown)), count: "
++        )
++        counterTraceWrite(value.identity.count)
++        counterTraceWrite("), generation: "); counterTraceWrite(value.generation);
++        counterTraceWrite(")")
++    }
++
++    private func counterTraceWrite(_ value: PointerGestureOutcome<SemanticCompleteIdentity>) {
++        switch value {
++        case .captured(let action):
++            counterTraceWrite("captured("); counterTraceWrite(action); counterTraceWrite(")")
++        case .continued(let action):
++            counterTraceWrite("continued("); counterTraceWrite(action); counterTraceWrite(")")
++        case .activationAdmitted(let action):
++            counterTraceWrite("activationAdmitted("); counterTraceWrite(action);
++            counterTraceWrite(")")
++        case .cancelled: counterTraceWrite("cancelled")
++        case .ignored: counterTraceWrite("ignored")
++        }
++    }
++
++    private func counterTraceWrite(_ value: RuntimeRecordInteractionDispatchResult) {
++        switch value {
++        case .interaction(let result):
++            counterTraceWrite("interaction(GiftUIInteraction.InteractionDispatchResult.")
++            switch result {
++            case .dispatched: counterTraceWrite("dispatched")
++            case .cancelled: counterTraceWrite("cancelled")
++            case .failure(let error):
++                counterTraceWrite("failure("); counterTraceWrite(error); counterTraceWrite(")")
++            }
++            counterTraceWrite(")")
++        case .observableFailure(let error):
++            counterTraceWrite("observableFailure("); counterTraceWrite(error);
++            counterTraceWrite(")")
++        }
++    }
++
++    private func counterTraceWrite(_ value: RunCycleSummary) {
++        counterTraceWrite("RunCycleSummary(cycle: "); counterTraceWrite(value.cycle)
++        counterTraceWrite(", admission: GiftUIExecution.AdmissionSummary(inputEventCount: ");
++        counterTraceWrite(value.admission.inputEventCount)
++        counterTraceWrite(", stateChangeFactCount: ");
++        counterTraceWrite(value.admission.stateChangeFactCount)
++        counterTraceWrite(", completionFactCount: ");
++        counterTraceWrite(value.admission.completionFactCount)
++        counterTraceWrite(", semanticActionCount: ");
++        counterTraceWrite(value.admission.semanticActionCount)
++        counterTraceWrite(", includesDirtyRederivation: ");
++        counterTraceWrite(value.admission.includesDirtyRederivation)
++        counterTraceWrite(", includesPresentationRecovery: ");
++        counterTraceWrite(value.admission.includesPresentationRecovery)
++        counterTraceWrite("), semanticRevision: "); counterTraceWrite(value.semanticRevision)
++        counterTraceWrite(", semanticDisposition: "); counterTraceWrite(value.semanticDisposition)
++        counterTraceWrite(", logicalFrameDisposition: ");
++        counterTraceWrite(value.logicalFrameDisposition)
++        counterTraceWrite(", committedPresentationRevision: ");
++        counterTraceWrite(value.committedPresentationRevision)
++        counterTraceWrite(", presentationIntentState: ");
++        counterTraceWrite(value.presentationIntentState)
++        counterTraceWrite(", presentationPending: "); counterTraceWrite(value.presentationPending)
++        counterTraceWrite(
++            ", operationalEvents: GiftUIExecution.ExecutionOperationalEvents(rawValue: ")
++        counterTraceWrite(value.operationalEvents.rawValue); counterTraceWrite("))")
++    }
++
++    private func counterTraceWrite(_ value: ExecutionAdmissionOutcome) {
++        counterTraceWrite("ExecutionAdmissionOutcome(result: "); counterTraceWrite(value.result)
++        counterTraceWrite(", context: "); counterTraceWrite(value.context); counterTraceWrite(")")
++    }
++
++    func counterTrace(
++        _ label: StaticString, _ value: RuntimeCompletePipelineResult<RuntimeOwnerFailure>
++    ) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite(value)
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(_ label: StaticString, _ value: RuntimeCompletePipelineStage) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite(counterTraceName(value))
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(_ label: StaticString, _ value: RuntimeCleanupAction) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite(counterTraceName(value))
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(_ label: StaticString, _ value: RuntimePipelineDisposition) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite(value, nested: false)
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(
++        _ label: StaticString, _ value: PointerGestureOutcome<SemanticCompleteIdentity>
++    ) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite(value)
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(_ label: StaticString, _ value: RuntimeRecordInteractionDispatchResult) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite(value)
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(_ label: StaticString, _ value: RunCycleSummary) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite(value)
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(_ label: StaticString, _ value: ExecutionAdmissionOutcome) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite(value)
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(
++        _ label: StaticString, _ value: (UInt16, UInt16, ObservableModelOwnership.Phase)
++    ) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite("("); counterTraceWrite(value.0); counterTraceWrite(", ");
++        counterTraceWrite(value.1); counterTraceWrite(", "); counterTraceWrite(value.2);
++        counterTraceWrite(")")
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(
++        _ label: StaticString,
++        _ value: (ExecutionContext, Int, Int, UInt16, UInt16, ObservableModelOwnership.Phase)
++    ) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite("("); counterTraceWrite(value.0); counterTraceWrite(", ");
++        counterTraceWrite(value.1); counterTraceWrite(", "); counterTraceWrite(value.2);
++        counterTraceWrite(", "); counterTraceWrite(value.3); counterTraceWrite(", ");
++        counterTraceWrite(value.4); counterTraceWrite(", "); counterTraceWrite(value.5);
++        counterTraceWrite(")")
++        counterTraceWrite("\n")
++    }
++
++    func counterTrace(_ label: StaticString, _ value: (PresentationPendingIntent?, Bool, UInt32)) {
++        counterTraceWrite(label); counterTraceWrite(" ")
++        counterTraceWrite("("); counterTraceWrite(value.0); counterTraceWrite(", ");
++        counterTraceWrite(value.1); counterTraceWrite(", "); counterTraceWrite(value.2);
++        counterTraceWrite(")")
++        counterTraceWrite("\n")
++    }
++
+     private func counterTraceWrite(_ text: StaticString) {
+         text.withUTF8Buffer { bytes in
+             for byte in bytes { _ = putchar(Int32(byte)) }

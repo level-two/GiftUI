@@ -1,0 +1,357 @@
+{
+  "disposition": "ELEVEN_NATIVE_STATIC_COUNTERTRACE_SHAPES_CORRECTED_AND_FOCUSED_FULL_VALIDATED; independent review pending",
+  "authority": {
+    "specification": "Existing approved SPEC013/015 strictNativeStatic contracts; fixture-local implementation, no architecture or ownership change",
+    "batched_directive": "Human requested batched completion and commits; root owns commit/index after one review",
+    "standing_refresh_approval": {
+      "date": "2026-10-22",
+      "human_reply": "Authorize traceable refreshes",
+      "conditions": "After authorized fix, applicable validation and independent review; preserve old evidence, map changed artifacts/sites, freeze before renewed semantics; numerical caps and approval boundaries unchanged"
+    },
+    "ordinary_alternative": "Coordinator explicitly authorized finite source correction based on already reviewed generic print construction after failed U02 delivery; failed current semantic attempt is NOT upgraded"
+  },
+  "source": {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "before_sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d",
+    "after_sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+    "diff": "source-change.diff",
+    "inserted_lines": 671,
+    "deleted_lines": 0,
+    "new_concrete_shapes": [
+      "RuntimeCompletePipelineResult<RuntimeOwnerFailure>",
+      "RuntimeCompletePipelineStage",
+      "RuntimeCleanupAction",
+      "RuntimePipelineDisposition",
+      "PointerGestureOutcome<SemanticCompleteIdentity>",
+      "RuntimeRecordInteractionDispatchResult",
+      "RunCycleSummary",
+      "ExecutionAdmissionOutcome",
+      "(UInt16, UInt16, ObservableModelOwnership.Phase)",
+      "(ExecutionContext, Int, Int, UInt16, UInt16, ObservableModelOwnership.Phase)",
+      "(PresentationPendingIntent?, Bool, UInt32)"
+    ],
+    "native_static_generic_fallback": false,
+    "other_profile_generic_body_literal_unchanged": true,
+    "all_non_diagnostic_owner_code_literal_unchanged": true,
+    "format": {
+      "command": [
+        ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift",
+        "format",
+        "format",
+        "--configuration",
+        ".swift-format",
+        "--in-place",
+        "--lines",
+        "801:1450",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift"
+      ],
+      "actual_exit": 0,
+      "scope": "Touched finite diagnostic region; original following owner code restored literally before compilation to avoid unrelated formatting",
+      "repository_formatter_script": "Fixtures excluded by maintained script; no global source sweep performed"
+    }
+  },
+  "maintenance_tradeoff": {
+    "added_fixture_lines": 671,
+    "not_a_simplicity_claim": true,
+    "mirrors": [
+      "Finite enum/struct member ordering and module/type spellings of the pinned Swift print output",
+      "Opaque Swift.InlineArray<34,...>(_storage:(Unknown)) display, alongside actual key count/generation"
+    ],
+    "contract_distinction": "Required semantic values, ordering, return/failure behavior and independent oracles are preserved. Byte spelling, including incidental compiler reflection spelling, was conservatively preserved under the assigned equivalence requirement; it is not asserted to be normative SPEC architecture. This mirror adds maintenance when compiler/type layouts change.",
+    "measured_speedup_or_heap_saving": false
+  },
+  "focused": {
+    "path": ".build/contracts/p08-counter-rxnrxs1z/result.json",
+    "sha256": "bfbc5d716b28ba4519db1b2579a72ffaf7ac3f615f50c9f79c6d650e052fede2",
+    "producer_exit": 0,
+    "fresh_focused": true,
+    "focused_passed": true,
+    "selected_families": [
+      "runtime"
+    ],
+    "passed": 35,
+    "intentionally_not_run": 391,
+    "aggregate_complete": false,
+    "aggregate_passed": false,
+    "stdout_comparison": "stdout-comparison.json"
+  },
+  "paired_controls": {
+    "path": ".build/contracts/p08-native-static-diagnostic-batch17/format-control2/paired-controls.json",
+    "sha256": "6f58110e55cee0bb1a176e8eb8e16a8fcb6cc387ffda82e3978974749efe6dbd",
+    "valid_attempt_compilers_exit": [
+      0,
+      0
+    ],
+    "processes_exit0": 6,
+    "buffered_and_unbuffered_bytes_each": 108895,
+    "rows_each": 259,
+    "closed_stdout_bytes": 0,
+    "test_marker": "authoritative-control-return=37: test continuation only, not counter assertion/entry result",
+    "cases": "Eleven stages, nine cleanup cases, all declared owner/error/dispatch/admission cases used by the finite shapes, operational/nil forms, Int.min/max and decimal boundaries, UInt32 full-width boundaries, all model phases, gesture key counts1\u201334",
+    "limits": "Single-process stdout equivalence and closed-descriptor continuation; no new concurrent-line atomicity, intermittent-write, provider/cold or timing guarantee",
+    "invalid_prior_attempt": "invocation-errors.json; original invalid-summary\u22125 processes and logs preserved"
+  },
+  "compiler_assessment": {
+    "SIL": {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/counter.sil",
+      "sha256": "c1d87ab1aefa620af38ab6bbd878883d2814a635e5fa42cee4d4fc8010853e9a",
+      "bytes": 62950849,
+      "selected_functions": 68,
+      "caller_refs": 37,
+      "alloc_ref_Any_array_print_refs": 0,
+      "generic_NativeStatic_fallback_absent": true
+    },
+    "source_and_flags_binding": "SIL compilation reuses exact focused maintained counter-model sources/compiler/flags; only emit mode/output/cache changed. Full producer uses same source/compiler/profile; its distinct object is independently inspected below.",
+    "before_counter16_runtime_object_sha256": "021643dff6d5b9253074511ab0008fb78159aedb77cb787f815db1d4dc5b8296",
+    "focused_runtime_object_sha256": "e75ac8e21f907892ae9e8c97d42bc839c8f9a90dbc551e0cbfc0c6386df33a15",
+    "full_runtime_object_sha256": "3c106c086ef904fdf3a74481fd479a138fbfe39dca5587169ac501e1bfaea4cf",
+    "focused_full_byte_identity": false,
+    "full_named_trace_functions": 36,
+    "old_named_trace_allocator_calls": 11,
+    "current_full_named_trace_allocator_calls": 0,
+    "whole_Runtime_other_site_counts": {
+      "counter16_before": 28,
+      "focused_after": 17,
+      "full_after": 17
+    },
+    "other_site_scope": "Raw exact address/symbol/site sets retained; additional non-trace-labelled site changes are not promoted to path equivalence or runtime savings. Old56/1892 corpus is immutable and not rewritten with new tuples.",
+    "proof_limit": "Finite counterTrace compiler construction removal. Not a transitive allocator/provider, actual heap allocation count, cold or complete strict-root proof."
+  },
+  "full": {
+    "path": ".build/contracts/p08-counter-wrapel2y/result.json",
+    "sha256": "af9ba8ef87a2f33d4d6d7ea46d2e1f4f925228f667c0b7fb95b4ae3023b06773",
+    "bytes": 8548218,
+    "actual_argv": [
+      "python3",
+      "scripts/contracts/check-spec-015-counter.py",
+      "--profile",
+      "macos-static",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-7gj3vxnl",
+      "--collect-failures"
+    ],
+    "started_utc": "2026-10-22T06:22:26.913156+00:00",
+    "terminal": {
+      "exit": 0,
+      "ended_utc": "2026-10-22T08:33:49.758453+00:00"
+    },
+    "elapsed_seconds": 7882.845297,
+    "profile": "macos-static",
+    "selected_host_profile": "macos-static",
+    "raster_realization": "full-surface",
+    "collection_schema": 2,
+    "collection_complete": true,
+    "passed": true,
+    "fresh_focused": false,
+    "focused_passed": false,
+    "selected_families": [],
+    "prior_collection": null,
+    "legacy_import": null,
+    "commands": 412,
+    "records": 426,
+    "all_record_status_passed": true,
+    "numeric_exits": {
+      "0": 218,
+      "1": 193,
+      "-6": 1
+    },
+    "no_standalone_exit_observations": 14,
+    "scoped": {
+      "positive_exit0": 192,
+      "expected_negative_exit1": 192,
+      "pointer": "/planned_scoped_labels"
+    },
+    "supplemental": {
+      "positive_exit0": 1,
+      "expected_negative_exit1": 1
+    },
+    "runtime": {
+      "assertions": 1736320,
+      "failures": 0,
+      "execute_pointer": "/checks/406",
+      "actual_execute_exit": 0,
+      "reuse_observations": 13,
+      "summary_observations": 1,
+      "observation_scope": "The14grouped rows share execute exit0; not14independent child processes"
+    },
+    "expected_fatal": {
+      "pointer": "/checks/425",
+      "exit": -6,
+      "diagnostics": [
+        "Simultaneous accesses",
+        "Fatal access conflict"
+      ]
+    },
+    "current_declared_inputs_verified": 201,
+    "inputs_pointer": "/inputs",
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "dependencies": {
+      "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+      "runtime_receipt_sha256": "c85ce3f88a88ff1fd798f54c59427202aa4301e26aacf4f7957b284fdd95cb3c",
+      "host_build": ".build/contracts/p08-scoped-host-7gj3vxnl",
+      "host_receipt_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+      "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1",
+      "macro_tool_sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814",
+      "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308"
+    },
+    "flags": [
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wrapel2y",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wrapel2y/cache",
+      "-disable-sandbox",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+      "-parse-as-library",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+      "-enable-testing"
+    ],
+    "selected_artifacts": {
+      "P08CounterRuntime.o": {
+        "sha256": "3c106c086ef904fdf3a74481fd479a138fbfe39dca5587169ac501e1bfaea4cf",
+        "bytes": 2576112
+      },
+      "counter": {
+        "sha256": "267bc26d27bbecc0c2e20ac6ce8499b609f0945c0f91a790759387da4dabb0e1",
+        "bytes": 6606808
+      },
+      "execute.log": {
+        "sha256": "54c71c509cc13c9aec221f754b3c61cc4fad1036ada34f9cc85c729ae5deb115",
+        "bytes": 611254
+      }
+    },
+    "stdout_comparison": "full-stdout-comparison.json"
+  },
+  "raw_artifact_references": [
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/focused-start.json",
+      "bytes": 660,
+      "sha256": "0a688b88bfa06e8dbf544415efdf36d14f882f21d6409e5fcf11e03f24efa77a"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/focused-exit.json",
+      "bytes": 61,
+      "sha256": "b46c51e16da278a64713a739d86f2377b4655dfb29168b1aa8eb078ca71d13a3"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/full-start.json",
+      "bytes": 741,
+      "sha256": "5f71cea1e406c2c99b85afc42015b24b75c0f814abeff55b6f406a2bd61054d8"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/full-exit.json",
+      "bytes": 61,
+      "sha256": "8ff6547c2616e8384c5792813c96e717841c8f8b5d9adb8937b98135cfb1c7e0"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/format-control2/paired-controls.json",
+      "bytes": 1189,
+      "sha256": "6f58110e55cee0bb1a176e8eb8e16a8fcb6cc387ffda82e3978974749efe6dbd"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/format-control2/TraceControl.swift",
+      "bytes": 56909,
+      "sha256": "5a29b655dceab5d2eecfe4f24aadd8915c7dff99cad8c153a933752416bc3d2e"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/start.json",
+      "bytes": 6365,
+      "sha256": "57407f38ad8d08cac85c5b81a625655b0b94803599c226a93bf99981543b7fe0"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/exit.json",
+      "bytes": 55,
+      "sha256": "bde780cc380759d34d9fdc8b638c8c3dc6ba4f8115cd21d920769a8e5653deea"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/sil-assessment.json",
+      "bytes": 40284,
+      "sha256": "6676919da6babe4cc7b909fe114f8d17fee11f0a9bc04fab45f321b7c3e37c00"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/machine-reconciliation.json",
+      "bytes": 48917,
+      "sha256": "b56f9c825f157d189fd50be3be524f3db7c6e69edd041b0f38c4b29713c9c5bc"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/full-machine.json",
+      "bytes": 18974,
+      "sha256": "dbf317edecb436bdd24f7cbd239898b574020c0223838b0fd5b1928557418136"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/selected-trace-functions.sil.txt",
+      "bytes": 758037,
+      "sha256": "9ec73ef79d4fe1956c86fe8db7b52d161fc8927a92b26c0a285f2eb187c0ad3b"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/before-trace-disassembly.txt",
+      "bytes": 64031,
+      "sha256": "a9a398ee2c506ab84d6a0ca5d22a8b92296c16a4ecbbdef5c8f8a5145e683045"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/after-trace-disassembly.txt",
+      "bytes": 277572,
+      "sha256": "70184b2e1e82f69b90623006d930f32ea5fd7e8f807e1ffc44091eda670bda06"
+    },
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/full-trace-disassembly.txt",
+      "bytes": 277572,
+      "sha256": "70184b2e1e82f69b90623006d930f32ea5fd7e8f807e1ffc44091eda670bda06"
+    }
+  ],
+  "failed_U02_lineage": {
+    "status": "STOP_BEFORE_CONTEXT_EMISSION; all selected current paths/types UNEXAMINED in that session",
+    "files": [
+      "rows.json",
+      "inspection-accounting.json",
+      "preservation.json",
+      "retained-excerpts.txt",
+      "u02-stop-readme.md",
+      "STOP-closeout.json"
+    ],
+    "four_child_exits": [
+      0,
+      2,
+      0,
+      0
+    ],
+    "semantic_seconds": 21.641162,
+    "recorded_processing": 507707798,
+    "recorded_four_request_exchange": 567,
+    "all_tool_request_counting_certified": false,
+    "reason": "Collaboration tool arguments were outside scripted four-request ledger; no post-hoc qualification claim"
+  },
+  "invocation_errors": "invocation-errors.json",
+  "residuals": [
+    "Actual U02 current strict-root/control/provider/cold obligations remain open where unexamined; ordinary source/compiler validation does not requalify that failed proof.",
+    "Known SO06role and standalone render/probe/assert prints outside finite counterTrace set remain; their strict-root/error/observer applicability and U04 costs are not disposed of here.",
+    "No global zero-heap, allocator success/byte cost, measured performance, full-image/RAM/stack, other-profile/hardware or whole-P08 claim.",
+    "Other profiles retain their generic source behavior, but their old complete-input manifests are historical after the owner-source hash change; no automatic profile requalification.",
+    "Pending fault paths, unfinished SignalAnalyzer/build changes, original raw evidence and prior result directories were untouched."
+  ],
+  "review": "One independent Strong review required; no successor or commit by this worker"
+}

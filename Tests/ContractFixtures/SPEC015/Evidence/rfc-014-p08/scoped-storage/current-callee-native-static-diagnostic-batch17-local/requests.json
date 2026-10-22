@@ -1,0 +1,42 @@
+{
+  "auth": {
+    "mode": "auth",
+    "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g17 a\"});text(r.output);",
+    "nested_arguments": {
+      "cmd": "python3 /tmp/g17 a"
+    },
+    "counted_UTF8_bytes": 106
+  },
+  "group": {
+    "mode": "group",
+    "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g17 g\"});text(r.output);",
+    "nested_arguments": {
+      "cmd": "python3 /tmp/g17 g"
+    },
+    "counted_UTF8_bytes": 106
+  },
+  "close-metadata-proof-gap": {
+    "mode": "close-metadata-proof-gap",
+    "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g17 c\"});text(r.output);",
+    "nested_arguments": {
+      "cmd": "python3 /tmp/g17 c"
+    },
+    "counted_UTF8_bytes": 106
+  },
+  "close-batch-native-static-traces-examined": {
+    "mode": "close-batch-native-static-traces-examined",
+    "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g17 p\"});text(r.output);",
+    "nested_arguments": {
+      "cmd": "python3 /tmp/g17 p"
+    },
+    "counted_UTF8_bytes": 106
+  },
+  "finish": {
+    "mode": "finish",
+    "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g17 f\"});text(r.output);",
+    "nested_arguments": {
+      "cmd": "python3 /tmp/g17 f"
+    },
+    "counted_UTF8_bytes": 106
+  }
+}

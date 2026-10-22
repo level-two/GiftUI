@@ -1,0 +1,28 @@
+{
+  "baseline": ".build/contracts/p08-counter-v5bqywpm/execute.log",
+  "corrected": ".build/contracts/p08-counter-rxnrxs1z/execute.log",
+  "baseline_sha256": "7635fb0b97225b43b1c1010f222a42a7e8fbccecf63ab0e96e98a089f5e063b3",
+  "corrected_sha256": "8b209766517fe9711a31eb57a2a01d10c84d70581ce1241fc54225b50cc21525",
+  "lines_each": 3673,
+  "trace_labels_counts": {
+    "result": 168,
+    "terminal": 37,
+    "stage": 1726,
+    "gesture": 63,
+    "dispatch": 23,
+    "cleanup": 446,
+    "disposition": 168,
+    "finalized": 168,
+    "recovery": 168,
+    "summary": 168,
+    "admission.pointer": 71,
+    "admission.state": 277,
+    "admission.completion": 53,
+    "reuse.namespaces": 1
+  },
+  "trace_lines_all_byte_and_position_identical": true,
+  "differing_lines": 120,
+  "all_differences": "Only SO06 role token indices4,8, decimal physical addresses; all other tokens identical",
+  "normalization_applied": false,
+  "physical_address_source": "CounterScopedStorage.swift:3168; unchanged12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17"
+}

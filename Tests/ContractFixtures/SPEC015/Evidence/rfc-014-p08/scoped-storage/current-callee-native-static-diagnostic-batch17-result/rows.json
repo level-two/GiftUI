@@ -1,0 +1,199 @@
+{
+  "old_frozen_universe": {
+    "groups": 56,
+    "sites": 1892,
+    "roots": 3,
+    "status": "IMMUTABLE BASELINE; refreshed current addresses are not substituted into old tuples"
+  },
+  "model_status": "metadata-proof-gap",
+  "current_focus": {
+    "root_symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+    "root_address": "0x4bc78",
+    "command": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-v5bqywpm/P08CounterRuntime.o"
+    ],
+    "whole_disassembly_sha256": "c76c6dee4d9f9b956ccb29a9ec42d54a089421e1b8d2a3fe765a47c6e143ae25",
+    "whole_disassembly_bytes": 26280550,
+    "whole_disassembly_lines": 245771,
+    "retention": "Only selected raw context retained; full stream not copied",
+    "rooted_trace_functions": [],
+    "other_trace_functions_unexamined": [
+      {
+        "address": "0x4beb0",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF"
+        ]
+      },
+      {
+        "address": "0x57120",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF15GiftUIExecution25ExecutionAdmissionOutcomeV_Tg5"
+        ]
+      },
+      {
+        "address": "0x571f4",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C31RecordInteractionDispatchResultO_Tg5"
+        ]
+      },
+      {
+        "address": "0x57298",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C21CompletePipelineStageO_Tg5Tm"
+        ]
+      },
+      {
+        "address": "0x572f4",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C19PipelineDispositionV_Tg5"
+        ]
+      },
+      {
+        "address": "0x573c0",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlFs6UInt16V_AF21GiftUIObservableState24ObservableModelOwnershipV5PhaseOt_Tg5"
+        ]
+      },
+      {
+        "address": "0x5747c",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF15GiftUIExecution16ExecutionContextV_S2is6UInt16VAI0H17UIObservableState24ObservableModelOwnershipV5PhaseOt_Tg5"
+        ]
+      },
+      {
+        "address": "0x575a0",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF17GiftUIRuntimeCore0C22CompletePipelineResultOyAE0C12OwnerFailureOG_Tg5"
+        ]
+      },
+      {
+        "address": "0x57660",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF15GiftUIExecution25PresentationPendingIntentVSg_Sbs6UInt32Vt_Tg5"
+        ]
+      },
+      {
+        "address": "0x5772c",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF15GiftUIExecution15RunCycleSummaryV_Tg5"
+        ]
+      },
+      {
+        "address": "0x577f0",
+        "symbols": [
+          "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_xtlF"
+        ]
+      }
+    ],
+    "labels": {
+      "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVz_AA0A15StaticOuterViewAPLLVtXEfU_TA": "S0",
+      "_$s17P08CounterRuntime0A11StaticOuter33_480B1BD841D053AE4FCDC18507668536LLV10modelOwner08semanticL0AD21GiftUIObservableState015ObservableModelL8IdentityV_0N14UISemanticCore014SemanticRecordlS0VtcfC": "S1",
+      "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5": "S2",
+      "_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl": "S3",
+      "_$s18GiftUISemanticCore22SemanticExpansionErrorON": "S4",
+      "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF": "S5",
+      "_$s17P08CounterRuntime0B14ProducedActionVSgWOi0_": "S6",
+      "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtFSiSpyAA0aE15ReuseTranscript33_480B1BD841D053AE4FCDC18507668536LLVGXEfU0_SiAA0A17TypedBackingOwnerAPLLVz_AA0A15StaticOuterViewAPLLVtXEfU_TA": "S7"
+    },
+    "source_call_locators": [
+      {
+        "line": 368,
+        "text": "counterTrace(\"result\", result)"
+      },
+      {
+        "line": 395,
+        "text": "counterTrace(\"terminal\", (interaction.committedRecordCount, values.count, models.phase))"
+      },
+      {
+        "line": 399,
+        "text": "counterTrace(\"stage\", stage)"
+      },
+      {
+        "line": 486,
+        "text": "counterTrace(\"gesture\", gesture)"
+      },
+      {
+        "line": 533,
+        "text": "counterTrace(\"dispatch\", result)"
+      },
+      {
+        "line": 711,
+        "text": "counterTrace(\"cleanup\", action)"
+      },
+      {
+        "line": 735,
+        "text": "counterTrace(\"disposition\", disposition)"
+      },
+      {
+        "line": 751,
+        "text": "counterTrace(\"finalized\", (completedContext, control.pointee.applied, control.pointee.commits, interaction.committedRecordCount, values.count, models.phase))"
+      },
+      {
+        "line": 768,
+        "text": "func counterTrace<T>(_ label: StaticString, _ value: T) {"
+      },
+      {
+        "line": 777,
+        "text": "func counterTrace("
+      },
+      {
+        "line": 796,
+        "text": "private func counterTraceWrite(_ text: StaticString) {"
+      },
+      {
+        "line": 802,
+        "text": "private func counterTraceWrite(_ text: BoundedText) {"
+      },
+      {
+        "line": 808,
+        "text": "private func counterTraceWrite(_ value: UInt32) {"
+      }
+    ],
+    "context_sha256": "2fbc23d451b6675ae2e475625a9dfb85fd5abe278aa0e464d76677118da556fe",
+    "context_bytes": 14513,
+    "extracted": true,
+    "emitted": false,
+    "model_examined": false
+  },
+  "baseline_refresh": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 75495,
+      "sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d",
+      "replaces_old_sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+      "authority": "ebc98c69 diagnostic15+counter16 reviewed fix"
+    },
+    ".build/contracts/p08-counter-v5bqywpm/result.json": {
+      "path": ".build/contracts/p08-counter-v5bqywpm/result.json",
+      "bytes": 8548218,
+      "sha256": "83cff530c1d4bebe3ee752dfbde04b3874e8730fe38e720a7c28d25c2e432f72",
+      "scope": "Current producer manifest provenance; no raw copy"
+    },
+    ".build/contracts/p08-counter-v5bqywpm/P08CounterRuntime.o": {
+      "path": ".build/contracts/p08-counter-v5bqywpm/P08CounterRuntime.o",
+      "bytes": 2545512,
+      "sha256": "021643dff6d5b9253074511ab0008fb78159aedb77cb787f815db1d4dc5b8296",
+      "scope": "Current selected source compiled object; new address universe"
+    },
+    "OBJECT_TOOL": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "scope": "Read-only artifact decoder; not provider acquisition"
+    }
+  },
+  "qualification": "Compiler-level evidence only; no allocator success/cost/cold/zero-heap claim",
+  "historical_semantic11_transcript": {
+    "actual": 3877,
+    "recorded": 3773,
+    "not_requalified": true
+  },
+  "terminal_disposition": "STOP_BEFORE_CONTEXT_EMISSION_NO_MODEL_PROOF",
+  "proof_qualification": false,
+  "timing_qualification": "Semantic group closed21.641162s; pre-record ordinary helper time unknown, so90min whole-package certification FALSE",
+  "request_identity_limit": "Four planned functions.exec code/nestedargs self-attested; collaboration launch/STOP messages are additional tool arguments outside recorded four-request ledger. Exact all-tool transcript compliance is NOT certified."
+}

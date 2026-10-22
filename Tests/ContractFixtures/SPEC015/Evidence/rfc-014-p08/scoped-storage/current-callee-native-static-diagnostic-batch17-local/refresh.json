@@ -1,0 +1,27 @@
+{
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "bytes": 75495,
+    "sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d",
+    "replaces_old_sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+    "authority": "ebc98c69 diagnostic15+counter16 reviewed fix"
+  },
+  ".build/contracts/p08-counter-v5bqywpm/result.json": {
+    "path": ".build/contracts/p08-counter-v5bqywpm/result.json",
+    "bytes": 8548218,
+    "sha256": "83cff530c1d4bebe3ee752dfbde04b3874e8730fe38e720a7c28d25c2e432f72",
+    "scope": "Current producer manifest provenance; no raw copy"
+  },
+  ".build/contracts/p08-counter-v5bqywpm/P08CounterRuntime.o": {
+    "path": ".build/contracts/p08-counter-v5bqywpm/P08CounterRuntime.o",
+    "bytes": 2545512,
+    "sha256": "021643dff6d5b9253074511ab0008fb78159aedb77cb787f815db1d4dc5b8296",
+    "scope": "Current selected source compiled object; new address universe"
+  },
+  "OBJECT_TOOL": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "scope": "Read-only artifact decoder; not provider acquisition"
+  }
+}

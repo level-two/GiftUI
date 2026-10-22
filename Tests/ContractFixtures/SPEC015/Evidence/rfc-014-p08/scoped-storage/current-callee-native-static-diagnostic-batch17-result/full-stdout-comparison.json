@@ -1,0 +1,12 @@
+{
+  "baseline": ".build/contracts/p08-counter-v5bqywpm/execute.log",
+  "full_current": ".build/contracts/p08-counter-wrapel2y/execute.log",
+  "full_current_sha256": "54c71c509cc13c9aec221f754b3c61cc4fad1036ada34f9cc85c729ae5deb115",
+  "line_count": 3673,
+  "all3537_trace_lines_byte_and_position_equal": true,
+  "different_lines": 120,
+  "differences": "SO06 role physical addresses only at decimal token4,8; every other token unchanged",
+  "normalization": false,
+  "source_prefix_and_all_code_after_diagnostic_helpers_equal": true,
+  "other_profile_generic_function_body_literal_unchanged": true
+}
