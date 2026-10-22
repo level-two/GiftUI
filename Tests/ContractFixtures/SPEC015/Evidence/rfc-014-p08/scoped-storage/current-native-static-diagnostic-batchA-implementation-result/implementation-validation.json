@@ -1,0 +1,250 @@
+{
+  "status": "FULL_MAINTAINED_PRODUCER_AND_SINGLE_INDEPENDENT_IMPLEMENTATION_REVIEW_PASS",
+  "source_correction": {
+    "scope": "NativeStatic-only reached reuse label,SO06role,static+dynamic audit classes; unchanged putchar transport and original other-profile print branches",
+    "source_identities": [
+      {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+        "before_sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+        "after_sha256": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050",
+        "before_bytes": 104448,
+        "after_bytes": 118924
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+        "before_sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+        "after_sha256": "77d67f4489042cdcdab24dc80eb1b05cc092e7d1273d49d82eb0fb1b35e78ef5",
+        "before_bytes": 254803,
+        "after_bytes": 255474
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+        "before_sha256": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+        "after_sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab",
+        "before_bytes": 6503,
+        "after_bytes": 6845
+      }
+    ],
+    "maintenance_tradeoff": "257 additional owner fixture lines with explicit field/type spelling and enum switches; no simplicity/runtime speedup claim; compiler spelling mirror maintained against pinned print oracle",
+    "diff": "3fixtures282insertions9deletions"
+  },
+  "prerequisites": {
+    "core": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "runtime_new": ".build/contracts/spec-013-runtime-cycle/tmps4xst3kt/macos-static",
+    "runtime_sha256": "49a133f3fac23fbe1244d8df73ce95af7e552cc9252b75bca818720c3c05cd90",
+    "host_historical_recipe": ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "host_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+    "recipe_reason": "oldP07declaredScopedStorage12b15...withoutcompilingit; maintainedP07rerunnecessaryhashgate passed with current77d67...; no validator hash bypass orhost rebinding"
+  },
+  "validation": {
+    "focused_precompiler_exit": 1,
+    "focused_first_compile_exit": 1,
+    "focused_type_repair": "actualUInt16rolecounts and losslessInt32-to-Int lineWidth conversion; approvedowneronly",
+    "focused_pass": ".build/contracts/p08-counter-va__8qip",
+    "focused_pass_claim": "runtime freshfocusedPASS,1736320assertions0failures; aggregate incomplete false/no full qualification yet",
+    "paired_controls": {
+      "rows": 68,
+      "compilers_exit": [
+        0,
+        0
+      ],
+      "processes": 8,
+      "all_exit": 0,
+      "buffered_unbuffered_bytes": 153529,
+      "closed_bytes": 0,
+      "partial_prefix_bytes": 4096,
+      "all_stdout_stderr_equal": true,
+      "failure_scope": "fixed4096-byte successful prefix then ENOSPC, continuationmarker; not arbitraryintermittent/concurrentatomicity"
+    },
+    "full": {
+      "started_utc": "2026-10-22T13:08:31.295254+00:00",
+      "deadline_utc": "2026-10-22T17:08:31.295254+00:00",
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--profile",
+        "macos-static",
+        "--runtime-build",
+        ".build/contracts/spec-013-runtime-cycle/tmps4xst3kt/macos-static",
+        "--host-build",
+        ".build/contracts/p08-scoped-host-7gj3vxnl",
+        "--collect-failures"
+      ],
+      "capture_pid": 42186,
+      "source_identities": [
+        {
+          "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+          "before_sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+          "after_sha256": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050",
+          "before_bytes": 104448,
+          "after_bytes": 118924
+        },
+        {
+          "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+          "before_sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+          "after_sha256": "77d67f4489042cdcdab24dc80eb1b05cc092e7d1273d49d82eb0fb1b35e78ef5",
+          "before_bytes": 254803,
+          "after_bytes": 255474
+        },
+        {
+          "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+          "before_sha256": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+          "after_sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab",
+          "before_bytes": 6503,
+          "after_bytes": 6845
+        }
+      ],
+      "output_limit_bytes": 805306368,
+      "retained_bytes_before_full_known": 433919300,
+      "final_reserve_bytes": 16777216,
+      "amendment": "Coordinator amended ordinary validation512MiB to768MiB before full launch: immutable failed compile141355479B + focused153665965B + P0725073836B + capture/SIL/controls113824020B, plus full~176MiB/provider lineage/reserve. No U02 cap change; no wholeBatchA timing certification."
+    },
+    "final_repository_format_check": ".build/contracts/p08-native-static-diagnostic-batchA/final-format-check.json",
+    "full_terminal": {
+      "result_path": ".build/contracts/p08-counter-ob4qm63e/result.json",
+      "result_bytes": 8548218,
+      "result_sha256": "855207e2a6ea836d965ce602079dbdfd138d570117eb14a4155b73554e7e4951",
+      "profile": "macos-static",
+      "records": 426,
+      "commands": 412,
+      "all_records_passed": true,
+      "collection_complete": true,
+      "passed": true,
+      "fresh_focused": false,
+      "exit_groups": {
+        "0": 218,
+        "1": 193,
+        "None": 14,
+        "-6": 1
+      },
+      "grouped_observations_not_standalone_exits": [
+        "so06-reuse-static-inventory-two-hosts",
+        "so06-reuse-static-control-same-address",
+        "so06-reuse-static-terminal-old-host",
+        "so06-reuse-static-raw-namespace-collision",
+        "so06-reuse-static-action-stale",
+        "so06-reuse-static-action-current",
+        "so06-reuse-static-input-stale",
+        "so06-reuse-static-input-current",
+        "so06-reuse-static-admission-stale",
+        "so06-reuse-static-admission-current",
+        "so06-reuse-static-source-stale",
+        "so06-reuse-static-source-current",
+        "so06-reuse-static-cleanup-backing-last",
+        "runtime-summary"
+      ],
+      "expected_fatal": [
+        "so06-native-exclusivity-negative-execute"
+      ],
+      "execution_banner": "P08 counter components assertions=1736320 failures=0",
+      "raw_execution_bytes": 611253,
+      "raw_execution_sha256": "f8c743c6a8b366c953dfd74a7d7371ba90639beaa01b081f7fb503031935b2b5",
+      "baseline_after_only240physical_address_tokens_substituted_equal": true,
+      "normalized_execution_sha256": "5bde586fa3572110ed1b343954bde71c6148a24352c248d4d666352001c17b81",
+      "source_joins": [
+        {
+          "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+          "current_input_key": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+          "sha256": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050"
+        },
+        {
+          "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+          "current_input_key": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+          "sha256": "77d67f4489042cdcdab24dc80eb1b05cc092e7d1273d49d82eb0fb1b35e78ef5"
+        },
+        {
+          "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+          "current_input_key": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+          "sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": ".build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.o",
+          "bytes": 2594224,
+          "sha256": "7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846"
+        },
+        {
+          "path": ".build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.swiftmodule",
+          "bytes": 1553684,
+          "sha256": "dc47a0c3f91d4027983d33d984f183a63cbc7b02db1eb19da74c2114e184f3bb"
+        },
+        {
+          "path": ".build/contracts/p08-counter-ob4qm63e/Main.swift",
+          "bytes": 276,
+          "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a"
+        },
+        {
+          "path": ".build/contracts/p08-counter-ob4qm63e/counter",
+          "bytes": 6624072,
+          "sha256": "c2168ce0050718c62f20f5c9436e3dd2bd0facbe5933e193f38339a0ee31ce40"
+        }
+      ],
+      "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "runtime_receipt_sha256": "49a133f3fac23fbe1244d8df73ce95af7e552cc9252b75bca818720c3c05cd90",
+      "host_receipt_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+      "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1",
+      "actual_terminal": {
+        "ended_utc": "2026-10-22T15:44:00.525966+00:00",
+        "exit": 0,
+        "elapsed_seconds": 9329.230712
+      },
+      "full_object_matches_focused_object": false,
+      "compiled_removal_scope": "Focused va__8qip object/SIL only; full ob4qm63e object has differentSHA. Fullfunctional/expectednegativepass and exactcurrentinput/compiler/dependencybindings proved; no transferof focusedmachineidentity/sitecount withoutactual comparison."
+    },
+    "full_scope": "macos-static426records412commands; expectednegativeandgroupedobservations preserved; no P08/U02/provider/cold/currentimage closure"
+  },
+  "compiler_construction": {
+    "before_SIL": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/counter.sil",
+    "before_alloc_ref_lines": [
+      339876,
+      409147,
+      524832,
+      524912
+    ],
+    "before_callee": "_ContiguousArrayStorage<Any>, unstacked alloc_ref for reuse/role/twoaudits; printrefs339950409264524880",
+    "after_SIL_sha256": "3fe03fa6aaf890d79e164b486f064c93e1783f337e1907c411e16653fe179bad",
+    "after_SIL_bytes": 63276796,
+    "matched_old_callers_now_alloc_ref_print_refs": 0,
+    "selected_trace_diagnostic_write_name_functions": 72,
+    "selected_alloc_ref_Anyarray_print_refs": 0,
+    "wholeRuntime_allocator_sites_before_after": [
+      17,
+      17
+    ],
+    "limits": "Exactfocusedva__8qipSIL/object only; fullob4qm63eobjectSHA differs, so fullmachineidentity/sitecount not inferred. Four matchingoldSILcallerallocrefs removed; fullsource/compiler/dependency+functional/negativevalidation proved independently. No globalprovider/allocation/cost claim.",
+    "exact_old_to_new_caller_projection": "../current-native-static-diagnostic-batchA-implementation-local/validation/compiler-evidence/construction-caller-reconciliation.json"
+  },
+  "output_equivalence": {
+    "baseline": ".build/contracts/p08-counter-wrapel2y/result.json",
+    "baseline_sha256": "af9ba8ef87a2f33d4d6d7ea46d2e1f4f925228f667c0b7fb95b4ae3023b06773",
+    "rows": 3673,
+    "bytes_both": 611253,
+    "difference_isolation": "OnlySO06roleleft/rightphysicaladdresses token4/8;240tokens; allotherlinebytes/orderidentical",
+    "full_raw_execution_is_retained_in_original_results": true,
+    "full_run_also_equal_after_exact_byte_preserving_address_only_substitution": true
+  },
+  "scope_limits": [
+    "No allocation success/runtime bytes/speedup/zeroheap/globalstdio/P08/cold/currentimage claim",
+    "All17remaining object allocator sites unchanged/count-only; exactindirect/witness/staticfeasibility notclosed",
+    "Known Render/probe/assert failureprints remainguarded/unexamined,notinfeasible byname or successfulruntime",
+    "Main wrapper summary/setup/window/coldcosts notexempt",
+    "No hardware/targetruntime/fourprofile/currentimage/resource transfer",
+    "R-to-Sstdoutbinding and persistence/loadedprovider applicability remainunresolved from27; no28setterleafsession"
+  ],
+  "accounting": {
+    "ordinary_implementation_start_known": "2026-10-22T12:24:08Z",
+    "wholeBatchA_prior_pre_record_time_unknown": true,
+    "wholeBatchA_timing_qualification": false,
+    "ordinary_validation_output_envelope_bytes": 805306368,
+    "minimum_final_reserve_bytes": 16777216,
+    "U02_caps_unchanged": true,
+    "aggregate_IO_platformmetadata_not_certified": true,
+    "ordinary_display_mistake": "One postterminal metadata print included allartifactkeys; tooltruncated output. Preserved; no exactordinarytranscriptcertification claimed and no U02session ran."
+  },
+  "authority_provenance": {
+    "human_provider_scope": "Authorize bounded provider evidence: exactinstalledruntimeproviders/versions/relevantinitialstate, read-only; nodownload/install/runtimeexperiment/hardware/network",
+    "human_refresh_scope": "Authorize traceable refreshes: afterauthorizedfix+applicablevalidation+independentreview,preserveold,mapchanges,freezeinputs/helpersbefore semantics; originalcapsunchanged",
+    "Astra_advice": "Conditionalallocatorfamilydependency sufficienttoauthorize localcompiler-constructionremoval underexistingobservationcontract; actualruntimebytes/state requiredforobservedallocationclaim. ExistingMainsetbufnil materiallycorrectedpremise: retaintransportpendingroutepredicate proof; no speculativefflush/write."
+  }
+}

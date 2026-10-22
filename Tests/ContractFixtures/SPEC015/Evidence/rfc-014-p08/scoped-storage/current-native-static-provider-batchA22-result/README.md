@@ -1,0 +1,5 @@
+# Batch A22 installed-provider delivery STOP
+
+Bounded installed-cache metadata/opaque slice hashing and authenticated selected-byte extraction succeeded. The eight-function literal packet exceeded the original whole-exchange10000-byte cap before emission. No provider instructions were returned to or examined by the model. Actual group status/model flags, before/after preservation, exact installed cache mappings/UUIDs/slice hashes/derived-byte provenance and numeric child exits remain retained. This is not an allocation/provider/safety proof or global absence claim. See STOP-closeout.json for structural accounting and the concrete delivery lower bound. No compiler/runtime experiment/source change occurred.
+
+Original root/provider21 proof remains applicable; its imported-provider ordinary/first-use cost remains unresolved. Source/callee/safety consolidation was not completed by this stopped mechanism. Platform envelopes and post-terminal coordination are not certified by this experiment ledger.

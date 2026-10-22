@@ -1,0 +1,291 @@
+{
+  "old_frozen_universe": {
+    "groups": 56,
+    "sites": 1892,
+    "roots": 3,
+    "status": "IMMUTABLE BASELINE; no current tuple substitution"
+  },
+  "model_status": "provider-gap",
+  "current_focus": {
+    "frontier": [
+      {
+        "name": "_putchar",
+        "aliases": [
+          "_putchar"
+        ],
+        "provider": "/usr/lib/system/libsystem_c.dylib",
+        "address": 6446356928,
+        "end": 6446357076,
+        "raw_sha256": "aa43f2c0345a881705759a129d33381cfd75491add76ce6d3be82cedb4fca250",
+        "bytes_sha256": "7996f4badc0d8d1e8facb170a5875bc3704fc2b16858bcc1ccd4b6b752838a2a",
+        "slice": {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "offset": 3348928,
+          "bytes": 148
+        },
+        "instructions": "0:pacibsp \n4:stp x22, x21, [sp, #-0x30]!\n8:stp x20, x19, [sp, #0x10]\nc:stp x29, x30, [sp, #0x20]\n10:add x29, sp, #0x20\n14:mov x20, x0\n18:adrp x8, 0x1ea473000 <__text+0x6a0b9640>\n1c:add x8, x8, #0x2a8\n20:ldr x19, [x8]\n24:mov x0, x19\n28:bl 0x18039d1e0\n2c:ldr w8, [x19, #0xc]\n30:subs w9, w8, #0x1\n34:str w9, [x19, #0xc]\n38:and w21, w20, #0xff\n3c:b.ge 0x1803b9a14 <__text+0x54>\n40:cmp w21, #0xa\n44:b.eq 0x1803b9a40 <__text+0x80>\n48:ldr w9, [x19, #0x28]\n4c:cmp w8, w9\n50:b.le 0x1803b9a40 <__text+0x80>\n54:ldr x8, [x19]\n58:add x9, x8, #0x1\n5c:str x9, [x19]\n60:strb w20, [x8]\n64:mov x0, x19\n68:bl 0x18039d38c\n6c:mov x0, x21\n70:ldp x29, x30, [sp, #0x20]\n74:ldp x20, x19, [sp, #0x10]\n78:ldp x22, x21, [sp], #0x30\n7c:retab \n80:mov x0, x20\n84:mov x1, x19\n88:bl 0x1803be6cc <__text+0x4d0c>\n8c:mov x21, x0\n90:b 0x1803b9a24 <__text+0x64>",
+        "decoder_argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local/provider-_putchar.o"
+        ]
+      },
+      {
+        "name": "___swbuf",
+        "aliases": [
+          "___swbuf"
+        ],
+        "provider": "/usr/lib/system/libsystem_c.dylib",
+        "address": 6446376652,
+        "end": 6446376900,
+        "raw_sha256": "e64980e88467b69b6d3e35960e9fe3406a16d8aa9c678bd2abb55b7aadafc908",
+        "bytes_sha256": "8f77b8e70bd5fa3649c140f379f31da0f2fec9eb08001f8d9ae0a464ce6595c7",
+        "slice": {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "offset": 3368652,
+          "bytes": 248
+        },
+        "instructions": "0:pacibsp \n4:stp x22, x21, [sp, #-0x30]!\n8:stp x20, x19, [sp, #0x10]\nc:stp x29, x30, [sp, #0x20]\n10:add x29, sp, #0x20\n14:mov x19, x1\n18:mov x20, x0\n1c:ldr w8, [x1, #0x28]\n20:str w8, [x1, #0xc]\n24:ldrh w8, [x1, #0x10]\n28:tbz w8, #0x3, 0x1803be704 <__text+0x38>\n2c:tbnz w8, #0x9, 0x1803be720 <__text+0x54>\n30:ldr x8, [x19, #0x18]\n34:cbnz x8, 0x1803be720 <__text+0x54>\n38:mov x0, x19\n3c:bl 0x1803ad498\n40:cbz w0, 0x1803be720 <__text+0x54>\n44:bl 0x1804062c0 <__text+0x47bf4>\n48:mov w8, #0x9\n4c:str w8, [x0]\n50:b 0x1803be7ac <__text+0xe0>\n54:ldr x8, [x19, #0x68]\n58:ldrb w9, [x8, #0x48]\n5c:tst w9, #0x7\n60:b.ne 0x1803be738 <__text+0x6c>\n64:orr w9, w9, #0x7\n68:strb w9, [x8, #0x48]\n6c:ldr x8, [x19]\n70:ldr w9, [x19, #0x18]\n74:ldr w10, [x19, #0x20]\n78:sub w9, w8, w9\n7c:cmp w10, w9\n80:b.gt 0x1803be764 <__text+0x98>\n84:mov x0, x19\n88:bl 0x18039f1c8\n8c:cbnz w0, 0x1803be7ac <__text+0xe0>\n90:mov w9, #0x0\n94:ldr x8, [x19]\n98:and w21, w20, #0xff\n9c:ldr w10, [x19, #0xc]\na0:sub w10, w10, #0x1\na4:str w10, [x19, #0xc]\na8:add x10, x8, #0x1\nac:str x10, [x19]\nb0:strb w20, [x8]\nb4:add w8, w9, #0x1\nb8:ldr w9, [x19, #0x20]\nbc:cmp w8, w9\nc0:b.eq 0x1803be7a0 <__text+0xd4>\nc4:cmp w21, #0xa\nc8:b.ne 0x1803be7b0 <__text+0xe4>\ncc:ldrh w8, [x19, #0x10]\nd0:tbz w8, #0x0, 0x1803be7b0 <__text+0xe4>\nd4:mov x0, x19\nd8:bl 0x18039f1c8\ndc:cbz w0, 0x1803be7b0 <__text+0xe4>\ne0:mov w21, #-0x1\ne4:mov x0, x21\ne8:ldp x29, x30, [sp, #0x20]\nec:ldp x20, x19, [sp, #0x10]\nf0:ldp x22, x21, [sp], #0x30\nf4:retab ",
+        "decoder_argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local/provider-___swbuf.o"
+        ]
+      }
+    ],
+    "boundaries": [
+      {
+        "from": "_putchar",
+        "site": "0x1803b99e8",
+        "to": "0x18039d1e0",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:_flockfile"
+        ],
+        "op": "bl"
+      },
+      {
+        "from": "_putchar",
+        "site": "0x1803b9a28",
+        "to": "0x18039d38c",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:_funlockfile"
+        ],
+        "op": "bl"
+      },
+      {
+        "from": "___swbuf",
+        "site": "0x1803be708",
+        "to": "0x1803ad498",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:___swsetup"
+        ],
+        "op": "bl"
+      },
+      {
+        "from": "___swbuf",
+        "site": "0x1803be710",
+        "to": "0x1804062c0",
+        "exports": [],
+        "op": "bl"
+      },
+      {
+        "from": "___swbuf",
+        "site": "0x1803be754",
+        "to": "0x18039f1c8",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:___fflush"
+        ],
+        "op": "bl"
+      },
+      {
+        "from": "___swbuf",
+        "site": "0x1803be7a4",
+        "to": "0x18039f1c8",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:___fflush"
+        ],
+        "op": "bl"
+      }
+    ],
+    "indirect": [],
+    "installed_binding": {
+      "/usr/lib/libSystem.B.dylib": {
+        "uuid": "4fed5ee25d3e35b1a1709859c4b683bb",
+        "identity": {
+          "name": "/usr/lib/libSystem.B.dylib",
+          "command": 13,
+          "current_version": 88866816,
+          "compatibility_version": 65536
+        },
+        "reexports": [
+          {
+            "name": "/usr/lib/system/libsystem_c.dylib",
+            "command": 2147483679,
+            "current_version": 114860036,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_malloc.dylib",
+            "command": 2147483679,
+            "current_version": 53256197,
+            "compatibility_version": 65536
+          }
+        ]
+      },
+      "/usr/lib/system/libsystem_c.dylib": {
+        "uuid": "d77ceb62aff63cecba9b4f057fbe2eb5",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 13,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        "reexports": []
+      },
+      "/usr/lib/system/libsystem_malloc.dylib": {
+        "uuid": "d969a9073e43395193658c2db3812e9d",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_malloc.dylib",
+          "command": 13,
+          "current_version": 53256197,
+          "compatibility_version": 65536
+        },
+        "reexports": []
+      },
+      "/usr/lib/system/libsystem_pthread.dylib": {
+        "uuid": "a373f0b09880326a88b4dd8be4e33072",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_pthread.dylib",
+          "command": 13,
+          "current_version": 35349508,
+          "compatibility_version": 65536
+        },
+        "reexports": []
+      }
+    },
+    "context_sha256": "3e6fefb63a9a577073a9d67e4e6f2c690d3f7d041e6a216e0baa350732ae1a62",
+    "context_bytes": 2472,
+    "original22STOP": {
+      "processing": 496291595,
+      "transcript": 567,
+      "output_upper": 2538527,
+      "model_examined": false
+    },
+    "source_root_lemma": "Reviewed provider21 root/typed/writer/helper relation, same exact wrapel2y source/object; no local-chain replay",
+    "extracted": true,
+    "emitted": true,
+    "model_examined": true,
+    "scope": "Exact installed putchar executable frontier among already extracted bodies; no alternate entry bodies unless reached. Unknown calls/initial state not closed."
+  },
+  "baseline_refresh": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 104448,
+      "sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    ".build/contracts/p08-counter-wrapel2y/result.json": {
+      "path": ".build/contracts/p08-counter-wrapel2y/result.json",
+      "bytes": 8548218,
+      "sha256": "af9ba8ef87a2f33d4d6d7ea46d2e1f4f925228f667c0b7fb95b4ae3023b06773",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o": {
+      "path": ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o",
+      "bytes": 2576112,
+      "sha256": "3c106c086ef904fdf3a74481fd479a138fbfe39dca5587169ac501e1bfaea4cf",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    "OBJECT_TOOL": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "scope": "Read-only artifact decoder; not provider acquisition"
+    },
+    "NM_TOOL": {
+      "path": "/usr/bin/nm",
+      "bytes": 118640,
+      "sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9"
+    },
+    "EXECUTABLE": {
+      "path": ".build/contracts/p08-counter-wrapel2y/counter",
+      "bytes": 6606808,
+      "sha256": "267bc26d27bbecc0c2e20ac6ce8499b609f0945c0f91a790759387da4dabb0e1"
+    },
+    "SELECTED_SIL": {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/selected-trace-functions.sil.txt",
+      "bytes": 758037,
+      "sha256": "9ec73ef79d4fe1956c86fe8db7b52d161fc8927a92b26c0a285f2eb187c0ad3b"
+    },
+    "CACHE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/selected-cache.json",
+      "bytes": 2010850,
+      "sha256": "b671634a198f2cb9778b8134c68b2c500d5feaa352380b9cba581b07cdd0adcb",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "STATE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/state.json",
+      "bytes": 27210,
+      "sha256": "85228da83a64acefa2ffad10cdd1795527b59c7ad53e9d2c5299746447696238",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "HELPER18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/inspect.py",
+      "bytes": 34192,
+      "sha256": "755d4ad4ff22731ccbc8b28a3a23d23ddd1dd1c96cc6f074fa32f21983bc32e3",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "FREEZE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/invocation/freeze.json",
+      "bytes": 1207,
+      "sha256": "671d67311e5d0ec2b47a3a39f071fcbf98471b970f70fab566736807013092df",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "STATE19": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider19-local/state.json",
+      "bytes": 34912,
+      "sha256": "79f48aea7b4150798e5e3a57df8add2cc010b9839c0712b4c8144feb806c5ea4",
+      "scope": "Immutable closed19 accounting; model helper unexamined; new20does not reopen/reset19"
+    },
+    "STATE20": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider20-local/state.json",
+      "bytes": 22815,
+      "sha256": "a35d05417b22bd7be6319bd03e444b3132f58460862c27c8c18ee6f7c6935507",
+      "scope": "Immutable auth STOP before group, expected HEAD advanced by authorized fault commit; no semantic reset"
+    },
+    "PROOF21": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider21-result/rows.json",
+      "bytes": 19163,
+      "sha256": "46ae4d064c182015c9f91e76a7a71c88595185a460aa3f99b5241a9a8a2d89c3",
+      "scope": "Reviewed exact21root/typed/writer/helper and original source bindings, no repetition"
+    },
+    "DERIVED22": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local/state.json",
+      "bytes": 53915,
+      "sha256": "43df24bc7d8ffc77597c367e67b26a8ab0b4c4f7bbd00d1efb93e03908dc5fc3",
+      "scope": "Immutable22bounded extraction/STOP/model-unexamined lineage; code is exact installed slice derivation, reused under23clock"
+    },
+    "HELPER22": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local/inspect.py",
+      "bytes": 33585,
+      "sha256": "1da31cc41cfb3dbb20add36ff7188b98d6daa2541192c2e399cf94793cf44516",
+      "scope": "Immutable22bounded extraction/STOP/model-unexamined lineage; code is exact installed slice derivation, reused under23clock"
+    },
+    "FREEZE22": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local/invocation/freeze.json",
+      "bytes": 1276,
+      "sha256": "d022eb5900f8cdd0a23a00da3b70aede94a654ecc13b823a461dc4fc66059773",
+      "scope": "Immutable22bounded extraction/STOP/model-unexamined lineage; code is exact installed slice derivation, reused under23clock"
+    },
+    "STOP22": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-result/STOP-closeout.json",
+      "bytes": 1247,
+      "sha256": "f5864379b0659e2fffc64764d3416b0a18f6cedb698e14092582f9c0be1db5b4",
+      "scope": "Immutable22bounded extraction/STOP/model-unexamined lineage; code is exact installed slice derivation, reused under23clock"
+    }
+  },
+  "qualification": "Model-selected disposition applies only when model_examined=true, active group<=90 seconds and no errors; no allocator success/cost/cold/zero-heap claim",
+  "batch17_STOP_preserved": true
+}

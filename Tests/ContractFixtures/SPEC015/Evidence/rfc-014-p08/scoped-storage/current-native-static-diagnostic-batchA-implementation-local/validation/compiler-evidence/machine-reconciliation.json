@@ -1,0 +1,910 @@
+{
+  "before": {
+    "object": ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o",
+    "object_sha256": "3c106c086ef904fdf3a74481fd479a138fbfe39dca5587169ac501e1bfaea4cf",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o"
+    ],
+    "tool_exit": 0,
+    "disassembly_sha256": "d1690eb1df0492cfc4a86aeab323b4b113a6fb81c69a3c478c3909cc6f3da64e",
+    "disassembly_bytes": 26422837,
+    "trace_functions": [
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF",
+        "address": "0x4bebc",
+        "line": 92856,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_15GiftUIExecution25PresentationPendingIntentVSg_Sbs6UInt32VttF",
+        "address": "0x56fa4",
+        "line": 106261,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_15GiftUIExecution15RunCycleSummaryVtF",
+        "address": "0x57020",
+        "line": 106307,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_15GiftUIExecution25ExecutionAdmissionOutcomeVtF",
+        "address": "0x57ae8",
+        "line": 107245,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C22CompletePipelineResultOyAE0C12OwnerFailureOGtF",
+        "address": "0x5bdf4",
+        "line": 113732,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_s6UInt16V_AF21GiftUIObservableState24ObservableModelOwnershipV5PhaseOttF",
+        "address": "0x5c608",
+        "line": 114481,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C21CompletePipelineStageOtF",
+        "address": "0x5cb5c",
+        "line": 114867,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIInteraction21PointerGestureOutcomeOy0H14UISemanticCore24SemanticCompleteIdentityVGtF",
+        "address": "0x612b0",
+        "line": 120262,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C31RecordInteractionDispatchResultOtF",
+        "address": "0x62e14",
+        "line": 122224,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C13CleanupActionOtF",
+        "address": "0x76b54",
+        "line": 145500,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C19PipelineDispositionVtF",
+        "address": "0x76e30",
+        "line": 145741,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_15GiftUIExecution16ExecutionContextV_S2is6UInt16VAI0H17UIObservableState24ObservableModelOwnershipV5PhaseOttF",
+        "address": "0x77b18",
+        "line": 146733,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF",
+        "address": "0x77dd4",
+        "line": 146981,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys6UInt32VF",
+        "address": "0x77f04",
+        "line": 147063,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime16counterTraceName33_F69033F4DB287CAFB71641A3EEA15F2ALLys12StaticStringV17GiftUIRuntimeCore0C21CompletePipelineStageOF",
+        "address": "0x77fc4",
+        "line": 147125,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution24SemanticCycleDispositionOF",
+        "address": "0x7808c",
+        "line": 147203,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution23PresentationIntentStateOF",
+        "address": "0x780fc",
+        "line": 147244,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution23LogicalFrameDispositionOF",
+        "address": "0x7816c",
+        "line": 147285,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy21GiftUIObservableState010ObservableP5ErrorOF",
+        "address": "0x781dc",
+        "line": 147326,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy17GiftUIInteraction16InteractionErrorOF",
+        "address": "0x7832c",
+        "line": 147456,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy21GiftUIObservableState24ObservableModelOwnershipV5PhaseOF",
+        "address": "0x783e4",
+        "line": 147528,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyySbF",
+        "address": "0x784dc",
+        "line": 147623,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyySiF",
+        "address": "0x7852c",
+        "line": 147652,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime25counterTraceWriteUnsigned33_F69033F4DB287CAFB71641A3EEA15F2ALLyySuF",
+        "address": "0x7855c",
+        "line": 147668,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution10RunCycleIDVF",
+        "address": "0x785f4",
+        "line": 147716,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution16SemanticRevisionVF",
+        "address": "0x78634",
+        "line": 147739,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution16SemanticRevisionVSgF",
+        "address": "0x78670",
+        "line": 147762,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy6GiftUI20PresentationRevisionVSgF",
+        "address": "0x786d0",
+        "line": 147799,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution16ExecutionContextVF",
+        "address": "0x78750",
+        "line": 147848,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution25PresentationPendingIntentVSgF",
+        "address": "0x78954",
+        "line": 148037,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALL_6nestedy17GiftUIRuntimeCore0C19PipelineDispositionV_SbtF",
+        "address": "0x789e8",
+        "line": 148092,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy17GiftUIRuntimeCore0C19PipelinePublicationVF",
+        "address": "0x78b14",
+        "line": 148197,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution14CapturedActionVy0N14UISemanticCore24SemanticCompleteIdentityVGF",
+        "address": "0x78b7c",
+        "line": 148235,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy17GiftUIInteraction21PointerGestureOutcomeOy0N14UISemanticCore24SemanticCompleteIdentityVGF",
+        "address": "0x78bfc",
+        "line": 148284,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution25ExecutionAdmissionOutcomeVF",
+        "address": "0x78d28",
+        "line": 148394,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy6GiftUI11BoundedTextVFySRys5UInt8VGXEfU_",
+        "address": "0x78e20",
+        "line": 148483,
+        "allocator_sites": []
+      }
+    ],
+    "trace_allocator_sites": [],
+    "other_allocator_sites": [
+      {
+        "caller": "_$s17P08CounterRuntime17counterVerifyPlan_6canvas6bounds5valueSix_18GiftUISemanticCore23SemanticRecordReferenceV0J2UI4RectVs5UInt8Vt0J9UIDrawing07DrawingF4ViewRzAH8IdentityRtzlF0J15UIRuntimeStatic0xnT9WorkspaceVyAA0xbtY0VG_Tg5",
+        "caller_address": "0xb598",
+        "caller_header_line": 13861,
+        "site": "0xb8a4",
+        "evidence": [
+          {
+            "line": 14081,
+            "instruction": "000000000000b8a4:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime17counterVerifyPlan_6canvas6bounds5valueSix_18GiftUISemanticCore23SemanticRecordReferenceV0J2UI4RectVs5UInt8Vt0J9UIDrawing07DrawingF4ViewRzAH8IdentityRtzlF0J16UIRuntimeDynamic0xtF9WorkspaceV_Tg5",
+        "caller_address": "0xb934",
+        "caller_header_line": 14130,
+        "site": "0xbbac",
+        "evidence": [
+          {
+            "line": 14305,
+            "instruction": "000000000000bbac:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+        "caller_address": "0x19e08",
+        "caller_header_line": 32844,
+        "site": "0x19e70",
+        "evidence": [
+          {
+            "line": 32879,
+            "instruction": "0000000000019e70:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g504$s17ab90Runtime07DynamicB14ProfileStorageV5audit17GiftUIRuntimeCore0cE16ValidationResultOyFyAA0bF6L6VXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnc_n",
+        "caller_address": "0x3e6a0",
+        "caller_header_line": 76485,
+        "site": "0x3eba0",
+        "evidence": [
+          {
+            "line": 76821,
+            "instruction": "000000000003eba0:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g504$s17ab90Runtime07DynamicB14ProfileStorageV5audit17GiftUIRuntimeCore0cE16ValidationResultOyFyAA0bF6L6VXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnc_n",
+        "caller_address": "0x3e6a0",
+        "caller_header_line": 76485,
+        "site": "0x3ebc4",
+        "evidence": [
+          {
+            "line": 76836,
+            "instruction": "000000000003ebc4:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g5",
+        "caller_address": "0x40664",
+        "caller_header_line": 78725,
+        "site": "0x40b24",
+        "evidence": [
+          {
+            "line": 79045,
+            "instruction": "0000000000040b24:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g5",
+        "caller_address": "0x40664",
+        "caller_header_line": 78725,
+        "site": "0x40b48",
+        "evidence": [
+          {
+            "line": 79060,
+            "instruction": "0000000000040b48:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+        "caller_address": "0xa27d0",
+        "caller_header_line": 200905,
+        "site": "0xa284c",
+        "evidence": [
+          {
+            "line": 200941,
+            "instruction": "00000000000a284c:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+        "caller_address": "0xa28d8",
+        "caller_header_line": 200983,
+        "site": "0xa2954",
+        "evidence": [
+          {
+            "line": 201019,
+            "instruction": "00000000000a2954:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+        "caller_address": "0xa29d4",
+        "caller_header_line": 201058,
+        "site": "0xa2a50",
+        "evidence": [
+          {
+            "line": 201094,
+            "instruction": "00000000000a2a50:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_188",
+        "caller_address": "0xba6c0",
+        "caller_header_line": 233076,
+        "site": "0xba6c8",
+        "evidence": [
+          {
+            "line": 233080,
+            "instruction": "00000000000ba6c8:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_309",
+        "caller_address": "0xbb50c",
+        "caller_header_line": 234321,
+        "site": "0xbb514",
+        "evidence": [
+          {
+            "line": 234325,
+            "instruction": "00000000000bb514:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_468",
+        "caller_address": "0xbc2a4",
+        "caller_header_line": 235618,
+        "site": "0xbc2ac",
+        "evidence": [
+          {
+            "line": 235622,
+            "instruction": "00000000000bc2ac:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_470",
+        "caller_address": "0xbc2c8",
+        "caller_header_line": 235633,
+        "site": "0xbc2d0",
+        "evidence": [
+          {
+            "line": 235637,
+            "instruction": "00000000000bc2d0:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_560",
+        "caller_address": "0xbc9bc",
+        "caller_header_line": 236351,
+        "site": "0xbc9c4",
+        "evidence": [
+          {
+            "line": 236355,
+            "instruction": "00000000000bc9c4:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_594",
+        "caller_address": "0xbcc1c",
+        "caller_header_line": 236590,
+        "site": "0xbcc20",
+        "evidence": [
+          {
+            "line": 236593,
+            "instruction": "00000000000bcc20:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_669",
+        "caller_address": "0xbd334",
+        "caller_header_line": 237243,
+        "site": "0xbd33c",
+        "evidence": [
+          {
+            "line": 237247,
+            "instruction": "00000000000bd33c:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      }
+    ],
+    "trace_excerpt_sha256": "70184b2e1e82f69b90623006d930f32ea5fd7e8f807e1ffc44091eda670bda06"
+  },
+  "after": {
+    "object": ".build/contracts/p08-counter-va__8qip/P08CounterRuntime.o",
+    "object_sha256": "e960b92ee9b0af4da3d26ae0f4f6aa4981673be4a9d711fb8912fc43bd348ce4",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-va__8qip/P08CounterRuntime.o"
+    ],
+    "tool_exit": 0,
+    "disassembly_sha256": "498a264feac10766c6e6c2cd538599bfd75726e2cb3b382e06b99bccbdf3d8aa",
+    "disassembly_bytes": 26562579,
+    "trace_functions": [
+      {
+        "symbol": "_$s17P08CounterRuntime22counterDiagnosticReuseyys12StaticStringV_ADtF",
+        "address": "0x36430",
+        "line": 66171,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF",
+        "address": "0x4be48",
+        "line": 92797,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime21counterDiagnosticRoleyys5UInt8V_ADSus6UInt16VSiADSuAFSiA2DtF",
+        "address": "0x4f64c",
+        "line": 97132,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_15GiftUIExecution25PresentationPendingIntentVSg_Sbs6UInt32VttF",
+        "address": "0x57030",
+        "line": 106308,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_15GiftUIExecution15RunCycleSummaryVtF",
+        "address": "0x570a8",
+        "line": 106353,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_15GiftUIExecution25ExecutionAdmissionOutcomeVtF",
+        "address": "0x57b60",
+        "line": 107287,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C22CompletePipelineResultOyAE0C12OwnerFailureOGtF",
+        "address": "0x5be6c",
+        "line": 113774,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_s6UInt16V_AF21GiftUIObservableState24ObservableModelOwnershipV5PhaseOttF",
+        "address": "0x5c664",
+        "line": 114517,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C21CompletePipelineStageOtF",
+        "address": "0x5cbb4",
+        "line": 114902,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIInteraction21PointerGestureOutcomeOy0H14UISemanticCore24SemanticCompleteIdentityVGtF",
+        "address": "0x6130c",
+        "line": 120298,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C31RecordInteractionDispatchResultOtF",
+        "address": "0x62e70",
+        "line": 122260,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C13CleanupActionOtF",
+        "address": "0x76ba8",
+        "line": 145536,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_17GiftUIRuntimeCore0C19PipelineDispositionVtF",
+        "address": "0x76e84",
+        "line": 145777,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_15GiftUIExecution16ExecutionContextV_S2is6UInt16VAI0H17UIObservableState24ObservableModelOwnershipV5PhaseOttF",
+        "address": "0x77b70",
+        "line": 146770,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF",
+        "address": "0x77e2c",
+        "line": 147018,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys6UInt32VF",
+        "address": "0x77f5c",
+        "line": 147100,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime16counterTraceName33_F69033F4DB287CAFB71641A3EEA15F2ALLys12StaticStringV17GiftUIRuntimeCore0C21CompletePipelineStageOF",
+        "address": "0x7801c",
+        "line": 147162,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution24SemanticCycleDispositionOF",
+        "address": "0x780e4",
+        "line": 147240,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution23PresentationIntentStateOF",
+        "address": "0x78154",
+        "line": 147281,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution23LogicalFrameDispositionOF",
+        "address": "0x781c4",
+        "line": 147322,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy21GiftUIObservableState010ObservableP5ErrorOF",
+        "address": "0x78234",
+        "line": 147363,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy17GiftUIInteraction16InteractionErrorOF",
+        "address": "0x78384",
+        "line": 147493,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy21GiftUIObservableState24ObservableModelOwnershipV5PhaseOF",
+        "address": "0x7843c",
+        "line": 147565,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyySbF",
+        "address": "0x78534",
+        "line": 147660,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyySiF",
+        "address": "0x78584",
+        "line": 147689,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime25counterTraceWriteUnsigned33_F69033F4DB287CAFB71641A3EEA15F2ALLyySuF",
+        "address": "0x785b4",
+        "line": 147705,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution10RunCycleIDVF",
+        "address": "0x7864c",
+        "line": 147753,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution16SemanticRevisionVF",
+        "address": "0x7868c",
+        "line": 147776,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution16SemanticRevisionVSgF",
+        "address": "0x786c8",
+        "line": 147799,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy6GiftUI20PresentationRevisionVSgF",
+        "address": "0x78728",
+        "line": 147836,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution16ExecutionContextVF",
+        "address": "0x787a8",
+        "line": 147885,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution25PresentationPendingIntentVSgF",
+        "address": "0x789b0",
+        "line": 148075,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALL_6nestedy17GiftUIRuntimeCore0C19PipelineDispositionV_SbtF",
+        "address": "0x78a44",
+        "line": 148130,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy17GiftUIRuntimeCore0C19PipelinePublicationVF",
+        "address": "0x78b70",
+        "line": 148235,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution14CapturedActionVy0N14UISemanticCore24SemanticCompleteIdentityVGF",
+        "address": "0x78bd8",
+        "line": 148273,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy17GiftUIInteraction21PointerGestureOutcomeOy0N14UISemanticCore24SemanticCompleteIdentityVGF",
+        "address": "0x78c58",
+        "line": 148322,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution25ExecutionAdmissionOutcomeVF",
+        "address": "0x78d84",
+        "line": 148432,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime22counterDiagnosticAudityys12StaticStringV_17GiftUIRuntimeCore0C23ProfileValidationResultOtF",
+        "address": "0x78e7c",
+        "line": 148521,
+        "allocator_sites": []
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy6GiftUI11BoundedTextVFySRys5UInt8VGXEfU_",
+        "address": "0x79e2c",
+        "line": 149997,
+        "allocator_sites": []
+      }
+    ],
+    "trace_allocator_sites": [],
+    "other_allocator_sites": [
+      {
+        "caller": "_$s17P08CounterRuntime17counterVerifyPlan_6canvas6bounds5valueSix_18GiftUISemanticCore23SemanticRecordReferenceV0J2UI4RectVs5UInt8Vt0J9UIDrawing07DrawingF4ViewRzAH8IdentityRtzlF0J15UIRuntimeStatic0xnT9WorkspaceVyAA0xbtY0VG_Tg5",
+        "caller_address": "0xb564",
+        "caller_header_line": 13834,
+        "site": "0xb870",
+        "evidence": [
+          {
+            "line": 14054,
+            "instruction": "000000000000b870:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime17counterVerifyPlan_6canvas6bounds5valueSix_18GiftUISemanticCore23SemanticRecordReferenceV0J2UI4RectVs5UInt8Vt0J9UIDrawing07DrawingF4ViewRzAH8IdentityRtzlF0J16UIRuntimeDynamic0xtF9WorkspaceV_Tg5",
+        "caller_address": "0xb900",
+        "caller_header_line": 14103,
+        "site": "0xbb78",
+        "evidence": [
+          {
+            "line": 14278,
+            "instruction": "000000000000bb78:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+        "caller_address": "0x19de4",
+        "caller_header_line": 32820,
+        "site": "0x19e4c",
+        "evidence": [
+          {
+            "line": 32855,
+            "instruction": "0000000000019e4c:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g504$s17ab90Runtime07DynamicB14ProfileStorageV5audit17GiftUIRuntimeCore0cE16ValidationResultOyFyAA0bF6L6VXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnc_n",
+        "caller_address": "0x3e61c",
+        "caller_header_line": 76424,
+        "site": "0x3eb1c",
+        "evidence": [
+          {
+            "line": 76760,
+            "instruction": "000000000003eb1c:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g504$s17ab90Runtime07DynamicB14ProfileStorageV5audit17GiftUIRuntimeCore0cE16ValidationResultOyFyAA0bF6L6VXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnc_n",
+        "caller_address": "0x3e61c",
+        "caller_header_line": 76424,
+        "site": "0x3eb40",
+        "evidence": [
+          {
+            "line": 76775,
+            "instruction": "000000000003eb40:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g5",
+        "caller_address": "0x405e0",
+        "caller_header_line": 78664,
+        "site": "0x40aa0",
+        "evidence": [
+          {
+            "line": 78984,
+            "instruction": "0000000000040aa0:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g5",
+        "caller_address": "0x405e0",
+        "caller_header_line": 78664,
+        "site": "0x40ac4",
+        "evidence": [
+          {
+            "line": 78999,
+            "instruction": "0000000000040ac4:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+        "caller_address": "0xa3728",
+        "caller_header_line": 202350,
+        "site": "0xa37a4",
+        "evidence": [
+          {
+            "line": 202386,
+            "instruction": "00000000000a37a4:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+        "caller_address": "0xa3830",
+        "caller_header_line": 202428,
+        "site": "0xa38ac",
+        "evidence": [
+          {
+            "line": 202464,
+            "instruction": "00000000000a38ac:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+        "caller_address": "0xa392c",
+        "caller_header_line": 202503,
+        "site": "0xa39a8",
+        "evidence": [
+          {
+            "line": 202539,
+            "instruction": "00000000000a39a8:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_198",
+        "caller_address": "0xbb6d4",
+        "caller_header_line": 234592,
+        "site": "0xbb6dc",
+        "evidence": [
+          {
+            "line": 234596,
+            "instruction": "00000000000bb6dc:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_310",
+        "caller_address": "0xbc454",
+        "caller_header_line": 235761,
+        "site": "0xbc45c",
+        "evidence": [
+          {
+            "line": 235765,
+            "instruction": "00000000000bc45c:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_472",
+        "caller_address": "0xbd228",
+        "caller_header_line": 237083,
+        "site": "0xbd230",
+        "evidence": [
+          {
+            "line": 237087,
+            "instruction": "00000000000bd230:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_474",
+        "caller_address": "0xbd24c",
+        "caller_header_line": 237098,
+        "site": "0xbd254",
+        "evidence": [
+          {
+            "line": 237102,
+            "instruction": "00000000000bd254:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_564",
+        "caller_address": "0xbd940",
+        "caller_header_line": 237815,
+        "site": "0xbd948",
+        "evidence": [
+          {
+            "line": 237819,
+            "instruction": "00000000000bd948:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_603",
+        "caller_address": "0xbdbdc",
+        "caller_header_line": 238082,
+        "site": "0xbdbe0",
+        "evidence": [
+          {
+            "line": 238085,
+            "instruction": "00000000000bdbe0:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      },
+      {
+        "caller": "_OUTLINED_FUNCTION_677",
+        "caller_address": "0xbe2d8",
+        "caller_header_line": 238728,
+        "site": "0xbe2e0",
+        "evidence": [
+          {
+            "line": 238732,
+            "instruction": "00000000000be2e0:  ARM64_RELOC_BRANCH26\t_swift_allocObject"
+          }
+        ]
+      }
+    ],
+    "trace_excerpt_sha256": "2e9d70824e87eebdc18559a7137f6aff0279f38086b5a3fe54023e32322077fd"
+  },
+  "reconciliation": {
+    "removed_selected_trace_allocator_calls": 0,
+    "removed_whole_module_allocator_sites": 0,
+    "new_trace_allocator_calls": 0,
+    "other_before": 17,
+    "other_after": 17,
+    "old_frozen_universe": "Preserved56groups/1892sites; current object sites are not substituted into old tuples",
+    "nontrace_identity_limit": "Other current addresses/counts retained as reconciliation context only; no feasibility/provider equivalence inferred",
+    "scope": "Finite reached reuse/role/audit compiler construction replacement; selected trace/writer functions remain construction-free, ordinary implementation assessment; failed U02 proof remains STOP"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "bytes": 104448,
+    "sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+    "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+  },
+  ".build/contracts/p08-counter-wrapel2y/result.json": {
+    "path": ".build/contracts/p08-counter-wrapel2y/result.json",
+    "bytes": 8548218,
+    "sha256": "af9ba8ef87a2f33d4d6d7ea46d2e1f4f925228f667c0b7fb95b4ae3023b06773",
+    "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+  },
+  ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o": {
+    "path": ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o",
+    "bytes": 2576112,
+    "sha256": "3c106c086ef904fdf3a74481fd479a138fbfe39dca5587169ac501e1bfaea4cf",
+    "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+  },
+  "OBJECT_TOOL": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "scope": "Read-only artifact decoder; not provider acquisition"
+  },
+  "NM_TOOL": {
+    "path": "/usr/bin/nm",
+    "bytes": 118640,
+    "sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9"
+  },
+  "EXECUTABLE": {
+    "path": ".build/contracts/p08-counter-wrapel2y/counter",
+    "bytes": 6606808,
+    "sha256": "267bc26d27bbecc0c2e20ac6ce8499b609f0945c0f91a790759387da4dabb0e1"
+  },
+  "SELECTED_SIL": {
+    "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/selected-trace-functions.sil.txt",
+    "bytes": 758037,
+    "sha256": "9ec73ef79d4fe1956c86fe8db7b52d161fc8927a92b26c0a285f2eb187c0ad3b"
+  },
+  "CACHE18": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/selected-cache.json",
+    "bytes": 2010850,
+    "sha256": "b671634a198f2cb9778b8134c68b2c500d5feaa352380b9cba581b07cdd0adcb",
+    "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+  },
+  "STATE18": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/state.json",
+    "bytes": 27210,
+    "sha256": "85228da83a64acefa2ffad10cdd1795527b59c7ad53e9d2c5299746447696238",
+    "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+  },
+  "HELPER18": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/inspect.py",
+    "bytes": 34192,
+    "sha256": "755d4ad4ff22731ccbc8b28a3a23d23ddd1dd1c96cc6f074fa32f21983bc32e3",
+    "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+  },
+  "FREEZE18": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/invocation/freeze.json",
+    "bytes": 1207,
+    "sha256": "671d67311e5d0ec2b47a3a39f071fcbf98471b970f70fab566736807013092df",
+    "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+  },
+  "STATE19": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider19-local/state.json",
+    "bytes": 34912,
+    "sha256": "79f48aea7b4150798e5e3a57df8add2cc010b9839c0712b4c8144feb806c5ea4",
+    "scope": "Immutable closed19 accounting; model helper unexamined; new20does not reopen/reset19"
+  },
+  "STATE20": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider20-local/state.json",
+    "bytes": 22815,
+    "sha256": "a35d05417b22bd7be6319bd03e444b3132f58460862c27c8c18ee6f7c6935507",
+    "scope": "Immutable auth STOP before group, expected HEAD advanced by authorized fault commit; no semantic reset"
+  },
+  "PROOF21": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider21-result/rows.json",
+    "bytes": 19163,
+    "sha256": "46ae4d064c182015c9f91e76a7a71c88595185a460aa3f99b5241a9a8a2d89c3",
+    "scope": "Reviewed exact21root/typed/writer/helper and original source bindings, no repetition"
+  },
+  "PROOF23": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-result/rows.json",
+    "bytes": 14851,
+    "sha256": "d26a30d8a4fd7e612a50d671376350fca1c5031995c0b04a9d2f9ae541a41ec7",
+    "scope": "Exact frozen installed-body/context lineage; closed23rooted-frontier facts and immutable22STOP"
+  },
+  "HELPER23": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-local/inspect.py",
+    "bytes": 30250,
+    "sha256": "84fb7de99a79dbcc233f6369c552c10663d649b511c27922090f356d42776c98",
+    "scope": "Exact frozen installed-body/context lineage; closed23rooted-frontier facts and immutable22STOP"
+  },
+  "STOP22": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-result/STOP-closeout.json",
+    "bytes": 1247,
+    "sha256": "f5864379b0659e2fffc64764d3416b0a18f6cedb698e14092582f9c0be1db5b4",
+    "scope": "Exact frozen installed-body/context lineage; closed23rooted-frontier facts and immutable22STOP"
+  },
+  "PROOF24": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-result/rows.json",
+    "bytes": 31510,
+    "sha256": "2d2cf55131c2be3d558b6557fc1760f23dcdd57ee8bf4bca5e9538434a22d40a",
+    "scope": "Closed24conditionalsetup/bufferbody lemma; exact same installedcache and source21bindings"
+  },
+  "HELPER24": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-local/inspect.py",
+    "bytes": 35114,
+    "sha256": "0e1e9368668e320242aa8bd4f5e4dbab91ae901f1f0710ae7c2efabd2b3945f2",
+    "scope": "Closed24conditionalsetup/bufferbody lemma; exact same installedcache and source21bindings"
+  },
+  "PROOF25": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-result/rows.json",
+    "bytes": 35977,
+    "sha256": "122e0858f3209af6a4231d159b4da5fddf8bc3caa53734d46764ed87cf7b0d48",
+    "scope": "Exact current retained executed recipe/source identity; body/order interpreted only under26window"
+  },
+  "MAIN_SOURCE": {
+    "path": ".build/contracts/p08-counter-wrapel2y/Main.swift",
+    "bytes": 276,
+    "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a",
+    "scope": "Exact current retained executed recipe/source identity; body/order interpreted only under26window"
+  },
+  "DERIVED26": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local/state.json",
+    "bytes": 53851,
+    "sha256": "2a288b66ec45b67ec7d6b9dd90e5da30ab15274ef329bc76547a9554846c0d51",
+    "scope": "Raw26projection/nonqualifiedtimefailure lineage; exactcurrentexecutableidentity metadata; reread/reasononly27window"
+  },
+  "HELPER26": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local/inspect.py",
+    "bytes": 37193,
+    "sha256": "7dd74e22d06ef9db8807977cd44b87e5d21580e89158e2308632fcaa20669fbe",
+    "scope": "Raw26projection/nonqualifiedtimefailure lineage; exactcurrentexecutableidentity metadata; reread/reasononly27window"
+  },
+  "EXE_BINDINGS": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA27-local/executable-bindings.json",
+    "bytes": 49569,
+    "sha256": "e4298835ee187fc8ef0d47d597bafae00316f0e7a1cc309cf1286b09296b0314",
+    "scope": "Raw26projection/nonqualifiedtimefailure lineage; exactcurrentexecutableidentity metadata; reread/reasononly27window"
+  }
+}

@@ -1,0 +1,684 @@
+{
+  "old_frozen_universe": {
+    "groups": 56,
+    "sites": 1892,
+    "roots": 3,
+    "status": "IMMUTABLE BASELINE; no current tuple substitution"
+  },
+  "model_status": "provider-gap",
+  "current_focus": {
+    "provider_identities": {
+      "/usr/lib/libSystem.B.dylib": {
+        "uuid": "4fed5ee25d3e35b1a1709859c4b683bb",
+        "identity": {
+          "name": "/usr/lib/libSystem.B.dylib",
+          "command": 13,
+          "current_version": 88866816,
+          "compatibility_version": 65536
+        },
+        "dependencies": [
+          {
+            "name": "/usr/lib/system/libcache.dylib",
+            "command": 2147483679,
+            "current_version": 6225920,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libcommonCrypto.dylib",
+            "command": 2147483679,
+            "current_version": 4294901760,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libcompiler_rt.dylib",
+            "command": 2147483679,
+            "current_version": 6750976,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libcopyfile.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libcorecrypto.dylib",
+            "command": 2147483679,
+            "current_version": 126001162,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdispatch.dylib",
+            "command": 2147483679,
+            "current_version": 101097474,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdyld.dylib",
+            "command": 2147483679,
+            "current_version": 0,
+            "compatibility_version": 0
+          },
+          {
+            "name": "/usr/lib/system/libkeymgr.dylib",
+            "command": 2147483679,
+            "current_version": 2031616,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libmacho.dylib",
+            "command": 2147483679,
+            "current_version": 68157440,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libquarantine.dylib",
+            "command": 2147483679,
+            "current_version": 12886018,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libremovefile.dylib",
+            "command": 2147483679,
+            "current_version": 5596166,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_asl.dylib",
+            "command": 2147483679,
+            "current_version": 26607616,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_blocks.dylib",
+            "command": 2147483679,
+            "current_version": 6291456,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_c.dylib",
+            "command": 2147483679,
+            "current_version": 114860036,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_collections.dylib",
+            "command": 2147483679,
+            "current_version": 114860036,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_configuration.dylib",
+            "command": 2147483679,
+            "current_version": 92119043,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_containermanager.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_coreservices.dylib",
+            "command": 2147483679,
+            "current_version": 8454144,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_darwin.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_darwindirectory.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_dnssd.dylib",
+            "command": 2147483679,
+            "current_version": 188850180,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_eligibility.dylib",
+            "command": 2147483679,
+            "current_version": 20946961,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_featureflags.dylib",
+            "command": 2147483679,
+            "current_version": 6750208,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_info.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_m.dylib",
+            "command": 2147483679,
+            "current_version": 217080833,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_malloc.dylib",
+            "command": 2147483679,
+            "current_version": 53256197,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_networkextension.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_notify.dylib",
+            "command": 2147483679,
+            "current_version": 22847491,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_sandbox.dylib",
+            "command": 2147483679,
+            "current_version": 175677446,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_sanitizers.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_secinit.dylib",
+            "command": 2147483679,
+            "current_version": 11035655,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_kernel.dylib",
+            "command": 2147483679,
+            "current_version": 811180302,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_platform.dylib",
+            "command": 2147483679,
+            "current_version": 24606722,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_pthread.dylib",
+            "command": 2147483679,
+            "current_version": 35349508,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_symptoms.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_trace.dylib",
+            "command": 2147483679,
+            "current_version": 122003460,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_trial.dylib",
+            "command": 2147483679,
+            "current_version": 31064594,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libunwind.dylib",
+            "command": 2147483679,
+            "current_version": 137626112,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libxpc.dylib",
+            "command": 2147483679,
+            "current_version": 203333637,
+            "compatibility_version": 65536
+          }
+        ]
+      },
+      "/usr/lib/system/libsystem_c.dylib": {
+        "uuid": "d77ceb62aff63cecba9b4f057fbe2eb5",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 13,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        "dependencies": [
+          {
+            "name": "/usr/lib/system/libcompiler_rt.dylib",
+            "command": 12,
+            "current_version": 6750976,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdyld.dylib",
+            "command": 12,
+            "current_version": 0,
+            "compatibility_version": 0
+          },
+          {
+            "name": "/usr/lib/system/libsystem_kernel.dylib",
+            "command": 12,
+            "current_version": 811180302,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_m.dylib",
+            "command": 12,
+            "current_version": 217080833,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_malloc.dylib",
+            "command": 12,
+            "current_version": 53256197,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_platform.dylib",
+            "command": 12,
+            "current_version": 24606722,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_pthread.dylib",
+            "command": 12,
+            "current_version": 35349508,
+            "compatibility_version": 65536
+          }
+        ]
+      },
+      "/usr/lib/system/libsystem_malloc.dylib": {
+        "uuid": "d969a9073e43395193658c2db3812e9d",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_malloc.dylib",
+          "command": 13,
+          "current_version": 53256197,
+          "compatibility_version": 65536
+        },
+        "dependencies": [
+          {
+            "name": "/usr/lib/system/libcompiler_rt.dylib",
+            "command": 12,
+            "current_version": 6750976,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdyld.dylib",
+            "command": 12,
+            "current_version": 0,
+            "compatibility_version": 0
+          },
+          {
+            "name": "/usr/lib/system/libsystem_kernel.dylib",
+            "command": 12,
+            "current_version": 811180302,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_platform.dylib",
+            "command": 12,
+            "current_version": 24606722,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_pthread.dylib",
+            "command": 12,
+            "current_version": 35349508,
+            "compatibility_version": 65536
+          }
+        ]
+      },
+      "/usr/lib/system/libsystem_pthread.dylib": {
+        "uuid": "a373f0b09880326a88b4dd8be4e33072",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_pthread.dylib",
+          "command": 13,
+          "current_version": 35349508,
+          "compatibility_version": 65536
+        },
+        "dependencies": [
+          {
+            "name": "/usr/lib/system/libsystem_kernel.dylib",
+            "command": 12,
+            "current_version": 811180302,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_platform.dylib",
+            "command": 12,
+            "current_version": 24606722,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdyld.dylib",
+            "command": 12,
+            "current_version": 0,
+            "compatibility_version": 0
+          }
+        ]
+      }
+    },
+    "functions": [
+      {
+        "name": "_setbuf",
+        "aliases": [
+          "_setbuf"
+        ],
+        "provider": "/usr/lib/system/libsystem_c.dylib",
+        "address": 6446570496,
+        "end": 6446570516,
+        "raw_sha256": "7e1d3c3d73ba93caf0085de3daeb74af1e0ec7e18f87ba7989cf6505bdd4d723",
+        "bytes_sha256": "ee43940a5869929f96ab0b09a7dd94173ae8f4177a22ca5ef2bc09bd6c23401d",
+        "slice": {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "offset": 3562496,
+          "bytes": 20
+        },
+        "instructions": "0:cmp x1, #0x0\n4:mov w8, #0x2\n8:csel w2, w8, wzr, eq\nc:mov w3, #0x400\n10:b 0x1803b68fc",
+        "decoder_argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local/provider-_setbuf.o"
+        ]
+      },
+      {
+        "name": "_setvbuf",
+        "aliases": [
+          "_setvbuf"
+        ],
+        "provider": "/usr/lib/system/libsystem_c.dylib",
+        "address": 6446344444,
+        "end": 6446345056,
+        "raw_sha256": "1a281e55ea6a6f47dc8686b7d159a3d8355e1cbdf92fe1d2184c6a9d22cd53f0",
+        "bytes_sha256": "57537987ac98960993879e5078ae88e49a586d97f45e8d498f5a13ae43d7e081",
+        "slice": {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "offset": 3336444,
+          "bytes": 612
+        },
+        "instructions": "0:pacibsp \n4:sub sp, sp, #0x60\n8:stp x26, x25, [sp, #0x10]\nc:stp x24, x23, [sp, #0x20]\n10:stp x22, x21, [sp, #0x30]\n14:stp x20, x19, [sp, #0x40]\n18:stp x29, x30, [sp, #0x50]\n1c:add x29, sp, #0x50\n20:mov x22, x3\n24:mov x20, x2\n28:mov x21, x1\n2c:mov x19, x0\n30:cmp w2, #0x2\n34:b.eq 0x1803b6944 <__text+0x48>\n38:mov w23, #-0x1\n3c:cmp w20, #0x1\n40:b.hi 0x1803b6b08 <__text+0x20c>\n44:tbnz w22, #0x1f, 0x1803b6b08 <__text+0x20c>\n48:adrp x24, 0x1ea474000 <__text+0x6a0bd704>\n4c:add x24, x24, #0xd00\n50:mov x23, x24\n54:ldr x8, [x23, #0x20]!\n58:cbz x8, 0x1803b69cc <__text+0xd0>\n5c:movk x23, #0x723d, lsl #48\n60:mov x16, x8\n64:mov x17, x23\n68:autia x16, x17\n6c:mov x17, x16\n70:xpaci x17\n74:cmp x16, x17\n78:b.eq 0x1803b697c <__text+0x80>\n7c:brk #0xc470\n80:paciza x16\n84:cbz x16, 0x1803b6998 <__text+0x9c>\n88:mov x0, x19\n8c:mov w1, #0x98\n90:blraa x8, x23\n94:ldr x8, [x24, #0x20]\n98:cbz x8, 0x1803b69cc <__text+0xd0>\n9c:mov x16, x8\na0:mov x17, x23\na4:autia x16, x17\na8:mov x17, x16\nac:xpaci x17\nb0:cmp x16, x17\nb4:b.eq 0x1803b69b8 <__text+0xbc>\nb8:brk #0xc470\nbc:paciza x16\nc0:cbz x16, 0x1803b69cc <__text+0xd0>\nc4:mov x0, x21\nc8:mov x1, x22\ncc:blraa x8, x23\nd0:mov x0, x19\nd4:bl 0x18039d1e0\nd8:mov x0, x19\ndc:bl 0x18039d21c\ne0:ldr x0, [x19, #0x58]\ne4:cbz x0, 0x1803b69f8 <__text+0xfc>\ne8:add x8, x19, #0x74\nec:cmp x0, x8\nf0:b.eq 0x1803b69f4 <__text+0xf8>\nf4:bl 0x180406920 <__text+0x50024>\nf8:str xzr, [x19, #0x58]\nfc:str wzr, [x19, #0x28]\n100:str wzr, [x19, #0x8]\n104:ldrh w23, [x19, #0x10]\n108:tbz w23, #0x7, 0x1803b6a10 <__text+0x114>\n10c:ldr x0, [x19, #0x18]\n110:bl 0x180406920 <__text+0x50024>\n114:str xzr, [sp, #0x8]\n118:str wzr, [sp, #0x4]\n11c:mov w8, #0xe35c\n120:and w25, w23, w8\n124:cmp w20, #0x2\n128:b.ne 0x1803b6a50 <__text+0x154>\n12c:mov w23, #0x0\n130:orr w8, w25, #0x2\n134:strh w8, [x19, #0x10]\n138:str wzr, [x19, #0xc]\n13c:add x8, x19, #0x77\n140:str x8, [x19]\n144:str x8, [x19, #0x18]\n148:mov w8, #0x1\n14c:str w8, [x19, #0x20]\n150:b 0x1803b6b00 <__text+0x204>\n154:add x1, sp, #0x8\n158:add x2, sp, #0x4\n15c:mov x0, x19\n160:bl 0x1803a1860\n164:orr w25, w0, w25\n168:ldr x8, [sp, #0x8]\n16c:cmp x22, #0x0\n170:csel x24, x8, x22, eq\n174:cbz x21, 0x1803b6a80 <__text+0x184>\n178:cbz x22, 0x1803b6a80 <__text+0x184>\n17c:mov w23, #0x0\n180:b 0x1803b6aa4 <__text+0x1a8>\n184:mov x0, x24\n188:mov w1, #0x18a4\n18c:movk w1, #0xb8f5, lsl #16\n190:bl 0x180406c20 <__text+0x50324>\n194:cbz x0, 0x1803b6b28 <__text+0x22c>\n198:mov x21, x0\n19c:mov w23, #0x0\n1a0:orr w25, w25, #0x80\n1a4:ldr x8, [sp, #0x8]\n1a8:orr w9, w25, #0x800\n1ac:cmp x24, x8\n1b0:csel w9, w25, w9, eq\n1b4:cmp w20, #0x1\n1b8:cset w8, eq\n1bc:orr w8, w9, w8\n1c0:strh w8, [x19, #0x10]\n1c4:str x21, [x19]\n1c8:str x21, [x19, #0x18]\n1cc:str w24, [x19, #0x20]\n1d0:tbnz w9, #0x3, 0x1803b6ad8 <__text+0x1dc>\n1d4:str wzr, [x19, #0xc]\n1d8:b 0x1803b6af0 <__text+0x1f4>\n1dc:tbnz w8, #0x0, 0x1803b6ae4 <__text+0x1e8>\n1e0:str w24, [x19, #0xc]\n1e4:b 0x1803b6af0 <__text+0x1f4>\n1e8:str wzr, [x19, #0xc]\n1ec:neg w8, w24\n1f0:str w8, [x19, #0x28]\n1f4:adrp x8, 0x1ecf48000 <__text+0x6cb91704>\n1f8:add x8, x8, #0x4c0\n1fc:mov w9, #0x1\n200:str w9, [x8]\n204:mov x0, x19\n208:bl 0x18039d38c\n20c:mov x0, x23\n210:ldp x29, x30, [sp, #0x50]\n214:ldp x20, x19, [sp, #0x40]\n218:ldp x22, x21, [sp, #0x30]\n21c:ldp x24, x23, [sp, #0x20]\n220:ldp x26, x25, [sp, #0x10]\n224:add sp, sp, #0x60\n228:retab \n22c:ldr x22, [sp, #0x8]\n230:cmp x24, x22\n234:b.ne 0x1803b6b3c <__text+0x240>\n238:mov w23, #-0x1\n23c:b 0x1803b6a2c <__text+0x130>\n240:mov x0, x22\n244:mov w1, #0x45de\n248:movk w1, #0xca07, lsl #16\n24c:bl 0x180406c20 <__text+0x50324>\n250:mov x21, x0\n254:mov w23, #-0x1\n258:mov x24, x22\n25c:cbz x0, 0x1803b6a2c <__text+0x130>\n260:b 0x1803b6a9c <__text+0x1a0>",
+        "decoder_argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local/provider-_setvbuf.o"
+        ]
+      }
+    ],
+    "calls": [
+      {
+        "from": "_setbuf",
+        "site": "0x1803edc10",
+        "to": "0x1803b68fc",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:_setvbuf"
+        ],
+        "op": "b"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b69d0",
+        "to": "0x18039d1e0",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:_flockfile"
+        ],
+        "op": "bl"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b69d8",
+        "to": "0x18039d21c",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:___sflush"
+        ],
+        "op": "bl"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b69f0",
+        "to": "0x180406920",
+        "exports": [],
+        "op": "bl"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6a0c",
+        "to": "0x180406920",
+        "exports": [],
+        "op": "bl"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6a4c",
+        "to": "0x1803b6b00",
+        "exports": [],
+        "op": "b"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6a5c",
+        "to": "0x1803a1860",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:___swhatbuf"
+        ],
+        "op": "bl"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6a7c",
+        "to": "0x1803b6aa4",
+        "exports": [],
+        "op": "b"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6a8c",
+        "to": "0x180406c20",
+        "exports": [],
+        "op": "bl"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6ad4",
+        "to": "0x1803b6af0",
+        "exports": [],
+        "op": "b"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6ae0",
+        "to": "0x1803b6af0",
+        "exports": [],
+        "op": "b"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6b04",
+        "to": "0x18039d38c",
+        "exports": [
+          "/usr/lib/system/libsystem_c.dylib:_funlockfile"
+        ],
+        "op": "bl"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6b38",
+        "to": "0x1803b6a2c",
+        "exports": [],
+        "op": "b"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6b48",
+        "to": "0x180406c20",
+        "exports": [],
+        "op": "bl"
+      },
+      {
+        "from": "_setvbuf",
+        "site": "0x1803b6b5c",
+        "to": "0x1803b6a9c",
+        "exports": [],
+        "op": "b"
+      }
+    ],
+    "not_export_bound": [],
+    "body_context_sha256": "ab2db6047592ae68a8259c8a53e2a5b966e39a4f7c091efd4d19c7b9ec1f0ced",
+    "body_context_bytes": 13426,
+    "source_root_lemma": "Reviewed provider21 root/typed/writer/helper relation, same exact wrapel2y source/object; no local-chain replay",
+    "extracted": true,
+    "emitted": true,
+    "model_examined": true,
+    "provider_scope": "Complete installed setup/buffer bodies plus bounded pristine data; current loaded/window state not inferred",
+    "initial_cache_data": [],
+    "stub_bindings": [],
+    "slide_headers": []
+  },
+  "baseline_refresh": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 104448,
+      "sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    ".build/contracts/p08-counter-wrapel2y/result.json": {
+      "path": ".build/contracts/p08-counter-wrapel2y/result.json",
+      "bytes": 8548218,
+      "sha256": "af9ba8ef87a2f33d4d6d7ea46d2e1f4f925228f667c0b7fb95b4ae3023b06773",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o": {
+      "path": ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o",
+      "bytes": 2576112,
+      "sha256": "3c106c086ef904fdf3a74481fd479a138fbfe39dca5587169ac501e1bfaea4cf",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    "OBJECT_TOOL": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "scope": "Read-only artifact decoder; not provider acquisition"
+    },
+    "NM_TOOL": {
+      "path": "/usr/bin/nm",
+      "bytes": 118640,
+      "sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9"
+    },
+    "EXECUTABLE": {
+      "path": ".build/contracts/p08-counter-wrapel2y/counter",
+      "bytes": 6606808,
+      "sha256": "267bc26d27bbecc0c2e20ac6ce8499b609f0945c0f91a790759387da4dabb0e1"
+    },
+    "SELECTED_SIL": {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/selected-trace-functions.sil.txt",
+      "bytes": 758037,
+      "sha256": "9ec73ef79d4fe1956c86fe8db7b52d161fc8927a92b26c0a285f2eb187c0ad3b"
+    },
+    "CACHE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/selected-cache.json",
+      "bytes": 2010850,
+      "sha256": "b671634a198f2cb9778b8134c68b2c500d5feaa352380b9cba581b07cdd0adcb",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "STATE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/state.json",
+      "bytes": 27210,
+      "sha256": "85228da83a64acefa2ffad10cdd1795527b59c7ad53e9d2c5299746447696238",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "HELPER18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/inspect.py",
+      "bytes": 34192,
+      "sha256": "755d4ad4ff22731ccbc8b28a3a23d23ddd1dd1c96cc6f074fa32f21983bc32e3",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "FREEZE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/invocation/freeze.json",
+      "bytes": 1207,
+      "sha256": "671d67311e5d0ec2b47a3a39f071fcbf98471b970f70fab566736807013092df",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "STATE19": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider19-local/state.json",
+      "bytes": 34912,
+      "sha256": "79f48aea7b4150798e5e3a57df8add2cc010b9839c0712b4c8144feb806c5ea4",
+      "scope": "Immutable closed19 accounting; model helper unexamined; new20does not reopen/reset19"
+    },
+    "STATE20": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider20-local/state.json",
+      "bytes": 22815,
+      "sha256": "a35d05417b22bd7be6319bd03e444b3132f58460862c27c8c18ee6f7c6935507",
+      "scope": "Immutable auth STOP before group, expected HEAD advanced by authorized fault commit; no semantic reset"
+    },
+    "PROOF21": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider21-result/rows.json",
+      "bytes": 19163,
+      "sha256": "46ae4d064c182015c9f91e76a7a71c88595185a460aa3f99b5241a9a8a2d89c3",
+      "scope": "Reviewed exact21root/typed/writer/helper and original source bindings, no repetition"
+    },
+    "PROOF23": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-result/rows.json",
+      "bytes": 14851,
+      "sha256": "d26a30d8a4fd7e612a50d671376350fca1c5031995c0b04a9d2f9ae541a41ec7",
+      "scope": "Exact frozen installed-body/context lineage; closed23rooted-frontier facts and immutable22STOP"
+    },
+    "HELPER23": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-local/inspect.py",
+      "bytes": 30250,
+      "sha256": "84fb7de99a79dbcc233f6369c552c10663d649b511c27922090f356d42776c98",
+      "scope": "Exact frozen installed-body/context lineage; closed23rooted-frontier facts and immutable22STOP"
+    },
+    "STOP22": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-result/STOP-closeout.json",
+      "bytes": 1247,
+      "sha256": "f5864379b0659e2fffc64764d3416b0a18f6cedb698e14092582f9c0be1db5b4",
+      "scope": "Exact frozen installed-body/context lineage; closed23rooted-frontier facts and immutable22STOP"
+    },
+    "PROOF24": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-result/rows.json",
+      "bytes": 31510,
+      "sha256": "2d2cf55131c2be3d558b6557fc1760f23dcdd57ee8bf4bca5e9538434a22d40a",
+      "scope": "Closed24conditionalsetup/bufferbody lemma; exact same installedcache and source21bindings"
+    },
+    "HELPER24": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-local/inspect.py",
+      "bytes": 35114,
+      "sha256": "0e1e9368668e320242aa8bd4f5e4dbab91ae901f1f0710ae7c2efabd2b3945f2",
+      "scope": "Closed24conditionalsetup/bufferbody lemma; exact same installedcache and source21bindings"
+    },
+    "PROOF25": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-result/rows.json",
+      "bytes": 35977,
+      "sha256": "122e0858f3209af6a4231d159b4da5fddf8bc3caa53734d46764ed87cf7b0d48",
+      "scope": "Exact current retained executed recipe/source identity; body/order interpreted only under26window"
+    },
+    "MAIN_SOURCE": {
+      "path": ".build/contracts/p08-counter-wrapel2y/Main.swift",
+      "bytes": 276,
+      "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a",
+      "scope": "Exact current retained executed recipe/source identity; body/order interpreted only under26window"
+    }
+  },
+  "qualification": "Model-selected disposition applies only when model_examined=true, active group<=90 seconds and no errors; no allocator success/cost/cold/zero-heap claim",
+  "batch17_STOP_preserved": true
+}

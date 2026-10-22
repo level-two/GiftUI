@@ -1,0 +1,92 @@
+{
+  "result_path": ".build/contracts/p08-counter-ob4qm63e/result.json",
+  "result_bytes": 8548218,
+  "result_sha256": "855207e2a6ea836d965ce602079dbdfd138d570117eb14a4155b73554e7e4951",
+  "profile": "macos-static",
+  "records": 426,
+  "commands": 412,
+  "all_records_passed": true,
+  "collection_complete": true,
+  "passed": true,
+  "fresh_focused": false,
+  "exit_groups": {
+    "0": 218,
+    "1": 193,
+    "None": 14,
+    "-6": 1
+  },
+  "grouped_observations_not_standalone_exits": [
+    "so06-reuse-static-inventory-two-hosts",
+    "so06-reuse-static-control-same-address",
+    "so06-reuse-static-terminal-old-host",
+    "so06-reuse-static-raw-namespace-collision",
+    "so06-reuse-static-action-stale",
+    "so06-reuse-static-action-current",
+    "so06-reuse-static-input-stale",
+    "so06-reuse-static-input-current",
+    "so06-reuse-static-admission-stale",
+    "so06-reuse-static-admission-current",
+    "so06-reuse-static-source-stale",
+    "so06-reuse-static-source-current",
+    "so06-reuse-static-cleanup-backing-last",
+    "runtime-summary"
+  ],
+  "expected_fatal": [
+    "so06-native-exclusivity-negative-execute"
+  ],
+  "execution_banner": "P08 counter components assertions=1736320 failures=0",
+  "raw_execution_bytes": 611253,
+  "raw_execution_sha256": "f8c743c6a8b366c953dfd74a7d7371ba90639beaa01b081f7fb503031935b2b5",
+  "baseline_after_only240physical_address_tokens_substituted_equal": true,
+  "normalized_execution_sha256": "5bde586fa3572110ed1b343954bde71c6148a24352c248d4d666352001c17b81",
+  "source_joins": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "current_input_key": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "sha256": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "current_input_key": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "sha256": "77d67f4489042cdcdab24dc80eb1b05cc092e7d1273d49d82eb0fb1b35e78ef5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "current_input_key": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.o",
+      "bytes": 2594224,
+      "sha256": "7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846"
+    },
+    {
+      "path": ".build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.swiftmodule",
+      "bytes": 1553684,
+      "sha256": "dc47a0c3f91d4027983d33d984f183a63cbc7b02db1eb19da74c2114e184f3bb"
+    },
+    {
+      "path": ".build/contracts/p08-counter-ob4qm63e/Main.swift",
+      "bytes": 276,
+      "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a"
+    },
+    {
+      "path": ".build/contracts/p08-counter-ob4qm63e/counter",
+      "bytes": 6624072,
+      "sha256": "c2168ce0050718c62f20f5c9436e3dd2bd0facbe5933e193f38339a0ee31ce40"
+    }
+  ],
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "runtime_receipt_sha256": "49a133f3fac23fbe1244d8df73ce95af7e552cc9252b75bca818720c3c05cd90",
+  "host_receipt_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+  "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1",
+  "actual_terminal": {
+    "ended_utc": "2026-10-22T15:44:00.525966+00:00",
+    "exit": 0,
+    "elapsed_seconds": 9329.230712
+  },
+  "full_object_matches_focused_object": false,
+  "compiled_removal_scope": "Focused va__8qip object/SIL only; full ob4qm63e object has differentSHA. Fullfunctional/expectednegativepass and exactcurrentinput/compiler/dependencybindings proved; no transferof focusedmachineidentity/sitecount withoutactual comparison."
+}

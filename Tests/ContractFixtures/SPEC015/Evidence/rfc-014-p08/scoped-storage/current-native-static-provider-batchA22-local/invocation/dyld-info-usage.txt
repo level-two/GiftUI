@@ -1,0 +1,33 @@
+Usage: dyld_info <options>* <mach-o file>+ | -all_dir <dir> | -all_dyld_cache
+	-arch                       limit to specified architecture(s) (defaults to all architectures)
+	-platform                   print platform (default if no options specified)
+	-segments                   print segments (default if no options specified)
+	-linked_dylibs              print all dylibs this image links against (default if no options specified)
+	-inits                      print initializers
+	-fixups                     print locations dyld will rebase/bind
+	-exports                    print all exported symbols
+	-imports                    print all symbols needed from other dylibs
+	-objc                       print objc classes, categories, etc
+	-fixup_chains               print info about chain format and starts
+	-fixup_chain_details        print detailed info about every fixup in chain
+	-fixup_chain_header         print detailed info about the fixup chains header
+	-symbolic_fixups            print ranges of each atom of DATA with symbol name and fixups
+	-shared_region              print shared cache (split seg) info
+	-function_starts            print function starts information
+	-opcodes                    print opcodes information
+	-load_commands              print load commands
+	-uuid                       print UUID of binary
+	-function_variants          print info on function variants in binary
+	-dlopens                    print calls to dlopen() and the path used
+	-dlsyms                     print calls to dlsym() and the symbol name used
+	-disassemble                print all code sections using disassembler
+	-section <seg> <sect>       print content of section, formatted by section type
+	-all_sections               print content of all sections, formatted by section type
+	-section_bytes <seg> <sect> print content of section, as raw hex bytes
+	-all_sections_bytes         print content of all sections, formatted as raw hex bytes
+	-validate_only              only prints an malformedness about file(s)
+	-no_validate                don't check for malformedness about file(s)
+	-all_dir                    starting is specified directory, recurse to find all mach-o files
+	-all_dyld_cache             show specified info about all dylibs in the dyld cache
+	-lookup_va <va_hex>[,...]   symbolicate requested virtual addresses
+	-load_addr <va_hex>         specify binary load address to use with -lookup_va

@@ -1,0 +1,167 @@
+[
+  {
+    "path": "focused2-exit.json",
+    "bytes": 61,
+    "sha256": "c0dfd1fc6ea2a3fe92378c8ab3085e249961e8c46c780a8183131a841c71068d"
+  },
+  {
+    "path": "full-output-location.json",
+    "bytes": 205,
+    "sha256": "cfcbc904651317e771cfb59b928e886d8b84876d2be0d5cf64e39ed7673b21bd"
+  },
+  {
+    "path": "full-exit.json",
+    "bytes": 93,
+    "sha256": "de0832b3b751b0b1d917a62ed0f69b3f07b8e1b86df4044d3d9393943b46f285"
+  },
+  {
+    "path": "focused-start.json",
+    "bytes": 545,
+    "sha256": "d4b660ed75bd1a8fe1fd03f881fa74f6e24d53f16d1bb35ed528ea393821fa73"
+  },
+  {
+    "path": "current-source-identities.json",
+    "bytes": 986,
+    "sha256": "8618c50a7f5f69e964f5dd33835ac518943f0067a31896d1ecdc1b602f286cfe"
+  },
+  {
+    "path": "focused3-exit.json",
+    "bytes": 61,
+    "sha256": "d77d6508c3dc458cccc3e3d98cf06843b6892e9e599edb683f2c6a19fe4b44a9"
+  },
+  {
+    "path": "focused3-start.json",
+    "bytes": 545,
+    "sha256": "b14a649f15aeaa35f954fac5a8d81f4115fe714ed39cec38fac3ec94b7e5bc05"
+  },
+  {
+    "path": "focused3-capture.py",
+    "bytes": 1166,
+    "sha256": "32552e4ff8aeba52fcfa6c9c4b62d0a2a4a6891a5d51ba5751e1ebadca0a9e0c"
+  },
+  {
+    "path": "focused-output-comparison.json",
+    "bytes": 24282,
+    "sha256": "71e574c9614a304af4556b7017c7460d60c28705d2f7690fd049a09e5e737dd1"
+  },
+  {
+    "path": "focused-exit.json",
+    "bytes": 61,
+    "sha256": "e26ad015a321419a89def019b158cd8be657a339c22d86fcf166078447a84bb5"
+  },
+  {
+    "path": "final-format-check.json",
+    "bytes": 456,
+    "sha256": "4e1a7a9f02f237fd787f3f9ab552673bd79748c1c08796a74709297b5464ab69"
+  },
+  {
+    "path": "p07-exit.json",
+    "bytes": 61,
+    "sha256": "a8faacdecfb4cccabe2ee927edf63ccf85d322c4e86decf2896756e3045450ba"
+  },
+  {
+    "path": "p07-start.json",
+    "bytes": 447,
+    "sha256": "1a2a4fd9f806a7624ca4ad616399e71927cbb8881b2c88570318fb4db8599909"
+  },
+  {
+    "path": "p07-capture.py",
+    "bytes": 1064,
+    "sha256": "fc8f027a9f4d6d44c48ded2452cf521039051f28f63951e8644f76972578eda3"
+  },
+  {
+    "path": "full-capture.py",
+    "bytes": 1742,
+    "sha256": "32a938b92619db0a89a0661e7215f1988013f20ee0d2b5974d3379b29f9f853e"
+  },
+  {
+    "path": "full-start.json",
+    "bytes": 1912,
+    "sha256": "8b012e63ad15ce36c6a119fbdd4cd3ff19a7f620065c20ce133264d677d4643d"
+  },
+  {
+    "path": "focused2-capture.py",
+    "bytes": 1166,
+    "sha256": "328ef63b01b5b1fe312ffe1e6993687bec349cd338be736159d5f2679ce721f4"
+  },
+  {
+    "path": "focused2-start.json",
+    "bytes": 545,
+    "sha256": "47210e204ec5407f5eea398a6845fb4e0814c4328a5aade5f19c1afccef0f280"
+  },
+  {
+    "path": "format-control/PartialStream.c",
+    "bytes": 627,
+    "sha256": "9e48bb02e637875c7d2b29b6bdeb994920498b8c83fde3f15b32a19d1feb3a6c"
+  },
+  {
+    "path": "format-control/paired-controls.json",
+    "bytes": 1734,
+    "sha256": "a0dc59f9992662fada8cb437cc9ec270ad99c79b5e7874907372f986e6151f9e"
+  },
+  {
+    "path": "format-control/DiagnosticControl.swift",
+    "bytes": 97249,
+    "sha256": "39b7311a6ff1a2f1738574f0b99c41e12a658d9ee4afede1e802ce73ea7b45ba"
+  },
+  {
+    "path": "format-control/cases.json",
+    "bytes": 2842,
+    "sha256": "84862977aa32ea91185a5e9014546da79e1f4a2e3bee5d02f133f6483737a37f"
+  },
+  {
+    "path": "format-control/run-controls.py",
+    "bytes": 2694,
+    "sha256": "3abdd9f3215b17a24587f8a2444764c2dd1cf3779b19a403978dacf54efa7339"
+  },
+  {
+    "path": "compiler-evidence/exit.json",
+    "bytes": 55,
+    "sha256": "cb86237d54cc30bec54926db5d8bbdeebb3036ad8f45e1e623113612b0f9401c"
+  },
+  {
+    "path": "compiler-evidence/selected-trace-functions.sil.txt",
+    "bytes": 1101907,
+    "sha256": "bcd4c025296aae802c04b03ce78d4214448f31e5d0e70ae95abfebe45622ae69"
+  },
+  {
+    "path": "compiler-evidence/assess.py",
+    "bytes": 5544,
+    "sha256": "f00aea9309329a7aacffb21e675a8b8861a79aba1ffc2504bf6211daf27cdb9d"
+  },
+  {
+    "path": "compiler-evidence/start.json",
+    "bytes": 6115,
+    "sha256": "3bf547675e0954f2fb4f679fdd23c0cc6e22bd3f72e7b44e6a201a4079ada2e7"
+  },
+  {
+    "path": "compiler-evidence/compile.py",
+    "bytes": 524,
+    "sha256": "82c8f78faeea572ac19b2cde239422dace61dd0d0fc4f7cf4c32d245b5ebe899"
+  },
+  {
+    "path": "compiler-evidence/sil-assessment.json",
+    "bytes": 41350,
+    "sha256": "2a2a09127022262e21bfbfbd5f0f0ad6710a576a868feb0e0f5ad6fb98a9d0f9"
+  },
+  {
+    "path": "compiler-evidence/argv.json",
+    "bytes": 5896,
+    "sha256": "6f200090f49a0c1ca78105dc07f1174010f75cf3cc3f70718b5015320c2de2cb"
+  },
+  {
+    "path": "compiler-evidence/construction-caller-reconciliation.json",
+    "bytes": 8721,
+    "sha256": "a308d3913990811ed765628ca7a1a592d25fa186f4cf281df1a67e8dbf476ddf"
+  },
+  {
+    "path": "compiler-evidence/machine-reconciliation.json",
+    "bytes": 43079,
+    "sha256": "17b27bdca15640a0aff9916b0cf289ea743f92f4fdbc109381470fd6ec1bb56c"
+  },
+  {
+    "path": "compiler-evidence/construction-caller-excerpts.txt",
+    "bytes": 206410,
+    "sha256": "01246a753fae3afc056cc47ca03a1d05c436f10edf96e55ef7a296c715c5e40b"
+  }
+]

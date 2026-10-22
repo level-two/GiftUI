@@ -1,0 +1,32 @@
+{
+  "actual_outcome": "STOP BEFORE MODEL CONTEXT EMISSION",
+  "exact_error": [
+    "RuntimeError: checked payload exceeds reserved transcript"
+  ],
+  "group_model_examined": false,
+  "group_seconds": 10.105069,
+  "processing": 496291595,
+  "transcript": 567,
+  "output_upper": 2538527,
+  "acquisition_start": "2026-10-22T11:58:07.797573+00:00",
+  "session_start": "2026-10-22T12:05:20.485339+00:00",
+  "finish": "2026-10-22T12:05:43.415201+00:00",
+  "known_acquisition_to_finish_seconds": 455.617628,
+  "pre_record_work": "not separately timed; no whole campaign certification",
+  "provider_packet_lower_bound_bytes": 13209,
+  "whole_exchange_lower_bound": 14049,
+  "function_serialized_instruction_byte_sizes": {
+    "_putchar": 823,
+    "_fputc": 738,
+    "_putc": 753,
+    "_putc_unlocked": 348,
+    "___swbuf": 1474,
+    "___smakebuf": 4336,
+    "___sinit": 814
+  },
+  "exact_original_input_slices_bytes": 1078930,
+  "preauth_metadata_opaque_read_bytes": 3773958,
+  "session_preflight_conservative_processing_charge": 16777216,
+  "no_runtime_compiler_or_new_source_change": true,
+  "closeout": "Structural metadata/byte lengths only after terminal; provider bodies remain model-unexamined; no complete post-terminal aggregate certification"
+}

@@ -1,0 +1,68 @@
+{
+  "compilations": [
+    {
+      "variant": "bounded",
+      "exit": 0
+    },
+    {
+      "variant": "reference",
+      "exit": 0
+    }
+  ],
+  "comparisons": [
+    {
+      "mode": "buffered",
+      "exits": {
+        "bounded": 0,
+        "reference": 0
+      },
+      "stdout_equal": true,
+      "stderr_equal": true,
+      "stdout_bytes": 153529,
+      "rows": 68,
+      "continuation_marker": true,
+      "stdout_sha256": "3a771fcb5ef05b84ae1266c546f47220e8f7e7a0d0454edd82122469e66dcc08"
+    },
+    {
+      "mode": "unbuffered",
+      "exits": {
+        "bounded": 0,
+        "reference": 0
+      },
+      "stdout_equal": true,
+      "stderr_equal": true,
+      "stdout_bytes": 153529,
+      "rows": 68,
+      "continuation_marker": true,
+      "stdout_sha256": "3a771fcb5ef05b84ae1266c546f47220e8f7e7a0d0454edd82122469e66dcc08"
+    },
+    {
+      "mode": "closed",
+      "exits": {
+        "bounded": 0,
+        "reference": 0
+      },
+      "stdout_equal": true,
+      "stderr_equal": true,
+      "stdout_bytes": 0,
+      "rows": 0,
+      "continuation_marker": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "mode": "partial",
+      "exits": {
+        "bounded": 0,
+        "reference": 0
+      },
+      "stdout_equal": true,
+      "stderr_equal": true,
+      "stdout_bytes": 4096,
+      "rows": 15,
+      "continuation_marker": true,
+      "stdout_sha256": "71261e04ceec4709e2ba6fdd232e22cac950651aa2a15b6494a8f6be18e8ee55"
+    }
+  ],
+  "source_sha256": "39b7311a6ff1a2f1738574f0b99c41e12a658d9ee4afede1e802ce73ea7b45ba",
+  "failure_scope": "closedfd and deterministic4096-byte prefix then ENOSPC, no arbitrary intermittent/concurrentatomicity guarantee"
+}

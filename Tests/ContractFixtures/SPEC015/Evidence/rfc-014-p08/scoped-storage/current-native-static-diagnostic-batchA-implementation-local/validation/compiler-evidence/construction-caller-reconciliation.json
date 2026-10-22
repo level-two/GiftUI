@@ -1,0 +1,241 @@
+[
+  {
+    "version": "before",
+    "SIL": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/counter.sil",
+    "functions": [
+      {
+        "symbol": "$s17P08CounterRuntime13p08ReuseLabel33_480B1BD841D053AE4FCDC18507668536LLyys12StaticStringV_AEtF",
+        "first_line": 339866,
+        "context": [
+          "  %21 = struct_element_addr %0, #P08HostReuseTranscript.semanticRevision // user: %22",
+          "  store %20 to %21                                // id: %22",
+          "  %23 = tuple ()                                  // user: %24",
+          "  return %23                                      // id: %24",
+          "} // end sil function '$s17P08CounterRuntime0A19HostReuseTranscript33_480B1BD841D053AE4FCDC18507668536LLV23endRetainedObservationsyyF'",
+          "",
+          "// p08ReuseLabel(_:_:)",
+          "// Isolation: unspecified"
+        ],
+        "alloc_ref": [
+          339876
+        ],
+        "Any_array": [
+          339876,
+          339938,
+          339950,
+          339951
+        ],
+        "print_refs": [
+          339950
+        ],
+        "diagnostic_refs": [],
+        "labels": [],
+        "last_line": 339955
+      },
+      {
+        "symbol": "$s17P08CounterRuntime23p08VerifyRoleTranscript33_480B1BD841D053AE4FCDC18507668536LLySiAA0afG0ACLLVF",
+        "first_line": 409002,
+        "context": [
+          "  dealloc_stack %3                                // id: %8",
+          "  %9 = load %2                                    // user: %11",
+          "  dealloc_stack %2                                // id: %10",
+          "  return %9                                       // id: %11",
+          "} // end sil function '$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE15committedRecord3forAA011BoundActionH0Vy0A14UISemanticCore24SemanticCompleteIdentityVGSgAJ_tF'",
+          "",
+          "// p08VerifyRoleTranscript(_:)",
+          "// Isolation: unspecified"
+        ],
+        "alloc_ref": [
+          409147
+        ],
+        "Any_array": [
+          409147,
+          409250,
+          409264,
+          409265
+        ],
+        "print_refs": [
+          409264
+        ],
+        "diagnostic_refs": [],
+        "labels": [],
+        "last_line": 409283
+      },
+      {
+        "symbol": "$s17P08CounterRuntime03p08B11CoordinatorSiyF",
+        "first_line": 524808,
+        "context": [
+          "  destroy_addr %2                                 // id: %23",
+          "  destroy_addr %22                                // id: %24",
+          "  %25 = tuple ()                                  // user: %26",
+          "  return %25                                      // id: %26",
+          "} // end sil function '$s19GiftUIRuntimeStatic0C27RuntimeExecutionCoordinatorVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE23takeQuiescedOpportunityq0_SgyF'",
+          "",
+          "// p08CounterCoordinator()",
+          "// Isolation: unspecified"
+        ],
+        "alloc_ref": [
+          524832,
+          524912
+        ],
+        "Any_array": [
+          524832,
+          524867,
+          524880,
+          524881,
+          524912,
+          524938,
+          524939
+        ],
+        "print_refs": [
+          524880
+        ],
+        "diagnostic_refs": [],
+        "labels": [
+          {
+            "label": "counter static audit",
+            "line": 524841
+          },
+          {
+            "label": "counter dynamic audit",
+            "line": 524917
+          }
+        ],
+        "last_line": 524997
+      }
+    ]
+  },
+  {
+    "version": "after",
+    "SIL": ".build/contracts/p08-native-static-diagnostic-batchA/compiler-evidence/counter.sil",
+    "functions": [
+      {
+        "symbol": "$s17P08CounterRuntime22counterDiagnosticReuseyys12StaticStringV_ADtF",
+        "first_line": 339874,
+        "context": [
+          "  %21 = struct_element_addr %0, #P08HostReuseTranscript.semanticRevision // user: %22",
+          "  store %20 to %21                                // id: %22",
+          "  %23 = tuple ()                                  // user: %24",
+          "  return %23                                      // id: %24",
+          "} // end sil function '$s17P08CounterRuntime0A19HostReuseTranscript33_480B1BD841D053AE4FCDC18507668536LLV23endRetainedObservationsyyF'",
+          "",
+          "// counterDiagnosticReuse(_:_:)",
+          "// Isolation: unspecified"
+        ],
+        "alloc_ref": [],
+        "Any_array": [],
+        "print_refs": [],
+        "diagnostic_refs": [],
+        "labels": [
+          {
+            "label": "so06-reuse-",
+            "line": 339881
+          }
+        ],
+        "last_line": 340013
+      },
+      {
+        "symbol": "$s17P08CounterRuntime23p08VerifyRoleTranscript33_480B1BD841D053AE4FCDC18507668536LLySiAA0afG0ACLLVF",
+        "first_line": 409112,
+        "context": [
+          "  dealloc_stack %3                                // id: %8",
+          "  %9 = load %2                                    // user: %11",
+          "  dealloc_stack %2                                // id: %10",
+          "  return %9                                       // id: %11",
+          "} // end sil function '$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE15committedRecord3forAA011BoundActionH0Vy0A14UISemanticCore24SemanticCompleteIdentityVGSgAJ_tF'",
+          "",
+          "// p08VerifyRoleTranscript(_:)",
+          "// Isolation: unspecified"
+        ],
+        "alloc_ref": [],
+        "Any_array": [],
+        "print_refs": [],
+        "diagnostic_refs": [],
+        "labels": [
+          {
+            "label": "SO06 role",
+            "line": 409291
+          }
+        ],
+        "last_line": 409794
+      },
+      {
+        "symbol": "$s17P08CounterRuntime21counterDiagnosticRoleyys5UInt8V_ADSus6UInt16VSiADSuAFSiA2DtF",
+        "first_line": 409798,
+        "context": [
+          "  %495 = tuple_extract %493, 1                    // user: %496",
+          "  cond_fail %495, \"arithmetic overflow\"           // id: %496",
+          "  %497 = struct $Int (%494)                       // user: %498",
+          "  return %497                                     // id: %498",
+          "} // end sil function '$s17P08CounterRuntime23p08VerifyRoleTranscript33_480B1BD841D053AE4FCDC18507668536LLySiAA0afG0ACLLVF'",
+          "",
+          "// counterDiagnosticRole(_:_:_:_:_:_:_:_:_:_:_:)",
+          "// Isolation: unspecified"
+        ],
+        "alloc_ref": [],
+        "Any_array": [],
+        "print_refs": [],
+        "diagnostic_refs": [],
+        "labels": [
+          {
+            "label": "SO06 role",
+            "line": 409823
+          }
+        ],
+        "last_line": 410326
+      },
+      {
+        "symbol": "$s17P08CounterRuntime22counterDiagnosticAudityys12StaticStringV_17GiftUIRuntimeCore0C23ProfileValidationResultOtF",
+        "first_line": 495092,
+        "context": [
+          "  br bb15                                         // id: %94",
+          "",
+          "bb18:                                             // Preds: bb16",
+          "  br bb16(%84)                                    // id: %95",
+          "} // end sil function '$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy15GiftUIExecution25ExecutionAdmissionOutcomeVF'",
+          "",
+          "// counterDiagnosticAudit(_:_:)",
+          "// Isolation: unspecified"
+        ],
+        "alloc_ref": [],
+        "Any_array": [],
+        "print_refs": [],
+        "diagnostic_refs": [],
+        "labels": [],
+        "last_line": 495660
+      },
+      {
+        "symbol": "$s17P08CounterRuntime03p08B11CoordinatorSiyF",
+        "first_line": 529759,
+        "context": [
+          "  destroy_addr %2                                 // id: %23",
+          "  destroy_addr %22                                // id: %24",
+          "  %25 = tuple ()                                  // user: %26",
+          "  return %25                                      // id: %26",
+          "} // end sil function '$s19GiftUIRuntimeStatic0C27RuntimeExecutionCoordinatorVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE23takeQuiescedOpportunityq0_SgyF'",
+          "",
+          "// p08CounterCoordinator()",
+          "// Isolation: unspecified"
+        ],
+        "alloc_ref": [],
+        "Any_array": [],
+        "print_refs": [],
+        "diagnostic_refs": [
+          529785,
+          529786
+        ],
+        "labels": [
+          {
+            "label": "counter static audit",
+            "line": 529780
+          },
+          {
+            "label": "counter dynamic audit",
+            "line": 529818
+          }
+        ],
+        "last_line": 529880
+      }
+    ]
+  }
+]

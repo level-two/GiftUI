@@ -1,0 +1,313 @@
+_setbuf /usr/lib/system/libsystem_c.dylib uuid=d77ceb62aff63cecba9b4f057fbe2eb5 bytesSHA=ee43940a5869929f96ab0b09a7dd94173ae8f4177a22ca5ef2bc09bd6c23401d
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local/provider-_setbuf.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001803edc00 <__text>:
+1803edc00:     	cmp	x1, #0x0
+1803edc04:     	mov	w8, #0x2                ; =2
+1803edc08:     	csel	w2, w8, wzr, eq
+1803edc0c:     	mov	w3, #0x400              ; =1024
+1803edc10:     	b	0x1803b68fc
+
+
+_setvbuf /usr/lib/system/libsystem_c.dylib uuid=d77ceb62aff63cecba9b4f057fbe2eb5 bytesSHA=57537987ac98960993879e5078ae88e49a586d97f45e8d498f5a13ae43d7e081
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local/provider-_setvbuf.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001803b68fc <__text>:
+1803b68fc:     	pacibsp
+1803b6900:     	sub	sp, sp, #0x60
+1803b6904:     	stp	x26, x25, [sp, #0x10]
+1803b6908:     	stp	x24, x23, [sp, #0x20]
+1803b690c:     	stp	x22, x21, [sp, #0x30]
+1803b6910:     	stp	x20, x19, [sp, #0x40]
+1803b6914:     	stp	x29, x30, [sp, #0x50]
+1803b6918:     	add	x29, sp, #0x50
+1803b691c:     	mov	x22, x3
+1803b6920:     	mov	x20, x2
+1803b6924:     	mov	x21, x1
+1803b6928:     	mov	x19, x0
+1803b692c:     	cmp	w2, #0x2
+1803b6930:     	b.eq	0x1803b6944 <__text+0x48>
+1803b6934:     	mov	w23, #-0x1              ; =-1
+1803b6938:     	cmp	w20, #0x1
+1803b693c:     	b.hi	0x1803b6b08 <__text+0x20c>
+1803b6940:     	tbnz	w22, #0x1f, 0x1803b6b08 <__text+0x20c>
+1803b6944:     	adrp	x24, 0x1ea474000 <__text+0x6a0bd704>
+1803b6948:     	add	x24, x24, #0xd00
+1803b694c:     	mov	x23, x24
+1803b6950:     	ldr	x8, [x23, #0x20]!
+1803b6954:     	cbz	x8, 0x1803b69cc <__text+0xd0>
+1803b6958:     	movk	x23, #0x723d, lsl #48
+1803b695c:     	mov	x16, x8
+1803b6960:     	mov	x17, x23
+1803b6964:     	autia	x16, x17
+1803b6968:     	mov	x17, x16
+1803b696c:     	xpaci	x17
+1803b6970:     	cmp	x16, x17
+1803b6974:     	b.eq	0x1803b697c <__text+0x80>
+1803b6978:     	brk	#0xc470
+1803b697c:     	paciza	x16
+1803b6980:     	cbz	x16, 0x1803b6998 <__text+0x9c>
+1803b6984:     	mov	x0, x19
+1803b6988:     	mov	w1, #0x98               ; =152
+1803b698c:     	blraa	x8, x23
+1803b6990:     	ldr	x8, [x24, #0x20]
+1803b6994:     	cbz	x8, 0x1803b69cc <__text+0xd0>
+1803b6998:     	mov	x16, x8
+1803b699c:     	mov	x17, x23
+1803b69a0:     	autia	x16, x17
+1803b69a4:     	mov	x17, x16
+1803b69a8:     	xpaci	x17
+1803b69ac:     	cmp	x16, x17
+1803b69b0:     	b.eq	0x1803b69b8 <__text+0xbc>
+1803b69b4:     	brk	#0xc470
+1803b69b8:     	paciza	x16
+1803b69bc:     	cbz	x16, 0x1803b69cc <__text+0xd0>
+1803b69c0:     	mov	x0, x21
+1803b69c4:     	mov	x1, x22
+1803b69c8:     	blraa	x8, x23
+1803b69cc:     	mov	x0, x19
+1803b69d0:     	bl	0x18039d1e0
+1803b69d4:     	mov	x0, x19
+1803b69d8:     	bl	0x18039d21c
+1803b69dc:     	ldr	x0, [x19, #0x58]
+1803b69e0:     	cbz	x0, 0x1803b69f8 <__text+0xfc>
+1803b69e4:     	add	x8, x19, #0x74
+1803b69e8:     	cmp	x0, x8
+1803b69ec:     	b.eq	0x1803b69f4 <__text+0xf8>
+1803b69f0:     	bl	0x180406920 <__text+0x50024>
+1803b69f4:     	str	xzr, [x19, #0x58]
+1803b69f8:     	str	wzr, [x19, #0x28]
+1803b69fc:     	str	wzr, [x19, #0x8]
+1803b6a00:     	ldrh	w23, [x19, #0x10]
+1803b6a04:     	tbz	w23, #0x7, 0x1803b6a10 <__text+0x114>
+1803b6a08:     	ldr	x0, [x19, #0x18]
+1803b6a0c:     	bl	0x180406920 <__text+0x50024>
+1803b6a10:     	str	xzr, [sp, #0x8]
+1803b6a14:     	str	wzr, [sp, #0x4]
+1803b6a18:     	mov	w8, #0xe35c             ; =58204
+1803b6a1c:     	and	w25, w23, w8
+1803b6a20:     	cmp	w20, #0x2
+1803b6a24:     	b.ne	0x1803b6a50 <__text+0x154>
+1803b6a28:     	mov	w23, #0x0               ; =0
+1803b6a2c:     	orr	w8, w25, #0x2
+1803b6a30:     	strh	w8, [x19, #0x10]
+1803b6a34:     	str	wzr, [x19, #0xc]
+1803b6a38:     	add	x8, x19, #0x77
+1803b6a3c:     	str	x8, [x19]
+1803b6a40:     	str	x8, [x19, #0x18]
+1803b6a44:     	mov	w8, #0x1                ; =1
+1803b6a48:     	str	w8, [x19, #0x20]
+1803b6a4c:     	b	0x1803b6b00 <__text+0x204>
+1803b6a50:     	add	x1, sp, #0x8
+1803b6a54:     	add	x2, sp, #0x4
+1803b6a58:     	mov	x0, x19
+1803b6a5c:     	bl	0x1803a1860
+1803b6a60:     	orr	w25, w0, w25
+1803b6a64:     	ldr	x8, [sp, #0x8]
+1803b6a68:     	cmp	x22, #0x0
+1803b6a6c:     	csel	x24, x8, x22, eq
+1803b6a70:     	cbz	x21, 0x1803b6a80 <__text+0x184>
+1803b6a74:     	cbz	x22, 0x1803b6a80 <__text+0x184>
+1803b6a78:     	mov	w23, #0x0               ; =0
+1803b6a7c:     	b	0x1803b6aa4 <__text+0x1a8>
+1803b6a80:     	mov	x0, x24
+1803b6a84:     	mov	w1, #0x18a4             ; =6308
+1803b6a88:     	movk	w1, #0xb8f5, lsl #16
+1803b6a8c:     	bl	0x180406c20 <__text+0x50324>
+1803b6a90:     	cbz	x0, 0x1803b6b28 <__text+0x22c>
+1803b6a94:     	mov	x21, x0
+1803b6a98:     	mov	w23, #0x0               ; =0
+1803b6a9c:     	orr	w25, w25, #0x80
+1803b6aa0:     	ldr	x8, [sp, #0x8]
+1803b6aa4:     	orr	w9, w25, #0x800
+1803b6aa8:     	cmp	x24, x8
+1803b6aac:     	csel	w9, w25, w9, eq
+1803b6ab0:     	cmp	w20, #0x1
+1803b6ab4:     	cset	w8, eq
+1803b6ab8:     	orr	w8, w9, w8
+1803b6abc:     	strh	w8, [x19, #0x10]
+1803b6ac0:     	str	x21, [x19]
+1803b6ac4:     	str	x21, [x19, #0x18]
+1803b6ac8:     	str	w24, [x19, #0x20]
+1803b6acc:     	tbnz	w9, #0x3, 0x1803b6ad8 <__text+0x1dc>
+1803b6ad0:     	str	wzr, [x19, #0xc]
+1803b6ad4:     	b	0x1803b6af0 <__text+0x1f4>
+1803b6ad8:     	tbnz	w8, #0x0, 0x1803b6ae4 <__text+0x1e8>
+1803b6adc:     	str	w24, [x19, #0xc]
+1803b6ae0:     	b	0x1803b6af0 <__text+0x1f4>
+1803b6ae4:     	str	wzr, [x19, #0xc]
+1803b6ae8:     	neg	w8, w24
+1803b6aec:     	str	w8, [x19, #0x28]
+1803b6af0:     	adrp	x8, 0x1ecf48000 <__text+0x6cb91704>
+1803b6af4:     	add	x8, x8, #0x4c0
+1803b6af8:     	mov	w9, #0x1                ; =1
+1803b6afc:     	str	w9, [x8]
+1803b6b00:     	mov	x0, x19
+1803b6b04:     	bl	0x18039d38c
+1803b6b08:     	mov	x0, x23
+1803b6b0c:     	ldp	x29, x30, [sp, #0x50]
+1803b6b10:     	ldp	x20, x19, [sp, #0x40]
+1803b6b14:     	ldp	x22, x21, [sp, #0x30]
+1803b6b18:     	ldp	x24, x23, [sp, #0x20]
+1803b6b1c:     	ldp	x26, x25, [sp, #0x10]
+1803b6b20:     	add	sp, sp, #0x60
+1803b6b24:     	retab
+1803b6b28:     	ldr	x22, [sp, #0x8]
+1803b6b2c:     	cmp	x24, x22
+1803b6b30:     	b.ne	0x1803b6b3c <__text+0x240>
+1803b6b34:     	mov	w23, #-0x1              ; =-1
+1803b6b38:     	b	0x1803b6a2c <__text+0x130>
+1803b6b3c:     	mov	x0, x22
+1803b6b40:     	mov	w1, #0x45de             ; =17886
+1803b6b44:     	movk	w1, #0xca07, lsl #16
+1803b6b48:     	bl	0x180406c20 <__text+0x50324>
+1803b6b4c:     	mov	x21, x0
+1803b6b50:     	mov	w23, #-0x1              ; =-1
+1803b6b54:     	mov	x24, x22
+1803b6b58:     	cbz	x0, 0x1803b6a2c <__text+0x130>
+1803b6b5c:     	b	0x1803b6a9c <__text+0x1a0>
+
+
+ACTUAL EXECUTED MAIN
+import P08CounterRuntime
+import Darwin
+@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\(p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()) failures=0") } }
+
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wrapel2y/counter:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000100000ce8 <_$s7counter4MainV4mainyyFZ>:
+100000ce8:     	sub	sp, sp, #0x50
+100000cec:     	stp	x22, x21, [sp, #0x20]
+100000cf0:     	stp	x20, x19, [sp, #0x30]
+100000cf4:     	stp	x29, x30, [sp, #0x40]
+100000cf8:     	add	x29, sp, #0x40
+100000cfc:     	bl	0x1001d9f48 <_swift_willThrowTypedImpl+0x1001d9f48>
+100000d00:     	mov	x1, #0x0                ; =0
+100000d04:     	bl	0x1001da1e8 <_swift_willThrowTypedImpl+0x1001da1e8>
+100000d08:     	adrp	x0, 0x10028c000 <__IVARS__TtC20GiftUIRuntimeDynamic29DynamicObservableModelStorage>
+100000d0c:     	add	x0, x0, #0x1f8
+100000d10:     	bl	0x100000e5c <___swift_instantiateConcreteTypeFromMangledName>
+100000d14:     	mov	w1, #0x40               ; =64
+100000d18:     	mov	w2, #0x7                ; =7
+100000d1c:     	bl	0x1001da200 <_swift_willThrowTypedImpl+0x1001da200>
+100000d20:     	mov	x19, x0
+100000d24:     	adrp	x8, 0x1001da000 <_swift_willThrowTypedImpl+0x1001da000>
+100000d28:     	ldr	q0, [x8, #0x420]
+100000d2c:     	str	q0, [x0, #0x10]
+100000d30:     	mov	x8, #-0x2000000000000000 ; =-2305843009213693952
+100000d34:     	stp	xzr, x8, [sp, #0x10]
+100000d38:     	add	x20, sp, #0x10
+100000d3c:     	mov	w0, #0x2f               ; =47
+100000d40:     	bl	0x1001da080 <_swift_willThrowTypedImpl+0x1001da080>
+100000d44:     	ldr	x0, [sp, #0x18]
+100000d48:     	bl	0x1001da230 <_swift_willThrowTypedImpl+0x1001da230>
+100000d4c:     	adrp	x8, 0x1001fc000 <_symbolic Spy_____y_____GG___________t 17P08CounterRuntime30StaticTwoInteractionHitStorageV 18GiftUISemanticCore24SemanticCompleteIdentityV AA0A16InitializedEntry33_480B1BD841D053AE4FCDC18507668536LLV s6UInt16V+0x16>
+100000d50:     	add	x8, x8, #0x130
+100000d54:     	sub	x8, x8, #0x20
+100000d58:     	orr	x8, x8, #0x8000000000000000
+100000d5c:     	mov	x9, #0x22               ; =34
+100000d60:     	movk	x9, #0xd000, lsl #48
+100000d64:     	stp	x9, x8, [sp, #0x10]
+100000d68:     	mov	x0, #0x0                ; =0
+100000d6c:     	mov	x1, #0x0                ; =0
+100000d70:     	mov	x2, #0x0                ; =0
+100000d74:     	mov	w3, #0x1                ; =1
+100000d78:     	bl	0x1001abcf8 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF>
+100000d7c:     	mov	x20, x0
+100000d80:     	bl	0x100116dc4 <_$s17P08CounterRuntime03p08B5ModelSiyF>
+100000d84:     	adds	x20, x20, x0
+100000d88:     	b.vs	0x100000e4c <_$s7counter4MainV4mainyyFZ+0x164>
+100000d8c:     	bl	0x10011e26c <_$s17P08CounterRuntime03p08B8SemanticSiyF>
+100000d90:     	adds	x20, x20, x0
+100000d94:     	b.vs	0x100000e50 <_$s7counter4MainV4mainyyFZ+0x168>
+100000d98:     	bl	0x100125af4 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF>
+100000d9c:     	adds	x20, x20, x0
+100000da0:     	b.vs	0x100000e54 <_$s7counter4MainV4mainyyFZ+0x16c>
+100000da4:     	bl	0x10019ac88 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF>
+100000da8:     	adds	x8, x20, x0
+100000dac:     	b.vs	0x100000e58 <_$s7counter4MainV4mainyyFZ+0x170>
+100000db0:     	str	x8, [sp, #0x8]
+100000db4:     	adrp	x0, 0x10025c000 <_swift_willThrowTypedImpl+0x10025c000>
+100000db8:     	ldr	x0, [x0, #0x680]
+100000dbc:     	adrp	x1, 0x10025c000 <_swift_willThrowTypedImpl+0x10025c000>
+100000dc0:     	ldr	x1, [x1, #0x688]
+100000dc4:     	add	x20, sp, #0x8
+100000dc8:     	bl	0x1001da0a4 <_swift_willThrowTypedImpl+0x1001da0a4>
+100000dcc:     	mov	x21, x1
+100000dd0:     	add	x20, sp, #0x10
+100000dd4:     	bl	0x1001d9f60 <_swift_willThrowTypedImpl+0x1001d9f60>
+100000dd8:     	mov	x0, x21
+100000ddc:     	bl	0x1001da230 <_swift_willThrowTypedImpl+0x1001da230>
+100000de0:     	mov	x0, #0x6620             ; =26144
+100000de4:     	movk	x0, #0x6961, lsl #16
+100000de8:     	movk	x0, #0x756c, lsl #32
+100000dec:     	movk	x0, #0x6572, lsl #48
+100000df0:     	mov	x1, #0x3d73             ; =15731
+100000df4:     	movk	x1, #0x30, lsl #16
+100000df8:     	movk	x1, #0xeb00, lsl #48
+100000dfc:     	add	x20, sp, #0x10
+100000e00:     	bl	0x1001d9f60 <_swift_willThrowTypedImpl+0x1001d9f60>
+100000e04:     	ldp	x8, x9, [sp, #0x10]
+100000e08:     	adrp	x10, 0x10025c000 <_swift_willThrowTypedImpl+0x10025c000>
+100000e0c:     	ldr	x10, [x10, #0x5d0]
+100000e10:     	str	x10, [x19, #0x38]
+100000e14:     	stp	x8, x9, [x19, #0x20]
+100000e18:     	mov	x0, x19
+100000e1c:     	mov	w1, #0x20               ; =32
+100000e20:     	mov	x2, #-0x1f00000000000000 ; =-2233785415175766016
+100000e24:     	mov	w3, #0xa                ; =10
+100000e28:     	mov	x4, #-0x1f00000000000000 ; =-2233785415175766016
+100000e2c:     	bl	0x1001da0f8 <_swift_willThrowTypedImpl+0x1001da0f8>
+100000e30:     	mov	x0, x19
+100000e34:     	bl	0x1001da3c8 <_swift_willThrowTypedImpl+0x1001da3c8>
+100000e38:     	ldp	x29, x30, [sp, #0x40]
+100000e3c:     	ldp	x20, x19, [sp, #0x30]
+100000e40:     	ldp	x22, x21, [sp, #0x20]
+100000e44:     	add	sp, sp, #0x50
+100000e48:     	ret
+100000e4c:     	brk	#0x1
+100000e50:     	brk	#0x1
+100000e54:     	brk	#0x1
+100000e58:     	brk	#0x1
+
+0000000100000e5c <___swift_instantiateConcreteTypeFromMangledName>:
+100000e5c:     	stp	x20, x19, [sp, #-0x20]!
+100000e60:     	stp	x29, x30, [sp, #0x10]
+100000e64:     	add	x29, sp, #0x10
+100000e68:     	mov	x19, x0
+100000e6c:     	ldr	x0, [x0]
+100000e70:     	tbnz	x0, #0x3f, 0x100000e80 <___swift_instantiateConcreteTypeFromMangledName+0x24>
+100000e74:     	ldp	x29, x30, [sp, #0x10]
+100000e78:     	ldp	x20, x19, [sp], #0x20
+100000e7c:     	ret
+100000e80:     	neg	x1, x0, asr #32
+100000e84:     	add	x0, x19, w0, sxtw
+100000e88:     	mov	x2, #0x0                ; =0
+100000e8c:     	mov	x3, #0x0                ; =0
+100000e90:     	bl	0x1001da35c <_swift_willThrowTypedImpl+0x1001da35c>
+100000e94:     	str	x0, [x19]
+100000e98:     	b	0x100000e74 <___swift_instantiateConcreteTypeFromMangledName+0x18>
+
+0000000100000e9c <_$s7counter4MainV5$mainyyFZ>:
+100000e9c:     	b	0x100000ce8 <_$s7counter4MainV4mainyyFZ>
+
+0000000100000ea0 <_$s7counter4MainVACycfC>:
+100000ea0:     	ret
+
+0000000100000ea4 <_main>:
+100000ea4:     	stp	x29, x30, [sp, #-0x10]!
+100000ea8:     	mov	x29, sp
+100000eac:     	bl	0x100000ce8 <_$s7counter4MainV4mainyyFZ>
+100000eb0:     	mov	w0, #0x0                ; =0
+100000eb4:     	ldp	x29, x30, [sp], #0x10
+100000eb8:     	ret
+

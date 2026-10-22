@@ -1,0 +1,4 @@
+{"s":"AUTH"}
+{"s":"STOP","error":"RuntimeError: checked payload exceeds reserved transcript"}
+{"s":"CLOSED","sec":10.105069}
+{"s":"PRESERVED"}

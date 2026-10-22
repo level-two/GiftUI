@@ -1,0 +1,1199 @@
+{
+  "started_utc": "2026-10-22T12:18:55.778865+00:00",
+  "used": 490343976,
+  "charges": {
+    "refresh_control": 50992,
+    "stop_capture_write_processing_escrow": 32768,
+    "file_delivery_source_alias_read_decode_hash": 29380,
+    "script_prepare_interpreter_hash": 429876,
+    "preflight_code_orientation_upper_charge": 8388608,
+    "request_plan_read_write": 7976,
+    "startup_capture_and_wrapper": 20080,
+    "metadata": 730501,
+    "control_read": 2076770,
+    "control_git": 2125922,
+    "evidence_auth": 126694715,
+    "git_auth": 127026747,
+    "preservation_auth": 906177,
+    "current_refresh_auth": 39248432,
+    "preservation_metadata": 3500,
+    "cache_metadata": 2120,
+    "diff_base": 299136,
+    "diff_payload": 218314,
+    "diff_stdout": 18652,
+    "provider_descriptor_auth": 1660642,
+    "installed_provider_exact_extent_read_hash": 11624468,
+    "payload_write_capture_forward": 21936,
+    "state_write": 132684,
+    "provider_descriptor_decode": 830321,
+    "provider_export_parse_processing": 181134,
+    "provider_projection_write": 38292,
+    "selected_provider_decoder_read": 12764,
+    "provider_decoder_output_processing": 16467,
+    "provider_raw_context_write": 17967,
+    "final_evidence_hash": 126694715,
+    "final_preservation_hash": 906177,
+    "final_current_refresh_auth": 39248432,
+    "final_capture_snapshot_metadata_write_upper": 524288,
+    "final_context_reuse": 5989,
+    "semantic_result_write": 117034
+  },
+  "transcript_payload_bytes": 5908,
+  "groups": {
+    "U02-X28": {
+      "started_utc": "2026-10-22T12:19:05.487982+00:00",
+      "status": "CLOSED",
+      "context_emitted": true,
+      "model_examined": true,
+      "ended_utc": "2026-10-22T12:20:33.314403+00:00",
+      "elapsed_UTC_seconds": 87.826421
+    }
+  },
+  "auth": [
+    {
+      "path": "Sources/GiftUI/BoundedText.swift",
+      "bytes": 6445,
+      "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7509,
+      "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/README.md",
+      "bytes": 2175,
+      "sha256": "570df5a7a205332f5f55e73c615909941d18defca1de32098584334e738a111f",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/independent-review-inspection.json",
+      "bytes": 3018,
+      "sha256": "dbc39cec008ceb7bc3b6ca420da7bc3b2c778bdc11e30a05250795f42279c1e7",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/independent-review.md",
+      "bytes": 7656,
+      "sha256": "00d0004dfc86e383fd0a34d644c80cac5e5bec3268e38b2936dbb5fdd628e84e",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw-file-manifest.json",
+      "bytes": 140691,
+      "sha256": "8532be63e94df9f65a4b2eb7cfeb6fd224022c12fa165d29ba08b13b764398fd",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-disassembly.stdout",
+      "bytes": 965629,
+      "sha256": "c3e296adc9a2b91e7570999b440be1e6e2697188f0b0b0cb0dc51a998e02df7c",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout",
+      "bytes": 183317,
+      "sha256": "2c660b94df670062667b5ebbc9ddc781e2f02e816ee11420f4919bce8de5ec7d",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-disassembly.stdout",
+      "bytes": 651238,
+      "sha256": "35d707d859d6029d113626344f7baaee8fe46b8a91d79813ca59403ba88fada2",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout",
+      "bytes": 85417,
+      "sha256": "6d36a8049cc68721dbbe77c47012793cf1e44eb143d343a8ea13260eb2eaeddc",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-disassembly.stdout",
+      "bytes": 491299,
+      "sha256": "9f89a454e85ae8cdaf61b1a2a2cf6a4deeb9ab1b66e1edaeec9d6808422c9276",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout",
+      "bytes": 141167,
+      "sha256": "bed4f6d25c7e20721f0d4ad9d892e74d8d263ecde9d4a011f8b945c35a3ca667",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-disassembly.stdout",
+      "bytes": 36644,
+      "sha256": "400c6d1d9644c8f1951b8dd87f5ddc52bb1970e0862707b9bfc84da79248c5b2",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout",
+      "bytes": 13694,
+      "sha256": "359b6b7b8392956274f0bcb52e89c71c08e44750fccdb03e0eb449f7fc8e220a",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-disassembly.stdout",
+      "bytes": 655969,
+      "sha256": "c870475b0dc34e2ded57218052083151daa42b1c001e9941989fd92f4639bf91",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout",
+      "bytes": 65802,
+      "sha256": "2aea66575a9ec5572756f7d43b61fad53f4447cd9a746dda7dfc663b36040af6",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-disassembly.stdout",
+      "bytes": 1748716,
+      "sha256": "3bc854e5ce88884be1933cf79079f628dc109116755a15e7fd1874adc4386735",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout",
+      "bytes": 324587,
+      "sha256": "a3fc2f35a2ab345fe9efdd7662a3416edc53805136929cf532a06e8cdf67bd13",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-disassembly.stdout",
+      "bytes": 250009,
+      "sha256": "566c344c5b586802b2a25f1ca6ca7f5d641bb1510dc9630568f0a95636790c89",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout",
+      "bytes": 79565,
+      "sha256": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-disassembly.stdout",
+      "bytes": 4019172,
+      "sha256": "c9590dcc1d56ad375ac85e18220adc78cb188c925292c44733ec354f9c5048f5",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout",
+      "bytes": 332487,
+      "sha256": "c6f037b559d3c77f35dc135f15726bf70ebcafb29b04394686cdd81bde4ebfa4",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-disassembly.stdout",
+      "bytes": 905402,
+      "sha256": "771dc671e0b3780a1b9a67fef3ce02f12acaa4bba22a14b6a7fcb9cc929bf032",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout",
+      "bytes": 96219,
+      "sha256": "b67a2eace99806e37257f667f9a6f766451ff18f1aeb4c3d293ed311e46c043c",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-disassembly.stdout",
+      "bytes": 1140821,
+      "sha256": "716854c7cc1a98bc02c16590b89744764fe8dd0c600aca0600fafda8abfcc137",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout",
+      "bytes": 73517,
+      "sha256": "ad92675dbf22f2790065f00c086bdab98e495876e70ee79a9731864d4217a194",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-disassembly.stdout",
+      "bytes": 1254642,
+      "sha256": "9acd925d033115bd941debd5a226239949e97e4da77f3c187ddfa95f25cca97f",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout",
+      "bytes": 131444,
+      "sha256": "9e34f715c66f11f52359ed5457981f4c65cd8d9ef5c03a86d7780be1b22bfeb1",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-disassembly.stdout",
+      "bytes": 673879,
+      "sha256": "d2235334b93d736c4cf9a6d4dfb03770b092e88afacf62f7fd5e54e48a5be31d",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout",
+      "bytes": 65797,
+      "sha256": "b3454ab96cac2d6b91dd2b681d875b90ec04a5437f0d7df4296c497a806a2dc6",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-disassembly.stdout",
+      "bytes": 3635166,
+      "sha256": "e828edc7951785ef8d23e00f73fa74cc0be52c996870c40b845b498d89f4f5f6",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout",
+      "bytes": 564684,
+      "sha256": "0a2fcbc2a2427ac2c06af89ac0bfa8a0c728f76b94127a8046a22b5a213d8ffb",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-disassembly.stdout",
+      "bytes": 124454,
+      "sha256": "dc8f9e5c44b8e2bf1d90767460ce3b4c383c206b374423a259f9990bfacab7f9",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout",
+      "bytes": 37432,
+      "sha256": "45497e731615ab4407a20c816cd33c3ac45452f315e6fc34f1bb60eef67570e2",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-disassembly.stdout",
+      "bytes": 605963,
+      "sha256": "4cbfd465a411a90fe44af0a59b1f2a5f4e104ee1f4851f8eac96ecef20da0093",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout",
+      "bytes": 37907,
+      "sha256": "e6d4afa997fdff0ae91d18bc1cd26435828aeba4d32f53b6428ce764f8b897aa",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-disassembly.stdout",
+      "bytes": 1237348,
+      "sha256": "06324e4dd7ea480371cbfcfc9f5395a033000ce7bcba002833d5b3725f89006c",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout",
+      "bytes": 176898,
+      "sha256": "911145ad5cd7f2a44f81dc4d97c220a12e681c5b0e576d4f576f409f3f3b0879",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-disassembly.stdout",
+      "bytes": 1041632,
+      "sha256": "8f6a6fa8ed67e4e0699d55ff4c2242ab7d6e2f70253ea4ae3c2b6c9955984e1e",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout",
+      "bytes": 141101,
+      "sha256": "c2a6ae8c0765c3b4c5039fe4c9944714beee9a223e705fdb6d132966b9194179",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-disassembly.stdout",
+      "bytes": 2592864,
+      "sha256": "54b77ee1c145f293a78fa8b18423f11efd8873b495eb67ef485a3059d2159b65",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout",
+      "bytes": 88104,
+      "sha256": "f518c968a3dd48413be74570954fe64d8feb97369f773ec1b154f6d49730c27e",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-disassembly.stdout",
+      "bytes": 4035988,
+      "sha256": "808f12f81e643cc6c9bfebe1abed9fa2faedc4c2287d0fa6f1bb82ceb22306b6",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout",
+      "bytes": 213807,
+      "sha256": "368408887e33f34676d272044029ef16fc27cde82623054afb2d2e56d4800cc1",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-disassembly.stdout",
+      "bytes": 18663,
+      "sha256": "9b362e3a97cbbf6392162f9e8cc183fc1e51b5406ec2f1631eb4662c5fe4589e",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout",
+      "bytes": 7481,
+      "sha256": "0be7989d8d408fc92f9c778e0ff9853325e4731f702ff4cbbbffdd5fed339f30",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-disassembly.stdout",
+      "bytes": 420605,
+      "sha256": "c56b9e961a473e9d196c659b1851ffd3c8d91baba76f4fbc586850f903c2a8c3",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout",
+      "bytes": 53131,
+      "sha256": "3c4ac6df9682d2b1cf78862b80222cefcb0abec0d241af9960ac68cd834c2417",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-disassembly.stdout",
+      "bytes": 181889,
+      "sha256": "7c3ad980048659206089608608efa458f825aa17911d7737f606f3c9eba4e927",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout",
+      "bytes": 25023,
+      "sha256": "331f22802cd15e56746c91476ff89651bf1f8d79913d03bb46b4ece4b2070918",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-disassembly.stdout",
+      "bytes": 26255090,
+      "sha256": "8371140b87d30015cf0b277045ec1b8a5813c26ce5709d55e163917b3e4c3362",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout",
+      "bytes": 1201222,
+      "sha256": "b391ad57a0f68b4bec189bd154ba4952695fe39bb4eb18d6e62042cc1a0a2b90",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-disassembly.stdout",
+      "bytes": 9188,
+      "sha256": "89f0249e070e57c36da79bba4ba4e2f8dc79660fb86e2385196791b52e81949f",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout",
+      "bytes": 4956,
+      "sha256": "53d0b6492a9eeb6e06805e540746eaa6a7d7e0993e26d56831f4daa3ff2e6ba4",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-disassembly.stdout",
+      "bytes": 21973,
+      "sha256": "796eab16c92b4326e9a85f0a874856f38c76fa302dded343ec9eb93789836905",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout",
+      "bytes": 7312,
+      "sha256": "973a5273f10deb02e35524570d158ce73c79bde32358fb6b353db0616f82001a",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/actual-host.sil",
+      "bytes": 62139693,
+      "sha256": "6cc9e7b6cecbeb46dd71b2ac8b6e023182354e7fcc08c814374b9c23303c71ed",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/boundary-physical-index.json",
+      "bytes": 4690424,
+      "sha256": "9b67676aa047e5d4b8f654854f518acacde3c526f3c9229fdba4b4f2f7174298",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/required-bodies.json",
+      "bytes": 151353,
+      "sha256": "907d583bc6b6a43457ec57d30d778dbed41e51682f96b41b2f1ef81ee6892070",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/terminal.json",
+      "bytes": 680851,
+      "sha256": "41c38e4ececed6f5cbd91d6eb2387642e316752ff61d7928a7b1633302a8cf2a",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md",
+      "bytes": 20623,
+      "sha256": "e4dbd6e6e7facb2ba4832940c0c229ca2655f4b6c70d89ea057b756fcfd58b63",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review-inspection.json",
+      "bytes": 14334,
+      "sha256": "b7e7575bcdb375e1068b1e4f648ecb154449c91da45c377dbd0bd2fa29ffa0cd",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md",
+      "bytes": 9824,
+      "sha256": "c4374687e404be2e3c3de8e73f4ad199a7bed4219972f64d03aa2a97a2b6c2ee",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspect.py",
+      "bytes": 15037,
+      "sha256": "3c57b50bfc4cc5147d4b1e1ed767e06b0a26d343315ef4c6e39d6b290a696d18",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspection-summary.json",
+      "bytes": 1974,
+      "sha256": "409fc3fa3ddf82a9a53d8ff00a1c76bdf48e4eacf961e7a9a28eb7eb4a540a58",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/object-inventory.json.gz",
+      "bytes": 1033539,
+      "sha256": "87df0a548b79008aa0935788900ccebad58d1676c6bc4118bc7939e6af1b7c0b",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/privacy-control-join.json",
+      "bytes": 68231,
+      "sha256": "c56528a7688fce44b7e89a637fb344c2d24d5533df73e196848a237f30138072",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/required-body-join.json",
+      "bytes": 70460,
+      "sha256": "c5b1b4d1057fe3aed16d5f72ff835be6b948fcaf282869069b490369251e3caa",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/sil-inventory.json.gz",
+      "bytes": 345990,
+      "sha256": "e433fbd2a2eb08e248b65f1c605bb6be94e3f6086c08904170efc754a31f7b8a",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/preserved-dirty-files.json",
+      "bytes": 942,
+      "sha256": "00e65144643e2ddc66cf923b902192eb8afc9e4a6ecd0afe4082af7fc4634489",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/source42.json",
+      "bytes": 8366,
+      "sha256": "27248b41a5f120471f6b6092ff27c1b01e076a92d9e2c61561bada91d59b0df9",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md",
+      "bytes": 17382,
+      "sha256": "a2d66b770ecadaec9b487b7e1e7b9f84629807586631261a3dd81089498b7f65",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review-inspection.json",
+      "bytes": 19924,
+      "sha256": "d827454612ae7f6ede4d40d6bebfbd7f280fecb7e0126ef40a1284106928a874",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md",
+      "bytes": 6776,
+      "sha256": "0d6c514607ad62c4484482b0a1c5ed0fe4e65c3455d5efe7fcbf64b6705818d0",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspection.json",
+      "bytes": 24426,
+      "sha256": "6d9fc972cfbe4825d1bffe508657b1ee8dbb6bf75e698e6f234fc16092383a44",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/retained-excerpts.txt",
+      "bytes": 46504,
+      "sha256": "6ffc059c6584521e885b6d2252f49a398513a5b90d7ce83bdf2dbed7421d7ff0",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-next-step-after-git-ref2.md",
+      "bytes": 6581,
+      "sha256": "38030db206b8d2fe0fbd6859928842a725440c37e6294d5d41281bbcddd0e472",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-independent-review-inspection.json",
+      "bytes": 19564,
+      "sha256": "7f7b8f1a3a459c934e2283158fcda801a19073b48bb650d532450859ede68081",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-independent-review.md",
+      "bytes": 8109,
+      "sha256": "6a22dfa6f833eaf7fd6f6a40dbf1295c3f241b89bcab5aabdeff637736220f47",
+      "later_access": "authentication_only"
+    }
+  ],
+  "errors": [],
+  "request_records": [
+    {
+      "mode": "auth",
+      "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g25 a\"});text(r.output);",
+      "nested_arguments": {
+        "cmd": "python3 /tmp/g25 a"
+      },
+      "counted_UTF8_bytes": 106
+    },
+    {
+      "mode": "group",
+      "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g25 g\"});text(r.output);",
+      "nested_arguments": {
+        "cmd": "python3 /tmp/g25 g"
+      },
+      "counted_UTF8_bytes": 106
+    },
+    {
+      "mode": "close-provider-gap",
+      "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g25 c\"});text(r.output);",
+      "nested_arguments": {
+        "cmd": "python3 /tmp/g25 c"
+      },
+      "counted_UTF8_bytes": 106
+    },
+    {
+      "mode": "finish",
+      "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g25 f\"});text(r.output);",
+      "nested_arguments": {
+        "cmd": "python3 /tmp/g25 f"
+      },
+      "counted_UTF8_bytes": 106
+    }
+  ],
+  "output_upper_bytes": 2391477,
+  "before": {
+    "utc": "2026-10-22T12:18:56.970148+00:00",
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+        16777234,
+        29640436
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+        16777234,
+        29650609
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+        16777234,
+        29652748
+      ]
+    },
+    "cache_members": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "dirty_diff_bytes": 5230
+  },
+  "provider_before": {
+    "descriptor_sha256": "79a60ac0b00bea68788ade21a128f0d875695e93e9a3ccee9eae9af60420067f",
+    "provider_uuids": {
+      "/usr/lib/libSystem.B.dylib": "4fed5ee25d3e35b1a1709859c4b683bb",
+      "/usr/lib/system/libsystem_c.dylib": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "/usr/lib/system/libsystem_malloc.dylib": "d969a9073e43395193658c2db3812e9d",
+      "/usr/lib/system/libsystem_pthread.dylib": "a373f0b09880326a88b4dd8be4e33072"
+    },
+    "exact_extent_bytes_per_check": 2417144
+  },
+  "controls": {
+    "README.md": {
+      "bytes": 22022,
+      "sha256": "a8413884de82ee7d696fb81fa2d834ea8e2a60e0d61e1965799221596caf0301"
+    },
+    "inputs.json": {
+      "bytes": 48197,
+      "sha256": "83535ca92bdefd3f132133d88a10a6ff65530f2219547009de9852f007fd23bf"
+    },
+    "roots.json": {
+      "bytes": 70161,
+      "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0"
+    },
+    "selected-rows.json": {
+      "bytes": 867601,
+      "sha256": "0c0953116114e7e5f1c61671faa07f125a6b9c33b5e00894fbf570822fdcc064"
+    },
+    "preservation.json": {
+      "bytes": 2214,
+      "sha256": "4dc777db0f14d7ac00fb72e2a75dca5ee2c39420f3ff1bfddc4639d6928494ab"
+    },
+    "preservation-reads.json": {
+      "bytes": 28190,
+      "sha256": "31ed4e23365cadc34891028651eb64962625d62a09e4501c8c4fe2093fdc250d"
+    }
+  },
+  "state_bytes": 43258,
+  "focus": {
+    "provider_identities": {
+      "/usr/lib/libSystem.B.dylib": {
+        "uuid": "4fed5ee25d3e35b1a1709859c4b683bb",
+        "identity": {
+          "name": "/usr/lib/libSystem.B.dylib",
+          "command": 13,
+          "current_version": 88866816,
+          "compatibility_version": 65536
+        },
+        "dependencies": [
+          {
+            "name": "/usr/lib/system/libcache.dylib",
+            "command": 2147483679,
+            "current_version": 6225920,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libcommonCrypto.dylib",
+            "command": 2147483679,
+            "current_version": 4294901760,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libcompiler_rt.dylib",
+            "command": 2147483679,
+            "current_version": 6750976,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libcopyfile.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libcorecrypto.dylib",
+            "command": 2147483679,
+            "current_version": 126001162,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdispatch.dylib",
+            "command": 2147483679,
+            "current_version": 101097474,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdyld.dylib",
+            "command": 2147483679,
+            "current_version": 0,
+            "compatibility_version": 0
+          },
+          {
+            "name": "/usr/lib/system/libkeymgr.dylib",
+            "command": 2147483679,
+            "current_version": 2031616,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libmacho.dylib",
+            "command": 2147483679,
+            "current_version": 68157440,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libquarantine.dylib",
+            "command": 2147483679,
+            "current_version": 12886018,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libremovefile.dylib",
+            "command": 2147483679,
+            "current_version": 5596166,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_asl.dylib",
+            "command": 2147483679,
+            "current_version": 26607616,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_blocks.dylib",
+            "command": 2147483679,
+            "current_version": 6291456,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_c.dylib",
+            "command": 2147483679,
+            "current_version": 114860036,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_collections.dylib",
+            "command": 2147483679,
+            "current_version": 114860036,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_configuration.dylib",
+            "command": 2147483679,
+            "current_version": 92119043,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_containermanager.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_coreservices.dylib",
+            "command": 2147483679,
+            "current_version": 8454144,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_darwin.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_darwindirectory.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_dnssd.dylib",
+            "command": 2147483679,
+            "current_version": 188850180,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_eligibility.dylib",
+            "command": 2147483679,
+            "current_version": 20946961,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_featureflags.dylib",
+            "command": 2147483679,
+            "current_version": 6750208,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_info.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_m.dylib",
+            "command": 2147483679,
+            "current_version": 217080833,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_malloc.dylib",
+            "command": 2147483679,
+            "current_version": 53256197,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_networkextension.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_notify.dylib",
+            "command": 2147483679,
+            "current_version": 22847491,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_sandbox.dylib",
+            "command": 2147483679,
+            "current_version": 175677446,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_sanitizers.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_secinit.dylib",
+            "command": 2147483679,
+            "current_version": 11035655,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_kernel.dylib",
+            "command": 2147483679,
+            "current_version": 811180302,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_platform.dylib",
+            "command": 2147483679,
+            "current_version": 24606722,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_pthread.dylib",
+            "command": 2147483679,
+            "current_version": 35349508,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_symptoms.dylib",
+            "command": 2147483679,
+            "current_version": 65536,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_trace.dylib",
+            "command": 2147483679,
+            "current_version": 122003460,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_trial.dylib",
+            "command": 2147483679,
+            "current_version": 31064594,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libunwind.dylib",
+            "command": 2147483679,
+            "current_version": 137626112,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libxpc.dylib",
+            "command": 2147483679,
+            "current_version": 203333637,
+            "compatibility_version": 65536
+          }
+        ]
+      },
+      "/usr/lib/system/libsystem_c.dylib": {
+        "uuid": "d77ceb62aff63cecba9b4f057fbe2eb5",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 13,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        "dependencies": [
+          {
+            "name": "/usr/lib/system/libcompiler_rt.dylib",
+            "command": 12,
+            "current_version": 6750976,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdyld.dylib",
+            "command": 12,
+            "current_version": 0,
+            "compatibility_version": 0
+          },
+          {
+            "name": "/usr/lib/system/libsystem_kernel.dylib",
+            "command": 12,
+            "current_version": 811180302,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_m.dylib",
+            "command": 12,
+            "current_version": 217080833,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_malloc.dylib",
+            "command": 12,
+            "current_version": 53256197,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_platform.dylib",
+            "command": 12,
+            "current_version": 24606722,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_pthread.dylib",
+            "command": 12,
+            "current_version": 35349508,
+            "compatibility_version": 65536
+          }
+        ]
+      },
+      "/usr/lib/system/libsystem_malloc.dylib": {
+        "uuid": "d969a9073e43395193658c2db3812e9d",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_malloc.dylib",
+          "command": 13,
+          "current_version": 53256197,
+          "compatibility_version": 65536
+        },
+        "dependencies": [
+          {
+            "name": "/usr/lib/system/libcompiler_rt.dylib",
+            "command": 12,
+            "current_version": 6750976,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdyld.dylib",
+            "command": 12,
+            "current_version": 0,
+            "compatibility_version": 0
+          },
+          {
+            "name": "/usr/lib/system/libsystem_kernel.dylib",
+            "command": 12,
+            "current_version": 811180302,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_platform.dylib",
+            "command": 12,
+            "current_version": 24606722,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_pthread.dylib",
+            "command": 12,
+            "current_version": 35349508,
+            "compatibility_version": 65536
+          }
+        ]
+      },
+      "/usr/lib/system/libsystem_pthread.dylib": {
+        "uuid": "a373f0b09880326a88b4dd8be4e33072",
+        "identity": {
+          "name": "/usr/lib/system/libsystem_pthread.dylib",
+          "command": 13,
+          "current_version": 35349508,
+          "compatibility_version": 65536
+        },
+        "dependencies": [
+          {
+            "name": "/usr/lib/system/libsystem_kernel.dylib",
+            "command": 12,
+            "current_version": 811180302,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libsystem_platform.dylib",
+            "command": 12,
+            "current_version": 24606722,
+            "compatibility_version": 65536
+          },
+          {
+            "name": "/usr/lib/system/libdyld.dylib",
+            "command": 12,
+            "current_version": 0,
+            "compatibility_version": 0
+          }
+        ]
+      }
+    },
+    "functions": [
+      {
+        "name": "___swhatbuf",
+        "aliases": [
+          "___swhatbuf"
+        ],
+        "provider": "/usr/lib/system/libsystem_c.dylib",
+        "address": 6446258272,
+        "end": 6446258488,
+        "raw_sha256": "f886fed35886e800e372a20c6ae2436fa3f39457f9ee3ddc147c33b9eebd3055",
+        "bytes_sha256": "425ebb363ce109789765950de90687ab133bdd1aad0022cb973767ac64ff87fc",
+        "slice": {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "offset": 3250272,
+          "bytes": 216
+        },
+        "instructions": "0:pacibsp \n4:sub sp, sp, #0xc0\n8:stp x22, x21, [sp, #0x90]\nc:stp x20, x19, [sp, #0xa0]\n10:stp x29, x30, [sp, #0xb0]\n14:add x29, sp, #0xb0\n18:mov x21, x2\n1c:mov x20, x1\n20:mov x19, x0\n24:ldrsh w0, [x0, #0x12]\n28:tbnz w0, #0x1f, 0x1803a1914 <__text+0xb4>\n2c:movi.2d v0, #0000000000000000\n30:stp q0, q0, [sp, #0x70]\n34:stp q0, q0, [sp, #0x50]\n38:stp q0, q0, [sp, #0x30]\n3c:stp q0, q0, [sp, #0x10]\n40:str q0, [sp]\n44:mov x1, sp\n48:bl 0x180406950 <__text+0x650f0>\n4c:tbnz w0, #0x1f, 0x1803a1914 <__text+0xb4>\n50:ldrh w8, [sp, #0x4]\n54:and w9, w8, #0xf000\n58:cmp w9, #0x2, lsl #12\n5c:cset w9, eq\n60:str w9, [x21]\n64:ldr w9, [sp, #0x70]\n68:cmp w9, #0x0\n6c:b.le 0x1803a1918 <__text+0xb8>\n70:mov w10, #0x1000000\n74:cmp w9, w10\n78:csel w9, w9, w10, lo\n7c:str x9, [x20]\n80:str w9, [x19, #0x88]\n84:sxth w8, w8\n88:mov w0, #0x800\n8c:cmn w8, #0x7, lsl #12\n90:b.ge 0x1803a1924 <__text+0xc4>\n94:ldr x8, [x19, #0x48]\n98:adrp x16, 0x1803bb000 <__text+0x197a0>\n9c:add x16, x16, #0xb8c\na0:paciza x16\na4:cmp x8, x16\na8:mov w8, #0x400\nac:csel w0, w8, w0, eq\nb0:b 0x1803a1924 <__text+0xc4>\nb4:str wzr, [x21]\nb8:mov w8, #0x400\nbc:str x8, [x20]\nc0:mov w0, #0x800\nc4:ldp x29, x30, [sp, #0xb0]\nc8:ldp x20, x19, [sp, #0xa0]\ncc:ldp x22, x21, [sp, #0x90]\nd0:add sp, sp, #0xc0\nd4:retab ",
+        "decoder_argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local/provider-___swhatbuf.o"
+        ]
+      },
+      {
+        "name": "stdio_once_callback",
+        "aliases": [
+          "stdio_once_callback"
+        ],
+        "provider": "/usr/lib/system/libsystem_c.dylib",
+        "address": 6446221728,
+        "end": 6446221856,
+        "raw_sha256": "11fcbbeaa436cfe85907d3e80fc368f373deb023db0fb992e9de21b730a1ffe4",
+        "bytes_sha256": "bc51bee226d79bd63e618afb148eb3e8f3977be42ce3bd745d93d90fc36d7979",
+        "slice": {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "offset": 3213728,
+          "bytes": 128
+        },
+        "instructions": "0:adrp x8, 0x1ecf48000 <__text+0x6cbaf660>\n4:add x8, x8, #0x4c0\n8:mov w9, #0x1\nc:str w9, [x8]\n10:mov w9, #0x3\n14:adrp x8, 0x1ecf46000 <__text+0x6cbad660>\n18:add x8, x8, #0xbe8\n1c:adrp x10, 0x1ecf47000 <__text+0x6cbae660>\n20:str x9, [x10, #0x9b8]\n24:mov w9, #0x68\n28:adrp x10, 0x1ecf47000 <__text+0x6cbae660>\n2c:add x10, x10, #0x9c0\n30:mov w11, #0xaba2\n34:movk w11, #0x32aa, lsl #16\n38:movi.2d v0, #0000000000000000\n3c:str x8, [x10, x9]\n40:stp xzr, x11, [x8]\n44:stp q0, q0, [x8, #0x10]\n48:str q0, [x8, #0x30]\n4c:str xzr, [x8, #0x40]\n50:ldrb w12, [x8, #0x48]\n54:stp q0, q0, [x8, #0x50]\n58:stp q0, q0, [x8, #0x70]\n5c:stp q0, q0, [x8, #0x90]\n60:and w12, w12, #0xf0\n64:add x9, x9, #0x98\n68:stp q0, q0, [x8, #0xb0]\n6c:strb w12, [x8, #0x48]\n70:add x8, x8, #0xd0\n74:cmp x9, #0xa80\n78:b.ne 0x1803989dc <__text+0x3c>\n7c:ret ",
+        "decoder_argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local/provider-stdio_once_callback.o"
+        ]
+      },
+      {
+        "name": "_malloc_type_malloc",
+        "aliases": [
+          "_malloc_type_malloc"
+        ],
+        "provider": "/usr/lib/system/libsystem_malloc.dylib",
+        "address": 6445658160,
+        "end": 6445658292,
+        "raw_sha256": "0de5522ab4e9b7affa7f0b2ac0e71715cf817ec33f26113f727e33973a6104e6",
+        "bytes_sha256": "a4bcbe1e408f926bb5b2f9f791b0873d0d1235ef2a7b9fe20bae940309508eec",
+        "slice": {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "offset": 2650160,
+          "bytes": 132
+        },
+        "instructions": "0:mov x2, x1\n4:mov x1, x0\n8:adrp x8, 0x1ea471000 <__text+0x6a161fd0>\nc:add x8, x8, #0x830\n10:ldr x8, [x8]\n14:cbnz x8, 0x18030f098 <__text+0x68>\n18:adrp x8, 0x1ea471000 <__text+0x6a161fd0>\n1c:ldrb w8, [x8, #0x858]\n20:tbnz w8, #0x0, 0x18030f098 <__text+0x68>\n24:adrp x8, 0x1ecf41000 <__text+0x6cc31fd0>\n28:add x8, x8, #0xc68\n2c:ldr x8, [x8]\n30:cmp x1, x8\n34:b.hi 0x18030f098 <__text+0x68>\n38:adrp x8, 0x1ecf41000 <__text+0x6cc31fd0>\n3c:add x8, x8, #0x9b8\n40:ldr x8, [x8]\n44:ldr x0, [x8]\n48:ldr w8, [x0, #0x68]\n4c:cmp w8, #0x10\n50:b.lo 0x18030f090 <__text+0x60>\n54:ldr x3, [x0, #0xa0]\n58:mov x16, #0xeafc\n5c:braa x3, x16\n60:cmp w8, #0xc\n64:b.hi 0x18030f0a8 <__text+0x78>\n68:mov x0, x1\n6c:mov x1, x2\n70:mov w2, #0x1\n74:b 0x18030f664 <__text+0x634>\n78:ldr x2, [x0, #0x18]\n7c:mov x16, #0x8fd\n80:braa x2, x16",
+        "decoder_argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local/provider-_malloc_type_malloc.o"
+        ]
+      }
+    ],
+    "calls": [
+      {
+        "from": "___swhatbuf",
+        "site": "0x1803a18a8",
+        "to": "0x180406950",
+        "exports": [],
+        "op": "bl"
+      },
+      {
+        "from": "___swhatbuf",
+        "site": "0x1803a1910",
+        "to": "0x1803a1924",
+        "exports": [],
+        "op": "b"
+      },
+      {
+        "from": "_malloc_type_malloc",
+        "site": "0x18030f0a4",
+        "to": "0x18030f664",
+        "exports": [],
+        "op": "b"
+      }
+    ],
+    "not_export_bound": [],
+    "body_context_sha256": "9ea465977e282e80411663884204817e6680d615a6bc0ec10d3304c80c3d4961",
+    "body_context_bytes": 5989,
+    "source_root_lemma": "Reviewed provider21 root/typed/writer/helper relation, same exact wrapel2y source/object; no local-chain replay",
+    "extracted": true,
+    "emitted": true,
+    "model_examined": true,
+    "provider_scope": "Complete installed setup/buffer bodies plus bounded pristine data; current loaded/window state not inferred",
+    "initial_cache_data": [
+      {
+        "symbol": "___sF",
+        "address": "0x1ecf457d8",
+        "raw_hex": "000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000d857f46c000010009cb33a0000001080f0b93b00000010808cbb3b00000010808cdb3b000000308000000000000000000000000000000000b059f46c0000c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000100000000000000000000000000000000000000000000000000000000007058f46c000010009cb33a0000001080f0b93b00000010808cbb3b00000010808cdb3b000000308000000000000000000000000000000000805af46c0000c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a000200000000000000000000000000000000000000000000000000000000000859f46c000010009cb33a0000001080f0b93b00000010808cbb3b00000010808cdb3b000000308000000000000000000000000000000000505bf46c0000000600000000000000000000000000000000000000000000000000000000000000000000000000000000babcb1300000000000000000000000000000000000000000a2abaa3200000000000000000000000000000000000000000000000000000000",
+        "slice": {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+          "offset": 81844184,
+          "bytes": 512,
+          "sha256": "52aa07777c709c508709f3f3e672965078fd5e1102250263b195735137f1221f",
+          "file_bytes": 234569728,
+          "device": 16777230,
+          "inode": 575282,
+          "mtime_ns": 1786589515000000000,
+          "role": "pristine-__sF-array-selected-range",
+          "vmaddr": 8270403544
+        },
+        "status": "Pristine frozen cache bytes; actual process-window/once state not observed"
+      },
+      {
+        "symbol": "___stdoutp",
+        "address": "0x1ea4732a8",
+        "prior24_raw_hex": "7058f46c00001000",
+        "status": "Exact prior24cache-byte lemma, not live process pointer"
+      }
+    ],
+    "stub_bindings": [
+      {
+        "stub": "0x180406950",
+        "symbol": "_fstat",
+        "ordinal": 3,
+        "dependency": "/usr/lib/system/libsystem_kernel.dylib",
+        "selected_provider_exports": []
+      },
+      {
+        "stub": "0x180406c20",
+        "symbol": "_malloc_type_malloc",
+        "ordinal": 5,
+        "dependency": "/usr/lib/system/libsystem_malloc.dylib",
+        "selected_provider_exports": [
+          {
+            "provider": "/usr/lib/system/libsystem_malloc.dylib",
+            "address": "0x18030f030"
+          }
+        ]
+      },
+      {
+        "stub": "0x180406f90",
+        "symbol": "_pthread_once",
+        "ordinal": 7,
+        "dependency": "/usr/lib/system/libsystem_pthread.dylib",
+        "selected_provider_exports": [
+          {
+            "provider": "/usr/lib/system/libsystem_pthread.dylib",
+            "address": "0x1804fbaec"
+          }
+        ]
+      }
+    ],
+    "slide_headers": [
+      {
+        "mapping_vmaddr": "0x1eccac000",
+        "bytes_hex": "050000000040000008060000000000000000008001000000ffff002328000000"
+      }
+    ]
+  },
+  "joint_packet_bytes": 5422,
+  "complete_exchange_forecast_upper": 6275,
+  "model_selected_disposition": "provider-gap",
+  "model_examination_scope": "Selected installed-provider code packet; existing reviewed21root applicability reused. Other callees/window state unexamined.",
+  "after": {
+    "utc": "2026-10-22T12:20:37.991825+00:00",
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+        16777234,
+        29640436
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+        16777234,
+        29650609
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+        16777234,
+        29652748
+      ]
+    },
+    "cache_members": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "dirty_diff_bytes": 5230
+  },
+  "provider_after": {
+    "descriptor_sha256": "79a60ac0b00bea68788ade21a128f0d875695e93e9a3ccee9eae9af60420067f",
+    "provider_uuids": {
+      "/usr/lib/libSystem.B.dylib": "4fed5ee25d3e35b1a1709859c4b683bb",
+      "/usr/lib/system/libsystem_c.dylib": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "/usr/lib/system/libsystem_malloc.dylib": "d969a9073e43395193658c2db3812e9d",
+      "/usr/lib/system/libsystem_pthread.dylib": "a373f0b09880326a88b4dd8be4e33072"
+    },
+    "exact_extent_bytes_per_check": 2417144
+  },
+  "finished_utc": "2026-10-22T12:20:38.016753+00:00"
+}

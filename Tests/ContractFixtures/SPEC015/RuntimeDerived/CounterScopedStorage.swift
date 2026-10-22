@@ -1683,8 +1683,10 @@ fileprivate struct P08HostReuseTranscript {
     }
 }
 fileprivate func p08ReuseLabel(_ route: StaticString, _ suffix: StaticString) {
-    #if !hasFeature(Embedded)
-    print("so06-reuse-\(route)-\(suffix)")
+    #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+        counterDiagnosticReuse(route, suffix)
+    #elseif !hasFeature(Embedded)
+        print("so06-reuse-\(route)-\(suffix)")
     #endif
 }
 fileprivate func p08RequireFreshControl(_ control: UnsafeMutablePointer<CounterControl>) {
@@ -3164,8 +3166,18 @@ fileprivate func p08VerifyRoleTranscript(_ transcript: borrowing P08RoleTranscri
         precondition(event.leftAfter.address == event.rightBefore.address && event.rightAfter.address == event.leftBefore.address)
         precondition(event.leftAfter.retainedBytes == event.rightBefore.retainedBytes && event.rightAfter.retainedBytes == event.leftBefore.retainedBytes)
         precondition(event.leftCount != event.rightCount) // 1→0, 2→1, 1→2, ...
-        #if !hasFeature(Embedded)
-        print("SO06 role", event.bankKind, event.leftBefore.id.rawValue, event.leftBefore.address, event.leftCount, event.leftBefore.retainedBytes, event.rightBefore.id.rawValue, event.rightBefore.address, event.rightCount, event.rightBefore.retainedBytes, "=>", event.leftAfter.id.rawValue, event.rightAfter.id.rawValue)
+        #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+            counterDiagnosticRole(
+                event.bankKind, event.leftBefore.id.rawValue, event.leftBefore.address,
+                event.leftCount, event.leftBefore.retainedBytes, event.rightBefore.id.rawValue,
+                event.rightBefore.address, event.rightCount, event.rightBefore.retainedBytes,
+                event.leftAfter.id.rawValue, event.rightAfter.id.rawValue)
+        #elseif !hasFeature(Embedded)
+            print(
+                "SO06 role", event.bankKind, event.leftBefore.id.rawValue, event.leftBefore.address,
+                event.leftCount, event.leftBefore.retainedBytes, event.rightBefore.id.rawValue,
+                event.rightBefore.address, event.rightCount, event.rightBefore.retainedBytes, "=>",
+                event.leftAfter.id.rawValue, event.rightAfter.id.rawValue)
         #endif
     }
     return count * 5 + 1

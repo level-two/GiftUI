@@ -1,0 +1,9 @@
+# Batch A installed-provider result,22–25
+
+The exact current conditional diagnostic path reaches installed stdio buffer setup and a resolved `_malloc_type_malloc` dependency. This justifies the authorized local NativeStatic correction; it does not prove that allocation occurred in a recorded window, quantify bytes, or establish cold/zeroheap/P08conformance.
+
+The chain and predicates are retained in batchA-provider-summary.json/rows.json;23contains complete putchar/swbuf,24complete setup/buffer,25size/oncecallback and exact indirect-symbol/import/export bindings. Selected installed cache mappings, UUIDs, range hashes and decoder bytes are frozen in the adjacent local directories. No whole-cache/opaque inspector read, compiler or runtime experiment occurred. The original corpus/currentsource/object bindings remain preserved.22stopped before model emission;23–25 separate qualified windows remain independently accounted, including24at80.042935s and25at87.826421s.
+
+Remaining proof is consolidated: actual relevant stream/window/loader/zone state and ordinary/firstuse costs; other current-root/callee/indirect/witness eligibility; separate B runtime/image/resource/profile gates. Accepted concrete counter lifetime/dispatch/tiled/linkedwriter and reviewedfault5facts are reused within their scope, not reopened or broadened. Pristine cache bytes never substitute for process state. Existing source-owner correction authority now applies; no source change or measurement result is included in this provider receipt.
+
+All exact raw paths/hashes and metadata are JSON/local artifact references, with no Markdown links to untracked historical documents. Request-identity self-attestation and post-terminal closeout limits remain explicit in the session artifacts. No complete aggregate transcript/I/O certification or global provider-absence claim is made.

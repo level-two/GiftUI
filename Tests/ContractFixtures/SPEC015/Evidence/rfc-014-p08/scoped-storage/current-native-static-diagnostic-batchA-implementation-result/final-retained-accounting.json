@@ -1,0 +1,117 @@
+{
+  "recorded_utc": "2026-10-22T15:47:09.856346+00:00",
+  "scope_file_list": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-batchA-implementation-result/scoped-files.txt",
+  "scope_file_list_sha256": "d05d46fb8b383473034739807b41d1453bf08d056e230d1c5a87b65a7dbd460b",
+  "scoped_files": 350,
+  "source_files": 3,
+  "owned_evidence_directories": [
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-result",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-result",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-result",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-result",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-result",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA27-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA27-result",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-batchA-implementation-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-batchA-implementation-result"
+  ],
+  "retained_paths": [
+    {
+      "path": ".build/contracts/p08-native-static-diagnostic-batchA",
+      "bytes": 114049021
+    },
+    {
+      "path": ".build/contracts/p08-counter-6b7ehmbf",
+      "bytes": 141355479
+    },
+    {
+      "path": ".build/contracts/p08-counter-va__8qip",
+      "bytes": 153665965
+    },
+    {
+      "path": ".build/contracts/p08-counter-ob4qm63e",
+      "bytes": 176475965
+    },
+    {
+      "path": ".build/contracts/spec-013-runtime-cycle/tmps4xst3kt",
+      "bytes": 25073836
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local",
+      "bytes": 210493
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-result",
+      "bytes": 155317
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-local",
+      "bytes": 146839
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-result",
+      "bytes": 84591
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-local",
+      "bytes": 184907
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-result",
+      "bytes": 126138
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local",
+      "bytes": 1001386
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-result",
+      "bytes": 132216
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local",
+      "bytes": 982905
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-result",
+      "bytes": 135146
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA27-local",
+      "bytes": 1042049
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA27-result",
+      "bytes": 141928
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-batchA-implementation-local",
+      "bytes": 1943424
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-batchA-implementation-result",
+      "bytes": 100088
+    }
+  ],
+  "retained_output_bytes_before_final_accounting_record": 617007693,
+  "final_reserve_bytes": 16777216,
+  "ordinary_output_envelope_bytes": 805306368,
+  "ordinary_not_U02": true,
+  "aggregate_processing_and_outer_toolmetadata_not_certified": true,
+  "whole_BatchA_timing_qualification": false,
+  "no_staging_or_commit": true,
+  "final_accounting_record_bytes": 6087,
+  "final_retained_bytes_upper": 618062609,
+  "coordinator_finalization_extra_upper_bytes": 1048576,
+  "coordinator_finalization_note": "Adds a conservative 1 MiB upper allowance for the final independent review and scope/status bookkeeping after the worker retained-size measurement; no producer, source, provider evidence or U02 limit changed.",
+  "coordinator_checks": {
+    "governance": "PASS: 212 nodes / 2071 edges",
+    "maintained_three_fixture_diff_check": "PASS",
+    "staged_all_evidence_diff_check": "Whitespace warnings retained in byte-preserved SIL/disassembly and frozen helper captures; no frozen bytes rewritten. Ordinary metadata displays were truncated; complete rendered transcript remains uncertified."
+  }
+}

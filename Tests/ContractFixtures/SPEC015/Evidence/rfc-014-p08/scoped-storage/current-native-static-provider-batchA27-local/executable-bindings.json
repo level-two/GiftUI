@@ -1,0 +1,1457 @@
+{
+  "executable": ".build/contracts/p08-counter-wrapel2y/counter",
+  "sha256": "267bc26d27bbecc0c2e20ac6ce8499b609f0945c0f91a790759387da4dabb0e1",
+  "bindings": [
+    {
+      "address": 4296908616,
+      "symbol": "_$s6Darwin6stdoutSpySo7__sFILEVGvg",
+      "ordinal": 5,
+      "dependency": "/usr/lib/swift/libswift_DarwinFoundation2.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749368,
+        "indirect_hex": "a48b0000",
+        "nlist_offset": 3746120,
+        "nlist_hex": "c52e1100010000050000000000000000",
+        "string_offset": 4877093,
+        "string_hex": "5f24733644617277696e367374646f7574537079536f375f5f7346494c455647766700"
+      }
+    },
+    {
+      "address": 4296908628,
+      "symbol": "_$sSQ2eeoiySbx_xtFZTj",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749372,
+        "indirect_hex": "bb8b0000",
+        "nlist_offset": 3746488,
+        "nlist_hex": "5a301100010000030000000000000000",
+        "string_offset": 4877498,
+        "string_hex": "5f247353513265656f69795362785f7874465a546a00"
+      }
+    },
+    {
+      "address": 4296908640,
+      "symbol": "_$sSS6appendyySSF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749376,
+        "indirect_hex": "be8b0000",
+        "nlist_offset": 3746536,
+        "nlist_hex": "8e301100010000030000000000000000",
+        "string_offset": 4877550,
+        "string_hex": "5f2473535336617070656e64797953534600"
+      }
+    },
+    {
+      "address": 4296908652,
+      "symbol": "_$sST12makeIterator0B0QzyFTj",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749380,
+        "indirect_hex": "c08b0000",
+        "nlist_offset": 3746568,
+        "nlist_hex": "a7301100010000030000000000000000",
+        "string_offset": 4877575,
+        "string_hex": "5f2473535431326d616b654974657261746f72304230517a7946546a00"
+      }
+    },
+    {
+      "address": 4296908664,
+      "symbol": "_$sSY8rawValue03RawB0QzvgTj",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749384,
+        "indirect_hex": "c38b0000",
+        "nlist_offset": 3746616,
+        "nlist_hex": "e2301100010000030000000000000000",
+        "string_offset": 4877634,
+        "string_hex": "5f247353593872617756616c756530335261774230517a7667546a00"
+      }
+    },
+    {
+      "address": 4296908676,
+      "symbol": "_$sSY8rawValuexSg03RawB0Qz_tcfCTj",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749388,
+        "indirect_hex": "c58b0000",
+        "nlist_offset": 3746648,
+        "nlist_hex": "1a311100010000030000000000000000",
+        "string_offset": 4877690,
+        "string_hex": "5f247353593872617756616c756578536730335261774230517a5f74636643546a00"
+      }
+    },
+    {
+      "address": 4296908688,
+      "symbol": "_$sSYsSHRzSH8RawValueSYRpzrlE04hashB0Sivg",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749392,
+        "indirect_hex": "c88b0000",
+        "nlist_offset": 3746696,
+        "nlist_hex": "66311100010000030000000000000000",
+        "string_offset": 4877766,
+        "string_hex": "5f24735359735348527a53483852617756616c7565535952707a726c4530346861736842305369766700"
+      }
+    },
+    {
+      "address": 4296908700,
+      "symbol": "_$sSYsSHRzSH8RawValueSYRpzrlE08_rawHashB04seedS2i_tF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749396,
+        "indirect_hex": "c98b0000",
+        "nlist_offset": 3746712,
+        "nlist_hex": "90311100010000030000000000000000",
+        "string_offset": 4877808,
+        "string_hex": "5f24735359735348527a53483852617756616c7565535952707a726c4530385f72617748617368423034736565645332695f744600"
+      }
+    },
+    {
+      "address": 4296908712,
+      "symbol": "_$sSYsSHRzSH8RawValueSYRpzrlE4hash4intoys6HasherVz_tF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749400,
+        "indirect_hex": "ca8b0000",
+        "nlist_offset": 3746728,
+        "nlist_hex": "c5311100010000030000000000000000",
+        "string_offset": 4877861,
+        "string_hex": "5f24735359735348527a53483852617756616c7565535952707a726c45346861736834696e746f797336486173686572567a5f744600"
+      }
+    },
+    {
+      "address": 4296908724,
+      "symbol": "_$sSa15reserveCapacityyySiF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749404,
+        "indirect_hex": "cb8b0000",
+        "nlist_offset": 3746744,
+        "nlist_hex": "fb311100010000030000000000000000",
+        "string_offset": 4877915,
+        "string_hex": "5f247353613135726573657276654361706163697479797953694600"
+      }
+    },
+    {
+      "address": 4296908736,
+      "symbol": "_$sSa21_makeMutableAndUniqueyyF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749408,
+        "indirect_hex": "cc8b0000",
+        "nlist_offset": 3746760,
+        "nlist_hex": "17321100010000030000000000000000",
+        "string_offset": 4877943,
+        "string_hex": "5f2473536132315f6d616b654d757461626c65416e64556e6971756579794600"
+      }
+    },
+    {
+      "address": 4296908748,
+      "symbol": "_$sSa22_allocateUninitializedySayxG_SpyxGtSiFZ",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749412,
+        "indirect_hex": "cd8b0000",
+        "nlist_offset": 3746776,
+        "nlist_hex": "37321100010000030000000000000000",
+        "string_offset": 4877975,
+        "string_hex": "5f2473536132325f616c6c6f63617465556e696e697469616c697a65647953617978475f5370797847745369465a00"
+      }
+    },
+    {
+      "address": 4296908760,
+      "symbol": "_$sSa28_allocateBufferUninitialized15minimumCapacitys06_ArrayB0VyxGSi_tFZ",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749416,
+        "indirect_hex": "ce8b0000",
+        "nlist_offset": 3746792,
+        "nlist_hex": "66321100010000030000000000000000",
+        "string_offset": 4878022,
+        "string_hex": "5f2473536132385f616c6c6f63617465427566666572556e696e697469616c697a656431356d696e696d756d43617061636974797330365f417272617942305679784753695f74465a00"
+      }
+    },
+    {
+      "address": 4296908772,
+      "symbol": "_$sSa5countSivg",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749420,
+        "indirect_hex": "cf8b0000",
+        "nlist_offset": 3746808,
+        "nlist_hex": "b0321100010000030000000000000000",
+        "string_offset": 4878096,
+        "string_hex": "5f2473536135636f756e745369766700"
+      }
+    },
+    {
+      "address": 4296908784,
+      "symbol": "_$sSa6appendyyxnF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749424,
+        "indirect_hex": "d08b0000",
+        "nlist_offset": 3746824,
+        "nlist_hex": "c0321100010000030000000000000000",
+        "string_offset": 4878112,
+        "string_hex": "5f2473536136617070656e647979786e4600"
+      }
+    },
+    {
+      "address": 4296908796,
+      "symbol": "_$sSa8capacitySivg",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749428,
+        "indirect_hex": "d18b0000",
+        "nlist_offset": 3746840,
+        "nlist_hex": "d2321100010000030000000000000000",
+        "string_offset": 4878130,
+        "string_hex": "5f247353613863617061636974795369766700"
+      }
+    },
+    {
+      "address": 4296908808,
+      "symbol": "_$sSa9removeAll15keepingCapacityySb_tF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749432,
+        "indirect_hex": "d28b0000",
+        "nlist_offset": 3746856,
+        "nlist_hex": "e5321100010000030000000000000000",
+        "string_offset": 4878149,
+        "string_hex": "5f247353613972656d6f7665416c6c31356b656570696e6743617061636974797953625f744600"
+      }
+    },
+    {
+      "address": 4296908820,
+      "symbol": "_$sSa9repeating5countSayxGx_SitcfC",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749436,
+        "indirect_hex": "d38b0000",
+        "nlist_offset": 3746872,
+        "nlist_hex": "0c331100010000030000000000000000",
+        "string_offset": 4878188,
+        "string_hex": "5f2473536139726570656174696e6735636f756e745361797847785f53697463664300"
+      }
+    },
+    {
+      "address": 4296908832,
+      "symbol": "_$sSaMa",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749440,
+        "indirect_hex": "d48b0000",
+        "nlist_offset": 3746888,
+        "nlist_hex": "2f331100010000030000000000000000",
+        "string_offset": 4878223,
+        "string_hex": "5f247353614d6100"
+      }
+    },
+    {
+      "address": 4296908844,
+      "symbol": "_$sSayxSicig",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749444,
+        "indirect_hex": "d68b0000",
+        "nlist_offset": 3746920,
+        "nlist_hex": "45331100010000030000000000000000",
+        "string_offset": 4878245,
+        "string_hex": "5f247353617978536963696700"
+      }
+    },
+    {
+      "address": 4296908856,
+      "symbol": "_$sSp10initialize9repeating5countyx_SitF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749448,
+        "indirect_hex": "da8b0000",
+        "nlist_offset": 3746984,
+        "nlist_hex": "83331100010000030000000000000000",
+        "string_offset": 4878307,
+        "string_hex": "5f247353703130696e697469616c697a6539726570656174696e6735636f756e7479785f5369744600"
+      }
+    },
+    {
+      "address": 4296908868,
+      "symbol": "_$sSqMa",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749452,
+        "indirect_hex": "db8b0000",
+        "nlist_offset": 3747000,
+        "nlist_hex": "ac331100010000030000000000000000",
+        "string_offset": 4878348,
+        "string_hex": "5f247353714d6100"
+      }
+    },
+    {
+      "address": 4296908880,
+      "symbol": "_$sSrys5SliceVySryxGGSnySiGcig",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749456,
+        "indirect_hex": "dc8b0000",
+        "nlist_offset": 3747016,
+        "nlist_hex": "b4331100010000030000000000000000",
+        "string_offset": 4878356,
+        "string_hex": "5f24735372797335536c6963655679537279784747536e7953694763696700"
+      }
+    },
+    {
+      "address": 4296908892,
+      "symbol": "_$sSt4next7ElementQzSgyFTj",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749460,
+        "indirect_hex": "dd8b0000",
+        "nlist_offset": 3747032,
+        "nlist_hex": "d3331100010000030000000000000000",
+        "string_offset": 4878387,
+        "string_hex": "5f24735374346e65787437456c656d656e74517a53677946546a00"
+      }
+    },
+    {
+      "address": 4296908904,
+      "symbol": "_$ss10SetAlgebraPsEyxqd__ncSTRd__7ElementQyd__ACRtzlufC",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749464,
+        "indirect_hex": "f28b0000",
+        "nlist_offset": 3747368,
+        "nlist_hex": "f2361100010000030000000000000000",
+        "string_offset": 4879186,
+        "string_hex": "5f2473733130536574416c6765627261507345797871645f5f6e63535452645f5f37456c656d656e745179645f5f414352747a6c75664300"
+      }
+    },
+    {
+      "address": 4296908916,
+      "symbol": "_$ss11InlineArrayVMa",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749468,
+        "indirect_hex": "f58b0000",
+        "nlist_offset": 3747416,
+        "nlist_hex": "7b371100010000030000000000000000",
+        "string_offset": 4879323,
+        "string_hex": "5f2473733131496e6c696e654172726179564d6100"
+      }
+    },
+    {
+      "address": 4296908928,
+      "symbol": "_$ss11_StringGutsV4growyySiF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749472,
+        "indirect_hex": "f78b0000",
+        "nlist_offset": 3747448,
+        "nlist_hex": "a5371100010000030000000000000000",
+        "string_offset": 4879365,
+        "string_hex": "5f24737331315f537472696e6747757473563467726f77797953694600"
+      }
+    },
+    {
+      "address": 4296908940,
+      "symbol": "_$ss12StaticStringV11descriptionSSvg",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749476,
+        "indirect_hex": "fb8b0000",
+        "nlist_offset": 3747512,
+        "nlist_hex": "26381100010000030000000000000000",
+        "string_offset": 4879494,
+        "string_hex": "5f2473733132537461746963537472696e675631316465736372697074696f6e5353766700"
+      }
+    },
+    {
+      "address": 4296908952,
+      "symbol": "_$ss17_assertionFailure__4file4line5flagss5NeverOs12StaticStringV_SSAHSus6UInt32VtF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749480,
+        "indirect_hex": "fd8b0000",
+        "nlist_offset": 3747544,
+        "nlist_hex": "60381100010000030000000000000000",
+        "string_offset": 4879552,
+        "string_hex": "5f24737331375f617373657274696f6e4661696c7572655f5f3466696c65346c696e6535666c61677373354e657665724f733132537461746963537472696e67565f535341485375733655496e74333256744600"
+      }
+    },
+    {
+      "address": 4296908964,
+      "symbol": "_$ss23CustomStringConvertibleP11descriptionSSvgTj",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749484,
+        "indirect_hex": "ff8b0000",
+        "nlist_offset": 3747576,
+        "nlist_hex": "d1381100010000030000000000000000",
+        "string_offset": 4879665,
+        "string_hex": "5f2473733233437573746f6d537472696e67436f6e7665727469626c655031316465736372697074696f6e53537667546a00"
+      }
+    },
+    {
+      "address": 4296908976,
+      "symbol": "_$ss4swapyyxz_xztlF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749488,
+        "indirect_hex": "048c0000",
+        "nlist_offset": 3747656,
+        "nlist_hex": "93391100010000030000000000000000",
+        "string_offset": 4879859,
+        "string_hex": "5f24737334737761707979787a5f787a746c4600"
+      }
+    },
+    {
+      "address": 4296908988,
+      "symbol": "_$ss5ErrorPsE19_getEmbeddedNSErroryXlSgyF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749492,
+        "indirect_hex": "0a8c0000",
+        "nlist_offset": 3747752,
+        "nlist_hex": "2f3a1100010000030000000000000000",
+        "string_offset": 4880015,
+        "string_hex": "5f247373354572726f7250734531395f676574456d6265646465644e534572726f7279586c5367794600"
+      }
+    },
+    {
+      "address": 4296909000,
+      "symbol": "_$ss5ErrorPsE5_codeSivg",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749496,
+        "indirect_hex": "0b8c0000",
+        "nlist_offset": 3747768,
+        "nlist_hex": "593a1100010000030000000000000000",
+        "string_offset": 4880057,
+        "string_hex": "5f247373354572726f72507345355f636f64655369766700"
+      }
+    },
+    {
+      "address": 4296909012,
+      "symbol": "_$ss5ErrorPsE7_domainSSvg",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749500,
+        "indirect_hex": "0c8c0000",
+        "nlist_offset": 3747784,
+        "nlist_hex": "713a1100010000030000000000000000",
+        "string_offset": 4880081,
+        "string_hex": "5f247373354572726f72507345375f646f6d61696e5353766700"
+      }
+    },
+    {
+      "address": 4296909024,
+      "symbol": "_$ss5ErrorPsE9_userInfoyXlSgvg",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749504,
+        "indirect_hex": "0d8c0000",
+        "nlist_offset": 3747800,
+        "nlist_hex": "8b3a1100010000030000000000000000",
+        "string_offset": 4880107,
+        "string_hex": "5f247373354572726f72507345395f75736572496e666f79586c5367766700"
+      }
+    },
+    {
+      "address": 4296909036,
+      "symbol": "_$ss5ErrorPsSYRzs17FixedWidthInteger8RawValueSYRpzrlE5_codeSivg",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749508,
+        "indirect_hex": "0e8c0000",
+        "nlist_offset": 3747816,
+        "nlist_hex": "aa3a1100010000030000000000000000",
+        "string_offset": 4880138,
+        "string_hex": "5f247373354572726f7250735359527a73313746697865645769647468496e74656765723852617756616c7565535952707a726c45355f636f64655369766700"
+      }
+    },
+    {
+      "address": 4296909048,
+      "symbol": "_$ss5print_9separator10terminatoryypd_S2StF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749512,
+        "indirect_hex": "188c0000",
+        "nlist_offset": 3747976,
+        "nlist_hex": "853b1100010000030000000000000000",
+        "string_offset": 4880357,
+        "string_hex": "5f247373357072696e745f39736570617261746f7231307465726d696e61746f72797970645f533253744600"
+      }
+    },
+    {
+      "address": 4296909060,
+      "symbol": "_$ss6HasherV5_seedABSi_tcfC",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749516,
+        "indirect_hex": "198c0000",
+        "nlist_offset": 3747992,
+        "nlist_hex": "b13b1100010000030000000000000000",
+        "string_offset": 4880401,
+        "string_hex": "5f2473733648617368657256355f73656564414253695f7463664300"
+      }
+    },
+    {
+      "address": 4296909072,
+      "symbol": "_$ss6HasherV8_combineyySuF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749520,
+        "indirect_hex": "1a8c0000",
+        "nlist_offset": 3748008,
+        "nlist_hex": "cd3b1100010000030000000000000000",
+        "string_offset": 4880429,
+        "string_hex": "5f2473733648617368657256385f636f6d62696e65797953754600"
+      }
+    },
+    {
+      "address": 4296909084,
+      "symbol": "_$ss6HasherV8_combineyys5UInt8VF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749524,
+        "indirect_hex": "1b8c0000",
+        "nlist_offset": 3748024,
+        "nlist_hex": "e83b1100010000030000000000000000",
+        "string_offset": 4880456,
+        "string_hex": "5f2473733648617368657256385f636f6d62696e657979733555496e7438564600"
+      }
+    },
+    {
+      "address": 4296909096,
+      "symbol": "_$ss6HasherV8_combineyys6UInt16VF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749528,
+        "indirect_hex": "1c8c0000",
+        "nlist_offset": 3748040,
+        "nlist_hex": "093c1100010000030000000000000000",
+        "string_offset": 4880489,
+        "string_hex": "5f2473733648617368657256385f636f6d62696e657979733655496e743136564600"
+      }
+    },
+    {
+      "address": 4296909108,
+      "symbol": "_$ss6HasherV8_combineyys6UInt32VF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749532,
+        "indirect_hex": "1d8c0000",
+        "nlist_offset": 3748056,
+        "nlist_hex": "2b3c1100010000030000000000000000",
+        "string_offset": 4880523,
+        "string_hex": "5f2473733648617368657256385f636f6d62696e657979733655496e743332564600"
+      }
+    },
+    {
+      "address": 4296909120,
+      "symbol": "_$ss6HasherV9_finalizeSiyF",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749536,
+        "indirect_hex": "1e8c0000",
+        "nlist_offset": 3748072,
+        "nlist_hex": "4d3c1100010000030000000000000000",
+        "string_offset": 4880557,
+        "string_hex": "5f2473733648617368657256395f66696e616c697a655369794600"
+      }
+    },
+    {
+      "address": 4296909132,
+      "symbol": "_$ss6ResultOsSQRzSQR_rlE2eeoiySbAByxq_G_ADtFZ",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749540,
+        "indirect_hex": "1f8c0000",
+        "nlist_offset": 3748088,
+        "nlist_hex": "683c1100010000030000000000000000",
+        "string_offset": 4880584,
+        "string_hex": "5f24737336526573756c744f735351527a5351525f726c453265656f6979536241427978715f475f414474465a00"
+      }
+    },
+    {
+      "address": 4296909144,
+      "symbol": "___divti3",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749544,
+        "indirect_hex": "2d8c0000",
+        "nlist_offset": 3748312,
+        "nlist_hex": "923d1100010000010000000000000000",
+        "string_offset": 4880882,
+        "string_hex": "5f5f5f64697674693300"
+      }
+    },
+    {
+      "address": 4296909156,
+      "symbol": "___stack_chk_fail",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749548,
+        "indirect_hex": "2e8c0000",
+        "nlist_offset": 3748328,
+        "nlist_hex": "9c3d1100010000010000000000000000",
+        "string_offset": 4880892,
+        "string_hex": "5f5f5f737461636b5f63686b5f6661696c00"
+      }
+    },
+    {
+      "address": 4296909168,
+      "symbol": "___udivti3",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749552,
+        "indirect_hex": "308c0000",
+        "nlist_offset": 3748360,
+        "nlist_hex": "c13d1100010000010000000000000000",
+        "string_offset": 4880929,
+        "string_hex": "5f5f5f7564697674693300"
+      }
+    },
+    {
+      "address": 4296909180,
+      "symbol": "__swift_isClassOrObjCExistentialType",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749556,
+        "indirect_hex": "358c0000",
+        "nlist_offset": 3748440,
+        "nlist_hex": "393e1100010000030000000000000000",
+        "string_offset": 4881049,
+        "string_hex": "5f5f73776966745f6973436c6173734f724f626a434578697374656e7469616c5479706500"
+      }
+    },
+    {
+      "address": 4296909192,
+      "symbol": "_bzero",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749560,
+        "indirect_hex": "368c0000",
+        "nlist_offset": 3748456,
+        "nlist_hex": "5e3e1100010000010000000000000000",
+        "string_offset": 4881086,
+        "string_hex": "5f627a65726f00"
+      }
+    },
+    {
+      "address": 4296909204,
+      "symbol": "_free",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749564,
+        "indirect_hex": "378c0000",
+        "nlist_offset": 3748472,
+        "nlist_hex": "653e1100010000010000000000000000",
+        "string_offset": 4881093,
+        "string_hex": "5f6672656500"
+      }
+    },
+    {
+      "address": 4296909216,
+      "symbol": "_malloc_size",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749568,
+        "indirect_hex": "388c0000",
+        "nlist_offset": 3748488,
+        "nlist_hex": "6b3e1100010000010000000000000000",
+        "string_offset": 4881099,
+        "string_hex": "5f6d616c6c6f635f73697a6500"
+      }
+    },
+    {
+      "address": 4296909228,
+      "symbol": "_memcmp",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749572,
+        "indirect_hex": "398c0000",
+        "nlist_offset": 3748504,
+        "nlist_hex": "783e1100010000010000000000000000",
+        "string_offset": 4881112,
+        "string_hex": "5f6d656d636d7000"
+      }
+    },
+    {
+      "address": 4296909240,
+      "symbol": "_memcpy",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749576,
+        "indirect_hex": "3a8c0000",
+        "nlist_offset": 3748520,
+        "nlist_hex": "803e1100010000010000000000000000",
+        "string_offset": 4881120,
+        "string_hex": "5f6d656d63707900"
+      }
+    },
+    {
+      "address": 4296909252,
+      "symbol": "_memmove",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749580,
+        "indirect_hex": "3b8c0000",
+        "nlist_offset": 3748536,
+        "nlist_hex": "883e1100010000010000000000000000",
+        "string_offset": 4881128,
+        "string_hex": "5f6d656d6d6f766500"
+      }
+    },
+    {
+      "address": 4296909264,
+      "symbol": "_memset",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749584,
+        "indirect_hex": "3c8c0000",
+        "nlist_offset": 3748552,
+        "nlist_hex": "913e1100010000010000000000000000",
+        "string_offset": 4881137,
+        "string_hex": "5f6d656d73657400"
+      }
+    },
+    {
+      "address": 4296909276,
+      "symbol": "_putchar",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749588,
+        "indirect_hex": "3d8c0000",
+        "nlist_offset": 3748568,
+        "nlist_hex": "993e1100010000010000000000000000",
+        "string_offset": 4881145,
+        "string_hex": "5f7075746368617200"
+      }
+    },
+    {
+      "address": 4296909288,
+      "symbol": "_setbuf",
+      "ordinal": 1,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749592,
+        "indirect_hex": "3e8c0000",
+        "nlist_offset": 3748584,
+        "nlist_hex": "a23e1100010000010000000000000000",
+        "string_offset": 4881154,
+        "string_hex": "5f73657462756600"
+      }
+    },
+    {
+      "address": 4296909300,
+      "symbol": "_swift_allocError",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749596,
+        "indirect_hex": "3f8c0000",
+        "nlist_offset": 3748600,
+        "nlist_hex": "aa3e1100010000030000000000000000",
+        "string_offset": 4881162,
+        "string_hex": "5f73776966745f616c6c6f634572726f7200"
+      }
+    },
+    {
+      "address": 4296909312,
+      "symbol": "_swift_allocObject",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749600,
+        "indirect_hex": "408c0000",
+        "nlist_offset": 3748616,
+        "nlist_hex": "bc3e1100010000030000000000000000",
+        "string_offset": 4881180,
+        "string_hex": "5f73776966745f616c6c6f634f626a65637400"
+      }
+    },
+    {
+      "address": 4296909324,
+      "symbol": "_swift_allocateGenericClassMetadata",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749604,
+        "indirect_hex": "418c0000",
+        "nlist_offset": 3748632,
+        "nlist_hex": "cf3e1100010000030000000000000000",
+        "string_offset": 4881199,
+        "string_hex": "5f73776966745f616c6c6f6361746547656e65726963436c6173734d6574616461746100"
+      }
+    },
+    {
+      "address": 4296909336,
+      "symbol": "_swift_allocateGenericValueMetadata",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749608,
+        "indirect_hex": "428c0000",
+        "nlist_offset": 3748648,
+        "nlist_hex": "f33e1100010000030000000000000000",
+        "string_offset": 4881235,
+        "string_hex": "5f73776966745f616c6c6f6361746547656e6572696356616c75654d6574616461746100"
+      }
+    },
+    {
+      "address": 4296909348,
+      "symbol": "_swift_beginAccess",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749612,
+        "indirect_hex": "438c0000",
+        "nlist_offset": 3748664,
+        "nlist_hex": "173f1100010000030000000000000000",
+        "string_offset": 4881271,
+        "string_hex": "5f73776966745f626567696e41636365737300"
+      }
+    },
+    {
+      "address": 4296909360,
+      "symbol": "_swift_bridgeObjectRelease",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749616,
+        "indirect_hex": "448c0000",
+        "nlist_offset": 3748680,
+        "nlist_hex": "2a3f1100010000030000000000000000",
+        "string_offset": 4881290,
+        "string_hex": "5f73776966745f6272696467654f626a65637452656c6561736500"
+      }
+    },
+    {
+      "address": 4296909372,
+      "symbol": "_swift_bridgeObjectRetain",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749620,
+        "indirect_hex": "458c0000",
+        "nlist_offset": 3748696,
+        "nlist_hex": "453f1100010000030000000000000000",
+        "string_offset": 4881317,
+        "string_hex": "5f73776966745f6272696467654f626a65637452657461696e00"
+      }
+    },
+    {
+      "address": 4296909384,
+      "symbol": "_swift_checkMetadataState",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749624,
+        "indirect_hex": "468c0000",
+        "nlist_offset": 3748712,
+        "nlist_hex": "5f3f1100010000030000000000000000",
+        "string_offset": 4881343,
+        "string_hex": "5f73776966745f636865636b4d65746164617461537461746500"
+      }
+    },
+    {
+      "address": 4296909396,
+      "symbol": "_swift_coroFrameAlloc",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749628,
+        "indirect_hex": "478c0000",
+        "nlist_offset": 3748728,
+        "nlist_hex": "793f1100010000030000000000000000",
+        "string_offset": 4881369,
+        "string_hex": "5f73776966745f636f726f4672616d65416c6c6f6300"
+      }
+    },
+    {
+      "address": 4296909408,
+      "symbol": "_swift_deallocClassInstance",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749632,
+        "indirect_hex": "488c0000",
+        "nlist_offset": 3748744,
+        "nlist_hex": "8f3f1100010000030000000000000000",
+        "string_offset": 4881391,
+        "string_hex": "5f73776966745f6465616c6c6f63436c617373496e7374616e636500"
+      }
+    },
+    {
+      "address": 4296909420,
+      "symbol": "_swift_deallocObject",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749636,
+        "indirect_hex": "498c0000",
+        "nlist_offset": 3748760,
+        "nlist_hex": "ab3f1100010000030000000000000000",
+        "string_offset": 4881419,
+        "string_hex": "5f73776966745f6465616c6c6f634f626a65637400"
+      }
+    },
+    {
+      "address": 4296909432,
+      "symbol": "_swift_deallocPartialClassInstance",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749640,
+        "indirect_hex": "4a8c0000",
+        "nlist_offset": 3748776,
+        "nlist_hex": "c03f1100010000030000000000000000",
+        "string_offset": 4881440,
+        "string_hex": "5f73776966745f6465616c6c6f635061727469616c436c617373496e7374616e636500"
+      }
+    },
+    {
+      "address": 4296909444,
+      "symbol": "_swift_dynamicCast",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749644,
+        "indirect_hex": "4c8c0000",
+        "nlist_offset": 3748808,
+        "nlist_hex": "fd3f1100010000030000000000000000",
+        "string_offset": 4881501,
+        "string_hex": "5f73776966745f64796e616d69634361737400"
+      }
+    },
+    {
+      "address": 4296909456,
+      "symbol": "_swift_endAccess",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749648,
+        "indirect_hex": "4d8c0000",
+        "nlist_offset": 3748824,
+        "nlist_hex": "10401100010000030000000000000000",
+        "string_offset": 4881520,
+        "string_hex": "5f73776966745f656e6441636365737300"
+      }
+    },
+    {
+      "address": 4296909468,
+      "symbol": "_swift_errorRelease",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749652,
+        "indirect_hex": "4e8c0000",
+        "nlist_offset": 3748840,
+        "nlist_hex": "21401100010000030000000000000000",
+        "string_offset": 4881537,
+        "string_hex": "5f73776966745f6572726f7252656c6561736500"
+      }
+    },
+    {
+      "address": 4296909480,
+      "symbol": "_swift_errorRetain",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749656,
+        "indirect_hex": "4f8c0000",
+        "nlist_offset": 3748856,
+        "nlist_hex": "35401100010000030000000000000000",
+        "string_offset": 4881557,
+        "string_hex": "5f73776966745f6572726f7252657461696e00"
+      }
+    },
+    {
+      "address": 4296909492,
+      "symbol": "_swift_getAssociatedConformanceWitness",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749660,
+        "indirect_hex": "508c0000",
+        "nlist_offset": 3748872,
+        "nlist_hex": "48401100010000030000000000000000",
+        "string_offset": 4881576,
+        "string_hex": "5f73776966745f6765744173736f636961746564436f6e666f726d616e63655769746e65737300"
+      }
+    },
+    {
+      "address": 4296909504,
+      "symbol": "_swift_getAssociatedTypeWitness",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749664,
+        "indirect_hex": "518c0000",
+        "nlist_offset": 3748888,
+        "nlist_hex": "6f401100010000030000000000000000",
+        "string_offset": 4881615,
+        "string_hex": "5f73776966745f6765744173736f636961746564547970655769746e65737300"
+      }
+    },
+    {
+      "address": 4296909516,
+      "symbol": "_swift_getEnumCaseMultiPayload",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749668,
+        "indirect_hex": "528c0000",
+        "nlist_offset": 3748904,
+        "nlist_hex": "8f401100010000030000000000000000",
+        "string_offset": 4881647,
+        "string_hex": "5f73776966745f676574456e756d436173654d756c74695061796c6f616400"
+      }
+    },
+    {
+      "address": 4296909528,
+      "symbol": "_swift_getEnumTagSinglePayloadGeneric",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749672,
+        "indirect_hex": "538c0000",
+        "nlist_offset": 3748920,
+        "nlist_hex": "ae401100010000030000000000000000",
+        "string_offset": 4881678,
+        "string_hex": "5f73776966745f676574456e756d54616753696e676c655061796c6f616447656e6572696300"
+      }
+    },
+    {
+      "address": 4296909540,
+      "symbol": "_swift_getFixedArrayTypeMetadata",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749676,
+        "indirect_hex": "548c0000",
+        "nlist_offset": 3748936,
+        "nlist_hex": "d4401100010000030000000000000000",
+        "string_offset": 4881716,
+        "string_hex": "5f73776966745f67657446697865644172726179547970654d6574616461746100"
+      }
+    },
+    {
+      "address": 4296909552,
+      "symbol": "_swift_getGenericMetadata",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749680,
+        "indirect_hex": "558c0000",
+        "nlist_offset": 3748952,
+        "nlist_hex": "f5401100010000030000000000000000",
+        "string_offset": 4881749,
+        "string_hex": "5f73776966745f67657447656e657269634d6574616461746100"
+      }
+    },
+    {
+      "address": 4296909564,
+      "symbol": "_swift_getOpaqueTypeConformance2",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749684,
+        "indirect_hex": "568c0000",
+        "nlist_offset": 3748968,
+        "nlist_hex": "0f411100010000030000000000000000",
+        "string_offset": 4881775,
+        "string_hex": "5f73776966745f6765744f706171756554797065436f6e666f726d616e63653200"
+      }
+    },
+    {
+      "address": 4296909576,
+      "symbol": "_swift_getOpaqueTypeMetadata2",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749688,
+        "indirect_hex": "578c0000",
+        "nlist_offset": 3748984,
+        "nlist_hex": "30411100010000030000000000000000",
+        "string_offset": 4881808,
+        "string_hex": "5f73776966745f6765744f7061717565547970654d657461646174613200"
+      }
+    },
+    {
+      "address": 4296909588,
+      "symbol": "_swift_getTupleTypeLayout",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749692,
+        "indirect_hex": "588c0000",
+        "nlist_offset": 3749000,
+        "nlist_hex": "4e411100010000030000000000000000",
+        "string_offset": 4881838,
+        "string_hex": "5f73776966745f6765745475706c65547970654c61796f757400"
+      }
+    },
+    {
+      "address": 4296909600,
+      "symbol": "_swift_getTupleTypeLayout2",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749696,
+        "indirect_hex": "598c0000",
+        "nlist_offset": 3749016,
+        "nlist_hex": "68411100010000030000000000000000",
+        "string_offset": 4881864,
+        "string_hex": "5f73776966745f6765745475706c65547970654c61796f75743200"
+      }
+    },
+    {
+      "address": 4296909612,
+      "symbol": "_swift_getTupleTypeLayout3",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749700,
+        "indirect_hex": "5a8c0000",
+        "nlist_offset": 3749032,
+        "nlist_hex": "83411100010000030000000000000000",
+        "string_offset": 4881891,
+        "string_hex": "5f73776966745f6765745475706c65547970654c61796f75743300"
+      }
+    },
+    {
+      "address": 4296909624,
+      "symbol": "_swift_getTupleTypeMetadata",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749704,
+        "indirect_hex": "5b8c0000",
+        "nlist_offset": 3749048,
+        "nlist_hex": "9e411100010000030000000000000000",
+        "string_offset": 4881918,
+        "string_hex": "5f73776966745f6765745475706c65547970654d6574616461746100"
+      }
+    },
+    {
+      "address": 4296909636,
+      "symbol": "_swift_getTupleTypeMetadata2",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749708,
+        "indirect_hex": "5c8c0000",
+        "nlist_offset": 3749064,
+        "nlist_hex": "ba411100010000030000000000000000",
+        "string_offset": 4881946,
+        "string_hex": "5f73776966745f6765745475706c65547970654d657461646174613200"
+      }
+    },
+    {
+      "address": 4296909648,
+      "symbol": "_swift_getTupleTypeMetadata3",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749712,
+        "indirect_hex": "5d8c0000",
+        "nlist_offset": 3749080,
+        "nlist_hex": "d7411100010000030000000000000000",
+        "string_offset": 4881975,
+        "string_hex": "5f73776966745f6765745475706c65547970654d657461646174613300"
+      }
+    },
+    {
+      "address": 4296909660,
+      "symbol": "_swift_getTypeByMangledNameInContext2",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749716,
+        "indirect_hex": "5e8c0000",
+        "nlist_offset": 3749096,
+        "nlist_hex": "f4411100010000030000000000000000",
+        "string_offset": 4882004,
+        "string_hex": "5f73776966745f6765745479706542794d616e676c65644e616d65496e436f6e746578743200"
+      }
+    },
+    {
+      "address": 4296909672,
+      "symbol": "_swift_getTypeByMangledNameInContextInMetadataState2",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749720,
+        "indirect_hex": "5f8c0000",
+        "nlist_offset": 3749112,
+        "nlist_hex": "1a421100010000030000000000000000",
+        "string_offset": 4882042,
+        "string_hex": "5f73776966745f6765745479706542794d616e676c65644e616d65496e436f6e74657874496e4d6574616461746153746174653200"
+      }
+    },
+    {
+      "address": 4296909684,
+      "symbol": "_swift_getWitnessTable",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749724,
+        "indirect_hex": "608c0000",
+        "nlist_offset": 3749128,
+        "nlist_hex": "4f421100010000030000000000000000",
+        "string_offset": 4882095,
+        "string_hex": "5f73776966745f6765745769746e6573735461626c6500"
+      }
+    },
+    {
+      "address": 4296909696,
+      "symbol": "_swift_initClassMetadata2",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749728,
+        "indirect_hex": "618c0000",
+        "nlist_offset": 3749144,
+        "nlist_hex": "66421100010000030000000000000000",
+        "string_offset": 4882118,
+        "string_hex": "5f73776966745f696e6974436c6173734d657461646174613200"
+      }
+    },
+    {
+      "address": 4296909708,
+      "symbol": "_swift_initEnumMetadataMultiPayload",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749732,
+        "indirect_hex": "628c0000",
+        "nlist_offset": 3749160,
+        "nlist_hex": "80421100010000030000000000000000",
+        "string_offset": 4882144,
+        "string_hex": "5f73776966745f696e6974456e756d4d657461646174614d756c74695061796c6f616400"
+      }
+    },
+    {
+      "address": 4296909720,
+      "symbol": "_swift_initEnumMetadataSinglePayload",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749736,
+        "indirect_hex": "638c0000",
+        "nlist_offset": 3749176,
+        "nlist_hex": "a4421100010000030000000000000000",
+        "string_offset": 4882180,
+        "string_hex": "5f73776966745f696e6974456e756d4d6574616461746153696e676c655061796c6f616400"
+      }
+    },
+    {
+      "address": 4296909732,
+      "symbol": "_swift_initStructMetadata",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749740,
+        "indirect_hex": "648c0000",
+        "nlist_offset": 3749192,
+        "nlist_hex": "c9421100010000030000000000000000",
+        "string_offset": 4882217,
+        "string_hex": "5f73776966745f696e69745374727563744d6574616461746100"
+      }
+    },
+    {
+      "address": 4296909744,
+      "symbol": "_swift_isUniquelyReferenced_nonNull_native",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749744,
+        "indirect_hex": "658c0000",
+        "nlist_offset": 3749208,
+        "nlist_hex": "e3421100010000030000000000000000",
+        "string_offset": 4882243,
+        "string_hex": "5f73776966745f6973556e697175656c795265666572656e6365645f6e6f6e4e756c6c5f6e617469766500"
+      }
+    },
+    {
+      "address": 4296909756,
+      "symbol": "_swift_once",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749748,
+        "indirect_hex": "668c0000",
+        "nlist_offset": 3749224,
+        "nlist_hex": "0e431100010000030000000000000000",
+        "string_offset": 4882286,
+        "string_hex": "5f73776966745f6f6e636500"
+      }
+    },
+    {
+      "address": 4296909768,
+      "symbol": "_swift_release",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749752,
+        "indirect_hex": "678c0000",
+        "nlist_offset": 3749240,
+        "nlist_hex": "1a431100010000030000000000000000",
+        "string_offset": 4882298,
+        "string_hex": "5f73776966745f72656c6561736500"
+      }
+    },
+    {
+      "address": 4296909780,
+      "symbol": "_swift_retain",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749756,
+        "indirect_hex": "688c0000",
+        "nlist_offset": 3749256,
+        "nlist_hex": "29431100010000030000000000000000",
+        "string_offset": 4882313,
+        "string_hex": "5f73776966745f72657461696e00"
+      }
+    },
+    {
+      "address": 4296909792,
+      "symbol": "_swift_setDeallocating",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749760,
+        "indirect_hex": "6a8c0000",
+        "nlist_offset": 3749288,
+        "nlist_hex": "5e431100010000030000000000000000",
+        "string_offset": 4882366,
+        "string_hex": "5f73776966745f7365744465616c6c6f636174696e6700"
+      }
+    },
+    {
+      "address": 4296909804,
+      "symbol": "_swift_storeEnumTagMultiPayload",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749764,
+        "indirect_hex": "6b8c0000",
+        "nlist_offset": 3749304,
+        "nlist_hex": "75431100010000030000000000000000",
+        "string_offset": 4882389,
+        "string_hex": "5f73776966745f73746f7265456e756d5461674d756c74695061796c6f616400"
+      }
+    },
+    {
+      "address": 4296909816,
+      "symbol": "_swift_storeEnumTagSinglePayloadGeneric",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749768,
+        "indirect_hex": "6c8c0000",
+        "nlist_offset": 3749320,
+        "nlist_hex": "95431100010000030000000000000000",
+        "string_offset": 4882421,
+        "string_hex": "5f73776966745f73746f7265456e756d54616753696e676c655061796c6f616447656e6572696300"
+      }
+    },
+    {
+      "address": 4296909828,
+      "symbol": "_swift_unexpectedError",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749772,
+        "indirect_hex": "6d8c0000",
+        "nlist_offset": 3749336,
+        "nlist_hex": "bd431100010000030000000000000000",
+        "string_offset": 4882461,
+        "string_hex": "5f73776966745f756e65787065637465644572726f7200"
+      }
+    },
+    {
+      "address": 4296909840,
+      "symbol": "_swift_willThrowTypedImpl",
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "raw_identity": {
+        "indirect_offset": 3749776,
+        "indirect_hex": "6e8c0000",
+        "nlist_offset": 3749352,
+        "nlist_hex": "d4431100010000030000000000000000",
+        "string_offset": 4882484,
+        "string_hex": "5f73776966745f77696c6c5468726f775479706564496d706c00"
+      }
+    }
+  ],
+  "dependencies": [
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/swift/libswiftCore.dylib",
+    "/usr/lib/swift/libswift_Builtin_float.dylib",
+    "/usr/lib/swift/libswift_DarwinFoundation2.dylib"
+  ],
+  "preauth_metadata_read_bytes": 31692,
+  "scope": "Mach-O identity/indirect-table provenance only; no body semantics interpreted"
+}

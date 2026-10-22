@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-22T12:59:26.402635+00:00",
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmps4xst3kt/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "--fresh-focused",
+    "--select-family",
+    "runtime"
+  ],
+  "capture_pid": 41282,
+  "scope": "NativeStaticfinitefour-classcompilerconstructioncorrection; existingputchartransport; noU02orresourceclaim"
+}

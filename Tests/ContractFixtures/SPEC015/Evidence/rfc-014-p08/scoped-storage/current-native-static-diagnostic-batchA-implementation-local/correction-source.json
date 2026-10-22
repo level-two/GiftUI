@@ -1,0 +1,20 @@
+{
+  "utc": "2026-10-22T12:47:12.327422+00:00",
+  "scope": "Three fixture files only; NativeStaticfour reached diagnostic classes; existing putchar transport unchanged",
+  "added_owner_lines": 253,
+  "source": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "before_sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+      "after_sha256": "f2bf801f800e8d1d0f8260bf5f36bfd98d2f073654f4b9eb0b8b589880541c8c"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "before_sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+      "after_sha256": "6c93f9e340fd17a348774e0180040984dc434c3b6a58ff4d3df343d2710dde5a"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+      "before_sha256": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+      "after_sha256": "c205032ae65e198cd57e22f25f778a434117f4da889b77f5d3313da01552f33a"
+    }
+  },
+  "audit_generation": "Finite explicit field reads, static spelling only, no runtime reflection/generic collections; independentSwiftprint controls required"
+}

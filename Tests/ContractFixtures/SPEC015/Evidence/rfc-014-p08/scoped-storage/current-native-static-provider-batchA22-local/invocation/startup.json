@@ -1,0 +1,16 @@
+{
+  "frozen_utc": "2026-10-22T12:05:08.647146+00:00",
+  "helper_sha256": "1da31cc41cfb3dbb20add36ff7188b98d6daa2541192c2e399cf94793cf44516",
+  "delivery_sha256": "8d37814359aa23b07a43686c7cac7b127e04ffa24e3b7ca5ec346872471a56b0",
+  "requests_sha256": "9d0c2721f3ad475cd2e0c364805b2e49176781b618596b10654070869abcd48f",
+  "refresh_sha256": "2e99832adb0ab36a3c2b8c8afbec9ea326eebe4c20e4ed1ecdd9a3c500eb7345",
+  "provider_slices_sha256": "8e261ab9ab3297264c449a275e4cd3a42c9605ebededc01fc0cfae7dd831fb7d",
+  "alias_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local/deliver.py",
+  "expected_HEAD": "c94574d05770e1011eb8f81d74a5f28a8f690bd8",
+  "preflight_processing_upper_bytes": 16777216,
+  "control_sha256": "f97a7020ef0cd78d2f71798d5a7f0f98c77628a0a4cb901e3d24dc167bba2219",
+  "control_result_sha256": "bf4e44de2b9f7fb20ad917d0d629b9b663440f004ffc30683c47d4b188287798",
+  "complete_exchange_rule": "Actual complete selected provider packet+requests/status/STOP reserve<=10000 before emission; no subcap",
+  "authority": "Explicit human bounded installed-provider evidence; opaque metadata/range hashes frozen before semantic reading; no live process or new provider acquired",
+  "started_utc": "2026-10-22T12:05:20.485339+00:00"
+}

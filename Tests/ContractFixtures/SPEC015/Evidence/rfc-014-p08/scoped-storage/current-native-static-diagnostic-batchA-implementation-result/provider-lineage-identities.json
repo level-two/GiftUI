@@ -1,0 +1,241 @@
+[
+  {
+    "session": 22,
+    "state_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA22-local/state.json",
+    "state_sha256": "43df24bc7d8ffc77597c367e67b26a8ab0b4c4f7bbd00d1efb93e03908dc5fc3",
+    "state": {
+      "started_utc": "2026-10-22T12:05:20.485339+00:00",
+      "errors": [
+        "RuntimeError: checked payload exceeds reserved transcript"
+      ]
+    },
+    "result_rows_sha256": "6636632ef570f0988099993ab82eb2b2e55387b9db4cb5352ea45dc425e3f381",
+    "child_exits": {
+      "group-exit": {
+        "exit": 2
+      },
+      "auth-exit": {
+        "exit": 0
+      },
+      "finish-exit": {
+        "exit": 0
+      },
+      "close-exit": {
+        "exit": 0
+      }
+    },
+    "final_accounting": {
+      "used": 496291595,
+      "transcript_payload_bytes": 567,
+      "output_upper_bytes": 2538527,
+      "started_utc": "2026-10-22T12:05:20.485339+00:00",
+      "finished_utc": "2026-10-22T12:05:43.415201+00:00",
+      "errors": [
+        "RuntimeError: checked payload exceeds reserved transcript"
+      ]
+    },
+    "group_timing": {
+      "U02-X28": {
+        "started_utc": "2026-10-22T12:05:30.691390+00:00",
+        "ended_utc": "2026-10-22T12:05:40.796459+00:00"
+      }
+    }
+  },
+  {
+    "session": 23,
+    "state_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-local/state.json",
+    "state_sha256": "78115f5d3238f786c663582094a51e3b9562134ce33122af800c037402ecd1c3",
+    "state": {
+      "started_utc": "2026-10-22T12:11:07.073629+00:00",
+      "errors": []
+    },
+    "result_rows_sha256": "d26a30d8a4fd7e612a50d671376350fca1c5031995c0b04a9d2f9ae541a41ec7",
+    "child_exits": {
+      "group-exit": {
+        "exit": 0
+      },
+      "auth-exit": {
+        "exit": 0
+      },
+      "finish-exit": {
+        "exit": 0
+      },
+      "close-exit": {
+        "exit": 0
+      }
+    },
+    "final_accounting": {
+      "used": 485787391,
+      "transcript_payload_bytes": 4870,
+      "output_upper_bytes": 2219878,
+      "started_utc": "2026-10-22T12:11:07.073629+00:00",
+      "finished_utc": "2026-10-22T12:12:04.435566+00:00",
+      "errors": []
+    },
+    "group_timing": {
+      "U02-X28": {
+        "started_utc": "2026-10-22T12:11:17.834759+00:00",
+        "ended_utc": "2026-10-22T12:12:00.864756+00:00"
+      }
+    }
+  },
+  {
+    "session": 24,
+    "state_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-local/state.json",
+    "state_sha256": "f6f23678012a3fe4b89ad49302d395a7d8ee1ac87ce5a1424a718cec9e40fb2e",
+    "state": {
+      "started_utc": "2026-10-22T12:13:39.739397+00:00",
+      "errors": []
+    },
+    "result_rows_sha256": "2d2cf55131c2be3d558b6557fc1760f23dcdd57ee8bf4bca5e9538434a22d40a",
+    "child_exits": {
+      "group-exit": {
+        "exit": 0
+      },
+      "auth-exit": {
+        "exit": 0
+      },
+      "finish-exit": {
+        "exit": 0
+      },
+      "close-exit": {
+        "exit": 0
+      }
+    },
+    "final_accounting": {
+      "used": 487854197,
+      "transcript_payload_bytes": 7376,
+      "output_upper_bytes": 2403791,
+      "started_utc": "2026-10-22T12:13:39.739397+00:00",
+      "finished_utc": "2026-10-22T12:15:13.466248+00:00",
+      "errors": []
+    },
+    "group_timing": {
+      "U02-X28": {
+        "started_utc": "2026-10-22T12:13:48.667417+00:00",
+        "ended_utc": "2026-10-22T12:15:08.710352+00:00"
+      }
+    }
+  },
+  {
+    "session": 25,
+    "state_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local/state.json",
+    "state_sha256": "3dbe8fd2c6a73cca0dd0a07052e8a77f4ec750b88f3647c4e097446472387ca4",
+    "state": {
+      "started_utc": "2026-10-22T12:18:55.778865+00:00",
+      "errors": []
+    },
+    "result_rows_sha256": "122e0858f3209af6a4231d159b4da5fddf8bc3caa53734d46764ed87cf7b0d48",
+    "child_exits": {
+      "group-exit": {
+        "exit": 0
+      },
+      "auth-exit": {
+        "exit": 0
+      },
+      "finish-exit": {
+        "exit": 0
+      },
+      "close-exit": {
+        "exit": 0
+      }
+    },
+    "final_accounting": {
+      "used": 490343976,
+      "transcript_payload_bytes": 5908,
+      "output_upper_bytes": 2391477,
+      "started_utc": "2026-10-22T12:18:55.778865+00:00",
+      "finished_utc": "2026-10-22T12:20:38.016753+00:00",
+      "errors": []
+    },
+    "group_timing": {
+      "U02-X28": {
+        "started_utc": "2026-10-22T12:19:05.487982+00:00",
+        "ended_utc": "2026-10-22T12:20:33.314403+00:00"
+      }
+    }
+  },
+  {
+    "session": 26,
+    "state_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA26-local/state.json",
+    "state_sha256": "2a288b66ec45b67ec7d6b9dd90e5da30ab15274ef329bc76547a9554846c0d51",
+    "state": {
+      "started_utc": "2026-10-22T12:31:36.612711+00:00",
+      "errors": [
+        "U02-X28 exceeded 90-second active group window"
+      ]
+    },
+    "result_rows_sha256": "48b359b8355cd2a1c5411a967c0f7d6f3f32cdf18d2ef70203bc58a79e8d7e02",
+    "child_exits": {
+      "group-exit": {
+        "exit": 0
+      },
+      "auth-exit": {
+        "exit": 0
+      },
+      "finish-exit": {
+        "exit": 0
+      },
+      "close-exit": {
+        "exit": 0
+      }
+    },
+    "final_accounting": {
+      "used": 519440273,
+      "transcript_payload_bytes": 9216,
+      "output_upper_bytes": 2470849,
+      "started_utc": "2026-10-22T12:31:36.612711+00:00",
+      "finished_utc": "2026-10-22T12:33:49.960173+00:00",
+      "errors": [
+        "U02-X28 exceeded 90-second active group window"
+      ]
+    },
+    "group_timing": {
+      "U02-X28": {
+        "started_utc": "2026-10-22T12:31:49.825839+00:00",
+        "ended_utc": "2026-10-22T12:33:22.564637+00:00"
+      }
+    }
+  },
+  {
+    "session": 27,
+    "state_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA27-local/state.json",
+    "state_sha256": "9da202dee2b037c87ee4f03a989e3012b592f0cf4ba0f8bf0a2eefe635d50977",
+    "state": {
+      "started_utc": "2026-10-22T12:39:15.682171+00:00",
+      "errors": []
+    },
+    "result_rows_sha256": "c76a84106d677e918db4a5e7643c6466572f9eaf85a3151564208e1ba295a336",
+    "child_exits": {
+      "group-exit": {
+        "exit": 0
+      },
+      "auth-exit": {
+        "exit": 0
+      },
+      "finish-exit": {
+        "exit": 0
+      },
+      "close-exit": {
+        "exit": 0
+      },
+      "clock-exit": {
+        "exit": 0
+      }
+    },
+    "final_accounting": {
+      "used": 502390091,
+      "transcript_payload_bytes": 7865,
+      "output_upper_bytes": 2678963,
+      "started_utc": "2026-10-22T12:39:15.682171+00:00",
+      "finished_utc": "2026-10-22T12:40:34.578161+00:00",
+      "errors": []
+    },
+    "group_timing": {
+      "U02-X28": {
+        "started_utc": "2026-10-22T12:39:25.408896+00:00",
+        "ended_utc": "2026-10-22T12:40:31.623772+00:00"
+      }
+    }
+  }
+]

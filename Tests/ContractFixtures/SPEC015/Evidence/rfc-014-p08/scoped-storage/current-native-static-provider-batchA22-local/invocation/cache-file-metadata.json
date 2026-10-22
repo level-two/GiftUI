@@ -1,0 +1,77 @@
+[
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e",
+    "bytes": 573440,
+    "inode": 575278
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+    "bytes": 1715355648,
+    "inode": 575280
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+    "bytes": 234569728,
+    "inode": 575282
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly",
+    "bytes": 127057920,
+    "inode": 575284
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "bytes": 601341952,
+    "inode": 575286
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05",
+    "bytes": 1819885568,
+    "inode": 575288
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata",
+    "bytes": 237125632,
+    "inode": 575290
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly",
+    "bytes": 7290880,
+    "inode": 575292
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit",
+    "bytes": 617381888,
+    "inode": 575294
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09",
+    "bytes": 182812672,
+    "inode": 575296
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata",
+    "bytes": 23199744,
+    "inode": 575298
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11",
+    "bytes": 32768,
+    "inode": 575300
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit",
+    "bytes": 254345216,
+    "inode": 575302
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.atlas",
+    "bytes": 2372801,
+    "inode": 575304
+  },
+  {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map",
+    "bytes": 1338214,
+    "inode": 575306
+  }
+]

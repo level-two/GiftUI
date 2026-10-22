@@ -1,0 +1,145 @@
+___swhatbuf /usr/lib/system/libsystem_c.dylib uuid=d77ceb62aff63cecba9b4f057fbe2eb5 bytesSHA=425ebb363ce109789765950de90687ab133bdd1aad0022cb973767ac64ff87fc
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local/provider-___swhatbuf.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001803a1860 <__text>:
+1803a1860:     	pacibsp
+1803a1864:     	sub	sp, sp, #0xc0
+1803a1868:     	stp	x22, x21, [sp, #0x90]
+1803a186c:     	stp	x20, x19, [sp, #0xa0]
+1803a1870:     	stp	x29, x30, [sp, #0xb0]
+1803a1874:     	add	x29, sp, #0xb0
+1803a1878:     	mov	x21, x2
+1803a187c:     	mov	x20, x1
+1803a1880:     	mov	x19, x0
+1803a1884:     	ldrsh	w0, [x0, #0x12]
+1803a1888:     	tbnz	w0, #0x1f, 0x1803a1914 <__text+0xb4>
+1803a188c:     	movi.2d	v0, #0000000000000000
+1803a1890:     	stp	q0, q0, [sp, #0x70]
+1803a1894:     	stp	q0, q0, [sp, #0x50]
+1803a1898:     	stp	q0, q0, [sp, #0x30]
+1803a189c:     	stp	q0, q0, [sp, #0x10]
+1803a18a0:     	str	q0, [sp]
+1803a18a4:     	mov	x1, sp
+1803a18a8:     	bl	0x180406950 <__text+0x650f0>
+1803a18ac:     	tbnz	w0, #0x1f, 0x1803a1914 <__text+0xb4>
+1803a18b0:     	ldrh	w8, [sp, #0x4]
+1803a18b4:     	and	w9, w8, #0xf000
+1803a18b8:     	cmp	w9, #0x2, lsl #12       ; =0x2000
+1803a18bc:     	cset	w9, eq
+1803a18c0:     	str	w9, [x21]
+1803a18c4:     	ldr	w9, [sp, #0x70]
+1803a18c8:     	cmp	w9, #0x0
+1803a18cc:     	b.le	0x1803a1918 <__text+0xb8>
+1803a18d0:     	mov	w10, #0x1000000         ; =16777216
+1803a18d4:     	cmp	w9, w10
+1803a18d8:     	csel	w9, w9, w10, lo
+1803a18dc:     	str	x9, [x20]
+1803a18e0:     	str	w9, [x19, #0x88]
+1803a18e4:     	sxth	w8, w8
+1803a18e8:     	mov	w0, #0x800              ; =2048
+1803a18ec:     	cmn	w8, #0x7, lsl #12       ; =0x7000
+1803a18f0:     	b.ge	0x1803a1924 <__text+0xc4>
+1803a18f4:     	ldr	x8, [x19, #0x48]
+1803a18f8:     	adrp	x16, 0x1803bb000 <__text+0x197a0>
+1803a18fc:     	add	x16, x16, #0xb8c
+1803a1900:     	paciza	x16
+1803a1904:     	cmp	x8, x16
+1803a1908:     	mov	w8, #0x400              ; =1024
+1803a190c:     	csel	w0, w8, w0, eq
+1803a1910:     	b	0x1803a1924 <__text+0xc4>
+1803a1914:     	str	wzr, [x21]
+1803a1918:     	mov	w8, #0x400              ; =1024
+1803a191c:     	str	x8, [x20]
+1803a1920:     	mov	w0, #0x800              ; =2048
+1803a1924:     	ldp	x29, x30, [sp, #0xb0]
+1803a1928:     	ldp	x20, x19, [sp, #0xa0]
+1803a192c:     	ldp	x22, x21, [sp, #0x90]
+1803a1930:     	add	sp, sp, #0xc0
+1803a1934:     	retab
+
+
+stdio_once_callback /usr/lib/system/libsystem_c.dylib uuid=d77ceb62aff63cecba9b4f057fbe2eb5 bytesSHA=bc51bee226d79bd63e618afb148eb3e8f3977be42ce3bd745d93d90fc36d7979
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local/provider-stdio_once_callback.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001803989a0 <__text>:
+1803989a0:     	adrp	x8, 0x1ecf48000 <__text+0x6cbaf660>
+1803989a4:     	add	x8, x8, #0x4c0
+1803989a8:     	mov	w9, #0x1                ; =1
+1803989ac:     	str	w9, [x8]
+1803989b0:     	mov	w9, #0x3                ; =3
+1803989b4:     	adrp	x8, 0x1ecf46000 <__text+0x6cbad660>
+1803989b8:     	add	x8, x8, #0xbe8
+1803989bc:     	adrp	x10, 0x1ecf47000 <__text+0x6cbae660>
+1803989c0:     	str	x9, [x10, #0x9b8]
+1803989c4:     	mov	w9, #0x68               ; =104
+1803989c8:     	adrp	x10, 0x1ecf47000 <__text+0x6cbae660>
+1803989cc:     	add	x10, x10, #0x9c0
+1803989d0:     	mov	w11, #0xaba2            ; =43938
+1803989d4:     	movk	w11, #0x32aa, lsl #16
+1803989d8:     	movi.2d	v0, #0000000000000000
+1803989dc:     	str	x8, [x10, x9]
+1803989e0:     	stp	xzr, x11, [x8]
+1803989e4:     	stp	q0, q0, [x8, #0x10]
+1803989e8:     	str	q0, [x8, #0x30]
+1803989ec:     	str	xzr, [x8, #0x40]
+1803989f0:     	ldrb	w12, [x8, #0x48]
+1803989f4:     	stp	q0, q0, [x8, #0x50]
+1803989f8:     	stp	q0, q0, [x8, #0x70]
+1803989fc:     	stp	q0, q0, [x8, #0x90]
+180398a00:     	and	w12, w12, #0xf0
+180398a04:     	add	x9, x9, #0x98
+180398a08:     	stp	q0, q0, [x8, #0xb0]
+180398a0c:     	strb	w12, [x8, #0x48]
+180398a10:     	add	x8, x8, #0xd0
+180398a14:     	cmp	x9, #0xa80
+180398a18:     	b.ne	0x1803989dc <__text+0x3c>
+180398a1c:     	ret
+
+
+_malloc_type_malloc /usr/lib/system/libsystem_malloc.dylib uuid=d969a9073e43395193658c2db3812e9d bytesSHA=a4bcbe1e408f926bb5b2f9f791b0873d0d1235ef2a7b9fe20bae940309508eec
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-local/provider-_malloc_type_malloc.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000018030f030 <__text>:
+18030f030:     	mov	x2, x1
+18030f034:     	mov	x1, x0
+18030f038:     	adrp	x8, 0x1ea471000 <__text+0x6a161fd0>
+18030f03c:     	add	x8, x8, #0x830
+18030f040:     	ldr	x8, [x8]
+18030f044:     	cbnz	x8, 0x18030f098 <__text+0x68>
+18030f048:     	adrp	x8, 0x1ea471000 <__text+0x6a161fd0>
+18030f04c:     	ldrb	w8, [x8, #0x858]
+18030f050:     	tbnz	w8, #0x0, 0x18030f098 <__text+0x68>
+18030f054:     	adrp	x8, 0x1ecf41000 <__text+0x6cc31fd0>
+18030f058:     	add	x8, x8, #0xc68
+18030f05c:     	ldr	x8, [x8]
+18030f060:     	cmp	x1, x8
+18030f064:     	b.hi	0x18030f098 <__text+0x68>
+18030f068:     	adrp	x8, 0x1ecf41000 <__text+0x6cc31fd0>
+18030f06c:     	add	x8, x8, #0x9b8
+18030f070:     	ldr	x8, [x8]
+18030f074:     	ldr	x0, [x8]
+18030f078:     	ldr	w8, [x0, #0x68]
+18030f07c:     	cmp	w8, #0x10
+18030f080:     	b.lo	0x18030f090 <__text+0x60>
+18030f084:     	ldr	x3, [x0, #0xa0]
+18030f088:     	mov	x16, #0xeafc            ; =60156
+18030f08c:     	braa	x3, x16
+18030f090:     	cmp	w8, #0xc
+18030f094:     	b.hi	0x18030f0a8 <__text+0x78>
+18030f098:     	mov	x0, x1
+18030f09c:     	mov	x1, x2
+18030f0a0:     	mov	w2, #0x1                ; =1
+18030f0a4:     	b	0x18030f664 <__text+0x634>
+18030f0a8:     	ldr	x2, [x0, #0x18]
+18030f0ac:     	mov	x16, #0x8fd             ; =2301
+18030f0b0:     	braa	x2, x16
+

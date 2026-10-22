@@ -1,0 +1,6 @@
+import pathlib,subprocess,json,datetime,sys,os
+R=pathlib.Path('/Users/eugene/work/GiftUI');C=R/'.build/contracts/p08-native-static-diagnostic-batchA'
+argv=['python3', 'scripts/contracts/check-spec-015-counter.py', '--profile', 'macos-static', '--runtime-build', '.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static', '--host-build', '.build/contracts/p08-scoped-host-7gj3vxnl', '--fresh-focused', '--select-family', 'runtime']
+start=datetime.datetime.now(datetime.timezone.utc).isoformat();(C/'focused-start.json').write_text(json.dumps({'started_utc':start,'argv':argv,'capture_pid':os.getpid(),'scope':'NativeStaticfinitefour-classcompilerconstructioncorrection; existingputchartransport; noU02orresourceclaim'},indent=2)+'\n');print('START '+start+' '+json.dumps(argv),flush=True)
+with (C/'focused.stdout').open('wb') as out,(C/'focused.stderr').open('wb') as err:r=subprocess.run(argv,cwd=R,stdout=out,stderr=err)
+end=datetime.datetime.now(datetime.timezone.utc).isoformat();(C/'focused-exit.json').write_text(json.dumps({'ended_utc':end,'exit':r.returncode})+'\n');print('TERMINAL '+str(r.returncode)+' '+end,flush=True);sys.exit(r.returncode)

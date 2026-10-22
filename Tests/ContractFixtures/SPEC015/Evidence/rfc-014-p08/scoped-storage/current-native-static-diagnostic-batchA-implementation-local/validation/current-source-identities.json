@@ -1,0 +1,23 @@
+[
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "before_sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+    "after_sha256": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050",
+    "before_bytes": 104448,
+    "after_bytes": 118924
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "before_sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+    "after_sha256": "77d67f4489042cdcdab24dc80eb1b05cc092e7d1273d49d82eb0fb1b35e78ef5",
+    "before_bytes": 254803,
+    "after_bytes": 255474
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+    "before_sha256": "1129e33dcab9bb075d3c11dac16cedd72c26efad6da87adc204b68de25408ee7",
+    "after_sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab",
+    "before_bytes": 6503,
+    "after_bytes": 6845
+  }
+]

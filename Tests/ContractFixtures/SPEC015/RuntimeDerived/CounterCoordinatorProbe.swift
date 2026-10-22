@@ -72,17 +72,21 @@ package func p08CounterCoordinator() -> Int {
     do {
         var storage = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
         let staticAudit = storage.audit();
-        #if !hasFeature(Embedded)
-        print("counter static audit", staticAudit)
+        #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+            counterDiagnosticAudit("counter static audit", staticAudit)
+        #elseif !hasFeature(Embedded)
+            print("counter static audit", staticAudit)
         #endif
         guard case .valid = staticAudit else { preconditionFailure("counter static audit") }
         var checks = storage.run() + 1
         #if !hasFeature(Embedded)
         var dynamic = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
         let dynamicAudit = dynamic.audit();
-        #if !hasFeature(Embedded)
-        print("counter dynamic audit", dynamicAudit)
-        #endif
+            #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+                counterDiagnosticAudit("counter dynamic audit", dynamicAudit)
+            #elseif !hasFeature(Embedded)
+                print("counter dynamic audit", dynamicAudit)
+            #endif
         guard case .valid = dynamicAudit else { preconditionFailure("counter dynamic audit") }
         checks += dynamic.run() + 1
         #endif

@@ -1,0 +1,134 @@
+{
+  "verdict": "Conditional installed allocator-family dependency demonstrated; not an observed allocation/cost/cold result. Astra-authorized coherent NativeStatic writer correction follows in same BatchA, no per-leaf review.",
+  "source_root": "Reviewed21current root/typedtrace/sharedStaticStringwriter relation reused with exact owner/object/result hashes.",
+  "installed_chain": "libSystem reexports libsystem_c. _putchar0x1803b99c0 -> conditional___swbuf0x1803be6cc -> conditional___swsetup0x1803ad498 -> null-buffer___smakebuf0x1803a15c0 -> size-taking importstub0x180406c20 -> ordinal5libsystem_malloc:_malloc_type_malloc0x18030f030.",
+  "conditions": "_putchar locks stream, decrements write count; negative/newline/line-buffer conditions can enter___swbuf. Writable/otherflags/null-buffer gates enter setup. __smakebuf bypasses dynamic buffer for unbuffered/configured paths; eligible size-taking call stores nonnull result as buffer/base and setsflag0x80, else selects embedded one-bytebuffer. All full branch bodies retained in23/24rawcontexts.",
+  "size_and_initializer": "25full___swhatbuf: fd/fstat failure defaults1024, otherwise positive file-derived size capped16MiB and flags; otherconfig parsing/bounds retained24. Complete oncecallback0x1803989a0 has no calls and writes shown global initialization tables. Exact setup-once stub binds ordinal7pthread_once.",
+  "allocator_boundary": "Exact nlist/indirect-table/string and installed export binding identifies_malloc_type_malloc; full entry loads installed zone state/version and dispatches authenticated zone function or localfallback. Actual zone origin/behavior/allocation success and bytecost were not established. No API-name-only allocation-success inference.",
+  "initial_state": "Exact___stdoutp encodedcachebytes,512B___sF selectedrange and v5slideheader/value-add retained25. Pristine cache bytes are not actual process state; no completed pointer-slide/process-window/loaded interposition proof. No runtime experiment performed.",
+  "consolidated_residuals": [
+    {
+      "class": "Actual stream/window/provider state",
+      "status": "UNRESOLVED for actual observed allocation/firstuse/cost; stream flags/buffer/once/config and loaded provider/zone state must be bound to exact construction/window. No zeros/exemptions inferred."
+    },
+    {
+      "class": "Remaining current callee/root eligibility",
+      "status": "OPEN: other current-mapped allocation, metadata, indirect/witness origins and other callers not discharged by this one sharedstdio path. Original56/1892/3 corpus is unchanged; old tuples not automatically current."
+    },
+    {
+      "class": "Concrete counter source safety",
+      "status": "Reuse accepted owner/reader/publication/dispatch/generation/backing-last/invariants/tiled-linkedwriter proofs. U03-05 reviewed fault5d02ecc8b supersedes stale in-progress language. No general foreign/concurrent guarantee or new safety closure inferred here."
+    },
+    {
+      "class": "B target/runtime/currentimage/resource/cold",
+      "status": "Separate gated validation; cross-compilation and historicallinkedwriter facts do not qualify boardexecution/currentRAMstack/cold windows. No P08pass."
+    }
+  ],
+  "lineage": "22deliverySTOP/model-unexamined preserved;23actualstdio frontier;24fullsetup/buffer;25binding,size,initializer,pristine-state. Each separate qualified window/caps retained, not one reset/reopened90s attempt. Acquisition known455.617628s/pre-recordtimeuncertain preserved; no completeaggregate/tool-envelope certification.",
+  "windows": {
+    "22": {
+      "start": "2026-10-22T12:05:20.485339+00:00",
+      "finish": "2026-10-22T12:05:43.415201+00:00",
+      "groups": {
+        "U02-X28": {
+          "started_utc": "2026-10-22T12:05:30.691390+00:00",
+          "status": "CLOSED",
+          "context_emitted": false,
+          "model_examined": false,
+          "ended_utc": "2026-10-22T12:05:40.796459+00:00",
+          "elapsed_UTC_seconds": 10.105069
+        }
+      },
+      "processing": 496291595,
+      "transcript": 567,
+      "output_upper": 2538527,
+      "errors": [
+        "RuntimeError: checked payload exceeds reserved transcript"
+      ],
+      "children": {
+        "auth": 0,
+        "group": 2,
+        "close": 0,
+        "finish": 0
+      }
+    },
+    "23": {
+      "start": "2026-10-22T12:11:07.073629+00:00",
+      "finish": "2026-10-22T12:12:04.435566+00:00",
+      "groups": {
+        "U02-X28": {
+          "started_utc": "2026-10-22T12:11:17.834759+00:00",
+          "status": "CLOSED",
+          "context_emitted": true,
+          "model_examined": true,
+          "ended_utc": "2026-10-22T12:12:00.864756+00:00",
+          "elapsed_UTC_seconds": 43.029997
+        }
+      },
+      "processing": 485787391,
+      "transcript": 4870,
+      "output_upper": 2219878,
+      "errors": [],
+      "children": {
+        "auth": 0,
+        "group": 0,
+        "close": 0,
+        "finish": 0
+      }
+    },
+    "24": {
+      "start": "2026-10-22T12:13:39.739397+00:00",
+      "finish": "2026-10-22T12:15:13.466248+00:00",
+      "groups": {
+        "U02-X28": {
+          "started_utc": "2026-10-22T12:13:48.667417+00:00",
+          "status": "CLOSED",
+          "context_emitted": true,
+          "model_examined": true,
+          "ended_utc": "2026-10-22T12:15:08.710352+00:00",
+          "elapsed_UTC_seconds": 80.042935
+        }
+      },
+      "processing": 487854197,
+      "transcript": 7376,
+      "output_upper": 2403791,
+      "errors": [],
+      "children": {
+        "auth": 0,
+        "group": 0,
+        "close": 0,
+        "finish": 0
+      }
+    },
+    "25": {
+      "start": "2026-10-22T12:18:55.778865+00:00",
+      "finish": "2026-10-22T12:20:38.016753+00:00",
+      "groups": {
+        "U02-X28": {
+          "started_utc": "2026-10-22T12:19:05.487982+00:00",
+          "status": "CLOSED",
+          "context_emitted": true,
+          "model_examined": true,
+          "ended_utc": "2026-10-22T12:20:33.314403+00:00",
+          "elapsed_UTC_seconds": 87.826421
+        }
+      },
+      "processing": 490343976,
+      "transcript": 5908,
+      "output_upper": 2391477,
+      "errors": [],
+      "children": {
+        "auth": 0,
+        "group": 0,
+        "close": 0,
+        "finish": 0
+      }
+    }
+  },
+  "Astra_advice": {
+    "authority": "Architectural advice under existing human implementation delegation; not new human approval",
+    "initial": "Conditional allocator-family dependency can justify local correction without measured allocation/bytes; preserve observations/failures and prove replacement callee eligibility.",
+    "corrected_premise": "Actual maintained Main setbuf(stdout,nil) may exclude the buffer-allocation branch for its guarded route if exact caller/setter/state persistence binds; do not introduce speculativewrite/fflush or broaden the exclusion.",
+    "current_action": "Keep putchar transport, correct independent demonstrated reached Swiftprint/interpolation compiler constructions only."
+  }
+}

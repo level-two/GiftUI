@@ -1,0 +1,1 @@
+{"start": "2026-10-22T12:48:15.376909+00:00", "argv": ["/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift", "format", "format", "--configuration", "/Users/eugene/work/GiftUI/.swift-format", "--in-place", "--lines", "3169:3173", "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift"], "exit": 0}
