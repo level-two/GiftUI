@@ -1,0 +1,303 @@
+{
+  "old_frozen_universe": {
+    "groups": 56,
+    "sites": 1892,
+    "roots": 3,
+    "status": "IMMUTABLE BASELINE; no current tuple substitution"
+  },
+  "model_status": "provider-gap",
+  "current_focus": {
+    "addresses": {
+      "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF": 310404,
+      "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF": 310972,
+      "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF": 490964
+    },
+    "root_symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+    "target_symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF",
+    "writer_symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF",
+    "raw_disassembly_sha256": "d1690eb1df0492cfc4a86aeab323b4b113a6fb81c69a3c478c3909cc6f3da64e",
+    "raw_disassembly_bytes": 26422837,
+    "derivation_cache": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/selected-cache.json",
+      "bytes": 2010850,
+      "sha256": "b671634a198f2cb9778b8134c68b2c500d5feaa352380b9cba581b07cdd0adcb",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "decoder_argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o"
+    ],
+    "root_trace_chain": [
+      {
+        "site": "0x4bdac",
+        "line": 92774,
+        "kind": "bl",
+        "to": 310972,
+        "relocation_line": 92775,
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF"
+      }
+    ],
+    "first_writer_call": {
+      "site": "0x4bee0",
+      "line": 92866,
+      "kind": "bl",
+      "to": 490964,
+      "relocation_line": 92867,
+      "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF"
+    },
+    "scope": "Whole selected root; argument helper; exact trace-entry prefix through first shared writer call; whole writer and exact entry-helper0xbf288. Later trace work/other callers unexamined.",
+    "symbol_index_coverage": [
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout",
+        "sha256": "2c660b94df670062667b5ebbc9ddc781e2f02e816ee11420f4919bce8de5ec7d",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout",
+        "sha256": "6d36a8049cc68721dbbe77c47012793cf1e44eb143d343a8ea13260eb2eaeddc",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout",
+        "sha256": "bed4f6d25c7e20721f0d4ad9d892e74d8d263ecde9d4a011f8b945c35a3ca667",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout",
+        "sha256": "359b6b7b8392956274f0bcb52e89c71c08e44750fccdb03e0eb449f7fc8e220a",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout",
+        "sha256": "2aea66575a9ec5572756f7d43b61fad53f4447cd9a746dda7dfc663b36040af6",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout",
+        "sha256": "a3fc2f35a2ab345fe9efdd7662a3416edc53805136929cf532a06e8cdf67bd13",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout",
+        "sha256": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout",
+        "sha256": "c6f037b559d3c77f35dc135f15726bf70ebcafb29b04394686cdd81bde4ebfa4",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout",
+        "sha256": "b67a2eace99806e37257f667f9a6f766451ff18f1aeb4c3d293ed311e46c043c",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout",
+        "sha256": "ad92675dbf22f2790065f00c086bdab98e495876e70ee79a9731864d4217a194",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout",
+        "sha256": "9e34f715c66f11f52359ed5457981f4c65cd8d9ef5c03a86d7780be1b22bfeb1",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout",
+        "sha256": "b3454ab96cac2d6b91dd2b681d875b90ec04a5437f0d7df4296c497a806a2dc6",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout",
+        "sha256": "0a2fcbc2a2427ac2c06af89ac0bfa8a0c728f76b94127a8046a22b5a213d8ffb",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout",
+        "sha256": "45497e731615ab4407a20c816cd33c3ac45452f315e6fc34f1bb60eef67570e2",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout",
+        "sha256": "e6d4afa997fdff0ae91d18bc1cd26435828aeba4d32f53b6428ce764f8b897aa",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout",
+        "sha256": "911145ad5cd7f2a44f81dc4d97c220a12e681c5b0e576d4f576f409f3f3b0879",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout",
+        "sha256": "c2a6ae8c0765c3b4c5039fe4c9944714beee9a223e705fdb6d132966b9194179",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout",
+        "sha256": "f518c968a3dd48413be74570954fe64d8feb97369f773ec1b154f6d49730c27e",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout",
+        "sha256": "368408887e33f34676d272044029ef16fc27cde82623054afb2d2e56d4800cc1",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout",
+        "sha256": "0be7989d8d408fc92f9c778e0ff9853325e4731f702ff4cbbbffdd5fed339f30",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout",
+        "sha256": "3c4ac6df9682d2b1cf78862b80222cefcb0abec0d241af9960ac68cd834c2417",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout",
+        "sha256": "331f22802cd15e56746c91476ff89651bf1f8d79913d03bb46b4ece4b2070918",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout",
+        "sha256": "b391ad57a0f68b4bec189bd154ba4952695fe39bb4eb18d6e62042cc1a0a2b90",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout",
+        "sha256": "53d0b6492a9eeb6e06805e540746eaa6a7d7e0993e26d56831f4daa3ff2e6ba4",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout",
+        "sha256": "973a5273f10deb02e35524570d158ce73c79bde32358fb6b353db0616f82001a",
+        "hits": []
+      }
+    ],
+    "writer_entry_helper": {
+      "base": 782984,
+      "header_line": 240194,
+      "symbol": "_OUTLINED_FUNCTION_1039",
+      "edges": []
+    },
+    "current_object_nm_putchar": [
+      {
+        "line": 710,
+        "text": "                 U _putchar"
+      }
+    ],
+    "executable_nm_putchar": [
+      "                 (undefined) external _putchar (from libSystem)"
+    ],
+    "selected_SIL_type_lines": [
+      "401596: sil @$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF : $@convention(thin) (StaticString, ObservableModelOwnerIdentity, ObservableModelOwnerIdentity, SemanticRecordOwnerIdentity, SemanticRecordOwnerIdentity) -> () {"
+    ],
+    "context_sha256": "a346b40a82fb55c96b7c7a6ddabff8a0973bd69e9554cbd8f283d8fd7a95b7fe",
+    "context_bytes": 21952,
+    "model_examined": true,
+    "extracted": true,
+    "emitted": true
+  },
+  "baseline_refresh": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 104448,
+      "sha256": "de2df6fd0730393aaa2aca89b2aca937d0b20b38817dc1d399b2dc0ea2252084",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    ".build/contracts/p08-counter-wrapel2y/result.json": {
+      "path": ".build/contracts/p08-counter-wrapel2y/result.json",
+      "bytes": 8548218,
+      "sha256": "af9ba8ef87a2f33d4d6d7ea46d2e1f4f925228f667c0b7fb95b4ae3023b06773",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o": {
+      "path": ".build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o",
+      "bytes": 2576112,
+      "sha256": "3c106c086ef904fdf3a74481fd479a138fbfe39dca5587169ac501e1bfaea4cf",
+      "authority": "95bec0b4 reviewed batch17 current-artifact baseline; old raw corpus preserved"
+    },
+    "OBJECT_TOOL": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "scope": "Read-only artifact decoder; not provider acquisition"
+    },
+    "NM_TOOL": {
+      "path": "/usr/bin/nm",
+      "bytes": 118640,
+      "sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9"
+    },
+    "EXECUTABLE": {
+      "path": ".build/contracts/p08-counter-wrapel2y/counter",
+      "bytes": 6606808,
+      "sha256": "267bc26d27bbecc0c2e20ac6ce8499b609f0945c0f91a790759387da4dabb0e1"
+    },
+    "SELECTED_SIL": {
+      "path": ".build/contracts/p08-native-static-diagnostic-batch17/compiler-evidence/selected-trace-functions.sil.txt",
+      "bytes": 758037,
+      "sha256": "9ec73ef79d4fe1956c86fe8db7b52d161fc8927a92b26c0a285f2eb187c0ad3b"
+    },
+    "CACHE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/selected-cache.json",
+      "bytes": 2010850,
+      "sha256": "b671634a198f2cb9778b8134c68b2c500d5feaa352380b9cba581b07cdd0adcb",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "STATE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/state.json",
+      "bytes": 27210,
+      "sha256": "85228da83a64acefa2ffad10cdd1795527b59c7ad53e9d2c5299746447696238",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "HELPER18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/inspect.py",
+      "bytes": 34192,
+      "sha256": "755d4ad4ff22731ccbc8b28a3a23d23ddd1dd1c96cc6f074fa32f21983bc32e3",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "FREEZE18": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/invocation/freeze.json",
+      "bytes": 1207,
+      "sha256": "671d67311e5d0ec2b47a3a39f071fcbf98471b970f70fab566736807013092df",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "STATE19": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider19-local/state.json",
+      "bytes": 34912,
+      "sha256": "79f48aea7b4150798e5e3a57df8add2cc010b9839c0712b4c8144feb806c5ea4",
+      "scope": "Immutable closed19 accounting; model helper unexamined; new20does not reopen/reset19"
+    },
+    "STATE20": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider20-local/state.json",
+      "bytes": 22815,
+      "sha256": "a35d05417b22bd7be6319bd03e444b3132f58460862c27c8c18ee6f7c6935507",
+      "scope": "Immutable auth STOP before group, expected HEAD advanced by authorized fault commit; no semantic reset"
+    }
+  },
+  "qualification": "Model-selected disposition applies only when model_examined=true, active group<=90 seconds and no errors; no allocator success/cost/cold/zero-heap claim",
+  "batch17_STOP_preserved": true,
+  "model_assessment": {
+    "classification": "LOCAL_CONDITIONAL_ROOT_TYPED_WRITER_PROVIDER_CALL_RELATION_CLOSED; IMPORTED_PROVIDER_ORDINARY_FIRST_USE_ALLOCATION_COST_UNRESOLVED",
+    "selected_chain": "Root0x4bc84 -> call0x4bdac/L92774 -> concrete owner-identity trace0x4bebc -> first call0x4bee0/L92866 -> shared StaticString writer0x77dd4 -> exact entry helper0xbf288 -> conditional byte-loop _putchar import.",
+    "root_control": "Whole root examined. Earlier called routines must return with valid live ABI state. Signed accumulator overflow branches/traps, loop/carry guards and final trap/stack-check paths are retained, not assumed success. At H92682+78..82, w19 carry must be clear and w20+1 must not carry; equality branch traps. This is a conditional path, not proof all root executions reach it or of cold state.",
+    "exact_arguments": "H92682+83..93 binds x0 through PAGE21/PAGEOFF12 to l_.str.16.reuse.namespaces, calls exact argument helper0xc3c64 then moves x20 to x5 and x21 to x6. H247923+1..5 sets w1=16,w2=2,w3=9,w4=10 and returns. Exact retained SIL401596 declares (StaticString,ObservableModelOwnerIdentity,ObservableModelOwnerIdentity,SemanticRecordOwnerIdentity,SemanticRecordOwnerIdentity)->(). No new generic metadata/allocator semantics inferred from type names or the label symbol.",
+    "typed_entry": "H92856+1..10 saves callee registers, moves x6,x5,x4,x3 into x19,x20,x21,x22 and calls shared writer without modifying x0,x1,w2. Only prefix through first writer call was examined; later tuple formatting remains outside this proof.",
+    "helper_resolved": "H240194+1..3: add x29,sp,#0x30; mov x19,x0; ret. No calls or changes to x1,w2. Thus the writer sees x19=the relocated incoming label storage, x1=16,w2=2. Provider19 local-helper UNEXAMINED condition is now resolved;19record remains unchanged.",
+    "encoding_and_call_conditions": "H146981+7 tests w2 bit0: literal2 selects pointer branch. +8 requires x19!=0; +9 sets x20=16; +10 sees nonzero length. Given correctly relocated/non-null readable label storage, +11 loads a byte and +12/+13 calls imported _putchar; +14/+15 decrements/tests x20. The local path attempts16 byte calls if each prior load/call returns. These are compiler/control facts, not observed process-call counts. The scalar-encoding checks are visible but not selected by this literal flag.",
+    "return_limits": "Writer tail epilogue0xc1c5c and later trace/root work are not needed to establish the first provider call and are not claimed closed. External calls returning is an explicit condition; no provider error-handling, successful output, nonallocation or lifetime/cost behavior inferred.",
+    "real_provider_boundary": "Current object nm line710 is U _putchar. Current executable nm binds undefined external _putchar from libSystem. All25 permitted retained-attribution symbol indices examined contain zero exact _putchar entries. No provider body/implementation-version or first-use observer-state join is established by this packet. Other allowed bodies not inspected remain unexamined, not globally absent. A provider body/control-and-state binding inside permitted evidence is required before allocator/cold/cost disposition; no acquisition performed.",
+    "scope": "This one rooted writer dependency is enough to leave the complete strict allocation/first-use obligation unresolved. Other finite writers/callers and remaining49 historicalX28 sites are unexamined here. No whole-callee,zero-heap,resource,current-image,cold or P08pass transfer.",
+    "lineage": "18STOPbeforemodel;19closedconditionalproof;20authSTOPexpectedHEADadvance/no group;21freshfreezeon authorized fault-only d02ecc8b, same counter/provider hashes. No ledger reset or prior attempt erasure."
+  },
+  "closed_19_preserved": true,
+  "auth_STOP_20_preserved": {
+    "error": [
+      "RuntimeError: unexpected HEAD advance"
+    ],
+    "groups": {},
+    "actual_child_exit": 2
+  }
+}

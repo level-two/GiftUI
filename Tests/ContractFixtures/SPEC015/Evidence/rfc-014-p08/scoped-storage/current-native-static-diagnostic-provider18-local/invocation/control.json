@@ -1,0 +1,37 @@
+{
+  "state": "WHOLE_EXCHANGE_CONTROL_PASS",
+  "context_bytes": 8600,
+  "request_upper": 530,
+  "other_payload_upper": 240,
+  "STOP_reserve": 256,
+  "total_upper": 9626,
+  "slack": 374,
+  "children": {
+    "a": {
+      "exit": 0,
+      "stdout": 13,
+      "precount": 13
+    },
+    "g": {
+      "exit": 0,
+      "stdout": 8600,
+      "precount": 8600
+    },
+    "c": {
+      "exit": 0,
+      "stdout": 31,
+      "precount": 31
+    },
+    "f": {
+      "exit": 0,
+      "stdout": 18,
+      "precount": 18
+    },
+    "stop": {
+      "exit": 2,
+      "stdout": 67,
+      "precount": 67
+    }
+  },
+  "frozen_evidence_reads": 0
+}

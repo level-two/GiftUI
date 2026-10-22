@@ -1,0 +1,46 @@
+{
+  "status": "STOP_BEFORE_ROOT_CONTEXT_EMISSION; no provider or model proof",
+  "started_utc": "2026-10-22T09:12:39.162982+00:00",
+  "group": {
+    "U02-X28": {
+      "started_utc": "2026-10-22T09:12:53.377305+00:00",
+      "status": "CLOSED",
+      "context_emitted": false,
+      "model_examined": false,
+      "ended_utc": "2026-10-22T09:13:33.706451+00:00",
+      "elapsed_UTC_seconds": 40.329146
+    }
+  },
+  "final_recorded_processing_bytes": 509403738,
+  "final_recorded_scripted_transcript_bytes": 570,
+  "final_recorded_output_upper_bytes": 6317340,
+  "root_projection_string_UTF8_bytes": 3989,
+  "complete_root_packet_bound_inferred_from_actual_control_flow": {
+    "greater_than": 5000,
+    "at_most": 5775,
+    "reason": "Global checked_payload with4000reserve passed before invented5000B check rejected; NOTproof global cap insufficient"
+  },
+  "root_emitted": false,
+  "provider_emitted": false,
+  "model_examined": false,
+  "errors": [
+    "RuntimeError: literal root packet exceeds planned5000B bound"
+  ],
+  "actual_child_exits": {
+    "auth": {
+      "exit": 0
+    },
+    "group": {
+      "exit": 2
+    },
+    "close": {
+      "exit": 0
+    },
+    "finish": {
+      "exit": 0
+    }
+  },
+  "classification": "Delivery sub-bound defect, not provider absence or irreducible10000B proof limit",
+  "next_method_decision": "Reassess complete joint root+necessary-provider context against the single global exchange bound; do not infer missing joins or relaunch a shrunk per-packet variant automatically",
+  "post_terminal_closeout": "This structural-only read occurs after the failed scripted session; no exact all-tool aggregate qualification is asserted"
+}

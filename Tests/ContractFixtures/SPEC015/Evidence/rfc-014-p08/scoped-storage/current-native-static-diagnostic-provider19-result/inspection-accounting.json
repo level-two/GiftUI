@@ -1,0 +1,830 @@
+{
+  "started_utc": "2026-10-22T11:29:11.117352+00:00",
+  "used": 502581353,
+  "charges": {
+    "refresh_control": 27256,
+    "stop_capture_write_processing_escrow": 32768,
+    "file_delivery_source_alias_read_decode_hash": 29380,
+    "script_prepare_interpreter_hash": 389652,
+    "preflight_code_orientation_upper_charge": 8388608,
+    "request_plan_read_write": 7976,
+    "startup_capture_and_wrapper": 18248,
+    "metadata": 768841,
+    "control_read": 2076770,
+    "control_git": 2125922,
+    "evidence_auth": 126694715,
+    "git_auth": 127026747,
+    "preservation_auth": 906177,
+    "current_refresh_auth": 39058570,
+    "preservation_metadata": 3500,
+    "cache_metadata": 2120,
+    "diff_base": 299136,
+    "diff_payload": 218314,
+    "diff_stdout": 18652,
+    "payload_write_capture_forward": 35612,
+    "state_write": 115970,
+    "focused_control": 70161,
+    "retained_projection_read": 2010850,
+    "retained_projection_decode_copy": 4021700,
+    "retained_derivation_state": 27210,
+    "identity_map_write": 18918,
+    "executable_nm_read": 6606808,
+    "executable_nm_decode": 9247018,
+    "coverage_control": 48197,
+    "frozen_provider_symbol_index": 4152071,
+    "selected_SIL_projection": 758037,
+    "exact_context_decode_write": 65367,
+    "final_evidence_hash": 126694715,
+    "final_preservation_hash": 906177,
+    "final_current_refresh_auth": 39058570,
+    "final_capture_snapshot_metadata_write_upper": 524288,
+    "final_context_reuse": 21789,
+    "semantic_result_write": 104543
+  },
+  "transcript_payload_bytes": 9327,
+  "groups": {
+    "U02-X28": {
+      "started_utc": "2026-10-22T11:29:20.312646+00:00",
+      "status": "CLOSED",
+      "context_emitted": true,
+      "model_examined": true,
+      "ended_utc": "2026-10-22T11:29:44.634185+00:00",
+      "elapsed_UTC_seconds": 24.321539
+    }
+  },
+  "auth": [
+    {
+      "path": "Sources/GiftUI/BoundedText.swift",
+      "bytes": 6445,
+      "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7509,
+      "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/README.md",
+      "bytes": 2175,
+      "sha256": "570df5a7a205332f5f55e73c615909941d18defca1de32098584334e738a111f",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/independent-review-inspection.json",
+      "bytes": 3018,
+      "sha256": "dbc39cec008ceb7bc3b6ca420da7bc3b2c778bdc11e30a05250795f42279c1e7",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/independent-review.md",
+      "bytes": 7656,
+      "sha256": "00d0004dfc86e383fd0a34d644c80cac5e5bec3268e38b2936dbb5fdd628e84e",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw-file-manifest.json",
+      "bytes": 140691,
+      "sha256": "8532be63e94df9f65a4b2eb7cfeb6fd224022c12fa165d29ba08b13b764398fd",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-disassembly.stdout",
+      "bytes": 965629,
+      "sha256": "c3e296adc9a2b91e7570999b440be1e6e2697188f0b0b0cb0dc51a998e02df7c",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout",
+      "bytes": 183317,
+      "sha256": "2c660b94df670062667b5ebbc9ddc781e2f02e816ee11420f4919bce8de5ec7d",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-disassembly.stdout",
+      "bytes": 651238,
+      "sha256": "35d707d859d6029d113626344f7baaee8fe46b8a91d79813ca59403ba88fada2",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout",
+      "bytes": 85417,
+      "sha256": "6d36a8049cc68721dbbe77c47012793cf1e44eb143d343a8ea13260eb2eaeddc",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-disassembly.stdout",
+      "bytes": 491299,
+      "sha256": "9f89a454e85ae8cdaf61b1a2a2cf6a4deeb9ab1b66e1edaeec9d6808422c9276",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout",
+      "bytes": 141167,
+      "sha256": "bed4f6d25c7e20721f0d4ad9d892e74d8d263ecde9d4a011f8b945c35a3ca667",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-disassembly.stdout",
+      "bytes": 36644,
+      "sha256": "400c6d1d9644c8f1951b8dd87f5ddc52bb1970e0862707b9bfc84da79248c5b2",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout",
+      "bytes": 13694,
+      "sha256": "359b6b7b8392956274f0bcb52e89c71c08e44750fccdb03e0eb449f7fc8e220a",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-disassembly.stdout",
+      "bytes": 655969,
+      "sha256": "c870475b0dc34e2ded57218052083151daa42b1c001e9941989fd92f4639bf91",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout",
+      "bytes": 65802,
+      "sha256": "2aea66575a9ec5572756f7d43b61fad53f4447cd9a746dda7dfc663b36040af6",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-disassembly.stdout",
+      "bytes": 1748716,
+      "sha256": "3bc854e5ce88884be1933cf79079f628dc109116755a15e7fd1874adc4386735",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout",
+      "bytes": 324587,
+      "sha256": "a3fc2f35a2ab345fe9efdd7662a3416edc53805136929cf532a06e8cdf67bd13",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-disassembly.stdout",
+      "bytes": 250009,
+      "sha256": "566c344c5b586802b2a25f1ca6ca7f5d641bb1510dc9630568f0a95636790c89",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout",
+      "bytes": 79565,
+      "sha256": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-disassembly.stdout",
+      "bytes": 4019172,
+      "sha256": "c9590dcc1d56ad375ac85e18220adc78cb188c925292c44733ec354f9c5048f5",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout",
+      "bytes": 332487,
+      "sha256": "c6f037b559d3c77f35dc135f15726bf70ebcafb29b04394686cdd81bde4ebfa4",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-disassembly.stdout",
+      "bytes": 905402,
+      "sha256": "771dc671e0b3780a1b9a67fef3ce02f12acaa4bba22a14b6a7fcb9cc929bf032",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout",
+      "bytes": 96219,
+      "sha256": "b67a2eace99806e37257f667f9a6f766451ff18f1aeb4c3d293ed311e46c043c",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-disassembly.stdout",
+      "bytes": 1140821,
+      "sha256": "716854c7cc1a98bc02c16590b89744764fe8dd0c600aca0600fafda8abfcc137",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout",
+      "bytes": 73517,
+      "sha256": "ad92675dbf22f2790065f00c086bdab98e495876e70ee79a9731864d4217a194",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-disassembly.stdout",
+      "bytes": 1254642,
+      "sha256": "9acd925d033115bd941debd5a226239949e97e4da77f3c187ddfa95f25cca97f",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout",
+      "bytes": 131444,
+      "sha256": "9e34f715c66f11f52359ed5457981f4c65cd8d9ef5c03a86d7780be1b22bfeb1",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-disassembly.stdout",
+      "bytes": 673879,
+      "sha256": "d2235334b93d736c4cf9a6d4dfb03770b092e88afacf62f7fd5e54e48a5be31d",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout",
+      "bytes": 65797,
+      "sha256": "b3454ab96cac2d6b91dd2b681d875b90ec04a5437f0d7df4296c497a806a2dc6",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-disassembly.stdout",
+      "bytes": 3635166,
+      "sha256": "e828edc7951785ef8d23e00f73fa74cc0be52c996870c40b845b498d89f4f5f6",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout",
+      "bytes": 564684,
+      "sha256": "0a2fcbc2a2427ac2c06af89ac0bfa8a0c728f76b94127a8046a22b5a213d8ffb",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-disassembly.stdout",
+      "bytes": 124454,
+      "sha256": "dc8f9e5c44b8e2bf1d90767460ce3b4c383c206b374423a259f9990bfacab7f9",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout",
+      "bytes": 37432,
+      "sha256": "45497e731615ab4407a20c816cd33c3ac45452f315e6fc34f1bb60eef67570e2",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-disassembly.stdout",
+      "bytes": 605963,
+      "sha256": "4cbfd465a411a90fe44af0a59b1f2a5f4e104ee1f4851f8eac96ecef20da0093",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout",
+      "bytes": 37907,
+      "sha256": "e6d4afa997fdff0ae91d18bc1cd26435828aeba4d32f53b6428ce764f8b897aa",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-disassembly.stdout",
+      "bytes": 1237348,
+      "sha256": "06324e4dd7ea480371cbfcfc9f5395a033000ce7bcba002833d5b3725f89006c",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout",
+      "bytes": 176898,
+      "sha256": "911145ad5cd7f2a44f81dc4d97c220a12e681c5b0e576d4f576f409f3f3b0879",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-disassembly.stdout",
+      "bytes": 1041632,
+      "sha256": "8f6a6fa8ed67e4e0699d55ff4c2242ab7d6e2f70253ea4ae3c2b6c9955984e1e",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout",
+      "bytes": 141101,
+      "sha256": "c2a6ae8c0765c3b4c5039fe4c9944714beee9a223e705fdb6d132966b9194179",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-disassembly.stdout",
+      "bytes": 2592864,
+      "sha256": "54b77ee1c145f293a78fa8b18423f11efd8873b495eb67ef485a3059d2159b65",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout",
+      "bytes": 88104,
+      "sha256": "f518c968a3dd48413be74570954fe64d8feb97369f773ec1b154f6d49730c27e",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-disassembly.stdout",
+      "bytes": 4035988,
+      "sha256": "808f12f81e643cc6c9bfebe1abed9fa2faedc4c2287d0fa6f1bb82ceb22306b6",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout",
+      "bytes": 213807,
+      "sha256": "368408887e33f34676d272044029ef16fc27cde82623054afb2d2e56d4800cc1",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-disassembly.stdout",
+      "bytes": 18663,
+      "sha256": "9b362e3a97cbbf6392162f9e8cc183fc1e51b5406ec2f1631eb4662c5fe4589e",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout",
+      "bytes": 7481,
+      "sha256": "0be7989d8d408fc92f9c778e0ff9853325e4731f702ff4cbbbffdd5fed339f30",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-disassembly.stdout",
+      "bytes": 420605,
+      "sha256": "c56b9e961a473e9d196c659b1851ffd3c8d91baba76f4fbc586850f903c2a8c3",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout",
+      "bytes": 53131,
+      "sha256": "3c4ac6df9682d2b1cf78862b80222cefcb0abec0d241af9960ac68cd834c2417",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-disassembly.stdout",
+      "bytes": 181889,
+      "sha256": "7c3ad980048659206089608608efa458f825aa17911d7737f606f3c9eba4e927",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout",
+      "bytes": 25023,
+      "sha256": "331f22802cd15e56746c91476ff89651bf1f8d79913d03bb46b4ece4b2070918",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-disassembly.stdout",
+      "bytes": 26255090,
+      "sha256": "8371140b87d30015cf0b277045ec1b8a5813c26ce5709d55e163917b3e4c3362",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout",
+      "bytes": 1201222,
+      "sha256": "b391ad57a0f68b4bec189bd154ba4952695fe39bb4eb18d6e62042cc1a0a2b90",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-disassembly.stdout",
+      "bytes": 9188,
+      "sha256": "89f0249e070e57c36da79bba4ba4e2f8dc79660fb86e2385196791b52e81949f",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout",
+      "bytes": 4956,
+      "sha256": "53d0b6492a9eeb6e06805e540746eaa6a7d7e0993e26d56831f4daa3ff2e6ba4",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-disassembly.stdout",
+      "bytes": 21973,
+      "sha256": "796eab16c92b4326e9a85f0a874856f38c76fa302dded343ec9eb93789836905",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout",
+      "bytes": 7312,
+      "sha256": "973a5273f10deb02e35524570d158ce73c79bde32358fb6b353db0616f82001a",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/actual-host.sil",
+      "bytes": 62139693,
+      "sha256": "6cc9e7b6cecbeb46dd71b2ac8b6e023182354e7fcc08c814374b9c23303c71ed",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/boundary-physical-index.json",
+      "bytes": 4690424,
+      "sha256": "9b67676aa047e5d4b8f654854f518acacde3c526f3c9229fdba4b4f2f7174298",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/required-bodies.json",
+      "bytes": 151353,
+      "sha256": "907d583bc6b6a43457ec57d30d778dbed41e51682f96b41b2f1ef81ee6892070",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/terminal.json",
+      "bytes": 680851,
+      "sha256": "41c38e4ececed6f5cbd91d6eb2387642e316752ff61d7928a7b1633302a8cf2a",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/README.md",
+      "bytes": 20623,
+      "sha256": "e4dbd6e6e7facb2ba4832940c0c229ca2655f4b6c70d89ea057b756fcfd58b63",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review-inspection.json",
+      "bytes": 14334,
+      "sha256": "b7e7575bcdb375e1068b1e4f648ecb154449c91da45c377dbd0bd2fa29ffa0cd",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/independent-review.md",
+      "bytes": 9824,
+      "sha256": "c4374687e404be2e3c3de8e73f4ad199a7bed4219972f64d03aa2a97a2b6c2ee",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspect.py",
+      "bytes": 15037,
+      "sha256": "3c57b50bfc4cc5147d4b1e1ed767e06b0a26d343315ef4c6e39d6b290a696d18",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/inspection-summary.json",
+      "bytes": 1974,
+      "sha256": "409fc3fa3ddf82a9a53d8ff00a1c76bdf48e4eacf961e7a9a28eb7eb4a540a58",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/object-inventory.json.gz",
+      "bytes": 1033539,
+      "sha256": "87df0a548b79008aa0935788900ccebad58d1676c6bc4118bc7939e6af1b7c0b",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/privacy-control-join.json",
+      "bytes": 68231,
+      "sha256": "c56528a7688fce44b7e89a637fb344c2d24d5533df73e196848a237f30138072",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/required-body-join.json",
+      "bytes": 70460,
+      "sha256": "c5b1b4d1057fe3aed16d5f72ff835be6b948fcaf282869069b490369251e3caa",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-interpretation1-result/sil-inventory.json.gz",
+      "bytes": 345990,
+      "sha256": "e433fbd2a2eb08e248b65f1c605bb6be94e3f6086c08904170efc754a31f7b8a",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/preserved-dirty-files.json",
+      "bytes": 942,
+      "sha256": "00e65144643e2ddc66cf923b902192eb8afc9e4a6ecd0afe4082af7fc4634489",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/source42.json",
+      "bytes": 8366,
+      "sha256": "27248b41a5f120471f6b6092ff27c1b01e076a92d9e2c61561bada91d59b0df9",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/README.md",
+      "bytes": 17382,
+      "sha256": "a2d66b770ecadaec9b487b7e1e7b9f84629807586631261a3dd81089498b7f65",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review-inspection.json",
+      "bytes": 19924,
+      "sha256": "d827454612ae7f6ede4d40d6bebfbd7f280fecb7e0126ef40a1284106928a874",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/independent-review.md",
+      "bytes": 6776,
+      "sha256": "0d6c514607ad62c4484482b0a1c5ed0fe4e65c3455d5efe7fcbf64b6705818d0",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/inspection.json",
+      "bytes": 24426,
+      "sha256": "6d9fc972cfbe4825d1bffe508657b1ee8dbb6bf75e698e6f234fc16092383a44",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-attribution1-result/retained-excerpts.txt",
+      "bytes": 46504,
+      "sha256": "6ffc059c6584521e885b6d2252f49a398513a5b90d7ce83bdf2dbed7421d7ff0",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-next-step-after-git-ref2.md",
+      "bytes": 6581,
+      "sha256": "38030db206b8d2fe0fbd6859928842a725440c37e6294d5d41281bbcddd0e472",
+      "later_access": "retained_attribution_read"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-independent-review-inspection.json",
+      "bytes": 19564,
+      "sha256": "7f7b8f1a3a459c934e2283158fcda801a19073b48bb650d532450859ede68081",
+      "later_access": "authentication_only"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-dyld-cache-git-ref2-preparation/result-independent-review.md",
+      "bytes": 8109,
+      "sha256": "6a22dfa6f833eaf7fd6f6a40dbf1295c3f241b89bcab5aabdeff637736220f47",
+      "later_access": "authentication_only"
+    }
+  ],
+  "errors": [],
+  "request_records": [
+    {
+      "mode": "auth",
+      "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g19 a\"});text(r.output);",
+      "nested_arguments": {
+        "cmd": "python3 /tmp/g19 a"
+      },
+      "counted_UTF8_bytes": 106
+    },
+    {
+      "mode": "group",
+      "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g19 g\"});text(r.output);",
+      "nested_arguments": {
+        "cmd": "python3 /tmp/g19 g"
+      },
+      "counted_UTF8_bytes": 106
+    },
+    {
+      "mode": "close-provider-gap",
+      "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g19 c\"});text(r.output);",
+      "nested_arguments": {
+        "cmd": "python3 /tmp/g19 c"
+      },
+      "counted_UTF8_bytes": 106
+    },
+    {
+      "mode": "finish",
+      "request_code": "const r=await tools.exec_command({\"cmd\":\"python3 /tmp/g19 f\"});text(r.output);",
+      "nested_arguments": {
+        "cmd": "python3 /tmp/g19 f"
+      },
+      "counted_UTF8_bytes": 106
+    }
+  ],
+  "output_upper_bytes": 2361918,
+  "before": {
+    "utc": "2026-10-22T11:29:12.463117+00:00",
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+        16777234,
+        29640436
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+        16777234,
+        29650609
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+        16777234,
+        29652748
+      ]
+    },
+    "cache_members": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "dirty_diff_bytes": 5230
+  },
+  "controls": {
+    "README.md": {
+      "bytes": 22022,
+      "sha256": "a8413884de82ee7d696fb81fa2d834ea8e2a60e0d61e1965799221596caf0301"
+    },
+    "inputs.json": {
+      "bytes": 48197,
+      "sha256": "83535ca92bdefd3f132133d88a10a6ff65530f2219547009de9852f007fd23bf"
+    },
+    "roots.json": {
+      "bytes": 70161,
+      "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0"
+    },
+    "selected-rows.json": {
+      "bytes": 867601,
+      "sha256": "0c0953116114e7e5f1c61671faa07f125a6b9c33b5e00894fbf570822fdcc064"
+    },
+    "preservation.json": {
+      "bytes": 2214,
+      "sha256": "4dc777db0f14d7ac00fb72e2a75dca5ee2c39420f3ff1bfddc4639d6928494ab"
+    },
+    "preservation-reads.json": {
+      "bytes": 28190,
+      "sha256": "31ed4e23365cadc34891028651eb64962625d62a09e4501c8c4fe2093fdc250d"
+    }
+  },
+  "state_bytes": 34912,
+  "focus": {
+    "addresses": {
+      "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF": 310404,
+      "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF": 310972,
+      "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF": 490964
+    },
+    "root_symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+    "target_symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF",
+    "writer_symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF",
+    "raw_disassembly_sha256": "d1690eb1df0492cfc4a86aeab323b4b113a6fb81c69a3c478c3909cc6f3da64e",
+    "raw_disassembly_bytes": 26422837,
+    "derivation_cache": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/selected-cache.json",
+      "bytes": 2010850,
+      "sha256": "b671634a198f2cb9778b8134c68b2c500d5feaa352380b9cba581b07cdd0adcb",
+      "scope": "Immutable provider18 exact projection/derivation/STOP lineage; model unexamined"
+    },
+    "decoder_argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wrapel2y/P08CounterRuntime.o"
+    ],
+    "root_trace_chain": [
+      {
+        "site": "0x4bdac",
+        "line": 92774,
+        "kind": "bl",
+        "to": 310972,
+        "relocation_line": 92775,
+        "symbol": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF"
+      }
+    ],
+    "first_writer_call": {
+      "site": "0x4bee0",
+      "line": 92866,
+      "kind": "bl",
+      "to": 490964,
+      "relocation_line": 92867,
+      "symbol": "_$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF"
+    },
+    "scope": "Whole selected root; argument helper where resolved; exact trace entry THROUGH first shared StaticString writer call; whole writer. Later typed-entry work and other callers unexamined.",
+    "symbol_index_coverage": [
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUI-symbols.stdout",
+        "sha256": "2c660b94df670062667b5ebbc9ddc781e2f02e816ee11420f4919bce8de5ec7d",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIBackendIntegration-symbols.stdout",
+        "sha256": "6d36a8049cc68721dbbe77c47012793cf1e44eb143d343a8ea13260eb2eaeddc",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUICapabilities-symbols.stdout",
+        "sha256": "bed4f6d25c7e20721f0d4ad9d892e74d8d263ecde9d4a011f8b945c35a3ca667",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDisplayCore-symbols.stdout",
+        "sha256": "359b6b7b8392956274f0bcb52e89c71c08e44750fccdb03e0eb449f7fc8e220a",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIDrawing-symbols.stdout",
+        "sha256": "2aea66575a9ec5572756f7d43b61fad53f4447cd9a746dda7dfc663b36040af6",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIExecution-symbols.stdout",
+        "sha256": "a3fc2f35a2ab345fe9efdd7662a3416edc53805136929cf532a06e8cdf67bd13",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIFailureCore-symbols.stdout",
+        "sha256": "a4a06674a2c0ea1ad051b5a502e1c879413626adac77f6daa99ac9cb92b02443",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIHostConfiguration-symbols.stdout",
+        "sha256": "c6f037b559d3c77f35dc135f15726bf70ebcafb29b04394686cdd81bde4ebfa4",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIInteraction-symbols.stdout",
+        "sha256": "b67a2eace99806e37257f667f9a6f766451ff18f1aeb4c3d293ed311e46c043c",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUILayout-symbols.stdout",
+        "sha256": "ad92675dbf22f2790065f00c086bdab98e495876e70ee79a9731864d4217a194",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIObservableState-symbols.stdout",
+        "sha256": "9e34f715c66f11f52359ed5457981f4c65cd8d9ef5c03a86d7780be1b22bfeb1",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRasterCore-symbols.stdout",
+        "sha256": "b3454ab96cac2d6b91dd2b681d875b90ec04a5437f0d7df4296c497a806a2dc6",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIReferenceTextResources-symbols.stdout",
+        "sha256": "0a2fcbc2a2427ac2c06af89ac0bfa8a0c728f76b94127a8046a22b5a213d8ffb",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderCore-symbols.stdout",
+        "sha256": "45497e731615ab4407a20c816cd33c3ac45452f315e6fc34f1bb60eef67570e2",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRenderLowering-symbols.stdout",
+        "sha256": "e6d4afa997fdff0ae91d18bc1cd26435828aeba4d32f53b6428ce764f8b897aa",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeCore-symbols.stdout",
+        "sha256": "911145ad5cd7f2a44f81dc4d97c220a12e681c5b0e576d4f576f409f3f3b0879",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeDynamic-symbols.stdout",
+        "sha256": "c2a6ae8c0765c3b4c5039fe4c9944714beee9a223e705fdb6d132966b9194179",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUIRuntimeStatic-symbols.stdout",
+        "sha256": "f518c968a3dd48413be74570954fe64d8feb97369f773ec1b154f6d49730c27e",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISemanticCore-symbols.stdout",
+        "sha256": "368408887e33f34676d272044029ef16fc27cde82623054afb2d2e56d4800cc1",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUISurfaceCore-symbols.stdout",
+        "sha256": "0be7989d8d408fc92f9c778e0ff9853325e4731f702ff4cbbbffdd5fed339f30",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/GiftUITextResources-symbols.stdout",
+        "sha256": "3c4ac6df9682d2b1cf78862b80222cefcb0abec0d241af9960ac68cd834c2417",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterPresentation-symbols.stdout",
+        "sha256": "331f22802cd15e56746c91476ff89651bf1f8d79913d03bb46b4ece4b2070918",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterRuntime-symbols.stdout",
+        "sha256": "b391ad57a0f68b4bec189bd154ba4952695fe39bb4eb18d6e62042cc1a0a2b90",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterSchema-symbols.stdout",
+        "sha256": "53d0b6492a9eeb6e06805e540746eaa6a7d7e0993e26d56831f4daa3ff2e6ba4",
+        "hits": []
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-collection1-result/raw/P08CounterTable-symbols.stdout",
+        "sha256": "973a5273f10deb02e35524570d158ce73c79bde32358fb6b353db0616f82001a",
+        "hits": []
+      }
+    ],
+    "current_object_nm_putchar": [
+      {
+        "line": 710,
+        "text": "                 U _putchar"
+      }
+    ],
+    "executable_nm_putchar": [
+      "                 (undefined) external _putchar (from libSystem)"
+    ],
+    "selected_SIL_type_lines": [
+      "401596: sil @$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF : $@convention(thin) (StaticString, ObservableModelOwnerIdentity, ObservableModelOwnerIdentity, SemanticRecordOwnerIdentity, SemanticRecordOwnerIdentity) -> () {"
+    ],
+    "context_sha256": "2b607698873c58f9d67fd7a08b0f53f367bb8654927712e8a0741e42f479c080",
+    "context_bytes": 21789,
+    "model_examined": true,
+    "extracted": true,
+    "emitted": true
+  },
+  "joint_packet_bytes": 8841,
+  "complete_exchange_forecast_upper": 9694,
+  "model_selected_disposition": "provider-gap",
+  "after": {
+    "utc": "2026-10-22T11:29:47.801922+00:00",
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+        16777234,
+        29640436
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+        16777234,
+        29650609
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+        16777234,
+        29652748
+      ]
+    },
+    "cache_members": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "dirty_diff_bytes": 5230
+  },
+  "finished_utc": "2026-10-22T11:29:47.801953+00:00"
+}

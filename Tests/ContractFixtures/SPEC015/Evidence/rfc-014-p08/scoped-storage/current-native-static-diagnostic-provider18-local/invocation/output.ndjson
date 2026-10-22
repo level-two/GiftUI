@@ -1,0 +1,4 @@
+{"s":"AUTH"}
+{"s":"STOP","error":"RuntimeError: literal root packet exceeds planned5000B bound"}
+{"s":"CLOSED","sec":40.329146}
+{"s":"PRESERVED"}

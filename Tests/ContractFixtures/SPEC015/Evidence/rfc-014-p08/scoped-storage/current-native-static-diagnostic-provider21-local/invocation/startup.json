@@ -1,0 +1,16 @@
+{
+  "frozen_utc": "2026-10-22T11:35:59.072137+00:00",
+  "helper_sha256": "1024b9ea639d9e5761daec3b49913270d49816651cb4cca7c35f5a978da99596",
+  "delivery_sha256": "ed442792c1f0f7e621876304998c45e8082090da67b46724a11e54efb427010f",
+  "requests_sha256": "c3ae25ddac83de8d38153e0991f0199e6764cb75d4397c11c3be891c6bbe9d33",
+  "refresh_sha256": "5c5a7076a0c88cc09a59938aad8f9481252e8906bf65ae4110acb669db91b983",
+  "control_sha256": "f97a7020ef0cd78d2f71798d5a7f0f98c77628a0a4cb901e3d24dc167bba2219",
+  "control_result_sha256": "bf4e44de2b9f7fb20ad917d0d629b9b663440f004ffc30683c47d4b188287798",
+  "alias_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider21-local/deliver.py",
+  "expected_HEAD": "d02ecc8bceb26cb41c2c969e84b6b8959a3a62a6",
+  "preflight_processing_upper_bytes": 8388608,
+  "complete_exchange_rule": "One joint packet, actual UTF8 JSON+424 request bytes+160 status bytes+256 STOP reserve<=10000 before emission; no subcap",
+  "orientation": "Only routine authorized HEAD reconciliation; same exact21helper method and counter/provider input hashes, no semantic body read before auth.",
+  "not_yet_authenticated": true,
+  "started_utc": "2026-10-22T11:36:07.417080+00:00"
+}

@@ -1,0 +1,1 @@
+{"state": "STOP", "error": "RuntimeError: literal root packet exceeds planned5000B bound", "utc": "2026-10-22T09:12:54.114236+00:00"}

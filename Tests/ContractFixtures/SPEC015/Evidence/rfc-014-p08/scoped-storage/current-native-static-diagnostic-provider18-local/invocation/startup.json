@@ -1,0 +1,23 @@
+{
+  "frozen_utc": "2026-10-22T09:12:11.785393+00:00",
+  "helper_sha256": "755d4ad4ff22731ccbc8b28a3a23d23ddd1dd1c96cc6f074fa32f21983bc32e3",
+  "delivery_sha256": "bafd00a81a980e5a6e91cbc852767aceac9eefaa49bbe893ba4ee7aa9d7dceb3",
+  "requests_sha256": "0ea7db0a26ef767b86be688d1bf24a90f26c5282aa58146eee665eb76b09cda3",
+  "refresh_sha256": "afdfed66069f57275b2bcf554177cc2662c877900da22553cd8b7c4b58009f16",
+  "alias_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider18-local/deliver.py",
+  "expected_HEAD": "95bec0b4ed4a601c891300c9148e61bedfcd9f9e",
+  "preflight_processing_upper_bytes": 8388608,
+  "two_packet_context_upper_bytes": [
+    5000,
+    3500
+  ],
+  "complete_exchange_upper": 9526,
+  "control": "Existing actual file delivery child exits/streams checked, plus finite root5000/provider3500 request/status/STOP budget; no py_compile",
+  "preauth_orientation_start": {
+    "utc": "2026-10-22T08:57:46.641498+00:00",
+    "state": "PREAUTH_SCHEMA_ORIENTATION; no selected semantic reads",
+    "whole_session_start": "actual auth entry; preflight work charged there"
+  },
+  "not_yet_authenticated": true,
+  "started_utc": "2026-10-22T09:12:39.162982+00:00"
+}

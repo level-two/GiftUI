@@ -1,0 +1,16 @@
+{
+  "frozen_utc": "2026-10-22T11:29:07.619602+00:00",
+  "helper_sha256": "d0fd13bdfeb168c43fd73389298b8f637e877b2c0f50d24d50ad7c0c5c6bb3df",
+  "delivery_sha256": "28b7b40280a93120596aac7f767622a72690db6d95e4e99bbdcc2d45ae5972b5",
+  "requests_sha256": "21cdda2ce06c468527fcbce6953d0f878e62f608a159633b5019a7fda6d11ef6",
+  "refresh_sha256": "44470bd4e21696a5ea54cf9f7ae2df8f1feade7d5d5db79a447e497dcd42de30",
+  "control_sha256": "f97a7020ef0cd78d2f71798d5a7f0f98c77628a0a4cb901e3d24dc167bba2219",
+  "control_result_sha256": "bf4e44de2b9f7fb20ad917d0d629b9b663440f004ffc30683c47d4b188287798",
+  "alias_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider19-local/deliver.py",
+  "expected_HEAD": "95bec0b4ed4a601c891300c9148e61bedfcd9f9e",
+  "preflight_processing_upper_bytes": 8388608,
+  "complete_exchange_rule": "One joint packet, actual UTF8 JSON+424 request bytes+160 status bytes+256 STOP reserve<=10000 before emission; no subcap",
+  "orientation": "Metadata/code orientation and opaque projection hashing only before authentication; prior18STOP/model-unexamined immutable",
+  "not_yet_authenticated": true,
+  "started_utc": "2026-10-22T11:29:11.117352+00:00"
+}

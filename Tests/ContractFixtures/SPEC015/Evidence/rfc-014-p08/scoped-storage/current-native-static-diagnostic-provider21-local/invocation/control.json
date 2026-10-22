@@ -1,0 +1,16 @@
+{
+  "state": "PASS",
+  "frozen_semantic_reads": 0,
+  "records": {
+    "joint": {
+      "before_emit": 7423,
+      "exit": 0,
+      "whole_exchange_upper": 8263
+    },
+    "stop": {
+      "before_emit": 46,
+      "exit": 2,
+      "whole_exchange_upper": 10840
+    }
+  }
+}
