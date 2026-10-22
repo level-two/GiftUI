@@ -1,0 +1,12 @@
+{
+  "requested_utc": "2026-10-22T10:42:41.891816+00:00",
+  "method": "same SDK-corrected direct compiler argv plus required GiftUISemanticCore.o; no redirection",
+  "added_object": {
+    "path": ".build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+    "sha256": "d1e6eb3af4d1566dc06f196d6a9154d781e2da0f046c4d920af68c1df56d3ea7"
+  },
+  "reason": "SDK-corrected link reports exactly two undefined GiftUISemanticCore metadata/protocol descriptors; Package.swift target GiftUISemanticCore depends only on already linked GiftUI",
+  "dependency_manifest": "Package.swift:87",
+  "previous_exit": 1,
+  "result": "not yet observed"
+}

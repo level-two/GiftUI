@@ -1,0 +1,10 @@
+{
+  "chunk_id": "f7603d",
+  "wall_time_seconds": 0.889633542,
+  "exit_code": 1,
+  "original_token_count": 46,
+  "output": "error: link command failed with exit code 1 (use -v to see invocation)\nld: library 'System' not found\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\n",
+  "observed_utc": "2026-10-22 10:23:02 UTC",
+  "capture": "exec_command combined output; stdout/stderr not separately observed",
+  "method": "exact corrected compiler argv without shell redirection; require_escalated exact compiler prefix"
+}

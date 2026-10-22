@@ -1,0 +1,9 @@
+{
+  "requested_utc": "2026-10-22T09:11:37.871020+00:00",
+  "owner": "coordinator /root/focused_p08_continuation",
+  "source_sha256": "8a04caca423c301b8206bb9f878281d13dac4b95511321768d567168736dbbcc",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "method": "identical compiler argv without shell redirection; require_escalated exact compiler prefix; save returned combined stdout/stderr and exit after result",
+  "result": "not yet observed",
+  "ownership": "prior corrected command did not reach compiler; original cell2 already terminal exit1"
+}

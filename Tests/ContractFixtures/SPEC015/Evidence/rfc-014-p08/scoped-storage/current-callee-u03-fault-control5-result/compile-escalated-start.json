@@ -1,0 +1,7 @@
+{
+  "requested_UTC": "2026-10-21T05:10:48.185414+00:00",
+  "source_argv": "execution.json /commands/2/argv",
+  "permission": "require_escalated",
+  "purpose": "exact original compile after global Clang cache sandbox denial",
+  "result": "not yet observed"
+}

@@ -1,0 +1,73 @@
+{
+  "started_UTC": "2026-10-20T19:03:21.157135+00:00",
+  "commands": [
+    {
+      "name": "fixture-format",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift",
+        "format",
+        "format",
+        "--configuration",
+        "/Users/eugene/work/GiftUI/.swift-format",
+        "--in-place",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RootStoppedActivationFaultControl.swift"
+      ],
+      "exit_code": 0,
+      "started_UTC": "2026-10-20T19:03:21.157471+00:00",
+      "elapsed_seconds": 0.166849,
+      "log": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-fault-control5-result/fixture-format.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "maintained-format-lint",
+      "argv": [
+        "scripts/format-swift.sh",
+        "--lint"
+      ],
+      "exit_code": 0,
+      "started_UTC": "2026-10-20T19:03:21.324679+00:00",
+      "elapsed_seconds": 1.5847304999999998,
+      "log": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-fault-control5-result/maintained-format-lint.log",
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "compile",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-swift-version",
+        "6",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-package-name",
+        "giftui",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-parse-as-library",
+        "-module-name",
+        "P08RootStoppedActivationFaultControl",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RootStoppedActivationFaultControl.swift",
+        "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-root-stopped-activation-control5/control"
+      ],
+      "exit_code": 1,
+      "started_UTC": "2026-10-20T19:03:22.909780+00:00",
+      "elapsed_seconds": 0.495649,
+      "log": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-fault-control5-result/compile.log",
+      "log_bytes": 225,
+      "log_sha256": "55c3226cbf47cc8c25220b9aa00318166ca524f93615151f65ada913f61341a6"
+    }
+  ],
+  "scope": "focused fixture only, existing source-bound library objects, no product source changes",
+  "ended_UTC": "2026-10-20T19:03:23.405759+00:00",
+  "fixture_sha256": "5a84d9c20b09a45baaec95914832e5422f546c9ce3a6228e1c8890a5bfcb08a3"
+}

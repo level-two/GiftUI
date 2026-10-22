@@ -1,0 +1,74 @@
+{
+  "hash_bytes_processed": 3957158,
+  "selection_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-readiness1-preparation/retained-module-selection.json",
+  "selection_sha256": "29aa0f289bf3f9bef55f37191a7629958a42f2847ae0cdd39982721fadc2cc70",
+  "artifacts": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RootStoppedActivationFaultControl.swift",
+      "bytes": 7486,
+      "sha256": "8a04caca423c301b8206bb9f878281d13dac4b95511321768d567168736dbbcc",
+      "expected_selected_sha256": null,
+      "selected_match": null,
+      "matches_successful_launch_source": true
+    },
+    {
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "bytes": 230720,
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "expected_selected_sha256": null,
+      "selected_match": null,
+      "expected_retained_compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "compiler_matches_retained": true
+    },
+    {
+      "path": ".build/contracts/p08-root-stopped-activation-control5/control",
+      "bytes": 1003592,
+      "sha256": "e474f706590622b4b613140f35745d41fbfde43cb14aacdda9d00994d93ad672",
+      "expected_selected_sha256": null,
+      "selected_match": null
+    },
+    {
+      "path": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.swiftmodule",
+      "bytes": 347436,
+      "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48",
+      "expected_selected_sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48",
+      "selected_match": true
+    },
+    {
+      "path": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+      "bytes": 354032,
+      "sha256": "697e1435723ab9721bdcda4fe029a190cef1b7fa1d609381e5e0905c3163575c",
+      "expected_selected_sha256": "697e1435723ab9721bdcda4fe029a190cef1b7fa1d609381e5e0905c3163575c",
+      "selected_match": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIObservableState.swiftmodule",
+      "bytes": 342192,
+      "sha256": "a2f068025db1c8705e7f7e7f3bc9b17041439fba6956a3697e8afbcbe7a2f4dc",
+      "expected_selected_sha256": "a2f068025db1c8705e7f7e7f3bc9b17041439fba6956a3697e8afbcbe7a2f4dc",
+      "selected_match": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+      "bytes": 254904,
+      "sha256": "9cdc1ff0b65ad89e7895994a9042839030ddd19e87fbd3b953a1715591677b52",
+      "expected_selected_sha256": "9cdc1ff0b65ad89e7895994a9042839030ddd19e87fbd3b953a1715591677b52",
+      "selected_match": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.swiftmodule",
+      "bytes": 882308,
+      "sha256": "b4ceebdcec571b5f50e7762b83b9adeaa2c3bd43cf11f35dcb9ec5ebaffe4e97",
+      "expected_selected_sha256": "b4ceebdcec571b5f50e7762b83b9adeaa2c3bd43cf11f35dcb9ec5ebaffe4e97",
+      "selected_match": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+      "bytes": 534488,
+      "sha256": "d1e6eb3af4d1566dc06f196d6a9154d781e2da0f046c4d920af68c1df56d3ea7",
+      "expected_selected_sha256": "d1e6eb3af4d1566dc06f196d6a9154d781e2da0f046c4d920af68c1df56d3ea7",
+      "selected_match": true
+    }
+  ],
+  "binding_proof": "Prior reviewed invariants4 endpoint-source-binding and host-retirement2 prove source/build/module identities. This package reauthenticates exact compiler/module/object/fixture/executable bytes and links successful coordinator invocation to them. No entire SDK tree hash claimed."
+}

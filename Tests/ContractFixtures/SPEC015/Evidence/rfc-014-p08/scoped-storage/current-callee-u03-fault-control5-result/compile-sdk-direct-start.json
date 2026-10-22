@@ -1,0 +1,13 @@
+{
+  "requested_utc": "2026-10-22T10:24:40.219017+00:00",
+  "method": "same direct corrected compiler argv plus -sdk from maintained producer; no shell redirection; require_escalated exact compiler prefix",
+  "sdk": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+  "sdk_provenance": {
+    "result": ".build/contracts/p08-counter-wrapel2y/result.json",
+    "sha256": "af9ba8ef87a2f33d4d6d7ea46d2e1f4f925228f667c0b7fb95b4ae3023b06773",
+    "command_index": 0
+  },
+  "previous_direct_exit": 1,
+  "previous_diagnostic": "ld: library System not found",
+  "result": "not yet observed"
+}

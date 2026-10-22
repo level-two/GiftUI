@@ -1,0 +1,11 @@
+{
+  "recorded_utc": "2026-10-22T09:11:37.870572+00:00",
+  "reported_by": "original Strong fixture owner",
+  "request_result": "aborted by user after 2870.3s",
+  "compiler_exit": null,
+  "cell_session_pid": null,
+  "exact_redirection_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-fault-control5-result/compile-corrected.log",
+  "redirection_exists": false,
+  "target_binary_exists": false,
+  "launch_deduction": "Exact sole shell command redirects output before compiler execution; absent mandatory redirection file establishes command did not reach swiftc, with no intervening deletion authorized or observed."
+}

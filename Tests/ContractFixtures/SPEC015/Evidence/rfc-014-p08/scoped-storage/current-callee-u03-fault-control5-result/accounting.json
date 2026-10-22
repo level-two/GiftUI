@@ -1,0 +1,196 @@
+{
+  "started_UTC": "2026-10-20T18:57:35.583389+00:00",
+  "clock": "UTC datetime.now entire package including compilation and model reasoning",
+  "time_cap_seconds": 2400,
+  "processing_cap_bytes": 268435456,
+  "output_cap_bytes": 8388608,
+  "transcript_cap_bytes": 65536,
+  "model_display_hard_cap": 51000,
+  "processing_known_bytes": 12943113,
+  "model_display_bytes": 49486,
+  "completion_reserve_bytes": 2097152,
+  "tool_envelope_transcript_reserve_bytes": 14536,
+  "reads": [
+    {
+      "path": "docs/engineering/CODE_STYLE.md",
+      "bytes": 4563,
+      "sha256": "63d11db685129a04880cb857aae638d58db202fc3e8cbda4c3c31887443fc2d2",
+      "mode": "lines"
+    },
+    {
+      "path": "Tests/GiftUIObservableStateTests/ObservableStateReconciliationFaultTests.swift",
+      "bytes": 5885,
+      "sha256": "d2f185f0e10a07f658c47b53deee7971c226207b65eb0090c0eae2931a3ad1b7",
+      "mode": "lines"
+    },
+    {
+      "path": "scripts/test.sh",
+      "bytes": 8263,
+      "sha256": "e91556eb7107eb39a24853167ab84bbad829d6f0f29ef53b2a7db61958b55489",
+      "mode": "lines"
+    },
+    {
+      "path": "scripts/lib/swiftpm.sh",
+      "bytes": 3033,
+      "sha256": "28811ad9ae2b2fc32b894a54779e27d85474ba46f6b8358a07f819a07983a211",
+      "mode": "lines"
+    },
+    {
+      "path": "scripts/format-swift.sh",
+      "bytes": 2179,
+      "sha256": "d89d47e032093d8fe42c45ba1504c9bc97a9755a86650bdde2abfa0737701853",
+      "mode": "lines"
+    },
+    {
+      "path": "Package.swift",
+      "bytes": 27233,
+      "sha256": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+      "mode": "find"
+    },
+    {
+      "path": "Tests/GiftUIRuntimeConformanceTests/ProductionObservableRootAdapterTests.swift",
+      "bytes": 21196,
+      "sha256": "91e6097b66af09912ec5edfced78d4be437bbc8d9e37e208bdbdee8004fa8ec1",
+      "mode": "lines"
+    },
+    {
+      "path": "Tests/GiftUIObservableStateTests/ObservableStateRegistrationBridgeTests.swift",
+      "bytes": 4258,
+      "sha256": "674426622e563beee219840bec734ef21852157185da9b078824ddeaa2e157fd",
+      "mode": "lines"
+    },
+    {
+      "path": "Package.swift",
+      "bytes": 27233,
+      "sha256": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+      "mode": "lines"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "bytes": 3358,
+      "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "bytes": 13855,
+      "sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "bytes": 5340,
+      "sha256": "0b293757d79cfa7b5c5e78fe06b2d1897b592f0ef6938cc9b75791dd5126d3e7",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateModel.swift",
+      "bytes": 654,
+      "sha256": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelMutation.swift",
+      "bytes": 607,
+      "sha256": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+      "bytes": 2141,
+      "sha256": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "bytes": 17507,
+      "sha256": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "bytes": 34291,
+      "sha256": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "bytes": 1754,
+      "sha256": "fbe273372d34c2535002a2465076559adb9b6c9239fbab7abda0b7587107ae82",
+      "mode": "lines"
+    },
+    {
+      "path": "Sources/GiftUI/ObservableState.swift",
+      "bytes": 5340,
+      "sha256": "0b293757d79cfa7b5c5e78fe06b2d1897b592f0ef6938cc9b75791dd5126d3e7",
+      "mode": "find"
+    }
+  ],
+  "helper_exits": [
+    {
+      "argv": "[{\"path\":\"docs/engineering/CODE_STYLE.md\",\"mode\":\"lines\",\"ranges\":[[1,200]]},{\"path\":\"Tests/GiftUIObservableStateTests/ObservableStateReconciliationFaultTests.swift\",\"mode\":\"lines\",\"ranges\":[[1,230]]},{\"path\":\"scripts/test.sh\",\"mode\":\"lines\",\"ranges\":[[1,120]]}]",
+      "intended_exit": 0,
+      "errors": [],
+      "display_bytes": 13863,
+      "omitted_lines": 0
+    },
+    {
+      "argv": "[{\"path\":\"scripts/lib/swiftpm.sh\",\"mode\":\"lines\",\"ranges\":[[1,160]]},{\"path\":\"scripts/format-swift.sh\",\"mode\":\"lines\",\"ranges\":[[1,145]]},{\"path\":\"Package.swift\",\"mode\":\"find\",\"words\":[\"GiftUIObservableStateTests\",\"swiftSettings\",\"enableExperimentalFeature\",\"enableUpcomingFeature\",\"swiftLanguageModes\",\"NonEscapable\",\"Lifetime\",\"6.4\"]}]",
+      "intended_exit": 0,
+      "errors": [],
+      "display_bytes": 5939,
+      "omitted_lines": 0
+    },
+    {
+      "argv": "[{\"path\":\"Tests/GiftUIRuntimeConformanceTests/ProductionObservableRootAdapterTests.swift\",\"mode\":\"lines\",\"ranges\":[[1,190]]},{\"path\":\"Tests/GiftUIObservableStateTests/ObservableStateRegistrationBridgeTests.swift\",\"mode\":\"lines\",\"ranges\":[[1,150]]},{\"path\":\"Package.swift\",\"mode\":\"lines\",\"ranges\":[[175,196],[617,639]]}]",
+      "intended_exit": 0,
+      "errors": [],
+      "display_bytes": 11309,
+      "omitted_lines": 0
+    },
+    {
+      "argv": "[{\"path\":\"Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift\",\"mode\":\"lines\",\"ranges\":[[1,65]]},{\"path\":\"Sources/GiftUIObservableState/ObservableModelScope.swift\",\"mode\":\"lines\",\"ranges\":[[1,96]]}]",
+      "intended_exit": 0,
+      "errors": [],
+      "display_bytes": 6996,
+      "omitted_lines": 0
+    },
+    {
+      "argv": "[{\"path\":\"Sources/GiftUI/ObservableState.swift\",\"mode\":\"lines\",\"ranges\":[[1,40]]},{\"path\":\"Sources/GiftUIObservableState/ObservableStateModel.swift\",\"mode\":\"lines\",\"ranges\":[[1,90]]},{\"path\":\"Sources/GiftUIObservableState/ObservableModelMutation.swift\",\"mode\":\"lines\",\"ranges\":[[1,55]]},{\"path\":\"Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift\",\"mode\":\"lines\",\"ranges\":[[1,125]]},{\"path\":\"Sources/GiftUIObservableState/ObservableModelOwnership.swift\",\"mode\":\"lines\",\"ranges\":[[60,102]]}]",
+      "intended_exit": 0,
+      "errors": [],
+      "display_bytes": 6148,
+      "omitted_lines": 0
+    },
+    {
+      "argv": "[{\"path\":\"Sources/GiftUIObservableState/ObservableStateRootScope.swift\",\"mode\":\"lines\",\"ranges\":[[393,432]]},{\"path\":\"Sources/GiftUIObservableState/ObservableModelTicket.swift\",\"mode\":\"lines\",\"ranges\":[[1,105]]},{\"path\":\"Sources/GiftUI/ObservableState.swift\",\"mode\":\"find\",\"words\":[\"init(\",\"_giftUISeed\",\"_giftUICandidate\"]}]",
+      "intended_exit": 0,
+      "errors": [],
+      "display_bytes": 1743,
+      "omitted_lines": 52
+    }
+  ],
+  "unknowns": [
+    "Tool request/wrapper/syscall bytes not exact;19536 reserve, unknown not zero"
+  ],
+  "status": "FINAL_RUNTIME_PASS_PACKAGE_TIMING_NONQUALIFIED",
+  "last_UTC": "2026-10-20T18:59:44.915138+00:00",
+  "ended_UTC": "2026-10-22T11:28:32.760893+00:00",
+  "full_package_elapsed_seconds": 145857.177504,
+  "time_qualification": "NONQUALIFIED; full package spans blocked approval waits, no reset",
+  "transcript_qualification": "Exact complete tool/approval/request transcript bytes UNKNOWN; prior helper model_display_bytes is not total. No budget certification.",
+  "finalization_charge_bytes": 65536,
+  "compiler_internal_io": "Unmeasured; no zero substitution or total read-budget certification",
+  "output_known_result_bytes": 37237,
+  "observed_terminal_exits": {
+    "initial_format": 0,
+    "initial_maintained_lint": 0,
+    "initial_compile": 1,
+    "exact_escalated_compile": 1,
+    "corrected_request": "aborted/no compiler launch established",
+    "coordinator_direct_compile": 1,
+    "SDK_compile": 1,
+    "final_link_compile": 0,
+    "run": 0
+  }
+}

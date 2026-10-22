@@ -1,0 +1,30 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RootStoppedActivationFaultControl.swift:23:14: error: cannot use mutating member on immutable value: 'sink' is a 'let' constant
+ 13 | 
+ 14 | private struct ObservedSink: ~Copyable {
+ 15 |     let sink: _GiftUIObservableChangeSink
+    |     `- note: change 'let' to 'var' to make it mutable
+ 16 |     let trace: RetirementTrace
+ 17 | 
+    :
+ 21 | 
+ 22 |     borrowing func report() -> _GiftUIObservableChangeReportOutcome {
+ 23 |         sink.reportChange()
+    |              `- error: cannot use mutating member on immutable value: 'sink' is a 'let' constant
+ 24 |     }
+ 25 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RootStoppedActivationFaultControl.swift:87:9: error: generic parameter 'Schema' could not be inferred
+ 85 |     var assertions = 0
+ 86 | 
+ 87 |     try withObservableModelScope(
+    |         `- error: generic parameter 'Schema' could not be inferred
+ 88 |         ownership: &ownership, models: &span, schema: 1, needsCapture: false
+ 89 |     ) { models throws(ObservableStateError) in
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift:6:14: note: in call to function 'withObservableModelScope(ownership:models:schema:needsCapture:_:)'
+  4 | /// generic result is Escapable, so neither a scope nor a ticket can be returned.
+  5 | @inlinable
+  6 | package func withObservableModelScope<Model: ~Copyable, Schema, Result>(
+    |              `- note: in call to function 'withObservableModelScope(ownership:models:schema:needsCapture:_:)'
+  7 |     ownership: inout ObservableModelOwnership,
+  8 |     models: inout MutableSpan<Model?>,

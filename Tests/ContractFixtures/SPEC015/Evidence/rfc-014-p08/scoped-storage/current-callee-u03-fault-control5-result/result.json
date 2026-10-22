@@ -1,0 +1,105 @@
+{
+  "status": "PASS_FOCUSED_NATIVE_ROOT_STOPPED_ACTIVATION_CONTROL_ONLY",
+  "fixture": "Tests/ContractFixtures/SPEC015/RootStoppedActivationFaultControl.swift",
+  "fixture_sha256": "8a04caca423c301b8206bb9f878281d13dac4b95511321768d567168736dbbcc",
+  "cases": 3,
+  "assertions": 41,
+  "compile": {
+    "record": "compile-link-direct.json",
+    "exit_code": 0,
+    "process_wall_seconds": 0.711055833
+  },
+  "run": {
+    "record": "run-coordinator.json",
+    "exit_code": 0,
+    "process_wall_seconds": 0.484512542,
+    "output": "PASS root-stopped-activation baseline=1 detach-failure=1 retired-unregister-failure=1 assertions=41"
+  },
+  "runtime_observation": [
+    "Baseline: successful detach destroys owned sink wrapper while independent ticket keeps model alive; model is destroyed when that ticket is released.",
+    "Detach failure: private sink remains at root-body-returning marker, then its owning model/wrapper is destroyed before withRoot returns while independent ticket value is still live.",
+    "Retired-unregister failure: scope is explicitly stopped, unregister rejection is asserted, and model ALSO refuses detach. Same destruction ordering holds. This is not an isolated unregister-only fault case.",
+    "Stopped scope report(key) is rejected before invoking model callback. No raw callback is invoked after report storage lifetime, and no UB is used to obtain the ordering observation."
+  ],
+  "observation_boundary": "Runtime directly establishes deinitialization/destruction before withRoot RETURNS. It does not instrument the internal report-storage borrow end. The separate source-order proof locates defer finishStoppedActivation inside reports-pointer borrow (ObservableStateRootScope185-199, defer190), and ModelScope96-110/Ownership128-138 implement model destruction. Original source hashes still match. Observer marker is wrapper deinit entry; owned-field destruction completes on function return under Swift value lifetime semantics.",
+  "source_order_binding": [
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "sha256": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639",
+      "expected_original_sha256": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639",
+      "matches_original": true
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+      "expected_original_sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+      "matches_original": true
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "sha256": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d",
+      "expected_original_sha256": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d",
+      "matches_original": true
+    }
+  ],
+  "profile": "native arm64 macOS target26.0, SDK26.5, project-local Swift6.4; actual retained GiftUI/ObservableState/SemanticCore dependency identities in final-dependencies.json. A focused bridge fault control, not the full counter producer or arbitrary foreign/concurrent callback proof.",
+  "reproduction": {
+    "file": "focused-invocation.txt",
+    "argv": [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-swift-version",
+      "6",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-parse-as-library",
+      "-module-name",
+      "P08RootStoppedActivationFaultControl",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RootStoppedActivationFaultControl.swift",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUIObservableState.o",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-npoej3u2/GiftUISemanticCore.o",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-root-stopped-activation-control5/control"
+    ],
+    "run_argv": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-root-stopped-activation-control5/control"
+    ],
+    "capture_limit": "Reconstructed from captured original argv plus coordinator-documented SDK and SemCore object additions. All effective operands are exact; byte ordering of the coordinator final tool command was not separately serialized.",
+    "sdk_provenance": {
+      "result": ".build/contracts/p08-counter-wrapel2y/result.json",
+      "sha256": "af9ba8ef87a2f33d4d6d7ea46d2e1f4f925228f667c0b7fb95b4ae3023b06773",
+      "command_index": 0
+    },
+    "dependency_manifest": "Package.swift:87 (SemanticCore depends on already linked GiftUI)",
+    "dependency_file": "final-dependencies.json"
+  },
+  "failed_history_preserved": [
+    "compile.log: original sandbox global Clang cache denial, exit1",
+    "compile-escalated-terminal.json/log: original exact escalated command, exit1, two fixture source diagnostics",
+    "compile-corrected-aborted.json: interrupted corrected redirection request did not reach compiler, per absent mandatory log/binary observation",
+    "compile-coordinator-direct.json/log: clean fixture compilation but System library link missing, exit1",
+    "compile-sdk-direct.json/log: SDK correction leaves exactly two SemanticCore descriptor references, exit1",
+    "compile-link-direct.json/log: added original SemanticCore object, exit0",
+    "run-coordinator.json/log: actual control exit0"
+  ],
+  "formatting": "fixture format and maintained format lint exited0 before original compile; fixture-only corrections were formatted again, exit0. No broad repository test gate or four-profile run claimed.",
+  "source_changes": "Only focused SPEC015 fixture added/corrected, outside frozen42. No production API/implementation/source fix; coordinator owns index/commit.",
+  "proof_limits": [
+    "No strict heap/allocation/cost/stack/RAM/flash/cold claim.",
+    "No hardware or Pi/nRF/tiled execution.",
+    "No full current-callee, U03, U02, P08/R07/T8.1 closure.",
+    "Single package clock was not reset across blocked approval history.40-minute total budget is NONQUALIFIED; fast compile/test process durations do not certify complete execution-budget compliance."
+  ]
+}

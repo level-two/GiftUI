@@ -1,0 +1,1 @@
+PASS root-stopped-activation baseline=1 detach-failure=1 retired-unregister-failure=1 assertions=41

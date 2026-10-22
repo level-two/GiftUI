@@ -1,0 +1,2 @@
+<unknown>:0: error: unable to open output file '/Users/eugene/.cache/clang/ModuleCache/2GGMBF7V5ZCX/SwiftShims-1GWGQKUA6LRMC.pcm': 'Operation not permitted'
+<unknown>:0: error: could not build Objective-C module 'SwiftShims'

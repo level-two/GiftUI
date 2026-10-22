@@ -1,0 +1,11 @@
+{
+  "observed_exit_code": 1,
+  "observed_process_wall_seconds": 0.114588583,
+  "functions_cell_id": "2",
+  "observed_UTC": "2026-10-22T08:11:25.374865+00:00",
+  "log": "compile-escalated.log",
+  "log_bytes": 1664,
+  "log_sha256": "33a689a70e1470786d488f1180b3f69bd161ed2ec3fbf5c55cf01cdf6929ad1a",
+  "source_argv": "execution.json /commands/2/argv",
+  "sandbox_permissions": "require_escalated"
+}

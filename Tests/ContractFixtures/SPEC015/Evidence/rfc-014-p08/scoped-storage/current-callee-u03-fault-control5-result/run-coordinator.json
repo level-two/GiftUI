@@ -1,0 +1,8 @@
+{
+  "chunk_id": "aa7e66",
+  "wall_time_seconds": 0.484512542,
+  "exit_code": 0,
+  "original_token_count": 25,
+  "output": "PASS root-stopped-activation baseline=1 detach-failure=1 retired-unregister-failure=1 assertions=41\n",
+  "capture": "combined output"
+}
