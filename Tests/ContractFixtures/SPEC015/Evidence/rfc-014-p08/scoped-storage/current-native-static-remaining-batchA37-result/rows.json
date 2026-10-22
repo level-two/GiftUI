@@ -1,0 +1,133 @@
+{
+  "status": "SCOPED_CONDITIONAL_PROVIDER_BODY_CLOSURE",
+  "broad_Batch_A_eligibility": false,
+  "prior_consolidated_map": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-capacity33-result/consolidated-residual-map.json",
+    "sha256": "c4df82acbe1314b558e45333ae1366faef27d24fd391ef0f264dd72d6aa66bae",
+    "update": "All prior available-unexamined and B/C rows retained. This overlay closes only examined local constructor/16 helpers/required memory-body operations under stated predicates."
+  },
+  "baseline": {
+    "HEAD": "80c6c6be554229925d25d3cfa3cafc3c9326cbcd",
+    "result_sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838",
+    "runtime_object_sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581",
+    "executable_sha256": "01b054c0a4460bf449f1a6057e81146e636a0e470a9aefe2bad342acfb7d963e"
+  },
+  "rows": [
+    {
+      "id": "local-constructor",
+      "condition": "Current caller0x4fa38 and0x4fd8c target StaticReservation.init0x349a8-0x34bd0; full172line body and local16 complete225line union examined. Valid fixed destination/source spans and prior lifetime lemmas required.",
+      "disposition": "No allocator/metadata/once/witness/indirect call operation in these local bodies; only exact memcpy/bzero and canary comparison/fail branch.",
+      "not_proved": "Other current rooted17 sites; fresh full root alias join beyond reused accepted route lemmas; runtime costs or resource fit."
+    },
+    {
+      "id": "memory-provider-binding",
+      "condition": "Executable imports unique ordinal1 libSystem; umbrella LC_REEXPORT14 libc; libc ordinal6 reexports exact __platform_memmove/__platform_bzero; platform UUID edb83a19ec1732de93506145970a85d6.",
+      "disposition": "Leaf regular flags0, no export resolver; import n_desc256/reference type0, exact stubs and NON_LAZY_SYMBOL_POINTERS GOT slots; chained-fixups command present.",
+      "not_proved": "Actual chained slot target/loaded image identity; dyld/setup allocation cost. No per-call lazy-binding mechanism inferred."
+    },
+    {
+      "id": "memmove-body",
+      "condition": "Exact installed0x180509360-0x180509640,185lines complete; literal copy sizes195,202,460,484,1025,1027,1057,2082 with valid bounds/overlap predicates.",
+      "disposition": "All branches register/load/store/overlap/size/loop/return; no call/allocator/global-state initialization. Ordinary and first invocation share this instruction body.",
+      "not_proved": "Successful historical execution or zero process allocation."
+    },
+    {
+      "id": "bzero-body",
+      "condition": "Entry0x180509030 initializes x2=count,q0=0,x1=0,x3=destination; actual literal171,216,260,452,1024,1056 are >=64 and<32768. Branch0x18050904c therefore selects0x1805090fc.",
+      "disposition": "Complete shared owner0x180509090-0x180509164 inspected; required0x90fc tail consists aligned q0 stores/backedge/end stores/ret0x913c, no calls/allocator/cache branch.",
+      "not_proved": "Unselected large/small workload variants or runtime bytes/cost."
+    },
+    {
+      "id": "canary-and-fatal",
+      "condition": "Constructor saved guard atx29-0x28; helper59 compares current same guard symbol; b.ne0x34bb8 targets stack_chk_fail0x34bcc. Local valid-span stores do not alias guard.",
+      "disposition": "Equal guard normal return; mismatch exact libc ___stack_chk_fail0x180405a94-0x180405af4 then fallback0x180405984-0x180405a40 ending brk. Not normal cleanup.",
+      "not_proved": "Loaded guard identity/stability and imported fatal-path transitive targets0x180406a50,0x180406ec0,0x1804065c0,0x180406fe0,0x1803ad644,0x180407140,0x180406400,0x180407000,0x180406f30,0x1803e0f50; no failure-cost/noreturn-callee claim from names."
+    }
+  ],
+  "remaining": {
+    "available_unexamined": [
+      "Other current rooted allocator/error callers and their required-workload predicates",
+      "Metadata/once/indirect/witness concrete origin and feasibility",
+      "Fatal-path imported transitive bodies/required-scope classification"
+    ],
+    "exact_state_or_binding": [
+      "Selected executable chained fixup targets versus exact installed provider UUID for accepted run",
+      "Same guard identity/value stability for normal return",
+      "Shared stdio R=S, intervening state persistence and current window binding"
+    ],
+    "closed_source_safety_reused": "Previously reviewed U03 local ownership/reader/publication/dispatch/generation/backing-last/linked-writer/fault conditions retained in their exact scope.",
+    "Batch_B_C": "Target runtime/physical/current image/cold/allocation counts/bytes/RAM/stack remain gated; no historical resource totals transferred."
+  },
+  "evidence": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/static-init-working.stdout",
+      "bytes": 10934,
+      "sha256": "79a0fdbc994a8165358ca5fc46453d25b3e2045bdc679dab86794503bb961824"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA36-local/helper-captures.json",
+      "bytes": 13453,
+      "sha256": "04d328c8fdd7c3fb249a0a2a4676b1432ed09b2be531f16b8844d07040329a30"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA36-local/ledger.json",
+      "bytes": 22870,
+      "sha256": "64de3d50ccdfa0884ec06b85cfb47e75965ae71fc64b9d12ec62f994ee5c03e0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-1.stdout",
+      "bytes": 6719,
+      "sha256": "61285eb8c288cb6d9d71164b93a713e2d544a3d45c2dd679b3284c176214e3d3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-2.stdout",
+      "bytes": 1120,
+      "sha256": "e40c669a1da4b741d4ef026b20d3a515ea30124f6763e55d8cff0b4f833c5fb7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-3.stdout",
+      "bytes": 1208,
+      "sha256": "3f26c3f9c39ceb143e9ce4cc9ba6e8a4184eeec8336b7ba96251e647dcaf3e63"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-1.stdout",
+      "bytes": 2217,
+      "sha256": "5f9fe7d1d2bf8c2ab548e73503174f1f6b82f898abdaa5c6cdf140df2fcc7f1c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-2.stdout",
+      "bytes": 2205,
+      "sha256": "6f1d8cc4eaaa091b76d17f17bc1a910824ff75ce1eb8c834825b6a8645e375d7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-captures.json",
+      "bytes": 10771,
+      "sha256": "c6e810b493302517b0b185fe43f4d93d0eefcfd3826e5b1dc40bb999741460cd"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/memory-followup-captures.json",
+      "bytes": 3986,
+      "sha256": "40f6342f50967a62d9db41a020203e1431ad6394bbcb94f7681e1c1f440500c7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/binding-kind.json",
+      "bytes": 2876,
+      "sha256": "826a4b1afa811cbf622b9b8d1035910bfe41547755833b9a9f4367e45bee2d37"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/freeze.json",
+      "bytes": 3956,
+      "sha256": "bc8cbe8156f621a9d7e0778111bafc78ef87b7d24c4856499eac4bf6367c011b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/page.py",
+      "bytes": 4708,
+      "sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/ledger.json",
+      "bytes": 38328,
+      "sha256": "f4a5895c1aef04d3cafbf4f5722bf01893083e4489bdf33fc422616a585fa9aa"
+    }
+  ]
+}

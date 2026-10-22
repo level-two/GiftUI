@@ -1,0 +1,21 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000b6f00 <_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_>:
+   b6f00:      	stp	x20, x19, [sp, #-0x20]!
+   b6f04:      	stp	x29, x30, [sp, #0x10]
+   b6f08:      	add	x29, sp, #0x10
+   b6f0c:      	mov	x19, x0
+   b6f10:      	mov	w1, #0xd8               ; =216
+   b6f14:      	bl	0xb6f14 <_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_+0x14>
+		00000000000b6f14:  ARM64_RELOC_BRANCH26	_bzero
+   b6f18:      	mov	w8, #0x300              ; =768
+   b6f1c:      	str	x8, [x19, #0xd8]
+   b6f20:      	add	x0, x19, #0xe0
+   b6f24:      	mov	w1, #0x104              ; =260
+   b6f28:      	ldp	x29, x30, [sp, #0x10]
+   b6f2c:      	ldp	x20, x19, [sp], #0x20
+   b6f30:      	b	0xb6f30 <_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_+0x30>
+		00000000000b6f30:  ARM64_RELOC_BRANCH26	_bzero

@@ -1,0 +1,53 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-2.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180405984 <__text>:
+180405984:     	adrp	x8, 0x1ea472000 <__text+0x6a06c67c>
+180405988:     	ldr	x9, [x8, #0xc48]
+18040598c:     	cbnz	x9, 0x18040599c <__text+0x18>
+180405990:     	adrp	x9, 0x18040c000 <__text+0x667c>
+180405994:     	add	x9, x9, #0x7a9
+180405998:     	str	x9, [x8, #0xc48]
+18040599c:     	pacibsp
+1804059a0:     	sub	sp, sp, #0x50
+1804059a4:     	stp	x22, x21, [sp, #0x20]
+1804059a8:     	stp	x20, x19, [sp, #0x30]
+1804059ac:     	stp	x29, x30, [sp, #0x40]
+1804059b0:     	add	x29, sp, #0x40
+1804059b4:     	bl	0x180406fe0 <__text+0x165c>
+1804059b8:     	mov	x19, x0
+1804059bc:     	add	x20, sp, #0x10
+1804059c0:     	mov	w21, #-0x1              ; =-1
+1804059c4:     	stp	xzr, x21, [sp, #0x10]
+1804059c8:     	add	x1, sp, #0x10
+1804059cc:     	mov	w0, #0x6                ; =6
+1804059d0:     	mov	x2, #0x0                ; =0
+1804059d4:     	bl	0x1803ad644
+1804059d8:     	ldr	w8, [sp, #0x18]
+1804059dc:     	and	w8, w8, #0xffffffdf
+1804059e0:     	str	w8, [sp, #0x18]
+1804059e4:     	str	w21, [sp, #0xc]
+1804059e8:     	add	x1, sp, #0xc
+1804059ec:     	mov	w0, #0x3                ; =3
+1804059f0:     	mov	x2, #0x0                ; =0
+1804059f4:     	bl	0x180407140 <__text+0x17bc>
+1804059f8:     	mov	w0, #0x1                ; =1
+1804059fc:     	bl	0x180406400 <__text+0xa7c>
+180405a00:     	add	x1, x20, #0x8
+180405a04:     	mov	w0, #0x3                ; =3
+180405a08:     	mov	x2, #0x0                ; =0
+180405a0c:     	bl	0x180407000 <__text+0x167c>
+180405a10:     	mov	x0, x19
+180405a14:     	mov	w1, #0x6                ; =6
+180405a18:     	bl	0x180406f30 <__text+0x15ac>
+180405a1c:     	mov	w0, #0x2710             ; =10000
+180405a20:     	bl	0x1803e0f50
+180405a24:     	mov	w8, #-0x19              ; =-25
+180405a28:     	str	w8, [sp, #0x18]
+180405a2c:     	add	x1, x20, #0x8
+180405a30:     	mov	w0, #0x3                ; =3
+180405a34:     	mov	x2, #0x0                ; =0
+180405a38:     	bl	0x180407140 <__text+0x17bc>
+180405a3c:     	brk	#0x1

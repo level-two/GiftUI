@@ -1,0 +1,11 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000b6f34 <_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_>:
+   b6f34:      	mov	x8, #0x700000000        ; =30064771072
+   b6f38:      	str	x8, [x0], #0x8
+   b6f3c:      	mov	w1, #0x1c4              ; =452
+   b6f40:      	b	0xb6f40 <_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_+0xc>
+		00000000000b6f40:  ARM64_RELOC_BRANCH26	_bzero

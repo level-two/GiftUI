@@ -1,0 +1,363 @@
+{
+  "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/resolve-known-memory-edges.py",
+  "source_sha256": "9dcb732368fd64ee16f6d1a1e791ada6fc527497f94d7b18bf11d0d771102a43",
+  "started_utc": "2026-10-22T22:05:36.481174+00:00",
+  "predicates": [
+    {
+      "predicate": "libSystem LC_REEXPORT edge14 is frozen libc",
+      "value": true,
+      "actual": {
+        "name": "/usr/lib/system/libsystem_c.dylib",
+        "command": 2147483679,
+        "current_version": 114860036,
+        "compatibility_version": 65536
+      }
+    },
+    {
+      "predicate": "libc dependency ordinal6 is frozen platform",
+      "value": true,
+      "actual": {
+        "name": "/usr/lib/system/libsystem_platform.dylib",
+        "command": 12,
+        "current_version": 24606722,
+        "compatibility_version": 65536
+      }
+    },
+    {
+      "predicate": "exact libc reexport _memcpy",
+      "value": true,
+      "actual": {
+        "flags": 8,
+        "ordinal": 6,
+        "import_name": "__platform_memmove"
+      }
+    },
+    {
+      "predicate": "exact leaf export __platform_memmove",
+      "value": true,
+      "actual": {
+        "flags": 0,
+        "address": 6447731552
+      }
+    },
+    {
+      "predicate": "exact libc reexport _bzero",
+      "value": true,
+      "actual": {
+        "flags": 8,
+        "ordinal": 6,
+        "import_name": "__platform_bzero"
+      }
+    },
+    {
+      "predicate": "exact leaf export __platform_bzero",
+      "value": true,
+      "actual": {
+        "flags": 0,
+        "address": 6447730736
+      }
+    },
+    {
+      "predicate": "exact direct libc export ___stack_chk_fail",
+      "value": true,
+      "actual": {
+        "flags": 0,
+        "address": 6446668436
+      }
+    },
+    {
+      "predicate": "exact direct libc export ___stack_chk_guard",
+      "value": true,
+      "actual": {
+        "flags": 0,
+        "address": 8270415072
+      }
+    },
+    {
+      "predicate": "function-start predecessor __platform_memmove",
+      "value": true,
+      "actual": {
+        "entry": "0x180509360",
+        "index": 85,
+        "starts_count": 279
+      }
+    },
+    {
+      "predicate": "complete frozen text coverage __platform_memmove",
+      "value": true,
+      "actual": {
+        "range": [
+          "0x180509360",
+          "0x180509640"
+        ],
+        "slice": [
+          "0x1805068a0",
+          28768
+        ],
+        "entry_offset": 0
+      }
+    },
+    {
+      "predicate": "selected excerpt bound __platform_memmove",
+      "value": true,
+      "actual": {
+        "stdout_bytes": 6719,
+        "stderr_bytes": 0,
+        "lines": 185
+      }
+    },
+    {
+      "predicate": "known working decoder exit0 __platform_memmove",
+      "value": true,
+      "actual": {
+        "exit": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "predicate": "function-start predecessor __platform_bzero",
+      "value": true,
+      "actual": {
+        "entry": "0x180509030",
+        "index": 80,
+        "starts_count": 279
+      }
+    },
+    {
+      "predicate": "complete frozen text coverage __platform_bzero",
+      "value": true,
+      "actual": {
+        "range": [
+          "0x180509030",
+          "0x180509090"
+        ],
+        "slice": [
+          "0x1805068a0",
+          28768
+        ],
+        "entry_offset": 0
+      }
+    },
+    {
+      "predicate": "selected excerpt bound __platform_bzero",
+      "value": true,
+      "actual": {
+        "stdout_bytes": 1120,
+        "stderr_bytes": 0,
+        "lines": 30
+      }
+    },
+    {
+      "predicate": "known working decoder exit0 __platform_bzero",
+      "value": true,
+      "actual": {
+        "exit": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "predicate": "function-start predecessor ___stack_chk_fail",
+      "value": true,
+      "actual": {
+        "entry": "0x180405a94",
+        "index": 1839,
+        "starts_count": 1880
+      }
+    },
+    {
+      "predicate": "complete frozen text coverage ___stack_chk_fail",
+      "value": true,
+      "actual": {
+        "range": [
+          "0x180405a94",
+          "0x180405af4"
+        ],
+        "slice": [
+          "0x18038d000",
+          528872
+        ],
+        "entry_offset": 0
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "client_import": "_memcpy",
+      "root_export": null,
+      "root_edge14": {
+        "name": "/usr/lib/system/libsystem_c.dylib",
+        "command": 2147483679,
+        "current_version": 114860036,
+        "compatibility_version": 65536
+      },
+      "libc_export": {
+        "flags": 8,
+        "ordinal": 6,
+        "import_name": "__platform_memmove"
+      },
+      "libc_edge6": {
+        "name": "/usr/lib/system/libsystem_platform.dylib",
+        "command": 12,
+        "current_version": 24606722,
+        "compatibility_version": 65536
+      },
+      "leaf_symbol": "__platform_memmove",
+      "leaf_provider": "/usr/lib/system/libsystem_platform.dylib",
+      "leaf_export": {
+        "flags": 0,
+        "address": 6447731552
+      }
+    },
+    {
+      "client_import": "_bzero",
+      "root_export": null,
+      "root_edge14": {
+        "name": "/usr/lib/system/libsystem_c.dylib",
+        "command": 2147483679,
+        "current_version": 114860036,
+        "compatibility_version": 65536
+      },
+      "libc_export": {
+        "flags": 8,
+        "ordinal": 6,
+        "import_name": "__platform_bzero"
+      },
+      "libc_edge6": {
+        "name": "/usr/lib/system/libsystem_platform.dylib",
+        "command": 12,
+        "current_version": 24606722,
+        "compatibility_version": 65536
+      },
+      "leaf_symbol": "__platform_bzero",
+      "leaf_provider": "/usr/lib/system/libsystem_platform.dylib",
+      "leaf_export": {
+        "flags": 0,
+        "address": 6447730736
+      }
+    },
+    {
+      "client_import": "___stack_chk_fail",
+      "root_export": null,
+      "root_edge14": {
+        "name": "/usr/lib/system/libsystem_c.dylib",
+        "command": 2147483679,
+        "current_version": 114860036,
+        "compatibility_version": 65536
+      },
+      "leaf_provider": "/usr/lib/system/libsystem_c.dylib",
+      "leaf_symbol": "___stack_chk_fail",
+      "leaf_export": {
+        "flags": 0,
+        "address": 6446668436
+      }
+    },
+    {
+      "client_import": "___stack_chk_guard",
+      "root_export": null,
+      "root_edge14": {
+        "name": "/usr/lib/system/libsystem_c.dylib",
+        "command": 2147483679,
+        "current_version": 114860036,
+        "compatibility_version": 65536
+      },
+      "leaf_provider": "/usr/lib/system/libsystem_c.dylib",
+      "leaf_symbol": "___stack_chk_guard",
+      "leaf_export": {
+        "flags": 0,
+        "address": 8270415072
+      }
+    }
+  ],
+  "captures": [
+    {
+      "name": "__platform_memmove",
+      "provider": "/usr/lib/system/libsystem_platform.dylib",
+      "entry": 6447731552,
+      "role": "entry",
+      "index": 1,
+      "lo": "0x180509360",
+      "hi": "0x180509640",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-1.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 6719,
+      "stdout_lines": 185,
+      "stdout_sha256": "61285eb8c288cb6d9d71164b93a713e2d544a3d45c2dd679b3284c176214e3d3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "code_sha256": "fc387ac7f55810a81652408ead8b6d4a3029457198416446f096293622426530",
+      "provider_uuid": "edb83a19ec1732de93506145970a85d6",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 4723552,
+      "raw_cache_bytes": 736
+    },
+    {
+      "name": "__platform_bzero",
+      "provider": "/usr/lib/system/libsystem_platform.dylib",
+      "entry": 6447730736,
+      "role": "entry",
+      "index": 2,
+      "lo": "0x180509030",
+      "hi": "0x180509090",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-2.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 1120,
+      "stdout_lines": 30,
+      "stdout_sha256": "e40c669a1da4b741d4ef026b20d3a515ea30124f6763e55d8cff0b4f833c5fb7",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "code_sha256": "518549c5fbf2d44a2839d1e92a9119fc68cb42551d05d97fe362951b11496e88",
+      "provider_uuid": "edb83a19ec1732de93506145970a85d6",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 4722736,
+      "raw_cache_bytes": 96
+    },
+    {
+      "name": "___stack_chk_fail",
+      "provider": "/usr/lib/system/libsystem_c.dylib",
+      "entry": 6446668436,
+      "role": "entry",
+      "index": 3,
+      "lo": "0x180405a94",
+      "hi": "0x180405af4",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-3.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 1208,
+      "stdout_lines": 30,
+      "stdout_sha256": "3f26c3f9c39ceb143e9ce4cc9ba6e8a4184eeec8336b7ba96251e647dcaf3e63",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "code_sha256": "712650b99e9c3335f3566bf2abd2787ba1864130ea78492944bc09d24d87623c",
+      "provider_uuid": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 3660436,
+      "raw_cache_bytes": 96
+    }
+  ],
+  "pending": {
+    "index": 3,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-3.o"
+    ]
+  }
+}

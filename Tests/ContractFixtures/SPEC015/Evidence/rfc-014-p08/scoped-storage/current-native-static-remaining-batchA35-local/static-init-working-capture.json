@@ -1,0 +1,22 @@
+{
+  "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/decode-static-init-working.py",
+  "sha256": "8a0853e11021a5e9d857ae4b533ea22c1aee774069e56a74f1327e8fb25035da",
+  "started_utc": "2026-10-22T21:37:59.108828+00:00",
+  "scope": "Exact known working decoder form, no --macho; already resolved range0x349a8\u20130x34bd0, no metadata/parser replay",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x349a8",
+    "--stop-address=0x34bd0",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+  ],
+  "returned_utc": "2026-10-22T21:37:59.126288+00:00",
+  "returncode": 0,
+  "stdout_bytes": 10934,
+  "stdout_sha256": "79a0fdbc994a8165358ca5fc46453d25b3e2045bdc679dab86794503bb961824",
+  "stdout_lines": 172,
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

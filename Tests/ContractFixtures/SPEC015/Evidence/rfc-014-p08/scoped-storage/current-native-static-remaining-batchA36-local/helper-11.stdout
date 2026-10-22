@@ -1,0 +1,18 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000b6e90 <_$ss11InlineArrayVy$1055_s5UInt8VGSgWOi0_>:
+   b6e90:      	stp	x20, x19, [sp, #-0x20]!
+   b6e94:      	stp	x29, x30, [sp, #0x10]
+   b6e98:      	add	x29, sp, #0x10
+   b6e9c:      	mov	x19, x0
+   b6ea0:      	mov	w1, #0x420              ; =1056
+   b6ea4:      	bl	0xb6ea4 <_$ss11InlineArrayVy$1055_s5UInt8VGSgWOi0_+0x14>
+		00000000000b6ea4:  ARM64_RELOC_BRANCH26	_bzero
+   b6ea8:      	mov	w8, #0x1                ; =1
+   b6eac:      	strb	w8, [x19, #0x420]
+   b6eb0:      	ldp	x29, x30, [sp, #0x10]
+   b6eb4:      	ldp	x20, x19, [sp], #0x20
+   b6eb8:      	ret

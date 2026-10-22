@@ -1,0 +1,172 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000349a8 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC>:
+   349a8:      	stp	x28, x27, [sp, #-0x30]!
+   349ac:      	stp	x20, x19, [sp, #0x10]
+   349b0:      	stp	x29, x30, [sp, #0x20]
+   349b4:      	add	x29, sp, #0x20
+   349b8:      	sub	sp, sp, #0x2, lsl #12   ; =0x2000
+   349bc:      	sub	sp, sp, #0x330
+   349c0:      	bl	0x349c0 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x18>
+		00000000000349c0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_153
+   349c4:      	stur	x8, [x29, #-0x28]
+   349c8:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   349cc:      	add	x0, x0, #0xaa
+   349d0:      	bl	0x349d0 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x28>
+		00000000000349d0:  ARM64_RELOC_BRANCH26	_$ss11InlineArrayVy$1023_s5UInt8VGSgWOi0_
+   349d4:      	add	x20, sp, #0x888
+   349d8:      	add	x0, sp, #0x888
+   349dc:      	add	x1, sp, #0x1, lsl #12   ; =0x1000
+   349e0:      	add	x1, x1, #0xaa
+   349e4:      	bl	0x349e4 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x3c>
+		00000000000349e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1255
+   349e8:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   349ec:      	add	x0, x0, #0x4ab
+   349f0:      	bl	0x349f0 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x48>
+		00000000000349f0:  ARM64_RELOC_BRANCH26	_$ss11InlineArrayVy$1055_s5UInt8VGSgWOi0_
+   349f4:      	add	x0, x20, #0x401
+   349f8:      	add	x1, sp, #0x1, lsl #12   ; =0x1000
+   349fc:      	add	x1, x1, #0x4ab
+   34a00:      	bl	0x34a00 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x58>
+		0000000000034a00:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1901
+   34a04:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   34a08:      	add	x0, x0, #0x8cc
+   34a0c:      	bl	0x34a0c <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x64>
+		0000000000034a0c:  ARM64_RELOC_BRANCH26	_$ss11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGSgWOi0_
+   34a10:      	add	x8, sp, #0x484
+   34a14:      	add	x0, x8, #0x2
+   34a18:      	add	x1, sp, #0x1, lsl #12   ; =0x1000
+   34a1c:      	add	x1, x1, #0x8cc
+   34a20:      	bl	0x34a20 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x78>
+		0000000000034a20:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1255
+   34a24:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   34a28:      	add	x0, x0, #0xcd0
+   34a2c:      	bl	0x34a2c <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x84>
+		0000000000034a2c:  ARM64_RELOC_BRANCH26	_$s19GiftUIRuntimeStatic0C22RecordDrawingWorkspaceVy17P08CounterRuntime0cheF0VGSgWOi0_
+   34a30:      	add	x8, sp, #0x3b8
+   34a34:      	orr	x0, x8, #0x7
+   34a38:      	add	x1, sp, #0x1, lsl #12   ; =0x1000
+   34a3c:      	add	x1, x1, #0xcd0
+   34a40:      	bl	0x34a40 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x98>
+		0000000000034a40:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_813
+   34a44:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   34a48:      	add	x0, x0, #0xd94
+   34a4c:      	bl	0x34a4c <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0xa4>
+		0000000000034a4c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   34a50:      	add	x0, sp, #0x1d0
+   34a54:      	add	x1, sp, #0x1, lsl #12   ; =0x1000
+   34a58:      	add	x1, x1, #0xd94
+   34a5c:      	bl	0x34a5c <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0xb4>
+		0000000000034a5c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_726
+   34a60:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   34a64:      	add	x0, x0, #0xf78
+   34a68:      	bl	0x34a68 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0xc0>
+		0000000000034a68:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   34a6c:      	add	x0, sp, #0x4
+   34a70:      	add	x1, sp, #0x1, lsl #12   ; =0x1000
+   34a74:      	add	x1, x1, #0xf78
+   34a78:      	bl	0x34a78 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0xd0>
+		0000000000034a78:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_927
+   34a7c:      	add	x0, sp, #0x2, lsl #12   ; =0x2000
+   34a80:      	add	x0, x0, #0x144
+   34a84:      	bl	0x34a84 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0xdc>
+		0000000000034a84:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   34a88:      	add	x1, sp, #0x888
+   34a8c:      	mov	x0, x19
+   34a90:      	mov	w2, #0x822              ; =2082
+   34a94:      	bl	0x34a94 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0xec>
+		0000000000034a94:  ARM64_RELOC_BRANCH26	_memcpy
+   34a98:      	add	x8, x19, #0x822
+   34a9c:      	bl	0x34a9c <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0xf4>
+		0000000000034a9c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1828
+   34aa0:      	str	wzr, [x8, #0x10]
+   34aa4:      	mov	w8, #0x1                ; =1
+   34aa8:      	strb	w8, [x19, #0x836]
+   34aac:      	add	x9, x19, #0x837
+   34ab0:      	stp	q0, q0, [x9]
+   34ab4:      	stp	q0, q0, [x9, #0x20]
+   34ab8:      	stp	q0, q0, [x9, #0x40]
+   34abc:      	str	q0, [x9, #0x60]
+   34ac0:      	strb	w8, [x19, #0x8a7]
+   34ac4:      	str	xzr, [x19, #0x8a8]
+   34ac8:      	mov	w8, #0x20000            ; =131072
+   34acc:      	str	x8, [x19, #0x8b0]
+   34ad0:      	add	x8, x19, #0x8b8
+   34ad4:      	stp	q0, q0, [x8]
+   34ad8:      	stp	q0, q0, [x8, #0x20]
+   34adc:      	stur	q0, [x8, #0x3a]
+   34ae0:      	mov	w8, #0x2                ; =2
+   34ae4:      	str	x8, [x19, #0x908]
+   34ae8:      	add	x8, x19, #0x910
+   34aec:      	str	q0, [x19, #0x910]
+   34af0:      	str	q0, [x19, #0x920]
+   34af4:      	str	q0, [x19, #0x930]
+   34af8:      	str	q0, [x19, #0x940]
+   34afc:      	str	q0, [x19, #0x950]
+   34b00:      	str	q0, [x19, #0x960]
+   34b04:      	stur	q0, [x8, #0x5e]
+   34b08:      	add	x0, x19, #0x97e
+   34b0c:      	add	x1, sp, #0x484
+   34b10:      	mov	w2, #0x403              ; =1027
+   34b14:      	bl	0x34b14 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x16c>
+		0000000000034b14:  ARM64_RELOC_BRANCH26	_memcpy
+   34b18:      	add	x0, x19, #0xd81
+   34b1c:      	add	x1, sp, #0x3b8
+   34b20:      	mov	w2, #0xca               ; =202
+   34b24:      	bl	0x34b24 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x17c>
+		0000000000034b24:  ARM64_RELOC_BRANCH26	_memcpy
+   34b28:      	adrp	x8, 0x34000 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFxSpy20GiftUIRuntimeDynamic0T15LayoutWorkspaceVGXEfU0_xSpyAM0t8ResolveduM0VGXEfU_xSpyAM0t11DrawingPlanV0VGXEfU_xSpyAM0t6RenderV0VGXEfU_xSpyAM0t20InteractionCandidateM0Vy0R14UISemanticCore24SemanticCompleteIdentityVGGXEfU_xSpyAM0t14InteractionHitM0VyA2_GGXEfU_Si_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk21LLVzXEfU1_SiSpyAA0A14op19APLLVGXEfU_SiAA0aG7Q11APLLVnXEfU_Tf1nnnnnnnnnnnnnnnnnnnnncnnnnnnn_nTm+0x1230>
+		0000000000034b28:  ARM64_RELOC_PAGE21	lCPI930_0
+   34b2c:      	ldr	q0, [x8]
+		0000000000034b2c:  ARM64_RELOC_PAGEOFF12	lCPI930_0
+   34b30:      	str	q0, [x19, #0xe50]
+   34b34:      	str	wzr, [x19, #0xe74]
+   34b38:      	movi.2d	v0, #0000000000000000
+   34b3c:      	str	q0, [x19, #0xe60]
+   34b40:      	strh	wzr, [x19, #0xe70]
+   34b44:      	add	x0, x19, #0xe78
+   34b48:      	add	x1, sp, #0x1d0
+   34b4c:      	bl	0x34b4c <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x1a4>
+		0000000000034b4c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_726
+   34b50:      	mov	w8, #0x105c             ; =4188
+   34b54:      	add	x0, x19, x8
+   34b58:      	add	x1, sp, #0x4
+   34b5c:      	bl	0x34b5c <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x1b4>
+		0000000000034b5c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_927
+   34b60:      	mov	w8, #0x1228             ; =4648
+   34b64:      	add	x0, x19, x8
+   34b68:      	add	x1, sp, #0x2, lsl #12   ; =0x2000
+   34b6c:      	add	x1, x1, #0x144
+   34b70:      	bl	0x34b70 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x1c8>
+		0000000000034b70:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_726
+   34b74:      	mov	w8, #0x140c             ; =5132
+   34b78:      	add	x0, x19, x8
+   34b7c:      	add	x1, sp, #0x2, lsl #12   ; =0x2000
+   34b80:      	add	x1, x1, #0x144
+   34b84:      	bl	0x34b84 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x1dc>
+		0000000000034b84:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_726
+   34b88:      	movi.2d	v0, #0000000000000000
+   34b8c:      	str	q0, [x19, #0x15f0]
+   34b90:      	str	q0, [x19, #0x1600]
+   34b94:      	str	q0, [x19, #0x1610]
+   34b98:      	mov	w8, #0x1630             ; =5680
+   34b9c:      	str	q0, [x19, #0x1620]
+   34ba0:      	add	x0, x19, x8
+   34ba4:      	add	x1, sp, #0x1, lsl #12   ; =0x1000
+   34ba8:      	add	x1, x1, #0xf78
+   34bac:      	bl	0x34bac <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x204>
+		0000000000034bac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_927
+   34bb0:      	ldur	x8, [x29, #-0x28]
+   34bb4:      	bl	0x34bb4 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x20c>
+		0000000000034bb4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+   34bb8:      	b.ne	0x34bcc <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x224>
+   34bbc:      	add	sp, sp, #0x2, lsl #12   ; =0x2000
+   34bc0:      	add	sp, sp, #0x330
+   34bc4:      	ldp	x29, x30, [sp, #0x20]
+   34bc8:      	b	0x34bc8 <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x220>
+		0000000000034bc8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_312
+   34bcc:      	bl	0x34bcc <_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC+0x224>
+		0000000000034bcc:  ARM64_RELOC_BRANCH26	___stack_chk_fail

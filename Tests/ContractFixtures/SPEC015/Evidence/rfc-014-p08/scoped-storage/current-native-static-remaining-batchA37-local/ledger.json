@@ -1,0 +1,910 @@
+{
+  "started_utc": "2026-10-22T21:49:58+00:00",
+  "processing": 390354381,
+  "transcript": 37019,
+  "requests": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 a\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 a",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/decode-memory-group.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/decode-memory-group.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/resolve-known-memory-edges.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/resolve-known-memory-edges.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/examine-memory-group.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/examine-memory-group.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/decode-memory-followups.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/decode-memory-followups.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/page-derived.py follow-memory-1.stdout 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/page-derived.py follow-memory-1.stdout 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/page-derived.py follow-memory-2.stdout 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/page-derived.py follow-memory-2.stdout 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 f '{\\\"scope\\\":\\\"A35 constructor + A36 local16 + A37 installed memory/stack providers only\\\",\\\"normal_memory_body\\\":\\\"CONDITIONAL_NO_ALLOCATION_OPERATION: exact memcpy reexport to platform memmove complete185 lines; bzero literal171..1056 branch to shared0x1805090fc tail complete59 lines, only stores/loops/ret\\\",\\\"preconditions\\\":[\\\"exact frozen provider implementations are the loaded import bindings\\\",\\\"valid source/destination spans from reviewed local lifetime premises\\\",\\\"same stack guard value at save/compare; local fixed-span writes do not alias guard\\\"],\\\"first_use\\\":\\\"No body-local cache/setup/allocator branch in examined memmove or required bzero path; dyld/binding/setup costs are not proved\\\",\\\"failure\\\":\\\"canary mismatch calls exact libc stack_chk_fail then fallback0x180405984 ending brk; imported fatal-path callees not yet bound, no normal-cleanup or failure-cost claim\\\",\\\"remaining\\\":\\\"other rooted allocator/metadata/once/witness/indirect/error frontiers remain AVAILABLE_UNEXAMINED; stdout R=S/persistence/window remains unresolved; no broad Batch A or B/C pass\\\",\\\"model_examined\\\":\\\"memmove185 lines, bzero entry30+sharedtail59, stackfail30+fallback53; all retained ordered raw files with exact hashes\\\",\\\"qualification\\\":\\\"preauth/admin request accounting and earlier failed capture uncertainties remain; no complete aggregate numerical certification\\\"}'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 f '{\"scope\":\"A35 constructor + A36 local16 + A37 installed memory/stack providers only\",\"normal_memory_body\":\"CONDITIONAL_NO_ALLOCATION_OPERATION: exact memcpy reexport to platform memmove complete185 lines; bzero literal171..1056 branch to shared0x1805090fc tail complete59 lines, only stores/loops/ret\",\"preconditions\":[\"exact frozen provider implementations are the loaded import bindings\",\"valid source/destination spans from reviewed local lifetime premises\",\"same stack guard value at save/compare; local fixed-span writes do not alias guard\"],\"first_use\":\"No body-local cache/setup/allocator branch in examined memmove or required bzero path; dyld/binding/setup costs are not proved\",\"failure\":\"canary mismatch calls exact libc stack_chk_fail then fallback0x180405984 ending brk; imported fatal-path callees not yet bound, no normal-cleanup or failure-cost claim\",\"remaining\":\"other rooted allocator/metadata/once/witness/indirect/error frontiers remain AVAILABLE_UNEXAMINED; stdout R=S/persistence/window remains unresolved; no broad Batch A or B/C pass\",\"model_examined\":\"memmove185 lines, bzero entry30+sharedtail59, stackfail30+fallback53; all retained ordered raw files with exact hashes\",\"qualification\":\"preauth/admin request accounting and earlier failed capture uncertainties remain; no complete aggregate numerical certification\"}'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/check-binding-kind.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/check-binding-kind.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 f '{\\\"result\\\":\\\"current-native-static-remaining-batchA37-result\\\",\\\"status\\\":\\\"SCOPED_CONDITIONAL_PROVIDER_BODY_CLOSURE_BROAD_A_OPEN\\\",\\\"postclose_continuation\\\":\\\"Explicitly authorized same21:49:58 clock; first CLOSED snapshot preserved, no reset\\\",\\\"binding\\\":\\\"regular platform export flags0; executable selected __stubs and __DATA_CONST.__got NON_LAZY_SYMBOL_POINTERS type6; n_desc256/reference type0; chained-fixups command present, actual slot targets/loaded UUID unobserved\\\",\\\"normal\\\":\\\"Exact constructor/local16 and required memcpy/bzero bodies contain no allocator/cache-initialization operations under valid spans and literal-length predicates\\\",\\\"fatal\\\":\\\"Guard mismatch distinct; exact failstop body ends brk, imported fatal callees remain unbound; no normal-cleanup inference\\\",\\\"remaining\\\":\\\"Other rooted allocator/metadata/once/witness/indirect/error paths available-unexamined; stdio R=S/persistence/window and loaded binding/guard premises explicit; B/C gated\\\",\\\"qualification\\\":\\\"Known processing ledger only; preauth/admin request identity/counting and earlier failure-capture uncertainties prohibit exact aggregate compliance certification; no complete rendered transcript/OS-I/O claim\\\"}'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 f '{\"result\":\"current-native-static-remaining-batchA37-result\",\"status\":\"SCOPED_CONDITIONAL_PROVIDER_BODY_CLOSURE_BROAD_A_OPEN\",\"postclose_continuation\":\"Explicitly authorized same21:49:58 clock; first CLOSED snapshot preserved, no reset\",\"binding\":\"regular platform export flags0; executable selected __stubs and __DATA_CONST.__got NON_LAZY_SYMBOL_POINTERS type6; n_desc256/reference type0; chained-fixups command present, actual slot targets/loaded UUID unobserved\",\"normal\":\"Exact constructor/local16 and required memcpy/bzero bodies contain no allocator/cache-initialization operations under valid spans and literal-length predicates\",\"fatal\":\"Guard mismatch distinct; exact failstop body ends brk, imported fatal callees remain unbound; no normal-cleanup inference\",\"remaining\":\"Other rooted allocator/metadata/once/witness/indirect/error paths available-unexamined; stdio R=S/persistence/window and loaded binding/guard premises explicit; B/C gated\",\"qualification\":\"Known processing ledger only; preauth/admin request identity/counting and earlier failure-capture uncertainties prohibit exact aggregate compliance certification; no complete rendered transcript/OS-I/O claim\"}'",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "pages": [],
+  "errors": [
+    "memory group AssertionError: "
+  ],
+  "auth_utc": "2026-10-22T21:58:07.334857+00:00",
+  "page_count": 2,
+  "line_count": 172,
+  "provider_before": {
+    "/usr/lib/libSystem.B.dylib": {
+      "uuid": "4fed5ee25d3e35b1a1709859c4b683bb",
+      "identity": {
+        "name": "/usr/lib/libSystem.B.dylib",
+        "command": 13,
+        "current_version": 88866816,
+        "compatibility_version": 65536
+      }
+    },
+    "/usr/lib/system/libsystem_c.dylib": {
+      "uuid": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "identity": {
+        "name": "/usr/lib/system/libsystem_c.dylib",
+        "command": 13,
+        "current_version": 114860036,
+        "compatibility_version": 65536
+      }
+    },
+    "/usr/lib/system/libsystem_platform.dylib": {
+      "uuid": "edb83a19ec1732de93506145970a85d6",
+      "identity": {
+        "name": "/usr/lib/system/libsystem_platform.dylib",
+        "command": 13,
+        "current_version": 24606722,
+        "compatibility_version": 65536
+      }
+    }
+  },
+  "stopped_utc": "2026-10-22T21:58:15.568843+00:00",
+  "ordinary_diagnostics": [
+    {
+      "kind": "Exact frozen pre-decoder assertion/import/reexport rows only",
+      "utc": "2026-10-22T22:01:40.113057+00:00",
+      "request_delivery_processing_upper": 65536,
+      "request_identity": "Actual inline request in retained turn history; no claim complete aggregate request identity independently audited",
+      "values": {
+        "assertions_pre_decoder_source_order": [
+          {
+            "line": 3,
+            "predicate": "sha(src)==F['helper_sha256']"
+          },
+          {
+            "line": 6,
+            "predicate": "[st.st_size,st.st_dev,st.st_ino,st.st_mtime_ns]==[d['file_bytes'],d['device'],d['inode'],d['mtime_ns']]"
+          },
+          {
+            "line": 8,
+            "predicate": "len(b)==d['bytes'] and sha(b)==d['sha256']"
+          },
+          {
+            "line": 14,
+            "predicate": "s<=63"
+          },
+          {
+            "line": 18,
+            "predicate": "(off,prefix) not in seen"
+          },
+          {
+            "line": 41,
+            "predicate": "struct.unpack_from('<I',exe)[0]==0xfeedfacf"
+          },
+          {
+            "line": 47,
+            "predicate": "sym"
+          },
+          {
+            "line": 53,
+            "predicate": "len(hits)==1"
+          },
+          {
+            "line": 56,
+            "predicate": "row is not None"
+          },
+          {
+            "line": 62,
+            "predicate": "i>=0 and i+1<len(seq)"
+          },
+          {
+            "line": 62,
+            "predicate": "address%4==0 and lo<=address<hi"
+          },
+          {
+            "line": 65,
+            "predicate": "len(body)==x['hi']-x['lo'] and len(body)%4==0"
+          }
+        ],
+        "actual_rows": [
+          {
+            "symbol": "_memcpy",
+            "assert_unique_import_value": true,
+            "actual_imports": [
+              {
+                "nlist_index": 35896,
+                "ordinal": 1,
+                "provider": "/usr/lib/libSystem.B.dylib",
+                "n_desc": 256
+              }
+            ],
+            "root_export_row": null,
+            "assert_root_export_row_not_none_value": false,
+            "selected_frozen_LC_REEXPORT_edges": [
+              {
+                "ordinal": 14,
+                "name": "/usr/lib/system/libsystem_c.dylib",
+                "command": 2147483679,
+                "current_version": 114860036,
+                "compatibility_version": 65536,
+                "frozen_child_export": {
+                  "flags": 8,
+                  "ordinal": 6,
+                  "import_name": "__platform_memmove"
+                },
+                "child_metadata_frozen": true
+              },
+              {
+                "ordinal": 33,
+                "name": "/usr/lib/system/libsystem_platform.dylib",
+                "command": 2147483679,
+                "current_version": 24606722,
+                "compatibility_version": 65536,
+                "frozen_child_export": null,
+                "child_metadata_frozen": true
+              }
+            ],
+            "selected_provider_exact_export_rows": {
+              "/usr/lib/libSystem.B.dylib": null,
+              "/usr/lib/system/libsystem_c.dylib": {
+                "flags": 8,
+                "ordinal": 6,
+                "import_name": "__platform_memmove"
+              },
+              "/usr/lib/system/libsystem_platform.dylib": null
+            }
+          },
+          {
+            "symbol": "_bzero",
+            "assert_unique_import_value": true,
+            "actual_imports": [
+              {
+                "nlist_index": 35892,
+                "ordinal": 1,
+                "provider": "/usr/lib/libSystem.B.dylib",
+                "n_desc": 256
+              }
+            ],
+            "root_export_row": null,
+            "assert_root_export_row_not_none_value": false,
+            "selected_frozen_LC_REEXPORT_edges": [
+              {
+                "ordinal": 14,
+                "name": "/usr/lib/system/libsystem_c.dylib",
+                "command": 2147483679,
+                "current_version": 114860036,
+                "compatibility_version": 65536,
+                "frozen_child_export": {
+                  "flags": 8,
+                  "ordinal": 6,
+                  "import_name": "__platform_bzero"
+                },
+                "child_metadata_frozen": true
+              },
+              {
+                "ordinal": 33,
+                "name": "/usr/lib/system/libsystem_platform.dylib",
+                "command": 2147483679,
+                "current_version": 24606722,
+                "compatibility_version": 65536,
+                "frozen_child_export": null,
+                "child_metadata_frozen": true
+              }
+            ],
+            "selected_provider_exact_export_rows": {
+              "/usr/lib/libSystem.B.dylib": null,
+              "/usr/lib/system/libsystem_c.dylib": {
+                "flags": 8,
+                "ordinal": 6,
+                "import_name": "__platform_bzero"
+              },
+              "/usr/lib/system/libsystem_platform.dylib": null
+            }
+          },
+          {
+            "symbol": "___stack_chk_guard",
+            "assert_unique_import_value": true,
+            "actual_imports": [
+              {
+                "nlist_index": 35885,
+                "ordinal": 1,
+                "provider": "/usr/lib/libSystem.B.dylib",
+                "n_desc": 256
+              }
+            ],
+            "root_export_row": null,
+            "assert_root_export_row_not_none_value": false,
+            "selected_frozen_LC_REEXPORT_edges": [
+              {
+                "ordinal": 14,
+                "name": "/usr/lib/system/libsystem_c.dylib",
+                "command": 2147483679,
+                "current_version": 114860036,
+                "compatibility_version": 65536,
+                "frozen_child_export": {
+                  "flags": 0,
+                  "address": 8270415072
+                },
+                "child_metadata_frozen": true
+              },
+              {
+                "ordinal": 33,
+                "name": "/usr/lib/system/libsystem_platform.dylib",
+                "command": 2147483679,
+                "current_version": 24606722,
+                "compatibility_version": 65536,
+                "frozen_child_export": null,
+                "child_metadata_frozen": true
+              }
+            ],
+            "selected_provider_exact_export_rows": {
+              "/usr/lib/libSystem.B.dylib": null,
+              "/usr/lib/system/libsystem_c.dylib": {
+                "flags": 0,
+                "address": 8270415072
+              },
+              "/usr/lib/system/libsystem_platform.dylib": null
+            }
+          },
+          {
+            "symbol": "___stack_chk_fail",
+            "assert_unique_import_value": true,
+            "actual_imports": [
+              {
+                "nlist_index": 35884,
+                "ordinal": 1,
+                "provider": "/usr/lib/libSystem.B.dylib",
+                "n_desc": 256
+              }
+            ],
+            "root_export_row": null,
+            "assert_root_export_row_not_none_value": false,
+            "selected_frozen_LC_REEXPORT_edges": [
+              {
+                "ordinal": 14,
+                "name": "/usr/lib/system/libsystem_c.dylib",
+                "command": 2147483679,
+                "current_version": 114860036,
+                "compatibility_version": 65536,
+                "frozen_child_export": {
+                  "flags": 0,
+                  "address": 6446668436
+                },
+                "child_metadata_frozen": true
+              },
+              {
+                "ordinal": 33,
+                "name": "/usr/lib/system/libsystem_platform.dylib",
+                "command": 2147483679,
+                "current_version": 24606722,
+                "compatibility_version": 65536,
+                "frozen_child_export": null,
+                "child_metadata_frozen": true
+              }
+            ],
+            "selected_provider_exact_export_rows": {
+              "/usr/lib/libSystem.B.dylib": null,
+              "/usr/lib/system/libsystem_c.dylib": {
+                "flags": 0,
+                "address": 6446668436
+              },
+              "/usr/lib/system/libsystem_platform.dylib": null
+            }
+          }
+        ],
+        "implementation_alias_metadata": {
+          "/usr/lib/libSystem.B.dylib": {},
+          "/usr/lib/system/libsystem_c.dylib": {},
+          "/usr/lib/system/libsystem_platform.dylib": {}
+        },
+        "scope": "Frozen metadata only; no provider instruction reading/decoder/runtime. LC_REEXPORT fallback not implemented in failed script."
+      }
+    }
+  ],
+  "known_memory_edge_resolution": {
+    "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/resolve-known-memory-edges.py",
+    "source_sha256": "9dcb732368fd64ee16f6d1a1e791ada6fc527497f94d7b18bf11d0d771102a43",
+    "started_utc": "2026-10-22T22:05:36.481174+00:00",
+    "predicates": [
+      {
+        "predicate": "libSystem LC_REEXPORT edge14 is frozen libc",
+        "value": true,
+        "actual": {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        }
+      },
+      {
+        "predicate": "libc dependency ordinal6 is frozen platform",
+        "value": true,
+        "actual": {
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 12,
+          "current_version": 24606722,
+          "compatibility_version": 65536
+        }
+      },
+      {
+        "predicate": "exact libc reexport _memcpy",
+        "value": true,
+        "actual": {
+          "flags": 8,
+          "ordinal": 6,
+          "import_name": "__platform_memmove"
+        }
+      },
+      {
+        "predicate": "exact leaf export __platform_memmove",
+        "value": true,
+        "actual": {
+          "flags": 0,
+          "address": 6447731552
+        }
+      },
+      {
+        "predicate": "exact libc reexport _bzero",
+        "value": true,
+        "actual": {
+          "flags": 8,
+          "ordinal": 6,
+          "import_name": "__platform_bzero"
+        }
+      },
+      {
+        "predicate": "exact leaf export __platform_bzero",
+        "value": true,
+        "actual": {
+          "flags": 0,
+          "address": 6447730736
+        }
+      },
+      {
+        "predicate": "exact direct libc export ___stack_chk_fail",
+        "value": true,
+        "actual": {
+          "flags": 0,
+          "address": 6446668436
+        }
+      },
+      {
+        "predicate": "exact direct libc export ___stack_chk_guard",
+        "value": true,
+        "actual": {
+          "flags": 0,
+          "address": 8270415072
+        }
+      },
+      {
+        "predicate": "function-start predecessor __platform_memmove",
+        "value": true,
+        "actual": {
+          "entry": "0x180509360",
+          "index": 85,
+          "starts_count": 279
+        }
+      },
+      {
+        "predicate": "complete frozen text coverage __platform_memmove",
+        "value": true,
+        "actual": {
+          "range": [
+            "0x180509360",
+            "0x180509640"
+          ],
+          "slice": [
+            "0x1805068a0",
+            28768
+          ],
+          "entry_offset": 0
+        }
+      },
+      {
+        "predicate": "selected excerpt bound __platform_memmove",
+        "value": true,
+        "actual": {
+          "stdout_bytes": 6719,
+          "stderr_bytes": 0,
+          "lines": 185
+        }
+      },
+      {
+        "predicate": "known working decoder exit0 __platform_memmove",
+        "value": true,
+        "actual": {
+          "exit": 0,
+          "stderr": ""
+        }
+      },
+      {
+        "predicate": "function-start predecessor __platform_bzero",
+        "value": true,
+        "actual": {
+          "entry": "0x180509030",
+          "index": 80,
+          "starts_count": 279
+        }
+      },
+      {
+        "predicate": "complete frozen text coverage __platform_bzero",
+        "value": true,
+        "actual": {
+          "range": [
+            "0x180509030",
+            "0x180509090"
+          ],
+          "slice": [
+            "0x1805068a0",
+            28768
+          ],
+          "entry_offset": 0
+        }
+      },
+      {
+        "predicate": "selected excerpt bound __platform_bzero",
+        "value": true,
+        "actual": {
+          "stdout_bytes": 1120,
+          "stderr_bytes": 0,
+          "lines": 30
+        }
+      },
+      {
+        "predicate": "known working decoder exit0 __platform_bzero",
+        "value": true,
+        "actual": {
+          "exit": 0,
+          "stderr": ""
+        }
+      },
+      {
+        "predicate": "function-start predecessor ___stack_chk_fail",
+        "value": true,
+        "actual": {
+          "entry": "0x180405a94",
+          "index": 1839,
+          "starts_count": 1880
+        }
+      },
+      {
+        "predicate": "complete frozen text coverage ___stack_chk_fail",
+        "value": true,
+        "actual": {
+          "range": [
+            "0x180405a94",
+            "0x180405af4"
+          ],
+          "slice": [
+            "0x18038d000",
+            528872
+          ],
+          "entry_offset": 0
+        }
+      },
+      {
+        "predicate": "selected excerpt bound ___stack_chk_fail",
+        "value": true,
+        "actual": {
+          "stdout_bytes": 1208,
+          "stderr_bytes": 0,
+          "lines": 30
+        }
+      },
+      {
+        "predicate": "known working decoder exit0 ___stack_chk_fail",
+        "value": true,
+        "actual": {
+          "exit": 0,
+          "stderr": ""
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "client_import": "_memcpy",
+        "root_export": null,
+        "root_edge14": {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        "libc_export": {
+          "flags": 8,
+          "ordinal": 6,
+          "import_name": "__platform_memmove"
+        },
+        "libc_edge6": {
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 12,
+          "current_version": 24606722,
+          "compatibility_version": 65536
+        },
+        "leaf_symbol": "__platform_memmove",
+        "leaf_provider": "/usr/lib/system/libsystem_platform.dylib",
+        "leaf_export": {
+          "flags": 0,
+          "address": 6447731552
+        }
+      },
+      {
+        "client_import": "_bzero",
+        "root_export": null,
+        "root_edge14": {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        "libc_export": {
+          "flags": 8,
+          "ordinal": 6,
+          "import_name": "__platform_bzero"
+        },
+        "libc_edge6": {
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 12,
+          "current_version": 24606722,
+          "compatibility_version": 65536
+        },
+        "leaf_symbol": "__platform_bzero",
+        "leaf_provider": "/usr/lib/system/libsystem_platform.dylib",
+        "leaf_export": {
+          "flags": 0,
+          "address": 6447730736
+        }
+      },
+      {
+        "client_import": "___stack_chk_fail",
+        "root_export": null,
+        "root_edge14": {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        "leaf_provider": "/usr/lib/system/libsystem_c.dylib",
+        "leaf_symbol": "___stack_chk_fail",
+        "leaf_export": {
+          "flags": 0,
+          "address": 6446668436
+        }
+      },
+      {
+        "client_import": "___stack_chk_guard",
+        "root_export": null,
+        "root_edge14": {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        "leaf_provider": "/usr/lib/system/libsystem_c.dylib",
+        "leaf_symbol": "___stack_chk_guard",
+        "leaf_export": {
+          "flags": 0,
+          "address": 8270415072
+        }
+      }
+    ],
+    "captures": [
+      {
+        "name": "__platform_memmove",
+        "provider": "/usr/lib/system/libsystem_platform.dylib",
+        "entry": 6447731552,
+        "role": "entry",
+        "index": 1,
+        "lo": "0x180509360",
+        "hi": "0x180509640",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-1.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 6719,
+        "stdout_lines": 185,
+        "stdout_sha256": "61285eb8c288cb6d9d71164b93a713e2d544a3d45c2dd679b3284c176214e3d3",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "code_sha256": "fc387ac7f55810a81652408ead8b6d4a3029457198416446f096293622426530",
+        "provider_uuid": "edb83a19ec1732de93506145970a85d6",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 4723552,
+        "raw_cache_bytes": 736
+      },
+      {
+        "name": "__platform_bzero",
+        "provider": "/usr/lib/system/libsystem_platform.dylib",
+        "entry": 6447730736,
+        "role": "entry",
+        "index": 2,
+        "lo": "0x180509030",
+        "hi": "0x180509090",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-2.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 1120,
+        "stdout_lines": 30,
+        "stdout_sha256": "e40c669a1da4b741d4ef026b20d3a515ea30124f6763e55d8cff0b4f833c5fb7",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "code_sha256": "518549c5fbf2d44a2839d1e92a9119fc68cb42551d05d97fe362951b11496e88",
+        "provider_uuid": "edb83a19ec1732de93506145970a85d6",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 4722736,
+        "raw_cache_bytes": 96
+      },
+      {
+        "name": "___stack_chk_fail",
+        "provider": "/usr/lib/system/libsystem_c.dylib",
+        "entry": 6446668436,
+        "role": "entry",
+        "index": 3,
+        "lo": "0x180405a94",
+        "hi": "0x180405af4",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-3.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 1208,
+        "stdout_lines": 30,
+        "stdout_sha256": "3f26c3f9c39ceb143e9ce4cc9ba6e8a4184eeec8336b7ba96251e647dcaf3e63",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "code_sha256": "712650b99e9c3335f3566bf2abd2787ba1864130ea78492944bc09d24d87623c",
+        "provider_uuid": "d77ceb62aff63cecba9b4f057fbe2eb5",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 3660436,
+        "raw_cache_bytes": 96
+      }
+    ],
+    "pending": null,
+    "ended_utc": "2026-10-22T22:05:36.511167+00:00"
+  },
+  "provider_union_examination": {
+    "indices": [
+      1,
+      2,
+      3
+    ],
+    "ordered_union_sha256": "2ebc8a3bdeda05300315e49d6d7c20fba652b29f4a8f09e727a7bea6132cb4da",
+    "pages": 3
+  },
+  "memory_followups": {
+    "source_sha256": "ee19b9a14f02e015a06b1c13af1bd9cbf6acad6e8af5cdaccb8908600a3d3bd1",
+    "predicates": [
+      {
+        "predicate": "function bound 0x1805090fc",
+        "value": true,
+        "actual": {
+          "index": 81,
+          "entry": "0x1805090fc"
+        }
+      },
+      {
+        "predicate": "frozen exact coverage 0x1805090fc",
+        "value": true,
+        "actual": {
+          "range": [
+            "0x180509090",
+            "0x180509164"
+          ],
+          "entry": "0x1805090fc",
+          "slice_vmaddr": "0x1805068a0",
+          "slice_bytes": 28768
+        }
+      },
+      {
+        "predicate": "excerpt bound 0x1805090fc",
+        "value": true,
+        "actual": {
+          "bytes": 2217,
+          "lines": 59
+        }
+      },
+      {
+        "predicate": "decoder exit0 0x1805090fc",
+        "value": true,
+        "actual": {
+          "exit": 0,
+          "stderr": ""
+        }
+      },
+      {
+        "predicate": "function bound 0x180405984",
+        "value": true,
+        "actual": {
+          "index": 1837,
+          "entry": "0x180405984"
+        }
+      },
+      {
+        "predicate": "frozen exact coverage 0x180405984",
+        "value": true,
+        "actual": {
+          "range": [
+            "0x180405984",
+            "0x180405a40"
+          ],
+          "entry": "0x180405984",
+          "slice_vmaddr": "0x18038d000",
+          "slice_bytes": 528872
+        }
+      },
+      {
+        "predicate": "excerpt bound 0x180405984",
+        "value": true,
+        "actual": {
+          "bytes": 2205,
+          "lines": 53
+        }
+      },
+      {
+        "predicate": "decoder exit0 0x180405984",
+        "value": true,
+        "actual": {
+          "exit": 0,
+          "stderr": ""
+        }
+      }
+    ],
+    "captures": [
+      {
+        "index": 1,
+        "provider": "/usr/lib/system/libsystem_platform.dylib",
+        "uuid": "edb83a19ec1732de93506145970a85d6",
+        "entry": "0x1805090fc",
+        "lo": "0x180509090",
+        "hi": "0x180509164",
+        "why": "required bzero branch for all current fixed171..1056 lengths",
+        "code_sha256": "76daddf8d10a84677e0925e9e1c33c9a8b6b1c03a8b891aea0163f62926ec6e2",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 4722832,
+        "raw_cache_bytes": 212,
+        "returncode": 0,
+        "stdout_bytes": 2217,
+        "stdout_lines": 59,
+        "stdout_sha256": "5f9fe7d1d2bf8c2ab548e73503174f1f6b82f898abdaa5c6cdf140df2fcc7f1c",
+        "stderr_bytes": 0,
+        "stderr": "",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-1.o"
+        ]
+      },
+      {
+        "index": 2,
+        "provider": "/usr/lib/system/libsystem_c.dylib",
+        "uuid": "d77ceb62aff63cecba9b4f057fbe2eb5",
+        "entry": "0x180405984",
+        "lo": "0x180405984",
+        "hi": "0x180405a40",
+        "why": "literal fallback target from stack_chk_fail",
+        "code_sha256": "2cd3faf5a890d84c18125aae56163fab91d934470bad1fe3aa4855dd53d1f98a",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 3660164,
+        "raw_cache_bytes": 188,
+        "returncode": 0,
+        "stdout_bytes": 2205,
+        "stdout_lines": 53,
+        "stdout_sha256": "6f1d8cc4eaaa091b76d17f17bc1a910824ff75ce1eb8c834825b6a8645e375d7",
+        "stderr_bytes": 0,
+        "stderr": "",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-2.o"
+        ]
+      }
+    ],
+    "pending": null
+  },
+  "findings": {
+    "result": "current-native-static-remaining-batchA37-result",
+    "status": "SCOPED_CONDITIONAL_PROVIDER_BODY_CLOSURE_BROAD_A_OPEN",
+    "postclose_continuation": "Explicitly authorized same21:49:58 clock; first CLOSED snapshot preserved, no reset",
+    "binding": "regular platform export flags0; executable selected __stubs and __DATA_CONST.__got NON_LAZY_SYMBOL_POINTERS type6; n_desc256/reference type0; chained-fixups command present, actual slot targets/loaded UUID unobserved",
+    "normal": "Exact constructor/local16 and required memcpy/bzero bodies contain no allocator/cache-initialization operations under valid spans and literal-length predicates",
+    "fatal": "Guard mismatch distinct; exact failstop body ends brk, imported fatal callees remain unbound; no normal-cleanup inference",
+    "remaining": "Other rooted allocator/metadata/once/witness/indirect/error paths available-unexamined; stdio R=S/persistence/window and loaded binding/guard premises explicit; B/C gated",
+    "qualification": "Known processing ledger only; preauth/admin request identity/counting and earlier failure-capture uncertainties prohibit exact aggregate compliance certification; no complete rendered transcript/OS-I/O claim"
+  },
+  "model_end_utc": "2026-10-22T22:17:00.911730+00:00",
+  "finished_utc": "2026-10-22T22:17:00.953165+00:00",
+  "elapsed_seconds": 1622.953165,
+  "first_closed_snapshot": {
+    "finished_utc": "2026-10-22T22:14:02.283418+00:00",
+    "model_end_utc": "2026-10-22T22:14:02.241979+00:00",
+    "elapsed_seconds": 1444.283418,
+    "processing_before_postclose": 303969940,
+    "transcript_before_postclose": 32166
+  },
+  "postclose_metadata_started_utc": "2026-10-22T22:15:22.430120+00:00",
+  "binding_kind_sha256": "826a4b1afa811cbf622b9b8d1035910bfe41547755833b9a9f4367e45bee2d37",
+  "postclose_metadata_end_utc": "2026-10-22T22:15:22.452864+00:00",
+  "ordinary_result_closeout": {
+    "utc": "2026-10-22T22:16:52.655719+00:00",
+    "result": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-result",
+    "known_result_bytes": 12375,
+    "prior_map_sha256": "c4df82acbe1314b558e45333ae1366faef27d24fd391ef0f264dd72d6aa66bae",
+    "request_accounting": "Ordinary administrative request/creation identities are not completely certified; no exact aggregate qualification is claimed."
+  }
+}

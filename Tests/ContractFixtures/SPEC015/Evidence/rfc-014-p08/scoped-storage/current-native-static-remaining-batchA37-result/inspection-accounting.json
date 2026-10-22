@@ -1,0 +1,53 @@
+{
+  "status": "NUMERICAL_AGGREGATE_UNCERTIFIED_SUBSTANTIVE_PROOF_SCOPED",
+  "terminal": {
+    "ledger_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/ledger.json",
+    "ledger_sha256": "f4a5895c1aef04d3cafbf4f5722bf01893083e4489bdf33fc422616a585fa9aa",
+    "charged_processing": 390354381,
+    "counted_text": 37019,
+    "model_end_utc": "2026-10-22T22:17:00.911730+00:00",
+    "finished_utc": "2026-10-22T22:17:00.953165+00:00",
+    "session_elapsed_seconds": 1622.953165,
+    "helper_sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc",
+    "first_closed_snapshot": {
+      "finished_utc": "2026-10-22T22:14:02.283418+00:00",
+      "model_end_utc": "2026-10-22T22:14:02.241979+00:00",
+      "elapsed_seconds": 1444.283418,
+      "processing_before_postclose": 303969940,
+      "transcript_before_postclose": 32166
+    },
+    "postclose_metadata_start": "2026-10-22T22:15:22.430120+00:00",
+    "postclose_metadata_end": "2026-10-22T22:15:22.452864+00:00",
+    "result_administrative_end_utc": "2026-10-22T22:18:07.241756+00:00",
+    "no_aggregate_certification": "Charged ledger does not certify unrecorded administrative/acquisition request identities or complete aggregate content processing; no numeric full-session compliance claim. Final result construction/hash processing occurs after this frozen ledger and is identified separately."
+  },
+  "limits": {
+    "session_seconds": 7200,
+    "processing_bytes": 536870912,
+    "shared_outputs_and_counted_text_bytes": 8388608,
+    "raw_excerpt_bytes": 1048576,
+    "raw_excerpt_lines": 16384
+  },
+  "counting_definition": "Exact UTF8 tool request code/arguments and deliberately returned textual payloads; platform presentation/completion/timing envelopes excluded. Self-attestation is not independent tool-history audit.",
+  "uncertainties": [
+    "Known acquisition/setup bytes and actual semantic decoder reads are charged; earlier administrative exact request bytes are not completely retained in the session ledger.",
+    "Bare assertion and missing-sys failures preserved; no invented successful exits or retrospective compliance.",
+    "Final administrative result construction/hash reads are separate from frozen second-terminal ledger; no zero-cost exemption or exact final aggregate total asserted."
+  ],
+  "actual_known_excerpt_lines": {
+    "constructor": 172,
+    "local_helpers_union": 225,
+    "memmove": 185,
+    "bzero_entry": 30,
+    "bzero_shared_tail": 59,
+    "stack_fail": 30,
+    "fatal_fallback": 53
+  },
+  "shared_scope": "Only A37 new local/result output and its counted session text belong to this session; historical A35/A36 outputs keep their own ledgers, not a fresh allowance.",
+  "ordinary_final_hash_processing": {
+    "actual_bytes_read": 405353,
+    "hash_processing_same_bytes": 405353,
+    "separate_from_frozen_ledger": true
+  },
+  "retained_scope_bytes_excluding_scope_manifest": 405353
+}

@@ -1,0 +1,8 @@
+{
+  "before_auth": true,
+  "unused_freeze_sha256": "c1361df342ecdbc03d0749978772dfb634dab104f573a3554305e155705f7b04",
+  "unused_future_time": "2026-10-22T21:47:00+00:00",
+  "actual_first_tool_clock_utc": "2026-10-22T21:43:47Z",
+  "corrected_start": "2026-10-22T21:43:47+00:00",
+  "no_auth_or_semantic_execution_before_correction": true
+}

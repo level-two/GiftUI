@@ -1,0 +1,79 @@
+{
+  "started_utc": "2026-10-22T21:43:47+00:00",
+  "HEAD": "80c6c6be554229925d25d3cfa3cafc3c9326cbcd",
+  "inputs": {
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/static-init-working.stdout",
+      "bytes": 10934,
+      "sha256": "79a0fdbc994a8165358ca5fc46453d25b3e2045bdc679dab86794503bb961824"
+    },
+    "machine": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-capacity33-result/machine-p08-counter-e3ivm0v6.json",
+      "bytes": 117658,
+      "sha256": "366ddd086325dfe89bc631f2041f29936582dd0403a10fd980a35a10ba3251ab"
+    },
+    "object": {
+      "path": ".build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o",
+      "bytes": 2593056,
+      "sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581"
+    },
+    "result": {
+      "path": ".build/contracts/p08-counter-e3ivm0v6/result.json",
+      "bytes": 8548218,
+      "sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838"
+    },
+    "source_AUTH": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 255642,
+      "sha256": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf"
+    },
+    "parser": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.inspect.py",
+      "bytes": 44447,
+      "sha256": "d27705f7a22991a3c7176fd1e303178a2129cc5e2f9ba8078d99ef98258a31e4"
+    },
+    "prior_closed_ledger": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/ledger.json",
+      "bytes": 9519,
+      "sha256": "a800748dfb5612e7f168374f22bd81ea344ae77f8c7c6cd2d8c15752644ac4c2"
+    },
+    "group_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA36-local/decode-helper-group.py",
+      "bytes": 3949,
+      "sha256": "f7fea8656da64ef86f2c1c9b58daed363d74b12fb6dcb18486f831efa782bd4e"
+    },
+    "decoder_tool": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+    }
+  },
+  "helper_sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc",
+  "setup_processing_upper": 282149,
+  "setup_charge_basis": "Actual unchanged helper/source copies, group code write/hash, three exact small input metadata reads/hash counted from declared sizes; no provider/body free reading",
+  "reuse": "Same coherent BatchA outcome. A35 closed ledger/body and committed A32/33 original auth/provider/local safety lemmas retained, not reset or retroqualified. Fresh current object/result/source/small selected body/parser/group-code/prior-ledger auth; exact working decoder form, no whole map.",
+  "helper_symbols": [
+    "_OUTLINED_FUNCTION_153",
+    "_OUTLINED_FUNCTION_1255",
+    "_OUTLINED_FUNCTION_1901",
+    "_OUTLINED_FUNCTION_813",
+    "_OUTLINED_FUNCTION_726",
+    "_OUTLINED_FUNCTION_927",
+    "_OUTLINED_FUNCTION_1828",
+    "_OUTLINED_FUNCTION_59",
+    "_OUTLINED_FUNCTION_312",
+    "_$ss11InlineArrayVy$1023_s5UInt8VGSgWOi0_",
+    "_$ss11InlineArrayVy$1055_s5UInt8VGSgWOi0_",
+    "_$ss11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGSgWOi0_",
+    "_$s19GiftUIRuntimeStatic0C22RecordDrawingWorkspaceVy17P08CounterRuntime0cheF0VGSgWOi0_",
+    "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+    "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+    "_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi0_"
+  ],
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "identity_reuse": "One fresh authentication hash before grouped execution; final hash preservation, not per-helper rehash. Each decoder invocation still charged full tool+object input extent."
+  }
+}

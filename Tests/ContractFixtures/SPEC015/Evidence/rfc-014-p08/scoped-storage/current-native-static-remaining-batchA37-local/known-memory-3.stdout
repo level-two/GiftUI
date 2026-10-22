@@ -1,0 +1,30 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-3.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180405a94 <__text>:
+180405a94:     	pacibsp
+180405a98:     	sub	sp, sp, #0x50
+180405a9c:     	stp	x20, x19, [sp, #0x30]
+180405aa0:     	stp	x29, x30, [sp, #0x40]
+180405aa4:     	add	x29, sp, #0x40
+180405aa8:     	adrp	x19, 0x18040c000 <__text+0x656c>
+180405aac:     	add	x19, x19, #0x7d3
+180405ab0:     	adrp	x8, 0x1ea472000 <__text+0x6a06c56c>
+180405ab4:     	str	x19, [x8, #0xc48]
+180405ab8:     	strb	wzr, [sp, #0x20]
+180405abc:     	movi.2d	v0, #0000000000000000
+180405ac0:     	stp	q0, q0, [sp]
+180405ac4:     	bl	0x180406a50 <__text+0xfbc>
+180405ac8:     	mov	x1, sp
+180405acc:     	mov	w2, #0x20               ; =32
+180405ad0:     	bl	0x180406ec0 <__text+0x142c>
+180405ad4:     	strb	wzr, [sp, #0x20]
+180405ad8:     	adrp	x1, 0x18040a000 <__text+0x456c>
+180405adc:     	add	x1, x1, #0xefc
+180405ae0:     	mov	x3, sp
+180405ae4:     	mov	w0, #0x2                ; =2
+180405ae8:     	mov	x2, x19
+180405aec:     	bl	0x1804065c0 <__text+0xb2c>
+180405af0:     	bl	0x180405984

@@ -1,0 +1,188 @@
+{
+  "started_utc": "2026-10-22T21:22:10+00:00",
+  "processing": 188079355,
+  "transcript": 59968,
+  "requests": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 a\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 a",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 i\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 i",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 4 4\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 4 4",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 13 13\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 13 13",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 14 14\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 14 14",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/decode-static-init.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/decode-static-init.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/decode-static-init-working.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/decode-static-init-working.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/page-derived.py static-init-working.stdout 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/page-derived.py static-init-working.stdout 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 f '{\\\"status\\\":\\\"CURRENT_STATIC_RESERVATION_BODY_EXAMINED_TRANSITIVE_GROUP_CONTINUES\\\",\\\"body_sha256\\\":\\\"79a0fdbc994a8165358ca5fc46453d25b3e2045bdc679dab86794503bb961824\\\",\\\"range\\\":[\\\"0x349a8\\\",\\\"0x34bd0\\\"],\\\"rooted_origins\\\":[\\\"0x4fa38\\\",\\\"0x4fd8c\\\"],\\\"direct_allocator_metadata_once_indirect_calls\\\":0,\\\"copy_calls\\\":[[\\\"0x34a94\\\",2082],[\\\"0x34b14\\\",1027],[\\\"0x34b24\\\",202]],\\\"only_conditional\\\":\\\"stackguard0x34bb4-to-34bb8; failurecall0x34bcc\\\",\\\"local_transitive_helpers_unexamined\\\":16,\\\"provider_dependencies\\\":[\\\"_memcpy\\\",\\\"___stack_chk_fail\\\"],\\\"scope\\\":\\\"No transitive noheap/firstuse/provider-cost or full BatchA closure. Failed --macho history unchanged; successful exact command separately captured. Complete16-helper continuation required by actual remaining512MiB reserve forecast.\\\"}'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 f '{\"status\":\"CURRENT_STATIC_RESERVATION_BODY_EXAMINED_TRANSITIVE_GROUP_CONTINUES\",\"body_sha256\":\"79a0fdbc994a8165358ca5fc46453d25b3e2045bdc679dab86794503bb961824\",\"range\":[\"0x349a8\",\"0x34bd0\"],\"rooted_origins\":[\"0x4fa38\",\"0x4fd8c\"],\"direct_allocator_metadata_once_indirect_calls\":0,\"copy_calls\":[[\"0x34a94\",2082],[\"0x34b14\",1027],[\"0x34b24\",202]],\"only_conditional\":\"stackguard0x34bb4-to-34bb8; failurecall0x34bcc\",\"local_transitive_helpers_unexamined\":16,\"provider_dependencies\":[\"_memcpy\",\"___stack_chk_fail\"],\"scope\":\"No transitive noheap/firstuse/provider-cost or full BatchA closure. Failed --macho history unchanged; successful exact command separately captured. Complete16-helper continuation required by actual remaining512MiB reserve forecast.\"}'",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "pages": [
+    1,
+    2,
+    3,
+    4,
+    13,
+    14
+  ],
+  "errors": [
+    "ordinary decoder AssertionError: "
+  ],
+  "auth_utc": "2026-10-22T21:23:37.412747+00:00",
+  "page_count": 29,
+  "line_count": 2793,
+  "ordinary_direct_commands": [
+    {
+      "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/decode-static-init.py",
+      "sha256": "a6acb1b965123cf032854e636b90d506e0a0738408e1eb1fcc4a408b355f2384",
+      "started_utc": "2026-10-22T21:29:13.650960+00:00",
+      "scope": "Only exact current StaticReservation.init selected local callee; existing frozen helper unchanged",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--macho",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x349a8",
+        "--stop-address=0x34bd0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "range": [
+        "0x349a8",
+        "0x34bd0"
+      ]
+    },
+    {
+      "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA35-local/decode-static-init-working.py",
+      "sha256": "8a0853e11021a5e9d857ae4b533ea22c1aee774069e56a74f1327e8fb25035da",
+      "started_utc": "2026-10-22T21:37:59.108828+00:00",
+      "scope": "Exact known working decoder form, no --macho; already resolved range0x349a8\u20130x34bd0, no metadata/parser replay",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x349a8",
+        "--stop-address=0x34bd0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returned_utc": "2026-10-22T21:37:59.126288+00:00",
+      "returncode": 0,
+      "stdout_bytes": 10934,
+      "stdout_sha256": "79a0fdbc994a8165358ca5fc46453d25b3e2045bdc679dab86794503bb961824",
+      "stdout_lines": 172,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "page_count": 2
+    }
+  ],
+  "stopped_utc": "2026-10-22T21:29:31.450743+00:00",
+  "findings": {
+    "status": "CURRENT_STATIC_RESERVATION_BODY_EXAMINED_TRANSITIVE_GROUP_CONTINUES",
+    "body_sha256": "79a0fdbc994a8165358ca5fc46453d25b3e2045bdc679dab86794503bb961824",
+    "range": [
+      "0x349a8",
+      "0x34bd0"
+    ],
+    "rooted_origins": [
+      "0x4fa38",
+      "0x4fd8c"
+    ],
+    "direct_allocator_metadata_once_indirect_calls": 0,
+    "copy_calls": [
+      [
+        "0x34a94",
+        2082
+      ],
+      [
+        "0x34b14",
+        1027
+      ],
+      [
+        "0x34b24",
+        202
+      ]
+    ],
+    "only_conditional": "stackguard0x34bb4-to-34bb8; failurecall0x34bcc",
+    "local_transitive_helpers_unexamined": 16,
+    "provider_dependencies": [
+      "_memcpy",
+      "___stack_chk_fail"
+    ],
+    "scope": "No transitive noheap/firstuse/provider-cost or full BatchA closure. Failed --macho history unchanged; successful exact command separately captured. Complete16-helper continuation required by actual remaining512MiB reserve forecast."
+  },
+  "model_end_utc": "2026-10-22T21:42:46.607592+00:00",
+  "finished_utc": "2026-10-22T21:42:46.623611+00:00",
+  "elapsed_seconds": 1236.623611
+}

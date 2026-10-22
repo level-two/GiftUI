@@ -1,0 +1,244 @@
+{
+  "assertions_pre_decoder_source_order": [
+    {
+      "line": 3,
+      "predicate": "sha(src)==F['helper_sha256']"
+    },
+    {
+      "line": 6,
+      "predicate": "[st.st_size,st.st_dev,st.st_ino,st.st_mtime_ns]==[d['file_bytes'],d['device'],d['inode'],d['mtime_ns']]"
+    },
+    {
+      "line": 8,
+      "predicate": "len(b)==d['bytes'] and sha(b)==d['sha256']"
+    },
+    {
+      "line": 14,
+      "predicate": "s<=63"
+    },
+    {
+      "line": 18,
+      "predicate": "(off,prefix) not in seen"
+    },
+    {
+      "line": 41,
+      "predicate": "struct.unpack_from('<I',exe)[0]==0xfeedfacf"
+    },
+    {
+      "line": 47,
+      "predicate": "sym"
+    },
+    {
+      "line": 53,
+      "predicate": "len(hits)==1"
+    },
+    {
+      "line": 56,
+      "predicate": "row is not None"
+    },
+    {
+      "line": 62,
+      "predicate": "i>=0 and i+1<len(seq)"
+    },
+    {
+      "line": 62,
+      "predicate": "address%4==0 and lo<=address<hi"
+    },
+    {
+      "line": 65,
+      "predicate": "len(body)==x['hi']-x['lo'] and len(body)%4==0"
+    }
+  ],
+  "actual_rows": [
+    {
+      "symbol": "_memcpy",
+      "assert_unique_import_value": true,
+      "actual_imports": [
+        {
+          "nlist_index": 35896,
+          "ordinal": 1,
+          "provider": "/usr/lib/libSystem.B.dylib",
+          "n_desc": 256
+        }
+      ],
+      "root_export_row": null,
+      "assert_root_export_row_not_none_value": false,
+      "selected_frozen_LC_REEXPORT_edges": [
+        {
+          "ordinal": 14,
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536,
+          "frozen_child_export": {
+            "flags": 8,
+            "ordinal": 6,
+            "import_name": "__platform_memmove"
+          },
+          "child_metadata_frozen": true
+        },
+        {
+          "ordinal": 33,
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 2147483679,
+          "current_version": 24606722,
+          "compatibility_version": 65536,
+          "frozen_child_export": null,
+          "child_metadata_frozen": true
+        }
+      ],
+      "selected_provider_exact_export_rows": {
+        "/usr/lib/libSystem.B.dylib": null,
+        "/usr/lib/system/libsystem_c.dylib": {
+          "flags": 8,
+          "ordinal": 6,
+          "import_name": "__platform_memmove"
+        },
+        "/usr/lib/system/libsystem_platform.dylib": null
+      }
+    },
+    {
+      "symbol": "_bzero",
+      "assert_unique_import_value": true,
+      "actual_imports": [
+        {
+          "nlist_index": 35892,
+          "ordinal": 1,
+          "provider": "/usr/lib/libSystem.B.dylib",
+          "n_desc": 256
+        }
+      ],
+      "root_export_row": null,
+      "assert_root_export_row_not_none_value": false,
+      "selected_frozen_LC_REEXPORT_edges": [
+        {
+          "ordinal": 14,
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536,
+          "frozen_child_export": {
+            "flags": 8,
+            "ordinal": 6,
+            "import_name": "__platform_bzero"
+          },
+          "child_metadata_frozen": true
+        },
+        {
+          "ordinal": 33,
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 2147483679,
+          "current_version": 24606722,
+          "compatibility_version": 65536,
+          "frozen_child_export": null,
+          "child_metadata_frozen": true
+        }
+      ],
+      "selected_provider_exact_export_rows": {
+        "/usr/lib/libSystem.B.dylib": null,
+        "/usr/lib/system/libsystem_c.dylib": {
+          "flags": 8,
+          "ordinal": 6,
+          "import_name": "__platform_bzero"
+        },
+        "/usr/lib/system/libsystem_platform.dylib": null
+      }
+    },
+    {
+      "symbol": "___stack_chk_guard",
+      "assert_unique_import_value": true,
+      "actual_imports": [
+        {
+          "nlist_index": 35885,
+          "ordinal": 1,
+          "provider": "/usr/lib/libSystem.B.dylib",
+          "n_desc": 256
+        }
+      ],
+      "root_export_row": null,
+      "assert_root_export_row_not_none_value": false,
+      "selected_frozen_LC_REEXPORT_edges": [
+        {
+          "ordinal": 14,
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536,
+          "frozen_child_export": {
+            "flags": 0,
+            "address": 8270415072
+          },
+          "child_metadata_frozen": true
+        },
+        {
+          "ordinal": 33,
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 2147483679,
+          "current_version": 24606722,
+          "compatibility_version": 65536,
+          "frozen_child_export": null,
+          "child_metadata_frozen": true
+        }
+      ],
+      "selected_provider_exact_export_rows": {
+        "/usr/lib/libSystem.B.dylib": null,
+        "/usr/lib/system/libsystem_c.dylib": {
+          "flags": 0,
+          "address": 8270415072
+        },
+        "/usr/lib/system/libsystem_platform.dylib": null
+      }
+    },
+    {
+      "symbol": "___stack_chk_fail",
+      "assert_unique_import_value": true,
+      "actual_imports": [
+        {
+          "nlist_index": 35884,
+          "ordinal": 1,
+          "provider": "/usr/lib/libSystem.B.dylib",
+          "n_desc": 256
+        }
+      ],
+      "root_export_row": null,
+      "assert_root_export_row_not_none_value": false,
+      "selected_frozen_LC_REEXPORT_edges": [
+        {
+          "ordinal": 14,
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483679,
+          "current_version": 114860036,
+          "compatibility_version": 65536,
+          "frozen_child_export": {
+            "flags": 0,
+            "address": 6446668436
+          },
+          "child_metadata_frozen": true
+        },
+        {
+          "ordinal": 33,
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 2147483679,
+          "current_version": 24606722,
+          "compatibility_version": 65536,
+          "frozen_child_export": null,
+          "child_metadata_frozen": true
+        }
+      ],
+      "selected_provider_exact_export_rows": {
+        "/usr/lib/libSystem.B.dylib": null,
+        "/usr/lib/system/libsystem_c.dylib": {
+          "flags": 0,
+          "address": 6446668436
+        },
+        "/usr/lib/system/libsystem_platform.dylib": null
+      }
+    }
+  ],
+  "implementation_alias_metadata": {
+    "/usr/lib/libSystem.B.dylib": {},
+    "/usr/lib/system/libsystem_c.dylib": {},
+    "/usr/lib/system/libsystem_platform.dylib": {}
+  },
+  "scope": "Frozen metadata only; no provider instruction reading/decoder/runtime. LC_REEXPORT fallback not implemented in failed script."
+}

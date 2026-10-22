@@ -1,0 +1,124 @@
+{
+  "source_sha256": "ee19b9a14f02e015a06b1c13af1bd9cbf6acad6e8af5cdaccb8908600a3d3bd1",
+  "predicates": [
+    {
+      "predicate": "function bound 0x1805090fc",
+      "value": true,
+      "actual": {
+        "index": 81,
+        "entry": "0x1805090fc"
+      }
+    },
+    {
+      "predicate": "frozen exact coverage 0x1805090fc",
+      "value": true,
+      "actual": {
+        "range": [
+          "0x180509090",
+          "0x180509164"
+        ],
+        "entry": "0x1805090fc",
+        "slice_vmaddr": "0x1805068a0",
+        "slice_bytes": 28768
+      }
+    },
+    {
+      "predicate": "excerpt bound 0x1805090fc",
+      "value": true,
+      "actual": {
+        "bytes": 2217,
+        "lines": 59
+      }
+    },
+    {
+      "predicate": "decoder exit0 0x1805090fc",
+      "value": true,
+      "actual": {
+        "exit": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "predicate": "function bound 0x180405984",
+      "value": true,
+      "actual": {
+        "index": 1837,
+        "entry": "0x180405984"
+      }
+    },
+    {
+      "predicate": "frozen exact coverage 0x180405984",
+      "value": true,
+      "actual": {
+        "range": [
+          "0x180405984",
+          "0x180405a40"
+        ],
+        "entry": "0x180405984",
+        "slice_vmaddr": "0x18038d000",
+        "slice_bytes": 528872
+      }
+    }
+  ],
+  "captures": [
+    {
+      "index": 1,
+      "provider": "/usr/lib/system/libsystem_platform.dylib",
+      "uuid": "edb83a19ec1732de93506145970a85d6",
+      "entry": "0x1805090fc",
+      "lo": "0x180509090",
+      "hi": "0x180509164",
+      "why": "required bzero branch for all current fixed171..1056 lengths",
+      "code_sha256": "76daddf8d10a84677e0925e9e1c33c9a8b6b1c03a8b891aea0163f62926ec6e2",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 4722832,
+      "raw_cache_bytes": 212,
+      "returncode": 0,
+      "stdout_bytes": 2217,
+      "stdout_lines": 59,
+      "stdout_sha256": "5f9fe7d1d2bf8c2ab548e73503174f1f6b82f898abdaa5c6cdf140df2fcc7f1c",
+      "stderr_bytes": 0,
+      "stderr": "",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-1.o"
+      ]
+    },
+    {
+      "index": 2,
+      "provider": "/usr/lib/system/libsystem_c.dylib",
+      "uuid": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "entry": "0x180405984",
+      "lo": "0x180405984",
+      "hi": "0x180405a40",
+      "why": "literal fallback target from stack_chk_fail",
+      "code_sha256": "2cd3faf5a890d84c18125aae56163fab91d934470bad1fe3aa4855dd53d1f98a",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 3660164,
+      "raw_cache_bytes": 188,
+      "returncode": 0,
+      "stdout_bytes": 2205,
+      "stdout_lines": 53,
+      "stdout_sha256": "6f1d8cc4eaaa091b76d17f17bc1a910824ff75ce1eb8c834825b6a8645e375d7",
+      "stderr_bytes": 0,
+      "stderr": "",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-2.o"
+      ]
+    }
+  ],
+  "pending": {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-2.o"
+    ],
+    "index": 2
+  }
+}

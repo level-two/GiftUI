@@ -1,0 +1,21 @@
+{
+  "ledger_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/ledger.json",
+  "ledger_sha256": "f4a5895c1aef04d3cafbf4f5722bf01893083e4489bdf33fc422616a585fa9aa",
+  "charged_processing": 390354381,
+  "counted_text": 37019,
+  "model_end_utc": "2026-10-22T22:17:00.911730+00:00",
+  "finished_utc": "2026-10-22T22:17:00.953165+00:00",
+  "session_elapsed_seconds": 1622.953165,
+  "helper_sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc",
+  "first_closed_snapshot": {
+    "finished_utc": "2026-10-22T22:14:02.283418+00:00",
+    "model_end_utc": "2026-10-22T22:14:02.241979+00:00",
+    "elapsed_seconds": 1444.283418,
+    "processing_before_postclose": 303969940,
+    "transcript_before_postclose": 32166
+  },
+  "postclose_metadata_start": "2026-10-22T22:15:22.430120+00:00",
+  "postclose_metadata_end": "2026-10-22T22:15:22.452864+00:00",
+  "result_administrative_end_utc": "2026-10-22T22:18:07.241756+00:00",
+  "no_aggregate_certification": "Charged ledger does not certify unrecorded administrative/acquisition request identities or complete aggregate content processing; no numeric full-session compliance claim. Final result construction/hash processing occurs after this frozen ledger and is identified separately."
+}

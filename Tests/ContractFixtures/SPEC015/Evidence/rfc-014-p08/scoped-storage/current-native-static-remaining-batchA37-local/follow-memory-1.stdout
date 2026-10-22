@@ -1,0 +1,59 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/follow-memory-1.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180509090 <__text>:
+180509090:     	and	x1, x1, #0xff
+180509094:     	mov	x3, #0x101010101010101  ; =72340172838076673
+180509098:     	mul	x1, x1, x3
+18050909c:     	dup.2d	v0, x1
+1805090a0:     	mov	x3, x0
+1805090a4:     	cmp	x2, #0x40
+1805090a8:     	b.lo	0x180509144 <__text+0xb4>
+1805090ac:     	cmp	x2, #0x8, lsl #12       ; =0x8000
+1805090b0:     	b.lo	0x1805090fc <__text+0x6c>
+1805090b4:     	cbz	x1, 0x180509050
+1805090b8:     	stnp	q0, q0, [x0]
+1805090bc:     	stnp	q0, q0, [x0, #0x20]
+1805090c0:     	add	x3, x0, #0x40
+1805090c4:     	and	x3, x3, #0xffffffffffffffc0
+1805090c8:     	add	x2, x2, x0
+1805090cc:     	add	x4, x3, #0x40
+1805090d0:     	subs	x2, x2, x4
+1805090d4:     	b.ls	0x1805090ec <__text+0x5c>
+1805090d8:     	stnp	q0, q0, [x3]
+1805090dc:     	stnp	q0, q0, [x3, #0x20]
+1805090e0:     	add	x3, x3, #0x40
+1805090e4:     	subs	x2, x2, #0x40
+1805090e8:     	b.hi	0x1805090d8 <__text+0x48>
+1805090ec:     	add	x3, x3, x2
+1805090f0:     	stnp	q0, q0, [x3]
+1805090f4:     	stnp	q0, q0, [x3, #0x20]
+1805090f8:     	ret
+1805090fc:     	stp	q0, q0, [x0]
+180509100:     	stp	q0, q0, [x0, #0x20]
+180509104:     	add	x3, x0, #0x40
+180509108:     	and	x3, x3, #0xffffffffffffffc0
+18050910c:     	add	x2, x2, x0
+180509110:     	add	x4, x3, #0x40
+180509114:     	subs	x2, x2, x4
+180509118:     	b.ls	0x180509130 <__text+0xa0>
+18050911c:     	stp	q0, q0, [x3]
+180509120:     	stp	q0, q0, [x3, #0x20]
+180509124:     	add	x3, x3, #0x40
+180509128:     	subs	x2, x2, #0x40
+18050912c:     	b.hi	0x18050911c <__text+0x8c>
+180509130:     	add	x3, x3, x2
+180509134:     	stp	q0, q0, [x3]
+180509138:     	stp	q0, q0, [x3, #0x20]
+18050913c:     	ret
+180509140:     	str	x1, [x3], #0x8
+180509144:     	subs	x2, x2, #0x8
+180509148:     	b.hs	0x180509140 <__text+0xb0>
+18050914c:     	adds	x2, x2, #0x8
+180509150:     	b.eq	0x180509160 <__text+0xd0>
+180509154:     	strb	w1, [x3], #0x1
+180509158:     	subs	x2, x2, #0x1
+18050915c:     	b.ne	0x180509154 <__text+0xc4>
+180509160:     	ret

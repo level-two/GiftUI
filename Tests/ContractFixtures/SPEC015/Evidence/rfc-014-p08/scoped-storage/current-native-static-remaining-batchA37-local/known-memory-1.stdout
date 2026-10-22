@@ -1,0 +1,185 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-1.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180509360 <__text>:
+180509360:     	sub	x3, x0, x1
+180509364:     	cmp	x3, x2
+180509368:     	b.lo	0x180509530 <__text+0x1d0>
+18050936c:     	mov	x3, x0
+180509370:     	cmp	x2, #0x40
+180509374:     	b.lo	0x18050950c <__text+0x1ac>
+180509378:     	sub	x4, x1, x0
+18050937c:     	cmp	x4, x2
+180509380:     	b.lo	0x180509444 <__text+0xe4>
+180509384:     	cmp	x2, #0x4, lsl #12       ; =0x4000
+180509388:     	b.lo	0x1805093e8 <__text+0x88>
+18050938c:     	add	x3, x3, #0x20
+180509390:     	and	x3, x3, #0xffffffffffffffe0
+180509394:     	ldnp	q2, q3, [x1]
+180509398:     	sub	x5, x3, x0
+18050939c:     	add	x1, x1, x5
+1805093a0:     	ldnp	q0, q1, [x1]
+1805093a4:     	add	x1, x1, #0x20
+1805093a8:     	sub	x2, x2, x5
+1805093ac:     	stnp	q2, q3, [x0]
+1805093b0:     	subs	x2, x2, #0x40
+1805093b4:     	b.ls	0x1805093d0 <__text+0x70>
+1805093b8:     	stnp	q0, q1, [x3]
+1805093bc:     	add	x3, x3, #0x20
+1805093c0:     	ldnp	q0, q1, [x1]
+1805093c4:     	add	x1, x1, #0x20
+1805093c8:     	subs	x2, x2, #0x20
+1805093cc:     	b.hi	0x1805093b8 <__text+0x58>
+1805093d0:     	add	x1, x1, x2
+1805093d4:     	ldnp	q2, q3, [x1]
+1805093d8:     	stnp	q0, q1, [x3]
+1805093dc:     	add	x3, x3, x2
+1805093e0:     	stnp	q2, q3, [x3, #0x20]
+1805093e4:     	ret
+1805093e8:     	add	x3, x3, #0x20
+1805093ec:     	and	x3, x3, #0xffffffffffffffe0
+1805093f0:     	ldnp	q2, q3, [x1]
+1805093f4:     	sub	x5, x3, x0
+1805093f8:     	add	x1, x1, x5
+1805093fc:     	ldnp	q0, q1, [x1]
+180509400:     	add	x1, x1, #0x20
+180509404:     	sub	x2, x2, x5
+180509408:     	stp	q2, q3, [x0]
+18050940c:     	subs	x2, x2, #0x40
+180509410:     	b.ls	0x18050942c <__text+0xcc>
+180509414:     	stp	q0, q1, [x3]
+180509418:     	add	x3, x3, #0x20
+18050941c:     	ldnp	q0, q1, [x1]
+180509420:     	add	x1, x1, #0x20
+180509424:     	subs	x2, x2, #0x20
+180509428:     	b.hi	0x180509414 <__text+0xb4>
+18050942c:     	add	x1, x1, x2
+180509430:     	ldnp	q2, q3, [x1]
+180509434:     	stp	q0, q1, [x3]
+180509438:     	add	x3, x3, x2
+18050943c:     	stp	q2, q3, [x3, #0x20]
+180509440:     	ret
+180509444:     	cmp	x2, #0x4, lsl #12       ; =0x4000
+180509448:     	b.lo	0x1805094a8 <__text+0x148>
+18050944c:     	add	x3, x3, #0x20
+180509450:     	and	x3, x3, #0xffffffffffffffe0
+180509454:     	ldp	q2, q3, [x1]
+180509458:     	sub	x5, x3, x0
+18050945c:     	add	x1, x1, x5
+180509460:     	ldp	q0, q1, [x1]
+180509464:     	add	x1, x1, #0x20
+180509468:     	sub	x2, x2, x5
+18050946c:     	stnp	q2, q3, [x0]
+180509470:     	subs	x2, x2, #0x40
+180509474:     	b.ls	0x180509490 <__text+0x130>
+180509478:     	stnp	q0, q1, [x3]
+18050947c:     	add	x3, x3, #0x20
+180509480:     	ldp	q0, q1, [x1]
+180509484:     	add	x1, x1, #0x20
+180509488:     	subs	x2, x2, #0x20
+18050948c:     	b.hi	0x180509478 <__text+0x118>
+180509490:     	add	x1, x1, x2
+180509494:     	ldp	q2, q3, [x1]
+180509498:     	stnp	q0, q1, [x3]
+18050949c:     	add	x3, x3, x2
+1805094a0:     	stnp	q2, q3, [x3, #0x20]
+1805094a4:     	ret
+1805094a8:     	add	x3, x3, #0x20
+1805094ac:     	and	x3, x3, #0xffffffffffffffe0
+1805094b0:     	ldp	q2, q3, [x1]
+1805094b4:     	sub	x5, x3, x0
+1805094b8:     	add	x1, x1, x5
+1805094bc:     	ldp	q0, q1, [x1]
+1805094c0:     	add	x1, x1, #0x20
+1805094c4:     	sub	x2, x2, x5
+1805094c8:     	stp	q2, q3, [x0]
+1805094cc:     	subs	x2, x2, #0x40
+1805094d0:     	b.ls	0x1805094ec <__text+0x18c>
+1805094d4:     	stp	q0, q1, [x3]
+1805094d8:     	add	x3, x3, #0x20
+1805094dc:     	ldp	q0, q1, [x1]
+1805094e0:     	add	x1, x1, #0x20
+1805094e4:     	subs	x2, x2, #0x20
+1805094e8:     	b.hi	0x1805094d4 <__text+0x174>
+1805094ec:     	add	x1, x1, x2
+1805094f0:     	ldp	q2, q3, [x1]
+1805094f4:     	stp	q0, q1, [x3]
+1805094f8:     	add	x3, x3, x2
+1805094fc:     	stp	q2, q3, [x3, #0x20]
+180509500:     	ret
+180509504:     	ldr	x6, [x1], #0x8
+180509508:     	str	x6, [x3], #0x8
+18050950c:     	subs	x2, x2, #0x8
+180509510:     	b.hs	0x180509504 <__text+0x1a4>
+180509514:     	adds	x2, x2, #0x8
+180509518:     	b.eq	0x18050952c <__text+0x1cc>
+18050951c:     	ldrb	w6, [x1], #0x1
+180509520:     	strb	w6, [x3], #0x1
+180509524:     	subs	x2, x2, #0x1
+180509528:     	b.ne	0x18050951c <__text+0x1bc>
+18050952c:     	ret
+180509530:     	cbz	x3, 0x180509624 <__text+0x2c4>
+180509534:     	add	x4, x0, x2
+180509538:     	add	x1, x1, x2
+18050953c:     	cmp	x2, #0x40
+180509540:     	b.lo	0x180509604 <__text+0x2a4>
+180509544:     	cmp	x2, #0x4, lsl #12       ; =0x4000
+180509548:     	b.lo	0x1805095a4 <__text+0x244>
+18050954c:     	ldp	q2, q3, [x1, #-0x20]
+180509550:     	sub	x3, x4, #0x1
+180509554:     	and	x3, x3, #0xffffffffffffffe0
+180509558:     	sub	x5, x4, x3
+18050955c:     	sub	x1, x1, x5
+180509560:     	sub	x2, x2, x5
+180509564:     	ldp	q0, q1, [x1, #-0x20]
+180509568:     	stnp	q2, q3, [x4, #-0x20]
+18050956c:     	sub	x1, x1, #0x20
+180509570:     	subs	x2, x2, #0x40
+180509574:     	b.ls	0x180509590 <__text+0x230>
+180509578:     	stnp	q0, q1, [x3, #-0x20]
+18050957c:     	sub	x3, x3, #0x20
+180509580:     	ldp	q0, q1, [x1, #-0x20]
+180509584:     	sub	x1, x1, #0x20
+180509588:     	subs	x2, x2, #0x20
+18050958c:     	b.hi	0x180509578 <__text+0x218>
+180509590:     	sub	x1, x1, x2
+180509594:     	ldp	q2, q3, [x1, #-0x20]
+180509598:     	stnp	q0, q1, [x3, #-0x20]
+18050959c:     	stnp	q2, q3, [x0]
+1805095a0:     	ret
+1805095a4:     	ldp	q2, q3, [x1, #-0x20]
+1805095a8:     	sub	x3, x4, #0x1
+1805095ac:     	and	x3, x3, #0xffffffffffffffe0
+1805095b0:     	sub	x5, x4, x3
+1805095b4:     	sub	x1, x1, x5
+1805095b8:     	sub	x2, x2, x5
+1805095bc:     	ldp	q0, q1, [x1, #-0x20]
+1805095c0:     	stp	q2, q3, [x4, #-0x20]
+1805095c4:     	sub	x1, x1, #0x20
+1805095c8:     	subs	x2, x2, #0x40
+1805095cc:     	b.ls	0x1805095e8 <__text+0x288>
+1805095d0:     	stp	q0, q1, [x3, #-0x20]
+1805095d4:     	sub	x3, x3, #0x20
+1805095d8:     	ldp	q0, q1, [x1, #-0x20]
+1805095dc:     	sub	x1, x1, #0x20
+1805095e0:     	subs	x2, x2, #0x20
+1805095e4:     	b.hi	0x1805095d0 <__text+0x270>
+1805095e8:     	sub	x1, x1, x2
+1805095ec:     	ldp	q2, q3, [x1, #-0x20]
+1805095f0:     	stp	q0, q1, [x3, #-0x20]
+1805095f4:     	stp	q2, q3, [x0]
+1805095f8:     	ret
+1805095fc:     	ldr	x6, [x1, #-0x8]!
+180509600:     	str	x6, [x4, #-0x8]!
+180509604:     	subs	x2, x2, #0x8
+180509608:     	b.hs	0x1805095fc <__text+0x29c>
+18050960c:     	adds	x2, x2, #0x8
+180509610:     	b.eq	0x180509624 <__text+0x2c4>
+180509614:     	ldrb	w6, [x1, #-0x1]!
+180509618:     	strb	w6, [x4, #-0x1]!
+18050961c:     	subs	x2, x2, #0x1
+180509620:     	b.ne	0x180509614 <__text+0x2b4>
+180509624:     	ret
+		...

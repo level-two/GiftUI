@@ -1,0 +1,30 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/known-memory-2.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180509030 <__text>:
+180509030:     	mov	x2, x1
+180509034:     	eor.16b	v0, v0, v0
+180509038:     	eor	x1, x1, x1
+18050903c:     	mov	x3, x0
+180509040:     	cmp	x2, #0x40
+180509044:     	b.lo	0x180509144 <__text+0x114>
+180509048:     	cmp	x2, #0x8, lsl #12       ; =0x8000
+18050904c:     	b.lo	0x1805090fc <__text+0xcc>
+180509050:     	stnp	q0, q0, [x0]
+180509054:     	stnp	q0, q0, [x0, #0x20]
+180509058:     	add	x3, x0, #0x40
+18050905c:     	and	x3, x3, #0xffffffffffffffc0
+180509060:     	add	x2, x2, x0
+180509064:     	add	x4, x3, #0x40
+180509068:     	subs	x2, x2, x4
+18050906c:     	b.ls	0x180509080 <__text+0x50>
+180509070:     	dc	zva, x3
+180509074:     	add	x3, x3, #0x40
+180509078:     	subs	x2, x2, #0x40
+18050907c:     	b.hi	0x180509070 <__text+0x40>
+180509080:     	add	x3, x3, x2
+180509084:     	stnp	q0, q0, [x3]
+180509088:     	stnp	q0, q0, [x3, #0x20]
+18050908c:     	ret

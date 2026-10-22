@@ -1,0 +1,7 @@
+Exact ordered raw bodies (full bytes retained in adjacent local directories; no clipped semantic excerpt):
+A35 static-init-working.stdout lines1-172, SHA79a0fdbc994a8165358ca5fc46453d25b3e2045bdc679dab86794503bb961824.
+A36 all16 helper raw outputs: helper-captures.json and ledger provider union SHA9fa8a9fd3b2e5e62f09962fb78b9c569da8347c95682076276951048cfc5422f,225lines.
+A37 known-memory-1.stdout lines1-185, known-memory-2.stdout lines1-30, known-memory-3.stdout lines1-30; exact paths/hashes in rows.json.
+A37 follow-memory-1.stdout lines1-59: entry prerequisite x2=literal count,q0=0; required branch target0x1805090fc; loop0x18050911c/backedge0x18050912c; tail stores0x180509134/138; ret0x18050913c.
+A37 follow-memory-2.stdout lines1-53: conditional initial message-global store; exact imported call targets retained in rows.json; terminal brk0x180405a3c.
+Each body is decoded only from frozen exact object/cache extents with VM addresses and derived projection hashes; full decoder argv/status/stderr/length/hash are in capture JSON, not inferred from symbol spelling.
