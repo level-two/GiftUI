@@ -53,7 +53,7 @@ case "${corpus}" in
         [[ -n "${runtime_build}" ]] || { printf 'counter route requires matching --runtime-build receipt\n' >&2; exit 2; }
         counter_arguments=(--profile "${profile}" --runtime-build "${runtime_build}")
         if [[ -n "${host_build}" ]]; then counter_arguments+=(--host-build "${host_build}"); fi
-        exec python3 "${SCRIPT_DIR}/check-spec-015-counter.py" "${counter_arguments[@]}" "${collection_arguments[@]}"
+        exec python3 "${SCRIPT_DIR}/check-spec-015-counter.py" "${counter_arguments[@]}" ${collection_arguments[@]+"${collection_arguments[@]}"}
         ;;
     *) usage >&2; exit 2 ;;
 esac
