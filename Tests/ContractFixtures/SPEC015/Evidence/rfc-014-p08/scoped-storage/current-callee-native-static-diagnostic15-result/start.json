@@ -1,0 +1,11 @@
+{
+  "started_utc": "2026-10-21T19:38:05.173789+00:00",
+  "wall_limit_seconds": 5400,
+  "new_output_limit_bytes": 268435456,
+  "scope": "Local counter diagnostic construction correction; no U02 frozen reauthentication/current-image transfer",
+  "output_bound_amendment": {
+    "bytes": 536870912,
+    "reason": "Measured baseline153317199B; two maintained runs plus SIL/disassembly forecast~395MB",
+    "utc": "2026-10-21T19:45:51.665744+00:00"
+  }
+}

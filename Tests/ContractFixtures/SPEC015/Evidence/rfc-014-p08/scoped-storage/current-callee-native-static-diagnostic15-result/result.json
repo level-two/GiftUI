@@ -1,0 +1,499 @@
+{
+  "disposition": "FOCUSED_NATIVE_STATIC_DIAGNOSTIC_CONSTRUCTION_CORRECTED_AND_VALIDATED",
+  "source": {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "before_sha256": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+    "after_sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d",
+    "changed_scope": "macOS non-Dynamic typed four-owner-identity counterTrace overload; private bounded stdout fragments; all other generic traces retained",
+    "unrelated_sampled_inputs_unchanged": {
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+      "scripts/contracts/check-spec-015-counter.py": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+      "scripts/contracts/p08_check_collection.py": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41"
+    },
+    "diff": "source-change.diff",
+    "formatter": "format.json"
+  },
+  "baseline": {
+    "build": ".build/contracts/p08-counter-qwx9eovw",
+    "result_sha256": "5407718eba333f7bc861cfbff7f3c4e700bf38795ad2d0a42901e7e270ae62d5",
+    "fresh_focused": true,
+    "producer_top_level_exit": null,
+    "capture_wrapper_exit": 1,
+    "wrapper_error": ".build/contracts/p08-native-static-diagnostic15/baseline-wrapper-error.json",
+    "counter_model_exit": 0,
+    "link_exit": 0,
+    "execute_exit": 0
+  },
+  "corrected": {
+    "build": ".build/contracts/p08-counter-l4w07o3p",
+    "result_sha256": "ef78ee86deec5a15cbd1c2ad676c3b1ab48e950c16a7251df6c8f413d0c331e2",
+    "capture_exit": {
+      "exit": 0,
+      "ended_utc": "2026-10-21T19:47:09.043022+00:00"
+    },
+    "profile": "macos-static",
+    "fresh_focused": true,
+    "focused_passed": true,
+    "aggregate_complete": false,
+    "aggregate_passed": false,
+    "selected_families": [
+      "runtime"
+    ],
+    "passed_check_count": 35,
+    "not_run_count": 391,
+    "checks": [
+      {
+        "name": "GiftUISemanticCore",
+        "family": "GiftUISemanticCore",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUITextResources",
+        "family": "GiftUITextResources",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIReferenceTextResources",
+        "family": "GiftUIReferenceTextResources",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUILayout",
+        "family": "GiftUILayout",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIRenderCore",
+        "family": "GiftUIRenderCore",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIExecution",
+        "family": "GiftUIExecution",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIInteraction",
+        "family": "GiftUIInteraction",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIObservableState",
+        "family": "GiftUIObservableState",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIRenderLowering",
+        "family": "GiftUIRenderLowering",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIDrawing",
+        "family": "GiftUIDrawing",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIRuntimeCore",
+        "family": "GiftUIRuntimeCore",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIRuntimeStatic",
+        "family": "GiftUIRuntimeStatic",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIRuntimeDynamic",
+        "family": "GiftUIRuntimeDynamic",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "GiftUIHostConfiguration",
+        "family": "GiftUIHostConfiguration",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "counter-lowering",
+        "family": "counter-lowering",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "P08CounterSchema",
+        "family": "P08CounterSchema",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "P08CounterPresentation",
+        "family": "P08CounterPresentation",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "P08CounterTable",
+        "family": "P08CounterTable",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "counter-model",
+        "family": "counter-model",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "link",
+        "family": "runtime",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "execute",
+        "family": "runtime",
+        "status": "passed",
+        "exit": 0,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-inventory-two-hosts",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-control-same-address",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-terminal-old-host",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-raw-namespace-collision",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-action-stale",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-action-current",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-input-stale",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-input-current",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-admission-stale",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-admission-current",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-source-stale",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-source-current",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "so06-reuse-static-cleanup-backing-last",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      },
+      {
+        "name": "runtime-summary",
+        "family": "runtime",
+        "status": "passed",
+        "exit": null,
+        "passed": true
+      }
+    ],
+    "execution": "P08 counter components assertions=1736320 failures=0",
+    "registered_reuse_labels": [
+      "so06-reuse-static-inventory-two-hosts",
+      "so06-reuse-static-control-same-address",
+      "so06-reuse-static-terminal-old-host",
+      "so06-reuse-static-raw-namespace-collision",
+      "so06-reuse-static-action-stale",
+      "so06-reuse-static-action-current",
+      "so06-reuse-static-input-stale",
+      "so06-reuse-static-input-current",
+      "so06-reuse-static-admission-stale",
+      "so06-reuse-static-admission-current",
+      "so06-reuse-static-source-stale",
+      "so06-reuse-static-source-current",
+      "so06-reuse-static-cleanup-backing-last"
+    ]
+  },
+  "dependency_identity": {
+    "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "runtime_receipt_sha256": "c85ce3f88a88ff1fd798f54c59427202aa4301e26aacf4f7957b284fdd95cb3c",
+    "host_build": ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "host_receipt_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+    "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1",
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "macro_tool_sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814",
+    "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308",
+    "target_flags": [
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-l4w07o3p",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+      "-swift-version",
+      "6",
+      "-Osize",
+      "-whole-module-optimization",
+      "-enable-experimental-feature",
+      "LifetimeDependence",
+      "-enable-experimental-feature",
+      "Lifetimes",
+      "-package-name",
+      "giftui",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-l4w07o3p/cache",
+      "-disable-sandbox",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-load-plugin-executable",
+      "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+      "-parse-as-library",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+      "-enable-testing"
+    ]
+  },
+  "runtime_output_comparison": "runtime-comparison.json",
+  "formatter_controls": {
+    "source_binding": ".build/contracts/p08-native-static-diagnostic15/format-control/source-binding.json",
+    "compile": ".build/contracts/p08-native-static-diagnostic15/format-control/compile-start.json",
+    "compile_exit": {
+      "exit": 0,
+      "ended_utc": "2026-10-21T19:50:50.228545+00:00"
+    },
+    "comparisons": [
+      {
+        "mode": "buffered",
+        "stdout_equal": true,
+        "stderr_equal": true,
+        "reference_exit": 0,
+        "bounded_exit": 0,
+        "stdout_bytes": 468,
+        "authoritative_return_reached": true
+      },
+      {
+        "mode": "unbuffered",
+        "stdout_equal": true,
+        "stderr_equal": true,
+        "reference_exit": 0,
+        "bounded_exit": 0,
+        "stdout_bytes": 468,
+        "authoritative_return_reached": true
+      },
+      {
+        "mode": "closed",
+        "stdout_equal": true,
+        "stderr_equal": true,
+        "reference_exit": 0,
+        "bounded_exit": 0,
+        "stdout_bytes": 0,
+        "authoritative_return_reached": true
+      }
+    ],
+    "UInt32_test_values": [
+      0,
+      1,
+      9,
+      10,
+      99,
+      100,
+      999999999,
+      1000000000,
+      1000000001,
+      1010000001,
+      2147483647,
+      2147483648,
+      4294967295
+    ],
+    "failure_scope": "Closed-stdout paired process exit and post-diagnostic continuation marker only. Marker37 is not a counter assertion/count/real producer result. Full actual pipeline oracles remain the independent focused runtime tests."
+  },
+  "compiled_evidence": {
+    "sil_start": ".build/contracts/p08-native-static-diagnostic15/compiler-evidence/sil-start.json",
+    "sil_exit": {
+      "exit": 0,
+      "ended_utc": "2026-10-21T19:49:03.029937+00:00"
+    },
+    "SIL_summary": {
+      "old_exact_specialization_mentions": [],
+      "new_typed_symbols": [
+        "$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF"
+      ],
+      "functions": [
+        {
+          "symbol": "$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF",
+          "first_line": 401452,
+          "last_line": 401689,
+          "alloc_ref_lines": [],
+          "Any_array_type": false,
+          "swift_allocObject_mentions": []
+        },
+        {
+          "symbol": "$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys12StaticStringVF",
+          "first_line": 482491,
+          "last_line": 482722,
+          "alloc_ref_lines": [],
+          "Any_array_type": false,
+          "swift_allocObject_mentions": []
+        },
+        {
+          "symbol": "$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyys6UInt32VF",
+          "first_line": 482726,
+          "last_line": 482818,
+          "alloc_ref_lines": [],
+          "Any_array_type": false,
+          "swift_allocObject_mentions": []
+        },
+        {
+          "symbol": "$s17P08CounterRuntime17counterTraceWrite33_F69033F4DB287CAFB71641A3EEA15F2ALLyy6GiftUI11BoundedTextVFySRys5UInt8VGXEfU_",
+          "first_line": 482827,
+          "last_line": 482909,
+          "alloc_ref_lines": [],
+          "Any_array_type": false,
+          "swift_allocObject_mentions": []
+        }
+      ],
+      "SIL_sha256": "a4a02d5b6a4ec97d4925924af552d4889c81f20949c1999730b8d35c55353abf",
+      "object_sha256": "d5ecf4cada41c7e9383114b0ba2342c27c3a349e6c72fe0037ebb5aba07e4e4e",
+      "source_sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d"
+    },
+    "SIL_excerpt": ".build/contracts/p08-native-static-diagnostic15/compiler-evidence/selected-functions.sil.txt",
+    "object_summary": ".build/contracts/p08-native-static-diagnostic15/compiler-evidence/object-summary.json",
+    "object_excerpt": ".build/contracts/p08-native-static-diagnostic15/compiler-evidence/selected-object.txt",
+    "outlined_argument_setup_and_epilogues": ".build/contracts/p08-native-static-diagnostic15/compiler-evidence/selected-outlined.txt",
+    "actual_root_call": [
+      {
+        "kind": "direct-root-call",
+        "root": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+        "root_address": "0x4bc78",
+        "root_relocation_line": 92766,
+        "root_relocation": "\t\t000000000004bda0:  ARM64_RELOC_BRANCH26\t_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF",
+        "target": "_$s17P08CounterRuntime12counterTraceyys12StaticStringV_21GiftUIObservableState28ObservableModelOwnerIdentityV_AG0H14UISemanticCore014SemanticRecordmN0VAJttF"
+      }
+    ]
+  },
+  "applicability": {
+    "old_U02_proofs": "Immutable baseline artifacts and conditional facts preserved; not silently rebased to modified source or new addresses. Old allocator0x4c5d0 belongs to old object hash only.",
+    "prerequisites": "Accepted P02/P04/P07/schema-host dependency identity reused and checked by maintained corrected producer.",
+    "new_qualification": "This corrected NativeStatic fresh-focused runtime family and explicit compiler/output controls only.",
+    "previous_counter_profile_artifacts": "Previously qualified artifacts remain historical; manifests containing old CounterPipelineOwner hash no longer equal complete current declared inputs. No other-profile, full safety-matrix, cold or whole-image/resource transfer is claimed.",
+    "not_run": "391 compiler/control checks remain not-run in this focused package; independent existing oracles were not modified."
+  },
+  "limits": [
+    "No global provider/zero-heap/allocation-success/measured-saving/byte-cost/P08 claim",
+    "Other49X28 sites and complete callee/cold/current-image obligations remain open",
+    "Putchar uses existing native stdio buffering; tested single-process buffered/unbuffered ordering and failed-write continuation; no new concurrent-line atomicity assurance"
+  ],
+  "clock": {
+    "started_utc": "2026-10-21T19:38:05.173789+00:00",
+    "finished_utc": "2026-10-21T19:58:07.817534+00:00",
+    "elapsed_seconds": 1202.643745,
+    "limit_seconds": 5400,
+    "finalized_utc": "2026-10-21T19:58:07.864849+00:00"
+  },
+  "budget": {
+    "output_limit_bytes": 536870912,
+    "original_output_limit_bytes": 268435456,
+    "amendment": "Coordinator amendment based on153317199-byte measured baseline and~395MB forecast; independent non-U02 bound only",
+    "aggregate_I_O_and_outer_tool_metadata_certified": false,
+    "measured_before_final_receipt_bytes": 436002104,
+    "final_receipt_reserve_bytes": 1048576,
+    "final_retained_output_bytes": 436022930
+  },
+  "review": "One independent Strong boundary review required; no successor launched"
+}

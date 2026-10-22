@@ -1,0 +1,63 @@
+--- before/CounterPipelineOwner.swift
++++ after/CounterPipelineOwner.swift
+@@ -19,6 +19,9 @@
+ import GiftUISemanticCore
+ import P08CounterSchema
+ import P08CounterPresentation
++#if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
++    import Darwin
++#endif
+ 
+ struct CounterRuntimeControl {
+     var admission = CounterAdmissionBacking()
+@@ -768,6 +771,50 @@
+ #endif
+ }
+ 
++#if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
++    // Preserve this finite native trace's spelling with bounded fragments instead
++    // of the variadic print call's Any storage.
++    func counterTrace(
++        _ label: StaticString,
++        _ value: (
++            ObservableModelOwnerIdentity, ObservableModelOwnerIdentity,
++            SemanticRecordOwnerIdentity, SemanticRecordOwnerIdentity
++        )
++    ) {
++        counterTraceWrite(label)
++        counterTraceWrite(" (GiftUIObservableState.ObservableModelOwnerIdentity(rawValue: ")
++        counterTraceWrite(value.0.rawValue)
++        counterTraceWrite("), GiftUIObservableState.ObservableModelOwnerIdentity(rawValue: ")
++        counterTraceWrite(value.1.rawValue)
++        counterTraceWrite("), GiftUISemanticCore.SemanticRecordOwnerIdentity(rawValue: ")
++        counterTraceWrite(value.2.rawValue)
++        counterTraceWrite("), GiftUISemanticCore.SemanticRecordOwnerIdentity(rawValue: ")
++        counterTraceWrite(value.3.rawValue)
++        counterTraceWrite("))\n")
++    }
++
++    private func counterTraceWrite(_ text: StaticString) {
++        text.withUTF8Buffer { bytes in
++            for byte in bytes { _ = putchar(Int32(byte)) }
++        }
++    }
++
++    private func counterTraceWrite(_ text: BoundedText) {
++        text.withUTF8 { bytes in
++            for byte in bytes { _ = putchar(Int32(byte)) }
++        }
++    }
++
++    private func counterTraceWrite(_ value: UInt32) {
++        let low = BoundedText(Int32(value % 1_000_000_000))
++        if value >= 1_000_000_000 {
++            counterTraceWrite(BoundedText(Int32(value / 1_000_000_000)))
++            for _ in Int(low.utf8ByteCount) ..< 9 { _ = putchar(48) }
++        }
++        counterTraceWrite(low)
++    }
++#endif
++
+ private func counterActionCode(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> UInt16 {
+     guard let record = bank.record(ref), let payload = bank.payload(at: record.payload), case .standard(.action(_, let code)) = payload else { preconditionFailure("counter action payload") }
+     return code

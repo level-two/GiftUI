@@ -1,0 +1,22 @@
+{
+  "started_utc": "2026-10-21T20:05:00.111278+00:00",
+  "deadline_utc": "2026-10-22T00:05:00.111278+00:00",
+  "wall_limit_seconds": 14400,
+  "output_limit_bytes": 536870912,
+  "output_reserve_bytes": 134217728,
+  "forecast_bytes": 184549376,
+  "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+  "source_sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d",
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "--collect-failures"
+  ],
+  "scope": "Full current NativeStatic counter producer, no focused selection; immutable prior evidence preserved; no hardware/image/cold/U02 work"
+}

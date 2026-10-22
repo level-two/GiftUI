@@ -1,0 +1,15 @@
+# Native Static bounded namespace diagnostic correction
+
+The known four-identity `counterTrace` construction now uses a finite typed overload, existing inline `BoundedText` decimal formatting and native stdio byte output. The label, all four UInt32 values, type names, punctuation/newline and call-site ordering are preserved. Other generic traces remain unchanged. The one-file diff and targeted pinned formatter receipt are retained.
+
+The maintained corrected fresh-focused **runtime** producer exited0: **35 checks pass**, **391 intentionally unrun**, all13 exact reuse labels and **1,736,320 assertions/failures0**. All3,537 counterTrace rows match the baseline byte-for-byte at identical line positions, without normalization. Entire stdout remains distinct: exactly120 SO06 role rows differ only in token positions4/8, confirmed by source as the two physical addresses. Both raw logs remain intact.
+
+The baseline producer wrote a focused-PASS result with counter-model/link/execute exit0. Its capture shell subsequently failed on zsh's reserved `status` variable: wrapper exit1, producer top-level exit unknown. That failure is preserved; no baseline producer rerun occurred. The corrected capture records actual exit0.
+
+Paired exact-source controls match independent Swift `print` for13 UInt32 boundaries through `.max`, buffered and unbuffered ordering, and closed-stdout continuation: six process exits0. The control's stderr marker is a test continuation marker, not a real counter return value or assertion total. It does not replace actual pipeline failure/semantic/action/pixel oracles.
+
+Pinned SIL compilation passes. The old exact generic specialization is absent; the new typed overload at SIL401452–401689 and three writer functions contain no `alloc_ref` or `Array<Any>`. The actual Static root now directly calls the typed overload: machine0x4bda0/raw92766 → entry0x4beb0. Its four identities are passed in w3/w4 (9/10) and x5/x6 (guarded values). Exact object/SIL/source/compiler identities and full selected excerpts are referenced in result.json. This removes the demonstrated Any-array construction; it is not a transitive runtime-provider or zero-heap proof.
+
+Old frozen U02/profiles/matrices/images remain unchanged historical artifacts. The modified fixture's old whole-input hashes are not current; no broad matrix, other profile, cold, resource, runtime-saving or P08 conclusion transfers. Accepted matching core/P07/schema-host prerequisites are retained; new qualification is limited to the focused Native Static run and controls above.
+
+The [independent Strong package review](review.md) passed. The subsequent [full Native Static collection](../current-native-static-counter16-result/README.md) also passed against the corrected source; its distinct compiled artifacts retain their own proof boundaries. No hardware/network work, production/Core API changes or pending-fault rebuild occurred. See result.json for the original clock, output amendment, raw receipts and residuals.

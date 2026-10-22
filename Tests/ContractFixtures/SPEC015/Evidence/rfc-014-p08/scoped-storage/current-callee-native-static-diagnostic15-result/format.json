@@ -1,0 +1,18 @@
+{
+  "argv": [
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift",
+    "format",
+    "format",
+    "--configuration",
+    ".swift-format",
+    "--in-place",
+    "--lines",
+    "22:24",
+    "--lines",
+    "774:817",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift"
+  ],
+  "exit": 0,
+  "stdout": "",
+  "stderr": ""
+}

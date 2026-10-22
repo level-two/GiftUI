@@ -1,0 +1,188 @@
+{
+  "disposition": "PASS: full current macos-static counter functional/compiler collection",
+  "raw_result": {
+    "path": ".build/contracts/p08-counter-v5bqywpm/result.json",
+    "sha256": "83cff530c1d4bebe3ee752dfbde04b3874e8730fe38e720a7c28d25c2e432f72",
+    "bytes": 8548218
+  },
+  "capture_directory": ".build/contracts/p08-native-static-counter16",
+  "actual_invocation": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "--collect-failures"
+  ],
+  "started_utc": "2026-10-21T20:05:00.111278+00:00",
+  "producer_terminal": {
+    "exit": 0,
+    "ended_utc": "2026-10-21T22:15:18.582566+00:00"
+  },
+  "producer_elapsed_seconds": 7818.471288,
+  "profile": "macos-static",
+  "selected_host_profile": "macos-static",
+  "raster_realization": "full-surface",
+  "collection_schema": 2,
+  "collection_complete": true,
+  "passed": true,
+  "fresh_focused": false,
+  "focused_passed": false,
+  "selected_families": [],
+  "prior_collection": null,
+  "legacy_import": null,
+  "records": 426,
+  "commands": 412,
+  "all_records_passed": true,
+  "actual_exit_histogram": {
+    "0": 218,
+    "1": 193,
+    "None": 14,
+    "-6": 1
+  },
+  "scoped": {
+    "records": 384,
+    "positive_exit0": 192,
+    "expected_negative_exit1": 192,
+    "pointer": "/planned_scoped_labels"
+  },
+  "supplemental": {
+    "positive_exit0": 1,
+    "expected_negative_exit1": 1,
+    "pointer": "/planned_supplemental_labels"
+  },
+  "grouped_runtime_observations": {
+    "records": 14,
+    "reuse": 13,
+    "standalone_child_exit": null,
+    "pointers": [
+      "/checks/407",
+      "/checks/420"
+    ],
+    "scope": "13 reuse observations and runtime summary share execute exit0; they are not independent processes"
+  },
+  "runtime_summary": {
+    "assertions": 1736320,
+    "failures": 0,
+    "pointer": "/execution"
+  },
+  "expected_exclusivity_fatal": {
+    "pointer": "/checks/425",
+    "actual_exit": -6,
+    "required_diagnostics": [
+      "Simultaneous accesses",
+      "Fatal access conflict"
+    ]
+  },
+  "current_declared_inputs": {
+    "all_matched": true,
+    "count": 201,
+    "pointer": "/inputs",
+    "owner_source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "owner_source_sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d",
+    "counter_scoped_storage_sha256": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17"
+  },
+  "compiler": {
+    "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "verified_current": true
+  },
+  "dependencies": {
+    "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "runtime_receipt_sha256": "c85ce3f88a88ff1fd798f54c59427202aa4301e26aacf4f7957b284fdd95cb3c",
+    "host_build": ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "host_receipt_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+    "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1",
+    "macro_tool_sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814",
+    "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308"
+  },
+  "flags": [
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-v5bqywpm",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-enable-experimental-feature",
+    "LifetimeDependence",
+    "-enable-experimental-feature",
+    "Lifetimes",
+    "-package-name",
+    "giftui",
+    "-module-cache-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-v5bqywpm/cache",
+    "-disable-sandbox",
+    "-target",
+    "arm64-apple-macosx26.0",
+    "-sdk",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-load-plugin-executable",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-parse-as-library",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpb3zdakko/macos-static",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-enable-testing"
+  ],
+  "selected_artifacts_verified": {
+    "P08CounterRuntime.o": {
+      "sha256": "021643dff6d5b9253074511ab0008fb78159aedb77cb787f815db1d4dc5b8296",
+      "bytes": 2545512
+    },
+    "counter": {
+      "sha256": "04751417635aa7aef6ecfbbd5edeb9a3ab32569ae5a03b7bb70b0a2286de32fa",
+      "bytes": 6602472
+    },
+    "counter-model.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "link.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "execute.log": {
+      "sha256": "7635fb0b97225b43b1c1010f222a42a7e8fbccecf63ab0e96e98a089f5e063b3",
+      "bytes": 611254
+    },
+    "so06-native-exclusivity-negative-execute.log": {
+      "sha256": "6bbc019708774a3d1481d93bc09226ed7d3ac2ce8a75fc066830f945da020cac",
+      "bytes": 1447
+    }
+  },
+  "checks_identity": {
+    "path": ".build/contracts/p08-counter-v5bqywpm/checks.json",
+    "sha256": "ff54908b1bfac294c6eb2c247605d532494b20e39633b6e03ac23fb9f57d39ee",
+    "equal_result_checks": true
+  },
+  "diagnostic15_relation": {
+    "receipt": "../current-callee-native-static-diagnostic15-result/README.md",
+    "same_owner_source": true,
+    "new_object_sha256": "021643dff6d5b9253074511ab0008fb78159aedb77cb787f815db1d4dc5b8296",
+    "prior_object_sha256": "d5ecf4cada41c7e9383114b0ba2342c27c3a349e6c72fe0037ebb5aba07e4e4e",
+    "byte_identical_object": false,
+    "qualification": "Diagnostic15 SIL/machine removal proof remains bound to its own artifact; no byte-identical machine transfer to this rebuilt object is claimed."
+  },
+  "analysis_error_once": {
+    "operation": "read-only final record projection",
+    "exit": 1,
+    "diagnostic": "KeyError: 'diagnostic' when grouped runtime record lacked that optional field",
+    "effect": "No producer/source/artifact change; corrected projection used optional-field access. Actual producer remains exit0."
+  },
+  "limits": [
+    "No other-profile qualification from logical Dynamic controls in the macos-static executable.",
+    "No cold/first-use/allocation-cost/provider/zero-heap/resource/full-image/P08 conformance claim.",
+    "Bytewise stdio performance and cost remain unmeasured.",
+    "Previous frozen U02 records and old complete source manifests remain historical baselines; no rebasing.",
+    "No source changes, build restart, hardware, network, or pending-fault dependency writes in counter16.",
+    "Unknown aggregate I/O and platform-added tool metadata are not certified."
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "event": "baseline capture shell variable status reserved by zsh",
+    "actual_wrapper_exit": 1,
+    "producer_exit": null,
+    "raw_error": "zsh:7: read-only variable: status",
+    "effect": "Producer result/individual exits retained; no baseline rerun; corrected capture uses diagnostic_exit_code"
+  },
+  {
+    "event": "initial object-join extraction assumed old wrapper topology",
+    "error": "AssertionError",
+    "effect": "Analysis only; actual new machine join is a direct call, recorded from literal relocation; no source/compiler retry"
+  },
+  {
+    "event": "orientation path guesses missing Examples/Counter and reconciliation identity.json",
+    "effect": "Read-only lookup errors; corrected exact maintained paths used; no source change caused by these errors"
+  }
+]

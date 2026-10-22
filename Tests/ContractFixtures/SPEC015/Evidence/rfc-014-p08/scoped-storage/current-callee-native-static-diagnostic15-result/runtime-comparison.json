@@ -1,0 +1,82 @@
+{
+  "normalization": null,
+  "entire_stdout_equal": false,
+  "baseline_sha256": "6527787b9143078554793ba190a93df5cebad5c82bb20719a2ca2adc13a20128",
+  "corrected_sha256": "90c0ba0db496c77e8507f7aea4d7a7f2ef32a50e8e39a3a453a55eacb921e745",
+  "baseline_lines": 3673,
+  "corrected_lines": 3673,
+  "first_differences": [
+    [
+      1,
+      "SO06 role 0 12 6101444204 0 484 11 6101443720 1 484 => 11 12",
+      "SO06 role 0 12 6093612652 0 484 11 6093612168 1 484 => 11 12"
+    ],
+    [
+      2,
+      "SO06 role 1 13 6101444752 0 460 10 6101443260 1 460 => 10 13",
+      "SO06 role 1 13 6093613200 0 460 10 6093611708 1 460 => 10 13"
+    ],
+    [
+      3,
+      "SO06 role 0 11 6101443720 1 484 12 6101444204 2 484 => 12 11",
+      "SO06 role 0 11 6093612168 1 484 12 6093612652 2 484 => 12 11"
+    ]
+  ],
+  "reuse_namespace_lines_before": [
+    [
+      2845,
+      "reuse.namespaces (GiftUIObservableState.ObservableModelOwnerIdentity(rawValue: 9), GiftUIObservableState.ObservableModelOwnerIdentity(rawValue: 10), GiftUISemanticCore.SemanticRecordOwnerIdentity(rawValue: 9), GiftUISemanticCore.SemanticRecordOwnerIdentity(rawValue: 10))"
+    ]
+  ],
+  "reuse_namespace_lines_after": [
+    [
+      2845,
+      "reuse.namespaces (GiftUIObservableState.ObservableModelOwnerIdentity(rawValue: 9), GiftUIObservableState.ObservableModelOwnerIdentity(rawValue: 10), GiftUISemanticCore.SemanticRecordOwnerIdentity(rawValue: 9), GiftUISemanticCore.SemanticRecordOwnerIdentity(rawValue: 10))"
+    ]
+  ],
+  "corrected_checks": {
+    "passed": 35,
+    "not_run": 391,
+    "failed": []
+  },
+  "all_reuse_exact_line_oracles": true,
+  "summary": true,
+  "source_sha256": "ea413f1bdf9e1d90ef6db7b61b9d7bb668f692d693ca1cd27df4357b76f3fc6d",
+  "result_sha256": "ef78ee86deec5a15cbd1c2ad676c3b1ab48e950c16a7251df6c8f413d0c331e2",
+  "all_counterTrace_rows_equal_with_positions": true,
+  "counterTrace_row_count": 3537,
+  "trace_labels": [
+    "admission.completion",
+    "admission.pointer",
+    "admission.state",
+    "cleanup",
+    "dispatch",
+    "disposition",
+    "finalized",
+    "gesture",
+    "recovery",
+    "result",
+    "reuse.namespaces",
+    "stage",
+    "summary",
+    "terminal"
+  ],
+  "all_whole_stdout_difference_classes": {
+    "SO06 role": {
+      "count": 120,
+      "changed_token_indices": [
+        4,
+        8
+      ],
+      "token_count_equal": true,
+      "examples": [
+        {
+          "line": 1,
+          "before": "SO06 role 0 12 6101444204 0 484 11 6101443720 1 484 => 11 12",
+          "after": "SO06 role 0 12 6093612652 0 484 11 6093612168 1 484 => 11 12"
+        }
+      ]
+    }
+  },
+  "whole_stdout_qualification": "Raw outputs retained distinct; no normalization used for byte-identical counterTrace/oracles claim"
+}

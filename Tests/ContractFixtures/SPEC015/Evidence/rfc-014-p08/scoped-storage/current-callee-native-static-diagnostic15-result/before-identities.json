@@ -1,0 +1,6 @@
+{
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "418f0588dd0c2ef2e617e4baf722613568d370568f59758407166095e127dcfb",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "12b15fc1f5d37c030d204cbf8f07c196892eef9da6e27ba1e73d19a6a4ba2a17",
+  "scripts/contracts/check-spec-015-counter.py": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+  "scripts/contracts/p08_check_collection.py": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41"
+}

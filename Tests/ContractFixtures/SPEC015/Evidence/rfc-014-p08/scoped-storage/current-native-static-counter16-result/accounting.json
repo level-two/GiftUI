@@ -1,0 +1,12 @@
+{
+  "started_utc": "2026-10-21T20:05:00.111278+00:00",
+  "ended_utc": "2026-10-21T22:16:46.943060+00:00",
+  "full_package_elapsed_seconds": 7906.831782,
+  "wall_limit_seconds": 14400,
+  "producer_output_bytes": 176022147,
+  "retained_total_before_this_small_accounting_file": 176039150,
+  "finalization_reserve_bytes": 1048576,
+  "output_limit_bytes": 536870912,
+  "within_coordination_bounds": true,
+  "unknown_aggregate_io_and_tool_envelopes_certified": false
+}
