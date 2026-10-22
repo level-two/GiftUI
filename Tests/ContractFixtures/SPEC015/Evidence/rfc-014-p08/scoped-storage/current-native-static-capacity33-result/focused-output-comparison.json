@@ -1,0 +1,15 @@
+{
+  "baseline_path": ".build/contracts/p08-counter-ob4qm63e/execute.log",
+  "after_path": ".build/contracts/p08-counter-8rng9k7r/execute.log",
+  "baseline_bytes": 611254,
+  "after_bytes": 611254,
+  "baseline_sha256": "3a7963ebb9a8e80f34b4851835744efba84d900c76097d0ce01fefd0d680af7e",
+  "after_sha256": "37ef17bf79f02fa330b07529b8c221090fbeb80274ab68ed76d19fd8a832fd4f",
+  "rows": 3673,
+  "raw_equal": false,
+  "only_normalization": "Exactly SO06 role tokens4 and8,120rows/240physicaladdress tokens; no whitespace or newline stripping",
+  "exact_bytes_after_only_address_substitution_equal": true,
+  "normalized_sha256": "9f9b66ae44a9e0fe40b7ebb13d34b165b37d20d8324d754be0585b92f2b2a658",
+  "banner": "P08 counter components assertions=1736320 failures=0",
+  "scope": "Maintained execute.log artifacts preserve their log terminator; actual producer status remains fresh-focused selected-family only, aggregate incomplete."
+}

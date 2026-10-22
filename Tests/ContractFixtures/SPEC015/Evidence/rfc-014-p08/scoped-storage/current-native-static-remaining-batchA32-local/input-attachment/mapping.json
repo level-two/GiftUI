@@ -1,0 +1,55 @@
+{
+  "purpose": "Exact direct frozen dependencies retained after proof for commit reproducibility; no helper edit/execution or semantic rerun",
+  "original_helper": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/page.py",
+    "sha256": "5b50db90841a39784e10f96dff81ca9d10ad4522b057b0a9041607955ca8ec1a"
+  },
+  "attachments": [
+    {
+      "role": "auth_operations",
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/inspect.py",
+      "attachment_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.inspect.py",
+      "bytes": 44447,
+      "sha256": "d27705f7a22991a3c7176fd1e303178a2129cc5e2f9ba8078d99ef98258a31e4"
+    },
+    {
+      "role": "packet",
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/invocation/group.stdout",
+      "attachment_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.group.stdout",
+      "bytes": 72903,
+      "sha256": "1dc209fc2db96252ea549ba7b071e09e83958ea6feae6fbbfafaf1f5631c70e5"
+    },
+    {
+      "role": "identity_map",
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/identity-map.ndjson",
+      "attachment_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.identity-map.ndjson",
+      "bytes": 110284,
+      "sha256": "1f4ed0db298ee5193cc803a0b215816dc8331ea2fbe821ed305e1f203dc56008"
+    },
+    {
+      "role": "frontier",
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/current-frontier.json",
+      "attachment_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.current-frontier.json",
+      "bytes": 137341,
+      "sha256": "1eba2d12f2fca075c0626764cc5515f65ad4260ff8fdf301f4d8271266784c58"
+    },
+    {
+      "role": "prior_ledger",
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/state.json",
+      "attachment_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.state.json",
+      "bytes": 39649,
+      "sha256": "5012b2eb0b6af86f641f3408a58a800a0536f660c010eae1cd373d8766b1d540"
+    }
+  ],
+  "request_identity": "A32 ledger.json contains actual self-attested request_identities; exact attached A31.state.json preserves request_records and actual_dynamic_requests. No separately unread request template is introduced.",
+  "dependency_boundary": "A32 imports only read/git/controls/preservation/provider_read/provider_auth from exact A31.inspect.py; those functions read six original committed controls, declared original79/preservation48 inputs, current refresh.json entries and local provider-slices.json installed-cache extents. Complete original corpus is not duplicated here. Frozen selected packet/map/frontier/prior ledger are the only A31 local data reads.",
+  "external_replay_requirements": [
+    "Original authenticated historical HEAD5f6f0261 and exact current-at-proof source/artifact inputs, not the corrected current source",
+    "Original committed preparation3db4e1b13a728947569a700f35957bb4d17ef943 and declared79/48 baseline files",
+    "Raw .build counter ob4qm63e object/result,63MB explanatory SIL and machine projection at exact freeze/refresh paths and hashes",
+    "Exact installed provider cache files/extents, tool binaries and preservation metadata from provider-slices.json/original controls",
+    "Original absolute repository path and /tmp/g32 alias as frozen; attachments must be materialized at original paths to replay unchanged helper"
+  ],
+  "clean_checkout_replay_claim": false,
+  "independent_decisive_evidence": "A32 invocation/output-1 through output-8 retain all29 ordered body pages; output-9 contains exact symbol identities; output-10 contains exact explanatory SIL context, all with saved identities. Capacity33 exact full-object comparison and selected excerpts establish both post-fix construction removals."
+}

@@ -1,0 +1,243 @@
+{
+  "status": "FULL_VALIDATED_PASS",
+  "written_utc": "2026-10-22T18:53:05.493743+00:00",
+  "machine_proof": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-result/rows.json",
+    "sha256": "3849a9a4559ea7d6712eb7cbf3681fcdcbd774866a35d073aad39f719e546880",
+    "current_old_full_object_sha256": "7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846",
+    "model_complete_page_union": true,
+    "model_seconds": 293.312808,
+    "processing_through_frozen_finish": 519381176,
+    "counted_transcript_through_finish": 121432,
+    "old_full_call_origins": [
+      "0x4fc98",
+      "0x50c14"
+    ],
+    "shared_old_wrapper": "0xbdbdc -> _swift_allocObject at0xbdbe0",
+    "typed_metadata_symbol": "_$ss23_ContiguousArrayStorageCys06InlineB0Vy$4_s6UInt16VGGMD",
+    "focused_SIL_type": "_ContiguousArrayStorage<InlineArray<5, UInt16>>",
+    "focused_stack_lowering_not_transferred_to_full": true
+  },
+  "ordinary_source_assessment": {
+    "separate_from_inherited_AUTH_only_U02_source": true,
+    "started_utc": "2026-10-22T18:45:37.168222Z",
+    "source_before": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "sha256": "77d67f4489042cdcdab24dc80eb1b05cc092e7d1273d49d82eb0fb1b35e78ef5",
+      "bytes": 255474,
+      "literal_lines": [
+        3224,
+        3286
+      ]
+    },
+    "source_after": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "sha256": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf",
+      "bytes": 255642
+    },
+    "vectors": [
+      [
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      [
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        1
+      ]
+    ],
+    "unchanged_oracles": [
+      "Static .invalidCapacity for every vector",
+      "Static originalInventory all14 nil",
+      "Dynamic .invalidCapacity for every vector",
+      "5 testcase vectors and order for each logical route",
+      "All surrounding fault/lifecycle assertions and diagnostics"
+    ],
+    "purpose": "Remove two concrete ordinary testcase Array constructions; not measured malloc success/bytes or general Static-zero-heap proof",
+    "read_processing_conservative_upper_bytes": 4194304,
+    "source_role_not_retroactively_promoted": true
+  },
+  "window_route_join": {
+    "route_source": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "sha256": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+      "guard": "!Embedded and !GIFTUI_COUNTER_ROUTE_DYNAMIC",
+      "entry_lines": [
+        32,
+        35
+      ],
+      "route_lines": [
+        38,
+        45
+      ],
+      "ordinary_order": "graph -> scoped storage -> host"
+    },
+    "driver_source": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-allocation-diagnostic/Driver.c",
+      "sha256": "da992ba29b0fb7a5bc34ad2c7cb15adc41d27a1a3869803a525608312336c487",
+      "window_lines": [
+        136,
+        142
+      ],
+      "cold": "probe_begin(1,1) -> entry(NULL) -> end",
+      "reuse": "probe_begin(2,0) -> entry(NULL) -> end"
+    },
+    "reviewed_window_records": [
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u04-diagnostic-windows1-result/window-attribution.json",
+        "sha256": "4d6ad280e69b3043879b0baf2eb16d003fe366ae8b6e817a5c165be011af590d",
+        "facts": [
+          "W01",
+          "W03",
+          "W06"
+        ]
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u04-executed-provenance2-result/executed-window-attribution.json",
+        "sha256": "ab44a841f53108b953a3626646ac9f746bffcb10c9624c1351b1b531d7edb226"
+      }
+    ],
+    "consequence": "These current-source ordinary-recipe constructions lie inside that whole-entry window if executed. Host-first skips scoped root. No construction-only current measurement exists; no historical whole-window allocation totals transfer."
+  },
+  "correction_scope": {
+    "files": [
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift"
+    ],
+    "method": "One shared InlineArray<5,InlineArray<5,UInt16>> and two indexed0..<5 loops",
+    "native_only": "Existing outer !hasFeature(Embedded) function guard excludes this function from Embedded; both native logical profile controls retain identical vectors",
+    "logical_table_payload_bytes": 50,
+    "physical_stack_or_image_resource_transfer": false,
+    "no_std_io_transport_change": true
+  },
+  "validation": {
+    "formatter": {
+      "command": "scripts/format-swift.sh --lint",
+      "exit": 0,
+      "fixture_policy": "Tests/ContractFixtures excluded by CODE_STYLE and script; no broad rewrite"
+    },
+    "P07": {
+      "command": "scripts/contracts/run-spec-013.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+      "started_utc": "2026-10-22T18:49:56.218108Z",
+      "session": 50154,
+      "status": "PASS",
+      "captures": ".build/contracts/p08-native-static-capacity33/p07.*",
+      "exit": 0,
+      "ended_utc": "2026-10-22T18:50:28.132978Z",
+      "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmpe8onpqjb/macos-static",
+      "result_sha256": "65f7f45b280dc9913591b9301d44443251a1399a8012a96faf5492e50b0abe8d",
+      "assertions": 5904,
+      "failures": 0
+    },
+    "focused": {
+      "status": "PASS selected runtime family; aggregate deliberately incomplete",
+      "exit": 0,
+      "build": ".build/contracts/p08-counter-8rng9k7r",
+      "result_sha256": "2eabe0b2d1e98f4487b651241084f921f04941b1ef74e29923377a9f65f86148",
+      "started_utc": "2026-10-22T18:53:23.914194Z",
+      "ended_utc": "2026-10-22T18:54:26.024378Z",
+      "assertions": 1736320,
+      "failures": 0,
+      "comparison": {
+        "baseline_path": ".build/contracts/p08-counter-ob4qm63e/execute.log",
+        "after_path": ".build/contracts/p08-counter-8rng9k7r/execute.log",
+        "baseline_bytes": 611254,
+        "after_bytes": 611254,
+        "baseline_sha256": "3a7963ebb9a8e80f34b4851835744efba84d900c76097d0ce01fefd0d680af7e",
+        "after_sha256": "37ef17bf79f02fa330b07529b8c221090fbeb80274ab68ed76d19fd8a832fd4f",
+        "rows": 3673,
+        "raw_equal": false,
+        "only_normalization": "Exactly SO06 role tokens4 and8,120rows/240physicaladdress tokens; no whitespace or newline stripping",
+        "exact_bytes_after_only_address_substitution_equal": true,
+        "normalized_sha256": "9f9b66ae44a9e0fe40b7ebb13d34b165b37d20d8324d754be0585b92f2b2a658",
+        "banner": "P08 counter components assertions=1736320 failures=0",
+        "scope": "Maintained execute.log artifacts preserve their log terminator; actual producer status remains fresh-focused selected-family only, aggregate incomplete."
+      }
+    },
+    "full": {
+      "status": "PASS",
+      "record": "full-validation.json",
+      "result": {
+        "path": ".build/contracts/p08-counter-e3ivm0v6/result.json",
+        "bytes": 8548218,
+        "sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838"
+      },
+      "exit": 0,
+      "ended_utc": "2026-10-22T21:07:23.577725+00:00",
+      "elapsed_seconds": 7853.365159,
+      "checks": 426,
+      "commands": 412,
+      "assertions": 1736320,
+      "failures": 0,
+      "output_comparison": "full-output-comparison.json"
+    },
+    "required_compiler_assessment": "BOTH former call origins and metadata construction must be checked in actual NEW FULL object; focused SIL alone is insufficient",
+    "actual_full_machine": {
+      "path": ".build/contracts/p08-native-static-capacity33/machine-p08-counter-e3ivm0v6.json",
+      "sha256": "366ddd086325dfe89bc631f2041f29936582dd0403a10fd980a35a10ba3251ab",
+      "old_object_sha256": "7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846",
+      "new_object_sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581",
+      "old_calls": [
+        "0x4fc98",
+        "0x50c14"
+      ],
+      "old_exact_array_type_descriptor_count": 1,
+      "new_exact_array_type_descriptor_count": 0,
+      "positive_full_caller_excerpt": {
+        "path": ".build/contracts/p08-native-static-capacity33/full-capacity-positive-excerpts.txt",
+        "sha256": "d3b82f645c14bda961c45836eb3716adcfbd4f2877c5fec6460a93372f42b88e",
+        "first_stack_constant_setup": [
+          "0x4fd2c",
+          "0x4fd80"
+        ],
+        "second_stack_constant_reuse": [
+          "0x50c40",
+          "0x50ce4"
+        ]
+      },
+      "global_allocator_import_count_before": 17,
+      "global_allocator_import_count_after": 17,
+      "scope": "Type-specific testcase array construction removal in actual full object, BOTH old source operations; no global allocator-count, provider allocation/cost or zeroheap claim"
+    }
+  },
+  "limits": {
+    "analysis_cutoff": "2026-10-22T19:43:00Z",
+    "justified_validation_may_continue": true,
+    "ordinary_output_limit": 536870912,
+    "final_reserve": 16777216,
+    "full_deadline": "4h from actual full launch, not yet launched"
+  },
+  "remaining_batch_A": {
+    "complete_eligibility": false,
+    "other_allocator_indirect_witness_metadata_once_error_frontiers": "Available-unexamined, not external absence; no new frontier analysis in this correction package",
+    "stdio": "R=S/live-state/persistence/provider-window gaps remain; current putchar transport unchanged",
+    "safety": "Prior reviewed concrete source/lifetime/bridge/fault/linked-writer lemmas retained at their original scope",
+    "BatchB": "Runtime/physical/current-image/cold/resource/profile gates remain separate"
+  },
+  "updated_utc": "2026-10-22T21:08:44.388155+00:00"
+}

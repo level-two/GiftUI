@@ -1,0 +1,69 @@
+{
+  "before": {
+    "utc": "2026-10-22T18:39:27.335641+00:00",
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+        16777234,
+        29640436
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+        16777234,
+        29650609
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+        16777234,
+        29652748
+      ]
+    },
+    "cache_members": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "dirty_diff_bytes": 5230
+  },
+  "after": {
+    "utc": "2026-10-22T18:44:20.636708+00:00",
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+        16777234,
+        29640436
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+        16777234,
+        29650609
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+        16777234,
+        29652748
+      ]
+    },
+    "cache_members": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "dirty_diff_bytes": 5230
+  },
+  "provider_before": {
+    "descriptor_sha256": "8e7fd326e4efb98e9d3d87d061280be713b30524cb6695ba4db7abb45d503923",
+    "provider_uuids": {
+      "/usr/lib/libSystem.B.dylib": "4fed5ee25d3e35b1a1709859c4b683bb",
+      "/usr/lib/system/libsystem_c.dylib": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "/usr/lib/system/libsystem_malloc.dylib": "d969a9073e43395193658c2db3812e9d",
+      "/usr/lib/system/libsystem_pthread.dylib": "a373f0b09880326a88b4dd8be4e33072",
+      "/usr/lib/swift/libswift_DarwinFoundation2.dylib": "af5af4dcd24a3073bd234cead8c3aee4"
+    },
+    "exact_extent_bytes_per_check": 2419000
+  },
+  "provider_after": {
+    "descriptor_sha256": "8e7fd326e4efb98e9d3d87d061280be713b30524cb6695ba4db7abb45d503923",
+    "provider_uuids": {
+      "/usr/lib/libSystem.B.dylib": "4fed5ee25d3e35b1a1709859c4b683bb",
+      "/usr/lib/system/libsystem_c.dylib": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "/usr/lib/system/libsystem_malloc.dylib": "d969a9073e43395193658c2db3812e9d",
+      "/usr/lib/system/libsystem_pthread.dylib": "a373f0b09880326a88b4dd8be4e33072",
+      "/usr/lib/swift/libswift_DarwinFoundation2.dylib": "af5af4dcd24a3073bd234cead8c3aee4"
+    },
+    "exact_extent_bytes_per_check": 2419000
+  },
+  "Git_blob_auth_reuse": "Original immutable blob identities and exact priorA31 comparison reused; all79 worktree hashes fresh. No altered evidence authority."
+}

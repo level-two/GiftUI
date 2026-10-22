@@ -1,0 +1,5284 @@
+{
+  "object": {
+    "path": ".build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.o",
+    "bytes": 2594224,
+    "sha256": "7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846"
+  },
+  "all_allocators": [
+    {
+      "caller": 46436,
+      "site": 47216,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 32183,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 47360,
+      "site": 47992,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 32155,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 105956,
+      "site": 106060,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 29585,
+      "root": 337948,
+      "path": [
+        {
+          "from": 337948,
+          "to": 325912,
+          "edge": {
+            "site": 337948,
+            "op": "b",
+            "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+            "relocation_index": 20026,
+            "type": 2,
+            "target": 325912,
+            "to": 325912,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 325912,
+          "to": 114096,
+          "edge": {
+            "site": 327880,
+            "op": "bl",
+            "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFSi_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk10LLVzXEfU1_w9SpyAA0A14op11APLLVGXEfU_w6AA0aG7Q11APLLVnXEfU_Tf1ncn_nTm",
+            "relocation_index": 20621,
+            "type": 2,
+            "target": 114096,
+            "to": 114096,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 114096,
+          "to": 186616,
+          "edge": {
+            "site": 121228,
+            "op": "bl",
+            "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFxSwXEfU_xSwXEfU_xSwXEfU_xSwXEfU_xSpyAA06StaticB15LayoutWorkspaceVGXEfU_xSpyAA0rb8ResolvedsM0VGXEfU_xSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGXEfU_xSpy0x9UIRuntimeR00r13RecordDrawingT0VyAA0rb7DrawingT0VGGXEfU_xSpyAA15QualifiedRenderVGXEfU_xSpyAA0r23TwoInteractionCandidateM0VyAU24SemanticCompleteIdentityVGGXEfU_xSpyAA0r17TwoInteractionHitM0VyA12_GGXEfU_Si_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk21LLVzXEfU1_SiSpyAA0A14op19APLLVGXEfU_SiAA0aG7Q11APLLVnXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnncnnnnnnn_nTm",
+            "relocation_index": 28915,
+            "type": 2,
+            "target": 186616,
+            "to": 186616,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 186616,
+          "to": 335816,
+          "edge": {
+            "site": 194160,
+            "op": "bl",
+            "symbol": "_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF",
+            "relocation_index": 26294,
+            "type": 2,
+            "target": 335816,
+            "to": 335816,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 335816,
+          "to": 105956,
+          "edge": {
+            "site": 336320,
+            "op": "bl",
+            "symbol": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+            "relocation_index": 20138,
+            "type": 2,
+            "target": 105956,
+            "to": 105956,
+            "entry_addend": 0
+          }
+        }
+      ],
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 255516,
+      "site": 256796,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 23790,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 255516,
+      "site": 256832,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 23784,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 263648,
+      "site": 264864,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 23585,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 263648,
+      "site": 264900,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 23579,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 669480,
+      "site": 669604,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 6062,
+      "root": 337948,
+      "path": [
+        {
+          "from": 337948,
+          "to": 325912,
+          "edge": {
+            "site": 337948,
+            "op": "b",
+            "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+            "relocation_index": 20026,
+            "type": 2,
+            "target": 325912,
+            "to": 325912,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 325912,
+          "to": 89088,
+          "edge": {
+            "site": 326520,
+            "op": "bl",
+            "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+            "relocation_index": 20667,
+            "type": 2,
+            "target": 89088,
+            "to": 89088,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 89088,
+          "to": 669480,
+          "edge": {
+            "site": 95240,
+            "op": "bl",
+            "symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+            "relocation_index": 30185,
+            "type": 2,
+            "target": 669480,
+            "to": 669480,
+            "entry_addend": 0
+          }
+        }
+      ],
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 669744,
+      "site": 669868,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 6052,
+      "root": 337948,
+      "path": [
+        {
+          "from": 337948,
+          "to": 325912,
+          "edge": {
+            "site": 337948,
+            "op": "b",
+            "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+            "relocation_index": 20026,
+            "type": 2,
+            "target": 325912,
+            "to": 325912,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 325912,
+          "to": 89088,
+          "edge": {
+            "site": 326520,
+            "op": "bl",
+            "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+            "relocation_index": 20667,
+            "type": 2,
+            "target": 89088,
+            "to": 89088,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 89088,
+          "to": 669744,
+          "edge": {
+            "site": 94576,
+            "op": "bl",
+            "symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+            "relocation_index": 30240,
+            "type": 2,
+            "target": 669744,
+            "to": 669744,
+            "entry_addend": 0
+          }
+        }
+      ],
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 669996,
+      "site": 670120,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 6042,
+      "root": 337948,
+      "path": [
+        {
+          "from": 337948,
+          "to": 325912,
+          "edge": {
+            "site": 337948,
+            "op": "b",
+            "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+            "relocation_index": 20026,
+            "type": 2,
+            "target": 325912,
+            "to": 325912,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 325912,
+          "to": 89088,
+          "edge": {
+            "site": 326520,
+            "op": "bl",
+            "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+            "relocation_index": 20667,
+            "type": 2,
+            "target": 89088,
+            "to": 89088,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 89088,
+          "to": 669996,
+          "edge": {
+            "site": 94316,
+            "op": "bl",
+            "symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+            "relocation_index": 30252,
+            "type": 2,
+            "target": 669996,
+            "to": 669996,
+            "entry_addend": 0
+          }
+        }
+      ],
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 767700,
+      "site": 767708,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 1152,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 771156,
+      "site": 771164,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 1071,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 774696,
+      "site": 774704,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 958,
+      "root": 337948,
+      "path": [
+        {
+          "from": 337948,
+          "to": 325912,
+          "edge": {
+            "site": 337948,
+            "op": "b",
+            "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+            "relocation_index": 20026,
+            "type": 2,
+            "target": 325912,
+            "to": 325912,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 325912,
+          "to": 774696,
+          "edge": {
+            "site": 332388,
+            "op": "bl",
+            "symbol": "_OUTLINED_FUNCTION_472",
+            "relocation_index": 20354,
+            "type": 2,
+            "target": 774696,
+            "to": 774696,
+            "entry_addend": 0
+          }
+        }
+      ],
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 774732,
+      "site": 774740,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 956,
+      "root": 337948,
+      "path": [
+        {
+          "from": 337948,
+          "to": 325912,
+          "edge": {
+            "site": 337948,
+            "op": "b",
+            "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+            "relocation_index": 20026,
+            "type": 2,
+            "target": 325912,
+            "to": 325912,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 325912,
+          "to": 774732,
+          "edge": {
+            "site": 332444,
+            "op": "bl",
+            "symbol": "_OUTLINED_FUNCTION_474",
+            "relocation_index": 20348,
+            "type": 2,
+            "target": 774732,
+            "to": 774732,
+            "entry_addend": 0
+          }
+        }
+      ],
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 776512,
+      "site": 776520,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 864,
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 777180,
+      "site": 777184,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 842,
+      "root": 337948,
+      "path": [
+        {
+          "from": 337948,
+          "to": 325912,
+          "edge": {
+            "site": 337948,
+            "op": "b",
+            "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+            "relocation_index": 20026,
+            "type": 2,
+            "target": 325912,
+            "to": 325912,
+            "entry_addend": 0
+          }
+        },
+        {
+          "from": 325912,
+          "to": 777180,
+          "edge": {
+            "site": 326808,
+            "op": "bl",
+            "symbol": "_OUTLINED_FUNCTION_603",
+            "relocation_index": 20657,
+            "type": 2,
+            "target": 777180,
+            "to": 777180,
+            "entry_addend": 0
+          }
+        }
+      ],
+      "semantic": "UNEXAMINED"
+    },
+    {
+      "caller": 778968,
+      "site": 778976,
+      "symbol": "_swift_allocObject",
+      "relocation_index": 791,
+      "semantic": "UNEXAMINED"
+    }
+  ],
+  "roots": [
+    {
+      "symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+      "address": "0x4bc10"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+      "address": "0x5281c"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+      "address": "0x96ad0"
+    }
+  ],
+  "chosen": {
+    "caller": 777180,
+    "site": 777184,
+    "symbol": "_swift_allocObject",
+    "relocation_index": 842,
+    "root": 337948,
+    "path": [
+      {
+        "from": 337948,
+        "to": 325912,
+        "edge": {
+          "site": 337948,
+          "op": "b",
+          "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+          "relocation_index": 20026,
+          "type": 2,
+          "target": 325912,
+          "to": 325912,
+          "entry_addend": 0
+        }
+      },
+      {
+        "from": 325912,
+        "to": 777180,
+        "edge": {
+          "site": 326808,
+          "op": "bl",
+          "symbol": "_OUTLINED_FUNCTION_603",
+          "relocation_index": 20657,
+          "type": 2,
+          "target": 777180,
+          "to": 777180,
+          "entry_addend": 0
+        }
+      }
+    ],
+    "semantic": "UNEXAMINED"
+  },
+  "selected_identities": [
+    {
+      "base": "0x5281c",
+      "symbol": "_$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+      "ids": {
+        "S0": "0x5281c",
+        "S1": "0x4f918"
+      }
+    },
+    {
+      "base": "0x4f918",
+      "symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+      "ids": {
+        "S0": "retained-map",
+        "S1": "0xc0b28",
+        "S2": "retained-map",
+        "S3": "0xc0260",
+        "S4": "retained-map",
+        "S5": "0xbb498",
+        "S6": "retained-map",
+        "S7": "retained-map",
+        "S8": "retained-map",
+        "S9": "retained-map",
+        "S10": "retained-map",
+        "S11": "retained-map",
+        "S12": "0xc4160",
+        "S13": "retained-map",
+        "S14": "retained-map",
+        "S15": "0x349a8",
+        "S16": "retained-map",
+        "S17": "0xbffbc",
+        "S18": "retained-map",
+        "S19": "0xc1f0c",
+        "S20": "retained-map",
+        "S21": "0xc0dbc",
+        "S22": "retained-map",
+        "S23": "0xc2e68",
+        "S24": "retained-map",
+        "S25": "0xbfb30",
+        "S26": "retained-map",
+        "S27": "0xc1880",
+        "S28": "retained-map",
+        "S29": "0xbdb54",
+        "S30": "retained-map",
+        "S31": "0xc2dec",
+        "S32": "retained-map",
+        "S33": "0xbe698",
+        "S34": "retained-map",
+        "S35": "0xc4d94",
+        "S36": "retained-map",
+        "S37": "0xc40d0",
+        "S38": "retained-map",
+        "S39": "retained-map",
+        "S40": "0xbccd0",
+        "S41": "retained-map",
+        "S42": "retained-map",
+        "S43": "0xc2d14",
+        "S44": "retained-map",
+        "S45": "0x15c00",
+        "S46": "retained-map",
+        "S47": "retained-map",
+        "S48": "0x4f77c",
+        "S49": "retained-map",
+        "S50": "retained-map",
+        "S51": "retained-map",
+        "S52": "retained-map",
+        "S53": "retained-map",
+        "S54": "retained-map",
+        "S55": "retained-map",
+        "S56": "retained-map",
+        "S57": "0x18da8",
+        "S58": "retained-map",
+        "S59": "retained-map",
+        "S60": "retained-map",
+        "S61": "retained-map",
+        "S62": "retained-map",
+        "S63": "0x18594",
+        "S64": "retained-map",
+        "S65": "retained-map",
+        "S66": "retained-map",
+        "S67": "retained-map",
+        "S68": "0xbec",
+        "S69": "retained-map",
+        "S70": "0xbdbdc",
+        "S71": "retained-map",
+        "S72": "retained-map",
+        "S73": "retained-map",
+        "S74": "retained-map",
+        "S75": "retained-map",
+        "S76": "retained-map",
+        "S77": "retained-map",
+        "S78": "0xc2cf8",
+        "S79": "retained-map",
+        "S80": "0xa3698",
+        "S81": "retained-map",
+        "S82": "0xbe5e4",
+        "S83": "retained-map",
+        "S84": "0xc0d74",
+        "S85": "retained-map",
+        "S86": "0x15a00",
+        "S87": "retained-map",
+        "S88": "0xbc9c0",
+        "S89": "retained-map",
+        "S90": "retained-map",
+        "S91": "0xc06d8",
+        "S92": "retained-map",
+        "S93": "0xbe858",
+        "S94": "retained-map",
+        "S95": "retained-map",
+        "S96": "0x19470",
+        "S97": "retained-map",
+        "S98": "retained-map",
+        "S99": "retained-map",
+        "S100": "retained-map",
+        "S101": "0xc3df8",
+        "S102": "retained-map",
+        "S103": "0xbf794",
+        "S104": "retained-map",
+        "S105": "retained-map",
+        "S106": "retained-map",
+        "S107": "retained-map",
+        "S108": "retained-map",
+        "S109": "retained-map",
+        "S110": "0xbc69c",
+        "S111": "retained-map",
+        "S112": "0xc4ce0",
+        "S113": "retained-map",
+        "S114": "retained-map",
+        "S115": "retained-map",
+        "S116": "0xc374c",
+        "S117": "retained-map",
+        "S118": "retained-map",
+        "S119": "0xc33f8",
+        "S120": "retained-map",
+        "S121": "0x4eaac",
+        "S122": "retained-map",
+        "S123": "0xc2234",
+        "S124": "retained-map",
+        "S125": "0xc114c",
+        "S126": "retained-map",
+        "S127": "0xc0854",
+        "S128": "retained-map",
+        "S129": "retained-map",
+        "S130": "0x1bdb0",
+        "S131": "retained-map",
+        "S132": "retained-map",
+        "S133": "retained-map",
+        "S134": "retained-map",
+        "S135": "retained-map",
+        "S136": "0x4f440",
+        "S137": "retained-map",
+        "S138": "retained-map",
+        "S139": "retained-map",
+        "S140": "0xc2228",
+        "S141": "retained-map",
+        "S142": "retained-map",
+        "S143": "retained-map",
+        "S144": "0xc1458",
+        "S145": "retained-map",
+        "S146": "0xc4c94",
+        "S147": "retained-map",
+        "S148": "retained-map",
+        "S149": "retained-map",
+        "S150": "retained-map",
+        "S151": "retained-map",
+        "S152": "retained-map",
+        "S153": "retained-map",
+        "S154": "retained-map",
+        "S155": "retained-map",
+        "S156": "retained-map",
+        "S157": "retained-map",
+        "S158": "retained-map",
+        "S159": "retained-map",
+        "S160": "retained-map",
+        "S161": "retained-map",
+        "S162": "retained-map",
+        "S163": "retained-map",
+        "S164": "0x184c0",
+        "S165": "retained-map",
+        "S166": "retained-map",
+        "S167": "0xc3ff0",
+        "S168": "retained-map",
+        "S169": "retained-map",
+        "S170": "retained-map",
+        "S171": "retained-map",
+        "S172": "retained-map",
+        "S173": "retained-map",
+        "S174": "retained-map",
+        "S175": "retained-map",
+        "S176": "retained-map",
+        "S177": "retained-map",
+        "S178": "retained-map",
+        "S179": "retained-map",
+        "S180": "0xc1894",
+        "S181": "retained-map",
+        "S182": "retained-map",
+        "S183": "0xc43e4",
+        "S184": "retained-map",
+        "S185": "0xc3170",
+        "S186": "retained-map",
+        "S187": "retained-map",
+        "S188": "retained-map",
+        "S189": "retained-map",
+        "S190": "retained-map",
+        "S191": "retained-map",
+        "S192": "retained-map",
+        "S193": "retained-map",
+        "S194": "retained-map",
+        "S195": "0x51d30",
+        "S196": "retained-map",
+        "S197": "retained-map",
+        "S198": "retained-map",
+        "S199": "retained-map",
+        "S200": "retained-map",
+        "S201": "retained-map",
+        "S202": "retained-map",
+        "S203": "retained-map",
+        "S204": "retained-map",
+        "S205": "retained-map",
+        "S206": "retained-map",
+        "S207": "retained-map",
+        "S208": "retained-map",
+        "S209": "retained-map",
+        "S210": "retained-map",
+        "S211": "0x34bd0",
+        "S212": "retained-map",
+        "S213": "0xc1cf4",
+        "S214": "retained-map",
+        "S215": "retained-map",
+        "S216": "0xbed08",
+        "S217": "retained-map",
+        "S218": "retained-map",
+        "S219": "0xa3488",
+        "S220": "retained-map",
+        "S221": "retained-map",
+        "S222": "retained-map",
+        "S223": "retained-map",
+        "S224": "retained-map",
+        "S225": "0x51e60",
+        "S226": "retained-map",
+        "S227": "retained-map",
+        "S228": "retained-map",
+        "S229": "retained-map",
+        "S230": "retained-map",
+        "S231": "retained-map",
+        "S232": "retained-map",
+        "S233": "retained-map",
+        "S234": "retained-map",
+        "S235": "0xbdfa0",
+        "S236": "retained-map",
+        "S237": "0xbdf98",
+        "S238": "retained-map",
+        "S239": "0xbf9a4",
+        "S240": "retained-map",
+        "S241": "0xa352c",
+        "S242": "retained-map",
+        "S243": "0xbd564",
+        "S244": "retained-map",
+        "S245": "0xbd540",
+        "S246": "retained-map",
+        "S247": "0xa3588",
+        "S248": "retained-map",
+        "S249": "retained-map",
+        "S250": "retained-map",
+        "S251": "retained-map",
+        "S252": "retained-map",
+        "S253": "0xbd570",
+        "S254": "retained-map",
+        "S255": "retained-map",
+        "S256": "retained-map",
+        "S257": "retained-map",
+        "S258": "retained-map",
+        "S259": "retained-map",
+        "S260": "0xc0d3c",
+        "S261": "retained-map",
+        "S262": "0xc3680",
+        "S263": "0xb6d6c",
+        "S264": "retained-map",
+        "S265": "retained-map",
+        "S266": "0x3c640",
+        "S267": "retained-map",
+        "S268": "retained-map",
+        "S269": "0xbdec0",
+        "S270": "retained-map",
+        "S271": "0xc2914",
+        "S272": "retained-map",
+        "S273": "retained-map",
+        "S274": "0xc3650",
+        "S275": "retained-map",
+        "S276": "0x44b88",
+        "S277": "retained-map",
+        "S278": "retained-map",
+        "S279": "retained-map",
+        "S280": "retained-map",
+        "S281": "0xb63ac",
+        "S282": "retained-map",
+        "S283": "retained-map",
+        "S284": "retained-map",
+        "S285": "retained-map",
+        "S286": "retained-map",
+        "S287": "retained-map",
+        "S288": "retained-map",
+        "S289": "retained-map",
+        "S290": "retained-map",
+        "S291": "retained-map",
+        "S292": "retained-map",
+        "S293": "retained-map",
+        "S294": "0x120",
+        "S295": "retained-map",
+        "S296": "retained-map",
+        "S297": "retained-map",
+        "S298": "retained-map",
+        "S299": "retained-map",
+        "S300": "retained-map",
+        "S301": "retained-map",
+        "S302": "retained-map",
+        "S303": "retained-map",
+        "S304": "retained-map",
+        "S305": "retained-map",
+        "S306": "0xa36fc",
+        "S307": "retained-map",
+        "S308": "0xc4bd4",
+        "S309": "retained-map",
+        "S310": "retained-map",
+        "S311": "retained-map",
+        "S312": "0xa3704",
+        "S313": "retained-map",
+        "S314": "retained-map",
+        "S315": "retained-map",
+        "S316": "retained-map",
+        "S317": "retained-map",
+        "S318": "0xc362c",
+        "S319": "retained-map",
+        "S320": "retained-map",
+        "S321": "retained-map",
+        "S322": "0xc4b74",
+        "S323": "retained-map",
+        "S324": "retained-map",
+        "S325": "retained-map",
+        "S326": "0xc4b68",
+        "S327": "retained-map",
+        "S328": "0xc40c4",
+        "S329": "retained-map",
+        "S330": "retained-map",
+        "S331": "retained-map",
+        "S332": "retained-map",
+        "S333": "retained-map",
+        "S334": "retained-map",
+        "S335": "retained-map",
+        "S336": "retained-map",
+        "S337": "retained-map",
+        "S338": "retained-map",
+        "S339": "retained-map",
+        "S340": "retained-map",
+        "S341": "retained-map",
+        "S342": "retained-map",
+        "S343": "retained-map",
+        "S344": "0xc4b04",
+        "S345": "retained-map",
+        "S346": "retained-map",
+        "S347": "retained-map",
+        "S348": "retained-map",
+        "S349": "retained-map",
+        "S350": "retained-map",
+        "S351": "retained-map",
+        "S352": "0xc0160",
+        "S353": "retained-map",
+        "S354": "0xc3cb0",
+        "S355": "retained-map",
+        "S356": "retained-map",
+        "S357": "retained-map",
+        "S358": "retained-map",
+        "S359": "retained-map",
+        "S360": "retained-map",
+        "S361": "retained-map",
+        "S362": "retained-map",
+        "S363": "retained-map",
+        "S364": "retained-map",
+        "S365": "retained-map",
+        "S366": "retained-map",
+        "S367": "retained-map",
+        "S368": "retained-map",
+        "S369": "retained-map",
+        "S370": "retained-map",
+        "S371": "retained-map",
+        "S372": "retained-map",
+        "S373": "retained-map",
+        "S374": "retained-map",
+        "S375": "retained-map",
+        "S376": "retained-map",
+        "S377": "retained-map",
+        "S378": "retained-map",
+        "S379": "retained-map",
+        "S380": "retained-map",
+        "S381": "retained-map",
+        "S382": "retained-map",
+        "S383": "0xc35e4",
+        "S384": "retained-map",
+        "S385": "retained-map",
+        "S386": "retained-map",
+        "S387": "0xc40dc",
+        "S388": "retained-map",
+        "S389": "retained-map",
+        "S390": "retained-map",
+        "S391": "retained-map",
+        "S392": "retained-map",
+        "S393": "retained-map",
+        "S394": "retained-map",
+        "S395": "retained-map",
+        "S396": "retained-map",
+        "S397": "retained-map",
+        "S398": "retained-map",
+        "S399": "retained-map",
+        "S400": "retained-map",
+        "S401": "retained-map",
+        "S402": "retained-map",
+        "S403": "retained-map",
+        "S404": "retained-map",
+        "S405": "retained-map",
+        "S406": "retained-map",
+        "S407": "retained-map",
+        "S408": "retained-map",
+        "S409": "0xc3d8c",
+        "S410": "retained-map",
+        "S411": "retained-map",
+        "S412": "retained-map",
+        "S413": "0xbe5c8",
+        "S414": "retained-map",
+        "S415": "retained-map",
+        "S416": "retained-map",
+        "S417": "retained-map",
+        "S418": "retained-map",
+        "S419": "retained-map",
+        "S420": "retained-map",
+        "S421": "retained-map",
+        "S422": "retained-map",
+        "S423": "retained-map",
+        "S424": "retained-map",
+        "S425": "retained-map",
+        "S426": "0xc4a34",
+        "S427": "retained-map",
+        "S428": "retained-map",
+        "S429": "retained-map",
+        "S430": "retained-map",
+        "S431": "retained-map",
+        "S432": "retained-map",
+        "S433": "retained-map",
+        "S434": "retained-map",
+        "S435": "retained-map",
+        "S436": "retained-map",
+        "S437": "retained-map",
+        "S438": "retained-map",
+        "S439": "retained-map",
+        "S440": "retained-map",
+        "S441": "retained-map",
+        "S442": "retained-map",
+        "S443": "retained-map",
+        "S444": "retained-map",
+        "S445": "retained-map",
+        "S446": "retained-map",
+        "S447": "retained-map",
+        "S448": "retained-map",
+        "S449": "retained-map",
+        "S450": "retained-map",
+        "S451": "retained-map",
+        "S452": "0xc395c",
+        "S453": "retained-map",
+        "S454": "retained-map",
+        "S455": "retained-map",
+        "S456": "retained-map",
+        "S457": "retained-map",
+        "S458": "0xc06cc",
+        "S459": "retained-map",
+        "S460": "0xb74a4",
+        "S461": "retained-map",
+        "S462": "0xc06c0",
+        "S463": "retained-map",
+        "S464": "retained-map",
+        "S465": "retained-map",
+        "S466": "retained-map",
+        "S467": "retained-map",
+        "S468": "0xc0bf0",
+        "S469": "retained-map",
+        "S470": "retained-map",
+        "S471": "retained-map",
+        "S472": "retained-map",
+        "S473": "retained-map",
+        "S474": "retained-map",
+        "S475": "retained-map",
+        "S476": "retained-map",
+        "S477": "retained-map",
+        "S478": "0xbf25c",
+        "S479": "retained-map",
+        "S480": "retained-map",
+        "S481": "retained-map",
+        "S482": "retained-map",
+        "S483": "retained-map",
+        "S484": "retained-map",
+        "S485": "0xf4f4",
+        "S486": "retained-map",
+        "S487": "0xbd630",
+        "S488": "retained-map",
+        "S489": "retained-map",
+        "S490": "0xbded8",
+        "S491": "retained-map",
+        "S492": "0xbc494",
+        "S493": "retained-map",
+        "S494": "0xbb7ec",
+        "S495": "retained-map",
+        "S496": "retained-map",
+        "S497": "retained-map",
+        "S498": "retained-map",
+        "S499": "0xbe308",
+        "S500": "retained-map",
+        "S501": "retained-map",
+        "S502": "retained-map",
+        "S503": "0xbd094",
+        "S504": "retained-map",
+        "S505": "0x3c3d4",
+        "S506": "retained-map",
+        "S507": "0xbe210",
+        "S508": "retained-map",
+        "S509": "0xbd228",
+        "S510": "retained-map",
+        "S511": "0xbb970",
+        "S512": "retained-map",
+        "S513": "0xc3a9c",
+        "S514": "retained-map",
+        "S515": "retained-map",
+        "S516": "0xbdc0c",
+        "S517": "retained-map",
+        "S518": "retained-map",
+        "S519": "0xc0c34",
+        "S520": "retained-map",
+        "S521": "0xbe23c",
+        "S522": "retained-map",
+        "S523": "0xbd24c",
+        "S524": "retained-map",
+        "S525": "0xc2870",
+        "S526": "retained-map",
+        "S527": "0xc09e4",
+        "S528": "retained-map",
+        "S529": "retained-map",
+        "S530": "retained-map",
+        "S531": "retained-map",
+        "S532": "retained-map",
+        "S533": "retained-map",
+        "S534": "retained-map",
+        "S535": "retained-map",
+        "S536": "retained-map",
+        "S537": "retained-map",
+        "S538": "retained-map",
+        "S539": "retained-map",
+        "S540": "retained-map",
+        "S541": "retained-map",
+        "S542": "retained-map",
+        "S543": "retained-map",
+        "S544": "retained-map",
+        "S545": "0xa34f0",
+        "S546": "retained-map",
+        "S547": "retained-map",
+        "S548": "retained-map",
+        "S549": "0xbe98c",
+        "S550": "retained-map",
+        "S551": "0x4c964",
+        "S552": "retained-map",
+        "S553": "retained-map",
+        "S554": "0xc2310",
+        "S555": "retained-map",
+        "S556": "retained-map",
+        "S557": "retained-map",
+        "S558": "retained-map",
+        "S559": "0x4ca00",
+        "S560": "retained-map",
+        "S561": "retained-map",
+        "S562": "0x34c64",
+        "S563": "retained-map",
+        "S564": "0x36644",
+        "S565": "retained-map",
+        "S566": "0xc49c4",
+        "S567": "retained-map",
+        "S568": "retained-map",
+        "S569": "retained-map",
+        "S570": "retained-map",
+        "S571": "retained-map",
+        "S572": "retained-map",
+        "S573": "retained-map",
+        "S574": "0xc2f58",
+        "S575": "retained-map",
+        "S576": "retained-map",
+        "S577": "0xc353c",
+        "S578": "retained-map",
+        "S579": "retained-map",
+        "S580": "retained-map",
+        "S581": "retained-map",
+        "S582": "0xc1318",
+        "S583": "retained-map",
+        "S584": "retained-map",
+        "S585": "0xbfc28",
+        "S586": "retained-map",
+        "S587": "retained-map",
+        "S588": "retained-map",
+        "S589": "retained-map",
+        "S590": "retained-map",
+        "S591": "retained-map",
+        "S592": "retained-map",
+        "S593": "retained-map",
+        "S594": "retained-map",
+        "S595": "retained-map",
+        "S596": "retained-map",
+        "S597": "0xbf2fc",
+        "S598": "retained-map",
+        "S599": "retained-map",
+        "S600": "retained-map",
+        "S601": "retained-map",
+        "S602": "retained-map",
+        "S603": "retained-map",
+        "S604": "retained-map",
+        "S605": "retained-map",
+        "S606": "retained-map",
+        "S607": "retained-map",
+        "S608": "retained-map",
+        "S609": "retained-map",
+        "S610": "retained-map",
+        "S611": "retained-map",
+        "S612": "retained-map",
+        "S613": "retained-map",
+        "S614": "0xba86c",
+        "S615": "retained-map",
+        "S616": "0xbad64",
+        "S617": "retained-map",
+        "S618": "retained-map",
+        "S619": "retained-map",
+        "S620": "retained-map",
+        "S621": "retained-map",
+        "S622": "retained-map",
+        "S623": "retained-map",
+        "S624": "retained-map",
+        "S625": "retained-map",
+        "S626": "retained-map",
+        "S627": "retained-map",
+        "S628": "retained-map",
+        "S629": "retained-map",
+        "S630": "retained-map",
+        "S631": "retained-map",
+        "S632": "retained-map",
+        "S633": "retained-map",
+        "S634": "retained-map",
+        "S635": "retained-map",
+        "S636": "retained-map",
+        "S637": "retained-map",
+        "S638": "retained-map",
+        "S639": "retained-map",
+        "S640": "0xbe4e8",
+        "S641": "retained-map",
+        "S642": "retained-map",
+        "S643": "retained-map",
+        "S644": "retained-map",
+        "S645": "retained-map",
+        "S646": "retained-map",
+        "S647": "retained-map",
+        "S648": "retained-map",
+        "S649": "retained-map",
+        "S650": "retained-map",
+        "S651": "retained-map",
+        "S652": "retained-map",
+        "S653": "retained-map",
+        "S654": "retained-map",
+        "S655": "retained-map",
+        "S656": "retained-map",
+        "S657": "retained-map",
+        "S658": "retained-map",
+        "S659": "retained-map",
+        "S660": "retained-map",
+        "S661": "0xc4864",
+        "S662": "retained-map",
+        "S663": "retained-map",
+        "S664": "retained-map",
+        "S665": "retained-map",
+        "S666": "retained-map",
+        "S667": "retained-map",
+        "S668": "0xbf4b4",
+        "S669": "retained-map",
+        "S670": "retained-map",
+        "S671": "retained-map",
+        "S672": "0xc2adc",
+        "S673": "retained-map",
+        "S674": "retained-map",
+        "S675": "retained-map",
+        "S676": "retained-map",
+        "S677": "retained-map",
+        "S678": "retained-map",
+        "S679": "retained-map",
+        "S680": "retained-map",
+        "S681": "retained-map",
+        "S682": "retained-map",
+        "S683": "retained-map",
+        "S684": "retained-map",
+        "S685": "retained-map",
+        "S686": "retained-map",
+        "S687": "retained-map",
+        "S688": "retained-map",
+        "S689": "retained-map",
+        "S690": "retained-map",
+        "S691": "retained-map",
+        "S692": "retained-map",
+        "S693": "retained-map",
+        "S694": "retained-map",
+        "S695": "retained-map",
+        "S696": "retained-map",
+        "S697": "retained-map",
+        "S698": "retained-map",
+        "S699": "retained-map",
+        "S700": "retained-map",
+        "S701": "retained-map",
+        "S702": "retained-map",
+        "S703": "0xc3974",
+        "S704": "retained-map",
+        "S705": "retained-map",
+        "S706": "retained-map",
+        "S707": "retained-map",
+        "S708": "retained-map",
+        "S709": "retained-map",
+        "S710": "retained-map",
+        "S711": "retained-map",
+        "S712": "retained-map",
+        "S713": "retained-map",
+        "S714": "retained-map",
+        "S715": "retained-map",
+        "S716": "0xba7b4",
+        "S717": "retained-map",
+        "S718": "retained-map",
+        "S719": "0xbbfdc",
+        "S720": "retained-map",
+        "S721": "retained-map",
+        "S722": "0xa31bc",
+        "S723": "retained-map",
+        "S724": "retained-map",
+        "S725": "0xc38c4",
+        "S726": "retained-map",
+        "S727": "0xbf840",
+        "S728": "retained-map",
+        "S729": "retained-map",
+        "S730": "retained-map",
+        "S731": "retained-map",
+        "S732": "retained-map",
+        "S733": "retained-map"
+      }
+    },
+    {
+      "base": "0xbdbdc",
+      "symbol": "_OUTLINED_FUNCTION_603",
+      "ids": {
+        "S0": "retained-map",
+        "S1": "retained-map"
+      }
+    }
+  ],
+  "decoder": [
+    {
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x5281c",
+        "--stop-address=0x52820",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_sha256": "20c8d4e862d4cf6aaf2023b70e150821102c54e7a43186a04cbf5a39db0380db",
+      "bytes": 577,
+      "range": [
+        "0x5281c",
+        "0x52820"
+      ]
+    },
+    {
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x4f918",
+        "--stop-address=0x51d30",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_sha256": "df4523009f3beeba40106fdc233f86745eb560b2229f2177b7007bd46c91113c",
+      "bytes": 202934,
+      "range": [
+        "0x4f918",
+        "0x51d30"
+      ]
+    },
+    {
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbdbdc",
+        "--stop-address=0xbdbe4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e475ee89bb3cd62abc98bc3c7c6111f03899eea2b9b248c3c06261c7b8a060b5",
+      "bytes": 359,
+      "range": [
+        "0xbdbdc",
+        "0xbdbe4"
+      ]
+    }
+  ],
+  "old_to_new": [
+    {
+      "old_caller": "_$s17P08CounterRuntime17counterVerifyPlan_6canvas6bounds5valueSix_18GiftUISemanticCore23SemanticRecordReferenceV0J2UI4RectVs5UInt8Vt0J9UIDrawing07DrawingF4ViewRzAH8IdentityRtzlF0J15UIRuntimeStatic0xnT9WorkspaceVyAA0xbtY0VG_Tg5",
+      "old_site": "0xb870",
+      "new_sites": [
+        "0xb870"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$s17P08CounterRuntime17counterVerifyPlan_6canvas6bounds5valueSix_18GiftUISemanticCore23SemanticRecordReferenceV0J2UI4RectVs5UInt8Vt0J9UIDrawing07DrawingF4ViewRzAH8IdentityRtzlF0J16UIRuntimeDynamic0xtF9WorkspaceV_Tg5",
+      "old_site": "0xbb78",
+      "new_sites": [
+        "0xbb78"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "old_site": "0x19e4c",
+      "new_sites": [
+        "0x19e4c"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g504$s17ab90Runtime07DynamicB14ProfileStorageV5audit17GiftUIRuntimeCore0cE16ValidationResultOyFyAA0bF6L6VXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnc_n",
+      "old_site": "0x3eb1c",
+      "new_sites": [
+        "0x3eb1c"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g504$s17ab90Runtime07DynamicB14ProfileStorageV5audit17GiftUIRuntimeCore0cE16ValidationResultOyFyAA0bF6L6VXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnc_n",
+      "old_site": "0x3eb40",
+      "new_sites": [
+        "0x3eb40"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g5",
+      "old_site": "0x40aa0",
+      "new_sites": [
+        "0x40aa0"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g5",
+      "old_site": "0x40ac4",
+      "new_sites": [
+        "0x40ac4"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "old_site": "0xa37a4",
+      "new_sites": [
+        "0xa37a4"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "old_site": "0xa38ac",
+      "new_sites": [
+        "0xa38ac"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "old_site": "0xa39a8",
+      "new_sites": [
+        "0xa39a8"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_OUTLINED_FUNCTION_198",
+      "old_site": "0xbb6dc",
+      "new_sites": [
+        "0xbb6dc"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_OUTLINED_FUNCTION_310",
+      "old_site": "0xbc45c",
+      "new_sites": [
+        "0xbc45c"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_OUTLINED_FUNCTION_472",
+      "old_site": "0xbd230",
+      "new_sites": [
+        "0xbd230"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_OUTLINED_FUNCTION_474",
+      "old_site": "0xbd254",
+      "new_sites": [
+        "0xbd254"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_OUTLINED_FUNCTION_564",
+      "old_site": "0xbd948",
+      "new_sites": [
+        "0xbd948"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_OUTLINED_FUNCTION_603",
+      "old_site": "0xbdbe0",
+      "new_sites": [
+        "0xbdbe0"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    },
+    {
+      "old_caller": "_OUTLINED_FUNCTION_677",
+      "old_site": "0xbe2e0",
+      "new_sites": [
+        "0xbe2e0"
+      ],
+      "status": "exactsymbol+offsetmatch"
+    }
+  ],
+  "indirect_on_reachable_nodes": [
+    {
+      "caller": "0x8534",
+      "sites": [
+        {
+          "site": 34616,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x12264",
+      "sites": [
+        {
+          "site": 74388,
+          "op": "blr",
+          "target": null
+        },
+        {
+          "site": 74460,
+          "op": "blr",
+          "target": null
+        },
+        {
+          "site": 74484,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x15554",
+      "sites": [
+        {
+          "site": 87424,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x1562c",
+      "sites": [
+        {
+          "site": 87648,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x15790",
+      "sites": [
+        {
+          "site": 88016,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x15870",
+      "sites": [
+        {
+          "site": 88232,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x15938",
+      "sites": [
+        {
+          "site": 88432,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x15c00",
+      "sites": [
+        {
+          "site": 91992,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 92664,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 93428,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 94420,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 94868,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 94908,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 94984,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 95068,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 95128,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 95192,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 96268,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 96308,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 97272,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 97704,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x18594",
+      "sites": [
+        {
+          "site": 99836,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 99952,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 99980,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 100448,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 100492,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 100568,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x19a1c",
+      "sites": [
+        {
+          "site": 105036,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x1bdb0",
+      "sites": [
+        {
+          "site": 114824,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 114920,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 114984,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 115048,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x1f40c",
+      "sites": [
+        {
+          "site": 128312,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 128432,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 128524,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x21d88",
+      "sites": [
+        {
+          "site": 138912,
+          "op": "br",
+          "target": null
+        },
+        {
+          "site": 139008,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x24100",
+      "sites": [
+        {
+          "site": 147964,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x44b88",
+      "sites": [
+        {
+          "site": 282020,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x4d9b0",
+      "sites": [
+        {
+          "site": 317992,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x4ddc8",
+      "sites": [
+        {
+          "site": 319112,
+          "op": "br",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x7cef4",
+      "sites": [
+        {
+          "site": 511772,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x7cf6c",
+      "sites": [
+        {
+          "site": 511892,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x7cfe4",
+      "sites": [
+        {
+          "site": 512012,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0x7d05c",
+      "sites": [
+        {
+          "site": 512132,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0xb6b80",
+      "sites": [
+        {
+          "site": 748448,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0xb6bb4",
+      "sites": [
+        {
+          "site": 748500,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0xb6c44",
+      "sites": [
+        {
+          "site": 748644,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0xb6d38",
+      "sites": [
+        {
+          "site": 748888,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    },
+    {
+      "caller": "0xb74a4",
+      "sites": [
+        {
+          "site": 750784,
+          "op": "blr",
+          "target": null
+        }
+      ]
+    }
+  ],
+  "imported_calls_on_reachable_nodes": [
+    {
+      "caller": 288,
+      "site": 328,
+      "op": "bl",
+      "symbol": "_swift_getWitnessTable",
+      "relocation_index": 34198,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 3052,
+      "site": 3104,
+      "op": "bl",
+      "symbol": "_swift_getTypeByMangledNameInContext2",
+      "relocation_index": 34035,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34180,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 32569,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34192,
+      "op": "bl",
+      "symbol": "_$s21GiftUIObservableState24ObservableModelOwnershipV16operationAllowed9discoveryAA0dC5ErrorOSgSb_tF",
+      "relocation_index": 32568,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34232,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 32567,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34244,
+      "op": "bl",
+      "symbol": "_$s21GiftUIObservableState24ObservableModelOwnershipV16operationAllowed9discoveryAA0dC5ErrorOSgSb_tF",
+      "relocation_index": 32566,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34320,
+      "op": "bl",
+      "symbol": "_swift_willThrowTypedImpl",
+      "relocation_index": 32562,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34360,
+      "op": "bl",
+      "symbol": "_swift_willThrowTypedImpl",
+      "relocation_index": 32558,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34396,
+      "op": "bl",
+      "symbol": "_swift_willThrowTypedImpl",
+      "relocation_index": 32554,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34452,
+      "op": "bl",
+      "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF",
+      "relocation_index": 32547,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34684,
+      "op": "bl",
+      "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8shutdownyyAA0dC5ErrorOYKF",
+      "relocation_index": 32543,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34744,
+      "op": "bl",
+      "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8shutdownyyAA0dC5ErrorOYKF",
+      "relocation_index": 32542,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34772,
+      "op": "bl",
+      "symbol": "_swift_willThrowTypedImpl",
+      "relocation_index": 32538,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 34100,
+      "site": 34864,
+      "op": "bl",
+      "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF",
+      "relocation_index": 32529,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 54588,
+      "site": 54664,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 31814,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 54588,
+      "site": 54692,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 31813,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 62708,
+      "site": 62880,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 31442,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 63332,
+      "site": 63568,
+      "op": "bl",
+      "symbol": "_$s17GiftUIRuntimeCore20RuntimeProfileLimitsV7records6models8semantic36maximumSemanticStructuralOccurrences6layout6render0O9Workspace0O4Sink0J24OrdinaryRenderOperations9execution15observableState11interaction7drawing12staticCanvas7profileACSgAA0d6RecordF0V_AA0d5ModelF0V0a10UISemanticC00k9ExpansionF0Vs6UInt16V0A8UILayout06LayoutF0V0A16UIRenderLowering0sF0VA4_0sP8CapacityV0a8UIRenderC00sQ8CapacityVA0_0A11UIExecution09ExecutionF0V0a12UIObservableW0010ObservablewF0V0A13UIInteraction011InteractionF0V0A9UIDrawing07DrawingF0VA21_012StaticCanvasF0VSgAA0dE4KindOtcfC",
+      "relocation_index": 31416,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 63656,
+      "site": 63668,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 31411,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 67732,
+      "site": 67776,
+      "op": "bl",
+      "symbol": "_memset",
+      "relocation_index": 31295,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 69824,
+      "site": 69856,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 31256,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 71640,
+      "site": 71672,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 31162,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74340,
+      "site": 74524,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 30977,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74876,
+      "site": 74948,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 30940,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74876,
+      "site": 74964,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 30939,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74876,
+      "site": 74988,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 30938,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74876,
+      "site": 75028,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 30937,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74876,
+      "site": 75072,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 30936,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74876,
+      "site": 75104,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 30934,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74876,
+      "site": 75132,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 30932,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 74876,
+      "site": 75184,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 30929,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 87596,
+      "site": 87692,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 30500,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 87596,
+      "site": 87864,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 30495,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 87596,
+      "site": 87884,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 30492,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 87596,
+      "site": 87948,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 30489,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 88576,
+      "site": 88768,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 30448,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 91696,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15LayoutWorkspaceV20reservedPayloadBytess6UInt64Vvg",
+      "relocation_index": 30398,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 92200,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageV20reservedPayloadBytess6UInt64Vvg",
+      "relocation_index": 30379,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 92936,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV8capacityAC0A9UIDrawing0D6LimitsV_tcfC",
+      "relocation_index": 30327,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 92952,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15LivePathStorageV20reservedPayloadBytess6UInt64Vvg",
+      "relocation_index": 30326,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 92968,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV24planReservedPayloadBytess6UInt64Vvg",
+      "relocation_index": 30325,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 93688,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15RenderWorkspaceV8capacity18structuralCapacityAC0A16UIRenderLowering0D6LimitsV_AF0deH0VtcfC",
+      "relocation_index": 30272,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 93696,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15RenderWorkspaceV20reservedPayloadBytesSivg",
+      "relocation_index": 30271,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 94940,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 30216,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 89088,
+      "site": 98428,
+      "op": "bl",
+      "symbol": "_memmove",
+      "relocation_index": 29959,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 99272,
+      "site": 99444,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 29903,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 99732,
+      "site": 101000,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 29827,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 99732,
+      "site": 101720,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 29795,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 103816,
+      "site": 103864,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV11strokeCounts6UInt16Vvg",
+      "relocation_index": 29739,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 103816,
+      "site": 103892,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV10pointCounts6UInt16Vvg",
+      "relocation_index": 29737,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 103816,
+      "site": 103916,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV12subpathCounts6UInt16Vvg",
+      "relocation_index": 29734,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 104988,
+      "site": 105016,
+      "op": "bl",
+      "symbol": "_swift_isUniquelyReferenced_nonNull_native",
+      "relocation_index": 29655,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 104988,
+      "site": 105100,
+      "op": "bl",
+      "symbol": "_malloc_size",
+      "relocation_index": 29650,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 105956,
+      "site": 105976,
+      "op": "bl",
+      "symbol": "_swift_isUniquelyReferenced_nonNull_native",
+      "relocation_index": 29592,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 105956,
+      "site": 106060,
+      "op": "bl",
+      "symbol": "_swift_allocObject",
+      "relocation_index": 29585,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 105956,
+      "site": 106068,
+      "op": "bl",
+      "symbol": "_malloc_size",
+      "relocation_index": 29584,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 105956,
+      "site": 106092,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 29583,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 112056,
+      "site": 112484,
+      "op": "bl",
+      "symbol": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE5state020maximumComponentsPerE00hI0ACyxq_q0_GSgAA0cF0Vyxq_q0_G_s6UInt16Vs6UInt32VtcfC",
+      "relocation_index": 29229,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 112056,
+      "site": 112636,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 29225,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 112668,
+      "site": 113112,
+      "op": "bl",
+      "symbol": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE5state020maximumComponentsPerE00hI0ACyxq_q0_GSgAA0cF0Vyxq_q0_G_s6UInt16Vs6UInt32VtcfC",
+      "relocation_index": 29217,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 112668,
+      "site": 113196,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 29213,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 113360,
+      "site": 114092,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 29179,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 215464,
+      "site": 215700,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 25897,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 215464,
+      "site": 215828,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 25895,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 215464,
+      "site": 215844,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 25894,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 215464,
+      "site": 216012,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 25884,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 216016,
+      "site": 216132,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 25876,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 216016,
+      "site": 216160,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 25873,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 216240,
+      "site": 217484,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15RenderWorkspaceV27visitRetainedPayloadExtentsyyySi_S3itXEF",
+      "relocation_index": 25799,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 216240,
+      "site": 217648,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15RenderWorkspaceV20reservedPayloadBytesSivg",
+      "relocation_index": 25790,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 216240,
+      "site": 217708,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15RenderWorkspaceV27visitRetainedPayloadExtentsyyySi_S3itXEF",
+      "relocation_index": 25785,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 216240,
+      "site": 219704,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 25675,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 219996,
+      "site": 220088,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 25662,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 221040,
+      "site": 221116,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15LayoutWorkspaceV20reservedPayloadBytess6UInt64Vvg",
+      "relocation_index": 25634,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 221040,
+      "site": 221192,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15LayoutWorkspaceV27visitRetainedPayloadExtentsyyySi_S3itXEF",
+      "relocation_index": 25629,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 221308,
+      "site": 221364,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageV20reservedPayloadBytess6UInt64Vvg",
+      "relocation_index": 25625,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 221308,
+      "site": 221428,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageV27visitRetainedPayloadExtentsyyySi_S3itXEF",
+      "relocation_index": 25619,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 221556,
+      "site": 221620,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV24planReservedPayloadBytess6UInt64Vvg",
+      "relocation_index": 25607,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 221556,
+      "site": 221692,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV24visitRetainedPathExtentsyyySi_S3itXEF",
+      "relocation_index": 25601,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 221556,
+      "site": 221744,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV013visitRetainedE7ExtentsyyySi_S3itXEF",
+      "relocation_index": 25595,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 246564,
+      "site": 246696,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 24136,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 246564,
+      "site": 246736,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 24131,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 246740,
+      "site": 247156,
+      "op": "bl",
+      "symbol": "_$s23GiftUIHostConfiguration23HostNormalizedInputGateV16configuredSource24nextSubmittedSequenceRawAC0A2UI0fI2IDV_s6UInt32VSgtcfC",
+      "relocation_index": 24112,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 246740,
+      "site": 247356,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 24105,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 247360,
+      "site": 247508,
+      "op": "bl",
+      "symbol": "_$s21GiftUIObservableState010ObservableC11RootControlVACycfC",
+      "relocation_index": 24093,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 247360,
+      "site": 247692,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 24080,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 248064,
+      "site": 248352,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 24033,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 248896,
+      "site": 254408,
+      "op": "bl",
+      "symbol": "_$s17GiftUIRuntimeCore24RuntimeStorageByteCountsV26semanticCandidatePathBytes0h9PublishedjK00hi7PayloadK00hlmK0022identityMatchWorkspaceK0011interactioni8IdentityK00q9CommittedrK0013modelMetadataK00t5OwnerK008framePinK00hiK00hlK006layoutiK006renderpK0014canvasCallableK004pathpK0011drawingPlanK0014observableLiveK0010observableiK00qiK00qsK0014admissionQueueK0011sealedBatchK0012pointerStateK0016coordinatorStateK0012failureStateK0ACs6UInt32V_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_A3_tcfC",
+      "relocation_index": 23818,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 248896,
+      "site": 255104,
+      "op": "bl",
+      "symbol": "_$s17GiftUIRuntimeCore23RuntimeProfileValidatorO15validateDynamic6inputs10capacitiesAA0dE16ValidationResultOAA0dE11LimitInputsV_AA0D17StorageCapacitiesVtFZ",
+      "relocation_index": 23809,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 248896,
+      "site": 255120,
+      "op": "bl",
+      "symbol": "_$s17GiftUIRuntimeCore23RuntimeProfileValidatorO14validateStatic6inputs10capacities8metadataAA0dE16ValidationResultOAA0dE11LimitInputsV_AA0D17StorageCapacitiesVxtAA0dH19CanvasAuditMetadataRzlFZ",
+      "relocation_index": 23806,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 248896,
+      "site": 255172,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 23805,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 281480,
+      "site": 282312,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 23064,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 310288,
+      "site": 310852,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 21405,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 311564,
+      "site": 311636,
+      "op": "bl",
+      "symbol": "_swift_retain",
+      "relocation_index": 21354,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 311564,
+      "site": 311648,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21SemanticRecordStorageC15retainedExtentsSi7records_Si5pathsSi8payloadsSi7scalarsSi11recordBytesSi04pathN0Si07payloadN0Si07controlN0tvg",
+      "relocation_index": 21353,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 311564,
+      "site": 311700,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+      "relocation_index": 21351,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 311564,
+      "site": 311888,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21SemanticRecordStorageC13storageLimits0A14UISemanticCore0deH0Vvg",
+      "relocation_index": 21345,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 311564,
+      "site": 312060,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 21335,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 314368,
+      "site": 314440,
+      "op": "bl",
+      "symbol": "_$s21GiftUIObservableState010ObservableC11RootControlVACycfC",
+      "relocation_index": 21245,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 314368,
+      "site": 314648,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 21235,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 317872,
+      "site": 317960,
+      "op": "bl",
+      "symbol": "_$s23GiftUIHostConfiguration17HostComponentRoleO8rawValueACSgs5UInt8V_tcfC",
+      "relocation_index": 21042,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 317872,
+      "site": 318128,
+      "op": "bl",
+      "symbol": "_$s23GiftUIHostConfiguration28HostComponentGraphValidationO8validateyAA0dC5ErrorOSgxAA0deF4ViewRzlFZ",
+      "relocation_index": 21040,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 317872,
+      "site": 318172,
+      "op": "bl",
+      "symbol": "_$s23GiftUIHostConfiguration28HostComponentGraphValidationO8validateyAA0dC5ErrorOSgxAA0deF4ViewRzlFZ",
+      "relocation_index": 21031,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318408,
+      "site": 318464,
+      "op": "bl",
+      "symbol": "_$s23GiftUIHostConfiguration28HostComponentGraphValidationO8validateyAA0dC5ErrorOSgxAA0deF4ViewRzlFZ",
+      "relocation_index": 21019,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318408,
+      "site": 318720,
+      "op": "bl",
+      "symbol": "_$s23GiftUIHostConfiguration20HostValidationResultO21__derived_enum_equalsySbAC_ACtFZ",
+      "relocation_index": 21004,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319004,
+      "op": "bl",
+      "symbol": "_$s23GiftUIHostConfiguration28HostComponentGraphValidationO8validateyAA0dC5ErrorOSgxAA0deF4ViewRzlFZ",
+      "relocation_index": 20987,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319408,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities18RasterOperationSetV16opaqueRectanglesACvau",
+      "relocation_index": 20980,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319416,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities18RasterOperationSetV14positionedTextACvau",
+      "relocation_index": 20979,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319424,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities18RasterOperationSetV19straightLineStrokesACvau",
+      "relocation_index": 20978,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319432,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities18RasterOperationSetV8clippingACvau",
+      "relocation_index": 20977,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319440,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities18RasterOperationSetV6damageACvau",
+      "relocation_index": 20976,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319460,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities25CanonicalPixelEncodingSetV8rgba8888ACvau",
+      "relocation_index": 20975,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319472,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities21SubmissionLifetimeSetV17synchronousBorrowACvau",
+      "relocation_index": 20974,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319520,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities29RasterPresentationRequirementV10operations6extent15operationStream17acceptedEncodings0J19SubmissionLifetimes07maximumC5Bytes0n7PayloadO00n8InFlightO07absenceACSgAA0C12OperationSetV_AA16CapabilityExtentVAA0tI8LifetimeOAA022CanonicalPixelEncodingU0VAA0lxU0VAA0V9ByteCountVA2yA0V7AbsenceOtcfC",
+      "relocation_index": 20973,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319608,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities29RasterRealizationContributionV4kind10operations15operationStream9encodings27producedSubmissionLifetimes13maximumExtent0N11RegionWidth0nP6Height16rowByteAlignment0nC5Bytes0n7PayloadV0ACSgAA0cD4KindO_AA0C12OperationSetVAA0yI8LifetimeOAA022CanonicalPixelEncodingZ0VAA0l8LifetimeZ0VAA010CapabilityO0Vs6UInt16VA1_A1_AA010CapabilityT5CountVA3_tcfC",
+      "relocation_index": 20972,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319708,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities26RenderProducerContributionV10operations15operationStreamACSgAA18RasterOperationSetV_AA0jH8LifetimeOtcfC",
+      "relocation_index": 20968,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319796,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities25RasterBackendContributionV7primary9alternateACSgAA0c11RealizationE0V_AHSgtcfC",
+      "relocation_index": 20965,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319888,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities20SubmissionHandoffSetV11synchronousACvau",
+      "relocation_index": 20962,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 319936,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities26SurfaceDisplayContributionV6extent9encodings27acceptedSubmissionLifetimes8handoffs18maximumRegionWidth0lM6Height16rowByteAlignment0L13InFlightCount0lsT5BytesACSgAA16CapabilityExtentV_AA25CanonicalPixelEncodingSetVAA0I11LifetimeSetVAA0I10HandoffSetVs6UInt16VA2Ws5UInt8VAA0wqU0VtcfC",
+      "relocation_index": 20961,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 320000,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities24RasterRealizationKindSetV11fullSurfaceACvau",
+      "relocation_index": 20957,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 320032,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities24RasterPresentationPolicyV07maximumC5Bytes0f7PayloadG00f8InFlightG019allowedRealizations0K9Encodings20preferredRealization0N8EncodingACSgAA19CapabilityByteCountV_A2mA0cO7KindSetVAA014CanonicalPixelpU0VAA0coT0OAQtcfC",
+      "relocation_index": 20956,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 320188,
+      "op": "bl",
+      "symbol": "_$s18GiftUICapabilities26RasterPresentationResolverO7resolve11requirement13contributions9workspaceAA0cD10ResolutionOAA0cD11RequirementV_AA0cD13ContributionsVAA0cdE9WorkspaceVztFZ",
+      "relocation_index": 20952,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 320272,
+      "op": "bl",
+      "symbol": "_$s17GiftUISurfaceCore23RasterSurfaceDescriptorV6bounds8encoding11bytesPerRow11realization11regionWidth0M6HeightACSg0A2UI4RectV_0A14UICapabilities22CanonicalPixelEncodingOs6UInt32VAN0D15RealizationKindOs6UInt16VAVtcfC",
+      "relocation_index": 20950,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 320336,
+      "op": "bl",
+      "symbol": "_$s16GiftUIRasterCore19RasterPayloadLimitsV07maximumD5Bytes0geH00g10RegionsPerE00g17RegionSubmissionsJ5Frame0g10TileVisitsjM00G16InFlightPayloads0g5GlyphdH00g15StrokeWorkspaceH0ACSgs6UInt32V_ANs6UInt16VA2Ns5UInt8VA2NtcfC",
+      "relocation_index": 20948,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 320428,
+      "op": "bl",
+      "symbol": "_$s19GiftUITextResources21TextResourceValidatorO8validate_9requiringAA0dE16ValidationResultOAA0dE7PackageVyxq_G_AA19RasterRealizationIDVtAA09CanonicalD11MetricsViewRzAA0dleQ0R_r0_lFZ",
+      "relocation_index": 20943,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 320908,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 20935,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 321644,
+      "op": "bl",
+      "symbol": "_$s23GiftUIHostConfiguration014CheckedMVPHostC9ValidatorV8validateAA20HostValidationResultOyF",
+      "relocation_index": 20915,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 318920,
+      "site": 322068,
+      "op": "bl",
+      "symbol": "_swift_once",
+      "relocation_index": 20895,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322220,
+      "site": 322348,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 20886,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 322512,
+      "op": "bl",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+      "relocation_index": 20873,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 322584,
+      "op": "bl",
+      "symbol": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF",
+      "relocation_index": 20868,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 322648,
+      "op": "bl",
+      "symbol": "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF",
+      "relocation_index": 20865,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 322708,
+      "op": "bl",
+      "symbol": "_$s6GiftUI20PresentationRevisionV8rawValueACs6UInt32V_tcfC",
+      "relocation_index": 20861,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 323644,
+      "op": "bl",
+      "symbol": "_$s6GiftUI4RectV8containsySbAA5PointVF",
+      "relocation_index": 20814,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 323896,
+      "op": "bl",
+      "symbol": "_$s17GiftUIInteraction21PointerGestureOutcomeO21__derived_enum_equalsySbACyxG_AEtFZ",
+      "relocation_index": 20796,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 323984,
+      "op": "bl",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+      "relocation_index": 20789,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 324052,
+      "op": "bl",
+      "symbol": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF",
+      "relocation_index": 20784,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 324076,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 20783,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 324100,
+      "op": "bl",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+      "relocation_index": 20781,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 324168,
+      "op": "bl",
+      "symbol": "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF",
+      "relocation_index": 20778,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 324232,
+      "op": "bl",
+      "symbol": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF",
+      "relocation_index": 20774,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 322352,
+      "site": 324500,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 20766,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 324508,
+      "site": 324536,
+      "op": "bl",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACycfC",
+      "relocation_index": 20764,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 324508,
+      "site": 324564,
+      "op": "bl",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+      "relocation_index": 20762,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 324672,
+      "site": 324756,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 20752,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 324672,
+      "site": 324984,
+      "op": "bl",
+      "symbol": "_putchar",
+      "relocation_index": 20750,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 329256,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20539,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 329264,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20538,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 329272,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20537,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 329292,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20535,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 330052,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 20494,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 330564,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20465,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 330572,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20464,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 330580,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20463,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 330596,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20460,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 331352,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20425,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 331360,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20424,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 332000,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20376,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 332008,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20375,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 332016,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20374,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 332352,
+      "op": "bl",
+      "symbol": "_$sSa28_allocateBufferUninitialized15minimumCapacitys06_ArrayB0VyxGSi_tFZ",
+      "relocation_index": 20358,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 333296,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20294,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 333308,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20292,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 333332,
+      "op": "bl",
+      "symbol": "_swift_release",
+      "relocation_index": 20289,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 333340,
+      "op": "bl",
+      "symbol": "_swift_release",
+      "relocation_index": 20288,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 333348,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20287,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 333700,
+      "op": "bl",
+      "symbol": "_$sSa28_allocateBufferUninitialized15minimumCapacitys06_ArrayB0VyxGSi_tFZ",
+      "relocation_index": 20274,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 334104,
+      "op": "bl",
+      "symbol": "_$s17GiftUIRuntimeCore28RuntimeCompletePipelineStageO8rawValueACSgs5UInt8V_tcfC",
+      "relocation_index": 20253,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 334628,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20217,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 334652,
+      "op": "bl",
+      "symbol": "_swift_release",
+      "relocation_index": 20214,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 334660,
+      "op": "bl",
+      "symbol": "_swift_release",
+      "relocation_index": 20213,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 334668,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 20212,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 325912,
+      "site": 335148,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 20195,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 335152,
+      "site": 335452,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 20181,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 335456,
+      "site": 335736,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 20167,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 335816,
+      "site": 335980,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15RenderWorkspaceV5resetyyF",
+      "relocation_index": 20159,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 335816,
+      "site": 335988,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV7discardyyF",
+      "relocation_index": 20158,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 335816,
+      "site": 335992,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV5resetyyF",
+      "relocation_index": 20157,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 335816,
+      "site": 336000,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15LayoutWorkspaceV05resetD0yyF",
+      "relocation_index": 20156,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 335816,
+      "site": 336008,
+      "op": "bl",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageV7discardyyF",
+      "relocation_index": 20155,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 335816,
+      "site": 336596,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 20116,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 362836,
+      "site": 362976,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 19107,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 362836,
+      "site": 363012,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 19104,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 366288,
+      "site": 366324,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 18932,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 366288,
+      "site": 366340,
+      "op": "bl",
+      "symbol": "_memset",
+      "relocation_index": 18931,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 366288,
+      "site": 366428,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 18930,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 491052,
+      "site": 491092,
+      "op": "bl",
+      "symbol": "_putchar",
+      "relocation_index": 13981,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 491052,
+      "site": 491212,
+      "op": "bl",
+      "symbol": "_putchar",
+      "relocation_index": 13980,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 491356,
+      "site": 491404,
+      "op": "bl",
+      "symbol": "_$s6GiftUI11BoundedTextVyACs5Int32VcfC",
+      "relocation_index": 13978,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 491356,
+      "site": 491440,
+      "op": "bl",
+      "symbol": "_$s6GiftUI11BoundedTextVyACs5Int32VcfC",
+      "relocation_index": 13975,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 491356,
+      "site": 491488,
+      "op": "bl",
+      "symbol": "_putchar",
+      "relocation_index": 13971,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 491356,
+      "site": 491520,
+      "op": "bl",
+      "symbol": "_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF",
+      "relocation_index": 13968,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 492932,
+      "site": 492956,
+      "op": "bl",
+      "symbol": "_putchar",
+      "relocation_index": 13801,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 492980,
+      "site": 493024,
+      "op": "bl",
+      "symbol": "_$s6GiftUI11BoundedTextVyACs5Int32VcfC",
+      "relocation_index": 13799,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 492980,
+      "site": 493072,
+      "op": "bl",
+      "symbol": "_putchar",
+      "relocation_index": 13798,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 617168,
+      "site": 617316,
+      "op": "bl",
+      "symbol": "___stack_chk_fail",
+      "relocation_index": 7199,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 667404,
+      "site": 667424,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6238,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 667428,
+      "site": 667440,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6237,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 667444,
+      "site": 667456,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6236,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 667812,
+      "site": 667832,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6185,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 668092,
+      "site": 668132,
+      "op": "bl",
+      "symbol": "_swift_getWitnessTable",
+      "relocation_index": 6140,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 668156,
+      "site": 668176,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6137,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 668912,
+      "site": 668948,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6082,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 668972,
+      "site": 669012,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6081,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 668972,
+      "site": 669020,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6080,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 668972,
+      "site": 669028,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6079,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 668972,
+      "site": 669036,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6078,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 668972,
+      "site": 669056,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6077,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669064,
+      "site": 669092,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6076,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669064,
+      "site": 669100,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6075,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669064,
+      "site": 669116,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6074,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669124,
+      "site": 669136,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6073,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669436,
+      "site": 669440,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6068,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669444,
+      "site": 669448,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 6067,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669480,
+      "site": 669604,
+      "op": "bl",
+      "symbol": "_swift_allocObject",
+      "relocation_index": 6062,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669480,
+      "site": 669612,
+      "op": "bl",
+      "symbol": "_malloc_size",
+      "relocation_index": 6061,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669480,
+      "site": 669684,
+      "op": "bl",
+      "symbol": "_memmove",
+      "relocation_index": 6058,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669480,
+      "site": 669704,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 6057,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669480,
+      "site": 669712,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6056,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669744,
+      "site": 669868,
+      "op": "bl",
+      "symbol": "_swift_allocObject",
+      "relocation_index": 6052,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669744,
+      "site": 669876,
+      "op": "bl",
+      "symbol": "_malloc_size",
+      "relocation_index": 6051,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669744,
+      "site": 669944,
+      "op": "bl",
+      "symbol": "_memmove",
+      "relocation_index": 6048,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669744,
+      "site": 669956,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 6047,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669744,
+      "site": 669964,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6046,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669996,
+      "site": 670120,
+      "op": "bl",
+      "symbol": "_swift_allocObject",
+      "relocation_index": 6042,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669996,
+      "site": 670128,
+      "op": "bl",
+      "symbol": "_malloc_size",
+      "relocation_index": 6041,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669996,
+      "site": 670200,
+      "op": "bl",
+      "symbol": "_memmove",
+      "relocation_index": 6038,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669996,
+      "site": 670220,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 6037,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 669996,
+      "site": 670228,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 6036,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 670780,
+      "site": 670860,
+      "op": "bl",
+      "symbol": "_swift_isUniquelyReferenced_nonNull_native",
+      "relocation_index": 6029,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 670780,
+      "site": 670964,
+      "op": "bl",
+      "symbol": "_memmove",
+      "relocation_index": 6027,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 672216,
+      "site": 672296,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 5972,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 672216,
+      "site": 672320,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 5971,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 672216,
+      "site": 672392,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 5969,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 672216,
+      "site": 672416,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 5967,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 672216,
+      "site": 672432,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 5966,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 672216,
+      "site": 672444,
+      "op": "bl",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+      "relocation_index": 5965,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 672216,
+      "site": 672512,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 5962,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 672216,
+      "site": 672528,
+      "op": "bl",
+      "symbol": "_memcpy",
+      "relocation_index": 5961,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 673496,
+      "site": 673508,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 5914,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 673512,
+      "site": 673532,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 5913,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 673772,
+      "site": 673792,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 5902,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 673816,
+      "site": 673856,
+      "op": "bl",
+      "symbol": "_swift_getWitnessTable",
+      "relocation_index": 5895,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 674816,
+      "site": 674848,
+      "op": "b",
+      "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF",
+      "relocation_index": 5856,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 690232,
+      "site": 690252,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 5356,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 746012,
+      "site": 746048,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 2312,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 746132,
+      "site": 746172,
+      "op": "bl",
+      "symbol": "_swift_getWitnessTable",
+      "relocation_index": 2303,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 746196,
+      "site": 746236,
+      "op": "bl",
+      "symbol": "_swift_getWitnessTable",
+      "relocation_index": 2292,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 746260,
+      "site": 746300,
+      "op": "bl",
+      "symbol": "_swift_getWitnessTable",
+      "relocation_index": 2281,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 746392,
+      "site": 746408,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 2276,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 748664,
+      "site": 748692,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRetain",
+      "relocation_index": 2152,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 748664,
+      "site": 748700,
+      "op": "bl",
+      "symbol": "_swift_bridgeObjectRetain",
+      "relocation_index": 2151,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 748664,
+      "site": 748716,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRetain",
+      "relocation_index": 2150,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749120,
+      "site": 749140,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 2130,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749164,
+      "site": 749184,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 2129,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749208,
+      "site": 749228,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 2128,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749252,
+      "site": 749272,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 2127,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749276,
+      "site": 749296,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 2126,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749276,
+      "site": 749324,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 2125,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749328,
+      "site": 749340,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 2124,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749344,
+      "site": 749364,
+      "op": "bl",
+      "symbol": "_bzero",
+      "relocation_index": 2123,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 749344,
+      "site": 749392,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 2122,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 762004,
+      "site": 762024,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1324,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 762028,
+      "site": 762048,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1323,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 762052,
+      "site": 762072,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1322,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 762076,
+      "site": 762096,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1321,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 764012,
+      "site": 764028,
+      "op": "b",
+      "symbol": "_swift_once",
+      "relocation_index": 1294,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 764436,
+      "site": 764448,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1287,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 764452,
+      "site": 764464,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1286,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 765284,
+      "site": 765300,
+      "op": "b",
+      "symbol": "_swift_once",
+      "relocation_index": 1235,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 766328,
+      "site": 766348,
+      "op": "b",
+      "symbol": "_$s17GiftUIInteraction31InteractionOwnedBankMeasurementV5count8capacity21retainedIdentitySlots0I12PayloadBytes10inlineSize0N6Stride0N9AlignmentACs6UInt16V_ALS5itcfC",
+      "relocation_index": 1210,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 766744,
+      "site": 766752,
+      "op": "b",
+      "symbol": "_putchar",
+      "relocation_index": 1192,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 767980,
+      "site": 768088,
+      "op": "b",
+      "symbol": "_$s17GiftUIRuntimeCore20RuntimeProfileLimitsV7records6models8semantic36maximumSemanticStructuralOccurrences6layout6render0O9Workspace0O4Sink0J24OrdinaryRenderOperations9execution15observableState11interaction7drawing12staticCanvas7profileACSgAA0d6RecordF0V_AA0d5ModelF0V0a10UISemanticC00k9ExpansionF0Vs6UInt16V0A8UILayout06LayoutF0V0A16UIRenderLowering0sF0VA4_0sP8CapacityV0a8UIRenderC00sQ8CapacityVA0_0A11UIExecution09ExecutionF0V0a12UIObservableW0010ObservablewF0V0A13UIInteraction011InteractionF0V0A9UIDrawing07DrawingF0VA21_012StaticCanvasF0VSgAA0dE4KindOtcfC",
+      "relocation_index": 1139,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 769232,
+      "site": 769240,
+      "op": "b",
+      "symbol": "_putchar",
+      "relocation_index": 1119,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 770304,
+      "site": 770312,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1098,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 770756,
+      "site": 770772,
+      "op": "b",
+      "symbol": "_$s17GiftUIInteraction31InteractionOwnedBankMeasurementV5count8capacity21retainedIdentitySlots0I12PayloadBytes10inlineSize0N6Stride0N9AlignmentACs6UInt16V_ALS5itcfC",
+      "relocation_index": 1083,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 770888,
+      "site": 770896,
+      "op": "b",
+      "symbol": "_swift_beginAccess",
+      "relocation_index": 1074,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 771532,
+      "site": 771540,
+      "op": "b",
+      "symbol": "_putchar",
+      "relocation_index": 1063,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 771800,
+      "site": 771808,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 1051,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 771828,
+      "site": 771848,
+      "op": "b",
+      "symbol": "_$s17GiftUIInteraction31InteractionOwnedBankMeasurementV5count8capacity21retainedIdentitySlots0I12PayloadBytes10inlineSize0N6Stride0N9AlignmentACs6UInt16V_ALS5itcfC",
+      "relocation_index": 1049,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 772424,
+      "site": 772432,
+      "op": "b",
+      "symbol": "_putchar",
+      "relocation_index": 1036,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 772472,
+      "site": 772480,
+      "op": "b",
+      "symbol": "_swift_beginAccess",
+      "relocation_index": 1034,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 772924,
+      "site": 772932,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1023,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 773328,
+      "site": 773340,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 1008,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 773476,
+      "site": 773492,
+      "op": "b",
+      "symbol": "_$s21GiftUIObservableState24ObservableModelOwnershipV8identity10modelLimit05claimI003pinI007captureI0ACSgAA0dE13OwnerIdentityV_s6UInt16VA3MtcfC",
+      "relocation_index": 1005,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 773956,
+      "site": 773964,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 981,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 773968,
+      "site": 773976,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 980,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 774192,
+      "site": 774200,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 972,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 774204,
+      "site": 774212,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 971,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 774696,
+      "site": 774704,
+      "op": "b",
+      "symbol": "_swift_allocObject",
+      "relocation_index": 958,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 774732,
+      "site": 774740,
+      "op": "b",
+      "symbol": "_swift_allocObject",
+      "relocation_index": 956,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 775572,
+      "site": 775580,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 929,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 775584,
+      "site": 775592,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 928,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 776500,
+      "site": 776508,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 865,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777068,
+      "site": 777072,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 848,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777104,
+      "site": 777108,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 846,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777112,
+      "site": 777116,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 845,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777180,
+      "site": 777184,
+      "op": "b",
+      "symbol": "_swift_allocObject",
+      "relocation_index": 842,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777188,
+      "site": 777192,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 841,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777196,
+      "site": 777200,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 840,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777220,
+      "site": 777224,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 837,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777912,
+      "site": 777916,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 828,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 777920,
+      "site": 777924,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 827,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 778136,
+      "site": 778140,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 824,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 778144,
+      "site": 778148,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 823,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 778288,
+      "site": 778292,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 818,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 778456,
+      "site": 778460,
+      "op": "b",
+      "symbol": "_$s6GiftUI13InputSourceIDV8rawValueACs6UInt16V_tcfC",
+      "relocation_index": 814,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 778464,
+      "site": 778468,
+      "op": "b",
+      "symbol": "_putchar",
+      "relocation_index": 813,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 778724,
+      "site": 778732,
+      "op": "b",
+      "symbol": "_putchar",
+      "relocation_index": 806,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 779004,
+      "site": 779012,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 789,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 779488,
+      "site": 779492,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 774,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 779508,
+      "site": 779512,
+      "op": "b",
+      "symbol": "_putchar",
+      "relocation_index": 773,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 779720,
+      "site": 779724,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 771,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 779748,
+      "site": 779752,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 769,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 780268,
+      "site": 780272,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 760,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 780376,
+      "site": 780380,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 758,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 780408,
+      "site": 780412,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 757,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 780684,
+      "site": 780688,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 752,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 781544,
+      "site": 781548,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 741,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 782392,
+      "site": 782396,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 726,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 782416,
+      "site": 782420,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 725,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 782940,
+      "site": 782944,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 721,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783132,
+      "site": 783136,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 719,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783200,
+      "site": 783204,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 717,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783260,
+      "site": 783264,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 716,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783352,
+      "site": 783356,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRetain",
+      "relocation_index": 711,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783360,
+      "site": 783364,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 710,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783472,
+      "site": 783476,
+      "op": "b",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+      "relocation_index": 708,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783580,
+      "site": 783592,
+      "op": "b",
+      "symbol": "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14beginCandidate6limitsAA0C5ErrorOSgAA0C6LimitsV_tF",
+      "relocation_index": 706,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783640,
+      "site": 783652,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 703,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 783812,
+      "site": 783820,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 692,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 784116,
+      "site": 784124,
+      "op": "b",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+      "relocation_index": 678,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 784276,
+      "site": 784288,
+      "op": "b",
+      "symbol": "_swift_deallocClassInstance",
+      "relocation_index": 672,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 784348,
+      "site": 784352,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 668,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 784448,
+      "site": 784460,
+      "op": "b",
+      "symbol": "_swift_allocError",
+      "relocation_index": 663,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 784464,
+      "site": 784476,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 662,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 784796,
+      "site": 784800,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 655,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 784804,
+      "site": 784808,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 654,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 785388,
+      "site": 785392,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 630,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 787256,
+      "site": 787260,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 582,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 787460,
+      "site": 787464,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 581,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 787468,
+      "site": 787472,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 580,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 788564,
+      "site": 788568,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 552,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 788964,
+      "site": 788968,
+      "op": "b",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21SemanticRecordStorageC6limits5ownerACyxG0A14UISemanticCore0dE6LimitsV_AG0dE13OwnerIdentityVtcfc",
+      "relocation_index": 540,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 789112,
+      "site": 789116,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 531,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 789224,
+      "site": 789248,
+      "op": "b",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15RenderWorkspaceV20reservedPayloadBytesSivg",
+      "relocation_index": 525,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 790156,
+      "site": 790164,
+      "op": "b",
+      "symbol": "_$s17GiftUIInteraction17BoundActionRecordV23__derived_struct_equalsySbACyxG_AEtFZ",
+      "relocation_index": 504,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 790224,
+      "site": 790232,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 501,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 790288,
+      "site": 790296,
+      "op": "b",
+      "symbol": "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE15finishCandidateAA0C5ErrorOSgyF",
+      "relocation_index": 498,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 790508,
+      "site": 790512,
+      "op": "b",
+      "symbol": "_putchar",
+      "relocation_index": 490,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 790736,
+      "site": 790740,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 481,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 790928,
+      "site": 790932,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 477,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 790984,
+      "site": 790992,
+      "op": "b",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15LayoutWorkspaceV6limits22maximumSemanticRecordsAC0A8UILayout0D6LimitsV_s6UInt16VtcfC",
+      "relocation_index": 476,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 791668,
+      "site": 791672,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 461,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 792368,
+      "site": 792372,
+      "op": "b",
+      "symbol": "_swift_release",
+      "relocation_index": 436,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 793844,
+      "site": 793848,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 404,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 794380,
+      "site": 794384,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 371,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 795940,
+      "site": 795944,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 323,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 795948,
+      "site": 795952,
+      "op": "b",
+      "symbol": "_$s18GiftUICapabilities31RasterPresentationContributionsV6insertyAA0cD21ContributionInsertionOAA0cdG0OF",
+      "relocation_index": 322,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 796088,
+      "site": 796092,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 319,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 796108,
+      "site": 796112,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 318,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 796736,
+      "site": 796740,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRetain",
+      "relocation_index": 298,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 797912,
+      "site": 797916,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 256,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 800792,
+      "site": 800800,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 214,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 800828,
+      "site": 800836,
+      "op": "b",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C15LivePathStorageV20reservedPayloadBytess6UInt64Vvg",
+      "relocation_index": 211,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 800944,
+      "site": 800948,
+      "op": "b",
+      "symbol": "_$s17GiftUIRuntimeCore24RuntimeStorageCapacitiesV16candidateRecords09publishedH06models17semanticCandidate0K9Published0kL21StructuralOccurrences0kmnO006layoutL06render0Q9Workspace014canvasCallableO024staticCanvasCaptureBytes10pathPoints0Y8Subpaths18drawingPlanStrokes011drawingPlanZ019drawingPlanSubpaths26normalizedStrokeOperations23observableLiveLocations27observableLiveRegistrations010observableL12Associations011interactionL7Actions011interactionL10HitRegions27interactionCommittedActions30interactionCommittedHitRegions14admissionQueue11sealedBatch13pointerStates23coordinatorStatePresent19failureStatePresent10byteCountsAcA0D12RecordLimitsVSg_A9_AA0D11ModelLimitsVSg0a10UISemanticC023SemanticExpansionLimitsVSgA16_s6UInt16VSgA19_0A8UILayout12LayoutLimitsVSg0A16UIRenderLowering12RenderLimitsVSgA24_06RenderR8CapacityVSgA19_A19_A19_A19_A19_A19_A19_A19_A19_A19_A19_A19_A19_A19_A19_0A11UIExecution15ExecutionLimitsVSgA34_A19_S2bAA0dE10ByteCountsVSgtcfC",
+      "relocation_index": 201,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 800964,
+      "site": 800968,
+      "op": "b",
+      "symbol": "_swift_willThrowTypedImpl",
+      "relocation_index": 199,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 801076,
+      "site": 801080,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 193,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 801092,
+      "site": 801096,
+      "op": "b",
+      "symbol": "_$s19GiftUIRuntimeStatic0C21SemanticRecordStorageV6limits5ownerAC0A14UISemanticCore0dE6LimitsV_AF0dE13OwnerIdentityVtcfC",
+      "relocation_index": 192,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 801140,
+      "site": 801144,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 188,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 801208,
+      "site": 801212,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 184,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 801404,
+      "site": 801408,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 170,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 801436,
+      "site": 801440,
+      "op": "b",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0D18ModelOwnerIdentityV_s6UInt16VSbA4QSgtcfc",
+      "relocation_index": 167,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 801456,
+      "site": 801460,
+      "op": "b",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageV6limitsAC0A8UILayout0E6LimitsV_tcfC",
+      "relocation_index": 165,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802188,
+      "site": 802192,
+      "op": "b",
+      "symbol": "_swift_bridgeObjectRelease",
+      "relocation_index": 103,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802296,
+      "site": 802300,
+      "op": "b",
+      "symbol": "_swift_setDeallocating",
+      "relocation_index": 94,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802332,
+      "site": 802340,
+      "op": "b",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+      "relocation_index": 91,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802356,
+      "site": 802364,
+      "op": "b",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+      "relocation_index": 89,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802380,
+      "site": 802388,
+      "op": "b",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+      "relocation_index": 87,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802392,
+      "site": 802400,
+      "op": "b",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+      "relocation_index": 86,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802448,
+      "site": 802456,
+      "op": "b",
+      "symbol": "_$s28GiftUIReferenceTextResources0abC11MetricsViewV8instance2at0a6UITextD022FontInstanceDescriptorVSgs6UInt16V_tF",
+      "relocation_index": 80,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802752,
+      "site": 802760,
+      "op": "b",
+      "symbol": "_memcpy",
+      "relocation_index": 43,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 802828,
+      "site": 802832,
+      "op": "b",
+      "symbol": "_bzero",
+      "relocation_index": 37,
+      "type": 2,
+      "target": null
+    },
+    {
+      "caller": 803080,
+      "site": 803088,
+      "op": "b",
+      "symbol": "_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF",
+      "relocation_index": 15,
+      "type": 2,
+      "target": null
+    }
+  ],
+  "boundary": "Currentobjectexactstructuralclosureonly; crossmodule/indirectoriginsnotassumedabsent"
+}

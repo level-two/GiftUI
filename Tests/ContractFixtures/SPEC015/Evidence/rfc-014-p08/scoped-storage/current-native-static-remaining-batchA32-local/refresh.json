@@ -1,0 +1,68 @@
+{
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "bytes": 118924,
+    "sha256": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050"
+  },
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "bytes": 255474,
+    "sha256": "77d67f4489042cdcdab24dc80eb1b05cc092e7d1273d49d82eb0fb1b35e78ef5"
+  },
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+    "bytes": 6845,
+    "sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab"
+  },
+  ".build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.o": {
+    "path": ".build/contracts/p08-counter-ob4qm63e/P08CounterRuntime.o",
+    "bytes": 2594224,
+    "sha256": "7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846"
+  },
+  "OBJECT_TOOL": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "scope": "Read-only artifact decoder; not provider acquisition"
+  },
+  "NM_TOOL": {
+    "path": "/usr/bin/nm",
+    "bytes": 118640,
+    "sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9"
+  },
+  "PROOF21": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-provider21-result/rows.json",
+    "bytes": 19163,
+    "sha256": "46ae4d064c182015c9f91e76a7a71c88595185a460aa3f99b5241a9a8a2d89c3"
+  },
+  "PROOF23": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA23-result/rows.json",
+    "bytes": 14851,
+    "sha256": "d26a30d8a4fd7e612a50d671376350fca1c5031995c0b04a9d2f9ae541a41ec7"
+  },
+  "PROOF24": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA24-result/rows.json",
+    "bytes": 31510,
+    "sha256": "2d2cf55131c2be3d558b6557fc1760f23dcdd57ee8bf4bca5e9538434a22d40a"
+  },
+  "PROOF25": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA25-result/rows.json",
+    "bytes": 35977,
+    "sha256": "122e0858f3209af6a4231d159b4da5fddf8bc3caa53734d46764ed87cf7b0d48"
+  },
+  "PROOF27": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA27-result/rows.json",
+    "bytes": 32239,
+    "sha256": "c76a84106d677e918db4a5e7643c6466572f9eaf85a3151564208e1ba295a336"
+  },
+  "OLD_MACHINE": {
+    "path": ".build/contracts/p08-native-static-diagnostic-batchA/compiler-evidence/machine-reconciliation.json",
+    "bytes": 43079,
+    "sha256": "17b27bdca15640a0aff9916b0cf289ea743f92f4fdbc109381470fd6ec1bb56c"
+  },
+  "FULL_PROJECTION": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-batchA-implementation-result/full-producer.json",
+    "bytes": 4017,
+    "sha256": "9d23ee675e46d7226740fdb4f8dea9ad20c97062fa82c772606dbb1496d7dcda"
+  }
+}

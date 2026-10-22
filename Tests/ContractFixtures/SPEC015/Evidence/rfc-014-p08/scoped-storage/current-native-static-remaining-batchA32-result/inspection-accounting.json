@@ -1,0 +1,272 @@
+{
+  "started_utc": "2026-10-22T18:39:27.034479+00:00",
+  "used": 519381176,
+  "charges": {
+    "preauth_orientation_hash_code_upper": 8388608,
+    "auth operation code read": 1600092,
+    "invocation code request capture reserve": 410622,
+    "metadata": 693136,
+    "control_read": 2076770,
+    "control_git": 2125922,
+    "selected read decode": 2827724,
+    "fresh_original_worktree_hash": 126694715,
+    "preservation fresh hash": 921666,
+    "current refresh fresh hash": 21547791,
+    "current SIL authentication only": 63276796,
+    "git_auth": 8448,
+    "preservation_metadata": 3500,
+    "cache_metadata": 2120,
+    "diff_base": 299136,
+    "diff_payload": 218314,
+    "diff_stdout": 18652,
+    "provider_descriptor_auth": 1668604,
+    "installed_provider_exact_extent_read_hash": 9730052,
+    "payload capture forward": 443536,
+    "selective SIL byte stream": 63276796,
+    "SIL selected excerpt decode retain": 93096,
+    "final original hash": 126694715,
+    "final preservation hash": 921666,
+    "final current refresh hash": 21547791,
+    "final current SIL hash": 63276796,
+    "final files ledger output reserve": 524288
+  },
+  "transcript": 121432,
+  "errors": [],
+  "page_coverage": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "model_findings": {
+    "status": "COMPLETE_PAGED_CURRENT_MACHINE_FINDING_WINDOW_OPEN",
+    "batch_A_eligibility": false,
+    "complete_packet_model_examined": true,
+    "packet_sha256": "1dc209fc2db96252ea549ba7b071e09e83958ea6feae6fbbfafaf1f5631c70e5",
+    "page_union": "All29 pages in sequence, no omitted instructions, each at most100lines and8192bytes",
+    "current_full_object": "7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846",
+    "root_chain": {
+      "root": "0x5281c",
+      "tail_target": "0x4f918",
+      "allocator_wrapper": "0xbdbdc",
+      "allocator_import_site": "0xbdbe0"
+    },
+    "control_proof": {
+      "initial": "Caller x11=0, x21=0; each outer item iterates x21 to2; outer saved x11+1 compared to14",
+      "guards": "Initial fault tag must not equal14; initialization return must not equal17; owner state2, residual queue and arithmetic overflow lead traps; state1 drains bounded records, with count<=14 and nonempty tags; normal completion increments loops",
+      "first_literal": "Only normal completion of initial14-by2 loop reaches metadata setup at projection253-258, stores return at sp+a8, then w1=82 and call0x4fc98",
+      "second_literal": "Later normal completion of9-by2 loop at projections1449-1455 reloads same metadata from sp+a8, sets w1=82 and calls0x50c14 to same allocator wrapper",
+      "suffix": "Complete remaining body examined: later success/error/final cleanup branches do not supply an earlier normal return bypassing the first literal. Trap and throwing-error handlers are not normal cleanup or infeasibility proofs.",
+      "scope": "This proves normal-return dominance conditional on invoked selected root and normal helper returns; does not independently bind a construction/firstuse measurement window."
+    },
+    "type_join": {
+      "full_metadata_relocation": "_$ss23_ContiguousArrayStorageCys06InlineB0Vy$4_s6UInt16VGGMD",
+      "metadata_helper": "___swift_instantiateConcreteTypeFromMangledName exact local0xbec",
+      "full_literal_size_register": 82,
+      "wrapper_alignment_register": 7,
+      "current_focused_SIL": ".build/contracts/p08-native-static-diagnostic-batchA/compiler-evidence/counter.sil SHA3fe03fa6aaf890d79e164b486f064c93e1783f337e1907c411e16653fe179bad",
+      "exact_same_function_header_line": 410934,
+      "explicit_type": "_ContiguousArrayStorage<InlineArray<5, UInt16>>",
+      "SIL_literal_lines": [
+        411512,
+        413732
+      ],
+      "lowering_limit": "Focused SIL has alloc_ref bare stack and dealloc_stack_ref; full object differs and literally calls allocator import. Focused stack lowering is not transferred to full object."
+    },
+    "semantic_consequence": "Two ordinary testcase-table constructions, not failure-only print allocation. Compiler-level full-object allocator-family dependency is demonstrated; actual runtime allocation success/bytes and promised-window eligibility are not proved.",
+    "next_required_join": "Narrow current maintained source plus original root/window contract in separately identified ordinary implementation assessment; inheritedAUTH-onlysource is not promoted within this machine proof. Decide in-window violation versus exact boundary before correction.",
+    "consolidated_residuals": {
+      "current_allocator_frontier": "17 structural sites,7 locally rooted; selected shared allocator wrapper now has complete controlling caller examination, other callers remain available-unexamined",
+      "other_A": "Actual indirect/witness origins, metadata/once and required failed-guard paths remain available-unexamined; not external evidence absence",
+      "stdio": "Reviewed23-27 conditional buffer/setter predicates retained; live R=S, persistence and exact loaded-provider/window remain unproved",
+      "safety": "Previously closed concrete owner/reader/publication/dispatch/generation/backing-last/invariants/tiled/linked-writer/fault lemmas retain reviewed scope",
+      "BatchB": "Runtime/physical/current-image/cold/resource/profile gates remain separate"
+    },
+    "history": "A28-31 STOPs remain immutable and unqualified; no source/build/runtime/provider experiment or successor launched inside this proof."
+  },
+  "request_identities": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 a\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 a",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 p 1 4\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 p 1 4",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 p 5 8\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 p 5 8",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 p 9 12\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 p 9 12",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 p 13 16\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 p 13 16",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 p 17 20\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 p 17 20",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 p 21 24\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 p 21 24",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 p 25 28\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 p 25 28",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 p 29 29\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 p 29 29",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 j S66 S68 S70 S10 S12 S45 S48 S101 S103 S294 S722 S723 S725 S727 S733\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 j S66 S68 S70 S10 S12 S45 S48 S101 S103 S294 S722 S723 S725 S727 S733",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 s\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 s",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g32 f '{\\\"status\\\":\\\"COMPLETE_PAGED_CURRENT_MACHINE_FINDING_WINDOW_OPEN\\\",\\\"batch_A_eligibility\\\":false,\\\"complete_packet_model_examined\\\":true,\\\"packet_sha256\\\":\\\"1dc209fc2db96252ea549ba7b071e09e83958ea6feae6fbbfafaf1f5631c70e5\\\",\\\"page_union\\\":\\\"All29 pages in sequence, no omitted instructions, each at most100lines and8192bytes\\\",\\\"current_full_object\\\":\\\"7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846\\\",\\\"root_chain\\\":{\\\"root\\\":\\\"0x5281c\\\",\\\"tail_target\\\":\\\"0x4f918\\\",\\\"allocator_wrapper\\\":\\\"0xbdbdc\\\",\\\"allocator_import_site\\\":\\\"0xbdbe0\\\"},\\\"control_proof\\\":{\\\"initial\\\":\\\"Caller x11=0, x21=0; each outer item iterates x21 to2; outer saved x11+1 compared to14\\\",\\\"guards\\\":\\\"Initial fault tag must not equal14; initialization return must not equal17; owner state2, residual queue and arithmetic overflow lead traps; state1 drains bounded records, with count<=14 and nonempty tags; normal completion increments loops\\\",\\\"first_literal\\\":\\\"Only normal completion of initial14-by2 loop reaches metadata setup at projection253-258, stores return at sp+a8, then w1=82 and call0x4fc98\\\",\\\"second_literal\\\":\\\"Later normal completion of9-by2 loop at projections1449-1455 reloads same metadata from sp+a8, sets w1=82 and calls0x50c14 to same allocator wrapper\\\",\\\"suffix\\\":\\\"Complete remaining body examined: later success/error/final cleanup branches do not supply an earlier normal return bypassing the first literal. Trap and throwing-error handlers are not normal cleanup or infeasibility proofs.\\\",\\\"scope\\\":\\\"This proves normal-return dominance conditional on invoked selected root and normal helper returns; does not independently bind a construction/firstuse measurement window.\\\"},\\\"type_join\\\":{\\\"full_metadata_relocation\\\":\\\"_$ss23_ContiguousArrayStorageCys06InlineB0Vy$4_s6UInt16VGGMD\\\",\\\"metadata_helper\\\":\\\"___swift_instantiateConcreteTypeFromMangledName exact local0xbec\\\",\\\"full_literal_size_register\\\":82,\\\"wrapper_alignment_register\\\":7,\\\"current_focused_SIL\\\":\\\".build/contracts/p08-native-static-diagnostic-batchA/compiler-evidence/counter.sil SHA3fe03fa6aaf890d79e164b486f064c93e1783f337e1907c411e16653fe179bad\\\",\\\"exact_same_function_header_line\\\":410934,\\\"explicit_type\\\":\\\"_ContiguousArrayStorage<InlineArray<5, UInt16>>\\\",\\\"SIL_literal_lines\\\":[411512,413732],\\\"lowering_limit\\\":\\\"Focused SIL has alloc_ref bare stack and dealloc_stack_ref; full object differs and literally calls allocator import. Focused stack lowering is not transferred to full object.\\\"},\\\"semantic_consequence\\\":\\\"Two ordinary testcase-table constructions, not failure-only print allocation. Compiler-level full-object allocator-family dependency is demonstrated; actual runtime allocation success/bytes and promised-window eligibility are not proved.\\\",\\\"next_required_join\\\":\\\"Narrow current maintained source plus original root/window contract in separately identified ordinary implementation assessment; inheritedAUTH-onlysource is not promoted within this machine proof. Decide in-window violation versus exact boundary before correction.\\\",\\\"consolidated_residuals\\\":{\\\"current_allocator_frontier\\\":\\\"17 structural sites,7 locally rooted; selected shared allocator wrapper now has complete controlling caller examination, other callers remain available-unexamined\\\",\\\"other_A\\\":\\\"Actual indirect/witness origins, metadata/once and required failed-guard paths remain available-unexamined; not external evidence absence\\\",\\\"stdio\\\":\\\"Reviewed23-27 conditional buffer/setter predicates retained; live R=S, persistence and exact loaded-provider/window remain unproved\\\",\\\"safety\\\":\\\"Previously closed concrete owner/reader/publication/dispatch/generation/backing-last/invariants/tiled/linked-writer/fault lemmas retain reviewed scope\\\",\\\"BatchB\\\":\\\"Runtime/physical/current-image/cold/resource/profile gates remain separate\\\"},\\\"history\\\":\\\"A28-31 STOPs remain immutable and unqualified; no source/build/runtime/provider experiment or successor launched inside this proof.\\\"}'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g32 f '{\"status\":\"COMPLETE_PAGED_CURRENT_MACHINE_FINDING_WINDOW_OPEN\",\"batch_A_eligibility\":false,\"complete_packet_model_examined\":true,\"packet_sha256\":\"1dc209fc2db96252ea549ba7b071e09e83958ea6feae6fbbfafaf1f5631c70e5\",\"page_union\":\"All29 pages in sequence, no omitted instructions, each at most100lines and8192bytes\",\"current_full_object\":\"7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846\",\"root_chain\":{\"root\":\"0x5281c\",\"tail_target\":\"0x4f918\",\"allocator_wrapper\":\"0xbdbdc\",\"allocator_import_site\":\"0xbdbe0\"},\"control_proof\":{\"initial\":\"Caller x11=0, x21=0; each outer item iterates x21 to2; outer saved x11+1 compared to14\",\"guards\":\"Initial fault tag must not equal14; initialization return must not equal17; owner state2, residual queue and arithmetic overflow lead traps; state1 drains bounded records, with count<=14 and nonempty tags; normal completion increments loops\",\"first_literal\":\"Only normal completion of initial14-by2 loop reaches metadata setup at projection253-258, stores return at sp+a8, then w1=82 and call0x4fc98\",\"second_literal\":\"Later normal completion of9-by2 loop at projections1449-1455 reloads same metadata from sp+a8, sets w1=82 and calls0x50c14 to same allocator wrapper\",\"suffix\":\"Complete remaining body examined: later success/error/final cleanup branches do not supply an earlier normal return bypassing the first literal. Trap and throwing-error handlers are not normal cleanup or infeasibility proofs.\",\"scope\":\"This proves normal-return dominance conditional on invoked selected root and normal helper returns; does not independently bind a construction/firstuse measurement window.\"},\"type_join\":{\"full_metadata_relocation\":\"_$ss23_ContiguousArrayStorageCys06InlineB0Vy$4_s6UInt16VGGMD\",\"metadata_helper\":\"___swift_instantiateConcreteTypeFromMangledName exact local0xbec\",\"full_literal_size_register\":82,\"wrapper_alignment_register\":7,\"current_focused_SIL\":\".build/contracts/p08-native-static-diagnostic-batchA/compiler-evidence/counter.sil SHA3fe03fa6aaf890d79e164b486f064c93e1783f337e1907c411e16653fe179bad\",\"exact_same_function_header_line\":410934,\"explicit_type\":\"_ContiguousArrayStorage<InlineArray<5, UInt16>>\",\"SIL_literal_lines\":[411512,413732],\"lowering_limit\":\"Focused SIL has alloc_ref bare stack and dealloc_stack_ref; full object differs and literally calls allocator import. Focused stack lowering is not transferred to full object.\"},\"semantic_consequence\":\"Two ordinary testcase-table constructions, not failure-only print allocation. Compiler-level full-object allocator-family dependency is demonstrated; actual runtime allocation success/bytes and promised-window eligibility are not proved.\",\"next_required_join\":\"Narrow current maintained source plus original root/window contract in separately identified ordinary implementation assessment; inheritedAUTH-onlysource is not promoted within this machine proof. Decide in-window violation versus exact boundary before correction.\",\"consolidated_residuals\":{\"current_allocator_frontier\":\"17 structural sites,7 locally rooted; selected shared allocator wrapper now has complete controlling caller examination, other callers remain available-unexamined\",\"other_A\":\"Actual indirect/witness origins, metadata/once and required failed-guard paths remain available-unexamined; not external evidence absence\",\"stdio\":\"Reviewed23-27 conditional buffer/setter predicates retained; live R=S, persistence and exact loaded-provider/window remain unproved\",\"safety\":\"Previously closed concrete owner/reader/publication/dispatch/generation/backing-last/invariants/tiled/linked-writer/fault lemmas retain reviewed scope\",\"BatchB\":\"Runtime/physical/current-image/cold/resource/profile gates remain separate\"},\"history\":\"A28-31 STOPs remain immutable and unqualified; no source/build/runtime/provider experiment or successor launched inside this proof.\"}'",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "Git_blob_auth_reuse": "Original immutable blob identities and exact priorA31 comparison reused; all79 worktree hashes fresh. No altered evidence authority.",
+  "before": {
+    "utc": "2026-10-22T18:39:27.335641+00:00",
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+        16777234,
+        29640436
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+        16777234,
+        29650609
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+        16777234,
+        29652748
+      ]
+    },
+    "cache_members": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "dirty_diff_bytes": 5230
+  },
+  "provider_before": {
+    "descriptor_sha256": "8e7fd326e4efb98e9d3d87d061280be713b30524cb6695ba4db7abb45d503923",
+    "provider_uuids": {
+      "/usr/lib/libSystem.B.dylib": "4fed5ee25d3e35b1a1709859c4b683bb",
+      "/usr/lib/system/libsystem_c.dylib": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "/usr/lib/system/libsystem_malloc.dylib": "d969a9073e43395193658c2db3812e9d",
+      "/usr/lib/system/libsystem_pthread.dylib": "a373f0b09880326a88b4dd8be4e33072",
+      "/usr/lib/swift/libswift_DarwinFoundation2.dylib": "af5af4dcd24a3073bd234cead8c3aee4"
+    },
+    "exact_extent_bytes_per_check": 2419000
+  },
+  "auth_utc": "2026-10-22T18:39:27.366802+00:00",
+  "total_pages": 29,
+  "ordered_projection_sha256": "5b4a0ce9ae599aad8a60754558a2d3ed32f61938eca1f3846463c2e7ffb79791",
+  "model_ended_utc": "2026-10-22T18:44:20.347287+00:00",
+  "model_elapsed_seconds": 293.312808,
+  "after": {
+    "utc": "2026-10-22T18:44:20.636708+00:00",
+    "markers": {
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": [
+        16777234,
+        29640436
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1": [
+        16777234,
+        29650609
+      ],
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-system-provider-static1": [
+        16777234,
+        29652748
+      ]
+    },
+    "cache_members": [
+      "p08_layout_facts.cpython-314.pyc"
+    ],
+    "dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
+    "dirty_diff_bytes": 5230
+  },
+  "provider_after": {
+    "descriptor_sha256": "8e7fd326e4efb98e9d3d87d061280be713b30524cb6695ba4db7abb45d503923",
+    "provider_uuids": {
+      "/usr/lib/libSystem.B.dylib": "4fed5ee25d3e35b1a1709859c4b683bb",
+      "/usr/lib/system/libsystem_c.dylib": "d77ceb62aff63cecba9b4f057fbe2eb5",
+      "/usr/lib/system/libsystem_malloc.dylib": "d969a9073e43395193658c2db3812e9d",
+      "/usr/lib/system/libsystem_pthread.dylib": "a373f0b09880326a88b4dd8be4e33072",
+      "/usr/lib/swift/libswift_DarwinFoundation2.dylib": "af5af4dcd24a3073bd234cead8c3aee4"
+    },
+    "exact_extent_bytes_per_check": 2419000
+  },
+  "finished_utc": "2026-10-22T18:44:20.663374+00:00",
+  "complete_page_coverage": true
+}

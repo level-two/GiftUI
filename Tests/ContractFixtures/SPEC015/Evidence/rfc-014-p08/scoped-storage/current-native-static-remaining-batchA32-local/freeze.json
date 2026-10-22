@@ -1,0 +1,45 @@
+{
+  "helper_sha256": "5b50db90841a39784e10f96dff81ca9d10ad4522b057b0a9041607955ca8ec1a",
+  "alias_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/page.py",
+  "auth_operations_sha256": "d27705f7a22991a3c7176fd1e303178a2129cc5e2f9ba8078d99ef98258a31e4",
+  "HEAD": "5f6f0261caf95e74cb91e5f7ab6cf62e58c108ba",
+  "selected": {
+    "packet": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/invocation/group.stdout",
+      "bytes": 72903,
+      "sha256": "1dc209fc2db96252ea549ba7b071e09e83958ea6feae6fbbfafaf1f5631c70e5"
+    },
+    "identity_map": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/identity-map.ndjson",
+      "bytes": 110284,
+      "sha256": "1f4ed0db298ee5193cc803a0b215816dc8331ea2fbe821ed305e1f203dc56008"
+    },
+    "frontier": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/current-frontier.json",
+      "bytes": 137341,
+      "sha256": "1eba2d12f2fca075c0626764cc5515f65ad4260ff8fdf301f4d8271266784c58"
+    },
+    "prior_ledger": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/state.json",
+      "bytes": 39649,
+      "sha256": "5012b2eb0b6af86f641f3408a58a800a0536f660c010eae1cd373d8766b1d540"
+    }
+  },
+  "sil": {
+    "path": ".build/contracts/p08-native-static-diagnostic-batchA/compiler-evidence/counter.sil",
+    "bytes": 63276796,
+    "sha256": "3fe03fa6aaf890d79e164b486f064c93e1783f337e1907c411e16653fe179bad"
+  },
+  "caller_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+  "provider_slices_sha256": "8e7fd326e4efb98e9d3d87d061280be713b30524cb6695ba4db7abb45d503923",
+  "freeze_utc": "2026-10-22T18:39:14.424697+00:00",
+  "reserve_basis": "208MiB final reserve covers original126.7MB +current SIL63.3MB +currenttool/object21MB +preservation/control/result overhead; fresh originals and SIL before/after, immutable Gitblob comparisons reused explicitly from A31.",
+  "limits": {
+    "session_seconds": 7200,
+    "cutoff": "2026-10-22T19:43:00Z",
+    "processing": 536870912,
+    "shared": 8388608,
+    "page_lines": 100,
+    "page_bytes": 8192
+  }
+}

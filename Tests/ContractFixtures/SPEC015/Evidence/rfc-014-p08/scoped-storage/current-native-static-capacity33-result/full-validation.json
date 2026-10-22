@@ -1,0 +1,221 @@
+{
+  "status": "PASS",
+  "result": {
+    "path": ".build/contracts/p08-counter-e3ivm0v6/result.json",
+    "bytes": 8548218,
+    "sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838"
+  },
+  "start": {
+    "started_utc": "2026-10-22T18:56:30.212566+00:00",
+    "deadline_utc": "2026-10-22T22:56:30.212566+00:00",
+    "argv": [
+      "python3",
+      "scripts/contracts/check-spec-015-counter.py",
+      "--profile",
+      "macos-static",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpe8onpqjb/macos-static",
+      "--host-build",
+      ".build/contracts/p08-scoped-host-7gj3vxnl",
+      "--collect-failures"
+    ],
+    "capture_pid": 63180,
+    "source_sha256": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf",
+    "output_limit_bytes": 536870912,
+    "final_reserve": 16777216,
+    "reservation": {
+      "utc": "2026-10-22T18:56:30.134944+00:00",
+      "known_before_full": 178808153,
+      "expected_full_bytes": 184549376,
+      "final_reserve": 16777216,
+      "total_forecast": 380134745,
+      "limit": 536870912,
+      "scope": "New capacity33 P07/focused/full and captures; immutable prior outputs are not copied"
+    }
+  },
+  "terminal": {
+    "ended_utc": "2026-10-22T21:07:23.577725+00:00",
+    "exit": 0,
+    "elapsed_seconds": 7853.365159
+  },
+  "former_session": 13460,
+  "profile": "macos-static",
+  "selected_host_profile": "macos-static",
+  "raster_realization": "full-surface",
+  "collection_complete": true,
+  "fresh_focused": false,
+  "record_count": 426,
+  "command_count": 412,
+  "all_checks_passed": true,
+  "actual_exit_histogram": {
+    "0": 218,
+    "1": 193,
+    "None": 14,
+    "-6": 1
+  },
+  "exit_scope": "218exit0,193expected compiler-negative exit1,1expected exclusivity-fatal exit-6;14grouped observations(13reuse+runtime-summary)have no standalone child exit",
+  "assertions": 1736320,
+  "failures": 0,
+  "runtime_summary": "P08 counter components assertions=1736320 failures=0",
+  "compiler": {
+    "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+  },
+  "target_flags": [
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-enable-experimental-feature",
+    "LifetimeDependence",
+    "-enable-experimental-feature",
+    "Lifetimes",
+    "-package-name",
+    "giftui",
+    "-module-cache-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/cache",
+    "-disable-sandbox",
+    "-target",
+    "arm64-apple-macosx26.0",
+    "-sdk",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-load-plugin-executable",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-parse-as-library",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpe8onpqjb/macos-static",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-enable-testing"
+  ],
+  "source_joins": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "recorded_sha256": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf",
+      "current": {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+        "bytes": 255642,
+        "sha256": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf"
+      }
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "recorded_sha256": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050",
+      "current": {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+        "bytes": 118924,
+        "sha256": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050"
+      }
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+      "recorded_sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab",
+      "current": {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+        "bytes": 6845,
+        "sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab"
+      }
+    }
+  },
+  "dependency_receipts": {
+    "core": {
+      "path": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/result.json",
+      "bytes": 15198,
+      "sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1"
+    },
+    "runtime": {
+      "path": ".build/contracts/spec-013-runtime-cycle/tmpe8onpqjb/macos-static/result.json",
+      "bytes": 135018,
+      "sha256": "65f7f45b280dc9913591b9301d44443251a1399a8012a96faf5492e50b0abe8d"
+    },
+    "host": {
+      "path": ".build/contracts/p08-scoped-host-7gj3vxnl/result.json",
+      "bytes": 87487,
+      "sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0"
+    }
+  },
+  "artifacts": {
+    "P08CounterRuntime.o": {
+      "recorded": {
+        "sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581",
+        "bytes": 2593056
+      },
+      "current": {
+        "path": ".build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o",
+        "bytes": 2593056,
+        "sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581"
+      }
+    },
+    "P08CounterRuntime.swiftmodule": {
+      "recorded": {
+        "sha256": "dc47a0c3f91d4027983d33d984f183a63cbc7b02db1eb19da74c2114e184f3bb",
+        "bytes": 1553684
+      },
+      "current": {
+        "path": ".build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.swiftmodule",
+        "bytes": 1553684,
+        "sha256": "dc47a0c3f91d4027983d33d984f183a63cbc7b02db1eb19da74c2114e184f3bb"
+      }
+    },
+    "counter": {
+      "recorded": {
+        "sha256": "01b054c0a4460bf449f1a6057e81146e636a0e470a9aefe2bad342acfb7d963e",
+        "bytes": 6623608
+      },
+      "current": {
+        "path": ".build/contracts/p08-counter-e3ivm0v6/counter",
+        "bytes": 6623608,
+        "sha256": "01b054c0a4460bf449f1a6057e81146e636a0e470a9aefe2bad342acfb7d963e"
+      }
+    }
+  },
+  "command_joins": {
+    "18": {
+      "json_pointer": "/commands/18",
+      "utf8_sha256": "a9f43c397dff747c3b61b9b4061a31bf2c5492084eb85916230fa4f540f52820"
+    },
+    "405": {
+      "json_pointer": "/commands/405",
+      "utf8_sha256": "8dd7105da188a7999556182aa11957cd8658c7fca74b6bcd1aee01b79a98e329"
+    }
+  },
+  "captures": {
+    "full-start.json": {
+      "path": ".build/contracts/p08-native-static-capacity33/full-start.json",
+      "bytes": 927,
+      "sha256": "636124b95286e1b0d366cca6c34b811b4fbf1d85d8bb119c98d5561002db955c"
+    },
+    "full-exit.json": {
+      "path": ".build/contracts/p08-native-static-capacity33/full-exit.json",
+      "bytes": 93,
+      "sha256": "fb5639c24e6824de37410c69030cf4a86681f8870edf4c996baed3b636978841"
+    },
+    "full.stdout": {
+      "path": ".build/contracts/p08-native-static-capacity33/full.stdout",
+      "bytes": 138,
+      "sha256": "ec2a7a456da24062044400c0bcf2b220c6d0414c9029eb74e15e55d5e3134821"
+    },
+    "full.stderr": {
+      "path": ".build/contracts/p08-native-static-capacity33/full.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "output_comparison": "full-output-comparison.json",
+  "FW038": {
+    "actual_elapsed_seconds": 7853.365159,
+    "prior_full_elapsed_seconds": 9329.230712,
+    "interpretation": "Observed producer elapsed only; no speedup, workload-performance or allocator-cost inference"
+  },
+  "optional_status_error": {
+    "utc": "2026-10-22T19:30:51.188457Z",
+    "operation": "ps metadata only",
+    "exit": 1,
+    "error": "PermissionError: [Errno 1] Operation not permitted: 'ps'",
+    "producer_effect": "none; owned write_stdin session continued; unnecessary ps not retried"
+  },
+  "claims": "Both type-specific capacity testcase constructions removed in actual full object; whole allocator import count17-to17; no global heap/cold/provider/resource or complete Batch A closure"
+}

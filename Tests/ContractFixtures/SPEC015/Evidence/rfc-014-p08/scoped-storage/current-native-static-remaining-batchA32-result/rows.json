@@ -1,0 +1,46 @@
+{
+  "status": "COMPLETE_PAGED_CURRENT_MACHINE_FINDING_WINDOW_OPEN",
+  "batch_A_eligibility": false,
+  "complete_packet_model_examined": true,
+  "packet_sha256": "1dc209fc2db96252ea549ba7b071e09e83958ea6feae6fbbfafaf1f5631c70e5",
+  "page_union": "All29 pages in sequence, no omitted instructions, each at most100lines and8192bytes",
+  "current_full_object": "7a0df24b05d86921f1b5c3d660cae9a2692078b952499978ba8c6eda55310846",
+  "root_chain": {
+    "root": "0x5281c",
+    "tail_target": "0x4f918",
+    "allocator_wrapper": "0xbdbdc",
+    "allocator_import_site": "0xbdbe0"
+  },
+  "control_proof": {
+    "initial": "Caller x11=0, x21=0; each outer item iterates x21 to2; outer saved x11+1 compared to14",
+    "guards": "Initial fault tag must not equal14; initialization return must not equal17; owner state2, residual queue and arithmetic overflow lead traps; state1 drains bounded records, with count<=14 and nonempty tags; normal completion increments loops",
+    "first_literal": "Only normal completion of initial14-by2 loop reaches metadata setup at projection253-258, stores return at sp+a8, then w1=82 and call0x4fc98",
+    "second_literal": "Later normal completion of9-by2 loop at projections1449-1455 reloads same metadata from sp+a8, sets w1=82 and calls0x50c14 to same allocator wrapper",
+    "suffix": "Complete remaining body examined: later success/error/final cleanup branches do not supply an earlier normal return bypassing the first literal. Trap and throwing-error handlers are not normal cleanup or infeasibility proofs.",
+    "scope": "This proves normal-return dominance conditional on invoked selected root and normal helper returns; does not independently bind a construction/firstuse measurement window."
+  },
+  "type_join": {
+    "full_metadata_relocation": "_$ss23_ContiguousArrayStorageCys06InlineB0Vy$4_s6UInt16VGGMD",
+    "metadata_helper": "___swift_instantiateConcreteTypeFromMangledName exact local0xbec",
+    "full_literal_size_register": 82,
+    "wrapper_alignment_register": 7,
+    "current_focused_SIL": ".build/contracts/p08-native-static-diagnostic-batchA/compiler-evidence/counter.sil SHA3fe03fa6aaf890d79e164b486f064c93e1783f337e1907c411e16653fe179bad",
+    "exact_same_function_header_line": 410934,
+    "explicit_type": "_ContiguousArrayStorage<InlineArray<5, UInt16>>",
+    "SIL_literal_lines": [
+      411512,
+      413732
+    ],
+    "lowering_limit": "Focused SIL has alloc_ref bare stack and dealloc_stack_ref; full object differs and literally calls allocator import. Focused stack lowering is not transferred to full object."
+  },
+  "semantic_consequence": "Two ordinary testcase-table constructions, not failure-only print allocation. Compiler-level full-object allocator-family dependency is demonstrated; actual runtime allocation success/bytes and promised-window eligibility are not proved.",
+  "next_required_join": "Narrow current maintained source plus original root/window contract in separately identified ordinary implementation assessment; inheritedAUTH-onlysource is not promoted within this machine proof. Decide in-window violation versus exact boundary before correction.",
+  "consolidated_residuals": {
+    "current_allocator_frontier": "17 structural sites,7 locally rooted; selected shared allocator wrapper now has complete controlling caller examination, other callers remain available-unexamined",
+    "other_A": "Actual indirect/witness origins, metadata/once and required failed-guard paths remain available-unexamined; not external evidence absence",
+    "stdio": "Reviewed23-27 conditional buffer/setter predicates retained; live R=S, persistence and exact loaded-provider/window remain unproved",
+    "safety": "Previously closed concrete owner/reader/publication/dispatch/generation/backing-last/invariants/tiled/linked-writer/fault lemmas retain reviewed scope",
+    "BatchB": "Runtime/physical/current-image/cold/resource/profile gates remain separate"
+  },
+  "history": "A28-31 STOPs remain immutable and unqualified; no source/build/runtime/provider experiment or successor launched inside this proof."
+}

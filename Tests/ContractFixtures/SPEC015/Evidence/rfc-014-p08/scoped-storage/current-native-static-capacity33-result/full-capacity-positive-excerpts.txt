@@ -1,0 +1,139 @@
+SOURCE .build/contracts/p08-native-static-capacity33/capacity-p08-counter-e3ivm0v6-caller-disassembly.txt SHAd74e6608f1b54b4ac2206638a32b63f61b7cf693f6c1a06dfec762b5f98ad6b5 lines255-325
+255:   4fc90:      	ldr	x8, [sp, #0x118]
+256:   4fc94:      	mov	x22, x8
+257:   4fc98:      	cmp	x8, #0xe
+258:   4fc9c:      	b.ne	0x4f9e8 <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0xcc>
+259:   4fca0:      	mov	x22, #0x0               ; =0
+260:   4fca4:      	add	x23, sp, #0x1d, lsl #12 ; =0x1d000
+261:   4fca8:      	add	x23, x23, #0x330
+262:   4fcac:      	add	x8, x23, #0xe50
+263:   4fcb0:      	str	x8, [sp, #0x1a0]
+264:   4fcb4:      	add	x9, x23, #0xd88
+265:   4fcb8:      	add	x8, x23, #0x980
+266:   4fcbc:      	stp	x8, x9, [sp, #0x188]
+267:   4fcc0:      	add	x9, x23, #0x908
+268:   4fcc4:      	add	x8, x23, #0x8a8
+269:   4fcc8:      	stp	x8, x9, [sp, #0x178]
+270:   4fccc:      	add	x9, x23, #0x837
+271:   4fcd0:      	add	x8, x23, #0x822
+272:   4fcd4:      	stp	x8, x9, [sp, #0x168]
+273:   4fcd8:      	add	x9, x23, #0x401
+274:   4fcdc:      	add	x8, x23, #0xe78
+275:   4fce0:      	stp	x8, x9, [sp, #0x158]
+276:   4fce4:      	mov	w8, #0x105c             ; =4188
+277:   4fce8:      	add	x8, x23, x8
+278:   4fcec:      	str	x8, [sp, #0x150]
+279:   4fcf0:      	mov	w8, #0x1228             ; =4648
+280:   4fcf4:      	add	x8, x23, x8
+281:   4fcf8:      	str	x8, [sp, #0x148]
+282:   4fcfc:      	mov	w8, #0x140c             ; =5132
+283:   4fd00:      	add	x8, x23, x8
+284:   4fd04:      	str	x8, [sp, #0x140]
+285:   4fd08:      	mov	w8, #0x1630             ; =5680
+286:   4fd0c:      	add	x8, x23, x8
+287:   4fd10:      	str	x8, [sp, #0x138]
+288:   4fd14:      	add	x25, sp, #0x3d, lsl #12 ; =0x3d000
+289:   4fd18:      	add	x25, x25, #0xb28
+290:   4fd1c:      	add	x27, sp, #0x3d, lsl #12 ; =0x3d000
+291:   4fd20:      	add	x27, x27, #0x360
+292:   4fd24:      	add	x19, x26, #0x5
+293:   4fd28:      	eor	x26, x26, #0x7fffffffffffffff
+294:   4fd2c:      	adrp	x8, 0x4f000 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4cc>
+295:		000000000004fd2c:  ARM64_RELOC_PAGE21	lCPI1171_2
+296:   4fd30:      	ldr	q0, [x8]
+297:		000000000004fd30:  ARM64_RELOC_PAGEOFF12	lCPI1171_2
+298:   4fd34:      	str	q0, [sp, #0xf0]
+299:   4fd38:      	adrp	x8, 0x4f000 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4cc>
+300:		000000000004fd38:  ARM64_RELOC_PAGE21	lCPI1171_3
+301:   4fd3c:      	ldr	q0, [x8]
+302:		000000000004fd3c:  ARM64_RELOC_PAGEOFF12	lCPI1171_3
+303:   4fd40:      	str	q0, [sp, #0xe0]
+304:   4fd44:      	adrp	x8, 0x4f000 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4cc>
+305:		000000000004fd44:  ARM64_RELOC_PAGE21	lCPI1171_4
+306:   4fd48:      	ldr	q0, [x8]
+307:		000000000004fd48:  ARM64_RELOC_PAGEOFF12	lCPI1171_4
+308:   4fd4c:      	str	q0, [sp, #0xd0]
+309:   4fd50:      	mov	w28, #0x1               ; =1
+310:   4fd54:      	add	x24, sp, #0x2, lsl #12  ; =0x2000
+311:   4fd58:      	add	x24, x24, #0x480
+312:   4fd5c:      	add	x8, sp, #0x1d, lsl #12  ; =0x1d000
+313:   4fd60:      	ldp	q0, q1, [sp, #0xe0]
+314:   4fd64:      	stp	q1, q0, [x8, #0x330]!
+315:   4fd68:      	ldr	q0, [sp, #0xd0]
+316:   4fd6c:      	str	q0, [x8, #0x20]
+317:   4fd70:      	strh	w28, [x8, #0x30]
+318:   4fd74:      	mov	w8, #0xa                ; =10
+319:   4fd78:      	madd	x8, x22, x8, x23
+320:   4fd7c:      	ldr	x20, [x8]
+321:   4fd80:      	ldrh	w21, [x8, #0x8]
+322:   4fd84:      	add	x8, sp, #0x3f, lsl #12  ; =0x3f000
+323:   4fd88:      	add	x8, x8, #0xc60
+324:   4fd8c:      	bl	0x4fd8c <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0x470>
+325:		000000000004fd8c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC
+SOURCE .build/contracts/p08-native-static-capacity33/capacity-p08-counter-e3ivm0v6-caller-disassembly.txt SHAd74e6608f1b54b4ac2206638a32b63f61b7cf693f6c1a06dfec762b5f98ad6b5 lines1449-1514
+1449:   50c40:      	cmp	x8, #0x9
+1450:   50c44:      	b.ne	0x508c4 <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0xfa8>
+1451:   50c48:      	mov	x10, #0x0               ; =0
+1452:   50c4c:      	bl	0x50c4c <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0x1330>
+1453:		0000000000050c4c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1682
+1454:   50c50:      	add	x9, x8, #0x38
+1455:   50c54:      	str	x9, [sp, #0x190]
+1456:   50c58:      	add	x21, x8, #0xc0
+1457:   50c5c:      	add	x11, x8, #0x168
+1458:   50c60:      	add	x9, x8, #0x190
+1459:   50c64:      	stp	x9, x11, [sp, #0x130]
+1460:   50c68:      	add	x11, x8, #0x1a0
+1461:   50c6c:      	add	x9, x8, #0x1b0
+1462:   50c70:      	stp	x9, x11, [sp, #0x120]
+1463:   50c74:      	add	x23, x8, #0x1c0
+1464:   50c78:      	add	x11, x8, #0x210
+1465:   50c7c:      	ldr	x9, [sp, #0x1a0]
+1466:   50c80:      	add	x8, x9, #0x5
+1467:   50c84:      	stp	x8, x11, [sp, #0x110]
+1468:   50c88:      	mov	x8, #-0x7fffffffffffffff ; =-9223372036854775807
+1469:   50c8c:      	add	x8, x9, x8
+1470:   50c90:      	cmp	x10, #0x32
+1471:   50c94:      	b.eq	0x50ec4 <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0x15a8>
+1472:   50c98:      	str	x8, [sp, #0x1a0]
+1473:   50c9c:      	ldp	q0, q1, [sp, #0xe0]
+1474:   50ca0:      	stp	q1, q0, [x28]
+1475:   50ca4:      	ldr	q0, [sp, #0xd0]
+1476:   50ca8:      	str	q0, [x28, #0x20]
+1477:   50cac:      	mov	w8, #0x1                ; =1
+1478:   50cb0:      	strh	w8, [x28, #0x30]
+1479:   50cb4:      	str	x10, [sp, #0x140]
+1480:   50cb8:      	add	x22, sp, #0x1d, lsl #12 ; =0x1d000
+1481:   50cbc:      	add	x22, x22, #0x330
+1482:   50cc0:      	add	x8, x22, x10
+1483:   50cc4:      	ldrh	w19, [x8, #0x8]
+1484:   50cc8:      	ldr	d8, [x8]
+1485:   50ccc:      	add	x8, sp, #0x44, lsl #12  ; =0x44000
+1486:   50cd0:      	add	x8, x8, #0x680
+1487:   50cd4:      	bl	0x50cd4 <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0x13b8>
+1488:		0000000000050cd4:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A18DynamicReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC
+1489:   50cd8:      	bl	0x50cd8 <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0x13bc>
+1490:		0000000000050cd8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1011
+1491:   50cdc:      	add	x1, sp, #0x44, lsl #12  ; =0x44000
+1492:   50ce0:      	add	x1, x1, #0x680
+1493:   50ce4:      	bl	0x50ce4 <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0x13c8>
+1494:		0000000000050ce4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1418
+1495:   50ce8:      	str	x22, [sp, #0x2480]
+1496:   50cec:      	str	xzr, [sp, #0x2488]
+1497:   50cf0:      	bl	0x50cf0 <_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF+0x13d4>
+1498:		0000000000050cf0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1477
+1499:   50cf4:      	strb	wzr, [x8, #0xb68]
+1500:   50cf8:      	ldr	x9, [sp, #0x190]
+1501:   50cfc:      	str	x9, [sp, #0x2498]
+1502:   50d00:      	str	xzr, [sp, #0x24a0]
+1503:   50d04:      	strb	wzr, [x8, #0xb80]
+1504:   50d08:      	str	x21, [sp, #0x24b0]
+1505:   50d0c:      	str	xzr, [sp, #0x24b8]
+1506:   50d10:      	strb	wzr, [x8, #0xb98]
+1507:   50d14:      	ldp	x9, x10, [sp, #0x130]
+1508:   50d18:      	str	x10, [sp, #0x24c8]
+1509:   50d1c:      	str	xzr, [sp, #0x24d0]
+1510:   50d20:      	strb	wzr, [x8, #0xbb0]
+1511:   50d24:      	str	x9, [sp, #0x24e0]
+1512:   50d28:      	str	xzr, [sp, #0x24e8]
+1513:   50d2c:      	strb	wzr, [x8, #0xbc8]
+1514:   50d30:      	ldp	x9, x10, [sp, #0x120]

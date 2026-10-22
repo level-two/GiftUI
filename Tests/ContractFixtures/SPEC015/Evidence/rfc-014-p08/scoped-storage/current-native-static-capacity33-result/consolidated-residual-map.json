@@ -1,0 +1,237 @@
+{
+  "prior_map_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-diagnostic-batchA-implementation-result/consolidated-residual-map.json",
+  "prior_map_sha256": "85b5ca8920873118920c9f8157ec91c2bd09c61e686d9456ef95f3231eb3c346",
+  "prior_26_dispositions": {
+    "scope": "ConsolidatedBatchA disposition from established reviewed facts and currentordinarysourcevalidation; no freshsemanticbodyexamination duringfullrun",
+    "complete_current_callee_and_safety_eligibility": false,
+    "not_a_global_absence_claim": true,
+    "not_a_provider21_or27_broad_U02_closure": true,
+    "source_continuity": "Threefixturehunks change onlyNativeStaticdiagnostic construction/callrouting and private finitehelpers; localownership/lifetimepredicates notchanged. Retainedbinarysourcebindings remain artifact-specific.",
+    "rows": [
+      {
+        "id": "A-root-set",
+        "status": "PARTIAL",
+        "established": "Original roots S0171,S0170,S0174 and56groups1892sites remain immutable. Reviewed current selectedroot0x4bc84\u2192typedtrace0x4bebc\u2192writer0x77dd4\u2192putchar conditional chain; current four-class correction has actual executed observations and compiled caller proof.",
+        "remainder": "Complete current incoming/control/callee/type mapping for all three originalroot assignments is not established by this package; originaltuples are not silently substituted into changed objects.",
+        "remainder_kind": "AVAILABLE_BUT_UNEXAMINED_CURRENT_JOINS",
+        "dependency_ready_after_review": "Freeze reviewed newfull baseline, map only changedcurrent artifacts/sites, then actual bounded rooted proofs, reusing unchanged lemmas. No fresh fullcounter withoutmaterialchange."
+      },
+      {
+        "id": "A-shared-stdio",
+        "status": "CONDITIONAL_PROVIDER_PATH_PROVED",
+        "established": "23\u201325 installed putchar\u2192swbuf\u2192swsetup\u2192smakebuf\u2192exact malloc_type_malloc binding; complete selected setup/size bodies.27 qualifies executedMain getter/setter stub origins and mode2 unbuffered predicate for returned streamR.",
+        "remainder": "R-to-writer-streamS equality, GOT0x28fa98478 target/libc stdout identity, state persistence through intervening linked calls and historical loaded-provider/window applicability not proved. No pristinebytes\u2192runtime substitution. Actual zone origin/success/bytes are separate unknowns.",
+        "remainder_kind": "EXACT_UNJOINED_STATE_BINDING_AND_PROCESS_FACTS",
+        "dependency_ready_after_review": "One coherent grouped state/applicability proof only if it closes necessary actualwindow predicates; no repeating setterleafpackets or presumingproviderabsence. Existingputchar retained, no speculativewrite/fflush/setvbuf correction."
+      },
+      {
+        "id": "A-reached-diagnostic-constructions",
+        "status": "CORRECTED_FOCUSED_AND_FULL_VALIDATED_REVIEW_PASS",
+        "established": "Finite typed traces frombatch17 retained; reuse label,SO06role,twoaudit Anyarray constructions now removed in exact matching focusedSIL callers.72selected functions0alloc_ref/Anyarray/printrefs;68pairedrows/failurecontrols and3673runtime observations preserved. FullmaintainedmacosStatic426records/412commandsPASS with1736320runtimeassertions0failures.",
+        "remainder": "Singleindependentreview pending; focusedmachine/SILproofartifact-specific becausefullobjecthashdiffers. Sharedproviderordinary/firstuseallocation/cost notclosed.",
+        "remainder_kind": "REVIEW_PENDING_AND_PROVIDER_PROOF_OPEN",
+        "dependency_ready_after_review": "Scopedcommit/rootcoordination thenauthorizedtraceablebaseline refresh and genuine remainingroot/callee work. No redundantfullrun."
+      },
+      {
+        "id": "A-current-allocator-frontier17",
+        "status": "AVAILABLE_UNEXAMINED",
+        "established": "Both actual comparedRuntimeobjects retain17allocatorcalls:7outlined+10named. Four removed SIL constructions do not imply wholemodule17reduction. Exact addresses/symbols retained in machine-reconciliation.json.",
+        "remainder": "Actual controllingrootpaths/typearguments to remaining17 and sharedoutlinedhelpercallorigins not semantically disposed. Array/Dynamic/functionnames do not establish feasibility/exclusion.",
+        "remainder_kind": "AVAILABLE_BUT_UNEXAMINED_LOCAL_EVIDENCE",
+        "dependency_ready_after_review": "Use exact retained current disassembly/SIL/maps underoriginal accountable windows, grouping only proven identical predicates; no newinventory or count-only disposition."
+      },
+      {
+        "id": "A-indirect-witness-metadata",
+        "status": "AVAILABLE_UNEXAMINED",
+        "established": "Concrete reviewed owner/reader/action/factdispatcher/callback constructions remain closed in their actual supported source scope.",
+        "remainder": "Other actual indirect/witness origins and metadata/once/getter ordinary/firstuse paths across currentmappedrootfrontier remain U02 obligations; provider21/27 do not close them.",
+        "remainder_kind": "AVAILABLE_BUT_UNEXAMINED_LOCAL_OR_SPECIFIC_PROVIDER_JOINS",
+        "dependency_ready_after_review": "Prioritize actual currentroot executable edges and exact instantiated types; acquire only named installedprovider facts needed understandingapproval, not wholeprovidercorpus."
+      },
+      {
+        "id": "A-guarded-failure-diagnostics",
+        "status": "AVAILABLE_UNEXAMINED",
+        "established": "New correction covers all four actuallyobserved classes. CounterRender,SemanticProbe,HostCorpus,WakeIntegration failedguard/assert prints were deliberately preserved.",
+        "remainder": "Actual feasible failureconditions versus established invariants/required failurecases not proved for all these paths. Successfulrun/name does not prove theminfeasible orobserver-exempt.",
+        "remainder_kind": "AVAILABLE_BUT_UNEXAMINED_LOCAL_EVIDENCE",
+        "dependency_ready_after_review": "Group exactrootederror predicates before anynecessary finitecorrection, preserving independent failureoracles; no speculativeunreachableformatter rewrite."
+      },
+      {
+        "id": "A-Main-and-cost-windows",
+        "status": "SCOPE_DISTINCTION",
+        "established": "Actual Main setbufnil precedes fivecomponentcounter entry evaluation; finalsummaryprint and setup visible in priorbinding. Initial11allocations/336requestedbytes was warmedsubset, not wholehost/coldceiling.",
+        "remainder": "Wrapper/setup/cold costs and exact current measurementwindow eligibility are not exempt; providerstate proof not complete.",
+        "remainder_kind": "BATCH_B_MEASUREMENT_AND_EXACT_SCOPE_PRECONDITIONS",
+        "dependency_ready_after_review": "AfterAeligibility, definecurrent composition/window from applicable actualreceipts; no unapprovedcold/image release or historiccosttransfer."
+      },
+      {
+        "id": "U03-01",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Concrete sink origin, stored callback tuple and original library bindings",
+        "remainder": "Other actualindirect/witness origins remainA U02 proof obligations; concreteproved sinksource remainsclosed.",
+        "remainder_kind": "AVAILABLE_BUT_UNEXAMINED_ACTUAL_ORIGIN_A",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-02",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Original14Static/9Dynamic bankloanfactory,token,active/body/end/empty/idle sourceordering",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-03",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Nativepaired carrier/compiler controls,ARMv6/Embedded compilerboundary",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-04",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Carriercontrols and concrete retirementordering",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-05",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Private sink,exactattachment,stoppedactivation destruction/fault5 sourceproof",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-06",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Fallback/reconstruction/sourceordering,twohost/earlyreturnobservations",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-07",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Disjointbuffers,factoryloans,phase/revision/readcount retirement/backinglast",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-08",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Nativecarrier and ARMv6/Embedded direct/generic compilercontrols",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-09",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Generation/ownership/sourceguards and retainedcontrolstorage controls",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-10",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Nativeactivation/copy/escape controls and targetcompilerboundary; EmbeddedDynamicescapeinapplicable",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-11",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Hostdeferredteardown,consumingextraction,retired-onlyreset/fault5",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-12",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Exact93privacy classifiers and pairednegative/positive scope",
+        "remainder": "Lifetime/escapecriteria beyond93testedclassifiers must be joined to actualremainingcalls; arbitraryforeign/concurrentextraassurance not added.",
+        "remainder_kind": "ACTUAL_CHAIN_JOIN_A_OR_APPLICABLE_CONTROL_B",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-13",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Ownership rejection-before-mutation/sourcepredicates",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-14",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Actualpublisher/view/readerloan/snapshot/generatedbind/getter chain",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-15",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Typedaction/facttarget,generation/rootattachment,mutation/reportreturn/teardown",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-16",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Exactactiveattachment,retirementadmission/generation,fault5 outstandingticket",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-17",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Native/tiledlocal loan/retirement,retainedinstallednRFwriter synchronouscompletion/abort contract",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "U03-18",
+        "status": "LOCAL_REVIEWED_SCOPE_RETAINED",
+        "established": "Stoppedactivation unwind/backinglast sourceargument andfault5",
+        "remainder": "Applicable completeprofile/path/lifetime observations and exactcurrentimage/profile applicability remain BatchB; reviewed local sourceconditions remain closed, no universalprofile/runtimetransfer.",
+        "remainder_kind": "BATCH_B_RUNTIME_PROFILE_IMAGE_OR_SCOPED_CONTROL",
+        "dependency_ready_after_review": "Reuse reviewedmatrixrow withoutreopeningclosedlocalproof; changedformatterbranches do not alter owner/generation/lifetime predicates. Fullsourcehashrefresh is not oldbinary/image requalification."
+      },
+      {
+        "id": "B-runtime-resources",
+        "status": "GATED_NOT_PASSED",
+        "established": "NativeStatic/Dynamic historical actualfunctionalproducer cells and targetcrosscompiler cells retain their ownprofiles/artifacts; fault5reviewclosedfocusedfailureobservation.",
+        "remainder": "Current completeapp/generatedschema,applicabletargetexecution/physicalconstruction/window/cold/currentlinkedimage/RAM/stack/resource gates remain; no earlyfullimage/no targetruntime fromcrossonly.",
+        "remainder_kind": "BATCH_B_MANDATORY_VALIDATION_NOT_OPTIONAL_ASSURANCE",
+        "dependency_ready_after_review": "AfterAeligibility+review, advance genuine ready retained/currentprofileproducer cells coherently; no automatic broadmatrix/cold/image or old255612B RAM transfer."
+      }
+    ],
+    "post_review_priority": [
+      "Finish current fullproducer/review and authorizedtraceablebaseline refresh",
+      "Decide sharedstdio R\u2192S+state/window applicability as one actualgroup; no setterleafloop",
+      "Classify genuine currentrooted remaining17/indirect/witness/errorfrontiers fromalreadyavailableevidence; unexamined is notexternalblocker",
+      "Only then applicableBatchB runtime/currentimage/cold/resourcevalidation; no automaticrelease"
+    ]
+  },
+  "capacity33_overlay": {
+    "source_and_focused": "Two testcase array constructions corrected; focused and full NativeStatic validated",
+    "full_status": "PASS",
+    "full_machine_type_specific_removal": true,
+    "complete_BatchA_eligibility": false,
+    "other_paths": "Available-unexamined remain ready work; no absent-provider inference",
+    "stdio_state": "R=S/persistence/loaded-provider/window unresolved",
+    "BatchB": "Runtime/physical/current-image/cold/resource/profile remain separately gated",
+    "full_record": "full-validation.json"
+  }
+}

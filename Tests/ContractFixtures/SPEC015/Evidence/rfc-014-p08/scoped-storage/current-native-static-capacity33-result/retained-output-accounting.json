@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-22T21:08:44.389077+00:00",
+  "retained_roots": [
+    ".build/contracts/p08-native-static-capacity33",
+    ".build/contracts/p08-counter-e3ivm0v6",
+    ".build/contracts/p08-counter-8rng9k7r",
+    ".build/contracts/spec-013-runtime-cycle/tmpe8onpqjb",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-capacity33-result"
+  ],
+  "retained_bytes": 356581011,
+  "bound_bytes": 536870912,
+  "final_reserve_bytes": 16777216,
+  "unknown_aggregate_tool_envelopes_and_IO": "not certified",
+  "ordinary_validation_not_U02_limit_amendment": true,
+  "no_raw_result_object_or_SIL_copies": true,
+  "remaining_after_final_reserve": 163512685,
+  "postproof_attachment_scope": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment",
+    "bytes": 410272,
+    "historical_U02_ledgers_unchanged": true
+  }
+}

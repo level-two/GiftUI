@@ -1,0 +1,19 @@
+{
+  "baseline": {
+    "path": ".build/contracts/p08-counter-ob4qm63e/execute.log",
+    "bytes": 611254,
+    "sha256": "3a7963ebb9a8e80f34b4851835744efba84d900c76097d0ce01fefd0d680af7e"
+  },
+  "after": {
+    "path": ".build/contracts/p08-counter-e3ivm0v6/execute.log",
+    "bytes": 611254,
+    "sha256": "76569bb08c05949c161ea00f00ef951f4736e0ca91c035213996dc9be8f69005"
+  },
+  "rows": 3673,
+  "raw_equal": false,
+  "normalized_equal": true,
+  "normalized_sha256": "9f9b66ae44a9e0fe40b7ebb13d34b165b37d20d8324d754be0585b92f2b2a658",
+  "normalization": "Only SO06 role tokens4/8:120rows,240physical-address tokens; no whitespace/newline stripping",
+  "regex_ascii": "(?m)^(SO06 role \\d+ \\d+ )(\\d+)( \\d+ \\d+ \\d+ )(\\d+)( \\d+ \\d+ => \\d+ \\d+)(\\r?$)",
+  "maintained_log_terminator_preserved": true
+}

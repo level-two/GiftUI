@@ -1,0 +1,289 @@
+410934:sil [stack_protection] @$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF : $@convention(thin) (Optional<UnsafeMutableRawBufferPointer>, Optional<@convention(c) (UInt16, UInt16, UInt16, UInt16, Optional<UnsafePointer<UInt8>>, Int) -> Int32>) -> Int {
+411021:  debug_value %78, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %83
+411022:  %84 = integer_literal $Builtin.Int64, 1         // users: %3867, %3868, %3872, %3894, %3934, %3380, %3381, %3385, %3407, %3447, %2671, %2874, %3057, %2253, %2272, %2355, %2539, %2520, %2516, %2141, %2166, %1966, %1992, %1224, %631, %471, %475, %494, %118, %99
+411023:  %85 = integer_literal $Builtin.Int1, -1         // users: %3359, %3848, %3850, %3894, %3934, %3945, %3820, %3407, %3447, %3458, %3331, %1203, %2022, %2198, %2904, %3324, %3812, %3473, %3947, %3581, %2920, %3460, %3085, %2671, %2847, %2874, %2880, %2253, %2272, %2355, %2559, %2539, %2583, %2522, %2289, %2042, %1856, %3952, %1224, %1594, %1830, %631, %897, %133, %477, %520, %494, %514, %118, %99
+411024:  %86 = integer_literal $Builtin.Int64, 2         // users: %3867, %3380, %110, %2264, %2517, %2516, %1835, %2261, %107, %471, %472
+411025:  %87 = integer_literal $Builtin.Int1, 0          // users: %1852, %2159, %1985, %1051, %1059, %1871, %1895, %2050, %2074, %2928, %2952, %3481, %3505, %1373, %1365, %747, %755, %286, %294, %2882
+411026:  debug_value %78, var, name "$after$generator", type $IndexingIterator<Array<Bool>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %88
+411027:  %89 = global_value [bare] @$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFTv_ : $_ContiguousArrayStorage<Bool> // user: %113
+411028:  br bb1(%78, %78)                                // id: %90
+411029:
+411030:// %91                                            // user: %104
+411031:// %92                                            // users: %94, %93, %99, %96, %95, %128
+411032:// Loop header
+411033:bb1(%91 : $Builtin.Int64, %92 : $Builtin.Int64):  // Preds: bb17 bb0
+411034:  debug_value %92, let, name "index", type $Int, expr op_fragment:#Int._value // id: %93
+411035:  debug_value %92, let, name "$element", type $Int, expr op_fragment:#Int._value // id: %94
+411036:  %95 = builtin "cmp_slt_Int64"(%92, %78) : $Builtin.Int1 // user: %97
+411053:
+411054:bb3:                                              // Preds: bb2
+411055:  %109 = builtin "cmp_slt_Int64"(%106, %78) : $Builtin.Int1 // user: %111
+411056:  %110 = builtin "cmp_sge_Int64"(%106, %86) : $Builtin.Int1 // user: %111
+411057:  %111 = builtin "or_Int1"(%109, %110) : $Builtin.Int1 // user: %112
+411058:  cond_fail %111, "Index out of range"            // id: %112
+411059:  %113 = upcast %89 to $__ContiguousArrayStorageBase // user: %114
+411060:  %114 = ref_tail_addr [immutable] %113, $Bool    // user: %116
+411061:  %115 = builtin "truncOrBitCast_Int64_Word"(%106) : $Builtin.Word // user: %116
+411062:  %116 = index_addr [stack_protection] %114, %115 // user: %117
+411063:  %117 = load %116                                // users: %137, %123, %124
+411064:  %118 = builtin "sadd_with_overflow_Int64"(%106, %84, %85) : $(Builtin.Int64, Builtin.Int1) // users: %120, %119
+411065:  %119 = tuple_extract %118, 0                    // users: %525, %122
+411066:  %120 = tuple_extract %118, 1                    // user: %121
+411067:  cond_fail %120, "arithmetic overflow"           // id: %121
+411068:  debug_value %119, var, name "$after$generator", type $IndexingIterator<Array<Bool>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %122
+411506:
+411507:bb17:                                             // Preds: bb16
+411508:  br bb1(%105, %100)                              // id: %528
+411509:
+411510:bb18:                                             // Preds: bb16
+411511:  %529 = integer_literal $Builtin.Int64, 5        // users: %2663, %2660, %902
+411512:  %530 = alloc_ref [bare] [stack] [tail_elems $InlineArray<5, UInt16> * %30] $_ContiguousArrayStorage<InlineArray<5, UInt16>> // users: %596, %905, %531, %908
+411513:  %531 = upcast %530 to $__ContiguousArrayStorageBase // user: %532
+411514:  %532 = ref_tail_addr %531, $InlineArray<5, UInt16> // users: %533, %584, %572, %560, %548
+411515:  %533 = struct_element_addr %532, #InlineArray._storage // user: %534
+411516:  %534 = vector_base_addr %533                    // users: %537, %546, %544, %542, %538
+411517:  %535 = integer_literal $Builtin.Int16, 1        // user: %536
+411518:  %536 = struct $UInt16 (%535)                    // users: %2654, %2640, %2628, %2626, %2618, %2612, %2598, %595, %581, %569, %567, %559, %553, %537, %3574, %3579, %3547, %3074, %3083, %3045, %3045, %3046, %3046, %3046, %3005
+411519:  store %536 to %534                              // id: %537
+411520:  %538 = index_addr %534, %10                     // user: %541
+411521:  %539 = integer_literal $Builtin.Int16, 2        // user: %540
+411522:  %540 = struct $UInt16 (%539)                    // users: %3629, %3627, %3625, %3623, %3621, %3139, %3137, %3135, %3133, %3131, %2897, %2895, %2893, %2891, %2889, %2652, %2650, %2648, %2646, %2642, %2638, %2636, %2634, %2630, %2624, %2622, %2616, %2614, %2610, %2606, %2604, %2602, %2600, %2316, %2314, %2312, %2310, %2308, %1609, %1607, %1605, %1603, %1601, %1239, %1237, %1235, %1233, %1231, %936, %934, %932, %930, %928, %593, %591, %589, %587, %583, %579, %577, %575, %571, %565, %563, %557, %555, %551, %547, %545, %543, %541, %3579, %3579, %3083, %3083, %3027, %3027, %3030, %3045, %3045, %3045, %3047, %3047
+411603:  // function_ref P08TypedBackingOwner.init(slots:identity:capacities:)
+411604:  %619 = function_ref @$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC : $@convention(method) (P08PhysicalSlots, UInt, InlineArray<5, UInt16>, @thin P08TypedBackingOwner.Type) -> @owned P08TypedBackingOwner // users: %3762, %3272, %1191, %1512, %1744, %1798, %1581, %887
+411605:  debug_value undef : $*P08TypedBackingOwner, var, name "owner", expr op_deref // id: %620
+411606:  // function_ref P08TypedBackingOwner.deinit
+411607:  %621 = function_ref @$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVfD : $@convention(method) (@owned P08TypedBackingOwner) -> () // users: %3778, %3290, %1196, %2852, %1517, %1749, %1803, %1586, %891
+411608:  debug_value undef : $*P08StaticReservation, var, name "reservation", expr op_deref // id: %622
+411609:  %623 = upcast %596 to $__ContiguousArrayStorageBase // user: %624
+411610:  %624 = ref_tail_addr [immutable] %623, $InlineArray<5, UInt16> // user: %629
+411611:  br bb19(%105, %78)                              // id: %625
+411612:
+411613:// %626                                           // user: %897
+411614:// %627                                           // users: %628, %631
+411615:// Loop header
+411616:bb19(%626 : $Builtin.Int64, %627 : $Builtin.Int64): // Preds: bb18 bb20
+411617:  %628 = builtin "truncOrBitCast_Int64_Word"(%627) : $Builtin.Word // user: %629
+411618:  %629 = index_addr [stack_protection] %624, %628 // user: %630
+411892:  cond_br %902, bb21, bb20                        // id: %903
+411893:
+411894:bb20:                                             // Preds: bb19
+411895:  br bb19(%898, %632)                             // id: %904
+411896:
+411897:bb21:                                             // Preds: bb19
+411898:  %905 = begin_dealloc_ref %596 of %530           // users: %907, %906
+411899:  fix_lifetime %905                               // id: %906
+411900:  dealloc_ref %905                                // id: %907
+411901:  dealloc_stack_ref %530                          // id: %908
+411902:  // function_ref closure #3 in counterExerciseScopedStorage(backing:write:)
+411903:  %909 = function_ref @$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVzXEfU1_ : $@convention(thin) @substituted <τ_0_0> (@inout P08TypedBackingOwner) -> @out τ_0_0 for <Int> // user: %1193
+411904:  debug_value undef : $Builtin.Int1, let, name "surplus", argno 2, type $Bool, expr op_constu:0:op_fragment:#Bool._value // id: %910
+411905:  debug_value undef : $Builtin.Int1, let, name "surplus", argno 2, type $Bool, expr op_constu:0:op_fragment:#Bool._value // id: %911
+411906:  debug_value undef : $Builtin.Int1, let, name "surplus", argno 3, type $Bool, expr op_constu:0:op_fragment:#Bool._value // id: %912
+411907:  debug_value undef : $Builtin.Int1, let, name "surplus", argno 3, type $Bool, expr op_constu:0:op_fragment:#Bool._value // id: %913
+411908:  debug_value undef : $Builtin.Int1, let, name "surplus", argno 3, type $Bool, expr op_constu:0:op_fragment:#Bool._value // id: %914
+411909:  debug_value undef : $Builtin.Int1, let, name "surplus", argno 4, type $Bool, expr op_constu:0:op_fragment:#Bool._value // id: %915
+412196:  dealloc_stack %941                              // id: %1202
+412197:  %1203 = builtin "sadd_with_overflow_Int64"(%898, %1199, %85) : $(Builtin.Int64, Builtin.Int1) // users: %1205, %1204
+412198:  %1204 = tuple_extract %1203, 0                  // users: %1218, %1207
+412199:  %1205 = tuple_extract %1203, 1                  // user: %1206
+412200:  cond_fail %1205, "arithmetic overflow"          // id: %1206
+412201:  debug_value %1204, var, name "checks", type $Int, expr op_fragment:#Int._value // id: %1207
+412202:  %1208 = global_value [bare] @$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFTv0_ : $_ContiguousArrayStorage<Bool> // user: %1216
+412203:  debug_value %78, var, name "$surplus$generator", type $IndexingIterator<Array<Bool>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %1209
+412204:  // function_ref closure #4 in counterExerciseScopedStorage(backing:write:)
+412205:  %1210 = function_ref @$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVzXEfU2_ : $@convention(thin) @substituted <τ_0_0> (@inout P08TypedBackingOwner, Bool) -> @out τ_0_0 for <Int> // users: %1583, %1514
+412206:  debug_value undef : $*P08StaticReservation, var, name "reservation", expr op_deref // id: %1211
+412207:  // function_ref closure #5 in counterExerciseScopedStorage(backing:write:)
+412208:  %1212 = function_ref @$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVzXEfU3_ : $@convention(thin) @substituted <τ_0_0> (@inout P08TypedBackingOwner, Bool) -> @out τ_0_0 for <Int> // users: %1800, %1746
+412209:  %1213 = metatype $@thin P08DynamicReservation.Type // users: %3636, %3146, %2690, %1616
+412210:  // function_ref P08DynamicReservation.init()
+412211:  %1214 = function_ref @$s17P08CounterRuntime0A18DynamicReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC : $@convention(method) (@thin P08DynamicReservation.Type) -> @owned P08DynamicReservation // users: %3636, %3146, %2690, %1616
+412212:  debug_value undef : $*P08DynamicReservation, var, name "reservation", expr op_deref // id: %1215
+412213:  %1216 = upcast %1208 to $__ContiguousArrayStorageBase // user: %1217
+412214:  %1217 = ref_tail_addr [immutable] %1216, $Bool  // user: %1222
+412215:  br bb22(%1204, %78)                             // id: %1218
+412216:
+412217:// %1219                                          // user: %1594
+412218:// %1220                                          // users: %1221, %1224
+412219:// Loop header
+412220:bb22(%1219 : $Builtin.Int64, %1220 : $Builtin.Int64): // Preds: bb21 bb29
+412221:  %1221 = builtin "truncOrBitCast_Int64_Word"(%1220) : $Builtin.Word // user: %1222
+412222:  %1222 = index_addr [stack_protection] %1217, %1221 // user: %1223
+413326:  debug_value %2235, let, name "dynamicIDs"       // id: %2237
+413327:  %2238 = integer_literal $Builtin.Int64, 9       // users: %2505, %2250, %2590, %2240
+413328:  debug_value %78, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._elements:op_fragment:#Range.lowerBound:op_fragment:#Int._value // id: %2239
+413329:  debug_value %2238, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._elements:op_fragment:#Range.upperBound:op_fragment:#Int._value // id: %2240
+413330:  debug_value %78, var, name "$index$generator", type $IndexingIterator<Range<Int>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %2241
+413331:  debug_value %78, var, name "$after$generator", type $IndexingIterator<Array<Bool>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %2242
+413332:  %2243 = global_value [bare] @$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFTv1_ : $_ContiguousArrayStorage<Bool> // user: %2267
+413333:  br bb63(%2199, %78)                             // id: %2244
+413334:
+413335:// %2245                                          // user: %2258
+413336:// %2246                                          // users: %2248, %2247, %2281, %2253, %2250, %2249, %2284
+413337:// Loop header
+413338:bb63(%2245 : $Builtin.Int64, %2246 : $Builtin.Int64): // Preds: bb82 bb62
+413339:  debug_value %2246, let, name "index", type $Int, expr op_fragment:#Int._value // id: %2247
+413340:  debug_value %2246, let, name "$element", type $Int, expr op_fragment:#Int._value // id: %2248
+413341:  %2249 = builtin "cmp_slt_Int64"(%2246, %78) : $Builtin.Int1 // user: %2251
+413358:
+413359:bb65:                                             // Preds: bb64
+413360:  %2263 = builtin "cmp_slt_Int64"(%2260, %78) : $Builtin.Int1 // user: %2265
+413361:  %2264 = builtin "cmp_sge_Int64"(%2260, %86) : $Builtin.Int1 // user: %2265
+413362:  %2265 = builtin "or_Int1"(%2263, %2264) : $Builtin.Int1 // user: %2266
+413363:  cond_fail %2265, "Index out of range"           // id: %2266
+413364:  %2267 = upcast %2243 to $__ContiguousArrayStorageBase // user: %2268
+413365:  %2268 = ref_tail_addr [immutable] %2267, $Bool  // user: %2270
+413366:  %2269 = builtin "truncOrBitCast_Int64_Word"(%2260) : $Builtin.Word // user: %2270
+413367:  %2270 = index_addr [stack_protection] %2268, %2269 // user: %2271
+413368:  %2271 = load %2270                              // users: %2293, %2277, %2278
+413369:  %2272 = builtin "sadd_with_overflow_Int64"(%2260, %84, %85) : $(Builtin.Int64, Builtin.Int1) // users: %2274, %2273
+413370:  %2273 = tuple_extract %2272, 0                  // users: %2588, %2276
+413371:  %2274 = tuple_extract %2272, 1                  // user: %2275
+413372:  cond_fail %2274, "arithmetic overflow"          // id: %2275
+413373:  debug_value %2273, var, name "$after$generator", type $IndexingIterator<Array<Bool>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %2276
+413726:  cond_br %2590, bb83, bb82                       // id: %2591
+413727:
+413728:bb82:                                             // Preds: bb81
+413729:  br bb63(%2259, %2254)                           // id: %2592
+413730:
+413731:bb83:                                             // Preds: bb81
+413732:  %2593 = alloc_ref [bare] [stack] [tail_elems $InlineArray<5, UInt16> * %30] $_ContiguousArrayStorage<InlineArray<5, UInt16>> // users: %2655, %2883, %2594, %2886
+413733:  %2594 = upcast %2593 to $__ContiguousArrayStorageBase // user: %2595
+413734:  %2595 = ref_tail_addr %2594, $InlineArray<5, UInt16> // users: %2596, %2643, %2631, %2619, %2607
+413735:  %2596 = struct_element_addr %2595, #InlineArray._storage // user: %2597
+413736:  %2597 = vector_base_addr %2596                  // users: %2598, %2605, %2603, %2601, %2599
+413737:  store %536 to %2597                             // id: %2598
+413738:  %2599 = index_addr %2597, %10                   // user: %2600
+413739:  store %540 to %2599                             // id: %2600
+413740:  %2601 = index_addr %2597, %15                   // user: %2602
+413741:  store %540 to %2601                             // id: %2602
+413742:  %2603 = index_addr %2597, %20                   // user: %2604
+413804:
+413805:bb85:                                             // Preds: bb84
+413806:  %2662 = builtin "cmp_slt_Int64"(%2659, %78) : $Builtin.Int1 // user: %2664
+413807:  %2663 = builtin "cmp_sge_Int64"(%2659, %529) : $Builtin.Int1 // user: %2664
+413808:  %2664 = builtin "or_Int1"(%2662, %2663) : $Builtin.Int1 // user: %2665
+413809:  cond_fail %2664, "Index out of range"           // id: %2665
+413810:  %2666 = upcast %2655 to $__ContiguousArrayStorageBase // user: %2667
+413811:  %2667 = ref_tail_addr [immutable] %2666, $InlineArray<5, UInt16> // user: %2669
+413812:  %2668 = builtin "truncOrBitCast_Int64_Word"(%2659) : $Builtin.Word // user: %2669
+413813:  %2669 = index_addr [stack_protection] %2667, %2668 // user: %2670
+413814:  %2670 = load %2669                              // users: %2833, %2688, %2676, %2677, %2697, %2704, %2712, %2721, %2731, %2742, %2754, %2764, %2779, %2792, %2809
+413815:  %2671 = builtin "sadd_with_overflow_Int64"(%2659, %84, %85) : $(Builtin.Int64, Builtin.Int1) // users: %2673, %2672
+413816:  %2672 = tuple_extract %2671, 0                  // users: %2879, %2675
+413817:  %2673 = tuple_extract %2671, 1                  // user: %2674
+413818:  cond_fail %2673, "arithmetic overflow"          // id: %2674
+413819:  debug_value %2672, var, name "$generator", type $IndexingIterator<Array<InlineArray<5, UInt16>>>, expr op_fragment:#IndexingIterator._position:op_fragment:#Int._value // id: %2675
+414037:bb92:                                             // Preds: bb85
+414038:  cond_fail %85, "precondition failure"           // id: %2880
+414039:  unreachable                                     // id: %2881
+414040:
+414041:bb93:                                             // Preds: bb84
+414042:  %2882 = struct $Bool (%87)                      // users: %3834, %3854, %3343, %3364, %3229, %3219, %3210, %3198, %3187, %3177, %3168, %3160, %3153, %3143, %3719, %3709, %3700, %3688, %3677, %3667, %3658, %3650, %3643, %3633, %2902, %3083, %3579
+414043:  %2883 = begin_dealloc_ref %2655 of %2593        // users: %2885, %2884
+414044:  fix_lifetime %2883                              // id: %2884
+414045:  dealloc_ref %2883                               // id: %2885
+414046:  dealloc_stack_ref %2593                         // id: %2886
+414047:  %2887 = alloc_stack $Builtin.FixedArray<5, UInt16> // users: %2898, %2900, %2888
+414048:  %2888 = vector_base_addr %2887                  // users: %2889, %2896, %2894, %2892, %2890
+414049:  store %540 to %2888                             // id: %2889
+414050:  %2890 = index_addr %2888, %10                   // user: %2891
+414051:  store %540 to %2890                             // id: %2891
+414052:  %2892 = index_addr %2888, %15                   // user: %2893
+414053:  store %540 to %2892                             // id: %2893
+414054:  %2894 = index_addr %2888, %20                   // user: %2895
+414257:  %3058 = metatype $@thin Array<Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>>>.Type // users: %3560, %3060
+414258:  // function_ref static Array._allocateBufferUninitialized(minimumCapacity:)
+414259:  %3059 = function_ref @$sSa28_allocateBufferUninitialized15minimumCapacitys06_ArrayB0VyxGSi_tFZ : $@convention(method) <τ_0_0> (Int, @thin Array<τ_0_0>.Type) -> @owned _ArrayBuffer<τ_0_0> // users: %3560, %3060
+414260:  %3060 = apply %3059<Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>>>(%3057, %3058) : $@convention(method) <τ_0_0> (Int, @thin Array<τ_0_0>.Type) -> @owned _ArrayBuffer<τ_0_0> // user: %3061
+414261:  %3061 = struct_extract %3060, #_ArrayBuffer._storage // user: %3062
+414262:  %3062 = struct_extract %3061, #_BridgeStorage.rawValue // users: %3063, %3070
+414263:  %3063 = unchecked_ref_cast %3062 to $__ContiguousArrayStorageBase // users: %3068, %3064
+414264:  %3064 = ref_element_addr %3063, #__ContiguousArrayStorageBase.countAndCapacity // user: %3065
+414265:  %3065 = struct_element_addr %3064, #_ArrayBody._storage // user: %3066
+414266:  %3066 = struct_element_addr %3065, #_SwiftArrayBodyStorage.count // user: %3067
+414267:  store %3057 to %3066                            // id: %3067
+414268:  %3068 = ref_tail_addr %3063, $Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>> // user: %3069
+414269:  store %3056 to %3068                            // id: %3069
+414270:  %3070 = end_cow_mutation %3062                  // user: %3071
+414271:  %3071 = struct $_BridgeStorage<__ContiguousArrayStorageBase> (%3070) // user: %3072
+414272:  %3072 = struct $_ArrayBuffer<Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>>> (%3071) // user: %3073
+414273:  %3073 = struct $Array<Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>>> (%3072) // user: %3074
+414274:  %3074 = struct $DynamicCanvasCallableStorage<SemanticRecordReference, P08CounterSchemaCanvasTable<CounterDomain>> (%3055, %3073, %536) // user: %3075
+414275:  store %3074 to %3054                            // id: %3075
+414276:  %3076 = struct_element_addr %2977, #P08DynamicOuter.control // users: %3122, %3079
+414277:  %3077 = metatype $@thin CounterControl.Type     // users: %3860, %3372, %3577, %3079
+414278:  // function_ref CounterControl.init()
+414279:  %3078 = function_ref @$s17P08CounterRuntime0B7ControlVACycfC : $@convention(method) (@thin CounterControl.Type) -> @out CounterControl // users: %3577, %3079
+414280:  %3079 = apply %3078(%3076, %3077) : $@convention(method) (@thin CounterControl.Type) -> @out CounterControl
+414281:  %3080 = enum $Optional<UInt16>, #Optional.some!enumelt, %3026 // users: %3579, %3083
+414282:  %3081 = alloc_ref $DynamicObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity> // user: %3083
+414283:  // function_ref DynamicObservableRootAdapter<>.init(identity:schema:needsCapture:modelLimit:claimLimit:pinLimit:captureLimit:)
+414284:  %3082 = function_ref @$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0D18ModelOwnerIdentityV_s6UInt16VSbA4QSgtcfc : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (ObservableModelOwnerIdentity, UInt16, Bool, UInt16, UInt16, UInt16, Optional<UInt16>, @owned DynamicObservableRootAdapter<τ_0_0, τ_0_1>) -> @owned Optional<DynamicObservableRootAdapter<τ_0_0, τ_0_1>> // users: %3579, %3083
+414285:  %3083 = apply %3082<CounterOwnedModel, SemanticCompleteIdentity>(%2972, %536, %2882, %540, %3024, %540, %3080, %3081) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (ObservableModelOwnerIdentity, UInt16, Bool, UInt16, UInt16, UInt16, Optional<UInt16>, @owned DynamicObservableRootAdapter<τ_0_0, τ_0_1>) -> @owned Optional<DynamicObservableRootAdapter<τ_0_0, τ_0_1>> // user: %3084
+414286:  switch_enum %3083, case #Optional.some!enumelt: bb111, case #Optional.none!enumelt: bb124 // id: %3084
+414287:
+414288:bb110:                                            // Preds: bb108
+414289:  cond_fail %85, "Unexpectedly found nil while unwrapping an Optional value" // id: %3085
+414290:  unreachable                                     // id: %3086
+414291:
+414297:  %3091 = address_to_pointer %3090 to $Builtin.RawPointer // user: %3093
+414298:  // function_ref one-time initialization function for counterSemanticLimits
+414299:  %3092 = function_ref @$s17P08CounterRuntime21counterSemanticLimits_WZ : $@convention(c) (Builtin.RawPointer) -> () // user: %3093
+414300:  %3093 = builtin "once"(%3091, %3092) : $Builtin.SILToken // user: %3094
+414301:  %3094 = global_addr @$s17P08CounterRuntime21counterSemanticLimits18GiftUISemanticCore0e6RecordF0Vvp : $*SemanticRecordLimits depends_on %3093 // users: %3586, %3095
+414302:  %3095 = load %3094                              // user: %3098
+414303:  %3096 = alloc_ref $DynamicSemanticRecordStorage<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>> // user: %3098
+414304:  // function_ref DynamicSemanticRecordStorage.init(limits:owner:)
+414305:  %3097 = function_ref @$s20GiftUIRuntimeDynamic0C21SemanticRecordStorageC6limits5ownerACyxG0A14UISemanticCore0dE6LimitsV_AG0dE13OwnerIdentityVtcfc : $@convention(method) <τ_0_0> (SemanticRecordLimits, SemanticRecordOwnerIdentity, @owned DynamicSemanticRecordStorage<τ_0_0>) -> @owned DynamicSemanticRecordStorage<τ_0_0> // users: %3588, %3098
+414306:  %3098 = apply %3097<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%3095, %2974, %3096) : $@convention(method) <τ_0_0> (SemanticRecordLimits, SemanticRecordOwnerIdentity, @owned DynamicSemanticRecordStorage<τ_0_0>) -> @owned DynamicSemanticRecordStorage<τ_0_0> // user: %3100
+414307:  %3099 = struct_element_addr %2977, #P08DynamicOuter.semantic // users: %3315, %3100, %3109
+414308:  store %3098 to %3099                            // id: %3100
+414309:  debug_value undef : $*P08DynamicOuter, var, name "self", expr op_deref // id: %3101
+414310:  %3102 = load %3052                              // users: %3333, %3275, %3103, %3108, %3113, %3119, %3125
+414311:  debug_value %3102, let, name "limits"           // id: %3103
+414312:  %3104 = address_to_pointer [stack_protection] %3088 to $Builtin.RawPointer // user: %3105
+414834:  %3557 = struct_element_addr %3530, #P08DynamicOuter.limits // users: %3592, %3558
+414835:  store %3556 to %3557                            // id: %3558
+414836:  %3559 = struct_element_addr %3530, #P08DynamicOuter.canvas // users: %3575, %3605, %3805
+414837:  %3560 = apply %3059<Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>>>(%3057, %3058) : $@convention(method) <τ_0_0> (Int, @thin Array<τ_0_0>.Type) -> @owned _ArrayBuffer<τ_0_0> // user: %3561
+414838:  %3561 = struct_extract %3560, #_ArrayBuffer._storage // user: %3562
+414839:  %3562 = struct_extract %3561, #_BridgeStorage.rawValue // users: %3563, %3570
+414840:  %3563 = unchecked_ref_cast %3562 to $__ContiguousArrayStorageBase // users: %3568, %3564
+414841:  %3564 = ref_element_addr %3563, #__ContiguousArrayStorageBase.countAndCapacity // user: %3565
+414842:  %3565 = struct_element_addr %3564, #_ArrayBody._storage // user: %3566
+414843:  %3566 = struct_element_addr %3565, #_SwiftArrayBodyStorage.count // user: %3567
+414844:  store %3057 to %3566                            // id: %3567
+414845:  %3568 = ref_tail_addr %3563, $Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>> // user: %3569
+414846:  store %3056 to %3568                            // id: %3569
+414847:  %3570 = end_cow_mutation %3562                  // user: %3571
+414848:  %3571 = struct $_BridgeStorage<__ContiguousArrayStorageBase> (%3570) // user: %3572
+414849:  %3572 = struct $_ArrayBuffer<Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>>> (%3571) // user: %3573
+414850:  %3573 = struct $Array<Optional<CanvasStagedEntry<SemanticRecordReference, P08CounterSchemaCanvasValues<CounterDomain>>>> (%3572) // user: %3574
+414851:  %3574 = struct $DynamicCanvasCallableStorage<SemanticRecordReference, P08CounterSchemaCanvasTable<CounterDomain>> (%3055, %3573, %536) // user: %3575
+414852:  store %3574 to %3559                            // id: %3575
+414853:  %3576 = struct_element_addr %3530, #P08DynamicOuter.control // users: %3612, %3577
+414854:  %3577 = apply %3078(%3576, %3077) : $@convention(method) (@thin CounterControl.Type) -> @out CounterControl
+414855:  %3578 = alloc_ref $DynamicObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity> // user: %3579
+414856:  %3579 = apply %3082<CounterOwnedModel, SemanticCompleteIdentity>(%3525, %536, %2882, %540, %3024, %540, %3080, %3578) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ObservableStateModel, τ_0_1 : Equatable, τ_0_1 : Sendable, τ_0_0 : ~Copyable> (ObservableModelOwnerIdentity, UInt16, Bool, UInt16, UInt16, UInt16, Optional<UInt16>, @owned DynamicObservableRootAdapter<τ_0_0, τ_0_1>) -> @owned Optional<DynamicObservableRootAdapter<τ_0_0, τ_0_1>> // user: %3580
+414857:  switch_enum %3579, case #Optional.some!enumelt: bb143, case #Optional.none!enumelt: bb158 // id: %3580
+414858:
+414859:bb142:                                            // Preds: bb140
+414860:  cond_fail %85, "Unexpectedly found nil while unwrapping an Optional value" // id: %3581
+414861:  unreachable                                     // id: %3582
+414862:
+414863:// %3583                                          // user: %3585
+414864:bb143(%3583 : $DynamicObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>): // Preds: bb141
+414865:  %3584 = struct_element_addr %3530, #P08DynamicOuter.root // users: %3801, %3585, %3594
+414866:  store %3583 to %3584                            // id: %3585
+414867:  %3586 = load %3094                              // user: %3588
+414868:  %3587 = alloc_ref $DynamicSemanticRecordStorage<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>> // user: %3588
+414869:  %3588 = apply %3097<CanvasSemanticPayload<P08CounterSchemaCanvasValues<CounterDomain>>>(%3586, %3527, %3587) : $@convention(method) <τ_0_0> (SemanticRecordLimits, SemanticRecordOwnerIdentity, @owned DynamicSemanticRecordStorage<τ_0_0>) -> @owned DynamicSemanticRecordStorage<τ_0_0> // user: %3590
+414870:  %3589 = struct_element_addr %3530, #P08DynamicOuter.semantic // users: %3803, %3590, %3599
+414871:  store %3588 to %3589                            // id: %3590
+414872:  debug_value undef : $*P08DynamicOuter, var, name "self", expr op_deref // id: %3591
+414873:  %3592 = load %3557                              // users: %3822, %3765, %3593, %3598, %3603, %3609, %3615
+414874:  debug_value %3592, let, name "limits"           // id: %3593
+414875:  %3594 = address_to_pointer [stack_protection] %3584 to $Builtin.RawPointer // user: %3595
+414876:  %3595 = struct $UnsafeMutablePointer<DynamicObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>> (%3594) // users: %3840, %3854, %3822, %3766, %3616, %3610, %3604, %3596
+414877:  debug_value %3595, let, name "root", argno 1    // id: %3596
