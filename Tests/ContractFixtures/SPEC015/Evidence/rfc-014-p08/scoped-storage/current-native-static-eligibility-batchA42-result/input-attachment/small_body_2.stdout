@@ -1,0 +1,52 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000019a38 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm>:
+   19a38:      	stp	x24, x23, [sp, #-0x40]!
+   19a3c:      	stp	x22, x21, [sp, #0x10]
+   19a40:      	stp	x20, x19, [sp, #0x20]
+   19a44:      	stp	x29, x30, [sp, #0x30]
+   19a48:      	add	x29, sp, #0x30
+   19a4c:      	bl	0x19a4c <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x14>
+		0000000000019a4c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1192
+   19a50:      	ldr	x0, [x20, #0x8]!
+   19a54:      	bl	0x19a54 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x1c>
+		0000000000019a54:  ARM64_RELOC_BRANCH26	_swift_isUniquelyReferenced_nonNull_native
+   19a58:      	ldr	x19, [x20]
+   19a5c:      	cbz	w0, 0x19a70 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x38>
+   19a60:      	ldr	x1, [x19, #0x10]
+   19a64:      	mov	x0, #0x0                ; =0
+   19a68:      	blr	x22
+   19a6c:      	b	0x19ac4 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x8c>
+   19a70:      	ldr	x8, [x19, #0x18]
+   19a74:      	cmp	x8, #0x2
+   19a78:      	b.hs	0x19a88 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x50>
+   19a7c:      	adrp	x21, 0x19000 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV12requireEmptyyyF+0x23c>
+		0000000000019a7c:  ARM64_RELOC_GOT_LOAD_PAGE21	__swiftEmptyArrayStorage
+   19a80:      	ldr	x21, [x21]
+		0000000000019a80:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	__swiftEmptyArrayStorage
+   19a84:      	b	0x19abc <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x84>
+   19a88:      	lsr	x22, x8, #1
+   19a8c:      	mov	x0, x21
+   19a90:      	bl	0x19a90 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x58>
+		0000000000019a90:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   19a94:      	mov	w23, #0xf0              ; =240
+   19a98:      	mov	x8, #0x20               ; =32
+   19a9c:      	madd	x1, x22, x23, x8
+   19aa0:      	bl	0x19aa0 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x68>
+		0000000000019aa0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_604
+   19aa4:      	mov	x21, x0
+   19aa8:      	bl	0x19aa8 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x70>
+		0000000000019aa8:  ARM64_RELOC_BRANCH26	_malloc_size
+   19aac:      	sub	x8, x0, #0x20
+   19ab0:      	sdiv	x8, x8, x23
+   19ab4:      	lsl	x8, x8, #1
+   19ab8:      	stp	xzr, x8, [x21, #0x10]
+   19abc:      	bl	0x19abc <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x84>
+		0000000000019abc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_825
+   19ac0:      	str	x21, [x20]
+   19ac4:      	ldp	x29, x30, [sp, #0x30]
+   19ac8:      	b	0x19ac8 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm+0x90>
+		0000000000019ac8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_95

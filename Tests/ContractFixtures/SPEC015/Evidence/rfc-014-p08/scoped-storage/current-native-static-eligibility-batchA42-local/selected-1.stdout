@@ -1,0 +1,23 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000bec <___swift_instantiateConcreteTypeFromMangledName>:
+     bec:      	stp	x20, x19, [sp, #-0x20]!
+     bf0:      	stp	x29, x30, [sp, #0x10]
+     bf4:      	add	x29, sp, #0x10
+     bf8:      	mov	x19, x0
+     bfc:      	ldr	x0, [x0]
+     c00:      	tbnz	x0, #0x3f, 0xc10 <___swift_instantiateConcreteTypeFromMangledName+0x24>
+     c04:      	ldp	x29, x30, [sp, #0x10]
+     c08:      	ldp	x20, x19, [sp], #0x20
+     c0c:      	ret
+     c10:      	neg	x1, x0, asr #32
+     c14:      	add	x0, x19, w0, sxtw
+     c18:      	mov	x2, #0x0                ; =0
+     c1c:      	mov	x3, #0x0                ; =0
+     c20:      	bl	0xc20 <___swift_instantiateConcreteTypeFromMangledName+0x34>
+		0000000000000c20:  ARM64_RELOC_BRANCH26	_swift_getTypeByMangledNameInContext2
+     c24:      	str	x0, [x19]
+     c28:      	b	0xc04 <___swift_instantiateConcreteTypeFromMangledName+0x18>

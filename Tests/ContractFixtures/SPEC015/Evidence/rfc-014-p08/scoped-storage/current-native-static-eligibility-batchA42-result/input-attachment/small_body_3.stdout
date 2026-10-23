@@ -1,0 +1,56 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000019e00 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5>:
+   19e00:      	stp	x22, x21, [sp, #-0x30]!
+   19e04:      	stp	x20, x19, [sp, #0x10]
+   19e08:      	stp	x29, x30, [sp, #0x20]
+   19e0c:      	add	x29, sp, #0x20
+   19e10:      	ldr	x0, [x20, #0x8]!
+   19e14:      	bl	0x19e14 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x14>
+		0000000000019e14:  ARM64_RELOC_BRANCH26	_swift_isUniquelyReferenced_nonNull_native
+   19e18:      	ldr	x19, [x20]
+   19e1c:      	cbz	w0, 0x19e30 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x30>
+   19e20:      	ldr	x1, [x19, #0x10]
+   19e24:      	mov	x0, #0x0                ; =0
+   19e28:      	bl	0x19e28 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x28>
+		0000000000019e28:  ARM64_RELOC_BRANCH26	_$sSa15replaceSubrange_4withySnySiG_qd__nt7ElementQyd__RszSlRd__lF17GiftUIInteraction20InteractionHitRegionVy0E14UISemanticCore24SemanticCompleteIdentityVG_s15EmptyCollectionVyALGTg5
+   19e2c:      	b	0x19e90 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x90>
+   19e30:      	ldr	x8, [x19, #0x18]
+   19e34:      	cmp	x8, #0x2
+   19e38:      	b.hs	0x19e48 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x48>
+   19e3c:      	adrp	x21, 0x19000 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV12requireEmptyyyF+0x23c>
+		0000000000019e3c:  ARM64_RELOC_GOT_LOAD_PAGE21	__swiftEmptyArrayStorage
+   19e40:      	ldr	x21, [x21]
+		0000000000019e40:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	__swiftEmptyArrayStorage
+   19e44:      	b	0x19e84 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x84>
+   19e48:      	lsr	x21, x8, #1
+   19e4c:      	adrp	x0, 0x19000 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV12requireEmptyyyF+0x23c>
+		0000000000019e4c:  ARM64_RELOC_PAGE21	_$ss23_ContiguousArrayStorageCy17GiftUIInteraction20InteractionHitRegionVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD
+   19e50:      	add	x0, x0, #0x0
+		0000000000019e50:  ARM64_RELOC_PAGEOFF12	_$ss23_ContiguousArrayStorageCy17GiftUIInteraction20InteractionHitRegionVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD
+   19e54:      	bl	0x19e54 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x54>
+		0000000000019e54:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   19e58:      	mov	w22, #0xe4              ; =228
+   19e5c:      	mov	x8, #0x20               ; =32
+   19e60:      	madd	x1, x21, x22, x8
+   19e64:      	mov	w2, #0x7                ; =7
+   19e68:      	bl	0x19e68 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x68>
+		0000000000019e68:  ARM64_RELOC_BRANCH26	_swift_allocObject
+   19e6c:      	mov	x21, x0
+   19e70:      	bl	0x19e70 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x70>
+		0000000000019e70:  ARM64_RELOC_BRANCH26	_malloc_size
+   19e74:      	sub	x8, x0, #0x20
+   19e78:      	sdiv	x8, x8, x22
+   19e7c:      	lsl	x8, x8, #1
+   19e80:      	stp	xzr, x8, [x21, #0x10]
+   19e84:      	mov	x0, x19
+   19e88:      	bl	0x19e88 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5+0x88>
+		0000000000019e88:  ARM64_RELOC_BRANCH26	_swift_bridgeObjectRelease
+   19e8c:      	str	x21, [x20]
+   19e90:      	ldp	x29, x30, [sp, #0x20]
+   19e94:      	ldp	x20, x19, [sp, #0x10]
+   19e98:      	ldp	x22, x21, [sp], #0x30
+   19e9c:      	ret

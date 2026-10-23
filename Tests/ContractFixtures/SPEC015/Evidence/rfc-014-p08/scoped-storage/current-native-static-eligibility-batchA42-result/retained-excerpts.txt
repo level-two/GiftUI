@@ -1,0 +1,8 @@
+A42 source pages: 1,7,8,9,11,12,13,14,32,33,34,35
+Source identity: 7ab835e7ffaec4c3d1d769fc14de845701d394bfe9636e536a41dee076f835c3
+Full exact source page payloads and ordered six-body displays: sibling A42-local/invocation/output-*.json.
+Original six current machine bodies: input-attachment/small_body_*.stdout with preservation mapping.
+New complete metadata helper: sibling A42-local/selected-1.stdout SHA56bd7e80cb0aeaa51c52a4ce3a951b4317dcbf11ec78568b7346012f1da82949.
+New complete witness helper: sibling A42-local/selected-2.stdout SHA923bece8b8d5f86d2e811f248528580836d23f7aadde7649faf3412a0bf56822.
+Exact cache data rows and all three caller relocations: sibling A42-local/ledger.json.
+No large A41 outer/nested caller body is part of this source-first context.

@@ -1,0 +1,132 @@
+{
+  "HEAD": "dafaaf8de77c997bcdedefd8e4c1c95f0a23db06",
+  "helper_sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc",
+  "inputs": {
+    "object": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+      "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+      "bytes": 2605520
+    },
+    "result": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/result.json",
+      "sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8",
+      "bytes": 8566019
+    },
+    "decoder_tool": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "bytes": 18272848
+    },
+    "parser": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.inspect.py",
+      "sha256": "d27705f7a22991a3c7176fd1e303178a2129cc5e2f9ba8078d99ef98258a31e4",
+      "bytes": 44447
+    },
+    "roots": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json",
+      "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0",
+      "bytes": 70161
+    },
+    "entry40_lemma": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-result/baseline-refresh.json",
+      "sha256": "dc175eb034e9c3207e7e4096d8efdc85dc9acfcecdf61f18aa3b57d9219d29ce",
+      "bytes": 3524
+    },
+    "prior_lemma": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-result/rows.json",
+      "sha256": "10fc20b0220a138cda43cdd719e1d7ca5c2690f1a849884925b1bdad3649dbca",
+      "bytes": 8501
+    },
+    "remaining": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-result/residuals.json",
+      "sha256": "b421bad4e682e2d9e04d117d2011428d93e7f440ebf9826bcb38aa84ed0929e6",
+      "bytes": 2601
+    },
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "sha256": "7ab835e7ffaec4c3d1d769fc14de845701d394bfe9636e536a41dee076f835c3",
+      "bytes": 256648
+    },
+    "small_body_1": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-1.stdout",
+      "sha256": "93efb3eca2ed28b2d4dfab3494662db79b2bac4e8be4ced983ab2630091c69f4",
+      "bytes": 2991
+    },
+    "small_body_2": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-2.stdout",
+      "sha256": "b2927877fe3526707e891857c827a6624d8f63d705c8ce3d50bb72d9813acb70",
+      "bytes": 3667
+    },
+    "small_body_3": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-3.stdout",
+      "sha256": "9a2030d7c3d71e224217d4c69905fdaf3017364ed3540e3ea7ec09fa17f960b8",
+      "bytes": 4114
+    },
+    "small_body_4": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-4.stdout",
+      "sha256": "7b385a446644add94fa0310e18c560a4d4ffa8ab50e83fbaa11eb688a874440b",
+      "bytes": 19136
+    },
+    "small_body_5": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-5.stdout",
+      "sha256": "23669bd0762de95282d12638fa2499b9370e1f8a8e3439736f65b05a645bd9a2",
+      "bytes": 51451
+    },
+    "small_body_6": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-6.stdout",
+      "sha256": "0c77a6eff45a5eaedbcffc8ae94ddcf42eca28a09039a7ceb228b4ae66d0a15d",
+      "bytes": 359
+    },
+    "group_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/decode-selected.py",
+      "sha256": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3",
+      "bytes": 4198
+    },
+    "producer_binding": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-result/full-qualification.json",
+      "sha256": "259f116e5177ce8f87883731d9ac4b0189e45fa858a2d2dba89b457d6ef13ac1",
+      "bytes": 8247
+    }
+  },
+  "all_terminal_hash_checks_passed": true,
+  "mutations": "new A42 evidence only; no source/HEAD/index/runtime changes",
+  "attachments": [
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-1.stdout",
+      "attached_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/input-attachment/small_body_1.stdout",
+      "bytes": 2991,
+      "sha256": "93efb3eca2ed28b2d4dfab3494662db79b2bac4e8be4ced983ab2630091c69f4"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-2.stdout",
+      "attached_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/input-attachment/small_body_2.stdout",
+      "bytes": 3667,
+      "sha256": "b2927877fe3526707e891857c827a6624d8f63d705c8ce3d50bb72d9813acb70"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-3.stdout",
+      "attached_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/input-attachment/small_body_3.stdout",
+      "bytes": 4114,
+      "sha256": "9a2030d7c3d71e224217d4c69905fdaf3017364ed3540e3ea7ec09fa17f960b8"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-4.stdout",
+      "attached_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/input-attachment/small_body_4.stdout",
+      "bytes": 19136,
+      "sha256": "7b385a446644add94fa0310e18c560a4d4ffa8ab50e83fbaa11eb688a874440b"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-5.stdout",
+      "attached_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/input-attachment/small_body_5.stdout",
+      "bytes": 51451,
+      "sha256": "23669bd0762de95282d12638fa2499b9370e1f8a8e3439736f65b05a645bd9a2"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-6.stdout",
+      "attached_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/input-attachment/small_body_6.stdout",
+      "bytes": 359,
+      "sha256": "0c77a6eff45a5eaedbcffc8ae94ddcf42eca28a09039a7ceb228b4ae66d0a15d"
+    }
+  ],
+  "replay_limit": "Exact raw baseline .build/provider/original authenticated inputs remain external prerequisites. Attached six bodies avoid depending on an uncommitted A41 directory for decisive machine evidence; original paths/hashes retained. No clean-checkout full replay claim."
+}

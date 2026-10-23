@@ -1,0 +1,1080 @@
+{
+  "started_utc": "2026-10-23T02:09:08.490090+00:00",
+  "processing": 236049902,
+  "transcript": 392137,
+  "requests": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 a\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 a",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/ordinary-source-locations.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/ordinary-source-locations.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 7 7\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 7 7",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 8 8\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 8 8",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 9 9\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 9 9",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 11 11\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 11 11",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 12 12\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 12 12",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 13 13\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 13 13",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 14 14\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 14 14",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 32 32\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 32 32",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 33 33\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 33 33",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 34 34\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 34 34",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 p 35 35\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 p 35 35",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-1.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-1.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-2.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-3.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-3.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-6.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-6.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 4 4\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 4 4",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 5 5\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 5 5",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 6 6\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 6 6",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 7 7\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 7 7",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/decode-selected.py '[[\\\"callsite\\\",\\\"0x4ec1c\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/decode-selected.py '[[\"callsite\",\"0x4ec1c\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py selected-1.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py selected-1.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py page.py 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py page.py 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ordinary-source-locations.py 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ordinary-source-locations.py 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/residuals.json 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/residuals.json 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/full-qualification.json 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/full-qualification.json 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/full-qualification.json 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/full-qualification.json 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/full-qualification.json 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/full-qualification.json 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py decode-selected.py 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py decode-selected.py 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/decode-selected.py '[[\\\"callsite\\\",\\\"0x4ef48\\\"],[\\\"callsite\\\",\\\"0x4f14c\\\"],[\\\"callsite\\\",\\\"0x4f1c4\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/decode-selected.py '[[\"callsite\",\"0x4ef48\"],[\"callsite\",\"0x4f14c\"],[\"callsite\",\"0x4f1c4\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py selected-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py selected-2.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/ordinary-cache-rows.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/ordinary-cache-rows.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/ordinary-cache-rows.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/ordinary-cache-rows.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/baseline-refresh.json 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-resource-entry40-result/baseline-refresh.json 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/finalize-result.py\",\"max_output_tokens\":10000});text({exit_code:r.exit_code,output:r.output});",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/finalize-result.py",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "pages": [
+    1,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    32,
+    33,
+    34,
+    35
+  ],
+  "errors": [],
+  "auth_utc": "2026-10-23T02:09:23.061997+00:00",
+  "page_count": 42,
+  "line_count": 4060,
+  "selected_predicates": [
+    {
+      "predicate": "frozen page identity",
+      "value": true,
+      "actual": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "predicate": "ordinary code frozen",
+      "value": true,
+      "actual": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
+    },
+    {
+      "predicate": "exact callsite relocation 0x4ec1c",
+      "value": true,
+      "actual": {
+        "symbol": "___swift_instantiateConcreteTypeFromMangledName",
+        "type": 2,
+        "index": 21065
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x4ec1c",
+      "value": true,
+      "actual": {
+        "symbol": "___swift_instantiateConcreteTypeFromMangledName",
+        "hits": [
+          {
+            "address": 3052,
+            "nlist_index": 10158
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xbec",
+      "value": true,
+      "actual": {
+        "index": 26
+      }
+    },
+    {
+      "predicate": "complete decode+final reserve",
+      "value": true,
+      "actual": {
+        "processing": 86078434,
+        "forecast": 97569984
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 1,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x4ec1c",
+          "symbol": "___swift_instantiateConcreteTypeFromMangledName"
+        },
+        "range": [
+          "0xbec",
+          "0xc2c"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbec",
+          "--stop-address=0xc2c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 1035,
+        "stdout_lines": 23,
+        "stdout_sha256": "56bd7e80cb0aeaa51c52a4ce3a951b4317dcbf11ec78568b7346012f1da82949",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-23T02:22:40.884791+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 1,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x4ec1c",
+          "symbol": "___swift_instantiateConcreteTypeFromMangledName"
+        },
+        "range": [
+          "0xbec",
+          "0xc2c"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbec",
+          "--stop-address=0xc2c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 1035,
+        "stdout_lines": 23,
+        "stdout_sha256": "56bd7e80cb0aeaa51c52a4ce3a951b4317dcbf11ec78568b7346012f1da82949",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-23T02:22:40.884791+00:00"
+      }
+    },
+    {
+      "predicate": "frozen page identity",
+      "value": true,
+      "actual": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "predicate": "ordinary code frozen",
+      "value": true,
+      "actual": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
+    },
+    {
+      "predicate": "exact callsite relocation 0x4ef48",
+      "value": true,
+      "actual": {
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl",
+        "type": 2,
+        "index": 21017
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x4ef48",
+      "value": true,
+      "actual": {
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl",
+        "hits": [
+          {
+            "address": 680016,
+            "nlist_index": 9928
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xa6050",
+      "value": true,
+      "actual": {
+        "index": 3452
+      }
+    },
+    {
+      "predicate": "exact callsite relocation 0x4f14c",
+      "value": true,
+      "actual": {
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl",
+        "type": 2,
+        "index": 20995
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x4f14c",
+      "value": true,
+      "actual": {
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl",
+        "hits": [
+          {
+            "address": 680016,
+            "nlist_index": 9928
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xa6050",
+      "value": true,
+      "actual": {
+        "index": 3452
+      }
+    },
+    {
+      "predicate": "exact callsite relocation 0x4f1c4",
+      "value": true,
+      "actual": {
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl",
+        "type": 2,
+        "index": 20985
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x4f1c4",
+      "value": true,
+      "actual": {
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl",
+        "hits": [
+          {
+            "address": 680016,
+            "nlist_index": 9928
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xa6050",
+      "value": true,
+      "actual": {
+        "index": 3452
+      }
+    },
+    {
+      "predicate": "complete decode+final reserve",
+      "value": true,
+      "actual": {
+        "processing": 120540635,
+        "forecast": 97569984
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 2,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x4f1c4",
+          "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl"
+        },
+        "range": [
+          "0xa6050",
+          "0xa6090"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xa6050",
+          "--stop-address=0xa6090",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 2676,
+        "stdout_lines": 31,
+        "stdout_sha256": "923bece8b8d5f86d2e811f248528580836d23f7aadde7649faf3412a0bf56822",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-23T02:29:22.051141+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 2,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x4f1c4",
+          "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl"
+        },
+        "range": [
+          "0xa6050",
+          "0xa6090"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xa6050",
+          "--stop-address=0xa6090",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 2676,
+        "stdout_lines": 31,
+        "stdout_sha256": "923bece8b8d5f86d2e811f248528580836d23f7aadde7649faf3412a0bf56822",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-23T02:29:22.051141+00:00"
+      }
+    }
+  ],
+  "current_body_examined_pages": {
+    "selected-1.stdout": [
+      1,
+      1
+    ],
+    "selected-4.stdout": [
+      1,
+      2,
+      3
+    ],
+    "selected-2.stdout": [
+      1,
+      1
+    ],
+    "selected-3.stdout": [
+      1
+    ],
+    "selected-6.stdout": [
+      1
+    ],
+    "selected-5.stdout": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "page.py": [
+      1
+    ],
+    "ordinary-source-locations.py": [
+      1
+    ],
+    "residuals.json": [
+      1
+    ],
+    "full-qualification.json": [
+      1,
+      2,
+      3
+    ],
+    "decode-selected.py": [
+      1
+    ],
+    "baseline-refresh.json": [
+      1
+    ]
+  },
+  "selected_captures": [
+    {
+      "index": 1,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x4ec1c",
+        "symbol": "___swift_instantiateConcreteTypeFromMangledName"
+      },
+      "range": [
+        "0xbec",
+        "0xc2c"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbec",
+        "--stop-address=0xc2c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 1035,
+      "stdout_lines": 23,
+      "stdout_sha256": "56bd7e80cb0aeaa51c52a4ce3a951b4317dcbf11ec78568b7346012f1da82949",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-23T02:22:40.884791+00:00"
+    },
+    {
+      "index": 2,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x4f1c4",
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl"
+      },
+      "range": [
+        "0xa6050",
+        "0xa6090"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xa6050",
+        "--stop-address=0xa6090",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 2676,
+      "stdout_lines": 31,
+      "stdout_sha256": "923bece8b8d5f86d2e811f248528580836d23f7aadde7649faf3412a0bf56822",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-23T02:29:22.051141+00:00"
+    }
+  ],
+  "pending_decoder": null,
+  "inline_query_failure": {
+    "error": "AttributeError: module 'sys' has no attribute 'orig_argv'",
+    "before_selected_parser_or_object_read": true,
+    "pre_emission_counting_qualification": false,
+    "unrecorded_request_capture_upper": 65536,
+    "control_processing_upper": 592012
+  },
+  "cache_symbol_rows": [
+    {
+      "name": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL",
+      "aliases": []
+    },
+    {
+      "name": "_$s17GiftUIInteraction16InteractionStateVy17P08CounterRuntime0E15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0e9CommittedI0AFLLVAD0e3HitI0AFLLVGMD",
+      "aliases": []
+    },
+    {
+      "name": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGMD",
+      "aliases": []
+    }
+  ],
+  "cache_data_predicates": {
+    "magic": "0xfeedfacf",
+    "ncmds": 14,
+    "symtab": [
+      1419056,
+      11437,
+      1602048,
+      1003472
+    ]
+  },
+  "cache_data_words": [
+    {
+      "name": "_$s17GiftUIInteraction16InteractionStateVy17P08CounterRuntime0E15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0e9CommittedI0AFLLVAD0e3HitI0AFLLVGMD",
+      "nlist_index": 6110,
+      "type": 31,
+      "section_index": 6,
+      "value": "0xcb7f0",
+      "description": 128,
+      "section": {
+        "name": "__data",
+        "segment": "__DATA",
+        "address": 830312,
+        "bytes": 3632,
+        "fileoff": 832872,
+        "reloff": 1297400,
+        "nreloc": 492,
+        "flags": 0
+      },
+      "section_delta": 3208,
+      "zero_fill": false,
+      "file_offset": 836080,
+      "raw_word_le_hex": "00000000eaffffff",
+      "unsigned": 18446743979220271104,
+      "signed": -94489280512,
+      "cell_relocations": [
+        {
+          "offset": 3208,
+          "symbolnum": 6110,
+          "pcrel": 0,
+          "length": 2,
+          "extern": 1,
+          "type": 1
+        },
+        {
+          "offset": 3208,
+          "symbolnum": 10643,
+          "pcrel": 0,
+          "length": 2,
+          "extern": 1,
+          "type": 0
+        }
+      ]
+    },
+    {
+      "name": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGMD",
+      "nlist_index": 6140,
+      "type": 31,
+      "section_index": 6,
+      "value": "0xcb7f8",
+      "description": 128,
+      "section": {
+        "name": "__data",
+        "segment": "__DATA",
+        "address": 830312,
+        "bytes": 3632,
+        "fileoff": 832872,
+        "reloff": 1297400,
+        "nreloc": 492,
+        "flags": 0
+      },
+      "section_delta": 3216,
+      "zero_fill": false,
+      "file_offset": 836088,
+      "raw_word_le_hex": "00000000eaffffff",
+      "unsigned": 18446743979220271104,
+      "signed": -94489280512,
+      "cell_relocations": [
+        {
+          "offset": 3216,
+          "symbolnum": 6140,
+          "pcrel": 0,
+          "length": 2,
+          "extern": 1,
+          "type": 1
+        },
+        {
+          "offset": 3216,
+          "symbolnum": 10644,
+          "pcrel": 0,
+          "length": 2,
+          "extern": 1,
+          "type": 0
+        }
+      ]
+    },
+    {
+      "name": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL",
+      "nlist_index": 9927,
+      "type": 31,
+      "section_index": 6,
+      "value": "0xcacf8",
+      "description": 128,
+      "section": {
+        "name": "__data",
+        "segment": "__DATA",
+        "address": 830312,
+        "bytes": 3632,
+        "fileoff": 832872,
+        "reloff": 1297400,
+        "nreloc": 492,
+        "flags": 0
+      },
+      "section_delta": 400,
+      "zero_fill": false,
+      "file_offset": 833272,
+      "raw_word_le_hex": "0000000000000000",
+      "unsigned": 0,
+      "signed": 0,
+      "cell_relocations": []
+    }
+  ],
+  "administrative_request_upper": 131072,
+  "model_end_utc": "2026-10-23T02:40:46.981017+00:00",
+  "findings": {
+    "Batch_A_eligibility_pass": false,
+    "semantic_result": "GROUPED_STATIC_VARIANT_EXCLUSION_AND_CONCRETE_FIRST_USE_PREDICATES",
+    "execution_pre_emission_qualification": false,
+    "baseline": {
+      "HEAD": "dafaaf8de77c997bcdedefd8e4c1c95f0a23db06",
+      "source_sha256": "7ab835e7ffaec4c3d1d769fc14de845701d394bfe9636e536a41dee076f835c3",
+      "Runtime_sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+      "result_sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8"
+    },
+    "source_proof": [
+      {
+        "at": "CounterScopedStorage.swift:621,642,720,805,1086,1238",
+        "fact": "The selected Static owner branch borrows the fourteen typed physical slots and calls p08ConstructStaticStorageSession. That constructor explicitly creates Static geometry and all five .static Candidate/Committed/Hit descriptors, then InteractionState and InteractionOwnedKeyState<CandidateAccess,CommittedAccess,HitAccess>. The neighboring Dynamic constructor is distinct."
+      },
+      {
+        "at": "same file:642 through complete access bodies; source pages7-13",
+        "fact": "Candidate descriptor is private, assigned by its constructor, and never reassigned by its complete methods. Committed/Hit exchange swaps whole descriptors between same-session peers after owner/serial/capacity and distinct-storage checks. Both peers originate Static, so repeated swaps preserve variant. Reset/append/replace mutate pointed-to storage rather than descriptor case. Geometry descriptor is immutable."
+      },
+      {
+        "at": "same file:3112 and3333; source pages32-35",
+        "fact": "The complete six-iteration transaction/commit/discard/capacity-failure body uses those same concrete access types. SessionOnlyCleanup takes/reinstalls the same session for exercise; finish takes it once and resets it. No replacement with a Dynamic session occurs on this chosen closure path."
+      }
+    ],
+    "premises": [
+      "Exact current source/compiler/full-object binding in Entry40 full-qualification.json lines150-216 and authenticated full201-input receipt. Source is newly authorized SEMANTIC evidence for A42; A41 AUTH-only role and STOP are unchanged.",
+      "Reuse reviewed Entry40 Static=false/tag0 owner selection, U03 scope/loan/exclusivity/backing-last conditions and source-language access control. No claim about arbitrary memory corruption, unsupported alias writes or foreign concurrent callbacks.",
+      "Compiled reset arm mapping is corroborated by the exact current branch: fixed InlineArray record clearing on one arm, exact Dynamic reset relocation on the bit63-set arm; no bankKind-to-profile inference."
+    ],
+    "current_machine": {
+      "Static_entry": "0x98308 ->0x9834c ->0x525ac; original roots Host0x4bca8 Scoped0x53f58 Route0x98270 retained by Entry40 mapping",
+      "candidate": "exerciseTransactions0x4ebd0 has exact access generic metadata and call0x4ed78 ->CandidateAccess.reset0x196ac. At0x196cc tbnz descriptor bit63 enters0x19710/0x19714 Dynamic reset; Static arm clears fixed records and count.",
+      "cleanup": "SessionOnlyCleanup.finish0x53704-0x53a14 returns for nil session; geometry discriminator selects Static or Dynamic operations. Candidate/hit/committed descriptor bit63 guards at0x53864,0x538b4,0x53908,0x53950,0x53998 select Dynamic arms only for Dynamic descriptors. Static paths clear fixed storage. Stack-canary failure0x53a10 and bounds BRKs remain fail-stop conditions, not cleanup success.",
+      "exclusions": [
+        {
+          "allocator_pc": "0xbf420",
+          "via": "Candidate Dynamic reset0x19a38;0x19aa0 ->outlined6040xbf41c",
+          "classification": "INFEASIBLE_FOR_THIS_PROVED_STATIC_SESSION",
+          "additional_dynamic_predicates": "Dynamic-selected descriptor, uniqueness test returns zero, storage capacity word>=2. Then metadata helper at0x19a90 and allocation tail are reachable structurally; no runtime allocation success/cost claim."
+        },
+        {
+          "allocator_pc": "0x19e68",
+          "via": "DynamicHit.reset0x19e00, cleanup calls0x538fc/0x539e0",
+          "classification": "INFEASIBLE_FOR_THIS_PROVED_STATIC_SESSION",
+          "additional_dynamic_predicates": "Dynamic hit descriptor, uniqueness result zero, capacity word>=2. Exact metadata is ContiguousArrayStorage<InteractionHitRegion<SemanticCompleteIdentity>>; requested register expression is32+228*(capacityword>>1),w2=7. This is literal flow, not allocator-byte or ABI-semantic proof."
+        }
+      ],
+      "scope": "These exclusions also remove those Dynamic reset metadata, uniqueness and malloc_size dependencies on this Static session only. Required mixed Dynamic validation remains unchanged. Shared outlined604 may have other callers; no global PC removal or all-caller exclusion."
+    },
+    "metadata_witness": {
+      "metadata_call": "0x4ec1c ->helper0xbec-0xc2c. x0 is exact InteractionState<CandidateAccess,CommittedAccess,HitAccess> descriptor from0x4ec14/18. Helper loads word; bit63 clear returns it; bit63 set computes x1=-(word>>32),x0=descriptor+signextended low32,x2=x3=0, calls _swift_getTypeByMangledNameInContext2 at0xc20, then caches returnedx0.",
+      "witness_calls": [
+        "0x4ef48",
+        "0x4f14c",
+        "0x4f1c4"
+      ],
+      "witness_helper": "All three exact relocations resolve to0xa6050-0xa6090. Load SemanticCompleteIdentity Equatable cache; nonzero returns. Zero loads exact SemanticCompleteIdentity conformance and metadata GOT entries, calls _swift_getWitnessTable at0xa6078 and release-stores result. No unsupported claim about incoming unspecified ABI registers.",
+      "initial_words": [
+        {
+          "name": "_$s17GiftUIInteraction16InteractionStateVy17P08CounterRuntime0E15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0e9CommittedI0AFLLVAD0e3HitI0AFLLVGMD",
+          "nlist_index": 6110,
+          "type": 31,
+          "section_index": 6,
+          "value": "0xcb7f0",
+          "description": 128,
+          "section": {
+            "name": "__data",
+            "segment": "__DATA",
+            "address": 830312,
+            "bytes": 3632,
+            "fileoff": 832872,
+            "reloff": 1297400,
+            "nreloc": 492,
+            "flags": 0
+          },
+          "section_delta": 3208,
+          "zero_fill": false,
+          "file_offset": 836080,
+          "raw_word_le_hex": "00000000eaffffff",
+          "unsigned": 18446743979220271104,
+          "signed": -94489280512,
+          "cell_relocations": [
+            {
+              "offset": 3208,
+              "symbolnum": 6110,
+              "pcrel": 0,
+              "length": 2,
+              "extern": 1,
+              "type": 1
+            },
+            {
+              "offset": 3208,
+              "symbolnum": 10643,
+              "pcrel": 0,
+              "length": 2,
+              "extern": 1,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "name": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGMD",
+          "nlist_index": 6140,
+          "type": 31,
+          "section_index": 6,
+          "value": "0xcb7f8",
+          "description": 128,
+          "section": {
+            "name": "__data",
+            "segment": "__DATA",
+            "address": 830312,
+            "bytes": 3632,
+            "fileoff": 832872,
+            "reloff": 1297400,
+            "nreloc": 492,
+            "flags": 0
+          },
+          "section_delta": 3216,
+          "zero_fill": false,
+          "file_offset": 836088,
+          "raw_word_le_hex": "00000000eaffffff",
+          "unsigned": 18446743979220271104,
+          "signed": -94489280512,
+          "cell_relocations": [
+            {
+              "offset": 3216,
+              "symbolnum": 6140,
+              "pcrel": 0,
+              "length": 2,
+              "extern": 1,
+              "type": 1
+            },
+            {
+              "offset": 3216,
+              "symbolnum": 10644,
+              "pcrel": 0,
+              "length": 2,
+              "extern": 1,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "name": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL",
+          "nlist_index": 9927,
+          "type": 31,
+          "section_index": 6,
+          "value": "0xcacf8",
+          "description": 128,
+          "section": {
+            "name": "__data",
+            "segment": "__DATA",
+            "address": 830312,
+            "bytes": 3632,
+            "fileoff": 832872,
+            "reloff": 1297400,
+            "nreloc": 492,
+            "flags": 0
+          },
+          "section_delta": 400,
+          "zero_fill": false,
+          "file_offset": 833272,
+          "raw_word_le_hex": "0000000000000000",
+          "unsigned": 0,
+          "signed": 0,
+          "cell_relocations": []
+        }
+      ],
+      "consequence": "Current object MD cells0xcb7f0/0xcb7f8 have negative high word0xffffffea, low32 relative relocations only; Equatable cache0xcacf8 is eight zero bytes without cell relocation. These emitted initial cells select slow/miss paths on first access if preserved by link/load and not previously initialized. They are not actual live process cache values. Metadata/witness first-use cannot be excluded by the Static descriptor invariant.",
+      "unproved": "Exact current linked/loaded cell mapping and earlier initialization, imported Swift runtime target/body/ordinary-first-use allocation semantics and relevant state are not supplied by these local helpers. No allocation inferred merely from getType/getWitness names; provider bodies not globally declared absent."
+    },
+    "consolidated_remaining": [
+      {
+        "frontier": "Metadata/witness on this actual Static transaction path",
+        "status": "CONCRETE_COLD_PREDICATE_OPEN_PROVIDER_AND_LIVE_APPLICABILITY",
+        "needed": "Resolve actual current imported getType/getWitness providers and semantics under the emitted slow/miss conditions; distinguish supported pristine-cell facts from actual live values and loaded targets."
+      },
+      {
+        "frontier": "Other allocator/once/indirect/error paths under original Host/Scoped/Route and standalone obligations",
+        "status": "AVAILABLE_UNEXAMINED_NOT_EXTERNAL_BLOCKER",
+        "needed": "Current baseline source/object remain available. This package does not promote original17-site index or56/1892 inventory to feasibility coverage. Static descriptor proof is specific to the chosen session and does not classify unexamined callers of shared helpers, other roots, error diagnostics, metadata or once/witness origins."
+      },
+      {
+        "frontier": "stdio R=S, persistence, loaded provider and inherited environment",
+        "status": "EXACT_RETAINED_STATE_RECORD_GAP",
+        "needed": "Actual setter/use stream identity, unbuffered state persistence and loaded targets/UUID/GOT/env. Current Main setbuf ordering and installed pristine provider bodies do not substitute. Entry40 functional receipt has no resource/allocator window or matching state snapshot."
+      },
+      {
+        "frontier": "U03 concrete owner/reader/dispatch/generation/backing-last/linkedwriter/fault",
+        "status": "PRIOR_REVIEWED_SCOPED_LEMMAS_RETAINED",
+        "needed": "Reuse only their exact type/module/route premises; no foreign/concurrent or all-root safety generalization."
+      },
+      {
+        "frontier": "Standalone Model/Semantic/FixedStorage/Coordinator",
+        "status": "MANDATORY_CONFORMANCE_RESOURCE_OBLIGATIONS_RETAINED",
+        "needed": "Entry40 selected workload does not exempt their independent Static obligations."
+      },
+      {
+        "frontier": "BatchB/C current image, profiles, physical, cold and resources",
+        "status": "GATED_NOT_EXECUTED",
+        "needed": "Future authorized fresh-process measurements charge setup and Static observers; no Dynamic prewarm/subtraction, old resource transfer or currentzeroheap/P08PASS."
+      }
+    ],
+    "state_action_proposal_only": "At most one separately authorized fresh NativeStatic state-only process: <=60s,32records,128KiB fixed caller-owned buffer,<=1MiBoutput; exact executable/provider UUID/slide/GOT targets, relevant inherited DYLD settings, actual setter/use stream and unbuffered state before/after setter/entry/teardown. Source proof must cover intervening writes; endpoints alone do not prove persistence. First review instrumentation allocation/noninterference. No allocator hooks, resource/cold window, hardware or network; no execution authorized or performed here.",
+    "history": "A41 remains STOP with1080180B same-group raw context,31604B over1MiB; no retrospective source-role or semantic qualification. A42 transient capacity interruption retained in wallclock, duration not separately observed. Inline sys.orig_argv failure occurred before selected object reads, had no durable exact request/capture charge; conservative allowances do not retroactively satisfy pre-emission discipline. Working file-query correction gave exact cache words. Frozen page.py/group decoder bytes unchanged."
+  },
+  "finished_utc": "2026-10-23T02:40:47.008816+00:00",
+  "elapsed_seconds": 1898.518726,
+  "result_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result",
+  "group_excerpt_upper_bytes": 350269,
+  "group_excerpt_upper_lines": 5291,
+  "execution_qualification": false,
+  "qualification_reason": "unrecorded inline request/payload before error; ordinary creation accounting uses stated upper allowances, not exact aggregate certification"
+}

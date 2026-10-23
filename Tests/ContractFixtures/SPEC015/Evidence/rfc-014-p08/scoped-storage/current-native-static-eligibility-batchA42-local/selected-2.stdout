@@ -1,0 +1,31 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a6050 <_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl>:
+   a6050:      	adrp	x8, 0xa6000 <_$s17GiftUIInteraction23ExecutionGestureAdapterO2up2at7capture8resolverAA07PointerD7OutcomeOy8IdentityQzG0A2UI5PointV_0A11UIExecution0J13ActionCaptureVyAKGzxtAA011InteractionD8ResolverRzRi_zRi0_zlFZ6$deferL_yyAaTRzRi_zRi0_zlF+0x88>
+		00000000000a6050:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL
+   a6054:      	ldr	x0, [x8]
+		00000000000a6054:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL
+   a6058:      	cbz	x0, 0xa6060 <_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl+0x10>
+   a605c:      	ret
+   a6060:      	stp	x29, x30, [sp, #-0x10]!
+   a6064:      	mov	x29, sp
+   a6068:      	adrp	x0, 0xa6000 <_$s17GiftUIInteraction23ExecutionGestureAdapterO2up2at7capture8resolverAA07PointerD7OutcomeOy8IdentityQzG0A2UI5PointV_0A11UIExecution0J13ActionCaptureVyAKGzxtAA011InteractionD8ResolverRzRi_zRi0_zlFZ6$deferL_yyAaTRzRi_zRi0_zlF+0x88>
+		00000000000a6068:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSQAAMc
+   a606c:      	ldr	x0, [x0]
+		00000000000a606c:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSQAAMc
+   a6070:      	adrp	x1, 0xa6000 <_$s17GiftUIInteraction23ExecutionGestureAdapterO2up2at7capture8resolverAA07PointerD7OutcomeOy8IdentityQzG0A2UI5PointV_0A11UIExecution0J13ActionCaptureVyAKGzxtAA011InteractionD8ResolverRzRi_zRi0_zlFZ6$deferL_yyAaTRzRi_zRi0_zlF+0x88>
+		00000000000a6070:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore24SemanticCompleteIdentityVN
+   a6074:      	ldr	x1, [x1]
+		00000000000a6074:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore24SemanticCompleteIdentityVN
+   a6078:      	bl	0xa6078 <_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl+0x28>
+		00000000000a6078:  ARM64_RELOC_BRANCH26	_swift_getWitnessTable
+   a607c:      	adrp	x8, 0xa6000 <_$s17GiftUIInteraction23ExecutionGestureAdapterO2up2at7capture8resolverAA07PointerD7OutcomeOy8IdentityQzG0A2UI5PointV_0A11UIExecution0J13ActionCaptureVyAKGzxtAA011InteractionD8ResolverRzRi_zRi0_zlFZ6$deferL_yyAaTRzRi_zRi0_zlF+0x88>
+		00000000000a607c:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL
+   a6080:      	add	x8, x8, #0x0
+		00000000000a6080:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL
+   a6084:      	stlr	x0, [x8]
+   a6088:      	ldp	x29, x30, [sp], #0x10
+   a608c:      	ret

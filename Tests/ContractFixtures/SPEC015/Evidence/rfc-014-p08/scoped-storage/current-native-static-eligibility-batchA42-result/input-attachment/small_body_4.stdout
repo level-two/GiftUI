@@ -1,0 +1,252 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000053704 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF>:
+   53704:      	mov	x0, x30
+   53708:      	bl	0x53708 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x4>
+		0000000000053708:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1029
+   5370c:      	mov	x30, x0
+   53710:      	stp	x29, x30, [sp, #0x50]
+   53714:      	add	x29, sp, #0x50
+   53718:      	sub	sp, sp, #0xa10
+   5371c:      	bl	0x5371c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x18>
+		000000000005371c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_183
+   53720:      	stur	x8, [x29, #-0x60]
+   53724:      	add	x0, sp, #0x520
+   53728:      	mov	x1, x20
+   5372c:      	bl	0x5372c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x28>
+		000000000005372c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_596
+   53730:      	add	x0, sp, #0x790
+   53734:      	bl	0x53734 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x30>
+		0000000000053734:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLVSgWOi0_
+   53738:      	add	x1, sp, #0x790
+   5373c:      	mov	x0, x20
+   53740:      	bl	0x53740 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x3c>
+		0000000000053740:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_596
+   53744:      	ldr	x26, [sp, #0x530]
+   53748:      	ldr	x27, [sp, #0x538]
+   5374c:      	ldr	x25, [sp, #0x540]
+   53750:      	ldr	x20, [sp, #0x548]
+   53754:      	ldr	x28, [sp, #0x550]
+   53758:      	ldrb	w22, [sp, #0x578]
+   5375c:      	ldr	x24, [sp, #0x590]
+   53760:      	ldr	x21, [sp, #0x598]
+   53764:      	ldr	x23, [sp, #0x5f0]
+   53768:      	ldr	x9, [sp, #0x5f8]
+   5376c:      	ldr	x19, [sp, #0x650]
+   53770:      	ldr	x10, [sp, #0x658]
+   53774:      	ldr	x8, [sp, #0x6b0]
+   53778:      	stp	x10, x8, [sp, #0x10]
+   5377c:      	ldr	x10, [sp, #0x6b8]
+   53780:      	ldr	x8, [sp, #0x710]
+   53784:      	stp	x8, x9, [sp, #0x20]
+   53788:      	ldr	x8, [sp, #0x718]
+   5378c:      	stp	x8, x10, [sp]
+   53790:      	add	x0, sp, #0x520
+   53794:      	bl	0x53794 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x90>
+		0000000000053794:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLVSgWOg
+   53798:      	cmp	w0, #0x1
+   5379c:      	b.eq	0x539e4 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2e0>
+   537a0:      	cmp	w22, #0x1
+   537a4:      	b.ne	0x537d8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xd4>
+   537a8:      	bl	0x537a8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xa4>
+		00000000000537a8:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C15RenderWorkspaceV5resetyyF
+   537ac:      	mov	x20, x25
+   537b0:      	bl	0x537b0 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xac>
+		00000000000537b0:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV7discardyyF
+   537b4:      	bl	0x537b4 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xb0>
+		00000000000537b4:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C20DrawingPlanWorkspaceV5resetyyF
+   537b8:      	mov	x20, x26
+   537bc:      	bl	0x537bc <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xb8>
+		00000000000537bc:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C15LayoutWorkspaceV05resetD0yyF
+   537c0:      	mov	x20, x27
+   537c4:      	bl	0x537c4 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xc0>
+		00000000000537c4:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageV7discardyyF
+   537c8:      	tbz	x21, #0x3f, 0x53868 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x164>
+   537cc:      	bl	0x537cc <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xc8>
+		00000000000537cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_431
+   537d0:      	bl	0x537d0 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xcc>
+		00000000000537d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1626
+   537d4:      	b	0x538ac <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1a8>
+   537d8:      	ldr	x8, [x28, #0x10]
+   537dc:      	cbz	x8, 0x537e4 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xe0>
+   537e0:      	bl	0x537e0 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xdc>
+		00000000000537e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_344
+   537e4:      	strh	wzr, [x28, #0x20]
+   537e8:      	strb	wzr, [x28, #0xe]
+   537ec:      	bl	0x537ec <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xe8>
+		00000000000537ec:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB16DrawingWorkspaceV7discardyyF
+   537f0:      	stur	xzr, [x20, #0xb4]
+   537f4:      	mov	x22, x20
+   537f8:      	str	wzr, [x22, #0xbc]!
+   537fc:      	strh	wzr, [x22, #0x4]
+   53800:      	mov	w28, #0x1               ; =1
+   53804:      	strb	w28, [x20, #0xc2]
+   53808:      	bl	0x53808 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x104>
+		0000000000053808:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB16DrawingWorkspaceV7discardyyF
+   5380c:      	ldp	x1, x2, [x20, #0x60]
+   53810:      	bl	0x53810 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x10c>
+		0000000000053810:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_939
+   53814:      	stur	xzr, [x20, #0xb4]
+   53818:      	strh	wzr, [x22, #0x4]
+   5381c:      	str	wzr, [x22]
+   53820:      	strb	w28, [x20, #0xc2]
+   53824:      	mov	x20, x27
+   53828:      	bl	0x53828 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x124>
+		0000000000053828:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB21ResolvedLayoutStorageV7discardyyF
+   5382c:      	mov	x20, x26
+   53830:      	bl	0x53830 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x12c>
+		0000000000053830:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB15LayoutWorkspaceV05resetE0yyF
+   53834:      	mov	x8, #0x0                ; =0
+   53838:      	add	x9, sp, #0x30
+   5383c:      	add	x10, x9, x8
+   53840:      	str	xzr, [x10]
+   53844:      	strh	wzr, [x10, #0xc]
+   53848:      	str	wzr, [x10, #0x8]
+   5384c:      	strb	w28, [x10, #0xe]
+   53850:      	bl	0x53850 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x14c>
+		0000000000053850:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1416
+   53854:      	b.ne	0x5383c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x138>
+   53858:      	add	x1, sp, #0x30
+   5385c:      	mov	x0, x25
+   53860:      	bl	0x53860 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x15c>
+		0000000000053860:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_622
+   53864:      	tbnz	x21, #0x3f, 0x537cc <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0xc8>
+   53868:      	ldrh	w22, [x24, #0x2]
+   5386c:      	cbz	x22, 0x538a8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1a4>
+   53870:      	add	x20, x24, #0x4
+   53874:      	add	x0, sp, #0x430
+   53878:      	bl	0x53878 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x174>
+		0000000000053878:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   5387c:      	mov	x21, #0x0               ; =0
+   53880:      	lsl	x8, x22, #8
+   53884:      	sub	x25, x8, x22, lsl #4
+   53888:      	cmp	x21, #0x1e0
+   5388c:      	b.eq	0x539fc <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2f8>
+   53890:      	add	x0, x20, x21
+   53894:      	add	x1, sp, #0x430
+   53898:      	bl	0x53898 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x194>
+		0000000000053898:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_609
+   5389c:      	add	x21, x21, #0xf0
+   538a0:      	cmp	x25, x21
+   538a4:      	b.ne	0x53888 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x184>
+   538a8:      	strh	wzr, [x24, #0x2]
+   538ac:      	mov	x24, x19
+   538b0:      	ldr	x8, [sp, #0x28]
+   538b4:      	tbnz	x8, #0x3f, 0x538f8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1f4>
+   538b8:      	ldrh	w21, [x23, #0x2]
+   538bc:      	cbz	x21, 0x538f0 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1ec>
+   538c0:      	add	x19, x23, #0x4
+   538c4:      	add	x0, sp, #0x430
+   538c8:      	bl	0x538c8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1c4>
+		00000000000538c8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction20InteractionHitRegionVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   538cc:      	mov	x20, #0x0               ; =0
+   538d0:      	mov	w8, #0xe4               ; =228
+   538d4:      	umull	x21, w21, w8
+   538d8:      	cmp	x20, #0x1c8
+   538dc:      	b.eq	0x53a00 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2fc>
+   538e0:      	bl	0x538e0 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1dc>
+		00000000000538e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2247
+   538e4:      	bl	0x538e4 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1e0>
+		00000000000538e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_640
+   538e8:      	bl	0x538e8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1e4>
+		00000000000538e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1176
+   538ec:      	b.ne	0x538d8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1d4>
+   538f0:      	strh	wzr, [x23, #0x2]
+   538f4:      	b	0x53900 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1fc>
+   538f8:      	mov	x20, x23
+   538fc:      	bl	0x538fc <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x1f8>
+		00000000000538fc:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5
+   53900:      	ldp	x23, x22, [sp, #0x18]
+   53904:      	ldr	x8, [sp, #0x10]
+   53908:      	tbnz	x8, #0x3f, 0x53944 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x240>
+   5390c:      	ldrh	w21, [x24, #0x2]
+   53910:      	cbz	x21, 0x5393c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x238>
+   53914:      	add	x19, x24, #0x4
+   53918:      	add	x0, sp, #0x430
+   5391c:      	bl	0x5391c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x218>
+		000000000005391c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   53920:      	bl	0x53920 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x21c>
+		0000000000053920:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_396
+   53924:      	cmp	x20, #0x1e0
+   53928:      	b.eq	0x53a04 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x300>
+   5392c:      	bl	0x5392c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x228>
+		000000000005392c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2247
+   53930:      	bl	0x53930 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x22c>
+		0000000000053930:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_609
+   53934:      	bl	0x53934 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x230>
+		0000000000053934:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1074
+   53938:      	b.ne	0x53924 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x220>
+   5393c:      	strh	wzr, [x24, #0x2]
+   53940:      	b	0x5394c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x248>
+   53944:      	bl	0x53944 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x240>
+		0000000000053944:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_200
+   53948:      	bl	0x53948 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x244>
+		0000000000053948:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1626
+   5394c:      	ldr	x8, [sp, #0x8]
+   53950:      	tbnz	x8, #0x3f, 0x5398c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x288>
+   53954:      	ldrh	w21, [x23, #0x2]
+   53958:      	cbz	x21, 0x53984 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x280>
+   5395c:      	add	x19, x23, #0x4
+   53960:      	add	x0, sp, #0x430
+   53964:      	bl	0x53964 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x260>
+		0000000000053964:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   53968:      	bl	0x53968 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x264>
+		0000000000053968:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_396
+   5396c:      	cmp	x20, #0x1e0
+   53970:      	b.eq	0x53a08 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x304>
+   53974:      	bl	0x53974 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x270>
+		0000000000053974:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2247
+   53978:      	bl	0x53978 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x274>
+		0000000000053978:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_609
+   5397c:      	bl	0x5397c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x278>
+		000000000005397c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1074
+   53980:      	b.ne	0x5396c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x268>
+   53984:      	strh	wzr, [x23, #0x2]
+   53988:      	b	0x53994 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x290>
+   5398c:      	bl	0x5398c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x288>
+		000000000005398c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_200
+   53990:      	bl	0x53990 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x28c>
+		0000000000053990:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1998
+   53994:      	ldr	x8, [sp]
+   53998:      	tbnz	x8, #0x3f, 0x539dc <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2d8>
+   5399c:      	ldrh	w21, [x22, #0x2]
+   539a0:      	cbz	x21, 0x539d4 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2d0>
+   539a4:      	add	x19, x22, #0x4
+   539a8:      	add	x0, sp, #0x430
+   539ac:      	bl	0x539ac <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2a8>
+		00000000000539ac:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction20InteractionHitRegionVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   539b0:      	mov	x20, #0x0               ; =0
+   539b4:      	mov	w8, #0xe4               ; =228
+   539b8:      	umull	x21, w21, w8
+   539bc:      	cmp	x20, #0x1c8
+   539c0:      	b.eq	0x53a0c <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x308>
+   539c4:      	bl	0x539c4 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2c0>
+		00000000000539c4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2247
+   539c8:      	bl	0x539c8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2c4>
+		00000000000539c8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_640
+   539cc:      	bl	0x539cc <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2c8>
+		00000000000539cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1176
+   539d0:      	b.ne	0x539bc <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2b8>
+   539d4:      	strh	wzr, [x22, #0x2]
+   539d8:      	b	0x539e4 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2e0>
+   539dc:      	mov	x20, x22
+   539e0:      	bl	0x539e0 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2dc>
+		00000000000539e0:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5
+   539e4:      	ldur	x8, [x29, #-0x60]
+   539e8:      	bl	0x539e8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2e4>
+		00000000000539e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+   539ec:      	b.ne	0x53a10 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x30c>
+   539f0:      	add	sp, sp, #0xa10
+   539f4:      	ldp	x29, x30, [sp, #0x50]
+   539f8:      	b	0x539f8 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x2f4>
+		00000000000539f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+   539fc:      	brk	#0x1
+   53a00:      	brk	#0x1
+   53a04:      	brk	#0x1
+   53a08:      	brk	#0x1
+   53a0c:      	brk	#0x1
+   53a10:      	bl	0x53a10 <_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF+0x30c>
+		0000000000053a10:  ARM64_RELOC_BRANCH26	___stack_chk_fail

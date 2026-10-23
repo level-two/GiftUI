@@ -1,0 +1,43 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000196ac <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF>:
+   196ac:      	mov	x0, x30
+   196b0:      	bl	0x196b0 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x4>
+		00000000000196b0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2323
+   196b4:      	mov	x30, x0
+   196b8:      	stp	x29, x30, [sp, #0x120]
+   196bc:      	add	x29, sp, #0x120
+   196c0:      	mov	x8, x20
+   196c4:      	ldr	x20, [x20, #0x10]
+   196c8:      	ldr	x8, [x8, #0x18]
+   196cc:      	tbnz	x8, #0x3f, 0x19710 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x64>
+   196d0:      	ldrh	w22, [x20, #0x2]
+   196d4:      	cbz	x22, 0x19708 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x5c>
+   196d8:      	add	x19, x20, #0x4
+   196dc:      	mov	x0, sp
+   196e0:      	bl	0x196e0 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x34>
+		00000000000196e0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   196e4:      	bl	0x196e4 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x38>
+		00000000000196e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1747
+   196e8:      	cmp	x21, #0x1e0
+   196ec:      	b.eq	0x19720 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x74>
+   196f0:      	add	x0, x19, x21
+   196f4:      	mov	x1, sp
+   196f8:      	bl	0x196f8 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x4c>
+		00000000000196f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_609
+   196fc:      	add	x21, x21, #0xf0
+   19700:      	cmp	x22, x21
+   19704:      	b.ne	0x196e8 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x3c>
+   19708:      	strh	wzr, [x20, #0x2]
+   1970c:      	b	0x19718 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x6c>
+   19710:      	bl	0x19710 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x64>
+		0000000000019710:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_431
+   19714:      	bl	0x19714 <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x68>
+		0000000000019714:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm
+   19718:      	ldp	x29, x30, [sp, #0x120]
+   1971c:      	b	0x1971c <_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF+0x70>
+		000000000001971c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_675
+   19720:      	brk	#0x1

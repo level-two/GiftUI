@@ -1,0 +1,11 @@
+{
+  "started_utc": "2026-10-23T02:09:08.490090+00:00",
+  "purpose": "Authorized current source/type/constructor semantics first; exact compiled joins only. A41 remains STOP.",
+  "limits": {
+    "seconds": 7200,
+    "processing": 536870912,
+    "shared_bytes": 8388608,
+    "group_excerpt_bytes": 1048576,
+    "group_excerpt_lines": 16384
+  }
+}

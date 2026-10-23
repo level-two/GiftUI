@@ -1,0 +1,25 @@
+{
+  "started_utc": "2026-10-23T02:09:08.490090+00:00",
+  "auth_utc": "2026-10-23T02:09:23.061997+00:00",
+  "model_end_utc": "2026-10-23T02:40:46.981017+00:00",
+  "finished_utc": "2026-10-23T02:40:47.008816+00:00",
+  "elapsed_seconds": 1898.518726,
+  "processing_before_final_emit": 236043105,
+  "counted_request_payload_upper_before_final_emit": 391610,
+  "retained_bytes_before_accounting_and_final_emit": 384555,
+  "shared_upper_before_accounting_and_final_emit": 776165,
+  "processing_reserve": 16777216,
+  "shared_output_reserve": 1048576,
+  "group_context_upper_bytes": 350269,
+  "group_context_upper_lines": 5291,
+  "caps": {
+    "session_seconds": 7200,
+    "processing": 536870912,
+    "shared_output_and_transcript": 8388608,
+    "group_excerpt_bytes": 1048576,
+    "group_excerpt_lines": 16384
+  },
+  "execution_pre_emission_qualification": false,
+  "actual_final_totals": "Authoritative sibling A42-local/ledger.json after final emit; this explicit pre-emit snapshot is not relabeled final. Retained-byte total in emitted closure includes this file.",
+  "unknowns": "Exact failed-inline request/capture administrative aggregate and platform/OS I/O are not certified; stated upper allowances are not retroactive pre-emission compliance. Semantic scope/limit facts are separately reviewable."
+}

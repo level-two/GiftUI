@@ -1,0 +1,206 @@
+{
+  "Batch_A_eligibility_pass": false,
+  "semantic_result": "GROUPED_STATIC_VARIANT_EXCLUSION_AND_CONCRETE_FIRST_USE_PREDICATES",
+  "execution_pre_emission_qualification": false,
+  "baseline": {
+    "HEAD": "dafaaf8de77c997bcdedefd8e4c1c95f0a23db06",
+    "source_sha256": "7ab835e7ffaec4c3d1d769fc14de845701d394bfe9636e536a41dee076f835c3",
+    "Runtime_sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+    "result_sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8"
+  },
+  "source_proof": [
+    {
+      "at": "CounterScopedStorage.swift:621,642,720,805,1086,1238",
+      "fact": "The selected Static owner branch borrows the fourteen typed physical slots and calls p08ConstructStaticStorageSession. That constructor explicitly creates Static geometry and all five .static Candidate/Committed/Hit descriptors, then InteractionState and InteractionOwnedKeyState<CandidateAccess,CommittedAccess,HitAccess>. The neighboring Dynamic constructor is distinct."
+    },
+    {
+      "at": "same file:642 through complete access bodies; source pages7-13",
+      "fact": "Candidate descriptor is private, assigned by its constructor, and never reassigned by its complete methods. Committed/Hit exchange swaps whole descriptors between same-session peers after owner/serial/capacity and distinct-storage checks. Both peers originate Static, so repeated swaps preserve variant. Reset/append/replace mutate pointed-to storage rather than descriptor case. Geometry descriptor is immutable."
+    },
+    {
+      "at": "same file:3112 and3333; source pages32-35",
+      "fact": "The complete six-iteration transaction/commit/discard/capacity-failure body uses those same concrete access types. SessionOnlyCleanup takes/reinstalls the same session for exercise; finish takes it once and resets it. No replacement with a Dynamic session occurs on this chosen closure path."
+    }
+  ],
+  "premises": [
+    "Exact current source/compiler/full-object binding in Entry40 full-qualification.json lines150-216 and authenticated full201-input receipt. Source is newly authorized SEMANTIC evidence for A42; A41 AUTH-only role and STOP are unchanged.",
+    "Reuse reviewed Entry40 Static=false/tag0 owner selection, U03 scope/loan/exclusivity/backing-last conditions and source-language access control. No claim about arbitrary memory corruption, unsupported alias writes or foreign concurrent callbacks.",
+    "Compiled reset arm mapping is corroborated by the exact current branch: fixed InlineArray record clearing on one arm, exact Dynamic reset relocation on the bit63-set arm; no bankKind-to-profile inference."
+  ],
+  "current_machine": {
+    "Static_entry": "0x98308 ->0x9834c ->0x525ac; original roots Host0x4bca8 Scoped0x53f58 Route0x98270 retained by Entry40 mapping",
+    "candidate": "exerciseTransactions0x4ebd0 has exact access generic metadata and call0x4ed78 ->CandidateAccess.reset0x196ac. At0x196cc tbnz descriptor bit63 enters0x19710/0x19714 Dynamic reset; Static arm clears fixed records and count.",
+    "cleanup": "SessionOnlyCleanup.finish0x53704-0x53a14 returns for nil session; geometry discriminator selects Static or Dynamic operations. Candidate/hit/committed descriptor bit63 guards at0x53864,0x538b4,0x53908,0x53950,0x53998 select Dynamic arms only for Dynamic descriptors. Static paths clear fixed storage. Stack-canary failure0x53a10 and bounds BRKs remain fail-stop conditions, not cleanup success.",
+    "exclusions": [
+      {
+        "allocator_pc": "0xbf420",
+        "via": "Candidate Dynamic reset0x19a38;0x19aa0 ->outlined6040xbf41c",
+        "classification": "INFEASIBLE_FOR_THIS_PROVED_STATIC_SESSION",
+        "additional_dynamic_predicates": "Dynamic-selected descriptor, uniqueness test returns zero, storage capacity word>=2. Then metadata helper at0x19a90 and allocation tail are reachable structurally; no runtime allocation success/cost claim."
+      },
+      {
+        "allocator_pc": "0x19e68",
+        "via": "DynamicHit.reset0x19e00, cleanup calls0x538fc/0x539e0",
+        "classification": "INFEASIBLE_FOR_THIS_PROVED_STATIC_SESSION",
+        "additional_dynamic_predicates": "Dynamic hit descriptor, uniqueness result zero, capacity word>=2. Exact metadata is ContiguousArrayStorage<InteractionHitRegion<SemanticCompleteIdentity>>; requested register expression is32+228*(capacityword>>1),w2=7. This is literal flow, not allocator-byte or ABI-semantic proof."
+      }
+    ],
+    "scope": "These exclusions also remove those Dynamic reset metadata, uniqueness and malloc_size dependencies on this Static session only. Required mixed Dynamic validation remains unchanged. Shared outlined604 may have other callers; no global PC removal or all-caller exclusion."
+  },
+  "metadata_witness": {
+    "metadata_call": "0x4ec1c ->helper0xbec-0xc2c. x0 is exact InteractionState<CandidateAccess,CommittedAccess,HitAccess> descriptor from0x4ec14/18. Helper loads word; bit63 clear returns it; bit63 set computes x1=-(word>>32),x0=descriptor+signextended low32,x2=x3=0, calls _swift_getTypeByMangledNameInContext2 at0xc20, then caches returnedx0.",
+    "witness_calls": [
+      "0x4ef48",
+      "0x4f14c",
+      "0x4f1c4"
+    ],
+    "witness_helper": "All three exact relocations resolve to0xa6050-0xa6090. Load SemanticCompleteIdentity Equatable cache; nonzero returns. Zero loads exact SemanticCompleteIdentity conformance and metadata GOT entries, calls _swift_getWitnessTable at0xa6078 and release-stores result. No unsupported claim about incoming unspecified ABI registers.",
+    "initial_words": [
+      {
+        "name": "_$s17GiftUIInteraction16InteractionStateVy17P08CounterRuntime0E15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0e9CommittedI0AFLLVAD0e3HitI0AFLLVGMD",
+        "nlist_index": 6110,
+        "type": 31,
+        "section_index": 6,
+        "value": "0xcb7f0",
+        "description": 128,
+        "section": {
+          "name": "__data",
+          "segment": "__DATA",
+          "address": 830312,
+          "bytes": 3632,
+          "fileoff": 832872,
+          "reloff": 1297400,
+          "nreloc": 492,
+          "flags": 0
+        },
+        "section_delta": 3208,
+        "zero_fill": false,
+        "file_offset": 836080,
+        "raw_word_le_hex": "00000000eaffffff",
+        "unsigned": 18446743979220271104,
+        "signed": -94489280512,
+        "cell_relocations": [
+          {
+            "offset": 3208,
+            "symbolnum": 6110,
+            "pcrel": 0,
+            "length": 2,
+            "extern": 1,
+            "type": 1
+          },
+          {
+            "offset": 3208,
+            "symbolnum": 10643,
+            "pcrel": 0,
+            "length": 2,
+            "extern": 1,
+            "type": 0
+          }
+        ]
+      },
+      {
+        "name": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGMD",
+        "nlist_index": 6140,
+        "type": 31,
+        "section_index": 6,
+        "value": "0xcb7f8",
+        "description": 128,
+        "section": {
+          "name": "__data",
+          "segment": "__DATA",
+          "address": 830312,
+          "bytes": 3632,
+          "fileoff": 832872,
+          "reloff": 1297400,
+          "nreloc": 492,
+          "flags": 0
+        },
+        "section_delta": 3216,
+        "zero_fill": false,
+        "file_offset": 836088,
+        "raw_word_le_hex": "00000000eaffffff",
+        "unsigned": 18446743979220271104,
+        "signed": -94489280512,
+        "cell_relocations": [
+          {
+            "offset": 3216,
+            "symbolnum": 6140,
+            "pcrel": 0,
+            "length": 2,
+            "extern": 1,
+            "type": 1
+          },
+          {
+            "offset": 3216,
+            "symbolnum": 10644,
+            "pcrel": 0,
+            "length": 2,
+            "extern": 1,
+            "type": 0
+          }
+        ]
+      },
+      {
+        "name": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL",
+        "nlist_index": 9927,
+        "type": 31,
+        "section_index": 6,
+        "value": "0xcacf8",
+        "description": 128,
+        "section": {
+          "name": "__data",
+          "segment": "__DATA",
+          "address": 830312,
+          "bytes": 3632,
+          "fileoff": 832872,
+          "reloff": 1297400,
+          "nreloc": 492,
+          "flags": 0
+        },
+        "section_delta": 400,
+        "zero_fill": false,
+        "file_offset": 833272,
+        "raw_word_le_hex": "0000000000000000",
+        "unsigned": 0,
+        "signed": 0,
+        "cell_relocations": []
+      }
+    ],
+    "consequence": "Current object MD cells0xcb7f0/0xcb7f8 have negative high word0xffffffea, low32 relative relocations only; Equatable cache0xcacf8 is eight zero bytes without cell relocation. These emitted initial cells select slow/miss paths on first access if preserved by link/load and not previously initialized. They are not actual live process cache values. Metadata/witness first-use cannot be excluded by the Static descriptor invariant.",
+    "unproved": "Exact current linked/loaded cell mapping and earlier initialization, imported Swift runtime target/body/ordinary-first-use allocation semantics and relevant state are not supplied by these local helpers. No allocation inferred merely from getType/getWitness names; provider bodies not globally declared absent."
+  },
+  "consolidated_remaining": [
+    {
+      "frontier": "Metadata/witness on this actual Static transaction path",
+      "status": "CONCRETE_COLD_PREDICATE_OPEN_PROVIDER_AND_LIVE_APPLICABILITY",
+      "needed": "Resolve actual current imported getType/getWitness providers and semantics under the emitted slow/miss conditions; distinguish supported pristine-cell facts from actual live values and loaded targets."
+    },
+    {
+      "frontier": "Other allocator/once/indirect/error paths under original Host/Scoped/Route and standalone obligations",
+      "status": "AVAILABLE_UNEXAMINED_NOT_EXTERNAL_BLOCKER",
+      "needed": "Current baseline source/object remain available. This package does not promote original17-site index or56/1892 inventory to feasibility coverage. Static descriptor proof is specific to the chosen session and does not classify unexamined callers of shared helpers, other roots, error diagnostics, metadata or once/witness origins."
+    },
+    {
+      "frontier": "stdio R=S, persistence, loaded provider and inherited environment",
+      "status": "EXACT_RETAINED_STATE_RECORD_GAP",
+      "needed": "Actual setter/use stream identity, unbuffered state persistence and loaded targets/UUID/GOT/env. Current Main setbuf ordering and installed pristine provider bodies do not substitute. Entry40 functional receipt has no resource/allocator window or matching state snapshot."
+    },
+    {
+      "frontier": "U03 concrete owner/reader/dispatch/generation/backing-last/linkedwriter/fault",
+      "status": "PRIOR_REVIEWED_SCOPED_LEMMAS_RETAINED",
+      "needed": "Reuse only their exact type/module/route premises; no foreign/concurrent or all-root safety generalization."
+    },
+    {
+      "frontier": "Standalone Model/Semantic/FixedStorage/Coordinator",
+      "status": "MANDATORY_CONFORMANCE_RESOURCE_OBLIGATIONS_RETAINED",
+      "needed": "Entry40 selected workload does not exempt their independent Static obligations."
+    },
+    {
+      "frontier": "BatchB/C current image, profiles, physical, cold and resources",
+      "status": "GATED_NOT_EXECUTED",
+      "needed": "Future authorized fresh-process measurements charge setup and Static observers; no Dynamic prewarm/subtraction, old resource transfer or currentzeroheap/P08PASS."
+    }
+  ],
+  "state_action_proposal_only": "At most one separately authorized fresh NativeStatic state-only process: <=60s,32records,128KiB fixed caller-owned buffer,<=1MiBoutput; exact executable/provider UUID/slide/GOT targets, relevant inherited DYLD settings, actual setter/use stream and unbuffered state before/after setter/entry/teardown. Source proof must cover intervening writes; endpoints alone do not prove persistence. First review instrumentation allocation/noninterference. No allocator hooks, resource/cold window, hardware or network; no execution authorized or performed here.",
+  "history": "A41 remains STOP with1080180B same-group raw context,31604B over1MiB; no retrospective source-role or semantic qualification. A42 transient capacity interruption retained in wallclock, duration not separately observed. Inline sys.orig_argv failure occurred before selected object reads, had no durable exact request/capture charge; conservative allowances do not retroactively satisfy pre-emission discipline. Working file-query correction gave exact cache words. Frozen page.py/group decoder bytes unchanged."
+}

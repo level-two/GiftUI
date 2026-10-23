@@ -1,0 +1,121 @@
+{
+  "started_utc": "2026-10-23T02:09:08.490090+00:00",
+  "HEAD": "dafaaf8de77c997bcdedefd8e4c1c95f0a23db06",
+  "inputs": {
+    "object": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+      "bytes": 2605520,
+      "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+      "role": "SEMANTIC selected exact local bodies/metadata; accepted currentfull baseline"
+    },
+    "result": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/result.json",
+      "bytes": 8566019,
+      "sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8",
+      "role": "AUTH baseline provenance, not automatic callee feasibility"
+    },
+    "decoder_tool": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "role": "TOOL authentication; unchanged exact selected decoder"
+    },
+    "parser": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.inspect.py",
+      "bytes": 44447,
+      "sha256": "d27705f7a22991a3c7176fd1e303178a2129cc5e2f9ba8078d99ef98258a31e4",
+      "role": "TRUSTED TOOLCODE exactstructural functions only"
+    },
+    "roots": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json",
+      "bytes": 70161,
+      "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0",
+      "role": "SEMANTIC original exactrootassignments"
+    },
+    "entry40_lemma": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-result/baseline-refresh.json",
+      "bytes": 3524,
+      "sha256": "dc175eb034e9c3207e7e4096d8efdc85dc9acfcecdf61f18aa3b57d9219d29ce",
+      "role": "REVIEWED exactreplacement/addedentrymapping"
+    },
+    "prior_lemma": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-result/rows.json",
+      "bytes": 8501,
+      "sha256": "10fc20b0220a138cda43cdd719e1d7ca5c2690f1a849884925b1bdad3649dbca",
+      "role": "REVIEWED memory/local16/providerpremises only"
+    },
+    "remaining": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-result/residuals.json",
+      "bytes": 2601,
+      "sha256": "b421bad4e682e2d9e04d117d2011428d93e7f440ebf9826bcb38aa84ed0929e6",
+      "role": "REVIEWED actualopenstatevsavailableunexamined boundary"
+    },
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 256648,
+      "sha256": "7ab835e7ffaec4c3d1d769fc14de845701d394bfe9636e536a41dee076f835c3",
+      "role": "SEMANTIC current maintained source expressly authorized for A42; no A41 AUTH-only retroqualification. Producer accepted Entry40 full input binding."
+    },
+    "small_body_1": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-1.stdout",
+      "bytes": 2991,
+      "sha256": "93efb3eca2ed28b2d4dfab3494662db79b2bac4e8be4ced983ab2630091c69f4",
+      "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
+    },
+    "small_body_2": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-2.stdout",
+      "bytes": 3667,
+      "sha256": "b2927877fe3526707e891857c827a6624d8f63d705c8ce3d50bb72d9813acb70",
+      "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
+    },
+    "small_body_3": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-3.stdout",
+      "bytes": 4114,
+      "sha256": "9a2030d7c3d71e224217d4c69905fdaf3017364ed3540e3ea7ec09fa17f960b8",
+      "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
+    },
+    "small_body_4": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-4.stdout",
+      "bytes": 19136,
+      "sha256": "7b385a446644add94fa0310e18c560a4d4ffa8ab50e83fbaa11eb688a874440b",
+      "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
+    },
+    "small_body_5": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-5.stdout",
+      "bytes": 51451,
+      "sha256": "23669bd0762de95282d12638fa2499b9370e1f8a8e3439736f65b05a645bd9a2",
+      "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
+    },
+    "small_body_6": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-6.stdout",
+      "bytes": 359,
+      "sha256": "0c77a6eff45a5eaedbcffc8ae94ddcf42eca28a09039a7ceb228b4ae66d0a15d",
+      "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
+    },
+    "group_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/decode-selected.py",
+      "bytes": 4198,
+      "sha256": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3",
+      "role": "FROZEN workingdecodercode"
+    },
+    "producer_binding": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-result/full-qualification.json",
+      "bytes": 8247,
+      "sha256": "259f116e5177ce8f87883731d9ac4b0189e45fa858a2d2dba89b457d6ef13ac1",
+      "role": "REVIEWED actual source/module/compiler identity; full201inputs receipt freshly authenticated separately"
+    }
+  },
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+  },
+  "helper_sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc",
+  "setup_processing_upper": 202271,
+  "setup_charge_basis": "Exact copied smallcode/control bytes conservatively charged plus65536request/control reserve. No selected source interpretation before auth. Administrative request self-attestation limits explicit.",
+  "reuse": "Accepted Entry40 current full/source/compiler201input binding + original79/48/6 retained authentication and exact prior scoped constructor/memory/U03 lemmas. A41 STOP/rawcapture history preserved.",
+  "delivery_alias": {
+    "path": "/tmp/g35",
+    "target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/page.py"
+  }
+}
