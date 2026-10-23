@@ -1,0 +1,311 @@
+{
+  "HEAD": "436d28bb75b69084294aacd968cd6ea6563dca14",
+  "HEAD_verified": true,
+  "helper_sha256": "0e56a67dcee3483cc38cbc08ce85d4d033441088b9c4b7820d20c442fb746725",
+  "helper_unchanged": true,
+  "file_inputs": [
+    {
+      "name": "body",
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-result/rows.json",
+      "bytes": 16822,
+      "sha256": "cb28a3d6bfa2d0cac7e4d17bbc023fc692cad007753bb50a85ad097197d84f0d",
+      "role": "Reviewed exact required caller/provider/cold-predicate lemma; no reproof",
+      "verified": true
+    },
+    {
+      "name": "prior_preservation",
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-result/preservation.json",
+      "bytes": 12799,
+      "sha256": "06fd90f1fde192512586d09efeddc19c69e031c3aa7f19733dbd7494803fcb21",
+      "role": "Accepted A43 final exact provider/artifact authentication",
+      "verified": true
+    },
+    {
+      "name": "prior_review",
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-result/review.md",
+      "bytes": 4872,
+      "sha256": "42a05b140d1f74401be208c51f5929b54fb63f1b48ff69bec337f61755e9a2a4",
+      "role": "ScopedPASS conditional graph; executionfalse unchanged",
+      "verified": true
+    },
+    {
+      "name": "provider_descriptor",
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/provider-slices.json",
+      "bytes": 26116,
+      "sha256": "30a33f816141c4218747dab8f5d6eb0decc063d7e339f9ed20193e22a53f18eb",
+      "role": "SEMANTIC exact installed provider code and selected metadata extents",
+      "verified": true
+    },
+    {
+      "name": "decode_code",
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/decode-swift-group.py",
+      "bytes": 6589,
+      "sha256": "5218bc5af73f2eadc52202fe35ae4fd761074817a0556f3c20b0e30523db9a0d",
+      "role": "Unchanged working specific provider decoder",
+      "verified": true
+    },
+    {
+      "name": "view_code",
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/view-selected.py",
+      "bytes": 1973,
+      "sha256": "6fe1f59c9ea6eeba842d7941ddd63c25e562d8c4f4dae854ba10b794cb9ee4c2",
+      "role": "Unchanged bounded file page delivery",
+      "verified": true
+    },
+    {
+      "name": "getType_core",
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/getType-core.stdout",
+      "bytes": 14576,
+      "sha256": "e5c062a6c148b036b1b30541c9acc96df0e4c29469596d4cd86d62adfd12534f",
+      "role": "SEMANTIC prior captured but model-unexamined exact core",
+      "verified": true
+    },
+    {
+      "name": "executable",
+      "path": ".build/contracts/p08-counter-m1vlvrlf/counter-static-resource-v1",
+      "bytes": 6625096,
+      "sha256": "bd7c518d2b7b84b16a55b8725b5ebdd25a6869b2d3796743fa5785d9b1ac0a55",
+      "role": "SEMANTIC exact import identity and entry recipe",
+      "verified": true
+    },
+    {
+      "name": "object",
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+      "bytes": 2605520,
+      "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+      "role": "SEMANTIC selected exact local bodies/metadata; accepted currentfull baseline",
+      "verified": true
+    },
+    {
+      "name": "current_result",
+      "path": ".build/contracts/p08-counter-m1vlvrlf/result.json",
+      "bytes": 8566019,
+      "sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8",
+      "role": "AUTH accepted current producer",
+      "verified": true
+    },
+    {
+      "name": "tool_auth",
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "role": "AUTH installed known-working decoder identity",
+      "verified": true
+    }
+  ],
+  "installed_extents": [
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331116544,
+      "bytes": 5768,
+      "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331129504,
+      "bytes": 4836300,
+      "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 18608160,
+      "bytes": 430488,
+      "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 5313112,
+      "bytes": 28160,
+      "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "136c2690f40776aa22b7f1263772ef1c5d6dd7d654c1ca7fa147a3d95c27381f",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e",
+      "offset": 552,
+      "bytes": 32,
+      "sha256": "e2f8ba82464e339204b36f0a034c19f308db147e4b5c6d4c7620595bc2a5ee7e",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "5772054a774fbfadde8d975eb3451b9796cd3227b3e6538c64601dd1dd34c47d",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 552,
+      "bytes": 32,
+      "sha256": "b2f7f5f327ded4d2120b4d2c656c3393f81c3a22a1b06c4ec885fbdd69e71576",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "2d337f47443d647d9aed46ffb64ded19988d37480fffd21251f2eb992ff657bd",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+      "offset": 552,
+      "bytes": 224,
+      "sha256": "a08657b36be30d27538539614b237dc637e6d1cff9e187ef2a672b7615aba23f",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "7906e184f7e7fd927b738910c94e8515705d2b60ae927b5b678dc36060f8eb9e",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.03.dyldreadonly",
+      "offset": 552,
+      "bytes": 64,
+      "sha256": "fb0e5b5ab7ef1095af68d5069ab4ebbdcae3987a1c6a2216663477d6fa05ae28",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "37ac184c40f1bc842ba968d348a232974dc16f0382db42d1e63135e03340d7d1",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 552,
+      "bytes": 64,
+      "sha256": "4a57a890ea845f5e562edf7fcca80cdb0c236f53cddb826d886b35045fb3bd36",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "086608eaf74fbf93610386898d22f41f728089fcaf82f14373f212ed84d9e256",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.05",
+      "offset": 552,
+      "bytes": 32,
+      "sha256": "5125c51b51df2cfe1cb208aebf43e3b9a17beee52fcce7d5f19775f0633fdc1c",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "a702c0d85330176c5b1dde058ebdf8aa6ccce0dadc6d3255ff065c8c71373494",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.06.dylddata",
+      "offset": 552,
+      "bytes": 192,
+      "sha256": "08371aea03692ac5785a0e046140eacae939a5f0eebf947ad9f264533f6ea1e3",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "ff14cb7710630c7877514a316fdb02f63dc7252290ad39ac282174cf27f559a1",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.07.dyldreadonly",
+      "offset": 552,
+      "bytes": 64,
+      "sha256": "326073e37a5ed3b6dff6e66fe28c8fbf2722c198b0d6e6a76b847c9b3276678a",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "94240faa01ebfdb5f403735ba3b0500d4d319f8ab2d81756b792eb0cd4feffd4",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.08.dyldlinkedit",
+      "offset": 552,
+      "bytes": 64,
+      "sha256": "89d9ee86fde0e30416233bd19b10d447b72d5636fa70f6076a0fb12b98cfd1ed",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "7464c1eb462a987e4bfadabd0f1ec54106286344ac0ef674c674c0fe10e82bb1",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.09",
+      "offset": 552,
+      "bytes": 32,
+      "sha256": "d4d4e7cf3875404cb7242b5a4dbbd299f88a5d28e9bd91ab3bdd4950a7c4327d",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "6ef8e7fb3042581c0d41336f80744ed323e7399a212b11730bdf510ea08c716c",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.10.dylddata",
+      "offset": 552,
+      "bytes": 192,
+      "sha256": "9cd1134974d5ba15352d5e63a3b0ba48443ccd16980317d746618bf7bbfed329",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "5111bc6e877e259a8588d513a0ca537b4fb1967b92ac33467532cd6bb3a49ca4",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.11",
+      "offset": 552,
+      "bytes": 32,
+      "sha256": "b6c48e5ed48108e8a5ff3ca6ff919051f01db408282fce9c27e120561e59d9f5",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit",
+      "offset": 0,
+      "bytes": 128,
+      "sha256": "d1d21f2b37f2b36f2c320482c943357366e9a8a95f04b3906392b03005b4bb2e",
+      "verified": true
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.12.dyldlinkedit",
+      "offset": 552,
+      "bytes": 64,
+      "sha256": "d0215d704e5b685d657fa950fa63566edad0e72a1a2a51d2002931068366b925",
+      "verified": true
+    }
+  ],
+  "source_edit": false,
+  "runtime_execution": false,
+  "note": "Final file/provider identity checks after final semantic read; pristine installed extent verification is not actual loaded-state observation."
+}

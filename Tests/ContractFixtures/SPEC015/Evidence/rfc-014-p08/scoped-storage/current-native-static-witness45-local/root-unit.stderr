@@ -1,0 +1,385 @@
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift test --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter InteractionValueTests\|InteractionCandidateAppendTests --skip-update --disable-automatic-resolution --disable-dependency-cache
+warning: '--skip-update' option is deprecated and will be removed in a future release
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Downloading package prebuilt https://download.swift.org/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport.zip
+Downloaded https://download.swift.org/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport.zip (0.86s)
+Building for debugging...
+[Computing dependencies]
+[Provisioning 1 / 95]
+[Pre-planning 1 / 2734]
+[Planning deferred tasks]
+[Constructing 4946 / 6216]
+[88 / 1599] GiftUISurfaceCore
+[648 / 1603] GiftUIMacros
+[649 / 1604] GiftUIFailureCore
+[662 / 1619] SignalAnalyzerDomain
+[679 / 1676]
+[689 / 1676]
+[699 / 1679] GiftUIFailureDiagnostics
+[727 / 1690] SignalAnalyzerData
+[751 / 1691] GiftUICapabilityFailureAdapterFixture
+[767 / 1693] SignalAnalyzerData
+[777 / 1702] GiftUICapabilitiesTests-product
+[782 / 1713]
+[789 / 1713]
+[792 / 1713]
+[794 / 1713]
+[802 / 1774]
+[808 / 1774]
+[812 / 1774]
+[814 / 1774]
+[819 / 1774]
+[820 / 1774]
+[839 / 1774] SignalAnalyzerDomainTests-product
+[841 / 1774] SignalAnalyzerDomainTests-product
+[843 / 1774] SignalAnalyzerDomainTests-product
+[857 / 1774] SignalAnalyzerDomainTests-product
+[863 / 1774] SignalAnalyzerDomainTests-product
+[865 / 1774] SignalAnalyzerDataTests-product
+[871 / 1774] SignalAnalyzerDomainTests-product
+[877 / 1774]
+[890 / 1774] GiftUIMacros
+[895 / 1774] GiftUIMacros
+[896 / 1774] GiftUIMacros
+[905 / 1774]
+[906 / 1774] GiftUIMacros
+[906 / 1774]
+[908 / 1774]
+[909 / 1774] GiftUIMacros
+[912 / 1774] GiftUIMacros
+[913 / 1774] GiftUIMacros
+[932 / 1789] GiftUI
+[934 / 1789] GiftUI
+[971 / 1828] SignalAnalyzerPresentation
+[973 / 1828] GiftUIDynamicConveniences
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift:18:34: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 16 |         } else if payloadCopy is _GiftUITextPayload {
+ 17 |             self = .text
+ 18 |         } else if payloadCopy is Canvas {
+    |                                  `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 19 |             self = .canvas
+ 20 |         } else {
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+error: SwiftCompile normal arm64 failed with a nonzero exit code. Command line:     cd /Users/eugene/work
+    
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:6: error: generic parameter 'Schema' could not be inferred
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |      |- error: generic parameter 'Schema' could not be inferred
+    |      `- note: explicitly specify the generic arguments to fix this issue
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:24: error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |                        `- error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:5:16: error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+    |                |- error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 5 | }
+    | 6 | 
+    | 7 | package func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |   |              `- note: candidate has non-matching type '<Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+GiftUI.View._giftUITraverse:2:13: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+1 | protocol View {
+2 | public func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor.Domain == Self.Body.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |             `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+3 | 
+
+GiftUI.View.Domain:2:16: note: protocol requires nested type 'Domain'
+1 | protocol View {
+2 | associatedtype Domain : GiftUI._GiftUIReadDomain}
+  |                `- note: protocol requires nested type 'Domain'
+3 | 
+
+GiftUI.View.Body:2:16: note: protocol requires nested type 'Body'
+1 | protocol View {
+2 | associatedtype Body : GiftUI.View}
+  |                `- note: protocol requires nested type 'Body'
+3 | 
+
+GiftUI.View._giftUITraverse:2:6: note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+1 | protocol View {
+2 | func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |      `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:35:16: error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+ 33 | }
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+    |                |- error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 36 |     package let acquisitionState: AcquisitionState
+ 37 |     package let errorMessage: SignalAnalyzerDiagnostic?
+
+GiftUI.View._giftUITraverse:2:13: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+1 | protocol View {
+2 | public func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor.Domain == Self.Body.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |             `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+3 | 
+
+GiftUI.View.Domain:2:16: note: protocol requires nested type 'Domain'
+1 | protocol View {
+2 | associatedtype Domain : GiftUI._GiftUIReadDomain}
+  |                `- note: protocol requires nested type 'Domain'
+3 | 
+
+GiftUI.View.Body:2:16: note: protocol requires nested type 'Body'
+1 | protocol View {
+2 | associatedtype Body : GiftUI.View}
+  |                `- note: protocol requires nested type 'Body'
+3 | 
+
+GiftUI.View._giftUITraverse:2:6: note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+1 | protocol View {
+2 | func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |      `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:64:16: error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+ 62 | }
+ 63 | 
+ 64 | package struct SignalAnalyzerWaveformView: View {
+    |                |- error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 65 |     package let layout: SignalAnalyzerLayoutConstraints
+ 66 | 
+
+GiftUI.View._giftUITraverse:2:13: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+1 | protocol View {
+2 | public func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor.Domain == Self.Body.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |             `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+3 | 
+
+GiftUI.View.Domain:2:16: note: protocol requires nested type 'Domain'
+1 | protocol View {
+2 | associatedtype Domain : GiftUI._GiftUIReadDomain}
+  |                `- note: protocol requires nested type 'Domain'
+3 | 
+
+GiftUI.View.Body:2:16: note: protocol requires nested type 'Body'
+1 | protocol View {
+2 | associatedtype Body : GiftUI.View}
+  |                `- note: protocol requires nested type 'Body'
+3 | 
+
+GiftUI.View._giftUITraverse:2:6: note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+1 | protocol View {
+2 | func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |      `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:144:16: error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+142 | }
+143 | 
+144 | package struct SignalAnalyzerTimeRulerView: View {
+    |                |- error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+145 |     package let visibleRange: Range<Duration>
+146 |     package var labelWidth: GeometryScalar = 72
+
+GiftUI.View._giftUITraverse:2:13: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+1 | protocol View {
+2 | public func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor.Domain == Self.Body.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |             `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+3 | 
+
+GiftUI.View.Domain:2:16: note: protocol requires nested type 'Domain'
+1 | protocol View {
+2 | associatedtype Domain : GiftUI._GiftUIReadDomain}
+  |                `- note: protocol requires nested type 'Domain'
+3 | 
+
+GiftUI.View.Body:2:16: note: protocol requires nested type 'Body'
+1 | protocol View {
+2 | associatedtype Body : GiftUI.View}
+  |                `- note: protocol requires nested type 'Body'
+3 | 
+
+GiftUI.View._giftUITraverse:2:6: note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+1 | protocol View {
+2 | func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |      `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:168:16: error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+166 | }
+167 | 
+168 | package struct SignalAnalyzerChannelWaveformView: View {
+    |                |- error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+169 |     package var layout: SignalAnalyzerLayoutConstraints = .reference
+170 |     package let channelID: SignalChannelID
+
+GiftUI.View._giftUITraverse:2:13: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+1 | protocol View {
+2 | public func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor.Domain == Self.Body.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |             `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+3 | 
+
+GiftUI.View.Domain:2:16: note: protocol requires nested type 'Domain'
+1 | protocol View {
+2 | associatedtype Domain : GiftUI._GiftUIReadDomain}
+  |                `- note: protocol requires nested type 'Domain'
+3 | 
+
+GiftUI.View.Body:2:16: note: protocol requires nested type 'Body'
+1 | protocol View {
+2 | associatedtype Body : GiftUI.View}
+  |                `- note: protocol requires nested type 'Body'
+3 | 
+
+GiftUI.View._giftUITraverse:2:6: note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+1 | protocol View {
+2 | func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |      `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:193:16: error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+191 | }
+192 | 
+193 | package struct SignalAnalyzerGridView: View {
+    |                |- error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+194 |     package var body: some View {
+195 |         makeSignalAnalyzerGridCanvas()
+
+GiftUI.View._giftUITraverse:2:13: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+1 | protocol View {
+2 | public func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor.Domain == Self.Body.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |             `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+3 | 
+
+GiftUI.View.Domain:2:16: note: protocol requires nested type 'Domain'
+1 | protocol View {
+2 | associatedtype Domain : GiftUI._GiftUIReadDomain}
+  |                `- note: protocol requires nested type 'Domain'
+3 | 
+
+GiftUI.View.Body:2:16: note: protocol requires nested type 'Body'
+1 | protocol View {
+2 | associatedtype Body : GiftUI.View}
+  |                `- note: protocol requires nested type 'Body'
+3 | 
+
+GiftUI.View._giftUITraverse:2:6: note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+1 | protocol View {
+2 | func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |      `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:199:16: error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+197 | }
+198 | 
+199 | package struct SignalAnalyzerTraceView: View {
+    |                |- error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+200 |     package let channelID: SignalChannelID
+201 |     package let capture: SignalCapture
+
+GiftUI.View._giftUITraverse:2:13: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+1 | protocol View {
+2 | public func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor.Domain == Self.Body.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |             `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+3 | 
+
+GiftUI.View.Domain:2:16: note: protocol requires nested type 'Domain'
+1 | protocol View {
+2 | associatedtype Domain : GiftUI._GiftUIReadDomain}
+  |                `- note: protocol requires nested type 'Domain'
+3 | 
+
+GiftUI.View.Body:2:16: note: protocol requires nested type 'Body'
+1 | protocol View {
+2 | associatedtype Body : GiftUI.View}
+  |                `- note: protocol requires nested type 'Body'
+3 | 
+
+GiftUI.View._giftUITraverse:2:6: note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+1 | protocol View {
+2 | func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |      `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:213:48: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+211 | }
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+    |                                                `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+214 |     Canvas { (context, size) throws(DrawingError) in
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:223:6: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+221 |     capture: SignalCapture,
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+    |      `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+224 |     Canvas { (context, size) throws(DrawingError) in
+225 |         try drawSignalAnalyzerTrace(
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:307:16: error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+305 | }
+306 | 
+307 | package struct SignalAnalyzerSquareButton: View {
+    |                |- error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+308 |     package let label: BoundedText
+309 |     package let action: SignalAnalyzerAction
+
+GiftUI.View._giftUITraverse:2:13: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+1 | protocol View {
+2 | public func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor.Domain == Self.Body.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |             `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+3 | 
+
+GiftUI.View.Domain:2:16: note: protocol requires nested type 'Domain'
+1 | protocol View {
+2 | associatedtype Domain : GiftUI._GiftUIReadDomain}
+  |                `- note: protocol requires nested type 'Domain'
+3 | 
+
+GiftUI.View.Body:2:16: note: protocol requires nested type 'Body'
+1 | protocol View {
+2 | associatedtype Body : GiftUI.View}
+  |                `- note: protocol requires nested type 'Body'
+3 | 
+
+GiftUI.View._giftUITraverse:2:6: note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+1 | protocol View {
+2 | func _giftUITraverse<Visitor>(_ visitor: inout Visitor) where Visitor : GiftUI._GiftUISemanticTraversalVisitor, Self.Domain == Visitor.Domain, Visitor : ~Copyable, Visitor : ~Escapable}
+  |      `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+3 | 
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+Failed frontend command:
+/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend -frontend -emit-module -experimental-skip-non-inlinable-function-bodies-without-types /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/ModuleBoundary.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerDiagnostic+BoundedText.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerFailureNormalizer.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerFailurePolicyValues.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerLayoutConstraints.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerOwnerFailureAdapter.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationAdmissionAdapter.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerRuntimeCondition.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerRuntimeFailureNormalizer.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerRuntimeFailureRule.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerTimelineFormatting.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift -target arm64-apple-macos15.0 -load-resolved-plugin \#/Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Products/Debug/GiftUIMacros\#GiftUIMacros -load-resolved-plugin /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/host/plugins/libSwiftMacros.dylib\#\#SwiftMacros -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -I /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Products/Debug -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib -Isystem /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing -F /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Products/Debug/PackageFrameworks -F /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Products/Debug -F /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/SwiftExplicitPrecompiledModules -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=5 -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -D GIFTUI_DYNAMIC_PROFILE -serialize-debugging-options -load-plugin-executable /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Products/Debug/GiftUIMacros\#GiftUIMacros -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/ModuleCache.noindex/Session.modulevalidation -disable-sandbox -Xcc -working-directory -Xcc /Users/eugene/work -enable-anonymous-context-mangled-names -file-compilation-dir /Users/eugene/work -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I/Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Products/Debug/include -Xcc -I/Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/DerivedSources-normal/arm64 -Xcc -I/Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/DerivedSources/arm64 -Xcc -I/Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name SignalAnalyzerPresentation -package-name giftui -const-gather-protocols-file /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation_const_extract_protocols.json -in-process-plugin-server-path /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -clang-target arm64-apple-macos26.5 -target-sdk-version 26.5 -target-sdk-name macosx26.5 -emit-module-doc-path /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation.swiftdoc -emit-module-source-info-path /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation.swiftsourceinfo -emit-objc-header-path /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation-Swift.h -serialize-diagnostics-path /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation-primary-emit-module.dia -emit-dependencies-path /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation-primary-emit-module.d -parse-as-library -o /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation.swiftmodule -emit-abi-descriptor-path /Users/eugene/work/GiftUI/.build/contracts/p08-witness45-swiftpm/scratch/out/Intermediates.noindex/GiftUI.build/Debug/SignalAnalyzerPresentation-t.build/Objects-normal/arm64/SignalAnalyzerPresentation.abi.json
+error: Build failed
+error: fatalError
+swiftpm-failure-class=compiler-or-test

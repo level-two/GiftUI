@@ -1,0 +1,47 @@
+{
+  "object": ".build/contracts/p08-counter-dvc6yr6p/P08CounterRuntime.o",
+  "object_sha256": "04a70987d7e0f70107676b1525bd7008f525df05e1e34e4e2a092157cec245d9",
+  "symbol": "000000000004ebd0 t _$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF",
+  "range": [
+    "0x4ebd0",
+    "0x4f2cc"
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x4ebd0",
+    "--stop-address=0x4f2cc",
+    ".build/contracts/p08-counter-dvc6yr6p/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "stderr": "",
+  "stdout_bytes": 42505,
+  "stdout_sha256": "16c0b149133cb86d3de141cfd1e4a8e7c533fcbc2e89e956fe4a9f7b29a960f4",
+  "witness_acquisition_refs": [],
+  "metadata_acquisition_refs": [
+    "\t\t000000000004ec1c:  ARM64_RELOC_BRANCH26\t___swift_instantiateConcreteTypeFromMangledName"
+  ],
+  "derived_equality_refs": [
+    "\t\t000000000004ef8c:  ARM64_RELOC_BRANCH26\t_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ"
+  ],
+  "selected_refs": [
+    "\t\t000000000004ec1c:  ARM64_RELOC_BRANCH26\t___swift_instantiateConcreteTypeFromMangledName",
+    "\t\t000000000004ec74:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+    "\t\t000000000004ecbc:  ARM64_RELOC_BRANCH26\t_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF",
+    "\t\t000000000004ecfc:  ARM64_RELOC_BRANCH26\t_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF",
+    "\t\t000000000004ee08:  ARM64_RELOC_BRANCH26\t_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF",
+    "\t\t000000000004eed0:  ARM64_RELOC_BRANCH26\t_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF",
+    "\t\t000000000004ef5c:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+    "\t\t000000000004ef8c:  ARM64_RELOC_BRANCH26\t_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ",
+    "\t\t000000000004f018:  ARM64_RELOC_BRANCH26\t_$s6GiftUI4RectV8containsySbAA5PointVF",
+    "\t\t000000000004f034:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+    "\t\t000000000004f0b0:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+    "\t\t000000000004f0f4:  ARM64_RELOC_BRANCH26\t_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF",
+    "\t\t000000000004f120:  ARM64_RELOC_BRANCH26\t_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+    "\t\t000000000004f160:  ARM64_RELOC_BRANCH26\t_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF",
+    "\t\t000000000004f184:  ARM64_RELOC_BRANCH26\t_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF",
+    "\t\t000000000004f1a0:  ARM64_RELOC_BRANCH26\t_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF"
+  ]
+}

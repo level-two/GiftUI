@@ -1,0 +1,2347 @@
+{
+  "started_utc": "2026-10-23T02:49:13.291989+00:00",
+  "processing": 521496153,
+  "transcript": 444298,
+  "requests": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g43 a\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g43 a",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\\\"_swift_getTypeByMangledNameInContext2\\\",\\\"_swift_getWitnessTable\\\"]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\"_swift_getTypeByMangledNameInContext2\",\"_swift_getWitnessTable\"]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-1.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-1.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-2.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\\\"0x193cea7e8\\\",\\\"0x193cce9e0\\\"]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\"0x193cea7e8\",\"0x193cce9e0\"]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-3.stdout 1 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-3.stdout 1 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 1 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 1 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 11 12\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 11 12",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-conformance-query.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-conformance-query.py",
+        "max_output_tokens": 10000
+      },
+      "ordinary_code_sha256": "3f0a3fb45484b36b722f9cc3b8f9cfddc10742e816e01fd5ffcbabb60c3ac6b6",
+      "frozen_before_selected_read_utc": "2026-10-23T03:01:06.032432+00:00"
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-conformance-query.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-conformance-query.py",
+        "max_output_tokens": 10000
+      },
+      "ordinary_code_sha256": "7bd150210beed47aa84e87a687eb85dd9c0ab218f54098ec8ad554706ff8e0af",
+      "frozen_before_selected_read_utc": "2026-10-23T03:02:16.047565+00:00"
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\\\"0x193cea26c\\\"]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\"0x193cea26c\"]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-5.stdout 1 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-5.stdout 1 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 3 4\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 3 4",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-swift-state-imports.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-swift-state-imports.py",
+        "max_output_tokens": 10000
+      },
+      "ordinary_code_sha256": "d323feba0c2dcbf0e0acf53d06670e5b4f08dc774ed3531656f05555d8c7de9b",
+      "before_read_utc": "2026-10-23T03:07:09.209241+00:00"
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 5 6\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 5 6",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\\\"0x193cde524\\\",\\\"0x193cf08c8\\\"]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\"0x193cde524\",\"0x193cf08c8\"]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-6.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-6.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-7.stdout 1 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-7.stdout 1 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-7.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-7.stdout 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\\\"0x193cf02cc\\\"]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py '[\"0x193cf02cc\"]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 8 9\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 8 9",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-private-cache-query.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-private-cache-query.py",
+        "max_output_tokens": 10000
+      },
+      "ordinary_code_sha256": "c72b93f6ce4b2f1024f685451aeb5bfe514773ff0a393bf3ce729f540cf1d095",
+      "before_selected_read": "2026-10-23T03:13:00.205151+00:00"
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-private-cache-query.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-private-cache-query.py",
+        "max_output_tokens": 10000
+      },
+      "ordinary_code_sha256": "648d7f58bff22ac47a2c1db9b985eeb5b7be4f15c36a8f0a92a6b88538039c4c",
+      "before_selected_read": "2026-10-23T03:14:02.062068+00:00"
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 14 14\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py swift-4.stdout 14 14",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-witness-init-bytes.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-witness-init-bytes.py",
+        "max_output_tokens": 10000
+      },
+      "ordinary_code_sha256": "6309b3bcd32bcd1db38d6a7685a37a975b5ecf06fde6ac3df6ca720749fc38ea"
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/finalize-result.py\",\"max_output_tokens\":10000});text({exit_code:r.exit_code,output:r.output});",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/finalize-result.py",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "pages": [],
+  "errors": [],
+  "preauth_orientation_exact_certified": false,
+  "preauth_request_payload_upper": 197683,
+  "auth_utc": "2026-10-23T02:57:36.974106+00:00",
+  "page_count": 3,
+  "line_count": 206,
+  "provider_predicates": [
+    {
+      "name": "frozen delivery helper",
+      "ok": true,
+      "actual": "6a47fc15d8d8aa8deec64ccc4324aa976b560ad9999ddc2795cc25ca0fdf9b3f"
+    },
+    {
+      "name": "frozen decoder script",
+      "ok": true,
+      "actual": "5218bc5af73f2eadc52202fe35ae4fd761074817a0556f3c20b0e30523db9a0d"
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 18608160,
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 5313112,
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331129504,
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact selected provider export",
+      "ok": true,
+      "actual": {
+        "symbol": "_swift_getTypeByMangledNameInContext2",
+        "row": {
+          "flags": 0,
+          "address": 6774761380
+        }
+      }
+    },
+    {
+      "name": "direct regular export",
+      "ok": true,
+      "actual": {
+        "symbol": "_swift_getTypeByMangledNameInContext2",
+        "row": {
+          "flags": 0,
+          "address": 6774761380
+        }
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193cea7a4",
+        "index": 3554
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193cea7a4",
+        "hi": "0x193cea7e8"
+      }
+    },
+    {
+      "name": "exact selected provider export",
+      "ok": true,
+      "actual": {
+        "symbol": "_swift_getWitnessTable",
+        "row": {
+          "flags": 0,
+          "address": 6774166812
+        }
+      }
+    },
+    {
+      "name": "direct regular export",
+      "ok": true,
+      "actual": {
+        "symbol": "_swift_getWitnessTable",
+        "row": {
+          "flags": 0,
+          "address": 6774166812
+        }
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193c5951c",
+        "index": 94
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193c5951c",
+        "hi": "0x193c59548"
+      }
+    },
+    {
+      "name": "complete decode and terminal reserve",
+      "ok": true,
+      "actual": {
+        "processing": 151096561,
+        "forecast": 125724152
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 893,
+        "lines": 23,
+        "reserved_bytes": 65536,
+        "reserved_lines": 1024
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "index": 1,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "_swift_getTypeByMangledNameInContext2",
+          "entry": 6774761380,
+          "export": {
+            "flags": 0,
+            "address": 6774761380
+          }
+        },
+        "range": [
+          "0x193cea7a4",
+          "0x193cea7e8"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-1.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 893,
+        "stdout_lines": 23,
+        "stdout_sha256": "75dd4e41f47443734b0a4ced94d8c26b148abc383ce91b750113f28860c9dd0c",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331753380,
+        "raw_cache_bytes": 68,
+        "code_sha256": "f6800f15fe0d948433c63d40c08d980dbdb50cf1d055f650cd94462419bbbfc8",
+        "ended_utc": "2026-10-23T02:57:50.977882+00:00"
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 1532,
+        "lines": 40,
+        "reserved_bytes": 65536,
+        "reserved_lines": 1024
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "index": 2,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "_swift_getWitnessTable",
+          "entry": 6774166812,
+          "export": {
+            "flags": 0,
+            "address": 6774166812
+          }
+        },
+        "range": [
+          "0x193c5951c",
+          "0x193c59548"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-2.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 639,
+        "stdout_lines": 17,
+        "stdout_sha256": "6aa114853605f8640c5e7563b5fcab5b10da285855784c0e4209440815665bcf",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331158812,
+        "raw_cache_bytes": 44,
+        "code_sha256": "bb525eab07f55821ea2693cb22c7058fa440c6085189225e63c2f9d27a95545d",
+        "ended_utc": "2026-10-23T02:57:50.981975+00:00"
+      }
+    },
+    {
+      "name": "frozen delivery helper",
+      "ok": true,
+      "actual": "6a47fc15d8d8aa8deec64ccc4324aa976b560ad9999ddc2795cc25ca0fdf9b3f"
+    },
+    {
+      "name": "frozen decoder script",
+      "ok": true,
+      "actual": "5218bc5af73f2eadc52202fe35ae4fd761074817a0556f3c20b0e30523db9a0d"
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 18608160,
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 5313112,
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331129504,
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193cea7e8",
+        "index": 3555
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193cea7e8",
+        "hi": "0x193ceaa50"
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193cce9e0",
+        "index": 3239
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193cce9e0",
+        "hi": "0x193ccfec4"
+      }
+    },
+    {
+      "name": "complete decode and terminal reserve",
+      "ok": true,
+      "actual": {
+        "processing": 205507144,
+        "forecast": 125724152
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 7612,
+        "lines": 200,
+        "reserved_bytes": 65536,
+        "reserved_lines": 1024
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "index": 3,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "0x193cea7e8",
+          "entry": 6774761448,
+          "export": null
+        },
+        "range": [
+          "0x193cea7e8",
+          "0x193ceaa50"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-3.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 6080,
+        "stdout_lines": 160,
+        "stdout_sha256": "669609536e30fbe1928bad46fe24e5de03b77e5eb178ac62746a575f434be039",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331753448,
+        "raw_cache_bytes": 616,
+        "code_sha256": "d9d6f8de4632d16f18bea6bd2f5173ecdd7beaf43ac1c964c000e0443a605bc2",
+        "ended_utc": "2026-10-23T02:58:22.206524+00:00"
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 60421,
+        "lines": 1543,
+        "reserved_bytes": 65536,
+        "reserved_lines": 1024
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "index": 4,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "0x193cce9e0",
+          "entry": 6774647264,
+          "export": null
+        },
+        "range": [
+          "0x193cce9e0",
+          "0x193ccfec4"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-4.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 52809,
+        "stdout_lines": 1343,
+        "stdout_sha256": "382097e5787b22cc8ba52babe25d212d8265524c4ee06bdaa9776dbebea8093a",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331639264,
+        "raw_cache_bytes": 5348,
+        "code_sha256": "5b21e8cc47b6868d20e1e4d896f794182016b303234820304037b00fa684948f",
+        "ended_utc": "2026-10-23T02:58:22.213126+00:00"
+      }
+    },
+    {
+      "name": "frozen delivery helper",
+      "ok": true,
+      "actual": "6a47fc15d8d8aa8deec64ccc4324aa976b560ad9999ddc2795cc25ca0fdf9b3f"
+    },
+    {
+      "name": "frozen decoder script",
+      "ok": true,
+      "actual": "5218bc5af73f2eadc52202fe35ae4fd761074817a0556f3c20b0e30523db9a0d"
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 18608160,
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 5313112,
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331129504,
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193cea26c",
+        "index": 3552
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193cea26c",
+        "hi": "0x193cea538"
+      }
+    },
+    {
+      "name": "complete decode and terminal reserve",
+      "ok": true,
+      "actual": {
+        "processing": 326946172,
+        "forecast": 107385768
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 67155,
+        "lines": 1728,
+        "reserved_bytes": 65536,
+        "reserved_lines": 1024
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "index": 5,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "0x193cea26c",
+          "entry": 6774760044,
+          "export": null
+        },
+        "range": [
+          "0x193cea26c",
+          "0x193cea538"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-5.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 6734,
+        "stdout_lines": 185,
+        "stdout_sha256": "08e57fcde22bef7fd84c5e4c40662c764651a96cde3de1ab097a311467e94eda",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331752044,
+        "raw_cache_bytes": 716,
+        "code_sha256": "4342b4e5365ced57708311cc973d6adafed51a9253a0239fcf1f0a317df3b184",
+        "ended_utc": "2026-10-23T03:03:49.535158+00:00"
+      }
+    },
+    {
+      "name": "frozen delivery helper",
+      "ok": true,
+      "actual": "6a47fc15d8d8aa8deec64ccc4324aa976b560ad9999ddc2795cc25ca0fdf9b3f"
+    },
+    {
+      "name": "frozen decoder script",
+      "ok": true,
+      "actual": "5218bc5af73f2eadc52202fe35ae4fd761074817a0556f3c20b0e30523db9a0d"
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 18608160,
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 5313112,
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331129504,
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193cde524",
+        "index": 3340
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193cde524",
+        "hi": "0x193cde698"
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193cf08c8",
+        "index": 3592
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193cf08c8",
+        "hi": "0x193cf0c64"
+      }
+    },
+    {
+      "name": "complete decode and terminal reserve",
+      "ok": true,
+      "actual": {
+        "processing": 363673361,
+        "forecast": 125724152
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 71058,
+        "lines": 1827,
+        "reserved_bytes": 65536,
+        "reserved_lines": 1024
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "index": 6,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "0x193cde524",
+          "entry": 6774711588,
+          "export": null
+        },
+        "range": [
+          "0x193cde524",
+          "0x193cde698"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-6.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 3903,
+        "stdout_lines": 99,
+        "stdout_sha256": "acac58601cf094f643f248ea23efb13c023c3bf528e42caa8dcd025275116f31",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331703588,
+        "raw_cache_bytes": 372,
+        "code_sha256": "2ef8005aad19fab85f5b14f38045bf555692cdb2b3da5b4162e52ae89223330b",
+        "ended_utc": "2026-10-23T03:07:46.240011+00:00"
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 79728,
+        "lines": 2064,
+        "reserved_bytes": 65536,
+        "reserved_lines": 1024
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "index": 7,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "0x193cf08c8",
+          "entry": 6774786248,
+          "export": null
+        },
+        "range": [
+          "0x193cf08c8",
+          "0x193cf0c64"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-7.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 8670,
+        "stdout_lines": 237,
+        "stdout_sha256": "8897da4f83f442a22397f3edfa5519eb88ceb956b92083fded00997b3da179e0",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331778248,
+        "raw_cache_bytes": 924,
+        "code_sha256": "783acf10b0e7563dd63c4efe5c22798ce63c43773876588a4e015cccce8b75f0",
+        "ended_utc": "2026-10-23T03:07:46.246490+00:00"
+      }
+    },
+    {
+      "name": "frozen delivery helper",
+      "ok": true,
+      "actual": "6a47fc15d8d8aa8deec64ccc4324aa976b560ad9999ddc2795cc25ca0fdf9b3f"
+    },
+    {
+      "name": "frozen decoder script",
+      "ok": true,
+      "actual": "5218bc5af73f2eadc52202fe35ae4fd761074817a0556f3c20b0e30523db9a0d"
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 18608160,
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 5313112,
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331129504,
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193cf02cc",
+        "index": 3591
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193cf02cc",
+        "hi": "0x193cf08c8"
+      }
+    },
+    {
+      "name": "complete decode and terminal reserve",
+      "ok": true,
+      "actual": {
+        "processing": 418254188,
+        "forecast": 107385768
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 94304,
+        "lines": 2453,
+        "reserved_bytes": 65536,
+        "reserved_lines": 1024
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "index": 8,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "0x193cf02cc",
+          "entry": 6774784716,
+          "export": null
+        },
+        "range": [
+          "0x193cf02cc",
+          "0x193cf08c8"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-8.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 14576,
+        "stdout_lines": 389,
+        "stdout_sha256": "e5c062a6c148b036b1b30541c9acc96df0e4c29469596d4cd86d62adfd12534f",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331776716,
+        "raw_cache_bytes": 1532,
+        "code_sha256": "2cd705f98f46f8c1e1781184f167f1ed6a9f8bee7b1df0bd2dcd258d150f5608",
+        "ended_utc": "2026-10-23T03:08:47.755801+00:00"
+      }
+    }
+  ],
+  "swift_captures": [
+    {
+      "index": 1,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "_swift_getTypeByMangledNameInContext2",
+        "entry": 6774761380,
+        "export": {
+          "flags": 0,
+          "address": 6774761380
+        }
+      },
+      "range": [
+        "0x193cea7a4",
+        "0x193cea7e8"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-1.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 893,
+      "stdout_lines": 23,
+      "stdout_sha256": "75dd4e41f47443734b0a4ced94d8c26b148abc383ce91b750113f28860c9dd0c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331753380,
+      "raw_cache_bytes": 68,
+      "code_sha256": "f6800f15fe0d948433c63d40c08d980dbdb50cf1d055f650cd94462419bbbfc8",
+      "ended_utc": "2026-10-23T02:57:50.977882+00:00"
+    },
+    {
+      "index": 2,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "_swift_getWitnessTable",
+        "entry": 6774166812,
+        "export": {
+          "flags": 0,
+          "address": 6774166812
+        }
+      },
+      "range": [
+        "0x193c5951c",
+        "0x193c59548"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-2.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 639,
+      "stdout_lines": 17,
+      "stdout_sha256": "6aa114853605f8640c5e7563b5fcab5b10da285855784c0e4209440815665bcf",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331158812,
+      "raw_cache_bytes": 44,
+      "code_sha256": "bb525eab07f55821ea2693cb22c7058fa440c6085189225e63c2f9d27a95545d",
+      "ended_utc": "2026-10-23T02:57:50.981975+00:00"
+    },
+    {
+      "index": 3,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "0x193cea7e8",
+        "entry": 6774761448,
+        "export": null
+      },
+      "range": [
+        "0x193cea7e8",
+        "0x193ceaa50"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-3.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 6080,
+      "stdout_lines": 160,
+      "stdout_sha256": "669609536e30fbe1928bad46fe24e5de03b77e5eb178ac62746a575f434be039",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331753448,
+      "raw_cache_bytes": 616,
+      "code_sha256": "d9d6f8de4632d16f18bea6bd2f5173ecdd7beaf43ac1c964c000e0443a605bc2",
+      "ended_utc": "2026-10-23T02:58:22.206524+00:00"
+    },
+    {
+      "index": 4,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "0x193cce9e0",
+        "entry": 6774647264,
+        "export": null
+      },
+      "range": [
+        "0x193cce9e0",
+        "0x193ccfec4"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-4.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 52809,
+      "stdout_lines": 1343,
+      "stdout_sha256": "382097e5787b22cc8ba52babe25d212d8265524c4ee06bdaa9776dbebea8093a",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331639264,
+      "raw_cache_bytes": 5348,
+      "code_sha256": "5b21e8cc47b6868d20e1e4d896f794182016b303234820304037b00fa684948f",
+      "ended_utc": "2026-10-23T02:58:22.213126+00:00"
+    },
+    {
+      "index": 5,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "0x193cea26c",
+        "entry": 6774760044,
+        "export": null
+      },
+      "range": [
+        "0x193cea26c",
+        "0x193cea538"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-5.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 6734,
+      "stdout_lines": 185,
+      "stdout_sha256": "08e57fcde22bef7fd84c5e4c40662c764651a96cde3de1ab097a311467e94eda",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331752044,
+      "raw_cache_bytes": 716,
+      "code_sha256": "4342b4e5365ced57708311cc973d6adafed51a9253a0239fcf1f0a317df3b184",
+      "ended_utc": "2026-10-23T03:03:49.535158+00:00"
+    },
+    {
+      "index": 6,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "0x193cde524",
+        "entry": 6774711588,
+        "export": null
+      },
+      "range": [
+        "0x193cde524",
+        "0x193cde698"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-6.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 3903,
+      "stdout_lines": 99,
+      "stdout_sha256": "acac58601cf094f643f248ea23efb13c023c3bf528e42caa8dcd025275116f31",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331703588,
+      "raw_cache_bytes": 372,
+      "code_sha256": "2ef8005aad19fab85f5b14f38045bf555692cdb2b3da5b4162e52ae89223330b",
+      "ended_utc": "2026-10-23T03:07:46.240011+00:00"
+    },
+    {
+      "index": 7,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "0x193cf08c8",
+        "entry": 6774786248,
+        "export": null
+      },
+      "range": [
+        "0x193cf08c8",
+        "0x193cf0c64"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-7.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 8670,
+      "stdout_lines": 237,
+      "stdout_sha256": "8897da4f83f442a22397f3edfa5519eb88ceb956b92083fded00997b3da179e0",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331778248,
+      "raw_cache_bytes": 924,
+      "code_sha256": "783acf10b0e7563dd63c4efe5c22798ce63c43773876588a4e015cccce8b75f0",
+      "ended_utc": "2026-10-23T03:07:46.246490+00:00"
+    },
+    {
+      "index": 8,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "0x193cf02cc",
+        "entry": 6774784716,
+        "export": null
+      },
+      "range": [
+        "0x193cf02cc",
+        "0x193cf08c8"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-8.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 14576,
+      "stdout_lines": 389,
+      "stdout_sha256": "e5c062a6c148b036b1b30541c9acc96df0e4c29469596d4cd86d62adfd12534f",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331776716,
+      "raw_cache_bytes": 1532,
+      "code_sha256": "2cd705f98f46f8c1e1781184f167f1ed6a9f8bee7b1df0bd2dcd258d150f5608",
+      "ended_utc": "2026-10-23T03:08:47.755801+00:00"
+    }
+  ],
+  "provider_pending": null,
+  "swift_joins": [
+    {
+      "selected": "_swift_getTypeByMangledNameInContext2",
+      "entry": "0x193cea7a4",
+      "range": [
+        "0x193cea7a4",
+        "0x193cea7e8"
+      ],
+      "export": {
+        "flags": 0,
+        "address": 6774761380
+      }
+    },
+    {
+      "selected": "_swift_getWitnessTable",
+      "entry": "0x193c5951c",
+      "range": [
+        "0x193c5951c",
+        "0x193c59548"
+      ],
+      "export": {
+        "flags": 0,
+        "address": 6774166812
+      }
+    },
+    {
+      "selected": "_swift_getTypeByMangledNameInContext2",
+      "entry": "0x193cea7a4",
+      "range": [
+        "0x193cea7a4",
+        "0x193cea7e8"
+      ],
+      "export": {
+        "flags": 0,
+        "address": 6774761380
+      }
+    },
+    {
+      "selected": "_swift_getWitnessTable",
+      "entry": "0x193c5951c",
+      "range": [
+        "0x193c5951c",
+        "0x193c59548"
+      ],
+      "export": {
+        "flags": 0,
+        "address": 6774166812
+      }
+    },
+    {
+      "selected": "0x193cea7e8",
+      "entry": "0x193cea7e8",
+      "range": [
+        "0x193cea7e8",
+        "0x193ceaa50"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cce9e0",
+      "entry": "0x193cce9e0",
+      "range": [
+        "0x193cce9e0",
+        "0x193ccfec4"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cea7e8",
+      "entry": "0x193cea7e8",
+      "range": [
+        "0x193cea7e8",
+        "0x193ceaa50"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cce9e0",
+      "entry": "0x193cce9e0",
+      "range": [
+        "0x193cce9e0",
+        "0x193ccfec4"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cea26c",
+      "entry": "0x193cea26c",
+      "range": [
+        "0x193cea26c",
+        "0x193cea538"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cde524",
+      "entry": "0x193cde524",
+      "range": [
+        "0x193cde524",
+        "0x193cde698"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cf08c8",
+      "entry": "0x193cf08c8",
+      "range": [
+        "0x193cf08c8",
+        "0x193cf0c64"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cde524",
+      "entry": "0x193cde524",
+      "range": [
+        "0x193cde524",
+        "0x193cde698"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cf08c8",
+      "entry": "0x193cf08c8",
+      "range": [
+        "0x193cf08c8",
+        "0x193cf0c64"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193cf02cc",
+      "entry": "0x193cf02cc",
+      "range": [
+        "0x193cf02cc",
+        "0x193cf08c8"
+      ],
+      "export": null
+    }
+  ],
+  "current_body_examined_pages": {
+    "swift-1.stdout": [
+      1
+    ],
+    "swift-2.stdout": [
+      1
+    ],
+    "swift-3.stdout": [
+      1,
+      2
+    ],
+    "swift-4.stdout": [
+      1,
+      2,
+      11,
+      12,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      14
+    ],
+    "swift-5.stdout": [
+      1,
+      2
+    ],
+    "swift-6.stdout": [
+      1
+    ],
+    "swift-7.stdout": [
+      1,
+      2,
+      3
+    ]
+  },
+  "conformance_header_predicate": {
+    "magic": "0xfeedfacf",
+    "ncmds": 22
+  },
+  "exact_current_conformance_rows": [
+    {
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVN",
+      "nlist_index": 31253,
+      "n_type": 15,
+      "section_index": 23,
+      "description": 0,
+      "address": "0x1002866d0",
+      "file_offset": 2647760,
+      "section": {
+        "name": "__const",
+        "segment": "__DATA_CONST",
+        "vmaddr": 4297460072,
+        "bytes": 179560,
+        "fileoff": 2492776
+      },
+      "raw16": "00020000000000001028200000002000"
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSQAAMc",
+      "nlist_index": 31254,
+      "n_type": 15,
+      "section_index": 4,
+      "description": 0,
+      "address": "0x1001f49a8",
+      "file_offset": 2050472,
+      "section": {
+        "name": "__const",
+        "segment": "__TEXT",
+        "vmaddr": 4296920192,
+        "bytes": 115824,
+        "fileoff": 1952896
+      },
+      "raw16": "1927090064de00000000000000000300",
+      "flags": 196608,
+      "bit17": true,
+      "bit7": false,
+      "relative_witness_table": 0,
+      "relative_witness_target": "0x1001f49b0",
+      "provider_fast_return_predicates": {
+        "bit17_clear": false,
+        "relative_nonzero": false,
+        "target_nonzero": true,
+        "bit7_clear": true
+      },
+      "provider_computed_x9": "0x1001f49b8",
+      "conditional_count_word": 1,
+      "provider_computed_x26": "0x1001f49c4",
+      "x26_file_offset": 2050500,
+      "x26_raw32": "000001000000000084c40b00f126090058de0000000000000000030001000000",
+      "x26_u16_0": 0,
+      "x26_u16_2": 1,
+      "x26_u32_4": 0,
+      "x26_i32_8": 771204
+    }
+  ],
+  "additional_frozen_slices": [
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331116544,
+      "bytes": 5768,
+      "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+      "vmaddr": "0x193c4f000",
+      "role": "authenticated provider loadcommands",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.210388+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 699548,
+      "bytes": 4,
+      "sha256": "19472bf5cd72eceaa5f59a28cc9abb2831b0a44921ddd7ff4b47444a67ed8958",
+      "vmaddr": "0x1ffa12c9c",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.212059+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 335967820,
+      "bytes": 16,
+      "sha256": "88aa1018735a6031adc47ada712ce10fe2ff635257d7f462317340860dc4b06a",
+      "vmaddr": "0x1940ef64c",
+      "role": "exact selected imported-call stub",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.212708+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 75967696,
+      "bytes": 16,
+      "sha256": "0e0e394add33c96458c48ec74553352ae1a227b4435ce7cf28cd0490de84a29b",
+      "vmaddr": "0x2041dacd0",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.213339+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 567095232,
+      "bytes": 256,
+      "sha256": "242f667f90d5591943b7b338b462883557bada45b5da41d07ebdd1060f6d0ac2",
+      "vmaddr": "0x22163afc0",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.213984+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 699552,
+      "bytes": 4,
+      "sha256": "0226dd84df200ef5c54cf88e67f91ad5e08bb36d36623e63dbfc75b12e9f0978",
+      "vmaddr": "0x1ffa12ca0",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.214618+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 335967836,
+      "bytes": 16,
+      "sha256": "19d7a0e68c8bfaf5c5ec0150c2664fd39080024ebc68b888fec30d2b083f08b9",
+      "vmaddr": "0x1940ef65c",
+      "role": "exact selected imported-call stub",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.215212+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 75967712,
+      "bytes": 16,
+      "sha256": "b2e7252cb21b03cc7c3162e9bf6e1cb033e7790ae782bcb47e68c3161ac5361a",
+      "vmaddr": "0x2041dace0",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.215808+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 567095270,
+      "bytes": 256,
+      "sha256": "a4b6e1f84b05cfc614fdf7440144482f7220f2efd340282b8946fbeebbab9488",
+      "vmaddr": "0x22163afe6",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.216426+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 699452,
+      "bytes": 4,
+      "sha256": "6561176a0a44d1f9ca51fb08f31b4d8dd99629ad05a592fa8498cf2a622b9359",
+      "vmaddr": "0x1ffa12c3c",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.217041+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 335967436,
+      "bytes": 16,
+      "sha256": "367b8fbdbb7eec376d2aaf1e4fe072ac3980314090af8d06a1346648e1708173",
+      "vmaddr": "0x1940ef4cc",
+      "role": "exact selected imported-call stub",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.217753+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 75967296,
+      "bytes": 16,
+      "sha256": "05d5bb838a82bfb013c7ade14f004221059dd226641d867b5190aff7c1b39a2f",
+      "vmaddr": "0x2041dab40",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.218400+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 567094192,
+      "bytes": 256,
+      "sha256": "811c6a8164679db2601f150ab4f3f74e99eba5603b4ce25c80d07147221bcad5",
+      "vmaddr": "0x22163abb0",
+      "role": "selected indirect-symbol metadata",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.219019+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+      "offset": 82981880,
+      "bytes": 8,
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+      "vmaddr": "0x1ed05b3f8",
+      "role": "selected pristine Swift dispatch/cache state",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.220132+00:00"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+      "offset": 83048360,
+      "bytes": 56,
+      "sha256": "d4817aa5497628e7c77e6b606107042bbba3130888c5f47a375e6179be789fbb",
+      "vmaddr": "0x1ed06b7a8",
+      "role": "selected pristine Swift dispatch/cache state",
+      "frozen_before_model_utc": "2026-10-23T03:07:09.220857+00:00"
+    }
+  ],
+  "selected_swift_stub_imports": [
+    {
+      "call_target": "0x1940ef64c",
+      "stub_sections": [
+        {
+          "name": "__auth_stubs",
+          "vmaddr": 6778973804,
+          "bytes": 3584,
+          "fileoff": 335965804,
+          "flags": 2147484680,
+          "reserved1": 0,
+          "reserved2": 16
+        }
+      ],
+      "indirect_slot": 126,
+      "indirect_value": 40093,
+      "stub_raw": "91242db031e23c91300240f9110a1fd7",
+      "symbol": "_malloc_type_calloc",
+      "nlist_index": 40093,
+      "n_type": 1,
+      "n_desc": 1280,
+      "ordinal": 5,
+      "declared_provider": "/usr/lib/libSystem.B.dylib"
+    },
+    {
+      "call_target": "0x1940ef65c",
+      "stub_sections": [
+        {
+          "name": "__auth_stubs",
+          "vmaddr": 6778973804,
+          "bytes": 3584,
+          "fileoff": 335965804,
+          "flags": 2147484680,
+          "reserved1": 0,
+          "reserved2": 16
+        }
+      ],
+      "indirect_slot": 127,
+      "indirect_value": 40094,
+      "stub_raw": "91242db031623d91300240f9110a1fd7",
+      "symbol": "_malloc_type_malloc",
+      "nlist_index": 40094,
+      "n_type": 1,
+      "n_desc": 1280,
+      "ordinal": 5,
+      "declared_provider": "/usr/lib/libSystem.B.dylib"
+    },
+    {
+      "call_target": "0x1940ef4cc",
+      "stub_sections": [
+        {
+          "name": "__auth_stubs",
+          "vmaddr": 6778973804,
+          "bytes": 3584,
+          "fileoff": 335965804,
+          "flags": 2147484680,
+          "reserved1": 0,
+          "reserved2": 16
+        }
+      ],
+      "indirect_slot": 102,
+      "indirect_value": 40068,
+      "stub_raw": "91242db031623a91300240f9110a1fd7",
+      "symbol": "_free",
+      "nlist_index": 40068,
+      "n_type": 1,
+      "n_desc": 1280,
+      "ordinal": 5,
+      "declared_provider": "/usr/lib/libSystem.B.dylib"
+    },
+    {
+      "call_target": "0x1940ede8c",
+      "stub_sections": []
+    }
+  ],
+  "selected_pristine_swift_state": [
+    {
+      "address": "0x1ed05b3f8",
+      "bytes": 8,
+      "raw": "0000000000000000",
+      "u64_words": [
+        0
+      ]
+    },
+    {
+      "address": "0x1ed06b7a8",
+      "bytes": 56,
+      "raw": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "u64_words": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "private_cache_exception": {
+    "type": "RuntimeError",
+    "message": "descriptor-selected private cache file mapping",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/ordinary-private-cache-query.py\", line 15, in <module>\n    if len(hits)!=1:raise RuntimeError('descriptor-selected private cache file mapping')\nRuntimeError: descriptor-selected private cache file mapping\n"
+  },
+  "private_cache_mapping_predicate": {
+    "address": "0x1002b0e50",
+    "matching_sections": [
+      {
+        "name": "__bss",
+        "vmaddr": 4297665152,
+        "bytes": 143760,
+        "fileoff": 0,
+        "flags": 1
+      }
+    ]
+  },
+  "descriptor_selected_private_cache": {
+    "source_descriptor_x26": "0x1001f49c4",
+    "relative_field_at_plus8": 771204,
+    "selected_address": "0x1002b0e50",
+    "file_offset": null,
+    "section": {
+      "name": "__bss",
+      "vmaddr": 4297665152,
+      "bytes": 143760,
+      "fileoff": 0,
+      "flags": 1
+    },
+    "zero_fill_declaration": true,
+    "bytes": 64,
+    "sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+    "raw": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "u64_words": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "frozen_before_model_utc": "2026-10-23T03:14:02.064346+00:00",
+    "once_word_offset": 56,
+    "scope": "Emitted bytes or explicit section zero-fill declaration only; actual linked/loaded cache and initialization effects remain separate"
+  },
+  "witness_initializer_raw20": {
+    "entry": "0x193cde510",
+    "end": "0x193cde524",
+    "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+    "raw_cache_offset": 331703568,
+    "bytes": 20,
+    "sha256": "f07eb7711c08c91ad6d51a0663d8feaeda1c5d12e6090d21cfac129ee31aeae0",
+    "hex": "1f1800f900e4006f008000ad0000803dc0035fd6",
+    "u32_instruction_words": [
+      "0xf900181f",
+      "0x6f00e400",
+      "0xad008000",
+      "0x3d800000",
+      "0xd65f03c0"
+    ],
+    "derived_from": "Exact callback address193ccfe84-9c and adjacent captured helper6 start193cde524; within same authenticated frozen Swift __text",
+    "frozen_before_model_utc": "2026-10-23T03:17:11.177698+00:00"
+  },
+  "terminal_phase": {
+    "started_utc": "2026-10-23T03:26:12.588431+00:00",
+    "processing_before": 437141796,
+    "semantic_reads_finished": true,
+    "reserve_purpose": "Mandatory final authentication, preservation and records only; no further semantic read/decoder. The pre-reserved16MiB may be debited for terminal work, never for new proof.",
+    "processing_debit": 84348383
+  },
+  "ordinary_administrative_request_upper": 131072,
+  "semantic_end_utc": "2026-10-23T03:26:12.588431+00:00",
+  "finished_utc": "2026-10-23T03:26:12.663544+00:00",
+  "elapsed_seconds": 2219.371555,
+  "findings": {
+    "Batch_A_eligibility_pass": false,
+    "outcome": "CONDITIONAL_REQUIRED_WITNESS_MISS_ALLOCATOR_FAMILY_DEPENDENCY; GETTYPE_PARTIAL_EXACT_FRONTIER",
+    "source_change": false,
+    "baseline": {
+      "HEAD": "436d28bb75b69084294aacd968cd6ea6563dca14",
+      "current_executable": {
+        "path": ".build/contracts/p08-counter-m1vlvrlf/counter-static-resource-v1",
+        "bytes": 6625096,
+        "sha256": "bd7c518d2b7b84b16a55b8725b5ebdd25a6869b2d3796743fa5785d9b1ac0a55",
+        "role": "SEMANTIC exact import identity and entry recipe"
+      },
+      "current_Runtime": {
+        "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+        "bytes": 2605520,
+        "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+        "role": "SEMANTIC selected exact local bodies/metadata; accepted currentfull baseline"
+      },
+      "A42_source_type_cache_lemma": {
+        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/rows.json",
+        "bytes": 12819,
+        "sha256": "3b8a5ddc174af7cc80a22c644f6e9a6fa606f6026cd9dd237565ec14845b1f74",
+        "role": "Reviewed A42 exact generic/Static and initial-cell lemma; no source reanalysis"
+      }
+    },
+    "provider": {
+      "path": "/usr/lib/swift/libswiftCore.dylib",
+      "uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "identity": {
+        "name": "/usr/lib/swift/libswiftCore.dylib",
+        "command": 13,
+        "current_version": 0,
+        "compatibility_version": 0
+      },
+      "imports": [
+        {
+          "symbol": "_swift_getTypeByMangledNameInContext2",
+          "ordinal": 3,
+          "provider": "/usr/lib/swift/libswiftCore.dylib",
+          "nlist_index": 35960,
+          "n_desc": 768
+        },
+        {
+          "symbol": "_swift_getWitnessTable",
+          "ordinal": 3,
+          "provider": "/usr/lib/swift/libswiftCore.dylib",
+          "nlist_index": 35962,
+          "n_desc": 768
+        }
+      ],
+      "rpaths": [],
+      "export_flags": 0,
+      "raw_provenance": "provider-slices.json and swift-captures.json in adjacent local directory; exact original cache extents/hashes, not whole-cache copies"
+    },
+    "witness": {
+      "ordinary_origins": [
+        "0x4ef48",
+        "0x4f14c",
+        "0x4f1c4"
+      ],
+      "input": "A42 exact SemanticCompleteIdentity Equatable conformance and metadata GOT loads; local cache initially zero. Actual loaded cells remain distinct.",
+      "provider_chain": [
+        "regular export0x193c5951c authenticates conformance pointer then tails0x193cce9e0",
+        "current conformance descriptor0x1001f49a8 flags0x30000 selects bit17 path, not small static-table return; relative table field+8 iszero",
+        "provider layout computation: count word1 givesx26=0x1001f49c4; +2 word1 selects instantiation path; +8 relative771204 selects own cache0x1002b0e50, not global fallback",
+        "own64-byte cache is in current executable __DATA/__bss(flags1), declaredzero-fill; no filebytes substituted for actual processstate",
+        "cache once word+56 !=\u22121 invokes callback0x193cde510 via call0x193ccfe9c to0x1940ef34c; its exact20B clears cachebytes0..55",
+        "after normal initialization, last-entry miss plus cachelookup miss under lock reaches allocation-family entry-buffer call0x193ccf300 ->stub0x1940ef65c ->declared _malloc_type_malloc ordinal5 libSystem"
+      ],
+      "initializer": {
+        "entry": "0x193cde510",
+        "end": "0x193cde524",
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331703568,
+        "bytes": 20,
+        "sha256": "f07eb7711c08c91ad6d51a0663d8feaeda1c5d12e6090d21cfac129ee31aeae0",
+        "hex": "1f1800f900e4006f008000ad0000803dc0035fd6",
+        "u32_instruction_words": [
+          "0xf900181f",
+          "0x6f00e400",
+          "0xad008000",
+          "0x3d800000",
+          "0xd65f03c0"
+        ],
+        "derived_from": "Exact callback address193ccfe84-9c and adjacent captured helper6 start193cde524; within same authenticated frozen Swift __text",
+        "frozen_before_model_utc": "2026-10-23T03:17:11.177698+00:00",
+        "manual_lossless_ARM64_decode": [
+          "STR XZR,[X0,#48]",
+          "MOVI V0.2D,#0",
+          "STP Q0,Q0,[X0,#16]",
+          "STR Q0,[X0]",
+          "RET"
+        ],
+        "interpretation": "Exactly zeroes offsets0..55. Once token+56 is not overwritten. Five raw instruction words are retained; no additional full disassembler process was run."
+      },
+      "feasibility_disposition": "NOT_FULLY_ESTABLISHED. Own-cache zero-fill and initializer clearing are proved. The actual required Static caller and concrete conformance are joined. However the descriptor-selected associative lookup0x193ce77b4 and its initialization/intervening effects were not examined; the captured0x193cde524 is a different fallback-cache lookup and is NOT substituted. Therefore its normal returnzero from the cleared private-cache inputs remains the exact missing local join. Lack of past-live-state observation alone does not refute an allowed cold execution, but it also does not supply this unexamined callee semantics. No source correction or proved violation is asserted.",
+      "miss_path_predicates": [
+        "Expected installed provider and authenticated valid conformance/metadata pointers",
+        "own-cache once/lock operations return normally",
+        "hash-seed setup, if required, returns normally; supported serialized execution/no competing cache insertion",
+        "own last-entry and associative lookup return a miss; the private lookup0x193ce77b4 body/effects remain available-unexamined, so empty-cache-to-MISS is not promoted to proved feasibility",
+        "allocation-family binding is the declared malloc_type_malloc import; successful returned storage/bytes/zone behavior not proved"
+      ],
+      "literal_new_buffer_flow": "Empty entries pointer at0x193ccef24, count0 at0x193ccef20; lookup0x193ce77b4 miss leads0x193ccef64. With initial compact-index state and count0, load factor16/15<4 bypasses calloc growth through0x193ccf0a4; null entry buffer goes0x193ccf2d0. Capacity expression is((max(count>>2,1)+count)<<3)+8 before rounding helper0x1940ef62c; returned rounded size becomesx0, type identifierx1 then0x193ccf300 calls malloc_type_malloc. The separate calloc growth path0x193ccefd0/0x193ccf06c is conditional and is not asserted for the cold empty case.",
+      "nonallocating_prefix_case": "Nonzero local witness cache returns at caller helper0xa6058/5c before provider. Provider descriptor bit17-clear+valid relative static table+bit7-clear also has a direct return, but current descriptor bit17 isSET so that generic alternative is inapplicable here.",
+      "not_claimed": "No observed or unavoidable allocation; no live-cache state, allocator-provider body/zone success, bytecost, universal noallocation result or zeroheap/resource/cold PASS. Hash initialization and once/lock provider effects remain exact unproved prerequisites, not silently assumed closed."
+    },
+    "getType": {
+      "ordinary_origin": "A42 current metadata helper0xbec passes exact InteractionState<CandidateAccess,CommittedAccess,HitAccess> mangled descriptor, length22 from emitted negative word; x2=x3=0. OwnedKeyState descriptor is separately negative.",
+      "provider_chain": [
+        "regular export0x193cea7a4 takes CBZx2 and tails0x193cea7e8",
+        "complete wrapper0x193cea7e8 builds stack callback objects/initial buffer and calls0x193cea26c; disposal has exact inline-object vs heap-object virtual branches and free if buffer pointer differs from initial stack storage",
+        "0x193cea26c dispatch cell0x1ed05b3f8: value1 direct0x193cf02cc; zero ->0x193cf08c8; othernonnull ->authenticated indirect callback",
+        "installed pristine dispatch cell iszero, not live state. Complete0x193cf08c8 calls0x193c52a84; nonnull result is stored and invoked, null result stores1 and calls0x193cf02cc"
+      ],
+      "captured_but_model_unexamined": {
+        "range": [
+          "0x193cf02cc",
+          "0x193cf08c8"
+        ],
+        "file": "swift-8.stdout",
+        "sha256": "e5c062a6c148b036b1b30541c9acc96df0e4c29469596d4cd86d62adfd12534f",
+        "bytes": 14576,
+        "lines": 389
+      },
+      "needed": "Exact runtime-selection0x193c52a84 and selected/override core plus callback targets/arena-growth effects for the actual22-byte symbolic type request. Those are retained/installed ready evidence, not absence. No allocation conclusion from API names or negative cell alone."
+    },
+    "pristine_state_and_import_rows": {
+      "current_conformance": [
+        {
+          "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVN",
+          "nlist_index": 31253,
+          "n_type": 15,
+          "section_index": 23,
+          "description": 0,
+          "address": "0x1002866d0",
+          "file_offset": 2647760,
+          "section": {
+            "name": "__const",
+            "segment": "__DATA_CONST",
+            "vmaddr": 4297460072,
+            "bytes": 179560,
+            "fileoff": 2492776
+          },
+          "raw16": "00020000000000001028200000002000"
+        },
+        {
+          "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSQAAMc",
+          "nlist_index": 31254,
+          "n_type": 15,
+          "section_index": 4,
+          "description": 0,
+          "address": "0x1001f49a8",
+          "file_offset": 2050472,
+          "section": {
+            "name": "__const",
+            "segment": "__TEXT",
+            "vmaddr": 4296920192,
+            "bytes": 115824,
+            "fileoff": 1952896
+          },
+          "raw16": "1927090064de00000000000000000300",
+          "flags": 196608,
+          "bit17": true,
+          "bit7": false,
+          "relative_witness_table": 0,
+          "relative_witness_target": "0x1001f49b0",
+          "provider_fast_return_predicates": {
+            "bit17_clear": false,
+            "relative_nonzero": false,
+            "target_nonzero": true,
+            "bit7_clear": true
+          },
+          "provider_computed_x9": "0x1001f49b8",
+          "conditional_count_word": 1,
+          "provider_computed_x26": "0x1001f49c4",
+          "x26_file_offset": 2050500,
+          "x26_raw32": "000001000000000084c40b00f126090058de0000000000000000030001000000",
+          "x26_u16_0": 0,
+          "x26_u16_2": 1,
+          "x26_u32_4": 0,
+          "x26_i32_8": 771204
+        }
+      ],
+      "own_cache": {
+        "source_descriptor_x26": "0x1001f49c4",
+        "relative_field_at_plus8": 771204,
+        "selected_address": "0x1002b0e50",
+        "file_offset": null,
+        "section": {
+          "name": "__bss",
+          "vmaddr": 4297665152,
+          "bytes": 143760,
+          "fileoff": 0,
+          "flags": 1
+        },
+        "zero_fill_declaration": true,
+        "bytes": 64,
+        "sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+        "raw": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "u64_words": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "frozen_before_model_utc": "2026-10-23T03:14:02.064346+00:00",
+        "once_word_offset": 56,
+        "scope": "Emitted bytes or explicit section zero-fill declaration only; actual linked/loaded cache and initialization effects remain separate"
+      },
+      "Swift_global_state": [
+        {
+          "address": "0x1ed05b3f8",
+          "bytes": 8,
+          "raw": "0000000000000000",
+          "u64_words": [
+            0
+          ]
+        },
+        {
+          "address": "0x1ed06b7a8",
+          "bytes": 56,
+          "raw": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "u64_words": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "selected_declared_imports": [
+        {
+          "call_target": "0x1940ef64c",
+          "stub_sections": [
+            {
+              "name": "__auth_stubs",
+              "vmaddr": 6778973804,
+              "bytes": 3584,
+              "fileoff": 335965804,
+              "flags": 2147484680,
+              "reserved1": 0,
+              "reserved2": 16
+            }
+          ],
+          "indirect_slot": 126,
+          "indirect_value": 40093,
+          "stub_raw": "91242db031e23c91300240f9110a1fd7",
+          "symbol": "_malloc_type_calloc",
+          "nlist_index": 40093,
+          "n_type": 1,
+          "n_desc": 1280,
+          "ordinal": 5,
+          "declared_provider": "/usr/lib/libSystem.B.dylib"
+        },
+        {
+          "call_target": "0x1940ef65c",
+          "stub_sections": [
+            {
+              "name": "__auth_stubs",
+              "vmaddr": 6778973804,
+              "bytes": 3584,
+              "fileoff": 335965804,
+              "flags": 2147484680,
+              "reserved1": 0,
+              "reserved2": 16
+            }
+          ],
+          "indirect_slot": 127,
+          "indirect_value": 40094,
+          "stub_raw": "91242db031623d91300240f9110a1fd7",
+          "symbol": "_malloc_type_malloc",
+          "nlist_index": 40094,
+          "n_type": 1,
+          "n_desc": 1280,
+          "ordinal": 5,
+          "declared_provider": "/usr/lib/libSystem.B.dylib"
+        },
+        {
+          "call_target": "0x1940ef4cc",
+          "stub_sections": [
+            {
+              "name": "__auth_stubs",
+              "vmaddr": 6778973804,
+              "bytes": 3584,
+              "fileoff": 335965804,
+              "flags": 2147484680,
+              "reserved1": 0,
+              "reserved2": 16
+            }
+          ],
+          "indirect_slot": 102,
+          "indirect_value": 40068,
+          "stub_raw": "91242db031623a91300240f9110a1fd7",
+          "symbol": "_free",
+          "nlist_index": 40068,
+          "n_type": 1,
+          "n_desc": 1280,
+          "ordinal": 5,
+          "declared_provider": "/usr/lib/libSystem.B.dylib"
+        },
+        {
+          "call_target": "0x1940ede8c",
+          "stub_sections": []
+        }
+      ]
+    },
+    "superseded_and_errors": [
+      "Initial global fallback-cache hypothesis is superseded: descriptor selects its own BSS cache. Global zero data does not establish that selected cache path.",
+      "First private-cache query required file backing and returned a concrete mapping error. Corrected section query proves S_ZEROFILL; missing file backing is not missing state/provider. Both request/result records remain.",
+      "Orientation and ordinary administration have upper accounting rather than exact complete pre-emission certification. No prior failure is retroqualified. Page/helper and specific provider-decoder frozen bytes remained unchanged."
+    ],
+    "consolidated_disposition": {
+      "achieved": [
+        "A42 exact Static descriptor/reset allocator exclusions reused without rereading",
+        "Exact current two-level provider imports, installed UUID/version, regular export bodies and required argument/state controls",
+        "Current concrete conformance selects generic/instantiation path and own BSS cache; exact initializer clears state; conditional malloc-family MISS dependency exposed"
+      ],
+      "technical_premises": [
+        "Actual loaded provider/import/GOT/cache state versus installed pristine bytes; no runtime action performed",
+        "Exact local empty-private-cache-to-MISS join through0x193ce77b4 is available-unexamined, not external absence or resolved by fallback helper6. Once/lock/hash initialization and competing-insertion effects plus malloc-family resolved implementation/semantics remain separate.",
+        "getType selection routine/core/callback effects not fully examined; exact captured/available boundaries above"
+      ],
+      "remaining_ready_local_work": [
+        "Other current-mapped Host/Scoped/Route allocator, metadata, once, indirect, witness and error callers are not classified by this provider result. Original17-site index/56groups/1892sites are not feasibility proof. No external absence.",
+        "Mandatory standalone Model/Semantic/FixedStorage/Coordinator obligations remain; selected three-root entry does not exempt them."
+      ],
+      "preserved_scoped_safety": "Reviewed U03 concrete owner/reader/dispatch/generation/backinglast/linkedwriter/fault and memory lemmas remain exact-premise scoped; no generalized foreign/concurrent safety claim.",
+      "state_gap": "Actual stdoutR=S, unbuffered persistence, loaded targets and inherited environment/window record remain unobserved. State-only capture proposal is still unexecuted.",
+      "scope_consequence": "Static eligibility cannot be discharged by declaring concrete Equatable first-use allocation-free or assuming warmth. The conditional dependency merits coordinator/Astra assessment of a contract-preserving implementation remedy; no source guess, prewarm, observer exemption, window move or acceptance relaxation is authorized by this receipt.",
+      "B_C": "No current image/resource/cold/physical/profile transfer or release; no runtime/provider experiment, compiler/fullcounter rerun, network/hardware or source/index mutation."
+    }
+  },
+  "execution_exact_pre_emission_qualification": false,
+  "result_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-result",
+  "combined_group_context_upper_bytes": 214175,
+  "combined_group_context_upper_lines": 3477,
+  "final_processing": 521496153,
+  "final_transcript_upper": 444298,
+  "final_retained_bytes": 464076,
+  "final_shared_upper": 908374
+}

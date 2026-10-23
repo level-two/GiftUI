@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-10-23T04:06:30.692080+00:00",
+  "argv": [
+    "/bin/bash",
+    "-c",
+    "source scripts/lib/swiftpm.sh\ngiftui_swiftpm --package-path /Users/eugene/work/GiftUI --scratch-path .build/contracts/p08-witness45-swiftpm/scratch --cache-root .build/contracts/p08-witness45-swiftpm/cache --swift-flag -DGIFTUI_DYNAMIC_PROFILE --disable-sandbox -- test --filter 'InteractionValueTests|InteractionCandidateAppendTests' --skip-update --disable-automatic-resolution --disable-dependency-cache"
+  ],
+  "environment_overrides": {
+    "GIFTUI_SWIFT_EXECUTABLE": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift",
+    "GIT_ALLOW_PROTOCOL": "file"
+  },
+  "deadline_utc": "2026-10-23T04:36:30.692080+00:00",
+  "pinned_local_cache_revision": "79e4b74a295b6eb74a8b585e3a39d29e70c1dbd1",
+  "ordinary_output_bound": 2147483648
+}

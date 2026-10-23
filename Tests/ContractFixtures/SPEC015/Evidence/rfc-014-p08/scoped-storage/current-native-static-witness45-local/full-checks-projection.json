@@ -1,0 +1,4267 @@
+[
+  {
+    "name": "GiftUISemanticCore",
+    "family": "GiftUISemanticCore",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUITextResources",
+    "family": "GiftUITextResources",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIReferenceTextResources",
+    "family": "GiftUIReferenceTextResources",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUILayout",
+    "family": "GiftUILayout",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIRenderCore",
+    "family": "GiftUIRenderCore",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIExecution",
+    "family": "GiftUIExecution",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIInteraction",
+    "family": "GiftUIInteraction",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIObservableState",
+    "family": "GiftUIObservableState",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIRenderLowering",
+    "family": "GiftUIRenderLowering",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIDrawing",
+    "family": "GiftUIDrawing",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIRuntimeCore",
+    "family": "GiftUIRuntimeCore",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIRuntimeStatic",
+    "family": "GiftUIRuntimeStatic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIRuntimeDynamic",
+    "family": "GiftUIRuntimeDynamic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "GiftUIHostConfiguration",
+    "family": "GiftUIHostConfiguration",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "counter-lowering",
+    "family": "counter-lowering",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "P08CounterSchema",
+    "family": "P08CounterSchema",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "P08CounterPresentation",
+    "family": "P08CounterPresentation",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "P08CounterTable",
+    "family": "P08CounterTable",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "counter-model",
+    "family": "counter-model",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-geometry-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-geometry-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-candidateRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-candidateRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-candidateHitRegions-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-candidateHitRegions-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-candidateCommittedRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-candidateCommittedRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-committedRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-committedRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-committedHitRegions-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-committedHitRegions-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-models-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-models-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-root-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-root-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-semantic-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-semantic-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-values-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-values-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-control-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-control-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-union-static-direct-activationSpan-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-direct-activationSpan-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-geometry-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-geometry-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-candidateRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-candidateRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-candidateHitRegions-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-candidateHitRegions-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-candidateCommittedRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-candidateCommittedRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-committedRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-committedRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-committedHitRegions-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-committedHitRegions-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-models-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-models-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-root-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-root-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-semantic-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-semantic-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-values-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-values-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-control-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-control-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-union-static-generic-activationSpan-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-static-generic-activationSpan-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-geometry-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-geometry-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-candidateRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-candidateRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-candidateHitRegions-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-candidateHitRegions-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-candidateCommittedRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-candidateCommittedRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-committedRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-committedRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-committedHitRegions-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-committedHitRegions-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-models-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-models-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-root-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-root-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-semantic-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-semantic-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-values-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-values-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-control-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-control-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-direct-activationSpan-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-direct-activationSpan-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-geometry-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-geometry-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-candidateRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-candidateRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-candidateHitRegions-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-candidateHitRegions-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-candidateCommittedRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-candidateCommittedRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-committedRecords-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-committedRecords-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-committedHitRegions-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-committedHitRegions-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-models-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-models-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-root-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-root-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-semantic-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-semantic-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-values-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-values-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-control-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-control-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-union-dynamic-generic-activationSpan-positive",
+    "family": "so06-union",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-union-dynamic-generic-activationSpan-negative",
+    "family": "so06-union",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-geometry-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-geometry-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-candidateRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-candidateRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-candidateHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-candidateHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-candidateCommittedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-candidateCommittedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-committedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-committedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-committedHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-committedHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-models-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-models-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-root-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-root-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-semantic-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-semantic-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-values-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-values-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-control-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-control-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-activationSpan-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-active-host-activationSpan-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-direct-active-host-optional-positive",
+    "family": "so06-erasure-optional",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-direct-active-host-optional-negative",
+    "family": "so06-erasure-optional",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-direct-active-host-tuple-positive",
+    "family": "so06-erasure-tuple",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-direct-active-host-tuple-negative",
+    "family": "so06-erasure-tuple",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-direct-active-host-generic-positive",
+    "family": "so06-erasure-generic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-direct-active-host-generic-negative",
+    "family": "so06-erasure-generic",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-direct-active-host-closure-positive",
+    "family": "so06-erasure-closure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-direct-active-host-closure-negative",
+    "family": "so06-erasure-closure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "'input' is borrowed and cannot be consumed"
+        ],
+        [
+          "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+        ],
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-erasure-static-direct-active-host-closure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-geometry-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-geometry-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-candidateRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-candidateRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-candidateHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-candidateHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-candidateCommittedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-candidateCommittedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-committedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-committedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-committedHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-committedHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-models-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-models-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-root-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-root-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-semantic-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-semantic-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-values-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-values-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-control-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-control-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-activationSpan-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-direct-retired-optional-activationSpan-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-direct-retired-optional-optional-positive",
+    "family": "so06-erasure-optional",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-direct-retired-optional-optional-negative",
+    "family": "so06-erasure-optional",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-direct-retired-optional-tuple-positive",
+    "family": "so06-erasure-tuple",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-direct-retired-optional-tuple-negative",
+    "family": "so06-erasure-tuple",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-direct-retired-optional-generic-positive",
+    "family": "so06-erasure-generic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-direct-retired-optional-generic-negative",
+    "family": "so06-erasure-generic",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-direct-retired-optional-closure-positive",
+    "family": "so06-erasure-closure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-direct-retired-optional-closure-negative",
+    "family": "so06-erasure-closure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "'input' is borrowed and cannot be consumed"
+        ],
+        [
+          "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+        ],
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-erasure-static-direct-retired-optional-closure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-geometry-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-geometry-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-candidateRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-candidateRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-candidateHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-candidateHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-candidateCommittedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-candidateCommittedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-committedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-committedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-committedHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-committedHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-models-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-models-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-root-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-root-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-semantic-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-semantic-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-values-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-values-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-control-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-control-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-activationSpan-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-active-host-activationSpan-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-generic-active-host-optional-positive",
+    "family": "so06-erasure-optional",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-generic-active-host-optional-negative",
+    "family": "so06-erasure-optional",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-generic-active-host-tuple-positive",
+    "family": "so06-erasure-tuple",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-generic-active-host-tuple-negative",
+    "family": "so06-erasure-tuple",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-generic-active-host-generic-positive",
+    "family": "so06-erasure-generic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-generic-active-host-generic-negative",
+    "family": "so06-erasure-generic",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-generic-active-host-closure-positive",
+    "family": "so06-erasure-closure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-generic-active-host-closure-negative",
+    "family": "so06-erasure-closure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "'input' is borrowed and cannot be consumed"
+        ],
+        [
+          "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+        ],
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-erasure-static-generic-active-host-closure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-geometry-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-geometry-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-candidateRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-candidateRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-candidateHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-candidateHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-candidateCommittedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-candidateCommittedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-committedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-committedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-committedHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-committedHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-models-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-models-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-root-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-root-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-semantic-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-semantic-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-values-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-values-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-control-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-control-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-activationSpan-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-static-generic-retired-optional-activationSpan-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-generic-retired-optional-optional-positive",
+    "family": "so06-erasure-optional",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-generic-retired-optional-optional-negative",
+    "family": "so06-erasure-optional",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-generic-retired-optional-tuple-positive",
+    "family": "so06-erasure-tuple",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-generic-retired-optional-tuple-negative",
+    "family": "so06-erasure-tuple",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-generic-retired-optional-generic-positive",
+    "family": "so06-erasure-generic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-generic-retired-optional-generic-negative",
+    "family": "so06-erasure-generic",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-static-generic-retired-optional-closure-positive",
+    "family": "so06-erasure-closure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-static-generic-retired-optional-closure-negative",
+    "family": "so06-erasure-closure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "'input' is borrowed and cannot be consumed"
+        ],
+        [
+          "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+        ],
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-erasure-static-generic-retired-optional-closure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-geometry-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-geometry-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-candidateRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-candidateRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-candidateHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-candidateHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-candidateCommittedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-candidateCommittedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-committedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-committedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-committedHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-committedHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-models-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-models-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-root-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-root-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-semantic-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-semantic-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-values-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-values-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-control-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-control-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-activationSpan-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-active-host-activationSpan-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-active-host-optional-positive",
+    "family": "so06-erasure-optional",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-active-host-optional-negative",
+    "family": "so06-erasure-optional",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-active-host-tuple-positive",
+    "family": "so06-erasure-tuple",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-active-host-tuple-negative",
+    "family": "so06-erasure-tuple",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-active-host-generic-positive",
+    "family": "so06-erasure-generic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-active-host-generic-negative",
+    "family": "so06-erasure-generic",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-active-host-closure-positive",
+    "family": "so06-erasure-closure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-active-host-closure-negative",
+    "family": "so06-erasure-closure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "'input' is borrowed and cannot be consumed"
+        ],
+        [
+          "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+        ],
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-erasure-dynamic-direct-active-host-closure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-geometry-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-geometry-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-candidateRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-candidateRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-candidateHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-candidateHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-candidateCommittedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-candidateCommittedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-committedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-committedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-committedHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-committedHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-models-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-models-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-root-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-root-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-semantic-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-semantic-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-values-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-values-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-control-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-control-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-activationSpan-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-direct-retired-optional-activationSpan-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-retired-optional-optional-positive",
+    "family": "so06-erasure-optional",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-retired-optional-optional-negative",
+    "family": "so06-erasure-optional",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-retired-optional-tuple-positive",
+    "family": "so06-erasure-tuple",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-retired-optional-tuple-negative",
+    "family": "so06-erasure-tuple",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-retired-optional-generic-positive",
+    "family": "so06-erasure-generic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-retired-optional-generic-negative",
+    "family": "so06-erasure-generic",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-retired-optional-closure-positive",
+    "family": "so06-erasure-closure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-direct-retired-optional-closure-negative",
+    "family": "so06-erasure-closure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "'input' is borrowed and cannot be consumed"
+        ],
+        [
+          "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+        ],
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-erasure-dynamic-direct-retired-optional-closure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-geometry-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-geometry-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-candidateRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-candidateRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-candidateHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-candidateHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-candidateCommittedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-candidateCommittedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-committedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-committedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-committedHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-committedHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-models-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-models-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-root-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-root-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-semantic-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-semantic-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-values-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-values-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-control-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-control-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-activationSpan-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-active-host-activationSpan-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-active-host-optional-positive",
+    "family": "so06-erasure-optional",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-active-host-optional-negative",
+    "family": "so06-erasure-optional",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-active-host-tuple-positive",
+    "family": "so06-erasure-tuple",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-active-host-tuple-negative",
+    "family": "so06-erasure-tuple",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-active-host-generic-positive",
+    "family": "so06-erasure-generic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-active-host-generic-negative",
+    "family": "so06-erasure-generic",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-active-host-closure-positive",
+    "family": "so06-erasure-closure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-active-host-closure-negative",
+    "family": "so06-erasure-closure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "'input' is borrowed and cannot be consumed"
+        ],
+        [
+          "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+        ],
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-erasure-dynamic-generic-active-host-closure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-geometry-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-geometry-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "geometry"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-candidateRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-candidateRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-candidateHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-candidateHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-candidateCommittedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-candidateCommittedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "candidateCommittedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-committedRecords-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-committedRecords-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedRecords"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-committedHitRegions-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-committedHitRegions-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "committedHitRegions"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-models-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-models-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "models"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-root-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-root-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "root"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-semantic-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-semantic-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "semantic"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-values-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-values-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "values"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-control-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-control-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "control"
+    ]
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-activationSpan-positive",
+    "family": "so06-carrier",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-carrier-dynamic-generic-retired-optional-activationSpan-negative",
+    "family": "so06-carrier",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "activationSpan"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-retired-optional-optional-positive",
+    "family": "so06-erasure-optional",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-retired-optional-optional-negative",
+    "family": "so06-erasure-optional",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-retired-optional-tuple-positive",
+    "family": "so06-erasure-tuple",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-retired-optional-tuple-negative",
+    "family": "so06-erasure-tuple",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-retired-optional-generic-positive",
+    "family": "so06-erasure-generic",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-retired-optional-generic-negative",
+    "family": "so06-erasure-generic",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-retired-optional-closure-positive",
+    "family": "so06-erasure-closure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-erasure-dynamic-generic-retired-optional-closure-negative",
+    "family": "so06-erasure-closure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "'input' is borrowed and cannot be consumed"
+        ],
+        [
+          "'input' cannot be captured by an escaping closure since it is a borrowed parameter"
+        ],
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-erasure-dynamic-generic-retired-optional-closure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "counter-host-copy-positive",
+    "family": "counter-host-copy",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "counter-host-copy-negative",
+    "family": "counter-host-copy",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "'copy' cannot be applied to noncopyable types"
+    ]
+  },
+  {
+    "name": "counter-host-backing-positive",
+    "family": "counter-host-backing",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "counter-host-backing-negative",
+    "family": "counter-host-backing",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "escaped"
+    ]
+  },
+  {
+    "name": "so06-use-after-consume-positive",
+    "family": "so06-use-after-consume",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-use-after-consume-negative",
+    "family": "so06-use-after-consume",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "consumed"
+    ]
+  },
+  {
+    "name": "so06-owned-return-positive",
+    "family": "so06-owned-return",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-owned-return-negative",
+    "family": "so06-owned-return",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Copyable",
+      "returnWorkspaces"
+    ]
+  },
+  {
+    "name": "so06-private-construction-positive",
+    "family": "so06-private-construction",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-private-construction-negative",
+    "family": "so06-private-construction",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "private"
+    ]
+  },
+  {
+    "name": "so06-private-extraction-positive",
+    "family": "so06-private-extraction",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-private-extraction-negative",
+    "family": "so06-private-extraction",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "private",
+      "interaction"
+    ]
+  },
+  {
+    "name": "so06-arbitrary-factory-positive",
+    "family": "so06-arbitrary-factory",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-arbitrary-factory-negative",
+    "family": "so06-arbitrary-factory",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "P08TypedBackingOwner",
+      "ForeignOwner"
+    ]
+  },
+  {
+    "name": "so06-optional-erasure-positive",
+    "family": "so06-optional-erasure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-optional-erasure-negative",
+    "family": "so06-optional-erasure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-tuple-erasure-positive",
+    "family": "so06-tuple-erasure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-tuple-erasure-negative",
+    "family": "so06-tuple-erasure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-generic-erasure-positive",
+    "family": "so06-generic-erasure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-generic-erasure-negative",
+    "family": "so06-generic-erasure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Escapable"
+    ]
+  },
+  {
+    "name": "so06-closure-erasure-positive",
+    "family": "so06-closure-erasure",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-closure-erasure-negative",
+    "family": "so06-closure-erasure",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-closure-erasure-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-sendable-positive",
+    "family": "so06-sendable",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-sendable-negative",
+    "family": "so06-sendable",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Sendable"
+    ]
+  },
+  {
+    "name": "so06-static-overlap-positive",
+    "family": "so06-static-overlap",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-static-overlap-negative",
+    "family": "so06-static-overlap",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "overlapping accesses"
+    ]
+  },
+  {
+    "name": "counter-dynamic-host-backing-positive",
+    "family": "counter-dynamic-host-backing",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "counter-dynamic-host-backing-negative",
+    "family": "counter-dynamic-host-backing",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "lifetime",
+      "escaped"
+    ]
+  },
+  {
+    "name": "so06-task-positive",
+    "family": "so06-task",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-task-negative",
+    "family": "so06-task",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "lifetime-dependent variable 'input' escapes its scope"
+        ],
+        [
+          "passing closure as a 'sending' parameter risks causing data races between code in the current isolation context and concurrent execution of the closure"
+        ],
+        [
+          "missing reinitialization of closure capture 'input' after consume while accessing memory"
+        ]
+      ],
+      "required_primary": [
+        "lifetime-dependent variable 'input' escapes its scope"
+      ],
+      "error_site": {
+        "filename": "so06-task-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "so06-async-positive",
+    "family": "so06-async",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-async-negative",
+    "family": "so06-async",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "cannot pass function of type",
+          "async",
+          "to parameter expecting synchronous function type"
+        ],
+        [
+          "'async' call in a function that does not support concurrency"
+        ]
+      ],
+      "required_primary": [
+        "async"
+      ],
+      "error_site": {
+        "filename": "so06-async-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "control-resident-projection-positive",
+    "family": "control-resident-projection",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "control-resident-projection-negative",
+    "family": "control-resident-projection",
+    "exit": 1,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": {
+      "any_of": [
+        [
+          "overlapping accesses"
+        ]
+      ],
+      "required_primary": [
+        "overlapping accesses"
+      ],
+      "error_site": {
+        "filename": "control-resident-projection-negative.swift",
+        "first_line": 4081
+      }
+    }
+  },
+  {
+    "name": "link",
+    "family": "runtime",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "execute",
+    "family": "runtime",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-inventory-two-hosts",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-control-same-address",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-terminal-old-host",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-raw-namespace-collision",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-action-stale",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-action-current",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-input-stale",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-input-current",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-admission-stale",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-admission-current",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-source-stale",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-source-current",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-reuse-static-cleanup-backing-last",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "runtime-summary",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-link",
+    "family": "runtime",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-execute",
+    "family": "runtime",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-inventory-two-hosts",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-control-same-address",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-terminal-old-host",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-raw-namespace-collision",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-action-stale",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-action-current",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-input-stale",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-input-current",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-admission-stale",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-admission-current",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-source-stale",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-source-current",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-so06-reuse-static-cleanup-backing-last",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "static-resource-v1-summary",
+    "family": "runtime",
+    "exit": null,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-native-exclusivity-module",
+    "family": "so06-native-exclusivity",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-native-exclusivity-positive-link",
+    "family": "so06-native-exclusivity",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-native-exclusivity-positive-execute",
+    "family": "so06-native-exclusivity",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-native-exclusivity-negative-link",
+    "family": "so06-native-exclusivity",
+    "exit": 0,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": null
+  },
+  {
+    "name": "so06-native-exclusivity-negative-execute",
+    "family": "so06-native-exclusivity",
+    "exit": -6,
+    "passed": true,
+    "status": "passed",
+    "diagnostic": [
+      "Simultaneous accesses",
+      "Fatal access conflict"
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "object": ".build/contracts/p08-counter-dt4nfsxd/P08CounterRuntime.o",
+  "object_sha256": "75d3ba94b7be7ac19215e493f35f6a43e116897dfd21bf6892a9ba2a515414c5",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x4ebd0",
+    "--stop-address=0x4f2cc",
+    ".build/contracts/p08-counter-dt4nfsxd/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 42505,
+  "stdout_sha256": "f6be9d51e53cb8ed57356bd6483537eed8359ba333a87a1ac88f6a66dd192c77",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "focused1_body_byte_equal": true,
+  "witness_acquisition_refs": [],
+  "metadata_acquisition_refs": [
+    "\t\t000000000004ec1c:  ARM64_RELOC_BRANCH26\t___swift_instantiateConcreteTypeFromMangledName"
+  ],
+  "derived_equality_refs": [
+    "\t\t000000000004ef8c:  ARM64_RELOC_BRANCH26\t_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ"
+  ]
+}

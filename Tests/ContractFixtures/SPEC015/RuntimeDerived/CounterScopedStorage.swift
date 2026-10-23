@@ -3138,8 +3138,27 @@ extension P08StorageSession {
             precondition(interaction.beginCandidate(limits: limits) == nil)
             precondition(interaction.finishCandidate() == nil)
             interaction.resolveCandidate(.discard)
-            precondition(interaction.committedRecord(for: key(0)) == before && interaction.committedRevision == revision)
-            precondition(interaction.resolveUp(captured, at: .init(x: 1, y: 1)) == .activationAdmitted(captured))
+            // Keep the complete record oracle concrete: generic Optional/record
+            // equality otherwise requests a runtime Equatable witness here.
+            let afterDiscard = interaction.committedRecord(for: key(0))
+            let recordMatches: Bool
+            if let afterDiscard {
+                recordMatches = afterDiscard.identity == before.identity
+                    && afterDiscard.generation == before.generation
+                    && afterDiscard.isEnabled == before.isEnabled
+                    && afterDiscard.hitBounds == before.hitBounds
+                    && afterDiscard.paintOrder == before.paintOrder
+                    && afterDiscard.action == before.action
+                    && afterDiscard.targetGeneration == before.targetGeneration
+            } else { recordMatches = false }
+            precondition(recordMatches && interaction.committedRevision == revision)
+            let outcome = interaction.resolveUp(captured, at: .init(x: 1, y: 1))
+            let activationMatches: Bool
+            if case .activationAdmitted(let admitted) = outcome {
+                activationMatches = admitted.identity == captured.identity
+                    && admitted.generation == captured.generation
+            } else { activationMatches = false }
+            precondition(activationMatches)
             checks += 5
         }
         // First-excess poisons the candidate; asking to commit cannot replace it.

@@ -1,0 +1,50 @@
+{
+  "kind": "ordinary source validation; NOT U02 semantic allowance",
+  "scope": "P07 final and reverted trial; focused1/focused2; failed unit attempts and full integration",
+  "full_elapsed_seconds": 7865,
+  "full_limit_seconds": 14400,
+  "retained_output_ceiling_bytes": 2147483648,
+  "actual_directories": [
+    {
+      "path": ".build/contracts/p08-witness45-swiftpm",
+      "bytes": 503749579
+    },
+    {
+      "path": ".build/contracts/p08-witness45-interaction-tests",
+      "bytes": 256571016
+    },
+    {
+      "path": ".build/contracts/p08-counter-dvc6yr6p",
+      "bytes": 161587476
+    },
+    {
+      "path": ".build/contracts/p08-counter-twz66ejq",
+      "bytes": 161590120
+    },
+    {
+      "path": ".build/contracts/p08-counter-dt4nfsxd",
+      "bytes": 184402716
+    },
+    {
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp7pzurowm",
+      "bytes": 25061692
+    },
+    {
+      "path": ".build/contracts/spec-013-runtime-cycle/tmpygas7b_p",
+      "bytes": 25063688
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-witness45-local",
+      "bytes": 704416
+    },
+    {
+      "path": ".build/contracts/p08-witness45-full",
+      "bytes": 1482
+    }
+  ],
+  "actual_total_bytes": 1318732185,
+  "final_reserve_bytes": 16777216,
+  "within_ceiling_with_reserve": true,
+  "amendment_history": "Initial 512/768MiB forecasts superseded by ordinary 2GiB validation envelope before full; not a retroactive U02 limit change. Failed unit/module caches are retained.",
+  "performance_claim": false
+}

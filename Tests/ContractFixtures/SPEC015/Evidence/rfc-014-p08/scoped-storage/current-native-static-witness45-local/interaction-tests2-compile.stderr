@@ -1,0 +1,2073 @@
+sandbox-exec: sandbox_apply: Operation not permitted
+sandbox-exec: sandbox_apply: Operation not permitted
+sandbox-exec: sandbox_apply: Operation not permitted
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:16:9: error: cannot find 'XCTAssertFalse' in scope
+ 14 |         let enabledSibling = root.applying(DisabledSemanticPayload(isDisabled: false))
+ 15 | 
+ 16 |         XCTAssertFalse(disabled.isEnabled)
+    |         `- error: cannot find 'XCTAssertFalse' in scope
+ 17 |         XCTAssertFalse(falseBelowDisabled.isEnabled)
+ 18 |         XCTAssertTrue(enabledSibling.isEnabled)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:90:9: note: macro 'XCTAssertFalse' unavailable: function like macros not supported
+ 88 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 89 | */
+ 90 | #define XCTAssertFalse(expression, ...) \
+    |         `- note: macro 'XCTAssertFalse' unavailable: function like macros not supported
+ 91 |     _XCTPrimitiveAssertFalse(nil, expression, @#expression, __VA_ARGS__)
+ 92 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:17:9: error: cannot find 'XCTAssertFalse' in scope
+ 15 | 
+ 16 |         XCTAssertFalse(disabled.isEnabled)
+ 17 |         XCTAssertFalse(falseBelowDisabled.isEnabled)
+    |         `- error: cannot find 'XCTAssertFalse' in scope
+ 18 |         XCTAssertTrue(enabledSibling.isEnabled)
+ 19 |     }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:90:9: note: macro 'XCTAssertFalse' unavailable: function like macros not supported
+ 88 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 89 | */
+ 90 | #define XCTAssertFalse(expression, ...) \
+    |         `- note: macro 'XCTAssertFalse' unavailable: function like macros not supported
+ 91 |     _XCTPrimitiveAssertFalse(nil, expression, @#expression, __VA_ARGS__)
+ 92 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:18:9: error: cannot find 'XCTAssertTrue' in scope
+ 16 |         XCTAssertFalse(disabled.isEnabled)
+ 17 |         XCTAssertFalse(falseBelowDisabled.isEnabled)
+ 18 |         XCTAssertTrue(enabledSibling.isEnabled)
+    |         `- error: cannot find 'XCTAssertTrue' in scope
+ 19 |     }
+ 20 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:81:9: note: macro 'XCTAssertTrue' unavailable: function like macros not supported
+ 79 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 80 | */
+ 81 | #define XCTAssertTrue(expression, ...) \
+    |         `- note: macro 'XCTAssertTrue' unavailable: function like macros not supported
+ 82 |     _XCTPrimitiveAssertTrue(nil, expression, @#expression, __VA_ARGS__)
+ 83 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:22:9: error: cannot find 'XCTAssertEqual' in scope
+ 20 | 
+ 21 |     func testActionNormalizerRejectsWrongDomainAndPreservesExactCodes() {
+ 22 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 23 |             RecordingActionNormalizer<TestHandler>.normalize(TestAction.maximum),
+ 24 |             .normalized(BoundedApplicationAction(code: .max))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:26:9: error: cannot find 'XCTAssertEqual' in scope
+ 24 |             .normalized(BoundedApplicationAction(code: .max))
+ 25 |         )
+ 26 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 27 |             RecordingActionNormalizer<TestHandler>.normalize(OtherAction.value),
+ 28 |             .failure(.incompatibleActionDomain)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:34:9: error: cannot find 'XCTAssertEqual' in scope
+ 32 |     func testRecordingCoordinatorRejectsDomainAndValueBeforeAppendOrOffer() {
+ 33 |         var wrongDomain = RecordingActionValidationCoordinator<TestHandler>()
+ 34 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 35 |             wrongDomain.validateAndAppend(OtherAction.value),
+ 36 |             .failure(.incompatibleActionDomain)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:38:9: error: cannot find 'XCTAssertEqual' in scope
+ 36 |             .failure(.incompatibleActionDomain)
+ 37 |         )
+ 38 |         XCTAssertEqual(wrongDomain.appendCount, 0)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 39 |         XCTAssertEqual(wrongDomain.offerCount, 0)
+ 40 |         XCTAssertEqual(wrongDomain.discardCount, 1)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:39:9: error: cannot find 'XCTAssertEqual' in scope
+ 37 |         )
+ 38 |         XCTAssertEqual(wrongDomain.appendCount, 0)
+ 39 |         XCTAssertEqual(wrongDomain.offerCount, 0)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 40 |         XCTAssertEqual(wrongDomain.discardCount, 1)
+ 41 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:40:9: error: cannot find 'XCTAssertEqual' in scope
+ 38 |         XCTAssertEqual(wrongDomain.appendCount, 0)
+ 39 |         XCTAssertEqual(wrongDomain.offerCount, 0)
+ 40 |         XCTAssertEqual(wrongDomain.discardCount, 1)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 41 | 
+ 42 |         var invalidValue = RecordingActionValidationCoordinator<NonTotalHandler>()
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:43:9: error: cannot find 'XCTAssertEqual' in scope
+ 41 | 
+ 42 |         var invalidValue = RecordingActionValidationCoordinator<NonTotalHandler>()
+ 43 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 44 |             invalidValue.validateAndAppend(NonTotalAction.invalid),
+ 45 |             .failure(.invalidActionValue)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:47:9: error: cannot find 'XCTAssertEqual' in scope
+ 45 |             .failure(.invalidActionValue)
+ 46 |         )
+ 47 |         XCTAssertEqual(invalidValue.appendCount, 0)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 48 |         XCTAssertEqual(invalidValue.offerCount, 0)
+ 49 |         XCTAssertEqual(invalidValue.discardCount, 1)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:48:9: error: cannot find 'XCTAssertEqual' in scope
+ 46 |         )
+ 47 |         XCTAssertEqual(invalidValue.appendCount, 0)
+ 48 |         XCTAssertEqual(invalidValue.offerCount, 0)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 49 |         XCTAssertEqual(invalidValue.discardCount, 1)
+ 50 |     }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:49:9: error: cannot find 'XCTAssertEqual' in scope
+ 47 |         XCTAssertEqual(invalidValue.appendCount, 0)
+ 48 |         XCTAssertEqual(invalidValue.offerCount, 0)
+ 49 |         XCTAssertEqual(invalidValue.discardCount, 1)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 50 |     }
+ 51 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:53:9: error: cannot find 'XCTAssertEqual' in scope
+ 51 | 
+ 52 |     func testBoundedApplicationActionIsExactlyTwoBytes() {
+ 53 |         XCTAssertEqual(MemoryLayout<BoundedApplicationAction>.size, 2)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 54 |         XCTAssertEqual(BoundedApplicationAction(code: .min).code, .min)
+ 55 |         XCTAssertEqual(BoundedApplicationAction(code: .max).code, .max)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:54:9: error: cannot find 'XCTAssertEqual' in scope
+ 52 |     func testBoundedApplicationActionIsExactlyTwoBytes() {
+ 53 |         XCTAssertEqual(MemoryLayout<BoundedApplicationAction>.size, 2)
+ 54 |         XCTAssertEqual(BoundedApplicationAction(code: .min).code, .min)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 55 |         XCTAssertEqual(BoundedApplicationAction(code: .max).code, .max)
+ 56 |     }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:55:9: error: cannot find 'XCTAssertEqual' in scope
+ 53 |         XCTAssertEqual(MemoryLayout<BoundedApplicationAction>.size, 2)
+ 54 |         XCTAssertEqual(BoundedApplicationAction(code: .min).code, .min)
+ 55 |         XCTAssertEqual(BoundedApplicationAction(code: .max).code, .max)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 56 |     }
+ 57 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:59:9: error: cannot find 'XCTAssertNil' in scope
+ 57 | 
+ 58 |     func testLimitsRejectZeroAndTooManyHitRegions() {
+ 59 |         XCTAssertNil(InteractionLimits(maximumActions: 0, maximumHitRegions: 1))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+ 60 |         XCTAssertNil(InteractionLimits(maximumActions: 1, maximumHitRegions: 0))
+ 61 |         XCTAssertNil(InteractionLimits(maximumActions: 1, maximumHitRegions: 2))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:60:9: error: cannot find 'XCTAssertNil' in scope
+ 58 |     func testLimitsRejectZeroAndTooManyHitRegions() {
+ 59 |         XCTAssertNil(InteractionLimits(maximumActions: 0, maximumHitRegions: 1))
+ 60 |         XCTAssertNil(InteractionLimits(maximumActions: 1, maximumHitRegions: 0))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+ 61 |         XCTAssertNil(InteractionLimits(maximumActions: 1, maximumHitRegions: 2))
+ 62 |         XCTAssertEqual(
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:61:9: error: cannot find 'XCTAssertNil' in scope
+ 59 |         XCTAssertNil(InteractionLimits(maximumActions: 0, maximumHitRegions: 1))
+ 60 |         XCTAssertNil(InteractionLimits(maximumActions: 1, maximumHitRegions: 0))
+ 61 |         XCTAssertNil(InteractionLimits(maximumActions: 1, maximumHitRegions: 2))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+ 62 |         XCTAssertEqual(
+ 63 |             InteractionLimits(maximumActions: 2, maximumHitRegions: 2),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:62:9: error: cannot find 'XCTAssertEqual' in scope
+ 60 |         XCTAssertNil(InteractionLimits(maximumActions: 1, maximumHitRegions: 0))
+ 61 |         XCTAssertNil(InteractionLimits(maximumActions: 1, maximumHitRegions: 2))
+ 62 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 63 |             InteractionLimits(maximumActions: 2, maximumHitRegions: 2),
+ 64 |             InteractionLimits(maximumActions: 2, maximumHitRegions: 2)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:20:13: error: cannot find 'XCTAssertNil' in scope
+ 18 |             let one = InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+ 19 |             let two = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+ 20 |             XCTAssertNil(state.beginCandidate(limits: one))
+    |             `- error: cannot find 'XCTAssertNil' in scope
+ 21 |             XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .requiresGeneration)
+ 22 |             XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 9), to: 7))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:21:13: error: cannot find 'XCTAssertEqual' in scope
+ 19 |             let two = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+ 20 |             XCTAssertNil(state.beginCandidate(limits: one))
+ 21 |             XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .requiresGeneration)
+    |             `- error: cannot find 'XCTAssertEqual' in scope
+ 22 |             XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 9), to: 7))
+ 23 |             XCTAssertNil(state.finishCandidate())
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:22:13: error: cannot find 'XCTAssertNil' in scope
+ 20 |             XCTAssertNil(state.beginCandidate(limits: one))
+ 21 |             XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .requiresGeneration)
+ 22 |             XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 9), to: 7))
+    |             `- error: cannot find 'XCTAssertNil' in scope
+ 23 |             XCTAssertNil(state.finishCandidate())
+ 24 |             state.resolveCandidate(.commit(PresentationRevision(rawValue: 4)))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:23:13: error: cannot find 'XCTAssertNil' in scope
+ 21 |             XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .requiresGeneration)
+ 22 |             XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 9), to: 7))
+ 23 |             XCTAssertNil(state.finishCandidate())
+    |             `- error: cannot find 'XCTAssertNil' in scope
+ 24 |             state.resolveCandidate(.commit(PresentationRevision(rawValue: 4)))
+ 25 |             let committed = state.committedRecord(at: 0)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:31:21: error: cannot find 'XCTAssertEqual' in scope
+ 29 |                 let begin = state.beginCandidate(limits: two)
+ 30 |                 if begin == nil {
+ 31 |                     XCTAssertEqual(append(&state, identity: 8, paintOrder: 0), .requiresGeneration)
+    |                     `- error: cannot find 'XCTAssertEqual' in scope
+ 32 |                     XCTAssertEqual(append(&state, identity: 9, paintOrder: 1), .requiresGeneration)
+ 33 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 10), to: 8))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:32:21: error: cannot find 'XCTAssertEqual' in scope
+ 30 |                 if begin == nil {
+ 31 |                     XCTAssertEqual(append(&state, identity: 8, paintOrder: 0), .requiresGeneration)
+ 32 |                     XCTAssertEqual(append(&state, identity: 9, paintOrder: 1), .requiresGeneration)
+    |                     `- error: cannot find 'XCTAssertEqual' in scope
+ 33 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 10), to: 8))
+ 34 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 11), to: 9))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:33:21: error: cannot find 'XCTAssertNil' in scope
+ 31 |                     XCTAssertEqual(append(&state, identity: 8, paintOrder: 0), .requiresGeneration)
+ 32 |                     XCTAssertEqual(append(&state, identity: 9, paintOrder: 1), .requiresGeneration)
+ 33 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 10), to: 8))
+    |                     `- error: cannot find 'XCTAssertNil' in scope
+ 34 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 11), to: 9))
+ 35 |                     XCTAssertEqual(state.finishCandidate(), .capacityExhausted)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:34:21: error: cannot find 'XCTAssertNil' in scope
+ 32 |                     XCTAssertEqual(append(&state, identity: 9, paintOrder: 1), .requiresGeneration)
+ 33 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 10), to: 8))
+ 34 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 11), to: 9))
+    |                     `- error: cannot find 'XCTAssertNil' in scope
+ 35 |                     XCTAssertEqual(state.finishCandidate(), .capacityExhausted)
+ 36 |                     state.resolveCandidate(.commit(PresentationRevision(rawValue: 5)))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:35:21: error: cannot find 'XCTAssertEqual' in scope
+ 33 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 10), to: 8))
+ 34 |                     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 11), to: 9))
+ 35 |                     XCTAssertEqual(state.finishCandidate(), .capacityExhausted)
+    |                     `- error: cannot find 'XCTAssertEqual' in scope
+ 36 |                     state.resolveCandidate(.commit(PresentationRevision(rawValue: 5)))
+ 37 |                     state.resolveCandidate(.discard)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:39:21: error: cannot find 'XCTAssertEqual' in scope
+ 37 |                     state.resolveCandidate(.discard)
+ 38 |                 } else {
+ 39 |                     XCTAssertEqual(begin, .capacityExhausted)
+    |                     `- error: cannot find 'XCTAssertEqual' in scope
+ 40 |                 }
+ 41 |                 XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 4))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:41:17: error: cannot find 'XCTAssertEqual' in scope
+ 39 |                     XCTAssertEqual(begin, .capacityExhausted)
+ 40 |                 }
+ 41 |                 XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 4))
+    |                 `- error: cannot find 'XCTAssertEqual' in scope
+ 42 |                 XCTAssertEqual(state.committedRecordCount, 1)
+ 43 |                 XCTAssertEqual(state.committedHitRegionCount, 1)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:42:17: error: cannot find 'XCTAssertEqual' in scope
+ 40 |                 }
+ 41 |                 XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 4))
+ 42 |                 XCTAssertEqual(state.committedRecordCount, 1)
+    |                 `- error: cannot find 'XCTAssertEqual' in scope
+ 43 |                 XCTAssertEqual(state.committedHitRegionCount, 1)
+ 44 |                 XCTAssertEqual(state.committedRecord(at: 0), committed)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:43:17: error: cannot find 'XCTAssertEqual' in scope
+ 41 |                 XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 4))
+ 42 |                 XCTAssertEqual(state.committedRecordCount, 1)
+ 43 |                 XCTAssertEqual(state.committedHitRegionCount, 1)
+    |                 `- error: cannot find 'XCTAssertEqual' in scope
+ 44 |                 XCTAssertEqual(state.committedRecord(at: 0), committed)
+ 45 |             }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:44:17: error: cannot find 'XCTAssertEqual' in scope
+ 42 |                 XCTAssertEqual(state.committedRecordCount, 1)
+ 43 |                 XCTAssertEqual(state.committedHitRegionCount, 1)
+ 44 |                 XCTAssertEqual(state.committedRecord(at: 0), committed)
+    |                 `- error: cannot find 'XCTAssertEqual' in scope
+ 45 |             }
+ 46 |             XCTAssertNil(state.beginCandidate(limits: one))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:46:13: error: cannot find 'XCTAssertNil' in scope
+ 44 |                 XCTAssertEqual(state.committedRecord(at: 0), committed)
+ 45 |             }
+ 46 |             XCTAssertNil(state.beginCandidate(limits: one))
+    |             `- error: cannot find 'XCTAssertNil' in scope
+ 47 |             XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .preserved)
+ 48 |             XCTAssertNil(state.finishCandidate())
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:47:13: error: cannot find 'XCTAssertEqual' in scope
+ 45 |             }
+ 46 |             XCTAssertNil(state.beginCandidate(limits: one))
+ 47 |             XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .preserved)
+    |             `- error: cannot find 'XCTAssertEqual' in scope
+ 48 |             XCTAssertNil(state.finishCandidate())
+ 49 |             state.resolveCandidate(.commit(PresentationRevision(rawValue: 6)))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:48:13: error: cannot find 'XCTAssertNil' in scope
+ 46 |             XCTAssertNil(state.beginCandidate(limits: one))
+ 47 |             XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .preserved)
+ 48 |             XCTAssertNil(state.finishCandidate())
+    |             `- error: cannot find 'XCTAssertNil' in scope
+ 49 |             state.resolveCandidate(.commit(PresentationRevision(rawValue: 6)))
+ 50 |             XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 6))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:50:13: error: cannot find 'XCTAssertEqual' in scope
+ 48 |             XCTAssertNil(state.finishCandidate())
+ 49 |             state.resolveCandidate(.commit(PresentationRevision(rawValue: 6)))
+ 50 |             XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 6))
+    |             `- error: cannot find 'XCTAssertEqual' in scope
+ 51 |         }
+ 52 |     }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:62:9: error: cannot find 'XCTAssertNil' in scope
+ 60 |             committedHitRegions: ArrayHitStorage(capacity: 2)
+ 61 |         )
+ 62 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+ 63 |             state.beginCandidate(
+ 64 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:65:9: error: cannot find 'XCTAssertEqual' in scope
+ 63 |             state.beginCandidate(
+ 64 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+ 65 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 66 |         XCTAssertEqual(append(&state, identity: 2, paintOrder: 1), .requiresGeneration)
+ 67 |         XCTAssertEqual(state.finishCandidate(), .invalidIdentity)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:66:9: error: cannot find 'XCTAssertEqual' in scope
+ 64 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+ 65 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+ 66 |         XCTAssertEqual(append(&state, identity: 2, paintOrder: 1), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 67 |         XCTAssertEqual(state.finishCandidate(), .invalidIdentity)
+ 68 |         state.resolveCandidate(.discard)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:67:9: error: cannot find 'XCTAssertEqual' in scope
+ 65 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+ 66 |         XCTAssertEqual(append(&state, identity: 2, paintOrder: 1), .requiresGeneration)
+ 67 |         XCTAssertEqual(state.finishCandidate(), .invalidIdentity)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 68 |         state.resolveCandidate(.discard)
+ 69 |         XCTAssertNil(
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:69:9: error: cannot find 'XCTAssertNil' in scope
+ 67 |         XCTAssertEqual(state.finishCandidate(), .invalidIdentity)
+ 68 |         state.resolveCandidate(.discard)
+ 69 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+ 70 |             state.beginCandidate(
+ 71 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:73:13: error: cannot find 'XCTAssertEqual' in scope
+ 71 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+ 72 |         for identity: UInt16 in 1 ... 2 {
+ 73 |             XCTAssertEqual(
+    |             `- error: cannot find 'XCTAssertEqual' in scope
+ 74 |                 append(&state, identity: identity, paintOrder: identity - 1), .requiresGeneration)
+ 75 |             XCTAssertNil(
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:75:13: error: cannot find 'XCTAssertNil' in scope
+ 73 |             XCTAssertEqual(
+ 74 |                 append(&state, identity: identity, paintOrder: identity - 1), .requiresGeneration)
+ 75 |             XCTAssertNil(
+    |             `- error: cannot find 'XCTAssertNil' in scope
+ 76 |                 state.assignGeneration(ActionGeneration(rawValue: UInt32(identity)), to: identity))
+ 77 |         }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:78:9: error: cannot find 'XCTAssertEqual' in scope
+ 76 |                 state.assignGeneration(ActionGeneration(rawValue: UInt32(identity)), to: identity))
+ 77 |         }
+ 78 |         XCTAssertEqual(state.finishCandidate(), .capacityExhausted)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 79 |         XCTAssertEqual(state.committedRecordCount, 0)
+ 80 |         XCTAssertEqual(state.committedHitRegionCount, 0)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:79:9: error: cannot find 'XCTAssertEqual' in scope
+ 77 |         }
+ 78 |         XCTAssertEqual(state.finishCandidate(), .capacityExhausted)
+ 79 |         XCTAssertEqual(state.committedRecordCount, 0)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 80 |         XCTAssertEqual(state.committedHitRegionCount, 0)
+ 81 |     }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:80:9: error: cannot find 'XCTAssertEqual' in scope
+ 78 |         XCTAssertEqual(state.finishCandidate(), .capacityExhausted)
+ 79 |         XCTAssertEqual(state.committedRecordCount, 0)
+ 80 |         XCTAssertEqual(state.committedHitRegionCount, 0)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 81 |     }
+ 82 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:88:9: error: cannot find 'XCTAssertEqual' in scope
+ 86 |         var capture = PointerActionCapture<UInt16>()
+ 87 | 
+ 88 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 89 |             ExecutionGestureAdapter.down(
+ 90 |                 at: Point(x: 1, y: 1),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:96:9: error: cannot find 'XCTAssertEqual' in scope
+ 94 |             .captured(CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 12)))
+ 95 |         )
+ 96 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+ 97 |             ExecutionGestureAdapter.move(
+ 98 |                 at: Point(x: 1, y: 1),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:104:9: error: cannot find 'XCTAssertEqual' in scope
+102 |             .continued(CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 12)))
+103 |         )
+104 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+105 |             ExecutionGestureAdapter.up(
+106 |                 at: Point(x: 1, y: 1),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:114:9: error: cannot find 'XCTAssertNil' in scope
+112 |             )
+113 |         )
+114 |         XCTAssertNil(capture.current)
+    |         `- error: cannot find 'XCTAssertNil' in scope
+115 | 
+116 |         XCTAssertEqual(
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:116:9: error: cannot find 'XCTAssertEqual' in scope
+114 |         XCTAssertNil(capture.current)
+115 | 
+116 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+117 |             ExecutionGestureAdapter.up(
+118 |                 at: Point(x: 1, y: 1),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:136:9: error: cannot find 'XCTAssertEqual' in scope
+134 |         )
+135 | 
+136 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+137 |             ExecutionGestureAdapter.move(
+138 |                 at: Point(x: 8, y: 8),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:144:9: error: cannot find 'XCTAssertNil' in scope
+142 |             .cancelled
+143 |         )
+144 |         XCTAssertNil(capture.current)
+    |         `- error: cannot find 'XCTAssertNil' in scope
+145 |         XCTAssertEqual(
+146 |             ExecutionGestureAdapter.move(
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:145:9: error: cannot find 'XCTAssertEqual' in scope
+143 |         )
+144 |         XCTAssertNil(capture.current)
+145 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+146 |             ExecutionGestureAdapter.move(
+147 |                 at: Point(x: 1, y: 1),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:158:9: error: cannot find 'XCTAssertEqual' in scope
+156 |         var enabled = makeState(capacity: 2)
+157 |         commitOverlappingRecords(&enabled, topEnabled: true)
+158 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+159 |             enabled.resolveDown(at: Point(x: 1, y: 1)),
+160 |             .captured(CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 12)))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:162:9: error: cannot find 'XCTAssertEqual' in scope
+160 |             .captured(CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 12)))
+161 |         )
+162 |         XCTAssertEqual(enabled.resolveDown(at: Point(x: 8, y: 8)), .ignored)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+163 | 
+164 |         var blocked = makeState(capacity: 2)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:166:9: error: cannot find 'XCTAssertEqual' in scope
+164 |         var blocked = makeState(capacity: 2)
+165 |         commitOverlappingRecords(&blocked, topEnabled: false)
+166 |         XCTAssertEqual(blocked.resolveDown(at: Point(x: 1, y: 1)), .ignored)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+167 |     }
+168 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:175:9: error: cannot find 'XCTAssertEqual' in scope
+173 |             identity: UInt16(2), generation: ActionGeneration(rawValue: 12))
+174 | 
+175 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+176 |             state.resolveMove(capture, at: Point(x: 1, y: 1)),
+177 |             .continued(capture)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:179:9: error: cannot find 'XCTAssertEqual' in scope
+177 |             .continued(capture)
+178 |         )
+179 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+180 |             state.resolveMove(capture, at: Point(x: 8, y: 8)),
+181 |             .cancelled
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:183:9: error: cannot find 'XCTAssertEqual' in scope
+181 |             .cancelled
+182 |         )
+183 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+184 |             state.resolveMove(
+185 |                 CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 99)),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:190:9: error: cannot find 'XCTAssertEqual' in scope
+188 |             .cancelled
+189 |         )
+190 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+191 |             state.resolveMove(
+192 |                 CapturedAction(identity: 1, generation: ActionGeneration(rawValue: 12)),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:205:9: error: cannot find 'XCTAssertEqual' in scope
+203 |             identity: UInt16(2), generation: ActionGeneration(rawValue: 12))
+204 | 
+205 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+206 |             state.resolveUp(capture, at: Point(x: 1, y: 1)),
+207 |             .activationAdmitted(capture)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:209:9: error: cannot find 'XCTAssertEqual' in scope
+207 |             .activationAdmitted(capture)
+208 |         )
+209 |         XCTAssertEqual(state.resolveUp(capture, at: Point(x: 8, y: 8)), .cancelled)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+210 |         XCTAssertEqual(
+211 |             state.resolveUp(
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:210:9: error: cannot find 'XCTAssertEqual' in scope
+208 |         )
+209 |         XCTAssertEqual(state.resolveUp(capture, at: Point(x: 8, y: 8)), .cancelled)
+210 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+211 |             state.resolveUp(
+212 |                 CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 13)),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:231:9: error: cannot find 'XCTAssertNil' in scope
+229 |         var state = makeState(capacity: 2, committed: former)
+230 |         let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+231 |         XCTAssertNil(state.beginCandidate(limits: limits))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+232 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+233 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:232:9: error: cannot find 'XCTAssertEqual' in scope
+230 |         let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+231 |         XCTAssertNil(state.beginCandidate(limits: limits))
+232 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+233 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+234 |         XCTAssertNil(state.finishCandidate())
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:233:9: error: cannot find 'XCTAssertNil' in scope
+231 |         XCTAssertNil(state.beginCandidate(limits: limits))
+232 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+233 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+234 |         XCTAssertNil(state.finishCandidate())
+235 |         state.resolveCandidate(.discard)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:234:9: error: cannot find 'XCTAssertNil' in scope
+232 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+233 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+234 |         XCTAssertNil(state.finishCandidate())
+    |         `- error: cannot find 'XCTAssertNil' in scope
+235 |         state.resolveCandidate(.discard)
+236 |         XCTAssertEqual(state.committedRecord(at: 0), former)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:236:9: error: cannot find 'XCTAssertEqual' in scope
+234 |         XCTAssertNil(state.finishCandidate())
+235 |         state.resolveCandidate(.discard)
+236 |         XCTAssertEqual(state.committedRecord(at: 0), former)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+237 |         XCTAssertNil(state.committedRevision)
+238 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:237:9: error: cannot find 'XCTAssertNil' in scope
+235 |         state.resolveCandidate(.discard)
+236 |         XCTAssertEqual(state.committedRecord(at: 0), former)
+237 |         XCTAssertNil(state.committedRevision)
+    |         `- error: cannot find 'XCTAssertNil' in scope
+238 | 
+239 |         XCTAssertNil(state.beginCandidate(limits: limits))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:239:9: error: cannot find 'XCTAssertNil' in scope
+237 |         XCTAssertNil(state.committedRevision)
+238 | 
+239 |         XCTAssertNil(state.beginCandidate(limits: limits))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+240 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+241 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:240:9: error: cannot find 'XCTAssertEqual' in scope
+238 | 
+239 |         XCTAssertNil(state.beginCandidate(limits: limits))
+240 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+241 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+242 |         XCTAssertNil(state.finishCandidate())
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:241:9: error: cannot find 'XCTAssertNil' in scope
+239 |         XCTAssertNil(state.beginCandidate(limits: limits))
+240 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+241 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+242 |         XCTAssertNil(state.finishCandidate())
+243 |         state.resolveCandidate(.commit(PresentationRevision(rawValue: 12)))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:242:9: error: cannot find 'XCTAssertNil' in scope
+240 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+241 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+242 |         XCTAssertNil(state.finishCandidate())
+    |         `- error: cannot find 'XCTAssertNil' in scope
+243 |         state.resolveCandidate(.commit(PresentationRevision(rawValue: 12)))
+244 |         XCTAssertEqual(state.committedRecordCount, 1)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:244:9: error: cannot find 'XCTAssertEqual' in scope
+242 |         XCTAssertNil(state.finishCandidate())
+243 |         state.resolveCandidate(.commit(PresentationRevision(rawValue: 12)))
+244 |         XCTAssertEqual(state.committedRecordCount, 1)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+245 |         XCTAssertEqual(state.committedHitRegionCount, 1)
+246 |         XCTAssertEqual(state.committedRecord(at: 0)?.identity, 1)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:245:9: error: cannot find 'XCTAssertEqual' in scope
+243 |         state.resolveCandidate(.commit(PresentationRevision(rawValue: 12)))
+244 |         XCTAssertEqual(state.committedRecordCount, 1)
+245 |         XCTAssertEqual(state.committedHitRegionCount, 1)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+246 |         XCTAssertEqual(state.committedRecord(at: 0)?.identity, 1)
+247 |         XCTAssertEqual(state.committedRecord(at: 0)?.generation, ActionGeneration(rawValue: 8))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:246:9: error: cannot find 'XCTAssertEqual' in scope
+244 |         XCTAssertEqual(state.committedRecordCount, 1)
+245 |         XCTAssertEqual(state.committedHitRegionCount, 1)
+246 |         XCTAssertEqual(state.committedRecord(at: 0)?.identity, 1)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+247 |         XCTAssertEqual(state.committedRecord(at: 0)?.generation, ActionGeneration(rawValue: 8))
+248 |         XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 12))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:247:9: error: cannot find 'XCTAssertEqual' in scope
+245 |         XCTAssertEqual(state.committedHitRegionCount, 1)
+246 |         XCTAssertEqual(state.committedRecord(at: 0)?.identity, 1)
+247 |         XCTAssertEqual(state.committedRecord(at: 0)?.generation, ActionGeneration(rawValue: 8))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+248 |         XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 12))
+249 |     }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:248:9: error: cannot find 'XCTAssertEqual' in scope
+246 |         XCTAssertEqual(state.committedRecord(at: 0)?.identity, 1)
+247 |         XCTAssertEqual(state.committedRecord(at: 0)?.generation, ActionGeneration(rawValue: 8))
+248 |         XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 12))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+249 |     }
+250 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:254:9: error: cannot find 'XCTAssertNil' in scope
+252 |         var state = makeState(capacity: 1)
+253 |         let limits = InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+254 |         XCTAssertNil(state.beginCandidate(limits: limits))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+255 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 1), .failure(.invalidGeometry))
+256 |         state.resolveCandidate(.discard)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:255:9: error: cannot find 'XCTAssertEqual' in scope
+253 |         let limits = InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+254 |         XCTAssertNil(state.beginCandidate(limits: limits))
+255 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 1), .failure(.invalidGeometry))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+256 |         state.resolveCandidate(.discard)
+257 |         state.resolveCandidate(.discard)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:258:9: error: cannot find 'XCTAssertNil' in scope
+256 |         state.resolveCandidate(.discard)
+257 |         state.resolveCandidate(.discard)
+258 |         XCTAssertNil(state.beginCandidate(limits: limits))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+259 |     }
+260 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:263:9: error: cannot find 'XCTAssertEqual' in scope
+261 |     func testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound() {
+262 |         var state = makeState(capacity: 2)
+263 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+264 |             state.assignGeneration(ActionGeneration(rawValue: 1), to: 1),
+265 |             .invalidPhase
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:267:9: error: cannot find 'XCTAssertNil' in scope
+265 |             .invalidPhase
+266 |         )
+267 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+268 |             state.beginCandidate(
+269 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:272:9: error: cannot find 'XCTAssertEqual' in scope
+270 |             )
+271 |         )
+272 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+273 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+274 |         XCTAssertEqual(
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:273:9: error: cannot find 'XCTAssertNil' in scope
+271 |         )
+272 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+273 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+274 |         XCTAssertEqual(
+275 |             state.assignGeneration(ActionGeneration(rawValue: 9), to: 1),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:274:9: error: cannot find 'XCTAssertEqual' in scope
+272 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+273 |         XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+274 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+275 |             state.assignGeneration(ActionGeneration(rawValue: 9), to: 1),
+276 |             .invariantViolation
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:278:9: error: cannot find 'XCTAssertEqual' in scope
+276 |             .invariantViolation
+277 |         )
+278 |         XCTAssertEqual(state.finishCandidate(), .invariantViolation)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+279 | 
+280 |         var unresolved = makeState(capacity: 1)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:281:9: error: cannot find 'XCTAssertNil' in scope
+279 | 
+280 |         var unresolved = makeState(capacity: 1)
+281 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+282 |             unresolved.beginCandidate(
+283 |                 limits: InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:286:9: error: cannot find 'XCTAssertEqual' in scope
+284 |             )
+285 |         )
+286 |         XCTAssertEqual(append(&unresolved, identity: 1, paintOrder: 0), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+287 |         XCTAssertEqual(unresolved.finishCandidate(), .invalidIdentity)
+288 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:287:9: error: cannot find 'XCTAssertEqual' in scope
+285 |         )
+286 |         XCTAssertEqual(append(&unresolved, identity: 1, paintOrder: 0), .requiresGeneration)
+287 |         XCTAssertEqual(unresolved.finishCandidate(), .invalidIdentity)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+288 | 
+289 |         var ready = makeState(capacity: 1)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:290:9: error: cannot find 'XCTAssertNil' in scope
+288 | 
+289 |         var ready = makeState(capacity: 1)
+290 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+291 |             ready.beginCandidate(
+292 |                 limits: InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:295:9: error: cannot find 'XCTAssertEqual' in scope
+293 |             )
+294 |         )
+295 |         XCTAssertEqual(append(&ready, identity: 1, paintOrder: 0), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+296 |         XCTAssertNil(ready.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+297 |         XCTAssertNil(ready.finishCandidate())
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:296:9: error: cannot find 'XCTAssertNil' in scope
+294 |         )
+295 |         XCTAssertEqual(append(&ready, identity: 1, paintOrder: 0), .requiresGeneration)
+296 |         XCTAssertNil(ready.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+297 |         XCTAssertNil(ready.finishCandidate())
+298 |         XCTAssertEqual(ready.finishCandidate(), .invalidPhase)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:297:9: error: cannot find 'XCTAssertNil' in scope
+295 |         XCTAssertEqual(append(&ready, identity: 1, paintOrder: 0), .requiresGeneration)
+296 |         XCTAssertNil(ready.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+297 |         XCTAssertNil(ready.finishCandidate())
+    |         `- error: cannot find 'XCTAssertNil' in scope
+298 |         XCTAssertEqual(ready.finishCandidate(), .invalidPhase)
+299 |         XCTAssertEqual(append(&ready, identity: 2, paintOrder: 1), .failure(.invalidPhase))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:298:9: error: cannot find 'XCTAssertEqual' in scope
+296 |         XCTAssertNil(ready.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+297 |         XCTAssertNil(ready.finishCandidate())
+298 |         XCTAssertEqual(ready.finishCandidate(), .invalidPhase)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+299 |         XCTAssertEqual(append(&ready, identity: 2, paintOrder: 1), .failure(.invalidPhase))
+300 |     }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:299:9: error: cannot find 'XCTAssertEqual' in scope
+297 |         XCTAssertNil(ready.finishCandidate())
+298 |         XCTAssertEqual(ready.finishCandidate(), .invalidPhase)
+299 |         XCTAssertEqual(append(&ready, identity: 2, paintOrder: 1), .failure(.invalidPhase))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+300 |     }
+301 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:304:9: error: cannot find 'XCTAssertNil' in scope
+302 |     func testFirstCandidateErrorWinsUntilDiscard() {
+303 |         var state = makeState(capacity: 2)
+304 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+305 |             state.beginCandidate(
+306 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:309:9: error: cannot find 'XCTAssertEqual' in scope
+307 |             )
+308 |         )
+309 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 1), .failure(.invalidGeometry))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+310 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .failure(.invalidGeometry))
+311 |         XCTAssertEqual(state.finishCandidate(), .invalidGeometry)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:310:9: error: cannot find 'XCTAssertEqual' in scope
+308 |         )
+309 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 1), .failure(.invalidGeometry))
+310 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .failure(.invalidGeometry))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+311 |         XCTAssertEqual(state.finishCandidate(), .invalidGeometry)
+312 |     }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:311:9: error: cannot find 'XCTAssertEqual' in scope
+309 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 1), .failure(.invalidGeometry))
+310 |         XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .failure(.invalidGeometry))
+311 |         XCTAssertEqual(state.finishCandidate(), .invalidGeometry)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+312 |     }
+313 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:325:9: error: cannot find 'XCTAssertNil' in scope
+323 |         )
+324 |         var equal = makeState(capacity: 2, committed: committed)
+325 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+326 |             equal.beginCandidate(
+327 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:328:9: error: cannot find 'XCTAssertEqual' in scope
+326 |             equal.beginCandidate(
+327 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+328 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+329 |             appendRecord(&equal, identity: 7, isEnabled: true, action: 5, target: 9),
+330 |             .preserved
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:334:9: error: cannot find 'XCTAssertNil' in scope
+332 | 
+333 |         var changedAction = makeState(capacity: 2, committed: committed)
+334 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+335 |             changedAction.beginCandidate(
+336 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:337:9: error: cannot find 'XCTAssertEqual' in scope
+335 |             changedAction.beginCandidate(
+336 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+337 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+338 |             appendRecord(&changedAction, identity: 7, isEnabled: true, action: 6, target: 9),
+339 |             .requiresGeneration
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:343:9: error: cannot find 'XCTAssertNil' in scope
+341 | 
+342 |         var changedTarget = makeState(capacity: 2, committed: committed)
+343 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+344 |             changedTarget.beginCandidate(
+345 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:346:9: error: cannot find 'XCTAssertEqual' in scope
+344 |             changedTarget.beginCandidate(
+345 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+346 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+347 |             appendRecord(&changedTarget, identity: 7, isEnabled: true, action: 5, target: 10),
+348 |             .requiresGeneration
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:352:9: error: cannot find 'XCTAssertNil' in scope
+350 | 
+351 |         var disabled = makeState(capacity: 2, committed: committed)
+352 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+353 |             disabled.beginCandidate(
+354 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:355:9: error: cannot find 'XCTAssertEqual' in scope
+353 |             disabled.beginCandidate(
+354 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+355 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+356 |             appendRecord(&disabled, identity: 7, isEnabled: false, action: 5, target: 9),
+357 |             .requiresGeneration
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:363:9: error: cannot find 'XCTAssertNil' in scope
+361 |     func testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit() {
+362 |         var state = makeState(capacity: 2)
+363 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+364 |             state.beginCandidate(
+365 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:367:9: error: cannot find 'XCTAssertEqual' in scope
+365 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+366 | 
+367 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+368 |             state.append(
+369 |                 identity: 1,
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:379:9: error: cannot find 'XCTAssertEqual' in scope
+377 |             .requiresGeneration
+378 |         )
+379 |         XCTAssertEqual(
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+380 |             state.append(
+381 |                 identity: 2,
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:396:9: error: cannot find 'XCTAssertNil' in scope
+394 |         var duplicate = makeState(capacity: 2)
+395 |         let limits = InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+396 |         XCTAssertNil(duplicate.beginCandidate(limits: limits))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+397 |         XCTAssertEqual(append(&duplicate, identity: 1, paintOrder: 0), .requiresGeneration)
+398 |         XCTAssertEqual(append(&duplicate, identity: 1, paintOrder: 1), .failure(.invalidIdentity))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:397:9: error: cannot find 'XCTAssertEqual' in scope
+395 |         let limits = InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+396 |         XCTAssertNil(duplicate.beginCandidate(limits: limits))
+397 |         XCTAssertEqual(append(&duplicate, identity: 1, paintOrder: 0), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+398 |         XCTAssertEqual(append(&duplicate, identity: 1, paintOrder: 1), .failure(.invalidIdentity))
+399 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:398:9: error: cannot find 'XCTAssertEqual' in scope
+396 |         XCTAssertNil(duplicate.beginCandidate(limits: limits))
+397 |         XCTAssertEqual(append(&duplicate, identity: 1, paintOrder: 0), .requiresGeneration)
+398 |         XCTAssertEqual(append(&duplicate, identity: 1, paintOrder: 1), .failure(.invalidIdentity))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+399 | 
+400 |         var excess = makeState(capacity: 2)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:401:9: error: cannot find 'XCTAssertNil' in scope
+399 | 
+400 |         var excess = makeState(capacity: 2)
+401 |         XCTAssertNil(excess.beginCandidate(limits: limits))
+    |         `- error: cannot find 'XCTAssertNil' in scope
+402 |         XCTAssertEqual(append(&excess, identity: 1, paintOrder: 0), .requiresGeneration)
+403 |         XCTAssertEqual(append(&excess, identity: 2, paintOrder: 1), .failure(.capacityExhausted))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:402:9: error: cannot find 'XCTAssertEqual' in scope
+400 |         var excess = makeState(capacity: 2)
+401 |         XCTAssertNil(excess.beginCandidate(limits: limits))
+402 |         XCTAssertEqual(append(&excess, identity: 1, paintOrder: 0), .requiresGeneration)
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+403 |         XCTAssertEqual(append(&excess, identity: 2, paintOrder: 1), .failure(.capacityExhausted))
+404 | 
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:403:9: error: cannot find 'XCTAssertEqual' in scope
+401 |         XCTAssertNil(excess.beginCandidate(limits: limits))
+402 |         XCTAssertEqual(append(&excess, identity: 1, paintOrder: 0), .requiresGeneration)
+403 |         XCTAssertEqual(append(&excess, identity: 2, paintOrder: 1), .failure(.capacityExhausted))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+404 | 
+405 |         var order = makeState(capacity: 2)
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:406:9: error: cannot find 'XCTAssertNil' in scope
+404 | 
+405 |         var order = makeState(capacity: 2)
+406 |         XCTAssertNil(
+    |         `- error: cannot find 'XCTAssertNil' in scope
+407 |             order.beginCandidate(
+408 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:409:9: error: cannot find 'XCTAssertEqual' in scope
+407 |             order.beginCandidate(
+408 |                 limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+409 |         XCTAssertEqual(append(&order, identity: 1, paintOrder: 1), .failure(.invalidGeometry))
+    |         `- error: cannot find 'XCTAssertEqual' in scope
+410 |     }
+411 | }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:460:5: error: cannot find 'XCTAssertNil' in scope
+458 | ) {
+459 |     let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+460 |     XCTAssertNil(state.beginCandidate(limits: limits))
+    |     `- error: cannot find 'XCTAssertNil' in scope
+461 |     XCTAssertEqual(
+462 |         appendRecord(&state, identity: 1, isEnabled: true, action: 1, target: 1),
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:461:5: error: cannot find 'XCTAssertEqual' in scope
+459 |     let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+460 |     XCTAssertNil(state.beginCandidate(limits: limits))
+461 |     XCTAssertEqual(
+    |     `- error: cannot find 'XCTAssertEqual' in scope
+462 |         appendRecord(&state, identity: 1, isEnabled: true, action: 1, target: 1),
+463 |         .requiresGeneration
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:465:5: error: cannot find 'XCTAssertNil' in scope
+463 |         .requiresGeneration
+464 |     )
+465 |     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 11), to: 1))
+    |     `- error: cannot find 'XCTAssertNil' in scope
+466 |     XCTAssertEqual(
+467 |         state.append(
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:466:5: error: cannot find 'XCTAssertEqual' in scope
+464 |     )
+465 |     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 11), to: 1))
+466 |     XCTAssertEqual(
+    |     `- error: cannot find 'XCTAssertEqual' in scope
+467 |         state.append(
+468 |             identity: 2,
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:120:9: note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+118 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+119 | */
+120 | #define XCTAssertEqual(expression1, expression2, ...) \
+    |         `- note: macro 'XCTAssertEqual' unavailable: function like macros not supported
+121 |     _XCTPrimitiveAssertEqual(nil, expression1, @#expression1, expression2, @#expression2, __VA_ARGS__)
+122 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:478:5: error: cannot find 'XCTAssertNil' in scope
+476 |         .requiresGeneration
+477 |     )
+478 |     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 12), to: 2))
+    |     `- error: cannot find 'XCTAssertNil' in scope
+479 |     XCTAssertNil(state.finishCandidate())
+480 |     state.resolveCandidate(.commit(PresentationRevision(rawValue: 1)))
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift:479:5: error: cannot find 'XCTAssertNil' in scope
+477 |     )
+478 |     XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 12), to: 2))
+479 |     XCTAssertNil(state.finishCandidate())
+    |     `- error: cannot find 'XCTAssertNil' in scope
+480 |     state.resolveCandidate(.commit(PresentationRevision(rawValue: 1)))
+481 | }
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework/Headers/XCTestAssertions.h:54:9: note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 52 |  * @param ... An optional supplementary description of the failure. A literal NSString, optionally with string format specifiers. This parameter can be completely omitted.
+ 53 | */
+ 54 | #define XCTAssertNil(expression, ...) \
+    |         `- note: macro 'XCTAssertNil' unavailable: function like macros not supported
+ 55 |     _XCTPrimitiveAssertNil(nil, expression, @#expression, __VA_ARGS__)
+ 56 | 
+
+.build/contracts/p08-witness45-interaction-tests/Main.swift:2:47: error: cannot find 'XCTMain' in scope
+1 | import XCTest
+2 | @main enum FocusedMain { static func main() { XCTMain([
+  |                                               `- error: cannot find 'XCTMain' in scope
+3 | testCase([("testDisabledStateConjoinsAndSiblingCopiesDoNotLeak", InteractionValueTests.testDisabledStateConjoinsAndSiblingCopiesDoNotLeak), ("testActionNormalizerRejectsWrongDomainAndPreservesExactCodes", InteractionValueTests.testActionNormalizerRejectsWrongDomainAndPreservesExactCodes), ("testRecordingCoordinatorRejectsDomainAndValueBeforeAppendOrOffer", InteractionValueTests.testRecordingCoordinatorRejectsDomainAndValueBeforeAppendOrOffer), ("testBoundedApplicationActionIsExactlyTwoBytes", InteractionValueTests.testBoundedApplicationActionIsExactlyTwoBytes), ("testLimitsRejectZeroAndTooManyHitRegions", InteractionValueTests.testLimitsRejectZeroAndTooManyHitRegions)]),
+4 | testCase([("testEachUndersizedStoreFailsWithoutReplacingCommittedState", InteractionCandidateAppendTests.testEachUndersizedStoreFailsWithoutReplacingCommittedState), ("testStagedCapacityFailurePreservesGenerationErrorPrecedence", InteractionCandidateAppendTests.testStagedCapacityFailurePreservesGenerationErrorPrecedence), ("testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp", InteractionCandidateAppendTests.testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp), ("testExecutionAdapterPermanentlyClearsAnOutsideMove", InteractionCandidateAppendTests.testExecutionAdapterPermanentlyClearsAnOutsideMove), ("testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting", InteractionCandidateAppendTests.testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting), ("testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion", InteractionCandidateAppendTests.testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion), ("testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion", InteractionCandidateAppendTests.testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion), ("testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState", InteractionCandidateAppendTests.testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState), ("testFailedCandidateCanBeDiscardedExactlyOnceAndReused", InteractionCandidateAppendTests.testFailedCandidateCanBeDiscardedExactlyOnceAndReused), ("testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound", InteractionCandidateAppendTests.testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound), ("testFirstCandidateErrorWinsUntilDiscard", InteractionCandidateAppendTests.testFirstCandidateErrorWinsUntilDiscard), ("testOnlyAnExactlyEqualCommittedRecordPreservesGeneration", InteractionCandidateAppendTests.testOnlyAnExactlyEqualCommittedRecordPreservesGeneration), ("testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit", InteractionCandidateAppendTests.testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit), ("testDuplicatePaintOrderAndFirstExcessFailDeterministically", InteractionCandidateAppendTests.testDuplicatePaintOrderAndFirstExcessFailDeterministically)])
+
+.build/contracts/p08-witness45-interaction-tests/Main.swift:3:1: error: cannot find 'testCase' in scope
+1 | import XCTest
+2 | @main enum FocusedMain { static func main() { XCTMain([
+3 | testCase([("testDisabledStateConjoinsAndSiblingCopiesDoNotLeak", InteractionValueTests.testDisabledStateConjoinsAndSiblingCopiesDoNotLeak), ("testActionNormalizerRejectsWrongDomainAndPreservesExactCodes", InteractionValueTests.testActionNormalizerRejectsWrongDomainAndPreservesExactCodes), ("testRecordingCoordinatorRejectsDomainAndValueBeforeAppendOrOffer", InteractionValueTests.testRecordingCoordinatorRejectsDomainAndValueBeforeAppendOrOffer), ("testBoundedApplicationActionIsExactlyTwoBytes", InteractionValueTests.testBoundedApplicationActionIsExactlyTwoBytes), ("testLimitsRejectZeroAndTooManyHitRegions", InteractionValueTests.testLimitsRejectZeroAndTooManyHitRegions)]),
+  | `- error: cannot find 'testCase' in scope
+4 | testCase([("testEachUndersizedStoreFailsWithoutReplacingCommittedState", InteractionCandidateAppendTests.testEachUndersizedStoreFailsWithoutReplacingCommittedState), ("testStagedCapacityFailurePreservesGenerationErrorPrecedence", InteractionCandidateAppendTests.testStagedCapacityFailurePreservesGenerationErrorPrecedence), ("testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp", InteractionCandidateAppendTests.testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp), ("testExecutionAdapterPermanentlyClearsAnOutsideMove", InteractionCandidateAppendTests.testExecutionAdapterPermanentlyClearsAnOutsideMove), ("testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting", InteractionCandidateAppendTests.testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting), ("testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion", InteractionCandidateAppendTests.testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion), ("testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion", InteractionCandidateAppendTests.testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion), ("testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState", InteractionCandidateAppendTests.testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState), ("testFailedCandidateCanBeDiscardedExactlyOnceAndReused", InteractionCandidateAppendTests.testFailedCandidateCanBeDiscardedExactlyOnceAndReused), ("testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound", InteractionCandidateAppendTests.testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound), ("testFirstCandidateErrorWinsUntilDiscard", InteractionCandidateAppendTests.testFirstCandidateErrorWinsUntilDiscard), ("testOnlyAnExactlyEqualCommittedRecordPreservesGeneration", InteractionCandidateAppendTests.testOnlyAnExactlyEqualCommittedRecordPreservesGeneration), ("testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit", InteractionCandidateAppendTests.testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit), ("testDuplicatePaintOrderAndFirstExcessFailDeterministically", InteractionCandidateAppendTests.testDuplicatePaintOrderAndFirstExcessFailDeterministically)])
+5 | ]) } }
+
+.build/contracts/p08-witness45-interaction-tests/Main.swift:4:1: error: cannot find 'testCase' in scope
+2 | @main enum FocusedMain { static func main() { XCTMain([
+3 | testCase([("testDisabledStateConjoinsAndSiblingCopiesDoNotLeak", InteractionValueTests.testDisabledStateConjoinsAndSiblingCopiesDoNotLeak), ("testActionNormalizerRejectsWrongDomainAndPreservesExactCodes", InteractionValueTests.testActionNormalizerRejectsWrongDomainAndPreservesExactCodes), ("testRecordingCoordinatorRejectsDomainAndValueBeforeAppendOrOffer", InteractionValueTests.testRecordingCoordinatorRejectsDomainAndValueBeforeAppendOrOffer), ("testBoundedApplicationActionIsExactlyTwoBytes", InteractionValueTests.testBoundedApplicationActionIsExactlyTwoBytes), ("testLimitsRejectZeroAndTooManyHitRegions", InteractionValueTests.testLimitsRejectZeroAndTooManyHitRegions)]),
+4 | testCase([("testEachUndersizedStoreFailsWithoutReplacingCommittedState", InteractionCandidateAppendTests.testEachUndersizedStoreFailsWithoutReplacingCommittedState), ("testStagedCapacityFailurePreservesGenerationErrorPrecedence", InteractionCandidateAppendTests.testStagedCapacityFailurePreservesGenerationErrorPrecedence), ("testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp", InteractionCandidateAppendTests.testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp), ("testExecutionAdapterPermanentlyClearsAnOutsideMove", InteractionCandidateAppendTests.testExecutionAdapterPermanentlyClearsAnOutsideMove), ("testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting", InteractionCandidateAppendTests.testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting), ("testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion", InteractionCandidateAppendTests.testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion), ("testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion", InteractionCandidateAppendTests.testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion), ("testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState", InteractionCandidateAppendTests.testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState), ("testFailedCandidateCanBeDiscardedExactlyOnceAndReused", InteractionCandidateAppendTests.testFailedCandidateCanBeDiscardedExactlyOnceAndReused), ("testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound", InteractionCandidateAppendTests.testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound), ("testFirstCandidateErrorWinsUntilDiscard", InteractionCandidateAppendTests.testFirstCandidateErrorWinsUntilDiscard), ("testOnlyAnExactlyEqualCommittedRecordPreservesGeneration", InteractionCandidateAppendTests.testOnlyAnExactlyEqualCommittedRecordPreservesGeneration), ("testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit", InteractionCandidateAppendTests.testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit), ("testDuplicatePaintOrderAndFirstExcessFailDeterministically", InteractionCandidateAppendTests.testDuplicatePaintOrderAndFirstExcessFailDeterministically)])
+  | `- error: cannot find 'testCase' in scope
+5 | ]) } }
+6 | 

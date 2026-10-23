@@ -1,0 +1,3 @@
+Complete selected bodies: adjacent local/swift-1..8.stdout and exact captures/provenance in swift-captures.json.
+Model examined:1,2,3,5,6,7 complete;4 pages1-6,8-9,11-12,14. Body4 omitted pages7,10,13 are not needed for the stated prefix/MISS conditional and remain unexamined; no whole-body proof claim. Body8 is captured, not model-examined.
+Exact initializer20 raw bytes/hash/manual five-instruction decode and current descriptor/private-cache declarations: rows.json and local ledger.

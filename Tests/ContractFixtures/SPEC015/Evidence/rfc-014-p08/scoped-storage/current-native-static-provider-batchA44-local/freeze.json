@@ -1,0 +1,80 @@
+{
+  "started_utc": "2026-10-23T03:32:36+00:00",
+  "HEAD": "436d28bb75b69084294aacd968cd6ea6563dca14",
+  "helper_sha256": "0e56a67dcee3483cc38cbc08ce85d4d033441088b9c4b7820d20c442fb746725",
+  "inputs": {
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-result/rows.json",
+      "bytes": 16822,
+      "sha256": "cb28a3d6bfa2d0cac7e4d17bbc023fc692cad007753bb50a85ad097197d84f0d",
+      "role": "Reviewed exact required caller/provider/cold-predicate lemma; no reproof"
+    },
+    "prior_preservation": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-result/preservation.json",
+      "bytes": 12799,
+      "sha256": "06fd90f1fde192512586d09efeddc19c69e031c3aa7f19733dbd7494803fcb21",
+      "role": "Accepted A43 final exact provider/artifact authentication"
+    },
+    "prior_review": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-result/review.md",
+      "bytes": 4872,
+      "sha256": "42a05b140d1f74401be208c51f5929b54fb63f1b48ff69bec337f61755e9a2a4",
+      "role": "ScopedPASS conditional graph; executionfalse unchanged"
+    },
+    "provider_descriptor": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/provider-slices.json",
+      "bytes": 26116,
+      "sha256": "30a33f816141c4218747dab8f5d6eb0decc063d7e339f9ed20193e22a53f18eb",
+      "role": "SEMANTIC exact installed provider code and selected metadata extents"
+    },
+    "decode_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/decode-swift-group.py",
+      "bytes": 6589,
+      "sha256": "5218bc5af73f2eadc52202fe35ae4fd761074817a0556f3c20b0e30523db9a0d",
+      "role": "Unchanged working specific provider decoder"
+    },
+    "view_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/view-selected.py",
+      "bytes": 1973,
+      "sha256": "6fe1f59c9ea6eeba842d7941ddd63c25e562d8c4f4dae854ba10b794cb9ee4c2",
+      "role": "Unchanged bounded file page delivery"
+    },
+    "getType_core": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/getType-core.stdout",
+      "bytes": 14576,
+      "sha256": "e5c062a6c148b036b1b30541c9acc96df0e4c29469596d4cd86d62adfd12534f",
+      "role": "SEMANTIC prior captured but model-unexamined exact core"
+    },
+    "executable": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/counter-static-resource-v1",
+      "bytes": 6625096,
+      "sha256": "bd7c518d2b7b84b16a55b8725b5ebdd25a6869b2d3796743fa5785d9b1ac0a55",
+      "role": "SEMANTIC exact import identity and entry recipe"
+    },
+    "object": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+      "bytes": 2605520,
+      "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+      "role": "SEMANTIC selected exact local bodies/metadata; accepted currentfull baseline"
+    },
+    "current_result": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/result.json",
+      "bytes": 8566019,
+      "sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8",
+      "role": "AUTH accepted current producer"
+    },
+    "tool_auth": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "role": "AUTH installed known-working decoder identity"
+    }
+  },
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+  },
+  "setup_processing_upper": 408352,
+  "reuse": "A42/A43 reviewed exact input/caller/conformance/cache/provider lemmas; original79/48/6 authentication and56groups1892sites3roots preserved. New evidence-only HEAD advance436d28bb authorized. No original corpus replay or state substitution."
+}

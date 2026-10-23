@@ -414,7 +414,7 @@ where
         _ captured: CapturedAction<Identity>,
         at point: Point
     ) -> PointerGestureOutcome<Identity> {
-        guard capturedRecord(captured, contains: point) != nil else {
+        guard case .some = capturedRecord(captured, contains: point) else {
             return .cancelled
         }
         return .continued(captured)
@@ -439,7 +439,7 @@ where
         _ captured: CapturedAction<Identity>,
         at point: Point
     ) -> PointerGestureOutcome<Identity> {
-        guard capturedRecord(captured, contains: point) != nil else {
+        guard case .some = capturedRecord(captured, contains: point) else {
             return .cancelled
         }
         return .activationAdmitted(captured)

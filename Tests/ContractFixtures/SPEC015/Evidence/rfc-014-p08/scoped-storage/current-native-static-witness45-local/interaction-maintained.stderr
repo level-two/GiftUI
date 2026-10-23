@@ -1,0 +1,7 @@
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift test --package-path /Users/eugene/work/GiftUI --scratch-path .build/contracts/p08-witness45-swiftpm/scratch --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter InteractionValueTests\|InteractionCandidateAppendTests --skip-update --disable-automatic-resolution --disable-dependency-cache
+warning: '--skip-update' option is deprecated and will be removed in a future release
+warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/Caches/org.swift.swiftpm is not accessible or not writable, disabling user-level cache features.
+error: 'giftui': invalid absolute path '.build/contracts/p08-witness45-swiftpm/cache/module-cache'
+swiftpm-failure-class=compiler-or-test

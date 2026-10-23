@@ -1,0 +1,39 @@
+{
+  "result": ".build/contracts/p08-counter-dt4nfsxd/result.json",
+  "result_sha256": "ccc841513e7c8e6a791de6d419a0b145f28a5aebf793400cf6fe7639a8ca7a37",
+  "exit": 0,
+  "start_utc": "2026-10-23T05:02:09+00:00",
+  "end_utc": "2026-10-23T07:13:14+00:00",
+  "elapsed_seconds": 7865.0,
+  "collection_complete": true,
+  "passed": true,
+  "checks": 442,
+  "passed_checks": 442,
+  "commands": 414,
+  "input_count": 201,
+  "inputs_current_match": true,
+  "execution_summary": "P08 counter components assertions=1736320 failures=0",
+  "static_summary": "P08 counter components assertions=1734308 failures=0",
+  "static_entry": {
+    "version": 1,
+    "entry": "p08CounterStaticResourceEntryV1",
+    "executable": "counter-static-resource-v1",
+    "source": "StaticResourceMainV1.swift",
+    "validation_kind": "separate-process-functional-only",
+    "original_roots": [
+      "p08CounterRoute",
+      "p08CounterScopedStorage",
+      "p08CounterHost"
+    ],
+    "workload": [
+      "p08CounterGraph",
+      "counterExerciseStaticScopedStorage",
+      "p08CounterHost"
+    ],
+    "dynamic_controls": "preserved unchanged in mixed functional execute",
+    "cold_or_resource_measurement": false,
+    "passed": true
+  },
+  "unit_status": "FAILED repository build; Interaction suites UNEXECUTED; no waiver",
+  "claims": "Three known witness acquisitions removed in actual full compiled body. Original metadata call remains. No global zero-heap, first-use, resource/cold or P08 closure."
+}

@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp7pzurowm/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "--collect-failures",
+    "--static-resource-entry-v1"
+  ],
+  "source_hashes": {
+    "Sources/GiftUIInteraction/InteractionState.swift": "26e04b95f119e104c8d218b5d7c36c518ad6929023105df363f9190573b24ba7",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "b70c0bbd92ca2d92c74a2d82db3d79f5a3776072f461ad378f541c6d9d6ca411"
+  },
+  "ordinary_package_limit_bytes": 2147483648,
+  "full_runtime_limit_seconds": 14400,
+  "full_forecast_bytes": 209715200,
+  "final_reserve_bytes": 16777216,
+  "unit_disposition": "root42923 exit1 before Interaction test execution, unrelated SignalAnalyzerPresentation compile failure; not a pass or waiver",
+  "reference_focused": ".build/contracts/p08-counter-dvc6yr6p"
+}

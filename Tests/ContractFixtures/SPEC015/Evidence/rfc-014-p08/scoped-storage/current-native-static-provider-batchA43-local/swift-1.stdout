@@ -1,0 +1,23 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-1.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000193cea7a4 <__text>:
+193cea7a4:     	cbz	x2, 0x193cea7dc <__text+0x38>
+193cea7a8:     	mov	x16, x2
+193cea7ac:     	mov	x17, #0xb5e3            ; =46563
+193cea7b0:     	autda	x16, x17
+193cea7b4:     	mov	x17, x16
+193cea7b8:     	xpacd	x17
+193cea7bc:     	cmp	x16, x17
+193cea7c0:     	b.eq	0x193cea7c8 <__text+0x24>
+193cea7c4:     	brk	#0xc472
+193cea7c8:     	cbz	x16, 0x193cea7e0 <__text+0x3c>
+193cea7cc:     	mov	x17, x16
+193cea7d0:     	mov	w16, #0xb5e3            ; =46563
+193cea7d4:     	pacdb	x17, x16
+193cea7d8:     	mov	x2, x17
+193cea7dc:     	b	0x193cea7e8 <__text+0x44>
+193cea7e0:     	mov	x2, #0x0                ; =0
+193cea7e4:     	b	0x193cea7e8 <__text+0x44>

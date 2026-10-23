@@ -1,0 +1,340 @@
+{
+  "Batch_A_eligibility_pass": false,
+  "outcome": "CONDITIONAL_REQUIRED_WITNESS_MISS_ALLOCATOR_FAMILY_DEPENDENCY; GETTYPE_PARTIAL_EXACT_FRONTIER",
+  "source_change": false,
+  "baseline": {
+    "HEAD": "436d28bb75b69084294aacd968cd6ea6563dca14",
+    "current_executable": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/counter-static-resource-v1",
+      "bytes": 6625096,
+      "sha256": "bd7c518d2b7b84b16a55b8725b5ebdd25a6869b2d3796743fa5785d9b1ac0a55",
+      "role": "SEMANTIC exact import identity and entry recipe"
+    },
+    "current_Runtime": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+      "bytes": 2605520,
+      "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+      "role": "SEMANTIC selected exact local bodies/metadata; accepted currentfull baseline"
+    },
+    "A42_source_type_cache_lemma": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/rows.json",
+      "bytes": 12819,
+      "sha256": "3b8a5ddc174af7cc80a22c644f6e9a6fa606f6026cd9dd237565ec14845b1f74",
+      "role": "Reviewed A42 exact generic/Static and initial-cell lemma; no source reanalysis"
+    }
+  },
+  "provider": {
+    "path": "/usr/lib/swift/libswiftCore.dylib",
+    "uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+    "identity": {
+      "name": "/usr/lib/swift/libswiftCore.dylib",
+      "command": 13,
+      "current_version": 0,
+      "compatibility_version": 0
+    },
+    "imports": [
+      {
+        "symbol": "_swift_getTypeByMangledNameInContext2",
+        "ordinal": 3,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "nlist_index": 35960,
+        "n_desc": 768
+      },
+      {
+        "symbol": "_swift_getWitnessTable",
+        "ordinal": 3,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "nlist_index": 35962,
+        "n_desc": 768
+      }
+    ],
+    "rpaths": [],
+    "export_flags": 0,
+    "raw_provenance": "provider-slices.json and swift-captures.json in adjacent local directory; exact original cache extents/hashes, not whole-cache copies"
+  },
+  "witness": {
+    "ordinary_origins": [
+      "0x4ef48",
+      "0x4f14c",
+      "0x4f1c4"
+    ],
+    "input": "A42 exact SemanticCompleteIdentity Equatable conformance and metadata GOT loads; local cache initially zero. Actual loaded cells remain distinct.",
+    "provider_chain": [
+      "regular export0x193c5951c authenticates conformance pointer then tails0x193cce9e0",
+      "current conformance descriptor0x1001f49a8 flags0x30000 selects bit17 path, not small static-table return; relative table field+8 iszero",
+      "provider layout computation: count word1 givesx26=0x1001f49c4; +2 word1 selects instantiation path; +8 relative771204 selects own cache0x1002b0e50, not global fallback",
+      "own64-byte cache is in current executable __DATA/__bss(flags1), declaredzero-fill; no filebytes substituted for actual processstate",
+      "cache once word+56 !=−1 invokes callback0x193cde510 via call0x193ccfe9c to0x1940ef34c; its exact20B clears cachebytes0..55",
+      "after normal initialization, last-entry miss plus cachelookup miss under lock reaches allocation-family entry-buffer call0x193ccf300 ->stub0x1940ef65c ->declared _malloc_type_malloc ordinal5 libSystem"
+    ],
+    "initializer": {
+      "entry": "0x193cde510",
+      "end": "0x193cde524",
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331703568,
+      "bytes": 20,
+      "sha256": "f07eb7711c08c91ad6d51a0663d8feaeda1c5d12e6090d21cfac129ee31aeae0",
+      "hex": "1f1800f900e4006f008000ad0000803dc0035fd6",
+      "u32_instruction_words": [
+        "0xf900181f",
+        "0x6f00e400",
+        "0xad008000",
+        "0x3d800000",
+        "0xd65f03c0"
+      ],
+      "derived_from": "Exact callback address193ccfe84-9c and adjacent captured helper6 start193cde524; within same authenticated frozen Swift __text",
+      "frozen_before_model_utc": "2026-10-23T03:17:11.177698+00:00",
+      "manual_lossless_ARM64_decode": [
+        "STR XZR,[X0,#48]",
+        "MOVI V0.2D,#0",
+        "STP Q0,Q0,[X0,#16]",
+        "STR Q0,[X0]",
+        "RET"
+      ],
+      "interpretation": "Exactly zeroes offsets0..55. Once token+56 is not overwritten. Five raw instruction words are retained; no additional full disassembler process was run."
+    },
+    "feasibility_disposition": "NOT_FULLY_ESTABLISHED. Own-cache zero-fill and initializer clearing are proved. The actual required Static caller and concrete conformance are joined. However the descriptor-selected associative lookup0x193ce77b4 and its initialization/intervening effects were not examined; the captured0x193cde524 is a different fallback-cache lookup and is NOT substituted. Therefore its normal returnzero from the cleared private-cache inputs remains the exact missing local join. Lack of past-live-state observation alone does not refute an allowed cold execution, but it also does not supply this unexamined callee semantics. No source correction or proved violation is asserted.",
+    "miss_path_predicates": [
+      "Expected installed provider and authenticated valid conformance/metadata pointers",
+      "own-cache once/lock operations return normally",
+      "hash-seed setup, if required, returns normally; supported serialized execution/no competing cache insertion",
+      "own last-entry and associative lookup return a miss; the private lookup0x193ce77b4 body/effects remain available-unexamined, so empty-cache-to-MISS is not promoted to proved feasibility",
+      "allocation-family binding is the declared malloc_type_malloc import; successful returned storage/bytes/zone behavior not proved"
+    ],
+    "literal_new_buffer_flow": "Empty entries pointer at0x193ccef24, count0 at0x193ccef20; lookup0x193ce77b4 miss leads0x193ccef64. With initial compact-index state and count0, load factor16/15<4 bypasses calloc growth through0x193ccf0a4; null entry buffer goes0x193ccf2d0. Capacity expression is((max(count>>2,1)+count)<<3)+8 before rounding helper0x1940ef62c; returned rounded size becomesx0, type identifierx1 then0x193ccf300 calls malloc_type_malloc. The separate calloc growth path0x193ccefd0/0x193ccf06c is conditional and is not asserted for the cold empty case.",
+    "nonallocating_prefix_case": "Nonzero local witness cache returns at caller helper0xa6058/5c before provider. Provider descriptor bit17-clear+valid relative static table+bit7-clear also has a direct return, but current descriptor bit17 isSET so that generic alternative is inapplicable here.",
+    "not_claimed": "No observed or unavoidable allocation; no live-cache state, allocator-provider body/zone success, bytecost, universal noallocation result or zeroheap/resource/cold PASS. Hash initialization and once/lock provider effects remain exact unproved prerequisites, not silently assumed closed."
+  },
+  "getType": {
+    "ordinary_origin": "A42 current metadata helper0xbec passes exact InteractionState<CandidateAccess,CommittedAccess,HitAccess> mangled descriptor, length22 from emitted negative word; x2=x3=0. OwnedKeyState descriptor is separately negative.",
+    "provider_chain": [
+      "regular export0x193cea7a4 takes CBZx2 and tails0x193cea7e8",
+      "complete wrapper0x193cea7e8 builds stack callback objects/initial buffer and calls0x193cea26c; disposal has exact inline-object vs heap-object virtual branches and free if buffer pointer differs from initial stack storage",
+      "0x193cea26c dispatch cell0x1ed05b3f8: value1 direct0x193cf02cc; zero ->0x193cf08c8; othernonnull ->authenticated indirect callback",
+      "installed pristine dispatch cell iszero, not live state. Complete0x193cf08c8 calls0x193c52a84; nonnull result is stored and invoked, null result stores1 and calls0x193cf02cc"
+    ],
+    "captured_but_model_unexamined": {
+      "range": [
+        "0x193cf02cc",
+        "0x193cf08c8"
+      ],
+      "file": "swift-8.stdout",
+      "sha256": "e5c062a6c148b036b1b30541c9acc96df0e4c29469596d4cd86d62adfd12534f",
+      "bytes": 14576,
+      "lines": 389
+    },
+    "needed": "Exact runtime-selection0x193c52a84 and selected/override core plus callback targets/arena-growth effects for the actual22-byte symbolic type request. Those are retained/installed ready evidence, not absence. No allocation conclusion from API names or negative cell alone."
+  },
+  "pristine_state_and_import_rows": {
+    "current_conformance": [
+      {
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVN",
+        "nlist_index": 31253,
+        "n_type": 15,
+        "section_index": 23,
+        "description": 0,
+        "address": "0x1002866d0",
+        "file_offset": 2647760,
+        "section": {
+          "name": "__const",
+          "segment": "__DATA_CONST",
+          "vmaddr": 4297460072,
+          "bytes": 179560,
+          "fileoff": 2492776
+        },
+        "raw16": "00020000000000001028200000002000"
+      },
+      {
+        "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSQAAMc",
+        "nlist_index": 31254,
+        "n_type": 15,
+        "section_index": 4,
+        "description": 0,
+        "address": "0x1001f49a8",
+        "file_offset": 2050472,
+        "section": {
+          "name": "__const",
+          "segment": "__TEXT",
+          "vmaddr": 4296920192,
+          "bytes": 115824,
+          "fileoff": 1952896
+        },
+        "raw16": "1927090064de00000000000000000300",
+        "flags": 196608,
+        "bit17": true,
+        "bit7": false,
+        "relative_witness_table": 0,
+        "relative_witness_target": "0x1001f49b0",
+        "provider_fast_return_predicates": {
+          "bit17_clear": false,
+          "relative_nonzero": false,
+          "target_nonzero": true,
+          "bit7_clear": true
+        },
+        "provider_computed_x9": "0x1001f49b8",
+        "conditional_count_word": 1,
+        "provider_computed_x26": "0x1001f49c4",
+        "x26_file_offset": 2050500,
+        "x26_raw32": "000001000000000084c40b00f126090058de0000000000000000030001000000",
+        "x26_u16_0": 0,
+        "x26_u16_2": 1,
+        "x26_u32_4": 0,
+        "x26_i32_8": 771204
+      }
+    ],
+    "own_cache": {
+      "source_descriptor_x26": "0x1001f49c4",
+      "relative_field_at_plus8": 771204,
+      "selected_address": "0x1002b0e50",
+      "file_offset": null,
+      "section": {
+        "name": "__bss",
+        "vmaddr": 4297665152,
+        "bytes": 143760,
+        "fileoff": 0,
+        "flags": 1
+      },
+      "zero_fill_declaration": true,
+      "bytes": 64,
+      "sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+      "raw": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "u64_words": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "frozen_before_model_utc": "2026-10-23T03:14:02.064346+00:00",
+      "once_word_offset": 56,
+      "scope": "Emitted bytes or explicit section zero-fill declaration only; actual linked/loaded cache and initialization effects remain separate"
+    },
+    "Swift_global_state": [
+      {
+        "address": "0x1ed05b3f8",
+        "bytes": 8,
+        "raw": "0000000000000000",
+        "u64_words": [
+          0
+        ]
+      },
+      {
+        "address": "0x1ed06b7a8",
+        "bytes": 56,
+        "raw": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "u64_words": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "selected_declared_imports": [
+      {
+        "call_target": "0x1940ef64c",
+        "stub_sections": [
+          {
+            "name": "__auth_stubs",
+            "vmaddr": 6778973804,
+            "bytes": 3584,
+            "fileoff": 335965804,
+            "flags": 2147484680,
+            "reserved1": 0,
+            "reserved2": 16
+          }
+        ],
+        "indirect_slot": 126,
+        "indirect_value": 40093,
+        "stub_raw": "91242db031e23c91300240f9110a1fd7",
+        "symbol": "_malloc_type_calloc",
+        "nlist_index": 40093,
+        "n_type": 1,
+        "n_desc": 1280,
+        "ordinal": 5,
+        "declared_provider": "/usr/lib/libSystem.B.dylib"
+      },
+      {
+        "call_target": "0x1940ef65c",
+        "stub_sections": [
+          {
+            "name": "__auth_stubs",
+            "vmaddr": 6778973804,
+            "bytes": 3584,
+            "fileoff": 335965804,
+            "flags": 2147484680,
+            "reserved1": 0,
+            "reserved2": 16
+          }
+        ],
+        "indirect_slot": 127,
+        "indirect_value": 40094,
+        "stub_raw": "91242db031623d91300240f9110a1fd7",
+        "symbol": "_malloc_type_malloc",
+        "nlist_index": 40094,
+        "n_type": 1,
+        "n_desc": 1280,
+        "ordinal": 5,
+        "declared_provider": "/usr/lib/libSystem.B.dylib"
+      },
+      {
+        "call_target": "0x1940ef4cc",
+        "stub_sections": [
+          {
+            "name": "__auth_stubs",
+            "vmaddr": 6778973804,
+            "bytes": 3584,
+            "fileoff": 335965804,
+            "flags": 2147484680,
+            "reserved1": 0,
+            "reserved2": 16
+          }
+        ],
+        "indirect_slot": 102,
+        "indirect_value": 40068,
+        "stub_raw": "91242db031623a91300240f9110a1fd7",
+        "symbol": "_free",
+        "nlist_index": 40068,
+        "n_type": 1,
+        "n_desc": 1280,
+        "ordinal": 5,
+        "declared_provider": "/usr/lib/libSystem.B.dylib"
+      },
+      {
+        "call_target": "0x1940ede8c",
+        "stub_sections": []
+      }
+    ]
+  },
+  "superseded_and_errors": [
+    "Initial global fallback-cache hypothesis is superseded: descriptor selects its own BSS cache. Global zero data does not establish that selected cache path.",
+    "First private-cache query required file backing and returned a concrete mapping error. Corrected section query proves S_ZEROFILL; missing file backing is not missing state/provider. Both request/result records remain.",
+    "Orientation and ordinary administration have upper accounting rather than exact complete pre-emission certification. No prior failure is retroqualified. Page/helper and specific provider-decoder frozen bytes remained unchanged."
+  ],
+  "consolidated_disposition": {
+    "achieved": [
+      "A42 exact Static descriptor/reset allocator exclusions reused without rereading",
+      "Exact current two-level provider imports, installed UUID/version, regular export bodies and required argument/state controls",
+      "Current concrete conformance selects generic/instantiation path and own BSS cache; exact initializer clears state; conditional malloc-family MISS dependency exposed"
+    ],
+    "technical_premises": [
+      "Actual loaded provider/import/GOT/cache state versus installed pristine bytes; no runtime action performed",
+      "Exact local empty-private-cache-to-MISS join through0x193ce77b4 is available-unexamined, not external absence or resolved by fallback helper6. Once/lock/hash initialization and competing-insertion effects plus malloc-family resolved implementation/semantics remain separate.",
+      "getType selection routine/core/callback effects not fully examined; exact captured/available boundaries above"
+    ],
+    "remaining_ready_local_work": [
+      "Other current-mapped Host/Scoped/Route allocator, metadata, once, indirect, witness and error callers are not classified by this provider result. Original17-site index/56groups/1892sites are not feasibility proof. No external absence.",
+      "Mandatory standalone Model/Semantic/FixedStorage/Coordinator obligations remain; selected three-root entry does not exempt them."
+    ],
+    "preserved_scoped_safety": "Reviewed U03 concrete owner/reader/dispatch/generation/backinglast/linkedwriter/fault and memory lemmas remain exact-premise scoped; no generalized foreign/concurrent safety claim.",
+    "state_gap": "Actual stdoutR=S, unbuffered persistence, loaded targets and inherited environment/window record remain unobserved. State-only capture proposal is still unexecuted.",
+    "scope_consequence": "Static eligibility cannot be discharged by declaring concrete Equatable first-use allocation-free or assuming warmth. The conditional dependency merits coordinator/Astra assessment of a contract-preserving implementation remedy; no source guess, prewarm, observer exemption, window move or acceptance relaxation is authorized by this receipt.",
+    "B_C": "No current image/resource/cold/physical/profile transfer or release; no runtime/provider experiment, compiler/fullcounter rerun, network/hardware or source/index mutation."
+  }
+}

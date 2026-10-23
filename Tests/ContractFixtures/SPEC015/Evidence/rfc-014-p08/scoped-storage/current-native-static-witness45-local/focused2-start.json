@@ -1,0 +1,17 @@
+{
+  "started_utc": "2026-10-23T03:56:01.343224+00:00",
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmpygas7b_p/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "--fresh-focused",
+    "--select-family",
+    "runtime",
+    "--static-resource-entry-v1"
+  ]
+}

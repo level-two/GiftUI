@@ -1,0 +1,36 @@
+[
+  {
+    "baseline": ".build/contracts/p08-counter-m1vlvrlf/execute.log",
+    "baseline_sha256": "3f332f10d2e7dcbcf6b6b90c748bb970792701d407903616ef8c4a94e93b96fc",
+    "full": ".build/contracts/p08-counter-dt4nfsxd/execute.log",
+    "full_sha256": "b11ad26d03c6e54d1e3e400be23e84989ba7c5b1793f4215aa6cfaeb8333c411",
+    "bytes": [
+      611254,
+      611254
+    ],
+    "normalized_equal": true,
+    "normalized_sha256": "583741c6b535e20435949ec4735109a90ae5935fa2d12594db290b0027336c00",
+    "physical_address_tokens": [
+      240,
+      240
+    ],
+    "normalization": "SO06 role fields4/8 physical-address decimal tokens only; whitespace/newlines preserved"
+  },
+  {
+    "baseline": ".build/contracts/p08-counter-m1vlvrlf/static-resource-v1-execute.log",
+    "baseline_sha256": "d32c7d1bac258aa81012c018d758e220dba62d847abc155c0500b5208b1f8b02",
+    "full": ".build/contracts/p08-counter-dt4nfsxd/static-resource-v1-execute.log",
+    "full_sha256": "8716794a4bd9a7185a19fd2461f0332c069de2e201e3ce0fd6cce11073e80be1",
+    "bytes": [
+      391098,
+      391098
+    ],
+    "normalized_equal": true,
+    "normalized_sha256": "a4b5061060a0adb39fa879afddf0223490e84a5b2ff9f41c25fe13362590954d",
+    "physical_address_tokens": [
+      120,
+      120
+    ],
+    "normalization": "SO06 role fields4/8 physical-address decimal tokens only; whitespace/newlines preserved"
+  }
+]

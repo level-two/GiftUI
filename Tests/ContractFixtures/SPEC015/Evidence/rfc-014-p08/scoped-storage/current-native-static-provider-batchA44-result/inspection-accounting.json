@@ -1,0 +1,29 @@
+{
+  "session_started_utc": "2026-10-23T03:32:36+00:00",
+  "auth_utc": "2026-10-23T03:36:24.132326+00:00",
+  "finished_utc": "2026-10-23T03:45:08.504186+00:00",
+  "elapsed_seconds": 752.504186,
+  "processing_upper_before_terminal_emit": 192929287,
+  "counted_transcript_before_terminal_emit": 131411,
+  "shared_limit": 8388608,
+  "processing_limit": 536870912,
+  "time_limit": 7200,
+  "retained_file_bytes_before_accounting": 259224,
+  "final_accounting_reserved_bytes": 262144,
+  "original_group_context": {
+    "private_capture_bytes": 3909,
+    "private_capture_lines": 99,
+    "getType_core_bytes": 14576,
+    "getType_core_lines": 389,
+    "prior_A43_context_reuse": "Exact accepted lemma references, not re-emitted whole bodies; prior limits/failures not reset"
+  },
+  "execution_qualified": false,
+  "reason": [
+    "Initial clock event recorded after event",
+    "One page.py orientation request/read/payload recorded exactly after event, not checked before emission",
+    "Request self-attestation is not independent platform observation; no complete rendered transcript bound"
+  ],
+  "known_child_exits": "auth0; provider decoder0/stderr0; page deliveries0; ordinary metadata/finalization requests independently retained numeric shell exits; no running child",
+  "actual_final_ledger": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-local/ledger.json",
+  "scope": "No exact platform-added envelope or aggregate unobserved I/O certification"
+}

@@ -1,0 +1,160 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-3.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000193cea7e8 <__text>:
+193cea7e8:     	pacibsp
+193cea7ec:     	sub	sp, sp, #0x1f0
+193cea7f0:     	stp	x24, x23, [sp, #0x1b0]
+193cea7f4:     	stp	x22, x21, [sp, #0x1c0]
+193cea7f8:     	stp	x20, x19, [sp, #0x1d0]
+193cea7fc:     	stp	x29, x30, [sp, #0x1e0]
+193cea800:     	add	x29, sp, #0x1e0
+193cea804:     	mov	x19, x1
+193cea808:     	mov	x20, x0
+193cea80c:     	adrp	x8, 0x1e61c2000 <__text+0x524d7818>
+193cea810:     	ldr	x8, [x8, #0xe40]
+193cea814:     	ldr	x8, [x8]
+193cea818:     	stur	x8, [x29, #-0x38]
+193cea81c:     	str	wzr, [sp, #0x78]
+193cea820:     	stp	x2, x3, [sp, #0x80]
+193cea824:     	add	x8, sp, #0x78
+193cea828:     	add	x22, x8, #0x28
+193cea82c:     	str	x22, [sp, #0x90]
+193cea830:     	adrp	x9, 0x194104000 <__text+0x419818>
+193cea834:     	ldr	d0, [x9, #0xd60]
+193cea838:     	str	d0, [sp, #0x98]
+193cea83c:     	str	xzr, [sp, #0x1a0]
+193cea840:     	add	x21, sp, #0x38
+193cea844:     	adrp	x16, 0x1efd49000 <__text+0x5c05e818>
+193cea848:     	add	x16, x16, #0x968
+193cea84c:     	add	x16, x16, #0x10
+193cea850:     	mov	x17, x21
+193cea854:     	movk	x17, #0x7a5c, lsl #48
+193cea858:     	pacda	x16, x17
+193cea85c:     	stp	x16, x8, [sp, #0x38]
+193cea860:     	str	x21, [sp, #0x50]
+193cea864:     	add	x23, sp, #0x18
+193cea868:     	adrp	x16, 0x1efd49000 <__text+0x5c05e818>
+193cea86c:     	add	x16, x16, #0x9b0
+193cea870:     	add	x16, x16, #0x10
+193cea874:     	mov	x17, x23
+193cea878:     	movk	x17, #0x50fa, lsl #48
+193cea87c:     	pacda	x16, x17
+193cea880:     	stp	x16, x8, [sp, #0x18]
+193cea884:     	str	x23, [sp, #0x30]
+193cea888:     	add	x8, sp, #0x58
+193cea88c:     	add	x4, sp, #0x38
+193cea890:     	add	x5, sp, #0x18
+193cea894:     	mov	x0, #0x0                ; =0
+193cea898:     	mov	x1, x20
+193cea89c:     	mov	x2, x19
+193cea8a0:     	bl	0x193cea26c
+193cea8a4:     	ldr	x0, [sp, #0x30]
+193cea8a8:     	cmp	x0, x23
+193cea8ac:     	b.eq	0x193cea8d4 <__text+0xec>
+193cea8b0:     	cbz	x0, 0x193cea8ec <__text+0x104>
+193cea8b4:     	ldr	x16, [x0]
+193cea8b8:     	mov	x17, x0
+193cea8bc:     	movk	x17, #0x50fa, lsl #48
+193cea8c0:     	autda	x16, x17
+193cea8c4:     	ldr	x8, [x16, #0x28]!
+193cea8c8:     	movk	x16, #0xd1b8, lsl #48
+193cea8cc:     	blraa	x8, x16
+193cea8d0:     	b	0x193cea8ec <__text+0x104>
+193cea8d4:     	movk	x23, #0x50fa, lsl #48
+193cea8d8:     	ldr	x16, [x0]
+193cea8dc:     	autda	x16, x23
+193cea8e0:     	ldr	x8, [x16, #0x20]!
+193cea8e4:     	movk	x16, #0x6ed7, lsl #48
+193cea8e8:     	blraa	x8, x16
+193cea8ec:     	ldr	x0, [sp, #0x50]
+193cea8f0:     	add	x8, sp, #0x38
+193cea8f4:     	cmp	x0, x8
+193cea8f8:     	b.eq	0x193cea920 <__text+0x138>
+193cea8fc:     	cbz	x0, 0x193cea938 <__text+0x150>
+193cea900:     	ldr	x16, [x0]
+193cea904:     	mov	x17, x0
+193cea908:     	movk	x17, #0x7a5c, lsl #48
+193cea90c:     	autda	x16, x17
+193cea910:     	ldr	x8, [x16, #0x28]!
+193cea914:     	movk	x16, #0x5df3, lsl #48
+193cea918:     	blraa	x8, x16
+193cea91c:     	b	0x193cea938 <__text+0x150>
+193cea920:     	movk	x21, #0x7a5c, lsl #48
+193cea924:     	ldr	x16, [x0]
+193cea928:     	autda	x16, x21
+193cea92c:     	ldr	x8, [x16, #0x20]!
+193cea930:     	movk	x16, #0xe081, lsl #48
+193cea934:     	blraa	x8, x16
+193cea938:     	ldrh	w8, [sp, #0x70]
+193cea93c:     	cmp	w8, #0x1
+193cea940:     	b.ne	0x193cea9dc <__text+0x1f4>
+193cea944:     	adrp	x8, 0x1ed06b000 <__text+0x59380818>
+193cea948:     	add	x8, x8, #0xa38
+193cea94c:     	ldr	x8, [x8]
+193cea950:     	cmn	x8, #0x1
+193cea954:     	b.ne	0x193ceaa44 <__text+0x25c>
+193cea958:     	adrp	x8, 0x1ea7fe000 <__text+0x56b13818>
+193cea95c:     	add	x8, x8, #0xc61
+193cea960:     	ldrb	w9, [x8]
+193cea964:     	ldrh	w8, [sp, #0x70]
+193cea968:     	cmp	w9, #0x1
+193cea96c:     	b.ne	0x193cea9dc <__text+0x1f4>
+193cea970:     	add	x9, sp, #0x58
+193cea974:     	add	x9, x9, #0x8
+193cea978:     	cmp	w8, #0x1
+193cea97c:     	mov	w8, #0x8                ; =8
+193cea980:     	csel	x23, x9, x8, eq
+193cea984:     	ldr	x8, [x23]
+193cea988:     	ldr	x0, [sp, #0x58]
+193cea98c:     	mov	w1, #0x0                ; =0
+193cea990:     	mov	x2, #0x0                ; =0
+193cea994:     	blraaz	x8
+193cea998:     	mov	x21, x0
+193cea99c:     	stp	x20, x0, [sp, #0x8]
+193cea9a0:     	str	x19, [sp]
+193cea9a4:     	adrp	x1, 0x1940f5000 <__text+0x40a818>
+193cea9a8:     	add	x1, x1, #0xd21
+193cea9ac:     	mov	w0, #0x0                ; =0
+193cea9b0:     	bl	0x193cb755c
+193cea9b4:     	ldr	x8, [x23]
+193cea9b8:     	ldr	x0, [sp, #0x58]
+193cea9bc:     	mov	w1, #0x1                ; =1
+193cea9c0:     	mov	x2, x21
+193cea9c4:     	blraaz	x8
+193cea9c8:     	mov	x19, #0x0               ; =0
+193cea9cc:     	ldrh	w8, [sp, #0x70]
+193cea9d0:     	cmp	w8, #0x1
+193cea9d4:     	b.eq	0x193cea9f0 <__text+0x208>
+193cea9d8:     	b	0x193ceaa00 <__text+0x218>
+193cea9dc:     	ldr	x9, [sp, #0x58]
+193cea9e0:     	cmp	w8, #0x0
+193cea9e4:     	csel	x19, x9, xzr, eq
+193cea9e8:     	cmp	w8, #0x1
+193cea9ec:     	b.ne	0x193ceaa00 <__text+0x218>
+193cea9f0:     	ldp	x0, x8, [sp, #0x58]
+193cea9f4:     	mov	w1, #0x3                ; =3
+193cea9f8:     	mov	x2, #0x0                ; =0
+193cea9fc:     	blraaz	x8
+193ceaa00:     	ldr	x0, [sp, #0x90]
+193ceaa04:     	cmp	x0, x22
+193ceaa08:     	b.eq	0x193ceaa10 <__text+0x228>
+193ceaa0c:     	bl	0x1940ef4cc <__text+0x404ce4>
+193ceaa10:     	ldur	x8, [x29, #-0x38]
+193ceaa14:     	adrp	x9, 0x1e61c2000 <__text+0x524d7818>
+193ceaa18:     	ldr	x9, [x9, #0xe40]
+193ceaa1c:     	ldr	x9, [x9]
+193ceaa20:     	cmp	x9, x8
+193ceaa24:     	b.ne	0x193ceaa4c <__text+0x264>
+193ceaa28:     	mov	x0, x19
+193ceaa2c:     	ldp	x29, x30, [sp, #0x1e0]
+193ceaa30:     	ldp	x20, x19, [sp, #0x1d0]
+193ceaa34:     	ldp	x22, x21, [sp, #0x1c0]
+193ceaa38:     	ldp	x24, x23, [sp, #0x1b0]
+193ceaa3c:     	add	sp, sp, #0x1f0
+193ceaa40:     	retab
+193ceaa44:     	bl	0x1940ede8c <__text+0x4036a4>
+193ceaa48:     	b	0x193cea958 <__text+0x170>
+193ceaa4c:     	bl	0x1940ef09c <__text+0x4048b4>

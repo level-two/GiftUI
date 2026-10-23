@@ -1,0 +1,27 @@
+{
+  "started_utc": "2026-10-23T02:49:13.291989+00:00",
+  "auth_utc": "2026-10-23T02:57:36.974106+00:00",
+  "finished_utc": "2026-10-23T03:26:12.663544+00:00",
+  "elapsed_seconds": 2219.371555,
+  "processing_before_final_emit": 521490179,
+  "transcript_upper_before_final_emit": 443884,
+  "retained_before_accounting_and_emit": 462355,
+  "shared_upper_before_accounting_and_emit": 906239,
+  "processing_remaining_before_final_emit": 15380733,
+  "context_combined_upper": [
+    214175,
+    3477
+  ],
+  "original_group_context_policy": "Combined bound is stronger than assigning the two imported families separately; no group reset or relabel is used.",
+  "caps": [
+    7200,
+    536870912,
+    8388608,
+    1048576,
+    16384
+  ],
+  "qualification": false,
+  "reason": "Acquisition/orientation and administrative exact pre-emission aggregate not certified; conservative upper allowances are not retroqualification.",
+  "final_authority": "Adjacent local ledger after terminal output includes final emission debit; snapshots above explicitly pre-emit.",
+  "terminal_reserve": "Reserved capacity debited solely for final authentication/preservation/records; no numerical cap changed."
+}

@@ -1,0 +1,526 @@
+
+.build/contracts/p08-counter-twz66ejq/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000004ebd4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF>:
+   4ebd4:      	mov	x0, x30
+   4ebd8:      	bl	0x4ebd8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4>
+		000000000004ebd8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1028
+   4ebdc:      	mov	x30, x0
+   4ebe0:      	stp	x29, x30, [sp, #0x50]
+   4ebe4:      	bl	0x4ebe4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x10>
+		000000000004ebe4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1103
+   4ebe8:      	sub	sp, sp, #0x6c0
+   4ebec:      	mov	x19, x20
+   4ebf0:      	mov	w24, #0x0               ; =0
+   4ebf4:      	bl	0x4ebf4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x20>
+		000000000004ebf4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_183
+   4ebf8:      	add	x9, x20, #0x232
+   4ebfc:      	str	x9, [sp, #0x18]
+   4ec00:      	stur	x8, [x29, #-0x60]
+   4ec04:      	mov	w22, #0x1               ; =1
+   4ec08:      	tst	w24, #0x1
+   4ec0c:      	cinc	w21, w22, ne
+   4ec10:      	adrp	x0, 0x4e000 <_$s17P08CounterRuntime0B12HostAssemblyV8validate_4kind15sourceCallbacks010repositoryI007useCaseI025nonTransitionPublications8negative11observationACSg17GiftUIRuntimeCore0C12StorageAuditV_0R19UIHostConfiguration11MVPHostKindOs6UInt16Vs5UInt8VA2vA0B20ConstructionNegativeOSgAA0B23ConstructionObservationVztFZ+0x194>
+		000000000004ec10:  ARM64_RELOC_PAGE21	_$s17GiftUIInteraction16InteractionStateVy17P08CounterRuntime0E15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0e9CommittedI0AFLLVAD0e3HitI0AFLLVGMD
+   4ec14:      	add	x0, x0, #0x0
+		000000000004ec14:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIInteraction16InteractionStateVy17P08CounterRuntime0E15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0e9CommittedI0AFLLVAD0e3HitI0AFLLVGMD
+   4ec18:      	bl	0x4ec18 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x44>
+		000000000004ec18:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   4ec1c:      	mov	x23, x0
+   4ec20:      	bl	0x4ec20 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4c>
+		000000000004ec20:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1529
+   4ec24:      	bl	0x4ec24 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x50>
+		000000000004ec24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4ec28:      	b.ne	0x4f25c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x688>
+   4ec2c:      	mov	x26, #0x0               ; =0
+   4ec30:      	add	w24, w24, #0x1
+   4ec34:      	str	wzr, [x19, #0x250]
+   4ec38:      	mov	w8, #0x901              ; =2305
+   4ec3c:      	strh	w8, [x19, #0x258]
+   4ec40:      	str	x21, [sp, #0x58]
+   4ec44:      	and	x21, x21, #0xffff
+   4ec48:      	mov	w25, #0x2               ; =2
+   4ec4c:      	cmp	x21, x26
+   4ec50:      	b.eq	0x4f1f8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x624>
+   4ec54:      	bl	0x4ec54 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x80>
+		000000000004ec54:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1216
+   4ec58:      	add	x20, sp, #0x830
+   4ec5c:      	bl	0x4ec5c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x88>
+		000000000004ec5c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_848
+   4ec60:      	tbz	w0, #0x0, 0x4f1fc <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x628>
+   4ec64:      	add	x20, sp, #0x830
+   4ec68:      	mov	x0, x25
+   4ec6c:      	bl	0x4ec6c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x98>
+		000000000004ec6c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF
+   4ec70:      	tbz	w0, #0x0, 0x4f200 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x62c>
+   4ec74:      	add	x20, sp, #0x830
+   4ec78:      	bl	0x4ec78 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0xa4>
+		000000000004ec78:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_892
+   4ec7c:      	tbz	w0, #0x0, 0x4f204 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x630>
+   4ec80:      	add	x27, x26, #0x1
+   4ec84:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   4ec88:      	add	x0, x0, #0x5e2
+   4ec8c:      	add	x1, sp, #0x830
+   4ec90:      	bl	0x4ec90 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0xbc>
+		000000000004ec90:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_593
+   4ec94:      	adrp	x0, 0x4e000 <_$s17P08CounterRuntime0B12HostAssemblyV8validate_4kind15sourceCallbacks010repositoryI007useCaseI025nonTransitionPublications8negative11observationACSg17GiftUIRuntimeCore0C12StorageAuditV_0R19UIHostConfiguration11MVPHostKindOs6UInt16Vs5UInt8VA2vA0B20ConstructionNegativeOSgAA0B23ConstructionObservationVztFZ+0x194>
+		000000000004ec94:  ARM64_RELOC_PAGE21	_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGMD
+   4ec98:      	add	x0, x0, #0x0
+		000000000004ec98:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGMD
+   4ec9c:      	bl	0x4ec9c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0xc8>
+		000000000004ec9c:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   4eca0:      	mov	x28, x0
+   4eca4:      	str	x0, [sp, #0x8]
+   4eca8:      	str	w22, [sp]
+   4ecac:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   4ecb0:      	add	x0, x0, #0x5e2
+   4ecb4:      	bl	0x4ecb4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0xe0>
+		000000000004ecb4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_498
+   4ecb8:      	mov	x6, x26
+   4ecbc:      	mov	x7, x27
+   4ecc0:      	bl	0x4ecc0 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0xec>
+		000000000004ecc0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF
+   4ecc4:      	bl	0x4ecc4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0xf0>
+		000000000004ecc4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4ecc8:      	b.eq	0x4ecf4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x120>
+   4eccc:      	cmp	w8, #0xa
+   4ecd0:      	b.ne	0x4f240 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x66c>
+   4ecd4:      	add	x1, sp, #0x1, lsl #12   ; =0x1000
+   4ecd8:      	add	x1, x1, #0x5e2
+   4ecdc:      	add	x20, x19, #0x60
+   4ece0:      	mov	x0, x24
+   4ece4:      	mov	x2, x28
+   4ece8:      	bl	0x4ece8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x114>
+		000000000004ece8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionH0V_0A14UISemanticCore24SemanticCompleteIdentityVtF
+   4ecec:      	bl	0x4ecec <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x118>
+		000000000004ecec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4ecf0:      	b.ne	0x4f244 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x670>
+   4ecf4:      	add	x25, x25, #0x100
+   4ecf8:      	mov	x26, x27
+   4ecfc:      	cmp	x21, x27
+   4ed00:      	b.ne	0x4ec4c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x78>
+   4ed04:      	ldrb	w8, [x19, #0x259]
+   4ed08:      	cmp	w8, #0x9
+   4ed0c:      	b.ne	0x4f254 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x680>
+   4ed10:      	bl	0x4ed10 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x13c>
+		000000000004ed10:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1870
+   4ed14:      	bl	0x4ed14 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x140>
+		000000000004ed14:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4ed18:      	b.ne	0x4f254 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x680>
+   4ed1c:      	strb	wzr, [x19, #0x258]
+   4ed20:      	mov	x0, x24
+   4ed24:      	bl	0x4ed24 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x150>
+		000000000004ed24:  ARM64_RELOC_BRANCH26	_$s6GiftUI20PresentationRevisionV8rawValueACs6UInt32V_tcfC
+   4ed28:      	mov	x25, x0
+   4ed2c:      	ldrb	w8, [x19, #0x237]
+   4ed30:      	cmp	w8, #0x2
+   4ed34:      	b.ne	0x4eda0 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x1cc>
+   4ed38:      	add	x0, x19, #0x118
+   4ed3c:      	add	x20, x19, #0x178
+   4ed40:      	mov	w1, #0x0                ; =0
+   4ed44:      	bl	0x4ed44 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x170>
+		000000000004ed44:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tFTm
+   4ed48:      	add	x0, x19, #0xb8
+   4ed4c:      	add	x20, x19, #0x1d8
+   4ed50:      	mov	w1, #0x1                ; =1
+   4ed54:      	bl	0x4ed54 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x180>
+		000000000004ed54:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tFTm
+   4ed58:      	str	w25, [x19, #0x23c]
+   4ed5c:      	strb	wzr, [x19, #0x240]
+   4ed60:      	add	x20, x19, #0x60
+   4ed64:      	bl	0x4ed64 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x190>
+		000000000004ed64:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF
+   4ed68:      	add	x20, x19, #0xb8
+   4ed6c:      	bl	0x4ed6c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x198>
+		000000000004ed6c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF
+   4ed70:      	add	x20, x19, #0x118
+   4ed74:      	bl	0x4ed74 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x1a0>
+		000000000004ed74:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF
+   4ed78:      	ldr	x8, [sp, #0x18]
+   4ed7c:      	str	wzr, [x8]
+   4ed80:      	strh	w22, [x19, #0x236]
+   4ed84:      	mov	w8, #0x9                ; =9
+   4ed88:      	strb	w8, [x19, #0x238]
+   4ed8c:      	ldr	w8, [x19, #0x250]
+   4ed90:      	str	w8, [x19, #0x254]
+   4ed94:      	str	wzr, [x19, #0x250]
+   4ed98:      	mov	w8, #0x900              ; =2304
+   4ed9c:      	strh	w8, [x19, #0x258]
+   4eda0:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   4eda4:      	add	x0, x0, #0x3e8
+   4eda8:      	add	x1, x19, #0x60
+   4edac:      	bl	0x4edac <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x1d8>
+		000000000004edac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1160
+   4edb0:      	ldr	w21, [sp, #0x15c4]
+   4edb4:      	add	x8, sp, #0x1, lsl #12   ; =0x1000
+   4edb8:      	add	x8, x8, #0x18
+   4edbc:      	ldrb	w22, [x8, #0x5b0]
+   4edc0:      	add	x20, sp, #0x1, lsl #12  ; =0x1000
+   4edc4:      	add	x20, x20, #0x3e8
+   4edc8:      	bl	0x4edc8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x1f4>
+		000000000004edc8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE20committedRecordCounts6UInt16Vvg17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AG0k9CommittedO0AILLVAG0k3HitO0AILLVTg5
+   4edcc:      	and	w8, w0, #0xffff
+   4edd0:      	ldr	x9, [sp, #0x58]
+   4edd4:      	cmp	w8, w9, uxth
+   4edd8:      	b.ne	0x4f208 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x634>
+   4eddc:      	cmp	w22, #0x1
+   4ede0:      	b.eq	0x4f260 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x68c>
+   4ede4:      	cmp	w21, w25
+   4ede8:      	b.ne	0x4f20c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x638>
+   4edec:      	add	x8, sp, #0x5c6
+   4edf0:      	mov	w0, #0x0                ; =0
+   4edf4:      	bl	0x4edf4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x220>
+		000000000004edf4:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF
+   4edf8:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   4edfc:      	add	x0, x0, #0x200
+   4ee00:      	bl	0x4ee00 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x22c>
+		000000000004ee00:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1209
+   4ee04:      	add	x8, sp, #0x830
+   4ee08:      	add	x0, sp, #0x5c6
+   4ee0c:      	add	x20, sp, #0x1, lsl #12  ; =0x1000
+   4ee10:      	add	x20, x20, #0x200
+   4ee14:      	bl	0x4ee14 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x240>
+		000000000004ee14:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5
+   4ee18:      	add	x0, sp, #0x404
+   4ee1c:      	add	x1, sp, #0x830
+   4ee20:      	bl	0x4ee20 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x24c>
+		000000000004ee20:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_612
+   4ee24:      	add	x0, sp, #0x4f4
+   4ee28:      	add	x1, sp, #0x404
+   4ee2c:      	bl	0x4ee2c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x258>
+		000000000004ee2c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1030
+   4ee30:      	ldr	w8, [sp, #0x4d4]
+   4ee34:      	str	w8, [sp, #0x58]
+   4ee38:      	ldrb	w8, [sp, #0x4d8]
+   4ee3c:      	str	w8, [sp, #0x4c]
+   4ee40:      	add	x8, sp, #0x3dd
+   4ee44:      	ldur	x27, [x8, #0xff]
+   4ee48:      	add	x8, sp, #0x3e5
+   4ee4c:      	ldur	x28, [x8, #0xff]
+   4ee50:      	ldrh	w21, [sp, #0x4ec]
+   4ee54:      	ldrh	w22, [sp, #0x4ee]
+   4ee58:      	ldr	w26, [sp, #0x4f0]
+   4ee5c:      	add	x0, sp, #0x404
+   4ee60:      	bl	0x4ee60 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x28c>
+		000000000004ee60:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1715
+   4ee64:      	b.eq	0x4f264 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x690>
+   4ee68:      	add	x0, sp, #0xf4a
+   4ee6c:      	add	x1, sp, #0x4f4
+   4ee70:      	bl	0x4ee70 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x29c>
+		000000000004ee70:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_593
+   4ee74:      	add	x0, sp, #0xbca
+   4ee78:      	add	x1, sp, #0x4f4
+   4ee7c:      	bl	0x4ee7c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x2a8>
+		000000000004ee7c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_593
+   4ee80:      	bl	0x4ee80 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x2ac>
+		000000000004ee80:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1529
+   4ee84:      	bl	0x4ee84 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x2b0>
+		000000000004ee84:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4ee88:      	b.ne	0x4f270 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x69c>
+   4ee8c:      	stp	x28, x27, [sp, #0x38]
+   4ee90:      	bl	0x4ee90 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x2bc>
+		000000000004ee90:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1870
+   4ee94:      	bl	0x4ee94 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x2c0>
+		000000000004ee94:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4ee98:      	b.ne	0x4f268 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x694>
+   4ee9c:      	stp	w26, w22, [sp, #0x2c]
+   4eea0:      	str	w21, [sp, #0x34]
+   4eea4:      	stp	w25, w24, [sp, #0x24]
+   4eea8:      	str	x23, [sp, #0x50]
+   4eeac:      	bl	0x4eeac <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x2d8>
+		000000000004eeac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1871
+   4eeb0:      	add	x8, sp, #0x694
+   4eeb4:      	mov	w0, #0x0                ; =0
+   4eeb8:      	bl	0x4eeb8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x2e4>
+		000000000004eeb8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF
+   4eebc:      	add	x0, sp, #0x1, lsl #12   ; =0x1000
+   4eec0:      	add	x0, x0, #0x18
+   4eec4:      	bl	0x4eec4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x2f0>
+		000000000004eec4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1209
+   4eec8:      	add	x8, sp, #0x830
+   4eecc:      	add	x0, sp, #0x694
+   4eed0:      	add	x20, sp, #0x1, lsl #12  ; =0x1000
+   4eed4:      	add	x20, x20, #0x18
+   4eed8:      	bl	0x4eed8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x304>
+		000000000004eed8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5
+   4eedc:      	add	x0, sp, #0x244
+   4eee0:      	add	x1, sp, #0x830
+   4eee4:      	bl	0x4eee4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x310>
+		000000000004eee4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_612
+   4eee8:      	add	x0, sp, #0x334
+   4eeec:      	add	x1, sp, #0x244
+   4eef0:      	bl	0x4eef0 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x31c>
+		000000000004eef0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1030
+   4eef4:      	ldr	w22, [sp, #0x314]
+   4eef8:      	ldrb	w23, [sp, #0x318]
+   4eefc:      	add	x8, sp, #0x21d
+   4ef00:      	ldur	x20, [x8, #0xff]
+   4ef04:      	add	x8, sp, #0x225
+   4ef08:      	ldur	x28, [x8, #0xff]
+   4ef0c:      	ldrh	w25, [sp, #0x32c]
+   4ef10:      	ldrh	w27, [sp, #0x32e]
+   4ef14:      	ldr	w21, [sp, #0x330]
+   4ef18:      	add	x0, sp, #0x244
+   4ef1c:      	bl	0x4ef1c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x348>
+		000000000004ef1c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1715
+   4ef20:      	b.eq	0x4f26c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x698>
+   4ef24:      	ldr	w26, [sp, #0x11f4]
+   4ef28:      	add	x8, sp, #0x1, lsl #12   ; =0x1000
+   4ef2c:      	add	x8, x8, #0x18
+   4ef30:      	ldrb	w24, [x8, #0x1e0]
+   4ef34:      	add	x0, sp, #0xe7c
+   4ef38:      	add	x1, sp, #0x334
+   4ef3c:      	bl	0x4ef3c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x368>
+		000000000004ef3c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_593
+   4ef40:      	add	x0, sp, #0xe7c
+   4ef44:      	add	x1, sp, #0xf4a
+   4ef48:      	bl	0x4ef48 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x374>
+		000000000004ef48:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+   4ef4c:      	ldr	w8, [sp, #0x58]
+   4ef50:      	cmp	w22, w8
+   4ef54:      	b.ne	0x4f210 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x63c>
+   4ef58:      	tbz	w0, #0x0, 0x4f210 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x63c>
+   4ef5c:      	ldr	w8, [sp, #0x4c]
+   4ef60:      	eor	w8, w23, w8
+   4ef64:      	tbnz	w8, #0x0, 0x4f210 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x63c>
+   4ef68:      	mov	x0, x20
+   4ef6c:      	mov	x1, x28
+   4ef70:      	ldp	x3, x2, [sp, #0x38]
+   4ef74:      	bl	0x4ef74 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x3a0>
+		000000000004ef74:  ARM64_RELOC_BRANCH26	_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ
+   4ef78:      	ldp	w9, w8, [sp, #0x2c]
+   4ef7c:      	cmp	w21, w9
+   4ef80:      	ccmp	w27, w8, #0x0, eq
+   4ef84:      	ldr	w8, [sp, #0x34]
+   4ef88:      	ccmp	w25, w8, #0x0, eq
+   4ef8c:      	b.ne	0x4f214 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x640>
+   4ef90:      	tbz	w0, #0x0, 0x4f214 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x640>
+   4ef94:      	cmp	w24, #0x1
+   4ef98:      	b.eq	0x4f274 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x6a0>
+   4ef9c:      	ldp	w8, w24, [sp, #0x24]
+   4efa0:      	cmp	w26, w8
+   4efa4:      	ldr	x21, [sp, #0x50]
+   4efa8:      	mov	w22, #0x1               ; =1
+   4efac:      	b.ne	0x4f218 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x644>
+   4efb0:      	add	x0, sp, #0xc98
+   4efb4:      	bl	0x4efb4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x3e0>
+		000000000004efb4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1209
+   4efb8:      	add	x8, sp, #0x154
+   4efbc:      	add	x0, sp, #0xbca
+   4efc0:      	add	x20, sp, #0xc98
+   4efc4:      	bl	0x4efc4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x3f0>
+		000000000004efc4:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5
+   4efc8:      	add	x0, sp, #0x154
+   4efcc:      	bl	0x4efcc <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x3f8>
+		000000000004efcc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1715
+   4efd0:      	b.eq	0x4f258 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x684>
+   4efd4:      	add	x0, sp, #0x64
+   4efd8:      	add	x1, sp, #0x154
+   4efdc:      	bl	0x4efdc <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x408>
+		000000000004efdc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_612
+   4efe0:      	ldr	w8, [sp, #0x134]
+   4efe4:      	ldr	w9, [sp, #0x58]
+   4efe8:      	cmp	w8, w9
+   4efec:      	b.ne	0x4f21c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x648>
+   4eff0:      	ldrb	w8, [sp, #0x138]
+   4eff4:      	tbz	w8, #0x0, 0x4f21c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x648>
+   4eff8:      	add	x8, sp, #0x45
+   4effc:      	ldur	x2, [x8, #0xff]
+   4f000:      	add	x8, sp, #0x3d
+   4f004:      	ldur	x1, [x8, #0xff]
+   4f008:      	mov	x0, #0x100000001        ; =4294967297
+   4f00c:      	bl	0x4f00c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x438>
+		000000000004f00c:  ARM64_RELOC_BRANCH26	_$s6GiftUI4RectV8containsySbAA5PointVF
+   4f010:      	tbz	w0, #0x0, 0x4f220 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x64c>
+   4f014:      	add	x0, sp, #0x64
+   4f018:      	bl	0x4f018 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x444>
+		000000000004f018:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1715
+   4f01c:      	b.eq	0x4f258 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x684>
+   4f020:      	add	x0, sp, #0xbca
+   4f024:      	add	x1, sp, #0xbca
+   4f028:      	bl	0x4f028 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x454>
+		000000000004f028:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+   4f02c:      	tbz	w0, #0x0, 0x4f224 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x650>
+   4f030:      	cmp	w24, #0x6
+   4f034:      	b.ne	0x4ec08 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x34>
+   4f038:      	add	x20, x19, #0x60
+   4f03c:      	mov	w0, #0x20002            ; =131074
+   4f040:      	mov	x1, x21
+   4f044:      	bl	0x4f044 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x470>
+		000000000004f044:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14beginCandidate6limitsAA0C5ErrorOSgAA0C6LimitsV_tF
+   4f048:      	bl	0x4f048 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x474>
+		000000000004f048:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4f04c:      	b.ne	0x4f27c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x6a8>
+   4f050:      	mov	w23, #0x0               ; =0
+   4f054:      	str	wzr, [x19, #0x250]
+   4f058:      	mov	w8, #0x901              ; =2305
+   4f05c:      	strh	w8, [x19, #0x258]
+   4f060:      	mov	w21, #0x2               ; =2
+   4f064:      	adrp	x22, 0x4f000 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x42c>
+		000000000004f064:  ARM64_RELOC_PAGE21	_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGMD
+   4f068:      	add	x22, x22, #0x0
+		000000000004f068:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGMD
+   4f06c:      	mov	w26, #0x1               ; =1
+   4f070:      	mov	w27, #0x14              ; =20
+   4f074:      	bl	0x4f074 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4a0>
+		000000000004f074:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1216
+   4f078:      	add	x20, sp, #0x830
+   4f07c:      	bl	0x4f07c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4a8>
+		000000000004f07c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_848
+   4f080:      	tbz	w0, #0x0, 0x4f228 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x654>
+   4f084:      	orr	w28, w21, w23, lsl #8
+   4f088:      	bl	0x4f088 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4b4>
+		000000000004f088:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1866
+   4f08c:      	tbz	w0, #0x0, 0x4f22c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x658>
+   4f090:      	add	x20, sp, #0x830
+   4f094:      	bl	0x4f094 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4c0>
+		000000000004f094:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_892
+   4f098:      	tbz	w0, #0x0, 0x4f230 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x65c>
+   4f09c:      	add	w25, w23, #0x1
+   4f0a0:      	add	x0, sp, #0xafc
+   4f0a4:      	add	x1, sp, #0x830
+   4f0a8:      	bl	0x4f0a8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4d4>
+		000000000004f0a8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_593
+   4f0ac:      	bl	0x4f0ac <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4d8>
+		000000000004f0ac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1072
+   4f0b0:      	mov	x24, x0
+   4f0b4:      	str	x0, [sp, #0x8]
+   4f0b8:      	str	w26, [sp]
+   4f0bc:      	add	x0, sp, #0xafc
+   4f0c0:      	bl	0x4f0c0 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4ec>
+		000000000004f0c0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_498
+   4f0c4:      	mov	x6, x23
+   4f0c8:      	mov	x7, x25
+   4f0cc:      	bl	0x4f0cc <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4f8>
+		000000000004f0cc:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF
+   4f0d0:      	and	w8, w0, #0xff
+   4f0d4:      	cmp	w8, #0xa
+   4f0d8:      	b.ne	0x4f12c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x558>
+   4f0dc:      	bl	0x4f0dc <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x508>
+		000000000004f0dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1216
+   4f0e0:      	add	x20, sp, #0x830
+   4f0e4:      	bl	0x4f0e4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x510>
+		000000000004f0e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_848
+   4f0e8:      	tbz	w0, #0x0, 0x4f234 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x660>
+   4f0ec:      	bl	0x4f0ec <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x518>
+		000000000004f0ec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1866
+   4f0f0:      	tbz	w0, #0x0, 0x4f238 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x664>
+   4f0f4:      	add	x20, sp, #0x830
+   4f0f8:      	bl	0x4f0f8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x524>
+		000000000004f0f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_892
+   4f0fc:      	tbz	w0, #0x0, 0x4f23c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x668>
+   4f100:      	orr	w20, w23, w27
+   4f104:      	add	x0, sp, #0xa2e
+   4f108:      	add	x1, sp, #0x830
+   4f10c:      	bl	0x4f10c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x538>
+		000000000004f10c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_593
+   4f110:      	and	w0, w20, #0xffff
+   4f114:      	add	x1, sp, #0xa2e
+   4f118:      	add	x20, x19, #0x60
+   4f11c:      	mov	x2, x24
+   4f120:      	bl	0x4f120 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x54c>
+		000000000004f120:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionH0V_0A14UISemanticCore24SemanticCompleteIdentityVtF
+   4f124:      	bl	0x4f124 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x550>
+		000000000004f124:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4f128:      	b.ne	0x4f278 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x6a4>
+   4f12c:      	and	w8, w25, #0xffff
+   4f130:      	mov	w23, #0x1               ; =1
+   4f134:      	cmp	w8, #0x2
+   4f138:      	b.ne	0x4f074 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x4a0>
+   4f13c:      	add	x8, sp, #0x762
+   4f140:      	mov	w0, #0x2                ; =2
+   4f144:      	bl	0x4f144 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x570>
+		000000000004f144:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF
+   4f148:      	str	x24, [sp, #0x8]
+   4f14c:      	str	w23, [sp]
+   4f150:      	add	x0, sp, #0x762
+   4f154:      	bl	0x4f154 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x580>
+		000000000004f154:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_498
+   4f158:      	mov	w6, #0x2                ; =2
+   4f15c:      	mov	w7, #0x3                ; =3
+   4f160:      	bl	0x4f160 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x58c>
+		000000000004f160:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF
+   4f164:      	sub	w8, w0, #0x9
+   4f168:      	and	w8, w8, #0xff
+   4f16c:      	cmp	w8, #0x2
+   4f170:      	b.lo	0x4f280 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x6ac>
+   4f174:      	tst	w0, #0xff
+   4f178:      	ldr	x1, [sp, #0x50]
+   4f17c:      	b.ne	0x4f248 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x674>
+   4f180:      	ldrb	w0, [x19, #0x259]
+   4f184:      	cmp	w0, #0x9
+   4f188:      	b.ne	0x4f1a0 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x5cc>
+   4f18c:      	add	x20, x19, #0x60
+   4f190:      	mov	x0, x1
+   4f194:      	bl	0x4f194 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x5c0>
+		000000000004f194:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE15finishCandidateAA0C5ErrorOSgyF
+   4f198:      	bl	0x4f198 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x5c4>
+		000000000004f198:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1506
+   4f19c:      	b.eq	0x4f288 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x6b4>
+   4f1a0:      	tst	w0, #0xff
+   4f1a4:      	b.ne	0x4f24c <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x678>
+   4f1a8:      	bl	0x4f1a8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x5d4>
+		000000000004f1a8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1871
+   4f1ac:      	str	wzr, [x19, #0x250]
+   4f1b0:      	mov	w8, #0x900              ; =2304
+   4f1b4:      	strh	w8, [x19, #0x258]
+   4f1b8:      	add	x0, sp, #0x830
+   4f1bc:      	add	x1, x19, #0x60
+   4f1c0:      	bl	0x4f1c0 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x5ec>
+		000000000004f1c0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1160
+   4f1c4:      	add	x20, sp, #0x830
+   4f1c8:      	bl	0x4f1c8 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x5f4>
+		000000000004f1c8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE20committedRecordCounts6UInt16Vvg17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AG0k9CommittedO0AILLVAG0k3HitO0AILLVTg5
+   4f1cc:      	and	w8, w0, #0xffff
+   4f1d0:      	cmp	w8, #0x2
+   4f1d4:      	b.ne	0x4f250 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x67c>
+   4f1d8:      	ldur	x8, [x29, #-0x60]
+   4f1dc:      	bl	0x4f1dc <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x608>
+		000000000004f1dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+   4f1e0:      	b.ne	0x4f284 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x6b0>
+   4f1e4:      	mov	w0, #0x21               ; =33
+   4f1e8:      	add	sp, sp, #0x1, lsl #12   ; =0x1000
+   4f1ec:      	add	sp, sp, #0x6c0
+   4f1f0:      	ldp	x29, x30, [sp, #0x50]
+   4f1f4:      	b	0x4f1f4 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x620>
+		000000000004f1f4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_14
+   4f1f8:      	brk	#0x1
+   4f1fc:      	brk	#0x1
+   4f200:      	brk	#0x1
+   4f204:      	brk	#0x1
+   4f208:      	brk	#0x1
+   4f20c:      	brk	#0x1
+   4f210:      	brk	#0x1
+   4f214:      	brk	#0x1
+   4f218:      	brk	#0x1
+   4f21c:      	brk	#0x1
+   4f220:      	brk	#0x1
+   4f224:      	brk	#0x1
+   4f228:      	brk	#0x1
+   4f22c:      	brk	#0x1
+   4f230:      	brk	#0x1
+   4f234:      	brk	#0x1
+   4f238:      	brk	#0x1
+   4f23c:      	brk	#0x1
+   4f240:      	brk	#0x1
+   4f244:      	brk	#0x1
+   4f248:      	brk	#0x1
+   4f24c:      	brk	#0x1
+   4f250:      	brk	#0x1
+   4f254:      	brk	#0x1
+   4f258:      	brk	#0x1
+   4f25c:      	brk	#0x1
+   4f260:      	brk	#0x1
+   4f264:      	brk	#0x1
+   4f268:      	brk	#0x1
+   4f26c:      	brk	#0x1
+   4f270:      	brk	#0x1
+   4f274:      	brk	#0x1
+   4f278:      	brk	#0x1
+   4f27c:      	brk	#0x1
+   4f280:      	brk	#0x1
+   4f284:      	bl	0x4f284 <_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF+0x6b0>
+		000000000004f284:  ARM64_RELOC_BRANCH26	___stack_chk_fail
+   4f288:      	brk	#0x1

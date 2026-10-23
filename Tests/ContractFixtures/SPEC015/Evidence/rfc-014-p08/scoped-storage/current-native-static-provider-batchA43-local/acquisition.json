@@ -1,0 +1,146 @@
+{
+  "started_utc": "2026-10-23T02:49:13.291989+00:00",
+  "deadline_utc": "2026-10-23T04:49:13.291989+00:00",
+  "orientation_processing_upper": 1048576,
+  "orientation_transcript_upper": 65536,
+  "orientation_exact_aggregate_certified": false,
+  "scope": "Exact installed Swift getType/getWitness providers; metadata and opaque code hashes only before authentication",
+  "extents": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/counter-static-resource-v1",
+      "offset": 0,
+      "bytes": 6625096,
+      "sha256": "bd7c518d2b7b84b16a55b8725b5ebdd25a6869b2d3796743fa5785d9b1ac0a55",
+      "file_bytes": 6625096,
+      "device": 16777234,
+      "inode": 30181435,
+      "mtime_ns": 1792718392599803318,
+      "role": "current-executable-auth-and-import-metadata",
+      "vmaddr": null
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map",
+      "offset": 0,
+      "bytes": 1338214,
+      "sha256": "9486c0f76e880803a785925771d601d064fee8a7bec4279bd54c059db92adddd",
+      "file_bytes": 1338214,
+      "device": 16777230,
+      "inode": 575306,
+      "mtime_ns": 1786589515000000000,
+      "role": "exact-installed-cache-image-map",
+      "vmaddr": null
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331116544,
+      "bytes": 32,
+      "sha256": "e5220004d3ac4e32b374e3651f50adac83acf81a939b08e1e91b48e11d55227b",
+      "file_bytes": 1715355648,
+      "device": 16777230,
+      "inode": 575280,
+      "mtime_ns": 1786589515000000000,
+      "role": "image-header",
+      "vmaddr": 6774124544
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331116544,
+      "bytes": 5768,
+      "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+      "file_bytes": 1715355648,
+      "device": 16777230,
+      "inode": 575280,
+      "mtime_ns": 1786589515000000000,
+      "role": "image-load-commands",
+      "vmaddr": 6774124544
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331129504,
+      "bytes": 4836300,
+      "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+      "file_bytes": 1715355648,
+      "device": 16777230,
+      "inode": 575280,
+      "mtime_ns": 1786589515000000000,
+      "role": "__TEXT",
+      "vmaddr": 6774137504
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 18608160,
+      "bytes": 430488,
+      "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+      "file_bytes": 601341952,
+      "device": 16777230,
+      "inode": 575286,
+      "mtime_ns": 1786589515000000000,
+      "role": "exports-trie",
+      "vmaddr": 8601628704
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 5313112,
+      "bytes": 28160,
+      "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+      "file_bytes": 601341952,
+      "device": 16777230,
+      "inode": 575286,
+      "mtime_ns": 1786589515000000000,
+      "role": "function-starts",
+      "vmaddr": 8588333656
+    }
+  ],
+  "requests": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/acquire-swift-metadata.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/acquire-swift-metadata.py",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "processing": 41065114,
+  "transcript": 66611,
+  "current_imports": [
+    {
+      "symbol": "_swift_getTypeByMangledNameInContext2",
+      "ordinal": 3,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "nlist_index": 35960,
+      "n_desc": 768
+    },
+    {
+      "symbol": "_swift_getWitnessTable",
+      "ordinal": 3,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "nlist_index": 35962,
+      "n_desc": 768
+    }
+  ],
+  "current_rpaths": [],
+  "executable": {
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/counter-static-resource-v1",
+    "offset": 0,
+    "bytes": 6625096,
+    "sha256": "bd7c518d2b7b84b16a55b8725b5ebdd25a6869b2d3796743fa5785d9b1ac0a55",
+    "file_bytes": 6625096,
+    "device": 16777234,
+    "inode": 30181435,
+    "mtime_ns": 1792718392599803318,
+    "role": "current-executable-auth-and-import-metadata",
+    "vmaddr": null
+  },
+  "declared_provider": "/usr/lib/swift/libswiftCore.dylib",
+  "acquisition_complete_utc": "2026-10-23T02:54:43.048115+00:00",
+  "provider_identity": {
+    "uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+    "identity": {
+      "name": "/usr/lib/swift/libswiftCore.dylib",
+      "command": 13,
+      "current_version": 0,
+      "compatibility_version": 0
+    },
+    "text_bytes": 4836300
+  }
+}

@@ -1,0 +1,99 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/swift-6.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000193cde524 <__text>:
+193cde524:     	pacibsp
+193cde528:     	sub	sp, sp, #0x40
+193cde52c:     	stp	x29, x30, [sp, #0x30]
+193cde530:     	add	x29, sp, #0x30
+193cde534:     	ldr	x8, [x0]
+193cde538:     	adrp	x9, 0x1ed054000 <__text+0x59375adc>
+193cde53c:     	add	x9, x9, #0x338
+193cde540:     	ldaprb	w9, [x9]
+193cde544:     	tbz	w9, #0x0, 0x193cde670 <__text+0x14c>
+193cde548:     	lsr	x9, x8, #32
+193cde54c:     	adrp	x10, 0x1ed053000 <__text+0x59374adc>
+193cde550:     	ldr	x10, [x10, #0x170]
+193cde554:     	ubfiz	x8, x8, #3, #32
+193cde558:     	add	x8, x10, x8
+193cde55c:     	eor	x8, x8, x9
+193cde560:     	mov	x10, #0x2d69            ; =11625
+193cde564:     	movk	x10, #0xeb38, lsl #16
+193cde568:     	movk	x10, #0xea08, lsl #32
+193cde56c:     	movk	x10, #0x9ddf, lsl #48
+193cde570:     	mul	x8, x8, x10
+193cde574:     	eor	x9, x9, x8, lsr #47
+193cde578:     	eor	x8, x9, x8
+193cde57c:     	mul	x8, x8, x10
+193cde580:     	eor	x8, x8, x8, lsr #47
+193cde584:     	mov	x9, #0x2d69             ; =11625
+193cde588:     	movk	x9, #0xeb38, lsl #16
+193cde58c:     	movk	x9, #0xea08, lsl #32
+193cde590:     	movk	x9, #0x1ddf, lsl #48
+193cde594:     	mul	x11, x8, x9
+193cde598:     	and	x10, x1, #0xfffffffffffffffc
+193cde59c:     	mov	w8, #0x4                ; =4
+193cde5a0:     	ands	x12, x1, #0x3
+193cde5a4:     	b.eq	0x193cde5b0 <__text+0x8c>
+193cde5a8:     	cbz	x10, 0x193cde5b0 <__text+0x8c>
+193cde5ac:     	ldrb	w8, [x10]
+193cde5b0:     	mov	x9, #-0x1               ; =-1
+193cde5b4:     	lsl	x8, x9, x8
+193cde5b8:     	mvn	x8, x8
+193cde5bc:     	and	w9, w1, #0x3
+193cde5c0:     	cmp	x12, #0x0
+193cde5c4:     	csel	x10, xzr, x10, eq
+193cde5c8:     	b	0x193cde5d0 <__text+0xac>
+193cde5cc:     	add	x11, x11, #0x1
+193cde5d0:     	and	x11, x11, x8
+193cde5d4:     	cmp	x11, #0x1
+193cde5d8:     	csinc	x11, x11, xzr, hi
+193cde5dc:     	cmp	w9, #0x1
+193cde5e0:     	b.gt	0x193cde5fc <__text+0xd8>
+193cde5e4:     	cbnz	w9, 0x193cde614 <__text+0xf0>
+193cde5e8:     	lsl	x12, x11, #2
+193cde5ec:     	lsr	x12, x1, x12
+193cde5f0:     	and	w12, w12, #0xf
+193cde5f4:     	cbnz	w12, 0x193cde630 <__text+0x10c>
+193cde5f8:     	b	0x193cde65c <__text+0x138>
+193cde5fc:     	cmp	w9, #0x2
+193cde600:     	b.ne	0x193cde624 <__text+0x100>
+193cde604:     	add	x12, x10, x11, lsl #1
+193cde608:     	ldaprh	w12, [x12]
+193cde60c:     	cbnz	w12, 0x193cde630 <__text+0x10c>
+193cde610:     	b	0x193cde65c <__text+0x138>
+193cde614:     	add	x12, x10, x11
+193cde618:     	ldaprb	w12, [x12]
+193cde61c:     	cbnz	w12, 0x193cde630 <__text+0x10c>
+193cde620:     	b	0x193cde65c <__text+0x138>
+193cde624:     	add	x12, x10, x11, lsl #2
+193cde628:     	ldapr	w12, [x12]
+193cde62c:     	cbz	w12, 0x193cde65c <__text+0x138>
+193cde630:     	sub	w12, w12, #0x1
+193cde634:     	cmp	x2, x12
+193cde638:     	b.ls	0x193cde5cc <__text+0xa8>
+193cde63c:     	ldr	x13, [x3, x12, lsl #3]
+193cde640:     	ldr	x14, [x0]
+193cde644:     	ldr	x13, [x13]
+193cde648:     	cmp	x14, x13
+193cde64c:     	b.ne	0x193cde5cc <__text+0xa8>
+193cde650:     	mov	x1, #0x0                ; =0
+193cde654:     	add	x0, x3, x12, lsl #3
+193cde658:     	b	0x193cde664 <__text+0x140>
+193cde65c:     	mov	x0, #0x0                ; =0
+193cde660:     	mov	w1, w11
+193cde664:     	ldp	x29, x30, [sp, #0x30]
+193cde668:     	add	sp, sp, #0x40
+193cde66c:     	retab
+193cde670:     	stur	x3, [x29, #-0x8]
+193cde674:     	str	x2, [sp, #0x10]
+193cde678:     	stur	x1, [x29, #-0x10]
+193cde67c:     	str	x0, [sp, #0x8]
+193cde680:     	str	x8, [sp, #0x18]
+193cde684:     	bl	0x1940edc70 <__text+0x40f74c>
+193cde688:     	ldp	x2, x8, [sp, #0x10]
+193cde68c:     	ldr	x0, [sp, #0x8]
+193cde690:     	ldp	x1, x3, [x29, #-0x10]
+193cde694:     	b	0x193cde548 <__text+0x24>

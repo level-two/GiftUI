@@ -1,0 +1,7 @@
+Tests/GiftUIInteractionTests/InteractionValueTests.swift:3:8: error: no such module 'XCTest'
+  1 | import GiftUI
+  2 | import GiftUIExecution
+  3 | import XCTest
+    |        `- error: no such module 'XCTest'
+  4 | 
+  5 | @testable import GiftUIInteraction

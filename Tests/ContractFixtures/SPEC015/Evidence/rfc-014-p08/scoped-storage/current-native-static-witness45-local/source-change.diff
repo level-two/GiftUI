@@ -1,0 +1,56 @@
+diff --git a/Sources/GiftUIInteraction/InteractionState.swift b/Sources/GiftUIInteraction/InteractionState.swift
+index 9ce7fdfe..3ba55711 100644
+--- a/Sources/GiftUIInteraction/InteractionState.swift
++++ b/Sources/GiftUIInteraction/InteractionState.swift
+@@ -414,7 +414,7 @@ where
+         _ captured: CapturedAction<Identity>,
+         at point: Point
+     ) -> PointerGestureOutcome<Identity> {
+-        guard capturedRecord(captured, contains: point) != nil else {
++        guard case .some = capturedRecord(captured, contains: point) else {
+             return .cancelled
+         }
+         return .continued(captured)
+@@ -439,7 +439,7 @@ where
+         _ captured: CapturedAction<Identity>,
+         at point: Point
+     ) -> PointerGestureOutcome<Identity> {
+-        guard capturedRecord(captured, contains: point) != nil else {
++        guard case .some = capturedRecord(captured, contains: point) else {
+             return .cancelled
+         }
+         return .activationAdmitted(captured)
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+index 793d38f1..13b2ca65 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+@@ -3138,8 +3138,27 @@ extension P08StorageSession {
+             precondition(interaction.beginCandidate(limits: limits) == nil)
+             precondition(interaction.finishCandidate() == nil)
+             interaction.resolveCandidate(.discard)
+-            precondition(interaction.committedRecord(for: key(0)) == before && interaction.committedRevision == revision)
+-            precondition(interaction.resolveUp(captured, at: .init(x: 1, y: 1)) == .activationAdmitted(captured))
++            // Keep the complete record oracle concrete: generic Optional/record
++            // equality otherwise requests a runtime Equatable witness here.
++            let afterDiscard = interaction.committedRecord(for: key(0))
++            let recordMatches: Bool
++            if let afterDiscard {
++                recordMatches = afterDiscard.identity == before.identity
++                    && afterDiscard.generation == before.generation
++                    && afterDiscard.isEnabled == before.isEnabled
++                    && afterDiscard.hitBounds == before.hitBounds
++                    && afterDiscard.paintOrder == before.paintOrder
++                    && afterDiscard.action == before.action
++                    && afterDiscard.targetGeneration == before.targetGeneration
++            } else { recordMatches = false }
++            precondition(recordMatches && interaction.committedRevision == revision)
++            let outcome = interaction.resolveUp(captured, at: .init(x: 1, y: 1))
++            let activationMatches: Bool
++            if case .activationAdmitted(let admitted) = outcome {
++                activationMatches = admitted.identity == captured.identity
++                    && admitted.generation == captured.generation
++            } else { activationMatches = false }
++            precondition(activationMatches)
+             checks += 5
+         }
+         // First-excess poisons the candidate; asking to commit cannot replace it.

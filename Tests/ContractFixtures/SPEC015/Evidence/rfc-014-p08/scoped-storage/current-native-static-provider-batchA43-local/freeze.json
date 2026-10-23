@@ -1,0 +1,80 @@
+{
+  "started_utc": "2026-10-23T02:49:13.291989+00:00",
+  "HEAD": "436d28bb75b69084294aacd968cd6ea6563dca14",
+  "helper_sha256": "6a47fc15d8d8aa8deec64ccc4324aa976b560ad9999ddc2795cc25ca0fdf9b3f",
+  "inputs": {
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/rows.json",
+      "bytes": 12819,
+      "sha256": "3b8a5ddc174af7cc80a22c644f6e9a6fa606f6026cd9dd237565ec14845b1f74",
+      "role": "Reviewed A42 exact generic/Static and initial-cell lemma; no source reanalysis"
+    },
+    "provider_descriptor": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/provider-slices.json",
+      "bytes": 26116,
+      "sha256": "30a33f816141c4218747dab8f5d6eb0decc063d7e339f9ed20193e22a53f18eb",
+      "role": "SEMANTIC exact installed Swift provider metadata and opaque extent identities"
+    },
+    "decode_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/decode-swift-group.py",
+      "bytes": 6589,
+      "sha256": "5218bc5af73f2eadc52202fe35ae4fd761074817a0556f3c20b0e30523db9a0d",
+      "role": "Frozen task-local specific provider decoder"
+    },
+    "view_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/view-selected.py",
+      "bytes": 1973,
+      "sha256": "6fe1f59c9ea6eeba842d7941ddd63c25e562d8c4f4dae854ba10b794cb9ee4c2",
+      "role": "Unchanged bounded numbered page method"
+    },
+    "acquisition": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA43-local/acquisition.json",
+      "bytes": 5268,
+      "sha256": "e6961e86b8f99299c2238ff537db29b8b0f5c9e511eb24e4ed8b09644394d638",
+      "role": "Actual acquisition start, extents, processing and limitations"
+    },
+    "object": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+      "bytes": 2605520,
+      "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de",
+      "role": "SEMANTIC selected exact local bodies/metadata; accepted currentfull baseline"
+    },
+    "prior_preservation": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/preservation.json",
+      "bytes": 7878,
+      "sha256": "d656781794e6f086e9f4e5c377d568512024877e9a71e4e92202ed050e78fa2e",
+      "role": "Accepted exact current baseline and reused original-auth proof"
+    },
+    "prior_review": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-result/review.md",
+      "bytes": 4958,
+      "sha256": "cbbbbf5e14fbe1aa53559c11b5fbfb92b4e73feaa57001a818c312419f9e3743",
+      "role": "Accepted scoped proof, recording qualification remains false"
+    },
+    "current_result": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/result.json",
+      "bytes": 8566019,
+      "sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8",
+      "role": "AUTH accepted current producer"
+    },
+    "executable": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/counter-static-resource-v1",
+      "bytes": 6625096,
+      "sha256": "bd7c518d2b7b84b16a55b8725b5ebdd25a6869b2d3796743fa5785d9b1ac0a55",
+      "role": "SEMANTIC exact import identity and entry recipe"
+    },
+    "tool_auth": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "role": "AUTH installed known-working decoder identity"
+    }
+  },
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+  },
+  "setup_processing_upper": 61024502,
+  "reuse": "A42 reviewed source variant/type/cache lemmas, Entry40 exact current full baseline; original79/48/6 auth and56/1892/3 roots preserved by accepted prior proofs. No original corpus replay or live-state substitution. Acquisition/orientation pre-emission aggregate not exactly certified; known upper retained."
+}
