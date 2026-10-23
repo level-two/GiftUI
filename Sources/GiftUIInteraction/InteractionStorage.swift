@@ -4,13 +4,39 @@ import GiftUIExecution
 @usableFromInline
 package struct InteractionCandidateRecord<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
+    @usableFromInline
     package let identity: Identity
+    @usableFromInline
     package var generation: ActionGeneration?
+    @usableFromInline
     package let isEnabled: Bool
+    @usableFromInline
     package let hitBounds: Rect
+    @usableFromInline
     package let paintOrder: UInt16
+    @usableFromInline
     package let action: BoundedApplicationAction
+    @usableFromInline
     package let targetGeneration: ObservableTargetGeneration
+
+    @inlinable
+    package init(
+        identity: Identity,
+        generation: ActionGeneration?,
+        isEnabled: Bool,
+        hitBounds: Rect,
+        paintOrder: UInt16,
+        action: BoundedApplicationAction,
+        targetGeneration: ObservableTargetGeneration
+    ) {
+        self.identity = identity
+        self.generation = generation
+        self.isEnabled = isEnabled
+        self.hitBounds = hitBounds
+        self.paintOrder = paintOrder
+        self.action = action
+        self.targetGeneration = targetGeneration
+    }
 }
 
 @usableFromInline
@@ -22,6 +48,13 @@ where Identity: Equatable & Sendable {
     package let bounds: Rect
     @usableFromInline
     package let paintOrder: UInt16
+
+    @inlinable
+    package init(identity: Identity, bounds: Rect, paintOrder: UInt16) {
+        self.identity = identity
+        self.bounds = bounds
+        self.paintOrder = paintOrder
+    }
 }
 
 @usableFromInline

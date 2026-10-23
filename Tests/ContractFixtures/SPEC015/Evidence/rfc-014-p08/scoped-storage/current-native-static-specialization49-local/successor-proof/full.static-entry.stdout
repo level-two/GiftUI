@@ -1,0 +1,50 @@
+
+.build/contracts/p08-counter-8vqb1sq8/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000097e60 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF>:
+   97e60:      	stp	x20, x19, [sp, #-0x20]!
+   97e64:      	stp	x29, x30, [sp, #0x10]
+   97e68:      	add	x29, sp, #0x10
+   97e6c:      	sub	sp, sp, #0x1e, lsl #12  ; =0x1e000
+   97e70:      	sub	sp, sp, #0x450
+   97e74:      	bl	0x97e74 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x14>
+		0000000000097e74:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_183
+   97e78:      	stur	x8, [x29, #-0x18]
+   97e7c:      	bl	0x97e7c <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x1c>
+		0000000000097e7c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime23p08CheckGraphDefinition33_480B1BD841D053AE4FCDC18507668536LLyyF
+   97e80:      	add	x19, sp, #0x80
+   97e84:      	bl	0x97e84 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x24>
+		0000000000097e84:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_857
+   97e88:      	add	x0, sp, #0xc
+   97e8c:      	add	x1, sp, #0x80
+   97e90:      	bl	0x97e90 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x30>
+		0000000000097e90:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_615
+   97e94:      	add	x0, x19, #0x78
+   97e98:      	bl	0x97e98 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x38>
+		0000000000097e98:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1229
+   97e9c:      	mov	x19, x0
+   97ea0:      	mov	x3, #0x0                ; =0
+   97ea4:      	bl	0x97ea4 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x44>
+		0000000000097ea4:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime34counterExerciseStaticScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF
+   97ea8:      	adds	x19, x19, x0
+   97eac:      	b.vs	0x97edc <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x7c>
+   97eb0:      	mov	x0, #0x0                ; =0
+   97eb4:      	bl	0x97eb4 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x54>
+		0000000000097eb4:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF
+   97eb8:      	adds	x0, x19, x0
+   97ebc:      	b.vs	0x97ee0 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x80>
+   97ec0:      	ldur	x8, [x29, #-0x18]
+   97ec4:      	bl	0x97ec4 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x64>
+		0000000000097ec4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+   97ec8:      	b.ne	0x97ee4 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x84>
+   97ecc:      	add	sp, sp, #0x1e, lsl #12  ; =0x1e000
+   97ed0:      	add	sp, sp, #0x450
+   97ed4:      	ldp	x29, x30, [sp, #0x10]
+   97ed8:      	b	0x97ed8 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x78>
+		0000000000097ed8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_916
+   97edc:      	brk	#0x1
+   97ee0:      	brk	#0x1
+   97ee4:      	bl	0x97ee4 <_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF+0x84>
+		0000000000097ee4:  ARM64_RELOC_BRANCH26	___stack_chk_fail

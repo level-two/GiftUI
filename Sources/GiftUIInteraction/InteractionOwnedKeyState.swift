@@ -21,8 +21,10 @@ where
     internal var state: InteractionState<Candidate, Committed, Hits>
     private let maximumComponentsPerKey: UInt16
     private let maximumComponents: UInt32
-    private var configuredComponentsPerKey: UInt16
-    private var configuredComponents: UInt32
+    @usableFromInline
+    internal var configuredComponentsPerKey: UInt16
+    @usableFromInline
+    internal var configuredComponents: UInt32
     @usableFromInline
     internal var candidateComponents: UInt32 = 0
     @usableFromInline
@@ -59,6 +61,7 @@ where
         return true
     }
 
+    @inlinable
     package mutating func beginCandidate(limits: InteractionLimits) -> InteractionError? {
         if let error = state.beginCandidate(limits: limits) { return error }
         candidateComponents = 0
@@ -66,6 +69,7 @@ where
         isStaging = true
         return nil
     }
+    @inlinable
     package mutating func rejectCandidate(_ error: InteractionError)
         -> InteractionCandidateAppendResult
     {
@@ -90,6 +94,7 @@ where
             identity: identity, isEnabled: isEnabled, bounds: bounds, clip: clip,
             paintOrder: paintOrder, action: action, targetGeneration: targetGeneration)
     }
+    @inlinable
     @inline(__always)
     package mutating func append(
         identity: Identity, isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,
@@ -113,6 +118,7 @@ where
             return result
         }
     }
+    @inlinable
     package borrowing func appendFailure(
         identity: Identity, bounds: Rect, clip: Rect, paintOrder: UInt16
     ) -> InteractionError? {
@@ -140,6 +146,7 @@ where
         return InteractionFailurePrecedence.select(from: failures)
     }
 
+    @inlinable
     package mutating func assignGeneration(_ generation: ActionGeneration, to identity: Identity)
         -> InteractionError?
     {
@@ -150,6 +157,7 @@ where
         }
         return nil
     }
+    @inlinable
     package mutating func finishCandidate() -> InteractionError? {
         if let failure { return failure }
         if let error = state.finishCandidate() {

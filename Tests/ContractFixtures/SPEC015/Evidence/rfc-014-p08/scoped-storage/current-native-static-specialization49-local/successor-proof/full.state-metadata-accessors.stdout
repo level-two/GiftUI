@@ -1,0 +1,20 @@
+
+.build/contracts/p08-counter-8vqb1sq8/GiftUIInteraction.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000006e54 <_$s17GiftUIInteraction16InteractionStateVMa>:
+    6e54:      	adrp	x2, 0x6000 <_$s17GiftUIInteraction16InteractionStateVyxq_q0_GAA0C15GestureResolverAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlAaEP11resolveDown2atAA07PointerE7OutcomeOy8IdentityQzG0A2UI5PointV_tFTW+0x534>
+		0000000000006e54:  ARM64_RELOC_PAGE21	_$s17GiftUIInteraction16InteractionStateVMn
+    6e58:      	add	x2, x2, #0x0
+		0000000000006e58:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIInteraction16InteractionStateVMn
+    6e5c:      	b	0x6e5c <_$s17GiftUIInteraction16InteractionStateVMa+0x8>
+		0000000000006e5c:  ARM64_RELOC_BRANCH26	_swift_getGenericMetadata
+
+0000000000006e60 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVMa>:
+    6e60:      	adrp	x2, 0x6000 <_$s17GiftUIInteraction16InteractionStateVyxq_q0_GAA0C15GestureResolverAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlAaEP11resolveDown2atAA07PointerE7OutcomeOy8IdentityQzG0A2UI5PointV_tFTW+0x534>
+		0000000000006e60:  ARM64_RELOC_PAGE21	_$s17GiftUIInteraction24InteractionOwnedKeyStateVMn
+    6e64:      	add	x2, x2, #0x0
+		0000000000006e64:  ARM64_RELOC_PAGEOFF12	_$s17GiftUIInteraction24InteractionOwnedKeyStateVMn
+    6e68:      	b	0x6e68 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVMa+0x8>
+		0000000000006e68:  ARM64_RELOC_BRANCH26	_swift_getGenericMetadata

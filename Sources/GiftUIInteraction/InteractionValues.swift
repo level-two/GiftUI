@@ -12,7 +12,9 @@ package struct BoundedApplicationAction: Equatable, Hashable, Sendable {
 
 @usableFromInline
 package struct InteractionLimits: Equatable, Sendable {
+    @usableFromInline
     package let maximumActions: UInt16
+    @usableFromInline
     package let maximumHitRegions: UInt16
 
     package init?(
@@ -36,10 +38,12 @@ where Identity: Equatable & Sendable {
     @usableFromInline package let isEnabled: Bool
     @usableFromInline
     package let hitBounds: Rect
+    @usableFromInline
     package let paintOrder: UInt16
     @usableFromInline package let action: BoundedApplicationAction
     @usableFromInline package let targetGeneration: ObservableTargetGeneration
 
+    @inlinable
     package init(
         identity: Identity,
         generation: ActionGeneration,
@@ -78,6 +82,7 @@ package enum InteractionCandidateDisposition: Equatable, Sendable {
     case discard
 }
 
+@usableFromInline
 package enum InteractionCandidateAppendResult: Equatable, Sendable {
     case preserved
     case requiresGeneration

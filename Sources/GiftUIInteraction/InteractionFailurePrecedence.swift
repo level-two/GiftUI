@@ -1,8 +1,11 @@
+@usableFromInline
 package struct InteractionVisibleFailures: Equatable, Sendable {
     private var rawValue: UInt16 = 0
 
+    @usableFromInline
     package init() {}
 
+    @usableFromInline
     package mutating func insert(_ error: InteractionError) {
         rawValue |= UInt16(1) << UInt16(error.rawValue)
     }
@@ -12,7 +15,9 @@ package struct InteractionVisibleFailures: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum InteractionFailurePrecedence {
+    @usableFromInline
     package static func select(
         from failures: borrowing InteractionVisibleFailures
     ) -> InteractionError? {

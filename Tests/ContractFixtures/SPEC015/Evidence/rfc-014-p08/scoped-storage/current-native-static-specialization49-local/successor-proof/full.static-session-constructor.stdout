@@ -1,0 +1,170 @@
+
+.build/contracts/p08-counter-8vqb1sq8/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000001b64c <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF>:
+   1b64c:      	mov	x9, x30
+   1b650:      	bl	0x1b650 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x4>
+		000000000001b650:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1029
+   1b654:      	mov	x30, x9
+   1b658:      	stp	x29, x30, [sp, #0x50]
+   1b65c:      	add	x29, sp, #0x50
+   1b660:      	sub	sp, sp, #0x850
+   1b664:      	stp	x6, x7, [sp, #0x38]
+   1b668:      	stp	x4, x5, [sp, #0x28]
+   1b66c:      	stp	x2, x3, [sp, #0x18]
+   1b670:      	mov	x19, x8
+   1b674:      	ldrh	w8, [x29, #0xa0]
+   1b678:      	ldp	x16, x13, [x29, #0x58]
+   1b67c:      	ldr	x10, [x29, #0xa8]
+   1b680:      	add	x9, sp, #0x460
+   1b684:      	ldp	x2, x20, [x29, #0x48]
+   1b688:      	ldp	x12, x3, [x29, #0x68]
+   1b68c:      	ldp	x4, x21, [x29, #0x78]
+   1b690:      	ldp	x14, x11, [x29, #0x88]
+   1b694:      	ldr	x5, [x29, #0x98]
+   1b698:      	lsr	x6, x5, #16
+   1b69c:      	lsr	x7, x5, #32
+   1b6a0:      	lsr	x15, x5, #48
+   1b6a4:      	ldrb	w17, [x11]
+   1b6a8:      	ldrb	w22, [x14]
+   1b6ac:      	ldrb	w28, [x21]
+   1b6b0:      	ldrb	w30, [x4]
+   1b6b4:      	ldrb	w23, [x3]
+   1b6b8:      	and	x23, x23, #0xf
+   1b6bc:      	and	x30, x30, #0xf
+   1b6c0:      	and	x28, x28, #0xf
+   1b6c4:      	and	x22, x22, #0xf
+   1b6c8:      	and	x17, x17, #0xf
+   1b6cc:      	str	x0, [sp, #0x460]
+   1b6d0:      	str	x1, [sp, #0x468]
+   1b6d4:      	str	x2, [sp, #0x470]
+   1b6d8:      	str	x23, [sp, #0x478]
+   1b6dc:      	ldur	q0, [x3, #0x8]
+   1b6e0:      	ldur	q1, [x3, #0x18]
+   1b6e4:      	stp	q0, q1, [x9, #0x20]
+   1b6e8:      	ldur	q0, [x3, #0x28]
+   1b6ec:      	str	q0, [x9, #0x40]
+   1b6f0:      	strh	w5, [sp, #0x4b0]
+   1b6f4:      	str	x0, [sp, #0x4b8]
+   1b6f8:      	str	x1, [sp, #0x4c0]
+   1b6fc:      	str	x10, [sp, #0x4c8]
+   1b700:      	str	x20, [sp, #0x4d0]
+   1b704:      	str	x30, [sp, #0x4d8]
+   1b708:      	ldur	q0, [x4, #0x8]
+   1b70c:      	ldur	q1, [x4, #0x18]
+   1b710:      	stp	q0, q1, [x9, #0x80]
+   1b714:      	ldur	q0, [x4, #0x28]
+   1b718:      	str	q0, [x9, #0xa0]
+   1b71c:      	strh	w6, [sp, #0x510]
+   1b720:      	str	x0, [sp, #0x518]
+   1b724:      	str	x1, [sp, #0x520]
+   1b728:      	str	x10, [sp, #0x528]
+   1b72c:      	str	x16, [sp, #0x530]
+   1b730:      	str	x28, [sp, #0x538]
+   1b734:      	ldur	q0, [x21, #0x8]
+   1b738:      	ldur	q1, [x21, #0x18]
+   1b73c:      	stp	q0, q1, [x9, #0xe0]
+   1b740:      	ldur	q0, [x21, #0x28]
+   1b744:      	str	q0, [x9, #0x100]
+   1b748:      	strh	w7, [sp, #0x570]
+   1b74c:      	str	x0, [sp, #0x578]
+   1b750:      	str	x1, [sp, #0x580]
+   1b754:      	str	x10, [sp, #0x588]
+   1b758:      	str	x13, [sp, #0x590]
+   1b75c:      	str	x22, [sp, #0x598]
+   1b760:      	ldur	q0, [x14, #0x8]
+   1b764:      	ldur	q1, [x14, #0x18]
+   1b768:      	stp	q0, q1, [x9, #0x140]
+   1b76c:      	ldur	q0, [x14, #0x28]
+   1b770:      	str	q0, [x9, #0x160]
+   1b774:      	strh	w15, [sp, #0x5d0]
+   1b778:      	stp	x0, x1, [sp, #0x48]
+   1b77c:      	str	x0, [sp, #0x5d8]
+   1b780:      	str	x1, [sp, #0x5e0]
+   1b784:      	str	x10, [sp, #0x5e8]
+   1b788:      	str	x12, [sp, #0x5f0]
+   1b78c:      	str	x17, [sp, #0x5f8]
+   1b790:      	ldur	q0, [x11, #0x8]
+   1b794:      	ldur	q1, [x11, #0x18]
+   1b798:      	stp	q0, q1, [x9, #0x1a0]
+   1b79c:      	ldur	q0, [x11, #0x28]
+   1b7a0:      	str	q0, [x9, #0x1c0]
+   1b7a4:      	strh	w8, [sp, #0x630]
+   1b7a8:      	add	x8, x9, #0x1d2
+   1b7ac:      	str	wzr, [x8]
+   1b7b0:      	mov	w8, #0x1                ; =1
+   1b7b4:      	strh	w8, [sp, #0x636]
+   1b7b8:      	mov	w9, #0x9                ; =9
+   1b7bc:      	strb	w9, [sp, #0x638]
+   1b7c0:      	str	wzr, [sp, #0x63c]
+   1b7c4:      	strb	w8, [sp, #0x640]
+   1b7c8:      	bl	0x1b7c8 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x17c>
+		000000000001b7c8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD17GiftUIInteraction011InteractionD13RecordStorageAAWl
+   1b7cc:      	mov	x28, x0
+   1b7d0:      	bl	0x1b7d0 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x184>
+		000000000001b7d0:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLVAD17GiftUIInteraction011InteractionD13RecordStorageAAWl
+   1b7d4:      	mov	x22, x0
+   1b7d8:      	bl	0x1b7d8 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x18c>
+		000000000001b7d8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLVAD17GiftUIInteraction011InteractionD13RegionStorageAAWl
+   1b7dc:      	bl	0x1b7dc <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x190>
+		000000000001b7dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1497
+   1b7e0:      	add	x8, sp, #0x260
+   1b7e4:      	add	x0, sp, #0x460
+   1b7e8:      	mov	w1, #0x18               ; =24
+   1b7ec:      	mov	w2, #0x30               ; =48
+   1b7f0:      	mov	x6, x28
+   1b7f4:      	mov	x7, x22
+   1b7f8:      	bl	0x1b7f8 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x1ac>
+		000000000001b7f8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE5state020maximumComponentsPerE00hI0ACyxq_q0_GSgAA0cF0Vyxq_q0_G_s6UInt16Vs6UInt32VtcfC
+   1b7fc:      	add	x0, sp, #0x648
+   1b800:      	add	x1, sp, #0x260
+   1b804:      	bl	0x1b804 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x1b8>
+		000000000001b804:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1160
+   1b808:      	add	x0, sp, #0x260
+   1b80c:      	bl	0x1b80c <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x1c0>
+		000000000001b80c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime0G15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CommittedK0AFLLVAD0g3HitK0AFLLVGSgWOg
+   1b810:      	cmp	w0, #0x1
+   1b814:      	b.eq	0x1b8ac <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x260>
+   1b818:      	ldr	x8, [x29, #0xb8]
+   1b81c:      	str	x8, [sp, #0x10]
+   1b820:      	ldr	x8, [x29, #0xb0]
+   1b824:      	str	x8, [sp, #0x8]
+   1b828:      	ldp	x24, x28, [x29, #0x38]
+   1b82c:      	ldp	x26, x25, [x29, #0x28]
+   1b830:      	ldp	x9, x8, [sp, #0x18]
+   1b834:      	sub	x22, x8, x9
+   1b838:      	ldr	x8, [x29, #0x10]
+   1b83c:      	ldp	x9, x27, [x29, #0x18]
+   1b840:      	ldp	x11, x10, [sp, #0x28]
+   1b844:      	sub	x23, x10, x11
+   1b848:      	ldp	x11, x10, [sp, #0x38]
+   1b84c:      	sub	x20, x10, x11
+   1b850:      	sub	x21, x9, x8
+   1b854:      	add	x8, sp, #0x58
+   1b858:      	orr	x0, x8, #0x7
+   1b85c:      	add	x1, sp, #0x648
+   1b860:      	bl	0x1b860 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x214>
+		000000000001b860:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1160
+   1b864:      	ldp	x9, x8, [sp, #0x48]
+   1b868:      	stp	x9, x8, [x19]
+   1b86c:      	stp	x27, x26, [x19, #0x10]
+   1b870:      	stp	x25, x24, [x19, #0x20]
+   1b874:      	stp	x28, x22, [x19, #0x30]
+   1b878:      	stp	x23, x20, [x19, #0x40]
+   1b87c:      	str	x21, [x19, #0x50]
+   1b880:      	strb	wzr, [x19, #0x58]
+   1b884:      	add	x0, x19, #0x59
+   1b888:      	add	x1, sp, #0x58
+   1b88c:      	mov	w2, #0x201              ; =513
+   1b890:      	bl	0x1b890 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x244>
+		000000000001b890:  ARM64_RELOC_BRANCH26	_memcpy
+   1b894:      	ldp	x9, x8, [sp, #0x8]
+   1b898:      	str	x9, [x19, #0x260]
+   1b89c:      	str	x8, [x19, #0x268]
+   1b8a0:      	add	sp, sp, #0x850
+   1b8a4:      	ldp	x29, x30, [sp, #0x50]
+   1b8a8:      	b	0x1b8a8 <_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF+0x25c>
+		000000000001b8a8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+   1b8ac:      	brk	#0x1

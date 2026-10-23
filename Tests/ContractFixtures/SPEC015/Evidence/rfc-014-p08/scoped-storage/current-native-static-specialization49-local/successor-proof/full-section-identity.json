@@ -1,0 +1,50 @@
+[
+  {
+    "path": ".build/contracts/p08-counter-dt4nfsxd/P08CounterRuntime.o",
+    "object_sha256": "75d3ba94b7be7ac19215e493f35f6a43e116897dfd21bf6892a9ba2a515414c5",
+    "text": [
+      {
+        "segment": "__TEXT",
+        "section": "__text",
+        "addr": "0x0",
+        "size": 808532,
+        "offset": 2560,
+        "sha256": "66ed3722dad0fd40738f05193d2a98ce07ed8ed8059862bc3b42ed9261d57bf0",
+        "relocation_count": 34167,
+        "relocations_sha256": "d0ad8a8dcf30749bc0516cb1ce104381711949dcfc868207906c880dd4c04557"
+      }
+    ]
+  },
+  {
+    "path": ".build/contracts/p08-counter-l24vyve3/P08CounterRuntime.o",
+    "object_sha256": "5eca1587cd4461d4b7696cca95c578e2d1bffe03b7737edd31854e921faa6dda",
+    "text": [
+      {
+        "segment": "__TEXT",
+        "section": "__text",
+        "addr": "0x0",
+        "size": 815632,
+        "offset": 2560,
+        "sha256": "960231fc9efe22e9d9a48781f5e2b1dee49ea73f64cfb001ba36874b94763bea",
+        "relocation_count": 34317,
+        "relocations_sha256": "dd876bbd3afb0196b7cb11c6e27ed581ed0ae71bb9512ccfbecae89d80be5935"
+      }
+    ]
+  },
+  {
+    "path": ".build/contracts/p08-counter-8vqb1sq8/P08CounterRuntime.o",
+    "object_sha256": "2097ebc87d95263d14265033b21d90e1fd2732acced9e2e73ce726394c08abdd",
+    "text": [
+      {
+        "segment": "__TEXT",
+        "section": "__text",
+        "addr": "0x0",
+        "size": 815632,
+        "offset": 2560,
+        "sha256": "960231fc9efe22e9d9a48781f5e2b1dee49ea73f64cfb001ba36874b94763bea",
+        "relocation_count": 34317,
+        "relocations_sha256": "dd876bbd3afb0196b7cb11c6e27ed581ed0ae71bb9512ccfbecae89d80be5935"
+      }
+    ]
+  }
+]

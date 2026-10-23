@@ -45,8 +45,10 @@ package struct SemanticCompleteIdentity: Equatable, Sendable {
     package static let capacity: UInt16 = 34
     private var components: InlineArray<34, SemanticPathComponent> = .init(
         repeating: .init(kind: .root))
+    @usableFromInline
     package private(set) var count: UInt16 = 0
     package init() {}
+    @usableFromInline
     package func component(at index: UInt16) -> SemanticPathComponent? {
         guard index < count else { return nil }
         return components[Int(index)]

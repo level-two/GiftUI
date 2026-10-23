@@ -1,0 +1,72 @@
+{
+  "comparisons": {
+    "mixed_execution": {
+      "raw_before_sha256": "e14c882253d2afaf483162f5ff917dc3b65d97900eea3b6ea072d73dc008c3d9",
+      "raw_after_sha256": "ac8f8875063ce1ddd4ede6fda165315873f7297a42b716b30cbc05f2d7bd7878",
+      "before_bytes": 611253,
+      "after_bytes": 611253,
+      "before_so06_lines": 120,
+      "after_so06_lines": 120,
+      "equal_after_only_SO06_address_normalization": true,
+      "normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "before_path": ".build/contracts/p08-counter-dt4nfsxd/result.json",
+      "after_path": ".build/contracts/p08-counter-8vqb1sq8/result.json",
+      "value_location": "JSON top-level execution string, decoded to UTF-8 bytes",
+      "normalization": "Only SO06 role lines: split into 14 whitespace-delimited tokens; require tokens 0/1 to be SO06/role, token 11 to be =>, and tokens 4/8 to be decimal physical addresses. Replace only the original decimal address spans at tokens 4 and 8 with <SO06_ADDRESS>; preserve all other bytes, whitespace, line endings, labels, values and order. No other normalization."
+    },
+    "static_resource_log": {
+      "raw_before_sha256": "8716794a4bd9a7185a19fd2461f0332c069de2e201e3ce0fd6cce11073e80be1",
+      "raw_after_sha256": "c9f35871e400c367282c1792edbed5868b858a0e8ca7ac05cb9ce0fc95d3bcd2",
+      "before_bytes": 391098,
+      "after_bytes": 391098,
+      "before_so06_lines": 60,
+      "after_so06_lines": 60,
+      "equal_after_only_SO06_address_normalization": true,
+      "normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "before_path": ".build/contracts/p08-counter-dt4nfsxd/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-8vqb1sq8/static-resource-v1-execute.log",
+      "value_location": "complete raw UTF-8 file bytes",
+      "normalization": "Only SO06 role lines: split into 14 whitespace-delimited tokens; require tokens 0/1 to be SO06/role, token 11 to be =>, and tokens 4/8 to be decimal physical addresses. Replace only the original decimal address spans at tokens 4 and 8 with <SO06_ADDRESS>; preserve all other bytes, whitespace, line endings, labels, values and order. No other normalization."
+    }
+  },
+  "full": {
+    "result_sha256": "7c437a608b62458844a8467123f09d5f58f5ff72fc8c8bd63366fda18831de35",
+    "checks": 442,
+    "passed_checks": 442,
+    "commands": 414,
+    "exit_categories": {
+      "0": 220,
+      "1": 193,
+      "None": 28,
+      "-6": 1
+    },
+    "runtime_receipt_sha256": "427e4d99502a9e74a01f9db534414a2434f60020172a38fc17763d15294a9a0e",
+    "host_receipt_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+    "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1"
+  },
+  "terminal": {
+    "path": ".build/contracts/p08-native-static-specialization49/full12h1/terminal.json",
+    "bytes": 273,
+    "sha256": "d75b90db773864a6ef60e09f3432c4632c93b59a897f5ae20f70960f37d9ca16",
+    "facts": {
+      "finished_utc": "2026-10-23T23:32:37.363910+00:00",
+      "exit": 0,
+      "retained_bytes": 643930425,
+      "within_deadline": true,
+      "within_output_envelope": true
+    }
+  },
+  "checks_are_not_fresh_invocations": "442 statuses:220 exit0,193 expectedexit1,1 expectedfatal-6,28 null-exit registered/reused observations;414 commands, reuse_execution=true",
+  "actual_root_reported_start_utc": "2026-10-23T20:31:25.773664+00:00",
+  "elapsed_seconds": 10871.590246,
+  "unit_gate": "FAILED before Interaction methods due unrelated SignalAnalyzerPresentation; Interaction UNEXECUTED, no waiver",
+  "old_run": {
+    "output": ".build/contracts/p08-counter-kbsizzq7",
+    "exit": 143,
+    "fixed_4h_deadline": "2026-10-23T15:51:12Z",
+    "overrun_seconds_root_reported": 287,
+    "status": "TIMEOUT/nonqualifying; old final-review.md immutable, no synthetic result"
+  },
+  "root_successor_authority": "Human-authorized, root-launched separate 12-hour bounded run; not a retroextension of the old four-hour attempt. terminal guard reason=null and within_deadline/output_envelope=true.",
+  "no_runtime_resource_claim": true
+}

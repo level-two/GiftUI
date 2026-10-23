@@ -1,0 +1,9 @@
+
+.build/contracts/p08-counter-8vqb1sq8/GiftUIInteraction.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000a388 <_OUTLINED_FUNCTION_58>:
+    a388:      	mov	x0, #0x0                ; =0
+    a38c:      	b	0xa38c <_OUTLINED_FUNCTION_58+0x4>
+		000000000000a38c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVMa

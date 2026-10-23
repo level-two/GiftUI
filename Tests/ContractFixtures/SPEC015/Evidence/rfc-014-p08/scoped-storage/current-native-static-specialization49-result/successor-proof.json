@@ -1,0 +1,187 @@
+{
+  "status": "SCOPED_TRANSACTION_REMOVAL_PASS_CHARGED_SETUP_ELIGIBILITY_OPEN",
+  "current_full_result": {
+    "path": ".build/contracts/p08-counter-8vqb1sq8/result.json",
+    "sha256": "7c437a608b62458844a8467123f09d5f58f5ff72fc8c8bd63366fda18831de35"
+  },
+  "current_Runtime_object": {
+    "path": ".build/contracts/p08-counter-8vqb1sq8/P08CounterRuntime.o",
+    "sha256": "2097ebc87d95263d14265033b21d90e1fd2732acced9e2e73ce726394c08abdd"
+  },
+  "transaction": {
+    "caller": "exerciseTransactions0x4ec48-0x4f688",
+    "claim": "Both concrete CandidateAccess InteractionState and OwnedKeyState mangled-cell requests are absent from the caller and checked reached transaction specializations. Four complete selected machine captures have no corresponding metadata/witness acquisition; concrete Self GMD descriptors are absent in current Runtime object. This scoped compiler removal is not global heap eligibility.",
+    "binding": "ENTIRE full/focused Runtime __text815632bytes SHA960231fc9efe22e9d9a48781f5e2b1dee49ea73f64cfb001ba36874b94763bea AND34317 raw text-relocations SHAdd876bbd3afb0196b7cb11c6e27ed581ed0ae71bb9512ccfbecae89d80be5935 match exactly despite distinct whole-object hashes. Exact source/type/current compiler/input provenance retained."
+  },
+  "setup": {
+    "claim": "Whole charged Static construction still requests BOTH generic Self metadata types; broader eligibility is OPEN. This is PREEXISTING, not new relocation caused by specialization49.",
+    "actual_same_session": "p08ConstructStaticStorageSession0x1b64c-0x1b8b0, current fixture lines1100-1135, produces the SAME private P08StorageSession and CandidateAccess/CommittedAccess/HitAccess types, not a different Host generic.",
+    "arguments": "Runtime outlined1497 at0xc42a4-0xc42c4 supplies exact CandidateAccess/CommittedAccess/HitAccess metadata globals(Mf+0x10) in x3/x4/x5; constructor supplies storage witnesses and limits24/48 before call0x1b7f8.",
+    "current_library": "Owned initializer0x838-0x9c0 unconditionally calls OwnedVMa at0x888. At0x8e8, outlined58(0xa388) forwards request0 to StateVMa. Accessors0x6e54/0x6e60 supply their exact descriptors and tail-call _swift_getGenericMetadata.",
+    "baseline": "Original dt4nfsxd library initializer0x824-0x9ac ALREADY calls OwnedVMa at0x874; outlined54(0x9e28) ALREADY forwards to StateVMa. Therefore earlier required construction first-use remains charged; no prewarm/window exemption or allocation-success/byte claim."
+  },
+  "Static_variant": {
+    "binding": "Current source hash and full producer binding establish .static lends in the SAME constructor. Reuse reviewed Static tag0/ownership/cleanup applicability where exact source remains unchanged.",
+    "machine": "CandidateAccess.replace at0x19930 tests descriptor bit63; only bit63=1 reaches Dynamic metadata at0x19980/0x19988. Five overapproximated local metadata edges are Dynamic storage/reset/ArrayBuffer alternatives, not shifted State/Owned requests.",
+    "limit": "No claim that arbitrary indirect targets or all3root frontiers are closed; historical map/site counts are orientation only."
+  },
+  "source": [
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "bytes": 17000,
+      "sha256": "9ae3845543250f1cc6769272c868e3d5d1ed2d06701d66c040b42c581c6530c0",
+      "full_input_binding": {
+        "Sources/GiftUIInteraction/InteractionState.swift": "9ae3845543250f1cc6769272c868e3d5d1ed2d06701d66c040b42c581c6530c0"
+      }
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "bytes": 9730,
+      "sha256": "e3e9c9e2abaf07b6d896091d3e77fb96533aa94f9fbc505b319d7c3a01c07262",
+      "full_input_binding": {
+        "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "e3e9c9e2abaf07b6d896091d3e77fb96533aa94f9fbc505b319d7c3a01c07262"
+      }
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "bytes": 3099,
+      "sha256": "1cb6c6bb221582a09ac5c215418732b5f6fd38e278819aeb9e3b3783a31ba1db",
+      "full_input_binding": {
+        "Sources/GiftUIInteraction/InteractionStorage.swift": "1cb6c6bb221582a09ac5c215418732b5f6fd38e278819aeb9e3b3783a31ba1db"
+      }
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "bytes": 6857,
+      "sha256": "8d850a792448828a9afe599ef5dd6cd8549436f5f2a48a9289306c4118cd3366",
+      "full_input_binding": {
+        "Sources/GiftUIInteraction/InteractionValues.swift": "8d850a792448828a9afe599ef5dd6cd8549436f5f2a48a9289306c4118cd3366"
+      }
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionFailurePrecedence.swift",
+      "bytes": 1406,
+      "sha256": "78b73565a87d7800ff03f573b42a3ca117310167319f4ca77d19f2d94ed0a08c",
+      "full_input_binding": {
+        "Sources/GiftUIInteraction/InteractionFailurePrecedence.swift": "78b73565a87d7800ff03f573b42a3ca117310167319f4ca77d19f2d94ed0a08c"
+      }
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "bytes": 17308,
+      "sha256": "715d37389fa167dd4f634c92c5857614ebf1b6f58c067777c83da4b3ba982cbf",
+      "full_input_binding": {
+        "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "715d37389fa167dd4f634c92c5857614ebf1b6f58c067777c83da4b3ba982cbf"
+      }
+    }
+  ],
+  "cost": {
+    "Runtime_text_before": 808532,
+    "Runtime_text_after": 815632,
+    "Runtime_text_delta": 7100,
+    "exerciseTransactions_before_bytes": 1788,
+    "exerciseTransactions_after_bytes": 2624,
+    "exerciseTransactions_delta": 836,
+    "new_inlinable_annotations": 17,
+    "new_usableFromInline_annotations": 20,
+    "scope": "These are source serialization/visibility counts and Runtime object text costs, not total new exported binary-symbol count or image/resource/performance claims.",
+    "tradeoff": "Serialized transaction bodies and directly required package ABI support increase compiler coupling and code size. Three formerly private State helpers/two Owned configured limits now internal for serialization; concrete SemanticCompleteIdentity accessors remain opaque. Explicit7field CandidateRecord/3field HitRegion initializers expose package serialization support. Former implicit CandidateRecord generation=nil default was internal, not an established package/public contract; current production construction explicitly passes preservedGeneration. No literal default-identity claim."
+  },
+  "artifacts": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/full-section-identity.json",
+      "original": ".build/contracts/p08-native-static-specialization49/full-section-identity.json",
+      "bytes": 1665,
+      "sha256": "4c9273f09c87fe78e18236c31fec229fc99e3f4fb0bddaf0e0ac7f7d84ad29b5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/full.static-entry.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/full.static-entry.stdout",
+      "bytes": 3064,
+      "sha256": "c603db419162621604b2cc1fa07501781700a974b5e7f7af36a8abc7ecfbe80c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/full.static-session-constructor.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/full.static-session-constructor.stdout",
+      "bytes": 17022,
+      "sha256": "06847b5d78329434da7bcf8c01af3fa9c5b8ab4789d0c4d6ae59a5a9870c3211"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/full.session-type-arguments.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/full.session-type-arguments.stdout",
+      "bytes": 1491,
+      "sha256": "72e05505c46b98f6ebff0dfd0e1242c7b124b823888741ce116be23e0f1295a0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/full.owned-initializer.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/full.owned-initializer.stdout",
+      "bytes": 7664,
+      "sha256": "ea912861c551f8d4d3c4b7a24f521223dba0ff25aa3d6438173366019898b0e5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/full.state-metadata-accessors.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/full.state-metadata-accessors.stdout",
+      "bytes": 1410,
+      "sha256": "61e4b7a8048f73092fb68c200d11babee180d846b6332836eaca0c1202353435"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/full.state-metadata-forward.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/full.state-metadata-forward.stdout",
+      "bytes": 355,
+      "sha256": "a4ee56a038508efb10b44a181a714aa6a642c84a6cad1489541ef48a4027c25a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/baseline.owned-initializer.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/baseline.owned-initializer.stdout",
+      "bytes": 7663,
+      "sha256": "fd8afb60e1e8470ef1ceb0e8329ff89fe63dfc26085371b0ac4861e5a5160924"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/baseline.state-metadata-forward.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/baseline.state-metadata-forward.stdout",
+      "bytes": 355,
+      "sha256": "6439ba12813b70e7fbf28299d73d0dad6a61a5b0cd636b9f68bf1db502ae81b3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/full.candidate-replace-tag.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/full.candidate-replace-tag.stdout",
+      "bytes": 16421,
+      "sha256": "80de7fab954d85898b16f0bc3ad9037f5662cf32f232f932947c894925e4dad4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/focused-grouped.caller.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/focused-grouped.caller.stdout",
+      "bytes": 57400,
+      "sha256": "1f27eca5c614e93e755dcf0ba9aa55d7d0f89bea23c9c0fdc73bc78a8ef22eeb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/focused-grouped.transaction-callees.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/focused-grouped.transaction-callees.stdout",
+      "bytes": 55101,
+      "sha256": "2eecc7befccd03e4f185546da83fe9155b176a894485bd1b48ee3fd7f01aed5e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/focused-grouped.merged-append.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/focused-grouped.merged-append.stdout",
+      "bytes": 37458,
+      "sha256": "7966aa279f09221163a5dab3513a0e14fa79216173efd07d6b689671e7d79758"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local/successor-proof/focused-grouped.record.stdout",
+      "original": ".build/contracts/p08-native-static-specialization49/focused-grouped.record.stdout",
+      "bytes": 10855,
+      "sha256": "6f349fc24f0d52ff4823cb3cacf946218ddf91302971ffdcfb842baef4d153e7"
+    }
+  ],
+  "remaining": {
+    "BatchA": false,
+    "mandatory_open": [
+      "charged constructor generic Self metadata dependency and its supported first-use feasibility",
+      "remaining current allocator/metadata/once/witness/indirect/error frontiers not individually proved",
+      "actual loaded provider/environment/stdout identity,persistence and window premises",
+      "unit gate FAILED/Interaction UNEXECUTED"
+    ],
+    "BatchB_C": "cold/resource/currentimage/physical profiles remain gated; no target/image/cold/provider runtime experiment performed."
+  },
+  "source_integrity": "No source/compiler/runtime/index/HEAD change during this post-terminal proof. Coordinator owns staging/commit; one successor independent review required."
+}

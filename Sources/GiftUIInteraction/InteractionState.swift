@@ -60,6 +60,7 @@ where
         self.committedHitRegions = consume committedHitRegions
     }
 
+    @inlinable
     package mutating func beginCandidate(
         limits: InteractionLimits
     ) -> InteractionError? {
@@ -78,6 +79,7 @@ where
         return nil
     }
 
+    @inlinable
     @inline(__always)
     package mutating func append(
         identity: Identity,
@@ -132,6 +134,7 @@ where
 
     /// Shared nonmutating preflight lets the owning key adapter include its pool
     /// failure in the existing deterministic precedence without staging a record.
+    @inlinable
     package borrowing func appendFailure(
         identity: Identity, bounds: Rect, clip: Rect, paintOrder: UInt16
     ) -> InteractionError? {
@@ -154,8 +157,9 @@ where
         return InteractionFailurePrecedence.select(from: failures)
     }
 
+    @inlinable
     @inline(__always)
-    private borrowing func matchingCommittedGeneration(
+    internal borrowing func matchingCommittedGeneration(
         identity: Identity,
         isEnabled: Bool,
         hitBounds: Rect,
@@ -182,8 +186,9 @@ where
         return nil
     }
 
+    @inlinable
     @inline(__always)
-    private borrowing func containsCandidate(identity: borrowing Identity) -> Bool {
+    internal borrowing func containsCandidate(identity: borrowing Identity) -> Bool {
         let soughtIdentity = copy identity
         var index: UInt16 = 0
         while index < candidateRecords.count {
@@ -195,7 +200,8 @@ where
         return false
     }
 
-    private mutating func failCandidate(
+    @inlinable
+    internal mutating func failCandidate(
         _ error: InteractionError
     ) -> InteractionCandidateAppendResult {
         if candidateError == nil {
@@ -204,6 +210,7 @@ where
         return .failure(error)
     }
 
+    @inlinable
     package mutating func assignGeneration(
         _ generation: ActionGeneration,
         to identity: Identity
@@ -234,6 +241,7 @@ where
         return .invalidIdentity
     }
 
+    @inlinable
     package mutating func finishCandidate() -> InteractionError? {
         guard phase == .staging else { return .invalidPhase }
         if let candidateError { return candidateError }

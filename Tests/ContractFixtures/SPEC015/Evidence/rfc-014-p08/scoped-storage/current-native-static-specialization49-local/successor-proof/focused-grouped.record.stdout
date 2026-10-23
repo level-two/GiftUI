@@ -1,0 +1,105 @@
+
+.build/contracts/p08-counter-l24vyve3/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a6950 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5>:
+   a6950:      	stp	x26, x25, [sp, #-0x50]!
+   a6954:      	stp	x24, x23, [sp, #0x10]
+   a6958:      	stp	x22, x21, [sp, #0x20]
+   a695c:      	stp	x20, x19, [sp, #0x30]
+   a6960:      	stp	x29, x30, [sp, #0x40]
+   a6964:      	add	x29, sp, #0x40
+   a6968:      	sub	sp, sp, #0x580
+   a696c:      	mov	x21, x0
+   a6970:      	mov	x19, x8
+   a6974:      	mov	w22, #0x0               ; =0
+   a6978:      	ldp	x23, x20, [x20, #0x130]
+   a697c:      	add	x24, sp, #0xf0
+   a6980:      	mov	w25, #0xf0              ; =240
+   a6984:      	tbnz	x20, #0x3f, 0xa69d8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x88>
+   a6988:      	ldrh	w8, [x23, #0x2]
+   a698c:      	cmp	w22, w8
+   a6990:      	b.hs	0xa6a48 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xf8>
+   a6994:      	add	x0, sp, #0xf0
+   a6998:      	add	x1, x23, #0x4
+   a699c:      	mov	w2, #0x1e0              ; =480
+   a69a0:      	bl	0xa69a0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x50>
+		00000000000a69a0:  ARM64_RELOC_BRANCH26	_memcpy
+   a69a4:      	cmp	w22, #0x1
+   a69a8:      	b.hi	0xa6a60 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x110>
+   a69ac:      	umaddl	x1, w22, w25, x24
+   a69b0:      	mov	x0, sp
+   a69b4:      	mov	w2, #0xf0               ; =240
+   a69b8:      	bl	0xa69b8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x68>
+		00000000000a69b8:  ARM64_RELOC_BRANCH26	_memcpy
+   a69bc:      	mov	x0, sp
+   a69c0:      	bl	0xa69c0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x70>
+		00000000000a69c0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg
+   a69c4:      	cmp	w0, #0x1
+   a69c8:      	b.eq	0xa6a6c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x11c>
+   a69cc:      	add	x0, sp, #0x2d0
+   a69d0:      	mov	x1, sp
+   a69d4:      	b	0xa6a14 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xc4>
+   a69d8:      	ldr	x8, [x23, #0x8]
+   a69dc:      	ldr	x9, [x8, #0x10]
+   a69e0:      	lsr	x10, x9, #16
+   a69e4:      	cbnz	x10, 0xa6aa8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x158>
+   a69e8:      	cmp	w22, w9
+   a69ec:      	b.hs	0xa6a48 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xf8>
+   a69f0:      	umaddl	x8, w22, w25, x8
+   a69f4:      	add	x0, sp, #0xf0
+   a69f8:      	add	x1, x8, #0x20
+   a69fc:      	mov	w2, #0xf0               ; =240
+   a6a00:      	bl	0xa6a00 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xb0>
+		00000000000a6a00:  ARM64_RELOC_BRANCH26	_memcpy
+   a6a04:      	add	x0, sp, #0xf0
+   a6a08:      	bl	0xa6a08 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xb8>
+		00000000000a6a08:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_
+   a6a0c:      	add	x0, sp, #0x2d0
+   a6a10:      	add	x1, sp, #0xf0
+   a6a14:      	mov	w2, #0xf0               ; =240
+   a6a18:      	bl	0xa6a18 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xc8>
+		00000000000a6a18:  ARM64_RELOC_BRANCH26	_memcpy
+   a6a1c:      	add	x0, sp, #0x4b2
+   a6a20:      	add	x1, sp, #0x2d0
+   a6a24:      	mov	w2, #0xce               ; =206
+   a6a28:      	bl	0xa6a28 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xd8>
+		00000000000a6a28:  ARM64_RELOC_BRANCH26	_memcpy
+   a6a2c:      	add	x0, sp, #0x4b2
+   a6a30:      	mov	x1, x21
+   a6a34:      	bl	0xa6a34 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xe4>
+		00000000000a6a34:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+   a6a38:      	tbnz	w0, #0x0, 0xa6a58 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x108>
+   a6a3c:      	add	w22, w22, #0x1
+   a6a40:      	tbnz	x20, #0x3f, 0xa69d8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x88>
+   a6a44:      	b	0xa6988 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x38>
+   a6a48:      	add	x0, sp, #0xf0
+   a6a4c:      	bl	0xa6a4c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0xfc>
+		00000000000a6a4c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a6a50:      	add	x1, sp, #0xf0
+   a6a54:      	b	0xa6a80 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x130>
+   a6a58:      	add	x1, sp, #0x2d0
+   a6a5c:      	b	0xa6a80 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x130>
+   a6a60:      	add	x0, sp, #0x3c0
+   a6a64:      	bl	0xa6a64 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x114>
+		00000000000a6a64:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a6a68:      	b	0xa6a7c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x12c>
+   a6a6c:      	add	x0, sp, #0x3c0
+   a6a70:      	mov	x1, sp
+   a6a74:      	mov	w2, #0xf0               ; =240
+   a6a78:      	bl	0xa6a78 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x128>
+		00000000000a6a78:  ARM64_RELOC_BRANCH26	_memcpy
+   a6a7c:      	add	x1, sp, #0x3c0
+   a6a80:      	mov	x0, x19
+   a6a84:      	mov	w2, #0xf0               ; =240
+   a6a88:      	bl	0xa6a88 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5+0x138>
+		00000000000a6a88:  ARM64_RELOC_BRANCH26	_memcpy
+   a6a8c:      	add	sp, sp, #0x580
+   a6a90:      	ldp	x29, x30, [sp, #0x40]
+   a6a94:      	ldp	x20, x19, [sp, #0x30]
+   a6a98:      	ldp	x22, x21, [sp, #0x20]
+   a6a9c:      	ldp	x24, x23, [sp, #0x10]
+   a6aa0:      	ldp	x26, x25, [sp], #0x50
+   a6aa4:      	ret
+   a6aa8:      	brk	#0x1

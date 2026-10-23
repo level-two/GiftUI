@@ -1,0 +1,23 @@
+{
+  "utc": "2026-10-23T23:46:59.813422+00:00",
+  "owned_paths": {
+    ".build/contracts/p08-native-static-specialization49": 14724760,
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-local": 239869,
+    ".build/contracts/spec-013-runtime-cycle/tmpfukkte94": 25066408,
+    ".build/contracts/spec-013-runtime-cycle/tmp_q6a_w89": 25113764,
+    ".build/contracts/p08-counter-xdjv4p17": 161594816,
+    ".build/contracts/p08-counter-l24vyve3": 161652972,
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp34nxc0zr": 8578277,
+    ".build/contracts/p08-counter-kbsizzq7": 69281370,
+    ".build/contracts/p08-counter-8vqb1sq8": 184522308,
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-result": 34064
+  },
+  "measured_before_this_account_file": 650808608,
+  "final_retained_upper": 651857184,
+  "final_review_reserve": 33554432,
+  "ordinary_limit": 2147483648,
+  "within_upper_plus_reserve": true,
+  "root_full_terminal_retained_bytes": 643930425,
+  "root_terminal_sha256": "d75b90db773864a6ef60e09f3432c4632c93b59a897f5ae20f70960f37d9ca16",
+  "definition": "Ordinary owned retained file bytes with1MiB final-write upper and32MiB review reserve. Not U02 amendment, aggregate OS-I/O or rendered-transcript certification. No per-poll artifact additions after coordinator stop instruction."
+}

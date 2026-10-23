@@ -1,0 +1,487 @@
+
+.build/contracts/p08-counter-l24vyve3/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a5554 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5>:
+   a5554:      	stp	x28, x27, [sp, #-0x60]!
+   a5558:      	stp	x26, x25, [sp, #0x10]
+   a555c:      	stp	x24, x23, [sp, #0x20]
+   a5560:      	stp	x22, x21, [sp, #0x30]
+   a5564:      	stp	x20, x19, [sp, #0x40]
+   a5568:      	stp	x29, x30, [sp, #0x50]
+   a556c:      	add	x29, sp, #0x50
+   a5570:      	sub	sp, sp, #0x1f0
+   a5574:      	ldrb	w8, [x20, #0x1f8]
+   a5578:      	tbz	w8, #0x0, 0xa5684 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x130>
+   a557c:      	mov	x19, x20
+   a5580:      	mov	x21, x0
+   a5584:      	ldrb	w0, [x20, #0x1f9]
+   a5588:      	cmp	w0, #0x9
+   a558c:      	b.ne	0xa5688 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x134>
+   a5590:      	mov	x22, x5
+   a5594:      	mov	x23, x4
+   a5598:      	mov	x24, x3
+   a559c:      	mov	x25, x2
+   a55a0:      	mov	x26, x1
+   a55a4:      	strh	wzr, [sp, #0x6]
+   a55a8:      	add	x0, sp, #0x8
+   a55ac:      	mov	x1, x19
+   a55b0:      	mov	w2, #0x1e1              ; =481
+   a55b4:      	bl	0xa55b4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x60>
+		00000000000a55b4:  ARM64_RELOC_BRANCH26	_memcpy
+   a55b8:      	add	x20, sp, #0x8
+   a55bc:      	mov	x0, x21
+   a55c0:      	mov	x1, x26
+   a55c4:      	mov	x2, x25
+   a55c8:      	mov	x3, x24
+   a55cc:      	mov	x4, x23
+   a55d0:      	mov	x5, x22
+   a55d4:      	bl	0xa55d4 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x80>
+		00000000000a55d4:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5
+   a55d8:      	and	w8, w0, #0xff
+   a55dc:      	cmp	w8, #0x9
+   a55e0:      	b.eq	0xa55ec <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x98>
+   a55e4:      	add	x20, sp, #0x6
+   a55e8:      	bl	0xa55e8 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x94>
+		00000000000a55e8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+   a55ec:      	ldrh	w22, [x21, #0xcc]
+   a55f0:      	cmp	w22, #0x2
+   a55f4:      	b.lo	0xa5624 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0xd0>
+   a55f8:      	mov	w0, #0x0                ; =0
+   a55fc:      	mov	x20, x21
+   a5600:      	bl	0xa5600 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0xac>
+		00000000000a5600:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV9component2atAA0D13PathComponentVSgs6UInt16V_tF
+   a5604:      	tst	x0, #0xff
+   a5608:      	b.ne	0xa5624 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0xd0>
+   a560c:      	sub	w0, w22, #0x1
+   a5610:      	mov	x20, x21
+   a5614:      	bl	0xa5614 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0xc0>
+		00000000000a5614:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV9component2atAA0D13PathComponentVSgs6UInt16V_tF
+   a5618:      	and	x8, x0, #0xff
+   a561c:      	cmp	x8, #0x5
+   a5620:      	b.eq	0xa5630 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0xdc>
+   a5624:      	add	x20, sp, #0x6
+   a5628:      	mov	w0, #0x1                ; =1
+   a562c:      	bl	0xa562c <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0xd8>
+		00000000000a562c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+   a5630:      	ldrh	w8, [x19, #0x1e8]
+   a5634:      	cmp	w8, w22
+   a5638:      	b.lo	0xa5654 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x100>
+   a563c:      	ldr	w8, [x19, #0x1f0]
+   a5640:      	adds	w8, w8, w22
+   a5644:      	b.hs	0xa5654 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x100>
+   a5648:      	ldr	w9, [x19, #0x1ec]
+   a564c:      	cmp	w9, w8
+   a5650:      	b.hs	0xa5660 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x10c>
+   a5654:      	add	x20, sp, #0x6
+   a5658:      	mov	w0, #0x0                ; =0
+   a565c:      	bl	0xa565c <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x108>
+		00000000000a565c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+   a5660:      	ldrh	w0, [sp, #0x6]
+   a5664:      	add	sp, sp, #0x1f0
+   a5668:      	ldp	x29, x30, [sp, #0x50]
+   a566c:      	ldp	x20, x19, [sp, #0x40]
+   a5670:      	ldp	x22, x21, [sp, #0x30]
+   a5674:      	ldp	x24, x23, [sp, #0x20]
+   a5678:      	ldp	x26, x25, [sp, #0x10]
+   a567c:      	ldp	x28, x27, [sp], #0x60
+   a5680:      	b	0xa5680 <_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5+0x12c>
+		00000000000a5680:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction28InteractionFailurePrecedenceO6select4fromAA0C5ErrorOSgAA0C15VisibleFailuresV_tFZ
+   a5684:      	mov	w0, #0x3                ; =3
+   a5688:      	add	sp, sp, #0x1f0
+   a568c:      	ldp	x29, x30, [sp, #0x50]
+   a5690:      	ldp	x20, x19, [sp, #0x40]
+   a5694:      	ldp	x22, x21, [sp, #0x30]
+   a5698:      	ldp	x24, x23, [sp, #0x20]
+   a569c:      	ldp	x26, x25, [sp, #0x10]
+   a56a0:      	ldp	x28, x27, [sp], #0x60
+   a56a4:      	ret
+
+00000000000a56a8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5>:
+   a56a8:      	stp	x28, x27, [sp, #-0x60]!
+   a56ac:      	stp	x26, x25, [sp, #0x10]
+   a56b0:      	stp	x24, x23, [sp, #0x20]
+   a56b4:      	stp	x22, x21, [sp, #0x30]
+   a56b8:      	stp	x20, x19, [sp, #0x40]
+   a56bc:      	stp	x29, x30, [sp, #0x50]
+   a56c0:      	add	x29, sp, #0x50
+   a56c4:      	sub	sp, sp, #0x790
+   a56c8:      	ldrb	w8, [x20, #0x1d7]
+   a56cc:      	cmp	w8, #0x1
+   a56d0:      	b.ne	0xa56e4 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x3c>
+   a56d4:      	mov	x24, x20
+   a56d8:      	ldrb	w8, [x20, #0x1d6]
+   a56dc:      	cmp	w8, #0x1
+   a56e0:      	b.ne	0xa5708 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x60>
+   a56e4:      	mov	w0, #0x3                ; =3
+   a56e8:      	add	sp, sp, #0x790
+   a56ec:      	ldp	x29, x30, [sp, #0x50]
+   a56f0:      	ldp	x20, x19, [sp, #0x40]
+   a56f4:      	ldp	x22, x21, [sp, #0x30]
+   a56f8:      	ldp	x24, x23, [sp, #0x20]
+   a56fc:      	ldp	x26, x25, [sp, #0x10]
+   a5700:      	ldp	x28, x27, [sp], #0x60
+   a5704:      	ret
+   a5708:      	mov	x26, x0
+   a570c:      	ldrb	w0, [x24, #0x1d8]
+   a5710:      	cmp	w0, #0x9
+   a5714:      	b.ne	0xa56e8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x40>
+   a5718:      	mov	x25, x5
+   a571c:      	mov	x19, x4
+   a5720:      	mov	x27, x3
+   a5724:      	mov	x22, x2
+   a5728:      	mov	x23, x1
+   a572c:      	add	x8, x24, #0x1d2
+   a5730:      	ldr	w21, [x8]
+   a5734:      	strh	wzr, [sp, #0x596]
+   a5738:      	add	x0, sp, #0x598
+   a573c:      	mov	x1, x24
+   a5740:      	mov	w2, #0x52               ; =82
+   a5744:      	bl	0xa5744 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x9c>
+		00000000000a5744:  ARM64_RELOC_BRANCH26	_memcpy
+   a5748:      	mov	x20, x24
+   a574c:      	bl	0xa574c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0xa4>
+		00000000000a574c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg
+   a5750:      	tst	w0, #0xffff
+   a5754:      	b.eq	0xa594c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x2a4>
+   a5758:      	str	x27, [sp]
+   a575c:      	str	w21, [sp, #0xc]
+   a5760:      	str	x19, [sp, #0x10]
+   a5764:      	ldr	x28, [sp, #0x5a8]
+   a5768:      	ldr	x27, [sp, #0x5b0]
+   a576c:      	add	x0, sp, #0x4c8
+   a5770:      	mov	x1, x26
+   a5774:      	mov	w2, #0xce               ; =206
+   a5778:      	bl	0xa5778 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0xd0>
+		00000000000a5778:  ARM64_RELOC_BRANCH26	_memcpy
+   a577c:      	add	x0, sp, #0x4c8
+   a5780:      	bl	0xa5780 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0xd8>
+		00000000000a5780:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   a5784:      	mov	x26, #0x0               ; =0
+   a5788:      	mov	x19, #0x0               ; =0
+   a578c:      	add	x21, sp, #0x18
+   a5790:      	tbnz	x27, #0x3f, 0xa57cc <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x124>
+   a5794:      	ldrh	w8, [x28, #0x2]
+   a5798:      	cmp	x19, x8
+   a579c:      	b.hs	0xa57fc <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x154>
+   a57a0:      	add	x0, sp, #0x18
+   a57a4:      	add	x1, x28, #0x4
+   a57a8:      	mov	w2, #0x1e0              ; =480
+   a57ac:      	bl	0xa57ac <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x104>
+		00000000000a57ac:  ARM64_RELOC_BRANCH26	_memcpy
+   a57b0:      	add	x0, sp, #0x1f8
+   a57b4:      	cmp	x19, #0x2
+   a57b8:      	b.hs	0xa581c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x174>
+   a57bc:      	add	x1, x21, x26
+   a57c0:      	mov	w2, #0xf0               ; =240
+   a57c4:      	bl	0xa57c4 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x11c>
+		00000000000a57c4:  ARM64_RELOC_BRANCH26	_memcpy
+   a57c8:      	b	0xa5820 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x178>
+   a57cc:      	ldr	x8, [x28, #0x8]
+   a57d0:      	ldr	x9, [x8, #0x10]
+   a57d4:      	cmp	x9, x19
+   a57d8:      	b.ls	0xa5808 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x160>
+   a57dc:      	add	x8, x8, x26
+   a57e0:      	add	x0, sp, #0x18
+   a57e4:      	add	x1, x8, #0x20
+   a57e8:      	mov	w2, #0xf0               ; =240
+   a57ec:      	bl	0xa57ec <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x144>
+		00000000000a57ec:  ARM64_RELOC_BRANCH26	_memcpy
+   a57f0:      	add	x0, sp, #0x18
+   a57f4:      	bl	0xa57f4 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x14c>
+		00000000000a57f4:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_
+   a57f8:      	b	0xa5810 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x168>
+   a57fc:      	add	x0, sp, #0x3d8
+   a5800:      	bl	0xa5800 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x158>
+		00000000000a5800:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a5804:      	b	0xa5830 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x188>
+   a5808:      	add	x0, sp, #0x18
+   a580c:      	bl	0xa580c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x164>
+		00000000000a580c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a5810:      	add	x0, sp, #0x3d8
+   a5814:      	add	x1, sp, #0x18
+   a5818:      	b	0xa5828 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x180>
+   a581c:      	bl	0xa581c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x174>
+		00000000000a581c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+   a5820:      	add	x0, sp, #0x3d8
+   a5824:      	add	x1, sp, #0x1f8
+   a5828:      	mov	w2, #0xf0               ; =240
+   a582c:      	bl	0xa582c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x184>
+		00000000000a582c:  ARM64_RELOC_BRANCH26	_memcpy
+   a5830:      	add	x0, sp, #0x2e8
+   a5834:      	add	x1, sp, #0x3d8
+   a5838:      	mov	w2, #0xf0               ; =240
+   a583c:      	bl	0xa583c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x194>
+		00000000000a583c:  ARM64_RELOC_BRANCH26	_memcpy
+   a5840:      	add	x0, sp, #0x2e8
+   a5844:      	bl	0xa5844 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x19c>
+		00000000000a5844:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg
+   a5848:      	cmp	w0, #0x1
+   a584c:      	b.ne	0xa585c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x1b4>
+   a5850:      	add	x0, sp, #0x1f8
+   a5854:      	bl	0xa5854 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x1ac>
+		00000000000a5854:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+   a5858:      	b	0xa5884 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x1dc>
+   a585c:      	add	x0, sp, #0x18
+   a5860:      	add	x1, sp, #0x2e8
+   a5864:      	mov	w2, #0xce               ; =206
+   a5868:      	bl	0xa5868 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x1c0>
+		00000000000a5868:  ARM64_RELOC_BRANCH26	_memcpy
+   a586c:      	add	x0, sp, #0x18
+   a5870:      	bl	0xa5870 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x1c8>
+		00000000000a5870:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   a5874:      	add	x0, sp, #0x1f8
+   a5878:      	add	x1, sp, #0x18
+   a587c:      	mov	w2, #0xce               ; =206
+   a5880:      	bl	0xa5880 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x1d8>
+		00000000000a5880:  ARM64_RELOC_BRANCH26	_memcpy
+   a5884:      	add	x0, sp, #0x18
+   a5888:      	add	x1, sp, #0x1f8
+   a588c:      	mov	w2, #0xce               ; =206
+   a5890:      	bl	0xa5890 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x1e8>
+		00000000000a5890:  ARM64_RELOC_BRANCH26	_memcpy
+   a5894:      	add	x0, x21, #0xce
+   a5898:      	add	x1, sp, #0x4c8
+   a589c:      	mov	w2, #0xce               ; =206
+   a58a0:      	bl	0xa58a0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x1f8>
+		00000000000a58a0:  ARM64_RELOC_BRANCH26	_memcpy
+   a58a4:      	add	x0, sp, #0x18
+   a58a8:      	bl	0xa58a8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x200>
+		00000000000a58a8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   a58ac:      	mov	x20, x0
+   a58b0:      	add	x0, x21, #0xce
+   a58b4:      	bl	0xa58b4 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x20c>
+		00000000000a58b4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   a58b8:      	cmp	w20, #0x1
+   a58bc:      	b.ne	0xa58cc <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x224>
+   a58c0:      	cmp	w0, #0x1
+   a58c4:      	b.eq	0xa5934 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x28c>
+   a58c8:      	b	0xa5904 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x25c>
+   a58cc:      	cmp	w0, #0x1
+   a58d0:      	b.eq	0xa5904 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x25c>
+   a58d4:      	add	x0, sp, #0x5ec
+   a58d8:      	add	x1, sp, #0x18
+   a58dc:      	mov	w2, #0xce               ; =206
+   a58e0:      	bl	0xa58e0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x238>
+		00000000000a58e0:  ARM64_RELOC_BRANCH26	_memcpy
+   a58e4:      	add	x0, sp, #0x6ba
+   a58e8:      	add	x1, x21, #0xce
+   a58ec:      	mov	w2, #0xce               ; =206
+   a58f0:      	bl	0xa58f0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x248>
+		00000000000a58f0:  ARM64_RELOC_BRANCH26	_memcpy
+   a58f4:      	add	x0, sp, #0x5ec
+   a58f8:      	add	x1, sp, #0x6ba
+   a58fc:      	bl	0xa58fc <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x254>
+		00000000000a58fc:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+   a5900:      	tbnz	w0, #0x0, 0xa5934 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x28c>
+   a5904:      	tbnz	x27, #0x3f, 0xa5910 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x268>
+   a5908:      	ldrh	w8, [x28, #0x2]
+   a590c:      	b	0xa5920 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x278>
+   a5910:      	ldr	x8, [x28, #0x8]
+   a5914:      	ldr	x8, [x8, #0x10]
+   a5918:      	lsr	x9, x8, #16
+   a591c:      	cbnz	x9, 0xa59f4 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x34c>
+   a5920:      	add	x19, x19, #0x1
+   a5924:      	add	x26, x26, #0xf0
+   a5928:      	cmp	x19, x8
+   a592c:      	b.lo	0xa5790 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0xe8>
+   a5930:      	b	0xa5940 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x298>
+   a5934:      	add	x20, sp, #0x596
+   a5938:      	mov	w0, #0x1                ; =1
+   a593c:      	bl	0xa593c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x294>
+		00000000000a593c:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+   a5940:      	ldr	x19, [sp, #0x10]
+   a5944:      	ldr	w21, [sp, #0xc]
+   a5948:      	ldr	x27, [sp]
+   a594c:      	add	x20, sp, #0x598
+   a5950:      	bl	0xa5950 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x2a8>
+		00000000000a5950:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg
+   a5954:      	and	w8, w25, #0xffff
+   a5958:      	cmp	w8, w0, uxth
+   a595c:      	b.eq	0xa596c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x2c4>
+   a5960:      	add	x20, sp, #0x596
+   a5964:      	mov	w0, #0x2                ; =2
+   a5968:      	bl	0xa5968 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x2c0>
+		00000000000a5968:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+   a596c:      	add	x20, sp, #0x598
+   a5970:      	bl	0xa5970 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x2c8>
+		00000000000a5970:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg
+   a5974:      	and	w8, w0, #0xffff
+   a5978:      	cmp	w8, w21, uxth
+   a597c:      	b.lo	0xa598c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x2e4>
+   a5980:      	add	x20, sp, #0x596
+   a5984:      	mov	w0, #0x0                ; =0
+   a5988:      	bl	0xa5988 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x2e0>
+		00000000000a5988:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+   a598c:      	add	x20, x24, #0x58
+   a5990:      	bl	0xa5990 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x2e8>
+		00000000000a5990:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16VvgTm
+   a5994:      	mov	x20, x0
+   a5998:      	mov	x0, x23
+   a599c:      	mov	x1, x22
+   a59a0:      	mov	x2, x27
+   a59a4:      	mov	x3, x19
+   a59a8:      	bl	0xa59a8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x300>
+		00000000000a59a8:  ARM64_RELOC_BRANCH26	_$s12GiftUILayout14LayoutGeometryO12intersectiony0A2UI4RectVSgAG_AGtFZ
+   a59ac:      	and	w8, w2, #0xff
+   a59b0:      	cmp	w8, #0x1
+   a59b4:      	b.ne	0xa59c0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x318>
+   a59b8:      	mov	w0, #0x2                ; =2
+   a59bc:      	b	0xa59e0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x338>
+   a59c0:      	lsr	x8, x1, #32
+   a59c4:      	cbz	x8, 0xa59e8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x340>
+   a59c8:      	mov	w8, w1
+   a59cc:      	cbz	x8, 0xa59e8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x340>
+   a59d0:      	lsr	w8, w21, #16
+   a59d4:      	cmp	w8, w20, uxth
+   a59d8:      	b.hi	0xa59e8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x340>
+   a59dc:      	mov	w0, #0x0                ; =0
+   a59e0:      	add	x20, sp, #0x596
+   a59e4:      	bl	0xa59e4 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x33c>
+		00000000000a59e4:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+   a59e8:      	ldrh	w0, [sp, #0x596]
+   a59ec:      	bl	0xa59ec <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x344>
+		00000000000a59ec:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction28InteractionFailurePrecedenceO6select4fromAA0C5ErrorOSgAA0C15VisibleFailuresV_tFZ
+   a59f0:      	b	0xa56e8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5+0x40>
+   a59f4:      	brk	#0x1
+
+00000000000a59f8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5>:
+   a59f8:      	stp	x28, x27, [sp, #-0x60]!
+   a59fc:      	stp	x26, x25, [sp, #0x10]
+   a5a00:      	stp	x24, x23, [sp, #0x20]
+   a5a04:      	stp	x22, x21, [sp, #0x30]
+   a5a08:      	stp	x20, x19, [sp, #0x40]
+   a5a0c:      	stp	x29, x30, [sp, #0x50]
+   a5a10:      	add	x29, sp, #0x50
+   a5a14:      	sub	sp, sp, #0x4b0
+   a5a18:      	ldrb	w8, [x20, #0x1d7]
+   a5a1c:      	cmp	w8, #0x1
+   a5a20:      	b.ne	0xa5b68 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x170>
+   a5a24:      	mov	x9, x0
+   a5a28:      	ldrb	w0, [x20, #0x1d8]
+   a5a2c:      	cmp	w0, #0x9
+   a5a30:      	b.ne	0xa5bd0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d8>
+   a5a34:      	mov	x22, x1
+   a5a38:      	str	w9, [sp, #0xc]
+   a5a3c:      	mov	x24, #0x0               ; =0
+   a5a40:      	mov	x21, #0x0               ; =0
+   a5a44:      	add	x23, sp, #0x2e0
+   a5a48:      	ldp	x25, x26, [x20, #0x10]
+   a5a4c:      	add	x27, sp, #0x100
+   a5a50:      	add	x28, sp, #0x10
+   a5a54:      	tbnz	x26, #0x3f, 0xa5a60 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x68>
+   a5a58:      	ldrh	w8, [x25, #0x2]
+   a5a5c:      	b	0xa5a70 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x78>
+   a5a60:      	ldr	x8, [x25, #0x8]
+   a5a64:      	ldr	x8, [x8, #0x10]
+   a5a68:      	lsr	x9, x8, #16
+   a5a6c:      	cbnz	x9, 0xa5bf0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1f8>
+   a5a70:      	cmp	x21, x8
+   a5a74:      	b.hs	0xa5b70 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x178>
+   a5a78:      	ldp	x8, x9, [x20, #0x10]
+   a5a7c:      	tbnz	x9, #0x3f, 0xa5ae8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0xf0>
+   a5a80:      	ldrh	w9, [x8, #0x2]
+   a5a84:      	cmp	x21, x9
+   a5a88:      	b.hs	0xa5bc8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d0>
+   a5a8c:      	add	x0, sp, #0x100
+   a5a90:      	add	x1, x8, #0x4
+   a5a94:      	mov	w2, #0x1e0              ; =480
+   a5a98:      	bl	0xa5a98 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0xa0>
+		00000000000a5a98:  ARM64_RELOC_BRANCH26	_memcpy
+   a5a9c:      	cmp	x21, #0x1
+   a5aa0:      	b.hi	0xa5bc8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d0>
+   a5aa4:      	add	x0, sp, #0x10
+   a5aa8:      	add	x1, x27, x24
+   a5aac:      	mov	w2, #0xf0               ; =240
+   a5ab0:      	bl	0xa5ab0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0xb8>
+		00000000000a5ab0:  ARM64_RELOC_BRANCH26	_memcpy
+   a5ab4:      	add	x0, sp, #0x10
+   a5ab8:      	bl	0xa5ab8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0xc0>
+		00000000000a5ab8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg
+   a5abc:      	cmp	w0, #0x1
+   a5ac0:      	b.eq	0xa5bc8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d0>
+   a5ac4:      	add	x0, sp, #0x300
+   a5ac8:      	add	x1, sp, #0x10
+   a5acc:      	mov	w2, #0xd0               ; =208
+   a5ad0:      	bl	0xa5ad0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0xd8>
+		00000000000a5ad0:  ARM64_RELOC_BRANCH26	_memcpy
+   a5ad4:      	ldrb	w19, [sp, #0xe4]
+   a5ad8:      	ldur	q0, [x28, #0xd5]
+   a5adc:      	str	q0, [sp, #0x2e0]
+   a5ae0:      	ldur	q0, [x28, #0xe0]
+   a5ae4:      	b	0xa5b34 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x13c>
+   a5ae8:      	ldr	x8, [x8, #0x8]
+   a5aec:      	ldr	x9, [x8, #0x10]
+   a5af0:      	cmp	x9, x21
+   a5af4:      	b.ls	0xa5bc8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d0>
+   a5af8:      	add	x8, x8, x24
+   a5afc:      	add	x0, sp, #0x100
+   a5b00:      	add	x1, x8, #0x20
+   a5b04:      	mov	w2, #0xf0               ; =240
+   a5b08:      	bl	0xa5b08 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x110>
+		00000000000a5b08:  ARM64_RELOC_BRANCH26	_memcpy
+   a5b0c:      	add	x0, sp, #0x100
+   a5b10:      	bl	0xa5b10 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x118>
+		00000000000a5b10:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_
+   a5b14:      	add	x0, sp, #0x300
+   a5b18:      	add	x1, sp, #0x100
+   a5b1c:      	mov	w2, #0xd0               ; =208
+   a5b20:      	bl	0xa5b20 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x128>
+		00000000000a5b20:  ARM64_RELOC_BRANCH26	_memcpy
+   a5b24:      	ldrb	w19, [sp, #0x1d4]
+   a5b28:      	ldur	q0, [x27, #0xd5]
+   a5b2c:      	str	q0, [sp, #0x2e0]
+   a5b30:      	ldur	q0, [x27, #0xe0]
+   a5b34:      	stur	q0, [x23, #0xb]
+   a5b38:      	add	x0, sp, #0x3d2
+   a5b3c:      	add	x1, sp, #0x300
+   a5b40:      	mov	w2, #0xce               ; =206
+   a5b44:      	bl	0xa5b44 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x14c>
+		00000000000a5b44:  ARM64_RELOC_BRANCH26	_memcpy
+   a5b48:      	add	x0, sp, #0x3d2
+   a5b4c:      	mov	x1, x22
+   a5b50:      	bl	0xa5b50 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x158>
+		00000000000a5b50:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+   a5b54:      	tbnz	w0, #0x0, 0xa5b78 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x180>
+   a5b58:      	add	x21, x21, #0x1
+   a5b5c:      	add	x24, x24, #0xf0
+   a5b60:      	tbnz	x26, #0x3f, 0xa5a60 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x68>
+   a5b64:      	b	0xa5a58 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x60>
+   a5b68:      	mov	w0, #0x3                ; =3
+   a5b6c:      	b	0xa5bd0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d8>
+   a5b70:      	mov	w0, #0x1                ; =1
+   a5b74:      	b	0xa5bcc <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d4>
+   a5b78:      	cmp	w19, #0x1
+   a5b7c:      	b.ne	0xa5bc8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d0>
+   a5b80:      	add	x0, sp, #0x100
+   a5b84:      	add	x1, sp, #0x300
+   a5b88:      	mov	w2, #0xd0               ; =208
+   a5b8c:      	bl	0xa5b8c <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x194>
+		00000000000a5b8c:  ARM64_RELOC_BRANCH26	_memcpy
+   a5b90:      	ldr	w8, [sp, #0xc]
+   a5b94:      	str	w8, [sp, #0x1d0]
+   a5b98:      	strb	wzr, [sp, #0x1d4]
+   a5b9c:      	ldr	q0, [sp, #0x2e0]
+   a5ba0:      	add	x8, sp, #0xd6
+   a5ba4:      	stur	q0, [x8, #0xff]
+   a5ba8:      	ldur	q0, [x23, #0xb]
+   a5bac:      	str	q0, [sp, #0x1e0]
+   a5bb0:      	add	x1, sp, #0x100
+   a5bb4:      	mov	x0, x21
+   a5bb8:      	bl	0xa5bb8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1c0>
+		00000000000a5bb8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV7replace2at4withSbs6UInt16V_17GiftUIInteraction011InteractionD6RecordVy0O14UISemanticCore24SemanticCompleteIdentityVGntF
+   a5bbc:      	tbz	w0, #0x0, 0xa5bc8 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d0>
+   a5bc0:      	mov	w0, #0x9                ; =9
+   a5bc4:      	b	0xa5bd0 <_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5+0x1d8>
+   a5bc8:      	mov	w0, #0x5                ; =5
+   a5bcc:      	strb	w0, [x20, #0x1d8]
+   a5bd0:      	add	sp, sp, #0x4b0
+   a5bd4:      	ldp	x29, x30, [sp, #0x50]
+   a5bd8:      	ldp	x20, x19, [sp, #0x40]
+   a5bdc:      	ldp	x22, x21, [sp, #0x30]
+   a5be0:      	ldp	x24, x23, [sp, #0x20]
+   a5be4:      	ldp	x26, x25, [sp, #0x10]
+   a5be8:      	ldp	x28, x27, [sp], #0x60
+   a5bec:      	ret
+   a5bf0:      	brk	#0x1
