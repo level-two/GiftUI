@@ -1,0 +1,636 @@
+{
+  "purpose": "Exact necessary A38/A39 proof and compact validation attachments; original paths preserved. A39selected12 is an exact duplicate of selected3 and remains at its original raw path.",
+  "replay_limit": "Decisive raw bodies/provenance are self-contained here. Re-executing historical authentication/decoding still requires original authenticated baseline, installed tool/cache and external .build files identified by original paths/hashes; no clean-checkout full replay claim. Original79/48/6 corpus not copied or changed.",
+  "files": [
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/decode-selected.py",
+      "bytes": 4179,
+      "sha256": "2fc5afa1ae60818192090344dcad93f93d87e98829128489127e5229ee4a9451"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/freeze.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/freeze.json",
+      "bytes": 4568,
+      "sha256": "e02f674ae2ff2a00cdbee7b0ea47df1b93d46a8ea95a3843eaeab13ed47edd31"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/join-origin-assessment.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/join-origin-assessment.py",
+      "bytes": 2647,
+      "sha256": "2c62a75c34ce093128980e9e1c9f1aaefded32f45403f1b929557a7bd197bacf"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/ledger.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/ledger.json",
+      "bytes": 89951,
+      "sha256": "4a2ee064527bda02c5f9a6c9204883fd96e1cebecb6152a2e9313261f600e51f"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/origin-assessment.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/origin-assessment.json",
+      "bytes": 11423,
+      "sha256": "1e17462aa385119c5e4a5f29263c21d50cdee82120c06669f391c314d470953f"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/page-derived.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/page-derived.py",
+      "bytes": 1546,
+      "sha256": "59e0ec53e50d902af761cdc3b84f3e03913bbe8e9d8c2b1c8e3bc5a26281b60d"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/page.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/page.py",
+      "bytes": 4708,
+      "sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/preauth-setup-error.txt",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/preauth-setup-error.txt",
+      "bytes": 228,
+      "sha256": "d4d6955ad8e3609c9f227b233b7fc0f0f7d8aa3be53da4a15de614c1de4ad99a"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/select-current-joins.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/select-current-joins.py",
+      "bytes": 5027,
+      "sha256": "2e496a26de0c9467d9a086d7facb785a34d6abdbb918a5a962b9628587ad2128"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-1.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-1.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-1.stdout",
+      "bytes": 283670,
+      "sha256": "dd2f2dfe3888b0cb3cc029ae60aa274b22b0d075fa9049a01f135b540da2bf2f"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-10.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-10.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-10.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-10.stdout",
+      "bytes": 6580,
+      "sha256": "5df1fe9da4c239762bc45e66f2ec33d46080572934eae33eadacf6fecd97ca89"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-11.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-11.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-11.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-11.stdout",
+      "bytes": 6807,
+      "sha256": "44939045155b9a0316ba980faa6e727ef5ba52c5ab3936b9c49f05ec38046ba6"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-12.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-12.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-12.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-12.stdout",
+      "bytes": 439,
+      "sha256": "1ceaa0f976ed46e0df28c97bc1034e0c412b5011c7aed0e6793b488b80a9235b"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-13.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-13.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-13.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-13.stdout",
+      "bytes": 304,
+      "sha256": "3eac9ce0cdacca9c09b84ef925322c7e04a08231f60970ca6922ddb5a0fdd16d"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-14.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-14.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-14.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-14.stdout",
+      "bytes": 577,
+      "sha256": "a94a24873ee80f8625d99946bca7e75a6c5606fbaafb12ea51ebc0dd9710eef4"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-2.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-2.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-2.stdout",
+      "bytes": 341,
+      "sha256": "8d577fc3ec1111e717d3b546a7dd0da07377333db9613a8447f21f6238add306"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-3.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-3.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-3.stdout",
+      "bytes": 316,
+      "sha256": "d9eae7e5b3474d81bfe561d30b1b1db885d6acfaad9a82faf806e03b9ac19766"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-4.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-4.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-4.stdout",
+      "bytes": 668,
+      "sha256": "9207b421c6d1a0fc64cce72151797a27905c45f02d1be3cc5f208d82e5c17950"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-5.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-5.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-5.stdout",
+      "bytes": 307,
+      "sha256": "e1ffb299587ee5ebb289b58078c7d67bc02125fca1029961f39b2887d74e2503"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-6.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-6.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-6.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-6.stdout",
+      "bytes": 304,
+      "sha256": "77574c6f24981aae44e1997f6d2afd120d6f550576b45784348d9568e66d1b02"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-7.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-7.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-7.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-7.stdout",
+      "bytes": 1205,
+      "sha256": "ae2a47318ec949f0cacf5d3b87bffef167fe23fc8f0448698156af1dbbbdfac3"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-8.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-8.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-8.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-8.stdout",
+      "bytes": 578,
+      "sha256": "efc084ed390fc93d493a78303178111028932c5106b10b7f0c105b07c68e9af8"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-9.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-9.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-9.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-9.stdout",
+      "bytes": 6645,
+      "sha256": "2a876010de40c5b868d0be8c50329b48f9407c9a5f4d02b3ae4c64798f10cdca"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-captures.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-captures.json",
+      "bytes": 13541,
+      "sha256": "0bc59bb90146e702bd2fe635d8c3d6fb2e98c8eba6333cf64a2e15900d34e020"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-root-site-joins.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/selected-root-site-joins.json",
+      "bytes": 43866,
+      "sha256": "b6ac8706f82232b9344c86810a9464ea76bc538c7088e60bb03155faa186ea6b"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA38-local/view-selected.py",
+      "bytes": 1973,
+      "sha256": "6fe1f59c9ea6eeba842d7941ddd63c25e562d8c4f4dae854ba10b794cb9ee4c2"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/acquisition.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/acquisition.json",
+      "bytes": 468,
+      "sha256": "c512b17b1295a1da470c72b177f43e94586d37f0ef8a191990a7024d3c4b0efb"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/current-result-metadata.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/current-result-metadata.json",
+      "bytes": 16236,
+      "sha256": "a4dba3af88da64b91d931f1a4d484a63e3a285c2321597ddaf6707b1c4c554b8"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/current-route-receipt.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/current-route-receipt.json",
+      "bytes": 6633,
+      "sha256": "aef4529738b70b26c4a1de9646c8484a2cc83204a6d785a75a212fb598601797"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/decode-selected.py",
+      "bytes": 4198,
+      "sha256": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/final-scope-provenance.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/final-scope-provenance.json",
+      "bytes": 10786,
+      "sha256": "addecbc36bdce76bf7ebbba96588c3c305e5ad5b67b3699e187e4487445a69e8"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/final-scope-provenance.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/final-scope-provenance.py",
+      "bytes": 3258,
+      "sha256": "2d13392a0a0563ca275fc2221427455ab9c2ecf5e1c1e79ebb1b6a8082d95988"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/freeze.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/freeze.json",
+      "bytes": 5679,
+      "sha256": "0abc946838e585e114a9586a6805c9645629c86acb6ff6e723c12e0a3b9d41b5"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/ledger.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/ledger.json",
+      "bytes": 75739,
+      "sha256": "37d25e7bfe83bf38d58e8314ed0f0792306f0ef0cc39e925a64fb3d69383242b"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/page-derived.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/page-derived.py",
+      "bytes": 1546,
+      "sha256": "59e0ec53e50d902af761cdc3b84f3e03913bbe8e9d8c2b1c8e3bc5a26281b60d"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/page.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/page.py",
+      "bytes": 4708,
+      "sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/project-route-receipt.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/project-route-receipt.py",
+      "bytes": 2230,
+      "sha256": "9c781583b5b08e61c64e606b38aabf10573d3aff41c912d4be642bafdb298396"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/read-scope-records.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/read-scope-records.py",
+      "bytes": 2834,
+      "sha256": "6b844a33e183dbbab3da2cb04ec95b31aaa4845349399efb842faf95c6920439"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/scope-contract-excerpts.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/scope-contract-excerpts.json",
+      "bytes": 1628,
+      "sha256": "9ce211c6a591d99fe06d54be1afb7ad8cbdc5bf4f9cd9b91cb3a4d5085fdd7dc"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-1.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-1.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-1.stdout",
+      "bytes": 351,
+      "sha256": "f276d2ef5f4f39092971b081e89487d1bc2f40dfaa045c9bf9bd45c7a1e86056"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-10.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-10.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-10.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-10.stdout",
+      "bytes": 298,
+      "sha256": "b3436957383f3bced1ffec1ace41022a928591b04cf559f40201020e5ca121bc"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-11.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-11.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-11.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-11.stdout",
+      "bytes": 275,
+      "sha256": "5961bfab33e71ad5cb29c6f955a5ceb3480073f71a325caeaaf552a3a58f0c64"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-2.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-2.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-2.stdout",
+      "bytes": 350,
+      "sha256": "f9d4481ecc6fee6da6974360ed5a68a3f1f8262440e2464edc5ea07595b823ec"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-3.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-3.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-3.stdout",
+      "bytes": 29106,
+      "sha256": "321b658cc9e7892ae6ee8b945c13f1c196360a3710210aa93440288a342489f9"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-4.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-4.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-4.stdout",
+      "bytes": 556,
+      "sha256": "558a642641c761556b2ada3a81a74af3b576f8a9240f4533b2196a01d69a7ae3"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-5.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-5.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-5.stdout",
+      "bytes": 3635,
+      "sha256": "ba61700e0a09b9709ca7e743cb0c95ea1abb3f50350cfe73fa0b626dfb52dac0"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-6.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-6.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-6.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-6.stdout",
+      "bytes": 1149,
+      "sha256": "b142c42e7dd501132c2ff0596fea5eafe96001708714b147a674037f4186bb51"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-7.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-7.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-7.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-7.stdout",
+      "bytes": 573,
+      "sha256": "c064102b2f414ce987ec6a392c4c91f0dd9ef4895194c232c2c59a1e28290394"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-8.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-8.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-8.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-8.stdout",
+      "bytes": 13740,
+      "sha256": "78ade1358408d383163e58302342ed7c6578ef329a4ec0289b0b3e382c9a7180"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-9.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-9.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-9.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-9.stdout",
+      "bytes": 5069,
+      "sha256": "78164920df61a9ec9bd155f3db72de48eba3b060118c27c0844b9e6f28ab888f"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-captures.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/selected-captures.json",
+      "bytes": 12288,
+      "sha256": "0bd443e36138d93e6341f322a7aabf25f2fdf4e520e3c3bad152f7d634208af6"
+    },
+    {
+      "original_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/proof-inputs/current-native-static-remaining-batchA39-local/view-selected.py",
+      "bytes": 1973,
+      "sha256": "6fe1f59c9ea6eeba842d7941ddd63c25e562d8c4f4dae854ba10b794cb9ee4c2"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/p07-start.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/p07-start.json",
+      "bytes": 422,
+      "sha256": "8791895429c4bf2e4155a05c1ec671963d43c4b4c282e5603fc046677f2ee01c"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/p07-exit.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/p07-exit.json",
+      "bytes": 70,
+      "sha256": "0e349ac6a5fddf40500181e7c5d815788f57bc1040b4f911ae65a9e0f7fb2ca5"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/p07.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/p07.stdout",
+      "bytes": 160,
+      "sha256": "969c00ba201bf194fa5e28d51f7ddee36e83b5843d83f5111e8c79f5a2d7cb35"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/p07.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/p07.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused-start.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused-start.json",
+      "bytes": 1287,
+      "sha256": "cdbb398ad88365c50a4cb05cd3c663926d17759ddfbd4fc76ee6a7e695d2d025"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused-exit.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused-exit.json",
+      "bytes": 70,
+      "sha256": "06b2c4ced01b7fd67c67bc4ce5826f83954d213f81926109dd7430fe014b901b"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused.stdout",
+      "bytes": 209,
+      "sha256": "0c7ac1d4e4716180d16f8af131382df5c511258659fe70b7e7341c862194408d"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/profile-rejection-controls.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/profile-rejection-controls.json",
+      "bytes": 3396,
+      "sha256": "01a32de3f95780f8651adf4ced1749ef4a7a235178ab56011ffd5720b0db6b20"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/format-lint.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/format-lint.json",
+      "bytes": 173,
+      "sha256": "c927c3f0bc100536e8c3bf2be5e1ca7fa7400b544405f9b2cc3018e23986a231"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/format-lint.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/format-lint.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/format-lint.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/format-lint.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused-output-comparison.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused-output-comparison.json",
+      "bytes": 652,
+      "sha256": "0af12c5a7541950c8574ad1c5d7381f3722bb9029a675b54ee99df3f333bdd71"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused-qualification.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused-qualification.json",
+      "bytes": 5512,
+      "sha256": "c7fd39d12862da1108bb23b6086381b0e8ba557723e1aab489b7321ede9affb0"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused-selected-symbols.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused-selected-symbols.json",
+      "bytes": 9645,
+      "sha256": "979eca3446a19aa5a978c2a1a199560908cd88013afee42ede4ddfe6c724f3bc"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused-compiled-selection.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused-compiled-selection.json",
+      "bytes": 19861,
+      "sha256": "d4491999b0e7ea9255f7ed8175457a95762659be0f555793b56d4410963ec4df"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/focused-static-tag-injection.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/focused-static-tag-injection.json",
+      "bytes": 537,
+      "sha256": "a817b16aa77c5181f06a8869a65762f39d15730b4724f76f133e8b6e8eb12fba"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-start.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-start.json",
+      "bytes": 2265,
+      "sha256": "bde34127aa239b3b9391440cca1cb31cf83fc09ea02b15f927912e3a462b741b"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-exit.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-exit.json",
+      "bytes": 104,
+      "sha256": "5266d0eab0912934e847f28be042e7cc996e6ad1dc791857ff0b3d34d9441622"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full.stdout",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full.stdout",
+      "bytes": 138,
+      "sha256": "c7334b8b7a5f12e8b0d00d2ebcdeac70fc56bd0e121f008ff58ec58dcd30e0f5"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full.stderr",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-output-reservation.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-output-reservation.json",
+      "bytes": 944,
+      "sha256": "e81d858d0b1bb0ba7013259e12d001b4ee9ce19d981791bba3919142226fc0b6"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-output-location.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-output-location.json",
+      "bytes": 245,
+      "sha256": "d492fd71dbb0366b1089a87badfbe589bfab30243d2eb45fe313886780409eb8"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-compiled-selection.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-compiled-selection.json",
+      "bytes": 20542,
+      "sha256": "e71875b1d3d07b995247bdfb52118d35df534a046798e807f1468febf24cc1d5"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-resource-root.disassembly",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-resource-root.disassembly",
+      "bytes": 3064,
+      "sha256": "538b58a211316476edd1b7083f442200b12d8e09240e705ae2462a2ff801f3a0"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-static-scoped.disassembly",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-static-scoped.disassembly",
+      "bytes": 88487,
+      "sha256": "6436b08c655c20e624576886217bb7c489926cc63539001d7be157cd07e6f816"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-static-tag-injection.disassembly",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-static-tag-injection.disassembly",
+      "bytes": 1123,
+      "sha256": "98f52d8bd841e4fd46bdd871010cd026ce2cf81a005d77e942164864ff009466"
+    },
+    {
+      "original_path": ".build/contracts/p08-static-resource-entry40/full-root-symbol-rows.json",
+      "retained_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local/validation/full-root-symbol-rows.json",
+      "bytes": 1675,
+      "sha256": "bce8dfb186418700ba17880458d049234aa010b901af0446c4a7611572312921"
+    }
+  ]
+}

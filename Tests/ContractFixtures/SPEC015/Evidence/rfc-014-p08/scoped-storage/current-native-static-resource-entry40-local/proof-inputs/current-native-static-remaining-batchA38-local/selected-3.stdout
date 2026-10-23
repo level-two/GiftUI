@@ -1,0 +1,10 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000b619c <l___unnamed_12>:
+   b619c:      	ldrb	w8, [x0, #0x168]
+   b61a0:      	and	w8, w8, #0x7f
+   b61a4:      	strb	w8, [x0, #0x168]
+   b61a8:      	ret

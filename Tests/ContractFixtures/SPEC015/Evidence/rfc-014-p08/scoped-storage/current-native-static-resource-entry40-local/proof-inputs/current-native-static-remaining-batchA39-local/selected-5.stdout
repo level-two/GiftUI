@@ -1,0 +1,53 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000096af8 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF>:
+   96af8:      	stp	x28, x27, [sp, #-0x30]!
+   96afc:      	stp	x20, x19, [sp, #0x10]
+   96b00:      	stp	x29, x30, [sp, #0x20]
+   96b04:      	add	x29, sp, #0x20
+   96b08:      	sub	sp, sp, #0x1e, lsl #12  ; =0x1e000
+   96b0c:      	sub	sp, sp, #0x450
+   96b10:      	mov	x19, x0
+   96b14:      	bl	0x96b14 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x1c>
+		0000000000096b14:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_182
+   96b18:      	stur	x8, [x29, #-0x28]
+   96b1c:      	bl	0x96b1c <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x24>
+		0000000000096b1c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime23p08CheckGraphDefinition33_480B1BD841D053AE4FCDC18507668536LLyyF
+   96b20:      	add	x20, sp, #0x80
+   96b24:      	bl	0x96b24 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x2c>
+		0000000000096b24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1514
+   96b28:      	add	x0, sp, #0xc
+   96b2c:      	add	x1, sp, #0x80
+   96b30:      	bl	0x96b30 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x38>
+		0000000000096b30:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_620
+   96b34:      	add	x0, x20, #0x78
+   96b38:      	bl	0x96b38 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x40>
+		0000000000096b38:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1878
+   96b3c:      	mov	x20, x0
+   96b40:      	mov	x3, x19
+   96b44:      	bl	0x96b44 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x4c>
+		0000000000096b44:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF
+   96b48:      	adds	x20, x20, x0
+   96b4c:      	b.vs	0x96b84 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x8c>
+   96b50:      	mov	x0, x19
+   96b54:      	bl	0x96b54 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x5c>
+		0000000000096b54:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF
+   96b58:      	adds	x0, x20, x0
+   96b5c:      	b.vs	0x96b88 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x90>
+   96b60:      	ldur	x8, [x29, #-0x28]
+   96b64:      	bl	0x96b64 <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x6c>
+		0000000000096b64:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+   96b68:      	b.ne	0x96b8c <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x94>
+   96b6c:      	add	sp, sp, #0x1e, lsl #12  ; =0x1e000
+   96b70:      	add	sp, sp, #0x450
+   96b74:      	ldp	x29, x30, [sp, #0x20]
+   96b78:      	ldp	x20, x19, [sp, #0x10]
+   96b7c:      	ldp	x28, x27, [sp], #0x30
+   96b80:      	ret
+   96b84:      	brk	#0x1
+   96b88:      	brk	#0x1
+   96b8c:      	bl	0x96b8c <_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF+0x94>
+		0000000000096b8c:  ARM64_RELOC_BRANCH26	___stack_chk_fail

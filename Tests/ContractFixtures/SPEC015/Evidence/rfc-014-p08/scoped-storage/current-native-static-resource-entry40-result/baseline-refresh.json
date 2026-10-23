@@ -1,0 +1,54 @@
+{
+  "authority": "Human standing Authorize traceable refreshes: authorized fix+matching validation+same independent review, preserve old inputs/map replacements/freeze before future semantic analysis.",
+  "old": {
+    "HEAD": "798686cf11a058c5ba1467a8b4b2f94f1b3390fa",
+    "result_sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838",
+    "Runtime_sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581",
+    "source_hashes": {
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050",
+      "scripts/contracts/check-spec-015-counter.py": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+      "scripts/contracts/p08_check_collection.py": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41"
+    }
+  },
+  "new": {
+    "result": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/result.json",
+      "sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8",
+      "bytes": 8566019
+    },
+    "Runtime": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+      "bytes": 2605520,
+      "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de"
+    },
+    "source_hashes": {
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "7ab835e7ffaec4c3d1d769fc14de845701d394bfe9636e536a41dee076f835c3",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a",
+      "scripts/contracts/check-spec-015-counter.py": "fc410351f1b1bed16f556091fff26a3804adb37f792154dd5a14b1a6d7e0b612",
+      "scripts/contracts/p08_check_collection.py": "4f602899833a848fe74dc60f722660f949a26a543fa4d28132f567eaca17aea1"
+    },
+    "exact_roots": {
+      "Host": {
+        "address": "0x4bca8",
+        "symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+      },
+      "ScopedStorage": {
+        "address": "0x53f58",
+        "symbol": "_$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF"
+      },
+      "Route": {
+        "address": "0x98270",
+        "symbol": "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+      },
+      "StaticResourceEntryV1": {
+        "address": "0x98308",
+        "symbol": "_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF"
+      }
+    }
+  },
+  "mapping": "All three original root symbols remain unchanged mixed functional roots. New v1 entry maps Graph\u2192Static-selected scoped workload\u2192same Host. Dynamic allocator controls remain in mixed functional validation. No old root/site removed from history, no assumption old1892site tuples fit newobject, no whole-site inventory/eligibility/count closure.",
+  "preserved": "Original56groups/1892sites/3roots/79evidence48preservation6controls/allSTOPs/fourroutes/ADR040counter-only scope."
+}

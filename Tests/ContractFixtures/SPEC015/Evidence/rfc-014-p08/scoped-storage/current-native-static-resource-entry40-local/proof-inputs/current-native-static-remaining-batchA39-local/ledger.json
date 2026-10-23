@@ -1,0 +1,1750 @@
+{
+  "started_utc": "2026-10-22T22:42:40.218409+00:00",
+  "processing": 505112115,
+  "transcript": 88765,
+  "requests": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 a\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 a",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py '[[\\\"callsite\\\",\\\"0x15c78\\\"],[\\\"callsite\\\",\\\"0x15cac\\\"],[\\\"entry\\\",\\\"0x44b80\\\"],[\\\"entry\\\",\\\"0xbc9e4\\\"],[\\\"entry\\\",\\\"0x96af8\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py '[[\"callsite\",\"0x15c78\"],[\"callsite\",\"0x15cac\"],[\"entry\",\"0x44b80\"],[\"entry\",\"0xbc9e4\"],[\"entry\",\"0x96af8\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-1.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-1.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-2.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-4.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-4.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-3.stdout 1 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-3.stdout 1 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-3.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-3.stdout 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-5.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-5.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py '[[\\\"callsite\\\",\\\"0x44ce0\\\"],[\\\"callsite\\\",\\\"0x44d08\\\"],[\\\"entry\\\",\\\"0x4bc08\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py '[[\"callsite\",\"0x44ce0\"],[\"callsite\",\"0x44d08\"],[\"entry\",\"0x4bc08\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-6.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-6.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-7.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-7.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-8.stdout 1 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-8.stdout 1 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py '[[\\\"callsite\\\",\\\"0xbc6c8\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py '[[\"callsite\",\"0xbc6c8\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-9.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-9.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py '[[\\\"callsite\\\",\\\"0x15a0c\\\"],[\\\"callsite\\\",\\\"0x15a90\\\"],[\\\"callsite\\\",\\\"0x4be04\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py '[[\"callsite\",\"0x15a0c\"],[\"callsite\",\"0x15a90\"],[\"callsite\",\"0x4be04\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-10.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-10.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-11.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py selected-11.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/read-scope-records.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/read-scope-records.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/project-route-receipt.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/project-route-receipt.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py /Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/Main.swift 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/view-selected.py /Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/Main.swift 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/final-scope-provenance.py\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/final-scope-provenance.py",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 /tmp/g35 f '{\\\"status\\\":\\\"DECISIVE_MIXED_FUNCTIONAL_VS_STATIC_RESOURCE_SCOPE_FINDING\\\",\\\"scope\\\":\\\"A38/A39 one coherent grouped outcome; current fullobject4cf710ca/source50395/resultec59 baseline preserved\\\",\\\"tag_and_copy\\\":\\\"PhysicalSlots tag1 injection0xa34ac sets bit7; tag0 injection0xa36bc clears viaAND3; getter0xb6190 shiftsbit7. Complete732=memcpy1986,707=memcpy361,405=memcpy361 close owner/payload copies; tag extraction mutation only stack value. Owner constructor537 saves exact args,850 sets finalcopy args; reviewed153 guard/result helper reused.\\\",\\\"roots\\\":\\\"Host0x4bc08 complete177lines calls same withSelectedStatic0x44b80 at4bcb4/4be04, exactsamehash confirmed; complete237line body tag0 and initializewrapperx0=0,w1=2. ScopedStorage0x5284c is unconditionaltail to wholeexercise. Route0x96af8 complete53lines normally calls wholeexercise thenHost; no Dynamic-control selection switch at route.\\\",\\\"allocation_consequence\\\":\\\"Tag0 initialization excludes 3 examined ArrayBuffer sites, uses StaticTwo alternatives. Tag1 Dynamic validation path has5logical ArrayBuffer origins sharing3exact allocator sitesa37c8/a38d0/a39cc; positive5capacities2 supplied by currentcaller; growForAppend0 makes max(minCapacity,oldCount)>=2, so nonzero branch invokes exact metadata descriptor/helper then swift_allocObject if preceding valid/workload/metadata returns complete. No runtime success/count/cost inference.\\\",\\\"current_execution\\\":\\\"Current276B Main e246ce21 calls setbuf(stdout,nil) then print interpolating Route+Model+Semantic+FixedStorage+Coordinator. Full functional execute exit0/log76569bb0; no resourcewindow/allocatorobserver inMain. Currentselected result has no top-level environment/loaded-image fields; all904 artifactnames queried for dyld/loaded/environment/fixup/window/maps/snapshot: none. DeclaredCollector d8d9fa4e launches subprocess.run withoutenv=; inherited actualambientenvironment not captured. Installedregular/nonlazy metadata cannot reconstruct past live GOT/UUID/guard/stdout persistence.\\\",\\\"authority\\\":\\\"SPEC013259-264/579-587/1105-1134 Staticzeroheap/separateDynamic; SPEC015267-275/386-400/1538-1548 requiresbothprofilecontrols butnotDynamicinsideStaticresourcewindow. Separate ordinary contract/source assessment provenance, no AUTH-only semantic source promotion. Coordinator transmitted Astra additiveStatic-only resourceentry+versionedrecipe while preserving valid mixedfunctionalproducer/allcontrols/order, noSpecamendment established.\\\",\\\"boundary\\\":\\\"Current functional receipt is NOT a failed resource measurement. Current mixed whole-entry cannot establish Static resource eligibility; tag1 controls cannot be silently deleted/exempted/subtracted/prewarmed. Other rooted allocator/error/metadata/once/witness/indirect paths stay available-unexamined, not absence. PriorU03/source safety closedscope retained; actual loadedtarget/state and freshcold/image/resources outsidecurrentreadonlyevidence remain explicit. No source/HEAD/index/compiler/runtime/providerexperiment change.\\\",\\\"accounting\\\":\\\"A38 preserved500483528B prefinal/16B quoted-request deficit; no retroqualification. A39 decoder canonical selector now shellquoted beforeexecution. Administrative/acquisition exact aggregate counting remains uncertified and ordinary metadata/contract toolreads outside canonicalhooks must not be treated free or certified. This is actual lastsemanticread terminal; subsequent administrative receipt only.\\\"}'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 /tmp/g35 f '{\"status\":\"DECISIVE_MIXED_FUNCTIONAL_VS_STATIC_RESOURCE_SCOPE_FINDING\",\"scope\":\"A38/A39 one coherent grouped outcome; current fullobject4cf710ca/source50395/resultec59 baseline preserved\",\"tag_and_copy\":\"PhysicalSlots tag1 injection0xa34ac sets bit7; tag0 injection0xa36bc clears viaAND3; getter0xb6190 shiftsbit7. Complete732=memcpy1986,707=memcpy361,405=memcpy361 close owner/payload copies; tag extraction mutation only stack value. Owner constructor537 saves exact args,850 sets finalcopy args; reviewed153 guard/result helper reused.\",\"roots\":\"Host0x4bc08 complete177lines calls same withSelectedStatic0x44b80 at4bcb4/4be04, exactsamehash confirmed; complete237line body tag0 and initializewrapperx0=0,w1=2. ScopedStorage0x5284c is unconditionaltail to wholeexercise. Route0x96af8 complete53lines normally calls wholeexercise thenHost; no Dynamic-control selection switch at route.\",\"allocation_consequence\":\"Tag0 initialization excludes 3 examined ArrayBuffer sites, uses StaticTwo alternatives. Tag1 Dynamic validation path has5logical ArrayBuffer origins sharing3exact allocator sitesa37c8/a38d0/a39cc; positive5capacities2 supplied by currentcaller; growForAppend0 makes max(minCapacity,oldCount)>=2, so nonzero branch invokes exact metadata descriptor/helper then swift_allocObject if preceding valid/workload/metadata returns complete. No runtime success/count/cost inference.\",\"current_execution\":\"Current276B Main e246ce21 calls setbuf(stdout,nil) then print interpolating Route+Model+Semantic+FixedStorage+Coordinator. Full functional execute exit0/log76569bb0; no resourcewindow/allocatorobserver inMain. Currentselected result has no top-level environment/loaded-image fields; all904 artifactnames queried for dyld/loaded/environment/fixup/window/maps/snapshot: none. DeclaredCollector d8d9fa4e launches subprocess.run withoutenv=; inherited actualambientenvironment not captured. Installedregular/nonlazy metadata cannot reconstruct past live GOT/UUID/guard/stdout persistence.\",\"authority\":\"SPEC013259-264/579-587/1105-1134 Staticzeroheap/separateDynamic; SPEC015267-275/386-400/1538-1548 requiresbothprofilecontrols butnotDynamicinsideStaticresourcewindow. Separate ordinary contract/source assessment provenance, no AUTH-only semantic source promotion. Coordinator transmitted Astra additiveStatic-only resourceentry+versionedrecipe while preserving valid mixedfunctionalproducer/allcontrols/order, noSpecamendment established.\",\"boundary\":\"Current functional receipt is NOT a failed resource measurement. Current mixed whole-entry cannot establish Static resource eligibility; tag1 controls cannot be silently deleted/exempted/subtracted/prewarmed. Other rooted allocator/error/metadata/once/witness/indirect paths stay available-unexamined, not absence. PriorU03/source safety closedscope retained; actual loadedtarget/state and freshcold/image/resources outsidecurrentreadonlyevidence remain explicit. No source/HEAD/index/compiler/runtime/providerexperiment change.\",\"accounting\":\"A38 preserved500483528B prefinal/16B quoted-request deficit; no retroqualification. A39 decoder canonical selector now shellquoted beforeexecution. Administrative/acquisition exact aggregate counting remains uncertified and ordinary metadata/contract toolreads outside canonicalhooks must not be treated free or certified. This is actual lastsemanticread terminal; subsequent administrative receipt only.\"}'",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "pages": [],
+  "errors": [],
+  "auth_utc": "2026-10-22T22:42:43.761572+00:00",
+  "page_count": 36,
+  "line_count": 3086,
+  "selected_predicates": [
+    {
+      "predicate": "frozen page identity",
+      "value": true,
+      "actual": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "predicate": "ordinary code frozen",
+      "value": true,
+      "actual": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
+    },
+    {
+      "predicate": "exact callsite relocation 0x15c78",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_732",
+        "type": 2,
+        "index": 30402
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x15c78",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_732",
+        "hits": [
+          {
+            "address": 780420,
+            "nlist_index": 657
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xbe884",
+      "value": true,
+      "actual": {
+        "index": 5333
+      }
+    },
+    {
+      "predicate": "exact callsite relocation 0x15cac",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_707",
+        "type": 2,
+        "index": 30399
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x15cac",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_707",
+        "hits": [
+          {
+            "address": 779752,
+            "nlist_index": 656
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xbe5e8",
+      "value": true,
+      "actual": {
+        "index": 5308
+      }
+    },
+    {
+      "predicate": "explicit selected entry 0x44b80",
+      "value": true,
+      "actual": {
+        "address": "0x44b80"
+      }
+    },
+    {
+      "predicate": "callee extent bound 0x44b80",
+      "value": true,
+      "actual": {
+        "index": 1069
+      }
+    },
+    {
+      "predicate": "explicit selected entry 0xbc9e4",
+      "value": true,
+      "actual": {
+        "address": "0xbc9e4"
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xbc9e4",
+      "value": true,
+      "actual": {
+        "index": 4971
+      }
+    },
+    {
+      "predicate": "explicit selected entry 0x96af8",
+      "value": true,
+      "actual": {
+        "address": "0x96af8"
+      }
+    },
+    {
+      "predicate": "callee extent bound 0x96af8",
+      "value": true,
+      "actual": {
+        "index": 3291
+      }
+    },
+    {
+      "predicate": "complete decode+final reserve",
+      "value": true,
+      "actual": {
+        "processing": 75100373,
+        "forecast": 182148776
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 1,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x15c78",
+          "symbol": "_OUTLINED_FUNCTION_732"
+        },
+        "range": [
+          "0xbe884",
+          "0xbe88c"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbe884",
+          "--stop-address=0xbe88c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 351,
+        "stdout_lines": 9,
+        "stdout_sha256": "f276d2ef5f4f39092971b081e89487d1bc2f40dfaa045c9bf9bd45c7a1e86056",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.605832+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 1,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x15c78",
+          "symbol": "_OUTLINED_FUNCTION_732"
+        },
+        "range": [
+          "0xbe884",
+          "0xbe88c"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbe884",
+          "--stop-address=0xbe88c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 351,
+        "stdout_lines": 9,
+        "stdout_sha256": "f276d2ef5f4f39092971b081e89487d1bc2f40dfaa045c9bf9bd45c7a1e86056",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.605832+00:00"
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 2,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x15cac",
+          "symbol": "_OUTLINED_FUNCTION_707"
+        },
+        "range": [
+          "0xbe5e8",
+          "0xbe5f0"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbe5e8",
+          "--stop-address=0xbe5f0",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 350,
+        "stdout_lines": 9,
+        "stdout_sha256": "f9d4481ecc6fee6da6974360ed5a68a3f1f8262440e2464edc5ea07595b823ec",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.620709+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 2,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x15cac",
+          "symbol": "_OUTLINED_FUNCTION_707"
+        },
+        "range": [
+          "0xbe5e8",
+          "0xbe5f0"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbe5e8",
+          "--stop-address=0xbe5f0",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 350,
+        "stdout_lines": 9,
+        "stdout_sha256": "f9d4481ecc6fee6da6974360ed5a68a3f1f8262440e2464edc5ea07595b823ec",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.620709+00:00"
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 3,
+        "origin": {
+          "origin_mode": "entry",
+          "origin": "0x44b80",
+          "symbol": [
+            "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5"
+          ]
+        },
+        "range": [
+          "0x44b80",
+          "0x44ec4"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x44b80",
+          "--stop-address=0x44ec4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 29106,
+        "stdout_lines": 237,
+        "stdout_sha256": "321b658cc9e7892ae6ee8b945c13f1c196360a3710210aa93440288a342489f9",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.636225+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 3,
+        "origin": {
+          "origin_mode": "entry",
+          "origin": "0x44b80",
+          "symbol": [
+            "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5"
+          ]
+        },
+        "range": [
+          "0x44b80",
+          "0x44ec4"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x44b80",
+          "--stop-address=0x44ec4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 29106,
+        "stdout_lines": 237,
+        "stdout_sha256": "321b658cc9e7892ae6ee8b945c13f1c196360a3710210aa93440288a342489f9",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.636225+00:00"
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 4,
+        "origin": {
+          "origin_mode": "entry",
+          "origin": "0xbc9e4",
+          "symbol": [
+            "_OUTLINED_FUNCTION_370"
+          ]
+        },
+        "range": [
+          "0xbc9e4",
+          "0xbc9f0"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbc9e4",
+          "--stop-address=0xbc9f0",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 556,
+        "stdout_lines": 10,
+        "stdout_sha256": "558a642641c761556b2ada3a81a74af3b576f8a9240f4533b2196a01d69a7ae3",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.652295+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 4,
+        "origin": {
+          "origin_mode": "entry",
+          "origin": "0xbc9e4",
+          "symbol": [
+            "_OUTLINED_FUNCTION_370"
+          ]
+        },
+        "range": [
+          "0xbc9e4",
+          "0xbc9f0"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbc9e4",
+          "--stop-address=0xbc9f0",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 556,
+        "stdout_lines": 10,
+        "stdout_sha256": "558a642641c761556b2ada3a81a74af3b576f8a9240f4533b2196a01d69a7ae3",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.652295+00:00"
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 5,
+        "origin": {
+          "origin_mode": "entry",
+          "origin": "0x96af8",
+          "symbol": [
+            "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+          ]
+        },
+        "range": [
+          "0x96af8",
+          "0x96b90"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x96af8",
+          "--stop-address=0x96b90",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 3635,
+        "stdout_lines": 53,
+        "stdout_sha256": "ba61700e0a09b9709ca7e743cb0c95ea1abb3f50350cfe73fa0b626dfb52dac0",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.668601+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 5,
+        "origin": {
+          "origin_mode": "entry",
+          "origin": "0x96af8",
+          "symbol": [
+            "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+          ]
+        },
+        "range": [
+          "0x96af8",
+          "0x96b90"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x96af8",
+          "--stop-address=0x96b90",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 3635,
+        "stdout_lines": 53,
+        "stdout_sha256": "ba61700e0a09b9709ca7e743cb0c95ea1abb3f50350cfe73fa0b626dfb52dac0",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:42:53.668601+00:00"
+      }
+    },
+    {
+      "predicate": "frozen page identity",
+      "value": true,
+      "actual": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "predicate": "ordinary code frozen",
+      "value": true,
+      "actual": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
+    },
+    {
+      "predicate": "exact callsite relocation 0x44ce0",
+      "value": true,
+      "actual": {
+        "symbol": "_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_",
+        "type": 2,
+        "index": 23045
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x44ce0",
+      "value": true,
+      "actual": {
+        "symbol": "_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_",
+        "hits": [
+          {
+            "address": 669372,
+            "nlist_index": 6895
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xa36bc",
+      "value": true,
+      "actual": {
+        "index": 3407
+      }
+    },
+    {
+      "predicate": "exact callsite relocation 0x44d08",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_335",
+        "type": 2,
+        "index": 23043
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x44d08",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_335",
+        "hits": [
+          {
+            "address": 771776,
+            "nlist_index": 1825
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xbc6c0",
+      "value": true,
+      "actual": {
+        "index": 4936
+      }
+    },
+    {
+      "predicate": "explicit selected entry 0x4bc08",
+      "value": true,
+      "actual": {
+        "address": "0x4bc08"
+      }
+    },
+    {
+      "predicate": "callee extent bound 0x4bc08",
+      "value": true,
+      "actual": {
+        "index": 1133
+      }
+    },
+    {
+      "predicate": "complete decode+final reserve",
+      "value": true,
+      "actual": {
+        "processing": 193085430,
+        "forecast": 140285896
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 6,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x44ce0",
+          "symbol": "_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_"
+        },
+        "range": [
+          "0xa36bc",
+          "0xa3720"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xa36bc",
+          "--stop-address=0xa3720",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 1149,
+        "stdout_lines": 31,
+        "stdout_sha256": "b142c42e7dd501132c2ff0596fea5eafe96001708714b147a674037f4186bb51",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:44:19.232876+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 6,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x44ce0",
+          "symbol": "_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_"
+        },
+        "range": [
+          "0xa36bc",
+          "0xa3720"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xa36bc",
+          "--stop-address=0xa3720",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 1149,
+        "stdout_lines": 31,
+        "stdout_sha256": "b142c42e7dd501132c2ff0596fea5eafe96001708714b147a674037f4186bb51",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:44:19.232876+00:00"
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 7,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x44d08",
+          "symbol": "_OUTLINED_FUNCTION_335"
+        },
+        "range": [
+          "0xbc6c0",
+          "0xbc6cc"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbc6c0",
+          "--stop-address=0xbc6cc",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 573,
+        "stdout_lines": 10,
+        "stdout_sha256": "c064102b2f414ce987ec6a392c4c91f0dd9ef4895194c232c2c59a1e28290394",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:44:19.249777+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 7,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x44d08",
+          "symbol": "_OUTLINED_FUNCTION_335"
+        },
+        "range": [
+          "0xbc6c0",
+          "0xbc6cc"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbc6c0",
+          "--stop-address=0xbc6cc",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 573,
+        "stdout_lines": 10,
+        "stdout_sha256": "c064102b2f414ce987ec6a392c4c91f0dd9ef4895194c232c2c59a1e28290394",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:44:19.249777+00:00"
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 8,
+        "origin": {
+          "origin_mode": "entry",
+          "origin": "0x4bc08",
+          "symbol": [
+            "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+          ]
+        },
+        "range": [
+          "0x4bc08",
+          "0x4be3c"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x4bc08",
+          "--stop-address=0x4be3c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 13740,
+        "stdout_lines": 177,
+        "stdout_sha256": "78ade1358408d383163e58302342ed7c6578ef329a4ec0289b0b3e382c9a7180",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:44:19.266559+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 8,
+        "origin": {
+          "origin_mode": "entry",
+          "origin": "0x4bc08",
+          "symbol": [
+            "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+          ]
+        },
+        "range": [
+          "0x4bc08",
+          "0x4be3c"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x4bc08",
+          "--stop-address=0x4be3c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 13740,
+        "stdout_lines": 177,
+        "stdout_sha256": "78ade1358408d383163e58302342ed7c6578ef329a4ec0289b0b3e382c9a7180",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:44:19.266559+00:00"
+      }
+    },
+    {
+      "predicate": "frozen page identity",
+      "value": true,
+      "actual": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "predicate": "ordinary code frozen",
+      "value": true,
+      "actual": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
+    },
+    {
+      "predicate": "exact callsite relocation 0xbc6c8",
+      "value": true,
+      "actual": {
+        "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC",
+        "type": 2,
+        "index": 1051
+      }
+    },
+    {
+      "predicate": "exact call target alias 0xbc6c8",
+      "value": true,
+      "actual": {
+        "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC",
+        "hits": [
+          {
+            "address": 88560,
+            "nlist_index": 655
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0x159f0",
+      "value": true,
+      "actual": {
+        "index": 793
+      }
+    },
+    {
+      "predicate": "complete decode+final reserve",
+      "value": true,
+      "actual": {
+        "processing": 269028417,
+        "forecast": 98423016
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 9,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0xbc6c8",
+          "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC"
+        },
+        "range": [
+          "0x159f0",
+          "0x15ab4"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x159f0",
+          "--stop-address=0x15ab4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 5069,
+        "stdout_lines": 66,
+        "stdout_sha256": "78164920df61a9ec9bd155f3db72de48eba3b060118c27c0844b9e6f28ab888f",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:45:48.743268+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 9,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0xbc6c8",
+          "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC"
+        },
+        "range": [
+          "0x159f0",
+          "0x15ab4"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x159f0",
+          "--stop-address=0x15ab4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 5069,
+        "stdout_lines": 66,
+        "stdout_sha256": "78164920df61a9ec9bd155f3db72de48eba3b060118c27c0844b9e6f28ab888f",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:45:48.743268+00:00"
+      }
+    },
+    {
+      "predicate": "frozen page identity",
+      "value": true,
+      "actual": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc"
+    },
+    {
+      "predicate": "ordinary code frozen",
+      "value": true,
+      "actual": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
+    },
+    {
+      "predicate": "exact callsite relocation 0x15a0c",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_537",
+        "type": 2,
+        "index": 30419
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x15a0c",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_537",
+        "hits": [
+          {
+            "address": 776052,
+            "nlist_index": 577
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xbd774",
+      "value": true,
+      "actual": {
+        "index": 5138
+      }
+    },
+    {
+      "predicate": "exact callsite relocation 0x15a90",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_850",
+        "type": 2,
+        "index": 30414
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x15a90",
+      "value": true,
+      "actual": {
+        "symbol": "_OUTLINED_FUNCTION_850",
+        "hits": [
+          {
+            "address": 783428,
+            "nlist_index": 248
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0xbf444",
+      "value": true,
+      "actual": {
+        "index": 5451
+      }
+    },
+    {
+      "predicate": "exact callsite relocation 0x4be04",
+      "value": true,
+      "actual": {
+        "symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5",
+        "type": 2,
+        "index": 21374
+      }
+    },
+    {
+      "predicate": "exact call target alias 0x4be04",
+      "value": true,
+      "actual": {
+        "symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5",
+        "hits": [
+          {
+            "address": 281472,
+            "nlist_index": 1832
+          }
+        ]
+      }
+    },
+    {
+      "predicate": "callee extent bound 0x44b80",
+      "value": true,
+      "actual": {
+        "index": 1069
+      }
+    },
+    {
+      "predicate": "complete decode+final reserve",
+      "value": true,
+      "actual": {
+        "processing": 303082638,
+        "forecast": 140285896
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 10,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x15a0c",
+          "symbol": "_OUTLINED_FUNCTION_537"
+        },
+        "range": [
+          "0xbd774",
+          "0xbd784"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbd774",
+          "--stop-address=0xbd784",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 298,
+        "stdout_lines": 10,
+        "stdout_sha256": "b3436957383f3bced1ffec1ace41022a928591b04cf559f40201020e5ca121bc",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:46:20.379957+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 10,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x15a0c",
+          "symbol": "_OUTLINED_FUNCTION_537"
+        },
+        "range": [
+          "0xbd774",
+          "0xbd784"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbd774",
+          "--stop-address=0xbd784",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 298,
+        "stdout_lines": 10,
+        "stdout_sha256": "b3436957383f3bced1ffec1ace41022a928591b04cf559f40201020e5ca121bc",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:46:20.379957+00:00"
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 11,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x15a90",
+          "symbol": "_OUTLINED_FUNCTION_850"
+        },
+        "range": [
+          "0xbf444",
+          "0xbf450"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbf444",
+          "--stop-address=0xbf450",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 275,
+        "stdout_lines": 9,
+        "stdout_sha256": "5961bfab33e71ad5cb29c6f955a5ceb3480073f71a325caeaaf552a3a58f0c64",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:46:20.397404+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 11,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x15a90",
+          "symbol": "_OUTLINED_FUNCTION_850"
+        },
+        "range": [
+          "0xbf444",
+          "0xbf450"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbf444",
+          "--stop-address=0xbf450",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 275,
+        "stdout_lines": 9,
+        "stdout_sha256": "5961bfab33e71ad5cb29c6f955a5ceb3480073f71a325caeaaf552a3a58f0c64",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:46:20.397404+00:00"
+      }
+    },
+    {
+      "predicate": "raw excerpt bound",
+      "value": true,
+      "actual": {
+        "index": 12,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x4be04",
+          "symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5"
+        },
+        "range": [
+          "0x44b80",
+          "0x44ec4"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x44b80",
+          "--stop-address=0x44ec4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 29106,
+        "stdout_lines": 237,
+        "stdout_sha256": "321b658cc9e7892ae6ee8b945c13f1c196360a3710210aa93440288a342489f9",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:46:20.415176+00:00"
+      }
+    },
+    {
+      "predicate": "known decoder exit0",
+      "value": true,
+      "actual": {
+        "index": 12,
+        "origin": {
+          "origin_mode": "callsite",
+          "origin": "0x4be04",
+          "symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5"
+        },
+        "range": [
+          "0x44b80",
+          "0x44ec4"
+        ],
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x44b80",
+          "--stop-address=0x44ec4",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+        ],
+        "returncode": 0,
+        "stdout_bytes": 29106,
+        "stdout_lines": 237,
+        "stdout_sha256": "321b658cc9e7892ae6ee8b945c13f1c196360a3710210aa93440288a342489f9",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-22T22:46:20.415176+00:00"
+      }
+    }
+  ],
+  "selected_captures": [
+    {
+      "index": 1,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x15c78",
+        "symbol": "_OUTLINED_FUNCTION_732"
+      },
+      "range": [
+        "0xbe884",
+        "0xbe88c"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbe884",
+        "--stop-address=0xbe88c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 351,
+      "stdout_lines": 9,
+      "stdout_sha256": "f276d2ef5f4f39092971b081e89487d1bc2f40dfaa045c9bf9bd45c7a1e86056",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:42:53.605832+00:00"
+    },
+    {
+      "index": 2,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x15cac",
+        "symbol": "_OUTLINED_FUNCTION_707"
+      },
+      "range": [
+        "0xbe5e8",
+        "0xbe5f0"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbe5e8",
+        "--stop-address=0xbe5f0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 350,
+      "stdout_lines": 9,
+      "stdout_sha256": "f9d4481ecc6fee6da6974360ed5a68a3f1f8262440e2464edc5ea07595b823ec",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:42:53.620709+00:00"
+    },
+    {
+      "index": 3,
+      "origin": {
+        "origin_mode": "entry",
+        "origin": "0x44b80",
+        "symbol": [
+          "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5"
+        ]
+      },
+      "range": [
+        "0x44b80",
+        "0x44ec4"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x44b80",
+        "--stop-address=0x44ec4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 29106,
+      "stdout_lines": 237,
+      "stdout_sha256": "321b658cc9e7892ae6ee8b945c13f1c196360a3710210aa93440288a342489f9",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:42:53.636225+00:00"
+    },
+    {
+      "index": 4,
+      "origin": {
+        "origin_mode": "entry",
+        "origin": "0xbc9e4",
+        "symbol": [
+          "_OUTLINED_FUNCTION_370"
+        ]
+      },
+      "range": [
+        "0xbc9e4",
+        "0xbc9f0"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbc9e4",
+        "--stop-address=0xbc9f0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 556,
+      "stdout_lines": 10,
+      "stdout_sha256": "558a642641c761556b2ada3a81a74af3b576f8a9240f4533b2196a01d69a7ae3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:42:53.652295+00:00"
+    },
+    {
+      "index": 5,
+      "origin": {
+        "origin_mode": "entry",
+        "origin": "0x96af8",
+        "symbol": [
+          "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+        ]
+      },
+      "range": [
+        "0x96af8",
+        "0x96b90"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x96af8",
+        "--stop-address=0x96b90",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 3635,
+      "stdout_lines": 53,
+      "stdout_sha256": "ba61700e0a09b9709ca7e743cb0c95ea1abb3f50350cfe73fa0b626dfb52dac0",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:42:53.668601+00:00"
+    },
+    {
+      "index": 6,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x44ce0",
+        "symbol": "_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_"
+      },
+      "range": [
+        "0xa36bc",
+        "0xa3720"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xa36bc",
+        "--stop-address=0xa3720",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 1149,
+      "stdout_lines": 31,
+      "stdout_sha256": "b142c42e7dd501132c2ff0596fea5eafe96001708714b147a674037f4186bb51",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:44:19.232876+00:00"
+    },
+    {
+      "index": 7,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x44d08",
+        "symbol": "_OUTLINED_FUNCTION_335"
+      },
+      "range": [
+        "0xbc6c0",
+        "0xbc6cc"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbc6c0",
+        "--stop-address=0xbc6cc",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 573,
+      "stdout_lines": 10,
+      "stdout_sha256": "c064102b2f414ce987ec6a392c4c91f0dd9ef4895194c232c2c59a1e28290394",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:44:19.249777+00:00"
+    },
+    {
+      "index": 8,
+      "origin": {
+        "origin_mode": "entry",
+        "origin": "0x4bc08",
+        "symbol": [
+          "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+        ]
+      },
+      "range": [
+        "0x4bc08",
+        "0x4be3c"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x4bc08",
+        "--stop-address=0x4be3c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 13740,
+      "stdout_lines": 177,
+      "stdout_sha256": "78ade1358408d383163e58302342ed7c6578ef329a4ec0289b0b3e382c9a7180",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:44:19.266559+00:00"
+    },
+    {
+      "index": 9,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0xbc6c8",
+        "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC"
+      },
+      "range": [
+        "0x159f0",
+        "0x15ab4"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x159f0",
+        "--stop-address=0x15ab4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 5069,
+      "stdout_lines": 66,
+      "stdout_sha256": "78164920df61a9ec9bd155f3db72de48eba3b060118c27c0844b9e6f28ab888f",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:45:48.743268+00:00"
+    },
+    {
+      "index": 10,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x15a0c",
+        "symbol": "_OUTLINED_FUNCTION_537"
+      },
+      "range": [
+        "0xbd774",
+        "0xbd784"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbd774",
+        "--stop-address=0xbd784",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 298,
+      "stdout_lines": 10,
+      "stdout_sha256": "b3436957383f3bced1ffec1ace41022a928591b04cf559f40201020e5ca121bc",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:46:20.379957+00:00"
+    },
+    {
+      "index": 11,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x15a90",
+        "symbol": "_OUTLINED_FUNCTION_850"
+      },
+      "range": [
+        "0xbf444",
+        "0xbf450"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbf444",
+        "--stop-address=0xbf450",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 275,
+      "stdout_lines": 9,
+      "stdout_sha256": "5961bfab33e71ad5cb29c6f955a5ceb3480073f71a325caeaaf552a3a58f0c64",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:46:20.397404+00:00"
+    },
+    {
+      "index": 12,
+      "origin": {
+        "origin_mode": "callsite",
+        "origin": "0x4be04",
+        "symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5"
+      },
+      "range": [
+        "0x44b80",
+        "0x44ec4"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x44b80",
+        "--stop-address=0x44ec4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 29106,
+      "stdout_lines": 237,
+      "stdout_sha256": "321b658cc9e7892ae6ee8b945c13f1c196360a3710210aa93440288a342489f9",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-22T22:46:20.415176+00:00"
+    }
+  ],
+  "pending_decoder": null,
+  "current_body_examined_pages": {
+    "selected-1.stdout": [
+      1
+    ],
+    "selected-2.stdout": [
+      1
+    ],
+    "selected-4.stdout": [
+      1
+    ],
+    "selected-3.stdout": [
+      1,
+      2,
+      3
+    ],
+    "selected-5.stdout": [
+      1
+    ],
+    "selected-6.stdout": [
+      1
+    ],
+    "selected-7.stdout": [
+      1
+    ],
+    "selected-8.stdout": [
+      1,
+      2
+    ],
+    "selected-9.stdout": [
+      1
+    ],
+    "selected-10.stdout": [
+      1
+    ],
+    "selected-11.stdout": [
+      1
+    ],
+    "Main.swift": [
+      1
+    ]
+  },
+  "findings": {
+    "status": "DECISIVE_MIXED_FUNCTIONAL_VS_STATIC_RESOURCE_SCOPE_FINDING",
+    "scope": "A38/A39 one coherent grouped outcome; current fullobject4cf710ca/source50395/resultec59 baseline preserved",
+    "tag_and_copy": "PhysicalSlots tag1 injection0xa34ac sets bit7; tag0 injection0xa36bc clears viaAND3; getter0xb6190 shiftsbit7. Complete732=memcpy1986,707=memcpy361,405=memcpy361 close owner/payload copies; tag extraction mutation only stack value. Owner constructor537 saves exact args,850 sets finalcopy args; reviewed153 guard/result helper reused.",
+    "roots": "Host0x4bc08 complete177lines calls same withSelectedStatic0x44b80 at4bcb4/4be04, exactsamehash confirmed; complete237line body tag0 and initializewrapperx0=0,w1=2. ScopedStorage0x5284c is unconditionaltail to wholeexercise. Route0x96af8 complete53lines normally calls wholeexercise thenHost; no Dynamic-control selection switch at route.",
+    "allocation_consequence": "Tag0 initialization excludes 3 examined ArrayBuffer sites, uses StaticTwo alternatives. Tag1 Dynamic validation path has5logical ArrayBuffer origins sharing3exact allocator sitesa37c8/a38d0/a39cc; positive5capacities2 supplied by currentcaller; growForAppend0 makes max(minCapacity,oldCount)>=2, so nonzero branch invokes exact metadata descriptor/helper then swift_allocObject if preceding valid/workload/metadata returns complete. No runtime success/count/cost inference.",
+    "current_execution": "Current276B Main e246ce21 calls setbuf(stdout,nil) then print interpolating Route+Model+Semantic+FixedStorage+Coordinator. Full functional execute exit0/log76569bb0; no resourcewindow/allocatorobserver inMain. Currentselected result has no top-level environment/loaded-image fields; all904 artifactnames queried for dyld/loaded/environment/fixup/window/maps/snapshot: none. DeclaredCollector d8d9fa4e launches subprocess.run withoutenv=; inherited actualambientenvironment not captured. Installedregular/nonlazy metadata cannot reconstruct past live GOT/UUID/guard/stdout persistence.",
+    "authority": "SPEC013259-264/579-587/1105-1134 Staticzeroheap/separateDynamic; SPEC015267-275/386-400/1538-1548 requiresbothprofilecontrols butnotDynamicinsideStaticresourcewindow. Separate ordinary contract/source assessment provenance, no AUTH-only semantic source promotion. Coordinator transmitted Astra additiveStatic-only resourceentry+versionedrecipe while preserving valid mixedfunctionalproducer/allcontrols/order, noSpecamendment established.",
+    "boundary": "Current functional receipt is NOT a failed resource measurement. Current mixed whole-entry cannot establish Static resource eligibility; tag1 controls cannot be silently deleted/exempted/subtracted/prewarmed. Other rooted allocator/error/metadata/once/witness/indirect paths stay available-unexamined, not absence. PriorU03/source safety closedscope retained; actual loadedtarget/state and freshcold/image/resources outsidecurrentreadonlyevidence remain explicit. No source/HEAD/index/compiler/runtime/providerexperiment change.",
+    "accounting": "A38 preserved500483528B prefinal/16B quoted-request deficit; no retroqualification. A39 decoder canonical selector now shellquoted beforeexecution. Administrative/acquisition exact aggregate counting remains uncertified and ordinary metadata/contract toolreads outside canonicalhooks must not be treated free or certified. This is actual lastsemanticread terminal; subsequent administrative receipt only."
+  },
+  "model_end_utc": "2026-10-22T22:56:18.540887+00:00",
+  "finished_utc": "2026-10-22T22:56:18.565889+00:00",
+  "elapsed_seconds": 818.34748
+}

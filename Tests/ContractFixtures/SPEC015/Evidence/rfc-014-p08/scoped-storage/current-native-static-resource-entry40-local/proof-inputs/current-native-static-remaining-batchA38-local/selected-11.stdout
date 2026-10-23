@@ -1,0 +1,82 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a3950 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5>:
+   a3950:      	stp	x24, x23, [sp, #-0x40]!
+   a3954:      	stp	x22, x21, [sp, #0x10]
+   a3958:      	stp	x20, x19, [sp, #0x20]
+   a395c:      	stp	x29, x30, [sp, #0x30]
+   a3960:      	add	x29, sp, #0x30
+   a3964:      	mov	x19, x3
+   a3968:      	mov	x20, x0
+   a396c:      	tbz	w2, #0x0, 0xa399c <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0x4c>
+   a3970:      	ldr	x9, [x19, #0x18]
+   a3974:      	lsr	x8, x9, #1
+   a3978:      	cmp	x8, x1
+   a397c:      	b.ge	0xa39a0 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0x50>
+   a3980:      	mov	x10, #0x4000000000000000 ; =4611686018427387904
+   a3984:      	cmn	x8, x10
+   a3988:      	b.mi	0xa3a54 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0x104>
+   a398c:      	and	x8, x9, #0xfffffffffffffffe
+   a3990:      	cmp	x8, x1
+   a3994:      	csel	x8, x8, x1, gt
+   a3998:      	b	0xa39a0 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0x50>
+   a399c:      	mov	x8, x1
+   a39a0:      	ldr	x22, [x19, #0x10]
+   a39a4:      	cmp	x8, x22
+   a39a8:      	csel	x21, x8, x22, gt
+   a39ac:      	cbz	x21, 0xa39ec <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0x9c>
+   a39b0:      	adrp	x0, 0xa3000 <_$s17GiftUIRuntimeCore19RuntimeOwnerFailureOACSQAAWl+0xc>
+		00000000000a39b0:  ARM64_RELOC_PAGE21	_$ss23_ContiguousArrayStorageCy17GiftUIInteraction26InteractionCandidateRecordVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD
+   a39b4:      	add	x0, x0, #0x0
+		00000000000a39b4:  ARM64_RELOC_PAGEOFF12	_$ss23_ContiguousArrayStorageCy17GiftUIInteraction26InteractionCandidateRecordVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD
+   a39b8:      	bl	0xa39b8 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0x68>
+		00000000000a39b8:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   a39bc:      	mov	w23, #0xf0              ; =240
+   a39c0:      	mov	x8, #0x20               ; =32
+   a39c4:      	madd	x1, x21, x23, x8
+   a39c8:      	mov	w2, #0x7                ; =7
+   a39cc:      	bl	0xa39cc <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0x7c>
+		00000000000a39cc:  ARM64_RELOC_BRANCH26	_swift_allocObject
+   a39d0:      	mov	x21, x0
+   a39d4:      	bl	0xa39d4 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0x84>
+		00000000000a39d4:  ARM64_RELOC_BRANCH26	_malloc_size
+   a39d8:      	sub	x8, x0, #0x20
+   a39dc:      	sdiv	x8, x8, x23
+   a39e0:      	lsl	x8, x8, #1
+   a39e4:      	stp	x22, x8, [x21, #0x10]
+   a39e8:      	b	0xa39f4 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0xa4>
+   a39ec:      	adrp	x21, 0xa3000 <_$s17GiftUIRuntimeCore19RuntimeOwnerFailureOACSQAAWl+0xc>
+		00000000000a39ec:  ARM64_RELOC_GOT_LOAD_PAGE21	__swiftEmptyArrayStorage
+   a39f0:      	ldr	x21, [x21]
+		00000000000a39f0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	__swiftEmptyArrayStorage
+   a39f4:      	add	x0, x21, #0x20
+   a39f8:      	add	x1, x19, #0x20
+   a39fc:      	tbz	w20, #0x0, 0xa3a28 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0xd8>
+   a3a00:      	mov	w8, #0xf0               ; =240
+   a3a04:      	madd	x8, x22, x8, x1
+   a3a08:      	cmp	x21, x19
+   a3a0c:      	ccmp	x0, x8, #0x2, eq
+   a3a10:      	b.lo	0xa3a20 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0xd0>
+   a3a14:      	lsl	x8, x22, #8
+   a3a18:      	sub	x2, x8, x22, lsl #4
+   a3a1c:      	bl	0xa3a1c <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0xcc>
+		00000000000a3a1c:  ARM64_RELOC_BRANCH26	_memmove
+   a3a20:      	str	xzr, [x19, #0x10]
+   a3a24:      	b	0xa3a34 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0xe4>
+   a3a28:      	lsl	x8, x22, #8
+   a3a2c:      	sub	x2, x8, x22, lsl #4
+   a3a30:      	bl	0xa3a30 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0xe0>
+		00000000000a3a30:  ARM64_RELOC_BRANCH26	_memcpy
+   a3a34:      	mov	x0, x19
+   a3a38:      	bl	0xa3a38 <_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5+0xe8>
+		00000000000a3a38:  ARM64_RELOC_BRANCH26	_swift_bridgeObjectRelease
+   a3a3c:      	mov	x0, x21
+   a3a40:      	ldp	x29, x30, [sp, #0x30]
+   a3a44:      	ldp	x20, x19, [sp, #0x20]
+   a3a48:      	ldp	x22, x21, [sp, #0x10]
+   a3a4c:      	ldp	x24, x23, [sp], #0x40
+   a3a50:      	ret
+   a3a54:      	brk	#0x1

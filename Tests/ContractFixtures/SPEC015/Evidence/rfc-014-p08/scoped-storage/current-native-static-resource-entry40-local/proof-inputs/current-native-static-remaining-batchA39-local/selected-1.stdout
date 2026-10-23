@@ -1,0 +1,9 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000be884 <_OUTLINED_FUNCTION_732>:
+   be884:      	mov	w2, #0x7c2              ; =1986
+   be888:      	b	0xbe888 <_OUTLINED_FUNCTION_732+0x4>
+		00000000000be888:  ARM64_RELOC_BRANCH26	_memcpy

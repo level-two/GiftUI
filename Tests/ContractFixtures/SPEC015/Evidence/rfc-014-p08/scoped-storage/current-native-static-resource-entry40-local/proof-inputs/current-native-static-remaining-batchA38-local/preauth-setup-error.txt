@@ -1,0 +1,1 @@
+Initial setup child1 before freeze/auth: KeyError 'parser'; A37 had no parser input key. Corrected using already-known exact committed A32 parser descriptor, not new selected evidence. No semantic body read or attempt consumed.

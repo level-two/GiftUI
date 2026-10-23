@@ -1,0 +1,8 @@
+{
+  "argv": [
+    "scripts/format-swift.sh",
+    "--lint"
+  ],
+  "exit": 0,
+  "fixture_exclusion": "Tests/ContractFixtures intentionally excluded by maintained formatter"
+}

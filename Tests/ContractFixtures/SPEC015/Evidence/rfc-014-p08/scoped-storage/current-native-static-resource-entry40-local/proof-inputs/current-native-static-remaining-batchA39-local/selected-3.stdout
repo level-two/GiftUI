@@ -1,0 +1,237 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000044b80 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5>:
+   44b80:      	mov	x8, x30
+   44b84:      	bl	0x44b84 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x4>
+		0000000000044b84:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1027
+   44b88:      	mov	x30, x8
+   44b8c:      	stp	x29, x30, [sp, #0x50]
+   44b90:      	bl	0x44b90 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x10>
+		0000000000044b90:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1405
+   44b94:      	sub	sp, sp, #0x410
+   44b98:      	bl	0x44b98 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x18>
+		0000000000044b98:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_182
+   44b9c:      	stur	x8, [x29, #-0x60]
+   44ba0:      	mov	w8, #0x553c             ; =21820
+   44ba4:      	add	x28, x1, x8
+   44ba8:      	tst	x28, #0x3
+   44bac:      	b.ne	0x44eac <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x32c>
+   44bb0:      	mov	x19, x7
+   44bb4:      	mov	x22, x6
+   44bb8:      	mov	x23, x5
+   44bbc:      	bl	0x44bbc <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x3c>
+		0000000000044bbc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1762
+   44bc0:      	mov	x26, x2
+   44bc4:      	mov	x21, x0
+   44bc8:      	add	x20, sp, #0x830
+   44bcc:      	add	x8, sp, #0x830
+   44bd0:      	bl	0x44bd0 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x50>
+		0000000000044bd0:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A17StaticReservation33_480B1BD841D053AE4FCDC18507668536LLVADycfC
+   44bd4:      	add	x9, x20, #0xe50
+   44bd8:      	cmn	x9, #0x29
+   44bdc:      	b.hi	0x44eb0 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x330>
+   44be0:      	stp	x19, x21, [sp, #0x18]
+   44be4:      	add	x8, sp, #0x2, lsl #12   ; =0x2000
+   44be8:      	add	x8, x8, #0x30
+   44bec:      	add	x10, x20, #0xd88
+   44bf0:      	add	x11, x20, #0x980
+   44bf4:      	str	x20, [sp, #0x2030]
+   44bf8:      	str	xzr, [sp, #0x2038]
+   44bfc:      	bl	0x44bfc <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x7c>
+		0000000000044bfc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1492
+   44c00:      	str	xzr, [sp, #0x2040]
+   44c04:      	str	x16, [sp, #0x2050]
+   44c08:      	mov	w16, #0x105c            ; =4188
+   44c0c:      	add	x16, x20, x16
+   44c10:      	mov	w0, #0x1228             ; =4648
+   44c14:      	add	x0, x20, x0
+   44c18:      	str	xzr, [sp, #0x2060]
+   44c1c:      	str	xzr, [sp, #0x2058]
+   44c20:      	mov	w1, #0x140c             ; =5132
+   44c24:      	mov	w2, #0x1                ; =1
+   44c28:      	strb	w2, [x8, #0x38]
+   44c2c:      	add	x1, x20, x1
+   44c30:      	mov	w2, #0x1630             ; =5680
+   44c34:      	add	x2, x20, x2
+   44c38:      	str	x15, [sp, #0x2070]
+   44c3c:      	str	xzr, [sp, #0x2078]
+   44c40:      	mov	w15, #0x2               ; =2
+   44c44:      	strb	w15, [x8, #0x58]
+   44c48:      	str	xzr, [sp, #0x2080]
+   44c4c:      	str	x14, [sp, #0x2090]
+   44c50:      	str	xzr, [sp, #0x20a0]
+   44c54:      	str	xzr, [sp, #0x2098]
+   44c58:      	mov	w14, #0x3               ; =3
+   44c5c:      	strb	w14, [x8, #0x78]
+   44c60:      	str	x13, [sp, #0x20b0]
+   44c64:      	str	xzr, [sp, #0x20b8]
+   44c68:      	strb	wzr, [x8, #0x90]
+   44c6c:      	str	x12, [sp, #0x20c8]
+   44c70:      	str	xzr, [sp, #0x20d0]
+   44c74:      	strb	wzr, [x8, #0xa8]
+   44c78:      	str	x11, [sp, #0x20e0]
+   44c7c:      	str	xzr, [sp, #0x20e8]
+   44c80:      	strb	wzr, [x8, #0xc0]
+   44c84:      	str	x10, [sp, #0x20f8]
+   44c88:      	str	xzr, [sp, #0x2100]
+   44c8c:      	strb	wzr, [x8, #0xd8]
+   44c90:      	str	x9, [sp, #0x2110]
+   44c94:      	str	xzr, [sp, #0x2118]
+   44c98:      	strb	wzr, [x8, #0xf0]
+   44c9c:      	str	x17, [sp, #0x2128]
+   44ca0:      	str	xzr, [sp, #0x2130]
+   44ca4:      	strb	wzr, [x8, #0x108]
+   44ca8:      	str	x16, [sp, #0x2140]
+   44cac:      	str	xzr, [sp, #0x2148]
+   44cb0:      	strb	wzr, [x8, #0x120]
+   44cb4:      	str	x0, [sp, #0x2158]
+   44cb8:      	str	xzr, [sp, #0x2160]
+   44cbc:      	strb	wzr, [x8, #0x138]
+   44cc0:      	str	x1, [sp, #0x2170]
+   44cc4:      	str	xzr, [sp, #0x2178]
+   44cc8:      	strb	wzr, [x8, #0x150]
+   44ccc:      	str	x2, [sp, #0x2188]
+   44cd0:      	str	xzr, [sp, #0x2190]
+   44cd4:      	strb	wzr, [x8, #0x168]
+   44cd8:      	add	x0, sp, #0x2, lsl #12   ; =0x2000
+   44cdc:      	add	x0, x0, #0x30
+   44ce0:      	bl	0x44ce0 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x160>
+		0000000000044ce0:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_
+   44ce4:      	add	x0, sp, #0x2, lsl #12   ; =0x2000
+   44ce8:      	add	x0, x0, #0x290
+   44cec:      	add	x1, sp, #0x2, lsl #12   ; =0x2000
+   44cf0:      	add	x1, x1, #0x30
+   44cf4:      	bl	0x44cf4 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x174>
+		0000000000044cf4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_707
+   44cf8:      	add	x8, sp, #0x68
+   44cfc:      	add	x0, sp, #0x2, lsl #12   ; =0x2000
+   44d00:      	add	x0, x0, #0x290
+   44d04:      	add	x1, sp, #0x830
+   44d08:      	bl	0x44d08 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x188>
+		0000000000044d08:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_335
+   44d0c:      	add	x20, sp, #0x68
+   44d10:      	bl	0x44d10 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x190>
+		0000000000044d10:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_370
+   44d14:      	cmp	x0, #0x11
+   44d18:      	b.ne	0x44ebc <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x33c>
+   44d1c:      	ldp	x21, x20, [x29, #0x20]
+   44d20:      	ldp	x19, x27, [x29, #0x10]
+   44d24:      	add	x0, sp, #0x2, lsl #12   ; =0x2000
+   44d28:      	add	x0, x0, #0x1a0
+   44d2c:      	mov	x1, x26
+   44d30:      	bl	0x44d30 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x1b0>
+		0000000000044d30:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_620
+   44d34:      	str	x25, [sp, #0x2218]
+   44d38:      	str	x24, [sp, #0x2220]
+   44d3c:      	mov	w8, #0x80               ; =128
+   44d40:      	str	x23, [sp, #0x2228]
+   44d44:      	str	x8, [sp, #0x2230]
+   44d48:      	mov	w9, #0x180              ; =384
+   44d4c:      	str	x22, [sp, #0x2238]
+   44d50:      	str	x9, [sp, #0x2240]
+   44d54:      	mov	w9, #0x100              ; =256
+   44d58:      	ldr	x10, [sp, #0x18]
+   44d5c:      	str	x10, [sp, #0x2248]
+   44d60:      	str	x9, [sp, #0x2250]
+   44d64:      	ldr	x9, [sp, #0x20]
+   44d68:      	str	x9, [sp, #0x2258]
+   44d6c:      	str	x8, [sp, #0x2260]
+   44d70:      	str	x19, [sp, #0x2268]
+   44d74:      	str	x28, [sp, #0x2270]
+   44d78:      	mov	w8, #0x1                ; =1
+   44d7c:      	str	x8, [sp, #0x2278]
+   44d80:      	str	x27, [sp, #0x2280]
+   44d84:      	mov	w8, #0xc7               ; =199
+   44d88:      	str	x8, [sp, #0x2288]
+   44d8c:      	add	x19, sp, #0x68
+   44d90:      	add	x8, sp, #0x28
+   44d94:      	add	x0, sp, #0x68
+   44d98:      	bl	0x44d98 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x218>
+		0000000000044d98:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2127
+   44d9c:      	blr	x21
+   44da0:      	mov	x0, x27
+   44da4:      	bl	0x44da4 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x224>
+		0000000000044da4:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B7ControlV013requireVacantC4Slot2atySpyACG_tFZ
+   44da8:      	ldrb	w8, [sp, #0x1e8]
+   44dac:      	cmp	w8, #0x1
+   44db0:      	b.ne	0x44e5c <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x2dc>
+   44db4:      	ldr	x21, [sp, #0x500]
+   44db8:      	add	x20, sp, #0x68
+   44dbc:      	bl	0x44dbc <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x23c>
+		0000000000044dbc:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV12requireEmptyyyF
+   44dc0:      	add	x9, x19, #0x188
+   44dc4:      	add	x8, x19, #0x4a0
+   44dc8:      	stp	x8, x9, [sp, #0x8]
+   44dcc:      	mov	w10, #0x38              ; =56
+   44dd0:      	subs	x8, x21, #0x1
+   44dd4:      	b.lt	0x44e70 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x2f0>
+   44dd8:      	str	x8, [sp, #0x500]
+   44ddc:      	cmp	x21, #0xe
+   44de0:      	b.hi	0x44ea4 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x324>
+   44de4:      	bl	0x44de4 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x264>
+		0000000000044de4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1787
+   44de8:      	b.eq	0x44eb8 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x338>
+   44dec:      	mov	x26, x25
+   44df0:      	ldr	x28, [x26, #0x8]!
+   44df4:      	ldp	x23, x8, [x25, #0x10]
+   44df8:      	ldp	x22, x21, [x25, #0x20]
+   44dfc:      	ldr	x24, [x25, #0x30]
+   44e00:      	strb	w27, [sp, #0x30]
+   44e04:      	stp	x28, x23, [sp, #0x38]
+   44e08:      	str	x8, [sp, #0x18]
+   44e0c:      	stp	x8, x22, [sp, #0x48]
+   44e10:      	stp	x21, x24, [sp, #0x58]
+   44e14:      	ldr	x8, [sp, #0x500]
+   44e18:      	str	x8, [sp, #0x20]
+   44e1c:      	ldr	x19, [sp, #0x818]
+   44e20:      	add	x0, sp, #0x30
+   44e24:      	add	x20, sp, #0x68
+   44e28:      	bl	0x44e28 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x2a8>
+		0000000000044e28:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV15destroyOriginalyyAA0A16InitializedEntryACLLVF
+   44e2c:      	cmp	x19, #0xd
+   44e30:      	b.hi	0x44ea8 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x328>
+   44e34:      	bl	0x44e34 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x2b4>
+		0000000000044e34:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2244
+   44e38:      	ldr	x9, [sp, #0x18]
+   44e3c:      	stp	x23, x9, [x8, #0x10]
+   44e40:      	stp	x22, x21, [x8, #0x20]
+   44e44:      	str	x24, [x8, #0x30]
+   44e48:      	add	x8, x19, #0x1
+   44e4c:      	str	x8, [sp, #0x818]
+   44e50:      	bl	0x44e50 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x2d0>
+		0000000000044e50:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1786
+   44e54:      	ldr	x21, [sp, #0x20]
+   44e58:      	b	0x44dd0 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x250>
+   44e5c:      	cmp	w8, #0x3
+   44e60:      	b.ne	0x44eb4 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x334>
+   44e64:      	ldr	x8, [sp, #0x500]
+   44e68:      	cbz	x8, 0x44e78 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x2f8>
+   44e6c:      	brk	#0x1
+   44e70:      	mov	w8, #0x3                ; =3
+   44e74:      	strb	w8, [sp, #0x1e8]
+   44e78:      	ldr	x19, [sp, #0x28]
+   44e7c:      	add	x20, sp, #0x68
+   44e80:      	bl	0x44e80 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x300>
+		0000000000044e80:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVfD
+   44e84:      	ldur	x8, [x29, #-0x60]
+   44e88:      	bl	0x44e88 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x308>
+		0000000000044e88:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+   44e8c:      	b.ne	0x44ec0 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x340>
+   44e90:      	mov	x0, x19
+   44e94:      	add	sp, sp, #0x2, lsl #12   ; =0x2000
+   44e98:      	add	sp, sp, #0x410
+   44e9c:      	ldp	x29, x30, [sp, #0x50]
+   44ea0:      	b	0x44ea0 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x320>
+		0000000000044ea0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_14
+   44ea4:      	brk	#0x1
+   44ea8:      	brk	#0x1
+   44eac:      	brk	#0x1
+   44eb0:      	brk	#0x1
+   44eb4:      	brk	#0x1
+   44eb8:      	brk	#0x1
+   44ebc:      	brk	#0x1
+   44ec0:      	bl	0x44ec0 <_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5+0x340>
+		0000000000044ec0:  ARM64_RELOC_BRANCH26	___stack_chk_fail

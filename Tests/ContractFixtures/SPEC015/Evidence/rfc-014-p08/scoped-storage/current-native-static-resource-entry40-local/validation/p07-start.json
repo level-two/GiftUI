@@ -1,0 +1,13 @@
+{
+  "start_utc": "2026-10-22T23:03:44.529290+00:00",
+  "argv": [
+    "scripts/contracts/run-spec-013.sh",
+    "--profile",
+    "macos-static",
+    "--compiler-baseline",
+    "rfc-014",
+    "--giftui-build",
+    ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static"
+  ],
+  "purpose": "Refresh exact declared CounterScopedStorage boundary after additive fixture change; matching Static only."
+}

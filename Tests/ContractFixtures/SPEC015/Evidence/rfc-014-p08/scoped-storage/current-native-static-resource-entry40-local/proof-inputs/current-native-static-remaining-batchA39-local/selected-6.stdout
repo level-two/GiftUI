@@ -1,0 +1,31 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a36bc <_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_>:
+   a36bc:      	ldr	x8, [x0, #0x58]
+   a36c0:      	ldr	x9, [x0, #0xd8]
+   a36c4:      	ldr	x10, [x0, #0xf0]
+   a36c8:      	ldr	x11, [x0, #0x108]
+   a36cc:      	ldr	x12, [x0, #0x120]
+   a36d0:      	ldr	x13, [x0, #0x138]
+   a36d4:      	ldr	x14, [x0, #0x150]
+   a36d8:      	ldrb	w15, [x0, #0x168]
+   a36dc:      	and	x8, x8, #0x7
+   a36e0:      	and	x9, x9, #0x3
+   a36e4:      	and	x10, x10, #0x3
+   a36e8:      	and	x11, x11, #0x3
+   a36ec:      	and	x12, x12, #0x3
+   a36f0:      	and	x13, x13, #0x3
+   a36f4:      	and	x14, x14, #0x3
+   a36f8:      	and	w15, w15, #0x3
+   a36fc:      	str	x8, [x0, #0x58]
+   a3700:      	str	x9, [x0, #0xd8]
+   a3704:      	str	x10, [x0, #0xf0]
+   a3708:      	str	x11, [x0, #0x108]
+   a370c:      	str	x12, [x0, #0x120]
+   a3710:      	str	x13, [x0, #0x138]
+   a3714:      	str	x14, [x0, #0x150]
+   a3718:      	strb	w15, [x0, #0x168]
+   a371c:      	ret

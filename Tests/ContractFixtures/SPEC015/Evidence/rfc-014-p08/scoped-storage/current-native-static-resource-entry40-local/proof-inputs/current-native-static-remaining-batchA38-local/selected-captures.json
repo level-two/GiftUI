@@ -1,0 +1,416 @@
+[
+  {
+    "index": 1,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x50a6c",
+      "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF"
+    },
+    "range": [
+      "0x15bf0",
+      "0x183c8"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x15bf0",
+      "--stop-address=0x183c8",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 283670,
+    "stdout_lines": 3086,
+    "stdout_sha256": "dd2f2dfe3888b0cb3cc029ae60aa274b22b0d075fa9049a01f135b540da2bf2f",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:25:30.536343+00:00"
+  },
+  {
+    "index": 2,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x15cb4",
+      "symbol": "_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOg"
+    },
+    "range": [
+      "0xb6190",
+      "0xb619c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xb6190",
+      "--stop-address=0xb619c",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 341,
+    "stdout_lines": 9,
+    "stdout_sha256": "8d577fc3ec1111e717d3b546a7dd0da07377333db9613a8447f21f6238add306",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:28:32.039074+00:00"
+  },
+  {
+    "index": 3,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x15cc0",
+      "symbol": "l___unnamed_12"
+    },
+    "range": [
+      "0xb619c",
+      "0xb61ac"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xb619c",
+      "--stop-address=0xb61ac",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 316,
+    "stdout_lines": 10,
+    "stdout_sha256": "d9eae7e5b3474d81bfe561d30b1b1db885d6acfaad9a82faf806e03b9ac19766",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:28:32.054775+00:00"
+  },
+  {
+    "index": 4,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x1666c",
+      "symbol": "_OUTLINED_FUNCTION_1031"
+    },
+    "range": [
+      "0xc01a4",
+      "0xc01c8"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc01a4",
+      "--stop-address=0xc01c8",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 668,
+    "stdout_lines": 16,
+    "stdout_sha256": "9207b421c6d1a0fc64cce72151797a27905c45f02d1be3cc5f208d82e5c17950",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:28:32.070590+00:00"
+  },
+  {
+    "index": 5,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x50a60",
+      "symbol": "_OUTLINED_FUNCTION_2236"
+    },
+    "range": [
+      "0xc4b14",
+      "0xc4b20"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc4b14",
+      "--stop-address=0xc4b20",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 307,
+    "stdout_lines": 9,
+    "stdout_sha256": "e1ffb299587ee5ebb289b58078c7d67bc02125fca1029961f39b2887d74e2503",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:28:32.087271+00:00"
+  },
+  {
+    "index": 6,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x50a00",
+      "symbol": "_OUTLINED_FUNCTION_1106"
+    },
+    "range": [
+      "0xc06e0",
+      "0xc06ec"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc06e0",
+      "--stop-address=0xc06ec",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 304,
+    "stdout_lines": 9,
+    "stdout_sha256": "77574c6f24981aae44e1997f6d2afd120d6f550576b45784348d9568e66d1b02",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:28:32.104002+00:00"
+  },
+  {
+    "index": 7,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x50a04",
+      "symbol": "_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi0_"
+    },
+    "range": [
+      "0xa34ac",
+      "0xa3514"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa34ac",
+      "--stop-address=0xa3514",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 1205,
+    "stdout_lines": 32,
+    "stdout_sha256": "ae2a47318ec949f0cacf5d3b87bffef167fe23fc8f0448698156af1dbbbdfac3",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:32:00.688319+00:00"
+  },
+  {
+    "index": 8,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x17060",
+      "symbol": "_OUTLINED_FUNCTION_376"
+    },
+    "range": [
+      "0xbca94",
+      "0xbcaac"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xbca94",
+      "--stop-address=0xbcaac",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 578,
+    "stdout_lines": 14,
+    "stdout_sha256": "efc084ed390fc93d493a78303178111028932c5106b10b7f0c105b07c68e9af8",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:32:00.705766+00:00"
+  },
+  {
+    "index": 9,
+    "origin": {
+      "origin_mode": "entry",
+      "origin": "0xa374c",
+      "symbol": [
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5"
+      ]
+    },
+    "range": [
+      "0xa374c",
+      "0xa3854"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa374c",
+      "--stop-address=0xa3854",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 6645,
+    "stdout_lines": 82,
+    "stdout_sha256": "2a876010de40c5b868d0be8c50329b48f9407c9a5f4d02b3ae4c64798f10cdca",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:32:00.723809+00:00"
+  },
+  {
+    "index": 10,
+    "origin": {
+      "origin_mode": "entry",
+      "origin": "0xa3854",
+      "symbol": [
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5"
+      ]
+    },
+    "range": [
+      "0xa3854",
+      "0xa3950"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa3854",
+      "--stop-address=0xa3950",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 6580,
+    "stdout_lines": 79,
+    "stdout_sha256": "5df1fe9da4c239762bc45e66f2ec33d46080572934eae33eadacf6fecd97ca89",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:32:00.742998+00:00"
+  },
+  {
+    "index": 11,
+    "origin": {
+      "origin_mode": "entry",
+      "origin": "0xa3950",
+      "symbol": [
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5"
+      ]
+    },
+    "range": [
+      "0xa3950",
+      "0xa3a58"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa3950",
+      "--stop-address=0xa3a58",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 6807,
+    "stdout_lines": 82,
+    "stdout_sha256": "44939045155b9a0316ba980faa6e727ef5ba52c5ab3936b9c49f05ec38046ba6",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:32:00.760912+00:00"
+  },
+  {
+    "index": 12,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x50a4c",
+      "symbol": "_OUTLINED_FUNCTION_405"
+    },
+    "range": [
+      "0xbcd04",
+      "0xbcd14"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xbcd04",
+      "--stop-address=0xbcd14",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 439,
+    "stdout_lines": 11,
+    "stdout_sha256": "1ceaa0f976ed46e0df28c97bc1034e0c412b5011c7aed0e6793b488b80a9235b",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:38:51.048627+00:00"
+  },
+  {
+    "index": 13,
+    "origin": {
+      "origin_mode": "callsite",
+      "origin": "0x15cb0",
+      "symbol": "_OUTLINED_FUNCTION_1018"
+    },
+    "range": [
+      "0xc0050",
+      "0xc005c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc0050",
+      "--stop-address=0xc005c",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 304,
+    "stdout_lines": 9,
+    "stdout_sha256": "3eac9ce0cdacca9c09b84ef925322c7e04a08231f60970ca6922ddb5a0fdd16d",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:38:51.067677+00:00"
+  },
+  {
+    "index": 14,
+    "origin": {
+      "origin_mode": "entry",
+      "origin": "0x5284c",
+      "symbol": [
+        "_$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF"
+      ]
+    },
+    "range": [
+      "0x5284c",
+      "0x52850"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x5284c",
+      "--stop-address=0x52850",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o"
+    ],
+    "returncode": 0,
+    "stdout_bytes": 577,
+    "stdout_lines": 8,
+    "stdout_sha256": "a94a24873ee80f8625d99946bca7e75a6c5606fbaafb12ea51ebc0dd9710eef4",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-22T22:38:51.086867+00:00"
+  }
+]

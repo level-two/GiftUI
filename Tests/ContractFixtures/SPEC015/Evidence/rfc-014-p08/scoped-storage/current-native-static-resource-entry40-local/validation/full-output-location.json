@@ -1,0 +1,7 @@
+{
+  "observed_utc": "2026-10-22T23:13:26.192021+00:00",
+  "path": ".build/contracts/p08-counter-m1vlvrlf",
+  "retained_bytes": 38372800,
+  "session": 42876,
+  "purpose": "Identify and monitor sole new producer output, not evidence inventory."
+}

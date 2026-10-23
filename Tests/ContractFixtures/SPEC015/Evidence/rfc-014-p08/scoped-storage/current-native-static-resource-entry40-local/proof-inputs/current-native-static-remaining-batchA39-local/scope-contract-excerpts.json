@@ -1,0 +1,25 @@
+[
+  {
+    "path": "docs/specs/spec-013-runtime-profiles.md",
+    "bytes": 73925,
+    "sha256": "df00021ebf42cecb624cd60723a31ad15a106cdde9d006a630e53e4ac75bd7e3",
+    "read_role": "Separate ordinary approved-contract/workload interpretation, not AUTH-only source promotion into frozen callee semantics",
+    "hits": []
+  },
+  {
+    "path": "docs/specs/spec-015-host-configuration.md",
+    "bytes": 106796,
+    "sha256": "05cfccbe91974726e888db8e399bed614626ac98587a0ffb89323cbae2e891f7",
+    "read_role": "Separate ordinary approved-contract/workload interpretation, not AUTH-only source promotion into frozen callee semantics",
+    "hits": [
+      {
+        "line": 386,
+        "text": "385:\n386:- [ ] **HC-SO-001:** Four-profile actual supplied\u2192pipeline\u2192coordinator\u2192host\u2192retirement\n387:  chains accept moves and owned reports; paired negatives reject copy/use-after-consume,\n388:  escape beyond each owner independently, activation-span escape, direct/generic Optional/\n389:  tuple/closure erasure, owned-only workspace return, construction/extraction, escaping/"
+      },
+      {
+        "line": 391,
+        "text": "390:  Sendable/task transfer and overlapping access for the intended classified cause.\n391:- [ ] **HC-SO-002:** Exact old/new slot, binding, initializer, control, audit and destructor\n392:  inventory plus fault-at-step/early-return/repeat-session transcripts establish S13/S15\n393:  lifetime and backing-last duties for both profiles. Host validation remains before\n394:  activation, preserves first error and rejects mismatched provenance/capacity without"
+      }
+    ]
+  }
+]

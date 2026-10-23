@@ -1,0 +1,45 @@
+{
+  "recipe": "native-static-resource-entry-v1",
+  "purpose": "Prospective explicit Static workload root, independently launched process, functional qualification only. No observer/window or allocation/cold claim.",
+  "original_mixed_main_preserved": "p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator(); setbuf then original print; no original statement/order/control removed.",
+  "root_mapping": [
+    {
+      "original": "p08CounterRoute",
+      "current_baseline_address": "0x96af8",
+      "resource_mapping": "p08CounterStaticResourceEntryV1 \u2192 p08CounterGraph + counterExerciseStaticScopedStorage + p08CounterHost",
+      "meaning": "Same original route order; explicit Static-selected scoped workload replaces mixed validation call only in new entry."
+    },
+    {
+      "original": "p08CounterScopedStorage",
+      "current_baseline_address": "0x5284c",
+      "resource_mapping": "counterExerciseStaticScopedStorage \u2192 private shared scoped implementation(includeDynamicValidation:false)",
+      "retained": "14 physical-ID before/after faults;five invalid-capacity vectors;three repeated role sessions;false/true surplus Static controls;five early phases;eleven candidate-failure stages;exact observations/assertions/cleanup."
+    },
+    {
+      "original": "p08CounterHost",
+      "current_baseline_address": "0x4bc08",
+      "resource_mapping": "same p08CounterHost",
+      "retained": "nine Static host scenarios and two-host same-control reconstruction/reuse independent oracles, charged diagnostics."
+    }
+  ],
+  "functional_only_controls_preserved": [
+    "Original mixed scoped entry always passes includeDynamicValidation:true; Dynamic surplus remains interleaved immediately after corresponding Static surplus.",
+    "Nine Dynamic physical-ID before/after controls;five invalid-capacity vectors;three repeated Dynamic sessions;five Dynamic early phases;eleven Dynamic candidate stages remain in original mixed positions.",
+    "Standalone Model/Semantic/FixedStorage/Coordinator component probes remain in mixed Main, outside the original frozen three-root application-route selection. This does not discharge their independent callee/resource eligibility or redefine a historical window."
+  ],
+  "namespace_ordering": "Static scoped namespace issues precede Dynamic early/stage loops; each Dynamic surplus/reservation has local fresh owners. New entry does not replay Dynamic steps as prewarm or reuse a mixed process state. Existing mixed statement order is unchanged.",
+  "remaining_A": [
+    "Other mapped allocator/metadata/once/witness/indirect/error feasibility remains available-unexamined, not absence.",
+    "Exact live stdout R=S/persistence and loaded provider identity remain unresolved from static records; current mixed Main has no observer/window;ambient environment not captured.",
+    "Static constructor/no-array selection is not universal zeroheap or setup-cost proof."
+  ],
+  "B_gates": [
+    "New cold/resource capture requires separately authorized fresh-process instrumentation and current bindings.",
+    "No current image/RAM/stack/resource/four-profile or physical target claims."
+  ],
+  "governing": [
+    "SPEC013 Static construction/all later operations zeroheap;Dynamic costs separate.",
+    "SPEC015 HC-SO002 both-profile fault/cleanup observations and HC-SO001 four routes retained.",
+    "Astra clarified additive entry preserves valid mixed functional producer, no new exception/amendment."
+  ]
+}

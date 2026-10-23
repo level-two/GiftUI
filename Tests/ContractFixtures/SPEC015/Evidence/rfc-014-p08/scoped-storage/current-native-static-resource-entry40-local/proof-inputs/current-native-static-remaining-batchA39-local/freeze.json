@@ -1,0 +1,93 @@
+{
+  "started_utc": "2026-10-22T22:42:40.218409+00:00",
+  "HEAD": "798686cf11a058c5ba1467a8b4b2f94f1b3390fa",
+  "inputs": {
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-1.stdout",
+      "bytes": 283670,
+      "sha256": "dd2f2dfe3888b0cb3cc029ae60aa274b22b0d075fa9049a01f135b540da2bf2f"
+    },
+    "machine": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-capacity33-result/machine-p08-counter-e3ivm0v6.json",
+      "bytes": 117658,
+      "sha256": "366ddd086325dfe89bc631f2041f29936582dd0403a10fd980a35a10ba3251ab"
+    },
+    "object": {
+      "path": ".build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o",
+      "bytes": 2593056,
+      "sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581"
+    },
+    "result": {
+      "path": ".build/contracts/p08-counter-e3ivm0v6/result.json",
+      "bytes": 8548218,
+      "sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838"
+    },
+    "source_AUTH": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 255642,
+      "sha256": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf"
+    },
+    "parser": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.inspect.py",
+      "bytes": 44447,
+      "sha256": "d27705f7a22991a3c7176fd1e303178a2129cc5e2f9ba8078d99ef98258a31e4"
+    },
+    "decoder_tool": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "identity_reuse": "One fresh authentication hash before grouped execution; final hash preservation, not per-helper rehash. Each decoder invocation still charged full tool+object input extent."
+    },
+    "roots": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json",
+      "bytes": 70161,
+      "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0"
+    },
+    "prior_closed_ledger": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/ledger.json",
+      "bytes": 89951,
+      "sha256": "4a2ee064527bda02c5f9a6c9204883fd96e1cebecb6152a2e9313261f600e51f"
+    },
+    "prior_lemma": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-result/rows.json",
+      "bytes": 8501,
+      "sha256": "10fc20b0220a138cda43cdd719e1d7ca5c2690f1a849884925b1bdad3649dbca"
+    },
+    "group_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py",
+      "bytes": 4198,
+      "sha256": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
+    },
+    "prior_selected_joins": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-root-site-joins.json",
+      "bytes": 43866,
+      "sha256": "b6ac8706f82232b9344c86810a9464ea76bc538c7088e60bb03155faa186ea6b"
+    },
+    "prior_current_captures": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-captures.json",
+      "bytes": 13541,
+      "sha256": "0bc59bb90146e702bd2fe635d8c3d6fb2e98c8eba6333cf64a2e15900d34e020"
+    },
+    "prior_origin_assessment": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/origin-assessment.json",
+      "bytes": 11423,
+      "sha256": "1e17462aa385119c5e4a5f29263c21d50cdee82120c06669f391c314d470953f"
+    }
+  },
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "identity_reuse": "One fresh authentication hash before grouped execution; final hash preservation, not per-helper rehash. Each decoder invocation still charged full tool+object input extent."
+  },
+  "helper_sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc",
+  "setup_processing_upper": 414155,
+  "setup_charge_basis": "Actual copied/hashed code and control bytes; no selected body interpretation during setup. Administrative exact outer request self-attestation uncertainty retained, not aggregate certification.",
+  "reuse": "A38 exact current initializer full3086line/model31pages, current3ArrayBuffer bodies and payload predicates reused by frozen hashes. A35-A37 constructor/local16/memory bodies and current capacity33/original79/48/6 auth lemmas reused. No prior charges reset or AUTH-only source promotion.",
+  "delivery_alias": {
+    "path": "/tmp/g35",
+    "target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/page.py",
+    "prior_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/page.py"
+  },
+  "predecessor_session": "A38 closed with500483528B processing before final status and known16B request quoting deficit; no retroqualification."
+}

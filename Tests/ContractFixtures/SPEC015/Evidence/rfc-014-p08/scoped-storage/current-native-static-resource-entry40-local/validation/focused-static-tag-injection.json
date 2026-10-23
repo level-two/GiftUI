@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0xa4ed0",
+    "--stop-address=0xa4f34",
+    ".build/contracts/p08-counter-szxj_hhm/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "stderr": "",
+  "bytes": 1123,
+  "sha256": "f42bdf10b561a2848057d7c3353d353803168b0bc5fc46adca66dbf306c08481",
+  "symbol": "_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_"
+}

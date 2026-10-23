@@ -1,0 +1,46 @@
+{
+  "Batch_A_eligibility_pass": false,
+  "dispositions": [
+    {
+      "class": "Demonstrated Dynamic ArrayBuffer controls",
+      "status": "MIXED_FUNCTIONAL_RETAINED_STATIC_SELECTED_EXCLUDED",
+      "basis": "A38/A39 tag1+capacity2 reaches actual typed allocatorfunctions; newfalse selection/fullcompiledroot/tag0 exclude those intentional controls from new workload only. No runtimeallocation/cost claim."
+    },
+    {
+      "class": "Other allocator/metadata/once/witness/indirect/error frontiers",
+      "status": "AVAILABLE_UNEXAMINED_READY_WORK",
+      "basis": "Actual current object/source are available; original17index/1892universe are orientation, not feasibility or remainingcount proof. No external absence."
+    },
+    {
+      "class": "StaticReservation+16local+memory lemmas",
+      "status": "PRIOR_REVIEWED_CONDITIONAL_SCOPE",
+      "basis": "Reuse exact earlier caller/type/ABI premises only; no blanket currentartifact/provider/firstuse transfer after filehashchange."
+    },
+    {
+      "class": "stdio R=S/persistence/loadedtarget",
+      "status": "EXACT_STATE_PREMISE_UNRESOLVED",
+      "needed": "Actual stdout identity atsetter/use; no interveningrebuffering; actualloaded target/UUID. Affects chargedStaticdiagnostics and newboundedsummary. Pristine setter/cache bytes are not processstate."
+    },
+    {
+      "class": "Current environment/window record",
+      "status": "RETAINED_RECORD_INSUFFICIENT",
+      "available": "Mainsetbuf\u2192mixedentry; collectorinheritsuncapturedambientenv; no explicitobserver/window or904artifactnames matchingloaded/env/fixup/window snapshots.",
+      "notperformed": "New runtime/loaderstate capture or resource/cold measurement requires separate approval/action; no global evidenceabsence asserted."
+    },
+    {
+      "class": "U03 concrete ownership/reader/dispatch/generation/backinglast/linkedwriter/fault",
+      "status": "PRIOR_REVIEWED_SCOPED_LEMMAS_RETAINED",
+      "basis": "No reopening or broaderforeign/concurrent safety transfer."
+    },
+    {
+      "class": "Standalone Model/Semantic/FixedStorage/Coordinator",
+      "status": "MANDATORY_FUNCTIONAL_RETAINED_RESOURCE_NOT_EXEMPT",
+      "basis": "MixedMain/fullPASSunchanged; selected3rootresourceworkload does not waive otherStaticconformance/resource obligations."
+    },
+    {
+      "class": "BatchB/C/profile/image/physical/cold/resources",
+      "status": "GATED_NOT_RUN",
+      "basis": "Freshprocess futurecapture/noDynamicprewarm; setup+Staticobserverscharged; no subtraction/exemption, oldRAM/stack/image/profile transfer, or currentresourcePASS."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000159f0 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC>:
+   159f0:      	mov	x4, x30
+   159f4:      	bl	0x159f4 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0x4>
+		00000000000159f4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1027
+   159f8:      	mov	x30, x4
+   159fc:      	stp	x29, x30, [sp, #0x50]
+   15a00:      	add	x29, sp, #0x50
+   15a04:      	sub	sp, sp, #0x810
+   15a08:      	mov	x20, x3
+   15a0c:      	bl	0x15a0c <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0x1c>
+		0000000000015a0c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_537
+   15a10:      	bl	0x15a10 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0x20>
+		0000000000015a10:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_153
+   15a14:      	stur	x8, [x29, #-0x58]
+   15a18:      	sub	x8, x29, #0x90
+   15a1c:      	str	xzr, [sp, #0x180]
+   15a20:      	strb	wzr, [sp, #0x188]
+   15a24:      	mov	w9, #0xe                ; =14
+   15a28:      	stur	x9, [x29, #-0x90]
+   15a2c:      	movi.2d	v0, #0000000000000000
+   15a30:      	stur	q0, [x8, #0x8]
+   15a34:      	lsr	x24, x2, #16
+   15a38:      	lsr	x25, x2, #32
+   15a3c:      	lsr	x26, x2, #48
+   15a40:      	add	x27, sp, #0x8
+   15a44:      	stur	q0, [x8, #0x18]
+   15a48:      	stur	q0, [x8, #0x28]
+   15a4c:      	add	x8, x27, #0x188
+   15a50:      	sub	x0, x29, #0x90
+   15a54:      	bl	0x15a54 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0x64>
+		0000000000015a54:  ARM64_RELOC_BRANCH26	_$ss11InlineArrayV9repeatingAByxq_Gq__tcfC$13__17P08CounterRuntime0D16InitializedEntry33_480B1BD841D053AE4FCDC18507668536LLVSgTt1g5
+   15a58:      	str	xzr, [sp, #0x4a0]
+   15a5c:      	add	x8, x27, #0x4a0
+   15a60:      	sub	x0, x29, #0x90
+   15a64:      	bl	0x15a64 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0x74>
+		0000000000015a64:  ARM64_RELOC_BRANCH26	_$ss11InlineArrayV9repeatingAByxq_Gq__tcfC$13__17P08CounterRuntime0D16InitializedEntry33_480B1BD841D053AE4FCDC18507668536LLVSgTt1g5
+   15a68:      	str	xzr, [sp, #0x7b8]
+   15a6c:      	add	x0, sp, #0x8
+   15a70:      	mov	x1, x23
+   15a74:      	bl	0x15a74 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0x84>
+		0000000000015a74:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_707
+   15a78:      	str	x22, [sp, #0x178]
+   15a7c:      	strh	w21, [sp, #0x7c0]
+   15a80:      	strh	w24, [sp, #0x7c2]
+   15a84:      	strh	w25, [sp, #0x7c4]
+   15a88:      	strh	w26, [sp, #0x7c6]
+   15a8c:      	strh	w20, [sp, #0x7c8]
+   15a90:      	bl	0x15a90 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0xa0>
+		0000000000015a90:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_850
+   15a94:      	bl	0x15a94 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0xa4>
+		0000000000015a94:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_732
+   15a98:      	ldur	x8, [x29, #-0x58]
+   15a9c:      	bl	0x15a9c <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0xac>
+		0000000000015a9c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+   15aa0:      	b.ne	0x15ab0 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0xc0>
+   15aa4:      	add	sp, sp, #0x810
+   15aa8:      	ldp	x29, x30, [sp, #0x50]
+   15aac:      	b	0x15aac <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0xbc>
+		0000000000015aac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_10
+   15ab0:      	bl	0x15ab0 <_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV5slots8identity10capacitiesAdA0A13PhysicalSlotsACLLO_Sus11InlineArrayVy$4_s6UInt16VGtcfC+0xc0>
+		0000000000015ab0:  ARM64_RELOC_BRANCH26	___stack_chk_fail

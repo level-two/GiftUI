@@ -1,0 +1,51 @@
+{
+  "checked_utc": "2026-10-22T23:04:08.947458+00:00",
+  "rows": [
+    {
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--runtime-build",
+        "/deliberately-not-read",
+        "--profile",
+        "macos-dynamic",
+        "--static-resource-entry-v1"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: check-spec-015-counter.py [-h] --runtime-build RUNTIME_BUILD\n                                 [--host-build HOST_BUILD]\n                                 [--profile {macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}]\n                                 [--raster-realization {full-surface,tiled}]\n                                 [--static-resource-entry-v1]\n                                 [--collect-failures] [--fresh-focused]\n                                 [--resume-from RESUME_FROM]\n                                 [--select-family SELECT_FAMILY]\n                                 [--import-legacy-controls IMPORT_LEGACY_CONTROLS]\ncheck-spec-015-counter.py: error: --static-resource-entry-v1 requires --profile macos-static\n",
+      "passed": true
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--runtime-build",
+        "/deliberately-not-read",
+        "--profile",
+        "raspberry-pi-armv6",
+        "--static-resource-entry-v1"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: check-spec-015-counter.py [-h] --runtime-build RUNTIME_BUILD\n                                 [--host-build HOST_BUILD]\n                                 [--profile {macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}]\n                                 [--raster-realization {full-surface,tiled}]\n                                 [--static-resource-entry-v1]\n                                 [--collect-failures] [--fresh-focused]\n                                 [--resume-from RESUME_FROM]\n                                 [--select-family SELECT_FAMILY]\n                                 [--import-legacy-controls IMPORT_LEGACY_CONTROLS]\ncheck-spec-015-counter.py: error: --static-resource-entry-v1 requires --profile macos-static\n",
+      "passed": true
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--runtime-build",
+        "/deliberately-not-read",
+        "--profile",
+        "nrf52840-embedded",
+        "--static-resource-entry-v1"
+      ],
+      "exit": 2,
+      "stdout": "",
+      "stderr": "usage: check-spec-015-counter.py [-h] --runtime-build RUNTIME_BUILD\n                                 [--host-build HOST_BUILD]\n                                 [--profile {macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}]\n                                 [--raster-realization {full-surface,tiled}]\n                                 [--static-resource-entry-v1]\n                                 [--collect-failures] [--fresh-focused]\n                                 [--resume-from RESUME_FROM]\n                                 [--select-family SELECT_FAMILY]\n                                 [--import-legacy-controls IMPORT_LEGACY_CONTROLS]\ncheck-spec-015-counter.py: error: --static-resource-entry-v1 requires --profile macos-static\n",
+      "passed": true
+    }
+  ],
+  "python_ast_parse": "PASS"
+}

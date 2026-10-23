@@ -1,0 +1,208 @@
+{
+  "result": ".build/contracts/p08-counter-szxj_hhm/result.json",
+  "sha256": "6af75b507a8d1177a8a97547730e4667c67736ffa10c33e2f2638543d1275927",
+  "profile": "macos-static",
+  "fresh_focused": true,
+  "focused_passed": true,
+  "collection_complete": false,
+  "checks": [
+    {
+      "name": "link",
+      "exit": 0,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "execute",
+      "exit": 0,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "runtime-summary",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-link",
+      "exit": 0,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-execute",
+      "exit": 0,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-inventory-two-hosts",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-control-same-address",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-terminal-old-host",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-raw-namespace-collision",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-action-stale",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-action-current",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-input-stale",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-input-current",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-admission-stale",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-admission-current",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-source-stale",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-source-current",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-cleanup-backing-last",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    },
+    {
+      "name": "static-resource-v1-summary",
+      "exit": null,
+      "passed": true,
+      "status": "passed",
+      "family": "runtime"
+    }
+  ],
+  "static_summary": [
+    "P08 counter components assertions=1734308 failures=0"
+  ],
+  "static_lines": 2386,
+  "static_role_banks": {
+    "0": 30,
+    "1": 30
+  },
+  "mixed_role_banks": {
+    "0": 60,
+    "1": 60
+  },
+  "static_resource_recipe": {
+    "version": 1,
+    "entry": "p08CounterStaticResourceEntryV1",
+    "executable": "counter-static-resource-v1",
+    "source": "StaticResourceMainV1.swift",
+    "validation_kind": "separate-process-functional-only",
+    "original_roots": [
+      "p08CounterRoute",
+      "p08CounterScopedStorage",
+      "p08CounterHost"
+    ],
+    "workload": [
+      "p08CounterGraph",
+      "counterExerciseStaticScopedStorage",
+      "p08CounterHost"
+    ],
+    "dynamic_controls": "preserved unchanged in mixed functional execute",
+    "cold_or_resource_measurement": false,
+    "passed": true
+  },
+  "target_flags": [
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-szxj_hhm",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-enable-experimental-feature",
+    "LifetimeDependence",
+    "-enable-experimental-feature",
+    "Lifetimes",
+    "-package-name",
+    "giftui",
+    "-module-cache-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-szxj_hhm/cache",
+    "-disable-sandbox",
+    "-target",
+    "arm64-apple-macosx26.0",
+    "-sdk",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-load-plugin-executable",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-parse-as-library",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpbmxzuxan/macos-static",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-enable-testing"
+  ]
+}

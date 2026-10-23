@@ -1,0 +1,20 @@
+{
+  "initial_profile_control": {
+    "argv": [
+      "python3",
+      "scripts/contracts/check-spec-015-counter.py",
+      "--runtime-build",
+      ".build/contracts/spec-013-runtime-cycle/tmpe8onpqjb/macos-static",
+      "--profile",
+      "macos-dynamic",
+      "--static-resource-entry-v1"
+    ],
+    "tool_session": 65941,
+    "actual_exit": 1,
+    "diagnostic": "AssertionError: runtime recipe profile mismatch",
+    "meaning": "Precompiler control reached existing runtime profile assertion before new opt-in guard. Guard was moved before any runtime receipt read; subsequent3 wrong-profile controls exit2 with explicit parser diagnostic. No compiler/runtime launch in failed control."
+  },
+  "focused_capture": ".build/contracts/p08-static-resource-entry40",
+  "source_frozen_during_full": true,
+  "not_resource_measurement": true
+}

@@ -3209,6 +3209,20 @@ fileprivate func p08VerifyFault(_ owner: borrowing P08TypedBackingOwner, fault: 
 }
 #if !hasFeature(Embedded)
 package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer? = nil, write: CounterTiledPixelWrite? = nil) -> Int {
+    counterExerciseScopedStorage(includeDynamicValidation: true, backing: backing, write: write)
+}
+
+#if !GIFTUI_COUNTER_ROUTE_DYNAMIC
+// The mixed functional corpus remains the default. This prospective resource
+// entry keeps all Static scenarios and their diagnostics, without executing the
+// intentional Dynamic validation controls before or within its process.
+package func counterExerciseStaticScopedStorage(backing: UnsafeMutableRawBufferPointer? = nil, write: CounterTiledPixelWrite? = nil) -> Int {
+    counterExerciseScopedStorage(includeDynamicValidation: false, backing: backing, write: write)
+}
+#endif
+
+@inline(__always)
+private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backing: UnsafeMutableRawBufferPointer?, write: CounterTiledPixelWrite?) -> Int {
     let staticIDs: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
     var checks = 0
     // Native typed arrays acquire whole T values. Embedded additionally acquires
@@ -3265,14 +3279,16 @@ package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer
             owner.release()
             return count + p08VerifyRoleTranscript(transcript) + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
         }
-        checks += withP08DynamicReservation(surplus: surplus) { owner in
-            precondition(owner.initialize() == nil)
-            let original = owner.originalInventory()
-            if surplus { precondition(original[6]!.retainedBytes < original[7]!.retainedBytes) }
-            var transcript = P08RoleTranscript()
-            let count = withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
-            owner.release()
-            return count + p08VerifyRoleTranscript(transcript) + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 9)
+        if includeDynamicValidation {
+            checks += withP08DynamicReservation(surplus: surplus) { owner in
+                precondition(owner.initialize() == nil)
+                let original = owner.originalInventory()
+                if surplus { precondition(original[6]!.retainedBytes < original[7]!.retainedBytes) }
+                var transcript = P08RoleTranscript()
+                let count = withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
+                owner.release()
+                return count + p08VerifyRoleTranscript(transcript) + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 9)
+            }
         }
     }
     #endif
@@ -3286,27 +3302,29 @@ package func counterExerciseScopedStorage(backing: UnsafeMutableRawBufferPointer
             checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer in runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write) }
         }
         #if !hasFeature(Embedded)
-        let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]
-        for index in 0..<9 { for after in [false, true] {
-            let fault = P08AcquisitionFault(id: dynamicIDs[index]!, completed: 0, afterInstall: after)
-            checks += withP08DynamicReservation { owner in precondition(owner.initialize(fault: fault) != nil); return p08VerifyFault(owner, fault: fault, ids: dynamicIDs, objects: 9) }
-        } }
-        for capacityIndex in 0..<5 {
-            let capacities = invalidCapacityCases[capacityIndex]
-            checks += withP08DynamicReservation(capacities: capacities) { owner in precondition(owner.initialize() == .invalidCapacity); return 1 }
-        }
-        checks += withP08DynamicReservation { owner in
-            precondition(owner.initialize() == nil); let original = owner.originalInventory()
-            var count = 0
-            for _ in 0..<3 {
-                var transcript = P08RoleTranscript()
-                count += withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
-                count += p08VerifyRoleTranscript(transcript)
+        if includeDynamicValidation {
+            let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]
+            for index in 0..<9 { for after in [false, true] {
+                let fault = P08AcquisitionFault(id: dynamicIDs[index]!, completed: 0, afterInstall: after)
+                checks += withP08DynamicReservation { owner in precondition(owner.initialize(fault: fault) != nil); return p08VerifyFault(owner, fault: fault, ids: dynamicIDs, objects: 9) }
+            } }
+            for capacityIndex in 0..<5 {
+                let capacities = invalidCapacityCases[capacityIndex]
+                checks += withP08DynamicReservation(capacities: capacities) { owner in precondition(owner.initialize() == .invalidCapacity); return 1 }
             }
-            owner.release(); return count + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 9)
+            checks += withP08DynamicReservation { owner in
+                precondition(owner.initialize() == nil); let original = owner.originalInventory()
+                var count = 0
+                for _ in 0..<3 {
+                    var transcript = P08RoleTranscript()
+                    count += withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
+                    count += p08VerifyRoleTranscript(transcript)
+                }
+                owner.release(); return count + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 9)
+            }
+            for early: UInt8 in 1...5 { checks += withP08SelectedDynamic(modelOwner: try models.issue(), semanticOwner: try semantics.issue()) { owner, outer in runP08DynamicHost(owner: &owner, outer: outer, failAfterRuntime: false, early: early) } }
+            for raw: UInt8 in 0...10 { checks += withP08SelectedDynamic(modelOwner: try models.issue(), semanticOwner: try semantics.issue()) { owner, outer in runP08DynamicHost(owner: &owner, outer: outer, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!) } }
         }
-        for early: UInt8 in 1...5 { checks += withP08SelectedDynamic(modelOwner: try models.issue(), semanticOwner: try semantics.issue()) { owner, outer in runP08DynamicHost(owner: &owner, outer: outer, failAfterRuntime: false, early: early) } }
-        for raw: UInt8 in 0...10 { checks += withP08SelectedDynamic(modelOwner: try models.issue(), semanticOwner: try semantics.issue()) { owner, outer in runP08DynamicHost(owner: &owner, outer: outer, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!) } }
         #endif
     } catch { preconditionFailure("scoped corpus identities") }
     return checks

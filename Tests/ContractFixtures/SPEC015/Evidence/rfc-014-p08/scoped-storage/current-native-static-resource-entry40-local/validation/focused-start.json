@@ -1,0 +1,26 @@
+{
+  "started_utc": "2026-10-22T23:05:23.889115+00:00",
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmpbmxzuxan/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "--fresh-focused",
+    "--select-family",
+    "runtime",
+    "--static-resource-entry-v1"
+  ],
+  "capture_pid": 78357,
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "7ab835e7ffaec4c3d1d769fc14de845701d394bfe9636e536a41dee076f835c3",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a",
+    "scripts/contracts/check-spec-015-counter.py": "fc410351f1b1bed16f556091fff26a3804adb37f792154dd5a14b1a6d7e0b612",
+    "scripts/contracts/p08_check_collection.py": "4f602899833a848fe74dc60f722660f949a26a543fa4d28132f567eaca17aea1"
+  },
+  "scope": "Mixed functional output equivalence plus additive separate-process Static-only entry v1; not resource/cold measurement"
+}

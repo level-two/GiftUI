@@ -1,0 +1,51 @@
+{
+  "observed_utc": "2026-10-23T01:23:17.807922+00:00",
+  "ordinary_first_read_utc": "2026-10-22T22:59:54.132376+00:00",
+  "full_start": "2026-10-22T23:09:02.884642+00:00",
+  "full_terminal": {
+    "exit": 0,
+    "terminal_utc": "2026-10-23T01:20:27.098833+00:00",
+    "elapsed_seconds": 7884.214191
+  },
+  "ordinary_retained_paths": [
+    {
+      "path": ".build/contracts/spec-013-runtime-cycle/tmpbmxzuxan",
+      "bytes": 25073836
+    },
+    {
+      "path": ".build/contracts/p08-counter-szxj_hhm",
+      "bytes": 161185180
+    },
+    {
+      "path": ".build/contracts/p08-counter-m1vlvrlf",
+      "bytes": 184046148
+    },
+    {
+      "path": ".build/contracts/p08-static-resource-entry40",
+      "bytes": 253255
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-result",
+      "bytes": 196655
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local",
+      "bytes": 858285
+    }
+  ],
+  "ordinary_retained_bytes_at_projection": 371613359,
+  "final_review_reserve_bytes": 16777216,
+  "ordinary_output_limit": 536870912,
+  "under_limit_with_reserve": true,
+  "attachment_files": 105,
+  "attachment_bytes": 858285,
+  "A38_A39_aggregate_numerical_certification": false,
+  "limits": "A38known16Bquoteundercount and administrative aggregate uncertainty preserved; no retroqualification. Ordinary source validation clocks/outputenvelope are separate from immutable U02 caps. OS I/O/platform metadata not certified.",
+  "source_diff_numstat": "6\t0\tTests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift\n8\t0\tTests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift\n45\t27\tTests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift\n16\t1\tscripts/contracts/check-spec-015-counter.py\n1\t1\tscripts/contracts/p08_check_collection.py\n",
+  "validation_elapsed_comparison": {
+    "current_seconds": 7884.214191,
+    "previous_capacity33_seconds": 7853.365159,
+    "claim": "validationelapsed only; no performancecomparison"
+  },
+  "finalization_projection_error": "One metadata projection exit1 used startswith on root name and hit duplicate exact-root/thunk candidates. Retained full-root-symbol-rows.json records actual rows; exact complete signature selection resolved it without source/decoder/proof rerun."
+}

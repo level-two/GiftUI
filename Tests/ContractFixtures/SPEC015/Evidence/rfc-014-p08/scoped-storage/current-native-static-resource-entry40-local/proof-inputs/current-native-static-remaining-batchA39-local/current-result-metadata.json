@@ -1,0 +1,567 @@
+{
+  "result": {
+    "path": ".build/contracts/p08-counter-e3ivm0v6/result.json",
+    "bytes": 8548218,
+    "sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838"
+  },
+  "schema": {
+    "scope": {
+      "type": "str",
+      "size": 100
+    },
+    "raster_realization": {
+      "type": "str",
+      "size": 12
+    },
+    "profile": {
+      "type": "str",
+      "size": 12
+    },
+    "selected_host_profile": {
+      "type": "str",
+      "size": 12
+    },
+    "target_flags": {
+      "type": "list",
+      "size": 31
+    },
+    "embedded_dynamic_escape_applicable": {
+      "type": "bool",
+      "size": null
+    },
+    "compiler": {
+      "type": "str",
+      "size": 55
+    },
+    "compiler_sha256": {
+      "type": "str",
+      "size": 64
+    },
+    "runtime_build": {
+      "type": "str",
+      "size": 64
+    },
+    "runtime_receipt_sha256": {
+      "type": "str",
+      "size": 64
+    },
+    "host_build": {
+      "type": "str",
+      "size": 41
+    },
+    "host_receipt_sha256": {
+      "type": "str",
+      "size": 64
+    },
+    "inputs": {
+      "type": "dict",
+      "size": 201
+    },
+    "commands": {
+      "type": "list",
+      "size": 412
+    },
+    "checks": {
+      "type": "list",
+      "size": 426
+    },
+    "planned_scoped_labels": {
+      "type": "list",
+      "size": 384
+    },
+    "planned_supplemental_labels": {
+      "type": "list",
+      "size": 2
+    },
+    "registered_reuse_labels": {
+      "type": "list",
+      "size": 13
+    },
+    "reuse_execution": {
+      "type": "bool",
+      "size": null
+    },
+    "qualified_noncompiled_applicability": {
+      "type": "list",
+      "size": 0
+    },
+    "execution": {
+      "type": "str",
+      "size": 611253
+    },
+    "collection_schema": {
+      "type": "int",
+      "size": null
+    },
+    "collection_complete": {
+      "type": "bool",
+      "size": null
+    },
+    "passed": {
+      "type": "bool",
+      "size": null
+    },
+    "fresh_focused": {
+      "type": "bool",
+      "size": null
+    },
+    "focused_passed": {
+      "type": "bool",
+      "size": null
+    },
+    "selected_families": {
+      "type": "list",
+      "size": 0
+    },
+    "prior_collection": {
+      "type": "NoneType",
+      "size": null
+    },
+    "legacy_import": {
+      "type": "NoneType",
+      "size": null
+    },
+    "scoped_negative_source": {
+      "type": "str",
+      "size": 72
+    },
+    "core_receipt_sha256": {
+      "type": "str",
+      "size": 64
+    },
+    "macro_tool_sha256": {
+      "type": "str",
+      "size": 64
+    },
+    "swift_syntax_sha256": {
+      "type": "str",
+      "size": 64
+    },
+    "artifacts": {
+      "type": "dict",
+      "size": 904
+    }
+  },
+  "scalars": {
+    "scope": "Actual P08 finite counter owner/layout/drawing/render components; host and early images remain open.",
+    "raster_realization": "full-surface",
+    "profile": "macos-static",
+    "selected_host_profile": "macos-static",
+    "embedded_dynamic_escape_applicable": true,
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmpe8onpqjb/macos-static",
+    "runtime_receipt_sha256": "65f7f45b280dc9913591b9301d44443251a1399a8012a96faf5492e50b0abe8d",
+    "host_build": ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "host_receipt_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+    "reuse_execution": true,
+    "collection_schema": 2,
+    "collection_complete": true,
+    "passed": true,
+    "fresh_focused": false,
+    "focused_passed": false,
+    "scoped_negative_source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1",
+    "macro_tool_sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814",
+    "swift_syntax_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308"
+  },
+  "record_schema": {
+    "checks": [
+      "name",
+      "family",
+      "exit",
+      "passed",
+      "diagnostic",
+      "identity",
+      "status",
+      "log_sha256"
+    ]
+  },
+  "possible_route_records": [
+    {
+      "list": "checks",
+      "index": 10,
+      "label": " GiftUIRuntimeCore  GiftUIRuntimeCore  ",
+      "keys": [
+        "name",
+        "family",
+        "exit",
+        "passed",
+        "diagnostic",
+        "identity",
+        "status",
+        "log_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 11,
+      "label": " GiftUIRuntimeStatic  GiftUIRuntimeStatic  ",
+      "keys": [
+        "name",
+        "family",
+        "exit",
+        "passed",
+        "diagnostic",
+        "identity",
+        "status",
+        "log_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 12,
+      "label": " GiftUIRuntimeDynamic  GiftUIRuntimeDynamic  ",
+      "keys": [
+        "name",
+        "family",
+        "exit",
+        "passed",
+        "diagnostic",
+        "identity",
+        "status",
+        "log_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 405,
+      "label": " link  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "exit",
+        "passed",
+        "diagnostic",
+        "identity",
+        "status",
+        "log_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 406,
+      "label": " execute  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "exit",
+        "passed",
+        "diagnostic",
+        "identity",
+        "status",
+        "log_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 407,
+      "label": " so06-reuse-static-inventory-two-hosts  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 408,
+      "label": " so06-reuse-static-control-same-address  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 409,
+      "label": " so06-reuse-static-terminal-old-host  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 410,
+      "label": " so06-reuse-static-raw-namespace-collision  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 411,
+      "label": " so06-reuse-static-action-stale  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 412,
+      "label": " so06-reuse-static-action-current  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 413,
+      "label": " so06-reuse-static-input-stale  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 414,
+      "label": " so06-reuse-static-input-current  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 415,
+      "label": " so06-reuse-static-admission-stale  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 416,
+      "label": " so06-reuse-static-admission-current  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 417,
+      "label": " so06-reuse-static-source-stale  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 418,
+      "label": " so06-reuse-static-source-current  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 419,
+      "label": " so06-reuse-static-cleanup-backing-last  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    },
+    {
+      "list": "checks",
+      "index": 420,
+      "label": " runtime-summary  runtime  ",
+      "keys": [
+        "name",
+        "family",
+        "identity",
+        "exit",
+        "passed",
+        "status",
+        "prerequisites",
+        "evidence",
+        "evidence_sha256"
+      ]
+    }
+  ],
+  "dictionary_keys": {
+    "inputs": [
+      "scripts/contracts/check-spec-015-counter.py",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle2-applicability.json",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift"
+    ],
+    "artifacts": [
+      "so06-carrier-static-generic-retired-optional-control-positive.log",
+      "so06-carrier-static-generic-active-host-semantic-negative.log",
+      "so06-carrier-static-direct-active-host-semantic-negative.swift",
+      "so06-carrier-static-generic-active-host-candidateRecords-negative.log",
+      "so06-private-extraction-positive.swift",
+      "so06-carrier-dynamic-generic-active-host-activationSpan-positive.log",
+      "so06-union-dynamic-generic-committedRecords-negative.log",
+      "counter-dynamic-host-backing-positive.swift",
+      "so06-union-static-generic-semantic-positive.swift",
+      "so06-erasure-static-generic-active-host-tuple-negative.swift",
+      "so06-carrier-dynamic-generic-retired-optional-values-positive.log",
+      "so06-carrier-static-direct-retired-optional-candidateCommittedRecords-positive.swift",
+      "so06-erasure-dynamic-direct-active-host-generic-negative.log",
+      "P08CounterSchema.abi.json",
+      "counter-host-copy-negative.swift",
+      "so06-carrier-dynamic-direct-retired-optional-models-positive.swift",
+      "so06-carrier-static-generic-retired-optional-models-positive.swift",
+      "so06-carrier-dynamic-direct-active-host-semantic-negative.swift",
+      "so06-union-dynamic-direct-geometry-positive.swift",
+      "so06-carrier-static-generic-active-host-committedHitRegions-positive.log",
+      "so06-union-dynamic-generic-control-negative.log",
+      "so06-union-dynamic-generic-values-negative.log",
+      "so06-native-exclusivity-positive-link.log",
+      "so06-carrier-dynamic-generic-active-host-committedRecords-negative.swift",
+      "so06-carrier-dynamic-generic-retired-optional-root-negative.swift",
+      "so06-erasure-dynamic-generic-active-host-generic-positive.log",
+      "so06-erasure-static-generic-retired-optional-tuple-positive.log",
+      "so06-carrier-dynamic-generic-retired-optional-candidateCommittedRecords-positive.log",
+      "GiftUIExecution.log",
+      "so06-union-static-generic-candidateCommittedRecords-positive.swift",
+      "so06-carrier-dynamic-generic-active-host-candidateHitRegions-negative.swift",
+      "so06-static-overlap-negative.swift",
+      "so06-union-static-direct-activationSpan-positive.swift",
+      "so06-generic-erasure-positive.swift",
+      "so06-carrier-dynamic-generic-retired-optional-control-negative.swift",
+      "so06-erasure-dynamic-generic-retired-optional-tuple-positive.swift",
+      "so06-carrier-dynamic-direct-retired-optional-root-negative.log",
+      "so06-carrier-static-direct-retired-optional-candidateHitRegions-negative.swift",
+      "counter-model.log",
+      "so06-union-static-generic-activationSpan-negative.swift"
+    ]
+  }
+}

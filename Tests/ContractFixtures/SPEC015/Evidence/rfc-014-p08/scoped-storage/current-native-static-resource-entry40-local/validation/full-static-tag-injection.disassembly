@@ -1,0 +1,31 @@
+
+.build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a4ed0 <_$s17P08CounterRuntime0A13PhysicalSlots33_480B1BD841D053AE4FCDC18507668536LLOWOi_>:
+   a4ed0:      	ldr	x8, [x0, #0x58]
+   a4ed4:      	ldr	x9, [x0, #0xd8]
+   a4ed8:      	ldr	x10, [x0, #0xf0]
+   a4edc:      	ldr	x11, [x0, #0x108]
+   a4ee0:      	ldr	x12, [x0, #0x120]
+   a4ee4:      	ldr	x13, [x0, #0x138]
+   a4ee8:      	ldr	x14, [x0, #0x150]
+   a4eec:      	ldrb	w15, [x0, #0x168]
+   a4ef0:      	and	x8, x8, #0x7
+   a4ef4:      	and	x9, x9, #0x3
+   a4ef8:      	and	x10, x10, #0x3
+   a4efc:      	and	x11, x11, #0x3
+   a4f00:      	and	x12, x12, #0x3
+   a4f04:      	and	x13, x13, #0x3
+   a4f08:      	and	x14, x14, #0x3
+   a4f0c:      	and	w15, w15, #0x3
+   a4f10:      	str	x8, [x0, #0x58]
+   a4f14:      	str	x9, [x0, #0xd8]
+   a4f18:      	str	x10, [x0, #0xf0]
+   a4f1c:      	str	x11, [x0, #0x108]
+   a4f20:      	str	x12, [x0, #0x120]
+   a4f24:      	str	x13, [x0, #0x138]
+   a4f28:      	str	x14, [x0, #0x150]
+   a4f2c:      	strb	w15, [x0, #0x168]
+   a4f30:      	ret

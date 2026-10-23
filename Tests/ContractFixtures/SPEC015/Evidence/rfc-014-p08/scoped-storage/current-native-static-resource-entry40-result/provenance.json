@@ -1,0 +1,39 @@
+{
+  "ordinary_first_required_read_utc": "2026-10-22T22:59:54.132376+00:00",
+  "recorded_utc": "2026-10-22T23:02:21.661104+00:00",
+  "head": "798686cf11a058c5ba1467a8b4b2f94f1b3390fa",
+  "scope": [
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "scripts/contracts/check-spec-015-counter.py",
+    "scripts/contracts/p08_check_collection.py"
+  ],
+  "source_before": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "bfcf074ec49455e7d5cc527b4a65cf9b9374da2c96914f8b8bdf8908ca90ec6b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "a39485018357e68d7a0a66571159d615aab90b6fccf87ea44bf14e0bd4e46050",
+    "scripts/contracts/check-spec-015-counter.py": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+    "scripts/contracts/p08_check_collection.py": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41"
+  },
+  "A39_terminal": {
+    "started_utc": "2026-10-22T22:42:40.218409+00:00",
+    "processing": 505112115,
+    "transcript": 88765,
+    "status": null,
+    "closed_utc": null,
+    "findings": {
+      "status": "DECISIVE_MIXED_FUNCTIONAL_VS_STATIC_RESOURCE_SCOPE_FINDING",
+      "scope": "A38/A39 one coherent grouped outcome; current fullobject4cf710ca/source50395/resultec59 baseline preserved",
+      "tag_and_copy": "PhysicalSlots tag1 injection0xa34ac sets bit7; tag0 injection0xa36bc clears viaAND3; getter0xb6190 shiftsbit7. Complete732=memcpy1986,707=memcpy361,405=memcpy361 close owner/payload copies; tag extraction mutation only stack value. Owner constructor537 saves exact args,850 sets finalcopy args; reviewed153 guard/result helper reused.",
+      "roots": "Host0x4bc08 complete177lines calls same withSelectedStatic0x44b80 at4bcb4/4be04, exactsamehash confirmed; complete237line body tag0 and initializewrapperx0=0,w1=2. ScopedStorage0x5284c is unconditionaltail to wholeexercise. Route0x96af8 complete53lines normally calls wholeexercise thenHost; no Dynamic-control selection switch at route.",
+      "allocation_consequence": "Tag0 initialization excludes 3 examined ArrayBuffer sites, uses StaticTwo alternatives. Tag1 Dynamic validation path has5logical ArrayBuffer origins sharing3exact allocator sitesa37c8/a38d0/a39cc; positive5capacities2 supplied by currentcaller; growForAppend0 makes max(minCapacity,oldCount)>=2, so nonzero branch invokes exact metadata descriptor/helper then swift_allocObject if preceding valid/workload/metadata returns complete. No runtime success/count/cost inference.",
+      "current_execution": "Current276B Main e246ce21 calls setbuf(stdout,nil) then print interpolating Route+Model+Semantic+FixedStorage+Coordinator. Full functional execute exit0/log76569bb0; no resourcewindow/allocatorobserver inMain. Currentselected result has no top-level environment/loaded-image fields; all904 artifactnames queried for dyld/loaded/environment/fixup/window/maps/snapshot: none. DeclaredCollector d8d9fa4e launches subprocess.run withoutenv=; inherited actualambientenvironment not captured. Installedregular/nonlazy metadata cannot reconstruct past live GOT/UUID/guard/stdout persistence.",
+      "authority": "SPEC013259-264/579-587/1105-1134 Staticzeroheap/separateDynamic; SPEC015267-275/386-400/1538-1548 requiresbothprofilecontrols butnotDynamicinsideStaticresourcewindow. Separate ordinary contract/source assessment provenance, no AUTH-only semantic source promotion. Coordinator transmitted Astra additiveStatic-only resourceentry+versionedrecipe while preserving valid mixedfunctionalproducer/allcontrols/order, noSpecamendment established.",
+      "boundary": "Current functional receipt is NOT a failed resource measurement. Current mixed whole-entry cannot establish Static resource eligibility; tag1 controls cannot be silently deleted/exempted/subtracted/prewarmed. Other rooted allocator/error/metadata/once/witness/indirect paths stay available-unexamined, not absence. PriorU03/source safety closedscope retained; actual loadedtarget/state and freshcold/image/resources outsidecurrentreadonlyevidence remain explicit. No source/HEAD/index/compiler/runtime/providerexperiment change.",
+      "accounting": "A38 preserved500483528B prefinal/16B quoted-request deficit; no retroqualification. A39 decoder canonical selector now shellquoted beforeexecution. Administrative/acquisition exact aggregate counting remains uncertified and ordinary metadata/contract toolreads outside canonicalhooks must not be treated free or certified. This is actual lastsemanticread terminal; subsequent administrative receipt only."
+    }
+  },
+  "aggregate_numerical_certification": false,
+  "purpose": "Additive Static-only resource workload entry; preserve historical mixed functional producer/control ordering; no cold or resource measurement."
+}

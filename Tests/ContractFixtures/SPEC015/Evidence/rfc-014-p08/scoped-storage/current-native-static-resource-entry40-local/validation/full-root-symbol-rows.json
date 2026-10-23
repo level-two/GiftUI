@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--syms",
+    ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "stderr": "",
+  "selected_root_and_thunk_rows": [
+    {
+      "address": "0xb8d5c",
+      "symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtFSiAA0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLVz_AA0A15StaticOuterViewAPLLVtXEfU_TA"
+    },
+    {
+      "address": "0xa4a3c",
+      "symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtFSiSpyAA0aE15ReuseTranscript33_480B1BD841D053AE4FCDC18507668536LLVGXEfU0_SiAA0A17TypedBackingOwnerAPLLVz_AA0A15StaticOuterViewAPLLVtXEfU_TA"
+    },
+    {
+      "address": "0x53f58",
+      "symbol": "_$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF"
+    },
+    {
+      "address": "0x98308",
+      "symbol": "_$s17P08CounterRuntime03p08B21StaticResourceEntryV1SiyF"
+    },
+    {
+      "address": "0x4bca8",
+      "symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+    },
+    {
+      "address": "0x98270",
+      "symbol": "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+    }
+  ],
+  "prior_projection_error": "exit1 bare AssertionError at duplicate-key guard in prefix projection; original script emitted no candidate values. No source or evidence input was changed; exact root-signature selection follows these retained rows."
+}

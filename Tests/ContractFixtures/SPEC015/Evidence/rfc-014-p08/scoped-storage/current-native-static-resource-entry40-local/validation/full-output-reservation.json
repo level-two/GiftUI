@@ -1,0 +1,31 @@
+{
+  "utc": "2026-10-22T23:08:35.900918+00:00",
+  "known_before_full": 186463757,
+  "breakdown": [
+    {
+      "path": ".build/contracts/spec-013-runtime-cycle/tmpbmxzuxan",
+      "bytes": 25073836
+    },
+    {
+      "path": ".build/contracts/p08-counter-szxj_hhm",
+      "bytes": 161185180
+    },
+    {
+      "path": ".build/contracts/p08-static-resource-entry40",
+      "bytes": 134668
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-result",
+      "bytes": 70073
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-resource-entry40-local",
+      "bytes": 0
+    }
+  ],
+  "expected_full_bytes": 209715200,
+  "final_reserve": 16777216,
+  "forecast": 412956173,
+  "limit_bytes": 536870912,
+  "purpose": "Ordinary additive-entry implementation/validation outputs only, not U02 cap alteration."
+}

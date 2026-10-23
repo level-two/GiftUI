@@ -1,0 +1,18 @@
+{
+  "baseline": ".build/contracts/p08-counter-e3ivm0v6/execute.log",
+  "baseline_sha256": "76569bb08c05949c161ea00f00ef951f4736e0ca91c035213996dc9be8f69005",
+  "after": ".build/contracts/p08-counter-szxj_hhm/execute.log",
+  "after_sha256": "c44ee3cc369f0db6cebe7f166695ec47c0166accd2df1175c7e187bc539adfa4",
+  "raw_equal": false,
+  "normalized_equal": true,
+  "only_normalization": "Exactly SO06 role fields4/8 physical-address decimal tokens, no whitespace/newline change",
+  "address_tokens": [
+    240,
+    240
+  ],
+  "bytes": [
+    611254,
+    611254
+  ],
+  "normalized_sha256": "583741c6b535e20435949ec4735109a90ae5935fa2d12594db290b0027336c00"
+}

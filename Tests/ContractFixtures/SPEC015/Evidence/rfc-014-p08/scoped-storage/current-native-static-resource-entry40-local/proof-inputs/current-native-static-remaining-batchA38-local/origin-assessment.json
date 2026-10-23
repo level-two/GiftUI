@@ -1,0 +1,153 @@
+{
+  "exact_frozen_root_joins": [
+    {
+      "exact_disassembly_headers": [
+        [
+          "P08CounterRuntime",
+          "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+        ]
+      ],
+      "sil_symbol": "$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+    },
+    {
+      "exact_disassembly_headers": [
+        [
+          "P08CounterRuntime",
+          "_$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF"
+        ]
+      ],
+      "sil_symbol": "$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF"
+    },
+    {
+      "exact_disassembly_headers": [
+        [
+          "P08CounterRuntime",
+          "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+        ]
+      ],
+      "sil_symbol": "$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+    }
+  ],
+  "selected_actual_current_chains": [
+    {
+      "pc": 670156,
+      "owner": 670032,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 310280,
+              "pc": 310452,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5",
+              "to": 281472,
+              "entry_addend": 0
+            },
+            {
+              "from": 281472,
+              "pc": 281872,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_370",
+              "to": 772580,
+              "entry_addend": 0
+            },
+            {
+              "from": 772580,
+              "pc": 772588,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94308,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 670032,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 337996,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 337996,
+              "pc": 337996,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 326560,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94308,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 670032,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 617208,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 617208,
+              "pc": 617284,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 326560,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94308,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 670032,
+              "entry_addend": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "source_assessment_role": "Separate authorized ordinary maintained-source workload/implementation assessment. Frozen source_AUTH is not retroactively promoted to U02 semantic machine evidence.",
+  "ordinary_source_identity": {
+    "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "bytes": 255642,
+    "sha256": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf"
+  },
+  "ordinary_source_spans": [
+    {
+      "reason": "exact reached9-object acquisition fault control",
+      "lines": [
+        3227,
+        3299
+      ],
+      "text": "3227:        [2, 2, 1, 1, 2],\n3228:        [2, 2, 2, 1, 2],\n3229:        [2, 2, 2, 2, 1],\n3230:    ]\n3231:    for capacityIndex in 0..<5 {\n3232:        let capacities = invalidCapacityCases[capacityIndex]\n3233:        checks += withP08StaticReservation(capacities: capacities) { owner in\n3234:            precondition(owner.initialize() == .invalidCapacity)\n3235:            let inventory = owner.originalInventory(); for index in 0..<14 { precondition(inventory[index] == nil) }\n3236:            return 1\n3237:        }\n3238:    }\n3239:    checks += withP08StaticReservation { owner in\n3240:        precondition(owner.initialize() == nil)\n3241:        let original = owner.originalInventory()\n3242:        var count = 0\n3243:        for _ in 0..<3 {\n3244:            var transcript = P08RoleTranscript()\n3245:            count += withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in\n3246:                var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }\n3247:                return holder.exercise()\n3248:            } }\n3249:            count += p08VerifyRoleTranscript(transcript)\n3250:            let current = owner.originalInventory()\n3251:            for index in 0..<14 { precondition(current[index]!.address == original[index]!.address && current[index]!.retainedBytes == original[index]!.retainedBytes) }\n3252:        }\n3253:        owner.release()\n3254:        return count + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)\n3255:    }\n3256:    for surplus in [false, true] {\n3257:        checks += withP08StaticReservation(surplus: surplus) { owner in\n3258:            precondition(owner.initialize() == nil)\n3259:            let original = owner.originalInventory()\n3260:            let left = original[11]!, right = original[12]!\n3261:            precondition(left.retainedBytes <= right.retainedBytes)\n3262:            if surplus { precondition(left.retainedBytes < right.retainedBytes) }\n3263:            var transcript = P08RoleTranscript()\n3264:            let count = withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }\n3265:            owner.release()\n3266:            return count + p08VerifyRoleTranscript(transcript) + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)\n3267:        }\n3268:        checks += withP08DynamicReservation(surplus: surplus) { owner in\n3269:            precondition(owner.initialize() == nil)\n3270:            let original = owner.originalInventory()\n3271:            if surplus { precondition(original[6]!.retainedBytes < original[7]!.retainedBytes) }\n3272:            var transcript = P08RoleTranscript()\n3273:            let count = withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }\n3274:            owner.release()\n3275:            return count + p08VerifyRoleTranscript(transcript) + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 9)\n3276:        }\n3277:    }\n3278:    #endif\n3279:    var models = ObservableModelOwnerNamespace(); var semantics = SemanticRecordOwnerNamespace()\n3280:    do {\n3281:\n3282:        for early: UInt8 in 1...5 {\n3283:            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer in runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, early: early, write: write) }\n3284:        }\n3285:        for raw: UInt8 in 0...10 {\n3286:            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer in runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write) }\n3287:        }\n3288:        #if !hasFeature(Embedded)\n3289:        let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]\n3290:        for index in 0..<9 { for after in [false, true] {\n3291:            let fault = P08AcquisitionFault(id: dynamicIDs[index]!, completed: 0, afterInstall: after)\n3292:            checks += withP08DynamicReservation { owner in precondition(owner.initialize(fault: fault) != nil); return p08VerifyFault(owner, fault: fault, ids: dynamicIDs, objects: 9) }\n3293:        } }\n3294:        for capacityIndex in 0..<5 {\n3295:            let capacities = invalidCapacityCases[capacityIndex]\n3296:            checks += withP08DynamicReservation(capacities: capacities) { owner in precondition(owner.initialize() == .invalidCapacity); return 1 }\n3297:        }\n3298:        checks += withP08DynamicReservation { owner in\n3299:            precondition(owner.initialize() == nil); let original = owner.originalInventory()"
+    }
+  ]
+}

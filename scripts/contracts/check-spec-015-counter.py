@@ -15,12 +15,15 @@ parser.add_argument('--runtime-build', required=True, type=pathlib.Path)
 parser.add_argument('--host-build', type=pathlib.Path, default=ROOT / '.build/contracts/p08-scoped-host-c5eocina')
 parser.add_argument('--profile', choices=('macos-dynamic', 'macos-static', 'raspberry-pi-armv6', 'nrf52840-embedded'))
 parser.add_argument('--raster-realization', choices=('full-surface', 'tiled'), default='full-surface')
+parser.add_argument('--static-resource-entry-v1', action='store_true', help='add a separate native Static-only workload process; no resource or cold measurement')
 parser.add_argument('--collect-failures', action='store_true', help='collect independent failures; block dependent checks')
 parser.add_argument('--fresh-focused', action='store_true', help='fresh preparation and selected families only; never complete aggregate evidence')
 parser.add_argument('--resume-from', type=pathlib.Path, help='verified complete collection build for focused rerun')
 parser.add_argument('--select-family', action='append', default=[], help='complete matcher/control family to rerun (repeatable)')
 parser.add_argument('--import-legacy-controls', type=pathlib.Path, help='exact immutable compatibility2 partial packet; rebuild preparation')
 args = parser.parse_args()
+if args.static_resource_entry_v1 and args.profile != 'macos-static':
+    parser.error('--static-resource-entry-v1 requires --profile macos-static')
 base = args.runtime_build.resolve()
 prior = json.loads((base / 'result.json').read_text())
 if args.profile:
@@ -130,7 +133,7 @@ for recipe in (prior, host_receipt) if is_target else (prior,):
             if selected:
                 inputs.extend(pathlib.Path(token) for token in pieces[pieces.index('-module-name') + 2:] if token.endswith('.swift'))
 collector = Collector(ROOT, out, args.collect_failures, args.resume_from, args.select_family, args.import_legacy_controls, args.fresh_focused)
-recipe_identity = dict(profile=prior['profile'], selected_host_profile=args.profile,
+recipe_identity = dict(static_resource_entry_version=1 if args.static_resource_entry_v1 else None, profile=prior['profile'], selected_host_profile=args.profile,
                        raster_realization='tiled' if is_target else args.raster_realization,
                        compiler_sha256=digest(compiler), runtime_receipt_sha256=digest(base / 'result.json'),
                        host_receipt_sha256=digest(host / 'result.json'), core_receipt_sha256=digest(core / 'result.json'),
@@ -370,6 +373,17 @@ if not is_target:
     for label in registered_reuse_labels:
         collector.observation(label, dict(kind='exact-line-count', line=label, count=1), ['execute'], 'execute.log')
     collector.observation('runtime-summary', dict(kind='positive-counter-summary', failures=0), ['execute'], 'execute.log')
+    if args.static_resource_entry_v1:
+        # Separate executable/process: no mixed validation runs in its address
+        # space. Setup and every Static diagnostic remain part of this recipe;
+        # this functional check installs no allocation observer or resource window.
+        resource_main = out / 'StaticResourceMainV1.swift'
+        resource_main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); let checks = p08CounterStaticResourceEntryV1(); precondition(checks > 0); counterDiagnosticStaticResourceSummary(checks) } }\n')
+        run('static-resource-v1-link', [compiler, *flags, resource_main, core / 'GiftUI.o', *host_objects, *sorted(module_objects), '-o', out / 'counter-static-resource-v1'], requires=['counter-model'])
+        run('static-resource-v1-execute', [out / 'counter-static-resource-v1'], requires=['static-resource-v1-link'])
+        for label in registered_reuse_labels:
+            collector.observation('static-resource-v1-' + label, dict(kind='exact-line-count', line=label, count=1), ['static-resource-v1-execute'], 'static-resource-v1-execute.log')
+        collector.observation('static-resource-v1-summary', dict(kind='positive-counter-summary', failures=0), ['static-resource-v1-execute'], 'static-resource-v1-execute.log')
     trap_flags = [*flags, '-D', 'GIFTUI_COUNTER_NATIVE_EXCLUSIVITY']
     run('so06-native-exclusivity-module', [compiler, *trap_flags, '-module-name', 'P08CounterNativeExclusivity', '-emit-module', '-emit-object', *counter_sources, *storage_sources, *join_sources, '-emit-module-path', out / 'P08CounterNativeExclusivity.swiftmodule', '-o', out / 'P08CounterNativeExclusivity.o'], requires=preparation[-2:-1])
     trap_objects = sorted([path for path in module_objects if path.name != 'P08CounterRuntime.o'] + [out / 'P08CounterNativeExclusivity.o'])
@@ -401,6 +415,7 @@ receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.
                legacy_import=getattr(collector, 'legacy_identity', None))
 receipt['scoped_negative_source'] = str(trusted.relative_to(ROOT))
 receipt.update(recipe_identity)
+receipt['static_resource_entry'] = dict(version=1, entry='p08CounterStaticResourceEntryV1', executable='counter-static-resource-v1', source='StaticResourceMainV1.swift', validation_kind='separate-process-functional-only', original_roots=['p08CounterRoute', 'p08CounterScopedStorage', 'p08CounterHost'], workload=['p08CounterGraph', 'counterExerciseStaticScopedStorage', 'p08CounterHost'], dynamic_controls='preserved unchanged in mixed functional execute', cold_or_resource_measurement=False, passed=collector.passed('static-resource-v1-execute')) if args.static_resource_entry_v1 else None
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(execution.splitlines()[-1] if execution else 'runtime execution unavailable; see per-check status')

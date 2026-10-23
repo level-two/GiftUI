@@ -1,0 +1,77 @@
+{
+  "started_utc": "2026-10-22T22:23:16.226513+00:00",
+  "HEAD": "798686cf11a058c5ba1467a8b4b2f94f1b3390fa",
+  "inputs": {
+    "body": {
+      "path": ".build/contracts/p08-native-static-capacity33/capacity-p08-counter-e3ivm0v6-caller-disassembly.txt",
+      "bytes": 197324,
+      "sha256": "d74e6608f1b54b4ac2206638a32b63f61b7cf693f6c1a06dfec762b5f98ad6b5"
+    },
+    "machine": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-capacity33-result/machine-p08-counter-e3ivm0v6.json",
+      "bytes": 117658,
+      "sha256": "366ddd086325dfe89bc631f2041f29936582dd0403a10fd980a35a10ba3251ab"
+    },
+    "object": {
+      "path": ".build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o",
+      "bytes": 2593056,
+      "sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581"
+    },
+    "result": {
+      "path": ".build/contracts/p08-counter-e3ivm0v6/result.json",
+      "bytes": 8548218,
+      "sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838"
+    },
+    "source_AUTH": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 255642,
+      "sha256": "50395a980314ed613ed7930cb5b1f807f78f3fd4ac6b57c8f8c2732786616ccf"
+    },
+    "parser": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA32-local/input-attachment/A31.inspect.py",
+      "bytes": 44447,
+      "sha256": "d27705f7a22991a3c7176fd1e303178a2129cc5e2f9ba8078d99ef98258a31e4"
+    },
+    "decoder_tool": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+      "identity_reuse": "One fresh authentication hash before grouped execution; final hash preservation, not per-helper rehash. Each decoder invocation still charged full tool+object input extent."
+    },
+    "roots": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json",
+      "bytes": 70161,
+      "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0"
+    },
+    "prior_closed_ledger": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/ledger.json",
+      "bytes": 38328,
+      "sha256": "f4a5895c1aef04d3cafbf4f5722bf01893083e4489bdf33fc422616a585fa9aa"
+    },
+    "prior_lemma": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-result/rows.json",
+      "bytes": 8501,
+      "sha256": "10fc20b0220a138cda43cdd719e1d7ca5c2690f1a849884925b1bdad3649dbca"
+    },
+    "group_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py",
+      "bytes": 4179,
+      "sha256": "2fc5afa1ae60818192090344dcad93f93d87e98829128489127e5229ee4a9451"
+    }
+  },
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "identity_reuse": "One fresh authentication hash before grouped execution; final hash preservation, not per-helper rehash. Each decoder invocation still charged full tool+object input extent."
+  },
+  "helper_sha256": "9774f442187cb1ffe5cda491744d29a49fd00ccb3ee40fcd9e6531e2134b3fcc",
+  "setup_processing_upper": 446948,
+  "setup_charge_basis": "Known copied helper/control bytes, twice orientation source extents and30000B bounded orientation payload/request allowance; initial setup KeyError preserved. Exact administrative request aggregate not certified.",
+  "reuse": "Reviewed798686cf constructor/local16/provider lemma; accepted capacity33 current full baseline and original79/48/6 auth/56groups1892sites3roots. No AUTH-only source promotion. Semantic current object permits necessary selected callees.",
+  "delivery_alias": {
+    "path": "/tmp/g35",
+    "target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/page.py",
+    "prior_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/page.py"
+  }
+}

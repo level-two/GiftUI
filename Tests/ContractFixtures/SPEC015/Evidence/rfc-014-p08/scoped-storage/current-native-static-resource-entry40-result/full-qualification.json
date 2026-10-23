@@ -1,0 +1,241 @@
+{
+  "result": {
+    "path": ".build/contracts/p08-counter-m1vlvrlf/result.json",
+    "sha256": "1681c1a1d4ff60b6b437a2bb73e19d2767c8f751fe33c8ecdb64b8734cae37f8",
+    "bytes": 8566019
+  },
+  "actual_terminal": {
+    "exit": 0,
+    "terminal_utc": "2026-10-23T01:20:27.098833+00:00",
+    "elapsed_seconds": 7884.214191
+  },
+  "profile": "macos-static",
+  "raster_realization": "full-surface",
+  "passed": true,
+  "collection_complete": true,
+  "fresh_focused": false,
+  "checks": 442,
+  "commands": 414,
+  "exit_groups": {
+    "0": 220,
+    "1": 193,
+    "None": 28,
+    "-6": 1
+  },
+  "failed_checks": [],
+  "mixed_banner": [
+    "P08 counter components assertions=1736320 failures=0"
+  ],
+  "static_banner": [
+    "P08 counter components assertions=1734308 failures=0"
+  ],
+  "static_recipe": {
+    "version": 1,
+    "entry": "p08CounterStaticResourceEntryV1",
+    "executable": "counter-static-resource-v1",
+    "source": "StaticResourceMainV1.swift",
+    "validation_kind": "separate-process-functional-only",
+    "original_roots": [
+      "p08CounterRoute",
+      "p08CounterScopedStorage",
+      "p08CounterHost"
+    ],
+    "workload": [
+      "p08CounterGraph",
+      "counterExerciseStaticScopedStorage",
+      "p08CounterHost"
+    ],
+    "dynamic_controls": "preserved unchanged in mixed functional execute",
+    "cold_or_resource_measurement": false,
+    "passed": true
+  },
+  "static_checks": [
+    {
+      "name": "static-resource-v1-link",
+      "exit": 0,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-execute",
+      "exit": 0,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-inventory-two-hosts",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-control-same-address",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-terminal-old-host",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-raw-namespace-collision",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-action-stale",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-action-current",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-input-stale",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-input-current",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-admission-stale",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-admission-current",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-source-stale",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-source-current",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-so06-reuse-static-cleanup-backing-last",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "static-resource-v1-summary",
+      "exit": null,
+      "passed": true,
+      "status": "passed"
+    }
+  ],
+  "source_hashes": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "7ab835e7ffaec4c3d1d769fc14de845701d394bfe9636e536a41dee076f835c3",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a",
+    "scripts/contracts/check-spec-015-counter.py": "fc410351f1b1bed16f556091fff26a3804adb37f792154dd5a14b1a6d7e0b612",
+    "scripts/contracts/p08_check_collection.py": "4f602899833a848fe74dc60f722660f949a26a543fa4d28132f567eaca17aea1"
+  },
+  "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmpbmxzuxan/macos-static",
+  "runtime_receipt_sha256": "6fd1f05a113baee55c214ab9763ad10d30d544b12ce08796f66517e236aa7f06",
+  "host_build": ".build/contracts/p08-scoped-host-7gj3vxnl",
+  "host_receipt_sha256": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+  "core_receipt_sha256": "f1ac3d8b44b2e187d98d3e2be55b1f82bcdd6a2c164ca47ac95459e6876353c1",
+  "target_flags": [
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-7gj3vxnl",
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-enable-experimental-feature",
+    "LifetimeDependence",
+    "-enable-experimental-feature",
+    "Lifetimes",
+    "-package-name",
+    "giftui",
+    "-module-cache-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-m1vlvrlf/cache",
+    "-disable-sandbox",
+    "-target",
+    "arm64-apple-macosx26.0",
+    "-sdk",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-load-plugin-executable",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-parse-as-library",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpbmxzuxan/macos-static",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-enable-testing"
+  ],
+  "artifacts": {
+    "P08CounterRuntime.o": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.o",
+      "bytes": 2605520,
+      "sha256": "ee4a37659c50abcd5cdd14a4a165e0de569343771f236711ea241594375f40de"
+    },
+    "P08CounterRuntime.swiftmodule": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/P08CounterRuntime.swiftmodule",
+      "bytes": 1554976,
+      "sha256": "8cf6a2030260819bf20351ab6b10c442447c898a41cb15c2d338024e836e3943"
+    },
+    "counter": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/counter",
+      "bytes": 6626216,
+      "sha256": "634399a106509e4d784a194248acdec90475835c80d0cfd1933fc48a92a74522"
+    },
+    "counter-static-resource-v1": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/counter-static-resource-v1",
+      "bytes": 6625096,
+      "sha256": "bd7c518d2b7b84b16a55b8725b5ebdd25a6869b2d3796743fa5785d9b1ac0a55"
+    },
+    "Main.swift": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/Main.swift",
+      "bytes": 276,
+      "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a"
+    },
+    "StaticResourceMainV1.swift": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/StaticResourceMainV1.swift",
+      "bytes": 226,
+      "sha256": "7aef8499bf65b3486e613db5c8de07c4d881c7b77f31713c59907e58b3eece0d"
+    },
+    "execute.log": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/execute.log",
+      "bytes": 611254,
+      "sha256": "3f332f10d2e7dcbcf6b6b90c748bb970792701d407903616ef8c4a94e93b96fc"
+    },
+    "static-resource-v1-execute.log": {
+      "path": ".build/contracts/p08-counter-m1vlvrlf/static-resource-v1-execute.log",
+      "bytes": 391098,
+      "sha256": "d32c7d1bac258aa81012c018d758e220dba62d847abc155c0500b5208b1f8b02"
+    }
+  },
+  "focused_full_object_byte_identity": false,
+  "scope": "Full NativeStatic functional/compiler-negative evidence plus separate Static-only workload execution; no resource/cold/providerstate measurement."
+}

@@ -1,0 +1,1092 @@
+{
+  "object": {
+    "path": ".build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o",
+    "bytes": 2593056,
+    "sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581"
+  },
+  "roots": [
+    {
+      "symbol": "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+      "address": 310280
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+      "address": 337996
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+      "address": 617208
+    }
+  ],
+  "sites": [
+    {
+      "pc": 47200,
+      "owner": 46420,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 47976,
+      "owner": 47344,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 106060,
+      "owner": 105956,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 337996,
+              "pc": 337996,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 327896,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFSi_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk10LLVzXEfU1_w9SpyAA0A14op11APLLVGXEfU_w6AA0aG7Q11APLLVnXEfU_Tf1ncn_nTm",
+              "to": 114096,
+              "entry_addend": 0
+            },
+            {
+              "from": 114096,
+              "pc": 121228,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFxSwXEfU_xSwXEfU_xSwXEfU_xSwXEfU_xSpyAA06StaticB15LayoutWorkspaceVGXEfU_xSpyAA0rb8ResolvedsM0VGXEfU_xSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGXEfU_xSpy0x9UIRuntimeR00r13RecordDrawingT0VyAA0rb7DrawingT0VGGXEfU_xSpyAA15QualifiedRenderVGXEfU_xSpyAA0r23TwoInteractionCandidateM0VyAU24SemanticCompleteIdentityVGGXEfU_xSpyAA0r17TwoInteractionHitM0VyA12_GGXEfU_Si_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk21LLVzXEfU1_SiSpyAA0A14op19APLLVGXEfU_SiAA0aG7Q11APLLVnXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnncnnnnnnn_nTm",
+              "to": 186616,
+              "entry_addend": 0
+            },
+            {
+              "from": 186616,
+              "pc": 194160,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF",
+              "to": 335864,
+              "entry_addend": 0
+            },
+            {
+              "from": 335864,
+              "pc": 336368,
+              "op": "bl",
+              "relocation_symbol": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+              "to": 105956,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 617208,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 617208,
+              "pc": 617284,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 327896,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFSi_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk10LLVzXEfU1_w9SpyAA0A14op11APLLVGXEfU_w6AA0aG7Q11APLLVnXEfU_Tf1ncn_nTm",
+              "to": 114096,
+              "entry_addend": 0
+            },
+            {
+              "from": 114096,
+              "pc": 121228,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFxSwXEfU_xSwXEfU_xSwXEfU_xSwXEfU_xSpyAA06StaticB15LayoutWorkspaceVGXEfU_xSpyAA0rb8ResolvedsM0VGXEfU_xSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGXEfU_xSpy0x9UIRuntimeR00r13RecordDrawingT0VyAA0rb7DrawingT0VGGXEfU_xSpyAA15QualifiedRenderVGXEfU_xSpyAA0r23TwoInteractionCandidateM0VyAU24SemanticCompleteIdentityVGGXEfU_xSpyAA0r17TwoInteractionHitM0VyA12_GGXEfU_Si_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk21LLVzXEfU1_SiSpyAA0A14op19APLLVGXEfU_SiAA0aG7Q11APLLVnXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnncnnnnnnn_nTm",
+              "to": 186616,
+              "entry_addend": 0
+            },
+            {
+              "from": 186616,
+              "pc": 194160,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF",
+              "to": 335864,
+              "entry_addend": 0
+            },
+            {
+              "from": 335864,
+              "pc": 336368,
+              "op": "bl",
+              "relocation_symbol": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+              "to": 105956,
+              "entry_addend": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pc": 256796,
+      "owner": 255516,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 256832,
+      "owner": 255516,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 264864,
+      "owner": 263648,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 264900,
+      "owner": 263648,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 669640,
+      "owner": 669516,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 310280,
+              "pc": 310452,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5",
+              "to": 281472,
+              "entry_addend": 0
+            },
+            {
+              "from": 281472,
+              "pc": 281872,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_370",
+              "to": 772580,
+              "entry_addend": 0
+            },
+            {
+              "from": 772580,
+              "pc": 772588,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 95232,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 669516,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 337996,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 337996,
+              "pc": 337996,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 326560,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 95232,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 669516,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 617208,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 617208,
+              "pc": 617284,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 326560,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 95232,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 669516,
+              "entry_addend": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pc": 669904,
+      "owner": 669780,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 310280,
+              "pc": 310452,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5",
+              "to": 281472,
+              "entry_addend": 0
+            },
+            {
+              "from": 281472,
+              "pc": 281872,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_370",
+              "to": 772580,
+              "entry_addend": 0
+            },
+            {
+              "from": 772580,
+              "pc": 772588,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94568,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 669780,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 337996,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 337996,
+              "pc": 337996,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 326560,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94568,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 669780,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 617208,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 617208,
+              "pc": 617284,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 326560,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94568,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 669780,
+              "entry_addend": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pc": 670156,
+      "owner": 670032,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 310280,
+              "pc": 310452,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5",
+              "to": 281472,
+              "entry_addend": 0
+            },
+            {
+              "from": 281472,
+              "pc": 281872,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_370",
+              "to": 772580,
+              "entry_addend": 0
+            },
+            {
+              "from": 772580,
+              "pc": 772588,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94308,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 670032,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 337996,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 337996,
+              "pc": 337996,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 326560,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94308,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 670032,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 617208,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 617208,
+              "pc": 617284,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 326560,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF",
+              "to": 89072,
+              "entry_addend": 0
+            },
+            {
+              "from": 89072,
+              "pc": 94308,
+              "op": "bl",
+              "relocation_symbol": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+              "to": 670032,
+              "entry_addend": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pc": 767744,
+      "owner": 767736,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 771200,
+      "owner": 771192,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 774752,
+      "owner": 774744,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 337996,
+              "pc": 337996,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 332412,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_473",
+              "to": 774744,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 617208,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 617208,
+              "pc": 617284,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 332412,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_473",
+              "to": 774744,
+              "entry_addend": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pc": 774788,
+      "owner": 774780,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 337996,
+              "pc": 337996,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 332468,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_475",
+              "to": 774780,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 617208,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 617208,
+              "pc": 617284,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 332468,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_475",
+              "to": 774780,
+              "entry_addend": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pc": 776556,
+      "owner": 776548,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    },
+    {
+      "pc": 777196,
+      "owner": 777192,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 337996,
+              "pc": 337996,
+              "op": "b",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 327896,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFSi_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk10LLVzXEfU1_w9SpyAA0A14op11APLLVGXEfU_w6AA0aG7Q11APLLVnXEfU_Tf1ncn_nTm",
+              "to": 114096,
+              "entry_addend": 0
+            },
+            {
+              "from": 114096,
+              "pc": 121228,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFxSwXEfU_xSwXEfU_xSwXEfU_xSwXEfU_xSpyAA06StaticB15LayoutWorkspaceVGXEfU_xSpyAA0rb8ResolvedsM0VGXEfU_xSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGXEfU_xSpy0x9UIRuntimeR00r13RecordDrawingT0VyAA0rb7DrawingT0VGGXEfU_xSpyAA15QualifiedRenderVGXEfU_xSpyAA0r23TwoInteractionCandidateM0VyAU24SemanticCompleteIdentityVGGXEfU_xSpyAA0r17TwoInteractionHitM0VyA12_GGXEfU_Si_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk21LLVzXEfU1_SiSpyAA0A14op19APLLVGXEfU_SiAA0aG7Q11APLLVnXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnncnnnnnnn_nTm",
+              "to": 186616,
+              "entry_addend": 0
+            },
+            {
+              "from": 186616,
+              "pc": 187176,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF",
+              "to": 322356,
+              "entry_addend": 0
+            },
+            {
+              "from": 322356,
+              "pc": 322780,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+              "to": 104080,
+              "entry_addend": 0
+            },
+            {
+              "from": 104080,
+              "pc": 104184,
+              "op": "bl",
+              "relocation_symbol": "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm",
+              "to": 104988,
+              "entry_addend": 0
+            },
+            {
+              "from": 104988,
+              "pc": 105092,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_602",
+              "to": 777192,
+              "entry_addend": 0
+            }
+          ]
+        },
+        {
+          "root": 617208,
+          "status": "STRUCTURAL_PATH_ONLY",
+          "edges": [
+            {
+              "from": 617208,
+              "pc": 617284,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+              "to": 325916,
+              "entry_addend": 0
+            },
+            {
+              "from": 325916,
+              "pc": 327896,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFSi_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk10LLVzXEfU1_w9SpyAA0A14op11APLLVGXEfU_w6AA0aG7Q11APLLVnXEfU_Tf1ncn_nTm",
+              "to": 114096,
+              "entry_addend": 0
+            },
+            {
+              "from": 114096,
+              "pc": 121228,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFxSwXEfU_xSwXEfU_xSwXEfU_xSwXEfU_xSpyAA06StaticB15LayoutWorkspaceVGXEfU_xSpyAA0rb8ResolvedsM0VGXEfU_xSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGXEfU_xSpy0x9UIRuntimeR00r13RecordDrawingT0VyAA0rb7DrawingT0VGGXEfU_xSpyAA15QualifiedRenderVGXEfU_xSpyAA0r23TwoInteractionCandidateM0VyAU24SemanticCompleteIdentityVGGXEfU_xSpyAA0r17TwoInteractionHitM0VyA12_GGXEfU_Si_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk21LLVzXEfU1_SiSpyAA0A14op19APLLVGXEfU_SiAA0aG7Q11APLLVnXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnncnnnnnnn_nTm",
+              "to": 186616,
+              "entry_addend": 0
+            },
+            {
+              "from": 186616,
+              "pc": 187176,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF",
+              "to": 322356,
+              "entry_addend": 0
+            },
+            {
+              "from": 322356,
+              "pc": 322780,
+              "op": "bl",
+              "relocation_symbol": "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+              "to": 104080,
+              "entry_addend": 0
+            },
+            {
+              "from": 104080,
+              "pc": 104184,
+              "op": "bl",
+              "relocation_symbol": "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm",
+              "to": 104988,
+              "entry_addend": 0
+            },
+            {
+              "from": 104988,
+              "pc": 105092,
+              "op": "bl",
+              "relocation_symbol": "_OUTLINED_FUNCTION_602",
+              "to": 777192,
+              "entry_addend": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pc": 779000,
+      "owner": 778992,
+      "root_chains": [
+        {
+          "root": 310280,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 337996,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        },
+        {
+          "root": 617208,
+          "status": "NOT_JOINED_IN_LOCAL_DIRECT_GRAPH",
+          "not_infeasible": true
+        }
+      ]
+    }
+  ],
+  "identities": [
+    {
+      "address": 46420,
+      "end": 47344,
+      "symbols": [
+        "_$s17P08CounterRuntime17counterVerifyPlan_6canvas6bounds5valueSix_18GiftUISemanticCore23SemanticRecordReferenceV0J2UI4RectVs5UInt8Vt0J9UIDrawing07DrawingF4ViewRzAH8IdentityRtzlF0J15UIRuntimeStatic0xnT9WorkspaceVyAA0xbtY0VG_Tg5"
+      ]
+    },
+    {
+      "address": 47344,
+      "end": 48120,
+      "symbols": [
+        "_$s17P08CounterRuntime17counterVerifyPlan_6canvas6bounds5valueSix_18GiftUISemanticCore23SemanticRecordReferenceV0J2UI4RectVs5UInt8Vt0J9UIDrawing07DrawingF4ViewRzAH8IdentityRtzlF0J16UIRuntimeDynamic0xtF9WorkspaceV_Tg5"
+      ]
+    },
+    {
+      "address": 89072,
+      "end": 99272,
+      "symbols": [
+        "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV10initialize5faultAA0aE21InitializationFailureACLLOSgAA0A16AcquisitionFaultACLLVSg_tF"
+      ]
+    },
+    {
+      "address": 104080,
+      "end": 104200,
+      "symbols": [
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF"
+      ]
+    },
+    {
+      "address": 104988,
+      "end": 105136,
+      "symbols": [
+        "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm"
+      ]
+    },
+    {
+      "address": 105956,
+      "end": 106116,
+      "symbols": [
+        "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5"
+      ]
+    },
+    {
+      "address": 114096,
+      "end": 121472,
+      "symbols": [
+        "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFSi_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk10LLVzXEfU1_w9SpyAA0A14op11APLLVGXEfU_w6AA0aG7Q11APLLVnXEfU_Tf1ncn_nTm"
+      ]
+    },
+    {
+      "address": 186616,
+      "end": 195368,
+      "symbols": [
+        "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV11withStorage10transcript_xSpyAA0A14RoleTranscriptACLLVGSg_xAA0aM7SessionACLLVnXEtlFxSwXEfU_xSwXEfU_xSwXEfU_xSwXEfU_xSpyAA06StaticB15LayoutWorkspaceVGXEfU_xSpyAA0rb8ResolvedsM0VGXEfU_xSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGXEfU_xSpy0x9UIRuntimeR00r13RecordDrawingT0VyAA0rb7DrawingT0VGGXEfU_xSpyAA15QualifiedRenderVGXEfU_xSpyAA0r23TwoInteractionCandidateM0VyAU24SemanticCompleteIdentityVGGXEfU_xSpyAA0r17TwoInteractionHitM0VyA12_GGXEfU_Si_Tg504$s17ab110Runtime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtFSiAA0A17de11Owner33_480ghijk21LLVzXEfU1_SiSpyAA0A14op19APLLVGXEfU_SiAA0aG7Q11APLLVnXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnncnnnnnnn_nTm"
+      ]
+    },
+    {
+      "address": 255516,
+      "end": 263648,
+      "symbols": [
+        "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g504$s17ab90Runtime07DynamicB14ProfileStorageV5audit17GiftUIRuntimeCore0cE16ValidationResultOyFyAA0bF6L6VXEfU_Tf1nnnnnnnnnnnnnnnnnnnnnnnnnc_n"
+      ]
+    },
+    {
+      "address": 263648,
+      "end": 272364,
+      "symbols": [
+        "_$s17P08CounterRuntime30counterValidatePhysicalBacking7profile6limits4root0J14MetadataRegion8semantic8geometry16interactionFacts18identityCapacities15descriptorBytes0N4Type09candidateU009committedU003hitU011canvasCount0Y8Capacity0y7ControlT007factoryL0017factoryDescriptorL00N7Regions6report17GiftUIRuntimeCore0C23ProfileValidationResultOAW0C11ProfileKindO_AW0C13ProfileLimitsV21GiftUIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA7_6claimsA7_4pinsA7_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si0vT0tAA0b7StorageL0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementVAA0bf11InteractionP0VA7_6perKey_s6UInt32V7perBanktSixmq_mq0_mq1_mSiA7_SiA18_A18_Sgq2_yA18_XEtAA0B8GeometryRzAA0b9CandidateG0R_AA0b9CommittedG0R0_AA0b3HitG0R1_AA0b7StorageL6SourceR2_18GiftUISemanticCore24SemanticCompleteIdentityV8IdentityRt_A37_A38_Rt0_A37_A38_Rt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r3_lFAA07DynamicB8GeometryV_20GiftUIRuntimeDynamic34DynamicInteractionCandidateStorageVyA37_GA44_34DynamicInteractionCommittedStorageVyA37_GA44_28DynamicInteractionHitStorageVyA37_GA43_Tt18t19t20t21g5"
+      ]
+    },
+    {
+      "address": 281472,
+      "end": 282308,
+      "symbols": [
+        "_$s17P08CounterRuntime04withA14SelectedStatic33_480B1BD841D053AE4FCDC18507668536LL10modelOwner08semanticM07backing_x21GiftUIObservableState015ObservableModelM8IdentityV_0P14UISemanticCore014SemanticRecordmU0VSwSgxAA0a12TypedBackingM0ACLLVz_AA0aF9OuterViewACLLVtXEtlFxSpyAA0bF11RootStorageVGXEfU_xSpy0p9UIRuntimeF00fxY7StorageVGXEfU_xSpyAU0F18CanvasValueStorageVGXEfU_xSpyAA0B7ControlVGXEfU_xSryAJ0xcY0VGXEfU_xSryAJ0X9PathEntryVGXEfU_xSry0P9UIDrawing06CanvasX7PayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGSgGXEfU_xSrys6UInt32VGXEfU_Si_Tg5"
+      ]
+    },
+    {
+      "address": 310280,
+      "end": 310844,
+      "symbols": [
+        "_$s17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+      ]
+    },
+    {
+      "address": 322356,
+      "end": 324512,
+      "symbols": [
+        "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF"
+      ]
+    },
+    {
+      "address": 325916,
+      "end": 335208,
+      "symbols": [
+        "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF"
+      ]
+    },
+    {
+      "address": 335864,
+      "end": 336648,
+      "symbols": [
+        "_$s17P08CounterRuntime0A18SessionOnlyCleanup33_480B1BD841D053AE4FCDC18507668536LLV6finishyyF"
+      ]
+    },
+    {
+      "address": 337996,
+      "end": 338000,
+      "symbols": [
+        "_$s17P08CounterRuntime03p08B13ScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF"
+      ]
+    },
+    {
+      "address": 617208,
+      "end": 617360,
+      "symbols": [
+        "_$s17P08CounterRuntime03p08B5Route5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF"
+      ]
+    },
+    {
+      "address": 669516,
+      "end": 669780,
+      "symbols": [
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5"
+      ]
+    },
+    {
+      "address": 669780,
+      "end": 670032,
+      "symbols": [
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5"
+      ]
+    },
+    {
+      "address": 670032,
+      "end": 670296,
+      "symbols": [
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction26InteractionCandidateRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5"
+      ]
+    },
+    {
+      "address": 767736,
+      "end": 767748,
+      "symbols": [
+        "_OUTLINED_FUNCTION_198"
+      ]
+    },
+    {
+      "address": 771192,
+      "end": 771204,
+      "symbols": [
+        "_OUTLINED_FUNCTION_310"
+      ]
+    },
+    {
+      "address": 772580,
+      "end": 772592,
+      "symbols": [
+        "_OUTLINED_FUNCTION_370"
+      ]
+    },
+    {
+      "address": 774744,
+      "end": 774756,
+      "symbols": [
+        "_OUTLINED_FUNCTION_473"
+      ]
+    },
+    {
+      "address": 774780,
+      "end": 774792,
+      "symbols": [
+        "_OUTLINED_FUNCTION_475"
+      ]
+    },
+    {
+      "address": 776548,
+      "end": 776560,
+      "symbols": [
+        "_OUTLINED_FUNCTION_564"
+      ]
+    },
+    {
+      "address": 777192,
+      "end": 777200,
+      "symbols": [
+        "_OUTLINED_FUNCTION_602"
+      ]
+    },
+    {
+      "address": 778992,
+      "end": 779004,
+      "symbols": [
+        "_OUTLINED_FUNCTION_677"
+      ]
+    }
+  ],
+  "qualification": "Only selected exact rooted17-site joins retained. Direct graph reachability does not discharge branch/argument/type feasibility. Nonjoined is not absence/infeasibility; imported cross-module and indirect edges not closed."
+}

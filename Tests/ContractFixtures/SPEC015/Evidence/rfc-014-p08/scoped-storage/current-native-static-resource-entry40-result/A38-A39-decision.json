@@ -1,0 +1,93 @@
+{
+  "classification": "Static tag0 excludes three demonstrated ArrayBuffer allocator functions; intentional Dynamic tag1 validation with positive capacities reaches them in mixed functional route. Functional PASS is not a failed resource measurement.",
+  "full_result": {
+    "path": ".build/contracts/p08-counter-e3ivm0v6/result.json",
+    "sha256": "ec59c51238a3b31ae77b2fe6fbe13f86d014ba057b5bbcb079b075b76fb41838"
+  },
+  "object": {
+    "path": ".build/contracts/p08-counter-e3ivm0v6/P08CounterRuntime.o",
+    "sha256": "4cf710ca008d6b8e289f29de7f788e3fa09e47d7673d8742a5cc5a6cd30b7581"
+  },
+  "roots": {
+    "Host": "0x4bc08",
+    "ScopedStorage": "0x5284c",
+    "Route": "0x96af8"
+  },
+  "dynamic_allocations": [
+    "0xa37c8 BoundActionRecord<SemanticCompleteIdentity>",
+    "0xa38d0 InteractionHitRegion<SemanticCompleteIdentity>",
+    "0xa39cc InteractionCandidateRecord<SemanticCompleteIdentity>"
+  ],
+  "tag_control": {
+    "getter": "0xb6190 load byte+0x168 >>7",
+    "static_injection": "0xa36bc clears bit7",
+    "dynamic_injection": "0xa34ac sets bit7",
+    "initializer": "0x165a4 compare extracted tag to1; tag1 Dynamic path; tag0 Static path",
+    "positive_capacities": "0x50a54 four UInt16 values2;0x50a5c fifth2; fault cases preserve required prefixes"
+  },
+  "retained_proof": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-1.stdout",
+      "bytes": 283670,
+      "sha256": "dd2f2dfe3888b0cb3cc029ae60aa274b22b0d075fa9049a01f135b540da2bf2f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/origin-assessment.json",
+      "bytes": 11423,
+      "sha256": "1e17462aa385119c5e4a5f29263c21d50cdee82120c06669f391c314d470953f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-root-site-joins.json",
+      "bytes": 43866,
+      "sha256": "b6ac8706f82232b9344c86810a9464ea76bc538c7088e60bb03155faa186ea6b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/current-route-receipt.json",
+      "bytes": 6633,
+      "sha256": "aef4529738b70b26c4a1de9646c8484a2cc83204a6d785a75a212fb598601797"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/final-scope-provenance.json",
+      "bytes": 10786,
+      "sha256": "addecbc36bdce76bf7ebbba96588c3c305e5ad5b67b3699e187e4487445a69e8"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-1.stdout",
+      "bytes": 351,
+      "sha256": "f276d2ef5f4f39092971b081e89487d1bc2f40dfaa045c9bf9bd45c7a1e86056"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-2.stdout",
+      "bytes": 350,
+      "sha256": "f9d4481ecc6fee6da6974360ed5a68a3f1f8262440e2464edc5ea07595b823ec"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-3.stdout",
+      "bytes": 29106,
+      "sha256": "321b658cc9e7892ae6ee8b945c13f1c196360a3710210aa93440288a342489f9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-5.stdout",
+      "bytes": 3635,
+      "sha256": "ba61700e0a09b9709ca7e743cb0c95ea1abb3f50350cfe73fa0b626dfb52dac0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-6.stdout",
+      "bytes": 1149,
+      "sha256": "b142c42e7dd501132c2ff0596fea5eafe96001708714b147a674037f4186bb51"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/selected-9.stdout",
+      "bytes": 5069,
+      "sha256": "78164920df61a9ec9bd155f3db72de48eba3b060118c27c0844b9e6f28ab888f"
+    }
+  ],
+  "state_limits": [
+    "No allocation observer/window in actual Main.",
+    "Current collector subprocess inherits uncaptured environment; no current live GOT/loaded UUID snapshot among904artifactnames.",
+    "R=S/stdout persistence, actual loaded bindings and cold costs remain unresolved.",
+    "A38 known16B quoted-request undercount; A38/A39 administrative aggregate uncertified.",
+    "Other current callees/witness/indirect/error paths remain available-unexamined; no whole Batch A eligibility."
+  ],
+  "Astra_advice": "Existing Staticzeroheap/Dynamiccost distinction permits prospective additive Static-only resource recipe while keeping mixed functional producer/allcontrols/order unchanged. Advice is not new human approval. Future cold requires fresh process/no Dynamic prewarm; all Static observers charged."
+}

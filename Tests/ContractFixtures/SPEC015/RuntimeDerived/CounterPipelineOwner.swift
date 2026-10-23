@@ -1466,6 +1466,12 @@ print(label, value)
 
     // Additional reached Native Static observations use the same finite writer.
     // Values remain live field reads; spelling mirrors the pinned print oracle.
+    package func counterDiagnosticStaticResourceSummary(_ assertions: Int) {
+        counterTraceWrite("P08 counter components assertions=")
+        counterTraceWrite(assertions)
+        counterTraceWrite(" failures=0\n")
+    }
+
     func counterDiagnosticReuse(_ route: StaticString, _ suffix: StaticString) {
         counterTraceWrite("so06-reuse-"); counterTraceWrite(route)
         counterTraceWrite("-"); counterTraceWrite(suffix); counterTraceWrite("\n")

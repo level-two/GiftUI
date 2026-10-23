@@ -1,0 +1,124 @@
+{
+  "purpose": "Ordinary current-producer/window/contract assessment, distinct from frozen AUTH-only source semantics",
+  "identities": [
+    {
+      "path": "scripts/contracts/check-spec-015-counter.py",
+      "bytes": 43222,
+      "sha256": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+      "expected_in_full_receipt": "8150d2cbd864222dfba32bd91543d7f7d3ac3be81639b0a86fa00aacc6dcf970",
+      "matches_declared": true
+    },
+    {
+      "path": "scripts/contracts/p08_check_collection.py",
+      "bytes": 20331,
+      "sha256": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41",
+      "expected_in_full_receipt": "d8d9fa4e92d7a0ad04173b401fbb332750337dd2d2e34bd72f3a7bbf396e1b41",
+      "matches_declared": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-e3ivm0v6/Main.swift",
+      "bytes": 276,
+      "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a",
+      "expected_in_full_receipt": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a",
+      "matches_declared": true
+    },
+    {
+      "path": "docs/specs/spec-013-runtime-profiles.md",
+      "bytes": 73925,
+      "sha256": "df00021ebf42cecb624cd60723a31ad15a106cdde9d006a630e53e4ac75bd7e3",
+      "expected_in_full_receipt": null,
+      "matches_declared": null
+    },
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "bytes": 106796,
+      "sha256": "05cfccbe91974726e888db8e399bed614626ac98587a0ffb89323cbae2e891f7",
+      "expected_in_full_receipt": null,
+      "matches_declared": null
+    }
+  ],
+  "excerpts": [
+    {
+      "path": "scripts/contracts/check-spec-015-counter.py",
+      "lines": [
+        141,
+        147
+      ],
+      "text": "141:def run(label, command, diagnostic=None, requires=None):\n142:    preparation_check = requires is None\n143:    if requires is None:\n144:        collector.legacy_preparation(label, command)\n145:        requires = preparation[-1:]\n146:        preparation.append(label)\n147:    return collector.run(label, command, diagnostic, requires, preparation=preparation_check)"
+    },
+    {
+      "path": "scripts/contracts/p08_check_collection.py",
+      "lines": [
+        218,
+        225
+      ],
+      "text": "218:    def run(self, label, command, diagnostic=None, requires=(), preparation=False):\n219:        command = list(map(str, command))\n220:        group = family(label)\n221:        self.seen_families.add(group)\n222:        identity = self.identity(command, diagnostic)\n223:        check = dict(name=label, family=group, exit=None, passed=False, diagnostic=identity['diagnostic'], identity=identity)\n224:        if self.fresh and not preparation and group not in self.selected:\n225:            self.record(check | dict(status='not-run', reason='omitted from explicit fresh focused selection'))"
+    },
+    {
+      "path": "scripts/contracts/p08_check_collection.py",
+      "lines": [
+        269,
+        280
+      ],
+      "text": "269:        self.commands.append(shlex.join(command))\n270:        self.checks.append(check | dict(status='running'))\n271:        self.flush()\n272:        result = subprocess.run(command, cwd=self.root, capture_output=True, text=True)\n273:        output = result.stdout + result.stderr\n274:        log = self.out / (label + '.log')\n275:        log.write_text(output)\n276:        okay = diagnostic_matches(diagnostic, output, result.returncode)\n277:        self.checks.pop()\n278:        self.record(check | dict(status='passed' if okay else 'failed', exit=result.returncode,\n279:                                 passed=okay, log_sha256=digest(log)))\n280:        return output"
+    },
+    {
+      "path": ".build/contracts/p08-counter-e3ivm0v6/Main.swift",
+      "lines": [
+        1,
+        3
+      ],
+      "text": "1:import P08CounterRuntime\n2:import Darwin\n3:@main struct Main { static func main() { setbuf(stdout, nil); print(\"P08 counter components assertions=\\(p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()) failures=0\") } }"
+    },
+    {
+      "path": "docs/specs/spec-013-runtime-profiles.md",
+      "lines": [
+        259,
+        264
+      ],
+      "text": "259:No capability/backend vocabulary changes. Backends never receive model keys,\n260:FrameRead, Canvas values or application callbacks. Static construction and every\n261:later phase allocate zero heap; linked rooted allocator reachability, not object\n262:symbol presence/absence alone, establishes this. ARMv6 and Cortex-M4F/VFP calling\n263:conventions require artifact verification. Native profile-selection flags on a\n264:shared test bridge are not actual runtime-profile evidence."
+    },
+    {
+      "path": "docs/specs/spec-013-runtime-profiles.md",
+      "lines": [
+        579,
+        587
+      ],
+      "text": "579:The dynamic runtime MAY use retained classes, bounded heap-backed buffers,\n580:and typed dictionaries internally. Dynamic convenience APIs remain in the\n581:separate `GiftUIDynamicConveniences` product and lower to the same portable\n582:contracts.\n583:\n584:The static runtime MUST use fixed, generated, inline, or caller-supplied typed\n585:storage. It MUST NOT depend on heap allocation, reflection, `Any`, arbitrary\n586:existentials, Objective-C runtime facilities, task locals, tasks, threads,\n587:exceptions, string structural paths, or dynamically growing collections."
+    },
+    {
+      "path": "docs/specs/spec-013-runtime-profiles.md",
+      "lines": [
+        1105,
+        1134
+      ],
+      "text": "1105:\n1106:All per-attempt operations are bounded by the supplied limits. Static runtime\n1107:construction and every later operation use zero heap allocations.\n1108:The static build contains no forbidden runtime facility listed in Module\n1109:Contract. Dynamic conformance fixtures enforce the same logical limits and\n1110:must not use unbounded history or retry storage.\n1111:\n1112:`RuntimeOwnerFailure` MUST occupy no more than 2 bytes on every supported\n1113:compiler and therefore satisfies SPEC-009's `OwnerFailure` ceiling. It contains\n1114:no reference, existential, closure, string, or diagnostic payload.\n1115:\n1116:An application-composed cycle `OwnerFailure` MUST occupy no more than 4 bytes;\n1117:`RunCycleFailure<OwnerFailure>` no more than 8 bytes; and\n1118:`RunCycleResult<OwnerFailure>` no more than 72 bytes, as already required by\n1119:SPEC-009. Measure every production specialization under each supported\n1120:toolchain. Generic specialization MUST NOT introduce heap allocation, boxed\n1121:errors, escaping captures, or an additional retained replay buffer. Include\n1122:changed first-failure storage in the checked profile audit and remeasure the\n1123:assembled binary against unchanged host ceilings before closing the join.\n1124:\n1125:For each supported toolchain, evidence MUST report separately:\n1126:\n1127:- each `RuntimeStorageAudit` field and checked total;\n1128:- maximum stack depth and bytes for construction, admission, derivation,\n1129:  Canvas invocation, rendering, offer, and finalization;\n1130:- heap allocations and peak heap bytes, with both zero for static;\n1131:- dynamic allocator bookkeeping separately from profile-owned bytes;\n1132:- text/resource, capability, backend, and host bytes excluded from the total;\n1133:- generated Canvas code size and greatest inline capture size separately from\n1134:  `canvasCallableBytes`;"
+    },
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "lines": [
+        267,
+        275
+      ],
+      "text": "267:not applicable physical ceilings. Report a complete per-application/per-target\n268:ledger: application/source/admission/model, profile, layout/render/Canvas, text,\n269:capability, backend payload/in-flight regions, host/service/owner control, static\n270:initialization and feasible stack/IRQ overlap. Each allocation has one owner,\n271:count, stride/alignment, lifetime and actual linked section or stack path. Static\n272:must fit target RAM/flash with zero heap; Dynamic reports bounded heap plus\n273:allocator overhead. No provisional control allowance or fixture subtotal is a\n274:budget, no missing path is zero, and no source/admission storage is loaned out.\n275:"
+    },
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "lines": [
+        386,
+        400
+      ],
+      "text": "386:- [ ] **HC-SO-001:** Four-profile actual supplied\u2192pipeline\u2192coordinator\u2192host\u2192retirement\n387:  chains accept moves and owned reports; paired negatives reject copy/use-after-consume,\n388:  escape beyond each owner independently, activation-span escape, direct/generic Optional/\n389:  tuple/closure erasure, owned-only workspace return, construction/extraction, escaping/\n390:  Sendable/task transfer and overlapping access for the intended classified cause.\n391:- [ ] **HC-SO-002:** Exact old/new slot, binding, initializer, control, audit and destructor\n392:  inventory plus fault-at-step/early-return/repeat-session transcripts establish S13/S15\n393:  lifetime and backing-last duties for both profiles. Host validation remains before\n394:  activation, preserves first error and rejects mismatched provenance/capacity without\n395:  client/service effects. Independent action/semantic/pixel controls remain unchanged.\n396:- [ ] **HC-SO-003:** Complete current-source caller/route inventory, four registered\n397:  counter routes and early linked Pi/nRF artifacts include ABI, allocator and feasible\n398:  nested-stack/RAM/flash evidence. A smaller source value or passing link cannot close\n399:  HC-RD-003; the prior 58,648-byte frame/27,648-byte ceiling remains failed until replaced\n400:  by measured passing evidence. P08/R07/T8.1 acceptance requires independent exit review;"
+    },
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "lines": [
+        1538,
+        1548
+      ],
+      "text": "1538:\n1539:- Validation must use bounded caller-owned or inline storage and perform no\n1540:  heap allocation on static presets.\n1541:- Capability resolution occurs once; steady-state snapshot access invokes the\n1542:  resolver zero times.\n1543:- Static construction, steady-state opportunities, action dispatch, fact\n1544:  admission, and teardown use no heap allocation, reflection, tasks, threads,\n1545:  exceptions, Objective-C runtime, or dynamically growing collection.\n1546:- Every first-party preset records exact configured limits, storage-audit\n1547:  fields, endpoint and payload bytes, application storage, host-policy bytes,\n1548:  stack high-water, linked RAM, and linked flash separately."
+    }
+  ],
+  "loaded_env_window_named_artifacts": {},
+  "runtime_module": []
+}

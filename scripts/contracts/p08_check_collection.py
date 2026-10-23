@@ -19,7 +19,7 @@ def family(label):
         return '-'.join(label.split('-')[:2])
     if label.startswith('so06-native-exclusivity-'):
         return 'so06-native-exclusivity'
-    if label.startswith('so06-reuse-') or label in ('link', 'execute', 'runtime-summary'):
+    if label.startswith(('so06-reuse-', 'static-resource-v1-')) or label in ('link', 'execute', 'runtime-summary'):
         return 'runtime'
     return re.sub(r'-(positive|negative)$', '', label)
 
