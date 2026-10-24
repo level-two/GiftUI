@@ -1,0 +1,1 @@
+python3 scripts/contracts/check-spec-015-counter.py --profile macos-static --runtime-build .build/contracts/spec-013-runtime-cycle/tmphr9k0k77/macos-static --host-build .build/contracts/p08-scoped-host-7gj3vxnl --fresh-focused --select-family runtime --static-resource-entry-v1

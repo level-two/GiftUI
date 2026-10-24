@@ -1,0 +1,164 @@
+{
+  "status": "FOCUSED_CONSTRUCTOR_AND_TRANSACTION_REMOVAL_PASS_FULL_NOT_RUN",
+  "sources": [
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "before_sha256": "9ae3845543250f1cc6769272c868e3d5d1ed2d06701d66c040b42c581c6530c0",
+      "after_sha256": "f2b94df5a83faaf09a3b9ef416111ace6783f88e9798942c418ac459ef5882ca",
+      "focused_input": "f2b94df5a83faaf09a3b9ef416111ace6783f88e9798942c418ac459ef5882ca"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "before_sha256": "e3e9c9e2abaf07b6d896091d3e77fb96533aa94f9fbc505b319d7c3a01c07262",
+      "after_sha256": "4385274e1c35ee53bafb1dc5aa3953926449c1837840260b9b7decae666932d0",
+      "focused_input": "4385274e1c35ee53bafb1dc5aa3953926449c1837840260b9b7decae666932d0"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "before_sha256": "715d37389fa167dd4f634c92c5857614ebf1b6f58c067777c83da4b3ba982cbf",
+      "after_sha256": "46b14032a2fa4eb33fc38f08cb442c3373cfc9f63e98e4304a7f7cb353f72e41",
+      "focused_input": "46b14032a2fa4eb33fc38f08cb442c3373cfc9f63e98e4304a7f7cb353f72e41"
+    }
+  ],
+  "focused": {
+    "result_path": ".build/contracts/p08-counter-dqcirgbq/result.json",
+    "sha256": "384443524075808b6d4fe5ef5b1982eb374b69a326e779744ffdcefeda5240b7",
+    "runtime_object_sha256": "1a48a526eda2fd1945c73efe4adb395fcaf28f53c997d507b21fe1aeb1a8950d",
+    "focused_passed": true,
+    "aggregate_passed": false,
+    "collection_complete": false,
+    "assertions": 1736320,
+    "failures": 0,
+    "inputs": 201,
+    "start_utc": "2026-10-23T23:53:59Z",
+    "finish_utc": "2026-10-23T23:55:28Z"
+  },
+  "P07": {
+    "result_path": ".build/contracts/spec-013-runtime-cycle/tmphr9k0k77/macos-static/result.json",
+    "sha256": "da69b108fc5ac9a9960e312dab36bdbd26c74f2abee5a7b9ca499498e86f9573",
+    "assertions": 5904,
+    "failures": 0,
+    "start_utc": "2026-10-23T23:53:03Z",
+    "finish_utc": "2026-10-23T23:53:48Z"
+  },
+  "compiled": {
+    "same_static_session_constructor": "0x1b65c\u20130x1b7dc; unchanged fixture p08ConstructStaticStorageSession and concrete CandidateAccess/CommittedAccess/HitAccess session type",
+    "setup_edges": [
+      "0x1b794\u2192outlined1852 0xc564c\u20130xc567c",
+      "0x1b7b8\u2192outlined2316 0xc6e98\u20130xc6ebc"
+    ],
+    "setup_consequence": "Complete constructor and both complete reached helpers contain only loads/stores/arithmetic/returns, no metadata/init/provider call. Both former opaque Self metadata requests disappear from this charged setup, rather than moving into these helpers. Constructor field/default/limit initialization remains visible in fixed stores.",
+    "transaction": "exerciseTransactions0x4eab4\u20130x4f4f4 plus exact direct local Branch26 closure92functions has no InteractionState/OwnedKeyState Self metadata request; complete selected closure retained. Remaining Dynamic storage/ArrayBuffer metadata alternatives are explicit and retain reviewed Static tag0 exclusion; no arbitrary indirect-target closure claim.",
+    "text_before": 815632,
+    "text_after": 814868,
+    "text_delta": -764,
+    "constructor_before_bytes": 612,
+    "constructor_after_bytes": 384
+  },
+  "output_comparisons": [
+    {
+      "name": "mixed",
+      "equal": true,
+      "before_bytes": 611253,
+      "after_bytes": 611253,
+      "before_raw_sha256": "ac8f8875063ce1ddd4ede6fda165315873f7297a42b716b30cbc05f2d7bd7878",
+      "after_raw_sha256": "6d10153a60d2bdd1af5179e841fbb0a5b9a7c4683b9c8f9beb209575ea9c33eb",
+      "SO06_counts": [
+        120,
+        120
+      ],
+      "normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d"
+    },
+    {
+      "name": "static",
+      "equal": true,
+      "before_bytes": 391098,
+      "after_bytes": 391098,
+      "before_raw_sha256": "c9f35871e400c367282c1792edbed5868b858a0e8ca7ac05cb9ce0fc95d3bcd2",
+      "after_raw_sha256": "6a4f1e31ee0bc6a094971bf69f85835d898a2981d4283e6118439f53c8456d21",
+      "SO06_counts": [
+        60,
+        60
+      ],
+      "normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d"
+    }
+  ],
+  "normalization": "Compare baseline8vqb1sq8 result.json top-level execution string to current dqcirgbq same field; compare respective static-resource-v1-execute.log files. Only14-token SO06 role lines with token11=> and decimal address tokens4/8 replace those two original spans with <SO06_ADDRESS>; preserve all other bytes/whitespace/order.120mixed/60Static address lines.",
+  "format": "Targeted swift format format on three files; scripts/format-swift.sh --lint exit0 before P07.",
+  "scope": "Two @inlinable initializers; two Owned immutable maximum fields private\u2192internal @usableFromInline; identity capacity @usableFromInline. Bodies/API signatures, consuming and lifetime attributes, guard/default/initialization order unchanged.",
+  "limits": [
+    "NO full producer launched: focused_passed=true, aggregate passed=false and collection incomplete intentionally.",
+    "No current image/cold/resource/other-profile/whole BatchA eligibility claim.",
+    "Unit gate remains FAILED before Interaction execution due unrelated target; Interaction UNEXECUTED.",
+    "Read-only assessment initially used nonexact substring and matched key nested helper as well; query raised AssertionError, corrected to exact symbol suffix once. No compiler/source repair or lost producer result.",
+    "Source changed prospectively; prior exact artifacts remain immutable baseline, not current qualification."
+  ],
+  "artifacts": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/constructor.stdout",
+      "original": ".build/contracts/p08-native-static-constructor50/constructor.stdout",
+      "bytes": 6068,
+      "sha256": "709793755da5a75707c407852aef9501770a0989cd1d28722015aee7accfd568"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/constructor-helper1852.stdout",
+      "original": ".build/contracts/p08-native-static-constructor50/constructor-helper1852.stdout",
+      "bytes": 640,
+      "sha256": "3ee8bf2074ec29f642af3e83789932772aecb7ad5aa3a6176b4eb55013337573"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/constructor-helper2316.stdout",
+      "original": ".build/contracts/p08-native-static-constructor50/constructor-helper2316.stdout",
+      "bytes": 502,
+      "sha256": "b5faa7fe22d584f7f7c3eba602de2d9b9ddec51d5d65d3095f3a4e970b9927e6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/transactions.stdout",
+      "original": ".build/contracts/p08-native-static-constructor50/transactions.stdout",
+      "bytes": 57400,
+      "sha256": "186f1644071dbbecfcab0f7ee1cc4f1fa909d055898c487ff393fa44d4defdb9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/transaction-selected-closure.stdout",
+      "original": ".build/contracts/p08-native-static-constructor50/transaction-selected-closure.stdout",
+      "bytes": 297834,
+      "sha256": "98905bf0f184129f0f1d0564e76d24ac32e0a040336a1c705b0d1aa70a5164c6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/transaction-selected-closure.json",
+      "original": ".build/contracts/p08-native-static-constructor50/transaction-selected-closure.json",
+      "bytes": 55888,
+      "sha256": "542229c0e859cd7359705880a404d531279fe6bb255b637a10fedfef52ddbee0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/runtime.sections",
+      "original": ".build/contracts/p08-native-static-constructor50/runtime.sections",
+      "bytes": 1446,
+      "sha256": "cf9cc713c43a3a75b758ffcef3cd74b35c3e64d3f0b9779220bbf2ff0309f06d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/constructor.capture.json",
+      "original": ".build/contracts/p08-native-static-constructor50/constructor.capture.json",
+      "bytes": 1242,
+      "sha256": "9070aa2d79b8e15acc67eff2dd3ea7e9cff5a618c1faac7ab0e0152c30ee1274"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/constructor-helper1852.capture.json",
+      "original": ".build/contracts/p08-native-static-constructor50/constructor-helper1852.capture.json",
+      "bytes": 504,
+      "sha256": "91c1b6e18847d9698d288ef8a97e467decfd6e88bda2aabba57e891f2d33327d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/constructor-helper2316.capture.json",
+      "original": ".build/contracts/p08-native-static-constructor50/constructor-helper2316.capture.json",
+      "bytes": 504,
+      "sha256": "2a9ad2c05d755f6ba68e7d4dfa182d56e37e08ac520519c741a31f0559b26293"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/proof/transactions.capture.json",
+      "original": ".build/contracts/p08-native-static-constructor50/transactions.capture.json",
+      "bytes": 587,
+      "sha256": "d408fe12de5d2eb183ab40a0eae4c2d23df09f094cf626ae7d9c564a222032dd"
+    }
+  ]
+}

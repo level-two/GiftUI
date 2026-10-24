@@ -1,0 +1,89 @@
+{
+  "result_path": ".build/contracts/p08-counter-ugr4qej1/result.json",
+  "sha256": "eebe4ac9d01de3e62f5f5156422cb29f3f61f17801fd2ff0015bf0ae298686de",
+  "passed": true,
+  "collection_complete": true,
+  "checks": 442,
+  "check_status_fields": [
+    "name",
+    "family",
+    "exit",
+    "passed",
+    "diagnostic",
+    "identity",
+    "status",
+    "log_sha256"
+  ],
+  "inputs_match": true,
+  "inputs_count": 201,
+  "input_drift": [],
+  "prerequisite_checks": [
+    {
+      "path": ".build/contracts/spec-013-runtime-cycle/tmphr9k0k77/macos-static/result.json",
+      "expected": "da69b108fc5ac9a9960e312dab36bdbd26c74f2abee5a7b9ca499498e86f9573",
+      "actual": "da69b108fc5ac9a9960e312dab36bdbd26c74f2abee5a7b9ca499498e86f9573",
+      "match": true
+    },
+    {
+      "path": ".build/contracts/p08-scoped-host-7gj3vxnl/result.json",
+      "expected": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+      "actual": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+      "match": true
+    },
+    {
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "expected": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "actual": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "match": true
+    }
+  ],
+  "objects": [
+    {
+      "path": ".build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o",
+      "bytes": 2604600,
+      "sha256": "6e821518a1f04adf06cf9792fbd9c2130fa60907abe68fc9fc2dcd04232f9abe",
+      "recorded": {
+        "sha256": "6e821518a1f04adf06cf9792fbd9c2130fa60907abe68fc9fc2dcd04232f9abe",
+        "bytes": 2604600
+      },
+      "match": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIInteraction.o",
+      "bytes": 190216,
+      "sha256": "d5be2094d234c47a24859cef2bc2e987d7b5f10a986c5bba33a4218628be4abf",
+      "recorded": {
+        "sha256": "d5be2094d234c47a24859cef2bc2e987d7b5f10a986c5bba33a4218628be4abf",
+        "bytes": 190216
+      },
+      "match": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUISemanticCore.o",
+      "bytes": 534808,
+      "sha256": "6a3f93c68416b3c872868d8701206e4de5dae0702e0d790ee6ce4cff4b4298f1",
+      "recorded": {
+        "sha256": "6a3f93c68416b3c872868d8701206e4de5dae0702e0d790ee6ce4cff4b4298f1",
+        "bytes": 534808
+      },
+      "match": true
+    }
+  ],
+  "focused_runtime": {
+    "text_bytes": 814868,
+    "text_sha256": "21d6a76d7553bc1dc0952360e73874cf212866a142b48ce69f5fb048fe2bdb09",
+    "relocations": 34223,
+    "raw_relocation_sha256": "3e45d146bdddc3c622e885331b80adb66d83e0356215ee4abd2ec33eccbb185f"
+  },
+  "full_runtime": {
+    "text_bytes": 814868,
+    "text_sha256": "21d6a76d7553bc1dc0952360e73874cf212866a142b48ce69f5fb048fe2bdb09",
+    "relocations": 34223,
+    "raw_relocation_sha256": "3e45d146bdddc3c622e885331b80adb66d83e0356215ee4abd2ec33eccbb185f"
+  },
+  "text_and_raw_relocations_equal": true,
+  "full_vs_focused_inputs_equal": true,
+  "reuse_execution": true,
+  "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmphr9k0k77/macos-static",
+  "host_build": ".build/contracts/p08-scoped-host-7gj3vxnl"
+}

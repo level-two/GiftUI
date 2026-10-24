@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x4eab4",
+    "--stop-address=0x4f4f4",
+    ".build/contracts/p08-counter-dqcirgbq/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "bytes": 57400,
+  "sha256": "186f1644071dbbecfcab0f7ee1cc4f1fa909d055898c487ff393fa44d4defdb9",
+  "start": "0x4eab4",
+  "end": "0x4f4f4",
+  "symbol": "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF"
+}

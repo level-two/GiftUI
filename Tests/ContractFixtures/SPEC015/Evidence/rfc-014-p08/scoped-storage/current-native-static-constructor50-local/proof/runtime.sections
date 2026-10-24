@@ -1,0 +1,30 @@
+
+.build/contracts/p08-counter-dqcirgbq/P08CounterRuntime.o:	file format mach-o arm64
+
+Sections:
+Idx Name             Size     VMA              Type
+  0 __text           000c6f14 0000000000000000 TEXT
+  1 __const          000025a2 00000000000c6f20 DATA
+  2 __literal16      00001ac0 00000000000c94d0 DATA
+  3 __literal8       00000108 00000000000caf90 DATA
+  4 __common         00000039 00000000000f6d20 BSS
+  5 __data           00000e10 00000000000cb098 DATA
+  6 __swift5_typeref 000019f1 00000000000cbea8 DATA
+  7 __cstring        00002866 00000000000cd8a0 DATA
+  8 __swift5_capture 000000a0 00000000000d0108 DATA
+  9 __const          00004938 00000000000d01a8 DATA
+ 10 __bss            00002838 00000000000f6d60 BSS
+ 11 __swift5_reflstr 000017eb 00000000000d4ae0 DATA
+ 12 __swift5_assocty 00000380 00000000000d62cc DATA
+ 13 __constg_swiftt  0000165c 00000000000d664c DATA
+ 14 __swift5_fieldmd 000026d0 00000000000d7ca8 DATA
+ 15 __swift5_builtin 00000050 00000000000da378 DATA
+ 16 __swift5_mpenum  00000044 00000000000da3c8 DATA
+ 17 __swift5_protos  00000018 00000000000da40c DATA
+ 18 __swift5_proto   000001e4 00000000000da424 DATA
+ 19 __swift5_types   0000018c 00000000000da608 DATA
+ 20 __swift5_types2  00000054 00000000000da794 DATA
+ 21 __swift_modhash  00000010 00000000000da7e8 DATA
+ 22 __objc_imageinfo 00000008 00000000000da7f8 DATA
+ 23 __compact_unwind 0001b1e0 00000000000da800 DATA
+ 24 __eh_frame       00001340 00000000000f59e0 DATA

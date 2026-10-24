@@ -1,0 +1,17 @@
+{
+  "recorded_utc": "2026-10-23T23:58:17.914398+00:00",
+  "ordinary_retained_limit": 2147483648,
+  "final_reserve": 33554432,
+  "owned_roots": [
+    ".build/contracts/p08-native-static-constructor50",
+    ".build/contracts/p08-counter-dqcirgbq",
+    ".build/contracts/spec-013-runtime-cycle/tmphr9k0k77",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-result"
+  ],
+  "measured_retained_before_final_accounting": 189107386,
+  "final_write_upper": 1048576,
+  "retained_upper": 190155962,
+  "within_upper_with_reserve": true,
+  "timing": "source-change timestamp durable in local/package-start.json; orientation preceded it. No whole prior-session/U02/OS-I/O/transcript certification."
+}

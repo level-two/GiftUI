@@ -42,6 +42,7 @@ package struct SemanticPathComponent: Equatable, Sendable {
 /// before activation; a future extent change needs the corresponding audit.
 @usableFromInline
 package struct SemanticCompleteIdentity: Equatable, Sendable {
+    @usableFromInline
     package static let capacity: UInt16 = 34
     private var components: InlineArray<34, SemanticPathComponent> = .init(
         repeating: .init(kind: .root))

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x1b65c",
+    "--stop-address=0x1b7dc",
+    ".build/contracts/p08-counter-dqcirgbq/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "bytes": 6068,
+  "sha256": "709793755da5a75707c407852aef9501770a0989cd1d28722015aee7accfd568",
+  "start": "0x1b65c",
+  "end": "0x1b7dc",
+  "symbol": "_$s17P08CounterRuntime32p08ConstructStaticStorageSession33_480B1BD841D053AE4FCDC18507668536LL5token2b02b12b22b32g02g12g22g32g42c02h02r02r12h10X5Entry0Y5Entry0Z5Entry7r1Entry7h1Entry13configuration10transcript13ownerIdentity13sessionSerialAA0agH0ACLLVAA0aH8LifetimeACLLV_S4wSpyAA0fB15LayoutWorkspaceVGSpyAA0fb14ResolvedLayoutG0VGSpys11InlineArrayVy$63_18GiftUISemanticCore23SemanticRecordReferenceVSgGGSpy013GiftUIRuntimeF00F22RecordDrawingWorkspaceVyAA0fB16DrawingWorkspaceVGGSpyAA15QualifiedRenderVGSpyAA0f23TwoInteractionCandidateG0VyA12_24SemanticCompleteIdentityVGGSpyAA0f17TwoInteractionHitG0VyA31_GGSpyAA0f23TwoInteractionCommittedG0VyA31_GGA41_A37_AA0A16InitializedEntryACLLVA43_A43_A43_A43_A11_y$4_s6UInt16VGSpyAA0A14RoleTranscriptACLLVGSgSus6UInt64VtF"
+}

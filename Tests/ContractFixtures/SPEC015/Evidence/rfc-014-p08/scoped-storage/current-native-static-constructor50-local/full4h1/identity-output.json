@@ -1,0 +1,74 @@
+{
+  "maps": {
+    "focused": {
+      "relocations": 34223,
+      "relocation_target_map_sha256": "82052f9a944eca4bee0f3623f38d03e96e85b6e1286977141750f85cd252523d",
+      "text_symbol_address_map_sha256": "d83b3b4a20a7664ecf601ba8802a659b6e9164cee602f5e607ee9e52b87cad3d",
+      "text_symbols": 6935,
+      "section_address_layout_sha256": "0584fbfb890321d5fcb246a36eea9aee824eda26813141228d9fb2295e9ded97",
+      "nlist_bytes_sha256": "fa89065185607905be57e635b0d4976835cd3da0771f280367e3aff43b005118",
+      "string_table_sha256": "5613a2e624f6e7e975e55e22d73ecc466f146ea7750ff0d283923d8f4cba50b0"
+    },
+    "full": {
+      "relocations": 34223,
+      "relocation_target_map_sha256": "82052f9a944eca4bee0f3623f38d03e96e85b6e1286977141750f85cd252523d",
+      "text_symbol_address_map_sha256": "d83b3b4a20a7664ecf601ba8802a659b6e9164cee602f5e607ee9e52b87cad3d",
+      "text_symbols": 6935,
+      "section_address_layout_sha256": "0584fbfb890321d5fcb246a36eea9aee824eda26813141228d9fb2295e9ded97",
+      "nlist_bytes_sha256": "fa89065185607905be57e635b0d4976835cd3da0771f280367e3aff43b005118",
+      "string_table_sha256": "5613a2e624f6e7e975e55e22d73ecc466f146ea7750ff0d283923d8f4cba50b0"
+    },
+    "all_equal": true
+  },
+  "comparisons": [
+    {
+      "name": "mixed",
+      "before_path": ".build/contracts/p08-counter-dqcirgbq/result.json#execution",
+      "after_path": ".build/contracts/p08-counter-ugr4qej1/result.json#execution",
+      "equal": true,
+      "SO06_counts": [
+        120,
+        120
+      ],
+      "raw_sha256": [
+        "6d10153a60d2bdd1af5179e841fbb0a5b9a7c4683b9c8f9beb209575ea9c33eb",
+        "897c23f7605fc9b0ba91cdda87c2babaaac5b193f87e20289687ed82155ec23b"
+      ],
+      "bytes": [
+        611253,
+        611253
+      ],
+      "normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d"
+    },
+    {
+      "name": "static",
+      "before_path": ".build/contracts/p08-counter-dqcirgbq/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-ugr4qej1/static-resource-v1-execute.log",
+      "equal": true,
+      "SO06_counts": [
+        60,
+        60
+      ],
+      "raw_sha256": [
+        "6a4f1e31ee0bc6a094971bf69f85835d898a2981d4283e6118439f53c8456d21",
+        "b455e0f5a93a7513294f37ddb2915f9b7324815a0b53cfaa6b039b8c175dfe33"
+      ],
+      "bytes": [
+        391098,
+        391098
+      ],
+      "normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d"
+    }
+  ],
+  "normalization": "Only fourteen-token SO06 role lines with token11 => and decimal address tokens4/8: replace exactly those two original spans with <SO06_ADDRESS>, preserving all other bytes and order.",
+  "exit_counts": {
+    "0": 220,
+    "1": 193,
+    "None": 28,
+    "-6": 1
+  },
+  "status_counts": {
+    "passed": 442
+  },
+  "all_passed": true
+}

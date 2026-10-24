@@ -1,0 +1,14 @@
+{
+  "recorded_utc": "2026-10-24T06:05:05.913494+00:00",
+  "ordinary_validation_ceiling": 2147483648,
+  "reserve": 33554432,
+  "guard_terminal_retained_bytes": 385127245,
+  "guard_initial_bytes": 200604879,
+  "new_full_output_bytes": 184522366,
+  "entire_scoped_proof_bytes_counted_again_conservatively": 460107,
+  "retained_upper_before_final_small_summary": 385587352,
+  "allowance_for_final_small_summaries": 1048576,
+  "accounted_upper_with_final_summaries_and_reserve": 420190360,
+  "within_envelope": true,
+  "statement": "Conservative retained-output accounting only; existing proof may be double-counted. No aggregate OS-I/O or U02 processing qualification claimed."
+}

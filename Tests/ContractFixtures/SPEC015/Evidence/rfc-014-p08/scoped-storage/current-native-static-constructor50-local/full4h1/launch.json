@@ -1,0 +1,22 @@
+{
+  "authority": "Root selected one constructor50 full run under standing ordinary 4-hour implementation validation authority on 2026-10-24; no reuse of consumed specialization49 12-hour authorization",
+  "start_utc": "2026-10-24T02:12:00.916181+00:00",
+  "deadline_utc": "2026-10-24T06:12:00.916181+00:00",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmphr9k0k77/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "--collect-failures",
+    "--static-resource-entry-v1"
+  ],
+  "guard_armed_before_spawn": true,
+  "output_limit": 2147483648,
+  "reserve": 33554432,
+  "initial_retained_bytes": 200604879,
+  "frozen_inputs_verified": 201
+}

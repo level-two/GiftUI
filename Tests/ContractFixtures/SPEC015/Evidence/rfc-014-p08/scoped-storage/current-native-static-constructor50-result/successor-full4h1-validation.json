@@ -1,0 +1,300 @@
+{
+  "status": "FULL_COLLECTION_PASS_SCOPED_CONSTRUCTOR_TRANSACTION_REMOVAL_PASS_BROAD_ELIGIBILITY_OPEN",
+  "full": {
+    "result_path": ".build/contracts/p08-counter-ugr4qej1/result.json",
+    "sha256": "eebe4ac9d01de3e62f5f5156422cb29f3f61f17801fd2ff0015bf0ae298686de",
+    "passed": true,
+    "collection_complete": true,
+    "checks": 442,
+    "check_status_fields": [
+      "name",
+      "family",
+      "exit",
+      "passed",
+      "diagnostic",
+      "identity",
+      "status",
+      "log_sha256"
+    ],
+    "inputs_match": true,
+    "inputs_count": 201,
+    "input_drift": [],
+    "prerequisite_checks": [
+      {
+        "path": ".build/contracts/spec-013-runtime-cycle/tmphr9k0k77/macos-static/result.json",
+        "expected": "da69b108fc5ac9a9960e312dab36bdbd26c74f2abee5a7b9ca499498e86f9573",
+        "actual": "da69b108fc5ac9a9960e312dab36bdbd26c74f2abee5a7b9ca499498e86f9573",
+        "match": true
+      },
+      {
+        "path": ".build/contracts/p08-scoped-host-7gj3vxnl/result.json",
+        "expected": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+        "actual": "d5bcf76323fe7648e174c1526909bd61fd6e41b0eed69cc0c39f7b7589141ac0",
+        "match": true
+      },
+      {
+        "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "expected": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+        "actual": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+        "match": true
+      }
+    ],
+    "objects": [
+      {
+        "path": ".build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o",
+        "bytes": 2604600,
+        "sha256": "6e821518a1f04adf06cf9792fbd9c2130fa60907abe68fc9fc2dcd04232f9abe",
+        "recorded": {
+          "sha256": "6e821518a1f04adf06cf9792fbd9c2130fa60907abe68fc9fc2dcd04232f9abe",
+          "bytes": 2604600
+        },
+        "match": true
+      },
+      {
+        "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIInteraction.o",
+        "bytes": 190216,
+        "sha256": "d5be2094d234c47a24859cef2bc2e987d7b5f10a986c5bba33a4218628be4abf",
+        "recorded": {
+          "sha256": "d5be2094d234c47a24859cef2bc2e987d7b5f10a986c5bba33a4218628be4abf",
+          "bytes": 190216
+        },
+        "match": true
+      },
+      {
+        "path": ".build/contracts/p08-counter-ugr4qej1/GiftUISemanticCore.o",
+        "bytes": 534808,
+        "sha256": "6a3f93c68416b3c872868d8701206e4de5dae0702e0d790ee6ce4cff4b4298f1",
+        "recorded": {
+          "sha256": "6a3f93c68416b3c872868d8701206e4de5dae0702e0d790ee6ce4cff4b4298f1",
+          "bytes": 534808
+        },
+        "match": true
+      }
+    ],
+    "focused_runtime": {
+      "text_bytes": 814868,
+      "text_sha256": "21d6a76d7553bc1dc0952360e73874cf212866a142b48ce69f5fb048fe2bdb09",
+      "relocations": 34223,
+      "raw_relocation_sha256": "3e45d146bdddc3c622e885331b80adb66d83e0356215ee4abd2ec33eccbb185f"
+    },
+    "full_runtime": {
+      "text_bytes": 814868,
+      "text_sha256": "21d6a76d7553bc1dc0952360e73874cf212866a142b48ce69f5fb048fe2bdb09",
+      "relocations": 34223,
+      "raw_relocation_sha256": "3e45d146bdddc3c622e885331b80adb66d83e0356215ee4abd2ec33eccbb185f"
+    },
+    "text_and_raw_relocations_equal": true,
+    "full_vs_focused_inputs_equal": true,
+    "reuse_execution": true,
+    "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmphr9k0k77/macos-static",
+    "host_build": ".build/contracts/p08-scoped-host-7gj3vxnl"
+  },
+  "checks": {
+    "total": 442,
+    "all_passed": true,
+    "exit_counts": {
+      "0": 220,
+      "1": 193,
+      "None": 28,
+      "-6": 1
+    },
+    "status_counts": {
+      "passed": 442
+    },
+    "interpretation": "220 exit0,193 expected exit1,one expected -6,28 registered/reused null-exit receipts; reuse_execution=true. Not442 fresh compiler invocations."
+  },
+  "actual_run": {
+    "launch": {
+      "authority": "Root selected one constructor50 full run under standing ordinary 4-hour implementation validation authority on 2026-10-24; no reuse of consumed specialization49 12-hour authorization",
+      "start_utc": "2026-10-24T02:12:00.916181+00:00",
+      "deadline_utc": "2026-10-24T06:12:00.916181+00:00",
+      "command": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--profile",
+        "macos-static",
+        "--runtime-build",
+        ".build/contracts/spec-013-runtime-cycle/tmphr9k0k77/macos-static",
+        "--host-build",
+        ".build/contracts/p08-scoped-host-7gj3vxnl",
+        "--collect-failures",
+        "--static-resource-entry-v1"
+      ],
+      "guard_armed_before_spawn": true,
+      "output_limit": 2147483648,
+      "reserve": 33554432,
+      "initial_retained_bytes": 200604879,
+      "frozen_inputs_verified": 201
+    },
+    "terminal": {
+      "finished_utc": "2026-10-24T05:13:21.355113+00:00",
+      "exit": 0,
+      "guard": {
+        "reason": null
+      },
+      "retained_bytes": 385127245,
+      "output_candidates": [
+        ".build/contracts/p08-counter-ugr4qej1"
+      ],
+      "within_deadline": true,
+      "within_output_envelope": true
+    },
+    "elapsed_seconds": 10880.438932,
+    "authority": "Coordinator/root-launched one run under standing ordinary four-hour validation authority; consumed specialization49 twelve-hour allowance was not renewed or reused."
+  },
+  "source": [
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "before_sha256": "9ae3845543250f1cc6769272c868e3d5d1ed2d06701d66c040b42c581c6530c0",
+      "after_sha256": "f2b94df5a83faaf09a3b9ef416111ace6783f88e9798942c418ac459ef5882ca",
+      "focused_input": "f2b94df5a83faaf09a3b9ef416111ace6783f88e9798942c418ac459ef5882ca"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "before_sha256": "e3e9c9e2abaf07b6d896091d3e77fb96533aa94f9fbc505b319d7c3a01c07262",
+      "after_sha256": "4385274e1c35ee53bafb1dc5aa3953926449c1837840260b9b7decae666932d0",
+      "focused_input": "4385274e1c35ee53bafb1dc5aa3953926449c1837840260b9b7decae666932d0"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "before_sha256": "715d37389fa167dd4f634c92c5857614ebf1b6f58c067777c83da4b3ba982cbf",
+      "after_sha256": "46b14032a2fa4eb33fc38f08cb442c3373cfc9f63e98e4304a7f7cb353f72e41",
+      "focused_input": "46b14032a2fa4eb33fc38f08cb442c3373cfc9f63e98e4304a7f7cb353f72e41"
+    }
+  ],
+  "focused_proof_reused": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-result/proof.json",
+    "sha256": "5363ff100b3d77148b35fb5faa4ab5912a8134f213412399231fc37aae1e4d89",
+    "exact_transfer": {
+      "focused": {
+        "relocations": 34223,
+        "relocation_target_map_sha256": "82052f9a944eca4bee0f3623f38d03e96e85b6e1286977141750f85cd252523d",
+        "text_symbol_address_map_sha256": "d83b3b4a20a7664ecf601ba8802a659b6e9164cee602f5e607ee9e52b87cad3d",
+        "text_symbols": 6935,
+        "section_address_layout_sha256": "0584fbfb890321d5fcb246a36eea9aee824eda26813141228d9fb2295e9ded97",
+        "nlist_bytes_sha256": "fa89065185607905be57e635b0d4976835cd3da0771f280367e3aff43b005118",
+        "string_table_sha256": "5613a2e624f6e7e975e55e22d73ecc466f146ea7750ff0d283923d8f4cba50b0"
+      },
+      "full": {
+        "relocations": 34223,
+        "relocation_target_map_sha256": "82052f9a944eca4bee0f3623f38d03e96e85b6e1286977141750f85cd252523d",
+        "text_symbol_address_map_sha256": "d83b3b4a20a7664ecf601ba8802a659b6e9164cee602f5e607ee9e52b87cad3d",
+        "text_symbols": 6935,
+        "section_address_layout_sha256": "0584fbfb890321d5fcb246a36eea9aee824eda26813141228d9fb2295e9ded97",
+        "nlist_bytes_sha256": "fa89065185607905be57e635b0d4976835cd3da0771f280367e3aff43b005118",
+        "string_table_sha256": "5613a2e624f6e7e975e55e22d73ecc466f146ea7750ff0d283923d8f4cba50b0"
+      },
+      "all_equal": true
+    },
+    "scope": "The complete runtime __text bytes, all raw relocation records, decoded relocation targets, text symbol/address map, complete symbol/string tables and section-address layout are identical. Inputs, compiler and prerequisites match. Whole object SHA differs and is recorded; no blanket whole-object identity claim.",
+    "constructor": "Same concrete CandidateAccess/CommittedAccess/HitAccess session constructor0x1b65c-0x1b7dc, exact helpers1852 0xc564c-0xc567c and2316 0xc6e98-0xc6ebc; all loads/stores/arithmetic/returns with no metadata/init/provider calls. Both former opaque Self requests absent from charged setup and these reached helpers.",
+    "transaction": "Same exerciseTransactions0x4eab4-0x4f4f4 and exact92-function direct local Branch26 closure; no InteractionState/OwnedKeyState Self metadata request. Reviewed Static tag0 guards still exclude residual Dynamic storage/ArrayBuffer alternatives. No arbitrary indirect closure inferred.",
+    "no_displacement": "Exact full/focused machine and relocation identity transfers earlier charged-setup/reached-callee nonrelocation evidence; not merely descriptor disappearance."
+  },
+  "matching_library_artifacts": {
+    "GiftUIInteraction.o": {
+      "focused": {
+        "sha256": "64180cf704ca779d1a14b69709ee5ce2ce148cb520899ee3b839faeea80b0f9d",
+        "bytes": 190216
+      },
+      "full": {
+        "sha256": "d5be2094d234c47a24859cef2bc2e987d7b5f10a986c5bba33a4218628be4abf",
+        "bytes": 190216
+      },
+      "recorded_identity_equal": false
+    },
+    "GiftUISemanticCore.o": {
+      "focused": {
+        "sha256": "a5279dd04fba409a53c1014237e39f900fddb73d9e4f49ea186e68fe9f330e13",
+        "bytes": 534808
+      },
+      "full": {
+        "sha256": "6a3f93c68416b3c872868d8701206e4de5dae0702e0d790ee6ce4cff4b4298f1",
+        "bytes": 534808
+      },
+      "recorded_identity_equal": false
+    }
+  },
+  "functional_outputs": [
+    {
+      "name": "mixed",
+      "before_path": ".build/contracts/p08-counter-dqcirgbq/result.json#execution",
+      "after_path": ".build/contracts/p08-counter-ugr4qej1/result.json#execution",
+      "equal": true,
+      "SO06_counts": [
+        120,
+        120
+      ],
+      "raw_sha256": [
+        "6d10153a60d2bdd1af5179e841fbb0a5b9a7c4683b9c8f9beb209575ea9c33eb",
+        "897c23f7605fc9b0ba91cdda87c2babaaac5b193f87e20289687ed82155ec23b"
+      ],
+      "bytes": [
+        611253,
+        611253
+      ],
+      "normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d"
+    },
+    {
+      "name": "static",
+      "before_path": ".build/contracts/p08-counter-dqcirgbq/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-ugr4qej1/static-resource-v1-execute.log",
+      "equal": true,
+      "SO06_counts": [
+        60,
+        60
+      ],
+      "raw_sha256": [
+        "6a4f1e31ee0bc6a094971bf69f85835d898a2981d4283e6118439f53c8456d21",
+        "b455e0f5a93a7513294f37ddb2915f9b7324815a0b53cfaa6b039b8c175dfe33"
+      ],
+      "bytes": [
+        391098,
+        391098
+      ],
+      "normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d"
+    }
+  ],
+  "normalization": "Only fourteen-token SO06 role lines with token11 => and decimal address tokens4/8: replace exactly those two original spans with <SO06_ADDRESS>, preserving all other bytes and order.",
+  "text_cost": {
+    "full_runtime_bytes": 814868,
+    "delta_from_focused50": 0,
+    "delta_from_specialization49": -764,
+    "claims": "Validation/object text sizes only; no runtime speed, allocation bytes or physical fit inference."
+  },
+  "scope_preservation": "Only carried constructor50 three-file group is retained. Rejected Model53 five-file changes were restored exactly; Model54 replacement stopped without source change. Consuming parameters, lifetime dependence, failable predicates/default order/limits/layout/API signatures preserved by original source group, subject to independent review.",
+  "remaining": [
+    "Model generic Self/Optional metadata dependency remains demonstrated and unresolved; concrete product path does not exempt mandatory generic controls. Model53 failed candidate and Model54 scope stop preserved.",
+    "Other local Semantic/Coordinator/FixedStorage once/error/metadata/witness frontiers and exact U03 applicability remain open as recorded, not closed by442 checks.",
+    "Actual loaded-provider/environment/stdout identity/persistence/resource-window facts remain unobserved.",
+    "Unit failed before tests due unrelated SignalAnalyzerPresentation; Interaction tests unexecuted, no waiver.",
+    "No cold/resource/current-image/other-profile/wholeBatchA/P08 acceptance or architecture change."
+  ],
+  "attachments": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/full4h1/full-inspection.json",
+      "original": ".build/contracts/p08-native-static-constructor50/successor-full-inspection.json",
+      "bytes": 3178,
+      "sha256": "85c52b7a618dc14b94ff70725db66b20879d782f8cdd9675d35b6dbfa4645c0f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/full4h1/identity-output.json",
+      "original": ".build/contracts/p08-native-static-constructor50/successor-identity-output.json",
+      "bytes": 2844,
+      "sha256": "6cd46424d24be6465ccf3d734a33653c8efb020a847b7258a778729a66e64516"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/full4h1/launch.json",
+      "original": ".build/contracts/p08-native-static-constructor50/full4h1/launch.json",
+      "bytes": 816,
+      "sha256": "de62646ad2f7048f293177fa4124c616d00afa7b5ef3cada8a384ba61c532fde"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-local/full4h1/terminal.json",
+      "original": ".build/contracts/p08-native-static-constructor50/full4h1/terminal.json",
+      "bytes": 273,
+      "sha256": "e618278461a337c3f41c24c8f6ab7399052ed9648643cdbcd30a7f820799f25b"
+    }
+  ],
+  "source_index": "Source frozen; no staging or commit performed by worker."
+}

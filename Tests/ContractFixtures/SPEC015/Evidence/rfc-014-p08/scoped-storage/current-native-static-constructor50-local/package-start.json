@@ -1,0 +1,13 @@
+{
+  "source_change_start_utc": "2026-10-23T23:52:57.639849+00:00",
+  "orientation_preceded_record": true,
+  "HEAD": "e4c36a946a2dc9fa3047ab840b77cb7aa68922cf",
+  "before": {
+    "Sources/GiftUIInteraction/InteractionState.swift": "9ae3845543250f1cc6769272c868e3d5d1ed2d06701d66c040b42c581c6530c0",
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "e3e9c9e2abaf07b6d896091d3e77fb96533aa94f9fbc505b319d7c3a01c07262",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "715d37389fa167dd4f634c92c5857614ebf1b6f58c067777c83da4b3ba982cbf"
+  },
+  "retained_output_limit": 2147483648,
+  "final_reserve": 33554432,
+  "full_run_authorized": false
+}

@@ -43,6 +43,7 @@ where
     @usableFromInline
     internal var committedPresentationRevision: PresentationRevision?
 
+    @inlinable
     @_lifetime(
         copy candidateRecords, copy candidateHitRegions, copy candidateCommittedRecords,
         copy committedRecords, copy committedHitRegions)

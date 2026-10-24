@@ -19,8 +19,10 @@ where
     package typealias Identity = SemanticCompleteIdentity
     @usableFromInline
     internal var state: InteractionState<Candidate, Committed, Hits>
-    private let maximumComponentsPerKey: UInt16
-    private let maximumComponents: UInt32
+    @usableFromInline
+    internal let maximumComponentsPerKey: UInt16
+    @usableFromInline
+    internal let maximumComponents: UInt32
     @usableFromInline
     internal var configuredComponentsPerKey: UInt16
     @usableFromInline
@@ -33,6 +35,7 @@ where
     internal var isStaging = false
     @usableFromInline
     internal var failure: InteractionError?
+    @inlinable
     @_lifetime(copy state)
     package init?(
         state: consuming InteractionState<Candidate, Committed, Hits>,

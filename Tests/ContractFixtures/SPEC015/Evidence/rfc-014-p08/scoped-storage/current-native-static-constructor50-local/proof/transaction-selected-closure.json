@@ -1,0 +1,1063 @@
+{
+  "root": "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF",
+  "functions": {
+    "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF": {
+      "start": "0x4eab4",
+      "end": "0x4f4f4",
+      "stdout_sha256": "186f1644071dbbecfcab0f7ee1cc4f1fa909d055898c487ff393fa44d4defdb9",
+      "branches": [
+        "_OUTLINED_FUNCTION_1027",
+        "_OUTLINED_FUNCTION_1096",
+        "_OUTLINED_FUNCTION_183",
+        "_OUTLINED_FUNCTION_1205",
+        "_OUTLINED_FUNCTION_1461",
+        "_OUTLINED_FUNCTION_1349",
+        "_OUTLINED_FUNCTION_846",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+        "_OUTLINED_FUNCTION_856",
+        "_OUTLINED_FUNCTION_590",
+        "_OUTLINED_FUNCTION_652",
+        "_OUTLINED_FUNCTION_1703",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5",
+        "_OUTLINED_FUNCTION_1461",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV9component2atAA0D13PathComponentVSgs6UInt16V_tF",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV9component2atAA0D13PathComponentVSgs6UInt16V_tF",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s17GiftUIInteraction28InteractionFailurePrecedenceO6select4fromAA0C5ErrorOSgAA0C15VisibleFailuresV_tFZ",
+        "_OUTLINED_FUNCTION_1461",
+        "_OUTLINED_FUNCTION_652",
+        "_OUTLINED_FUNCTION_1703",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5",
+        "_OUTLINED_FUNCTION_1461",
+        "_$s12GiftUILayout14LayoutGeometryO12intersectiony0A2UI4RectVSgAG_AGtFZ",
+        "_OUTLINED_FUNCTION_824",
+        "_OUTLINED_FUNCTION_847",
+        "_OUTLINED_FUNCTION_1146",
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_1519",
+        "_OUTLINED_FUNCTION_924",
+        "_OUTLINED_FUNCTION_608",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_OUTLINED_FUNCTION_924",
+        "_OUTLINED_FUNCTION_590",
+        "_OUTLINED_FUNCTION_2200",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+        "_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ",
+        "_OUTLINED_FUNCTION_2200",
+        "_OUTLINED_FUNCTION_590",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV6appendySb17GiftUIInteraction011InteractionD6RecordVy0L14UISemanticCore24SemanticCompleteIdentityVGnF",
+        "_OUTLINED_FUNCTION_2200",
+        "_OUTLINED_FUNCTION_590",
+        "_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV6appendySb17GiftUIInteraction011InteractionD6RegionVy0L14UISemanticCore24SemanticCompleteIdentityVGnF",
+        "_OUTLINED_FUNCTION_2200",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5",
+        "_OUTLINED_FUNCTION_1461",
+        "_OUTLINED_FUNCTION_1866",
+        "_OUTLINED_FUNCTION_1461",
+        "_$s6GiftUI20PresentationRevisionV8rawValueACs6UInt32V_tcfC",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tFTm",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tFTm",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+        "_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+        "_OUTLINED_FUNCTION_1862",
+        "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE20committedRecordCounts6UInt16Vvg17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AG0k9CommittedO0AILLVAG0k3HitO0AILLVTg5",
+        "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF",
+        "_OUTLINED_FUNCTION_652",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5",
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_924",
+        "_OUTLINED_FUNCTION_1519",
+        "_OUTLINED_FUNCTION_590",
+        "_OUTLINED_FUNCTION_590",
+        "_OUTLINED_FUNCTION_1205",
+        "_OUTLINED_FUNCTION_1461",
+        "_OUTLINED_FUNCTION_1866",
+        "_OUTLINED_FUNCTION_1461",
+        "_OUTLINED_FUNCTION_1867",
+        "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF",
+        "_OUTLINED_FUNCTION_652",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5",
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_924",
+        "_OUTLINED_FUNCTION_1519",
+        "_OUTLINED_FUNCTION_590",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+        "_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ",
+        "_OUTLINED_FUNCTION_652",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5",
+        "_OUTLINED_FUNCTION_1519",
+        "_OUTLINED_FUNCTION_608",
+        "_$s6GiftUI4RectV8containsySbAA5PointVF",
+        "_OUTLINED_FUNCTION_1519",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+        "_OUTLINED_FUNCTION_1205",
+        "_OUTLINED_FUNCTION_1461",
+        "_OUTLINED_FUNCTION_1349",
+        "_OUTLINED_FUNCTION_846",
+        "_OUTLINED_FUNCTION_1860",
+        "_OUTLINED_FUNCTION_856",
+        "_OUTLINED_FUNCTION_590",
+        "_OUTLINED_FUNCTION_1367",
+        "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF17P08CounterRuntime03P08R6Access33_480B1BD841D053AE4FCDC18507668536LLV_A_18P08CommittedAccessA1_LLVA_12P08HitAccessA1_LLVTg5",
+        "_OUTLINED_FUNCTION_1349",
+        "_OUTLINED_FUNCTION_846",
+        "_OUTLINED_FUNCTION_1860",
+        "_OUTLINED_FUNCTION_856",
+        "_OUTLINED_FUNCTION_590",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5",
+        "_OUTLINED_FUNCTION_1461",
+        "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF",
+        "_OUTLINED_FUNCTION_1367",
+        "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF17P08CounterRuntime03P08R6Access33_480B1BD841D053AE4FCDC18507668536LLV_A_18P08CommittedAccessA1_LLVA_12P08HitAccessA1_LLVTg5",
+        "_OUTLINED_FUNCTION_1866",
+        "_OUTLINED_FUNCTION_1461",
+        "_OUTLINED_FUNCTION_1867",
+        "_OUTLINED_FUNCTION_1862",
+        "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE20committedRecordCounts6UInt16Vvg17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AG0k9CommittedO0AILLVAG0k3HitO0AILLVTg5",
+        "_OUTLINED_FUNCTION_59",
+        "_OUTLINED_FUNCTION_14",
+        "___stack_chk_fail"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1027": {
+      "start": "0xc1e64",
+      "end": "0xc1e7c",
+      "stdout_sha256": "671326834fb73406f0f07cce18474e1036010e5cb1346a78f8d179c6fea6b66b",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1096": {
+      "start": "0xc2328",
+      "end": "0xc2334",
+      "stdout_sha256": "fc888740c3f6268284916113f6a9bc07743db04b61e4f41d775b520d90f10efd",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_183": {
+      "start": "0xbd1e4",
+      "end": "0xbd1f4",
+      "stdout_sha256": "d271709eec9f3ad32868c608347e1879db77173713dabe87eb37f71c5392f68d",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1205": {
+      "start": "0xc2b48",
+      "end": "0xc2b54",
+      "stdout_sha256": "a3ff9d380c4070ccddf64a043fe96695e57d1ffaf0c1afe1d492c16c97c60ecc",
+      "branches": [
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14beginCandidate6limitsAA0C5ErrorOSgAA0C6LimitsV_tF17P08CounterRuntime0jF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AK0j9CommittedM0AMLLVAK0j3HitM0AMLLVTg5"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1461": {
+      "start": "0xc3cf8",
+      "end": "0xc3d04",
+      "stdout_sha256": "0e336684abce93e771425a1c0fca052e50b9153e4a538a9006b882a952cf4bda",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1349": {
+      "start": "0xc3528",
+      "end": "0xc3534",
+      "stdout_sha256": "8b7949d8dbfa4a7f4f21ec458704d5a2c948c74a7b49556669807a67e4abf91b",
+      "branches": [
+        "_bzero"
+      ]
+    },
+    "_OUTLINED_FUNCTION_846": {
+      "start": "0xc1168",
+      "end": "0xc1170",
+      "stdout_sha256": "02907e647be108270d115aca14d91726b484054648a96ddcfbac5f31f9d3000c",
+      "branches": [
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF"
+      ]
+    },
+    "_OUTLINED_FUNCTION_856": {
+      "start": "0xc11e4",
+      "end": "0xc11f4",
+      "stdout_sha256": "a3108588e0cf846a2f6825af3e8cad5dd24e34c2b50adb9f52c7e274d5721bd5",
+      "branches": [
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF"
+      ]
+    },
+    "_OUTLINED_FUNCTION_590": {
+      "start": "0xbf850",
+      "end": "0xbf858",
+      "stdout_sha256": "2062fc112e5c36eae11f2d4c41c05bb17ccf3f2a9115b2e84be225f7477abc91",
+      "branches": [
+        "_memcpy"
+      ]
+    },
+    "_OUTLINED_FUNCTION_652": {
+      "start": "0xbfe4c",
+      "end": "0xbfe58",
+      "stdout_sha256": "1bb7a2bc9c4d104bd98ec48153820e7e25fa7e91a3aafaff1b5ac4e99dec53ea",
+      "branches": [
+        "_memcpy"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1703": {
+      "start": "0xc4bd0",
+      "end": "0xc4bec",
+      "stdout_sha256": "42c6aed0a163c275529ed07695c4b1bfd6a0c3def88895186282435db6b4cda6",
+      "branches": []
+    },
+    "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5": {
+      "start": "0xa53c4",
+      "end": "0xa5714",
+      "stdout_sha256": "4f43e5d2e5b7d02e83a9bd5939f3301973a148bba14a2de84df5aee478c5c6cd",
+      "branches": [
+        "_memcpy",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg",
+        "_memcpy",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_",
+        "_memcpy",
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_",
+        "_memcpy",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_",
+        "_memcpy",
+        "_memcpy",
+        "_memcpy",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg",
+        "_memcpy",
+        "_memcpy",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16VvgTm",
+        "_$s12GiftUILayout14LayoutGeometryO12intersectiony0A2UI4RectVSgAG_AGtFZ",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s17GiftUIInteraction28InteractionFailurePrecedenceO6select4fromAA0C5ErrorOSgAA0C15VisibleFailuresV_tFZ"
+      ]
+    },
+    "_OUTLINED_FUNCTION_824": {
+      "start": "0xc0f4c",
+      "end": "0xc0f58",
+      "stdout_sha256": "89c3fc92cd11a7ab17faf64b730224dac441ea9c2ed2d216b607a32f391b034d",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_847": {
+      "start": "0xc1170",
+      "end": "0xc117c",
+      "stdout_sha256": "b5a40ae98db49d597520b9540ca9b32dfbe0949abecfecdc807f1a71ddb28b11",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1146": {
+      "start": "0xc271c",
+      "end": "0xc2724",
+      "stdout_sha256": "1a0f2b864b4c449088b219590056ed2f57fffa3c218bbe52b05692f0a04cf3ef",
+      "branches": [
+        "_memcpy"
+      ]
+    },
+    "_OUTLINED_FUNCTION_608": {
+      "start": "0xbf91c",
+      "end": "0xbf924",
+      "stdout_sha256": "538d6521e73dfbc2d4b98b603516131a763d5d3e6c483cba229e454e4ade8c1b",
+      "branches": [
+        "_memcpy"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1519": {
+      "start": "0xc4148",
+      "end": "0xc415c",
+      "stdout_sha256": "8bb5cc40e0c90ec7ae6988736447f3e9b3fb5cef38ebefbc6f38a4de517383e8",
+      "branches": [
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg"
+      ]
+    },
+    "_OUTLINED_FUNCTION_924": {
+      "start": "0xc1668",
+      "end": "0xc1670",
+      "stdout_sha256": "e1f04837f9739b93188dc4662bb663326f70600972c3e94974ab9be4d5aa6919",
+      "branches": [
+        "_memcpy"
+      ]
+    },
+    "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_": {
+      "start": "0xb7090",
+      "end": "0xb7094",
+      "stdout_sha256": "689a94895f21675ad2f6207e75bd06a78e4709803b6d2e7626693f85cf11b4d0",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_2200": {
+      "start": "0xc66f0",
+      "end": "0xc66fc",
+      "stdout_sha256": "b994c559d78dcbc753ef6f077cc2f597bb571d0f9a507e12f8f609191cc5192d",
+      "branches": []
+    },
+    "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV6appendySb17GiftUIInteraction011InteractionD6RecordVy0L14UISemanticCore24SemanticCompleteIdentityVGnF": {
+      "start": "0x19850",
+      "end": "0x19904",
+      "stdout_sha256": "4ca42d72fd4f9072d1b9c9b16e4ea8e73f9b946596c1c9d18c3d8e9a0a520429",
+      "branches": [
+        "_OUTLINED_FUNCTION_2319",
+        "_OUTLINED_FUNCTION_1712",
+        "_OUTLINED_FUNCTION_1496",
+        "_OUTLINED_FUNCTION_608",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_847",
+        "_OUTLINED_FUNCTION_1940",
+        "_OUTLINED_FUNCTION_651",
+        "_OUTLINED_FUNCTION_1203",
+        "_OUTLINED_FUNCTION_1711",
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_673"
+      ]
+    },
+    "_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV6appendySb17GiftUIInteraction011InteractionD6RegionVy0L14UISemanticCore24SemanticCompleteIdentityVGnF": {
+      "start": "0x1a024",
+      "end": "0x1a0dc",
+      "stdout_sha256": "cdbc571b64b2b347cb136fc0a31765fcf109d22a822dd83297d748cc42eb555c",
+      "branches": [
+        "_OUTLINED_FUNCTION_2319",
+        "_OUTLINED_FUNCTION_1712",
+        "_OUTLINED_FUNCTION_637",
+        "_$s17GiftUIInteraction20InteractionHitRegionVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_OUTLINED_FUNCTION_637",
+        "_OUTLINED_FUNCTION_847",
+        "_OUTLINED_FUNCTION_1940",
+        "_OUTLINED_FUNCTION_651",
+        "_OUTLINED_FUNCTION_1203",
+        "_OUTLINED_FUNCTION_1711",
+        "_OUTLINED_FUNCTION_637",
+        "_OUTLINED_FUNCTION_673"
+      ]
+    },
+    "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5": {
+      "start": "0xa5714",
+      "end": "0xa5910",
+      "stdout_sha256": "4f08ea8ee3e6b33d86fb7ee5eed0ade9ae68e7dc1f393f49a3bc635136c1447e",
+      "branches": [
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg",
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_memcpy",
+        "_memcpy",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+        "_memcpy",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV7replace2at4withSbs6UInt16V_17GiftUIInteraction011InteractionD6RecordVy0O14UISemanticCore24SemanticCompleteIdentityVGntF"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1866": {
+      "start": "0xc56fc",
+      "end": "0xc5704",
+      "stdout_sha256": "7a7b692235748320e41826a1f2e93e4d50d0464a7674d37ca7a3f4203510987a",
+      "branches": [
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE15finishCandidateAA0C5ErrorOSgyF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AH0h9CommittedK0AJLLVAH0h3HitK0AJLLVTg5"
+      ]
+    },
+    "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tFTm": {
+      "start": "0x1a0dc",
+      "end": "0x1a2ec",
+      "stdout_sha256": "7d32b3a669c70355fa901b5b2e682816874e13b475a57b3ccd8b70db67ba07ed",
+      "branches": [
+        "_OUTLINED_FUNCTION_2300",
+        "_OUTLINED_FUNCTION_1783",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16VvgTm",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16VvgTm",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16VvgTm",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16VvgTm",
+        "_$s17P08CounterRuntime0A14RoleTranscript33_480B1BD841D053AE4FCDC18507668536LLV6recordyyAA0aD11ObservationACLLVF",
+        "_OUTLINED_FUNCTION_465"
+      ]
+    },
+    "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF": {
+      "start": "0x1972c",
+      "end": "0x197a4",
+      "stdout_sha256": "25ad9dba9ec22f7a618382b6f7187022671ebf97803c4d9e0d13d5d8dcbc2fa1",
+      "branches": [
+        "_OUTLINED_FUNCTION_2319",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+        "_OUTLINED_FUNCTION_1743",
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_430",
+        "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm",
+        "_OUTLINED_FUNCTION_672"
+      ]
+    },
+    "_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF": {
+      "start": "0x19e04",
+      "end": "0x19e80",
+      "stdout_sha256": "699bee074e011b59ecd1c3a7148cfd0a8fd5491233c7cf497145c2d31b50ede4",
+      "branches": [
+        "_OUTLINED_FUNCTION_2319",
+        "_$s17GiftUIInteraction20InteractionHitRegionVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+        "_OUTLINED_FUNCTION_637",
+        "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+        "_OUTLINED_FUNCTION_672"
+      ]
+    },
+    "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF": {
+      "start": "0x19a40",
+      "end": "0x19ab8",
+      "stdout_sha256": "fa8ff4bee8a1272e06496785b2f5a6dcce891df9ef73dbe6faad1fc0105068a8",
+      "branches": [
+        "_OUTLINED_FUNCTION_2319",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+        "_OUTLINED_FUNCTION_1743",
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_200",
+        "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm",
+        "_OUTLINED_FUNCTION_672"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1862": {
+      "start": "0xc56dc",
+      "end": "0xc56e4",
+      "stdout_sha256": "e18c275797eb60d1d43aeffd5d7438ad55929f55afc13bfb12a9c8a47ab9c0de",
+      "branches": [
+        "_memcpy"
+      ]
+    },
+    "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE20committedRecordCounts6UInt16Vvg17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AG0k9CommittedO0AILLVAG0k3HitO0AILLVTg5": {
+      "start": "0x4f9d8",
+      "end": "0x4fa00",
+      "stdout_sha256": "b6cb1dd5316d4cd21b7d094b3057cdc9fcbbd2f4104e014cdc19a4b1b9776f6e",
+      "branches": []
+    },
+    "_$s17P08CounterRuntime0A14StorageSession33_480B1BD841D053AE4FCDC18507668536LLV20exerciseTransactionsSiyF3keyL_y18GiftUISemanticCore24SemanticCompleteIdentityVs5UInt8VF": {
+      "start": "0x4f4f4",
+      "end": "0x4f578",
+      "stdout_sha256": "1e8674376b1bf9d0e1e628ecc2edb67c7472211e562080b9aa5e4eaa945efc5d",
+      "branches": [
+        "_OUTLINED_FUNCTION_1573",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACycfC",
+        "_OUTLINED_FUNCTION_846",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+        "_OUTLINED_FUNCTION_385",
+        "_OUTLINED_FUNCTION_590",
+        "_OUTLINED_FUNCTION_1056"
+      ]
+    },
+    "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6record8identityAA17BoundActionRecordVy8IdentityQzGSgAI_tF17P08CounterRuntime0K15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AL0k9CommittedO0ANLLVAL0k3HitO0ANLLVTg5": {
+      "start": "0xa666c",
+      "end": "0xa67c8",
+      "stdout_sha256": "42b72ab9afbf708f5c218bde1ebc6b67554f62876ae23655ef5e3960e9382cc4",
+      "branches": [
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg",
+        "_memcpy",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_memcpy",
+        "_memcpy",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_",
+        "_memcpy",
+        "_memcpy"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1867": {
+      "start": "0xc5704",
+      "end": "0xc5710",
+      "stdout_sha256": "c6aa7736227bd7e4548ff64f1938686e6c9376db57c43539be401732fe78a289",
+      "branches": [
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1860": {
+      "start": "0xc56c8",
+      "end": "0xc56d4",
+      "stdout_sha256": "20ca24750707e64fe2586d3fea8b3e8658fbea26311b4024472ca8d7a8dd5646",
+      "branches": [
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1367": {
+      "start": "0xc3648",
+      "end": "0xc366c",
+      "stdout_sha256": "a71aff0befd59ffae2f30ad12b3f36344f3539a70f41b6ebde690a79e878c95d",
+      "branches": []
+    },
+    "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE6append8identity9isEnabled6bounds4clip10paintOrder6action16targetGenerationAA0C21CandidateAppendResultO0A14UISemanticCore24SemanticCompleteIdentityV_Sb0A2UI4RectVASs6UInt16VAA24BoundedApplicationActionV0A11UIExecution016ObservableTargetQ0VtF17P08CounterRuntime03P08R6Access33_480B1BD841D053AE4FCDC18507668536LLV_A_18P08CommittedAccessA1_LLVA_12P08HitAccessA1_LLVTg5": {
+      "start": "0x4f578",
+      "end": "0x4f9d8",
+      "stdout_sha256": "4abe1b2bdd9a5fd85b701c07d91e2c9230795cc90993a25f304b5e60c8975989",
+      "branches": [
+        "_memcpy",
+        "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5",
+        "_memcpy",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5",
+        "_$s12GiftUILayout14LayoutGeometryO12intersectiony0A2UI4RectVSgAG_AGtFZ",
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg",
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_memcpy",
+        "_memcpy",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+        "_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ",
+        "_memcpy",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV6appendySb17GiftUIInteraction011InteractionD6RecordVy0L14UISemanticCore24SemanticCompleteIdentityVGnF",
+        "_memcpy",
+        "_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV6appendySb17GiftUIInteraction011InteractionD6RegionVy0L14UISemanticCore24SemanticCompleteIdentityVGnF"
+      ]
+    },
+    "_OUTLINED_FUNCTION_59": {
+      "start": "0xbc4e4",
+      "end": "0xbc4f8",
+      "stdout_sha256": "9dd805f219f73df37e288672c5441429152b80e3d797254bf4469696b6f36e75",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_14": {
+      "start": "0xbbbe0",
+      "end": "0xbbbf8",
+      "stdout_sha256": "100f8400b8245f911b28fc5d69ab5e62389531e595cb4a7b2f405ba95e8582b4",
+      "branches": []
+    },
+    "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14beginCandidate6limitsAA0C5ErrorOSgAA0C6LimitsV_tF17P08CounterRuntime0jF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AK0j9CommittedM0AMLLVAK0j3HitM0AMLLVTg5": {
+      "start": "0xa504c",
+      "end": "0xa50f4",
+      "stdout_sha256": "4e4af0b097f31935a9e9363689752398a1653de2954cd65d25127ac526370371",
+      "branches": [
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+        "_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF"
+      ]
+    },
+    "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg": {
+      "start": "0x196b0",
+      "end": "0x196d8",
+      "stdout_sha256": "b81047e01b060b6895a0d7949107d320dc05b7c5062c037e68d748d5efa4bb9c",
+      "branches": []
+    },
+    "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_": {
+      "start": "0xa3fa4",
+      "end": "0xa3fa8",
+      "stdout_sha256": "a4168294dd64adf9035db12fcc9e6e3e941eff18ca455bad8a4794caba09b342",
+      "branches": []
+    },
+    "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_": {
+      "start": "0xb7094",
+      "end": "0xb7098",
+      "stdout_sha256": "b3a0bbbf976f0c647298476cab21175a5377f0c15c639f67f3d6d54ef0c115a5",
+      "branches": []
+    },
+    "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_": {
+      "start": "0xaa55c",
+      "end": "0xaa58c",
+      "stdout_sha256": "26192f8b64557ec5b22ab21291c2bab1b2454e9b501d4e6249a81968d7df80fd",
+      "branches": [
+        "_bzero"
+      ]
+    },
+    "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg": {
+      "start": "0xb7074",
+      "end": "0xb7090",
+      "stdout_sha256": "8e1928cadcab0a9a451d7dbb0d8ee00d5392fa74b63b4c6ebe2c0388052e92d5",
+      "branches": []
+    },
+    "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_": {
+      "start": "0xf8b0",
+      "end": "0xf8c0",
+      "stdout_sha256": "23970acb9ebda81a79cd40b18428c272ceb5608d50aeb71f00eb377c6097cf94",
+      "branches": [
+        "_bzero"
+      ]
+    },
+    "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg": {
+      "start": "0xa3f3c",
+      "end": "0xa3f50",
+      "stdout_sha256": "8b776eb587544ee489947f41f7ca6bf12de46e643c481c72132fa310602ee678",
+      "branches": []
+    },
+    "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16VvgTm": {
+      "start": "0x19d80",
+      "end": "0x19da8",
+      "stdout_sha256": "e94d3cd09b5754087462b3885d629a19175e4f4e876d8074d65dc9be9697dcfc",
+      "branches": []
+    },
+    "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg": {
+      "start": "0xa6bac",
+      "end": "0xa6bc8",
+      "stdout_sha256": "fc2feb86fd55961a11aa8172fbed28b0865c2cbbb69e286822455b694d5973ed",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_2319": {
+      "start": "0xc6eec",
+      "end": "0xc6f00",
+      "stdout_sha256": "3599c555494dc9d94ba0577da3ddd85fddc99c504b1d9035720230d50ea0f1d6",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1712": {
+      "start": "0xc4c6c",
+      "end": "0xc4c7c",
+      "stdout_sha256": "1464f966fab153e613e3a0fbf1f03bb16472f92e4791d50377c8396f7d7e4f0b",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1496": {
+      "start": "0xc3fc8",
+      "end": "0xc3fd4",
+      "stdout_sha256": "de82c25e612d7788ad12ad40189300e8da2a2f5c42271eb2b556f10d670d0a97",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1940": {
+      "start": "0xc59e4",
+      "end": "0xc59ec",
+      "stdout_sha256": "d94c27de518c099dc7c820c5b9b0d35e5b8e51b28b12f60ccce1d6449f2f8db3",
+      "branches": [
+        "_$sSa034_makeUniqueAndReserveCapacityIfNotB0yyF17GiftUIInteraction26InteractionCandidateRecordVy0H14UISemanticCore24SemanticCompleteIdentityVG_Tg5Tm"
+      ]
+    },
+    "_OUTLINED_FUNCTION_651": {
+      "start": "0xbfe38",
+      "end": "0xbfe4c",
+      "stdout_sha256": "f554632bbbdcdf714c1530504468bf0f55ae6a955bcef4e270c8e536551d7e9b",
+      "branches": [
+        "_$sSa36_reserveCapacityAssumingUniqueBuffer8oldCountySi_tF17GiftUIInteraction26InteractionCandidateRecordVy0H14UISemanticCore24SemanticCompleteIdentityVG_Tg5Tm"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1203": {
+      "start": "0xc2b0c",
+      "end": "0xc2b20",
+      "stdout_sha256": "7ec36d39e5ab8b3aeae7a87e0a4ff09304e6009b336787d0bcab9fb28a68ee5c",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1711": {
+      "start": "0xc4c5c",
+      "end": "0xc4c6c",
+      "stdout_sha256": "89eb34189441517008fa03117c3d1cd8d7143f82bb53486a1e30492537e6eb7a",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_673": {
+      "start": "0xbff8c",
+      "end": "0xbffa0",
+      "stdout_sha256": "7edd6afe3633bcdf660b7f618127a8133454c09b7843223c1d426718fbf67290",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_637": {
+      "start": "0xbfd14",
+      "end": "0xbfd1c",
+      "stdout_sha256": "f49fe9ab43be5bf61daaf0d7249e34cebf86d366f3b2a435c5300f53be2577ff",
+      "branches": [
+        "_memcpy"
+      ]
+    },
+    "_$s17GiftUIInteraction20InteractionHitRegionVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_": {
+      "start": "0xb7cdc",
+      "end": "0xb7ce0",
+      "stdout_sha256": "b9f3d12e9656673a0dec78e5b798d2ea2f3ad632d559e29fabb3edc3d50e0322",
+      "branches": []
+    },
+    "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV7replace2at4withSbs6UInt16V_17GiftUIInteraction011InteractionD6RecordVy0O14UISemanticCore24SemanticCompleteIdentityVGntF": {
+      "start": "0x19904",
+      "end": "0x199bc",
+      "stdout_sha256": "2e81d8dadf2d9ac5f3769c8a9eb9ac193d92171bc4e5bf85f27e9e95ec4a09e3",
+      "branches": [
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_608",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_OUTLINED_FUNCTION_608",
+        "___swift_instantiateConcreteTypeFromMangledName",
+        "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV7replace2at4withSbs6UInt16V_0A13UIInteraction0dE6RecordVyxGntF",
+        "_OUTLINED_FUNCTION_503"
+      ]
+    },
+    "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE15finishCandidateAA0C5ErrorOSgyF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AH0h9CommittedK0AJLLVAH0h3HitK0AJLLVTg5": {
+      "start": "0xa5dec",
+      "end": "0xa623c",
+      "stdout_sha256": "14efd76df7572b1dee3058b9be7ef1e8362147727531e681210d1a25b7a8ec12",
+      "branches": [
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg",
+        "_memcpy",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16Vvg",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5counts6UInt16VvgTm",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOg",
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_memcpy",
+        "_memcpy",
+        "_memcpy",
+        "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi_",
+        "_memcpy",
+        "_swift_isUniquelyReferenced_nonNull_native",
+        "_memcpy",
+        "_swift_bridgeObjectRetain",
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+        "_swift_bridgeObjectRelease",
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5"
+      ]
+    },
+    "_OUTLINED_FUNCTION_2300": {
+      "start": "0xc6d00",
+      "end": "0xc6d1c",
+      "stdout_sha256": "f6b18e4ee58455f022b83320f02ff92adfea4b8251d469be21ff4186926c9dd8",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1783": {
+      "start": "0xc5138",
+      "end": "0xc5144",
+      "stdout_sha256": "8eb17e365e757e42760325b3351a727a19c110e91f5182ddb4403a9fbd55c3da",
+      "branches": []
+    },
+    "_$s17P08CounterRuntime0A14RoleTranscript33_480B1BD841D053AE4FCDC18507668536LLV6recordyyAA0aD11ObservationACLLVF": {
+      "start": "0x19cac",
+      "end": "0x19d08",
+      "stdout_sha256": "0ab26aa1504de103ad1f4dff50c95cb3fe127dfcde525eda1a8907b05506b66c",
+      "branches": [
+        "_OUTLINED_FUNCTION_608",
+        "_$s17P08CounterRuntime0A15RoleObservation33_480B1BD841D053AE4FCDC18507668536LLVSgWOi_",
+        "_OUTLINED_FUNCTION_608",
+        "_OUTLINED_FUNCTION_1350"
+      ]
+    },
+    "_OUTLINED_FUNCTION_465": {
+      "start": "0xbeeb8",
+      "end": "0xbeed4",
+      "stdout_sha256": "38c70c5b28bbb22afd75ac2da0d788b6036ebf7b9e13871a7709d4fc45703bba",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1743": {
+      "start": "0xc4e74",
+      "end": "0xc4e84",
+      "stdout_sha256": "3c1bf50f9c7d54616de9d34557ed2c4a81e4a8e38527f63b9cb71773fcce0462",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_430": {
+      "start": "0xbebf0",
+      "end": "0xbec04",
+      "stdout_sha256": "88029759f3278052f36758e85e67c3b7c15c98743da5fefefa4b19880816bc3e",
+      "branches": []
+    },
+    "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm": {
+      "start": "0x19ab8",
+      "end": "0x19b4c",
+      "stdout_sha256": "31d7394f69d9e06c9120f6673ab009383be31e1c5cb190c129d193698996f421",
+      "branches": [
+        "_OUTLINED_FUNCTION_1188",
+        "_swift_isUniquelyReferenced_nonNull_native",
+        "___swift_instantiateConcreteTypeFromMangledName",
+        "_OUTLINED_FUNCTION_601",
+        "_malloc_size",
+        "_OUTLINED_FUNCTION_823",
+        "_OUTLINED_FUNCTION_95"
+      ]
+    },
+    "_OUTLINED_FUNCTION_672": {
+      "start": "0xbff78",
+      "end": "0xbff8c",
+      "stdout_sha256": "f375c8aaf5ebd90f418f418d308c97110b879cd9043106631a3adb172b576dd5",
+      "branches": []
+    },
+    "_$s17GiftUIInteraction20InteractionHitRegionVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_": {
+      "start": "0xa6b6c",
+      "end": "0xa6b7c",
+      "stdout_sha256": "7da0153329707860f4282d53bfbc3d3aa816f62d4a04d439d99db67ba0b61a46",
+      "branches": [
+        "_bzero"
+      ]
+    },
+    "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5": {
+      "start": "0x19e80",
+      "end": "0x19f20",
+      "stdout_sha256": "fc81321c32ca1b91369dfb1d8a504c1cfa1513bd3bc60f5deab0071157791133",
+      "branches": [
+        "_swift_isUniquelyReferenced_nonNull_native",
+        "_$sSa15replaceSubrange_4withySnySiG_qd__nt7ElementQyd__RszSlRd__lF17GiftUIInteraction20InteractionHitRegionVy0E14UISemanticCore24SemanticCompleteIdentityVG_s15EmptyCollectionVyALGTg5",
+        "___swift_instantiateConcreteTypeFromMangledName",
+        "_swift_allocObject",
+        "_malloc_size",
+        "_swift_bridgeObjectRelease"
+      ]
+    },
+    "_$s17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_": {
+      "start": "0xa6b7c",
+      "end": "0xa6bac",
+      "stdout_sha256": "6b01e129ccb0b1a8473da6f5f683c87b45b9641c9018e5fec731ca2db00d0098",
+      "branches": [
+        "_bzero"
+      ]
+    },
+    "_OUTLINED_FUNCTION_200": {
+      "start": "0xbd42c",
+      "end": "0xbd440",
+      "stdout_sha256": "308b2170eb2d2198ec11389e95c54fb2b8863a4f8756425a2f58055ae9fd0db9",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1573": {
+      "start": "0xc445c",
+      "end": "0xc4468",
+      "stdout_sha256": "1bee3501a40924fe89ba0bf2598a39c189be8f4aea8fe610d770fbdcfe9efd56",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_385": {
+      "start": "0xbe85c",
+      "end": "0xbe868",
+      "stdout_sha256": "ee9ce2aa198055d27cd0ac53de486f96504d065d7c4160d490051214a730e0a2",
+      "branches": [
+        "_memcpy"
+      ]
+    },
+    "_OUTLINED_FUNCTION_1056": {
+      "start": "0xc2018",
+      "end": "0xc2020",
+      "stdout_sha256": "a0d04838a8d8f4af9c7f257405887ba5f2c306125d05e4e1884108d2e686ce4a",
+      "branches": []
+    },
+    "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16resolveCandidateyyAA0cF11DispositionOF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AG0h9CommittedK0AILLVAG0h3HitK0AILLVTg5": {
+      "start": "0xa5bb4",
+      "end": "0xa5c60",
+      "stdout_sha256": "6f4dfbf5e61c0cb247626a12679c11a8b10e35cba6cd4207f06098dc8ddb9de1",
+      "branches": [
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tFTm",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV16exchangeContents4withyADz_tFTm",
+        "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+        "_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF",
+        "_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLV5resetyyF"
+      ]
+    },
+    "_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF17P08CounterRuntime0W15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AT0W15CommittedAccessAVLLVAT0W9HitAccessAVLLVTg5": {
+      "start": "0xa5270",
+      "end": "0xa53c4",
+      "stdout_sha256": "f32c02db47c01bb19efe3abbcd139c060e7dde692e1149db40f595ced43f88d3",
+      "branches": [
+        "_memcpy",
+        "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg8IdentityQz_0A2UI4RectVAPs6UInt16VtF17P08CounterRuntime0Q15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AS0q9CommittedU0AULLVAS0q3HitU0AULLVTg5",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV9component2atAA0D13PathComponentVSgs6UInt16V_tF",
+        "_$s18GiftUISemanticCore24SemanticCompleteIdentityV9component2atAA0D13PathComponentVSgs6UInt16V_tF",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+        "_$s17GiftUIInteraction28InteractionFailurePrecedenceO6select4fromAA0C5ErrorOSgAA0C15VisibleFailuresV_tFZ"
+      ]
+    },
+    "_$sSa034_makeUniqueAndReserveCapacityIfNotB0yyF17GiftUIInteraction26InteractionCandidateRecordVy0H14UISemanticCore24SemanticCompleteIdentityVG_Tg5Tm": {
+      "start": "0xa4de8",
+      "end": "0xa4e34",
+      "stdout_sha256": "ca716d15cfe69f5cba9cbadb6afb46c440a75efa8bbffc76a5cd78ab409e51d1",
+      "branches": [
+        "_swift_isUniquelyReferenced_nonNull_native",
+        "_OUTLINED_FUNCTION_184"
+      ]
+    },
+    "_$sSa36_reserveCapacityAssumingUniqueBuffer8oldCountySi_tF17GiftUIInteraction26InteractionCandidateRecordVy0H14UISemanticCore24SemanticCompleteIdentityVG_Tg5Tm": {
+      "start": "0xa4e34",
+      "end": "0xa4e74",
+      "stdout_sha256": "cb6e049ce0ef693de6bb03aa85571febf818e040b3a41adfeb61b68ecbed9277",
+      "branches": []
+    },
+    "___swift_instantiateConcreteTypeFromMangledName": {
+      "start": "0xbec",
+      "end": "0xc2c",
+      "stdout_sha256": "e451c6f7e38d2742b8c7b119cd4674a34b55d6dbb585964417b7f378ce7e964d",
+      "branches": [
+        "_swift_getTypeByMangledNameInContext2"
+      ]
+    },
+    "_OUTLINED_FUNCTION_503": {
+      "start": "0xbf1d0",
+      "end": "0xbf1e0",
+      "stdout_sha256": "4c7f827e701a0087ea6c756d28b82c4f9bc8e7a51a0cd29485faa8bd3f0747b7",
+      "branches": []
+    },
+    "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5": {
+      "start": "0xa47d4",
+      "end": "0xa48dc",
+      "stdout_sha256": "c761738f48edac2135b406e3323085509480d97a90c73f0a5984047c21a3f81b",
+      "branches": [
+        "___swift_instantiateConcreteTypeFromMangledName",
+        "_swift_allocObject",
+        "_malloc_size",
+        "_memmove",
+        "_memcpy",
+        "_swift_bridgeObjectRelease"
+      ]
+    },
+    "_$s17P08CounterRuntime0A15RoleObservation33_480B1BD841D053AE4FCDC18507668536LLVSgWOi_": {
+      "start": "0xb7fd4",
+      "end": "0xb7fd8",
+      "stdout_sha256": "0d7f02d528afe3c4dfcfe170e1a32d063a9c74ed741b36e7c3bdddd46bb4aa6d",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1350": {
+      "start": "0xc3534",
+      "end": "0xc3540",
+      "stdout_sha256": "887abac05f7f52ee7e9e1eef5d81575d08291960142db90719d2f72e36dc757b",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_1188": {
+      "start": "0xc29f0",
+      "end": "0xc29fc",
+      "stdout_sha256": "c995ab1d9160994d56959057d7211320e00a95bc517a31f4bc43390d07969977",
+      "branches": []
+    },
+    "_OUTLINED_FUNCTION_601": {
+      "start": "0xbf8c0",
+      "end": "0xbf8c8",
+      "stdout_sha256": "38398c57b1f9fea1ecef34a3bbf3358ab6ade205f984485270f2f33f335ad0c1",
+      "branches": [
+        "_swift_allocObject"
+      ]
+    },
+    "_OUTLINED_FUNCTION_823": {
+      "start": "0xc0f44",
+      "end": "0xc0f4c",
+      "stdout_sha256": "65caea216f0780edad2249517a43c97963cb9ce7dd14c691df9d294afcc529a5",
+      "branches": [
+        "_swift_bridgeObjectRelease"
+      ]
+    },
+    "_OUTLINED_FUNCTION_95": {
+      "start": "0xbc910",
+      "end": "0xbc920",
+      "stdout_sha256": "fb11ed7a9ae555c1e7aba7cf8c34ad57c1cc7663af05989a253f577be127b3ed",
+      "branches": []
+    },
+    "_$sSa15replaceSubrange_4withySnySiG_qd__nt7ElementQyd__RszSlRd__lF17GiftUIInteraction20InteractionHitRegionVy0E14UISemanticCore24SemanticCompleteIdentityVG_s15EmptyCollectionVyALGTg5": {
+      "start": "0xa4ce8",
+      "end": "0xa4de8",
+      "stdout_sha256": "fd9a5460bb8c3b6d4d906dda368a23fb0229d19d43cf5da5fe34b3d34ca64d6f",
+      "branches": [
+        "_swift_isUniquelyReferenced_nonNull_native",
+        "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+        "_memmove"
+      ]
+    },
+    "_OUTLINED_FUNCTION_184": {
+      "start": "0xbd1f4",
+      "end": "0xbd200",
+      "stdout_sha256": "0532c208504e54ca80f36a59faa9e3e517e9c8112e96afa2ccbbd7aef64d8d89",
+      "branches": []
+    },
+    "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5": {
+      "start": "0xa48dc",
+      "end": "0xa49d8",
+      "stdout_sha256": "1e220528dd55066bf4eff54cd98fa9080f8fa499b307822ec85c7c77fefd2abb",
+      "branches": [
+        "___swift_instantiateConcreteTypeFromMangledName",
+        "_swift_allocObject",
+        "_malloc_size",
+        "_memmove",
+        "_memcpy",
+        "_swift_bridgeObjectRelease"
+      ]
+    }
+  },
+  "metadata_relocations": [
+    {
+      "function": "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV7replace2at4withSbs6UInt16V_17GiftUIInteraction011InteractionD6RecordVy0O14UISemanticCore24SemanticCompleteIdentityVGntF",
+      "line": "0000000000019988:  ARM64_RELOC_PAGE21\t_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageVy0A14UISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "function": "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV7replace2at4withSbs6UInt16V_17GiftUIInteraction011InteractionD6RecordVy0O14UISemanticCore24SemanticCompleteIdentityVGntF",
+      "line": "000000000001998c:  ARM64_RELOC_PAGEOFF12\t_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageVy0A14UISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "function": "_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV7replace2at4withSbs6UInt16V_17GiftUIInteraction011InteractionD6RecordVy0O14UISemanticCore24SemanticCompleteIdentityVGntF",
+      "line": "0000000000019990:  ARM64_RELOC_BRANCH26\t___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "function": "_OUTLINED_FUNCTION_430",
+      "line": "00000000000bebf8:  ARM64_RELOC_PAGE21\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction26InteractionCandidateRecordVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_OUTLINED_FUNCTION_430",
+      "line": "00000000000bebfc:  ARM64_RELOC_PAGEOFF12\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction26InteractionCandidateRecordVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5Tm",
+      "line": "0000000000019b10:  ARM64_RELOC_BRANCH26\t___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "function": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "line": "0000000000019ecc:  ARM64_RELOC_PAGE21\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction20InteractionHitRegionVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "line": "0000000000019ed0:  ARM64_RELOC_PAGEOFF12\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction20InteractionHitRegionVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageV5resetyyF0A14UISemanticCore24SemanticCompleteIdentityV_Tg5",
+      "line": "0000000000019ed4:  ARM64_RELOC_BRANCH26\t___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "function": "_OUTLINED_FUNCTION_200",
+      "line": "00000000000bd434:  ARM64_RELOC_PAGE21\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction17BoundActionRecordVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_OUTLINED_FUNCTION_200",
+      "line": "00000000000bd438:  ARM64_RELOC_PAGEOFF12\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction17BoundActionRecordVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "___swift_instantiateConcreteTypeFromMangledName",
+      "line": "0000000000000c20:  ARM64_RELOC_BRANCH26\t_swift_getTypeByMangledNameInContext2"
+    },
+    {
+      "function": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "line": "00000000000a4834:  ARM64_RELOC_PAGE21\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction17BoundActionRecordVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "line": "00000000000a4838:  ARM64_RELOC_PAGEOFF12\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction17BoundActionRecordVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction17BoundActionRecordVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "line": "00000000000a483c:  ARM64_RELOC_BRANCH26\t___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "function": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "line": "00000000000a493c:  ARM64_RELOC_PAGE21\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction20InteractionHitRegionVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "line": "00000000000a4940:  ARM64_RELOC_PAGEOFF12\t_$ss23_ContiguousArrayStorageCy17GiftUIInteraction20InteractionHitRegionVy0D14UISemanticCore24SemanticCompleteIdentityVGGMD"
+    },
+    {
+      "function": "_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtF17GiftUIInteraction20InteractionHitRegionVy0O14UISemanticCore24SemanticCompleteIdentityVG_Tg5",
+      "line": "00000000000a4944:  ARM64_RELOC_BRANCH26\t___swift_instantiateConcreteTypeFromMangledName"
+    }
+  ],
+  "external_targets": [
+    "_$s12GiftUILayout14LayoutGeometryO12intersectiony0A2UI4RectVSgAG_AGtFZ",
+    "_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF",
+    "_$s17GiftUIInteraction28InteractionFailurePrecedenceO6select4fromAA0C5ErrorOSgAA0C15VisibleFailuresV_tFZ",
+    "_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ",
+    "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF",
+    "_$s18GiftUISemanticCore24SemanticCompleteIdentityV9component2atAA0D13PathComponentVSgs6UInt16V_tF",
+    "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACycfC",
+    "_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV7replace2at4withSbs6UInt16V_0A13UIInteraction0dE6RecordVyxGntF",
+    "_$s6GiftUI20PresentationRevisionV8rawValueACs6UInt32V_tcfC",
+    "_$s6GiftUI4RectV23__derived_struct_equalsySbAC_ACtFZ",
+    "_$s6GiftUI4RectV8containsySbAA5PointVF",
+    "___stack_chk_fail",
+    "_bzero",
+    "_malloc_size",
+    "_memcpy",
+    "_memmove",
+    "_swift_allocObject",
+    "_swift_bridgeObjectRelease",
+    "_swift_bridgeObjectRetain",
+    "_swift_getTypeByMangledNameInContext2",
+    "_swift_isUniquelyReferenced_nonNull_native"
+  ],
+  "stdout_bytes": 297834,
+  "stdout_sha256": "98905bf0f184129f0f1d0564e76d24ac32e0a040336a1c705b0d1aa70a5164c6"
+}

@@ -1,0 +1,15 @@
+
+.build/contracts/p08-counter-dqcirgbq/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c6e98 <_OUTLINED_FUNCTION_2316>:
+   c6e98:      	stp	q0, q1, [x8, #0x80]
+   c6e9c:      	str	q2, [x8, #0xa0]
+   c6ea0:      	stp	q3, q4, [x8, #0xe0]
+   c6ea4:      	str	q5, [x8, #0x100]
+   c6ea8:      	stp	q6, q7, [x8, #0x140]
+   c6eac:      	str	q16, [x8, #0x160]
+   c6eb0:      	stp	q17, q18, [x8, #0x1a0]
+   c6eb4:      	str	q19, [x8, #0x1c0]
+   c6eb8:      	ret
