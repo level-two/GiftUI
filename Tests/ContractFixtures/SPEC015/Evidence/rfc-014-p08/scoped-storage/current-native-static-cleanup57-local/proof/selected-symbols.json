@@ -1,0 +1,110 @@
+[
+  {
+    "addr": "0x7bb0",
+    "end": "0x7c0c",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8modelKey8identity7ordinal0A2UI01_a7UIModelH0Vy6SchemaQzGSgq__s6UInt16VtF17P08CounterRuntime0P10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0x7d98",
+    "end": "0x7f60",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8shutdownyyAA0dC5ErrorOYKF17P08CounterRuntime0J10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0x81f0",
+    "end": "0x83fc",
+    "kind": "T",
+    "name": "_$s17P08CounterRuntime03p08B8SemanticSiyF"
+  },
+  {
+    "addr": "0x8d18",
+    "end": "0x8d48",
+    "kind": "t",
+    "name": "_$s17P08CounterRuntime03p08B8SemanticSiyFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedJ0V0aB6Schema0bjM0OG_AC0ih4RootK0VyAG0F14UISemanticCore0E16CompleteIdentityVGtAC0iH5ErrorOYKXEfU0_"
+  },
+  {
+    "addr": "0x59124",
+    "end": "0x59160",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7belongs2toSbAA0d5ModelF0Vyx6SchemaQzG_tF17P08CounterRuntime0l5OwnedI0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0x86c20",
+    "end": "0x86e18",
+    "kind": "T",
+    "name": "_$s17P08CounterRuntime03p08B11CoordinatorSiyF"
+  },
+  {
+    "addr": "0x98310",
+    "end": "0x98458",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0x986bc",
+    "end": "0x9876c",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE14checkOperation9discoveryySb_tAA0dC5ErrorOYKF17P08CounterRuntime0L10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0x9876c",
+    "end": "0x98948",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6retireyySiAA0dC5ErrorOYKF17P08CounterRuntime0J10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0x98948",
+    "end": "0x98cec",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE13releaseOffersyyAA0dC5ErrorOYKF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0xa757c",
+    "end": "0xa75ec",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5"
+  },
+  {
+    "addr": "0xa9a7c",
+    "end": "0xa9bac",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE9preserved_7ordinal5stateSbq__s6UInt16V0A2UI0C0Vy6SchemaQzGztAA0dC5ErrorOYKF17P08CounterRuntime0O10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0xa9bac",
+    "end": "0xaa10c",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7install_7ordinal5state6ticketyq__s6UInt16V0A2UI0C0Vy6SchemaQzGzAA0D11ModelTicketVyANGztAA0dC5ErrorOYKF17P08CounterRuntime0r5OwnedN0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0xaa10c",
+    "end": "0xaa1fc",
+    "kind": "T",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE4bind_4sloty0A2UI0C0Vy6SchemaQzGz_SitAA0dC5ErrorOYKF17P08CounterRuntime0M10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+  },
+  {
+    "addr": "0xbb82c",
+    "end": "0xbb830",
+    "kind": "t",
+    "name": "l_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable"
+  },
+  {
+    "addr": "0xcb8d0",
+    "end": "0xcb8d8",
+    "kind": "D",
+    "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD"
+  },
+  {
+    "addr": "0xcc840",
+    "end": "0xcc852",
+    "kind": "S",
+    "name": "_symbolic _____y__________G 21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE 17P08CounterRuntime0H10OwnedModelV 0A14UISemanticCore24SemanticCompleteIdentityV"
+  },
+  {
+    "addr": "0xcd1e6",
+    "end": "0xcd1ec",
+    "kind": "S",
+    "name": "_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable.11"
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+    "before": {
+      "sha256": "80120fed865f670b011e2b374763b9dce524e53b3b8c8cf58feee516abac0d52",
+      "bytes": 34342
+    },
+    "after": {
+      "sha256": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205",
+      "bytes": 34373
+    },
+    "nonattribute_tokens_equal": true
+  },
+  "Sources/GiftUIObservableState/ObservableModelScope.swift": {
+    "before": {
+      "sha256": "ead38d7ed28f6fa6b768fca10d3d5c828ffa224efaea73ecb629952ec4f27e7b",
+      "bytes": 13856
+    },
+    "after": {
+      "sha256": "61f3dec08d89c44f71866befdd763dfa8206b27b73f3aecf4ee9106e093733e6",
+      "bytes": 13894
+    },
+    "nonattribute_tokens_equal": true
+  },
+  "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+    "before": {
+      "sha256": "8684afa937f1d80aed8d26e82840ac924c6774cb9e820276b295d323069e5237",
+      "bytes": 17551
+    },
+    "after": {
+      "sha256": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832",
+      "bytes": 17684
+    },
+    "nonattribute_tokens_equal": true
+  }
+}

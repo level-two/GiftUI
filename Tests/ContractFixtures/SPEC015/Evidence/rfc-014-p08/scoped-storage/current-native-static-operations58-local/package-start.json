@@ -1,0 +1,8 @@
+{
+  "started_utc": "2026-10-24T08:05:38.491433+00:00",
+  "kind": "ordinary implementation assessment/correction; carries frozen cleanup57",
+  "full_authorized": false,
+  "retained_ceiling": 2147483648,
+  "final_reserve": 33554432,
+  "baseline": ".build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o"
+}

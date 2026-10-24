@@ -1,0 +1,13 @@
+
+.build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a78f0 <l___unnamed_1>:
+   a78f0:      	ldrb	w8, [x0, #0x7c]
+   a78f4:      	cmp	w8, #0x5
+   a78f8:      	b.ne	0xa7904 <l___unnamed_1+0x14>
+   a78fc:      	and	w3, w3, #0x1ffff
+   a7900:      	b	0xa7900 <l___unnamed_1+0x10>
+		00000000000a7900:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5
+   a7904:      	ret

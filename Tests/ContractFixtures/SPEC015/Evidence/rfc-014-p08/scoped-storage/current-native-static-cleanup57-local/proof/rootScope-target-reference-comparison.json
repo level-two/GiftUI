@@ -1,0 +1,752 @@
+{
+  "before": {
+    "object": ".build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o",
+    "sha256": "6e821518a1f04adf06cf9792fbd9c2130fa60907abe68fc9fc2dcd04232f9abe",
+    "text_bytes": 814868,
+    "target_symbols": [
+      {
+        "name": "l_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable",
+        "addr": 766296,
+        "section": 1,
+        "type": 14
+      },
+      {
+        "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "addr": 832016,
+        "section": 6,
+        "type": 31
+      },
+      {
+        "name": "_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable.11",
+        "addr": 838454,
+        "section": 7,
+        "type": 31
+      }
+    ],
+    "text_references": [
+      {
+        "pc": "0xbf5f8",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xbf5f4",
+        "owner": "_OUTLINED_FUNCTION_559"
+      },
+      {
+        "pc": "0xbf5f4",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xbf5f4",
+        "owner": "_OUTLINED_FUNCTION_559"
+      },
+      {
+        "pc": "0xadcd8",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xadcc8",
+        "owner": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable"
+      },
+      {
+        "pc": "0xadcd4",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xadcc8",
+        "owner": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable"
+      },
+      {
+        "pc": "0xa6fc0",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xa6d98",
+        "owner": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n"
+      },
+      {
+        "pc": "0xa6fbc",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xa6d98",
+        "owner": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n"
+      },
+      {
+        "pc": "0xa6f14",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xa6d98",
+        "owner": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n"
+      },
+      {
+        "pc": "0xa6f10",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xa6d98",
+        "owner": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n"
+      },
+      {
+        "pc": "0x758b4",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x757a8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0q14TwoInteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAA0qst9CommittedU0VyAQGAA0qst3HitU0VyAQGTg5"
+      },
+      {
+        "pc": "0x758b0",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x757a8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0q14TwoInteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAA0qst9CommittedU0VyAQGAA0qst3HitU0VyAQGTg5"
+      },
+      {
+        "pc": "0x7560c",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x75510",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0klQ00q11InteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAM0qs9CommittedT0VyARGAM0qs3HitT0VyARGTg5"
+      },
+      {
+        "pc": "0x75608",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x75510",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0klQ00q11InteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAM0qs9CommittedT0VyARGAM0qs3HitT0VyARGTg5"
+      },
+      {
+        "pc": "0x75374",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x75278",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5"
+      },
+      {
+        "pc": "0x75370",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x75278",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5"
+      },
+      {
+        "pc": "0x74bd0",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x749cc",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF"
+      },
+      {
+        "pc": "0x74bcc",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x749cc",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF"
+      },
+      {
+        "pc": "0x743e4",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x741b0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5"
+      },
+      {
+        "pc": "0x743e0",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x741b0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5"
+      },
+      {
+        "pc": "0x73bfc",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x739d8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00ogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0og9CommittedQ0VyARGAM0og3HitQ0VyARGTg5"
+      },
+      {
+        "pc": "0x73bf8",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x739d8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00ogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0og9CommittedQ0VyARGAM0og3HitQ0VyARGTg5"
+      },
+      {
+        "pc": "0x73494",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x73270",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5"
+      },
+      {
+        "pc": "0x73490",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x73270",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5"
+      },
+      {
+        "pc": "0x71b38",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x71a74",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA06StaticB8GeometryV_AA0I30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0ikl9CommittedN0VyAKGAA0ikl3HitN0VyAKGTg5"
+      },
+      {
+        "pc": "0x71b34",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x71a74",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA06StaticB8GeometryV_AA0I30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0ikl9CommittedN0VyAKGAA0ikl3HitN0VyAKGTg5"
+      },
+      {
+        "pc": "0x719cc",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x71910",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA07DynamicB8GeometryV_013GiftUIRuntimeI00I27InteractionCandidateStorageVy0K14UISemanticCore24SemanticCompleteIdentityVGAG0im9CommittedO0VyALGAG0im3HitO0VyALGTg5"
+      },
+      {
+        "pc": "0x719c8",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x71910",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA07DynamicB8GeometryV_013GiftUIRuntimeI00I27InteractionCandidateStorageVy0K14UISemanticCore24SemanticCompleteIdentityVGAG0im9CommittedO0VyALGAG0im3HitO0VyALGTg5"
+      },
+      {
+        "pc": "0x71868",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x717ac",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5"
+      },
+      {
+        "pc": "0x71864",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x717ac",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5"
+      },
+      {
+        "pc": "0x6b668",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x6b4b0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5"
+      },
+      {
+        "pc": "0x6b664",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x6b4b0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5"
+      },
+      {
+        "pc": "0x67e74",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x67cbc",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5"
+      },
+      {
+        "pc": "0x67e70",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x67cbc",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5"
+      },
+      {
+        "pc": "0x64680",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x644c8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5"
+      },
+      {
+        "pc": "0x6467c",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x644c8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5"
+      },
+      {
+        "pc": "0x63ad8",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x63904",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA06StaticB8GeometryV_AA0T30TwoInteractionCandidateStorageVyAPGAA0tvw9CommittedY0VyAPGAA0tvw3HitY0VyAPGTg5"
+      },
+      {
+        "pc": "0x63ad4",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x63904",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA06StaticB8GeometryV_AA0T30TwoInteractionCandidateStorageVyAPGAA0tvw9CommittedY0VyAPGAA0tvw3HitY0VyAPGTg5"
+      },
+      {
+        "pc": "0x63758",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x63584",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA07DynamicB8GeometryV_0ghT00T27InteractionCandidateStorageVyAPGAT0tv9CommittedX0VyAPGAT0tv3HitX0VyAPGTg5"
+      },
+      {
+        "pc": "0x63754",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x63584",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA07DynamicB8GeometryV_0ghT00T27InteractionCandidateStorageVyAPGAT0tv9CommittedX0VyAPGAT0tv3HitX0VyAPGTg5"
+      },
+      {
+        "pc": "0x633d8",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x63204",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateU0ASLLVAA0a9CommittedU0ASLLVAA0a3HitU0ASLLVTg5"
+      },
+      {
+        "pc": "0x633d4",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x63204",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateU0ASLLVAA0a9CommittedU0ASLLVAA0a3HitU0ASLLVTg5"
+      },
+      {
+        "pc": "0x5ed24",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x5ec8c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AHLLVAA0a9CommittedJ0AHLLVAA0a3HitJ0AHLLVTg5"
+      },
+      {
+        "pc": "0x5ed20",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x5ec8c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AHLLVAA0a9CommittedJ0AHLLVAA0a3HitJ0AHLLVTg5"
+      },
+      {
+        "pc": "0x54b8c",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x54a00",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyFAA06StaticB8GeometryV_AA0H30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0hjk9CommittedM0VyAKGAA0hjk3HitM0VyAKGTg5"
+      },
+      {
+        "pc": "0x54b88",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x54a00",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyFAA06StaticB8GeometryV_AA0H30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0hjk9CommittedM0VyAKGAA0hjk3HitM0VyAKGTg5"
+      },
+      {
+        "pc": "0x548ec",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x54764",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyFAA07DynamicB8GeometryV_013GiftUIRuntimeH00H27InteractionCandidateStorageVy0J14UISemanticCore24SemanticCompleteIdentityVGAG0hl9CommittedN0VyALGAG0hl3HitN0VyALGTg5"
+      },
+      {
+        "pc": "0x548e8",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x54764",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyFAA07DynamicB8GeometryV_013GiftUIRuntimeH00H27InteractionCandidateStorageVy0J14UISemanticCore24SemanticCompleteIdentityVGAG0hl9CommittedN0VyALGAG0hl3HitN0VyALGTg5"
+      },
+      {
+        "pc": "0x54648",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x544c4",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateI0AFLLVAA0a9CommittedI0AFLLVAA0a3HitI0AFLLVTg5"
+      },
+      {
+        "pc": "0x54644",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x544c4",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateI0AFLLVAA0a9CommittedI0AFLLVAA0a3HitI0AFLLVTg5"
+      },
+      {
+        "pc": "0x8a74",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x8848",
+        "owner": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5"
+      },
+      {
+        "pc": "0x8a70",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x8848",
+        "owner": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5"
+      },
+      {
+        "pc": "0x8a2c",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x8848",
+        "owner": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5"
+      },
+      {
+        "pc": "0x8a28",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x8848",
+        "owner": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5"
+      },
+      {
+        "pc": "0x8770",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x853c",
+        "owner": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab57Runtime23counterForeignJoinScope7backing7foreign_SiAA0B17def21Vz_AA0B7ControlVzSi21jk8State015mo9G0VyAA0b5q37R0V0aB6Schema0brT0OG_AI0qpkG0VyAM0N14s6Core24uvw27VGSpyAHGtXEtFSiAQ_AWtAI0qP5X8OYKXEfU_AA0B7ControlVApVSpyA_GSiIgggyd_Tf1ncn_n"
+      },
+      {
+        "pc": "0x876c",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x853c",
+        "owner": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab57Runtime23counterForeignJoinScope7backing7foreign_SiAA0B17def21Vz_AA0B7ControlVzSi21jk8State015mo9G0VyAA0b5q37R0V0aB6Schema0brT0OG_AI0qpkG0VyAM0N14s6Core24uvw27VGSpyAHGtXEtFSiAQ_AWtAI0qP5X8OYKXEfU_AA0B7ControlVApVSpyA_GSiIgggyd_Tf1ncn_n"
+      },
+      {
+        "pc": "0x265c",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x259c",
+        "owner": "_$s17P08CounterRuntime08exerciseB033_525B8117856EA287A828C133BA1BFF60LL_6models4root7dynamicSi18GiftUISemanticCore19SemanticRecordStoreVy0N9UIDrawing06CanvasQ7PayloadOy0aB5Table0ab6SchemaU6ValuesOyAA0B6DomainOGGG_0N17UIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0abX00b5ModelX0OGAU24ObservableStateRootScopeVyAyG0Q16CompleteIdentityVGSbtAG0Q14ExpansionErrorOYKF"
+      },
+      {
+        "pc": "0x2658",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x259c",
+        "owner": "_$s17P08CounterRuntime08exerciseB033_525B8117856EA287A828C133BA1BFF60LL_6models4root7dynamicSi18GiftUISemanticCore19SemanticRecordStoreVy0N9UIDrawing06CanvasQ7PayloadOy0aB5Table0ab6SchemaU6ValuesOyAA0B6DomainOGGG_0N17UIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0abX00b5ModelX0OGAU24ObservableStateRootScopeVyAyG0Q16CompleteIdentityVGSbtAG0Q14ExpansionErrorOYKF"
+      }
+    ],
+    "entry_ranges": [
+      {
+        "addr": "0x80ec8",
+        "end": "0x81288",
+        "name": "_$s17P08CounterRuntime06StaticB14ProfileStorageV10modelOwner08semanticH06limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0K14UISemanticCore014SemanticRecordhP0V0k9UIRuntimeR00cE6LimitsVtcfC"
+      },
+      {
+        "addr": "0x84638",
+        "end": "0x8481c",
+        "name": "_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF"
+      }
+    ]
+  },
+  "after": {
+    "object": ".build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o",
+    "sha256": "cf16eef566cc4d3a89e97562fa5010c6078313b0d7385a1c95ec3cfca4a7636a",
+    "text_bytes": 816580,
+    "target_symbols": [
+      {
+        "name": "l_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable",
+        "addr": 768044,
+        "section": 1,
+        "type": 14
+      },
+      {
+        "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "addr": 833744,
+        "section": 6,
+        "type": 31
+      },
+      {
+        "name": "_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable.11",
+        "addr": 840166,
+        "section": 7,
+        "type": 31
+      }
+    ],
+    "text_references": [
+      {
+        "pc": "0xc06e0",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xc06dc",
+        "owner": "_OUTLINED_FUNCTION_682"
+      },
+      {
+        "pc": "0xc06dc",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xc06dc",
+        "owner": "_OUTLINED_FUNCTION_682"
+      },
+      {
+        "pc": "0xae3a4",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xae394",
+        "owner": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable"
+      },
+      {
+        "pc": "0xae3a0",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0xae394",
+        "owner": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable"
+      },
+      {
+        "pc": "0x75994",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x75888",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0q14TwoInteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAA0qst9CommittedU0VyAQGAA0qst3HitU0VyAQGTg5"
+      },
+      {
+        "pc": "0x75990",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x75888",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0q14TwoInteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAA0qst9CommittedU0VyAQGAA0qst3HitU0VyAQGTg5"
+      },
+      {
+        "pc": "0x756ec",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x755f0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0klQ00q11InteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAM0qs9CommittedT0VyARGAM0qs3HitT0VyARGTg5"
+      },
+      {
+        "pc": "0x756e8",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x755f0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0klQ00q11InteractionJ7StorageVy0k10UISemanticM00G16CompleteIdentityVGAM0qs9CommittedT0VyARGAM0qs3HitT0VyARGTg5"
+      },
+      {
+        "pc": "0x75454",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x75358",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5"
+      },
+      {
+        "pc": "0x75450",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x75358",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ajR0ALLLVAA0a9CommittedR0ALLLVAA0a3HitR0ALLLVTg5"
+      },
+      {
+        "pc": "0x74cb0",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x74aac",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF"
+      },
+      {
+        "pc": "0x74cac",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x74aac",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF"
+      },
+      {
+        "pc": "0x744c4",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x74290",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5"
+      },
+      {
+        "pc": "0x744c0",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x74290",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5"
+      },
+      {
+        "pc": "0x73cdc",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x73ab8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00ogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0og9CommittedQ0VyARGAM0og3HitQ0VyARGTg5"
+      },
+      {
+        "pc": "0x73cd8",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x73ab8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00ogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0og9CommittedQ0VyARGAM0og3HitQ0VyARGTg5"
+      },
+      {
+        "pc": "0x73574",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x73350",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5"
+      },
+      {
+        "pc": "0x73570",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x73350",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5"
+      },
+      {
+        "pc": "0x71c18",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x71b54",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA06StaticB8GeometryV_AA0I30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0ikl9CommittedN0VyAKGAA0ikl3HitN0VyAKGTg5"
+      },
+      {
+        "pc": "0x71c14",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x71b54",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA06StaticB8GeometryV_AA0I30TwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGAA0ikl9CommittedN0VyAKGAA0ikl3HitN0VyAKGTg5"
+      },
+      {
+        "pc": "0x71aac",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x719f0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA07DynamicB8GeometryV_013GiftUIRuntimeI00I27InteractionCandidateStorageVy0K14UISemanticCore24SemanticCompleteIdentityVGAG0im9CommittedO0VyALGAG0im3HitO0VyALGTg5"
+      },
+      {
+        "pc": "0x71aa8",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x719f0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA07DynamicB8GeometryV_013GiftUIRuntimeI00I27InteractionCandidateStorageVy0K14UISemanticCore24SemanticCompleteIdentityVGAG0im9CommittedO0VyALGAG0im3HitO0VyALGTg5"
+      },
+      {
+        "pc": "0x71948",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x7188c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5"
+      },
+      {
+        "pc": "0x71944",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x7188c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AFLLVAA0a9CommittedJ0AFLLVAA0a3HitJ0AFLLVTg5"
+      },
+      {
+        "pc": "0x6b748",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x6b590",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5"
+      },
+      {
+        "pc": "0x6b744",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x6b590",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5"
+      },
+      {
+        "pc": "0x67f54",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x67d9c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5"
+      },
+      {
+        "pc": "0x67f50",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x67d9c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5"
+      },
+      {
+        "pc": "0x64760",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x645a8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5"
+      },
+      {
+        "pc": "0x6475c",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x645a8",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5"
+      },
+      {
+        "pc": "0x63bb8",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x639e4",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA06StaticB8GeometryV_AA0T30TwoInteractionCandidateStorageVyAPGAA0tvw9CommittedY0VyAPGAA0tvw3HitY0VyAPGTg5"
+      },
+      {
+        "pc": "0x63bb4",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x639e4",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA06StaticB8GeometryV_AA0T30TwoInteractionCandidateStorageVyAPGAA0tvw9CommittedY0VyAPGAA0tvw3HitY0VyAPGTg5"
+      },
+      {
+        "pc": "0x63838",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x63664",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA07DynamicB8GeometryV_0ghT00T27InteractionCandidateStorageVyAPGAT0tv9CommittedX0VyAPGAT0tv3HitX0VyAPGTg5"
+      },
+      {
+        "pc": "0x63834",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x63664",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA07DynamicB8GeometryV_0ghT00T27InteractionCandidateStorageVyAPGAT0tv9CommittedX0VyAPGAT0tv3HitX0VyAPGTg5"
+      },
+      {
+        "pc": "0x634b8",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x632e4",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateU0ASLLVAA0a9CommittedU0ASLLVAA0a3HitU0ASLLVTg5"
+      },
+      {
+        "pc": "0x634b4",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x632e4",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateU0ASLLVAA0a9CommittedU0ASLLVAA0a3HitU0ASLLVTg5"
+      },
+      {
+        "pc": "0x5ee04",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x5ed6c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AHLLVAA0a9CommittedJ0AHLLVAA0a3HitJ0AHLLVTg5"
+      },
+      {
+        "pc": "0x5ee00",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x5ed6c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateJ0AHLLVAA0a9CommittedJ0AHLLVAA0a3HitJ0AHLLVTg5"
+      },
+      {
+        "pc": "0x2668",
+        "type": 4,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x25a4",
+        "owner": "_$s17P08CounterRuntime08exerciseB033_525B8117856EA287A828C133BA1BFF60LL_6models4root7dynamicSi18GiftUISemanticCore19SemanticRecordStoreVy0N9UIDrawing06CanvasQ7PayloadOy0aB5Table0ab6SchemaU6ValuesOyAA0B6DomainOGGG_0N17UIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0abX00b5ModelX0OGAU24ObservableStateRootScopeVyAyG0Q16CompleteIdentityVGSbtAG0Q14ExpansionErrorOYKF"
+      },
+      {
+        "pc": "0x2664",
+        "type": 3,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "owner_addr": "0x25a4",
+        "owner": "_$s17P08CounterRuntime08exerciseB033_525B8117856EA287A828C133BA1BFF60LL_6models4root7dynamicSi18GiftUISemanticCore19SemanticRecordStoreVy0N9UIDrawing06CanvasQ7PayloadOy0aB5Table0ab6SchemaU6ValuesOyAA0B6DomainOGGG_0N17UIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0abX00b5ModelX0OGAU24ObservableStateRootScopeVyAyG0Q16CompleteIdentityVGSbtAG0Q14ExpansionErrorOYKF"
+      }
+    ],
+    "entry_ranges": [
+      {
+        "addr": "0x80fb0",
+        "end": "0x81370",
+        "name": "_$s17P08CounterRuntime06StaticB14ProfileStorageV10modelOwner08semanticH06limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0K14UISemanticCore014SemanticRecordhP0V0k9UIRuntimeR00cE6LimitsVtcfC"
+      },
+      {
+        "addr": "0x84720",
+        "end": "0x84904",
+        "name": "_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF"
+      }
+    ]
+  }
+}

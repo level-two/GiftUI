@@ -82,6 +82,7 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
         }
     }
 
+    @usableFromInline
     mutating func retire(
         attachment: _GiftUIObservationAttachment
     ) -> ObservableStateError? {

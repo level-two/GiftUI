@@ -1,0 +1,36 @@
+[
+  {
+    "tag": "commitReplacement",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x994b4",
+      "--stop-address=0x995c8",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 7262,
+    "sha256": "e41cf709275b9d617b62410a29104381b8e70247db015d071760d32af3cbad7a",
+    "stderr_bytes": 0,
+    "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE17commitReplacement_12transferringAA0dE6TicketVyq_GAA0dE9OwnershipV0H0V_AHztAA0dC5ErrorOYKF17P08CounterRuntime0n5OwnedE0V_0mN6Schema0neQ0OTg5"
+  },
+  {
+    "tag": "model-mutate",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x988fc",
+      "--stop-address=0x98ad8",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 27746,
+    "sha256": "81d33596f4fea4e1d0ec80853110a007a9d61ea5f72b261520a5f68fdea7d92b",
+    "stderr_bytes": 0,
+    "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF17P08CounterRuntime0s5OwnedE0V_0rS6Schema0seV0OTg504$s21ab8State010d6C9Rootf59VAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6j50Oq__s6UInt16V0A11UIExecution0D16TargetGenerationV8n5AA0d5e29Q0PQzyXEtAaQRzrlF0A2UI01_aB19opq9OyXEfU_17rs10Runtime0x5U52R0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5AA0dczF0VyAT0A14UISemanticCore24SemanticCompleteIdentityVGAKyAWGTf1nncn_nTm"
+  }
+]

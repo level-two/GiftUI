@@ -1,0 +1,12 @@
+
+.build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c06dc <_OUTLINED_FUNCTION_682>:
+   c06dc:      	adrp	x0, 0xc0000 <_OUTLINED_FUNCTION_610>
+		00000000000c06dc:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD
+   c06e0:      	add	x0, x0, #0x0
+		00000000000c06e0:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD
+   c06e4:      	b	0xc06e4 <_OUTLINED_FUNCTION_682+0x8>
+		00000000000c06e4:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName

@@ -1,0 +1,65 @@
+
+.build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000098cec <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5>:
+   98cec:      	sub	sp, sp, #0x110
+   98cf0:      	stp	x28, x26, [sp, #0xc0]
+   98cf4:      	stp	x25, x24, [sp, #0xd0]
+   98cf8:      	stp	x23, x22, [sp, #0xe0]
+   98cfc:      	stp	x20, x19, [sp, #0xf0]
+   98d00:      	stp	x29, x30, [sp, #0x100]
+   98d04:      	add	x29, sp, #0x100
+   98d08:      	mov	x19, x21
+   98d0c:      	mov	x23, x6
+   98d10:      	mov	x24, x4
+   98d14:      	mov	x22, x2
+   98d18:      	mov	x25, x1
+   98d1c:      	mov	x26, x0
+   98d20:      	add	x0, sp, #0x4
+   98d24:      	mov	x1, x3
+   98d28:      	mov	w2, #0xb9               ; =185
+   98d2c:      	bl	0x98d2c <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0x40>
+		0000000000098d2c:  ARM64_RELOC_BRANCH26	_memcpy
+   98d30:      	add	x20, sp, #0x4
+   98d34:      	mov	x0, x26
+   98d38:      	mov	x1, x25
+   98d3c:      	mov	x2, x23
+   98d40:      	mov	x21, x19
+   98d44:      	bl	0x98d44 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0x58>
+		0000000000098d44:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV13callbackIndex_6schemaSiAC7AddressV_s6UInt16VtAA0dC5ErrorOYKF
+   98d48:      	mov	x19, x0
+   98d4c:      	cbnz	x21, 0x98d94 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0xa8>
+   98d50:      	add	x20, x24, x19, lsl #5
+   98d54:      	ldr	x8, [x20, #0x18]
+   98d58:      	cmp	x8, #0x1
+   98d5c:      	b.eq	0x98d74 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0x88>
+   98d60:      	mov	x23, x21
+   98d64:      	and	x0, x22, #0xffffffff0000ffff
+   98d68:      	bl	0x98d68 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0x7c>
+		0000000000098d68:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B10OwnedModelV6detachySb6GiftUI01_G23UIObservationAttachmentVF
+   98d6c:      	tbz	w0, #0x0, 0x98d74 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0x88>
+   98d70:      	b	0x98d98 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0xac>
+   98d74:      	mov	w19, #0xb               ; =11
+   98d78:      	strb	w19, [sp, #0x3]
+   98d7c:      	bl	0x98d7c <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0x90>
+		0000000000098d7c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+   98d80:      	mov	x2, x0
+   98d84:      	adrp	x1, 0x98000 <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5+0x20>
+		0000000000098d84:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+   98d88:      	ldr	x1, [x1]
+		0000000000098d88:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+   98d8c:      	add	x0, sp, #0x3
+   98d90:      	bl	0x98d90 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6detach_10attachmenty0A2UI01_A10UIModelKeyVyq_G_AF01_A23UIObservationAttachmentVtAA0dC5ErrorOYKAA0dcE0Rz6SchemaQzRs_rlF17P08CounterRuntime0q5OwnedE0V_0pqO00qeO0OTg5+0xa4>
+		0000000000098d90:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+   98d94:      	mov	w23, #0x1               ; =1
+   98d98:      	mov	x0, x19
+   98d9c:      	mov	x21, x23
+   98da0:      	ldp	x29, x30, [sp, #0x100]
+   98da4:      	ldp	x20, x19, [sp, #0xf0]
+   98da8:      	ldp	x23, x22, [sp, #0xe0]
+   98dac:      	ldp	x25, x24, [sp, #0xd0]
+   98db0:      	ldp	x28, x26, [sp, #0xc0]
+   98db4:      	add	sp, sp, #0x110
+   98db8:      	ret

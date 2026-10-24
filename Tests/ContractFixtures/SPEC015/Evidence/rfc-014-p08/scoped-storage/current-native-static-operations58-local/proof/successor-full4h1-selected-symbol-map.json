@@ -1,0 +1,141 @@
+{
+  "focused_object": ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o",
+  "full_object": ".build/contracts/p08-counter-98512cay/P08CounterRuntime.o",
+  "identical_symbol_map": true,
+  "selected_current_symbols": [
+    {
+      "name": "_$s17P08CounterRuntime08exerciseB033_525B8117856EA287A828C133BA1BFF60LL_6models4root7dynamicSi18GiftUISemanticCore19SemanticRecordStoreVy0N9UIDrawing06CanvasQ7PayloadOy0aB5Table0ab6SchemaU6ValuesOyAA0B6DomainOGGG_0N17UIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0abX00b5ModelX0OGAU24ObservableStateRootScopeVyAyG0Q16CompleteIdentityVGSbtAG0Q14ExpansionErrorOYKF",
+      "type": 14,
+      "section": 1,
+      "desc": 0,
+      "value": 9628
+    },
+    {
+      "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE14beginCandidateAA0dC6ResultOyF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 12948
+    },
+    {
+      "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE15finishCandidateyAA0dC6ResultOAA0dcH11DispositionOF17P08CounterRuntime0L10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 31948
+    },
+    {
+      "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE7replace8identity7ordinal12transferring4seed21registrationAvailable07stagingM0AA0dC6ResultOq__s6UInt16VAA0D11ModelTicketVy6SchemaQzGzAQ_4SeedQZS2btF17P08CounterRuntime0v5OwnedQ0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 33228
+    },
+    {
+      "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8shutdownyyAA0dC5ErrorOYKF17P08CounterRuntime0J10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 35372
+    },
+    {
+      "name": "_$s17P08CounterRuntime03p08B8SemanticSiyF",
+      "type": 15,
+      "section": 1,
+      "desc": 32,
+      "value": 36484
+    },
+    {
+      "name": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFfA_",
+      "type": 15,
+      "section": 1,
+      "desc": 32,
+      "value": 37380
+    },
+    {
+      "name": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab14Runtime03p08B8u8SiyFSi21jk7State20mop7VyAA0b5q27J0V0aB6Schema0bjM0OG_AC0ih4e10K0VyAG0F14s8Core0E16vw9VGtAC0iH5X8OYKXEfU_Tf1ncn_n",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 37392
+    },
+    {
+      "name": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab57Runtime23counterForeignJoinScope7backing7foreign_SiAA0B17def21Vz_AA0B7ControlVzSi21jk8State015mo9G0VyAA0b5q37R0V0aB6Schema0brT0OG_AI0qpkG0VyAM0N14s6Core24uvw27VGSpyAHGtXEtFSiAQ_AWtAI0qP5X8OYKXEfU_AA0B7ControlVApVSpyA_GSiIgggyd_Tf1ncn_n",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 37716
+    },
+    {
+      "name": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 38444
+    },
+    {
+      "name": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlF",
+      "type": 15,
+      "section": 1,
+      "desc": 32,
+      "value": 39160
+    },
+    {
+      "name": "_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF",
+      "type": 15,
+      "section": 1,
+      "desc": 32,
+      "value": 545456
+    },
+    {
+      "name": "_$s17P08CounterRuntime03p08B11CoordinatorSiyF",
+      "type": 15,
+      "section": 1,
+      "desc": 32,
+      "value": 554916
+    },
+    {
+      "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6retireyySiAA0dC5ErrorOYKF17P08CounterRuntime0J10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 628168
+    },
+    {
+      "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE13releaseOffersyyAA0dC5ErrorOYKF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 628644
+    },
+    {
+      "name": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 688904
+    },
+    {
+      "name": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n",
+      "type": 31,
+      "section": 1,
+      "desc": 192,
+      "value": 689524
+    }
+  ],
+  "remaining_exact_rootScope_GMD_references": [
+    {
+      "pc": "0xaf234",
+      "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+      "owner_addr": "0xaf224",
+      "owner": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable"
+    },
+    {
+      "pc": "0xaf230",
+      "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+      "owner_addr": "0xaf224",
+      "owner": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable"
+    }
+  ],
+  "scope": "Exact symbol/section/relocation identity transfers these same PCs and section targets; no new semantic body decoding."
+}

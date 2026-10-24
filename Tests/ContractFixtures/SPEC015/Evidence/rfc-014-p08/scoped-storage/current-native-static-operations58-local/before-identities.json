@@ -1,0 +1,19 @@
+{
+  "mutation_started_utc": "2026-10-24T08:06:38.796786+00:00",
+  "head": "011b6dde0bd1f7e2e8cf13e5244e1348a1fee9a3",
+  "sources": {
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+      "sha256": "80120fed865f670b011e2b374763b9dce524e53b3b8c8cf58feee516abac0d52",
+      "bytes": 34342
+    },
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": {
+      "sha256": "ead38d7ed28f6fa6b768fca10d3d5c828ffa224efaea73ecb629952ec4f27e7b",
+      "bytes": 13856
+    },
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+      "sha256": "8684afa937f1d80aed8d26e82840ac924c6774cb9e820276b295d323069e5237",
+      "bytes": 17551
+    }
+  },
+  "prior_command_failure": "One ordinary snapshot/edit heredoc had an unmatched parenthesis; Python parse failed before executing any statement; no source changed or compiler started."
+}

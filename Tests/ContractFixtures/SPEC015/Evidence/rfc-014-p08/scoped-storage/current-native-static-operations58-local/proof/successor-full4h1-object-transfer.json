@@ -1,0 +1,510 @@
+{
+  "method": "Thin little-endian Mach-O64 exact __text payload + all raw relocation arrays + complete nlist(name/type/section/desc/value) + section target headers + complete symbolic relocation targets. No disassembly/compiler/runtime rerun. ADDEND payload interpreted separately; zero-fill sections have no file payload.",
+  "modules": [
+    {
+      "name": "GiftUIDrawing.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIDrawing.o",
+        "bytes": 135544,
+        "sha256": "98a89af30812c6cc63f7cace21a953d290fe6d132e661a6496740c37803881b3"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIDrawing.o",
+        "bytes": 135544,
+        "sha256": "67e964cbf9ed3d495b2c256c610bb9bd22e5bcdd9c8ca41b7d4c512a3d9c42d7"
+      },
+      "text_bytes": 33480,
+      "text_payload_equal": true,
+      "text_sha256": "b94c9e1e6b228bed6d2328d6a1e1b66b18b185369c7aee2a6867194b30c674d5",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "1543050c170b2e850fbb68b5ca88bcb14ca6c9441e9f70b7979ad242b16338fc",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "5816bce4572c6e5ff7288ce0a59a9dbdd922e6fe7aed2605ed5f53876b52a04d",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "388b490affeb09f4a7596e078f32368722d611eded323e17b7f651f5b34e5a4e",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "fed0f1c191b0e2b35622b82f5e731d970cfbbfb38ccbe52c224a0ae74b5ec853",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIExecution.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIExecution.o",
+        "bytes": 574800,
+        "sha256": "40d987bc753c969cf1c677f055fe9e8e9d23118ebf5e68a93de0bb822f90a425"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIExecution.o",
+        "bytes": 574800,
+        "sha256": "e8e26fe33941b62f851b86c2177f3d70ce9b05b0ddd7972f636694bc25a42a3d"
+      },
+      "text_bytes": 88900,
+      "text_payload_equal": true,
+      "text_sha256": "866f976dd6c449b0623e421d16f6ee8d3aa263e55655d6b2b51b3164ecf40367",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "c38fc22adfc8dc02e5adc25241336c82307bbb492760b4f628366135a0426f56",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "096b2535e27b58609f80a1b518399302e46d16bd90e4111f0908f1bd2b4e48f4",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "57268bf4bde2741d76b1ba8a162fd4014f699164ea1ed2096652760048cb59e4",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "71954d77ad2bd7220c0f0213e3cea23a0eb313ea8fd445544cc3b14be937862b",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIHostConfiguration.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIHostConfiguration.o",
+        "bytes": 731488,
+        "sha256": "3c1d31c678c7373b4e62b478b4e702282049825990a1af119d5c2627bd8ebf31"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIHostConfiguration.o",
+        "bytes": 731488,
+        "sha256": "e58873aab44ff665ce8896d7e34b9698c7d07a06d951ebccbbea62a9e9ee2ca1"
+      },
+      "text_bytes": 177064,
+      "text_payload_equal": true,
+      "text_sha256": "0fdb768438818ba563cbf53d4ed4923e131abf8a2ad25ac20ce4bc47b37cac87",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "9ba9952696f812ce58926be1857a4b7fc336a974d40cd19612f33461c0792cb6",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "d9729957892129b957f6261338cf7a04d3ace49b3e085bf768a0b1d37b9f251c",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "37cd8e6a59f7c2f78a271e44acbb5d09231300728abbcb4e3e164fa5b48de4e0",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "404c47c5c5b78572eed9f06c784b72f1beae5e270c0e6b77950ad971f4605632",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIInteraction.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIInteraction.o",
+        "bytes": 190216,
+        "sha256": "2feca5f3e0f6c8deae5df202fbf806a43b4d05d632a86fcf6be2becdfbbe374c"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIInteraction.o",
+        "bytes": 190216,
+        "sha256": "7b3490de3915f3eb2fc87f9e32e66a1533f44c0609d8980b28d49394e4114bcf"
+      },
+      "text_bytes": 44380,
+      "text_payload_equal": true,
+      "text_sha256": "af4600d93e4a5953467874de8934244844dc924eab90a58e3e6a5792b5e50917",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "90b10e675fd5b7178442a2f55c7d127399e4e557648a7de675e4c403c875ca47",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "51895f95318b92e32698204f18f4be8669bcb6ccf5cc8042c6a74bdff5b70677",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "7886ae230d6a8303f2be71f7119a8f8bb415104f877e22694a44d4568e83631c",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "d9da9e8fcaf28c6e9b103d9a974572cfa87024e1d6e96fa5a7de952ce940d4ce",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUILayout.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUILayout.o",
+        "bytes": 170544,
+        "sha256": "5b6f0ac3a8adb7c4493da05ae10ec966a1f75caa0a812a3ae8d6fc1973fa7b30"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUILayout.o",
+        "bytes": 170544,
+        "sha256": "3fc6e7bc060ba8a7b2cf52b7e1dbf957f34af90c2a48be45884d8f7be308fe39"
+      },
+      "text_bytes": 51404,
+      "text_payload_equal": true,
+      "text_sha256": "dd64216bb8c93f489e3e0fea4df8a4820e9f61cb4683dd12e8ba763d23980a59",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "e43bac456375b466bb725f1c31b235e3d91c9c325b0eed61bbbb3fcd035e2a34",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "4b00921bd1625f012c3c70574390929a18ab36a8f516d229f66995d8930e3f54",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "0c8c8f9a26efb04abe92b2d26d32559a5f53d9312b6fa247d178458c2f1c9fb5",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "12b56b847705a3d2408e45cc751cebeb26ac093bef82493522ef542596333bcd",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIObservableState.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIObservableState.o",
+        "bytes": 254456,
+        "sha256": "c3199156f518da31fed17810b08777f8048ad1ae0021a9235b0e1ce3580ab82c"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIObservableState.o",
+        "bytes": 254456,
+        "sha256": "7aa008f300ddec07c238ee427d4ac7bf78726496b7ae0f66a7d31ca9a1c33a8c"
+      },
+      "text_bytes": 59372,
+      "text_payload_equal": true,
+      "text_sha256": "3a78f05e147531940494614a5838bcd2de4b443d748b0d32a6703c1ab92f3ae6",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "e6c1c79a5d92042464ea4d75b45286aa833d5372ef98e3009eb781362555fe50",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "cc0eb7a5d4493ee95a4d4305c933397bc458d1257996368857eecf1d81da5404",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "b2ea9f26cc105b8ce0e4411c94a30bd95cae67e21185180c399633e76dfe2e52",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "aae14a23340ac7a595a498f58de57db0c9c813c59d749479a6a0595107bf307b",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIReferenceTextResources.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIReferenceTextResources.o",
+        "bytes": 1662280,
+        "sha256": "81fa4ac5c0e5cbc4107d1127562282c75514343d300b822d22106312f745f851"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIReferenceTextResources.o",
+        "bytes": 1662280,
+        "sha256": "7f5c379e1a19411912155bf6c2a7dffea909ef35cc56edb27139c8794f955ae7"
+      },
+      "text_bytes": 83980,
+      "text_payload_equal": true,
+      "text_sha256": "9a0196dcb3d4513bda07f02bc1dc0c2df0ab235142d8ae7f67c1061d179a3a7f",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "ff25e1b12c8ab21590feaa88afc9ba33eac2d51339cd9da7467c581e8ca68f78",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "0fb504728685ee3a141b05486bdba97d5cfc6944556ef513ca8a44c5d937fd45",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "d4013f3ca187d6738aa824d741ee9b19e67f5544f3b6e8fb5b67e64dd15a57b0",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "0cab85d124ae8fec4f297f2ede30a1ab2773017182b41ee004074d391fb500e0",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIRenderCore.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIRenderCore.o",
+        "bytes": 62200,
+        "sha256": "5e4ba95c6c055986da6b4a49289264c70d2364efcd2768392610a68716715a79"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIRenderCore.o",
+        "bytes": 62200,
+        "sha256": "00df8a6b47b04f91242f6c4e0890d7bcc8f3bfafafaed11c4d08eb6059314bbb"
+      },
+      "text_bytes": 7332,
+      "text_payload_equal": true,
+      "text_sha256": "9c20c4e560cba5f468856ef4a9399e638414e989adcd6e00ee62b316edaad77e",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "4a0b2541cba501d6588f9a33173b231a2c8b5e15f20fb1ec4787b2136d23e1ab",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "e463048024bf1d0972f6bb969d11ddfed7878c612a5fd917d769472d4355f3ae",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "04650a90d026f3e2cde9b9728c1ba3c35772124e38c4267cc5be1655ead8ac5c",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "ff11fa5ce1e3addf318ab1752f8afb31073d51ad859bba083f5355e23c1b44c6",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIRenderLowering.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIRenderLowering.o",
+        "bytes": 78864,
+        "sha256": "0a7330fe6a579b862606c10f315b39430022c1afafd76dea42f332a68a79606b"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIRenderLowering.o",
+        "bytes": 78864,
+        "sha256": "338112a134f5d6cda694da368d2cb358753561a906e78787ce34028b2b76af24"
+      },
+      "text_bytes": 20592,
+      "text_payload_equal": true,
+      "text_sha256": "fe0117dd9f095c468ecea42305855d9f4c3d467caa374b58ff942c8f10b8b7bb",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "98838b9074e08d34513bbf10e2de672dc53589c674232d587f16e1be7e8c343c",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "de964045a6dec96cbf975046f9e7d8420c6bed9663de07cae06a94c2082b2452",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "1a0d9cd98438f72fbd2a0965574df4be2f5ac4fbe6a0e3ed5d2b55dc342c3bff",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "383f428360f4e22c8c7715e885d93093fdece9af5f7e37fb333e2c346f3bcf80",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIRuntimeCore.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIRuntimeCore.o",
+        "bytes": 323040,
+        "sha256": "e9eff0f5605e67584a4419ecb7a9c501f40d7a73847a5df47f7b58dfb96c63a7"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIRuntimeCore.o",
+        "bytes": 323040,
+        "sha256": "d058f4defdca62ccb85d4bd22f343c4071c861646e03a8daf0919451c15c51dd"
+      },
+      "text_bytes": 61204,
+      "text_payload_equal": true,
+      "text_sha256": "0e01981698a60f227634f5d838d294df87f57b4a2e7fd2c1340fa2c44e09a840",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "67cf56eb308acea99b2a772c89ec9df441590ca9b490873ebdef7347463b4bbe",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "57d9ebc333208fe109bdc92fd7d5b19ad884ecbc4fc8927fa0923ac69eff0554",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "d2c08eb8d29868123940f39a757c0cca6c2b61b0ef0cea53a5fce8d27599ea39",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "218091e0ba150584be40f3b7108f08afcf518cfa88d5f622ea913b8fcbdfcb65",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIRuntimeDynamic.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIRuntimeDynamic.o",
+        "bytes": 250280,
+        "sha256": "4ae5f66ae1a6ac3b4ffef2ba2e27c2b3a6c2d25ee5a95c3270f274eea5582998"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIRuntimeDynamic.o",
+        "bytes": 250280,
+        "sha256": "30daf3c354d445afb7b9e736d8e1e220ee5e7625dd0d864041e9e0cbf3167192"
+      },
+      "text_bytes": 48904,
+      "text_payload_equal": true,
+      "text_sha256": "d56be9f973c38da706322cd546843fe4f33c6beba495c7136fa3ec4d1d3fb428",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "5ab9103a7a7f892d429ed332f4d2f9d3cbd83d3f3e8188da88d6f40e2d30e2c6",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "70487a7c5f98d2cf4e19f03d7bd25b61be5dbe4109d941b2921289677db1d0e7",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "7581f5daca6f09f63963047c963ac210fd3fbc3c793579c508892a3c0680a1ed",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "9292f93de5ca7c3c18eb2c40f769190a9101615bf2a221cf56a2eb7b47df8ec5",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUIRuntimeStatic.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUIRuntimeStatic.o",
+        "bytes": 284984,
+        "sha256": "ddf574b42c860e6d6bc1adfe39526606932a75b741b0fd72d0cf25287a7879b8"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUIRuntimeStatic.o",
+        "bytes": 284984,
+        "sha256": "2d9da1dff405ebb6bb6c17a3d4e4ab32e35200842d9a423cd4dfabd16f39af13"
+      },
+      "text_bytes": 103040,
+      "text_payload_equal": true,
+      "text_sha256": "8d569d5b756a12ffe59c1e1428277e8821b319c69727ae00cdace6e40d72bb65",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "4223a7e9a34133ea1f0b1c8725af74110ab06ce63c5baf2eb0850d6aa0fd8adc",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "0389a5542d8812deebf3451fa82b936521c8a85609e499148572fd41d0664151",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "0986d87b993c7fb027f46d4927fff60425b09534e39ca9a40265ee57560a2a8c",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "d7ffcaf62fd7970149abd6c84ab2cace2e880918f26da9ff37bfa01a473f380c",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUISemanticCore.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUISemanticCore.o",
+        "bytes": 534808,
+        "sha256": "44cc4dc14e3d702e8c392fdb977f1db8da5f4ae5ba71b272f26497c53709fc56"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUISemanticCore.o",
+        "bytes": 534808,
+        "sha256": "b168bc65db8e34043e40061eae02cc7fa184ec9f743dcfdd265d5a5ca7c3a22b"
+      },
+      "text_bytes": 175884,
+      "text_payload_equal": true,
+      "text_sha256": "b80294951f9a9fc321200bcfc9ed169697326d9bcbd8fa93a58407d6637a5e27",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "58182008616cb1178686b71bcf2734cbd7335f0fc59c28772f6a7dbae27669ef",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "1e9d0d826d399e9aa6006390dd04db817e68b9c47081de3d3ef8465e95a4b673",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "3d3c370a08fc23d6aa79764a08f6af3931926605ddd4d7d5ef1c7906f2475541",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "f077daabe3f316ca9489ba873fe8a7160cf780608a954ce52fcc6810fd4eb5ef",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "GiftUITextResources.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/GiftUITextResources.o",
+        "bytes": 102840,
+        "sha256": "7ce3d4e7f0f6659a0834df137c54890b9ef48ba58e5250c96b3db0c31673e919"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/GiftUITextResources.o",
+        "bytes": 102840,
+        "sha256": "5bc7b48a427b6f9a487916b0d93ba65e6db0b681cbd7ff3c2a8e8646fd7ab6cd"
+      },
+      "text_bytes": 20848,
+      "text_payload_equal": true,
+      "text_sha256": "ba3f3fa382d8819ab60aa2d7b5d2dd6aed42157bb1d7a919c4623ee376ac96d4",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "49eb40a561a3f4bbcb5bb09d0390ee0972ba03a811a9939dd1209f27707936a5",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "4f69ae851d2bad9addab22bf02e4dadd4f04ab8601dc859e0c193e084c7444cd",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "5a073e2acee89aeac80238f49b2edb469d11e25eee718b8446d33f5d73a8ef05",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "e82c1144ffbae7cedda97680fe2af71a227acb421e5d79f34df3a889aa9e31f1",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "P08CounterPresentation.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/P08CounterPresentation.o",
+        "bytes": 45736,
+        "sha256": "d6821afd6715d7a8ace97c45f96f39ea9ccfef38262ecf8a78e8a28fec0451b4"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/P08CounterPresentation.o",
+        "bytes": 45736,
+        "sha256": "732ec4af313d89d449a515e7625fc8ac6a3434813ca42d10898f711af3891a68"
+      },
+      "text_bytes": 7972,
+      "text_payload_equal": true,
+      "text_sha256": "2b603eb3764131aee60e10b551de948d7cffa13057f496d5e23d6f5872f6e8e1",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "6770b5eaf0fca3ccfb93fd3322c3d8deadda7291de159244fb6ab6cee0e46eb8",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "cfc899560489ae9089b1d4c43772240ed5efaad4838569d4b87495fdc1eb8377",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "bdebc143ecf149503eb3f5ad2f669baa3edb31ce05f189ef76c29afef7743a09",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "32df3343f149d290b97231ed1ae683f3d446ad9c3da96c5ae2b5dfcbd453edad",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "P08CounterRuntime.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o",
+        "bytes": 2613592,
+        "sha256": "8317d90ebe05b92c714e2a0d014ab31fb4c6b03938766a92d4293372ddb73f49"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/P08CounterRuntime.o",
+        "bytes": 2613592,
+        "sha256": "e074aea4e0435b190a739f7009d1ac92429809920a746db8c090d7ad599aec9b"
+      },
+      "text_bytes": 820384,
+      "text_payload_equal": true,
+      "text_sha256": "027f67fb9946ce0cf508b97f9b8844b3c7a676efcbb885c0ff1c5cc32063b95e",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "633b89c735f40746cee5198113732eecdea56a8713662b344a70ffc1eac26103",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "3db857bd8e83dd000aeb411aa75853e8aef86c23ac9330c88758abafd21703a9",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "44dbd7253d3776af8d461ce4327053c432f21c21c2b3cee33642d4c428dfd409",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "de1eff0b9f8350f5236617b0a1cbcfb4924e58805c153a06e1d2b5352600eb68",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "P08CounterSchema.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/P08CounterSchema.o",
+        "bytes": 9392,
+        "sha256": "0e589ca5d8f67f99ca0e3abcca53f1f5c3f8de569cc6b5c966807eff388ca606"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/P08CounterSchema.o",
+        "bytes": 9392,
+        "sha256": "ff6f8da5de87ab16509d9dda42aa8d404b688fceda723b0795f414265839506f"
+      },
+      "text_bytes": 528,
+      "text_payload_equal": true,
+      "text_sha256": "e34dd740cca7e3fdc21486540ee44cd18658be16f793a3629bf99272597d5cdd",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "9b51bccf444513ba410ed112bdf850fc215ad4a785e7ba9329ed37c7f442fc44",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "44d77effaeee72947f65c0bb9f730129df4fed0a03b9c28ecdaa85c2d99a0ded",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "7c071c82970f8ae494ed2a809bebee894f17400ce54027569f636faa69818888",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "ba24ce6900c2e57f66dbce4b291db25cd5f0e8f28846f980dd0754e8697a5c69",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    },
+    {
+      "name": "P08CounterTable.o",
+      "focused": {
+        "path": ".build/contracts/p08-counter-yje67t90/P08CounterTable.o",
+        "bytes": 12656,
+        "sha256": "2cb592439b6e31784ce2f590fb5f4d57bbaf343bf1316f11625dae041d7a0bf2"
+      },
+      "full": {
+        "path": ".build/contracts/p08-counter-98512cay/P08CounterTable.o",
+        "bytes": 12656,
+        "sha256": "db4732f66f26856bd0b06a18351085728e637fd796633fddbbbeb7388780d86b"
+      },
+      "text_bytes": 1224,
+      "text_payload_equal": true,
+      "text_sha256": "03882dd3ae70e0f4817f12579f59aff8199bf989a4ebab195daa9227d0f51c9b",
+      "text_raw_relocations_equal": true,
+      "text_raw_relocations_sha256": "d81e56cdfc257571a276520c1f2220e7538957d51a93ab502db99bed4d236916",
+      "all_raw_relocations_equal": true,
+      "symbol_map_equal": true,
+      "symbol_map_sha256": "1bf7a184b750656ddaba62087adc8c6826dd3649f163ec8f994e59b6bbb7eb33",
+      "section_target_map_equal": true,
+      "section_target_map_sha256": "3216919d13bab8b1d3beb6fe678697bca61145a17789c8f20002a89f9ce53e22",
+      "symbolic_relocations_equal": true,
+      "symbolic_relocations_sha256": "3b50a0ff50716c1a64c14be5d7665448aad3f14965bb9a419fca37e3f40d5959",
+      "differing_section_payloads": [
+        "__LLVM,__swift_modhash"
+      ]
+    }
+  ],
+  "all_transfer_relations_equal": true
+}

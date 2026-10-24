@@ -1,0 +1,181 @@
+{
+  "status": "FULL_COMPLETE_PASS_WITH_EXACT_FOCUSED_PROOF_TRANSFER",
+  "full": {
+    "result": ".build/contracts/p08-counter-98512cay/result.json",
+    "sha256": "bee58031292279fce2e4cb19cbd885d3d172301f2a870a12ab9256aca1a0f0f6",
+    "passed": true,
+    "collection_complete": true,
+    "checks": 442,
+    "passed_checks": 442,
+    "commands": 414,
+    "exit_distribution": {
+      "0": 220,
+      "1": 193,
+      "None": 28,
+      "-6": 1
+    },
+    "status_distribution": {
+      "passed": 442
+    },
+    "reuse_execution": true,
+    "fresh_focused": false,
+    "focused_passed": false,
+    "interpretation": "442 includes expected negative and registered/reused receipts; not442 fresh compiler invocations. Full aggregate passed/complete is independent of intentionally false focused fields."
+  },
+  "guard": {
+    "provenance": {
+      "launch.json": {
+        "path": ".build/contracts/p08-native-static-operations58/full4h1/launch.json",
+        "sha256": "cf477fde481d51d2bcacf335e586cf7c60e33d3ce44dd0d478908f7d3bbb7726",
+        "bytes": 836
+      },
+      "terminal.json": {
+        "path": ".build/contracts/p08-native-static-operations58/full4h1/terminal.json",
+        "sha256": "3e9ecfc8d59ae8d42bc87aebeb3fb4773fba4dc5439c9c66674815a3b83698cc",
+        "bytes": 273
+      },
+      "ownership.json": {
+        "path": ".build/contracts/p08-native-static-operations58/full4h1/ownership.json",
+        "sha256": "157c12aa2ec0df31fb34de5a7fe00e4b5986f4ebce011c438038fac333e7b198",
+        "bytes": 172
+      },
+      "launch-guard.py": {
+        "path": ".build/contracts/p08-native-static-operations58/full4h1/launch-guard.py",
+        "sha256": "d5029d18f92447d15954b50b7301f9d89e72f333b6a296335d73fa6af8e9f9fa",
+        "bytes": 4878
+      }
+    },
+    "launch": {
+      "authority": "Root selected one combined cleanup57 + operations58 full run under standing ordinary 4-hour implementation validation authority on 2026-10-24; no reuse of consumed specialization49 12-hour authorization",
+      "start_utc": "2026-10-24T09:06:20.638142+00:00",
+      "deadline_utc": "2026-10-24T13:06:20.638142+00:00",
+      "command": [
+        "python3",
+        "scripts/contracts/check-spec-015-counter.py",
+        "--profile",
+        "macos-static",
+        "--runtime-build",
+        ".build/contracts/spec-013-runtime-cycle/tmpx4wt4oc6/macos-static",
+        "--host-build",
+        ".build/contracts/p08-scoped-host-7gj3vxnl",
+        "--collect-failures",
+        "--static-resource-entry-v1"
+      ],
+      "guard_armed_before_spawn": true,
+      "output_limit": 2147483648,
+      "reserve": 33554432,
+      "initial_retained_bytes": 396713845,
+      "frozen_inputs_verified": 201
+    },
+    "terminal": {
+      "finished_utc": "2026-10-24T12:08:10.301503+00:00",
+      "exit": 0,
+      "guard": {
+        "reason": null
+      },
+      "retained_bytes": 581327723,
+      "output_candidates": [
+        ".build/contracts/p08-counter-98512cay"
+      ],
+      "within_deadline": true,
+      "within_output_envelope": true
+    },
+    "ownership": {
+      "pid": 24091,
+      "process_group": 24091,
+      "guard_pid": 24090,
+      "start_utc": "2026-10-24T09:06:20.638142+00:00",
+      "deadline_utc": "2026-10-24T13:06:20.638142+00:00"
+    },
+    "authority": "Human-authorized, root-launched sole full collection; worker performed only post-terminal artifact completion."
+  },
+  "identity_projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local/proof/successor-full4h1-input-binding.json",
+  "object_transfer": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local/proof/successor-full4h1-object-transfer.json",
+  "selected_symbol_target_map": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local/proof/successor-full4h1-selected-symbol-map.json",
+  "transfer_consequence": "Exact18module __text, ALL raw relocation arrays, complete nlist and section target maps, and symbolic targets transfer the focused57/58 Static callers, complete concrete operations/reached cleanup and no-new-displacement findings at the SAME PCs. Only section payload difference is LLVM swift_modhash. No descriptor-count-only or generic Host substitution; same concrete CounterOwnedModel/CounterModelSchema/SemanticCompleteIdentity types.",
+  "output_normalization": "Only validated SO06 role lines (exact14 tokens, token11 =>) replace decimal address tokens4/8 with <SO06_ADDRESS>. Preserve all other bytes/whitespace/order; no other normalization.",
+  "output_comparisons": [
+    {
+      "name": "mixed",
+      "before_path": ".build/contracts/p08-counter-yje67t90/result.json#execution",
+      "after_path": ".build/contracts/p08-counter-98512cay/result.json#execution",
+      "before_bytes": 611253,
+      "after_bytes": 611253,
+      "before_raw_sha256": "ae4662ef637aa01e2feeb872e75680c28f8a72e98e5526ce1cac9fe12e7ef39c",
+      "after_raw_sha256": "47ae3354192a24a3c3aeb7b151e1853753464a7caf971a7d42635f994c779a33",
+      "before_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "after_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "SO06_counts": [
+        120,
+        120
+      ],
+      "equal": true
+    },
+    {
+      "name": "static",
+      "before_path": ".build/contracts/p08-counter-yje67t90/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-98512cay/static-resource-v1-execute.log",
+      "before_bytes": 391098,
+      "after_bytes": 391098,
+      "before_raw_sha256": "e69cd8b2a93f09a3bccb41279d72534edf8ae69d81addedfaa38f32426bdfd87",
+      "after_raw_sha256": "11d7ad3c89694d46ce84e6588e249976c6819e3a3de1927e7e136bbecebd6bba",
+      "before_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "after_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "SO06_counts": [
+        60,
+        60
+      ],
+      "equal": true
+    },
+    {
+      "name": "mixed",
+      "before_path": ".build/contracts/p08-counter-ugr4qej1/result.json#execution",
+      "after_path": ".build/contracts/p08-counter-98512cay/result.json#execution",
+      "before_bytes": 611253,
+      "after_bytes": 611253,
+      "before_raw_sha256": "897c23f7605fc9b0ba91cdda87c2babaaac5b193f87e20289687ed82155ec23b",
+      "after_raw_sha256": "47ae3354192a24a3c3aeb7b151e1853753464a7caf971a7d42635f994c779a33",
+      "before_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "after_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "SO06_counts": [
+        120,
+        120
+      ],
+      "equal": true
+    },
+    {
+      "name": "static",
+      "before_path": ".build/contracts/p08-counter-ugr4qej1/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-98512cay/static-resource-v1-execute.log",
+      "before_bytes": 391098,
+      "after_bytes": 391098,
+      "before_raw_sha256": "b455e0f5a93a7513294f37ddb2915f9b7324815a0b53cfaa6b039b8c175dfe33",
+      "after_raw_sha256": "11d7ad3c89694d46ce84e6588e249976c6819e3a3de1927e7e136bbecebd6bba",
+      "before_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "after_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "SO06_counts": [
+        60,
+        60
+      ],
+      "equal": true
+    }
+  ],
+  "text_cost": {
+    "Runtime_text_bytes": 820384,
+    "delta_vs_cleanup57": 3804,
+    "delta_vs_accepted_constructor50": 5516,
+    "visibility": "17 combined serialized existing cleanup/operation bodies,10 combined usable support declarations including CandidateDisposition;6 maintained source files; bodies/layout/signatures/lifetimes/semantics preserved.",
+    "performance_claim": false
+  },
+  "remaining_gates": [
+    "Full98512cay passed/complete442 checks with exact18module current-artifact proof transfer; former focused-only/full-applicability reservation is discharged for this scoped six-source package. Broader eligibility is not implied.",
+    "Constructor50/cleanup57 positive changes carried; old artifacts/history remain immutable; no old full/resource identity transfer.",
+    "Preexisting layout-thunk applicability, Model owning/generic design, provider/once/error/live binding/environment/stdout persistence/window, remaining BatchA/P08/profile/image/cold/resource obligations remain open.",
+    "Unit gate FAILED before Interaction; Interaction UNEXECUTED. No test-driver/SwiftPM retry.",
+    "A51/A52/A55/A56 recording FALSE preserved; this ordinary implementation result does not retroqualify them."
+  ],
+  "unit_gate": "FAILED before Interaction execution; Interaction UNEXECUTED; not waived",
+  "overall_BatchA_P08_eligibility": false,
+  "metadata_layout_thunk": "Same two preexisting supportsNoncopyableTypes-guarded RootScope GMD references remain; runtime invocation/Model/error/once/provider/live/window/resource/cold/profile gaps remain open.",
+  "target_flags_note": "Raw per-attempt output/cache paths differ; all18 actual module compilation identities match using ONLY output-root replacement. This is path normalization, not a new compiler recipe or codegen-flag change."
+}

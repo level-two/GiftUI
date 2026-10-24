@@ -1,0 +1,33 @@
+{
+  "checked_utc": "2026-10-24T07:19:24.840851+00:00",
+  "source_bindings": {
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+      "current_sha256": "80120fed865f670b011e2b374763b9dce524e53b3b8c8cf58feee516abac0d52",
+      "focused_input_sha256": "80120fed865f670b011e2b374763b9dce524e53b3b8c8cf58feee516abac0d52"
+    },
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": {
+      "current_sha256": "ead38d7ed28f6fa6b768fca10d3d5c828ffa224efaea73ecb629952ec4f27e7b",
+      "focused_input_sha256": "ead38d7ed28f6fa6b768fca10d3d5c828ffa224efaea73ecb629952ec4f27e7b"
+    },
+    "Sources/GiftUIObservableState/ObservableModelTicket.swift": {
+      "current_sha256": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd",
+      "focused_input_sha256": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd"
+    },
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+      "current_sha256": "8684afa937f1d80aed8d26e82840ac924c6774cb9e820276b295d323069e5237",
+      "focused_input_sha256": "8684afa937f1d80aed8d26e82840ac924c6774cb9e820276b295d323069e5237"
+    },
+    "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": {
+      "current_sha256": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252",
+      "focused_input_sha256": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252"
+    }
+  },
+  "focused_result": ".build/contracts/p08-counter-l9qz2rz3/result.json",
+  "focused_result_sha256": "8e1d605dc55c18f4984377b55d61ed3c607c3976ea09aa079d7b5c1900d97823",
+  "P07": ".build/contracts/spec-013-runtime-cycle/tmpnsgacp62/macos-static",
+  "host": ".build/contracts/p08-scoped-host-7gj3vxnl",
+  "focused_passed": true,
+  "collection_complete": false,
+  "aggregate_passed": false,
+  "inputs": 201
+}

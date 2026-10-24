@@ -1,0 +1,18 @@
+{
+  "kind": "ordinary implementation-validation retained-output accounting; not aggregate OS I/O or Batch A qualification",
+  "source_change_start": "2026-10-24T07:10:25.649487+00:00",
+  "completed_utc": "2026-10-24T07:21:34.256509+00:00",
+  "roots": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-cleanup57-local": 539706,
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-cleanup57-result": 28550,
+    ".build/contracts/spec-013-runtime-cycle/tmpnsgacp62": 25131004,
+    ".build/contracts/p08-counter-l9qz2rz3": 161667004
+  },
+  "retained_snapshot_bytes": 187366264,
+  "ceiling_bytes": 2147483648,
+  "final_reserve_bytes": 33554432,
+  "snapshot_plus_reserve_bytes": 220920696,
+  "within_envelope": true,
+  "no_full_run": true,
+  "final_small_accounting_review_writes": "covered by protected32MiB reserve; snapshot precedes this file and reviewer result"
+}

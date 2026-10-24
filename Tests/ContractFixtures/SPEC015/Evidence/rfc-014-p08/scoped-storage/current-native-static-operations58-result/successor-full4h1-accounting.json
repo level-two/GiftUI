@@ -1,0 +1,62 @@
+{
+  "kind": "ordinary retained implementation/validation accounting, not aggregate OS I/O or U02 qualification",
+  "snapshot_utc": "2026-10-24T13:19:07.240636+00:00",
+  "root_guard_terminal": {
+    "finished_utc": "2026-10-24T12:08:10.301503+00:00",
+    "exit": 0,
+    "guard": {
+      "reason": null
+    },
+    "retained_bytes": 581327723,
+    "output_candidates": [
+      ".build/contracts/p08-counter-98512cay"
+    ],
+    "within_deadline": true,
+    "within_output_envelope": true
+  },
+  "root_guard_provenance": {
+    "launch.json": {
+      "path": ".build/contracts/p08-native-static-operations58/full4h1/launch.json",
+      "sha256": "cf477fde481d51d2bcacf335e586cf7c60e33d3ce44dd0d478908f7d3bbb7726",
+      "bytes": 836
+    },
+    "terminal.json": {
+      "path": ".build/contracts/p08-native-static-operations58/full4h1/terminal.json",
+      "sha256": "3e9ecfc8d59ae8d42bc87aebeb3fb4773fba4dc5439c9c66674815a3b83698cc",
+      "bytes": 273
+    },
+    "ownership.json": {
+      "path": ".build/contracts/p08-native-static-operations58/full4h1/ownership.json",
+      "sha256": "157c12aa2ec0df31fb34de5a7fe00e4b5986f4ebce011c438038fac333e7b198",
+      "bytes": 172
+    },
+    "launch-guard.py": {
+      "path": ".build/contracts/p08-native-static-operations58/full4h1/launch-guard.py",
+      "sha256": "d5029d18f92447d15954b50b7301f9d89e72f333b6a296335d73fa6af8e9f9fa",
+      "bytes": 4878
+    }
+  },
+  "ordinary_ceiling_bytes": 2147483648,
+  "final_reserve_bytes": 33554432,
+  "current_disjoint_owned_roots": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-cleanup57-local": 539706,
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-cleanup57-result": 39311,
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local": 1959364,
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-result": 65207,
+    ".build/contracts/spec-013-runtime-cycle/tmpnsgacp62": 25131004,
+    ".build/contracts/p08-counter-l9qz2rz3": 161667004,
+    ".build/contracts/spec-013-runtime-cycle/tmpzgx7rmnb": 9039346,
+    ".build/contracts/spec-013-runtime-cycle/tmpx4wt4oc6": 25160620,
+    ".build/contracts/p08-counter-yje67t90": 161731676,
+    ".build/contracts/p08-counter-98512cay": 184612732,
+    ".build/contracts/p08-native-static-operations58": 6297
+  },
+  "snapshot_plus_reserve_bytes": 603506699,
+  "within_envelope": true,
+  "elapsed_source": "Exact launch/terminal root guard timestamps retained in successor validation; elapsed is validation wall time only, no performance inference.",
+  "final_small_writes": "This accounting/manifest and final reviewer writes follow snapshot and are covered by the protected32MiB reserve.",
+  "listed_roots_snapshot_bytes": 569952267,
+  "guard_terminal_retained_bytes": 581327723,
+  "conservative_combined_upper_plus_reserve_bytes": 1184834422,
+  "overlap_note": "The explicit listed-root snapshot and root guard terminal have different scopes/times and overlap. Both actual numbers are retained; the conservative upper adds both without deducting overlap, plus32MiB reserve. It is not an exact global aggregate or OS-I/O claim."
+}

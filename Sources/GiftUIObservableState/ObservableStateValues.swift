@@ -72,6 +72,7 @@ package enum ObservableStateResult: Equatable, Sendable {
     case failure(ObservableStateError)
 }
 
+@usableFromInline
 package enum ObservableStateCandidateDisposition: UInt8, Equatable, Sendable {
     case publish = 0
     case discard = 1

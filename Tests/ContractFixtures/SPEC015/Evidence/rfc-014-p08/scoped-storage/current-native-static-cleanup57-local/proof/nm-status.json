@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-nm",
+    "--numeric-sort",
+    ".build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 1221315,
+  "stdout_sha256": "a1a6a913dbb3e1e3eec105d73846e85868b6cb2caed3114b781f6bb9711da433",
+  "stderr": ""
+}

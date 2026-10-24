@@ -1,0 +1,37 @@
+{
+  "normalization": "Only lines beginning SO06 role with exactly14 whitespace-separated tokens and zero-based token11 =>: replace decimal tokens4 and8 with <SO06_ADDRESS>, preserving every other byte, whitespace and line ordering. No other normalization.",
+  "comparisons": [
+    {
+      "name": "mixed",
+      "before_path": ".build/contracts/p08-counter-ugr4qej1/result.json#execution",
+      "after_path": ".build/contracts/p08-counter-l9qz2rz3/result.json#execution",
+      "before_bytes": 611253,
+      "after_bytes": 611253,
+      "before_raw_sha256": "897c23f7605fc9b0ba91cdda87c2babaaac5b193f87e20289687ed82155ec23b",
+      "after_raw_sha256": "c86e2e87d39712bc94a2dbc9f6b0cd544e1efea97f0e0d752060f3ea4cede73d",
+      "before_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "after_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "SO06_counts": [
+        120,
+        120
+      ],
+      "equal": true
+    },
+    {
+      "name": "static",
+      "before_path": ".build/contracts/p08-counter-ugr4qej1/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-l9qz2rz3/static-resource-v1-execute.log",
+      "before_bytes": 391098,
+      "after_bytes": 391098,
+      "before_raw_sha256": "b455e0f5a93a7513294f37ddb2915f9b7324815a0b53cfaa6b039b8c175dfe33",
+      "after_raw_sha256": "943f0d156ae526150f3dbc6701baca98e04106f5a795b29d46fdb808976c9808",
+      "before_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "after_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "SO06_counts": [
+        60,
+        60
+      ],
+      "equal": true
+    }
+  ]
+}

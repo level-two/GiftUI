@@ -1,0 +1,10 @@
+{
+  "exit": 0,
+  "bytes": 39562,
+  "sha256": "751183e29802766b9861e740b09e46e942f9f7402f6761c0079c407f84d1cdbd",
+  "stderr_bytes": 0,
+  "range": [
+    "0xa75ec",
+    "0xa78f0"
+  ]
+}

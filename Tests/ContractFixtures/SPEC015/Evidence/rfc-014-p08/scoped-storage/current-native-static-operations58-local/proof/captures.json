@@ -1,0 +1,274 @@
+[
+  {
+    "tag": "exerciseCounter",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x259c",
+      "--stop-address=0x3294",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 157320,
+    "sha256": "55cb79cf4bda4dfa760bd94d8a6471098b7dd88feb43018eded006636a6066dc",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "beginCandidate",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x3294",
+      "--stop-address=0x33e0",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 10568,
+    "sha256": "09fb1b7030b503cabc8649606277f6ca9dbc1824c8377230cf85eb8b709cd452",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "finish-replace-shutdown",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x7ccc",
+      "--stop-address=0x8bf4",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 108439,
+    "sha256": "1f6ac2f3196e9cb8653ec3ec2c48e96348626e12a42a314ce266a586e42e1562",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "mutate-operation",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa8308",
+      "--stop-address=0xa8504",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 14381,
+    "sha256": "3344e9bb410a48cd7d3bad2a0d1a34bfb88a324a174d0a8b2edcd42fe953eafd",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "semantic-withRoot",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa8574",
+      "--stop-address=0xa8878",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 38722,
+    "sha256": "7d3485323bf222591400ee10808bd86d7556637dc972ed75423465c54d76c16e",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "coordinator-lifetime",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x962c",
+      "--stop-address=0x98f8",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 17296,
+    "sha256": "a4e6fc30cc8577ff1b234ee6d085d4d41146d103f92aee0508344950ffc65331",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-0",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x5f9e4",
+      "--stop-address=0x5feb8",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 33632,
+    "sha256": "1d8f81487d4c70037269a96b3756dab9ce2d1ed83d9402993674699c165a38d8",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-1",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x726a0",
+      "--stop-address=0x727fc",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 9750,
+    "sha256": "1d7044775c5e94f7826a7bb69ac8c24db05f8d1c1f1c63ff56d5f6f23a181f1b",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-2",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x723f8",
+      "--stop-address=0x7254c",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 9106,
+    "sha256": "b5d46d5500fc26ac9a2b3bfc8bba9f6722cbd468c6249f8549c15398a831dacb",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-3",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x74e1c",
+      "--stop-address=0x7566c",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 73752,
+    "sha256": "15d146660627e50286bea2a0ab1b34863658cf341a08fa96f450fdedf5678bdd",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-4",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x73e84",
+      "--stop-address=0x74618",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 65635,
+    "sha256": "1afa812203295c8198932395a2531f891109146e3d08a0f91e8d8cf1992b1715",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-5",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x76438",
+      "--stop-address=0x766d4",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 19873,
+    "sha256": "f61f56a9d88ffd504193df7e892819c2598f7a086bb9071a87ba8e6d58515f69",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-6",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x75f28",
+      "--stop-address=0x761b0",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 18807,
+    "sha256": "aa03f2179aedc70b14c15795d12fbae2e8a3c33f25335acc7c0a3358240c2958",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-7",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x6c10c",
+      "--stop-address=0x6f904",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 417204,
+    "sha256": "4eb46f0a9381044e0dcc414053b30d606ecf03b5f0ef2e317c1528dcd5bd2b3f",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-8",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x6513c",
+      "--stop-address=0x68924",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 395681,
+    "sha256": "b81b376f48a95f27aa61f9453ee1fcd06149f09edf6945b4266972273158a37b",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-9",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x64604",
+      "--stop-address=0x6493c",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 26565,
+    "sha256": "d8240123350265774ac2ae5104eebe2076aa05698621ad2972a8637efbd167a6",
+    "stderr_bytes": 0
+  },
+  {
+    "tag": "static-pipeline-10",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x63f94",
+      "--stop-address=0x642cc",
+      ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 27023,
+    "sha256": "d69b3fca5c361f618f2ada642a7587a8a9fa9a6a52f2dbcf81e66890064fd241",
+    "stderr_bytes": 0
+  }
+]

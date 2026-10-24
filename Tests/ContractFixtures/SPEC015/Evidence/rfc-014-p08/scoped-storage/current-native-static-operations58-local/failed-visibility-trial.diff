@@ -1,0 +1,199 @@
+diff --git a/Sources/GiftUIObservableState/ObservableModelOwnership.swift b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+index 57b28959..260eac61 100644
+--- a/Sources/GiftUIObservableState/ObservableModelOwnership.swift
++++ b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+@@ -36,8 +36,11 @@ package struct ObservableModelOwnership: ~Copyable {
+         fileprivate let serial: UInt32
+     }
+ 
++    @usableFromInline
+     package struct Replacement {
++        @usableFromInline
+         package let former: Address
++        @usableFromInline
+         package let candidate: Address
+         fileprivate let formerClaim: Claim
+         fileprivate let candidateClaim: Claim
+@@ -125,6 +128,7 @@ package struct ObservableModelOwnership: ~Copyable {
+     // The activation callback has ended: its nonescapable tickets and readers
+     // cannot remain live. Retire every remaining claim before destroying model
+     // values, while preserving both non-reusing identity cursors.
++    @usableFromInline
+     package mutating func finishActivation() -> UInt8 {
+         var occupied: UInt8 = 0
+         for index in 0 ..< Int(modelLimit) {
+@@ -138,6 +142,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         return occupied
+     }
+ 
++    @inlinable
+     package func key<Schema>(for address: Address, as schema: Schema.Type) -> _GiftUIModelKey<
+         Schema
+     > {
+@@ -306,6 +311,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         records[index].registered = true
+     }
+ 
++    @usableFromInline
+     package mutating func unregister(_ address: Address) throws(ObservableStateError) -> UInt16? {
+         if let failure = operationAllowed(discovery: true) { throw failure }
+         let index = try validate(address)
+@@ -380,6 +386,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         phase = .mutating
+     }
+ 
++    @usableFromInline
+     package mutating func reserveReplacement(
+         transferring finalClaim: Claim, schema: UInt16, candidateIsEmpty: Bool,
+         registrationAvailable: Bool, stagingAvailable: Bool
+@@ -408,6 +415,7 @@ package struct ObservableModelOwnership: ~Copyable {
+         return reservation
+     }
+ 
++    @usableFromInline
+     package mutating func finishReplacement(_ reservation: Replacement, commit: Bool)
+         throws(ObservableStateError) -> Claim?
+     {
+diff --git a/Sources/GiftUIObservableState/ObservableModelScope.swift b/Sources/GiftUIObservableState/ObservableModelScope.swift
+index 69ecf24c..09775525 100644
+--- a/Sources/GiftUIObservableState/ObservableModelScope.swift
++++ b/Sources/GiftUIObservableState/ObservableModelScope.swift
+@@ -97,12 +97,12 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+ 
+     // Called before the root report-storage borrow ends, even if an independent
+     // ticket survives a failed detach. Terminal activation cannot be reopened.
+-    @usableFromInline
++    @inlinable
+     package borrowing func finishStoppedActivation() {
+         if ownership.pointee.phase == .retired { finishActivation() }
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     borrowing func finishActivation() {
+         let occupied = ownership.pointee.finishActivation()
+         for index in 0 ..< models.count where occupied & (1 << index) != 0 {
+@@ -146,6 +146,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         } catch { return .invariantViolation }
+     }
+ 
++    @inlinable
+     package borrowing func stageReplacement(
+         transferring ticket: borrowing ObservableModelTicket<Schema>, seed: Schema.Seed,
+         registrationAvailable: Bool, stagingAvailable: Bool
+@@ -160,6 +161,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         return reservation
+     }
+ 
++    @inlinable
+     package borrowing func discardReplacement(_ reservation: ObservableModelOwnership.Replacement)
+         throws(ObservableStateError)
+     {
+@@ -168,6 +170,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+     }
+ 
+     @_lifetime(copy self)
++    @inlinable
+     package borrowing func commitReplacement(
+         _ reservation: ObservableModelOwnership.Replacement,
+         transferring ticket: inout ObservableModelTicket<Schema>
+@@ -181,7 +184,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         return ObservableModelTicket(claim: claim, lifetime: self)
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package borrowing func key(for address: ObservableModelOwnership.Address) -> _GiftUIModelKey<
+         Schema
+     > {
+@@ -225,6 +228,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
+         try ownership.pointee.register(ticket.requireClaim().address, schema: schema)
+     }
+ 
++    @inlinable
+     package borrowing func unregister(_ key: _GiftUIModelKey<Schema>) throws(ObservableStateError) {
+         if let slot = try ownership.pointee.unregister(ownership.pointee.address(for: key)) {
+             models[Int(slot)] = nil
+diff --git a/Sources/GiftUIObservableState/ObservableStateRootScope.swift b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+index 497fdc4c..2f5394c8 100644
+--- a/Sources/GiftUIObservableState/ObservableStateRootScope.swift
++++ b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+@@ -97,6 +97,7 @@ struct ObservableStateRootReports {
+     struct Route {
+         @usableFromInline
+         var lifecycle = ObservableStateRegistrationLifecycle()
++        @usableFromInline
+         var dirty = false
+ 
+         @usableFromInline
+@@ -261,6 +262,7 @@ package struct ObservableStateRootScope<
+         try models.validateOperation(discovery: discovery)
+     }
+ 
++    @inlinable
+     package borrowing func beginCandidate() -> ObservableStateResult {
+         do throws(ObservableStateError) {
+             try checkOperation(discovery: true)
+@@ -299,7 +301,7 @@ package struct ObservableStateRootScope<
+         return key(at: slot)
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package borrowing func generation(
+         identity: Identity, ordinal: UInt16, publishable: Bool = false
+     ) -> UInt32? {
+@@ -429,7 +431,8 @@ package struct ObservableStateRootScope<
+         } catch { return .failure(error) }
+     }
+ 
+-    private borrowing func releaseOffers() throws(ObservableStateError) {
++    @inlinable
++    internal borrowing func releaseOffers() throws(ObservableStateError) {
+         var failure: ObservableStateError?
+         for i in 0 ..< 4 {
+             guard let claim = records.pointee.offeredClaims[i] else { continue }
+@@ -499,7 +502,8 @@ package struct ObservableStateRootScope<
+         try models.release(&ticket)
+     }
+ 
+-    private borrowing func retire(_ slot: Int) throws(ObservableStateError) {
++    @inlinable
++    internal borrowing func retire(_ slot: Int) throws(ObservableStateError) {
+         guard let attachment = records.pointee.records[slot].attachment else {
+             throw .invariantViolation
+         }
+@@ -521,6 +525,7 @@ package struct ObservableStateRootScope<
+         }
+     }
+ 
++    @inlinable
+     package borrowing func finishCandidate(_ disposition: ObservableStateCandidateDisposition)
+         -> ObservableStateResult
+     {
+@@ -559,6 +564,7 @@ package struct ObservableStateRootScope<
+         } catch { return .failure(error) }
+     }
+ 
++    @inlinable
+     package borrowing func replace(
+         identity: Identity, ordinal: UInt16,
+         transferring ticket: inout ObservableModelTicket<Model.Schema>, seed: Model.Schema.Seed,
+@@ -673,7 +679,7 @@ package struct ObservableStateRootScope<
+         } catch { return .failure(error) }
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package borrowing func mutate(
+         identity: Identity, ordinal: UInt16, matching generation: ObservableTargetGeneration,
+         operation: () -> Model.Mutation
+@@ -691,7 +697,7 @@ package struct ObservableStateRootScope<
+         } catch { return .failure(error) }
+     }
+ 
+-    @usableFromInline
++    @inlinable
+     package borrowing func shutdown() throws(ObservableStateError) {
+         if records.pointee.retired { return }
+         // A terminal activation still needs to retire all callback routes while

@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0xaf224",
+    "--stop-address=0xaf240",
+    ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "bytes": 2365,
+  "sha256": "d9b83ba9e44bb1e339a1b62c29f783e969c9de2595188f0a3a445ee8ce840090",
+  "stderr_bytes": 0
+}

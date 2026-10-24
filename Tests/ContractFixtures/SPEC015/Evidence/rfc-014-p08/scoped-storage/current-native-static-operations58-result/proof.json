@@ -1,0 +1,339 @@
+{
+  "status": "FOCUSED_EXERCISED_STATIC_OPERATION_METADATA_REMOVAL_NONRELOCATION_AND_CLEANUP57_REGRESSION_PASS",
+  "before_object": ".build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o",
+  "before_sha256": "cf16eef566cc4d3a89e97562fa5010c6078313b0d7385a1c95ec3cfca4a7636a",
+  "current_object": ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o",
+  "current_sha256": "8317d90ebe05b92c714e2a0d014ab31fb4c6b03938766a92d4293372ddb73f49",
+  "caller_to_body_joins": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local/proof/actual-operation-joins.json",
+  "complete_body_captures": [
+    {
+      "tag": "exerciseCounter",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x259c",
+        "--stop-address=0x3294",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 157320,
+      "sha256": "55cb79cf4bda4dfa760bd94d8a6471098b7dd88feb43018eded006636a6066dc",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "beginCandidate",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x3294",
+        "--stop-address=0x33e0",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 10568,
+      "sha256": "09fb1b7030b503cabc8649606277f6ca9dbc1824c8377230cf85eb8b709cd452",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "finish-replace-shutdown",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x7ccc",
+        "--stop-address=0x8bf4",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 108439,
+      "sha256": "1f6ac2f3196e9cb8653ec3ec2c48e96348626e12a42a314ce266a586e42e1562",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "mutate-operation",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xa8308",
+        "--stop-address=0xa8504",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 14381,
+      "sha256": "3344e9bb410a48cd7d3bad2a0d1a34bfb88a324a174d0a8b2edcd42fe953eafd",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "semantic-withRoot",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xa8574",
+        "--stop-address=0xa8878",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 38722,
+      "sha256": "7d3485323bf222591400ee10808bd86d7556637dc972ed75423465c54d76c16e",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "coordinator-lifetime",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x962c",
+        "--stop-address=0x98f8",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 17296,
+      "sha256": "a4e6fc30cc8577ff1b234ee6d085d4d41146d103f92aee0508344950ffc65331",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-0",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x5f9e4",
+        "--stop-address=0x5feb8",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 33632,
+      "sha256": "1d8f81487d4c70037269a96b3756dab9ce2d1ed83d9402993674699c165a38d8",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-1",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x726a0",
+        "--stop-address=0x727fc",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 9750,
+      "sha256": "1d7044775c5e94f7826a7bb69ac8c24db05f8d1c1f1c63ff56d5f6f23a181f1b",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-2",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x723f8",
+        "--stop-address=0x7254c",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 9106,
+      "sha256": "b5d46d5500fc26ac9a2b3bfc8bba9f6722cbd468c6249f8549c15398a831dacb",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-3",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x74e1c",
+        "--stop-address=0x7566c",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 73752,
+      "sha256": "15d146660627e50286bea2a0ab1b34863658cf341a08fa96f450fdedf5678bdd",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-4",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x73e84",
+        "--stop-address=0x74618",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 65635,
+      "sha256": "1afa812203295c8198932395a2531f891109146e3d08a0f91e8d8cf1992b1715",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-5",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x76438",
+        "--stop-address=0x766d4",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 19873,
+      "sha256": "f61f56a9d88ffd504193df7e892819c2598f7a086bb9071a87ba8e6d58515f69",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-6",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x75f28",
+        "--stop-address=0x761b0",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 18807,
+      "sha256": "aa03f2179aedc70b14c15795d12fbae2e8a3c33f25335acc7c0a3358240c2958",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-7",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x6c10c",
+        "--stop-address=0x6f904",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 417204,
+      "sha256": "4eb46f0a9381044e0dcc414053b30d606ecf03b5f0ef2e317c1528dcd5bd2b3f",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x6513c",
+        "--stop-address=0x68924",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 395681,
+      "sha256": "b81b376f48a95f27aa61f9453ee1fcd06149f09edf6945b4266972273158a37b",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-9",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x64604",
+        "--stop-address=0x6493c",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 26565,
+      "sha256": "d8240123350265774ac2ae5104eebe2076aa05698621ad2972a8637efbd167a6",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "static-pipeline-10",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x63f94",
+        "--stop-address=0x642cc",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 27023,
+      "sha256": "d69b3fca5c361f618f2ada642a7587a8a9fa9a6a52f2dbcf81e66890064fd241",
+      "stderr_bytes": 0
+    },
+    {
+      "tag": "commitReplacement",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x994b4",
+        "--stop-address=0x995c8",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 7262,
+      "sha256": "e41cf709275b9d617b62410a29104381b8e70247db015d071760d32af3cbad7a",
+      "stderr_bytes": 0,
+      "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE17commitReplacement_12transferringAA0dE6TicketVyq_GAA0dE9OwnershipV0H0V_AHztAA0dC5ErrorOYKF17P08CounterRuntime0n5OwnedE0V_0mN6Schema0neQ0OTg5"
+    },
+    {
+      "tag": "model-mutate",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x988fc",
+        "--stop-address=0x98ad8",
+        ".build/contracts/p08-counter-yje67t90/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 27746,
+      "sha256": "81d33596f4fea4e1d0ec80853110a007a9d61ea5f72b261520a5f68fdea7d92b",
+      "stderr_bytes": 0,
+      "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF17P08CounterRuntime0s5OwnedE0V_0rS6Schema0seV0OTg504$s21ab8State010d6C9Rootf59VAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6j50Oq__s6UInt16V0A11UIExecution0D16TargetGenerationV8n5AA0d5e29Q0PQzyXEtAaQRzrlF0A2UI01_aB19opq9OyXEfU_17rs10Runtime0x5U52R0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5AA0dczF0VyAT0A14UISemanticCore24SemanticCompleteIdentityVGAKyAWGTf1nncn_nTm"
+    }
+  ],
+  "operation_paths": {
+    "exerciseCounter": "0x259c\u20130x3294 calls concrete beginCandidate0x2650\u21920x3294\u20130x33e0; finishCandidate0x28e0\u21920x7ccc\u20130x7fe4. Native Static source and Dynamic source both retain unconditional retained-model replacement refusal then success.",
+    "replace": "Concrete0x81cc\u20130x8a2c retains phase/candidate/published/key/claim/generation/capacity ordering, lifecycle retirement/detach and commit/discard first-error paths. Stage/discard/key inline into concrete body; reached commit0x994b4\u20130x995c8 has no generic metadata acquisition.",
+    "generation": "Observe0x5f9e4 and Static build candidates0x74e1c / Native-wrapper0x73e84 inline generation/published/candidate checks and call concrete identity matching, without RootScope metadata.",
+    "dispatch": "Actual Static0x64604 / Native-wrapper0x63f94 retain target identity/generation/action admission then calls0x648f4 /0x64284\u2192concrete RootScope operation-mutate0xa8308\u20130xa8504\u2192ModelScope mutate0x988fc\u20130x98ad8. The latter complete body has no generic metadata acquisition; value-identity overload was not serialized.",
+    "begin_expand": "Static0x6c10c / Native-wrapper0x6513c retain phase/discovery guards and call concrete begin0x6c2c8 /0x652f8; prior typed encounter/owner premises unchanged.",
+    "publish_abort": "Static publish0x76438 /Native-wrapper0x75f28 call concrete finish0x76548 /0x76028. Static discard0x726a0 /Native-wrapper0x723f8 call concrete finish0x72768 /0x724b8. Current sources retain both false candidate guard and first-error cleanup paths.",
+    "cleanup57": "Semantic withRoot0xa8574\u20130xa8878 and Coordinator lifetime0x962c\u20130x98f8 still call concrete shutdown0x8a2c\u20130x8bf4 on normal and retry/error paths. Existing source/ownership/retirement/finish behavior preserved."
+  },
+  "before_argument_proof": "before-exerciseCounter.stdout: GMD0x2664/2668\u2192instantiate0x266c\u2192save[sp+0x58]\u2192opaque begin0x2678 and later metadata load\u2192finish0x28e8. Replacement is unconditional in actual source137/139; generation/mutation/finish source pipelines as recorded.",
+  "nonrelocation": "Current exact RootScope GMD/thunk relocation target query has no reference in any named exercised operation, earlier setup/constructor or new helper. Only two references remain in the same preexisting constrained generic pipeline metadata-layout thunk; therefore the demonstrated operation arguments were not moved to earlier charged setup or another named acquisition. This is a target-specific current-object relation, not a symbol-count allocation proof.",
+  "remaining_layout_thunk": {
+    "before_range": "0xae394\u20130xae3b0",
+    "after_range": "0xaf224\u20130xaf240",
+    "identity": "Same7instructions and symbolic relocations: runtimeSupportsNoncopyableTypes GOT-load, zero branch to same outlined192, otherwise same RootScope GMD adrp/add\u2192instantiate tail. Address relocation changes only.",
+    "guard": "_swift_runtimeSupportsNoncopyableTypes pointer !=0 takes metadata request",
+    "applicability": "Preexisting metadata-layout access remains; its complete runtime/caller/reflection invocation is not newly closed or declared infeasible. No provider/constructor expansion performed."
+  },
+  "text_before": 816580,
+  "text_after": 820384,
+  "text_delta_vs57": 3804,
+  "text_delta_vs_accepted_constructor50": 5516,
+  "limits": "No observed allocation/success/bytes, global zero-heap, performance, full/profile/image/cold/resource or overall Batch A claim."
+}

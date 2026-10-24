@@ -36,8 +36,11 @@ package struct ObservableModelOwnership: ~Copyable {
         fileprivate let serial: UInt32
     }
 
+    @usableFromInline
     package struct Replacement {
+        @usableFromInline
         package let former: Address
+        @usableFromInline
         package let candidate: Address
         fileprivate let formerClaim: Claim
         fileprivate let candidateClaim: Claim
@@ -125,6 +128,7 @@ package struct ObservableModelOwnership: ~Copyable {
     // The activation callback has ended: its nonescapable tickets and readers
     // cannot remain live. Retire every remaining claim before destroying model
     // values, while preserving both non-reusing identity cursors.
+    @usableFromInline
     package mutating func finishActivation() -> UInt8 {
         var occupied: UInt8 = 0
         for index in 0 ..< Int(modelLimit) {
@@ -138,6 +142,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return occupied
     }
 
+    @inlinable
     package func key<Schema>(for address: Address, as schema: Schema.Type) -> _GiftUIModelKey<
         Schema
     > {
@@ -306,6 +311,7 @@ package struct ObservableModelOwnership: ~Copyable {
         records[index].registered = true
     }
 
+    @usableFromInline
     package mutating func unregister(_ address: Address) throws(ObservableStateError) -> UInt16? {
         if let failure = operationAllowed(discovery: true) { throw failure }
         let index = try validate(address)
@@ -380,6 +386,7 @@ package struct ObservableModelOwnership: ~Copyable {
         phase = .mutating
     }
 
+    @usableFromInline
     package mutating func reserveReplacement(
         transferring finalClaim: Claim, schema: UInt16, candidateIsEmpty: Bool,
         registrationAvailable: Bool, stagingAvailable: Bool
@@ -408,6 +415,7 @@ package struct ObservableModelOwnership: ~Copyable {
         return reservation
     }
 
+    @usableFromInline
     package mutating func finishReplacement(_ reservation: Replacement, commit: Bool)
         throws(ObservableStateError) -> Claim?
     {

@@ -9,7 +9,7 @@ package struct ObservableModelTicket<Schema>: ~Copyable, ~Escapable {
     internal var ownsClaim = true
 
     @_lifetime(copy lifetime)
-    @usableFromInline
+    @inlinable
     package init<Scope: ~Copyable & ~Escapable>(
         claim: ObservableModelOwnership.Claim, lifetime: borrowing Scope
     ) {

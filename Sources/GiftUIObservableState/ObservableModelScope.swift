@@ -97,12 +97,12 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
 
     // Called before the root report-storage borrow ends, even if an independent
     // ticket survives a failed detach. Terminal activation cannot be reopened.
-    @usableFromInline
+    @inlinable
     package borrowing func finishStoppedActivation() {
         if ownership.pointee.phase == .retired { finishActivation() }
     }
 
-    @usableFromInline
+    @inlinable
     borrowing func finishActivation() {
         let occupied = ownership.pointee.finishActivation()
         for index in 0 ..< models.count where occupied & (1 << index) != 0 {
@@ -146,6 +146,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         } catch { return .invariantViolation }
     }
 
+    @inlinable
     package borrowing func stageReplacement(
         transferring ticket: borrowing ObservableModelTicket<Schema>, seed: Schema.Seed,
         registrationAvailable: Bool, stagingAvailable: Bool
@@ -160,6 +161,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         return reservation
     }
 
+    @inlinable
     package borrowing func discardReplacement(_ reservation: ObservableModelOwnership.Replacement)
         throws(ObservableStateError)
     {
@@ -168,6 +170,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
     }
 
     @_lifetime(copy self)
+    @inlinable
     package borrowing func commitReplacement(
         _ reservation: ObservableModelOwnership.Replacement,
         transferring ticket: inout ObservableModelTicket<Schema>
@@ -181,7 +184,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         return ObservableModelTicket(claim: claim, lifetime: self)
     }
 
-    @usableFromInline
+    @inlinable
     package borrowing func key(for address: ObservableModelOwnership.Address) -> _GiftUIModelKey<
         Schema
     > {
@@ -225,6 +228,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         try ownership.pointee.register(ticket.requireClaim().address, schema: schema)
     }
 
+    @inlinable
     package borrowing func unregister(_ key: _GiftUIModelKey<Schema>) throws(ObservableStateError) {
         if let slot = try ownership.pointee.unregister(ownership.pointee.address(for: key)) {
             models[Int(slot)] = nil

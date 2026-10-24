@@ -97,6 +97,7 @@ struct ObservableStateRootReports {
     struct Route {
         @usableFromInline
         var lifecycle = ObservableStateRegistrationLifecycle()
+        @usableFromInline
         var dirty = false
 
         @usableFromInline
@@ -261,6 +262,7 @@ package struct ObservableStateRootScope<
         try models.validateOperation(discovery: discovery)
     }
 
+    @inlinable
     package borrowing func beginCandidate() -> ObservableStateResult {
         do throws(ObservableStateError) {
             try checkOperation(discovery: true)
@@ -299,7 +301,7 @@ package struct ObservableStateRootScope<
         return key(at: slot)
     }
 
-    @usableFromInline
+    @inlinable
     package borrowing func generation(
         identity: Identity, ordinal: UInt16, publishable: Bool = false
     ) -> UInt32? {
@@ -429,7 +431,8 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
-    private borrowing func releaseOffers() throws(ObservableStateError) {
+    @inlinable
+    internal borrowing func releaseOffers() throws(ObservableStateError) {
         var failure: ObservableStateError?
         for i in 0 ..< 4 {
             guard let claim = records.pointee.offeredClaims[i] else { continue }
@@ -499,7 +502,8 @@ package struct ObservableStateRootScope<
         try models.release(&ticket)
     }
 
-    private borrowing func retire(_ slot: Int) throws(ObservableStateError) {
+    @inlinable
+    internal borrowing func retire(_ slot: Int) throws(ObservableStateError) {
         guard let attachment = records.pointee.records[slot].attachment else {
             throw .invariantViolation
         }
@@ -521,6 +525,7 @@ package struct ObservableStateRootScope<
         }
     }
 
+    @inlinable
     package borrowing func finishCandidate(_ disposition: ObservableStateCandidateDisposition)
         -> ObservableStateResult
     {
@@ -559,6 +564,7 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
+    @inlinable
     package borrowing func replace(
         identity: Identity, ordinal: UInt16,
         transferring ticket: inout ObservableModelTicket<Model.Schema>, seed: Model.Schema.Seed,
@@ -673,7 +679,7 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
-    @usableFromInline
+    @inlinable
     package borrowing func mutate(
         identity: Identity, ordinal: UInt16, matching generation: ObservableTargetGeneration,
         operation: () -> Model.Mutation
@@ -691,7 +697,7 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
-    @usableFromInline
+    @inlinable
     package borrowing func shutdown() throws(ObservableStateError) {
         if records.pointee.retired { return }
         // A terminal activation still needs to retire all callback routes while

@@ -1,0 +1,153 @@
+
+.build/contracts/p08-counter-yje67t90/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a8308 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5>:
+   a8308:      	sub	sp, sp, #0x150
+   a830c:      	stp	x28, x27, [sp, #0xf0]
+   a8310:      	stp	x26, x25, [sp, #0x100]
+   a8314:      	stp	x24, x23, [sp, #0x110]
+   a8318:      	stp	x22, x21, [sp, #0x120]
+   a831c:      	stp	x20, x19, [sp, #0x130]
+   a8320:      	stp	x29, x30, [sp, #0x140]
+   a8324:      	add	x29, sp, #0x140
+   a8328:      	ldr	x24, [x20, #0x30]
+   a832c:      	ldrb	w8, [x24, #0xa3]
+   a8330:      	cmp	w8, #0x1
+   a8334:      	b.ne	0xa8360 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x58>
+   a8338:      	mov	w8, #0x9                ; =9
+   a833c:      	strb	w8, [sp, #0x2c]
+   a8340:      	bl	0xa8340 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x38>
+		00000000000a8340:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+   a8344:      	mov	x2, x0
+   a8348:      	adrp	x1, 0xa8000 <_$s17P08CounterRuntime0B16ExecutionBindingVSgWOi0_+0x8>
+		00000000000a8348:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+   a834c:      	ldr	x1, [x1]
+		00000000000a834c:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+   a8350:      	add	x0, sp, #0x2c
+   a8354:      	bl	0xa8354 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x4c>
+		00000000000a8354:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+   a8358:      	mov	w0, #0x89               ; =137
+   a835c:      	b	0xa84e0 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1d8>
+   a8360:      	ldrb	w8, [x24, #0xa2]
+   a8364:      	cmp	w8, #0x1
+   a8368:      	b.ne	0xa8394 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x8c>
+   a836c:      	mov	w8, #0xa                ; =10
+   a8370:      	strb	w8, [sp, #0x2c]
+   a8374:      	bl	0xa8374 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x6c>
+		00000000000a8374:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+   a8378:      	mov	x2, x0
+   a837c:      	adrp	x1, 0xa8000 <_$s17P08CounterRuntime0B16ExecutionBindingVSgWOi0_+0x8>
+		00000000000a837c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+   a8380:      	ldr	x1, [x1]
+		00000000000a8380:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+   a8384:      	add	x0, sp, #0x2c
+   a8388:      	bl	0xa8388 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x80>
+		00000000000a8388:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+   a838c:      	mov	w0, #0x8a               ; =138
+   a8390:      	b	0xa84e0 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1d8>
+   a8394:      	mov	x22, x20
+   a8398:      	mov	x19, x4
+   a839c:      	mov	x21, x3
+   a83a0:      	mov	x26, x2
+   a83a4:      	mov	x27, x1
+   a83a8:      	mov	x28, x0
+   a83ac:      	ldp	x23, x9, [x20]
+   a83b0:      	ldr	x8, [x20, #0x10]
+   a83b4:      	stp	x8, x9, [sp, #0x18]
+   a83b8:      	ldrh	w8, [x20, #0x18]
+   a83bc:      	str	w8, [sp, #0x14]
+   a83c0:      	ldrb	w25, [x20, #0x1a]
+   a83c4:      	add	x0, sp, #0x2c
+   a83c8:      	mov	x1, x23
+   a83cc:      	mov	w2, #0xb9               ; =185
+   a83d0:      	bl	0xa83d0 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0xc8>
+		00000000000a83d0:  ARM64_RELOC_BRANCH26	_memcpy
+   a83d4:      	add	x20, sp, #0x2c
+   a83d8:      	mov	w0, #0x0                ; =0
+   a83dc:      	bl	0xa83dc <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0xd4>
+		00000000000a83dc:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV16operationAllowed9discoveryAA0dC5ErrorOSgSb_tF
+   a83e0:      	and	w8, w0, #0xff
+   a83e4:      	cmp	w8, #0x12
+   a83e8:      	b.ne	0xa8494 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x18c>
+   a83ec:      	mov	x0, x28
+   a83f0:      	mov	x1, x27
+   a83f4:      	mov	x20, x22
+   a83f8:      	bl	0xa83f8 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0xf0>
+		00000000000a83f8:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5
+   a83fc:      	and	w9, w1, #0xff
+   a8400:      	cmp	w9, #0x1
+   a8404:      	b.eq	0xa84bc <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1b4>
+   a8408:      	mov	x8, x0
+   a840c:      	cmp	x0, #0x1
+   a8410:      	b.hi	0xa8500 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1f8>
+   a8414:      	add	x9, x8, x8, lsl #1
+   a8418:      	add	x10, x24, x9, lsl #3
+   a841c:      	ldrb	w11, [x10, #0x15]
+   a8420:      	cmp	w11, #0x1
+   a8424:      	b.ne	0xa84bc <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1b4>
+   a8428:      	ldrb	w11, [x10, #0x14]
+   a842c:      	cmp	w11, #0x1
+   a8430:      	b.eq	0xa84bc <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1b4>
+   a8434:      	ldr	w10, [x10, #0x10]
+   a8438:      	cmp	w10, w26
+   a843c:      	b.ne	0xa84bc <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1b4>
+   a8440:      	lsl	x9, x9, #3
+   a8444:      	ldp	x10, x20, [x22, #0x30]
+   a8448:      	add	x9, x10, x9
+   a844c:      	ldur	x0, [x9, #0x4]
+   a8450:      	mov	w9, #0x1                ; =1
+   a8454:      	strb	w9, [x20, #0x18]
+   a8458:      	mov	w9, #0x10000            ; =65536
+   a845c:      	cmp	w25, #0x0
+   a8460:      	csel	w9, w9, wzr, ne
+   a8464:      	strh	w8, [sp, #0x10]
+   a8468:      	ldr	w10, [sp, #0x14]
+   a846c:      	orr	w7, w9, w10
+   a8470:      	stp	x22, x0, [sp]
+   a8474:      	mov	x1, x8
+   a8478:      	mov	x2, x21
+   a847c:      	mov	x3, x19
+   a8480:      	mov	x4, x23
+   a8484:      	ldp	x6, x5, [sp, #0x18]
+   a8488:      	bl	0xa8488 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x180>
+		00000000000a8488:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE6mutate_9operation6reportAA0dC6ResultO0A2UI01_A10UIModelKeyVyq_G_8MutationQzyXEAI01_aB19ChangeReportOutcomeOyXEtAA0deN0RzrlF17P08CounterRuntime0s5OwnedE0V_0rS6Schema0seV0OTg504$s21ab8State010d6C9Rootf59VAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6j50Oq__s6UInt16V0A11UIExecution0D16TargetGenerationV8n5AA0d5e29Q0PQzyXEtAaQRzrlF0A2UI01_aB19opq9OyXEfU_17rs10Runtime0x5U52R0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5AA0dczF0VyAT0A14UISemanticCore24SemanticCompleteIdentityVGAKyAWGTf1nncn_nTm
+   a848c:      	strb	wzr, [x20, #0x18]
+   a8490:      	b	0xa84e0 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1d8>
+   a8494:      	mov	x20, x0
+   a8498:      	strb	w0, [sp, #0x2b]
+   a849c:      	bl	0xa849c <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x194>
+		00000000000a849c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+   a84a0:      	mov	x2, x0
+   a84a4:      	adrp	x1, 0xa8000 <_$s17P08CounterRuntime0B16ExecutionBindingVSgWOi0_+0x8>
+		00000000000a84a4:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+   a84a8:      	ldr	x1, [x1]
+		00000000000a84a8:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+   a84ac:      	add	x0, sp, #0x2b
+   a84b0:      	bl	0xa84b0 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1a8>
+		00000000000a84b0:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+   a84b4:      	orr	w0, w20, #0xffffff80
+   a84b8:      	b	0xa84e0 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1d8>
+   a84bc:      	mov	w8, #0x10               ; =16
+   a84c0:      	strb	w8, [sp, #0x2b]
+   a84c4:      	bl	0xa84c4 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1bc>
+		00000000000a84c4:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+   a84c8:      	mov	x2, x0
+   a84cc:      	adrp	x1, 0xa8000 <_$s17P08CounterRuntime0B16ExecutionBindingVSgWOi0_+0x8>
+		00000000000a84cc:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+   a84d0:      	ldr	x1, [x1]
+		00000000000a84d0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+   a84d4:      	add	x0, sp, #0x2b
+   a84d8:      	bl	0xa84d8 <_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE6mutate8identity7ordinal8matching9operationAA0dC6ResultOq__s6UInt16V0A11UIExecution0D16TargetGenerationV8MutationAA0d5ModelQ0PQzyXEtAaQRzrlF17P08CounterRuntime0t5OwnedR0V_0A14UISemanticCore24SemanticCompleteIdentityVTg5+0x1d0>
+		00000000000a84d8:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+   a84dc:      	mov	w0, #0x90               ; =144
+   a84e0:      	ldp	x29, x30, [sp, #0x140]
+   a84e4:      	ldp	x20, x19, [sp, #0x130]
+   a84e8:      	ldp	x22, x21, [sp, #0x120]
+   a84ec:      	ldp	x24, x23, [sp, #0x110]
+   a84f0:      	ldp	x26, x25, [sp, #0x100]
+   a84f4:      	ldp	x28, x27, [sp, #0xf0]
+   a84f8:      	add	sp, sp, #0x150
+   a84fc:      	ret
+   a8500:      	brk	#0x1

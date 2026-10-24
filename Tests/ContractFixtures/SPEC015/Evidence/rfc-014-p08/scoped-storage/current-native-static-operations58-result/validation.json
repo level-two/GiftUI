@@ -1,0 +1,145 @@
+{
+  "kind": "ordinary implementation/focused validation, not an authenticated Batch A experiment",
+  "source_group": {
+    "incremental_files": [
+      "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "Sources/GiftUIObservableState/ObservableStateValues.swift"
+    ],
+    "combined57_58_source_files": {
+      "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+        "sha256": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205",
+        "bytes": 34373,
+        "focused_input_sha256": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205"
+      },
+      "Sources/GiftUIObservableState/ObservableModelScope.swift": {
+        "sha256": "61f3dec08d89c44f71866befdd763dfa8206b27b73f3aecf4ee9106e093733e6",
+        "bytes": 13894,
+        "focused_input_sha256": "61f3dec08d89c44f71866befdd763dfa8206b27b73f3aecf4ee9106e093733e6"
+      },
+      "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+        "sha256": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832",
+        "bytes": 17684,
+        "focused_input_sha256": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832"
+      },
+      "Sources/GiftUIObservableState/ObservableModelTicket.swift": {
+        "sha256": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd",
+        "bytes": 1747,
+        "focused_input_sha256": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd"
+      },
+      "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": {
+        "sha256": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252",
+        "bytes": 3056,
+        "focused_input_sha256": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252"
+      },
+      "Sources/GiftUIObservableState/ObservableStateValues.swift": {
+        "sha256": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae",
+        "bytes": 2487,
+        "focused_input_sha256": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae"
+      }
+    },
+    "new_serialized_bodies": [
+      "RootScope.beginCandidate",
+      "RootScope.generation",
+      "RootScope.finishCandidate",
+      "RootScope.replace",
+      "RootScope.mutate(identity:ordinal:matching:operation:)",
+      "ModelScope.stageReplacement",
+      "ModelScope.discardReplacement",
+      "ModelScope.commitReplacement",
+      "ModelScope.key(for:)",
+      "Ownership.key<Schema>"
+    ],
+    "new_usable_support": [
+      "Ownership.Replacement",
+      "Replacement.former",
+      "Replacement.candidate",
+      "Ownership.reserveReplacement",
+      "Ownership.finishReplacement",
+      "ObservableStateCandidateDisposition"
+    ],
+    "preservation": "Attributes only: bodies, signatures, raw enum cases, guards/defaults/evaluation/phase/error precedence, capacities/generation/ownership/lifetime, callback retirement/detach-before-storage-end/first-error behavior unchanged; prior Model generic conformance controls not bypassed.",
+    "maintenance_cost": "10 additional serialized bodies and6 usable declarations; internal ABI/serialization exposure and text size cost. No blanket flags/public API/representation or new forced inline."
+  },
+  "P07_failed": {
+    "result_directory": ".build/contracts/spec-013-runtime-cycle/tmpzgx7rmnb/macos-static",
+    "exit": 1,
+    "reason": "All diagnostics solely missing @usableFromInline CandidateDisposition signature enum/cases. One consolidated nominal-only fix applied; no other closure expansion."
+  },
+  "P07": {
+    "result": ".build/contracts/spec-013-runtime-cycle/tmpx4wt4oc6/macos-static/result.json",
+    "command": "python3 scripts/contracts/check-spec-013-runtime-cycle.py --profile macos-static --giftui-build .build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "start": "2026-10-24T08:08:58Z",
+    "finish": "2026-10-24T08:09:42Z",
+    "exit": 0,
+    "assertions": 5904,
+    "failures": 0,
+    "sha256": "7a5380abee368611a821e1a9fb205b5089d136f5eebff7b5e8bdf3f453ec9311"
+  },
+  "focused": {
+    "result": ".build/contracts/p08-counter-yje67t90/result.json",
+    "sha256": "e6dc854bf19fab46ab1592c55c87970c69c5fe5d865d6603c3117610e7bcc904",
+    "command": "python3 scripts/contracts/check-spec-015-counter.py --profile macos-static --runtime-build .build/contracts/spec-013-runtime-cycle/tmpx4wt4oc6/macos-static --host-build .build/contracts/p08-scoped-host-7gj3vxnl --fresh-focused --select-family runtime --static-resource-entry-v1",
+    "start": "2026-10-24T08:10:11Z",
+    "finish": "2026-10-24T08:11:40Z",
+    "exit": 0,
+    "assertions": 1736320,
+    "failures": 0,
+    "inputs": 201,
+    "fresh_focused": true,
+    "focused_passed": true,
+    "aggregate_passed": false,
+    "collection_complete": false,
+    "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmpx4wt4oc6/macos-static",
+    "host_build": ".build/contracts/p08-scoped-host-7gj3vxnl"
+  },
+  "output_normalization": "Only validated SO06 role lines (exact14 tokens, token11 =>) replace decimal address tokens4/8 with <SO06_ADDRESS>. Preserve all other bytes/whitespace/order; no other normalization.",
+  "output_equivalence": [
+    {
+      "name": "mixed",
+      "before_path": ".build/contracts/p08-counter-l9qz2rz3/result.json#execution",
+      "after_path": ".build/contracts/p08-counter-yje67t90/result.json#execution",
+      "before_bytes": 611253,
+      "after_bytes": 611253,
+      "before_raw_sha256": "c86e2e87d39712bc94a2dbc9f6b0cd544e1efea97f0e0d752060f3ea4cede73d",
+      "after_raw_sha256": "ae4662ef637aa01e2feeb872e75680c28f8a72e98e5526ce1cac9fe12e7ef39c",
+      "before_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "after_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+      "SO06_counts": [
+        120,
+        120
+      ],
+      "equal": true
+    },
+    {
+      "name": "static",
+      "before_path": ".build/contracts/p08-counter-l9qz2rz3/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-yje67t90/static-resource-v1-execute.log",
+      "before_bytes": 391098,
+      "after_bytes": 391098,
+      "before_raw_sha256": "943f0d156ae526150f3dbc6701baca98e04106f5a795b29d46fdb808976c9808",
+      "after_raw_sha256": "e69cd8b2a93f09a3bccb41279d72534edf8ae69d81addedfaa38f32426bdfd87",
+      "before_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "after_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+      "SO06_counts": [
+        60,
+        60
+      ],
+      "equal": true
+    }
+  ],
+  "formatter_lint_exits": [
+    0,
+    0
+  ],
+  "ordinary_delivery_errors": "Two duplicate ordinary pre-edit heredoc unmatched-parenthesis SyntaxErrors occurred before any statements, source mutation or compiler. First recorded in before-identities.json; both preserved in actual tool history. Switched to direct apply_patch for enum fix; no further source candidate.",
+  "full_run": false,
+  "gates": [
+    "No full run authorized or launched; current full-artifact applicability reserved.",
+    "Constructor50/cleanup57 positive changes carried; old artifacts/history remain immutable; no old full/resource identity transfer.",
+    "Preexisting layout-thunk applicability, Model owning/generic design, provider/once/error/live binding/environment/stdout persistence/window, remaining BatchA/P08/profile/image/cold/resource obligations remain open.",
+    "Unit gate FAILED before Interaction; Interaction UNEXECUTED. No test-driver/SwiftPM retry.",
+    "A51/A52/A55/A56 recording FALSE preserved; this ordinary implementation result does not retroqualify them."
+  ]
+}

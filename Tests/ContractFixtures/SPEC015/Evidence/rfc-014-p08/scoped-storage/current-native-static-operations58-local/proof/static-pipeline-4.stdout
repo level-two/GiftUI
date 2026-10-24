@@ -1,0 +1,601 @@
+
+.build/contracts/p08-counter-yje67t90/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000073e84 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5>:
+   73e84:      	stp	x28, x27, [sp, #-0x60]!
+   73e88:      	stp	x26, x25, [sp, #0x10]
+   73e8c:      	stp	x24, x23, [sp, #0x20]
+   73e90:      	stp	x22, x21, [sp, #0x30]
+   73e94:      	stp	x20, x19, [sp, #0x40]
+   73e98:      	stp	x29, x30, [sp, #0x50]
+   73e9c:      	add	x29, sp, #0x50
+   73ea0:      	sub	sp, sp, #0xd80
+   73ea4:      	mov	x19, x20
+   73ea8:      	mov	w0, #0x7                ; =7
+   73eac:      	bl	0x73eac <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x28>
+		0000000000073eac:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8boundaryy15GiftUIExecution15RunCycleFailureOy0G13UIRuntimeCore0ceK0OGSgAH0c8CompleteD5StageOFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0a9CandidateQ0APLLVAA0a9CommittedQ0APLLVAA0a3HitQ0APLLVTg5
+   73eb0:      	mov	x20, x0
+   73eb4:      	ubfx	w8, w0, #8, #8
+   73eb8:      	cmp	w8, #0xff
+   73ebc:      	b.lo	0x73ff4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x170>
+   73ec0:      	ldr	w0, [x19, #0x404]
+   73ec4:      	add	x21, x19, #0x190
+   73ec8:      	mov	x20, x21
+   73ecc:      	bl	0x73ecc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x48>
+		0000000000073ecc:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14beginCandidate6limitsAA0C5ErrorOSgAA0C6LimitsV_tF17P08CounterRuntime0jF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AK0j9CommittedM0AMLLVAK0j3HitM0AMLLVTg5
+   73ed0:      	and	w8, w0, #0xff
+   73ed4:      	cmp	w8, #0x9
+   73ed8:      	b.ne	0x73fe4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x160>
+   73edc:      	str	wzr, [x19, #0x380]
+   73ee0:      	mov	w8, #0x901              ; =2305
+   73ee4:      	strh	w8, [x19, #0x388]
+   73ee8:      	mov	w8, #0x1                ; =1
+   73eec:      	strb	w8, [x19, #0x48b]
+   73ef0:      	add	x0, sp, #0x13a
+   73ef4:      	bl	0x73ef4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x70>
+		0000000000073ef4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+   73ef8:      	ldr	x20, [x19, #0x128]
+   73efc:      	ldr	x22, [x19, #0x480]
+   73f00:      	mov	x0, x20
+   73f04:      	mov	x1, x22
+   73f08:      	bl	0x73f08 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x84>
+		0000000000073f08:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ
+   73f0c:      	add	x0, x20, #0x81e
+   73f10:      	add	x1, sp, #0x13a
+   73f14:      	mov	w2, #0xce               ; =206
+   73f18:      	bl	0x73f18 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x94>
+		0000000000073f18:  ARM64_RELOC_BRANCH26	_memcpy
+   73f1c:      	mov	x0, x20
+   73f20:      	mov	x1, x22
+   73f24:      	bl	0x73f24 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0xa0>
+		0000000000073f24:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ
+   73f28:      	add	x0, x20, #0x8ec
+   73f2c:      	add	x1, sp, #0x13a
+   73f30:      	mov	w2, #0xce               ; =206
+   73f34:      	bl	0x73f34 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0xb0>
+		0000000000073f34:  ARM64_RELOC_BRANCH26	_memcpy
+   73f38:      	add	x24, sp, #0x2a8
+   73f3c:      	add	x0, sp, #0x2a8
+   73f40:      	add	x1, x19, #0x60
+   73f44:      	mov	w2, #0xa4               ; =164
+   73f48:      	bl	0x73f48 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0xc4>
+		0000000000073f48:  ARM64_RELOC_BRANCH26	_memcpy
+   73f4c:      	add	x20, sp, #0x2a8
+   73f50:      	bl	0x73f50 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0xcc>
+		0000000000073f50:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5
+   73f54:      	and	w8, w0, #0xff00
+   73f58:      	cmp	w8, #0x100
+   73f5c:      	b.eq	0x73fbc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x138>
+   73f60:      	mov	x22, x0
+   73f64:      	add	x8, x24, #0x48
+   73f68:      	tst	w0, #0xff
+   73f6c:      	csel	x8, x24, x8, eq
+   73f70:      	ldr	x23, [x8]
+   73f74:      	mov	w8, #0x50               ; =80
+   73f78:      	mov	w9, #0x8                ; =8
+   73f7c:      	csel	x8, x9, x8, eq
+   73f80:      	add	x8, x24, x8
+   73f84:      	ldp	q0, q1, [x8]
+   73f88:      	add	x9, sp, #0x208
+   73f8c:      	stp	q0, q1, [sp, #0xf0]
+   73f90:      	ldp	q2, q3, [x8, #0x20]
+   73f94:      	stp	q2, q3, [sp, #0x110]
+   73f98:      	str	x23, [sp, #0x208]
+   73f9c:      	stur	q2, [x9, #0x28]
+   73fa0:      	stur	q3, [x9, #0x38]
+   73fa4:      	stur	q1, [x9, #0x18]
+   73fa8:      	stur	q0, [x9, #0x8]
+   73fac:      	add	x0, sp, #0x208
+   73fb0:      	add	x20, sp, #0x2a8
+   73fb4:      	bl	0x73fb4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x130>
+		0000000000073fb4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5
+   73fb8:      	tbz	w0, #0x0, 0x74018 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x194>
+   73fbc:      	mov	w8, #0x3                ; =3
+   73fc0:      	strb	w8, [sp, #0xca2]
+   73fc4:      	bl	0x73fc4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x140>
+		0000000000073fc4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+   73fc8:      	mov	x2, x0
+   73fcc:      	adrp	x1, 0x73000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE13resolveLayout17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF+0x190>
+		0000000000073fcc:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+   73fd0:      	ldr	x1, [x1]
+		0000000000073fd0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+   73fd4:      	add	x0, sp, #0xca2
+   73fd8:      	bl	0x73fd8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x154>
+		0000000000073fd8:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+   73fdc:      	mov	w20, #0x403             ; =1027
+   73fe0:      	b	0x73ff4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x170>
+   73fe4:      	mov	w8, #0x460              ; =1120
+   73fe8:      	orr	w8, w0, w8
+   73fec:      	mov	w9, #0x4ff              ; =1279
+   73ff0:      	and	w20, w8, w9
+   73ff4:      	mov	x0, x20
+   73ff8:      	add	sp, sp, #0xd80
+   73ffc:      	ldp	x29, x30, [sp, #0x50]
+   74000:      	ldp	x20, x19, [sp, #0x40]
+   74004:      	ldp	x22, x21, [sp, #0x30]
+   74008:      	ldp	x24, x23, [sp, #0x20]
+   7400c:      	ldp	x26, x25, [sp, #0x10]
+   74010:      	ldp	x28, x27, [sp], #0x60
+   74014:      	ret
+   74018:      	ldrh	w8, [x23, #0x8]
+   7401c:      	add	w8, w8, #0x1
+   74020:      	lsr	w9, w8, #16
+   74024:      	tbz	w9, #0x0, 0x7404c <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x1c8>
+   74028:      	strb	wzr, [sp, #0xca2]
+   7402c:      	bl	0x7402c <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x1a8>
+		000000000007402c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+   74030:      	mov	x2, x0
+   74034:      	adrp	x1, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		0000000000074034:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+   74038:      	ldr	x1, [x1]
+		0000000000074038:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+   7403c:      	add	x0, sp, #0xca2
+   74040:      	bl	0x74040 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x1bc>
+		0000000000074040:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+   74044:      	mov	w20, #0x400             ; =1024
+   74048:      	b	0x73ff4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x170>
+   7404c:      	strh	w8, [x23, #0x8]
+   74050:      	ldr	w20, [sp, #0x348]
+   74054:      	add	x0, sp, #0x250
+   74058:      	add	x1, sp, #0x208
+   7405c:      	mov	w2, #0x48               ; =72
+   74060:      	bl	0x74060 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x1dc>
+		0000000000074060:  ARM64_RELOC_BRANCH26	_memcpy
+   74064:      	ldr	w8, [x23, #0x4]
+   74068:      	strb	w22, [sp, #0x298]
+   7406c:      	str	w8, [sp, #0x29c]
+   74070:      	str	w20, [sp, #0x2a0]
+   74074:      	add	x0, sp, #0xca2
+   74078:      	bl	0x74078 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x1f4>
+		0000000000074078:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+   7407c:      	adrp	x0, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		000000000007407c:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore18SemanticRecordViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0jk6SchemaH6ValuesOy0jK7Runtime0K6DomainOGGGMD
+   74080:      	add	x0, x0, #0x0
+		0000000000074080:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore18SemanticRecordViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0jk6SchemaH6ValuesOy0jK7Runtime0K6DomainOGGGMD
+   74084:      	bl	0x74084 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x200>
+		0000000000074084:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   74088:      	mov	x22, x0
+   7408c:      	add	x20, sp, #0x250
+   74090:      	bl	0x74090 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x20c>
+		0000000000074090:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV11recordCounts6UInt16Vvg
+   74094:      	mov	x23, x0
+   74098:      	mov	w24, #0x0               ; =0
+   7409c:      	mov	x25, #0x1000000000000   ; =281474976710656
+   740a0:      	mov	w26, #0x18              ; =24
+   740a4:      	and	w8, w24, #0xffff
+   740a8:      	cmp	w8, w23, uxth
+   740ac:      	b.eq	0x741a0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x31c>
+   740b0:      	add	x20, sp, #0x250
+   740b4:      	mov	x0, x24
+   740b8:      	mov	x1, x22
+   740bc:      	bl	0x740bc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x238>
+		00000000000740bc:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV9reference2atAA0dE9ReferenceVSgs6UInt16V_tF
+   740c0:      	and	x8, x1, #0xff000000000000
+   740c4:      	cmp	x8, x25
+   740c8:      	b.eq	0x74610 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x78c>
+   740cc:      	add	x8, sp, #0x68a
+   740d0:      	and	x0, x0, #0xffffffffff
+   740d4:      	and	x1, x1, #0xffffffffffff
+   740d8:      	add	x20, sp, #0x250
+   740dc:      	mov	x2, x22
+   740e0:      	bl	0x740e0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x25c>
+		00000000000740e0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV16completeIdentity3forAA0d8CompleteH0VSgAA0dE9ReferenceV_tF
+   740e4:      	add	x0, sp, #0x9c2
+   740e8:      	add	x1, sp, #0x68a
+   740ec:      	mov	w2, #0xce               ; =206
+   740f0:      	bl	0x740f0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x26c>
+		00000000000740f0:  ARM64_RELOC_BRANCH26	_memcpy
+   740f4:      	add	x0, sp, #0x9c2
+   740f8:      	bl	0x740f8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x274>
+		00000000000740f8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   740fc:      	cmp	w0, #0x1
+   74100:      	b.eq	0x7460c <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x788>
+   74104:      	add	x0, sp, #0x8f4
+   74108:      	add	x1, sp, #0x9c2
+   7410c:      	mov	w2, #0xce               ; =206
+   74110:      	bl	0x74110 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x28c>
+		0000000000074110:  ARM64_RELOC_BRANCH26	_memcpy
+   74114:      	add	x20, sp, #0x8f4
+   74118:      	mov	w0, #0x1                ; =1
+   7411c:      	bl	0x7411c <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x298>
+		000000000007411c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF
+   74120:      	tbz	w0, #0x0, 0x745b4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x730>
+   74124:      	ldp	q0, q1, [x19, #0x20]
+   74128:      	str	q0, [sp, #0xc60]
+   7412c:      	str	q1, [sp, #0xc70]
+   74130:      	ldp	q0, q1, [x19, #0x40]
+   74134:      	str	q0, [sp, #0xc80]
+   74138:      	str	q1, [sp, #0xc90]
+   7413c:      	add	x0, sp, #0xb92
+   74140:      	add	x1, sp, #0x8f4
+   74144:      	mov	w2, #0xce               ; =206
+   74148:      	bl	0x74148 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x2c4>
+		0000000000074148:  ARM64_RELOC_BRANCH26	_memcpy
+   7414c:      	add	x0, sp, #0xb92
+   74150:      	add	x20, sp, #0xc60
+   74154:      	mov	w1, #0x0                ; =0
+   74158:      	bl	0x74158 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x2d4>
+		0000000000074158:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5
+   7415c:      	and	w8, w1, #0xff
+   74160:      	cmp	w8, #0x1
+   74164:      	b.eq	0x74198 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x314>
+   74168:      	cmp	x0, #0x1
+   7416c:      	b.hi	0x745fc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x778>
+   74170:      	ldr	x8, [sp, #0xc90]
+   74174:      	ldrb	w9, [x8, #0xa1]
+   74178:      	cmp	w9, #0x1
+   7417c:      	b.ne	0x74198 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x314>
+   74180:      	madd	x8, x0, x26, x8
+   74184:      	ldrb	w9, [x8, #0x16]
+   74188:      	cbz	w9, 0x74198 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x314>
+   7418c:      	ldrb	w8, [x8, #0x14]
+   74190:      	cmp	w8, #0x1
+   74194:      	b.ne	0x741ac <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x328>
+   74198:      	add	w24, w24, #0x1
+   7419c:      	b	0x740a4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x220>
+   741a0:      	add	x0, sp, #0x5bc
+   741a4:      	add	x1, sp, #0xca2
+   741a8:      	b	0x741cc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x348>
+   741ac:      	add	x0, sp, #0x826
+   741b0:      	add	x1, sp, #0x8f4
+   741b4:      	mov	w2, #0xce               ; =206
+   741b8:      	bl	0x741b8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x334>
+		00000000000741b8:  ARM64_RELOC_BRANCH26	_memcpy
+   741bc:      	add	x0, sp, #0x826
+   741c0:      	bl	0x741c0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x33c>
+		00000000000741c0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   741c4:      	add	x0, sp, #0x5bc
+   741c8:      	add	x1, sp, #0x826
+   741cc:      	mov	w2, #0xce               ; =206
+   741d0:      	bl	0x741d0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x34c>
+		00000000000741d0:  ARM64_RELOC_BRANCH26	_memcpy
+   741d4:      	add	x20, sp, #0x250
+   741d8:      	mov	x0, x22
+   741dc:      	bl	0x741dc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x358>
+		00000000000741dc:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV11recordCounts6UInt16Vvg
+   741e0:      	mov	x23, x0
+   741e4:      	mov	w27, #0x0               ; =0
+   741e8:      	mov	w24, #0x0               ; =0
+   741ec:      	mov	x28, #0x1000000000000   ; =281474976710656
+   741f0:      	and	w8, w24, #0xffff
+   741f4:      	cmp	w8, w23, uxth
+   741f8:      	b.eq	0x74568 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x6e4>
+   741fc:      	b.hs	0x745ec <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x768>
+   74200:      	add	x20, sp, #0x250
+   74204:      	mov	x0, x24
+   74208:      	mov	x1, x22
+   7420c:      	bl	0x7420c <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x388>
+		000000000007420c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV9reference2atAA0dE9ReferenceVSgs6UInt16V_tF
+   74210:      	and	x8, x1, #0xff000000000000
+   74214:      	cmp	x8, x28
+   74218:      	b.eq	0x74608 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x784>
+   7421c:      	mov	x25, x0
+   74220:      	mov	x26, x1
+   74224:      	add	w24, w24, #0x1
+   74228:      	and	x0, x0, #0xffffffffff
+   7422c:      	and	x1, x1, #0xffffffffffff
+   74230:      	add	x20, sp, #0x250
+   74234:      	mov	x2, x22
+   74238:      	bl	0x74238 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x3b4>
+		0000000000074238:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF
+   7423c:      	and	x8, x1, #0xff0000
+   74240:      	cmp	x8, #0x20, lsl #12      ; =0x20000
+   74244:      	b.ne	0x741f0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x36c>
+   74248:      	add	x0, sp, #0x4ee
+   7424c:      	add	x1, sp, #0x5bc
+   74250:      	mov	w2, #0xce               ; =206
+   74254:      	bl	0x74254 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x3d0>
+		0000000000074254:  ARM64_RELOC_BRANCH26	_memcpy
+   74258:      	add	x0, sp, #0x5bc
+   7425c:      	bl	0x7425c <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x3d8>
+		000000000007425c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   74260:      	cmp	w0, #0x1
+   74264:      	b.eq	0x745b4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x730>
+   74268:      	add	x0, sp, #0xb38
+   7426c:      	add	x1, x19, #0x130
+   74270:      	mov	w2, #0x59               ; =89
+   74274:      	bl	0x74274 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x3f0>
+		0000000000074274:  ARM64_RELOC_BRANCH26	_memcpy
+   74278:      	and	x0, x25, #0xffffffffff
+   7427c:      	and	x1, x26, #0xffffffffffff
+   74280:      	add	x20, sp, #0xb38
+   74284:      	adrp	x2, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		0000000000074284:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime15QualifiedLayoutV6bounds2of6GiftUI4RectVSg0H14UISemanticCore23SemanticRecordReferenceV_tF
+   74288:      	add	x2, x2, #0x0
+		0000000000074288:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime15QualifiedLayoutV6bounds2of6GiftUI4RectVSg0H14UISemanticCore23SemanticRecordReferenceV_tF
+   7428c:      	adrp	x3, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		000000000007428c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s20GiftUIRuntimeDynamic0C18ResolvedLayoutViewV6bounds2of0A2UI4RectVSg0A14UISemanticCore23SemanticRecordReferenceV_tF
+   74290:      	ldr	x3, [x3]
+		0000000000074290:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s20GiftUIRuntimeDynamic0C18ResolvedLayoutViewV6bounds2of0A2UI4RectVSg0A14UISemanticCore23SemanticRecordReferenceV_tF
+   74294:      	bl	0x74294 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x410>
+		0000000000074294:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV6boundsy6GiftUI4RectVSg0L14UISemanticCore23SemanticRecordReferenceVFTm
+   74298:      	str	x1, [sp, #0xe0]
+   7429c:      	and	w8, w2, #0xff
+   742a0:      	cmp	w8, #0x1
+   742a4:      	b.eq	0x745b4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x730>
+   742a8:      	mov	x28, x0
+   742ac:      	add	x0, sp, #0xad8
+   742b0:      	add	x1, x19, #0x130
+   742b4:      	mov	w2, #0x59               ; =89
+   742b8:      	bl	0x742b8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x434>
+		00000000000742b8:  ARM64_RELOC_BRANCH26	_memcpy
+   742bc:      	and	x0, x25, #0xffffffffff
+   742c0:      	and	x1, x26, #0xffffffffffff
+   742c4:      	add	x20, sp, #0xad8
+   742c8:      	adrp	x2, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		00000000000742c8:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime15QualifiedLayoutV4clip2of6GiftUI4RectVSg0H14UISemanticCore23SemanticRecordReferenceV_tF
+   742cc:      	add	x2, x2, #0x0
+		00000000000742cc:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime15QualifiedLayoutV4clip2of6GiftUI4RectVSg0H14UISemanticCore23SemanticRecordReferenceV_tF
+   742d0:      	adrp	x3, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		00000000000742d0:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s20GiftUIRuntimeDynamic0C18ResolvedLayoutViewV4clip2of0A2UI4RectVSg0A14UISemanticCore23SemanticRecordReferenceV_tF
+   742d4:      	ldr	x3, [x3]
+		00000000000742d4:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s20GiftUIRuntimeDynamic0C18ResolvedLayoutViewV4clip2of0A2UI4RectVSg0A14UISemanticCore23SemanticRecordReferenceV_tF
+   742d8:      	bl	0x742d8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x454>
+		00000000000742d8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV6boundsy6GiftUI4RectVSg0L14UISemanticCore23SemanticRecordReferenceVFTm
+   742dc:      	and	w8, w2, #0xff
+   742e0:      	cmp	w8, #0x1
+   742e4:      	b.eq	0x745b4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x730>
+   742e8:      	stp	x1, x28, [sp, #0xd0]
+   742ec:      	mov	x28, x0
+   742f0:      	str	w27, [sp, #0xec]
+   742f4:      	add	x8, sp, #0x758
+   742f8:      	and	x0, x25, #0xffffffffff
+   742fc:      	and	x1, x26, #0xffffffffffff
+   74300:      	add	x20, sp, #0x250
+   74304:      	mov	x2, x22
+   74308:      	bl	0x74308 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x484>
+		0000000000074308:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV16completeIdentity3forAA0d8CompleteH0VSgAA0dE9ReferenceV_tF
+   7430c:      	add	x0, sp, #0x826
+   74310:      	add	x1, sp, #0x758
+   74314:      	mov	w2, #0xce               ; =206
+   74318:      	bl	0x74318 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x494>
+		0000000000074318:  ARM64_RELOC_BRANCH26	_memcpy
+   7431c:      	add	x0, sp, #0x826
+   74320:      	bl	0x74320 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x49c>
+		0000000000074320:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   74324:      	cmp	w0, #0x1
+   74328:      	b.eq	0x74614 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x790>
+   7432c:      	add	x0, sp, #0x8f4
+   74330:      	add	x1, sp, #0x826
+   74334:      	mov	w2, #0xce               ; =206
+   74338:      	bl	0x74338 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x4b4>
+		0000000000074338:  ARM64_RELOC_BRANCH26	_memcpy
+   7433c:      	add	x0, sp, #0x420
+   74340:      	add	x1, sp, #0x826
+   74344:      	mov	w2, #0xce               ; =206
+   74348:      	bl	0x74348 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x4c4>
+		0000000000074348:  ARM64_RELOC_BRANCH26	_memcpy
+   7434c:      	add	x0, sp, #0x352
+   74350:      	add	x1, sp, #0x4ee
+   74354:      	mov	w2, #0xce               ; =206
+   74358:      	bl	0x74358 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x4d4>
+		0000000000074358:  ARM64_RELOC_BRANCH26	_memcpy
+   7435c:      	and	x0, x25, #0xffffffffff
+   74360:      	and	x1, x26, #0xffffffffffff
+   74364:      	add	x2, sp, #0x250
+   74368:      	bl	0x74368 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x4e4>
+		0000000000074368:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime22counterActionIsEnabled33_F69033F4DB287CAFB71641A3EEA15F2ALL_4bankSb18GiftUISemanticCore23SemanticRecordReferenceV_AE0sT4ViewVy0P9UIDrawing06CanvasS7PayloadOy0aB5Table0ab6SchemaX6ValuesOyAA0B6DomainOGGGtF
+   7436c:      	str	w0, [sp, #0xcc]
+   74370:      	ldp	q0, q1, [x19, #0x20]
+   74374:      	str	q0, [sp, #0xa90]
+   74378:      	str	q1, [sp, #0xaa0]
+   7437c:      	ldp	q0, q1, [x19, #0x40]
+   74380:      	str	q0, [sp, #0xab0]
+   74384:      	str	q1, [sp, #0xac0]
+   74388:      	adrp	x0, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		0000000000074388:  ARM64_RELOC_PAGE21	_$s15P08CounterTable0aB18SchemaCanvasValuesOy0aB7Runtime0B6DomainOGMD
+   7438c:      	add	x0, x0, #0x0
+		000000000007438c:  ARM64_RELOC_PAGEOFF12	_$s15P08CounterTable0aB18SchemaCanvasValuesOy0aB7Runtime0B6DomainOGMD
+   74390:      	bl	0x74390 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x50c>
+		0000000000074390:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   74394:      	str	x0, [sp, #0xc0]
+   74398:      	bl	0x74398 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x514>
+		0000000000074398:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVAD17GiftUIInteraction011InteractionD13RecordStorageAAWl
+   7439c:      	str	x0, [sp, #0xb8]
+   743a0:      	bl	0x743a0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x51c>
+		00000000000743a0:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLVAD17GiftUIInteraction011InteractionD13RecordStorageAAWl
+   743a4:      	str	x0, [sp, #0xb0]
+   743a8:      	bl	0x743a8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x524>
+		00000000000743a8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLVAD17GiftUIInteraction011InteractionD13RegionStorageAAWl
+   743ac:      	mov	x20, x0
+   743b0:      	bl	0x743b0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x52c>
+		00000000000743b0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl
+   743b4:      	mov	x27, x0
+   743b8:      	bl	0x743b8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x534>
+		00000000000743b8:  ARM64_RELOC_BRANCH26	_$s22P08CounterPresentation0B6ActionOAC6GiftUI0E8UIActionAAWl
+   743bc:      	adrp	x8, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		00000000000743bc:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP
+   743c0:      	add	x8, x8, #0x0
+		00000000000743c0:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP
+   743c4:      	stp	x0, x8, [sp, #0xa0]
+   743c8:      	adrp	x8, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		00000000000743c8:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime0B10OwnedModelV21GiftUIObservableState010ObservablehE0AAWP
+   743cc:      	add	x8, x8, #0x0
+		00000000000743cc:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime0B10OwnedModelV21GiftUIObservableState010ObservablehE0AAWP
+   743d0:      	stp	x8, x27, [sp, #0x90]
+   743d4:      	ldp	x9, x10, [sp, #0xb0]
+   743d8:      	stp	x9, x20, [sp, #0x80]
+   743dc:      	ldr	x8, [sp, #0xc0]
+   743e0:      	stp	x8, x10, [sp, #0x70]
+   743e4:      	adrp	x7, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		00000000000743e4:  ARM64_RELOC_ADDEND	0x10
+		00000000000743e4:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime0B5RolesOMf
+   743e8:      	add	x7, x7, #0x0
+		00000000000743e8:  ARM64_RELOC_ADDEND	0x10
+		00000000000743e8:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime0B5RolesOMf
+   743ec:      	str	x7, [sp, #0x68]
+   743f0:      	adrp	x6, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		00000000000743f0:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s22P08CounterPresentation0B6ActionON
+   743f4:      	ldr	x6, [x6]
+		00000000000743f4:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s22P08CounterPresentation0B6ActionON
+   743f8:      	str	x6, [sp, #0x60]
+   743fc:      	adrp	x8, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		00000000000743fc:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore24SemanticCompleteIdentityVN
+   74400:      	ldr	x9, [x8]
+		0000000000074400:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore24SemanticCompleteIdentityVN
+   74404:      	adrp	x8, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		0000000000074404:  ARM64_RELOC_ADDEND	0x10
+		0000000000074404:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime0B10OwnedModelVMf
+   74408:      	add	x8, x8, #0x0
+		0000000000074408:  ARM64_RELOC_ADDEND	0x10
+		0000000000074408:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime0B10OwnedModelVMf
+   7440c:      	stp	x8, x9, [sp, #0x50]
+   74410:      	adrp	x8, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		0000000000074410:  ARM64_RELOC_ADDEND	0x10
+		0000000000074410:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLVMf
+   74414:      	add	x9, x8, #0x0
+		0000000000074414:  ARM64_RELOC_ADDEND	0x10
+		0000000000074414:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime0A9HitAccess33_480B1BD841D053AE4FCDC18507668536LLVMf
+   74418:      	adrp	x8, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		0000000000074418:  ARM64_RELOC_ADDEND	0x10
+		0000000000074418:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLVMf
+   7441c:      	add	x8, x8, #0x0
+		000000000007441c:  ARM64_RELOC_ADDEND	0x10
+		000000000007441c:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime0A15CommittedAccess33_480B1BD841D053AE4FCDC18507668536LLVMf
+   74420:      	stp	x8, x9, [sp, #0x40]
+   74424:      	adrp	x8, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		0000000000074424:  ARM64_RELOC_ADDEND	0x10
+		0000000000074424:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVMf
+   74428:      	add	x8, x8, #0x0
+		0000000000074428:  ARM64_RELOC_ADDEND	0x10
+		0000000000074428:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime0A15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLVMf
+   7442c:      	stp	x21, x8, [sp, #0x30]
+   74430:      	ldr	w27, [sp, #0xec]
+   74434:      	strh	w27, [sp, #0x28]
+   74438:      	ldr	x8, [sp, #0xd0]
+   7443c:      	stp	x28, x8, [sp, #0x18]
+   74440:      	ldr	w8, [sp, #0xcc]
+   74444:      	and	w8, w8, #0x1
+   74448:      	and	x0, x25, #0xffffffffff
+   7444c:      	and	x1, x26, #0xffffffffffff
+   74450:      	add	x2, sp, #0x250
+   74454:      	add	x3, sp, #0xa90
+   74458:      	add	x4, sp, #0x352
+   7445c:      	ldp	x28, x9, [sp, #0xd8]
+   74460:      	stp	x28, x9, [sp, #0x8]
+   74464:      	strb	w8, [sp]
+   74468:      	mov	w5, #0x0                ; =0
+   7446c:      	bl	0x7446c <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x5e8>
+		000000000007446c:  ARM64_RELOC_BRANCH26	_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ
+   74470:      	and	w8, w0, #0xff
+   74474:      	cmp	w8, #0x9
+   74478:      	b.eq	0x744d0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x64c>
+   7447c:      	cmp	w8, #0xa
+   74480:      	b.ne	0x745c0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x73c>
+   74484:      	add	x20, x19, #0x438
+   74488:      	bl	0x74488 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x604>
+		0000000000074488:  ARM64_RELOC_BRANCH26	_$s15GiftUIExecution25ActionGenerationAllocatorV7reserveAA0cD0VSgyF
+   7448c:      	and	x8, x0, #0xff00000000
+   74490:      	mov	x9, #0x100000000        ; =4294967296
+   74494:      	cmp	x8, x9
+   74498:      	b.eq	0x745f4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x770>
+   7449c:      	ldr	w8, [x19, #0x440]
+   744a0:      	adds	w8, w8, #0x1
+   744a4:      	b.hs	0x745f4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x770>
+   744a8:      	str	w8, [x19, #0x440]
+   744ac:      	ldrb	w8, [x19, #0x389]
+   744b0:      	cmp	w8, #0x9
+   744b4:      	b.ne	0x745f4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x770>
+   744b8:      	add	x1, sp, #0x8f4
+   744bc:      	mov	x20, x21
+   744c0:      	bl	0x744c0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x63c>
+		00000000000744c0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime0L15CandidateAccess33_480B1BD841D053AE4FCDC18507668536LLV_AN0l9CommittedP0APLLVAN0l3HitP0APLLVTg5
+   744c4:      	and	w8, w0, #0xff
+   744c8:      	cmp	w8, #0x9
+   744cc:      	b.ne	0x745f0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x76c>
+   744d0:      	and	w8, w27, #0xffff
+   744d4:      	add	w8, w8, #0x1
+   744d8:      	str	w8, [sp, #0xec]
+   744dc:      	tbnz	w8, #0x10, 0x74600 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x77c>
+   744e0:      	lsr	x27, x28, #32
+   744e4:      	add	x0, sp, #0x352
+   744e8:      	add	x1, sp, #0x420
+   744ec:      	mov	w2, #0xce               ; =206
+   744f0:      	bl	0x744f0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x66c>
+		00000000000744f0:  ARM64_RELOC_BRANCH26	_memcpy
+   744f4:      	add	x0, sp, #0x352
+   744f8:      	bl	0x744f8 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x674>
+		00000000000744f8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   744fc:      	ldr	x20, [x19, #0x128]
+   74500:      	ldr	x1, [x19, #0x480]
+   74504:      	mov	x0, x20
+   74508:      	bl	0x74508 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x684>
+		0000000000074508:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ
+   7450c:      	add	x0, x20, #0x8ec
+   74510:      	add	x1, sp, #0x352
+   74514:      	mov	w2, #0xce               ; =206
+   74518:      	bl	0x74518 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x694>
+		0000000000074518:  ARM64_RELOC_BRANCH26	_memcpy
+   7451c:      	ldr	x8, [x19, #0x128]
+   74520:      	add	x8, x8, #0x18, lsl #12  ; =0x18000
+   74524:      	str	w28, [x8, #0xe14]
+   74528:      	str	w27, [x8, #0xe18]
+   7452c:      	and	x0, x25, #0xffffffffff
+   74530:      	and	x1, x26, #0xffffffffffff
+   74534:      	add	x2, sp, #0x250
+   74538:      	bl	0x74538 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x6b4>
+		0000000000074538:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime17counterActionCode33_F69033F4DB287CAFB71641A3EEA15F2ALL_4banks6UInt16V18GiftUISemanticCore23SemanticRecordReferenceV_AG0sT4ViewVy0P9UIDrawing06CanvasS7PayloadOy0aB5Table0ab6SchemaX6ValuesOyAA0B6DomainOGGGtF
+   7453c:      	and	w8, w0, #0xffff
+   74540:      	cmp	w8, #0x1
+   74544:      	b.hi	0x74604 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x780>
+   74548:      	ldr	x8, [x19, #0x128]
+   7454c:      	add	x8, x8, w0, uxth #3
+   74550:      	mov	w9, #0x8dd0             ; =36304
+   74554:      	movk	w9, #0x1, lsl #16
+   74558:      	add	x8, x8, x9
+   7455c:      	stp	w28, w27, [x8]
+   74560:      	ldr	w27, [sp, #0xec]
+   74564:      	b	0x741ec <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x368>
+   74568:      	ldr	x20, [x19, #0x128]
+   7456c:      	ldr	x1, [x19, #0x480]
+   74570:      	mov	x0, x20
+   74574:      	bl	0x74574 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x6f0>
+		0000000000074574:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ
+   74578:      	add	x0, x20, #0x81e
+   7457c:      	add	x1, sp, #0x5bc
+   74580:      	mov	w2, #0xce               ; =206
+   74584:      	bl	0x74584 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x700>
+		0000000000074584:  ARM64_RELOC_BRANCH26	_memcpy
+   74588:      	ldrb	w0, [x19, #0x389]
+   7458c:      	cmp	w0, #0x9
+   74590:      	b.ne	0x745c0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x73c>
+   74594:      	mov	x20, x21
+   74598:      	bl	0x74598 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x714>
+		0000000000074598:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE15finishCandidateAA0C5ErrorOSgyF17P08CounterRuntime0hF6Access33_480B1BD841D053AE4FCDC18507668536LLV_AH0h9CommittedK0AJLLVAH0h3HitK0AJLLVTg5
+   7459c:      	and	w8, w0, #0xff
+   745a0:      	cmp	w8, #0x9
+   745a4:      	b.ne	0x745bc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x738>
+   745a8:      	strb	wzr, [x19, #0x388]
+   745ac:      	mov	w20, #0xff00            ; =65280
+   745b0:      	b	0x745d0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x74c>
+   745b4:      	mov	w20, #0x8               ; =8
+   745b8:      	b	0x745d0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x74c>
+   745bc:      	strb	w0, [x19, #0x389]
+   745c0:      	mov	w8, #0x460              ; =1120
+   745c4:      	orr	w8, w0, w8
+   745c8:      	mov	w9, #0x4ff              ; =1279
+   745cc:      	and	w20, w8, w9
+   745d0:      	adrp	x1, 0x74000 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x17c>
+		00000000000745d0:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore18SemanticRecordViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0jk6SchemaH6ValuesOy0jK7Runtime0K6DomainOGGGMD
+   745d4:      	add	x1, x1, #0x0
+		00000000000745d4:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore18SemanticRecordViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0jk6SchemaH6ValuesOy0jK7Runtime0K6DomainOGGGMD
+   745d8:      	add	x0, sp, #0x250
+   745dc:      	bl	0x745dc <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x758>
+		00000000000745dc:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticRecordRenderViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0kl6SchemaI6ValuesOy0kL7Runtime0L6DomainOGGGWOhTm
+   745e0:      	add	x0, sp, #0x208
+   745e4:      	bl	0x745e4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x760>
+		00000000000745e4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyqd__s5UInt8V_qd__AA0deH0VyxGAA0D14ExpansionErrorOYKXEtAKYKlF6$deferL_yyr__lF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_ytTg5Tm
+   745e8:      	b	0x73ff4 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x170>
+   745ec:      	brk	#0x1
+   745f0:      	strb	w0, [x19, #0x389]
+   745f4:      	mov	w20, #0x3               ; =3
+   745f8:      	b	0x745d0 <_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5+0x74c>
+   745fc:      	brk	#0x1
+   74600:      	brk	#0x1
+   74604:      	brk	#0x1
+   74608:      	brk	#0x1
+   7460c:      	brk	#0x1
+   74610:      	brk	#0x1
+   74614:      	brk	#0x1

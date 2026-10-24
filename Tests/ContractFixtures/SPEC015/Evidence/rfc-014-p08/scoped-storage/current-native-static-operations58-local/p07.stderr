@@ -1,0 +1,81 @@
+GiftUIObservableState: /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpzgx7rmnb/macos-static
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:529:28: error: the parameter of a '@usableFromInline' method must be '@usableFromInline' or public
+527 | 
+528 |     @inlinable
+529 |     package borrowing func finishCandidate(_ disposition: ObservableStateCandidateDisposition)
+    |                            `- error: the parameter of a '@usableFromInline' method must be '@usableFromInline' or public
+530 |         -> ObservableStateResult
+531 |     {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift:75:14: note: type declared here
+73 | }
+74 | 
+75 | package enum ObservableStateCandidateDisposition: UInt8, Equatable, Sendable {
+   |              `- note: type declared here
+76 |     case publish = 0
+77 |     case discard = 1
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:529:59: error: enum 'ObservableStateCandidateDisposition' is package and cannot be referenced from an '@inlinable' function
+527 | 
+528 |     @inlinable
+529 |     package borrowing func finishCandidate(_ disposition: ObservableStateCandidateDisposition)
+    |                                                           `- error: enum 'ObservableStateCandidateDisposition' is package and cannot be referenced from an '@inlinable' function
+530 |         -> ObservableStateResult
+531 |     {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift:75:14: note: enum 'ObservableStateCandidateDisposition' is not '@usableFromInline' or public
+73 | }
+74 | 
+75 | package enum ObservableStateCandidateDisposition: UInt8, Equatable, Sendable {
+   |              `- note: enum 'ObservableStateCandidateDisposition' is not '@usableFromInline' or public
+76 |     case publish = 0
+77 |     case discard = 1
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:546:46: error: enum case 'discard' is package and cannot be referenced from an '@inlinable' function
+544 |             for i in 0 ..< 2 where identities[i] != nil {
+545 |                 let record = records.pointee.records[i]
+546 |                 let remove = disposition == .discard ? !record.published : !record.encountered
+    |                                              `- error: enum case 'discard' is package and cannot be referenced from an '@inlinable' function
+547 |                 if remove {
+548 |                     do { try retire(i) } catch { if failure == nil { failure = error } }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift:77:10: note: enum case 'discard' is not '@usableFromInline' or public
+75 | package enum ObservableStateCandidateDisposition: UInt8, Equatable, Sendable {
+76 |     case publish = 0
+77 |     case discard = 1
+   |          `- note: enum case 'discard' is not '@usableFromInline' or public
+78 | }
+79 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:551:40: error: enum case 'publish' is package and cannot be referenced from an '@inlinable' function
+549 |                     changed = true
+550 |                 } else {
+551 |                     if disposition == .publish {
+    |                                        `- error: enum case 'publish' is package and cannot be referenced from an '@inlinable' function
+552 |                         changed = changed || !record.published
+553 |                         records.pointee.records[i].published = true
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift:76:10: note: enum case 'publish' is not '@usableFromInline' or public
+74 | 
+75 | package enum ObservableStateCandidateDisposition: UInt8, Equatable, Sendable {
+76 |     case publish = 0
+   |          `- note: enum case 'publish' is not '@usableFromInline' or public
+77 |     case discard = 1
+78 | }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift:562:33: error: enum case 'discard' is package and cannot be referenced from an '@inlinable' function
+560 |             if let failure { throw failure }
+561 |             return .success(
+562 |                 disposition == .discard
+    |                                 `- error: enum case 'discard' is package and cannot be referenced from an '@inlinable' function
+563 |                     ? .candidateDiscarded : (changed ? .associationsCommitted : .unchanged))
+564 |         } catch { return .failure(error) }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift:77:10: note: enum case 'discard' is not '@usableFromInline' or public
+75 | package enum ObservableStateCandidateDisposition: UInt8, Equatable, Sendable {
+76 |     case publish = 0
+77 |     case discard = 1
+   |          `- note: enum case 'discard' is not '@usableFromInline' or public
+78 | }
+79 | 
+

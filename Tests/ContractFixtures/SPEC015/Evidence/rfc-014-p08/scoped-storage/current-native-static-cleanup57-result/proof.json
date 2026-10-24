@@ -1,0 +1,197 @@
+{
+  "status": "FOCUSED_BOTH_CLEANUP_METADATA_REMOVAL_AND_NONRELOCATION_PASS_FULL_NOT_RUN",
+  "scope": "Ordinary within-contract source/compiler assessment; not a new Batch A controller or numerical qualification of A56",
+  "before_head": "011b6dde0bd1f7e2e8cf13e5244e1348a1fee9a3",
+  "source_changes": {
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+      "before": {
+        "sha256": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639",
+        "bytes": 34291
+      },
+      "after": {
+        "bytes": 34342,
+        "sha256": "80120fed865f670b011e2b374763b9dce524e53b3b8c8cf58feee516abac0d52"
+      }
+    },
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": {
+      "before": {
+        "sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8",
+        "bytes": 13855
+      },
+      "after": {
+        "bytes": 13856,
+        "sha256": "ead38d7ed28f6fa6b768fca10d3d5c828ffa224efaea73ecb629952ec4f27e7b"
+      }
+    },
+    "Sources/GiftUIObservableState/ObservableModelTicket.swift": {
+      "before": {
+        "sha256": "fbe273372d34c2535002a2465076559adb9b6c9239fbab7abda0b7587107ae82",
+        "bytes": 1754
+      },
+      "after": {
+        "bytes": 1747,
+        "sha256": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd"
+      }
+    },
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+      "before": {
+        "sha256": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d",
+        "bytes": 17507
+      },
+      "after": {
+        "bytes": 17551,
+        "sha256": "8684afa937f1d80aed8d26e82840ac924c6774cb9e820276b295d323069e5237"
+      }
+    },
+    "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": {
+      "before": {
+        "sha256": "b2d0ccffa645cc32c27a5fb26fb3e9e1aa2ffd16db2d5f37306c1afb0f1539e1",
+        "bytes": 3034
+      },
+      "after": {
+        "bytes": 3056,
+        "sha256": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252"
+      }
+    }
+  },
+  "source_group": {
+    "serialized_methods": [
+      "ObservableStateRootScope.shutdown",
+      "ObservableStateRootScope.retire",
+      "ObservableStateRootScope.releaseOffers",
+      "ObservableModelScope.unregister",
+      "ObservableModelScope.finishStoppedActivation",
+      "ObservableModelScope.finishActivation",
+      "ObservableModelTicket.init(claim:lifetime:)"
+    ],
+    "usable_only": [
+      "ObservableStateRootReports.Route.dirty",
+      "ObservableStateRegistrationLifecycle.retire",
+      "ObservableModelOwnership.unregister",
+      "ObservableModelOwnership.finishActivation"
+    ],
+    "visibility": "retire/releaseOffers private to internal to permit serialization; other API signatures unchanged. Four existing declarations gain usable linkage. No layout, fields, ownership, borrowing/consuming, lifetime, defaults, guard, loop, error or operation body change.",
+    "mechanism": "Existing nongeneric ledger returns reclaim slot/occupied mask; generic scope performs typed destruction. No new bookkeeping split or owning representation."
+  },
+  "compiled": {
+    "before_object": ".build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o",
+    "before_sha256": "6e821518a1f04adf06cf9792fbd9c2130fa60907abe68fc9fc2dcd04232f9abe",
+    "focused_object": ".build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o",
+    "focused_sha256": "cf16eef566cc4d3a89e97562fa5010c6078313b0d7385a1c95ec3cfca4a7636a",
+    "semantic": [
+      "root0x81f0\u20130x83fc Static lifetimecall0x82d4\u21920x857c\u20130x86c0",
+      "withRoot0xa75ec\u20130xa78f0 normal0xa7764/0xa782c and retry0xa77a0/0xa7864 directly call concrete shutdown0x7d98\u20130x7f60; former GMD instructions removed"
+    ],
+    "coordinator": [
+      "root0x86c20\u20130x86e18 Static profile init0x86c5c/run0x86cd0 precede Dynamiccontrol0x86cf4",
+      "run0x84720\u20130x84904 admits owned-state/audit guards then lifetime0x84840\u21920x8998\u20130x8c64; concrete normalshutdown0x8b70/retry0x8ba0 without former GMD"
+    ],
+    "reached_cleanup": [
+      "shutdown0x7d98\u20130x7f60",
+      "checkOperation/retire/releaseOffers0x986bc\u20130x98cec",
+      "concrete detach0x98cec\u20130x98dbc",
+      "stopped-phase cleanup0xa78f0\u20130xa7908",
+      "concrete finishActivation0xa757c\u20130xa75ec; nongeneric ledgercall0xa7598 and direct typed nil stores"
+    ],
+    "consequence": "BOTH targeted concrete RootScope cleanup metadata arguments are removed through successful and error cleanup and direct generic callees. Exact selected complete bodies/relocations retained; concrete model/schema/identity types match the original required paths. Ordinary guards and first-error/retirement behavior unchanged. Error-conformance witness calls remain explicitly outside removal claim.",
+    "nonrelocation": "Exact RootScope GMD and metadata-thunk target-relocation comparison over current and accepted-before objects has no new named owner; old outlined559 and new682 are identical three-instruction GMD-address/instantiate helpers, with no new caller and 6\u21925 owner edges (terminatePresentation removed). Thus targeted requests did not move into earlier charged setup or another helper. Existing named requests in exerciseCounter/pipeline functions remain, not introduced by this patch and not declared ineligible/exempt.",
+    "text_before": 814868,
+    "text_after": 816580,
+    "text_delta": 1712,
+    "cost_limit": "Text/visibility maintenance cost only; no speedup, runtime allocation/success/byte-cost, image or resource measurement claim."
+  },
+  "output_equivalence": {
+    "normalization": "Only lines beginning SO06 role with exactly14 whitespace-separated tokens and zero-based token11 =>: replace decimal tokens4 and8 with <SO06_ADDRESS>, preserving every other byte, whitespace and line ordering. No other normalization.",
+    "comparisons": [
+      {
+        "name": "mixed",
+        "before_path": ".build/contracts/p08-counter-ugr4qej1/result.json#execution",
+        "after_path": ".build/contracts/p08-counter-l9qz2rz3/result.json#execution",
+        "before_bytes": 611253,
+        "after_bytes": 611253,
+        "before_raw_sha256": "897c23f7605fc9b0ba91cdda87c2babaaac5b193f87e20289687ed82155ec23b",
+        "after_raw_sha256": "c86e2e87d39712bc94a2dbc9f6b0cd544e1efea97f0e0d752060f3ea4cede73d",
+        "before_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+        "after_normalized_sha256": "37c7d6f3403ab731fce9821a88b93fcd10e8b04e6ae29034001986e1b04cc78d",
+        "SO06_counts": [
+          120,
+          120
+        ],
+        "equal": true
+      },
+      {
+        "name": "static",
+        "before_path": ".build/contracts/p08-counter-ugr4qej1/static-resource-v1-execute.log",
+        "after_path": ".build/contracts/p08-counter-l9qz2rz3/static-resource-v1-execute.log",
+        "before_bytes": 391098,
+        "after_bytes": 391098,
+        "before_raw_sha256": "b455e0f5a93a7513294f37ddb2915f9b7324815a0b53cfaa6b039b8c175dfe33",
+        "after_raw_sha256": "943f0d156ae526150f3dbc6701baca98e04106f5a795b29d46fdb808976c9808",
+        "before_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+        "after_normalized_sha256": "9828f3cfee04690c7583e5254b906afe2ab0a68a33089935e2a0204c60976e3d",
+        "SO06_counts": [
+          60,
+          60
+        ],
+        "equal": true
+      }
+    ]
+  },
+  "current_input_binding": {
+    "checked_utc": "2026-10-24T07:19:24.840851+00:00",
+    "source_bindings": {
+      "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+        "current_sha256": "80120fed865f670b011e2b374763b9dce524e53b3b8c8cf58feee516abac0d52",
+        "focused_input_sha256": "80120fed865f670b011e2b374763b9dce524e53b3b8c8cf58feee516abac0d52"
+      },
+      "Sources/GiftUIObservableState/ObservableModelScope.swift": {
+        "current_sha256": "ead38d7ed28f6fa6b768fca10d3d5c828ffa224efaea73ecb629952ec4f27e7b",
+        "focused_input_sha256": "ead38d7ed28f6fa6b768fca10d3d5c828ffa224efaea73ecb629952ec4f27e7b"
+      },
+      "Sources/GiftUIObservableState/ObservableModelTicket.swift": {
+        "current_sha256": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd",
+        "focused_input_sha256": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd"
+      },
+      "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+        "current_sha256": "8684afa937f1d80aed8d26e82840ac924c6774cb9e820276b295d323069e5237",
+        "focused_input_sha256": "8684afa937f1d80aed8d26e82840ac924c6774cb9e820276b295d323069e5237"
+      },
+      "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": {
+        "current_sha256": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252",
+        "focused_input_sha256": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252"
+      }
+    },
+    "focused_result": ".build/contracts/p08-counter-l9qz2rz3/result.json",
+    "focused_result_sha256": "8e1d605dc55c18f4984377b55d61ed3c607c3976ea09aa079d7b5c1900d97823",
+    "P07": ".build/contracts/spec-013-runtime-cycle/tmpnsgacp62/macos-static",
+    "host": ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "focused_passed": true,
+    "collection_complete": false,
+    "aggregate_passed": false,
+    "inputs": 201
+  },
+  "baseline_attachments": [
+    {
+      "original": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/capture-5.stdout",
+      "copy": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-cleanup57-local/proof/before-semantic-withRoot.stdout",
+      "bytes": 38455,
+      "sha256": "ceb234643f50b78783aca2600bb36d4371573f5f57bb5f3866ecaabc22ccf965",
+      "role": "retained raw ordinary before-artifact comparison; prior A56 recording FALSE unchanged"
+    },
+    {
+      "original": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/capture-11.stdout",
+      "copy": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-cleanup57-local/proof/before-coordinator-lifetime.stdout",
+      "bytes": 22259,
+      "sha256": "890b01f6ce4b8cb4d406b4d44ca4533a1ba47a851423e2541824a95ac7233e97",
+      "role": "retained raw ordinary before-artifact comparison; prior A56 recording FALSE unchanged"
+    }
+  ],
+  "limits": [
+    "Focused only: fresh_focused=true, focused_passed=true, aggregate passed=false and collection_complete=false intentionally. No full run authorized or launched.",
+    "Prior exact full/source applicability invalidated prospectively by this source group; before evidence preserved; focused-to-full applicability reserved.",
+    "Preexisting RootScope/Model and other metadata, error/once/provider dependencies, actual loaded binding/environment/stdout persistence/window, remaining root and profile/image/cold/resource/P08 eligibility stay open.",
+    "Unit gate FAILED before Interaction execution due unrelated target; Interaction UNEXECUTED. No broken unit-driver or SwiftPM retry.",
+    "Historical A51/A52/A55/A56 recording FALSE preserved. This ordinary implementation result does not retroqualify their experimental accounting.",
+    "No API-signature, layout, ownership, architecture or compiler-flag change; no provider/runtime experiment, full/board/network action, index or commit change."
+  ]
+}

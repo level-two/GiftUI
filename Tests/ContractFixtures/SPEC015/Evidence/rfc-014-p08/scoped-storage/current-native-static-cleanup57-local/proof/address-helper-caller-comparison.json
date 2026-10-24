@@ -1,0 +1,71 @@
+{
+  "before": {
+    "helper": "_OUTLINED_FUNCTION_559",
+    "callers": [
+      {
+        "pc": "0x75b4c",
+        "owner_addr": "0x75a54",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyF"
+      },
+      {
+        "pc": "0x71c84",
+        "owner_addr": "0x71be0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyF"
+      },
+      {
+        "pc": "0x6edd8",
+        "owner_addr": "0x6ecb4",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF"
+      },
+      {
+        "pc": "0x63e18",
+        "owner_addr": "0x63c84",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGF"
+      },
+      {
+        "pc": "0x5f1c0",
+        "owner_addr": "0x5f13c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyF"
+      },
+      {
+        "pc": "0x54e0c",
+        "owner_addr": "0x54c94",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyF"
+      }
+    ]
+  },
+  "after": {
+    "helper": "_OUTLINED_FUNCTION_682",
+    "callers": [
+      {
+        "pc": "0x75c2c",
+        "owner_addr": "0x75b34",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE37publishSemanticAndObservableCandidate17GiftUIRuntimeCore0cD17PublicationResultOyAE0cE7FailureOGyF"
+      },
+      {
+        "pc": "0x71d64",
+        "owner_addr": "0x71cc0",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE22discardLocalCandidatesyyF"
+      },
+      {
+        "pc": "0x6eeb8",
+        "owner_addr": "0x6ed94",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF"
+      },
+      {
+        "pc": "0x63ef8",
+        "owner_addr": "0x63d64",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8dispatchy17GiftUIRuntimeCore0cD14MutationResultOyAE0cE7FailureOG0G11UIExecution14CapturedActionVy0g10UISemanticI024SemanticCompleteIdentityVGF"
+      },
+      {
+        "pc": "0x5f2a0",
+        "owner_addr": "0x5f21c",
+        "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21observeProducedActionAA0bgH0VyF"
+      }
+    ]
+  },
+  "new_owner_edges": [],
+  "removed_owner_edges": [
+    "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE21terminatePresentationyyF"
+  ]
+}

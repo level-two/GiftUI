@@ -1,0 +1,35 @@
+
+.build/contracts/p08-counter-l9qz2rz3/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a757c <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5>:
+   a757c:      	stp	x22, x21, [sp, #-0x30]!
+   a7580:      	stp	x20, x19, [sp, #0x10]
+   a7584:      	stp	x29, x30, [sp, #0x20]
+   a7588:      	add	x29, sp, #0x20
+   a758c:      	mov	x19, x2
+   a7590:      	mov	x21, x1
+   a7594:      	mov	x20, x0
+   a7598:      	bl	0xa7598 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5+0x1c>
+		00000000000a7598:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV16finishActivations5UInt8VyF
+   a759c:      	tbnz	x19, #0x3f, 0xa75e8 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5+0x6c>
+   a75a0:      	cbz	x19, 0xa75d8 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5+0x5c>
+   a75a4:      	mov	x8, #0x0                ; =0
+   a75a8:      	and	w9, w0, #0xff
+   a75ac:      	mov	w10, #0x1               ; =1
+   a75b0:      	cmp	x8, #0x8
+   a75b4:      	b.hs	0xa75c8 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5+0x4c>
+   a75b8:      	lsr	w11, w9, w8
+   a75bc:      	tbz	w11, #0x0, 0xa75c8 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5+0x4c>
+   a75c0:      	stp	xzr, xzr, [x21]
+   a75c4:      	stp	xzr, x10, [x21, #0x10]
+   a75c8:      	add	x8, x8, #0x1
+   a75cc:      	add	x21, x21, #0x20
+   a75d0:      	cmp	x19, x8
+   a75d4:      	b.ne	0xa75b0 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5+0x34>
+   a75d8:      	ldp	x29, x30, [sp, #0x20]
+   a75dc:      	ldp	x20, x19, [sp, #0x10]
+   a75e0:      	ldp	x22, x21, [sp], #0x30
+   a75e4:      	ret
+   a75e8:      	brk	#0x1

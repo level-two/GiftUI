@@ -1,0 +1,17 @@
+{
+  "ordinary_ceiling": 2147483648,
+  "final_reserve": 33554432,
+  "owned_roots_snapshot_bytes": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local": 1855666,
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-result": 25726,
+    ".build/contracts/spec-013-runtime-cycle/tmpzgx7rmnb": 9039346,
+    ".build/contracts/spec-013-runtime-cycle/tmpx4wt4oc6": 25160620,
+    ".build/contracts/p08-counter-yje67t90": 161731676
+  },
+  "new_retained_snapshot": 197813034,
+  "carried_cleanup57_snapshot": 187366264,
+  "combined_snapshot_plus_final_reserve": 418733730,
+  "within_envelope": true,
+  "completed_utc": "2026-10-24T08:19:45.550457+00:00",
+  "limits": "Retained file-size snapshot only, not aggregate OS I/O/experimental transcript qualification. Final small result/review writes protected by32MiB reserve; no per-poll artifacts."
+}
