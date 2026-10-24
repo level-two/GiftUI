@@ -1,0 +1,108 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000ae4d8 <_$s17P08CounterRuntime0B13PipelineOwnerVMr>:
+   ae4d8:      	sub	sp, sp, #0x140
+   ae4dc:      	stp	x20, x19, [sp, #0x120]
+   ae4e0:      	stp	x29, x30, [sp, #0x130]
+   ae4e4:      	add	x29, sp, #0x130
+   ae4e8:      	bl	0xae4e8 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x10>
+		00000000000ae4e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1845
+   ae4ec:      	stp	x8, x9, [sp, #0x38]
+   ae4f0:      	adrp	x8, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae4f0:  ARM64_RELOC_PAGE21	l_type_layout_164_8_1_pod
+   ae4f4:      	add	x8, x8, #0x0
+		00000000000ae4f4:  ARM64_RELOC_PAGEOFF12	l_type_layout_164_8_1_pod
+   ae4f8:      	adrp	x9, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae4f8:  ARM64_RELOC_PAGE21	l_type_layout_26_8_1_pod
+   ae4fc:      	add	x9, x9, #0x0
+		00000000000ae4fc:  ARM64_RELOC_PAGEOFF12	l_type_layout_26_8_1_pod
+   ae500:      	stp	x8, x9, [sp, #0x48]
+   ae504:      	adrp	x8, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae504:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sBpWV
+   ae508:      	ldr	x8, [x8]
+		00000000000ae508:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sBpWV
+   ae50c:      	add	x8, x8, #0x40
+   ae510:      	str	x8, [sp, #0x58]
+   ae514:      	bl	0xae514 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x3c>
+		00000000000ae514:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_902
+   ae518:      	cmp	x1, #0x3f
+   ae51c:      	b.hi	0xae5d8 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x100>
+   ae520:      	bl	0xae520 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x48>
+		00000000000ae520:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1086
+   ae524:      	str	x8, [sp, #0x60]
+   ae528:      	bl	0xae528 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x50>
+		00000000000ae528:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_132
+   ae52c:      	cmp	x1, #0x3f
+   ae530:      	b.hi	0xae5d8 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x100>
+   ae534:      	bl	0xae534 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x5c>
+		00000000000ae534:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1086
+   ae538:      	adrp	x9, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae538:  ARM64_RELOC_PAGE21	l_type_layout_22_4_f9_pod
+   ae53c:      	add	x9, x9, #0x0
+		00000000000ae53c:  ARM64_RELOC_PAGEOFF12	l_type_layout_22_4_f9_pod
+   ae540:      	stp	x8, x9, [sp, #0x68]
+   ae544:      	adrp	x8, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae544:  ARM64_RELOC_PAGE21	l_type_layout_5_4_0_pod
+   ae548:      	add	x8, x8, #0x0
+		00000000000ae548:  ARM64_RELOC_PAGEOFF12	l_type_layout_5_4_0_pod
+   ae54c:      	adrp	x10, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae54c:  ARM64_RELOC_PAGE21	l_type_layout_115_4_0_pod
+   ae550:      	add	x10, x10, #0x0
+		00000000000ae550:  ARM64_RELOC_PAGEOFF12	l_type_layout_115_4_0_pod
+   ae554:      	stp	x8, x10, [sp, #0x78]
+   ae558:      	stp	x8, x8, [sp, #0x88]
+   ae55c:      	adrp	x10, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae55c:  ARM64_RELOC_PAGE21	l_type_layout_20_4_0_pod
+   ae560:      	add	x10, x10, #0x0
+		00000000000ae560:  ARM64_RELOC_PAGEOFF12	l_type_layout_20_4_0_pod
+   ae564:      	stp	x8, x10, [sp, #0x98]
+   ae568:      	stp	x9, x8, [sp, #0xa8]
+   ae56c:      	adrp	x9, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae56c:  ARM64_RELOC_PAGE21	l_type_layout_10_2_fd_pod
+   ae570:      	add	x9, x9, #0x0
+		00000000000ae570:  ARM64_RELOC_PAGEOFF12	l_type_layout_10_2_fd_pod
+   ae574:      	adrp	x10, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae574:  ARM64_RELOC_PAGE21	l_type_layout_10_4_0_pod
+   ae578:      	add	x10, x10, #0x0
+		00000000000ae578:  ARM64_RELOC_PAGEOFF12	l_type_layout_10_4_0_pod
+   ae57c:      	stp	x9, x10, [sp, #0xb8]
+   ae580:      	adrp	x9, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae580:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sBi64_WV
+   ae584:      	ldr	x9, [x9]
+		00000000000ae584:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sBi64_WV
+   ae588:      	add	x9, x9, #0x40
+   ae58c:      	adrp	x10, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae58c:  ARM64_RELOC_PAGE21	l_type_layout_1_1_fe_pod
+   ae590:      	add	x10, x10, #0x0
+		00000000000ae590:  ARM64_RELOC_PAGEOFF12	l_type_layout_1_1_fe_pod
+   ae594:      	adrp	x11, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae594:  ARM64_RELOC_PAGE21	l_type_layout_39_4_0_pod
+   ae598:      	add	x11, x11, #0x0
+		00000000000ae598:  ARM64_RELOC_PAGEOFF12	l_type_layout_39_4_0_pod
+   ae59c:      	stp	x9, x10, [sp, #0xc8]
+   ae5a0:      	stp	x10, x11, [sp, #0xe8]
+   ae5a4:      	adrp	x9, 0xae000 <_$s17P08CounterRuntime0B16ExecutionBindingVwst+0x14>
+		00000000000ae5a4:  ARM64_RELOC_PAGE21	l_type_layout_13_4_0_pod
+   ae5a8:      	add	x9, x9, #0x0
+		00000000000ae5a8:  ARM64_RELOC_PAGEOFF12	l_type_layout_13_4_0_pod
+   ae5ac:      	stp	x10, x10, [sp, #0xd8]
+   ae5b0:      	stp	x9, x8, [sp, #0xf8]
+   ae5b4:      	stp	x10, x10, [sp, #0x108]
+   ae5b8:      	str	x10, [sp, #0x118]
+   ae5bc:      	add	x3, sp, #0x38
+   ae5c0:      	bl	0xae5c0 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0xe8>
+		00000000000ae5c0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_968
+   ae5c4:      	mov	w2, #0x1d               ; =29
+   ae5c8:      	bl	0xae5c8 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0xf0>
+		00000000000ae5c8:  ARM64_RELOC_BRANCH26	_swift_initStructMetadata
+   ae5cc:      	mov	x0, #0x0                ; =0
+   ae5d0:      	mov	x1, #0x0                ; =0
+   ae5d4:      	b	0xae5dc <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x104>
+   ae5d8:      	mov	w1, #0x3f               ; =63
+   ae5dc:      	ldp	x29, x30, [sp, #0x130]
+   ae5e0:      	ldp	x20, x19, [sp, #0x120]
+   ae5e4:      	add	sp, sp, #0x140
+   ae5e8:      	ret

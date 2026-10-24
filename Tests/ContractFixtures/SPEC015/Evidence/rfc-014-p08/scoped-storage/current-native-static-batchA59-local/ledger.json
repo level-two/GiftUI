@@ -1,0 +1,1810 @@
+{
+  "started_utc": "2026-10-24T13:26:09+00:00",
+  "processing": 489354629,
+  "transcript": 297660,
+  "requests": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py a\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py a",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/decode-swift-group.py '[\\\"_swift_getWitnessTable\\\",\\\"_swift_once\\\"]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/decode-swift-group.py '[\"_swift_getWitnessTable\",\"_swift_once\"]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-1.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-1.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n z=read(F[\\\"inputs\\\"][\\\"provider_witness\\\"]);q=read(F[\\\"inputs\\\"][\\\"body\\\"]);charge(len(z)*3+len(q)*3);lines=q.decode().splitlines();headers=[{\\\"line\\\":i+1,\\\"page_upper\\\":(i//100)+1,\\\"header\\\":v} for i,v in enumerate(lines) if v.startswith(\\\"SOURCE \\\")];emit({\\\"s\\\":\\\"EXACT_REUSED_WITNESS_AND_SOURCE_TOC\\\",\\\"witness_identity\\\":F[\\\"inputs\\\"][\\\"provider_witness\\\"],\\\"witness\\\":json.loads(z),\\\"source_headers\\\":headers,\\\"processing\\\":S[\\\"processing\\\"],\\\"utc\\\":datetime.datetime.now(datetime.timezone.utc).isoformat()})\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n z=read(F[\\\"inputs\\\"][\\\"provider_witness\\\"]);q=read(F[\\\"inputs\\\"][\\\"body\\\"]);charge(len(z)*3+len(q)*3);lines=q.decode().splitlines();headers=[{\\\"line\\\":i+1,\\\"page_upper\\\":(i//100)+1,\\\"header\\\":v} for i,v in enumerate(lines) if v.startswith(\\\"SOURCE \\\")];emit({\\\"s\\\":\\\"EXACT_REUSED_WITNESS_AND_SOURCE_TOC\\\",\\\"witness_identity\\\":F[\\\"inputs\\\"][\\\"provider_witness\\\"],\\\"witness\\\":json.loads(z),\\\"source_headers\\\":headers,\\\"processing\\\":S[\\\"processing\\\"],\\\"utc\\\":datetime.datetime.now(datetime.timezone.utc).isoformat()})\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n z=read(F[\"inputs\"][\"provider_witness\"]);q=read(F[\"inputs\"][\"body\"]);charge(len(z)*3+len(q)*3);lines=q.decode().splitlines();headers=[{\"line\":i+1,\"page_upper\":(i//100)+1,\"header\":v} for i,v in enumerate(lines) if v.startswith(\"SOURCE \")];emit({\"s\":\"EXACT_REUSED_WITNESS_AND_SOURCE_TOC\",\"witness_identity\":F[\"inputs\"][\"provider_witness\"],\"witness\":json.loads(z),\"source_headers\":headers,\"processing\":S[\"processing\"],\"utc\":datetime.datetime.now(datetime.timezone.utc).isoformat()})\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n z=read(F[\"inputs\"][\"provider_witness\"]);q=read(F[\"inputs\"][\"body\"]);charge(len(z)*3+len(q)*3);lines=q.decode().splitlines();headers=[{\"line\":i+1,\"page_upper\":(i//100)+1,\"header\":v} for i,v in enumerate(lines) if v.startswith(\"SOURCE \")];emit({\"s\":\"EXACT_REUSED_WITNESS_AND_SOURCE_TOC\",\"witness_identity\":F[\"inputs\"][\"provider_witness\"],\"witness\":json.loads(z),\"source_headers\":headers,\"processing\":S[\"processing\"],\"utc\":datetime.datetime.now(datetime.timezone.utc).isoformat()})\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/decode-swift-group.py '[\\\"0x193cce9e0\\\"]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/decode-swift-group.py '[\"0x193cce9e0\"]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 11 11\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 11 11",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 12 12\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 12 12",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py '[[\\\"observable\\\",\\\"_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py '[[\"observable\",\"_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-1.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-1.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"))\\n z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);n=\\\"_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc\\\";rr=[x for x in rows if x[\\\"symbol\\\"]==n];check(\\\"one exact Error conformance\\\",len(rr)==1,len(rr));r=rr[0];se=secs[r[\\\"section\\\"]-1];off=se[\\\"file\\\"]+r[\\\"address\\\"]-se[\\\"addr\\\"];raw=z[off:off+32];rel=[]\\n for i in range(se[\\\"nreloc\\\"]):\\n  a,w=struct.unpack_from(\\\"<iI\\\",z,se[\\\"reloff\\\"]+8*i)\\n  if r[\\\"address\\\"]-se[\\\"addr\\\"]<=a<r[\\\"address\\\"]-se[\\\"addr\\\"]+16:rel.append({\\\"offset_in_descriptor\\\":a-(r[\\\"address\\\"]-se[\\\"addr\\\"]),\\\"kind\\\":w>>28,\\\"external\\\":(w>>27)&1,\\\"target\\\":rows[w&0xffffff][\\\"symbol\\\"] if (w>>27)&1 else w&0xffffff})\\n error={\\\"object\\\":F[\\\"inputs\\\"][\\\"observable\\\"],\\\"descriptor\\\":r,\\\"section\\\":se,\\\"raw32\\\":raw.hex(),\\\"flags_at12\\\":hex(struct.unpack_from(\\\"<I\\\",raw,12)[0]),\\\"relocations\\\":rel,\\\"cache\\\":[x for x in rows if x[\\\"symbol\\\"]==\\\"_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL\\\"]}\\n z=read(F[\\\"inputs\\\"][\\\"object\\\"]);secs,rows=parse(z);targets=[(i,x) for i,x in enumerate(rows) if x[\\\"address\\\"]==0xaf224 and x[\\\"section\\\"]>0];check(\\\"exact layout thunk\\\",len(targets)==1,len(targets));ix,r=targets[0];incoming=[]\\n for se in secs:\\n  for i in range(se[\\\"nreloc\\\"]):\\n   a,w=struct.unpack_from(\\\"<iI\\\",z,se[\\\"reloff\\\"]+8*i)\\n   if ((w>>27)&1) and w&0xffffff==ix:incoming.append({\\\"section\\\":se[\\\"name\\\"],\\\"pc_or_offset\\\":hex(se[\\\"addr\\\"]+a),\\\"kind\\\":w>>28,\\\"nearby_symbols\\\":[x for x in rows if x[\\\"section\\\"]==secs.index(se)+1 and se[\\\"addr\\\"]+a-8<=x[\\\"address\\\"]<=se[\\\"addr\\\"]+a+8]})\\n nominal=[x for x in rows if x[\\\"symbol\\\"].startswith(\\\"_$s17P08CounterRuntime0B13PipelineOwnerV\\\") and x[\\\"symbol\\\"].endswith((\\\"VMn\\\",\\\"VMi\\\",\\\"VMr\\\",\\\"VMI\\\",\\\"VMP\\\",\\\"VMa\\\"))];descriptor=json.loads(read(F[\\\"inputs\\\"][\\\"provider_descriptor\\\"]));extent=[{k:d.get(k) for k in [\\\"role\\\",\\\"vmaddr\\\",\\\"bytes\\\",\\\"offset\\\"]} for d in descriptor[\\\"providers\\\"][\\\"/usr/lib/swift/libswiftCore.dylib\\\"][\\\"slices\\\"]];out={\\\"s\\\":\\\"EXACT_ERROR_AND_LAYOUT_DATA\\\",\\\"error\\\":error,\\\"layout_thunk\\\":r,\\\"layout_incoming\\\":incoming,\\\"pipeline_nominal_metadata\\\":nominal,\\\"provider_extents\\\":extent,\\\"processing\\\":S[\\\"processing\\\"]};blob=(json.dumps(out,indent=2)+chr(10)).encode();charge(len(blob)*3);(H/\\\"error-layout-data.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"))\\n z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);n=\\\"_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc\\\";rr=[x for x in rows if x[\\\"symbol\\\"]==n];check(\\\"one exact Error conformance\\\",len(rr)==1,len(rr));r=rr[0];se=secs[r[\\\"section\\\"]-1];off=se[\\\"file\\\"]+r[\\\"address\\\"]-se[\\\"addr\\\"];raw=z[off:off+32];rel=[]\\n for i in range(se[\\\"nreloc\\\"]):\\n  a,w=struct.unpack_from(\\\"<iI\\\",z,se[\\\"reloff\\\"]+8*i)\\n  if r[\\\"address\\\"]-se[\\\"addr\\\"]<=a<r[\\\"address\\\"]-se[\\\"addr\\\"]+16:rel.append({\\\"offset_in_descriptor\\\":a-(r[\\\"address\\\"]-se[\\\"addr\\\"]),\\\"kind\\\":w>>28,\\\"external\\\":(w>>27)&1,\\\"target\\\":rows[w&0xffffff][\\\"symbol\\\"] if (w>>27)&1 else w&0xffffff})\\n error={\\\"object\\\":F[\\\"inputs\\\"][\\\"observable\\\"],\\\"descriptor\\\":r,\\\"section\\\":se,\\\"raw32\\\":raw.hex(),\\\"flags_at12\\\":hex(struct.unpack_from(\\\"<I\\\",raw,12)[0]),\\\"relocations\\\":rel,\\\"cache\\\":[x for x in rows if x[\\\"symbol\\\"]==\\\"_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL\\\"]}\\n z=read(F[\\\"inputs\\\"][\\\"object\\\"]);secs,rows=parse(z);targets=[(i,x) for i,x in enumerate(rows) if x[\\\"address\\\"]==0xaf224 and x[\\\"section\\\"]>0];check(\\\"exact layout thunk\\\",len(targets)==1,len(targets));ix,r=targets[0];incoming=[]\\n for se in secs:\\n  for i in range(se[\\\"nreloc\\\"]):\\n   a,w=struct.unpack_from(\\\"<iI\\\",z,se[\\\"reloff\\\"]+8*i)\\n   if ((w>>27)&1) and w&0xffffff==ix:incoming.append({\\\"section\\\":se[\\\"name\\\"],\\\"pc_or_offset\\\":hex(se[\\\"addr\\\"]+a),\\\"kind\\\":w>>28,\\\"nearby_symbols\\\":[x for x in rows if x[\\\"section\\\"]==secs.index(se)+1 and se[\\\"addr\\\"]+a-8<=x[\\\"address\\\"]<=se[\\\"addr\\\"]+a+8]})\\n nominal=[x for x in rows if x[\\\"symbol\\\"].startswith(\\\"_$s17P08CounterRuntime0B13PipelineOwnerV\\\") and x[\\\"symbol\\\"].endswith((\\\"VMn\\\",\\\"VMi\\\",\\\"VMr\\\",\\\"VMI\\\",\\\"VMP\\\",\\\"VMa\\\"))];descriptor=json.loads(read(F[\\\"inputs\\\"][\\\"provider_descriptor\\\"]));extent=[{k:d.get(k) for k in [\\\"role\\\",\\\"vmaddr\\\",\\\"bytes\\\",\\\"offset\\\"]} for d in descriptor[\\\"providers\\\"][\\\"/usr/lib/swift/libswiftCore.dylib\\\"][\\\"slices\\\"]];out={\\\"s\\\":\\\"EXACT_ERROR_AND_LAYOUT_DATA\\\",\\\"error\\\":error,\\\"layout_thunk\\\":r,\\\"layout_incoming\\\":incoming,\\\"pipeline_nominal_metadata\\\":nominal,\\\"provider_extents\\\":extent,\\\"processing\\\":S[\\\"processing\\\"]};blob=(json.dumps(out,indent=2)+chr(10)).encode();charge(len(blob)*3);(H/\\\"error-layout-data.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"))\n z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);n=\"_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc\";rr=[x for x in rows if x[\"symbol\"]==n];check(\"one exact Error conformance\",len(rr)==1,len(rr));r=rr[0];se=secs[r[\"section\"]-1];off=se[\"file\"]+r[\"address\"]-se[\"addr\"];raw=z[off:off+32];rel=[]\n for i in range(se[\"nreloc\"]):\n  a,w=struct.unpack_from(\"<iI\",z,se[\"reloff\"]+8*i)\n  if r[\"address\"]-se[\"addr\"]<=a<r[\"address\"]-se[\"addr\"]+16:rel.append({\"offset_in_descriptor\":a-(r[\"address\"]-se[\"addr\"]),\"kind\":w>>28,\"external\":(w>>27)&1,\"target\":rows[w&0xffffff][\"symbol\"] if (w>>27)&1 else w&0xffffff})\n error={\"object\":F[\"inputs\"][\"observable\"],\"descriptor\":r,\"section\":se,\"raw32\":raw.hex(),\"flags_at12\":hex(struct.unpack_from(\"<I\",raw,12)[0]),\"relocations\":rel,\"cache\":[x for x in rows if x[\"symbol\"]==\"_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL\"]}\n z=read(F[\"inputs\"][\"object\"]);secs,rows=parse(z);targets=[(i,x) for i,x in enumerate(rows) if x[\"address\"]==0xaf224 and x[\"section\"]>0];check(\"exact layout thunk\",len(targets)==1,len(targets));ix,r=targets[0];incoming=[]\n for se in secs:\n  for i in range(se[\"nreloc\"]):\n   a,w=struct.unpack_from(\"<iI\",z,se[\"reloff\"]+8*i)\n   if ((w>>27)&1) and w&0xffffff==ix:incoming.append({\"section\":se[\"name\"],\"pc_or_offset\":hex(se[\"addr\"]+a),\"kind\":w>>28,\"nearby_symbols\":[x for x in rows if x[\"section\"]==secs.index(se)+1 and se[\"addr\"]+a-8<=x[\"address\"]<=se[\"addr\"]+a+8]})\n nominal=[x for x in rows if x[\"symbol\"].startswith(\"_$s17P08CounterRuntime0B13PipelineOwnerV\") and x[\"symbol\"].endswith((\"VMn\",\"VMi\",\"VMr\",\"VMI\",\"VMP\",\"VMa\"))];descriptor=json.loads(read(F[\"inputs\"][\"provider_descriptor\"]));extent=[{k:d.get(k) for k in [\"role\",\"vmaddr\",\"bytes\",\"offset\"]} for d in descriptor[\"providers\"][\"/usr/lib/swift/libswiftCore.dylib\"][\"slices\"]];out={\"s\":\"EXACT_ERROR_AND_LAYOUT_DATA\",\"error\":error,\"layout_thunk\":r,\"layout_incoming\":incoming,\"pipeline_nominal_metadata\":nominal,\"provider_extents\":extent,\"processing\":S[\"processing\"]};blob=(json.dumps(out,indent=2)+chr(10)).encode();charge(len(blob)*3);(H/\"error-layout-data.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"))\n z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);n=\"_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc\";rr=[x for x in rows if x[\"symbol\"]==n];check(\"one exact Error conformance\",len(rr)==1,len(rr));r=rr[0];se=secs[r[\"section\"]-1];off=se[\"file\"]+r[\"address\"]-se[\"addr\"];raw=z[off:off+32];rel=[]\n for i in range(se[\"nreloc\"]):\n  a,w=struct.unpack_from(\"<iI\",z,se[\"reloff\"]+8*i)\n  if r[\"address\"]-se[\"addr\"]<=a<r[\"address\"]-se[\"addr\"]+16:rel.append({\"offset_in_descriptor\":a-(r[\"address\"]-se[\"addr\"]),\"kind\":w>>28,\"external\":(w>>27)&1,\"target\":rows[w&0xffffff][\"symbol\"] if (w>>27)&1 else w&0xffffff})\n error={\"object\":F[\"inputs\"][\"observable\"],\"descriptor\":r,\"section\":se,\"raw32\":raw.hex(),\"flags_at12\":hex(struct.unpack_from(\"<I\",raw,12)[0]),\"relocations\":rel,\"cache\":[x for x in rows if x[\"symbol\"]==\"_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL\"]}\n z=read(F[\"inputs\"][\"object\"]);secs,rows=parse(z);targets=[(i,x) for i,x in enumerate(rows) if x[\"address\"]==0xaf224 and x[\"section\"]>0];check(\"exact layout thunk\",len(targets)==1,len(targets));ix,r=targets[0];incoming=[]\n for se in secs:\n  for i in range(se[\"nreloc\"]):\n   a,w=struct.unpack_from(\"<iI\",z,se[\"reloff\"]+8*i)\n   if ((w>>27)&1) and w&0xffffff==ix:incoming.append({\"section\":se[\"name\"],\"pc_or_offset\":hex(se[\"addr\"]+a),\"kind\":w>>28,\"nearby_symbols\":[x for x in rows if x[\"section\"]==secs.index(se)+1 and se[\"addr\"]+a-8<=x[\"address\"]<=se[\"addr\"]+a+8]})\n nominal=[x for x in rows if x[\"symbol\"].startswith(\"_$s17P08CounterRuntime0B13PipelineOwnerV\") and x[\"symbol\"].endswith((\"VMn\",\"VMi\",\"VMr\",\"VMI\",\"VMP\",\"VMa\"))];descriptor=json.loads(read(F[\"inputs\"][\"provider_descriptor\"]));extent=[{k:d.get(k) for k in [\"role\",\"vmaddr\",\"bytes\",\"offset\"]} for d in descriptor[\"providers\"][\"/usr/lib/swift/libswiftCore.dylib\"][\"slices\"]];out={\"s\":\"EXACT_ERROR_AND_LAYOUT_DATA\",\"error\":error,\"layout_thunk\":r,\"layout_incoming\":incoming,\"pipeline_nominal_metadata\":nominal,\"provider_extents\":extent,\"processing\":S[\"processing\"]};blob=(json.dumps(out,indent=2)+chr(10)).encode();charge(len(blob)*3);(H/\"error-layout-data.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"));z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);sec=secs[1];out={\\\"descriptor_address\\\":59620,\\\"raw96\\\":z[61588:61684].hex(),\\\"section\\\":sec,\\\"rows_type\\\":type(rows).__name__,\\\"row_sample\\\":rows[0],\\\"cache_relative_i32\\\":struct.unpack_from(\\\"<i\\\",z,61648)[0],\\\"header_u16\\\":list(struct.unpack_from(\\\"<HH\\\",z,61640)),\\\"time\\\":datetime.datetime.now(datetime.timezone.utc).isoformat()};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\\\"error-descriptor96.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"));z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);sec=secs[1];out={\\\"descriptor_address\\\":59620,\\\"raw96\\\":z[61588:61684].hex(),\\\"section\\\":sec,\\\"rows_type\\\":type(rows).__name__,\\\"row_sample\\\":rows[0],\\\"cache_relative_i32\\\":struct.unpack_from(\\\"<i\\\",z,61648)[0],\\\"header_u16\\\":list(struct.unpack_from(\\\"<HH\\\",z,61640)),\\\"time\\\":datetime.datetime.now(datetime.timezone.utc).isoformat()};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\\\"error-descriptor96.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"));z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);sec=secs[1];out={\"descriptor_address\":59620,\"raw96\":z[61588:61684].hex(),\"section\":sec,\"rows_type\":type(rows).__name__,\"row_sample\":rows[0],\"cache_relative_i32\":struct.unpack_from(\"<i\",z,61648)[0],\"header_u16\":list(struct.unpack_from(\"<HH\",z,61640)),\"time\":datetime.datetime.now(datetime.timezone.utc).isoformat()};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\"error-descriptor96.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"));z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);sec=secs[1];out={\"descriptor_address\":59620,\"raw96\":z[61588:61684].hex(),\"section\":sec,\"rows_type\":type(rows).__name__,\"row_sample\":rows[0],\"cache_relative_i32\":struct.unpack_from(\"<i\",z,61648)[0],\"header_u16\":list(struct.unpack_from(\"<HH\",z,61640)),\"time\":datetime.datetime.now(datetime.timezone.utc).isoformat()};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\"error-descriptor96.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 4 4\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 4 4",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"));z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);sec=secs[1];rels=[]\\n for i in range(sec[\\\"nreloc\\\"]):\\n  a,b=struct.unpack_from(\\\"<iI\\\",z,sec[\\\"reloff\\\"]+8*i)\\n  if 59620<=sec[\\\"addr\\\"]+a<59684:\\n   n=b&0xffffff;ext=(b>>27)&1;rels.append({\\\"pc\\\":sec[\\\"addr\\\"]+a,\\\"word\\\":hex(b),\\\"type\\\":b>>28,\\\"external\\\":ext,\\\"target\\\":rows[n] if ext else secs[n-1]})\\n out={\\\"descriptor_relocations\\\":rels,\\\"own_cache_rows\\\":[r for r in rows if \\\"ObservableC5ErrorOs0E0AAMcMK\\\" in r[\\\"symbol\\\"]],\\\"processing\\\":S[\\\"processing\\\"]};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\\\"error-descriptor-relocations.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"));z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);sec=secs[1];rels=[]\\n for i in range(sec[\\\"nreloc\\\"]):\\n  a,b=struct.unpack_from(\\\"<iI\\\",z,sec[\\\"reloff\\\"]+8*i)\\n  if 59620<=sec[\\\"addr\\\"]+a<59684:\\n   n=b&0xffffff;ext=(b>>27)&1;rels.append({\\\"pc\\\":sec[\\\"addr\\\"]+a,\\\"word\\\":hex(b),\\\"type\\\":b>>28,\\\"external\\\":ext,\\\"target\\\":rows[n] if ext else secs[n-1]})\\n out={\\\"descriptor_relocations\\\":rels,\\\"own_cache_rows\\\":[r for r in rows if \\\"ObservableC5ErrorOs0E0AAMcMK\\\" in r[\\\"symbol\\\"]],\\\"processing\\\":S[\\\"processing\\\"]};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\\\"error-descriptor-relocations.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"));z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);sec=secs[1];rels=[]\n for i in range(sec[\"nreloc\"]):\n  a,b=struct.unpack_from(\"<iI\",z,sec[\"reloff\"]+8*i)\n  if 59620<=sec[\"addr\"]+a<59684:\n   n=b&0xffffff;ext=(b>>27)&1;rels.append({\"pc\":sec[\"addr\"]+a,\"word\":hex(b),\"type\":b>>28,\"external\":ext,\"target\":rows[n] if ext else secs[n-1]})\n out={\"descriptor_relocations\":rels,\"own_cache_rows\":[r for r in rows if \"ObservableC5ErrorOs0E0AAMcMK\" in r[\"symbol\"]],\"processing\":S[\"processing\"]};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\"error-descriptor-relocations.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"));z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);sec=secs[1];rels=[]\n for i in range(sec[\"nreloc\"]):\n  a,b=struct.unpack_from(\"<iI\",z,sec[\"reloff\"]+8*i)\n  if 59620<=sec[\"addr\"]+a<59684:\n   n=b&0xffffff;ext=(b>>27)&1;rels.append({\"pc\":sec[\"addr\"]+a,\"word\":hex(b),\"type\":b>>28,\"external\":ext,\"target\":rows[n] if ext else secs[n-1]})\n out={\"descriptor_relocations\":rels,\"own_cache_rows\":[r for r in rows if \"ObservableC5ErrorOs0E0AAMcMK\" in r[\"symbol\"]],\"processing\":S[\"processing\"]};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\"error-descriptor-relocations.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 5 5\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 5 5",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 7 7\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 7 7",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 13 13\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 13 13",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/decode-swift-group.py '[\\\"0x193c64ef0\\\"]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/decode-swift-group.py '[\"0x193c64ef0\"]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-3.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-3.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-3.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-3.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-3.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-3.stdout 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py '[[\\\"object\\\",\\\"_$s17P08CounterRuntime0B13PipelineOwnerVMr\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py '[[\"object\",\"_$s17P08CounterRuntime0B13PipelineOwnerVMr\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"));z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);ts=secs[9];off=ts[\\\"file\\\"]+70568-ts[\\\"addr\\\"];cache=[r for r in rows if 86768<=r[\\\"address\\\"]<=86840];meta=read(F[\\\"inputs\\\"][\\\"provider_metadata\\\"]).decode();lines=meta.splitlines();hits=[{\\\"line\\\":i+1,\\\"text\\\":s} for i,s in enumerate(lines) if any(x in s for x in [\\\"193c64ef0\\\",\\\"1940ef68c\\\",\\\"arena\\\",\\\"malloc\\\"])];out={\\\"type_descriptor_word\\\":hex(struct.unpack_from(\\\"<I\\\",z,off)[0]),\\\"type_descriptor_byte\\\":z[off],\\\"type_descriptor_section\\\":ts,\\\"cache_section\\\":secs[3],\\\"cache_rows\\\":cache,\\\"reserve_replacement_symbols\\\":[r for r in rows if \\\"reserveReplacement\\\" in r[\\\"symbol\\\"]],\\\"prior_metadata_selected_hits\\\":hits,\\\"processing\\\":S[\\\"processing\\\"]};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\\\"error-cache-type-and-prior.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"));z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);ts=secs[9];off=ts[\\\"file\\\"]+70568-ts[\\\"addr\\\"];cache=[r for r in rows if 86768<=r[\\\"address\\\"]<=86840];meta=read(F[\\\"inputs\\\"][\\\"provider_metadata\\\"]).decode();lines=meta.splitlines();hits=[{\\\"line\\\":i+1,\\\"text\\\":s} for i,s in enumerate(lines) if any(x in s for x in [\\\"193c64ef0\\\",\\\"1940ef68c\\\",\\\"arena\\\",\\\"malloc\\\"])];out={\\\"type_descriptor_word\\\":hex(struct.unpack_from(\\\"<I\\\",z,off)[0]),\\\"type_descriptor_byte\\\":z[off],\\\"type_descriptor_section\\\":ts,\\\"cache_section\\\":secs[3],\\\"cache_rows\\\":cache,\\\"reserve_replacement_symbols\\\":[r for r in rows if \\\"reserveReplacement\\\" in r[\\\"symbol\\\"]],\\\"prior_metadata_selected_hits\\\":hits,\\\"processing\\\":S[\\\"processing\\\"]};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\\\"error-cache-type-and-prior.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"));z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);ts=secs[9];off=ts[\"file\"]+70568-ts[\"addr\"];cache=[r for r in rows if 86768<=r[\"address\"]<=86840];meta=read(F[\"inputs\"][\"provider_metadata\"]).decode();lines=meta.splitlines();hits=[{\"line\":i+1,\"text\":s} for i,s in enumerate(lines) if any(x in s for x in [\"193c64ef0\",\"1940ef68c\",\"arena\",\"malloc\"])];out={\"type_descriptor_word\":hex(struct.unpack_from(\"<I\",z,off)[0]),\"type_descriptor_byte\":z[off],\"type_descriptor_section\":ts,\"cache_section\":secs[3],\"cache_rows\":cache,\"reserve_replacement_symbols\":[r for r in rows if \"reserveReplacement\" in r[\"symbol\"]],\"prior_metadata_selected_hits\":hits,\"processing\":S[\"processing\"]};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\"error-cache-type-and-prior.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"));z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);ts=secs[9];off=ts[\"file\"]+70568-ts[\"addr\"];cache=[r for r in rows if 86768<=r[\"address\"]<=86840];meta=read(F[\"inputs\"][\"provider_metadata\"]).decode();lines=meta.splitlines();hits=[{\"line\":i+1,\"text\":s} for i,s in enumerate(lines) if any(x in s for x in [\"193c64ef0\",\"1940ef68c\",\"arena\",\"malloc\"])];out={\"type_descriptor_word\":hex(struct.unpack_from(\"<I\",z,off)[0]),\"type_descriptor_byte\":z[off],\"type_descriptor_section\":ts,\"cache_section\":secs[3],\"cache_rows\":cache,\"reserve_replacement_symbols\":[r for r in rows if \"reserveReplacement\" in r[\"symbol\"]],\"prior_metadata_selected_hits\":hits,\"processing\":S[\"processing\"]};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\"error-cache-type-and-prior.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py '[[\\\"observable\\\",\\\"_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py '[[\"observable\",\"_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-3.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-3.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-2.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py '[[\\\"observable\\\",\\\"_OUTLINED_FUNCTION_5\\\"],[\\\"object\\\",\\\"_OUTLINED_FUNCTION_902\\\"],[\\\"object\\\",\\\"_OUTLINED_FUNCTION_132\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py '[[\"observable\",\"_OUTLINED_FUNCTION_5\"],[\"object\",\"_OUTLINED_FUNCTION_902\"],[\"object\",\"_OUTLINED_FUNCTION_132\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-4.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-4.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-5.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-5.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-6.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-6.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 26 26\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 26 26",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 25 25\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 25 25",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 27 27\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 27 27",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 28 28\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 28 28",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 32 32\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 32 32",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 14 14\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py group-2.stdout 14 14",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-2.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-2.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-3.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py capture-3.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 33 33\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 33 33",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 34 34\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py p 34 34",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"));z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);a=next(r[\\\"address\\\"] for r in rows if r[\\\"symbol\\\"]==\\\"_OUTLINED_FUNCTION_155\\\");end=min(r[\\\"address\\\"] for r in rows if r[\\\"section\\\"]==1 and r[\\\"address\\\"]>a);sec=secs[0];rels=[]\\n for i in range(sec[\\\"nreloc\\\"]):\\n  x,b=struct.unpack_from(\\\"<iI\\\",z,sec[\\\"reloff\\\"]+8*i)\\n  if a<=x+sec[\\\"addr\\\"]<end:rels.append({\\\"pc\\\":hex(x+sec[\\\"addr\\\"]),\\\"type\\\":b>>28,\\\"target\\\":rows[b&0xffffff] if (b>>27)&1 else secs[(b&0xffffff)-1]})\\n preservation=[]\\n for p in sorted(H.glob(\\\"swift-*.o\\\")):\\n  charge(p.stat().st_size*2);v=p.read_bytes();ss,rr=parse(v);t=next(q for q in ss if q[\\\"name\\\"]==\\\"__text\\\");off=331116544+t[\\\"addr\\\"]-0x193c4f000;charge(t[\\\"bytes\\\"]*2)\\n  with open(\\\"/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01\\\",\\\"rb\\\") as fp:fp.seek(off);raw=fp.read(t[\\\"bytes\\\"])\\n  expected=v[t[\\\"file\\\"]:t[\\\"file\\\"]+t[\\\"bytes\\\"]];ok=raw==expected;preservation.append({\\\"projected\\\":str(p.relative_to(R)),\\\"projected_sha256\\\":sha(v),\\\"vmaddr\\\":hex(t[\\\"addr\\\"]),\\\"bytes\\\":t[\\\"bytes\\\"],\\\"cache_offset\\\":off,\\\"code_sha256\\\":sha(raw),\\\"equal\\\":ok});assert ok\\n out={\\\"outlined155\\\":{\\\"range\\\":[hex(a),hex(end)],\\\"raw_hex\\\":z[sec[\\\"file\\\"]+a-sec[\\\"addr\\\"]:sec[\\\"file\\\"]+end-sec[\\\"addr\\\"]].hex(),\\\"relocations\\\":rels},\\\"selected_provider_extent_preservation\\\":preservation,\\\"processing\\\":S[\\\"processing\\\"],\\\"transcript\\\":S[\\\"transcript\\\"],\\\"frozen_input_bytes\\\":sum(v[\\\"bytes\\\"] for v in F[\\\"inputs\\\"].values()),\\\"time\\\":datetime.datetime.now(datetime.timezone.utc).isoformat()};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\\\"final-selected-preservation.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n ps=read(F[\\\"inputs\\\"][\\\"current_code\\\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"parse\\\",\\\"check\\\"}],type_ignores=[]),\\\"<frozen-structural-parser>\\\",\\\"exec\\\"));z=read(F[\\\"inputs\\\"][\\\"observable\\\"]);secs,rows=parse(z);a=next(r[\\\"address\\\"] for r in rows if r[\\\"symbol\\\"]==\\\"_OUTLINED_FUNCTION_155\\\");end=min(r[\\\"address\\\"] for r in rows if r[\\\"section\\\"]==1 and r[\\\"address\\\"]>a);sec=secs[0];rels=[]\\n for i in range(sec[\\\"nreloc\\\"]):\\n  x,b=struct.unpack_from(\\\"<iI\\\",z,sec[\\\"reloff\\\"]+8*i)\\n  if a<=x+sec[\\\"addr\\\"]<end:rels.append({\\\"pc\\\":hex(x+sec[\\\"addr\\\"]),\\\"type\\\":b>>28,\\\"target\\\":rows[b&0xffffff] if (b>>27)&1 else secs[(b&0xffffff)-1]})\\n preservation=[]\\n for p in sorted(H.glob(\\\"swift-*.o\\\")):\\n  charge(p.stat().st_size*2);v=p.read_bytes();ss,rr=parse(v);t=next(q for q in ss if q[\\\"name\\\"]==\\\"__text\\\");off=331116544+t[\\\"addr\\\"]-0x193c4f000;charge(t[\\\"bytes\\\"]*2)\\n  with open(\\\"/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01\\\",\\\"rb\\\") as fp:fp.seek(off);raw=fp.read(t[\\\"bytes\\\"])\\n  expected=v[t[\\\"file\\\"]:t[\\\"file\\\"]+t[\\\"bytes\\\"]];ok=raw==expected;preservation.append({\\\"projected\\\":str(p.relative_to(R)),\\\"projected_sha256\\\":sha(v),\\\"vmaddr\\\":hex(t[\\\"addr\\\"]),\\\"bytes\\\":t[\\\"bytes\\\"],\\\"cache_offset\\\":off,\\\"code_sha256\\\":sha(raw),\\\"equal\\\":ok});assert ok\\n out={\\\"outlined155\\\":{\\\"range\\\":[hex(a),hex(end)],\\\"raw_hex\\\":z[sec[\\\"file\\\"]+a-sec[\\\"addr\\\"]:sec[\\\"file\\\"]+end-sec[\\\"addr\\\"]].hex(),\\\"relocations\\\":rels},\\\"selected_provider_extent_preservation\\\":preservation,\\\"processing\\\":S[\\\"processing\\\"],\\\"transcript\\\":S[\\\"transcript\\\"],\\\"frozen_input_bytes\\\":sum(v[\\\"bytes\\\"] for v in F[\\\"inputs\\\"].values()),\\\"time\\\":datetime.datetime.now(datetime.timezone.utc).isoformat()};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\\\"final-selected-preservation.json\\\").write_bytes(blob);emit(out)\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"));z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);a=next(r[\"address\"] for r in rows if r[\"symbol\"]==\"_OUTLINED_FUNCTION_155\");end=min(r[\"address\"] for r in rows if r[\"section\"]==1 and r[\"address\"]>a);sec=secs[0];rels=[]\n for i in range(sec[\"nreloc\"]):\n  x,b=struct.unpack_from(\"<iI\",z,sec[\"reloff\"]+8*i)\n  if a<=x+sec[\"addr\"]<end:rels.append({\"pc\":hex(x+sec[\"addr\"]),\"type\":b>>28,\"target\":rows[b&0xffffff] if (b>>27)&1 else secs[(b&0xffffff)-1]})\n preservation=[]\n for p in sorted(H.glob(\"swift-*.o\")):\n  charge(p.stat().st_size*2);v=p.read_bytes();ss,rr=parse(v);t=next(q for q in ss if q[\"name\"]==\"__text\");off=331116544+t[\"addr\"]-0x193c4f000;charge(t[\"bytes\"]*2)\n  with open(\"/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01\",\"rb\") as fp:fp.seek(off);raw=fp.read(t[\"bytes\"])\n  expected=v[t[\"file\"]:t[\"file\"]+t[\"bytes\"]];ok=raw==expected;preservation.append({\"projected\":str(p.relative_to(R)),\"projected_sha256\":sha(v),\"vmaddr\":hex(t[\"addr\"]),\"bytes\":t[\"bytes\"],\"cache_offset\":off,\"code_sha256\":sha(raw),\"equal\":ok});assert ok\n out={\"outlined155\":{\"range\":[hex(a),hex(end)],\"raw_hex\":z[sec[\"file\"]+a-sec[\"addr\"]:sec[\"file\"]+end-sec[\"addr\"]].hex(),\"relocations\":rels},\"selected_provider_extent_preservation\":preservation,\"processing\":S[\"processing\"],\"transcript\":S[\"transcript\"],\"frozen_input_bytes\":sum(v[\"bytes\"] for v in F[\"inputs\"].values()),\"time\":datetime.datetime.now(datetime.timezone.utc).isoformat()};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\"final-selected-preservation.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback,struct;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n ps=read(F[\"inputs\"][\"current_code\"]);tree=ast.parse(ps);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"parse\",\"check\"}],type_ignores=[]),\"<frozen-structural-parser>\",\"exec\"));z=read(F[\"inputs\"][\"observable\"]);secs,rows=parse(z);a=next(r[\"address\"] for r in rows if r[\"symbol\"]==\"_OUTLINED_FUNCTION_155\");end=min(r[\"address\"] for r in rows if r[\"section\"]==1 and r[\"address\"]>a);sec=secs[0];rels=[]\n for i in range(sec[\"nreloc\"]):\n  x,b=struct.unpack_from(\"<iI\",z,sec[\"reloff\"]+8*i)\n  if a<=x+sec[\"addr\"]<end:rels.append({\"pc\":hex(x+sec[\"addr\"]),\"type\":b>>28,\"target\":rows[b&0xffffff] if (b>>27)&1 else secs[(b&0xffffff)-1]})\n preservation=[]\n for p in sorted(H.glob(\"swift-*.o\")):\n  charge(p.stat().st_size*2);v=p.read_bytes();ss,rr=parse(v);t=next(q for q in ss if q[\"name\"]==\"__text\");off=331116544+t[\"addr\"]-0x193c4f000;charge(t[\"bytes\"]*2)\n  with open(\"/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01\",\"rb\") as fp:fp.seek(off);raw=fp.read(t[\"bytes\"])\n  expected=v[t[\"file\"]:t[\"file\"]+t[\"bytes\"]];ok=raw==expected;preservation.append({\"projected\":str(p.relative_to(R)),\"projected_sha256\":sha(v),\"vmaddr\":hex(t[\"addr\"]),\"bytes\":t[\"bytes\"],\"cache_offset\":off,\"code_sha256\":sha(raw),\"equal\":ok});assert ok\n out={\"outlined155\":{\"range\":[hex(a),hex(end)],\"raw_hex\":z[sec[\"file\"]+a-sec[\"addr\"]:sec[\"file\"]+end-sec[\"addr\"]].hex(),\"relocations\":rels},\"selected_provider_extent_preservation\":preservation,\"processing\":S[\"processing\"],\"transcript\":S[\"transcript\"],\"frozen_input_bytes\":sum(v[\"bytes\"] for v in F[\"inputs\"].values()),\"time\":datetime.datetime.now(datetime.timezone.utc).isoformat()};blob=json.dumps(out,indent=2).encode();charge(len(blob)*3);(H/\"final-selected-preservation.json\").write_bytes(blob);emit(out)\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n D=H.parent/\\\"current-native-static-batchA59-result\\\";D.mkdir(exist_ok=True);rows={\\\"batch\\\":\\\"A59\\\",\\\"status\\\":\\\"STOP_CONSOLIDATED_LOCAL_AND_PROVIDER_BOUNDARIES\\\",\\\"baseline\\\":{\\\"head\\\":\\\"e55628c21186a2d2892de4685c3ba9efca8b63ef\\\",\\\"full\\\":\\\".build/contracts/p08-counter-98512cay/result.json\\\",\\\"result_sha256\\\":\\\"bee58031292279fce2e4cb19cbd885d3d172301f2a870a12ab9256aca1a0f0f6\\\",\\\"runtime_object_sha256\\\":\\\"e074aea4e0435b190a739f7009d1ac92429809920a746db8c090d7ad599aec9b\\\",\\\"swift_uuid\\\":\\\"83794fb3de9b3d23ab5e2c1d5d30f134\\\"},\\\"closed_scoped_facts\\\":[{\\\"id\\\":\\\"ERROR_CLASS\\\",\\\"fact\\\":\\\"The actual ObservableStateError:Error descriptor is NOT the flags17-clear direct static-witness case and NOT the generic own-cache MISS case. Descriptor address59620 flags0x30000, resilient count4, header at+52 has words0/1; +60 relocates to own McMK at86768 in __bss. Type descriptor at70568 is0x52, non-generic. Under expected installed provider and valid pointer authentication, getter0x2fc-0x33c loads AAWL, calls swift_getWitnessTable on zero with exact Error descriptor/type, then caches. Installed core follows bit17 then non-generic descriptor/cache path193ccf0b8->193ccf38c; nonzero cached pointer returns, zero reaches193ccfdf4 calling193c64ef0 before instantiation/casl publication.\\\",\\\"evidence\\\":[\\\"capture-1.stdout\\\",\\\"error-descriptor96.json\\\",\\\"error-descriptor-relocations.json\\\",\\\"error-cache-type-and-prior.json\\\",\\\"group-2.stdout:6-200,626-643,1258-1343\\\"]},{\\\"id\\\":\\\"ARENA_BODY\\\",\\\"fact\\\":\\\"Complete193c64ef0-193c652b4 body has once state, size>8192 branch to1940ef68c, or small-request pool path which calls same stub when available extent is insufficient; otherwise atomic bump/return can avoid that stub. Initial arena words, init effects and exact stub binding are not in frozen semantic extents. No malloc-family or observed-allocation conclusion follows solely from this body.\\\",\\\"evidence\\\":[\\\"group-3.stdout:1-247\\\"]},{\\\"id\\\":\\\"REQUIRED_TYPED_REFUSAL\\\",\\\"fact\\\":\\\"Current source explicitly retains transfer and cache, requires retainedModel refusal, releases cache, then requires successful replacement, for BOTH Static and Dynamic exerciseCounter. Static branch is explicit at source176/190. Current reserveReplacement0x20cc-0x2338 compares claim count at21c0-21c8; non1 gives raw14 at21d4 and routes2188->outlined155->outlined5. Raw14 is retainedModel. outlined5 supplies concrete Error metadata then tailcalls swift_willThrowTypedImpl. outlined155 exact WT acquisition join remains unexamined; do not promote typed throw alone to the complete getter path.\\\",\\\"evidence\\\":[\\\"source-context.txt CounterSemanticProbe.swift:131-151,163-194\\\",\\\"source-context.txt ObservableStateValues.swift:26-43\\\",\\\"capture-3.stdout\\\",\\\"capture-4.stdout\\\"]},{\\\"id\\\":\\\"ONCE_BODY\\\",\\\"fact\\\":\\\"Installed swift_once193c52a64-193c52a84 loads token; token=-1 returns without call/store. Other values permute context/callback and tail1940ef34c. Actual target stub/import/provider body lies outside frozen Swift __TEXT extent; direct returned branch is closed, general first-use body/effects remain open. No name-based dispatch/provider claim.\\\",\\\"evidence\\\":[\\\"group-1.stdout\\\"]},{\\\"id\\\":\\\"LAYOUT_RECONCILIATION\\\",\\\"fact\\\":\\\"The unchanged28B RootScope layout thunk ataf224 has exact incoming concrete RootScope wrapper branchbc6b0 and typeref relocationce255. Current PipelineOwner VMr ae4d8-ae5ec has no direct thunk edge; it reaches metadata-state checker via outlined902 and InteractionOwnedKeyState accessor via outlined132, plus still-unexamined outlined1845/1086/968. Typeref/reflection reachability cannot be excluded from absence of a direct VMr edge.\\\",\\\"evidence\\\":[\\\"error-layout-data.json\\\",\\\"capture-2.stdout\\\",\\\"capture-5.stdout\\\",\\\"capture-6.stdout\\\",\\\"frozen layout_body/current_transfer/remaining_targets inputs\\\"]},{\\\"id\\\":\\\"SEMANTIC_SOURCE_CONTROLS\\\",\\\"fact\\\":\\\"CounterRoles compares exact concrete types then finite inert sample types; unmatched role returns nil. RecordWorkspace enterDeclarationRole rejects missing/zero role. RecordSink invokes concrete Codec primitive/modifier/action and turns returned errors into bank failure. Canvas codec delegates to Table.payload/Standard codec; stateful binding checks association, beforeBody, root binding and model reads. Source defines real error/indirect predicates; no proof that every failure arm is infeasible or that all generic metadata/indirect callees are allocation-free.\\\",\\\"evidence\\\":[\\\"source-context.txt CounterSemantic.swift:12-35\\\",\\\"source-context.txt SemanticRecordExpansion.swift:106-117,186-225,244-274\\\",\\\"source-context.txt CanvasSemanticPayload.swift:31-61,65-89\\\",\\\"source-context.txt ObservableSemanticBodyBinding.swift:30-68\\\"]}],\\\"consolidated_remaining\\\":[{\\\"kind\\\":\\\"AVAILABLE_LOCAL_UNEXAMINED\\\",\\\"needed\\\":\\\"Exact outlined155 call/argument join to Error WT getter, and current rooted typed-error origin applicability beyond the proven replacement refusal. Failed final metadata/preservation query did not expose its prepared raw result.\\\"},{\\\"kind\\\":\\\"AVAILABLE_LOCAL_UNEXAMINED\\\",\\\"needed\\\":\\\"RootScope thunk transitive typeref consumers and outlined1845/1086/968 effects/current required PipelineOwner metadata origin; no reflection-only or unreachable conclusion.\\\"},{\\\"kind\\\":\\\"AVAILABLE_LOCAL_UNEXAMINED\\\",\\\"needed\\\":\\\"Exact current specialized tree/codec/CounterRoles concrete generic call origins, Table.payload/Standard codec and root-binding callback/guard feasibility; current valid functional observations are not a universal failure-path exclusion.\\\"},{\\\"kind\\\":\\\"OUTSIDE_FROZEN_PROVIDER_EXTENT_AVAILABLE_INSTALLED\\\",\\\"needed\\\":\\\"1940ef34c exact stub/import/target and installed once effects;1940ef68c exact import/target plus arena initial words/init effects at1ed0543a0 and1ed05b550. These are our finite frozen-slice coverage boundary, not missing providers or runtime-only data. No acquisition performed after freeze.\\\"},{\\\"kind\\\":\\\"ACTUALLY_UNOBSERVED_LIVE_STATE\\\",\\\"needed\\\":\\\"Exact loaded provider/binding/default selector, actual own witness/arena/once state and earlier required-use ordering, stdout R=S/persistence/inherited environment and measured resource/cold window. New runtime capture remains unexecuted/outside this task.\\\"},{\\\"kind\\\":\\\"INDEPENDENT_ACCEPTANCE_GATES\\\",\\\"needed\\\":\\\"Model generic owning design remains unresolved; units failed before Interaction execution and Interaction remains unexecuted; current-image/cold/resource/profile/P08 gates remain open. No exemption for mandatory Static conformance controls outside selected resource entry.\\\"}],\\\"decision\\\":\\\"No automatic source correction selected. Error conformance has a concrete cold resilient-cache construction dependency, but a complete required caller-to-getter join and exact arena allocator/state classification are not certified here. A47/A48 generic MISS lemma cannot simply be substituted for this non-generic path.\\\",\\\"method_failure\\\":{\\\"error\\\":\\\"RuntimeError LC_SYMTAB\\\",\\\"site\\\":\\\"Final selected-provider preservation query used existing full-object structural parser on a decoder-generated minimal projected image lacking LC_SYMTAB.\\\",\\\"consequence\\\":\\\"Semantic expansion stopped immediately; no helper edit/retry/new attempt. Selected-provider end-preservation did not complete. All raw captures and durable error remain; final frozen-file reauthentication still required by page.py f.\\\"},\\\"context\\\":{\\\"acquired_raw_bytes\\\":272226,\\\"acquired_raw_lines\\\":5335,\\\"scope\\\":\\\"Complete source packet plus all acquired raw disassemblies; derived selected metadata is additional small context. Not all captured contexts were model-examined.\\\",\\\"examined_source_pages\\\":[1,2,3,25,26,27,28,32,33,34],\\\"examined_provider_pages\\\":{\\\"group-1\\\":\\\"complete\\\",\\\"group-2\\\":[1,2,3,4,5,7,11,12,13,14],\\\"group-3\\\":\\\"complete\\\"},\\\"unexamined\\\":\\\"Remaining source pages, provider core pages6/8/9/10 and named local/transitive joins retained explicitly.\\\"},\\\"qualification\\\":{\\\"recording\\\":\\\"All post-auth requests/payloads used frozen recorded entry; terminal ledger authoritative. No post-auth collaboration/off-entry tool occurred.\\\",\\\"execution\\\":\\\"FALSE: terminal method failure and incomplete selected-provider end-preservation; no retroqualification. Logical source/body findings remain separately reviewable.\\\",\\\"numerical\\\":\\\"Final page.py f ledger is authoritative, not this pre-close snapshot.\\\"},\\\"pre_close\\\":{\\\"processing\\\":S[\\\"processing\\\"],\\\"counted_text\\\":S[\\\"transcript\\\"],\\\"time\\\":datetime.datetime.now(datetime.timezone.utc).isoformat()}};blob=json.dumps(rows,indent=2).encode();text=\\\"A59 stops with a consolidated finite residual set. The current Error conformance is a non-generic resilient witness-cache path, not a direct static-table return or the previously studied generic cache path. Current Static replacement deliberately exercises retainedModel refusal. The exact outlined155 acquisition join and arena stub/state classification remain available local/provider work; no allocator violation or global eligibility is certified. swift_once token=-1 direct return is closed; its first-use tail target remains outside the frozen text extent. RootScope layout and Semantic codec/role/indirect frontiers remain precisely listed in findings.json. Final preservation query failed LC_SYMTAB on a minimal projected object; no repair or semantic continuation followed. Historical failures, Model, unit, live-state and resource gates stay open. See the sibling local ledger.json for actual final counters/CLOSED, freeze.json for exact input roles/hashes and captures for direct raw citations.\\\"+chr(10);payloads={\\\"findings.json\\\":blob,\\\"README.md\\\":text.encode()};planned=sum(len(v) for v in payloads.values());foot=sum(p.stat().st_size for p in H.rglob(\\\"*\\\") if p.is_file())+sum(p.stat().st_size for p in D.rglob(\\\"*\\\") if p.is_file())+S[\\\"transcript\\\"];assert foot+planned+65536<8*1024*1024;charge(planned*3)\\n for name,b in payloads.items():(D/name).write_bytes(b)\\n emit({\\\"s\\\":\\\"RESULT_SAVED_PENDING_FINAL_REAUTH_CLOSE\\\",\\\"result\\\":str(D.relative_to(R)),\\\"files\\\":{n:{\\\"bytes\\\":len(b),\\\"sha256\\\":sha(b)} for n,b in payloads.items()},\\\"processing\\\":S[\\\"processing\\\"],\\\"counted_text\\\":S[\\\"transcript\\\"],\\\"semantic_reads_stopped\\\":True})\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback;R=Path(\\\"/Users/eugene/work/GiftUI\\\");H=R/\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\\\";P=H/\\\"ledger.json\\\";fb=(H/\\\"freeze.json\\\").read_bytes();lb=P.read_bytes();src=(H/\\\"page.py\\\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"<frozen-accounting>\\\",\\\"exec\\\"));args={\\\"cmd\\\":\\\"python3 -c \\\"+shlex.quote(sys.argv[1])+\\\" \\\"+shlex.quote(sys.argv[1]),\\\"max_output_tokens\\\":10000};code=\\\"// @exec: \\\"+json.dumps({\\\"max_output_tokens\\\":12000},separators=(\\\",\\\",\\\":\\\"))+chr(10)+\\\"const r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\";S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args});S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\\ntry:\\n assert sha(src)==F[\\\"helper_sha256\\\"]\\n D=H.parent/\\\"current-native-static-batchA59-result\\\";D.mkdir(exist_ok=True);rows={\\\"batch\\\":\\\"A59\\\",\\\"status\\\":\\\"STOP_CONSOLIDATED_LOCAL_AND_PROVIDER_BOUNDARIES\\\",\\\"baseline\\\":{\\\"head\\\":\\\"e55628c21186a2d2892de4685c3ba9efca8b63ef\\\",\\\"full\\\":\\\".build/contracts/p08-counter-98512cay/result.json\\\",\\\"result_sha256\\\":\\\"bee58031292279fce2e4cb19cbd885d3d172301f2a870a12ab9256aca1a0f0f6\\\",\\\"runtime_object_sha256\\\":\\\"e074aea4e0435b190a739f7009d1ac92429809920a746db8c090d7ad599aec9b\\\",\\\"swift_uuid\\\":\\\"83794fb3de9b3d23ab5e2c1d5d30f134\\\"},\\\"closed_scoped_facts\\\":[{\\\"id\\\":\\\"ERROR_CLASS\\\",\\\"fact\\\":\\\"The actual ObservableStateError:Error descriptor is NOT the flags17-clear direct static-witness case and NOT the generic own-cache MISS case. Descriptor address59620 flags0x30000, resilient count4, header at+52 has words0/1; +60 relocates to own McMK at86768 in __bss. Type descriptor at70568 is0x52, non-generic. Under expected installed provider and valid pointer authentication, getter0x2fc-0x33c loads AAWL, calls swift_getWitnessTable on zero with exact Error descriptor/type, then caches. Installed core follows bit17 then non-generic descriptor/cache path193ccf0b8->193ccf38c; nonzero cached pointer returns, zero reaches193ccfdf4 calling193c64ef0 before instantiation/casl publication.\\\",\\\"evidence\\\":[\\\"capture-1.stdout\\\",\\\"error-descriptor96.json\\\",\\\"error-descriptor-relocations.json\\\",\\\"error-cache-type-and-prior.json\\\",\\\"group-2.stdout:6-200,626-643,1258-1343\\\"]},{\\\"id\\\":\\\"ARENA_BODY\\\",\\\"fact\\\":\\\"Complete193c64ef0-193c652b4 body has once state, size>8192 branch to1940ef68c, or small-request pool path which calls same stub when available extent is insufficient; otherwise atomic bump/return can avoid that stub. Initial arena words, init effects and exact stub binding are not in frozen semantic extents. No malloc-family or observed-allocation conclusion follows solely from this body.\\\",\\\"evidence\\\":[\\\"group-3.stdout:1-247\\\"]},{\\\"id\\\":\\\"REQUIRED_TYPED_REFUSAL\\\",\\\"fact\\\":\\\"Current source explicitly retains transfer and cache, requires retainedModel refusal, releases cache, then requires successful replacement, for BOTH Static and Dynamic exerciseCounter. Static branch is explicit at source176/190. Current reserveReplacement0x20cc-0x2338 compares claim count at21c0-21c8; non1 gives raw14 at21d4 and routes2188->outlined155->outlined5. Raw14 is retainedModel. outlined5 supplies concrete Error metadata then tailcalls swift_willThrowTypedImpl. outlined155 exact WT acquisition join remains unexamined; do not promote typed throw alone to the complete getter path.\\\",\\\"evidence\\\":[\\\"source-context.txt CounterSemanticProbe.swift:131-151,163-194\\\",\\\"source-context.txt ObservableStateValues.swift:26-43\\\",\\\"capture-3.stdout\\\",\\\"capture-4.stdout\\\"]},{\\\"id\\\":\\\"ONCE_BODY\\\",\\\"fact\\\":\\\"Installed swift_once193c52a64-193c52a84 loads token; token=-1 returns without call/store. Other values permute context/callback and tail1940ef34c. Actual target stub/import/provider body lies outside frozen Swift __TEXT extent; direct returned branch is closed, general first-use body/effects remain open. No name-based dispatch/provider claim.\\\",\\\"evidence\\\":[\\\"group-1.stdout\\\"]},{\\\"id\\\":\\\"LAYOUT_RECONCILIATION\\\",\\\"fact\\\":\\\"The unchanged28B RootScope layout thunk ataf224 has exact incoming concrete RootScope wrapper branchbc6b0 and typeref relocationce255. Current PipelineOwner VMr ae4d8-ae5ec has no direct thunk edge; it reaches metadata-state checker via outlined902 and InteractionOwnedKeyState accessor via outlined132, plus still-unexamined outlined1845/1086/968. Typeref/reflection reachability cannot be excluded from absence of a direct VMr edge.\\\",\\\"evidence\\\":[\\\"error-layout-data.json\\\",\\\"capture-2.stdout\\\",\\\"capture-5.stdout\\\",\\\"capture-6.stdout\\\",\\\"frozen layout_body/current_transfer/remaining_targets inputs\\\"]},{\\\"id\\\":\\\"SEMANTIC_SOURCE_CONTROLS\\\",\\\"fact\\\":\\\"CounterRoles compares exact concrete types then finite inert sample types; unmatched role returns nil. RecordWorkspace enterDeclarationRole rejects missing/zero role. RecordSink invokes concrete Codec primitive/modifier/action and turns returned errors into bank failure. Canvas codec delegates to Table.payload/Standard codec; stateful binding checks association, beforeBody, root binding and model reads. Source defines real error/indirect predicates; no proof that every failure arm is infeasible or that all generic metadata/indirect callees are allocation-free.\\\",\\\"evidence\\\":[\\\"source-context.txt CounterSemantic.swift:12-35\\\",\\\"source-context.txt SemanticRecordExpansion.swift:106-117,186-225,244-274\\\",\\\"source-context.txt CanvasSemanticPayload.swift:31-61,65-89\\\",\\\"source-context.txt ObservableSemanticBodyBinding.swift:30-68\\\"]}],\\\"consolidated_remaining\\\":[{\\\"kind\\\":\\\"AVAILABLE_LOCAL_UNEXAMINED\\\",\\\"needed\\\":\\\"Exact outlined155 call/argument join to Error WT getter, and current rooted typed-error origin applicability beyond the proven replacement refusal. Failed final metadata/preservation query did not expose its prepared raw result.\\\"},{\\\"kind\\\":\\\"AVAILABLE_LOCAL_UNEXAMINED\\\",\\\"needed\\\":\\\"RootScope thunk transitive typeref consumers and outlined1845/1086/968 effects/current required PipelineOwner metadata origin; no reflection-only or unreachable conclusion.\\\"},{\\\"kind\\\":\\\"AVAILABLE_LOCAL_UNEXAMINED\\\",\\\"needed\\\":\\\"Exact current specialized tree/codec/CounterRoles concrete generic call origins, Table.payload/Standard codec and root-binding callback/guard feasibility; current valid functional observations are not a universal failure-path exclusion.\\\"},{\\\"kind\\\":\\\"OUTSIDE_FROZEN_PROVIDER_EXTENT_AVAILABLE_INSTALLED\\\",\\\"needed\\\":\\\"1940ef34c exact stub/import/target and installed once effects;1940ef68c exact import/target plus arena initial words/init effects at1ed0543a0 and1ed05b550. These are our finite frozen-slice coverage boundary, not missing providers or runtime-only data. No acquisition performed after freeze.\\\"},{\\\"kind\\\":\\\"ACTUALLY_UNOBSERVED_LIVE_STATE\\\",\\\"needed\\\":\\\"Exact loaded provider/binding/default selector, actual own witness/arena/once state and earlier required-use ordering, stdout R=S/persistence/inherited environment and measured resource/cold window. New runtime capture remains unexecuted/outside this task.\\\"},{\\\"kind\\\":\\\"INDEPENDENT_ACCEPTANCE_GATES\\\",\\\"needed\\\":\\\"Model generic owning design remains unresolved; units failed before Interaction execution and Interaction remains unexecuted; current-image/cold/resource/profile/P08 gates remain open. No exemption for mandatory Static conformance controls outside selected resource entry.\\\"}],\\\"decision\\\":\\\"No automatic source correction selected. Error conformance has a concrete cold resilient-cache construction dependency, but a complete required caller-to-getter join and exact arena allocator/state classification are not certified here. A47/A48 generic MISS lemma cannot simply be substituted for this non-generic path.\\\",\\\"method_failure\\\":{\\\"error\\\":\\\"RuntimeError LC_SYMTAB\\\",\\\"site\\\":\\\"Final selected-provider preservation query used existing full-object structural parser on a decoder-generated minimal projected image lacking LC_SYMTAB.\\\",\\\"consequence\\\":\\\"Semantic expansion stopped immediately; no helper edit/retry/new attempt. Selected-provider end-preservation did not complete. All raw captures and durable error remain; final frozen-file reauthentication still required by page.py f.\\\"},\\\"context\\\":{\\\"acquired_raw_bytes\\\":272226,\\\"acquired_raw_lines\\\":5335,\\\"scope\\\":\\\"Complete source packet plus all acquired raw disassemblies; derived selected metadata is additional small context. Not all captured contexts were model-examined.\\\",\\\"examined_source_pages\\\":[1,2,3,25,26,27,28,32,33,34],\\\"examined_provider_pages\\\":{\\\"group-1\\\":\\\"complete\\\",\\\"group-2\\\":[1,2,3,4,5,7,11,12,13,14],\\\"group-3\\\":\\\"complete\\\"},\\\"unexamined\\\":\\\"Remaining source pages, provider core pages6/8/9/10 and named local/transitive joins retained explicitly.\\\"},\\\"qualification\\\":{\\\"recording\\\":\\\"All post-auth requests/payloads used frozen recorded entry; terminal ledger authoritative. No post-auth collaboration/off-entry tool occurred.\\\",\\\"execution\\\":\\\"FALSE: terminal method failure and incomplete selected-provider end-preservation; no retroqualification. Logical source/body findings remain separately reviewable.\\\",\\\"numerical\\\":\\\"Final page.py f ledger is authoritative, not this pre-close snapshot.\\\"},\\\"pre_close\\\":{\\\"processing\\\":S[\\\"processing\\\"],\\\"counted_text\\\":S[\\\"transcript\\\"],\\\"time\\\":datetime.datetime.now(datetime.timezone.utc).isoformat()}};blob=json.dumps(rows,indent=2).encode();text=\\\"A59 stops with a consolidated finite residual set. The current Error conformance is a non-generic resilient witness-cache path, not a direct static-table return or the previously studied generic cache path. Current Static replacement deliberately exercises retainedModel refusal. The exact outlined155 acquisition join and arena stub/state classification remain available local/provider work; no allocator violation or global eligibility is certified. swift_once token=-1 direct return is closed; its first-use tail target remains outside the frozen text extent. RootScope layout and Semantic codec/role/indirect frontiers remain precisely listed in findings.json. Final preservation query failed LC_SYMTAB on a minimal projected object; no repair or semantic continuation followed. Historical failures, Model, unit, live-state and resource gates stay open. See the sibling local ledger.json for actual final counters/CLOSED, freeze.json for exact input roles/hashes and captures for direct raw citations.\\\"+chr(10);payloads={\\\"findings.json\\\":blob,\\\"README.md\\\":text.encode()};planned=sum(len(v) for v in payloads.values());foot=sum(p.stat().st_size for p in H.rglob(\\\"*\\\") if p.is_file())+sum(p.stat().st_size for p in D.rglob(\\\"*\\\") if p.is_file())+S[\\\"transcript\\\"];assert foot+planned+65536<8*1024*1024;charge(planned*3)\\n for name,b in payloads.items():(D/name).write_bytes(b)\\n emit({\\\"s\\\":\\\"RESULT_SAVED_PENDING_FINAL_REAUTH_CLOSE\\\",\\\"result\\\":str(D.relative_to(R)),\\\"files\\\":{n:{\\\"bytes\\\":len(b),\\\"sha256\\\":sha(b)} for n,b in payloads.items()},\\\"processing\\\":S[\\\"processing\\\"],\\\"counted_text\\\":S[\\\"transcript\\\"],\\\"semantic_reads_stopped\\\":True})\\nexcept BaseException as e:\\n S[\\\"errors\\\"].append({\\\"type\\\":type(e).__name__,\\\"message\\\":str(e),\\\"traceback\\\":traceback.format_exc()});save();emit({\\\"s\\\":\\\"STOP\\\",\\\"error\\\":S[\\\"errors\\\"][-1]});sys.exit(2)'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n D=H.parent/\"current-native-static-batchA59-result\";D.mkdir(exist_ok=True);rows={\"batch\":\"A59\",\"status\":\"STOP_CONSOLIDATED_LOCAL_AND_PROVIDER_BOUNDARIES\",\"baseline\":{\"head\":\"e55628c21186a2d2892de4685c3ba9efca8b63ef\",\"full\":\".build/contracts/p08-counter-98512cay/result.json\",\"result_sha256\":\"bee58031292279fce2e4cb19cbd885d3d172301f2a870a12ab9256aca1a0f0f6\",\"runtime_object_sha256\":\"e074aea4e0435b190a739f7009d1ac92429809920a746db8c090d7ad599aec9b\",\"swift_uuid\":\"83794fb3de9b3d23ab5e2c1d5d30f134\"},\"closed_scoped_facts\":[{\"id\":\"ERROR_CLASS\",\"fact\":\"The actual ObservableStateError:Error descriptor is NOT the flags17-clear direct static-witness case and NOT the generic own-cache MISS case. Descriptor address59620 flags0x30000, resilient count4, header at+52 has words0/1; +60 relocates to own McMK at86768 in __bss. Type descriptor at70568 is0x52, non-generic. Under expected installed provider and valid pointer authentication, getter0x2fc-0x33c loads AAWL, calls swift_getWitnessTable on zero with exact Error descriptor/type, then caches. Installed core follows bit17 then non-generic descriptor/cache path193ccf0b8->193ccf38c; nonzero cached pointer returns, zero reaches193ccfdf4 calling193c64ef0 before instantiation/casl publication.\",\"evidence\":[\"capture-1.stdout\",\"error-descriptor96.json\",\"error-descriptor-relocations.json\",\"error-cache-type-and-prior.json\",\"group-2.stdout:6-200,626-643,1258-1343\"]},{\"id\":\"ARENA_BODY\",\"fact\":\"Complete193c64ef0-193c652b4 body has once state, size>8192 branch to1940ef68c, or small-request pool path which calls same stub when available extent is insufficient; otherwise atomic bump/return can avoid that stub. Initial arena words, init effects and exact stub binding are not in frozen semantic extents. No malloc-family or observed-allocation conclusion follows solely from this body.\",\"evidence\":[\"group-3.stdout:1-247\"]},{\"id\":\"REQUIRED_TYPED_REFUSAL\",\"fact\":\"Current source explicitly retains transfer and cache, requires retainedModel refusal, releases cache, then requires successful replacement, for BOTH Static and Dynamic exerciseCounter. Static branch is explicit at source176/190. Current reserveReplacement0x20cc-0x2338 compares claim count at21c0-21c8; non1 gives raw14 at21d4 and routes2188->outlined155->outlined5. Raw14 is retainedModel. outlined5 supplies concrete Error metadata then tailcalls swift_willThrowTypedImpl. outlined155 exact WT acquisition join remains unexamined; do not promote typed throw alone to the complete getter path.\",\"evidence\":[\"source-context.txt CounterSemanticProbe.swift:131-151,163-194\",\"source-context.txt ObservableStateValues.swift:26-43\",\"capture-3.stdout\",\"capture-4.stdout\"]},{\"id\":\"ONCE_BODY\",\"fact\":\"Installed swift_once193c52a64-193c52a84 loads token; token=-1 returns without call/store. Other values permute context/callback and tail1940ef34c. Actual target stub/import/provider body lies outside frozen Swift __TEXT extent; direct returned branch is closed, general first-use body/effects remain open. No name-based dispatch/provider claim.\",\"evidence\":[\"group-1.stdout\"]},{\"id\":\"LAYOUT_RECONCILIATION\",\"fact\":\"The unchanged28B RootScope layout thunk ataf224 has exact incoming concrete RootScope wrapper branchbc6b0 and typeref relocationce255. Current PipelineOwner VMr ae4d8-ae5ec has no direct thunk edge; it reaches metadata-state checker via outlined902 and InteractionOwnedKeyState accessor via outlined132, plus still-unexamined outlined1845/1086/968. Typeref/reflection reachability cannot be excluded from absence of a direct VMr edge.\",\"evidence\":[\"error-layout-data.json\",\"capture-2.stdout\",\"capture-5.stdout\",\"capture-6.stdout\",\"frozen layout_body/current_transfer/remaining_targets inputs\"]},{\"id\":\"SEMANTIC_SOURCE_CONTROLS\",\"fact\":\"CounterRoles compares exact concrete types then finite inert sample types; unmatched role returns nil. RecordWorkspace enterDeclarationRole rejects missing/zero role. RecordSink invokes concrete Codec primitive/modifier/action and turns returned errors into bank failure. Canvas codec delegates to Table.payload/Standard codec; stateful binding checks association, beforeBody, root binding and model reads. Source defines real error/indirect predicates; no proof that every failure arm is infeasible or that all generic metadata/indirect callees are allocation-free.\",\"evidence\":[\"source-context.txt CounterSemantic.swift:12-35\",\"source-context.txt SemanticRecordExpansion.swift:106-117,186-225,244-274\",\"source-context.txt CanvasSemanticPayload.swift:31-61,65-89\",\"source-context.txt ObservableSemanticBodyBinding.swift:30-68\"]}],\"consolidated_remaining\":[{\"kind\":\"AVAILABLE_LOCAL_UNEXAMINED\",\"needed\":\"Exact outlined155 call/argument join to Error WT getter, and current rooted typed-error origin applicability beyond the proven replacement refusal. Failed final metadata/preservation query did not expose its prepared raw result.\"},{\"kind\":\"AVAILABLE_LOCAL_UNEXAMINED\",\"needed\":\"RootScope thunk transitive typeref consumers and outlined1845/1086/968 effects/current required PipelineOwner metadata origin; no reflection-only or unreachable conclusion.\"},{\"kind\":\"AVAILABLE_LOCAL_UNEXAMINED\",\"needed\":\"Exact current specialized tree/codec/CounterRoles concrete generic call origins, Table.payload/Standard codec and root-binding callback/guard feasibility; current valid functional observations are not a universal failure-path exclusion.\"},{\"kind\":\"OUTSIDE_FROZEN_PROVIDER_EXTENT_AVAILABLE_INSTALLED\",\"needed\":\"1940ef34c exact stub/import/target and installed once effects;1940ef68c exact import/target plus arena initial words/init effects at1ed0543a0 and1ed05b550. These are our finite frozen-slice coverage boundary, not missing providers or runtime-only data. No acquisition performed after freeze.\"},{\"kind\":\"ACTUALLY_UNOBSERVED_LIVE_STATE\",\"needed\":\"Exact loaded provider/binding/default selector, actual own witness/arena/once state and earlier required-use ordering, stdout R=S/persistence/inherited environment and measured resource/cold window. New runtime capture remains unexecuted/outside this task.\"},{\"kind\":\"INDEPENDENT_ACCEPTANCE_GATES\",\"needed\":\"Model generic owning design remains unresolved; units failed before Interaction execution and Interaction remains unexecuted; current-image/cold/resource/profile/P08 gates remain open. No exemption for mandatory Static conformance controls outside selected resource entry.\"}],\"decision\":\"No automatic source correction selected. Error conformance has a concrete cold resilient-cache construction dependency, but a complete required caller-to-getter join and exact arena allocator/state classification are not certified here. A47/A48 generic MISS lemma cannot simply be substituted for this non-generic path.\",\"method_failure\":{\"error\":\"RuntimeError LC_SYMTAB\",\"site\":\"Final selected-provider preservation query used existing full-object structural parser on a decoder-generated minimal projected image lacking LC_SYMTAB.\",\"consequence\":\"Semantic expansion stopped immediately; no helper edit/retry/new attempt. Selected-provider end-preservation did not complete. All raw captures and durable error remain; final frozen-file reauthentication still required by page.py f.\"},\"context\":{\"acquired_raw_bytes\":272226,\"acquired_raw_lines\":5335,\"scope\":\"Complete source packet plus all acquired raw disassemblies; derived selected metadata is additional small context. Not all captured contexts were model-examined.\",\"examined_source_pages\":[1,2,3,25,26,27,28,32,33,34],\"examined_provider_pages\":{\"group-1\":\"complete\",\"group-2\":[1,2,3,4,5,7,11,12,13,14],\"group-3\":\"complete\"},\"unexamined\":\"Remaining source pages, provider core pages6/8/9/10 and named local/transitive joins retained explicitly.\"},\"qualification\":{\"recording\":\"All post-auth requests/payloads used frozen recorded entry; terminal ledger authoritative. No post-auth collaboration/off-entry tool occurred.\",\"execution\":\"FALSE: terminal method failure and incomplete selected-provider end-preservation; no retroqualification. Logical source/body findings remain separately reviewable.\",\"numerical\":\"Final page.py f ledger is authoritative, not this pre-close snapshot.\"},\"pre_close\":{\"processing\":S[\"processing\"],\"counted_text\":S[\"transcript\"],\"time\":datetime.datetime.now(datetime.timezone.utc).isoformat()}};blob=json.dumps(rows,indent=2).encode();text=\"A59 stops with a consolidated finite residual set. The current Error conformance is a non-generic resilient witness-cache path, not a direct static-table return or the previously studied generic cache path. Current Static replacement deliberately exercises retainedModel refusal. The exact outlined155 acquisition join and arena stub/state classification remain available local/provider work; no allocator violation or global eligibility is certified. swift_once token=-1 direct return is closed; its first-use tail target remains outside the frozen text extent. RootScope layout and Semantic codec/role/indirect frontiers remain precisely listed in findings.json. Final preservation query failed LC_SYMTAB on a minimal projected object; no repair or semantic continuation followed. Historical failures, Model, unit, live-state and resource gates stay open. See the sibling local ledger.json for actual final counters/CLOSED, freeze.json for exact input roles/hashes and captures for direct raw citations.\"+chr(10);payloads={\"findings.json\":blob,\"README.md\":text.encode()};planned=sum(len(v) for v in payloads.values());foot=sum(p.stat().st_size for p in H.rglob(\"*\") if p.is_file())+sum(p.stat().st_size for p in D.rglob(\"*\") if p.is_file())+S[\"transcript\"];assert foot+planned+65536<8*1024*1024;charge(planned*3)\n for name,b in payloads.items():(D/name).write_bytes(b)\n emit({\"s\":\"RESULT_SAVED_PENDING_FINAL_REAUTH_CLOSE\",\"result\":str(D.relative_to(R)),\"files\":{n:{\"bytes\":len(b),\"sha256\":sha(b)} for n,b in payloads.items()},\"processing\":S[\"processing\"],\"counted_text\":S[\"transcript\"],\"semantic_reads_stopped\":True})\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)' 'from pathlib import Path;import ast,json,hashlib,datetime,sys,shlex,traceback;R=Path(\"/Users/eugene/work/GiftUI\");H=R/\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local\";P=H/\"ledger.json\";fb=(H/\"freeze.json\").read_bytes();lb=P.read_bytes();src=(H/\"page.py\").read_bytes();F=json.loads(fb);S=json.loads(lb);sha=lambda b:hashlib.sha256(b).hexdigest();tree=ast.parse(src);exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"<frozen-accounting>\",\"exec\"));args={\"cmd\":\"python3 -c \"+shlex.quote(sys.argv[1])+\" \"+shlex.quote(sys.argv[1]),\"max_output_tokens\":10000};code=\"// @exec: \"+json.dumps({\"max_output_tokens\":12000},separators=(\",\",\":\"))+chr(10)+\"const r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\";S[\"requests\"].append({\"code\":code,\"args\":args});S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode());charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096);save()\ntry:\n assert sha(src)==F[\"helper_sha256\"]\n D=H.parent/\"current-native-static-batchA59-result\";D.mkdir(exist_ok=True);rows={\"batch\":\"A59\",\"status\":\"STOP_CONSOLIDATED_LOCAL_AND_PROVIDER_BOUNDARIES\",\"baseline\":{\"head\":\"e55628c21186a2d2892de4685c3ba9efca8b63ef\",\"full\":\".build/contracts/p08-counter-98512cay/result.json\",\"result_sha256\":\"bee58031292279fce2e4cb19cbd885d3d172301f2a870a12ab9256aca1a0f0f6\",\"runtime_object_sha256\":\"e074aea4e0435b190a739f7009d1ac92429809920a746db8c090d7ad599aec9b\",\"swift_uuid\":\"83794fb3de9b3d23ab5e2c1d5d30f134\"},\"closed_scoped_facts\":[{\"id\":\"ERROR_CLASS\",\"fact\":\"The actual ObservableStateError:Error descriptor is NOT the flags17-clear direct static-witness case and NOT the generic own-cache MISS case. Descriptor address59620 flags0x30000, resilient count4, header at+52 has words0/1; +60 relocates to own McMK at86768 in __bss. Type descriptor at70568 is0x52, non-generic. Under expected installed provider and valid pointer authentication, getter0x2fc-0x33c loads AAWL, calls swift_getWitnessTable on zero with exact Error descriptor/type, then caches. Installed core follows bit17 then non-generic descriptor/cache path193ccf0b8->193ccf38c; nonzero cached pointer returns, zero reaches193ccfdf4 calling193c64ef0 before instantiation/casl publication.\",\"evidence\":[\"capture-1.stdout\",\"error-descriptor96.json\",\"error-descriptor-relocations.json\",\"error-cache-type-and-prior.json\",\"group-2.stdout:6-200,626-643,1258-1343\"]},{\"id\":\"ARENA_BODY\",\"fact\":\"Complete193c64ef0-193c652b4 body has once state, size>8192 branch to1940ef68c, or small-request pool path which calls same stub when available extent is insufficient; otherwise atomic bump/return can avoid that stub. Initial arena words, init effects and exact stub binding are not in frozen semantic extents. No malloc-family or observed-allocation conclusion follows solely from this body.\",\"evidence\":[\"group-3.stdout:1-247\"]},{\"id\":\"REQUIRED_TYPED_REFUSAL\",\"fact\":\"Current source explicitly retains transfer and cache, requires retainedModel refusal, releases cache, then requires successful replacement, for BOTH Static and Dynamic exerciseCounter. Static branch is explicit at source176/190. Current reserveReplacement0x20cc-0x2338 compares claim count at21c0-21c8; non1 gives raw14 at21d4 and routes2188->outlined155->outlined5. Raw14 is retainedModel. outlined5 supplies concrete Error metadata then tailcalls swift_willThrowTypedImpl. outlined155 exact WT acquisition join remains unexamined; do not promote typed throw alone to the complete getter path.\",\"evidence\":[\"source-context.txt CounterSemanticProbe.swift:131-151,163-194\",\"source-context.txt ObservableStateValues.swift:26-43\",\"capture-3.stdout\",\"capture-4.stdout\"]},{\"id\":\"ONCE_BODY\",\"fact\":\"Installed swift_once193c52a64-193c52a84 loads token; token=-1 returns without call/store. Other values permute context/callback and tail1940ef34c. Actual target stub/import/provider body lies outside frozen Swift __TEXT extent; direct returned branch is closed, general first-use body/effects remain open. No name-based dispatch/provider claim.\",\"evidence\":[\"group-1.stdout\"]},{\"id\":\"LAYOUT_RECONCILIATION\",\"fact\":\"The unchanged28B RootScope layout thunk ataf224 has exact incoming concrete RootScope wrapper branchbc6b0 and typeref relocationce255. Current PipelineOwner VMr ae4d8-ae5ec has no direct thunk edge; it reaches metadata-state checker via outlined902 and InteractionOwnedKeyState accessor via outlined132, plus still-unexamined outlined1845/1086/968. Typeref/reflection reachability cannot be excluded from absence of a direct VMr edge.\",\"evidence\":[\"error-layout-data.json\",\"capture-2.stdout\",\"capture-5.stdout\",\"capture-6.stdout\",\"frozen layout_body/current_transfer/remaining_targets inputs\"]},{\"id\":\"SEMANTIC_SOURCE_CONTROLS\",\"fact\":\"CounterRoles compares exact concrete types then finite inert sample types; unmatched role returns nil. RecordWorkspace enterDeclarationRole rejects missing/zero role. RecordSink invokes concrete Codec primitive/modifier/action and turns returned errors into bank failure. Canvas codec delegates to Table.payload/Standard codec; stateful binding checks association, beforeBody, root binding and model reads. Source defines real error/indirect predicates; no proof that every failure arm is infeasible or that all generic metadata/indirect callees are allocation-free.\",\"evidence\":[\"source-context.txt CounterSemantic.swift:12-35\",\"source-context.txt SemanticRecordExpansion.swift:106-117,186-225,244-274\",\"source-context.txt CanvasSemanticPayload.swift:31-61,65-89\",\"source-context.txt ObservableSemanticBodyBinding.swift:30-68\"]}],\"consolidated_remaining\":[{\"kind\":\"AVAILABLE_LOCAL_UNEXAMINED\",\"needed\":\"Exact outlined155 call/argument join to Error WT getter, and current rooted typed-error origin applicability beyond the proven replacement refusal. Failed final metadata/preservation query did not expose its prepared raw result.\"},{\"kind\":\"AVAILABLE_LOCAL_UNEXAMINED\",\"needed\":\"RootScope thunk transitive typeref consumers and outlined1845/1086/968 effects/current required PipelineOwner metadata origin; no reflection-only or unreachable conclusion.\"},{\"kind\":\"AVAILABLE_LOCAL_UNEXAMINED\",\"needed\":\"Exact current specialized tree/codec/CounterRoles concrete generic call origins, Table.payload/Standard codec and root-binding callback/guard feasibility; current valid functional observations are not a universal failure-path exclusion.\"},{\"kind\":\"OUTSIDE_FROZEN_PROVIDER_EXTENT_AVAILABLE_INSTALLED\",\"needed\":\"1940ef34c exact stub/import/target and installed once effects;1940ef68c exact import/target plus arena initial words/init effects at1ed0543a0 and1ed05b550. These are our finite frozen-slice coverage boundary, not missing providers or runtime-only data. No acquisition performed after freeze.\"},{\"kind\":\"ACTUALLY_UNOBSERVED_LIVE_STATE\",\"needed\":\"Exact loaded provider/binding/default selector, actual own witness/arena/once state and earlier required-use ordering, stdout R=S/persistence/inherited environment and measured resource/cold window. New runtime capture remains unexecuted/outside this task.\"},{\"kind\":\"INDEPENDENT_ACCEPTANCE_GATES\",\"needed\":\"Model generic owning design remains unresolved; units failed before Interaction execution and Interaction remains unexecuted; current-image/cold/resource/profile/P08 gates remain open. No exemption for mandatory Static conformance controls outside selected resource entry.\"}],\"decision\":\"No automatic source correction selected. Error conformance has a concrete cold resilient-cache construction dependency, but a complete required caller-to-getter join and exact arena allocator/state classification are not certified here. A47/A48 generic MISS lemma cannot simply be substituted for this non-generic path.\",\"method_failure\":{\"error\":\"RuntimeError LC_SYMTAB\",\"site\":\"Final selected-provider preservation query used existing full-object structural parser on a decoder-generated minimal projected image lacking LC_SYMTAB.\",\"consequence\":\"Semantic expansion stopped immediately; no helper edit/retry/new attempt. Selected-provider end-preservation did not complete. All raw captures and durable error remain; final frozen-file reauthentication still required by page.py f.\"},\"context\":{\"acquired_raw_bytes\":272226,\"acquired_raw_lines\":5335,\"scope\":\"Complete source packet plus all acquired raw disassemblies; derived selected metadata is additional small context. Not all captured contexts were model-examined.\",\"examined_source_pages\":[1,2,3,25,26,27,28,32,33,34],\"examined_provider_pages\":{\"group-1\":\"complete\",\"group-2\":[1,2,3,4,5,7,11,12,13,14],\"group-3\":\"complete\"},\"unexamined\":\"Remaining source pages, provider core pages6/8/9/10 and named local/transitive joins retained explicitly.\"},\"qualification\":{\"recording\":\"All post-auth requests/payloads used frozen recorded entry; terminal ledger authoritative. No post-auth collaboration/off-entry tool occurred.\",\"execution\":\"FALSE: terminal method failure and incomplete selected-provider end-preservation; no retroqualification. Logical source/body findings remain separately reviewable.\",\"numerical\":\"Final page.py f ledger is authoritative, not this pre-close snapshot.\"},\"pre_close\":{\"processing\":S[\"processing\"],\"counted_text\":S[\"transcript\"],\"time\":datetime.datetime.now(datetime.timezone.utc).isoformat()}};blob=json.dumps(rows,indent=2).encode();text=\"A59 stops with a consolidated finite residual set. The current Error conformance is a non-generic resilient witness-cache path, not a direct static-table return or the previously studied generic cache path. Current Static replacement deliberately exercises retainedModel refusal. The exact outlined155 acquisition join and arena stub/state classification remain available local/provider work; no allocator violation or global eligibility is certified. swift_once token=-1 direct return is closed; its first-use tail target remains outside the frozen text extent. RootScope layout and Semantic codec/role/indirect frontiers remain precisely listed in findings.json. Final preservation query failed LC_SYMTAB on a minimal projected object; no repair or semantic continuation followed. Historical failures, Model, unit, live-state and resource gates stay open. See the sibling local ledger.json for actual final counters/CLOSED, freeze.json for exact input roles/hashes and captures for direct raw citations.\"+chr(10);payloads={\"findings.json\":blob,\"README.md\":text.encode()};planned=sum(len(v) for v in payloads.values());foot=sum(p.stat().st_size for p in H.rglob(\"*\") if p.is_file())+sum(p.stat().st_size for p in D.rglob(\"*\") if p.is_file())+S[\"transcript\"];assert foot+planned+65536<8*1024*1024;charge(planned*3)\n for name,b in payloads.items():(D/name).write_bytes(b)\n emit({\"s\":\"RESULT_SAVED_PENDING_FINAL_REAUTH_CLOSE\",\"result\":str(D.relative_to(R)),\"files\":{n:{\"bytes\":len(b),\"sha256\":sha(b)} for n,b in payloads.items()},\"processing\":S[\"processing\"],\"counted_text\":S[\"transcript\"],\"semantic_reads_stopped\":True})\nexcept BaseException as e:\n S[\"errors\"].append({\"type\":type(e).__name__,\"message\":str(e),\"traceback\":traceback.format_exc()});save();emit({\"s\":\"STOP\",\"error\":S[\"errors\"][-1]});sys.exit(2)'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py f '{\\\"status\\\":\\\"STOP_CONSOLIDATED\\\",\\\"result\\\":\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-result/findings.json\\\",\\\"findings_sha256\\\":\\\"833a309569829654387f8dde1fe6c978377cd1ec66c1422095df28f29642cc4a\\\",\\\"execution_qualification\\\":false,\\\"reason\\\":\\\"LC_SYMTAB during selected-provider end-preservation; semantic reads stopped; exact Error resilient-cache, once and source/layout findings saved with remaining joins explicit\\\",\\\"source_index_unchanged\\\":true,\\\"no_automatic_successor\\\":true}'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/page.py f '{\"status\":\"STOP_CONSOLIDATED\",\"result\":\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-result/findings.json\",\"findings_sha256\":\"833a309569829654387f8dde1fe6c978377cd1ec66c1422095df28f29642cc4a\",\"execution_qualification\":false,\"reason\":\"LC_SYMTAB during selected-provider end-preservation; semantic reads stopped; exact Error resilient-cache, once and source/layout findings saved with remaining joins explicit\",\"source_index_unchanged\":true,\"no_automatic_successor\":true}'",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "pages": [
+    1,
+    2,
+    3,
+    26,
+    25,
+    27,
+    28,
+    32,
+    33,
+    34
+  ],
+  "errors": [
+    {
+      "type": "RuntimeError",
+      "message": "LC_SYMTAB",
+      "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\n  File \"<frozen-structural-parser>\", line 17, in parse\n  File \"<frozen-structural-parser>\", line 7, in check\nRuntimeError: LC_SYMTAB\n"
+    },
+    "RuntimeError: processing plus final reserve"
+  ],
+  "auth_utc": "2026-10-24T13:36:38.779064+00:00",
+  "page_count": 34,
+  "line_count": 3354,
+  "provider_predicates": [
+    {
+      "name": "frozen delivery helper",
+      "ok": true,
+      "actual": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4"
+    },
+    {
+      "name": "frozen decoder script",
+      "ok": true,
+      "actual": "0068d51c0cfbd588645a91ab32bc8eff13eeb1e2f323633ff46d60614fd992f3"
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 18608160,
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 5313112,
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331129504,
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact selected provider export",
+      "ok": true,
+      "actual": {
+        "symbol": "_swift_getWitnessTable",
+        "row": {
+          "flags": 0,
+          "address": 6774166812
+        }
+      }
+    },
+    {
+      "name": "direct regular export",
+      "ok": true,
+      "actual": {
+        "symbol": "_swift_getWitnessTable",
+        "row": {
+          "flags": 0,
+          "address": 6774166812
+        }
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193c5951c",
+        "index": 94
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193c5951c",
+        "hi": "0x193c59548"
+      }
+    },
+    {
+      "name": "exact selected provider export",
+      "ok": true,
+      "actual": {
+        "symbol": "_swift_once",
+        "row": {
+          "flags": 0,
+          "address": 6774139492
+        }
+      }
+    },
+    {
+      "name": "direct regular export",
+      "ok": true,
+      "actual": {
+        "symbol": "_swift_once",
+        "row": {
+          "flags": 0,
+          "address": 6774139492
+        }
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193c52a64",
+        "index": 7
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193c52a64",
+        "hi": "0x193c52a84"
+      }
+    },
+    {
+      "name": "complete decode and terminal reserve",
+      "ok": true,
+      "actual": {
+        "processing": 151812575,
+        "forecast": 99400222
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 1118,
+        "lines": 31
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "group": 1,
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-1.o",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-2.o"
+        ],
+        "selected": [
+          {
+            "index": 1,
+            "provider": "/usr/lib/swift/libswiftCore.dylib",
+            "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+            "origin": {
+              "selected": "_swift_getWitnessTable",
+              "entry": 6774166812,
+              "export": {
+                "flags": 0,
+                "address": 6774166812
+              }
+            },
+            "range": [
+              "0x193c5951c",
+              "0x193c59548"
+            ],
+            "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+            "raw_cache_offset": 331158812,
+            "raw_cache_bytes": 44,
+            "code_sha256": "bb525eab07f55821ea2693cb22c7058fa440c6085189225e63c2f9d27a95545d",
+            "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-1.o",
+            "projected_sha256": "07feb3ea7423eec6dc767c0c87e0c14df4c3224aff177fb1b566c0baec9b9ec9"
+          },
+          {
+            "index": 2,
+            "provider": "/usr/lib/swift/libswiftCore.dylib",
+            "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+            "origin": {
+              "selected": "_swift_once",
+              "entry": 6774139492,
+              "export": {
+                "flags": 0,
+                "address": 6774139492
+              }
+            },
+            "range": [
+              "0x193c52a64",
+              "0x193c52a84"
+            ],
+            "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+            "raw_cache_offset": 331131492,
+            "raw_cache_bytes": 32,
+            "code_sha256": "e01415ed507246d11f56a87cd3804ebb2876a595186ea475265468dfc9b2ee7b",
+            "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-2.o",
+            "projected_sha256": "322334d39435822129a2d5d93aa134d01bbf43796423584c773509d04f93012f"
+          }
+        ],
+        "returncode": 0,
+        "stdout_bytes": 1118,
+        "stdout_lines": 31,
+        "stdout_sha256": "b58c7b67f4169288d7f1d27b7f1ea834412994834f643819e1ca1e287b7545b5",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-24T13:36:52.061439+00:00"
+      }
+    },
+    {
+      "name": "frozen delivery helper",
+      "ok": true,
+      "actual": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4"
+    },
+    {
+      "name": "frozen decoder script",
+      "ok": true,
+      "actual": "0068d51c0cfbd588645a91ab32bc8eff13eeb1e2f323633ff46d60614fd992f3"
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 18608160,
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 5313112,
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331129504,
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193cce9e0",
+        "index": 3239
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193cce9e0",
+        "hi": "0x193ccfec4"
+      }
+    },
+    {
+      "name": "complete decode and terminal reserve",
+      "ok": true,
+      "actual": {
+        "processing": 190727005,
+        "forecast": 99334686
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 53918,
+        "lines": 1374
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "group": 2,
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-3.o"
+        ],
+        "selected": [
+          {
+            "index": 3,
+            "provider": "/usr/lib/swift/libswiftCore.dylib",
+            "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+            "origin": {
+              "selected": "0x193cce9e0",
+              "entry": 6774647264,
+              "export": null
+            },
+            "range": [
+              "0x193cce9e0",
+              "0x193ccfec4"
+            ],
+            "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+            "raw_cache_offset": 331639264,
+            "raw_cache_bytes": 5348,
+            "code_sha256": "5b21e8cc47b6868d20e1e4d896f794182016b303234820304037b00fa684948f",
+            "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-3.o",
+            "projected_sha256": "21dd93a3fe3a6135e20346bc2c18477bcf49ff07a7543d779608cad09e4b2b08"
+          }
+        ],
+        "returncode": 0,
+        "stdout_bytes": 52800,
+        "stdout_lines": 1343,
+        "stdout_sha256": "29302bb4193db2b5098136aec822ce480986c2f1b6e6dbf8a4d370d28915212c",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-24T13:41:47.896574+00:00"
+      }
+    },
+    {
+      "name": "frozen delivery helper",
+      "ok": true,
+      "actual": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4"
+    },
+    {
+      "name": "frozen decoder script",
+      "ok": true,
+      "actual": "0068d51c0cfbd588645a91ab32bc8eff13eeb1e2f323633ff46d60614fd992f3"
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+        "bytes": 5768
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 18608160,
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "e0944e0acd054e4ae5a7192db17d2dc63771aa513a791141e276d5f77604f2e8",
+        "bytes": 430488
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 5313112,
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+        "bytes": 28160
+      }
+    },
+    {
+      "name": "exact installed extent identity",
+      "ok": true,
+      "actual": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331129504,
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact installed extent hash",
+      "ok": true,
+      "actual": {
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "bytes": 4836300
+      }
+    },
+    {
+      "name": "exact selected function bounds",
+      "ok": true,
+      "actual": {
+        "entry": "0x193c64ef0",
+        "index": 370
+      }
+    },
+    {
+      "name": "selected code extent is frozen",
+      "ok": true,
+      "actual": {
+        "lo": "0x193c64ef0",
+        "hi": "0x193c652b4"
+      }
+    },
+    {
+      "name": "complete decode and terminal reserve",
+      "ok": true,
+      "actual": {
+        "processing": 275139388,
+        "forecast": 99334686
+      }
+    },
+    {
+      "name": "aggregate original group excerpt reserve",
+      "ok": true,
+      "actual": {
+        "bytes": 63679,
+        "lines": 1621
+      }
+    },
+    {
+      "name": "known provider decoder exit0",
+      "ok": true,
+      "actual": {
+        "group": 3,
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--no-show-raw-insn",
+          "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-4.o"
+        ],
+        "selected": [
+          {
+            "index": 4,
+            "provider": "/usr/lib/swift/libswiftCore.dylib",
+            "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+            "origin": {
+              "selected": "0x193c64ef0",
+              "entry": 6774214384,
+              "export": null
+            },
+            "range": [
+              "0x193c64ef0",
+              "0x193c652b4"
+            ],
+            "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+            "raw_cache_offset": 331206384,
+            "raw_cache_bytes": 964,
+            "code_sha256": "0f5d66f03ed032c508a9640a2a14bd5ca1dc7852db6ce1dcb1d498aafc062d19",
+            "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-4.o",
+            "projected_sha256": "94bae0a37543709ebc800715c6d55328d2a6a8ff849e215e568bc8aad399d9e7"
+          }
+        ],
+        "returncode": 0,
+        "stdout_bytes": 9761,
+        "stdout_lines": 247,
+        "stdout_sha256": "140c20716a52be1f8df6394823f9f0a78cf753f1f1f0762c07a858a7b78ddf09",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "",
+        "ended_utc": "2026-10-24T13:54:15.441487+00:00"
+      }
+    }
+  ],
+  "swift_captures": [
+    {
+      "index": 1,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "_swift_getWitnessTable",
+        "entry": 6774166812,
+        "export": {
+          "flags": 0,
+          "address": 6774166812
+        }
+      },
+      "range": [
+        "0x193c5951c",
+        "0x193c59548"
+      ],
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331158812,
+      "raw_cache_bytes": 44,
+      "code_sha256": "bb525eab07f55821ea2693cb22c7058fa440c6085189225e63c2f9d27a95545d",
+      "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-1.o",
+      "projected_sha256": "07feb3ea7423eec6dc767c0c87e0c14df4c3224aff177fb1b566c0baec9b9ec9"
+    },
+    {
+      "index": 2,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "_swift_once",
+        "entry": 6774139492,
+        "export": {
+          "flags": 0,
+          "address": 6774139492
+        }
+      },
+      "range": [
+        "0x193c52a64",
+        "0x193c52a84"
+      ],
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331131492,
+      "raw_cache_bytes": 32,
+      "code_sha256": "e01415ed507246d11f56a87cd3804ebb2876a595186ea475265468dfc9b2ee7b",
+      "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-2.o",
+      "projected_sha256": "322334d39435822129a2d5d93aa134d01bbf43796423584c773509d04f93012f"
+    },
+    {
+      "index": 3,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "0x193cce9e0",
+        "entry": 6774647264,
+        "export": null
+      },
+      "range": [
+        "0x193cce9e0",
+        "0x193ccfec4"
+      ],
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331639264,
+      "raw_cache_bytes": 5348,
+      "code_sha256": "5b21e8cc47b6868d20e1e4d896f794182016b303234820304037b00fa684948f",
+      "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-3.o",
+      "projected_sha256": "21dd93a3fe3a6135e20346bc2c18477bcf49ff07a7543d779608cad09e4b2b08"
+    },
+    {
+      "index": 4,
+      "provider": "/usr/lib/swift/libswiftCore.dylib",
+      "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+      "origin": {
+        "selected": "0x193c64ef0",
+        "entry": 6774214384,
+        "export": null
+      },
+      "range": [
+        "0x193c64ef0",
+        "0x193c652b4"
+      ],
+      "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "raw_cache_offset": 331206384,
+      "raw_cache_bytes": 964,
+      "code_sha256": "0f5d66f03ed032c508a9640a2a14bd5ca1dc7852db6ce1dcb1d498aafc062d19",
+      "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-4.o",
+      "projected_sha256": "94bae0a37543709ebc800715c6d55328d2a6a8ff849e215e568bc8aad399d9e7"
+    }
+  ],
+  "provider_pending": null,
+  "provider_groups": [
+    {
+      "group": 1,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-1.o",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-2.o"
+      ],
+      "selected": [
+        {
+          "index": 1,
+          "provider": "/usr/lib/swift/libswiftCore.dylib",
+          "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+          "origin": {
+            "selected": "_swift_getWitnessTable",
+            "entry": 6774166812,
+            "export": {
+              "flags": 0,
+              "address": 6774166812
+            }
+          },
+          "range": [
+            "0x193c5951c",
+            "0x193c59548"
+          ],
+          "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "raw_cache_offset": 331158812,
+          "raw_cache_bytes": 44,
+          "code_sha256": "bb525eab07f55821ea2693cb22c7058fa440c6085189225e63c2f9d27a95545d",
+          "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-1.o",
+          "projected_sha256": "07feb3ea7423eec6dc767c0c87e0c14df4c3224aff177fb1b566c0baec9b9ec9"
+        },
+        {
+          "index": 2,
+          "provider": "/usr/lib/swift/libswiftCore.dylib",
+          "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+          "origin": {
+            "selected": "_swift_once",
+            "entry": 6774139492,
+            "export": {
+              "flags": 0,
+              "address": 6774139492
+            }
+          },
+          "range": [
+            "0x193c52a64",
+            "0x193c52a84"
+          ],
+          "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "raw_cache_offset": 331131492,
+          "raw_cache_bytes": 32,
+          "code_sha256": "e01415ed507246d11f56a87cd3804ebb2876a595186ea475265468dfc9b2ee7b",
+          "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-2.o",
+          "projected_sha256": "322334d39435822129a2d5d93aa134d01bbf43796423584c773509d04f93012f"
+        }
+      ],
+      "returncode": 0,
+      "stdout_bytes": 1118,
+      "stdout_lines": 31,
+      "stdout_sha256": "b58c7b67f4169288d7f1d27b7f1ea834412994834f643819e1ca1e287b7545b5",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-24T13:36:52.061439+00:00"
+    },
+    {
+      "group": 2,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-3.o"
+      ],
+      "selected": [
+        {
+          "index": 3,
+          "provider": "/usr/lib/swift/libswiftCore.dylib",
+          "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+          "origin": {
+            "selected": "0x193cce9e0",
+            "entry": 6774647264,
+            "export": null
+          },
+          "range": [
+            "0x193cce9e0",
+            "0x193ccfec4"
+          ],
+          "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "raw_cache_offset": 331639264,
+          "raw_cache_bytes": 5348,
+          "code_sha256": "5b21e8cc47b6868d20e1e4d896f794182016b303234820304037b00fa684948f",
+          "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-3.o",
+          "projected_sha256": "21dd93a3fe3a6135e20346bc2c18477bcf49ff07a7543d779608cad09e4b2b08"
+        }
+      ],
+      "returncode": 0,
+      "stdout_bytes": 52800,
+      "stdout_lines": 1343,
+      "stdout_sha256": "29302bb4193db2b5098136aec822ce480986c2f1b6e6dbf8a4d370d28915212c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-24T13:41:47.896574+00:00"
+    },
+    {
+      "group": 3,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-4.o"
+      ],
+      "selected": [
+        {
+          "index": 4,
+          "provider": "/usr/lib/swift/libswiftCore.dylib",
+          "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+          "origin": {
+            "selected": "0x193c64ef0",
+            "entry": 6774214384,
+            "export": null
+          },
+          "range": [
+            "0x193c64ef0",
+            "0x193c652b4"
+          ],
+          "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+          "raw_cache_offset": 331206384,
+          "raw_cache_bytes": 964,
+          "code_sha256": "0f5d66f03ed032c508a9640a2a14bd5ca1dc7852db6ce1dcb1d498aafc062d19",
+          "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-4.o",
+          "projected_sha256": "94bae0a37543709ebc800715c6d55328d2a6a8ff849e215e568bc8aad399d9e7"
+        }
+      ],
+      "returncode": 0,
+      "stdout_bytes": 9761,
+      "stdout_lines": 247,
+      "stdout_sha256": "140c20716a52be1f8df6394823f9f0a78cf753f1f1f0762c07a858a7b78ddf09",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "ended_utc": "2026-10-24T13:54:15.441487+00:00"
+    }
+  ],
+  "swift_joins": [
+    {
+      "selected": "_swift_getWitnessTable",
+      "entry": "0x193c5951c",
+      "range": [
+        "0x193c5951c",
+        "0x193c59548"
+      ],
+      "export": {
+        "flags": 0,
+        "address": 6774166812
+      }
+    },
+    {
+      "selected": "_swift_once",
+      "entry": "0x193c52a64",
+      "range": [
+        "0x193c52a64",
+        "0x193c52a84"
+      ],
+      "export": {
+        "flags": 0,
+        "address": 6774139492
+      }
+    },
+    {
+      "selected": "0x193cce9e0",
+      "entry": "0x193cce9e0",
+      "range": [
+        "0x193cce9e0",
+        "0x193ccfec4"
+      ],
+      "export": null
+    },
+    {
+      "selected": "0x193c64ef0",
+      "entry": "0x193c64ef0",
+      "range": [
+        "0x193c64ef0",
+        "0x193c652b4"
+      ],
+      "export": null
+    }
+  ],
+  "current_body_examined_pages": {
+    "group-1.stdout": [
+      1
+    ],
+    "group-2.stdout": [
+      1,
+      11,
+      12,
+      2,
+      3,
+      4,
+      5,
+      7,
+      13,
+      14
+    ],
+    "capture-1.stdout": [
+      1
+    ],
+    "group-3.stdout": [
+      1,
+      2,
+      3
+    ],
+    "capture-3.stdout": [
+      1,
+      2
+    ],
+    "capture-2.stdout": [
+      1,
+      2
+    ],
+    "capture-4.stdout": [
+      1
+    ],
+    "capture-5.stdout": [
+      1
+    ],
+    "capture-6.stdout": [
+      1
+    ]
+  },
+  "predicates": [
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 213012777,
+        "forecast": 100572182
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 1809,
+        "lines": 33
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl",
+        "start": "0x2fc",
+        "end": "0x33c",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x2fc",
+          "--stop-address=0x33c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/GiftUIObservableState.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 1809,
+        "stdout_lines": 33,
+        "stdout_sha256": "574371b78beac1c04d2edbf4d918abb3f5d09f6a6d2ce6bf4867fd5791d5a4e6",
+        "stderr": "",
+        "raw": "capture-1.stdout"
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "one exact Error conformance",
+      "ok": true,
+      "actual": 1
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact layout thunk",
+      "ok": true,
+      "actual": 1
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 309212419,
+        "forecast": 102931318
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 7835,
+        "lines": 141
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+        "start": "0xae4d8",
+        "end": "0xae5ec",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xae4d8",
+          "--stop-address=0xae5ec",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 6026,
+        "stdout_lines": 108,
+        "stdout_sha256": "fc1d7b39f5f7021ec07102d67f9250a97492bb7f54b7fa8688236a53b65caeeb",
+        "stderr": "",
+        "raw": "capture-2.stdout"
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 336987551,
+        "forecast": 100572182
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 21765,
+        "lines": 314
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF",
+        "start": "0x20cc",
+        "end": "0x2338",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x20cc",
+          "--stop-address=0x2338",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/GiftUIObservableState.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 13930,
+        "stdout_lines": 173,
+        "stdout_sha256": "cb75f7cd7164ec7d715394e2866d20f9c6d1d44057dd1d697e40a35317e4717d",
+        "stderr": "",
+        "raw": "capture-3.stdout"
+      }
+    },
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_OUTLINED_FUNCTION_5",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 362852367,
+        "forecast": 100572182
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 22552,
+        "lines": 330
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_OUTLINED_FUNCTION_5",
+        "start": "0xd840",
+        "end": "0xd854",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xd840",
+          "--stop-address=0xd854",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/GiftUIObservableState.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 787,
+        "stdout_lines": 16,
+        "stdout_sha256": "26aac58bdc03347c20d72cd4d3a5de19d41d071f828bd326bac8412fea8ca903",
+        "stderr": "",
+        "raw": "capture-4.stdout"
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_OUTLINED_FUNCTION_902",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 392103279,
+        "forecast": 102931318
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 22956,
+        "lines": 340
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_OUTLINED_FUNCTION_902",
+        "start": "0xc2a2c",
+        "end": "0xc2a38",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xc2a2c",
+          "--stop-address=0xc2a38",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 404,
+        "stdout_lines": 10,
+        "stdout_sha256": "f93a99ec637af79894421d19cef40c7342409ee8ef33cb85ec124a991d272b60",
+        "stderr": "",
+        "raw": "capture-5.stdout"
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_OUTLINED_FUNCTION_132",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 415024366,
+        "forecast": 102931318
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 23753,
+        "lines": 360
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_OUTLINED_FUNCTION_132",
+        "start": "0xbe218",
+        "end": "0xbe24c",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbe218",
+          "--stop-address=0xbe24c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 797,
+        "stdout_lines": 20,
+        "stdout_sha256": "54301c838238d1a706074d4552e4317352fbc3ce1f568ef6d36fc5ee3c8da878",
+        "stderr": "",
+        "raw": "capture-6.stdout"
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": false,
+      "actual": {
+        "present": false
+      }
+    }
+  ],
+  "captures": [
+    {
+      "object": "observable",
+      "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl",
+      "start": "0x2fc",
+      "end": "0x33c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x2fc",
+        "--stop-address=0x33c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/GiftUIObservableState.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1809,
+      "stdout_lines": 33,
+      "stdout_sha256": "574371b78beac1c04d2edbf4d918abb3f5d09f6a6d2ce6bf4867fd5791d5a4e6",
+      "stderr": "",
+      "raw": "capture-1.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "start": "0xae4d8",
+      "end": "0xae5ec",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xae4d8",
+        "--stop-address=0xae5ec",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 6026,
+      "stdout_lines": 108,
+      "stdout_sha256": "fc1d7b39f5f7021ec07102d67f9250a97492bb7f54b7fa8688236a53b65caeeb",
+      "stderr": "",
+      "raw": "capture-2.stdout"
+    },
+    {
+      "object": "observable",
+      "symbol": "_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF",
+      "start": "0x20cc",
+      "end": "0x2338",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x20cc",
+        "--stop-address=0x2338",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/GiftUIObservableState.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 13930,
+      "stdout_lines": 173,
+      "stdout_sha256": "cb75f7cd7164ec7d715394e2866d20f9c6d1d44057dd1d697e40a35317e4717d",
+      "stderr": "",
+      "raw": "capture-3.stdout"
+    },
+    {
+      "object": "observable",
+      "symbol": "_OUTLINED_FUNCTION_5",
+      "start": "0xd840",
+      "end": "0xd854",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xd840",
+        "--stop-address=0xd854",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/GiftUIObservableState.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 787,
+      "stdout_lines": 16,
+      "stdout_sha256": "26aac58bdc03347c20d72cd4d3a5de19d41d071f828bd326bac8412fea8ca903",
+      "stderr": "",
+      "raw": "capture-4.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_OUTLINED_FUNCTION_902",
+      "start": "0xc2a2c",
+      "end": "0xc2a38",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc2a2c",
+        "--stop-address=0xc2a38",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 404,
+      "stdout_lines": 10,
+      "stdout_sha256": "f93a99ec637af79894421d19cef40c7342409ee8ef33cb85ec124a991d272b60",
+      "stderr": "",
+      "raw": "capture-5.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_OUTLINED_FUNCTION_132",
+      "start": "0xbe218",
+      "end": "0xbe24c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbe218",
+        "--stop-address=0xbe24c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 797,
+      "stdout_lines": 20,
+      "stdout_sha256": "54301c838238d1a706074d4552e4317352fbc3ce1f568ef6d36fc5ee3c8da878",
+      "stderr": "",
+      "raw": "capture-6.stdout"
+    }
+  ],
+  "findings": {
+    "status": "STOP_CONSOLIDATED",
+    "result": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-result/findings.json",
+    "findings_sha256": "833a309569829654387f8dde1fe6c978377cd1ec66c1422095df28f29642cc4a",
+    "execution_qualification": false,
+    "reason": "LC_SYMTAB during selected-provider end-preservation; semantic reads stopped; exact Error resilient-cache, once and source/layout findings saved with remaining joins explicit",
+    "source_index_unchanged": true,
+    "no_automatic_successor": true
+  },
+  "model_end_utc": "2026-10-24T14:04:16.276667+00:00",
+  "stopped_utc": "2026-10-24T14:04:16.286222+00:00"
+}

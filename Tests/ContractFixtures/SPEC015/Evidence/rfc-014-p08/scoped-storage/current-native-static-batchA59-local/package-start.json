@@ -1,0 +1,17 @@
+{
+  "actual_first_orientation_utc": "2026-10-24T13:26:09+00:00",
+  "deadline_utc": "2026-10-24T15:26:09+00:00",
+  "freeze_utc": "2026-10-24T13:36:02.771412+00:00",
+  "helper_identity": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4",
+  "forecast": {
+    "setup_processing_upper": 68967772,
+    "frozen_input_bytes": 32109543,
+    "auth_plus_final_input_reads": 128438172,
+    "protected_control_reserve": 16777216,
+    "expected_one_combined_swift_provider_decode_upper": 40000000,
+    "eight_selected_local_decoder_upper": 180000000,
+    "model_context_and_control_forecast": 50000000,
+    "planned_upper": 484183160
+  },
+  "preauth_only": "Schema/path/configuration orientation discarded as proof; no selected semantic analysis performed. Existing algorithms unchanged, only task-local path identity replaced. Required invocation dir created before auth. No collaboration/tools outside recorded entry between auth and closed."
+}

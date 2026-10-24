@@ -1,0 +1,31 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-1.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000193c5951c <__text>:
+193c5951c:     	cbz	x0, 0x193c59544 <__text+0x28>
+193c59520:     	mov	x16, x0
+193c59524:     	mov	x17, #0xc6eb            ; =50923
+193c59528:     	autda	x16, x17
+193c5952c:     	mov	x17, x16
+193c59530:     	xpacd	x17
+193c59534:     	cmp	x16, x17
+193c59538:     	b.eq	0x193c59540 <__text+0x24>
+193c5953c:     	brk	#0xc472
+193c59540:     	mov	x0, x16
+193c59544:     	b	0x193cce9e0 <__text+0x754c4>
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-2.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000193c52a64 <__text>:
+193c52a64:     	ldr	x8, [x0]
+193c52a68:     	cmn	x8, #0x1
+193c52a6c:     	b.ne	0x193c52a74 <__text+0x10>
+193c52a70:     	ret
+193c52a74:     	mov	x8, x1
+193c52a78:     	mov	x1, x2
+193c52a7c:     	mov	x2, x8
+193c52a80:     	b	0x1940ef34c <__text+0x49c8e8>

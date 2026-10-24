@@ -1,0 +1,189 @@
+{
+  "s": "EXACT_ERROR_AND_LAYOUT_DATA",
+  "error": {
+    "object": {
+      "path": ".build/contracts/p08-counter-98512cay/GiftUIObservableState.o",
+      "bytes": 254456,
+      "sha256": "7aa008f300ddec07c238ee427d4ac7bf78726496b7ae0f66a7d31ca9a1c33a8c"
+    },
+    "descriptor": {
+      "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+      "address": 59620,
+      "section": 2,
+      "type": 15
+    },
+    "section": {
+      "name": "__const",
+      "addr": 59376,
+      "bytes": 2490,
+      "file": 61344,
+      "reloff": 107880,
+      "nreloc": 358
+    },
+    "raw32": "01000000fcffffff000000000000030004000000edffffffe8ffffffe5ffffff",
+    "flags_at12": "0x30000",
+    "relocations": [
+      {
+        "offset_in_descriptor": 4,
+        "kind": 1,
+        "external": 1,
+        "target": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc"
+      },
+      {
+        "offset_in_descriptor": 4,
+        "kind": 0,
+        "external": 1,
+        "target": "_$s21GiftUIObservableState010ObservableC5ErrorOMn"
+      },
+      {
+        "offset_in_descriptor": 0,
+        "kind": 1,
+        "external": 1,
+        "target": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc"
+      },
+      {
+        "offset_in_descriptor": 0,
+        "kind": 0,
+        "external": 1,
+        "target": "l_got.$ss5ErrorMp"
+      }
+    ],
+    "cache": [
+      {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL",
+        "address": 61872,
+        "section": 3,
+        "type": 31
+      }
+    ]
+  },
+  "layout_thunk": {
+    "symbol": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+    "address": 717348,
+    "section": 1,
+    "type": 14
+  },
+  "layout_incoming": [
+    {
+      "section": "__text",
+      "pc_or_offset": "0xbc6b0",
+      "kind": 2,
+      "nearby_symbols": [
+        {
+          "symbol": "_$s17P08CounterRuntime03p08B5ModelSiyFSi21GiftUIObservableState010ObservableE5ScopeVyAA0b5OwnedE0V0aB6Schema0beL0OGAC0iH5ErrorOYKXEfU_",
+          "address": 771764,
+          "section": 1,
+          "type": 14
+        },
+        {
+          "symbol": "_$s17P08CounterRuntime0A17TypedBackingOwner33_480B1BD841D053AE4FCDC18507668536LLV13physicalFactsAA0a13OwnedPhysicalM0ACLLVyFySpy20GiftUIRuntimeDynamic0R15RenderWorkspaceVGXEfU6_ySi_S3itXEfU_TA.56",
+          "address": 771752,
+          "section": 1,
+          "type": 14
+        },
+        {
+          "symbol": "l_get_type_metadata 21GiftUIObservableState20ObservableModelScopeVy17P08CounterRuntime0h5OwnedE0V0gH6Schema0heK0OG noncopyable",
+          "address": 771756,
+          "section": 1,
+          "type": 14
+        },
+        {
+          "symbol": "l_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable",
+          "address": 771760,
+          "section": 1,
+          "type": 14
+        }
+      ]
+    },
+    {
+      "section": "__swift5_typeref",
+      "pc_or_offset": "0xce255",
+      "kind": 0,
+      "nearby_symbols": [
+        {
+          "symbol": "_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable.13",
+          "address": 844372,
+          "section": 7,
+          "type": 31
+        },
+        {
+          "symbol": "_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState20ObservableModelScopeVyAA0b5OwnedR0V0aB6Schema0brU0OG noncopyable.12",
+          "address": 844366,
+          "section": 7,
+          "type": 31
+        },
+        {
+          "symbol": "_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_lAF0L11RecordStoreVy0I9UIDrawing06CanvasL7PayloadOy0aB5Table0ab6SchemaR6ValuesOyAA0B6DomainOGGG noncopyable.14",
+          "address": 844378,
+          "section": 7,
+          "type": 31
+        }
+      ]
+    }
+  ],
+  "pipeline_nominal_metadata": [
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMi",
+      "address": 713936,
+      "section": 1,
+      "type": 14
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "address": 713944,
+      "section": 1,
+      "type": 14
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMI",
+      "address": 1023984,
+      "section": 11,
+      "type": 14
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMP",
+      "address": 826592,
+      "section": 2,
+      "type": 14
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMa",
+      "address": 677252,
+      "section": 1,
+      "type": 15
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMn",
+      "address": 885188,
+      "section": 14,
+      "type": 15
+    }
+  ],
+  "provider_extents": [
+    {
+      "role": "image-load-commands",
+      "vmaddr": 6774124544,
+      "bytes": 5768,
+      "offset": 331116544
+    },
+    {
+      "role": "__TEXT",
+      "vmaddr": 6774137504,
+      "bytes": 4836300,
+      "offset": 331129504
+    },
+    {
+      "role": "exports-trie",
+      "vmaddr": 8601628704,
+      "bytes": 430488,
+      "offset": 18608160
+    },
+    {
+      "role": "function-starts",
+      "vmaddr": 8588333656,
+      "bytes": 28160,
+      "offset": 5313112
+    }
+  ],
+  "processing": 243025243
+}

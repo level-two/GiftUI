@@ -1,0 +1,20 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000be218 <_OUTLINED_FUNCTION_132>:
+   be218:      	ldr	x8, [x19, #0x28]
+   be21c:      	ldp	x9, x10, [x19, #0x38]
+   be220:      	ldr	x9, [x9, #0x8]
+   be224:      	ldr	x10, [x10, #0x8]
+   be228:      	ldr	x11, [x19, #0x48]
+   be22c:      	ldr	x11, [x11, #0x8]
+   be230:      	ldur	q0, [x19, #0x18]
+   be234:      	str	q0, [sp]
+   be238:      	stp	x8, x9, [sp, #0x10]
+   be23c:      	stp	x10, x11, [sp, #0x20]
+   be240:      	mov	x1, sp
+   be244:      	mov	w0, #0x13f              ; =319
+   be248:      	b	0xbe248 <_OUTLINED_FUNCTION_132+0x30>
+		00000000000be248:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVMa

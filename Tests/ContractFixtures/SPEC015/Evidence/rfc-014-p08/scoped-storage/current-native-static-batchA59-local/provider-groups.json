@@ -1,0 +1,146 @@
+[
+  {
+    "group": 1,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-1.o",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-2.o"
+    ],
+    "selected": [
+      {
+        "index": 1,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "_swift_getWitnessTable",
+          "entry": 6774166812,
+          "export": {
+            "flags": 0,
+            "address": 6774166812
+          }
+        },
+        "range": [
+          "0x193c5951c",
+          "0x193c59548"
+        ],
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331158812,
+        "raw_cache_bytes": 44,
+        "code_sha256": "bb525eab07f55821ea2693cb22c7058fa440c6085189225e63c2f9d27a95545d",
+        "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-1.o",
+        "projected_sha256": "07feb3ea7423eec6dc767c0c87e0c14df4c3224aff177fb1b566c0baec9b9ec9"
+      },
+      {
+        "index": 2,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "_swift_once",
+          "entry": 6774139492,
+          "export": {
+            "flags": 0,
+            "address": 6774139492
+          }
+        },
+        "range": [
+          "0x193c52a64",
+          "0x193c52a84"
+        ],
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331131492,
+        "raw_cache_bytes": 32,
+        "code_sha256": "e01415ed507246d11f56a87cd3804ebb2876a595186ea475265468dfc9b2ee7b",
+        "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-2.o",
+        "projected_sha256": "322334d39435822129a2d5d93aa134d01bbf43796423584c773509d04f93012f"
+      }
+    ],
+    "returncode": 0,
+    "stdout_bytes": 1118,
+    "stdout_lines": 31,
+    "stdout_sha256": "b58c7b67f4169288d7f1d27b7f1ea834412994834f643819e1ca1e287b7545b5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-24T13:36:52.061439+00:00"
+  },
+  {
+    "group": 2,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-3.o"
+    ],
+    "selected": [
+      {
+        "index": 3,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "0x193cce9e0",
+          "entry": 6774647264,
+          "export": null
+        },
+        "range": [
+          "0x193cce9e0",
+          "0x193ccfec4"
+        ],
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331639264,
+        "raw_cache_bytes": 5348,
+        "code_sha256": "5b21e8cc47b6868d20e1e4d896f794182016b303234820304037b00fa684948f",
+        "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-3.o",
+        "projected_sha256": "21dd93a3fe3a6135e20346bc2c18477bcf49ff07a7543d779608cad09e4b2b08"
+      }
+    ],
+    "returncode": 0,
+    "stdout_bytes": 52800,
+    "stdout_lines": 1343,
+    "stdout_sha256": "29302bb4193db2b5098136aec822ce480986c2f1b6e6dbf8a4d370d28915212c",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-24T13:41:47.896574+00:00"
+  },
+  {
+    "group": 3,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-4.o"
+    ],
+    "selected": [
+      {
+        "index": 4,
+        "provider": "/usr/lib/swift/libswiftCore.dylib",
+        "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+        "origin": {
+          "selected": "0x193c64ef0",
+          "entry": 6774214384,
+          "export": null
+        },
+        "range": [
+          "0x193c64ef0",
+          "0x193c652b4"
+        ],
+        "raw_cache_path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "raw_cache_offset": 331206384,
+        "raw_cache_bytes": 964,
+        "code_sha256": "0f5d66f03ed032c508a9640a2a14bd5ca1dc7852db6ce1dcb1d498aafc062d19",
+        "projected_path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/swift-4.o",
+        "projected_sha256": "94bae0a37543709ebc800715c6d55328d2a6a8ff849e215e568bc8aad399d9e7"
+      }
+    ],
+    "returncode": 0,
+    "stdout_bytes": 9761,
+    "stdout_lines": 247,
+    "stdout_sha256": "140c20716a52be1f8df6394823f9f0a78cf753f1f1f0762c07a858a7b78ddf09",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr": "",
+    "ended_utc": "2026-10-24T13:54:15.441487+00:00"
+  }
+]

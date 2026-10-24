@@ -1,0 +1,1 @@
+{"s":"STOP","error":{"type":"RuntimeError","message":"LC_SYMTAB","traceback":"Traceback (most recent call last):\n  File \"<string>\", line 10, in <module>\n  File \"<frozen-structural-parser>\", line 17, in parse\n  File \"<frozen-structural-parser>\", line 7, in check\nRuntimeError: LC_SYMTAB\n"}}

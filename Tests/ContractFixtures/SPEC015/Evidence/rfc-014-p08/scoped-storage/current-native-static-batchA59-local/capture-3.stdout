@@ -1,0 +1,173 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/GiftUIObservableState.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000020cc <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF>:
+    20cc:      	sub	sp, sp, #0x160
+    20d0:      	str	x28, [sp, #0x100]
+    20d4:      	stp	x27, x26, [sp, #0x110]
+    20d8:      	stp	x25, x24, [sp, #0x120]
+    20dc:      	stp	x23, x22, [sp, #0x130]
+    20e0:      	stp	x20, x19, [sp, #0x140]
+    20e4:      	stp	x29, x30, [sp, #0x150]
+    20e8:      	add	x29, sp, #0x150
+    20ec:      	stp	x8, x6, [sp, #0x28]
+    20f0:      	mov	x22, x21
+    20f4:      	mov	x25, x20
+    20f8:      	mov	x28, x5
+    20fc:      	mov	x27, x4
+    2100:      	mov	x19, x3
+    2104:      	mov	x26, x2
+    2108:      	mov	x23, x1
+    210c:      	mov	x24, x0
+    2110:      	mov	w0, #0x0                ; =0
+    2114:      	bl	0x2114 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x48>
+		0000000000002114:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_43
+    2118:      	b.ne	0x217c <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xb0>
+    211c:      	add	x0, sp, #0x3c
+    2120:      	mov	x1, x25
+    2124:      	bl	0x2124 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x58>
+		0000000000002124:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_58
+    2128:      	add	x20, sp, #0x3c
+    212c:      	bl	0x212c <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x60>
+		000000000000212c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_137
+    2130:      	mov	x21, x22
+    2134:      	bl	0x2134 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x68>
+		0000000000002134:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV8validate33_DA0B303BB776CF3D4ADD0DB69677D3AFLLySiAC5ClaimVAA0dC5ErrorOYKF
+    2138:      	mov	x20, x0
+    213c:      	cbnz	x21, 0x2190 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xc4>
+    2140:      	cmp	x20, #0x1
+    2144:      	b.hi	0x2260 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x194>
+    2148:      	add	x10, x25, #0x14
+    214c:      	add	x8, x10, x20, lsl #4
+    2150:      	ldrh	w9, [x8, #0x4]
+    2154:      	cmp	w9, w26, uxth
+    2158:      	b.ne	0x2184 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xb8>
+    215c:      	ldrb	w9, [x8, #0xa]
+    2160:      	cmp	w9, #0x1
+    2164:      	b.ne	0x2184 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xb8>
+    2168:      	ldrb	w9, [sp, #0x44]
+    216c:      	cmp	w9, #0x1
+    2170:      	b.ne	0x21c0 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xf4>
+    2174:      	mov	w20, #0xf               ; =15
+    2178:      	b	0x2188 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xbc>
+    217c:      	mov	x20, x0
+    2180:      	b	0x2188 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xbc>
+    2184:      	mov	w20, #0x6               ; =6
+    2188:      	bl	0x2188 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xbc>
+		0000000000002188:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_155
+    218c:      	bl	0x218c <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xc0>
+		000000000000218c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_5
+    2190:      	mov	w27, #0x1               ; =1
+    2194:      	ldr	x8, [sp, #0x30]
+    2198:      	strb	w20, [x8]
+    219c:      	mov	x21, x27
+    21a0:      	ldp	x29, x30, [sp, #0x150]
+    21a4:      	ldp	x20, x19, [sp, #0x140]
+    21a8:      	ldp	x23, x22, [sp, #0x130]
+    21ac:      	ldp	x25, x24, [sp, #0x120]
+    21b0:      	ldp	x27, x26, [sp, #0x110]
+    21b4:      	ldr	x28, [sp, #0x100]
+    21b8:      	add	sp, sp, #0x160
+    21bc:      	ret
+    21c0:      	ldrh	w9, [x8, #0x8]
+    21c4:      	cmp	w9, #0x1
+    21c8:      	b.ne	0x21d4 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x108>
+    21cc:      	ldrb	w8, [x8, #0xb]
+    21d0:      	tbz	w8, #0x0, 0x21dc <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x110>
+    21d4:      	mov	w20, #0xe               ; =14
+    21d8:      	b	0x2188 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xbc>
+    21dc:      	tbz	w19, #0x0, 0x21f8 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x12c>
+    21e0:      	mov	x22, x21
+    21e4:      	str	x10, [sp, #0x20]
+    21e8:      	mov	x20, x25
+    21ec:      	bl	0x21ec <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x120>
+		00000000000021ec:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV04freeE033_DA0B303BB776CF3D4ADD0DB69677D3AFLLSiSgyF
+    21f0:      	bl	0x21f0 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x124>
+		00000000000021f0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_140
+    21f4:      	b.ne	0x2200 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x134>
+    21f8:      	mov	w20, #0xc               ; =12
+    21fc:      	b	0x2188 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xbc>
+    2200:      	ldr	w8, [x25]
+    2204:      	stp	x8, x0, [sp, #0x10]
+    2208:      	ldrb	w19, [x25, #0x10]
+    220c:      	mov	x20, x25
+    2210:      	bl	0x2210 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x144>
+		0000000000002210:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV9freeClaim33_DA0B303BB776CF3D4ADD0DB69677D3AFLLSiSgyF
+    2214:      	bl	0x2214 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x148>
+		0000000000002214:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_140
+    2218:      	ccmp	w19, #0x1, #0x4, ne
+    221c:      	b.ne	0x2228 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x15c>
+    2220:      	mov	w20, #0xd               ; =13
+    2224:      	b	0x2188 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xbc>
+    2228:      	tbz	w27, #0x0, 0x2250 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x184>
+    222c:      	tbz	w28, #0x0, 0x2258 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x18c>
+    2230:      	str	x0, [sp, #0x8]
+    2234:      	add	x20, x25, #0x4
+    2238:      	mov	x21, x22
+    223c:      	bl	0x223c <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x170>
+		000000000000223c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState29ObservableModelOwnerNamespaceV5issueAA0deF8IdentityVyAA0dC5ErrorOYKF
+    2240:      	mov	x28, x0
+    2244:      	cbz	x21, 0x2264 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x198>
+    2248:      	mov	x20, x28
+    224c:      	b	0x2190 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xc4>
+    2250:      	mov	w20, #0x1               ; =1
+    2254:      	b	0x2188 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xbc>
+    2258:      	mov	w20, #0x3               ; =3
+    225c:      	b	0x2188 <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xbc>
+    2260:      	brk	#0x1
+    2264:      	mov	x27, x21
+    2268:      	ldp	x22, x8, [sp, #0x18]
+    226c:      	add	x8, x8, x22, lsl #4
+    2270:      	str	w28, [x8]
+    2274:      	lsr	x19, x24, #32
+    2278:      	lsr	x9, x23, #32
+    227c:      	str	x9, [sp, #0x30]
+    2280:      	lsr	x9, x23, #16
+    2284:      	str	x9, [sp, #0x20]
+    2288:      	strh	w26, [x8, #0x4]
+    228c:      	mov	w9, #0x1                ; =1
+    2290:      	strb	w9, [x8, #0x6]
+    2294:      	str	wzr, [x8, #0x8]
+    2298:      	strb	wzr, [x8, #0xc]
+    229c:      	ldp	x0, x26, [sp, #0x8]
+    22a0:      	orr	x1, x26, x28, lsl #32
+    22a4:      	mov	x2, x22
+    22a8:      	mov	x20, x25
+    22ac:      	bl	0x22ac <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0x1e0>
+		00000000000022ac:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV10issueClaim33_DA0B303BB776CF3D4ADD0DB69677D3AFLL2at3forAC0H0VSi_AC7AddressVtF
+    22b0:      	lsr	x8, x0, #32
+    22b4:      	stp	w24, w19, [x25, #0x80]
+    22b8:      	lsr	x9, x1, #16
+    22bc:      	strh	w23, [x25, #0x88]
+    22c0:      	lsr	x10, x1, #32
+    22c4:      	stp	w26, w28, [x25, #0x8c]
+    22c8:      	strh	w22, [x25, #0x94]
+    22cc:      	stp	w24, w19, [x25, #0x98]
+    22d0:      	strh	w23, [x25, #0xa0]
+    22d4:      	ldr	x13, [sp, #0x20]
+    22d8:      	strh	w13, [x25, #0xa2]
+    22dc:      	ldr	x12, [sp, #0x30]
+    22e0:      	stp	w12, w0, [x25, #0xa4]
+    22e4:      	str	w8, [x25, #0xac]
+    22e8:      	strh	w1, [x25, #0xb0]
+    22ec:      	strh	w9, [x25, #0xb2]
+    22f0:      	str	w10, [x25, #0xb4]
+    22f4:      	strb	wzr, [x25, #0xb8]
+    22f8:      	mov	w11, #0x4               ; =4
+    22fc:      	strb	w11, [x25, #0x7c]
+    2300:      	ldr	x11, [sp, #0x28]
+    2304:      	stp	w24, w19, [x11]
+    2308:      	strh	w23, [x11, #0x8]
+    230c:      	stp	w26, w28, [x11, #0xc]
+    2310:      	strh	w22, [x11, #0x14]
+    2314:      	stp	w24, w19, [x11, #0x18]
+    2318:      	strh	w23, [x11, #0x20]
+    231c:      	strh	w13, [x11, #0x22]
+    2320:      	stp	w12, w0, [x11, #0x24]
+    2324:      	str	w8, [x11, #0x2c]
+    2328:      	strh	w1, [x11, #0x30]
+    232c:      	strh	w9, [x11, #0x32]
+    2330:      	str	w10, [x11, #0x34]
+    2334:      	b	0x219c <_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF+0xd0>

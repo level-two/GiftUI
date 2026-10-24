@@ -1,0 +1,277 @@
+{
+  "descriptor_relocations": [
+    {
+      "pc": 59680,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59680,
+      "word": "0xc0001d5",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMcMK",
+        "address": 86768,
+        "section": 4,
+        "type": 14
+      }
+    },
+    {
+      "pc": 59668,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59668,
+      "word": "0xc0003fe",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAsADP19_getEmbeddedNSErroryXlSgyFTW",
+        "address": 412,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "pc": 59664,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59664,
+      "word": "0xc0001da",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "l_got.$ss5ErrorP19_getEmbeddedNSErroryXlSgyFTq",
+        "address": 68280,
+        "section": 8,
+        "type": 14
+      }
+    },
+    {
+      "pc": 59660,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59660,
+      "word": "0xc000401",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAsADP9_userInfoyXlSgvgTW",
+        "address": 408,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "pc": 59656,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59656,
+      "word": "0xc0001d9",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "l_got.$ss5ErrorP9_userInfoyXlSgvgTq",
+        "address": 68272,
+        "section": 8,
+        "type": 14
+      }
+    },
+    {
+      "pc": 59652,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59652,
+      "word": "0xc0003ff",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAsADP5_codeSivgTW",
+        "address": 340,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "pc": 59648,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59648,
+      "word": "0xc0001d8",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "l_got.$ss5ErrorP5_codeSivgTq",
+        "address": 68264,
+        "section": 8,
+        "type": 14
+      }
+    },
+    {
+      "pc": 59644,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59644,
+      "word": "0xc000400",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAsADP7_domainSSvgTW",
+        "address": 336,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "pc": 59640,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59640,
+      "word": "0xc0001d7",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "l_got.$ss5ErrorP7_domainSSvgTq",
+        "address": 68256,
+        "section": 8,
+        "type": 14
+      }
+    },
+    {
+      "pc": 59624,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59624,
+      "word": "0xc0003f2",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOMn",
+        "address": 70568,
+        "section": 10,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59620,
+      "word": "0x1c0003fd",
+      "type": 1,
+      "external": 1,
+      "target": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc",
+        "address": 59620,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "pc": 59620,
+      "word": "0xc0001d6",
+      "type": 0,
+      "external": 1,
+      "target": {
+        "symbol": "l_got.$ss5ErrorMp",
+        "address": 68248,
+        "section": 8,
+        "type": 14
+      }
+    }
+  ],
+  "own_cache_rows": [
+    {
+      "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMcMK",
+      "address": 86768,
+      "section": 4,
+      "type": 14
+    }
+  ],
+  "processing": 250836001
+}

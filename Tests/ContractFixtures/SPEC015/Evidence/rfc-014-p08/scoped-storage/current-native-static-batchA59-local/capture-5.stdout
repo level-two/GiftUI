@@ -1,0 +1,10 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-98512cay/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c2a2c <_OUTLINED_FUNCTION_902>:
+   c2a2c:      	ldr	x1, [x0, #0x10]
+   c2a30:      	mov	w0, #0x13f              ; =319
+   c2a34:      	b	0xc2a34 <_OUTLINED_FUNCTION_902+0x8>
+		00000000000c2a34:  ARM64_RELOC_BRANCH26	_swift_checkMetadataState

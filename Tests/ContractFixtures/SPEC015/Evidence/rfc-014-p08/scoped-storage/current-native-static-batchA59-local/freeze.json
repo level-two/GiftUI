@@ -1,0 +1,192 @@
+{
+  "started_utc": "2026-10-24T13:26:09+00:00",
+  "HEAD": "e55628c21186a2d2892de4685c3ba9efca8b63ef",
+  "setup_processing_upper": 68967772,
+  "helper_sha256": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4",
+  "inputs": {
+    "source0": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 12910,
+      "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb"
+    },
+    "source1": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 2115,
+      "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653"
+    },
+    "source2": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 119153,
+      "sha256": "e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a"
+    },
+    "source3": {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "bytes": 10505,
+      "sha256": "e610496954dce3023b833fc07c785498025bf0e96372ab9430d8f7b5fc12c4a1"
+    },
+    "source4": {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "bytes": 15974,
+      "sha256": "4ffc05499e80646af0fb41bbe52f826b232a3bc8f3cb8654295a481819d9717c"
+    },
+    "source5": {
+      "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "bytes": 3534,
+      "sha256": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951"
+    },
+    "source6": {
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "bytes": 3148,
+      "sha256": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0"
+    },
+    "source7": {
+      "path": "Sources/GiftUIObservableState/ObservableStateValues.swift",
+      "bytes": 2487,
+      "sha256": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae"
+    },
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/source-context.txt",
+      "bytes": 184794,
+      "sha256": "e9154d6edb3e8a62df9a2cebf5ffd4b4a86b79ffb90fc8c9ffc49c79430fb012"
+    },
+    "current_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/selected-current.py",
+      "bytes": 4658,
+      "sha256": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    "view_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/view-selected.py",
+      "bytes": 2364,
+      "sha256": "1007c0015e21f262d9e812b8ecdbf047767359ef91f80521b1ed0380aff7a256"
+    },
+    "decode_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-local/decode-swift-group.py",
+      "bytes": 7302,
+      "sha256": "0068d51c0cfbd588645a91ab32bc8eff13eeb1e2f323633ff46d60614fd992f3"
+    },
+    "result": {
+      "path": ".build/contracts/p08-counter-98512cay/result.json",
+      "bytes": 8566019,
+      "sha256": "bee58031292279fce2e4cb19cbd885d3d172301f2a870a12ab9256aca1a0f0f6"
+    },
+    "object": {
+      "path": ".build/contracts/p08-counter-98512cay/P08CounterRuntime.o",
+      "bytes": 2613592,
+      "sha256": "e074aea4e0435b190a739f7009d1ac92429809920a746db8c090d7ad599aec9b"
+    },
+    "observable": {
+      "path": ".build/contracts/p08-counter-98512cay/GiftUIObservableState.o",
+      "bytes": 254456,
+      "sha256": "7aa008f300ddec07c238ee427d4ac7bf78726496b7ae0f66a7d31ca9a1c33a8c"
+    },
+    "semantic": {
+      "path": ".build/contracts/p08-counter-98512cay/GiftUISemanticCore.o",
+      "bytes": 534808,
+      "sha256": "b168bc65db8e34043e40061eae02cc7fa184ec9f743dcfdd265d5a5ca7c3a22b"
+    },
+    "static": {
+      "path": ".build/contracts/p08-counter-98512cay/GiftUIRuntimeStatic.o",
+      "bytes": 284984,
+      "sha256": "2d9da1dff405ebb6bb6c17a3d4e4ab32e35200842d9a423cd4dfabd16f39af13"
+    },
+    "runtime": {
+      "path": ".build/contracts/p08-counter-98512cay/GiftUIRuntimeCore.o",
+      "bytes": 323040,
+      "sha256": "d058f4defdca62ccb85d4bd22f343c4071c861646e03a8daf0919451c15c51dd"
+    },
+    "drawing": {
+      "path": ".build/contracts/p08-counter-98512cay/GiftUIDrawing.o",
+      "bytes": 135544,
+      "sha256": "67e964cbf9ed3d495b2c256c610bb9bd22e5bcdd9c8ca41b7d4c512a3d9c42d7"
+    },
+    "execution": {
+      "path": ".build/contracts/p08-counter-98512cay/GiftUIExecution.o",
+      "bytes": 574800,
+      "sha256": "e8e26fe33941b62f851b86c2177f3d70ce9b05b0ddd7972f636694bc25a42a3d"
+    },
+    "table": {
+      "path": ".build/contracts/p08-counter-98512cay/P08CounterTable.o",
+      "bytes": 12656,
+      "sha256": "db4732f66f26856bd0b06a18351085728e637fd796633fddbbbeb7388780d86b"
+    },
+    "provider_descriptor": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/provider-slices.json",
+      "bytes": 26116,
+      "sha256": "30a33f816141c4218747dab8f5d6eb0decc063d7e339f9ed20193e22a53f18eb"
+    },
+    "provider_witness": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-result/rows.json",
+      "bytes": 10305,
+      "sha256": "ace2a09d22672332dc1ee2bc6a9e472c05124b13ea87235a1b927d2db1855ae1"
+    },
+    "provider_metadata": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata48-result/rows.json",
+      "bytes": 18276,
+      "sha256": "0f0ebe240689adaae3c23032ccb82561c33f1a984bfcfeb8c2727bfb67a591a6"
+    },
+    "current_transfer": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local/proof/successor-full4h1-object-transfer.json",
+      "bytes": 24040,
+      "sha256": "407c27d0988cfcc0c08805688453d349c305d114337f7e4fd3c3942464227701"
+    },
+    "current_inputs": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local/proof/successor-full4h1-input-binding.json",
+      "bytes": 72059,
+      "sha256": "1ed764ac49f80fc44384a5087469d71d8c079b15a6bacb25fbbd9041a118f882"
+    },
+    "remaining_targets": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local/proof/current-rootScope-targets.json",
+      "bytes": 7946,
+      "sha256": "cb036215680787bfce98c3883256df01fa6fa614d561acce661dc0baa08c4028"
+    },
+    "layout_body": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-operations58-local/proof/after-layout-thunk.stdout",
+      "bytes": 2365,
+      "sha256": "d9b83ba9e44bb1e339a1b62c29f783e969c9de2595188f0a3a445ee8ce840090"
+    },
+    "prior_fixed": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/findings.json",
+      "bytes": 6745,
+      "sha256": "ae1e227e6f4b086815612268ff1251420228f65c794f4e47ebf2466903bced0e"
+    },
+    "tool_auth": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+    }
+  },
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+  },
+  "reuse": "Current accepted98512cay and committed57/58 exact18module transfer/201inputs; original79/48/6 controls preserved without replay. PriorA43/44/47/48 provider logic reused only under exact stated premises and priorFALSE recording never promoted. All source inputs here explicitly SEMANTIC. A51/A52/A55/A56 false ledgers immutable. Preauth schema/path/format orientation discarded as proof; source packet content will be re-read under ledger. InstalledSwift extent identities/provenance frozen by existing descriptor; extent authentication is performed by unchanged decoder before body use, final extent preservation through recorded ordinary request. No source/runtime/provider experiment.",
+  "all_helper_identities": {
+    "page.py": {
+      "bytes": 5740,
+      "sha256": "dcf8cd6e1071818773c88f5d63a2a94e10b4ec15e7f1b91c4814f6db8db062f4"
+    },
+    "selected-current.py": {
+      "bytes": 4658,
+      "sha256": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    "view-selected.py": {
+      "bytes": 2364,
+      "sha256": "1007c0015e21f262d9e812b8ecdbf047767359ef91f80521b1ed0380aff7a256"
+    },
+    "decode-swift-group.py": {
+      "bytes": 7302,
+      "sha256": "0068d51c0cfbd588645a91ab32bc8eff13eeb1e2f323633ff46d60614fd992f3"
+    }
+  },
+  "preauth_forecast": {
+    "setup_processing_upper": 68967772,
+    "frozen_input_bytes": 32109543,
+    "auth_plus_final_input_reads": 128438172,
+    "protected_control_reserve": 16777216,
+    "expected_one_combined_swift_provider_decode_upper": 40000000,
+    "eight_selected_local_decoder_upper": 180000000,
+    "model_context_and_control_forecast": 50000000,
+    "planned_upper": 484183160
+  }
+}

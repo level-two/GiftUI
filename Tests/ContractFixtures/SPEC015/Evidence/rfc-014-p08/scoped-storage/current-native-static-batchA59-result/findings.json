@@ -1,0 +1,145 @@
+{
+  "batch": "A59",
+  "status": "STOP_CONSOLIDATED_LOCAL_AND_PROVIDER_BOUNDARIES",
+  "baseline": {
+    "head": "e55628c21186a2d2892de4685c3ba9efca8b63ef",
+    "full": ".build/contracts/p08-counter-98512cay/result.json",
+    "result_sha256": "bee58031292279fce2e4cb19cbd885d3d172301f2a870a12ab9256aca1a0f0f6",
+    "runtime_object_sha256": "e074aea4e0435b190a739f7009d1ac92429809920a746db8c090d7ad599aec9b",
+    "swift_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134"
+  },
+  "closed_scoped_facts": [
+    {
+      "id": "ERROR_CLASS",
+      "fact": "The actual ObservableStateError:Error descriptor is NOT the flags17-clear direct static-witness case and NOT the generic own-cache MISS case. Descriptor address59620 flags0x30000, resilient count4, header at+52 has words0/1; +60 relocates to own McMK at86768 in __bss. Type descriptor at70568 is0x52, non-generic. Under expected installed provider and valid pointer authentication, getter0x2fc-0x33c loads AAWL, calls swift_getWitnessTable on zero with exact Error descriptor/type, then caches. Installed core follows bit17 then non-generic descriptor/cache path193ccf0b8->193ccf38c; nonzero cached pointer returns, zero reaches193ccfdf4 calling193c64ef0 before instantiation/casl publication.",
+      "evidence": [
+        "capture-1.stdout",
+        "error-descriptor96.json",
+        "error-descriptor-relocations.json",
+        "error-cache-type-and-prior.json",
+        "group-2.stdout:6-200,626-643,1258-1343"
+      ]
+    },
+    {
+      "id": "ARENA_BODY",
+      "fact": "Complete193c64ef0-193c652b4 body has once state, size>8192 branch to1940ef68c, or small-request pool path which calls same stub when available extent is insufficient; otherwise atomic bump/return can avoid that stub. Initial arena words, init effects and exact stub binding are not in frozen semantic extents. No malloc-family or observed-allocation conclusion follows solely from this body.",
+      "evidence": [
+        "group-3.stdout:1-247"
+      ]
+    },
+    {
+      "id": "REQUIRED_TYPED_REFUSAL",
+      "fact": "Current source explicitly retains transfer and cache, requires retainedModel refusal, releases cache, then requires successful replacement, for BOTH Static and Dynamic exerciseCounter. Static branch is explicit at source176/190. Current reserveReplacement0x20cc-0x2338 compares claim count at21c0-21c8; non1 gives raw14 at21d4 and routes2188->outlined155->outlined5. Raw14 is retainedModel. outlined5 supplies concrete Error metadata then tailcalls swift_willThrowTypedImpl. outlined155 exact WT acquisition join remains unexamined; do not promote typed throw alone to the complete getter path.",
+      "evidence": [
+        "source-context.txt CounterSemanticProbe.swift:131-151,163-194",
+        "source-context.txt ObservableStateValues.swift:26-43",
+        "capture-3.stdout",
+        "capture-4.stdout"
+      ]
+    },
+    {
+      "id": "ONCE_BODY",
+      "fact": "Installed swift_once193c52a64-193c52a84 loads token; token=-1 returns without call/store. Other values permute context/callback and tail1940ef34c. Actual target stub/import/provider body lies outside frozen Swift __TEXT extent; direct returned branch is closed, general first-use body/effects remain open. No name-based dispatch/provider claim.",
+      "evidence": [
+        "group-1.stdout"
+      ]
+    },
+    {
+      "id": "LAYOUT_RECONCILIATION",
+      "fact": "The unchanged28B RootScope layout thunk ataf224 has exact incoming concrete RootScope wrapper branchbc6b0 and typeref relocationce255. Current PipelineOwner VMr ae4d8-ae5ec has no direct thunk edge; it reaches metadata-state checker via outlined902 and InteractionOwnedKeyState accessor via outlined132, plus still-unexamined outlined1845/1086/968. Typeref/reflection reachability cannot be excluded from absence of a direct VMr edge.",
+      "evidence": [
+        "error-layout-data.json",
+        "capture-2.stdout",
+        "capture-5.stdout",
+        "capture-6.stdout",
+        "frozen layout_body/current_transfer/remaining_targets inputs"
+      ]
+    },
+    {
+      "id": "SEMANTIC_SOURCE_CONTROLS",
+      "fact": "CounterRoles compares exact concrete types then finite inert sample types; unmatched role returns nil. RecordWorkspace enterDeclarationRole rejects missing/zero role. RecordSink invokes concrete Codec primitive/modifier/action and turns returned errors into bank failure. Canvas codec delegates to Table.payload/Standard codec; stateful binding checks association, beforeBody, root binding and model reads. Source defines real error/indirect predicates; no proof that every failure arm is infeasible or that all generic metadata/indirect callees are allocation-free.",
+      "evidence": [
+        "source-context.txt CounterSemantic.swift:12-35",
+        "source-context.txt SemanticRecordExpansion.swift:106-117,186-225,244-274",
+        "source-context.txt CanvasSemanticPayload.swift:31-61,65-89",
+        "source-context.txt ObservableSemanticBodyBinding.swift:30-68"
+      ]
+    }
+  ],
+  "consolidated_remaining": [
+    {
+      "kind": "AVAILABLE_LOCAL_UNEXAMINED",
+      "needed": "Exact outlined155 call/argument join to Error WT getter, and current rooted typed-error origin applicability beyond the proven replacement refusal. Failed final metadata/preservation query did not expose its prepared raw result."
+    },
+    {
+      "kind": "AVAILABLE_LOCAL_UNEXAMINED",
+      "needed": "RootScope thunk transitive typeref consumers and outlined1845/1086/968 effects/current required PipelineOwner metadata origin; no reflection-only or unreachable conclusion."
+    },
+    {
+      "kind": "AVAILABLE_LOCAL_UNEXAMINED",
+      "needed": "Exact current specialized tree/codec/CounterRoles concrete generic call origins, Table.payload/Standard codec and root-binding callback/guard feasibility; current valid functional observations are not a universal failure-path exclusion."
+    },
+    {
+      "kind": "OUTSIDE_FROZEN_PROVIDER_EXTENT_AVAILABLE_INSTALLED",
+      "needed": "1940ef34c exact stub/import/target and installed once effects;1940ef68c exact import/target plus arena initial words/init effects at1ed0543a0 and1ed05b550. These are our finite frozen-slice coverage boundary, not missing providers or runtime-only data. No acquisition performed after freeze."
+    },
+    {
+      "kind": "ACTUALLY_UNOBSERVED_LIVE_STATE",
+      "needed": "Exact loaded provider/binding/default selector, actual own witness/arena/once state and earlier required-use ordering, stdout R=S/persistence/inherited environment and measured resource/cold window. New runtime capture remains unexecuted/outside this task."
+    },
+    {
+      "kind": "INDEPENDENT_ACCEPTANCE_GATES",
+      "needed": "Model generic owning design remains unresolved; units failed before Interaction execution and Interaction remains unexecuted; current-image/cold/resource/profile/P08 gates remain open. No exemption for mandatory Static conformance controls outside selected resource entry."
+    }
+  ],
+  "decision": "No automatic source correction selected. Error conformance has a concrete cold resilient-cache construction dependency, but a complete required caller-to-getter join and exact arena allocator/state classification are not certified here. A47/A48 generic MISS lemma cannot simply be substituted for this non-generic path.",
+  "method_failure": {
+    "error": "RuntimeError LC_SYMTAB",
+    "site": "Final selected-provider preservation query used existing full-object structural parser on a decoder-generated minimal projected image lacking LC_SYMTAB.",
+    "consequence": "Semantic expansion stopped immediately; no helper edit/retry/new attempt. Selected-provider end-preservation did not complete. All raw captures and durable error remain; final frozen-file reauthentication still required by page.py f."
+  },
+  "context": {
+    "acquired_raw_bytes": 272226,
+    "acquired_raw_lines": 5335,
+    "scope": "Complete source packet plus all acquired raw disassemblies; derived selected metadata is additional small context. Not all captured contexts were model-examined.",
+    "examined_source_pages": [
+      1,
+      2,
+      3,
+      25,
+      26,
+      27,
+      28,
+      32,
+      33,
+      34
+    ],
+    "examined_provider_pages": {
+      "group-1": "complete",
+      "group-2": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        11,
+        12,
+        13,
+        14
+      ],
+      "group-3": "complete"
+    },
+    "unexamined": "Remaining source pages, provider core pages6/8/9/10 and named local/transitive joins retained explicitly."
+  },
+  "qualification": {
+    "recording": "All post-auth requests/payloads used frozen recorded entry; terminal ledger authoritative. No post-auth collaboration/off-entry tool occurred.",
+    "execution": "FALSE: terminal method failure and incomplete selected-provider end-preservation; no retroqualification. Logical source/body findings remain separately reviewable.",
+    "numerical": "Final page.py f ledger is authoritative, not this pre-close snapshot."
+  },
+  "pre_close": {
+    "processing": 459347994,
+    "counted_text": 295635,
+    "time": "2026-10-24T14:03:55.811309+00:00"
+  }
+}

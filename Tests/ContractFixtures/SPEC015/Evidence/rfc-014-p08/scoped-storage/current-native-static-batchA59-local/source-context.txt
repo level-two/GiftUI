@@ -1,0 +1,3354 @@
+SOURCE Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift SHA256 9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb
+1:import P08CounterTable
+2:import GiftUI
+3:import GiftUIDrawing
+4:import GiftUIObservableState
+5:import GiftUISemanticCore
+6:import GiftUIRuntimeStatic
+7:#if !hasFeature(Embedded)
+8:import GiftUIRuntimeDynamic
+9:#endif
+10:import P08CounterSchema
+11:import P08CounterPresentation
+12:
+13:private let counterRecordLimits = SemanticRecordLimits(records: 64, paths: 192, depth: 24, fanout: 5, payloads: 64, textScalars: 64, payloadBytes: 4096)!
+14:private let counterExpansionLimits = SemanticExpansionLimits(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2)!
+15:private struct CounterProbeSemanticBacking: ~Copyable {
+16:    var records: InlineArray<128, SemanticRuntimeRecord> = .init(repeating: .init())
+17:    var paths: InlineArray<384, SemanticPathEntry> = .init(repeating: .init())
+18:    var payloads: InlineArray<128, CounterPayload?> = .init(repeating: nil)
+19:    var scalars: InlineArray<128, UInt32> = .init(repeating: 0)
+20:}
+21:private func withCounterValues(dynamic: Bool, _ body: (borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>) throws(DrawingError) -> Void) throws(DrawingError) {
+22:    let limits = StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 32)!
+23:    #if !hasFeature(Embedded)
+24:    if dynamic {
+25:        var storage = DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>(capacity: 1)
+26:        return try storage.withLifetime(table: CounterValueTable(), limits: limits, body)
+27:    }
+28:    #endif
+29:    var storage = StaticCanvasValueStorage()
+30:    var backing: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)
+31:    var entries = backing.mutableSpan
+32:    try storage.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits, body)
+33:}
+34:private func inspectCounter(_ bank: borrowing SemanticRecordView<CounterPayload>, value: UInt8) -> (SemanticCompleteIdentity, Int) {
+35:    var checks = 0, textCount = 0, actionCount = 0, disabledCount = 0, canvasCount = 0
+36:    var modelIdentity: SemanticCompleteIdentity?
+37:    for index: UInt16 in 0..<bank.recordCount {
+38:        let ref = bank.reference(at: index)!
+39:        let record = bank.record(ref)!
+40:        if bank.path(at: record.path)?.component.role == 1 {
+41:            var target = bank.completeIdentity(for: ref)!
+42:            // visitCustomBody enters customBody before evaluateStateful binds
+43:            // State; this is the owning declaration identity, not its record key.
+44:            counterSemanticExpect(target.append(.init(kind: .customBody)))
+45:            modelIdentity = target
+46:        }
+47:        guard let payload = bank.payload(at: record.payload) else { continue }
+48:        switch payload {
+49:        case .canvas:
+50:            canvasCount += 1
+51:        case .standard(.text):
+52:            let expected: InlineArray<9, UInt32> = textCount == 0 ? [67,111,117,110,116,101,114,0,0] : textCount == 1 ? [UInt32(48 + value),0,0,0,0,0,0,0,0] : textCount == 2 ? [73,110,99,114,101,109,101,110,116] : [82,101,115,101,116,0,0,0,0]
+53:            let count: UInt16 = textCount == 0 ? 7 : textCount == 1 ? 1 : textCount == 2 ? 9 : 5
+54:            counterSemanticExpect(record.textScalarCount == count); checks += 1
+55:            for scalar: UInt16 in 0..<count { counterSemanticExpect(bank.scalar(at: record.firstTextScalar + scalar) == expected[Int(scalar)]); checks += 1 }
+56:            textCount += 1
+57:        case .standard(.action(let role, let code)):
+58:            counterSemanticExpect(role == 6 && code == UInt16(actionCount)); actionCount += 1; checks += 1
+59:        case .standard(.disabled(let disabled)):
+60:            counterSemanticExpect(disabled == (disabledCount == 0 ? value == 9 : value == 0)); disabledCount += 1; checks += 1
+61:        default: break
+62:        }
+63:    }
+64:    counterSemanticExpect(textCount == 4 && actionCount == 2 && disabledCount == 2 && canvasCount == 1); checks += 1
+65:    counterSemanticExpect(bank.recordCount <= 64 && bank.pathCount <= 192 && bank.payloadBytes <= 4096); checks += 1
+66:    return (modelIdentity!, checks)
+67:}
+68:private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPayload>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) throws(SemanticExpansionError) -> Int {
+69:    var checks = 0
+70:    var identity: SemanticCompleteIdentity?
+71:    var key: _GiftUIModelKey<CounterModelSchema>?
+72:    for value: UInt8 in 0...9 {
+73:        do throws(ObservableStateError) {
+74:            if let key { counterSemanticExpect(models.mutate(key, mutation: .fact(value), report: { .dirtied }) == .success(.dirtied)); checks += 1 }
+75:            try models.beginFrame()
+76:            try models.withDiscovery { () throws(ObservableStateError) in
+77:                guard case .success = root.beginCandidate() else { preconditionFailure("counter begin") }
+78:            }
+79:            let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+80:            guard case .success = result else {
+81:            #if !hasFeature(Embedded)
+82:            print("counter expansion failed", result)
+83:            #endif
+84:            preconditionFailure("counter expansion") }
+85:            if value == 0 {
+86:                do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
+87:                catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+88:
+89:            }
+90:            do throws(DrawingError) {
+91:                try withCounterValues(dynamic: dynamic) { (values) throws(DrawingError) in
+92:                    try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CounterValueTable())
+93:                    counterSemanticExpect(values.count == 1 && values.releaseCount == 0); checks += 1
+94:                    do throws(SemanticExpansionError) {
+95:                        try semantic.withCandidateView { bank in
+96:                            let inspected = inspectCounter(bank, value: value)
+97:                            identity = inspected.0; checks += inspected.1
+98:                        }
+99:                    } catch {
+100:                    #if !hasFeature(Embedded)
+101:                    print("counter caught", error)
+102:                    #endif
+103:                    preconditionFailure("counter view") }
+104:                    checks += counterRenderActual(semantic: semantic, models: models, values: values, value: value, dynamic: dynamic)
+105:                    values.discard()
+106:                    counterSemanticExpect(values.count == 0 && values.releaseCount == 1); checks += 1
+107:                }
+108:            } catch {
+109:            #if !hasFeature(Embedded)
+110:            print("counter caught", error)
+111:            #endif
+112:            preconditionFailure("counter Canvas transfer") }
+113:            try models.withDiscovery { () throws(ObservableStateError) in
+114:                guard case .success = root.finishCandidate(.publish) else { preconditionFailure("counter publish State") }
+115:            }
+116:            try models.endFrame()
+117:            key = root.modelKey(identity: identity!, ordinal: 0)!
+118:        } catch {
+119:        #if !hasFeature(Embedded)
+120:        print("counter caught", error)
+121:        #endif
+122:        preconditionFailure("counter model phase") }
+123:        try semantic.publishCandidate()
+124:        if value == 0 {
+125:            try semantic.withPublishedView { _ in
+126:                do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("published reader reset accepted") }
+127:                catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+128:            }
+129:        }
+130:    }
+131:    do throws(ObservableStateError) {
+132:        // This explicit-final-ticket transfer API refuses while another cache
+133:        // claim exists. This does not claim that all independent scalar-slot
+134:        // replacement strategies require reclaiming retained former backing.
+135:        var transfer = try models.retain(key!)
+136:        var cache = try models.retain(key!)
+137:        counterSemanticExpect(root.replace(identity: identity!, ordinal: 0, transferring: &transfer, seed: .init(value: 3)) == .failure(.retainedModel)); checks += 1
+138:        try models.release(&cache)
+139:        counterSemanticExpect(root.replace(identity: identity!, ordinal: 0, transferring: &transfer, seed: .init(value: 3)) == .success(.replaced)); checks += 1
+140:        let replacement = root.modelKey(identity: identity!, ordinal: 0)!
+141:        counterSemanticExpect(replacement != key); checks += 1
+142:        try models.beginFrame()
+143:        try models.pin(replacement)
+144:        do throws(_GiftUIAccessFailure) {
+145:            try models.withRead(CounterDomain.self) { (read) throws(_GiftUIAccessFailure) in
+146:                counterSemanticExpect(try CounterRead<CounterDomain>(replacement, read: read).value == 3); checks += 1
+147:            }
+148:        } catch { throw ObservableStateError(accessFailure: error) }
+149:        try models.endFrame()
+150:        counterSemanticExpect(models.mutate(key!, mutation: .reset, report: { .dirtied }) == .failure(.staleModel)); checks += 1
+151:        try root.shutdown(); checks += 1
+152:    } catch {
+153:    #if !hasFeature(Embedded)
+154:    print("counter caught", error)
+155:    #endif
+156:    preconditionFailure("counter cache/replacement") }
+157:    try semantic.resetAfterQuiescence(); checks += 1
+158:    try semantic.resetAfterQuiescence(); checks += 1
+159:    do throws(SemanticExpansionError) { try semantic.withPublishedView { _ in preconditionFailure("reset publication visible") } }
+160:    catch { counterSemanticExpect(error == .invariantViolation); checks += 1 }
+161:    return checks
+162:}
+163:private func counterSemanticBacking(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) -> Int {
+164:    do throws(SemanticExpansionError) {
+165:        var namespace = SemanticRecordOwnerNamespace()
+166:        #if !hasFeature(Embedded)
+167:        if dynamic {
+168:            let storage = DynamicSemanticRecordStorage<CounterPayload>(limits: counterRecordLimits, owner: try namespace.issue())
+169:            return try storage.withLifetime { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: true) }
+170:        }
+171:        #endif
+172:        var storage = StaticSemanticRecordStorage(limits: counterRecordLimits, owner: try namespace.issue())
+173:        var backing = CounterProbeSemanticBacking()
+174:        var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
+175:        var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
+176:        return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: false) }
+177:    } catch {
+178:    #if !hasFeature(Embedded)
+179:    print("counter caught", error)
+180:    #endif
+181:    preconditionFailure("counter semantic backing") }
+182:}
+183:package func p08CounterSemantic() -> Int {
+184:    var checks = 0
+185:    do throws(ObservableStateError) {
+186:        var namespace = ObservableModelOwnerNamespace()
+187:        var storage = CounterStaticRootStorage(identity: try namespace.issue(), schema: 1, needsCapture: false)!
+188:        let layout = storage.storageLayout
+189:        counterSemanticExpect(layout.models == 2 && layout.claims == 4 && layout.pins == 2 && layout.captures == 0); checks += 1
+190:        checks += try storage.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: false) }
+191:        #if !hasFeature(Embedded)
+192:        let dynamic = DynamicObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
+193:        counterSemanticExpect(dynamic.storageLayout.models == 2 && dynamic.storageLayout.claims == 4 && dynamic.storageLayout.pins == 2 && dynamic.storageLayout.captures == 0); checks += 1
+194:        checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: true) }
+195:        #endif
+196:    } catch {
+197:    #if !hasFeature(Embedded)
+198:    print("counter caught", error)
+199:    #endif
+200:    preconditionFailure("counter root") }
+201:    return checks
+202:}
+203:
+204:private func counterSemanticExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
+205:    if !condition {
+206:    #if !hasFeature(Embedded)
+207:    print("counter assertion failed", file, line)
+208:    #endif
+209:    preconditionFailure("counter assertion") }
+210:}
+
+SOURCE Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift SHA256 7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653
+1:import GiftUI
+2:import GiftUIDrawing
+3:import GiftUISemanticCore
+4:import P08CounterSchema
+5:import P08CounterPresentation
+6:
+7:package typealias CounterPayload = CanvasSemanticPayload<CounterValueTable.CaptureStorage>
+8:
+9:// Finite type metadata only. These inert samples expose the existing API's
+10:// opaque modifier types; no sample is expanded, bound, stored or used as input.
+11:// All occurrence paths and child positions come from actual traversal.
+12:package enum CounterRoles: SemanticDeclarationRoles {
+13:    @inlinable
+14:    @inline(__always)
+15:    static func matches<V, Sample>(_ type: V.Type, _ sample: Sample) -> Bool { V.self == Sample.self }
+16:    package static func role<V>(of type: V.Type) -> SemanticRecordingRole? {
+17:        if V.self == CounterScreen<CounterDomain>.self { return .init(rawValue: 1) }
+18:        if V.self == CounterScreen<CounterDomain>.Body.self { return .init(rawValue: 2) }
+19:        if V.self == Text<CounterDomain>.self { return .init(rawValue: 3) }
+20:        if V.self == Button<CounterAction, Text<CounterDomain>>.self { return .init(rawValue: 4) }
+21:        if V.self == CounterCanvas<CounterDomain>.self { return .init(rawValue: 5) }
+22:        if V.self == CounterAction.self { return .init(rawValue: 6) }
+23:        let label = Text<CounterDomain>("")
+24:        let button = try! Button(action: CounterAction.increment) { Text<CounterDomain>("") }
+25:        let disabled = button.disabled(false)
+26:        // The key is used solely to select the generic opaque frame type.
+27:        let canvas = CounterCanvas<CounterDomain>(model: .init(ownerInstance: 0, allocationGeneration: 0, slot: 0)).frame(width: 48, height: 16)
+28:        if matches(type, disabled) { return .init(rawValue: 7) }
+29:        if matches(type, canvas) { return .init(rawValue: 8) }
+30:        let stack = try! VStack(spacing: 4) { label; label; disabled; disabled; canvas }
+31:        if matches(type, stack) { return .init(rawValue: 10) }
+32:        if matches(type, TupleView5(label, label, disabled, disabled, canvas)) { return .init(rawValue: 9) }
+33:        return nil
+34:    }
+35:    package static func modifierDiscriminator<V>(of type: V.Type) -> UInt16 { 0 }
+36:}
+
+SOURCE Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift SHA256 e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a
+1:import P08CounterTable
+2:import GiftUI
+3:import GiftUIDrawing
+4:@testable import GiftUIExecution
+5:import GiftUIInteraction
+6:import GiftUIHostConfiguration
+7:import GiftUIBackendIntegration
+8:import GiftUICapabilities
+9:import GiftUIDisplayCore
+10:import GiftUIFailureCore
+11:import GiftUIRasterCore
+12:import GiftUISurfaceCore
+13:import GiftUITextResources
+14:import GiftUILayout
+15:import GiftUIObservableState
+16:import GiftUIRenderCore
+17:import GiftUIRenderLowering
+18:@testable import GiftUIRuntimeCore
+19:import GiftUISemanticCore
+20:import P08CounterSchema
+21:import P08CounterPresentation
+22:#if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+23:    import Darwin
+24:#endif
+25:
+26:struct CounterRuntimeControl {
+27:    var admission = CounterAdmissionBacking()
+28:    var pointer = CounterPointerState()
+29:    var committedPresentation: PresentationRevision?
+30:    var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>?
+31:    var context = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
+32:    var unavailable = false
+33:    var changed = true
+34:}
+35:// Fixture-private producer identity; raw Execution identities remain runtime-local.
+36:struct CounterProducerOrigin: Equatable {
+37:    private let owner: UInt
+38:    private let serial: UInt64
+39:    fileprivate init(owner: UInt, serial: UInt64) { self.owner = owner; self.serial = serial }
+40:}
+41:struct CounterProducedAction {
+42:    fileprivate let origin: CounterProducerOrigin
+43:    let captured: CapturedAction<SemanticCompleteIdentity>
+44:    let targetGeneration: UInt32
+45:    let targetIdentity: SemanticCompleteIdentity
+46:    fileprivate init(origin: CounterProducerOrigin, captured: CapturedAction<SemanticCompleteIdentity>, targetGeneration: UInt32, targetIdentity: SemanticCompleteIdentity) {
+47:        self.origin = origin; self.captured = captured; self.targetGeneration = targetGeneration; self.targetIdentity = targetIdentity
+48:    }
+49:}
+50:enum CounterRuntimeSlotPhase: UInt8, Equatable { case vacant, installing, installed, quiesced }
+51:
+52:// Five independent stored fields below are borrowed separately. These scalar
+53:// claims record the one pipeline installation; they are not Interaction state.
+54:struct CounterControl {
+55:    var runtimeEndpoint: CounterEndpoint?
+56:    var runtimeRootIdentity: SemanticCompleteIdentity?
+57:    var runtimeActionIdentity: SemanticCompleteIdentity?
+58:    var runtimeCandidateRootIdentity: SemanticCompleteIdentity?
+59:    var runtimeCandidateActionIdentity: SemanticCompleteIdentity?
+60:    private(set) var runtimeSlotPhase: CounterRuntimeSlotPhase = .vacant
+61:    private(set) var runtimeSlotOwner: UInt64?
+62:    private(set) var runtimeLastOwnerSerial: UInt64 = 0
+63:    mutating func claimRuntimeSlot() -> UInt64 {
+64:        guard let claim = tryClaimRuntimeSlot() else { preconditionFailure("duplicate/overflow runtime claim") }
+65:        return claim
+66:    }
+67:    mutating func tryClaimRuntimeSlot() -> UInt64? {
+68:        guard runtimeSlotPhase == .vacant && runtimeSlotOwner == nil && runtimeEndpoint == nil,
+69:            runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil else { return nil }
+70:        let next = runtimeLastOwnerSerial.addingReportingOverflow(1)
+71:        guard !next.overflow else { return nil }
+72:        runtimeLastOwnerSerial = next.partialValue
+73:        runtimeSlotOwner = next.partialValue; runtimeSlotPhase = .installing
+74:        return next.partialValue
+75:    }
+76:    private static func requireVacantFacts(phaseVacant: Bool, ownerAbsent: Bool,
+77:        endpointAbsent: Bool, rootAbsent: Bool, actionAbsent: Bool,
+78:        candidateRootAbsent: Bool, candidateActionAbsent: Bool) {
+79:        let vacant = phaseVacant && ownerAbsent && endpointAbsent
+80:        let noKeys = rootAbsent && actionAbsent && candidateRootAbsent && candidateActionAbsent
+81:        precondition(vacant && noKeys)
+82:    }
+83:    private static func requireClaimFacts(sameOwner: Bool, installed: Bool, quiesced: Bool,
+84:        endpointPresent: Bool) {
+85:        let matches = sameOwner && (installed || quiesced) && endpointPresent
+86:        precondition(matches)
+87:    }
+88:    borrowing func requireVacantRuntimeSlot() {
+89:        let phaseVacant = runtimeSlotPhase == .vacant
+90:        let ownerAbsent = runtimeSlotOwner == nil
+91:        let endpointAbsent = runtimeEndpoint == nil
+92:        let rootAbsent = runtimeRootIdentity == nil
+93:        let actionAbsent = runtimeActionIdentity == nil
+94:        let candidateRootAbsent = runtimeCandidateRootIdentity == nil
+95:        let candidateActionAbsent = runtimeCandidateActionIdentity == nil
+96:        Self.requireVacantFacts(phaseVacant: phaseVacant, ownerAbsent: ownerAbsent,
+97:            endpointAbsent: endpointAbsent, rootAbsent: rootAbsent, actionAbsent: actionAbsent,
+98:            candidateRootAbsent: candidateRootAbsent, candidateActionAbsent: candidateActionAbsent)
+99:    }
+100:    static func requireVacantRuntimeSlot(at control: UnsafeMutablePointer<CounterControl>) {
+101:        let phaseVacant = control.pointee.runtimeSlotPhase == .vacant
+102:        let ownerAbsent = control.pointee.runtimeSlotOwner == nil
+103:        let endpointAbsent = control.pointee.runtimeEndpoint == nil
+104:        let rootAbsent = control.pointee.runtimeRootIdentity == nil
+105:        let actionAbsent = control.pointee.runtimeActionIdentity == nil
+106:        let candidateRootAbsent = control.pointee.runtimeCandidateRootIdentity == nil
+107:        let candidateActionAbsent = control.pointee.runtimeCandidateActionIdentity == nil
+108:        Self.requireVacantFacts(phaseVacant: phaseVacant, ownerAbsent: ownerAbsent,
+109:            endpointAbsent: endpointAbsent, rootAbsent: rootAbsent, actionAbsent: actionAbsent,
+110:            candidateRootAbsent: candidateRootAbsent, candidateActionAbsent: candidateActionAbsent)
+111:    }
+112:    borrowing func requireRuntimeClaim(_ claim: UInt64) {
+113:        let sameOwner = runtimeSlotOwner == claim
+114:        let installed = runtimeSlotPhase == .installed
+115:        let quiesced = runtimeSlotPhase == .quiesced
+116:        let endpointPresent = runtimeEndpoint != nil
+117:        Self.requireClaimFacts(sameOwner: sameOwner, installed: installed, quiesced: quiesced,
+118:            endpointPresent: endpointPresent)
+119:    }
+120:    static func requireRuntimeClaim(at control: UnsafeMutablePointer<CounterControl>, _ claim: UInt64) {
+121:        let sameOwner = control.pointee.runtimeSlotOwner == claim
+122:        let installed = control.pointee.runtimeSlotPhase == .installed
+123:        let quiesced = control.pointee.runtimeSlotPhase == .quiesced
+124:        let endpointPresent = control.pointee.runtimeEndpoint != nil
+125:        Self.requireClaimFacts(sameOwner: sameOwner, installed: installed, quiesced: quiesced,
+126:            endpointPresent: endpointPresent)
+127:    }
+128:    mutating func completeRuntimeInstallation(_ claim: UInt64) {
+129:        precondition(runtimeSlotOwner == claim && runtimeSlotPhase == .installing && runtimeEndpoint != nil)
+130:        precondition(runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil)
+131:        runtimeSlotPhase = .installed
+132:    }
+133:    mutating func markRuntimeQuiesced(_ claim: UInt64) {
+134:        Self.requireClaimFacts(sameOwner: runtimeSlotOwner == claim,
+135:            installed: runtimeSlotPhase == .installed, quiesced: runtimeSlotPhase == .quiesced,
+136:            endpointPresent: runtimeEndpoint != nil)
+137:        precondition(!backend.active)
+138:        runtimeSlotPhase = .quiesced
+139:    }
+140:    mutating func clearRuntimeSlot(_ claim: UInt64) {
+141:        let cleared = tryClearRuntimeSlot(claim)
+142:        precondition(cleared)
+143:    }
+144:    mutating func tryClearRuntimeSlot(_ claim: UInt64) -> Bool {
+145:        guard runtimeSlotOwner == claim && runtimeSlotPhase == .quiesced,
+146:              runtimeEndpoint != nil && !backend.active else { return false }
+147:        let idle = runtimeEndpoint!.actual.sink.isIdleForOffer
+148:        guard idle else { return false }
+149:        // Offers are synchronous and resolved before quiescence. These owned
+150:        // fields have no destructor callback and no scope-bearing capability.
+151:        runtimeEndpoint = nil
+152:        runtimeRootIdentity = nil; runtimeActionIdentity = nil
+153:        runtimeCandidateRootIdentity = nil; runtimeCandidateActionIdentity = nil
+154:        runtimeSlotOwner = nil; runtimeSlotPhase = .vacant
+155:        Self.requireVacantFacts(phaseVacant: runtimeSlotPhase == .vacant, ownerAbsent: runtimeSlotOwner == nil,
+156:            endpointAbsent: runtimeEndpoint == nil, rootAbsent: runtimeRootIdentity == nil,
+157:            actionAbsent: runtimeActionIdentity == nil, candidateRootAbsent: runtimeCandidateRootIdentity == nil,
+158:            candidateActionAbsent: runtimeCandidateActionIdentity == nil)
+159:        return true
+160:    }
+161:    private var producerOrigin: CounterProducerOrigin?
+162:    private var selectedProducer = false
+163:    mutating func installProducerOrigin(owner: UInt, serial: UInt64) {
+164:        precondition(!selectedProducer && producerOrigin == nil && admissionController == nil)
+165:        selectedProducer = true; producerOrigin = .init(owner: owner, serial: serial)
+166:    }
+167:    func snapshotProducerOrigin() -> CounterProducerOrigin? { producerOrigin }
+168:    func acceptsProducer(_ origin: CounterProducerOrigin?) -> Bool {
+169:        selectedProducer ? origin != nil && origin == producerOrigin : origin == nil
+170:    }
+171:    static func snapshotProducerOrigin(at control: UnsafeMutablePointer<CounterControl>) -> CounterProducerOrigin? {
+172:        control.pointee.producerOrigin
+173:    }
+174:    static func acceptsProducer(at control: UnsafeMutablePointer<CounterControl>, _ origin: CounterProducerOrigin?) -> Bool {
+175:        if control.pointee.selectedProducer {
+176:            guard origin != nil else { return false }
+177:            return origin == control.pointee.producerOrigin
+178:        }
+179:        return origin == nil
+180:    }
+181:    mutating func retireProducerOrigin() {
+182:        precondition(!inputGate.inputIsEligible && !wakeEnabled && !frameActive && admission.pointerCount == 0 && admission.pendingStateCount == 0 && !admission.sealActive)
+183:        producerOrigin = nil
+184:    }
+185:
+186:    #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
+187:    var backend = CounterTiledBackendStorage()
+188:    #else
+189:    var backend = CounterNativeBackendStorage()
+190:    #endif
+191:    private(set) var lastSealedAction: CapturedAction<SemanticCompleteIdentity>?
+192:    private(set) var lastDispatchedAction: CapturedAction<SemanticCompleteIdentity>?
+193:    private(set) var lastDispatchContext: ExecutionContext?
+194:    private(set) var actionDispatches = 0
+195:    mutating func observeSealedAction(_ action: CapturedAction<SemanticCompleteIdentity>?) { lastSealedAction = action }
+196:    mutating func observeActionDispatch(_ action: CapturedAction<SemanticCompleteIdentity>, context: ExecutionContext) {
+197:        precondition(context.phase == .mutating && lastSealedAction == action)
+198:        let next = actionDispatches.addingReportingOverflow(1); precondition(!next.overflow)
+199:        actionDispatches = next.partialValue; lastDispatchedAction = action; lastDispatchContext = context
+200:    }
+201:    var runtime = CounterRuntimeControl()
+202:    // The coordinator and finite callback adapter share this single controller.
+203:    var admissionController: CounterAdmission.Controller?
+204:    var wake: ExecutionWakeAccumulator<CounterWake>?
+205:    var scheduler: HostScheduledOpportunityController?
+206:    var wakeClockMicroseconds: UInt64 = 0
+207:    var wakeFirstFactMicroseconds: UInt64?
+208:    var wakeEnabled = false
+209:    var forwardedWakeRequestCount: UInt32 = 0
+210:    var hostWakeRequests = 0
+211:    var wakeTakes = 0
+212:    var lastTakenWakeReasons: ExecutionWakeReasons = []
+213:    var acceptedFactWakeRecords = 0
+214:    var disabledWakeRejections = 0
+215:    var injectCompletionAtApply = false
+216:    var lateCallbackObservedActive = false
+217:    var lateCallbackDidNotRunRuntime = false
+218:    var inputGate = HostNormalizedInputGate(configuredSource: .init(rawValue: 0))
+219:    var semanticSnapshot = CounterSemanticSnapshot()
+220:    var lastFrame = CounterRenderSink()
+221:    var actionPoints: InlineArray<2, Point> = .init(repeating: Point(x: 0, y: 0))
+222:    var admission: CounterAdmissionBacking {
+223:        get { runtime.admission }
+224:        set { runtime.admission = newValue }
+225:        _modify { yield &runtime.admission }
+226:    }
+227:    var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>? {
+228:        get { runtime.result }
+229:        set { runtime.result = newValue }
+230:    }
+231:    var context: ExecutionContext {
+232:        get { runtime.context }
+233:        set { runtime.context = newValue }
+234:    }
+235:    var unavailable: Bool {
+236:        get { runtime.unavailable }
+237:        set { runtime.unavailable = newValue }
+238:    }
+239:    var applicationConstructions = 0
+240:    var applicationCallbacks = 0
+241:    var observationsInstalled = 0
+242:    var observationsDetached = 0
+243:    var reentrantApplicationRejections = 0
+244:    var stoppedApplicationChecks = 0
+245:    var show = true
+246:    var mutate: Bool {
+247:        get { admission.pendingState != nil }
+248:        set { admission.pendingState = newValue ? 1 : nil }
+249:    }
+250:    mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) {
+251:        // Already queued phases passed producer-order admission. Preserve that
+252:        // trusted baseline when cancellation removes them before seal.
+253:        for index in 0..<2 {
+254:            guard let event = admission.pendingPointers[index], event.source == source, event.sequence == sequence else { continue }
+255:            let outcome = runtime.pointer.sequence.validate(phase: event.phase, sequence: event.sequence, ordinal: event.ordinal, targetGateAllowsResynchronization: true)
+256:            if outcome == .accepted || outcome == .consumedWhileCancelled { runtime.pointer.source = source }
+257:        }
+258:        runtime.pointer.cancel(source: source)
+259:        for index in 0..<Int(admission.sealedPointerCount) {
+260:            if let event = admission.sealedPointers[index], event.source == source && event.sequence == sequence {
+261:                admission.sealedAction = nil
+262:            }
+263:        }
+264:        admission.cancel(source: source, sequence: sequence)
+265:    }
+266:    var actionPoint = Point(x: 0, y: 0)
+267:    var idleQuiesceMode: UInt8 = 0
+268:    var teardowns = 0
+269:    var terminalRetry = false
+270:    var failAfterMutation = false
+271:    var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
+272:    var cleanupCount = 0
+273:    var boundaryFailure: RunCycleFailure<RuntimeOwnerFailure> = .execution(.capacityExhausted)
+274:    var fault: RuntimeCompletePipelineStage?
+275:    var offer: FrameOfferDisposition = .accepted
+276:    var stages: UInt16 = 0
+277:    var cleanups: UInt16 = 0
+278:    var finalized = 0
+279:    var applied = 0
+280:    var streams = 0
+281:    var commits = 0
+282:    var committedRecords: UInt16 = 0
+283:    var hasRoot = false
+284:    var frameActive = false
+285:}
+286:struct CounterPipelineOwner<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner
+287:where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+288:    typealias OwnerFailure = RuntimeOwnerFailure
+289:    let models: ObservableModelScope<CounterOwnedModel, CounterModelSchema>
+290:    let root: ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>
+291:    let semantic: SemanticRecordStore<CounterPayload>
+292:    let values: CanvasStagedValues<SemanticRecordReference, CounterValueTable>
+293:    let control: UnsafeMutablePointer<CounterControl>
+294:    private var geometry: Geometry
+295:    private var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
+296:    var phase = ExecutionPhaseMachine()
+297:    var counters = RunCycleIDAllocator()
+298:    let limits: RuntimeProfileLimits
+299:    var revisions = SemanticRevisionAllocator()
+300:    var candidates = CandidateFrameIDAllocator()
+301:    var presentations = PresentationRevisionAllocator()
+302:    var generations = RuntimeActionGenerationAllocator<SemanticCompleteIdentity>()
+303:    var completedContext = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
+304:    var committedPresentation: PresentationRevision?
+305:    var sealedAdmission: AdmissionSummary?
+306:    var recovery = PresentationPendingState(maximumRetryableRefusals: 3)!
+307:    private let runtimeClaim: UInt64
+308:    var frameActive = false
+309:    var observableCandidate = false
+310:    var semanticCandidate = false
+311:    var interactionCandidate = false
+312:    var rootIdentity: SemanticCompleteIdentity? {
+313:        get { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); return control.pointee.runtimeRootIdentity }
+314:        nonmutating set { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); control.pointee.runtimeRootIdentity = newValue }
+315:    }
+316:    var actionIdentity: SemanticCompleteIdentity? {
+317:        get { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); return control.pointee.runtimeActionIdentity }
+318:        nonmutating set { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); control.pointee.runtimeActionIdentity = newValue }
+319:    }
+320:    var candidateRootIdentity: SemanticCompleteIdentity? {
+321:        get { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); return control.pointee.runtimeCandidateRootIdentity }
+322:        nonmutating set { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); control.pointee.runtimeCandidateRootIdentity = newValue }
+323:    }
+324:    var candidateActionIdentity: SemanticCompleteIdentity? {
+325:        get { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); return control.pointee.runtimeCandidateActionIdentity }
+326:        nonmutating set { CounterControl.requireRuntimeClaim(at: control, runtimeClaim); control.pointee.runtimeCandidateActionIdentity = newValue }
+327:    }
+328:    var header: RenderPlanHeader?
+329:    var provenance: FrameProvenance?
+330:    var presentation: PresentationRevision?
+331:    var changed: Bool {
+332:        get { control.pointee.runtime.changed }
+333:        set { control.pointee.runtime.changed = newValue }
+334:    }
+335:    var pending = false
+336:    var presentationIntentState: PresentationIntentState { quiescent || control.pointee.unavailable ? .unavailable : pending ? .pending : .satisfied }
+337:    var hasAllocatedCandidateFrame: Bool { phase.context.candidateFrame != nil }
+338:    var quiescent = false
+339:    var presentationTeardownComplete = false
+340:    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control, copy geometry, copy interaction)
+341:    init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CounterControl>, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) {
+342:        let sameOwner = root.belongs(to: models)
+343:        precondition(sameOwner)
+344:        self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
+345:        self.limits = limits
+346:        let claim = control.pointee.claimRuntimeSlot()
+347:        control.pointee.initializeCounterWake()
+348:        let constructedEndpoint = CounterEndpoint(configuration: endpointConfiguration, control: control)
+349:        control.pointee.runtimeEndpoint = constructedEndpoint
+350:        control.pointee.completeRuntimeInstallation(claim)
+351:        runtimeClaim = claim
+352:        self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
+353:        precondition(self.root.belongs(to: self.models))
+354:    }
+355:    // Consuming the complete scoped owner ends its borrows while forwarding the
+356:    // two escapable owned workspace values. No original owner survives the call.
+357:
+358:
+359:    @_lifetime(copy self)
+360:    consuming func retireQuiescedStorage() -> CounterRetiredStorage<Geometry, Candidate, Committed, Hits> {
+361:        precondition(quiescent && presentationTeardownComplete && !frameActive && !observableCandidate && !semanticCandidate && !interactionCandidate)
+362:        precondition(control.pointee.unavailable && control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive)
+363:        clearOwnedRuntimeSlot()
+364:        return CounterRetiredStorage(semantic: semantic, geometry: geometry, interaction: interaction)
+365:    }
+366:    mutating func runTracedPipeline() -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {
+367:        let result = RuntimeCompletePipeline.run(owner: &self)
+368:        counterTrace("result", result)
+369:        return result
+370:    }
+371:    mutating func terminatePresentation() {
+372:        guard !presentationTeardownComplete else { return }
+373:        // Called only after the synchronous attempt finalized and released reads.
+374:        precondition(!frameActive && !observableCandidate && !semanticCandidate && !interactionCandidate)
+375:        presentationTeardownComplete = true
+376:        control.pointee.teardowns += 1
+377:        control.pointee.unavailable = true
+378:        control.pointee.inputGate.quiesce()
+379:        quiescent = true; pending = false
+380:        control.pointee.admission.resetAll()
+381:        control.pointee.runtime.pointer.capture.cancel()
+382:        control.pointee.runtime.pointer.sequence.cancelCurrentSequence()
+383:        control.pointee.runtime.pointer.source = nil
+384:        if let retained = recovery.pendingIntent { recovery.clearPending(for: retained.semanticRevision) }
+385:        control.pointee.disableCounterWake()
+386:        interaction.resetAllStorage()
+387:        control.pointee.committedRecords = 0
+388:        do throws(ObservableStateError) { try root.shutdown() }
+389:        catch { models.requireStop() }
+390:        rootIdentity = nil; actionIdentity = nil
+391:        let idle = control.pointee.runtimeEndpoint!.isIdleForRuntimeRelease
+392:        precondition(idle)
+393:        control.pointee.markRuntimeQuiesced(runtimeClaim)
+394:        control.pointee.hasRoot = false
+395:        counterTrace("terminal", (interaction.committedRecordCount, values.count, models.phase))
+396:    }
+397:    mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCycleFailure<RuntimeOwnerFailure>? {
+398:        control.pointee.context = phase.context
+399:        counterTrace("stage", stage)
+400:        control.pointee.stages |= UInt16(1) << stage.rawValue
+401:        if stage == .applyAdmittedWork && control.pointee.injectCompletionAtApply {
+402:            control.pointee.injectCompletionAtApply = false
+403:            let finalized = control.pointee.finalized
+404:            var producer = CounterAdmission(borrowing: control)
+405:            precondition(producer.submit(completion: 0).result == .queued)
+406:            control.pointee.lateCallbackObservedActive = phase.context.phase == .mutating
+407:            control.pointee.lateCallbackDidNotRunRuntime = control.pointee.finalized == finalized
+408:        }
+409:        if control.pointee.unavailable { return .execution(.requiredFacilityUnavailable) }
+410:        if control.pointee.fault == stage { return control.pointee.boundaryFailure }
+411:        return nil
+412:    }
+413:    borrowing func observeModelValue() -> UInt8 {
+414:        guard let rootIdentity, let key = root.modelKey(identity: rootIdentity, ordinal: 0) else { preconditionFailure("reuse current model") }
+415:        do throws(ObservableStateError) {
+416:            try models.beginFrame(); try models.pin(key)
+417:            var value: UInt8 = 0
+418:            do throws(_GiftUIAccessFailure) {
+419:                value = try models.withRead(CounterDomain.self) { (read) throws(_GiftUIAccessFailure) in
+420:                    try CounterRead<CounterDomain>(key, read: read).value
+421:                }
+422:            } catch { throw ObservableStateError(accessFailure: error) }
+423:            try models.endFrame()
+424:            return value
+425:        } catch { preconditionFailure("reuse actual model observation") }
+426:    }
+427:    borrowing func observeProducedAction() -> CounterProducedAction {
+428:        guard let origin = CounterControl.snapshotProducerOrigin(at: control), let rootIdentity,
+429:              let targetGeneration = root.generation(identity: rootIdentity, ordinal: 0, publishable: false) else { preconditionFailure("selected capture observation") }
+430:        var capture = PointerActionCapture<SemanticCompleteIdentity>()
+431:        let point = control.pointee.actionPoints[0]
+432:        _ = ExecutionGestureAdapter.down(at: point, capture: &capture, resolver: interaction)
+433:        guard case .activationAdmitted(let captured) = ExecutionGestureAdapter.up(at: point, capture: &capture, resolver: interaction) else { preconditionFailure("actual selected capture") }
+434:        return .init(origin: origin, captured: captured, targetGeneration: targetGeneration, targetIdentity: rootIdentity)
+435:    }
+436:    // The original owned capture enters the existing pointer capture/seal path.
+437:    // No target capability, dispatch callback or second pending owner is retained.
+438:    borrowing func prepareProducedAction(_ produced: CounterProducedAction) -> Bool {
+439:        guard CounterControl.acceptsProducer(at: control, produced.origin) else { return false }
+440:        guard !control.pointee.unavailable && control.pointee.context.phase == .idle else { return false }
+441:        var admission = CounterAdmission(borrowing: control)
+442:        let result = control.pointee.inputGate.submit(phase: .down, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: control.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
+443:        guard case .queued = result else { return false }
+444:        return true
+445:    }
+446:    borrowing func deliverProducedAction(_ produced: CounterProducedAction) -> Bool {
+447:        guard CounterControl.acceptsProducer(at: control, produced.origin) else { return false }
+448:        guard !control.pointee.unavailable && control.pointee.context.phase == .idle,
+449:              control.pointee.runtime.pointer.capture.current == produced.captured else { return false }
+450:        // Use the retained original value itself after the real down established
+451:        // this sequence. The actual up resolver, seal and mutation revalidate it.
+452:        control.pointee.runtime.pointer.capture.replace(with: produced.captured)
+453:        var admission = CounterAdmission(borrowing: control)
+454:        let result = control.pointee.inputGate.submit(phase: .up, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: control.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: false, to: &admission)
+455:        guard case .queued = result else { return false }
+456:        return true
+457:    }
+458:    mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+459:
+460:        control.pointee.cleanups = 0; control.pointee.cleanupCount = 0
+461:        guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
+462:        if let error = phase.beginCycle(reservingFrom: &counters) { return .failure(.execution(error)) }
+463:        if let error = boundary(.admissionAndSeal) { return .failure(error) }
+464:        sealedAdmission = nil
+465:        var transaction = ExecutionAdmissionSealTransaction(limits: limits.execution)!
+466:        precondition(transaction.begin())
+467:        var staged = control.pointee.runtime.pointer
+468:        var activation: CapturedAction<SemanticCompleteIdentity>?
+469:        var selected: UInt16 = 0
+470:        for index in 0..<2 where selected < limits.execution.maximumInputEvents {
+471:            guard let pointer = control.pointee.admission.pendingPointers[index] else { continue }
+472:            let validRevision = pointer.presentationRevision == interaction.committedRevision
+473:            let validSource = staged.source == nil || staged.source == pointer.source
+474:            let validation = staged.sequence.validate(phase: pointer.phase, sequence: pointer.sequence, ordinal: pointer.ordinal, targetGateAllowsResynchronization: true)
+475:            let valid = validRevision && validSource && (validation == .accepted || validation == .consumedWhileCancelled)
+476:            var createsActivation = false
+477:            if valid && validation == .accepted {
+478:                staged.source = pointer.source
+479:                let gesture: PointerGestureOutcome<SemanticCompleteIdentity>
+480:                switch pointer.phase {
+481:                case .down: gesture = ExecutionGestureAdapter.down(at: pointer.position, capture: &staged.capture, resolver: interaction)
+482:                case .move: gesture = ExecutionGestureAdapter.move(at: pointer.position, capture: &staged.capture, resolver: interaction)
+483:                case .up: gesture = ExecutionGestureAdapter.up(at: pointer.position, capture: &staged.capture, resolver: interaction)
+484:                }
+485:                if case .activationAdmitted(let captured) = gesture { activation = captured; createsActivation = true }
+486:                counterTrace("gesture", gesture)
+487:            }
+488:            guard transaction.stagePointer(pointer, provenanceValid: valid, createsActivation: createsActivation, transitionReservationAvailable: true) else { break }
+489:            selected += 1
+490:        }
+491:        switch transaction.finish(pendingStateChangeFacts: control.pointee.admission.pendingStateCount, pendingCompletionFacts: control.pointee.admission.pendingCompletion == nil ? 0 : 1, includesDirtyRederivation: changed, includesPresentationRecovery: pending, batchReservationAvailable: true) {
+492:        case .failure(let failure):
+493:            if let cancelled = failure.cancelledSequence {
+494:                control.pointee.cancelPointerSequence(source: cancelled.source, sequence: cancelled.sequence)
+495:            }
+496:            sealedAdmission = failure.summary
+497:            return .failure(.execution(failure.failure == .invalidProvenance ? .invalidProvenance : .capacityExhausted))
+498:        case .success(let selection):
+499:            guard control.pointee.admission.seal(selection.summary) else { return .failure(.execution(.invariantViolation)) }
+500:            control.pointee.runtime.pointer = staged
+501:            control.pointee.admission.sealedAction = activation
+502:            control.pointee.observeSealedAction(activation)
+503:            sealedAdmission = selection.summary
+504:        }
+505:        return .advanced
+506:    }
+507:    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
+508:        if let error = phase.transition(to: .mutating) { return .failure(.execution(error), mutationApplied: false) }
+509:        if let error = boundary(.applyAdmittedWork) { return .failure(error, mutationApplied: false) }
+510:        var applied = false
+511:        while let value = control.pointee.admission.takeState() {
+512:            guard let rootIdentity, let key = root.modelKey(identity: rootIdentity, ordinal: 0) else { return .failure(.execution(.invalidProvenance), mutationApplied: applied) }
+513:            switch root.mutate(key, mutation: .fact(value)) {
+514:            case .success(.unchanged): break
+515:            case .success: applied = true; changed = true; control.pointee.applied += 1
+516:            case .failure(let error): return .failure(.focusedOwner(.observableState(error)), mutationApplied: applied)
+517:            }
+518:        }
+519:        control.pointee.admission.sealedCompletion = nil
+520:        if let captured = control.pointee.admission.sealedAction.take() {
+521:            switch dispatch(captured) {
+522:            case .applied(let changed): applied = applied || changed
+523:            case .failure(let failure, let changed): return .failure(failure, mutationApplied: applied || changed)
+524:            }
+525:        }
+526:        return .applied(applied)
+527:    }
+528:    mutating func dispatch(_ captured: CapturedAction<SemanticCompleteIdentity>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
+529:        precondition(phase.context.phase == .mutating)
+530:        guard let rootIdentity else { return .applied(false) }
+531:        let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
+532:        let result = RuntimeRecordInteractionBridge.dispatch(captured, records: interaction, target: target, actionType: CounterAction.self, operation: CounterHandler.operation)
+533:        counterTrace("dispatch", result)
+534:        switch result {
+535:        case .interaction(.dispatched):
+536:            control.pointee.observeActionDispatch(captured, context: phase.context)
+537:            control.pointee.applied += 1; changed = true
+538:            if control.pointee.failAfterMutation { return .failure(.execution(.capacityExhausted), mutationApplied: true) }
+539:            return .applied(true)
+540:        case .interaction(.cancelled): return .applied(false)
+541:        case .observableFailure(let error): return .failure(.focusedOwner(.observableState(error)), mutationApplied: false)
+542:        case .interaction(.failure(let error)): return .failure(.focusedOwner(.interaction(error)), mutationApplied: false)
+543:        }
+544:    }
+545:    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+546:        if let error = boundary(.freezeObservableMutation) { return .failure(error) }
+547:        do throws(ObservableStateError) { try models.beginFrame(); frameActive = true }
+548:        catch { return .failure(.focusedOwner(.observableState(error))) }
+549:        if let error = phase.transition(to: .deriving) { return .failure(.execution(error)) }
+550:        control.pointee.context = phase.context
+551:        return .advanced
+552:    }
+553:    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+554:        if let error = boundary(.observableCandidateAndSemanticExpansion) { return .failure(error) }
+555:        do throws(ObservableStateError) {
+556:            try models.withDiscovery { () throws(ObservableStateError) in
+557:                if case .failure(let error) = root.beginCandidate() { throw error }
+558:            }
+559:            observableCandidate = true
+560:        } catch { return .failure(.focusedOwner(.observableState(error))) }
+561:        let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: limits.semantic, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+562:        switch result {
+563:        case .success: semanticCandidate = true
+564:        case .semanticFailure(let error): discardLocalCandidates(); return .failure(.focusedOwner(.semantic(error)))
+565:        case .bindingFailure(let error): discardLocalCandidates(); return .failure(.focusedOwner(.observableState(error)))
+566:        case .accessFailure: discardLocalCandidates(); return .failure(.focusedOwner(.observableState(.staleModel)))
+567:        }
+568:        do throws(DrawingError) { try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CounterValueTable()) }
+569:        catch {
+570:            discardLocalCandidates()
+571:            let production: DrawingProductionError = switch error {
+572:            case .invalidModelAccess: .invalidModelAccess
+573:            case .invalidValue: .invalidValue
+574:            case .invalidPathState: .invalidPathState
+575:            case .arithmeticOverflow: .arithmeticOverflow
+576:            case .capacityExhausted: .capacityExhausted
+577:            case .invalidScope: .invalidScope
+578:            case .invalidPhase: .invalidPhase
+579:            case .reentrancyViolation: .reentrancyViolation
+580:            case .invariantViolation: .invariantViolation
+581:            }
+582:            return .failure(.focusedOwner(.drawing(production)))
+583:        }
+584:        return .advanced
+585:    }
+586:    mutating func resolveLayout() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+587:        if let error = boundary(.layout) { return .failure(error) }
+588:        do throws(SemanticExpansionError) {
+589:            return try semantic.withCandidateView { bank in
+590:                control.pointee.semanticSnapshot = CounterSemanticSnapshot(bank)
+591:                switch geometry.layout(bank, limits: limits) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.layout(error))) }
+592:            }
+593:        } catch { return .failure(.focusedOwner(.semantic(error))) }
+594:    }
+595:    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+596:        if let error = boundary(.canvasInvocationAndPlan) { return .failure(error) }
+597:        var source = CounterSource(models: models.borrowedScope(), values: values.borrowedValues(), table: CounterValueTable())
+598:        switch geometry.draw(source: &source, context: phase.context, limits: limits) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.drawing(error))) }
+599:    }
+600:    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+601:        if let error = boundary(.combinedRenderPreflight) { return .failure(error) }
+602:        do throws(SemanticExpansionError) {
+603:            return try semantic.withCandidateView { bank in
+604:                switch geometry.preflight(bank, limits: limits) { case .success(let value): header = value; return .advanced; case .failure(let error): return .failure(.renderProduction(error)) }
+605:            }
+606:        } catch { return .failure(.focusedOwner(.semantic(error))) }
+607:    }
+608:    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+609:        if let error = boundary(.interactionCandidate) { return .failure(error) }
+610:        if let error = interaction.beginCandidate(limits: limits.interaction) { return .failure(.focusedOwner(.interaction(error))) }
+611:        interactionCandidate = true
+612:        candidateRootIdentity = nil; candidateActionIdentity = nil
+613:        do throws(SemanticExpansionError) {
+614:            return try semantic.withCandidateView { bank in
+615:                var target: SemanticCompleteIdentity?
+616:                var paintOrder: UInt16 = 0
+617:                for index: UInt16 in 0..<bank.recordCount {
+618:                    var identity = bank.completeIdentity(for: bank.reference(at: index)!)!
+619:                    guard identity.append(.init(kind: .customBody)) else { return .failure(.execution(.invariantViolation)) }
+620:                    if root.generation(identity: identity, ordinal: 0, publishable: true) != nil { target = identity; break }
+621:                }
+622:                for index: UInt16 in 0..<bank.recordCount {
+623:                    let ref = bank.reference(at: index)!
+624:                    guard bank.record(ref)?.kind == .action else { continue }
+625:                    guard let target, let bounds = geometry.bounds(ref), let clip = geometry.clip(ref) else { return .failure(.execution(.invariantViolation)) }
+626:                    let identity = bank.completeIdentity(for: ref)!
+627:                    switch RuntimeRecordInteractionBridge.append(record: ref, semantic: bank, root: root, rootIdentity: target, rootOrdinal: 0, actionType: CounterAction.self, roles: CounterRoles.self, isEnabled: counterActionIsEnabled(ref, bank: bank), bounds: bounds, clip: clip, paintOrder: paintOrder, interaction: &interaction) {
+628:                    case .failure(let error): return .failure(.focusedOwner(.interaction(error)))
+629:                    case .requiresGeneration:
+630:                        guard let generation = generations.generation(for: identity), interaction.assignGeneration(generation, to: identity) == nil else { return .failure(.execution(.identityExhausted)) }
+631:                    case .preserved: break
+632:                    }
+633:                    paintOrder += 1
+634:                    candidateActionIdentity = identity
+635:                    control.pointee.actionPoint = bounds.origin
+636:                    let code = counterActionCode(ref, bank: bank)
+637:                    precondition(code < 2)
+638:                    control.pointee.actionPoints[Int(code)] = bounds.origin
+639:                }
+640:                candidateRootIdentity = target
+641:                if let error = interaction.finishCandidate() { return .failure(.focusedOwner(.interaction(error))) }
+642:                return .advanced
+643:            }
+644:        } catch { return .failure(.focusedOwner(.semantic(error))) }
+645:    }
+646:    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {
+647:        if let error = boundary(.semanticAndObservablePublication) { return .failure(error) }
+648:        let revision: SemanticRevision
+649:        if changed || phase.context.semanticRevision == nil { guard let next = revisions.reserve() else { return .failure(.execution(.identityExhausted)) }; revision = next }
+650:        else { revision = phase.context.semanticRevision! }
+651:        if let error = phase.transition(to: .publishing) { return .failure(.execution(error)) }
+652:        do throws(ObservableStateError) {
+653:            try models.withDiscovery { () throws(ObservableStateError) in
+654:                if case .failure(let error) = root.finishCandidate(.publish) { throw error }
+655:            }
+656:            observableCandidate = false
+657:        } catch { quiescent = true; return .failure(.focusedOwner(.observableState(error))) }
+658:        do throws(SemanticExpansionError) { try semantic.publishCandidate(); semanticCandidate = false }
+659:        catch { quiescent = true; return .failure(.focusedOwner(.semantic(error))) }
+660:        rootIdentity = candidateRootIdentity
+661:        if let error = phase.recordPublishedSemanticRevision(revision) { return .failure(.execution(error)) }
+662:        control.pointee.context = phase.context
+663:        return .published(.init(semanticRevision: revision, changed: changed))
+664:    }
+665:    mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+666:        if let error = boundary(.candidateAllocation) { return .failure(error) }
+667:        guard let candidate = candidates.reserve(), let counter = phase.context.cycle, let revision = phase.context.semanticRevision else { return .failure(.execution(.identityExhausted)) }
+668:        if let error = phase.recordCandidateFrame(candidate) { return .failure(.execution(error)) }
+669:        guard let presentation = presentations.reserve() else { return .failure(.execution(.identityExhausted)) }
+670:        self.presentation = presentation; provenance = .init(cycle: counter, semanticRevision: revision, candidateFrame: candidate)
+671:        return .advanced
+672:    }
+673:    mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
+674:        if let error = boundary(.offerAndProduction) { return .failure(error) }
+675:        if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
+676:        control.pointee.context = phase.context
+677:        CounterControl.requireRuntimeClaim(at: control, runtimeClaim)
+678:        let productionSemantic = semantic.borrowedStore()
+679:        let productionHeader = header!, productionLimits = limits, productionProvenance = provenance!
+680:        // Only these disjoint fields/formals are lent across the producer.
+681:        // No whole pipeline/control value or mutator enters that callback.
+682:        let produced = counterProduceStoredEndpoint(endpoint: &control.pointee.runtimeEndpoint!,
+683:            streams: &control.pointee.streams, geometry: &geometry, semantic: productionSemantic,
+684:            header: productionHeader, limits: productionLimits, provenance: productionProvenance)
+685:        let offer = produced.endpoint.result
+686:        control.pointee.backend.envelopeRejections += produced.endpoint.invalidEnvelopeRejections
+687:        control.pointee.backend.endpointHealthObservation = produced.endpoint.health
+688:        precondition(produced.endpoint.health == control.pointee.backend.health)
+689:        if let recording = produced.endpoint.acceptedRecording { control.pointee.lastFrame = recording }
+690:        if let retained = produced.error { return .failure(.renderProduction(retained)) }
+691:        switch offer.disposition {
+692:        case .accepted: return .accepted(presentation!)
+693:        case .backpressured: return .backpressured
+694:        case .retryableRefusal: return .retryableRefusal
+695:        case .nonRetryableRefusal: return .nonRetryableRefusal(.endpoint)
+696:        case .failed: return .failure(.frameOffer(offer.failure!))
+697:        }
+698:    }
+699:    mutating func discardLocalCandidates() {
+700:        values.discard()
+701:        if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate() } catch { quiescent = true }; semanticCandidate = false }
+702:        if observableCandidate {
+703:            do throws(ObservableStateError) { try models.withDiscovery { () throws(ObservableStateError) in
+704:                if case .failure(let error) = root.finishCandidate(.discard) { throw error }
+705:            } } catch { quiescent = true }
+706:            observableCandidate = false
+707:        }
+708:    }
+709:    mutating func cleanup(_ action: RuntimeCleanupAction) {
+710:        precondition(control.pointee.cleanupCount < 9)
+711:        counterTrace("cleanup", action)
+712:        control.pointee.cleanupOrder[control.pointee.cleanupCount] = action.rawValue
+713:        control.pointee.cleanupCount += 1
+714:        precondition(control.pointee.cleanups & (UInt16(1) << action.rawValue) == 0)
+715:        control.pointee.cleanups |= UInt16(1) << action.rawValue
+716:        switch action {
+717:        case .releaseCanvasCallable: values.discard()
+718:        case .resetRenderWorkspace: geometry.resetRender()
+719:        case .resetDrawingPlan: geometry.resetPlan()
+720:        case .resetLayoutCandidate: geometry.resetLayout()
+721:        case .discardSemanticCandidate: if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate() } catch { quiescent = true }; semanticCandidate = false }
+722:        case .discardObservableCandidate:
+723:            if observableCandidate { discardLocalCandidates() }
+724:        case .discardInteractionCandidate: interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false
+725:        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1; actionIdentity = candidateActionIdentity; committedPresentation = presentation; control.pointee.runtime.committedPresentation = presentation; control.pointee.inputGate.installPhysicalPresentation(presentation!)
+726:        case .resetAttemptStorage:
+727:            discardLocalCandidates()
+728:            if interactionCandidate { interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false }
+729:            candidateRootIdentity = nil; candidateActionIdentity = nil
+730:            geometry.reset()
+731:            if frameActive { do throws(ObservableStateError) { try models.endFrame() } catch { quiescent = true }; frameActive = false }
+732:        }
+733:    }
+734:    mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {
+735:        counterTrace("disposition", disposition)
+736:        changed = disposition.semanticDisposition == .dirty
+737:        if changed { control.pointee.emitCounterWake(.semanticDirty) }
+738:        pending = disposition.presentationIntentState == .pending
+739:    }
+740:    mutating func finalizePipeline() {
+741:        control.pointee.admission.finishAttempt()
+742:        completedContext = phase.context
+743:        control.pointee.committedRecords = interaction.committedRecordCount
+744:        control.pointee.hasRoot = rootIdentity != nil
+745:        control.pointee.frameActive = frameActive
+746:        if phase.context.phase != .idle {
+747:            precondition(phase.transition(to: .finalizing) == nil)
+748:            precondition(phase.transition(to: .idle) == nil)
+749:        }
+750:        control.pointee.context = phase.context
+751:        counterTrace("finalized", (completedContext, control.pointee.applied, control.pointee.commits, interaction.committedRecordCount, values.count, models.phase))
+752:        control.pointee.finalized += 1
+753:        if quiescent { terminatePresentation() }
+754:    }
+755:}
+756:
+757:// Enabled state comes from the actual traversed modifier chain, not a copied
+758:// host value or precomputed action table.
+759:private func counterActionIsEnabled(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> Bool {
+760:    var current = ref
+761:    while let record = bank.record(current) {
+762:        if let payload = bank.payload(at: record.payload), case .standard(.disabled(true)) = payload { return false }
+763:        guard record.parent < current.ordinal, let parent = bank.reference(at: record.parent) else { break }
+764:        current = parent
+765:    }
+766:    return true
+767:}
+768:#if !os(macOS) || GIFTUI_COUNTER_ROUTE_DYNAMIC || hasFeature(Embedded)
+769:func counterTrace<T>(_ label: StaticString, _ value: T) {
+770:#if !hasFeature(Embedded)
+771:print(label, value)
+772:#endif
+773:}
+774:
+775:#endif
+776:
+777:#if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+778:    // Preserve this finite native trace's spelling with bounded fragments instead
+779:    // of the variadic print call's Any storage.
+780:    func counterTrace(
+781:        _ label: StaticString,
+782:        _ value: (
+783:            ObservableModelOwnerIdentity, ObservableModelOwnerIdentity,
+784:            SemanticRecordOwnerIdentity, SemanticRecordOwnerIdentity
+785:        )
+786:    ) {
+787:        counterTraceWrite(label)
+788:        counterTraceWrite(" (GiftUIObservableState.ObservableModelOwnerIdentity(rawValue: ")
+789:        counterTraceWrite(value.0.rawValue)
+790:        counterTraceWrite("), GiftUIObservableState.ObservableModelOwnerIdentity(rawValue: ")
+791:        counterTraceWrite(value.1.rawValue)
+792:        counterTraceWrite("), GiftUISemanticCore.SemanticRecordOwnerIdentity(rawValue: ")
+793:        counterTraceWrite(value.2.rawValue)
+794:        counterTraceWrite("), GiftUISemanticCore.SemanticRecordOwnerIdentity(rawValue: ")
+795:        counterTraceWrite(value.3.rawValue)
+796:        counterTraceWrite("))\n")
+797:    }
+798:
+799:    // Finite Native Static trace shapes. The generic print fallback is unavailable
+800:    // in this profile, so new call-site types require an explicit bounded writer.
+801:    // The captured-key InlineArray spelling mirrors this pinned compiler's opaque
+802:    // reflection output; key values are not reconstructed from that placeholder.
+803:    private func counterTraceName(_ value: RuntimeCompletePipelineStage) -> StaticString {
+804:        switch value {
+805:        case .admissionAndSeal: return "admissionAndSeal"
+806:        case .applyAdmittedWork: return "applyAdmittedWork"
+807:        case .freezeObservableMutation: return "freezeObservableMutation"
+808:        case .observableCandidateAndSemanticExpansion:
+809:            return "observableCandidateAndSemanticExpansion"
+810:        case .layout: return "layout"
+811:        case .canvasInvocationAndPlan: return "canvasInvocationAndPlan"
+812:        case .combinedRenderPreflight: return "combinedRenderPreflight"
+813:        case .interactionCandidate: return "interactionCandidate"
+814:        case .semanticAndObservablePublication: return "semanticAndObservablePublication"
+815:        case .candidateAllocation: return "candidateAllocation"
+816:        case .offerAndProduction: return "offerAndProduction"
+817:        }
+818:    }
+819:
+820:    private func counterTraceName(_ value: RuntimeCleanupAction) -> StaticString {
+821:        switch value {
+822:        case .releaseCanvasCallable: return "releaseCanvasCallable"
+823:        case .discardInteractionCandidate: return "discardInteractionCandidate"
+824:        case .commitInteractionCandidate: return "commitInteractionCandidate"
+825:        case .resetRenderWorkspace: return "resetRenderWorkspace"
+826:        case .resetDrawingPlan: return "resetDrawingPlan"
+827:        case .resetLayoutCandidate: return "resetLayoutCandidate"
+828:        case .discardSemanticCandidate: return "discardSemanticCandidate"
+829:        case .discardObservableCandidate: return "discardObservableCandidate"
+830:        case .resetAttemptStorage: return "resetAttemptStorage"
+831:        }
+832:    }
+833:
+834:    private func counterTraceName(_ value: ExecutionPhase) -> StaticString {
+835:        switch value {
+836:        case .idle: return "idle"
+837:        case .admitting: return "admitting"
+838:        case .mutating: return "mutating"
+839:        case .deriving: return "deriving"
+840:        case .publishing: return "publishing"
+841:        case .offering: return "offering"
+842:        case .finalizing: return "finalizing"
+843:        }
+844:    }
+845:
+846:    private func counterTraceWrite(_ value: ExecutionPhase) {
+847:        counterTraceWrite("GiftUIExecution.ExecutionPhase.")
+848:        counterTraceWrite(counterTraceName(value))
+849:    }
+850:
+851:    private func counterTraceName(_ value: SemanticCycleDisposition) -> StaticString {
+852:        switch value {
+853:        case .unchanged: return "unchanged"
+854:        case .published: return "published"
+855:        case .dirty: return "dirty"
+856:        }
+857:    }
+858:
+859:    private func counterTraceWrite(_ value: SemanticCycleDisposition) {
+860:        counterTraceWrite("GiftUIExecution.SemanticCycleDisposition.")
+861:        counterTraceWrite(counterTraceName(value))
+862:    }
+863:
+864:    private func counterTraceName(_ value: ExecutionOperational) -> StaticString {
+865:        switch value {
+866:        case .noChange: return "noChange"
+867:        case .backpressured: return "backpressured"
+868:        case .retryableRefusal: return "retryableRefusal"
+869:        case .superseded: return "superseded"
+870:        case .deferredToLaterAdmission: return "deferredToLaterAdmission"
+871:        }
+872:    }
+873:
+874:    private func counterTraceWrite(_ value: ExecutionOperational) {
+875:        counterTraceWrite("GiftUIExecution.ExecutionOperational.")
+876:        counterTraceWrite(counterTraceName(value))
+877:    }
+878:
+879:    private func counterTraceName(_ value: PresentationIntentState) -> StaticString {
+880:        switch value {
+881:        case .satisfied: return "satisfied"
+882:        case .pending: return "pending"
+883:        case .unavailable: return "unavailable"
+884:        }
+885:    }
+886:
+887:    private func counterTraceWrite(_ value: PresentationIntentState) {
+888:        counterTraceWrite("GiftUIExecution.PresentationIntentState.")
+889:        counterTraceWrite(counterTraceName(value))
+890:    }
+891:
+892:    private func counterTraceName(_ value: ExecutionError) -> StaticString {
+893:        switch value {
+894:        case .invalidValue: return "invalidValue"
+895:        case .arithmeticOverflow: return "arithmeticOverflow"
+896:        case .capacityExhausted: return "capacityExhausted"
+897:        case .identityExhausted: return "identityExhausted"
+898:        case .invalidProvenance: return "invalidProvenance"
+899:        case .invalidPhase: return "invalidPhase"
+900:        case .reentrancyViolation: return "reentrancyViolation"
+901:        case .requiredFacilityUnavailable: return "requiredFacilityUnavailable"
+902:        case .invariantViolation: return "invariantViolation"
+903:        }
+904:    }
+905:
+906:    private func counterTraceWrite(_ value: ExecutionError) {
+907:        counterTraceWrite("GiftUIExecution.ExecutionError.")
+908:        counterTraceWrite(counterTraceName(value))
+909:    }
+910:
+911:    private func counterTraceName(_ value: LogicalFrameDisposition) -> StaticString {
+912:        switch value {
+913:        case .notProduced: return "notProduced"
+914:        case .committed: return "committed"
+915:        case .aborted: return "aborted"
+916:        }
+917:    }
+918:
+919:    private func counterTraceWrite(_ value: LogicalFrameDisposition) {
+920:        counterTraceWrite("GiftUIExecution.LogicalFrameDisposition.")
+921:        counterTraceWrite(counterTraceName(value))
+922:    }
+923:
+924:    private func counterTraceName(_ value: FrameOfferFailure) -> StaticString {
+925:        switch value {
+926:        case .invalidEnvelope: return "invalidEnvelope"
+927:        case .insufficientCapacity: return "insufficientCapacity"
+928:        case .producerFailed: return "producerFailed"
+929:        case .contractViolation: return "contractViolation"
+930:        }
+931:    }
+932:
+933:    private func counterTraceWrite(_ value: FrameOfferFailure) {
+934:        counterTraceWrite("GiftUIExecution.FrameOfferFailure.")
+935:        counterTraceWrite(counterTraceName(value))
+936:    }
+937:
+938:    private func counterTraceName(_ value: FrameRefusalOrigin) -> StaticString {
+939:        switch value {
+940:        case .renderProducer: return "renderProducer"
+941:        case .endpoint: return "endpoint"
+942:        }
+943:    }
+944:
+945:    private func counterTraceWrite(_ value: FrameRefusalOrigin) {
+946:        counterTraceWrite("GiftUIExecution.FrameRefusalOrigin.")
+947:        counterTraceWrite(counterTraceName(value))
+948:    }
+949:
+950:    private func counterTraceName(_ value: ExecutionAdmissionResult) -> StaticString {
+951:        switch value {
+952:        case .queued: return "queued"
+953:        case .capacityRefused: return "capacityRefused"
+954:        case .unavailable: return "unavailable"
+955:        case .invalidValue: return "invalidValue"
+956:        case .invalidProvenance: return "invalidProvenance"
+957:        }
+958:    }
+959:
+960:    private func counterTraceWrite(_ value: ExecutionAdmissionResult) {
+961:        counterTraceWrite("GiftUIExecution.ExecutionAdmissionResult.")
+962:        counterTraceWrite(counterTraceName(value))
+963:    }
+964:
+965:    private func counterTraceName(_ value: ObservableStateError) -> StaticString {
+966:        switch value {
+967:        case .locationCapacityExhausted: return "locationCapacityExhausted"
+968:        case .registrationCapacityExhausted: return "registrationCapacityExhausted"
+969:        case .associationStagingCapacityExhausted: return "associationStagingCapacityExhausted"
+970:        case .replacementStagingCapacityExhausted: return "replacementStagingCapacityExhausted"
+971:        case .registrationGenerationExhausted: return "registrationGenerationExhausted"
+972:        case .duplicateOwner: return "duplicateOwner"
+973:        case .incompatibleAssociation: return "incompatibleAssociation"
+974:        case .staleAttachment: return "staleAttachment"
+975:        case .invalidPhaseContained: return "invalidPhaseContained"
+976:        case .invalidPhaseSafetyNotProven: return "invalidPhaseSafetyNotProven"
+977:        case .reentrancyViolation: return "reentrancyViolation"
+978:        case .invariantViolation: return "invariantViolation"
+979:        case .modelCapacityExhausted: return "modelCapacityExhausted"
+980:        case .ownerCapacityExhausted: return "ownerCapacityExhausted"
+981:        case .retainedModel: return "retainedModel"
+982:        case .modelGenerationExhausted: return "modelGenerationExhausted"
+983:        case .staleModel: return "staleModel"
+984:        case .modelReadOutOfBounds: return "modelReadOutOfBounds"
+985:        }
+986:    }
+987:
+988:    private func counterTraceWrite(_ value: ObservableStateError) {
+989:        counterTraceWrite("GiftUIObservableState.ObservableStateError.")
+990:        counterTraceWrite(counterTraceName(value))
+991:    }
+992:
+993:    private func counterTraceName(_ value: InteractionError) -> StaticString {
+994:        switch value {
+995:        case .capacityExhausted: return "capacityExhausted"
+996:        case .invalidIdentity: return "invalidIdentity"
+997:        case .invalidGeometry: return "invalidGeometry"
+998:        case .invalidPhase: return "invalidPhase"
+999:        case .reentrancyViolation: return "reentrancyViolation"
+1000:        case .invariantViolation: return "invariantViolation"
+1001:        case .incompatibleActionDomain: return "incompatibleActionDomain"
+1002:        case .invalidActionValue: return "invalidActionValue"
+1003:        case .missingModelTarget: return "missingModelTarget"
+1004:        }
+1005:    }
+1006:
+1007:    private func counterTraceWrite(_ value: InteractionError) {
+1008:        counterTraceWrite("GiftUIInteraction.InteractionError.")
+1009:        counterTraceWrite(counterTraceName(value))
+1010:    }
+1011:
+1012:    private func counterTraceName(_ value: DrawingProductionError) -> StaticString {
+1013:        switch value {
+1014:        case .invalidValue: return "invalidValue"
+1015:        case .invalidPathState: return "invalidPathState"
+1016:        case .arithmeticOverflow: return "arithmeticOverflow"
+1017:        case .capacityExhausted: return "capacityExhausted"
+1018:        case .invalidScope: return "invalidScope"
+1019:        case .invalidPhase: return "invalidPhase"
+1020:        case .reentrancyViolation: return "reentrancyViolation"
+1021:        case .operationCapacityExhausted: return "operationCapacityExhausted"
+1022:        case .invariantViolation: return "invariantViolation"
+1023:        case .invalidModelAccess: return "invalidModelAccess"
+1024:        }
+1025:    }
+1026:
+1027:    private func counterTraceWrite(_ value: DrawingProductionError) {
+1028:        counterTraceWrite("GiftUIDrawing.DrawingProductionError.")
+1029:        counterTraceWrite(counterTraceName(value))
+1030:    }
+1031:
+1032:    private func counterTraceName(_ value: LayoutError) -> StaticString {
+1033:        switch value {
+1034:        case .invalidDeclaration: return "invalidDeclaration"
+1035:        case .arithmeticOverflow: return "arithmeticOverflow"
+1036:        case .capacityExhausted: return "capacityExhausted"
+1037:        case .reentrancyViolation: return "reentrancyViolation"
+1038:        case .invariantViolation: return "invariantViolation"
+1039:        }
+1040:    }
+1041:
+1042:    private func counterTraceWrite(_ value: LayoutError) {
+1043:        counterTraceWrite("GiftUILayout.LayoutError.")
+1044:        counterTraceWrite(counterTraceName(value))
+1045:    }
+1046:
+1047:    private func counterTraceName(_ value: SemanticExpansionError) -> StaticString {
+1048:        switch value {
+1049:        case .capacityExhausted: return "capacityExhausted"
+1050:        case .invalidIdentity: return "invalidIdentity"
+1051:        case .reentrancyViolation: return "reentrancyViolation"
+1052:        case .invariantViolation: return "invariantViolation"
+1053:        }
+1054:    }
+1055:
+1056:    private func counterTraceWrite(_ value: SemanticExpansionError) {
+1057:        counterTraceWrite("GiftUISemanticCore.SemanticExpansionError.")
+1058:        counterTraceWrite(counterTraceName(value))
+1059:    }
+1060:
+1061:    private func counterTraceName(_ value: RenderProductionError) -> StaticString {
+1062:        switch value {
+1063:        case .invalidInput: return "invalidInput"
+1064:        case .arithmeticOverflow: return "arithmeticOverflow"
+1065:        case .capacityExhausted: return "capacityExhausted"
+1066:        case .incompatibleTextResource: return "incompatibleTextResource"
+1067:        case .sinkRefused: return "sinkRefused"
+1068:        case .reentrancyViolation: return "reentrancyViolation"
+1069:        case .invariantViolation: return "invariantViolation"
+1070:        }
+1071:    }
+1072:
+1073:    private func counterTraceWrite(_ value: RenderProductionError) {
+1074:        counterTraceWrite("GiftUIRenderCore.RenderProductionError.")
+1075:        counterTraceWrite(counterTraceName(value))
+1076:    }
+1077:
+1078:    private func counterTraceWrite(_ value: ObservableModelOwnership.Phase) {
+1079:        counterTraceWrite("GiftUIObservableState.ObservableModelOwnership.Phase.")
+1080:        switch value {
+1081:        case .mutating: counterTraceWrite("mutating")
+1082:        case .writing: counterTraceWrite("writing")
+1083:        case .reading: counterTraceWrite("reading")
+1084:        case .discovering: counterTraceWrite("discovering")
+1085:        case .replacing: counterTraceWrite("replacing")
+1086:        case .retired: counterTraceWrite("retired")
+1087:        }
+1088:    }
+1089:
+1090:    private func counterTraceWrite(_ value: Bool) {
+1091:        if value { counterTraceWrite("true") } else { counterTraceWrite("false") }
+1092:    }
+1093:
+1094:    private func counterTraceWrite(_ value: UInt16) {
+1095:        counterTraceWrite(UInt32(value))
+1096:    }
+1097:
+1098:    private func counterTraceWrite(_ value: UInt8) {
+1099:        counterTraceWrite(UInt32(value))
+1100:    }
+1101:
+1102:    private func counterTraceWrite(_ value: Int) {
+1103:        if value < 0 { counterTraceWrite("-") }
+1104:        counterTraceWriteUnsigned(value.magnitude)
+1105:    }
+1106:
+1107:    private func counterTraceWriteUnsigned(_ value: UInt) {
+1108:        let low = BoundedText(Int32(value % 1_000_000_000))
+1109:        if value >= 1_000_000_000 {
+1110:            counterTraceWriteUnsigned(value / 1_000_000_000)
+1111:            for _ in Int(low.utf8ByteCount) ..< 9 { _ = putchar(48) }
+1112:        }
+1113:        counterTraceWrite(low)
+1114:    }
+1115:
+1116:    private func counterTraceWrite(_ value: RunCycleID) {
+1117:        counterTraceWrite("GiftUIExecution.RunCycleID(rawValue: ")
+1118:        counterTraceWrite(value.rawValue)
+1119:        counterTraceWrite(")")
+1120:    }
+1121:
+1122:    private func counterTraceWrite(_ value: RunCycleID?) {
+1123:        if let value {
+1124:            counterTraceWrite("Optional(")
+1125:            counterTraceWrite(value)
+1126:            counterTraceWrite(")")
+1127:        } else {
+1128:            counterTraceWrite("nil")
+1129:        }
+1130:    }
+1131:
+1132:    private func counterTraceWrite(_ value: SemanticRevision) {
+1133:        counterTraceWrite("GiftUIExecution.SemanticRevision(rawValue: ")
+1134:        counterTraceWrite(value.rawValue)
+1135:        counterTraceWrite(")")
+1136:    }
+1137:
+1138:    private func counterTraceWrite(_ value: SemanticRevision?) {
+1139:        if let value {
+1140:            counterTraceWrite("Optional(")
+1141:            counterTraceWrite(value)
+1142:            counterTraceWrite(")")
+1143:        } else {
+1144:            counterTraceWrite("nil")
+1145:        }
+1146:    }
+1147:
+1148:    private func counterTraceWrite(_ value: CandidateFrameID) {
+1149:        counterTraceWrite("GiftUIExecution.CandidateFrameID(rawValue: ")
+1150:        counterTraceWrite(value.rawValue)
+1151:        counterTraceWrite(")")
+1152:    }
+1153:
+1154:    private func counterTraceWrite(_ value: CandidateFrameID?) {
+1155:        if let value {
+1156:            counterTraceWrite("Optional(")
+1157:            counterTraceWrite(value)
+1158:            counterTraceWrite(")")
+1159:        } else {
+1160:            counterTraceWrite("nil")
+1161:        }
+1162:    }
+1163:
+1164:    private func counterTraceWrite(_ value: ActionGeneration) {
+1165:        counterTraceWrite("GiftUIExecution.ActionGeneration(rawValue: ")
+1166:        counterTraceWrite(value.rawValue)
+1167:        counterTraceWrite(")")
+1168:    }
+1169:
+1170:    private func counterTraceWrite(_ value: ActionGeneration?) {
+1171:        if let value {
+1172:            counterTraceWrite("Optional(")
+1173:            counterTraceWrite(value)
+1174:            counterTraceWrite(")")
+1175:        } else {
+1176:            counterTraceWrite("nil")
+1177:        }
+1178:    }
+1179:
+1180:    private func counterTraceWrite(_ value: PresentationRevision) {
+1181:        counterTraceWrite("GiftUI.PresentationRevision(rawValue: ")
+1182:        counterTraceWrite(value.rawValue)
+1183:        counterTraceWrite(")")
+1184:    }
+1185:
+1186:    private func counterTraceWrite(_ value: PresentationRevision?) {
+1187:        if let value {
+1188:            counterTraceWrite("Optional(")
+1189:            counterTraceWrite(value)
+1190:            counterTraceWrite(")")
+1191:        } else {
+1192:            counterTraceWrite("nil")
+1193:        }
+1194:    }
+1195:
+1196:    private func counterTraceWrite(_ value: ExecutionContext) {
+1197:        counterTraceWrite("GiftUIExecution.ExecutionContext(cycle: ")
+1198:        counterTraceWrite(value.cycle)
+1199:        counterTraceWrite(", semanticRevision: ")
+1200:        counterTraceWrite(value.semanticRevision)
+1201:        counterTraceWrite(", candidateFrame: ")
+1202:        counterTraceWrite(value.candidateFrame)
+1203:        counterTraceWrite(", phase: ")
+1204:        counterTraceWrite(value.phase)
+1205:        counterTraceWrite(")")
+1206:    }
+1207:
+1208:    private func counterTraceWrite(_ value: ExecutionOperational?) {
+1209:        if let value {
+1210:            counterTraceWrite("Optional("); counterTraceWrite(value); counterTraceWrite(")")
+1211:        } else {
+1212:            counterTraceWrite("nil")
+1213:        }
+1214:    }
+1215:
+1216:    private func counterTraceWrite(_ value: PresentationPendingIntent?) {
+1217:        if let value {
+1218:            counterTraceWrite(
+1219:                "Optional(GiftUIExecution.PresentationPendingIntent(semanticRevision: ")
+1220:            counterTraceWrite(value.semanticRevision)
+1221:            counterTraceWrite(", retryableRefusalCount: ")
+1222:            counterTraceWrite(value.retryableRefusalCount)
+1223:            counterTraceWrite("))")
+1224:        } else {
+1225:            counterTraceWrite("nil")
+1226:        }
+1227:    }
+1228:
+1229:    private func counterTraceWrite(_ value: RuntimePipelineDisposition, nested: Bool) {
+1230:        if nested { counterTraceWrite("GiftUIRuntimeCore.") }
+1231:        counterTraceWrite("RuntimePipelineDisposition(semanticDisposition: ")
+1232:        counterTraceWrite(value.semanticDisposition)
+1233:        counterTraceWrite(", logicalFrameDisposition: ")
+1234:        counterTraceWrite(value.logicalFrameDisposition)
+1235:        counterTraceWrite(", presentationIntentState: ")
+1236:        counterTraceWrite(value.presentationIntentState)
+1237:        counterTraceWrite(", wakeReasons: GiftUIExecution.ExecutionWakeReasons(rawValue: ")
+1238:        counterTraceWrite(value.wakeReasons.rawValue)
+1239:        counterTraceWrite("), commitsInteractionCandidate: ")
+1240:        counterTraceWrite(value.commitsInteractionCandidate)
+1241:        counterTraceWrite(", preservesPublishedSemanticRevision: ")
+1242:        counterTraceWrite(value.preservesPublishedSemanticRevision)
+1243:        counterTraceWrite(")")
+1244:    }
+1245:
+1246:    private func counterTraceWrite(_ value: RuntimePipelinePublication) {
+1247:        counterTraceWrite("GiftUIRuntimeCore.RuntimePipelinePublication(semanticRevision: ")
+1248:        counterTraceWrite(value.semanticRevision)
+1249:        counterTraceWrite(", changed: "); counterTraceWrite(value.changed); counterTraceWrite(")")
+1250:    }
+1251:
+1252:    private func counterTraceWrite(_ value: RuntimePipelinePublication?) {
+1253:        if let value {
+1254:            counterTraceWrite("Optional("); counterTraceWrite(value); counterTraceWrite(")")
+1255:        } else {
+1256:            counterTraceWrite("nil")
+1257:        }
+1258:    }
+1259:
+1260:    private func counterTraceWrite(_ value: RuntimeOwnerFailure) {
+1261:        counterTraceWrite("GiftUIRuntimeCore.RuntimeOwnerFailure.")
+1262:        switch value {
+1263:        case .semantic(let error): counterTraceWrite("semantic("); counterTraceWrite(error)
+1264:        case .layout(let error): counterTraceWrite("layout("); counterTraceWrite(error)
+1265:        case .observableState(let error):
+1266:            counterTraceWrite("observableState("); counterTraceWrite(error)
+1267:        case .interaction(let error): counterTraceWrite("interaction("); counterTraceWrite(error)
+1268:        case .drawing(let error): counterTraceWrite("drawing("); counterTraceWrite(error)
+1269:        }
+1270:        counterTraceWrite(")")
+1271:    }
+1272:
+1273:    private func counterTraceWrite(_ value: RunCycleFailure<RuntimeOwnerFailure>) {
+1274:        counterTraceWrite("GiftUIExecution.RunCycleFailure<GiftUIRuntimeCore.RuntimeOwnerFailure>.")
+1275:        switch value {
+1276:        case .execution(let error): counterTraceWrite("execution("); counterTraceWrite(error)
+1277:        case .renderProduction(let error):
+1278:            counterTraceWrite("renderProduction("); counterTraceWrite(error)
+1279:        case .frameOffer(let error): counterTraceWrite("frameOffer("); counterTraceWrite(error)
+1280:        case .nonRetryableRefusal(let error):
+1281:            counterTraceWrite("nonRetryableRefusal("); counterTraceWrite(error)
+1282:        case .focusedOwner(let error): counterTraceWrite("focusedOwner("); counterTraceWrite(error)
+1283:        }
+1284:        counterTraceWrite(")")
+1285:    }
+1286:
+1287:    private func counterTraceWrite(_ value: RuntimeCompletePipelineResult<RuntimeOwnerFailure>) {
+1288:        switch value {
+1289:        case .completed(let completion):
+1290:            counterTraceWrite("completed(GiftUIRuntimeCore.RuntimePipelineCompletion(publication: ")
+1291:            counterTraceWrite(completion.publication)
+1292:            counterTraceWrite(", committedPresentationRevision: ");
+1293:            counterTraceWrite(completion.committedPresentationRevision)
+1294:            counterTraceWrite(", operational: "); counterTraceWrite(completion.operational)
+1295:            counterTraceWrite(", disposition: ");
+1296:            counterTraceWrite(completion.disposition, nested: true)
+1297:            counterTraceWrite("))")
+1298:        case .failed(let record):
+1299:            counterTraceWrite(
+1300:                "failed(GiftUIRuntimeCore.RuntimePipelineFailureRecord<GiftUIRuntimeCore.RuntimeOwnerFailure>(stage: GiftUIRuntimeCore.RuntimeCompletePipelineStage."
+1301:            )
+1302:            counterTraceWrite(counterTraceName(record.stage))
+1303:            counterTraceWrite(", failure: "); counterTraceWrite(record.failure)
+1304:            counterTraceWrite(", publication: "); counterTraceWrite(record.publication)
+1305:            counterTraceWrite(", disposition: ");
+1306:            counterTraceWrite(record.disposition, nested: true)
+1307:            counterTraceWrite("))")
+1308:        }
+1309:    }
+1310:
+1311:    private func counterTraceWrite(_ value: CapturedAction<SemanticCompleteIdentity>) {
+1312:        counterTraceWrite(
+1313:            "GiftUIExecution.CapturedAction<GiftUISemanticCore.SemanticCompleteIdentity>(identity: GiftUISemanticCore.SemanticCompleteIdentity(components: Swift.InlineArray<34, GiftUISemanticCore.SemanticPathComponent>(_storage: (Unknown)), count: "
+1314:        )
+1315:        counterTraceWrite(value.identity.count)
+1316:        counterTraceWrite("), generation: "); counterTraceWrite(value.generation);
+1317:        counterTraceWrite(")")
+1318:    }
+1319:
+1320:    private func counterTraceWrite(_ value: PointerGestureOutcome<SemanticCompleteIdentity>) {
+1321:        switch value {
+1322:        case .captured(let action):
+1323:            counterTraceWrite("captured("); counterTraceWrite(action); counterTraceWrite(")")
+1324:        case .continued(let action):
+1325:            counterTraceWrite("continued("); counterTraceWrite(action); counterTraceWrite(")")
+1326:        case .activationAdmitted(let action):
+1327:            counterTraceWrite("activationAdmitted("); counterTraceWrite(action);
+1328:            counterTraceWrite(")")
+1329:        case .cancelled: counterTraceWrite("cancelled")
+1330:        case .ignored: counterTraceWrite("ignored")
+1331:        }
+1332:    }
+1333:
+1334:    private func counterTraceWrite(_ value: RuntimeRecordInteractionDispatchResult) {
+1335:        switch value {
+1336:        case .interaction(let result):
+1337:            counterTraceWrite("interaction(GiftUIInteraction.InteractionDispatchResult.")
+1338:            switch result {
+1339:            case .dispatched: counterTraceWrite("dispatched")
+1340:            case .cancelled: counterTraceWrite("cancelled")
+1341:            case .failure(let error):
+1342:                counterTraceWrite("failure("); counterTraceWrite(error); counterTraceWrite(")")
+1343:            }
+1344:            counterTraceWrite(")")
+1345:        case .observableFailure(let error):
+1346:            counterTraceWrite("observableFailure("); counterTraceWrite(error);
+1347:            counterTraceWrite(")")
+1348:        }
+1349:    }
+1350:
+1351:    private func counterTraceWrite(_ value: RunCycleSummary) {
+1352:        counterTraceWrite("RunCycleSummary(cycle: "); counterTraceWrite(value.cycle)
+1353:        counterTraceWrite(", admission: GiftUIExecution.AdmissionSummary(inputEventCount: ");
+1354:        counterTraceWrite(value.admission.inputEventCount)
+1355:        counterTraceWrite(", stateChangeFactCount: ");
+1356:        counterTraceWrite(value.admission.stateChangeFactCount)
+1357:        counterTraceWrite(", completionFactCount: ");
+1358:        counterTraceWrite(value.admission.completionFactCount)
+1359:        counterTraceWrite(", semanticActionCount: ");
+1360:        counterTraceWrite(value.admission.semanticActionCount)
+1361:        counterTraceWrite(", includesDirtyRederivation: ");
+1362:        counterTraceWrite(value.admission.includesDirtyRederivation)
+1363:        counterTraceWrite(", includesPresentationRecovery: ");
+1364:        counterTraceWrite(value.admission.includesPresentationRecovery)
+1365:        counterTraceWrite("), semanticRevision: "); counterTraceWrite(value.semanticRevision)
+1366:        counterTraceWrite(", semanticDisposition: "); counterTraceWrite(value.semanticDisposition)
+1367:        counterTraceWrite(", logicalFrameDisposition: ");
+1368:        counterTraceWrite(value.logicalFrameDisposition)
+1369:        counterTraceWrite(", committedPresentationRevision: ");
+1370:        counterTraceWrite(value.committedPresentationRevision)
+1371:        counterTraceWrite(", presentationIntentState: ");
+1372:        counterTraceWrite(value.presentationIntentState)
+1373:        counterTraceWrite(", presentationPending: "); counterTraceWrite(value.presentationPending)
+1374:        counterTraceWrite(
+1375:            ", operationalEvents: GiftUIExecution.ExecutionOperationalEvents(rawValue: ")
+1376:        counterTraceWrite(value.operationalEvents.rawValue); counterTraceWrite("))")
+1377:    }
+1378:
+1379:    private func counterTraceWrite(_ value: ExecutionAdmissionOutcome) {
+1380:        counterTraceWrite("ExecutionAdmissionOutcome(result: "); counterTraceWrite(value.result)
+1381:        counterTraceWrite(", context: "); counterTraceWrite(value.context); counterTraceWrite(")")
+1382:    }
+1383:
+1384:    func counterTrace(
+1385:        _ label: StaticString, _ value: RuntimeCompletePipelineResult<RuntimeOwnerFailure>
+1386:    ) {
+1387:        counterTraceWrite(label); counterTraceWrite(" ")
+1388:        counterTraceWrite(value)
+1389:        counterTraceWrite("\n")
+1390:    }
+1391:
+1392:    func counterTrace(_ label: StaticString, _ value: RuntimeCompletePipelineStage) {
+1393:        counterTraceWrite(label); counterTraceWrite(" ")
+1394:        counterTraceWrite(counterTraceName(value))
+1395:        counterTraceWrite("\n")
+1396:    }
+1397:
+1398:    func counterTrace(_ label: StaticString, _ value: RuntimeCleanupAction) {
+1399:        counterTraceWrite(label); counterTraceWrite(" ")
+1400:        counterTraceWrite(counterTraceName(value))
+1401:        counterTraceWrite("\n")
+1402:    }
+1403:
+1404:    func counterTrace(_ label: StaticString, _ value: RuntimePipelineDisposition) {
+1405:        counterTraceWrite(label); counterTraceWrite(" ")
+1406:        counterTraceWrite(value, nested: false)
+1407:        counterTraceWrite("\n")
+1408:    }
+1409:
+1410:    func counterTrace(
+1411:        _ label: StaticString, _ value: PointerGestureOutcome<SemanticCompleteIdentity>
+1412:    ) {
+1413:        counterTraceWrite(label); counterTraceWrite(" ")
+1414:        counterTraceWrite(value)
+1415:        counterTraceWrite("\n")
+1416:    }
+1417:
+1418:    func counterTrace(_ label: StaticString, _ value: RuntimeRecordInteractionDispatchResult) {
+1419:        counterTraceWrite(label); counterTraceWrite(" ")
+1420:        counterTraceWrite(value)
+1421:        counterTraceWrite("\n")
+1422:    }
+1423:
+1424:    func counterTrace(_ label: StaticString, _ value: RunCycleSummary) {
+1425:        counterTraceWrite(label); counterTraceWrite(" ")
+1426:        counterTraceWrite(value)
+1427:        counterTraceWrite("\n")
+1428:    }
+1429:
+1430:    func counterTrace(_ label: StaticString, _ value: ExecutionAdmissionOutcome) {
+1431:        counterTraceWrite(label); counterTraceWrite(" ")
+1432:        counterTraceWrite(value)
+1433:        counterTraceWrite("\n")
+1434:    }
+1435:
+1436:    func counterTrace(
+1437:        _ label: StaticString, _ value: (UInt16, UInt16, ObservableModelOwnership.Phase)
+1438:    ) {
+1439:        counterTraceWrite(label); counterTraceWrite(" ")
+1440:        counterTraceWrite("("); counterTraceWrite(value.0); counterTraceWrite(", ");
+1441:        counterTraceWrite(value.1); counterTraceWrite(", "); counterTraceWrite(value.2);
+1442:        counterTraceWrite(")")
+1443:        counterTraceWrite("\n")
+1444:    }
+1445:
+1446:    func counterTrace(
+1447:        _ label: StaticString,
+1448:        _ value: (ExecutionContext, Int, Int, UInt16, UInt16, ObservableModelOwnership.Phase)
+1449:    ) {
+1450:        counterTraceWrite(label); counterTraceWrite(" ")
+1451:        counterTraceWrite("("); counterTraceWrite(value.0); counterTraceWrite(", ");
+1452:        counterTraceWrite(value.1); counterTraceWrite(", "); counterTraceWrite(value.2);
+1453:        counterTraceWrite(", "); counterTraceWrite(value.3); counterTraceWrite(", ");
+1454:        counterTraceWrite(value.4); counterTraceWrite(", "); counterTraceWrite(value.5);
+1455:        counterTraceWrite(")")
+1456:        counterTraceWrite("\n")
+1457:    }
+1458:
+1459:    func counterTrace(_ label: StaticString, _ value: (PresentationPendingIntent?, Bool, UInt32)) {
+1460:        counterTraceWrite(label); counterTraceWrite(" ")
+1461:        counterTraceWrite("("); counterTraceWrite(value.0); counterTraceWrite(", ");
+1462:        counterTraceWrite(value.1); counterTraceWrite(", "); counterTraceWrite(value.2);
+1463:        counterTraceWrite(")")
+1464:        counterTraceWrite("\n")
+1465:    }
+1466:
+1467:    // Additional reached Native Static observations use the same finite writer.
+1468:    // Values remain live field reads; spelling mirrors the pinned print oracle.
+1469:    package func counterDiagnosticStaticResourceSummary(_ assertions: Int) {
+1470:        counterTraceWrite("P08 counter components assertions=")
+1471:        counterTraceWrite(assertions)
+1472:        counterTraceWrite(" failures=0\n")
+1473:    }
+1474:
+1475:    func counterDiagnosticReuse(_ route: StaticString, _ suffix: StaticString) {
+1476:        counterTraceWrite("so06-reuse-"); counterTraceWrite(route)
+1477:        counterTraceWrite("-"); counterTraceWrite(suffix); counterTraceWrite("\n")
+1478:    }
+1479:
+1480:    func counterDiagnosticRole(
+1481:        _ bank: UInt8, _ leftID: UInt8, _ leftAddress: UInt,
+1482:        _ leftCount: UInt16, _ leftBytes: Int, _ rightID: UInt8, _ rightAddress: UInt,
+1483:        _ rightCount: UInt16, _ rightBytes: Int, _ leftAfter: UInt8, _ rightAfter: UInt8
+1484:    ) {
+1485:        counterTraceWrite("SO06 role "); counterTraceWrite(bank); counterTraceWrite(" ")
+1486:        counterTraceWrite(leftID); counterTraceWrite(" "); counterTraceWriteUnsigned(leftAddress)
+1487:        counterTraceWrite(" "); counterTraceWrite(leftCount); counterTraceWrite(" ")
+1488:        counterTraceWrite(leftBytes); counterTraceWrite(" "); counterTraceWrite(rightID)
+1489:        counterTraceWrite(" "); counterTraceWriteUnsigned(rightAddress); counterTraceWrite(" ")
+1490:        counterTraceWrite(rightCount); counterTraceWrite(" "); counterTraceWrite(rightBytes)
+1491:        counterTraceWrite(" => "); counterTraceWrite(leftAfter); counterTraceWrite(" ")
+1492:        counterTraceWrite(rightAfter); counterTraceWrite("\n")
+1493:    }
+1494:
+1495:    func counterDiagnosticAudit(_ label: StaticString, _ result: RuntimeProfileValidationResult) {
+1496:        counterTraceWrite(label); counterTraceWrite(" ")
+1497:        switch result {
+1498:        case .valid(let audit):
+1499:            counterTraceWrite("valid("); counterTraceWrite(audit); counterTraceWrite(")")
+1500:        case .invalid(let error):
+1501:            counterTraceWrite("invalid(GiftUIRuntimeCore.RuntimeProfileValidationError.")
+1502:            switch error {
+1503:            case .invalidLimits: counterTraceWrite("invalidLimits")
+1504:            case .incompatibleLimits: counterTraceWrite("incompatibleLimits")
+1505:            case .missingStorage: counterTraceWrite("missingStorage")
+1506:            case .insufficientStorage: counterTraceWrite("insufficientStorage")
+1507:            case .arithmeticOverflow: counterTraceWrite("arithmeticOverflow")
+1508:            case .staticCanvasTableInvalid: counterTraceWrite("staticCanvasTableInvalid")
+1509:            case .invariantViolation: counterTraceWrite("invariantViolation")
+1510:            }
+1511:            counterTraceWrite(")")
+1512:        }
+1513:        counterTraceWrite("\n")
+1514:    }
+1515:
+1516:    private func counterTraceWrite(_ audit: RuntimeStorageAudit) {
+1517:        counterTraceWrite("GiftUIRuntimeCore.RuntimeStorageAudit(")
+1518:        counterTraceWrite("profile: ")
+1519:        counterTraceWrite("GiftUIRuntimeCore.RuntimeProfileKind.")
+1520:        switch audit.profile {
+1521:        case .static: counterTraceWrite("static")
+1522:        case .dynamic: counterTraceWrite("dynamic")
+1523:        }
+1524:        counterTraceWrite(", limits: ")
+1525:        counterTraceWrite("GiftUIRuntimeCore.RuntimeProfileLimits(")
+1526:        counterTraceWrite("records: ")
+1527:        counterTraceWrite("GiftUIRuntimeCore.RuntimeRecordLimits(")
+1528:        counterTraceWrite("maximumPathEntries: ")
+1529:        counterTraceWrite(audit.limits.records.maximumPathEntries)
+1530:        counterTraceWrite(", maximumPathDepth: ")
+1531:        counterTraceWrite(audit.limits.records.maximumPathDepth)
+1532:        counterTraceWrite(", maximumPathChildFanout: ")
+1533:        counterTraceWrite(audit.limits.records.maximumPathChildFanout)
+1534:        counterTraceWrite(", maximumPayloadBytesPerBank: ")
+1535:        counterTraceWrite(audit.limits.records.maximumPayloadBytesPerBank)
+1536:        counterTraceWrite(", maximumIdentityComponentsPerKey: ")
+1537:        counterTraceWrite(audit.limits.records.maximumIdentityComponentsPerKey)
+1538:        counterTraceWrite(", maximumInteractionIdentityComponents: ")
+1539:        counterTraceWrite(audit.limits.records.maximumInteractionIdentityComponents)
+1540:        counterTraceWrite(")")
+1541:        counterTraceWrite(", models: ")
+1542:        counterTraceWrite("GiftUIRuntimeCore.RuntimeModelLimits(")
+1543:        counterTraceWrite("maximumModelSlots: ")
+1544:        counterTraceWrite(audit.limits.models.maximumModelSlots)
+1545:        counterTraceWrite(", maximumOwningTickets: ")
+1546:        counterTraceWrite(audit.limits.models.maximumOwningTickets)
+1547:        counterTraceWrite(", maximumFramePins: ")
+1548:        counterTraceWrite(audit.limits.models.maximumFramePins)
+1549:        counterTraceWrite(", maximumModelCaptureBanks: ")
+1550:        counterTraceWrite(audit.limits.models.maximumModelCaptureBanks)
+1551:        counterTraceWrite(")")
+1552:        counterTraceWrite(", semantic: ")
+1553:        counterTraceWrite("GiftUISemanticCore.SemanticExpansionLimits(")
+1554:        counterTraceWrite("maximumDepth: ")
+1555:        counterTraceWrite(audit.limits.semantic.maximumDepth)
+1556:        counterTraceWrite(", maximumSemanticNodes: ")
+1557:        counterTraceWrite(audit.limits.semantic.maximumSemanticNodes)
+1558:        counterTraceWrite(", maximumBodyEvaluations: ")
+1559:        counterTraceWrite(audit.limits.semantic.maximumBodyEvaluations)
+1560:        counterTraceWrite(", maximumModifierApplications: ")
+1561:        counterTraceWrite(audit.limits.semantic.maximumModifierApplications)
+1562:        counterTraceWrite(", maximumActionOccurrences: ")
+1563:        counterTraceWrite(audit.limits.semantic.maximumActionOccurrences)
+1564:        counterTraceWrite(")")
+1565:        counterTraceWrite(", maximumSemanticStructuralOccurrences: ")
+1566:        counterTraceWrite(audit.limits.maximumSemanticStructuralOccurrences)
+1567:        counterTraceWrite(", layout: ")
+1568:        counterTraceWrite("GiftUILayout.LayoutLimits(")
+1569:        counterTraceWrite("maximumScopes: ")
+1570:        counterTraceWrite(audit.limits.layout.maximumScopes)
+1571:        counterTraceWrite(", maximumDepth: ")
+1572:        counterTraceWrite(audit.limits.layout.maximumDepth)
+1573:        counterTraceWrite(", maximumTextScalars: ")
+1574:        counterTraceWrite(audit.limits.layout.maximumTextScalars)
+1575:        counterTraceWrite(", maximumTextLines: ")
+1576:        counterTraceWrite(audit.limits.layout.maximumTextLines)
+1577:        counterTraceWrite(", maximumPositionedGlyphs: ")
+1578:        counterTraceWrite(audit.limits.layout.maximumPositionedGlyphs)
+1579:        counterTraceWrite(")")
+1580:        counterTraceWrite(", render: ")
+1581:        counterTraceWrite("GiftUIRenderLowering.RenderLimits(")
+1582:        counterTraceWrite("maximumOperations: ")
+1583:        counterTraceWrite(audit.limits.render.maximumOperations)
+1584:        counterTraceWrite(", maximumPositionedGlyphs: ")
+1585:        counterTraceWrite(audit.limits.render.maximumPositionedGlyphs)
+1586:        counterTraceWrite(", maximumClipDepth: ")
+1587:        counterTraceWrite(audit.limits.render.maximumClipDepth)
+1588:        counterTraceWrite(")")
+1589:        counterTraceWrite(", renderWorkspace: ")
+1590:        counterTraceWrite("GiftUIRenderLowering.RenderWorkspaceCapacity(")
+1591:        counterTraceWrite("maximumSemanticScopes: ")
+1592:        counterTraceWrite(audit.limits.renderWorkspace.maximumSemanticScopes)
+1593:        counterTraceWrite(", maximumLayoutScopes: ")
+1594:        counterTraceWrite(audit.limits.renderWorkspace.maximumLayoutScopes)
+1595:        counterTraceWrite(", maximumTraversalDepth: ")
+1596:        counterTraceWrite(audit.limits.renderWorkspace.maximumTraversalDepth)
+1597:        counterTraceWrite(", maximumTextLines: ")
+1598:        counterTraceWrite(audit.limits.renderWorkspace.maximumTextLines)
+1599:        counterTraceWrite(")")
+1600:        counterTraceWrite(", renderSink: ")
+1601:        counterTraceWrite("GiftUIRenderCore.RenderSinkCapacity(")
+1602:        counterTraceWrite("maximumOperations: ")
+1603:        counterTraceWrite(audit.limits.renderSink.maximumOperations)
+1604:        counterTraceWrite(", maximumPositionedGlyphs: ")
+1605:        counterTraceWrite(audit.limits.renderSink.maximumPositionedGlyphs)
+1606:        counterTraceWrite(")")
+1607:        counterTraceWrite(", maximumOrdinaryRenderOperations: ")
+1608:        counterTraceWrite(audit.limits.maximumOrdinaryRenderOperations)
+1609:        counterTraceWrite(", execution: ")
+1610:        counterTraceWrite("GiftUIExecution.ExecutionLimits(")
+1611:        counterTraceWrite("maximumInputEvents: ")
+1612:        counterTraceWrite(audit.limits.execution.maximumInputEvents)
+1613:        counterTraceWrite(", maximumStateChangeFacts: ")
+1614:        counterTraceWrite(audit.limits.execution.maximumStateChangeFacts)
+1615:        counterTraceWrite(", maximumCompletionFacts: ")
+1616:        counterTraceWrite(audit.limits.execution.maximumCompletionFacts)
+1617:        counterTraceWrite(", maximumSemanticActions: ")
+1618:        counterTraceWrite(audit.limits.execution.maximumSemanticActions)
+1619:        counterTraceWrite(", maximumActiveInputSources: ")
+1620:        counterTraceWrite(audit.limits.execution.maximumActiveInputSources)
+1621:        counterTraceWrite(", maximumCommittedActions: ")
+1622:        counterTraceWrite(audit.limits.execution.maximumCommittedActions)
+1623:        counterTraceWrite(")")
+1624:        counterTraceWrite(", observableState: ")
+1625:        counterTraceWrite("GiftUIObservableState.ObservableStateLimits(")
+1626:        counterTraceWrite("maximumLocations: ")
+1627:        counterTraceWrite(audit.limits.observableState.maximumLocations)
+1628:        counterTraceWrite(", maximumRegistrations: ")
+1629:        counterTraceWrite(audit.limits.observableState.maximumRegistrations)
+1630:        counterTraceWrite(", maximumStagedAssociations: ")
+1631:        counterTraceWrite(audit.limits.observableState.maximumStagedAssociations)
+1632:        counterTraceWrite(")")
+1633:        counterTraceWrite(", interaction: ")
+1634:        counterTraceWrite("GiftUIInteraction.InteractionLimits(")
+1635:        counterTraceWrite("maximumActions: ")
+1636:        counterTraceWrite(audit.limits.interaction.maximumActions)
+1637:        counterTraceWrite(", maximumHitRegions: ")
+1638:        counterTraceWrite(audit.limits.interaction.maximumHitRegions)
+1639:        counterTraceWrite(")")
+1640:        counterTraceWrite(", drawing: ")
+1641:        counterTraceWrite("GiftUIDrawing.DrawingLimits(")
+1642:        counterTraceWrite("maximumLineWidth: ")
+1643:        counterTraceWrite(Int(audit.limits.drawing.maximumLineWidth))
+1644:        counterTraceWrite(", maximumCanvasOccurrences: ")
+1645:        counterTraceWrite(audit.limits.drawing.maximumCanvasOccurrences)
+1646:        counterTraceWrite(", maximumLivePathPoints: ")
+1647:        counterTraceWrite(audit.limits.drawing.maximumLivePathPoints)
+1648:        counterTraceWrite(", maximumLivePathSubpaths: ")
+1649:        counterTraceWrite(audit.limits.drawing.maximumLivePathSubpaths)
+1650:        counterTraceWrite(", maximumPlanStrokes: ")
+1651:        counterTraceWrite(audit.limits.drawing.maximumPlanStrokes)
+1652:        counterTraceWrite(", maximumPlanPoints: ")
+1653:        counterTraceWrite(audit.limits.drawing.maximumPlanPoints)
+1654:        counterTraceWrite(", maximumPlanSubpaths: ")
+1655:        counterTraceWrite(audit.limits.drawing.maximumPlanSubpaths)
+1656:        counterTraceWrite(", maximumNormalizedStrokeOperations: ")
+1657:        counterTraceWrite(audit.limits.drawing.maximumNormalizedStrokeOperations)
+1658:        counterTraceWrite(")")
+1659:        counterTraceWrite(", staticCanvas: ")
+1660:        if let canvas = audit.limits.staticCanvas {
+1661:            counterTraceWrite("Optional(")
+1662:            counterTraceWrite("GiftUIDrawing.StaticCanvasLimits(")
+1663:            counterTraceWrite("maximumStaticCallableCases: ")
+1664:            counterTraceWrite(canvas.maximumStaticCallableCases)
+1665:            counterTraceWrite(", maximumStaticCaptureBytes: ")
+1666:            counterTraceWrite(canvas.maximumStaticCaptureBytes)
+1667:            counterTraceWrite(")")
+1668:            counterTraceWrite(")")
+1669:        } else {
+1670:            counterTraceWrite("nil")
+1671:        }
+1672:        counterTraceWrite(")")
+1673:        counterTraceWrite(", semanticCandidatePathBytes: ")
+1674:        counterTraceWrite(audit.semanticCandidatePathBytes)
+1675:        counterTraceWrite(", semanticPublishedPathBytes: ")
+1676:        counterTraceWrite(audit.semanticPublishedPathBytes)
+1677:        counterTraceWrite(", semanticCandidatePayloadBytes: ")
+1678:        counterTraceWrite(audit.semanticCandidatePayloadBytes)
+1679:        counterTraceWrite(", semanticPublishedPayloadBytes: ")
+1680:        counterTraceWrite(audit.semanticPublishedPayloadBytes)
+1681:        counterTraceWrite(", identityMatchWorkspaceBytes: ")
+1682:        counterTraceWrite(audit.identityMatchWorkspaceBytes)
+1683:        counterTraceWrite(", interactionCandidateIdentityBytes: ")
+1684:        counterTraceWrite(audit.interactionCandidateIdentityBytes)
+1685:        counterTraceWrite(", interactionCommittedIdentityBytes: ")
+1686:        counterTraceWrite(audit.interactionCommittedIdentityBytes)
+1687:        counterTraceWrite(", modelMetadataBytes: ")
+1688:        counterTraceWrite(audit.modelMetadataBytes)
+1689:        counterTraceWrite(", modelOwnerBytes: ")
+1690:        counterTraceWrite(audit.modelOwnerBytes)
+1691:        counterTraceWrite(", framePinBytes: ")
+1692:        counterTraceWrite(audit.framePinBytes)
+1693:        counterTraceWrite(", semanticCandidateBytes: ")
+1694:        counterTraceWrite(audit.semanticCandidateBytes)
+1695:        counterTraceWrite(", semanticPublishedBytes: ")
+1696:        counterTraceWrite(audit.semanticPublishedBytes)
+1697:        counterTraceWrite(", layoutCandidateBytes: ")
+1698:        counterTraceWrite(audit.layoutCandidateBytes)
+1699:        counterTraceWrite(", renderWorkspaceBytes: ")
+1700:        counterTraceWrite(audit.renderWorkspaceBytes)
+1701:        counterTraceWrite(", canvasCallableBytes: ")
+1702:        counterTraceWrite(audit.canvasCallableBytes)
+1703:        counterTraceWrite(", pathWorkspaceBytes: ")
+1704:        counterTraceWrite(audit.pathWorkspaceBytes)
+1705:        counterTraceWrite(", drawingPlanBytes: ")
+1706:        counterTraceWrite(audit.drawingPlanBytes)
+1707:        counterTraceWrite(", observableLiveBytes: ")
+1708:        counterTraceWrite(audit.observableLiveBytes)
+1709:        counterTraceWrite(", observableCandidateBytes: ")
+1710:        counterTraceWrite(audit.observableCandidateBytes)
+1711:        counterTraceWrite(", interactionCandidateBytes: ")
+1712:        counterTraceWrite(audit.interactionCandidateBytes)
+1713:        counterTraceWrite(", interactionCommittedBytes: ")
+1714:        counterTraceWrite(audit.interactionCommittedBytes)
+1715:        counterTraceWrite(", admissionQueueBytes: ")
+1716:        counterTraceWrite(audit.admissionQueueBytes)
+1717:        counterTraceWrite(", sealedBatchBytes: ")
+1718:        counterTraceWrite(audit.sealedBatchBytes)
+1719:        counterTraceWrite(", pointerStateBytes: ")
+1720:        counterTraceWrite(audit.pointerStateBytes)
+1721:        counterTraceWrite(", coordinatorStateBytes: ")
+1722:        counterTraceWrite(audit.coordinatorStateBytes)
+1723:        counterTraceWrite(", failureStateBytes: ")
+1724:        counterTraceWrite(audit.failureStateBytes)
+1725:        counterTraceWrite(", totalProfileBytes: ")
+1726:        counterTraceWrite(audit.totalProfileBytes)
+1727:        counterTraceWrite(")")
+1728:    }
+1729:
+1730:    private func counterTraceWrite(_ text: StaticString) {
+1731:        text.withUTF8Buffer { bytes in
+1732:            for byte in bytes { _ = putchar(Int32(byte)) }
+1733:        }
+1734:    }
+1735:
+1736:    private func counterTraceWrite(_ text: BoundedText) {
+1737:        text.withUTF8 { bytes in
+1738:            for byte in bytes { _ = putchar(Int32(byte)) }
+1739:        }
+1740:    }
+1741:
+1742:    private func counterTraceWrite(_ value: UInt32) {
+1743:        let low = BoundedText(Int32(value % 1_000_000_000))
+1744:        if value >= 1_000_000_000 {
+1745:            counterTraceWrite(BoundedText(Int32(value / 1_000_000_000)))
+1746:            for _ in Int(low.utf8ByteCount) ..< 9 { _ = putchar(48) }
+1747:        }
+1748:        counterTraceWrite(low)
+1749:    }
+1750:#endif
+1751:
+1752:private func counterActionCode(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> UInt16 {
+1753:    guard let record = bank.record(ref), let payload = bank.payload(at: record.payload), case .standard(.action(_, let code)) = payload else { preconditionFailure("counter action payload") }
+1754:    return code
+1755:}
+1756:
+1757:extension CounterPipelineOwner
+1758:where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+1759:    @_lifetime(copy models, copy root, copy semantic, copy values, copy scopedControl, copy geometry, copy interaction)
+1760:    init(
+1761:        models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+1762:        root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+1763:        semantic: consuming SemanticRecordStore<CounterPayload>,
+1764:        values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>,
+1765:        geometry: consuming Geometry,
+1766:        interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>,
+1767:        scopedControl: consuming CounterHostControl, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration
+1768:    ) {
+1769:        let sameOwner = root.belongs(to: models)
+1770:        precondition(sameOwner)
+1771:        self.models = consume models
+1772:        self.root = consume root
+1773:        self.semantic = consume semantic
+1774:        self.values = consume values
+1775:        self.limits = limits
+1776:        let claim = scopedControl.pointer.pointee.claimRuntimeSlot()
+1777:        scopedControl.pointer.pointee.initializeCounterWake()
+1778:        let construction = CounterConstructionInputs.canonical
+1779:        let constructedEndpoint = CounterEndpoint(configuration: construction.endpointConfiguration.configuration(endpointConfiguration), control: construction.endpointBacking.control(scopedControl.pointer))
+1780:        scopedControl.pointer.pointee.runtimeEndpoint = constructedEndpoint
+1781:        scopedControl.pointer.pointee.completeRuntimeInstallation(claim)
+1782:        runtimeClaim = claim
+1783:        self.geometry = consume geometry
+1784:        self.interaction = consume interaction
+1785:        self.control = scopedControl.pointer
+1786:        precondition(self.root.belongs(to: self.models))
+1787:    }
+1788:}
+1789:
+1790:
+1791:// Extensions must repeat the scoped generic permissions: omitted constraints
+1792:// otherwise introduce implicit Copyable/Escapable specialization in Swift.
+1793:extension CounterPipelineOwner
+1794:where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+1795:    private borrowing func clearOwnedRuntimeSlot() {
+1796:        CounterControl.requireRuntimeClaim(at: control, runtimeClaim)
+1797:        let idle = control.pointee.runtimeEndpoint!.isIdleForRuntimeRelease
+1798:        let inactive = !control.pointee.backend.active
+1799:        precondition(idle && inactive)
+1800:        control.pointee.clearRuntimeSlot(runtimeClaim)
+1801:    }
+1802:}
+1803:
+1804:extension CounterPipelineOwner
+1805:where Geometry: Copyable & Escapable, Candidate: Copyable & Escapable, Committed: Copyable & Escapable, Hits: Copyable & Escapable {
+1806:    consuming func returnWorkspaces(checks: Int) -> CounterReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+1807:        precondition(quiescent && presentationTeardownComplete)
+1808:        clearOwnedRuntimeSlot()
+1809:        return CounterReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
+1810:    }
+1811:}
+1812:
+1813:struct CounterRetiredStorage<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable
+1814:where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+1815:    private let semantic: SemanticRecordStore<CounterPayload>
+1816:    private var geometry: Geometry
+1817:    private var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
+1818:    @_lifetime(copy semantic, copy geometry, copy interaction)
+1819:    init(semantic: consuming SemanticRecordStore<CounterPayload>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>) {
+1820:        self.semantic = consume semantic; self.geometry = consume geometry; self.interaction = consume interaction
+1821:    }
+1822:    @_lifetime(self: copy self)
+1823:    mutating func resetAfterQuiescence() {
+1824:        do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence() }
+1825:        catch { preconditionFailure("counter semantic reset") }
+1826:        geometry.reset(); interaction.resetAllStorage()
+1827:    }
+1828:}
+1829:
+1830:
+1831:struct CounterEndpointOfferObservation {
+1832:    let result: FrameOfferResult
+1833:    let invalidEnvelopeRejections: Int
+1834:    let health: GiftUIOperationalHealth
+1835:    let acceptedRecording: CounterRenderSink?
+1836:}
+1837:struct CounterProductionObservation {
+1838:    let endpoint: CounterEndpointOfferObservation
+1839:    let error: RenderProductionError?
+1840:}
+1841:// The callback borrows only these separate formal loans. The original semantic
+1842:// lender is retained by borrowedStore; no callback captures a pipeline/control.
+1843:private func counterProduceStoredEndpoint<G: CounterGeometry & ~Copyable & ~Escapable>(
+1844:    endpoint: inout CounterEndpoint, streams: inout Int, geometry: inout G,
+1845:    semantic: borrowing SemanticRecordStore<CounterPayload>, header: RenderPlanHeader,
+1846:    limits: RuntimeProfileLimits, provenance: FrameProvenance
+1847:) -> CounterProductionObservation {
+1848:    var retained: RenderProductionError?
+1849:    let observed = endpoint.offerAndObserve(provenance: provenance) { sink in
+1850:        streams += 1
+1851:        do throws(SemanticExpansionError) {
+1852:            return try semantic.withPublishedView { bank in
+1853:                switch geometry.produce(bank, header: header, sink: &sink, limits: limits) {
+1854:                case .success: return .complete
+1855:                case .failure(let error): retained = error; return RecordingRenderProductionAdapter.observe(error: error).streamResult!
+1856:                }
+1857:            }
+1858:        } catch { retained = .invariantViolation; return .contractViolation }
+1859:    }
+1860:    return .init(endpoint: observed, error: retained)
+1861:}
+1862:
+1863:
+1864:// Owned facts only: no endpoint, pointer, scoped value or callback is retained.
+1865:struct CounterRecordingObservation: Equatable {
+1866:    private var value: CounterRenderSink
+1867:    init() { value = CounterRenderSink() }
+1868:    init(_ value: borrowing CounterRenderSink) { self.value = copy value }
+1869:    mutating func capture(_ current: borrowing CounterRenderSink) { value = copy current }
+1870:    borrowing func matches(_ current: borrowing CounterRenderSink) -> Bool {
+1871:        let sameCapacity = value.capacity == current.capacity
+1872:        guard sameCapacity else { return false }
+1873:        let sameHeader = value.header == current.header
+1874:        guard sameHeader else { return false }
+1875:        let sameOperations = value.operations == current.operations
+1876:        guard sameOperations else { return false }
+1877:        let sameGlyphs = value.glyphs == current.glyphs
+1878:        guard sameGlyphs else { return false }
+1879:        let sameStrokes = value.strokes == current.strokes
+1880:        guard sameStrokes else { return false }
+1881:        let sameFinishes = value.finishes == current.finishes
+1882:        guard sameFinishes else { return false }
+1883:        let sameDiscards = value.discards == current.discards
+1884:        guard sameDiscards else { return false }
+1885:        let sameFirstPoint = value.firstPoint == current.firstPoint
+1886:        guard sameFirstPoint else { return false }
+1887:        let sameSecondPoint = value.secondPoint == current.secondPoint
+1888:        guard sameSecondPoint else { return false }
+1889:        let sameStrokeHeader = value.strokeHeader == current.strokeHeader
+1890:        guard sameStrokeHeader else { return false }
+1891:        for index in 0..<64 {
+1892:            let same = value.glyphRecords[index] == current.glyphRecords[index]
+1893:            guard same else { return false }
+1894:        }
+1895:        return true
+1896:    }
+1897:    @inline(never)
+1898:    mutating func captureAccepted(_ control: UnsafeMutablePointer<CounterControl>) { value = control.pointee.lastFrame }
+1899:    @inline(never)
+1900:    mutating func matchesAccepted(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+1901:        let sameCapacity = value.capacity == control.pointee.lastFrame.capacity
+1902:        guard sameCapacity else { return false }
+1903:        let sameHeader = value.header == control.pointee.lastFrame.header
+1904:        guard sameHeader else { return false }
+1905:        let sameOperations = value.operations == control.pointee.lastFrame.operations
+1906:        guard sameOperations else { return false }
+1907:        let sameGlyphs = value.glyphs == control.pointee.lastFrame.glyphs
+1908:        guard sameGlyphs else { return false }
+1909:        let sameStrokes = value.strokes == control.pointee.lastFrame.strokes
+1910:        guard sameStrokes else { return false }
+1911:        let sameFinishes = value.finishes == control.pointee.lastFrame.finishes
+1912:        guard sameFinishes else { return false }
+1913:        let sameDiscards = value.discards == control.pointee.lastFrame.discards
+1914:        guard sameDiscards else { return false }
+1915:        let sameFirstPoint = value.firstPoint == control.pointee.lastFrame.firstPoint
+1916:        guard sameFirstPoint else { return false }
+1917:        let sameSecondPoint = value.secondPoint == control.pointee.lastFrame.secondPoint
+1918:        guard sameSecondPoint else { return false }
+1919:        let sameStrokeHeader = value.strokeHeader == control.pointee.lastFrame.strokeHeader
+1920:        guard sameStrokeHeader else { return false }
+1921:        for index in 0..<64 {
+1922:            let same = value.glyphRecords[index] == control.pointee.lastFrame.glyphRecords[index]
+1923:            guard same else { return false }
+1924:        }
+1925:        return true
+1926:    }
+1927:    @inline(never)
+1928:    mutating func captureEndpoint(_ endpoint: inout CounterEndpoint) { value = endpoint.actual.sink.recording }
+1929:    @inline(never)
+1930:    mutating func matchesEndpoint(_ endpoint: inout CounterEndpoint) -> Bool {
+1931:        let sameCapacity = value.capacity == endpoint.actual.sink.recording.capacity
+1932:        guard sameCapacity else { return false }
+1933:        let sameHeader = value.header == endpoint.actual.sink.recording.header
+1934:        guard sameHeader else { return false }
+1935:        let sameOperations = value.operations == endpoint.actual.sink.recording.operations
+1936:        guard sameOperations else { return false }
+1937:        let sameGlyphs = value.glyphs == endpoint.actual.sink.recording.glyphs
+1938:        guard sameGlyphs else { return false }
+1939:        let sameStrokes = value.strokes == endpoint.actual.sink.recording.strokes
+1940:        guard sameStrokes else { return false }
+1941:        let sameFinishes = value.finishes == endpoint.actual.sink.recording.finishes
+1942:        guard sameFinishes else { return false }
+1943:        let sameDiscards = value.discards == endpoint.actual.sink.recording.discards
+1944:        guard sameDiscards else { return false }
+1945:        let sameFirstPoint = value.firstPoint == endpoint.actual.sink.recording.firstPoint
+1946:        guard sameFirstPoint else { return false }
+1947:        let sameSecondPoint = value.secondPoint == endpoint.actual.sink.recording.secondPoint
+1948:        guard sameSecondPoint else { return false }
+1949:        let sameStrokeHeader = value.strokeHeader == endpoint.actual.sink.recording.strokeHeader
+1950:        guard sameStrokeHeader else { return false }
+1951:        for index in 0..<64 {
+1952:            let same = value.glyphRecords[index] == endpoint.actual.sink.recording.glyphRecords[index]
+1953:            guard same else { return false }
+1954:        }
+1955:        return true
+1956:    }
+1957:    @inline(never)
+1958:    mutating func installAcceptedProbe(_ index: Int, control: UnsafeMutablePointer<CounterControl>) {
+1959:        guard let probe = value.glyphRecords[0] else { preconditionFailure("baseline glyph positive") }
+1960:        control.pointee.lastFrame.glyphRecords[index] = value.glyphRecords[index] == nil ? probe : nil
+1961:    }
+1962:    @inline(never)
+1963:    mutating func restoreAcceptedProbe(_ index: Int, control: UnsafeMutablePointer<CounterControl>) {
+1964:        control.pointee.lastFrame.glyphRecords[index] = value.glyphRecords[index]
+1965:    }
+1966:    static func == (left: Self, right: Self) -> Bool { left.matches(right.value) }
+1967:}
+1968:struct CounterWriterObservation: Equatable {
+1969:    let bytes: UInt32
+1970:    let regions: UInt16
+1971:    let origin: Point?
+1972:    let pixels: UInt16
+1973:    let remaining: UInt32
+1974:    let completed: Bool
+1975:}
+1976:struct CounterEndpointObservation: Equatable {
+1977:    let effectivePresentation: EffectiveRasterPresentation
+1978:    let descriptor: RasterSurfaceDescriptor
+1979:    let payloadLimits: RasterPayloadLimits
+1980:    let realization: RasterRealizationID
+1981:    let bodyCalls: UInt32
+1982:    let reservations: UInt32
+1983:    let displayError: DisplayTargetError?
+1984:    let producerError: RenderProductionError?
+1985:    let capacity: RenderSinkCapacity
+1986:    let sinkDescriptor: RasterSurfaceDescriptor
+1987:    let sinkLimits: RasterPayloadLimits
+1988:    let sinkFailure: RasterBackendError?
+1989:    let streamCompleted: Bool
+1990:    let presentationAccepted: Bool
+1991:    let sinkProducerError: RenderProductionError?
+1992:    let idle: Bool
+1993:    let health: GiftUIOperationalHealth
+1994:    let recording: CounterRecordingObservation
+1995:    let targetConfiguration: HostEndpointConfiguration
+1996:    let writer: CounterWriterObservation?
+1997:    let nativeReservation: DisplayReservationID?
+1998:    let nativeGlyphHeader: PositionedGlyphOperationHeader?
+1999:}
+2000:// Captured only once by the enclosing full baseline; never a live endpoint.
+2001:struct CounterEndpointBaseline: ~Copyable {
+2002:    var recording = CounterRecordingObservation()
+2003:    var effectivePresentation: EffectiveRasterPresentation? = nil
+2004:    var descriptor: RasterSurfaceDescriptor? = nil
+2005:    var payloadLimits: RasterPayloadLimits? = nil
+2006:    var realization: RasterRealizationID? = nil
+2007:    var bodyCalls: UInt32? = nil
+2008:    var reservations: UInt32? = nil
+2009:    var displayError: DisplayTargetError? = nil
+2010:    var producerError: RenderProductionError? = nil
+2011:    var capacity: RenderSinkCapacity? = nil
+2012:    var sinkDescriptor: RasterSurfaceDescriptor? = nil
+2013:    var sinkLimits: RasterPayloadLimits? = nil
+2014:    var sinkFailure: RasterBackendError? = nil
+2015:    var streamCompleted: Bool? = nil
+2016:    var presentationAccepted: Bool? = nil
+2017:    var sinkProducerError: RenderProductionError? = nil
+2018:    var idle: Bool? = nil
+2019:    var health: GiftUIOperationalHealth? = nil
+2020:    var targetConfiguration: HostEndpointConfiguration? = nil
+2021:    var writer: CounterWriterObservation? = nil
+2022:    var nativeReservation: DisplayReservationID? = nil
+2023:    var nativeGlyphHeader: PositionedGlyphOperationHeader? = nil
+2024:}
+2025:// Actual backend completion facts are independent of endpoint/adapter counters.
+2026:// This owned value contains no payload arrays, pointer, callback or live owner.
+2027:struct CounterBackendObservation: Equatable {
+2028:    let active: Bool
+2029:    let reservations: Int
+2030:    let submissions: Int
+2031:    let finishes: Int
+2032:    let cancellations: Int
+2033:    let submittedBytes: UInt32
+2034:    let submittedRows: UInt32
+2035:    let health: GiftUIOperationalHealth
+2036:    let endpointHealthObservation: GiftUIOperationalHealth
+2037:    let constructedProjection: HostEndpointConfiguration?
+2038:    let constructedEndpoints: Int
+2039:    let projectionControls: Int
+2040:    let envelopeRejections: Int
+2041:}
+2042:struct CounterRuntimeSlotObservation: Equatable {
+2043:    let backend: CounterBackendObservation
+2044:    let phase: CounterRuntimeSlotPhase
+2045:    let owner: UInt64?
+2046:    let lastSerial: UInt64
+2047:    let endpoint: CounterEndpointObservation?
+2048:    let root: SemanticCompleteIdentity?
+2049:    let action: SemanticCompleteIdentity?
+2050:    let candidateRoot: SemanticCompleteIdentity?
+2051:    let candidateAction: SemanticCompleteIdentity?
+2052:    init(_ control: UnsafeMutablePointer<CounterControl>) {
+2053:        backend = counterObserveBackend(control.pointee.backend)
+2054:        phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
+2055:        lastSerial = control.pointee.runtimeLastOwnerSerial
+2056:        endpoint = control.pointee.runtimeEndpoint?.ownedObservation
+2057:        root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
+2058:        candidateRoot = control.pointee.runtimeCandidateRootIdentity
+2059:        candidateAction = control.pointee.runtimeCandidateActionIdentity
+2060:    }
+2061:}
+2062:
+2063:// Every field of CounterRuntimeSlotObservation, captured into existing storage.
+2064:struct CounterRuntimeSlotBaseline: ~Copyable {
+2065:    private var captured = false
+2066:    private var backend: CounterBackendObservation? = nil
+2067:    private var phase: CounterRuntimeSlotPhase? = nil
+2068:    private var owner: UInt64? = nil
+2069:    private var lastSerial: UInt64 = 0
+2070:    private var endpointPresent = false
+2071:    private var endpoint = CounterEndpointBaseline()
+2072:    private var root: SemanticCompleteIdentity? = nil
+2073:    private var action: SemanticCompleteIdentity? = nil
+2074:    private var candidateRoot: SemanticCompleteIdentity? = nil
+2075:    private var candidateAction: SemanticCompleteIdentity? = nil
+2076:    @inline(never)
+2077:    mutating func installKeyProbe0(_ control: UnsafeMutablePointer<CounterControl>) {
+2078:        var changed = SemanticCompleteIdentity()
+2079:        let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+2080:        let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 4)); precondition(appendedChild)
+2081:        let equalsOriginal = root == changed
+2082:        if equalsOriginal {
+2083:            changed = SemanticCompleteIdentity()
+2084:            let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+2085:            let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 3)); precondition(appendedChild)
+2086:        }
+2087:        let distinct = root != changed; precondition(distinct)
+2088:        control.pointee.runtimeRootIdentity = changed
+2089:    }
+2090:    @inline(never)
+2091:    mutating func restoreKeyProbe0(_ control: UnsafeMutablePointer<CounterControl>) {
+2092:        control.pointee.runtimeRootIdentity = root
+2093:    }
+2094:    @inline(never)
+2095:    mutating func installKeyProbe1(_ control: UnsafeMutablePointer<CounterControl>) {
+2096:        var changed = SemanticCompleteIdentity()
+2097:        let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+2098:        let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 4)); precondition(appendedChild)
+2099:        let equalsOriginal = action == changed
+2100:        if equalsOriginal {
+2101:            changed = SemanticCompleteIdentity()
+2102:            let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+2103:            let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 3)); precondition(appendedChild)
+2104:        }
+2105:        let distinct = action != changed; precondition(distinct)
+2106:        control.pointee.runtimeActionIdentity = changed
+2107:    }
+2108:    @inline(never)
+2109:    mutating func restoreKeyProbe1(_ control: UnsafeMutablePointer<CounterControl>) {
+2110:        control.pointee.runtimeActionIdentity = action
+2111:    }
+2112:    @inline(never)
+2113:    mutating func installKeyProbe2(_ control: UnsafeMutablePointer<CounterControl>) {
+2114:        var changed = SemanticCompleteIdentity()
+2115:        let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+2116:        let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 4)); precondition(appendedChild)
+2117:        let equalsOriginal = candidateRoot == changed
+2118:        if equalsOriginal {
+2119:            changed = SemanticCompleteIdentity()
+2120:            let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+2121:            let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 3)); precondition(appendedChild)
+2122:        }
+2123:        let distinct = candidateRoot != changed; precondition(distinct)
+2124:        control.pointee.runtimeCandidateRootIdentity = changed
+2125:    }
+2126:    @inline(never)
+2127:    mutating func restoreKeyProbe2(_ control: UnsafeMutablePointer<CounterControl>) {
+2128:        control.pointee.runtimeCandidateRootIdentity = candidateRoot
+2129:    }
+2130:    @inline(never)
+2131:    mutating func installKeyProbe3(_ control: UnsafeMutablePointer<CounterControl>) {
+2132:        var changed = SemanticCompleteIdentity()
+2133:        let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+2134:        let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 4)); precondition(appendedChild)
+2135:        let equalsOriginal = candidateAction == changed
+2136:        if equalsOriginal {
+2137:            changed = SemanticCompleteIdentity()
+2138:            let appendedRoot = changed.append(.init(kind: .root)); precondition(appendedRoot)
+2139:            let appendedChild = changed.append(.init(kind: .fixedChild, ordinal: 3)); precondition(appendedChild)
+2140:        }
+2141:        let distinct = candidateAction != changed; precondition(distinct)
+2142:        control.pointee.runtimeCandidateActionIdentity = changed
+2143:    }
+2144:    @inline(never)
+2145:    mutating func restoreKeyProbe3(_ control: UnsafeMutablePointer<CounterControl>) {
+2146:        control.pointee.runtimeCandidateActionIdentity = candidateAction
+2147:    }
+2148:    mutating func capture(_ control: UnsafeMutablePointer<CounterControl>) {
+2149:        let mayCapture = !captured; precondition(mayCapture)
+2150:        backend = counterObserveBackend(control.pointee.backend)
+2151:        phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
+2152:        lastSerial = control.pointee.runtimeLastOwnerSerial
+2153:        endpointPresent = control.pointee.runtimeEndpoint != nil
+2154:        control.pointee.runtimeEndpoint?.captureBaselinePrefix(into: &endpoint)
+2155:        endpoint.health = CounterEndpoint.runtimeBaselineHealth(at: control)
+2156:        control.pointee.runtimeEndpoint?.captureBaselineSuffix(into: &endpoint)
+2157:        root = control.pointee.runtimeRootIdentity; action = control.pointee.runtimeActionIdentity
+2158:        candidateRoot = control.pointee.runtimeCandidateRootIdentity
+2159:        candidateAction = control.pointee.runtimeCandidateActionIdentity
+2160:        captured = true
+2161:    }
+2162:    @inline(never)
+2163:    private mutating func matchesBackend(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+2164:        let same = backend == counterObserveBackend(control.pointee.backend)
+2165:        return same
+2166:    }
+2167:    @inline(never)
+2168:    private mutating func matchesRoot(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+2169:        let same = root == control.pointee.runtimeRootIdentity
+2170:        return same
+2171:    }
+2172:    @inline(never)
+2173:    private mutating func matchesAction(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+2174:        let same = action == control.pointee.runtimeActionIdentity
+2175:        return same
+2176:    }
+2177:    @inline(never)
+2178:    private mutating func matchesCandidateRoot(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+2179:        let same = candidateRoot == control.pointee.runtimeCandidateRootIdentity
+2180:        return same
+2181:    }
+2182:    @inline(never)
+2183:    private mutating func matchesCandidateAction(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+2184:        let same = candidateAction == control.pointee.runtimeCandidateActionIdentity
+2185:        return same
+2186:    }
+2187:    mutating func matches(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
+2188:        let wasCaptured = captured; precondition(wasCaptured)
+2189:        let samebackend = matchesBackend(control)
+2190:        guard samebackend else { return false }
+2191:        let samephase = phase == control.pointee.runtimeSlotPhase
+2192:        guard samephase else { return false }
+2193:        let sameowner = owner == control.pointee.runtimeSlotOwner
+2194:        guard sameowner else { return false }
+2195:        let samelastSerial = lastSerial == control.pointee.runtimeLastOwnerSerial
+2196:        guard samelastSerial else { return false }
+2197:        let sameendpointPresent = endpointPresent == (control.pointee.runtimeEndpoint != nil)
+2198:        guard sameendpointPresent else { return false }
+2199:        let sameroot = matchesRoot(control)
+2200:        guard sameroot else { return false }
+2201:        let sameaction = matchesAction(control)
+2202:        guard sameaction else { return false }
+2203:        let samecandidateRoot = matchesCandidateRoot(control)
+2204:        guard samecandidateRoot else { return false }
+2205:        let samecandidateAction = matchesCandidateAction(control)
+2206:        guard samecandidateAction else { return false }
+2207:        if endpointPresent {
+2208:            let samePrefix = control.pointee.runtimeEndpoint?.matchesBaselinePrefix(&endpoint) == true
+2209:            guard samePrefix else { return false }
+2210:            let sameHealth = endpoint.health == CounterEndpoint.runtimeBaselineHealth(at: control)
+2211:            guard sameHealth else { return false }
+2212:            let sameSuffix = control.pointee.runtimeEndpoint?.matchesBaselineSuffix(&endpoint) == true
+2213:            guard sameSuffix else { return false }
+2214:        }
+2215:        return true
+2216:    }
+2217:}
+
+SOURCE Sources/GiftUISemanticCore/SemanticRecordExpansion.swift SHA256 e610496954dce3023b833fc07c785498025bf0e96372ab9430d8f7b5fc12c4a1
+1:import GiftUI
+2:
+3:@usableFromInline
+4:package protocol SemanticRecordPayloadCodec {
+5:    associatedtype Payload
+6:    static func primitive<Value: _GiftUISemanticPrimitivePayload>(
+7:        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+8:    ) -> SemanticExpansionError?
+9:    static func modifier<Value: _GiftUISemanticModifierPayload>(
+10:        _ value: borrowing Value, chainIndex: UInt16,
+11:        writer: borrowing SemanticPayloadWriter<Payload>
+12:    ) -> SemanticExpansionError?
+13:    static func action<Value: GiftUIAction>(
+14:        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+15:    ) -> SemanticExpansionError?
+16:}
+17:
+18:@usableFromInline
+19:package struct SemanticPayloadWriter<Payload>: ~Copyable, ~Escapable {
+20:    @usableFromInline
+21:    internal let bank: SemanticRecordBankBuffers<Payload>
+22:    @usableFromInline
+23:    internal let limits: SemanticRecordLimits
+24:    @_lifetime(borrow bank)
+25:    @usableFromInline
+26:    init(
+27:        bank: borrowing SemanticRecordBankBuffers<Payload>, limits: SemanticRecordLimits
+28:    ) {
+29:        self.bank = copy bank
+30:        self.limits = limits
+31:    }
+32:    @inlinable
+33:    package borrowing func store(
+34:        _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind,
+35:        chainIndex: UInt16 = 0, text: borrowing Span<UInt32>
+36:    ) -> SemanticExpansionError? {
+37:        bank.store(consume value, kind: kind, chainIndex: chainIndex, text: text, limits: limits)
+38:    }
+39:    @inlinable
+40:    package borrowing func store(
+41:        _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind,
+42:        chainIndex: UInt16 = 0
+43:    ) -> SemanticExpansionError? {
+44:        let empty: InlineArray<0, UInt32> = .init(repeating: 0)
+45:        return store(consume value, kind: kind, chainIndex: chainIndex, text: empty.span)
+46:    }
+47:}
+48:
+49:@usableFromInline
+50:struct RecordWorkspace<Roles: SemanticDeclarationRoles, Payload>: SemanticExpansionWorkspace {
+51:    @usableFromInline
+52:    typealias Identity = SemanticCompleteIdentity
+53:    @usableFromInline
+54:    let bank: SemanticRecordBankBuffers<Payload>
+55:    @usableFromInline
+56:    let limits: SemanticRecordLimits
+57:    @usableFromInline
+58:    var identity = SemanticCompleteIdentity()
+59:    @usableFromInline
+60:    var isExpanding = false
+61:    @inlinable
+62:    @inline(__always)
+63:    init(bank: SemanticRecordBankBuffers<Payload>, limits: SemanticRecordLimits) {
+64:        self.bank = bank
+65:        self.limits = limits
+66:    }
+67:    @usableFromInline
+68:    var maximumPathComponents: UInt16 { limits.depth }
+69:    @usableFromInline
+70:    var maximumIdentities: UInt16 { limits.paths }
+71:    @usableFromInline
+72:    mutating func beginExpansion() -> Bool {
+73:        guard !isExpanding, bank.metadata.pointee.phase == .expanding else { return false }
+74:        isExpanding = true
+75:        return true
+76:    }
+77:    @usableFromInline
+78:    mutating func enter(_ component: SemanticPathComponent, identity output: inout Identity?)
+79:        -> SemanticExpansionError?
+80:    {
+81:        if let error = bank.enter(component, limits: limits) { return error }
+82:        guard identity.append(component) else { return bank.fail(.invalidIdentity) }
+83:        output = identity
+84:        return nil
+85:    }
+86:    @usableFromInline
+87:    mutating func enterRoot<D: View>(_ declaration: D.Type, identity: inout Identity?)
+88:        -> SemanticExpansionError?
+89:    { enter(.init(kind: .root), identity: &identity) }
+90:    @usableFromInline
+91:    mutating func enterCustomBody<D: View>(_ declaration: D.Type, identity: inout Identity?)
+92:        -> SemanticExpansionError?
+93:    { enter(.init(kind: .customBody), identity: &identity) }
+94:    @usableFromInline
+95:    mutating func enterFixedChild(_ index: UInt8, identity: inout Identity?)
+96:        -> SemanticExpansionError?
+97:    { enter(.init(kind: .fixedChild, ordinal: index), identity: &identity) }
+98:    @usableFromInline
+99:    mutating func enterConditionalBranch(_ index: UInt8, identity: inout Identity?)
+100:        -> SemanticExpansionError?
+101:    { enter(.init(kind: .conditionalBranch, ordinal: index), identity: &identity) }
+102:    @usableFromInline
+103:    mutating func enterOptionalPresence(identity: inout Identity?) -> SemanticExpansionError? {
+104:        enter(.init(kind: .optionalPresence), identity: &identity)
+105:    }
+106:    @inlinable
+107:    @inline(__always)
+108:    mutating func enterDeclarationRole<D>(_ declaration: D.Type, identity: inout Identity?)
+109:        -> SemanticExpansionError?
+110:    {
+111:        guard let role = Roles.role(of: declaration), role.rawValue != 0 else {
+112:            return bank.fail(.invalidIdentity)
+113:        }
+114:        return enter(
+115:            .init(
+116:                kind: .declarationRole, role: role.rawValue,
+117:                modifier: Roles.modifierDiscriminator(of: declaration)), identity: &identity)
+118:    }
+119:    @usableFromInline
+120:    mutating func leavePathComponent() {
+121:        bank.leave()
+122:        identity.removeLast()
+123:    }
+124:    @usableFromInline
+125:    mutating func completeExpansion() {}
+126:    @usableFromInline
+127:    mutating func discardExpansion() {}
+128:    @usableFromInline
+129:    mutating func resetExpansion() {
+130:        isExpanding = false
+131:        identity = SemanticCompleteIdentity()
+132:    }
+133:}
+134:
+135:@usableFromInline
+136:struct RecordSink<Codec: SemanticRecordPayloadCodec>: SemanticExpansionSink {
+137:    @usableFromInline
+138:    typealias Identity = SemanticCompleteIdentity
+139:    @usableFromInline
+140:    let bank: SemanticRecordBankBuffers<Codec.Payload>
+141:    @usableFromInline
+142:    let limits: SemanticRecordLimits
+143:    @usableFromInline
+144:    let expansion: SemanticExpansionLimits
+145:    @usableFromInline
+146:    var bodyCount: UInt16 = 0
+147:    @usableFromInline
+148:    var semanticCount: UInt16 = 0
+149:    @usableFromInline
+150:    var modifierCount: UInt16 = 0
+151:    @usableFromInline
+152:    var actionCount: UInt16 = 0
+153:    @inlinable
+154:    @inline(__always)
+155:    init(
+156:        bank: SemanticRecordBankBuffers<Codec.Payload>, limits: SemanticRecordLimits,
+157:        expansion: SemanticExpansionLimits
+158:    ) {
+159:        self.bank = bank
+160:        self.limits = limits
+161:        self.expansion = expansion
+162:    }
+163:    @usableFromInline
+164:    var stagingFailure: SemanticExpansionError? { bank.metadata.pointee.failure }
+165:    @usableFromInline
+166:    var maximumStructuralOccurrences: UInt16 { limits.records }
+167:    @usableFromInline
+168:    var maximumBodyEvaluations: UInt16 { expansion.maximumBodyEvaluations }
+169:    @usableFromInline
+170:    var maximumSemanticOccurrences: UInt16 { expansion.maximumSemanticNodes }
+171:    @usableFromInline
+172:    var maximumModifierApplications: UInt16 { expansion.maximumModifierApplications }
+173:    @usableFromInline
+174:    var maximumActionOccurrences: UInt16 { expansion.maximumActionOccurrences }
+175:    @usableFromInline
+176:    mutating func beginExpansion() -> Bool { bank.metadata.pointee.phase == .expanding }
+177:    @usableFromInline
+178:    mutating func stageStructuralOccurrence(identity: borrowing Identity) -> Bool {
+179:        bank.appendRecord(limits: limits) == nil
+180:    }
+181:    @usableFromInline
+182:    mutating func stageBodyEvaluation(identity: borrowing Identity) -> Bool {
+183:        bodyCount += 1
+184:        return true
+185:    }
+186:    @inlinable
+187:    @inline(__always)
+188:    mutating func stageSemanticOccurrence<Value: _GiftUISemanticPrimitivePayload>(
+189:        identity: borrowing Identity, payload: borrowing Value
+190:    ) -> Bool {
+191:        let writer = SemanticPayloadWriter(bank: bank, limits: limits)
+192:        if let error = Codec.primitive(payload, writer: writer) {
+193:            _ = bank.fail(error)
+194:            return false
+195:        }
+196:        semanticCount += 1
+197:        return true
+198:    }
+199:    @inlinable
+200:    @inline(__always)
+201:    mutating func stageModifierApplication<Value: _GiftUISemanticModifierPayload>(
+202:        identity: borrowing Identity, payload: borrowing Value, chainIndex: UInt16
+203:    ) -> Bool {
+204:        let writer = SemanticPayloadWriter(bank: bank, limits: limits)
+205:        if let error = Codec.modifier(payload, chainIndex: chainIndex, writer: writer) {
+206:            _ = bank.fail(error)
+207:            return false
+208:        }
+209:        modifierCount += 1
+210:        return true
+211:    }
+212:    @inlinable
+213:    @inline(__always)
+214:    mutating func stageActionOccurrence<Value: GiftUIAction>(
+215:        identity: borrowing Identity, action: borrowing Value
+216:    ) -> Bool {
+217:        let writer = SemanticPayloadWriter(bank: bank, limits: limits)
+218:        if let error = Codec.action(action, writer: writer) {
+219:            _ = bank.fail(error)
+220:            return false
+221:        }
+222:        semanticCount += 1
+223:        actionCount += 1
+224:        return true
+225:    }
+226:    @inlinable
+227:    mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
+228:        guard bank.metadata.pointee.phase == .expanding, bank.metadata.pointee.failure == nil,
+229:            bank.metadata.pointee.activePath == .max, summary.bodyEvaluationCount == bodyCount,
+230:            summary.semanticNodeCount == semanticCount,
+231:            summary.modifierApplicationCount == modifierCount,
+232:            summary.actionOccurrenceCount == actionCount
+233:        else { return false }
+234:        bank.metadata.pointee.summary = summary
+235:        bank.metadata.pointee.phase = .candidate
+236:        return true
+237:    }
+238:    @usableFromInline
+239:    mutating func discardExpansion() {}
+240:    @usableFromInline
+241:    mutating func resetExpansion() {}
+242:}
+243:
+244:extension SemanticRecordStore {
+245:    @inlinable
+246:    @inline(__always)
+247:    package borrowing func expand<
+248:        Root: View, Roles: SemanticDeclarationRoles, Codec: SemanticRecordPayloadCodec,
+249:        Binding: SemanticStatefulBinding & ~Copyable & ~Escapable
+250:    >(
+251:        _ root: borrowing Root, roles: Roles.Type, codec: Codec.Type,
+252:        limits: SemanticExpansionLimits, binding: consuming Binding
+253:    ) -> BoundSemanticExpansionResult<Binding.Failure>
+254:    where
+255:        Root.Domain == Binding.Domain, Binding.Identity == SemanticCompleteIdentity,
+256:        Codec.Payload == Payload
+257:    {
+258:        let number: UInt8
+259:        do throws(SemanticExpansionError) { number = try beginCandidate() } catch {
+260:            return .semanticFailure(error)
+261:        }
+262:        guard let bank = expansionBank(number) else { return .semanticFailure(.invariantViolation) }
+263:        var workspace = RecordWorkspace<Roles, Payload>(bank: bank, limits: self.limits)
+264:        var sink = RecordSink<Codec>(bank: bank, limits: self.limits, expansion: limits)
+265:        let result = expandSemanticTreeWithStateBinding(
+266:            root, limits: limits, workspace: &workspace, sink: &sink, stateBinding: consume binding)
+267:        switch result {
+268:        case .success: break
+269:        default:
+270:            // This attempt cannot have lent a view before completion.
+271:            bank.clear()
+272:        }
+273:        return result
+274:    }
+275:}
+
+SOURCE Sources/GiftUISemanticCore/SemanticRecordStore.swift SHA256 4ffc05499e80646af0fb41bbe52f826b232a3bc8f3cb8654295a481819d9717c
+1:import GiftUI
+2:
+3:/// Owns no backing. The factory lends all five real storage regions until its
+4:/// Escapable-result callback ends; neither this scope nor a reader may escape.
+5:@inlinable
+6:@inline(__always)
+7:package func withSemanticRecordStore<Payload, Result>(
+8:    metadata: inout MutableSpan<SemanticRecordBankMetadata>,
+9:    records: inout MutableSpan<SemanticRuntimeRecord>,
+10:    paths: inout MutableSpan<SemanticPathEntry>,
+11:    payloads: inout MutableSpan<Payload?>,
+12:    scalars: inout MutableSpan<UInt32>,
+13:    limits: SemanticRecordLimits,
+14:    capacity: SemanticRecordLimits? = nil,
+15:    owner: SemanticRecordOwnerIdentity,
+16:    _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result
+17:) throws(SemanticExpansionError) -> Result {
+18:    let capacity = capacity ?? limits
+19:    guard capacity.records >= limits.records, capacity.paths >= limits.paths,
+20:        capacity.payloads >= limits.payloads, capacity.textScalars >= limits.textScalars,
+21:        metadata.count == 2, records.count >= Int(capacity.records) * 2,
+22:        paths.count >= Int(capacity.paths) * 2, payloads.count >= Int(capacity.payloads) * 2,
+23:        scalars.count >= Int(capacity.textScalars) * 2
+24:    else { throw .capacityExhausted }
+25:    guard metadata[0].phase == .idle, metadata[1].phase == .idle else { throw .reentrancyViolation }
+26:    return try metadata.withUnsafeMutableBufferPointer { (meta) throws(SemanticExpansionError) in
+27:        try records.withUnsafeMutableBufferPointer {
+28:            (recordBuffer) throws(SemanticExpansionError) in
+29:            try paths.withUnsafeMutableBufferPointer {
+30:                (pathBuffer) throws(SemanticExpansionError) in
+31:                try payloads.withUnsafeMutableBufferPointer {
+32:                    (payloadBuffer) throws(SemanticExpansionError) in
+33:                    try scalars.withUnsafeMutableBufferPointer {
+34:                        (scalarBuffer) throws(SemanticExpansionError) in
+35:                        func bank(_ number: Int) -> SemanticRecordBankBuffers<Payload> {
+36:                            SemanticRecordBankBuffers(
+37:                                metadata: meta.baseAddress! + number,
+38:                                records: .init(
+39:                                    rebasing: recordBuffer[
+40:                                        (number * Int(capacity.records))
+41:                                            ..< ((number + 1) * Int(capacity.records))]),
+42:                                paths: .init(
+43:                                    rebasing: pathBuffer[
+44:                                        (number * Int(capacity.paths))
+45:                                            ..< ((number + 1) * Int(capacity.paths))]),
+46:                                payloads: .init(
+47:                                    rebasing: payloadBuffer[
+48:                                        (number * Int(capacity.payloads))
+49:                                            ..< ((number + 1) * Int(capacity.payloads))]),
+50:                                scalars: .init(
+51:                                    rebasing: scalarBuffer[
+52:                                        (number * Int(capacity.textScalars))
+53:                                            ..< ((number + 1) * Int(capacity.textScalars))]))
+54:                        }
+55:                        let a = bank(0)
+56:                        let b = bank(1)
+57:                        let scope = SemanticRecordStore(a: a, b: b, limits: limits, owner: owner)
+58:                        defer {
+59:                            a.clear()
+60:                            b.clear()
+61:                        }
+62:                        return try body(scope)
+63:                    }
+64:                }
+65:            }
+66:        }
+67:    }
+68:}
+69:
+70:@usableFromInline
+71:package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+72:    @usableFromInline
+73:    let a: SemanticRecordBankBuffers<Payload>
+74:    @usableFromInline
+75:    let b: SemanticRecordBankBuffers<Payload>
+76:    @usableFromInline
+77:    package let limits: SemanticRecordLimits
+78:    @usableFromInline
+79:    let owner: SemanticRecordOwnerIdentity
+80:    @_lifetime(borrow a, borrow b)
+81:    @usableFromInline
+82:    init(
+83:        a: borrowing SemanticRecordBankBuffers<Payload>,
+84:        b: borrowing SemanticRecordBankBuffers<Payload>, limits: SemanticRecordLimits,
+85:        owner: SemanticRecordOwnerIdentity
+86:    ) {
+87:        self.a = copy a
+88:        self.b = copy b
+89:        self.limits = limits
+90:        self.owner = owner
+91:    }
+92:    @_lifetime(copy self)
+93:    @inlinable
+94:    package borrowing func borrowedStore() -> SemanticRecordStore<Payload> {
+95:        SemanticRecordStore(borrowing: self)
+96:    }
+97:
+98:    @_lifetime(copy other)
+99:    @inlinable
+100:    internal init(borrowing other: borrowing SemanticRecordStore<Payload>) {
+101:        a = other.a
+102:        b = other.b
+103:        limits = other.limits
+104:        owner = other.owner
+105:    }
+106:
+107:    @inlinable
+108:    borrowing func bank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload> {
+109:        number == 0 ? a : b
+110:    }
+111:    @inlinable
+112:    var candidate: UInt8? {
+113:        if a.metadata.pointee.phase == .candidate { return 0 }
+114:        if b.metadata.pointee.phase == .candidate { return 1 }
+115:        return nil
+116:    }
+117:    @inlinable
+118:    var published: UInt8? {
+119:        if a.metadata.pointee.phase == .published { return 0 }
+120:        if b.metadata.pointee.phase == .published { return 1 }
+121:        return nil
+122:    }
+123:    /// Clears retained semantic products only after the owning runtime has ended
+124:    /// candidates and scoped readers. Bank revisions remain monotonic.
+125:    package borrowing func resetAfterQuiescence() throws(SemanticExpansionError) {
+126:        guard a.metadata.pointee.readers == 0, b.metadata.pointee.readers == 0,
+127:            a.metadata.pointee.phase != .expanding, b.metadata.pointee.phase != .expanding,
+128:            a.metadata.pointee.phase != .candidate, b.metadata.pointee.phase != .candidate
+129:        else { throw .reentrancyViolation }
+130:        a.clear()
+131:        b.clear()
+132:    }
+133:
+134:    @inlinable
+135:    @inline(__always)
+136:    package borrowing func beginCandidate() throws(SemanticExpansionError) -> UInt8 {
+137:        guard candidate == nil, a.metadata.pointee.phase != .expanding,
+138:            b.metadata.pointee.phase != .expanding
+139:        else { throw .reentrancyViolation }
+140:        let number: UInt8
+141:        if a.metadata.pointee.phase == .idle {
+142:            number = 0
+143:        } else if b.metadata.pointee.phase == .idle {
+144:            number = 1
+145:        } else {
+146:            throw .capacityExhausted
+147:        }
+148:        let selected = bank(number)
+149:        guard selected.metadata.pointee.readers == 0 else { throw .invariantViolation }
+150:        let next = selected.metadata.pointee.revision.addingReportingOverflow(1)
+151:        guard !next.overflow, next.partialValue != 0 else { throw .invalidIdentity }
+152:        selected.clear()
+153:        selected.metadata.pointee.revision = next.partialValue
+154:        selected.metadata.pointee.phase = .expanding
+155:        return number
+156:    }
+157:    @inlinable
+158:    package borrowing func discardCandidate() throws(SemanticExpansionError) {
+159:        for number: UInt8 in 0 ..< 2 {
+160:            let selected = bank(number)
+161:            if selected.metadata.pointee.phase == .candidate
+162:                || selected.metadata.pointee.phase == .expanding
+163:            {
+164:                if selected.metadata.pointee.readers == 0 {
+165:                    selected.clear()
+166:                } else {
+167:                    selected.metadata.pointee.phase = .retired
+168:                }
+169:                return
+170:            }
+171:        }
+172:        throw .invariantViolation
+173:    }
+174:    /// The caller has prepared all other candidate products. This is the
+175:    /// semantic-bank swap, not accepted-offer action routing.
+176:    @inlinable
+177:    package borrowing func publishCandidate() throws(SemanticExpansionError) {
+178:        guard let candidate else { throw .invariantViolation }
+179:        let next = bank(candidate)
+180:        guard !hasPendingCanvas(next) else { throw .invariantViolation }
+181:        if let published {
+182:            let prior = bank(published)
+183:            if let failure = next.reconcile(with: prior, limits: limits) { throw failure }
+184:            prior.metadata.pointee.phase = .retired
+185:            if prior.metadata.pointee.readers == 0 { prior.clear() }
+186:        }
+187:        next.metadata.pointee.phase = .published
+188:    }
+189:    @inlinable
+190:    @inline(__always)
+191:    package borrowing func withCandidateView<Result>(
+192:        _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
+193:    ) throws(SemanticExpansionError) -> Result {
+194:        guard let candidate, !hasPendingCanvas(bank(candidate)) else { throw .invariantViolation }
+195:        return try withView(candidate, body)
+196:    }
+197:    @inlinable
+198:    borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>) -> Bool {
+199:        for index in 0 ..< Int(bank.metadata.pointee.records) {
+200:            if bank.records[index].kind == .pendingCanvas { return true }
+201:        }
+202:        return false
+203:    }
+204:
+205:    /// Transfer transient owned Canvas values before lending consumer views.
+206:    /// A failed transfer remains unpublished; the drawing adapter discards both
+207:    /// this candidate and any already-transferred entries.
+208:    @inlinable
+209:    package borrowing func takePendingCanvas(
+210:        _ body: (SemanticRecordReference, inout Payload) throws(SemanticExpansionError) -> Void
+211:    ) throws(SemanticExpansionError) {
+212:        guard let candidate else { throw .invariantViolation }
+213:        let selected = bank(candidate)
+214:        guard selected.metadata.pointee.readers == 0 else { throw .reentrancyViolation }
+215:        for index in 0 ..< Int(selected.metadata.pointee.records) {
+216:            let record = selected.records[index]
+217:            guard record.kind == .pendingCanvas else { continue }
+218:            guard record.payload < selected.metadata.pointee.payloads,
+219:                selected.payloads[Int(record.payload)] != nil
+220:            else { throw .invariantViolation }
+221:            let reference = SemanticRecordReference(
+222:                owner: owner, bank: candidate,
+223:                revision: selected.metadata.pointee.revision, ordinal: UInt16(index))
+224:            try body(reference, &selected.payloads[Int(record.payload)]!)
+225:            selected.records[index].kind = .primitive
+226:        }
+227:    }
+228:
+229:    @inlinable
+230:    @inline(__always)
+231:    package borrowing func withPublishedView<Result>(
+232:        _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
+233:    ) throws(SemanticExpansionError) -> Result {
+234:        guard let published else { throw .invariantViolation }
+235:        return try withView(published, body)
+236:    }
+237:    @inlinable
+238:    @inline(__always)
+239:    borrowing func withView<Result>(
+240:        _ number: UInt8,
+241:        _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
+242:    ) throws(SemanticExpansionError) -> Result {
+243:        let selected = bank(number)
+244:        let readers = selected.metadata.pointee.readers.addingReportingOverflow(1)
+245:        guard !readers.overflow else { throw .capacityExhausted }
+246:        selected.metadata.pointee.readers = readers.partialValue
+247:        defer {
+248:            selected.metadata.pointee.readers -= 1
+249:            if selected.metadata.pointee.readers == 0 && selected.metadata.pointee.phase == .retired
+250:            {
+251:                selected.clear()
+252:            }
+253:        }
+254:        let view = SemanticRecordView(bank: selected, number: number, owner: owner)
+255:        return try body(view)
+256:    }
+257:
+258:    // Restricted to the sole Semantic Core traversal adapter in this module.
+259:    @inlinable
+260:    borrowing func expansionBank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload>? {
+261:        guard number < 2 else { return nil }
+262:        let selected = bank(number)
+263:        guard selected.metadata.pointee.phase == .expanding else { return nil }
+264:        return selected
+265:    }
+266:}
+267:
+268:@usableFromInline
+269:package struct SemanticRecordView<Payload>: ~Escapable {
+270:    private let bank: SemanticRecordBankBuffers<Payload>
+271:    package let bankNumber: UInt8
+272:    package let revision: UInt32
+273:    private let owner: SemanticRecordOwnerIdentity
+274:    @_lifetime(borrow bank)
+275:    @usableFromInline
+276:    init(
+277:        bank: borrowing SemanticRecordBankBuffers<Payload>, number: UInt8,
+278:        owner: SemanticRecordOwnerIdentity
+279:    ) {
+280:        self.owner = owner
+281:        self.bank = copy bank
+282:        bankNumber = number
+283:        revision = bank.metadata.pointee.revision
+284:    }
+285:    private var valid: Bool {
+286:        bank.metadata.pointee.revision == revision && bank.metadata.pointee.readers > 0
+287:            && (bank.metadata.pointee.phase == .candidate
+288:                || bank.metadata.pointee.phase == .published
+289:                || bank.metadata.pointee.phase == .retired)
+290:    }
+291:    package var isCandidate: Bool { valid && bank.metadata.pointee.phase == .candidate }
+292:    package var rootReference: SemanticRecordReference {
+293:        SemanticRecordReference(owner: owner, bank: bankNumber, revision: revision, ordinal: 0)
+294:    }
+295:    package var recordCount: UInt16 { valid ? bank.metadata.pointee.records : 0 }
+296:    package var pathCount: UInt16 { valid ? bank.metadata.pointee.paths : 0 }
+297:    package var payloadCount: UInt16 { valid ? bank.metadata.pointee.payloads : 0 }
+298:    package var scalarCount: UInt16 { valid ? bank.metadata.pointee.scalars : 0 }
+299:    package var payloadBytes: UInt32 { valid ? bank.metadata.pointee.payloadBytes : 0 }
+300:    package var componentComparisons: UInt32 {
+301:        valid ? bank.metadata.pointee.componentComparisons : 0
+302:    }
+303:    package func reference(at ordinal: UInt16) -> SemanticRecordReference? {
+304:        guard valid, ordinal < recordCount else { return nil }
+305:        return SemanticRecordReference(
+306:            owner: owner, bank: bankNumber, revision: revision, ordinal: ordinal)
+307:    }
+308:    package func record(_ reference: SemanticRecordReference) -> SemanticRuntimeRecord? {
+309:        guard valid, reference.owner == owner, reference.bank == bankNumber,
+310:            reference.revision == revision,
+311:            reference.ordinal < recordCount
+312:        else { return nil }
+313:        return bank.records[Int(reference.ordinal)]
+314:    }
+315:    package func payload(at index: UInt16) -> Payload? {
+316:        guard valid, index < payloadCount else { return nil }
+317:        return bank.payloads[Int(index)]
+318:    }
+319:    package func scalar(at index: UInt16) -> UInt32? {
+320:        guard valid, index < scalarCount else { return nil }
+321:        return bank.scalars[Int(index)]
+322:    }
+323:    package func path(at index: UInt16) -> SemanticPathEntry? {
+324:        guard valid, index < pathCount else { return nil }
+325:        return bank.paths[Int(index)]
+326:    }
+327:    package func completeIdentity(for reference: SemanticRecordReference)
+328:        -> SemanticCompleteIdentity?
+329:    {
+330:        guard let record = record(reference), record.path < pathCount,
+331:            bank.paths[Int(record.path)].component.kind == .declarationRole
+332:        else { return nil }
+333:        var reversed: InlineArray<34, SemanticPathComponent> = .init(repeating: .init(kind: .root))
+334:        var cursor = record.path
+335:        var count = 0
+336:        while cursor != .max {
+337:            guard cursor < pathCount, count < Int(SemanticCompleteIdentity.capacity) else {
+338:                return nil
+339:            }
+340:            let entry = bank.paths[Int(cursor)]
+341:            guard entry.parent == .max || entry.parent < cursor else { return nil }
+342:            reversed[count] = entry.component
+343:            count += 1
+344:            cursor = entry.parent
+345:        }
+346:        var identity = SemanticCompleteIdentity()
+347:        while count > 0 {
+348:            count -= 1
+349:            guard identity.append(reversed[count]) else { return nil }
+350:        }
+351:        return identity
+352:    }
+353:    package func sameIdentity(
+354:        _ reference: SemanticRecordReference, as other: SemanticRecordReference,
+355:        in view: borrowing Self
+356:    ) -> Bool {
+357:        guard let left = completeIdentity(for: reference),
+358:            let right = view.completeIdentity(for: other)
+359:        else { return false }
+360:        return left == right
+361:    }
+362:}
+
+SOURCE Sources/GiftUIDrawing/CanvasSemanticPayload.swift SHA256 7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951
+1:import GiftUI
+2:import GiftUISemanticCore
+3:
+4:/// Owned only during candidate expansion. Transfer replaces every concrete
+5:/// value with a marker before any Layout/Render borrow or semantic publication.
+6:@usableFromInline
+7:package enum CanvasSemanticPayload<Value>: SemanticRecordConsumerPayload {
+8:    case standard(SemanticStandardPayload)
+9:    case canvas(Value?)
+10:
+11:    package var layoutPrimitive: SemanticLayoutPrimitive? {
+12:        switch self {
+13:        case .standard(let value): value.layoutPrimitive
+14:        case .canvas: .canvas
+15:        }
+16:    }
+17:    package var layoutModifier: SemanticLayoutModifier? {
+18:        switch self {
+19:        case .standard(let value): value.layoutModifier
+20:        case .canvas: nil
+21:        }
+22:    }
+23:    package var renderScope: SemanticRenderScope {
+24:        switch self {
+25:        case .standard(let value): value.renderScope
+26:        case .canvas: .canvas
+27:        }
+28:    }
+29:}
+30:
+31:@usableFromInline
+32:package enum CanvasSemanticPayloadCodec<Roles: SemanticDeclarationRoles, Table: CanvasValueTable>:
+33:    SemanticRecordPayloadCodec
+34:{
+35:    @usableFromInline
+36:    package typealias Payload = CanvasSemanticPayload<Table.CaptureStorage>
+37:    @inlinable
+38:    package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
+39:        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+40:    ) -> SemanticExpansionError? {
+41:        if let canvas = Table.payload(value) {
+42:            return writer.store(.canvas(canvas), kind: .pendingCanvas)
+43:        }
+44:        return SemanticStandardPayloadCodec<Roles>.primitive(
+45:            value, writer: writer, wrapping: { .standard($0) })
+46:    }
+47:    @inlinable
+48:    package static func modifier<Value: _GiftUISemanticModifierPayload>(
+49:        _ value: borrowing Value, chainIndex: UInt16,
+50:        writer: borrowing SemanticPayloadWriter<Payload>
+51:    ) -> SemanticExpansionError? {
+52:        SemanticStandardPayloadCodec<Roles>.modifier(
+53:            value, chainIndex: chainIndex, writer: writer, wrapping: { .standard($0) })
+54:    }
+55:    @inlinable
+56:    package static func action<Value: GiftUIAction>(
+57:        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+58:    ) -> SemanticExpansionError? {
+59:        SemanticStandardPayloadCodec<Roles>.action(
+60:            value, writer: writer, wrapping: { .standard($0) })
+61:    }
+62:}
+63:
+64:@usableFromInline
+65:package enum CanvasSemanticTransfer {
+66:    @inlinable
+67:    package static func stage<Table: CanvasValueTable>(
+68:        from semantic: borrowing SemanticRecordStore<CanvasSemanticPayload<Table.CaptureStorage>>,
+69:        into values: borrowing CanvasStagedValues<SemanticRecordReference, Table>,
+70:        table: borrowing Table
+71:    ) throws(DrawingError) {
+72:        guard values.count == 0 else { throw .invariantViolation }
+73:        let table = copy table
+74:        do throws(SemanticExpansionError) {
+75:            try semantic.takePendingCanvas { (identity, payload) throws(SemanticExpansionError) in
+76:                guard case .canvas(.some(let value)) = payload else { throw .invariantViolation }
+77:                do throws(DrawingError) {
+78:                    try values.stage(identity: identity, value: value, table: table)
+79:                } catch {
+80:                    throw error == .capacityExhausted ? .capacityExhausted : .invariantViolation
+81:                }
+82:                payload = .canvas(nil)
+83:            }
+84:        } catch {
+85:            values.discard()
+86:            try? semantic.discardCandidate()
+87:            throw error == .capacityExhausted ? .capacityExhausted : .invariantViolation
+88:        }
+89:    }
+90:}
+
+SOURCE Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift SHA256 578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0
+1:import GiftUI
+2:import GiftUISemanticCore
+3:
+4:/// Lexical join between Semantic Core's traversal and the existing State owner.
+5:/// The bridge owns no model, read scope, or independent registration lifetime.
+6:@usableFromInline
+7:package struct ObservableSemanticBodyBinding<
+8:    Model: ObservableStateModel & ~Copyable,
+9:    Identity: Equatable & Sendable,
+10:    Domain: _GiftUIReadDomain
+11:>: ~Copyable, ~Escapable, SemanticStatefulBinding
+12:where Domain.Slot == ObservableModelReadSlot<Model> {
+13:    @usableFromInline
+14:    package typealias Failure = ObservableStateError
+15:    @usableFromInline
+16:    internal let models: ObservableModelScope<Model, Model.Schema>
+17:    @usableFromInline
+18:    internal let root: ObservableStateRootScope<Model, Identity>
+19:
+20:    @_lifetime(copy models, copy root)
+21:    package init(
+22:        models: consuming ObservableModelScope<Model, Model.Schema>,
+23:        root: consuming ObservableStateRootScope<Model, Identity>,
+24:        domain: Domain.Type
+25:    ) {
+26:        self.models = consume models
+27:        self.root = consume root
+28:    }
+29:
+30:    @inlinable
+31:    @inline(__always)
+32:    package borrowing func evaluate<Declaration: View>(
+33:        _ declaration: borrowing Declaration,
+34:        beforeBody: () -> SemanticExpansionError?,
+35:        body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body
+36:    ) -> SemanticBodyEvaluation<Declaration.Body, ObservableStateError>
+37:    where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+38:        guard root.belongs(to: models) else { return .bindingFailure(.incompatibleAssociation) }
+39:        if let failure = beforeBody() { return .semanticFailure(failure) }
+40:        do throws(_GiftUIAccessFailure) {
+41:            return .body(try models.withRead(Domain.self, body))
+42:        } catch { return .accessFailure(error) }
+43:    }
+44:
+45:    @inlinable
+46:    @inline(__always)
+47:    package borrowing func evaluateStateful<Declaration: View & _GiftUIObservableStateHost>(
+48:        _ declaration: borrowing Declaration,
+49:        structuralIdentity: Identity,
+50:        beforeBody: () -> SemanticExpansionError?,
+51:        body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)
+52:            throws(_GiftUIAccessFailure) -> Declaration.Body
+53:    ) -> SemanticBodyEvaluation<Declaration.Body, ObservableStateError>
+54:    where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+55:        guard root.belongs(to: models) else { return .bindingFailure(.incompatibleAssociation) }
+56:        do throws(ObservableStateError) {
+57:            return try root.withBoundDeclaration(declaration, identity: structuralIdentity) {
+58:                (bound) throws(ObservableStateError) in
+59:                if let failure = beforeBody() { return .semanticFailure(failure) }
+60:                do throws(_GiftUIAccessFailure) {
+61:                    return .body(
+62:                        try models.withRead(Domain.self) {
+63:                            (read) throws(_GiftUIAccessFailure) in
+64:                            try body(bound, read)
+65:                        })
+66:                } catch { return .accessFailure(error) }
+67:            }
+68:        } catch { return .bindingFailure(error) }
+69:    }
+70:}
+
+SOURCE Sources/GiftUIObservableState/ObservableStateValues.swift SHA256 5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae
+1:import GiftUI
+2:
+3:@usableFromInline
+4:package struct ObservableStateLimits: Equatable, Sendable {
+5:    @usableFromInline package let maximumLocations: UInt16
+6:    @usableFromInline package let maximumRegistrations: UInt16
+7:    @usableFromInline package let maximumStagedAssociations: UInt16
+8:
+9:    @usableFromInline
+10:    package init?(
+11:        maximumLocations: UInt16,
+12:        maximumRegistrations: UInt16,
+13:        maximumStagedAssociations: UInt16
+14:    ) {
+15:        guard maximumLocations > 0,
+16:            maximumRegistrations >= maximumLocations,
+17:            maximumStagedAssociations >= maximumLocations
+18:        else { return nil }
+19:
+20:        self.maximumLocations = maximumLocations
+21:        self.maximumRegistrations = maximumRegistrations
+22:        self.maximumStagedAssociations = maximumStagedAssociations
+23:    }
+24:}
+25:
+26:@usableFromInline
+27:package enum ObservableStateError: UInt8, Error, Equatable, Sendable {
+28:    case locationCapacityExhausted = 0
+29:    case registrationCapacityExhausted = 1
+30:    case associationStagingCapacityExhausted = 2
+31:    case replacementStagingCapacityExhausted = 3
+32:    case registrationGenerationExhausted = 4
+33:    case duplicateOwner = 5
+34:    case incompatibleAssociation = 6
+35:    case staleAttachment = 7
+36:    case invalidPhaseContained = 8
+37:    case invalidPhaseSafetyNotProven = 9
+38:    case reentrancyViolation = 10
+39:    case invariantViolation = 11
+40:    case modelCapacityExhausted = 12
+41:    case ownerCapacityExhausted = 13
+42:    case retainedModel = 14
+43:    case modelGenerationExhausted = 15
+44:    case staleModel = 16
+45:    case modelReadOutOfBounds = 17
+46:
+47:    package init(accessFailure: _GiftUIAccessFailure) {
+48:        switch accessFailure {
+49:        case .invalidPhase: self = .invalidPhaseSafetyNotProven
+50:        case .wrongOwner, .wrongSchema, .staleModel: self = .staleModel
+51:        case .outOfBounds: self = .modelReadOutOfBounds
+52:        }
+53:    }
+54:}
+55:
+56:@usableFromInline
+57:package enum ObservableStateOperational: UInt8, Equatable, Sendable {
+58:    case unchanged = 0
+59:    case candidateStarted = 1
+60:    case materialized = 2
+61:    case preserved = 3
+62:    case candidateDiscarded = 4
+63:    case associationsCommitted = 5
+64:    case replaced = 6
+65:    case dirtied = 7
+66:    case coalesced = 8
+67:}
+68:
+69:@usableFromInline
+70:package enum ObservableStateResult: Equatable, Sendable {
+71:    case success(ObservableStateOperational)
+72:    case failure(ObservableStateError)
+73:}
+74:
+75:@usableFromInline
+76:package enum ObservableStateCandidateDisposition: UInt8, Equatable, Sendable {
+77:    case publish = 0
+78:    case discard = 1
+79:}
