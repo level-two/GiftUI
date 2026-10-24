@@ -1,0 +1,181 @@
+{
+  "root_scope_descriptor_pattern_cache": {
+    "VMn": {
+      "row": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn",
+        "address": 71648,
+        "section": 10,
+        "type": 15
+      },
+      "section": {
+        "name": "__constg_swiftt",
+        "addr": 70444,
+        "bytes": 1628,
+        "file": 72412,
+        "reloff": 118680,
+        "nreloc": 378
+      },
+      "raw_hex": "f1000000fcfffffff8fffffff4fffffff0ffffff0400000006000000e4ffffffe0ffffff02000300040000008080000080000000ccffffffc8ffffff80000000",
+      "relocations": [
+        {
+          "offset": 56,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn"
+        },
+        {
+          "offset": 56,
+          "type": 0,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC5ModelMp"
+        },
+        {
+          "offset": 52,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn"
+        },
+        {
+          "offset": 52,
+          "type": 0,
+          "external": 1,
+          "target": "_symbolic x"
+        },
+        {
+          "offset": 32,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn"
+        },
+        {
+          "offset": 32,
+          "type": 0,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMP"
+        },
+        {
+          "offset": 28,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn"
+        },
+        {
+          "offset": 28,
+          "type": 0,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMI"
+        },
+        {
+          "offset": 16,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn"
+        },
+        {
+          "offset": 16,
+          "type": 0,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMF"
+        },
+        {
+          "offset": 12,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn"
+        },
+        {
+          "offset": 12,
+          "type": 0,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMa"
+        },
+        {
+          "offset": 8,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn"
+        },
+        {
+          "offset": 8,
+          "type": 0,
+          "external": 1,
+          "target": "l_.str.24.ObservableStateRootScope"
+        },
+        {
+          "offset": 4,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn"
+        },
+        {
+          "offset": 4,
+          "type": 0,
+          "external": 1,
+          "target": "_$s21GiftUIObservableStateMXM"
+        }
+      ]
+    },
+    "VMP": {
+      "row": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMP",
+        "address": 61680,
+        "section": 2,
+        "type": 14
+      },
+      "section": {
+        "name": "__const",
+        "addr": 59504,
+        "bytes": 2490,
+        "file": 61472,
+        "reloff": 108048,
+        "nreloc": 358
+      },
+      "raw_hex": "000000000000000001000040f4ffffff",
+      "relocations": [
+        {
+          "offset": 12,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMP"
+        },
+        {
+          "offset": 12,
+          "type": 0,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVWV"
+        },
+        {
+          "offset": 0,
+          "type": 1,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMP"
+        },
+        {
+          "offset": 0,
+          "type": 0,
+          "external": 1,
+          "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVMi"
+        }
+      ]
+    },
+    "VMI": {
+      "row": {
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMI",
+        "address": 89552,
+        "section": 4,
+        "type": 14
+      },
+      "section": {
+        "name": "__bss",
+        "addr": 86480,
+        "bytes": 3712,
+        "file": 0,
+        "reloff": 0,
+        "nreloc": 0
+      },
+      "raw_hex": null,
+      "relocations": []
+    }
+  },
+  "object_sha256": "ab0d734545f9af91a20b25910e63576659c4eeadc3722c8db2c9e26b27d927b9"
+}

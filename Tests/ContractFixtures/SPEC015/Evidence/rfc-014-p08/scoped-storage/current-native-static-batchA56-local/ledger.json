@@ -1,0 +1,1401 @@
+{
+  "started_utc": "2026-10-24T06:13:10.430585+00:00",
+  "processing": 473535253,
+  "transcript": 286877,
+  "requests": [
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py a\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py a",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 4 4\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 4 4",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 5 5\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 5 5",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 9 9\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 9 9",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 10 10\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 10 10",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 14 14\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 14 14",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 13 13\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 13 13",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 15 15\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 15 15",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 16 16\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 16 16",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\\\"object\\\",\\\"_$s17P08CounterRuntime03p08B8SemanticSiyF\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\"object\",\"_$s17P08CounterRuntime03p08B8SemanticSiyF\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-1.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-1.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-1.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-1.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\\\"object\\\",\\\"_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab14Runtime03p08B8u8SiyFSi21jk7State20mop7VyAA0b5q27J0V0aB6Schema0bjM0OG_AC0ih4e10K0VyAG0F14s8Core0E16vw9VGtAC0iH5X8OYKXEfU_Tf1ncn_n\\\"],[\\\"object\\\",\\\"_$s17P08CounterRuntime03p08B11CoordinatorSiyF\\\"],[\\\"object\\\",\\\"_$s17P08CounterRuntime03p08B12FixedStorageSiyF\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\"object\",\"_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab14Runtime03p08B8u8SiyFSi21jk7State20mop7VyAA0b5q27J0V0aB6Schema0bjM0OG_AC0ih4e10K0VyAG0F14s8Core0E16vw9VGtAC0iH5X8OYKXEfU_Tf1ncn_n\"],[\"object\",\"_$s17P08CounterRuntime03p08B11CoordinatorSiyF\"],[\"object\",\"_$s17P08CounterRuntime03p08B12FixedStorageSiyF\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-2.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\\\"object\\\",\\\"_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n\\\"],[\\\"object\\\",\\\"_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\"object\",\"_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n\"],[\"object\",\"_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-5.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-5.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-5.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-5.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-5.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-5.stdout 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-6.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-6.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-3.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-3.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-4.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-4.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\\\"object\\\",\\\"_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF\\\"],[\\\"object\\\",\\\"_OUTLINED_FUNCTION_65\\\"],[\\\"object\\\",\\\"_OUTLINED_FUNCTION_524\\\"],[\\\"observable\\\",\\\"_$s21GiftUIObservableState010ObservableC9RootScopeVMi\\\"],[\\\"observable\\\",\\\"_$s21GiftUIObservableState010ObservableC9RootScopeVMn\\\"],[\\\"observable\\\",\\\"_$s21GiftUIObservableState010ObservableC9RootScopeVMI\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\"object\",\"_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF\"],[\"object\",\"_OUTLINED_FUNCTION_65\"],[\"object\",\"_OUTLINED_FUNCTION_524\"],[\"observable\",\"_$s21GiftUIObservableState010ObservableC9RootScopeVMi\"],[\"observable\",\"_$s21GiftUIObservableState010ObservableC9RootScopeVMn\"],[\"observable\",\"_$s21GiftUIObservableState010ObservableC9RootScopeVMI\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 20 20\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py p 20 20",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-10.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-10.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path; import ast,json,hashlib,datetime,sys,struct; R=Path.cwd(); H=Path(\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\\\"); P=H/\\\"ledger.json\\\"; fb=(H/\\\"freeze.json\\\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\\\"page.py\\\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"frozen accounting\\\",\\\"exec\\\")); cmd=\\\"python3 -c \\\"+chr(39)+sys.argv[1]+chr(39)+\\\" \\\"+chr(39)+sys.argv[1]+chr(39); args={\\\"cmd\\\":cmd,\\\"max_output_tokens\\\":10000}; code=\\\"// @exec: {\\\\\\\"max_output_tokens\\\\\\\":12000}\\\\nconst r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args}); S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode()); save(); c=read(F[\\\"inputs\\\"][\\\"current_code\\\"]); t=ast.parse(c); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"check\\\",\\\"parse\\\"}],type_ignores=[]),\\\"frozen parser\\\",\\\"exec\\\")); z=read(F[\\\"inputs\\\"][\\\"observable\\\"]); secs,rows=parse(z); prefix=\\\"_$s21GiftUIObservableState010ObservableC9RootScope\\\"; selected={};\\nfor suffix,n in [(\\\"VMn\\\",64),(\\\"VMP\\\",16),(\\\"VMI\\\",0)]:\\n row=next(r for r in rows if r[\\\"symbol\\\"]==prefix+suffix); se=secs[row[\\\"section\\\"]-1]; delta=row[\\\"address\\\"]-se[\\\"addr\\\"]; rels=[]\\n for j in range(se[\\\"nreloc\\\"]):\\n  a,v=struct.unpack_from(\\\"<iI\\\",z,se[\\\"reloff\\\"]+8*j)\\n  if delta<=a<delta+n: rels.append({\\\"offset\\\":a-delta,\\\"type\\\":v>>28,\\\"external\\\":(v>>27)&1,\\\"target\\\":rows[v&0xffffff][\\\"symbol\\\"] if (v>>27)&1 else v&0xffffff})\\n selected[suffix]={\\\"row\\\":row,\\\"section\\\":se,\\\"raw_hex\\\":z[se[\\\"file\\\"]+delta:se[\\\"file\\\"]+delta+n].hex() if n else None,\\\"relocations\\\":rels}\\nv={\\\"root_scope_descriptor_pattern_cache\\\":selected,\\\"object_sha256\\\":F[\\\"inputs\\\"][\\\"observable\\\"][\\\"sha256\\\"]}; payload=(json.dumps(v,indent=2)+\\\"\\\\n\\\").encode(); charge(len(payload)*3); (H/\\\"root-scope-descriptor.json\\\").write_bytes(payload); save(); emit(v)' 'from pathlib import Path; import ast,json,hashlib,datetime,sys,struct; R=Path.cwd(); H=Path(\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\\\"); P=H/\\\"ledger.json\\\"; fb=(H/\\\"freeze.json\\\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\\\"page.py\\\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"frozen accounting\\\",\\\"exec\\\")); cmd=\\\"python3 -c \\\"+chr(39)+sys.argv[1]+chr(39)+\\\" \\\"+chr(39)+sys.argv[1]+chr(39); args={\\\"cmd\\\":cmd,\\\"max_output_tokens\\\":10000}; code=\\\"// @exec: {\\\\\\\"max_output_tokens\\\\\\\":12000}\\\\nconst r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args}); S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode()); save(); c=read(F[\\\"inputs\\\"][\\\"current_code\\\"]); t=ast.parse(c); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"check\\\",\\\"parse\\\"}],type_ignores=[]),\\\"frozen parser\\\",\\\"exec\\\")); z=read(F[\\\"inputs\\\"][\\\"observable\\\"]); secs,rows=parse(z); prefix=\\\"_$s21GiftUIObservableState010ObservableC9RootScope\\\"; selected={};\\nfor suffix,n in [(\\\"VMn\\\",64),(\\\"VMP\\\",16),(\\\"VMI\\\",0)]:\\n row=next(r for r in rows if r[\\\"symbol\\\"]==prefix+suffix); se=secs[row[\\\"section\\\"]-1]; delta=row[\\\"address\\\"]-se[\\\"addr\\\"]; rels=[]\\n for j in range(se[\\\"nreloc\\\"]):\\n  a,v=struct.unpack_from(\\\"<iI\\\",z,se[\\\"reloff\\\"]+8*j)\\n  if delta<=a<delta+n: rels.append({\\\"offset\\\":a-delta,\\\"type\\\":v>>28,\\\"external\\\":(v>>27)&1,\\\"target\\\":rows[v&0xffffff][\\\"symbol\\\"] if (v>>27)&1 else v&0xffffff})\\n selected[suffix]={\\\"row\\\":row,\\\"section\\\":se,\\\"raw_hex\\\":z[se[\\\"file\\\"]+delta:se[\\\"file\\\"]+delta+n].hex() if n else None,\\\"relocations\\\":rels}\\nv={\\\"root_scope_descriptor_pattern_cache\\\":selected,\\\"object_sha256\\\":F[\\\"inputs\\\"][\\\"observable\\\"][\\\"sha256\\\"]}; payload=(json.dumps(v,indent=2)+\\\"\\\\n\\\").encode(); charge(len(payload)*3); (H/\\\"root-scope-descriptor.json\\\").write_bytes(payload); save(); emit(v)'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path; import ast,json,hashlib,datetime,sys,struct; R=Path.cwd(); H=Path(\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\"); P=H/\"ledger.json\"; fb=(H/\"freeze.json\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\"page.py\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"frozen accounting\",\"exec\")); cmd=\"python3 -c \"+chr(39)+sys.argv[1]+chr(39)+\" \"+chr(39)+sys.argv[1]+chr(39); args={\"cmd\":cmd,\"max_output_tokens\":10000}; code=\"// @exec: {\\\"max_output_tokens\\\":12000}\\nconst r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\"requests\"].append({\"code\":code,\"args\":args}); S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode()); save(); c=read(F[\"inputs\"][\"current_code\"]); t=ast.parse(c); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"check\",\"parse\"}],type_ignores=[]),\"frozen parser\",\"exec\")); z=read(F[\"inputs\"][\"observable\"]); secs,rows=parse(z); prefix=\"_$s21GiftUIObservableState010ObservableC9RootScope\"; selected={};\nfor suffix,n in [(\"VMn\",64),(\"VMP\",16),(\"VMI\",0)]:\n row=next(r for r in rows if r[\"symbol\"]==prefix+suffix); se=secs[row[\"section\"]-1]; delta=row[\"address\"]-se[\"addr\"]; rels=[]\n for j in range(se[\"nreloc\"]):\n  a,v=struct.unpack_from(\"<iI\",z,se[\"reloff\"]+8*j)\n  if delta<=a<delta+n: rels.append({\"offset\":a-delta,\"type\":v>>28,\"external\":(v>>27)&1,\"target\":rows[v&0xffffff][\"symbol\"] if (v>>27)&1 else v&0xffffff})\n selected[suffix]={\"row\":row,\"section\":se,\"raw_hex\":z[se[\"file\"]+delta:se[\"file\"]+delta+n].hex() if n else None,\"relocations\":rels}\nv={\"root_scope_descriptor_pattern_cache\":selected,\"object_sha256\":F[\"inputs\"][\"observable\"][\"sha256\"]}; payload=(json.dumps(v,indent=2)+\"\\n\").encode(); charge(len(payload)*3); (H/\"root-scope-descriptor.json\").write_bytes(payload); save(); emit(v)' 'from pathlib import Path; import ast,json,hashlib,datetime,sys,struct; R=Path.cwd(); H=Path(\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\"); P=H/\"ledger.json\"; fb=(H/\"freeze.json\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\"page.py\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"frozen accounting\",\"exec\")); cmd=\"python3 -c \"+chr(39)+sys.argv[1]+chr(39)+\" \"+chr(39)+sys.argv[1]+chr(39); args={\"cmd\":cmd,\"max_output_tokens\":10000}; code=\"// @exec: {\\\"max_output_tokens\\\":12000}\\nconst r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\"requests\"].append({\"code\":code,\"args\":args}); S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode()); save(); c=read(F[\"inputs\"][\"current_code\"]); t=ast.parse(c); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"check\",\"parse\"}],type_ignores=[]),\"frozen parser\",\"exec\")); z=read(F[\"inputs\"][\"observable\"]); secs,rows=parse(z); prefix=\"_$s21GiftUIObservableState010ObservableC9RootScope\"; selected={};\nfor suffix,n in [(\"VMn\",64),(\"VMP\",16),(\"VMI\",0)]:\n row=next(r for r in rows if r[\"symbol\"]==prefix+suffix); se=secs[row[\"section\"]-1]; delta=row[\"address\"]-se[\"addr\"]; rels=[]\n for j in range(se[\"nreloc\"]):\n  a,v=struct.unpack_from(\"<iI\",z,se[\"reloff\"]+8*j)\n  if delta<=a<delta+n: rels.append({\"offset\":a-delta,\"type\":v>>28,\"external\":(v>>27)&1,\"target\":rows[v&0xffffff][\"symbol\"] if (v>>27)&1 else v&0xffffff})\n selected[suffix]={\"row\":row,\"section\":se,\"raw_hex\":z[se[\"file\"]+delta:se[\"file\"]+delta+n].hex() if n else None,\"relocations\":rels}\nv={\"root_scope_descriptor_pattern_cache\":selected,\"object_sha256\":F[\"inputs\"][\"observable\"][\"sha256\"]}; payload=(json.dumps(v,indent=2)+\"\\n\").encode(); charge(len(payload)*3); (H/\"root-scope-descriptor.json\").write_bytes(payload); save(); emit(v)'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-7.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-7.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-7.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-7.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-8.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-8.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-9.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-9.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-4.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-4.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\\\"object\\\",\\\"_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5\\\"],[\\\"observable\\\",\\\"_$s21GiftUIObservableState010ObservableC9RootScopeVMa\\\"]]'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py '[[\"object\",\"_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5\"],[\"observable\",\"_$s21GiftUIObservableState010ObservableC9RootScopeVMa\"]]'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-11.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-11.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-11.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-11.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-11.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-11.stdout 3 3",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-12.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-12.stdout 1 1",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path; import ast,json,hashlib,datetime,sys,struct; R=Path.cwd(); H=Path(\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\\\"); P=H/\\\"ledger.json\\\"; fb=(H/\\\"freeze.json\\\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\\\"page.py\\\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"frozen accounting\\\",\\\"exec\\\")); cmd=\\\"python3 -c \\\"+chr(39)+sys.argv[1]+chr(39)+\\\" \\\"+chr(39)+sys.argv[1]+chr(39); args={\\\"cmd\\\":cmd,\\\"max_output_tokens\\\":10000}; code=\\\"// @exec: {\\\\\\\"max_output_tokens\\\\\\\":12000}\\\\nconst r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args}); S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode()); save(); c=read(F[\\\"inputs\\\"][\\\"current_code\\\"]); t=ast.parse(c); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"check\\\",\\\"parse\\\"}],type_ignores=[]),\\\"frozen parser\\\",\\\"exec\\\")); result={}\\nfor key,name in [(\\\"observable\\\",\\\"_$s21GiftUIObservableState010ObservableC9RootScopeVMI\\\"),(\\\"object\\\",\\\"__MergedGlobals\\\"),(\\\"object\\\",\\\"_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD\\\")]:\\n z=read(F[\\\"inputs\\\"][key]); secs,rows=parse(z); row=next(r for r in rows if r[\\\"symbol\\\"]==name); se=secs[row[\\\"section\\\"]-1]; off=32; ordinal=0; flags=None\\n for i in range(struct.unpack_from(\\\"<I\\\",z,16)[0]):\\n  cmd,size=struct.unpack_from(\\\"<II\\\",z,off)\\n  if cmd==25:\\n   for j in range(struct.unpack_from(\\\"<I\\\",z,off+64)[0]):\\n    ordinal+=1\\n    if ordinal==row[\\\"section\\\"]: flags=struct.unpack_from(\\\"<I\\\",z,off+72+80*j+64)[0]\\n  off+=size\\n d={\\\"row\\\":row,\\\"section\\\":se,\\\"flags\\\":flags,\\\"pristine_zerofill\\\":flags&255==1,\\\"live_state_observed\\\":False}\\n if name.endswith(\\\"GMD\\\"):\\n  delta=row[\\\"address\\\"]-se[\\\"addr\\\"]; raw=z[se[\\\"file\\\"]+delta:se[\\\"file\\\"]+delta+16]; d[\\\"raw_hex\\\"]=raw.hex(); d[\\\"signed_words\\\"]=struct.unpack(\\\"<qq\\\",raw); d[\\\"relocations\\\"]=[]\\n  for j in range(se[\\\"nreloc\\\"]):\\n   a,v=struct.unpack_from(\\\"<iI\\\",z,se[\\\"reloff\\\"]+8*j)\\n   if delta<=a<delta+16:d[\\\"relocations\\\"].append({\\\"offset\\\":a-delta,\\\"type\\\":v>>28,\\\"target\\\":rows[v&0xffffff][\\\"symbol\\\"] if (v>>27)&1 else v&0xffffff})\\n result[name]=d\\npayload=(json.dumps(result,indent=2)+\\\"\\\\n\\\").encode(); charge(len(payload)*3); (H/\\\"cache-type-initial-data.json\\\").write_bytes(payload); save(); emit({\\\"initial_data\\\":result,\\\"processing\\\":S[\\\"processing\\\"]})' 'from pathlib import Path; import ast,json,hashlib,datetime,sys,struct; R=Path.cwd(); H=Path(\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\\\"); P=H/\\\"ledger.json\\\"; fb=(H/\\\"freeze.json\\\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\\\"page.py\\\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"frozen accounting\\\",\\\"exec\\\")); cmd=\\\"python3 -c \\\"+chr(39)+sys.argv[1]+chr(39)+\\\" \\\"+chr(39)+sys.argv[1]+chr(39); args={\\\"cmd\\\":cmd,\\\"max_output_tokens\\\":10000}; code=\\\"// @exec: {\\\\\\\"max_output_tokens\\\\\\\":12000}\\\\nconst r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args}); S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode()); save(); c=read(F[\\\"inputs\\\"][\\\"current_code\\\"]); t=ast.parse(c); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"check\\\",\\\"parse\\\"}],type_ignores=[]),\\\"frozen parser\\\",\\\"exec\\\")); result={}\\nfor key,name in [(\\\"observable\\\",\\\"_$s21GiftUIObservableState010ObservableC9RootScopeVMI\\\"),(\\\"object\\\",\\\"__MergedGlobals\\\"),(\\\"object\\\",\\\"_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD\\\")]:\\n z=read(F[\\\"inputs\\\"][key]); secs,rows=parse(z); row=next(r for r in rows if r[\\\"symbol\\\"]==name); se=secs[row[\\\"section\\\"]-1]; off=32; ordinal=0; flags=None\\n for i in range(struct.unpack_from(\\\"<I\\\",z,16)[0]):\\n  cmd,size=struct.unpack_from(\\\"<II\\\",z,off)\\n  if cmd==25:\\n   for j in range(struct.unpack_from(\\\"<I\\\",z,off+64)[0]):\\n    ordinal+=1\\n    if ordinal==row[\\\"section\\\"]: flags=struct.unpack_from(\\\"<I\\\",z,off+72+80*j+64)[0]\\n  off+=size\\n d={\\\"row\\\":row,\\\"section\\\":se,\\\"flags\\\":flags,\\\"pristine_zerofill\\\":flags&255==1,\\\"live_state_observed\\\":False}\\n if name.endswith(\\\"GMD\\\"):\\n  delta=row[\\\"address\\\"]-se[\\\"addr\\\"]; raw=z[se[\\\"file\\\"]+delta:se[\\\"file\\\"]+delta+16]; d[\\\"raw_hex\\\"]=raw.hex(); d[\\\"signed_words\\\"]=struct.unpack(\\\"<qq\\\",raw); d[\\\"relocations\\\"]=[]\\n  for j in range(se[\\\"nreloc\\\"]):\\n   a,v=struct.unpack_from(\\\"<iI\\\",z,se[\\\"reloff\\\"]+8*j)\\n   if delta<=a<delta+16:d[\\\"relocations\\\"].append({\\\"offset\\\":a-delta,\\\"type\\\":v>>28,\\\"target\\\":rows[v&0xffffff][\\\"symbol\\\"] if (v>>27)&1 else v&0xffffff})\\n result[name]=d\\npayload=(json.dumps(result,indent=2)+\\\"\\\\n\\\").encode(); charge(len(payload)*3); (H/\\\"cache-type-initial-data.json\\\").write_bytes(payload); save(); emit({\\\"initial_data\\\":result,\\\"processing\\\":S[\\\"processing\\\"]})'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path; import ast,json,hashlib,datetime,sys,struct; R=Path.cwd(); H=Path(\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\"); P=H/\"ledger.json\"; fb=(H/\"freeze.json\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\"page.py\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"frozen accounting\",\"exec\")); cmd=\"python3 -c \"+chr(39)+sys.argv[1]+chr(39)+\" \"+chr(39)+sys.argv[1]+chr(39); args={\"cmd\":cmd,\"max_output_tokens\":10000}; code=\"// @exec: {\\\"max_output_tokens\\\":12000}\\nconst r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\"requests\"].append({\"code\":code,\"args\":args}); S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode()); save(); c=read(F[\"inputs\"][\"current_code\"]); t=ast.parse(c); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"check\",\"parse\"}],type_ignores=[]),\"frozen parser\",\"exec\")); result={}\nfor key,name in [(\"observable\",\"_$s21GiftUIObservableState010ObservableC9RootScopeVMI\"),(\"object\",\"__MergedGlobals\"),(\"object\",\"_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD\")]:\n z=read(F[\"inputs\"][key]); secs,rows=parse(z); row=next(r for r in rows if r[\"symbol\"]==name); se=secs[row[\"section\"]-1]; off=32; ordinal=0; flags=None\n for i in range(struct.unpack_from(\"<I\",z,16)[0]):\n  cmd,size=struct.unpack_from(\"<II\",z,off)\n  if cmd==25:\n   for j in range(struct.unpack_from(\"<I\",z,off+64)[0]):\n    ordinal+=1\n    if ordinal==row[\"section\"]: flags=struct.unpack_from(\"<I\",z,off+72+80*j+64)[0]\n  off+=size\n d={\"row\":row,\"section\":se,\"flags\":flags,\"pristine_zerofill\":flags&255==1,\"live_state_observed\":False}\n if name.endswith(\"GMD\"):\n  delta=row[\"address\"]-se[\"addr\"]; raw=z[se[\"file\"]+delta:se[\"file\"]+delta+16]; d[\"raw_hex\"]=raw.hex(); d[\"signed_words\"]=struct.unpack(\"<qq\",raw); d[\"relocations\"]=[]\n  for j in range(se[\"nreloc\"]):\n   a,v=struct.unpack_from(\"<iI\",z,se[\"reloff\"]+8*j)\n   if delta<=a<delta+16:d[\"relocations\"].append({\"offset\":a-delta,\"type\":v>>28,\"target\":rows[v&0xffffff][\"symbol\"] if (v>>27)&1 else v&0xffffff})\n result[name]=d\npayload=(json.dumps(result,indent=2)+\"\\n\").encode(); charge(len(payload)*3); (H/\"cache-type-initial-data.json\").write_bytes(payload); save(); emit({\"initial_data\":result,\"processing\":S[\"processing\"]})' 'from pathlib import Path; import ast,json,hashlib,datetime,sys,struct; R=Path.cwd(); H=Path(\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\"); P=H/\"ledger.json\"; fb=(H/\"freeze.json\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\"page.py\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"frozen accounting\",\"exec\")); cmd=\"python3 -c \"+chr(39)+sys.argv[1]+chr(39)+\" \"+chr(39)+sys.argv[1]+chr(39); args={\"cmd\":cmd,\"max_output_tokens\":10000}; code=\"// @exec: {\\\"max_output_tokens\\\":12000}\\nconst r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\"requests\"].append({\"code\":code,\"args\":args}); S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode()); save(); c=read(F[\"inputs\"][\"current_code\"]); t=ast.parse(c); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"check\",\"parse\"}],type_ignores=[]),\"frozen parser\",\"exec\")); result={}\nfor key,name in [(\"observable\",\"_$s21GiftUIObservableState010ObservableC9RootScopeVMI\"),(\"object\",\"__MergedGlobals\"),(\"object\",\"_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD\")]:\n z=read(F[\"inputs\"][key]); secs,rows=parse(z); row=next(r for r in rows if r[\"symbol\"]==name); se=secs[row[\"section\"]-1]; off=32; ordinal=0; flags=None\n for i in range(struct.unpack_from(\"<I\",z,16)[0]):\n  cmd,size=struct.unpack_from(\"<II\",z,off)\n  if cmd==25:\n   for j in range(struct.unpack_from(\"<I\",z,off+64)[0]):\n    ordinal+=1\n    if ordinal==row[\"section\"]: flags=struct.unpack_from(\"<I\",z,off+72+80*j+64)[0]\n  off+=size\n d={\"row\":row,\"section\":se,\"flags\":flags,\"pristine_zerofill\":flags&255==1,\"live_state_observed\":False}\n if name.endswith(\"GMD\"):\n  delta=row[\"address\"]-se[\"addr\"]; raw=z[se[\"file\"]+delta:se[\"file\"]+delta+16]; d[\"raw_hex\"]=raw.hex(); d[\"signed_words\"]=struct.unpack(\"<qq\",raw); d[\"relocations\"]=[]\n  for j in range(se[\"nreloc\"]):\n   a,v=struct.unpack_from(\"<iI\",z,se[\"reloff\"]+8*j)\n   if delta<=a<delta+16:d[\"relocations\"].append({\"offset\":a-delta,\"type\":v>>28,\"target\":rows[v&0xffffff][\"symbol\"] if (v>>27)&1 else v&0xffffff})\n result[name]=d\npayload=(json.dumps(result,indent=2)+\"\\n\").encode(); charge(len(payload)*3); (H/\"cache-type-initial-data.json\").write_bytes(payload); save(); emit({\"initial_data\":result,\"processing\":S[\"processing\"]})'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-2.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-2.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-3.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py capture-3.stdout 2 2",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path; import ast,json,hashlib,datetime,sys; R=Path.cwd(); H=Path(\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\\\"); P=H/\\\"ledger.json\\\"; fb=(H/\\\"freeze.json\\\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\\\"page.py\\\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"frozen accounting\\\",\\\"exec\\\")); cmd=\\\"python3 -c \\\"+chr(39)+sys.argv[1]+chr(39)+\\\" \\\"+chr(39)+sys.argv[1]+chr(39); args={\\\"cmd\\\":cmd,\\\"max_output_tokens\\\":10000}; code=\\\"// @exec: {\\\\\\\"max_output_tokens\\\\\\\":12000}\\\\nconst r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args}); S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode()); save(); D=H.parent/\\\"current-native-static-batchA56-result\\\"; rows={\\\"status\\\":\\\"LOCAL_REQUIRED_ROOTSCOPE_METADATA_DEPENDENCY_PROVED_CONDITIONAL_ALLOCATOR_CLASS_BROAD_ELIGIBILITY_OPEN\\\",\\\"HEAD\\\":F[\\\"HEAD\\\"],\\\"semantic\\\":{\\\"root\\\":\\\"804c-8258 ->8130 Static lifetime83d8-853c ->8484 exact withRoot a6d98-a7094\\\",\\\"predicates\\\":\\\"Fresh owned mutating phase; operationAllowed(false)==0x12; actual two-slot spans, limits2/2/2, aligned backing. These pass on required admitted entry; refusal witnesses remain guarded, not globally infeasible.\\\",\\\"required_cleanup\\\":\\\"Normal callback counterSemanticBacking at a6ee8 then exact concrete RootScope GMD a6f10/a6f18 -> opaque shutdown a6f28. Alternate base path a6fc4 -> shutdown a6fd4. Cleanup error retries shutdown a7014 and preserves first error; finishActivation outer normal852c/error84b0 retained.\\\",\\\"error_boundary\\\":\\\"Failed expand/counterSemanticExpect/caught-error prints are conditional on unsuccessful expansion/checks. Full functional success is not a proof of universal infeasibility. Exact expansion/codec/indirect callback failure feasibility remains available current local work; no allocator conclusion from print names.\\\"},\\\"coordinator\\\":{\\\"root\\\":\\\"86b38-86d30 constructs Static storage then audit/run86be8 before Dynamic controls\\\",\\\"run\\\":\\\"84638-8481c: used/audit/presence/configuration guards ->84758 exact Static lifetime8848-8b64 -> callback pointer bound at84740 to actual run callback; post-return audits/resetAllStorage847c4 preserved\\\",\\\"required_cleanup\\\":\\\"Normal callback return89ec/89f0 -> exact SAME RootScope GMD8a28/8a30 ->shutdown8a3c; error cleanup8a78 ->shutdown8a84; first error preserved and finishActivation8ae8/8b54 retained.\\\",\\\"operations\\\":\\\"Source preserves initial opportunity, ten value rounds, bounded34-fact queue, capacity/invalid/unavailable checks and quiescence; no Dynamic exemption applied to Static branch.\\\"},\\\"shared_type\\\":{\\\"type\\\":\\\"ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity>\\\",\\\"gmd\\\":\\\"address832016, signed32 length-17, relocation to exact symbolic RootScope/CounterOwnedModel/SemanticCompleteIdentity payload; negative emitted cell is not observed live state\\\",\\\"accessor\\\":\\\"GiftUIObservableState RootScopeVMa b39c-b3a8 passes exact VMn to swift_getGenericMetadata at b3a4\\\",\\\"descriptor\\\":\\\"VMn71648 relocation+28 to own VMI89552 and+32 to VMP61680; generic header2parameters/3requirements/4keyarguments\\\",\\\"pattern\\\":\\\"VMP+0 to actual VMi c9a0-c9a8: w3=48 then tail swift_allocateGenericValueMetadata atc9a4.48 is a literal argument, not allocation bytes.\\\",\\\"pristine\\\":\\\"VMI exact section flags1 S_ZEROFILL; no live cache/table/binding observation\\\",\\\"consequence\\\":\\\"Actual required compiler metadata dependency is proved. A47/A48 logical provider graph supports a conditional allocator-family consequence only under its expected-provider, normal valid argument/constraint continuation, absent-cache/table/MISS premises. Current typed construction/full functional success supports valid type inputs; transitive callbacks, prespecialization/table/live state are not all closed here. No observed/unavoidable allocation or success/byte claim. Earlier REQUIRED construction warming remains charged.\\\",\\\"historical_qualification\\\":\\\"Prior A47/A48/A51/A52 recordingFALSE remains FALSE; logical conditional reuse is not retroqualification.\\\"},\\\"fixed\\\":{\\\"path\\\":\\\"Fixed rootf914-fb10: fa34 helper524bf324 compares MergedGlobals+0x10 to-1; !=-1 ->faf8 helper65bc59c -> swift_once(token,counterDrawingLimits_WZ)\\\",\\\"initial_data\\\":\\\"MergedGlobals exact section flags1 S_ZEROFILL; pristine zero token is not actual live token. Earlier required drawing setup may initialize it and is still charged.\\\",\\\"closed\\\":\\\"Reuse exact accepted fixed callback/997/1669/DrawingLimits constructor constants(1,1,2,1,1,2,1,1), no local allocator/metadata calls; source byte-codec assertions preserved.\\\",\\\"residual\\\":\\\"Exact imported swift_once implementation/dependency first-use effects and loaded binding were not discharged by the selected retained provider rows. Body evidence is available within approved installed-provider authority, not globally absent or a runtime-only blocker. No reacquisition or runtime action performed.\\\"},\\\"safety\\\":\\\"Reuse exact owner/reader/dispatch/retirement/bridge/linked-writer/fault lemmas under their existing actual backing/lifetime/quiescence premises; no broad U03 closure from these rows\\\",\\\"recommendation\\\":\\\"No source or annotation/API trial. Add required generic RootScope cleanup barrier to existing Model owning-design/build-realization decision; concrete product ownership does not exempt required generic controls.\\\"}; residual={\\\"closed_local\\\":[\\\"Current Semantic and Coordinator admitted paths and complete normal/error cleanup metadata origins/type are joined to accepted full artifact.\\\",\\\"Direct guard conditions and normal/error finishActivation/first-failure cleanup order identified.\\\",\\\"Fixed local callback/limits work remains closed; actual once token/callback import join refreshed.\\\"],\\\"proved_dependency\\\":[\\\"Same concrete RootScope metadata is requested by REQUIRED normal cleanup in both Semantic and Coordinator. Imported generic allocator class remains conditional under exact provider/cache premises.\\\"],\\\"available_unexamined\\\":[\\\"Exact semantic expand/codec/CounterRoles/indirect body failure feasibility needed before excluding failure-only print/error paths.\\\",\\\"ObservableStateError witness getter120-160 cached fast path vs swift_getWitnessTable148 is captured; descriptor-specific nongeneric provider allocation classification not closed.\\\",\\\"Exact swift_once provider-body first-use effects remain available installed evidence, outside selected reused rows; no missing-provider claim.\\\",\\\"Other inherited callee/metadata/witness/error frontiers retain their precise prior dispositions; no17-site/26-row count closure.\\\"],\\\"actual_missing_live_evidence\\\":[\\\"Exact loaded provider bindings/interposition/default selector/environment and actual cache/table state throughout charged window.\\\",\\\"Actual stdout identity/GOT/R=S and persistence/window applicability; pristine files cannot supply live state.\\\"],\\\"gates\\\":[\\\"Existing Model generic owning metadata design blocker remains separate.\\\",\\\"UnitFAILED before Interaction due unrelated target; InteractionUNEXECUTED.\\\",\\\"No runtime/cold/resource/currentimage/other-profile/wholeBatchA/P08 pass; no new action proposed/executed.\\\"]}; total=F[\\\"inputs\\\"][\\\"body\\\"][\\\"bytes\\\"]+sum(c[\\\"stdout_bytes\\\"] for c in S[\\\"captures\\\"]); lines=S[\\\"line_count\\\"]+sum(c[\\\"stdout_lines\\\"] for c in S[\\\"captures\\\"]); forecast=sum(d[\\\"bytes\\\"]*2 for d in F[\\\"inputs\\\"].values()); account={\\\"started_utc\\\":S[\\\"started_utc\\\"],\\\"auth_utc\\\":S[\\\"auth_utc\\\"],\\\"processing_before_finalization\\\":S[\\\"processing\\\"],\\\"transcript_before_finalization\\\":S[\\\"transcript\\\"],\\\"final_auth_forecast\\\":forecast,\\\"protected_control_reserve\\\":16777216,\\\"additional_finalization_forecast\\\":4194304,\\\"forecast_processing_upper\\\":S[\\\"processing\\\"]+forecast+16777216+4194304,\\\"combined_all_selected_group_excerpt_bytes\\\":total,\\\"combined_lines\\\":lines,\\\"limits\\\":{\\\"processing\\\":536870912,\\\"shared\\\":8388608,\\\"excerpt_bytes\\\":1048576,\\\"excerpt_lines\\\":16384},\\\"actual_final_counters\\\":\\\"Authoritative ledger.json AFTER final page.py f emit/save; printed CLOSED is pre-emission. No post-close inspection required.\\\",\\\"qualification\\\":\\\"All post-auth worker requests and deliberate payloads use exact pre-emission recording. Pre-auth setup conservatively charged; platform envelope excluded; no OS-I/O/rendered transcript certification.\\\",\\\"pages_examined\\\":S[\\\"pages\\\"],\\\"machine_pages_examined\\\":S[\\\"current_body_examined_pages\\\"]}; assert account[\\\"forecast_processing_upper\\\"]<536870912 and total<1048576 and lines<16384; provenance={\\\"freeze\\\":\\\"../current-native-static-batchA56-local/freeze.json\\\",\\\"helper_sha256\\\":F[\\\"helper_sha256\\\"],\\\"inputs\\\":F[\\\"inputs\\\"],\\\"captures\\\":S[\\\"captures\\\"],\\\"reuse\\\":F[\\\"reuse\\\"],\\\"omission_boundary\\\":\\\"Source pages6-8 audit/Dynamic storage and pages11-12,17-19,21-26 unrelated/reused source portions are not asserted newly examined. Accepted owner/retirement/audit lemmas retain exact premises; all captured machine bodies are fully paged. No omitted semantic expansion body is called infeasible.\\\"}; report=\\\"# Batch A56: required cleanup dependency and consolidated eligibility\\\\n\\\\nCurrent Semantic and Coordinator normal cleanup both request the exact ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity> metadata before opaque shutdown. This is required successful-path work, separate from guarded refusal/error diagnostics. The exact descriptor/cache/pattern/accessor and allocator-family instantiator are joined in rows.json. The provider consequence is conditional under the stated normal-provider/cache premises, not observed or unavoidable allocation.\\\\n\\\\nFixedStorage local callback and limits work stay closed. Its actual token/callback-to-swift_once join is proved; exact provider first-use effects and live binding remain explicit. Available unexamined local failure/codec/indirect paths are distinguished from genuinely unavailable live state in residuals.json. No global eligibility pass follows.\\\\n\\\\nSee rows.json, residuals.json, provenance.json and accounting.json; exact raw captures, type/cache data and frozen sources are adjacent. A55 failure and all earlier FALSE recordings remain immutable. A56 uses unchanged delivery logic with the required invocation directory initialized before authentication. No source/compiler/runtime/provider acquisition or index action occurred.\\\\n\\\\nFinal hashes/HEAD, end clock, exact final counters and numeric exit are recorded by the final page.py f operation in the adjacent ledger and invocation receipt. Accounting snapshots explicitly precede that operation. The coordinator owns one independent package review.\\\\n\\\"; payloads={\\\"rows.json\\\":rows,\\\"residuals.json\\\":residual,\\\"provenance.json\\\":provenance,\\\"accounting.json\\\":account,\\\"README.md\\\":report}; planned={n:((v if isinstance(v,str) else json.dumps(v,indent=2))+\\\"\\\\n\\\").encode() for n,v in payloads.items()}; foot=sum(p.stat().st_size for p in H.rglob(\\\"*\\\") if p.is_file())+sum(p.stat().st_size for p in D.rglob(\\\"*\\\") if p.is_file()); assert foot+S[\\\"transcript\\\"]+sum(map(len,planned.values()))+1048576<8388608; charge(sum(map(len,planned.values()))*3)\\nfor n,z in planned.items():(D/n).write_bytes(z)\\nS[\\\"package_result\\\"]=str(D); S[\\\"model_findings_saved_utc\\\"]=datetime.datetime.now(datetime.timezone.utc).isoformat(); save(); emit({\\\"s\\\":\\\"RESULT_READY\\\",\\\"path\\\":str(D),\\\"processing\\\":S[\\\"processing\\\"],\\\"excerpt_bytes\\\":total,\\\"excerpt_lines\\\":lines,\\\"final_auth_forecast\\\":forecast,\\\"finalization_upper\\\":account[\\\"forecast_processing_upper\\\"]})' 'from pathlib import Path; import ast,json,hashlib,datetime,sys; R=Path.cwd(); H=Path(\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\\\"); P=H/\\\"ledger.json\\\"; fb=(H/\\\"freeze.json\\\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\\\"page.py\\\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"frozen accounting\\\",\\\"exec\\\")); cmd=\\\"python3 -c \\\"+chr(39)+sys.argv[1]+chr(39)+\\\" \\\"+chr(39)+sys.argv[1]+chr(39); args={\\\"cmd\\\":cmd,\\\"max_output_tokens\\\":10000}; code=\\\"// @exec: {\\\\\\\"max_output_tokens\\\\\\\":12000}\\\\nconst r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args}); S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode()); save(); D=H.parent/\\\"current-native-static-batchA56-result\\\"; rows={\\\"status\\\":\\\"LOCAL_REQUIRED_ROOTSCOPE_METADATA_DEPENDENCY_PROVED_CONDITIONAL_ALLOCATOR_CLASS_BROAD_ELIGIBILITY_OPEN\\\",\\\"HEAD\\\":F[\\\"HEAD\\\"],\\\"semantic\\\":{\\\"root\\\":\\\"804c-8258 ->8130 Static lifetime83d8-853c ->8484 exact withRoot a6d98-a7094\\\",\\\"predicates\\\":\\\"Fresh owned mutating phase; operationAllowed(false)==0x12; actual two-slot spans, limits2/2/2, aligned backing. These pass on required admitted entry; refusal witnesses remain guarded, not globally infeasible.\\\",\\\"required_cleanup\\\":\\\"Normal callback counterSemanticBacking at a6ee8 then exact concrete RootScope GMD a6f10/a6f18 -> opaque shutdown a6f28. Alternate base path a6fc4 -> shutdown a6fd4. Cleanup error retries shutdown a7014 and preserves first error; finishActivation outer normal852c/error84b0 retained.\\\",\\\"error_boundary\\\":\\\"Failed expand/counterSemanticExpect/caught-error prints are conditional on unsuccessful expansion/checks. Full functional success is not a proof of universal infeasibility. Exact expansion/codec/indirect callback failure feasibility remains available current local work; no allocator conclusion from print names.\\\"},\\\"coordinator\\\":{\\\"root\\\":\\\"86b38-86d30 constructs Static storage then audit/run86be8 before Dynamic controls\\\",\\\"run\\\":\\\"84638-8481c: used/audit/presence/configuration guards ->84758 exact Static lifetime8848-8b64 -> callback pointer bound at84740 to actual run callback; post-return audits/resetAllStorage847c4 preserved\\\",\\\"required_cleanup\\\":\\\"Normal callback return89ec/89f0 -> exact SAME RootScope GMD8a28/8a30 ->shutdown8a3c; error cleanup8a78 ->shutdown8a84; first error preserved and finishActivation8ae8/8b54 retained.\\\",\\\"operations\\\":\\\"Source preserves initial opportunity, ten value rounds, bounded34-fact queue, capacity/invalid/unavailable checks and quiescence; no Dynamic exemption applied to Static branch.\\\"},\\\"shared_type\\\":{\\\"type\\\":\\\"ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity>\\\",\\\"gmd\\\":\\\"address832016, signed32 length-17, relocation to exact symbolic RootScope/CounterOwnedModel/SemanticCompleteIdentity payload; negative emitted cell is not observed live state\\\",\\\"accessor\\\":\\\"GiftUIObservableState RootScopeVMa b39c-b3a8 passes exact VMn to swift_getGenericMetadata at b3a4\\\",\\\"descriptor\\\":\\\"VMn71648 relocation+28 to own VMI89552 and+32 to VMP61680; generic header2parameters/3requirements/4keyarguments\\\",\\\"pattern\\\":\\\"VMP+0 to actual VMi c9a0-c9a8: w3=48 then tail swift_allocateGenericValueMetadata atc9a4.48 is a literal argument, not allocation bytes.\\\",\\\"pristine\\\":\\\"VMI exact section flags1 S_ZEROFILL; no live cache/table/binding observation\\\",\\\"consequence\\\":\\\"Actual required compiler metadata dependency is proved. A47/A48 logical provider graph supports a conditional allocator-family consequence only under its expected-provider, normal valid argument/constraint continuation, absent-cache/table/MISS premises. Current typed construction/full functional success supports valid type inputs; transitive callbacks, prespecialization/table/live state are not all closed here. No observed/unavoidable allocation or success/byte claim. Earlier REQUIRED construction warming remains charged.\\\",\\\"historical_qualification\\\":\\\"Prior A47/A48/A51/A52 recordingFALSE remains FALSE; logical conditional reuse is not retroqualification.\\\"},\\\"fixed\\\":{\\\"path\\\":\\\"Fixed rootf914-fb10: fa34 helper524bf324 compares MergedGlobals+0x10 to-1; !=-1 ->faf8 helper65bc59c -> swift_once(token,counterDrawingLimits_WZ)\\\",\\\"initial_data\\\":\\\"MergedGlobals exact section flags1 S_ZEROFILL; pristine zero token is not actual live token. Earlier required drawing setup may initialize it and is still charged.\\\",\\\"closed\\\":\\\"Reuse exact accepted fixed callback/997/1669/DrawingLimits constructor constants(1,1,2,1,1,2,1,1), no local allocator/metadata calls; source byte-codec assertions preserved.\\\",\\\"residual\\\":\\\"Exact imported swift_once implementation/dependency first-use effects and loaded binding were not discharged by the selected retained provider rows. Body evidence is available within approved installed-provider authority, not globally absent or a runtime-only blocker. No reacquisition or runtime action performed.\\\"},\\\"safety\\\":\\\"Reuse exact owner/reader/dispatch/retirement/bridge/linked-writer/fault lemmas under their existing actual backing/lifetime/quiescence premises; no broad U03 closure from these rows\\\",\\\"recommendation\\\":\\\"No source or annotation/API trial. Add required generic RootScope cleanup barrier to existing Model owning-design/build-realization decision; concrete product ownership does not exempt required generic controls.\\\"}; residual={\\\"closed_local\\\":[\\\"Current Semantic and Coordinator admitted paths and complete normal/error cleanup metadata origins/type are joined to accepted full artifact.\\\",\\\"Direct guard conditions and normal/error finishActivation/first-failure cleanup order identified.\\\",\\\"Fixed local callback/limits work remains closed; actual once token/callback import join refreshed.\\\"],\\\"proved_dependency\\\":[\\\"Same concrete RootScope metadata is requested by REQUIRED normal cleanup in both Semantic and Coordinator. Imported generic allocator class remains conditional under exact provider/cache premises.\\\"],\\\"available_unexamined\\\":[\\\"Exact semantic expand/codec/CounterRoles/indirect body failure feasibility needed before excluding failure-only print/error paths.\\\",\\\"ObservableStateError witness getter120-160 cached fast path vs swift_getWitnessTable148 is captured; descriptor-specific nongeneric provider allocation classification not closed.\\\",\\\"Exact swift_once provider-body first-use effects remain available installed evidence, outside selected reused rows; no missing-provider claim.\\\",\\\"Other inherited callee/metadata/witness/error frontiers retain their precise prior dispositions; no17-site/26-row count closure.\\\"],\\\"actual_missing_live_evidence\\\":[\\\"Exact loaded provider bindings/interposition/default selector/environment and actual cache/table state throughout charged window.\\\",\\\"Actual stdout identity/GOT/R=S and persistence/window applicability; pristine files cannot supply live state.\\\"],\\\"gates\\\":[\\\"Existing Model generic owning metadata design blocker remains separate.\\\",\\\"UnitFAILED before Interaction due unrelated target; InteractionUNEXECUTED.\\\",\\\"No runtime/cold/resource/currentimage/other-profile/wholeBatchA/P08 pass; no new action proposed/executed.\\\"]}; total=F[\\\"inputs\\\"][\\\"body\\\"][\\\"bytes\\\"]+sum(c[\\\"stdout_bytes\\\"] for c in S[\\\"captures\\\"]); lines=S[\\\"line_count\\\"]+sum(c[\\\"stdout_lines\\\"] for c in S[\\\"captures\\\"]); forecast=sum(d[\\\"bytes\\\"]*2 for d in F[\\\"inputs\\\"].values()); account={\\\"started_utc\\\":S[\\\"started_utc\\\"],\\\"auth_utc\\\":S[\\\"auth_utc\\\"],\\\"processing_before_finalization\\\":S[\\\"processing\\\"],\\\"transcript_before_finalization\\\":S[\\\"transcript\\\"],\\\"final_auth_forecast\\\":forecast,\\\"protected_control_reserve\\\":16777216,\\\"additional_finalization_forecast\\\":4194304,\\\"forecast_processing_upper\\\":S[\\\"processing\\\"]+forecast+16777216+4194304,\\\"combined_all_selected_group_excerpt_bytes\\\":total,\\\"combined_lines\\\":lines,\\\"limits\\\":{\\\"processing\\\":536870912,\\\"shared\\\":8388608,\\\"excerpt_bytes\\\":1048576,\\\"excerpt_lines\\\":16384},\\\"actual_final_counters\\\":\\\"Authoritative ledger.json AFTER final page.py f emit/save; printed CLOSED is pre-emission. No post-close inspection required.\\\",\\\"qualification\\\":\\\"All post-auth worker requests and deliberate payloads use exact pre-emission recording. Pre-auth setup conservatively charged; platform envelope excluded; no OS-I/O/rendered transcript certification.\\\",\\\"pages_examined\\\":S[\\\"pages\\\"],\\\"machine_pages_examined\\\":S[\\\"current_body_examined_pages\\\"]}; assert account[\\\"forecast_processing_upper\\\"]<536870912 and total<1048576 and lines<16384; provenance={\\\"freeze\\\":\\\"../current-native-static-batchA56-local/freeze.json\\\",\\\"helper_sha256\\\":F[\\\"helper_sha256\\\"],\\\"inputs\\\":F[\\\"inputs\\\"],\\\"captures\\\":S[\\\"captures\\\"],\\\"reuse\\\":F[\\\"reuse\\\"],\\\"omission_boundary\\\":\\\"Source pages6-8 audit/Dynamic storage and pages11-12,17-19,21-26 unrelated/reused source portions are not asserted newly examined. Accepted owner/retirement/audit lemmas retain exact premises; all captured machine bodies are fully paged. No omitted semantic expansion body is called infeasible.\\\"}; report=\\\"# Batch A56: required cleanup dependency and consolidated eligibility\\\\n\\\\nCurrent Semantic and Coordinator normal cleanup both request the exact ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity> metadata before opaque shutdown. This is required successful-path work, separate from guarded refusal/error diagnostics. The exact descriptor/cache/pattern/accessor and allocator-family instantiator are joined in rows.json. The provider consequence is conditional under the stated normal-provider/cache premises, not observed or unavoidable allocation.\\\\n\\\\nFixedStorage local callback and limits work stay closed. Its actual token/callback-to-swift_once join is proved; exact provider first-use effects and live binding remain explicit. Available unexamined local failure/codec/indirect paths are distinguished from genuinely unavailable live state in residuals.json. No global eligibility pass follows.\\\\n\\\\nSee rows.json, residuals.json, provenance.json and accounting.json; exact raw captures, type/cache data and frozen sources are adjacent. A55 failure and all earlier FALSE recordings remain immutable. A56 uses unchanged delivery logic with the required invocation directory initialized before authentication. No source/compiler/runtime/provider acquisition or index action occurred.\\\\n\\\\nFinal hashes/HEAD, end clock, exact final counters and numeric exit are recorded by the final page.py f operation in the adjacent ledger and invocation receipt. Accounting snapshots explicitly precede that operation. The coordinator owns one independent package review.\\\\n\\\"; payloads={\\\"rows.json\\\":rows,\\\"residuals.json\\\":residual,\\\"provenance.json\\\":provenance,\\\"accounting.json\\\":account,\\\"README.md\\\":report}; planned={n:((v if isinstance(v,str) else json.dumps(v,indent=2))+\\\"\\\\n\\\").encode() for n,v in payloads.items()}; foot=sum(p.stat().st_size for p in H.rglob(\\\"*\\\") if p.is_file())+sum(p.stat().st_size for p in D.rglob(\\\"*\\\") if p.is_file()); assert foot+S[\\\"transcript\\\"]+sum(map(len,planned.values()))+1048576<8388608; charge(sum(map(len,planned.values()))*3)\\nfor n,z in planned.items():(D/n).write_bytes(z)\\nS[\\\"package_result\\\"]=str(D); S[\\\"model_findings_saved_utc\\\"]=datetime.datetime.now(datetime.timezone.utc).isoformat(); save(); emit({\\\"s\\\":\\\"RESULT_READY\\\",\\\"path\\\":str(D),\\\"processing\\\":S[\\\"processing\\\"],\\\"excerpt_bytes\\\":total,\\\"excerpt_lines\\\":lines,\\\"final_auth_forecast\\\":forecast,\\\"finalization_upper\\\":account[\\\"forecast_processing_upper\\\"]})'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path; import ast,json,hashlib,datetime,sys; R=Path.cwd(); H=Path(\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\"); P=H/\"ledger.json\"; fb=(H/\"freeze.json\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\"page.py\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"frozen accounting\",\"exec\")); cmd=\"python3 -c \"+chr(39)+sys.argv[1]+chr(39)+\" \"+chr(39)+sys.argv[1]+chr(39); args={\"cmd\":cmd,\"max_output_tokens\":10000}; code=\"// @exec: {\\\"max_output_tokens\\\":12000}\\nconst r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\"requests\"].append({\"code\":code,\"args\":args}); S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode()); save(); D=H.parent/\"current-native-static-batchA56-result\"; rows={\"status\":\"LOCAL_REQUIRED_ROOTSCOPE_METADATA_DEPENDENCY_PROVED_CONDITIONAL_ALLOCATOR_CLASS_BROAD_ELIGIBILITY_OPEN\",\"HEAD\":F[\"HEAD\"],\"semantic\":{\"root\":\"804c-8258 ->8130 Static lifetime83d8-853c ->8484 exact withRoot a6d98-a7094\",\"predicates\":\"Fresh owned mutating phase; operationAllowed(false)==0x12; actual two-slot spans, limits2/2/2, aligned backing. These pass on required admitted entry; refusal witnesses remain guarded, not globally infeasible.\",\"required_cleanup\":\"Normal callback counterSemanticBacking at a6ee8 then exact concrete RootScope GMD a6f10/a6f18 -> opaque shutdown a6f28. Alternate base path a6fc4 -> shutdown a6fd4. Cleanup error retries shutdown a7014 and preserves first error; finishActivation outer normal852c/error84b0 retained.\",\"error_boundary\":\"Failed expand/counterSemanticExpect/caught-error prints are conditional on unsuccessful expansion/checks. Full functional success is not a proof of universal infeasibility. Exact expansion/codec/indirect callback failure feasibility remains available current local work; no allocator conclusion from print names.\"},\"coordinator\":{\"root\":\"86b38-86d30 constructs Static storage then audit/run86be8 before Dynamic controls\",\"run\":\"84638-8481c: used/audit/presence/configuration guards ->84758 exact Static lifetime8848-8b64 -> callback pointer bound at84740 to actual run callback; post-return audits/resetAllStorage847c4 preserved\",\"required_cleanup\":\"Normal callback return89ec/89f0 -> exact SAME RootScope GMD8a28/8a30 ->shutdown8a3c; error cleanup8a78 ->shutdown8a84; first error preserved and finishActivation8ae8/8b54 retained.\",\"operations\":\"Source preserves initial opportunity, ten value rounds, bounded34-fact queue, capacity/invalid/unavailable checks and quiescence; no Dynamic exemption applied to Static branch.\"},\"shared_type\":{\"type\":\"ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity>\",\"gmd\":\"address832016, signed32 length-17, relocation to exact symbolic RootScope/CounterOwnedModel/SemanticCompleteIdentity payload; negative emitted cell is not observed live state\",\"accessor\":\"GiftUIObservableState RootScopeVMa b39c-b3a8 passes exact VMn to swift_getGenericMetadata at b3a4\",\"descriptor\":\"VMn71648 relocation+28 to own VMI89552 and+32 to VMP61680; generic header2parameters/3requirements/4keyarguments\",\"pattern\":\"VMP+0 to actual VMi c9a0-c9a8: w3=48 then tail swift_allocateGenericValueMetadata atc9a4.48 is a literal argument, not allocation bytes.\",\"pristine\":\"VMI exact section flags1 S_ZEROFILL; no live cache/table/binding observation\",\"consequence\":\"Actual required compiler metadata dependency is proved. A47/A48 logical provider graph supports a conditional allocator-family consequence only under its expected-provider, normal valid argument/constraint continuation, absent-cache/table/MISS premises. Current typed construction/full functional success supports valid type inputs; transitive callbacks, prespecialization/table/live state are not all closed here. No observed/unavoidable allocation or success/byte claim. Earlier REQUIRED construction warming remains charged.\",\"historical_qualification\":\"Prior A47/A48/A51/A52 recordingFALSE remains FALSE; logical conditional reuse is not retroqualification.\"},\"fixed\":{\"path\":\"Fixed rootf914-fb10: fa34 helper524bf324 compares MergedGlobals+0x10 to-1; !=-1 ->faf8 helper65bc59c -> swift_once(token,counterDrawingLimits_WZ)\",\"initial_data\":\"MergedGlobals exact section flags1 S_ZEROFILL; pristine zero token is not actual live token. Earlier required drawing setup may initialize it and is still charged.\",\"closed\":\"Reuse exact accepted fixed callback/997/1669/DrawingLimits constructor constants(1,1,2,1,1,2,1,1), no local allocator/metadata calls; source byte-codec assertions preserved.\",\"residual\":\"Exact imported swift_once implementation/dependency first-use effects and loaded binding were not discharged by the selected retained provider rows. Body evidence is available within approved installed-provider authority, not globally absent or a runtime-only blocker. No reacquisition or runtime action performed.\"},\"safety\":\"Reuse exact owner/reader/dispatch/retirement/bridge/linked-writer/fault lemmas under their existing actual backing/lifetime/quiescence premises; no broad U03 closure from these rows\",\"recommendation\":\"No source or annotation/API trial. Add required generic RootScope cleanup barrier to existing Model owning-design/build-realization decision; concrete product ownership does not exempt required generic controls.\"}; residual={\"closed_local\":[\"Current Semantic and Coordinator admitted paths and complete normal/error cleanup metadata origins/type are joined to accepted full artifact.\",\"Direct guard conditions and normal/error finishActivation/first-failure cleanup order identified.\",\"Fixed local callback/limits work remains closed; actual once token/callback import join refreshed.\"],\"proved_dependency\":[\"Same concrete RootScope metadata is requested by REQUIRED normal cleanup in both Semantic and Coordinator. Imported generic allocator class remains conditional under exact provider/cache premises.\"],\"available_unexamined\":[\"Exact semantic expand/codec/CounterRoles/indirect body failure feasibility needed before excluding failure-only print/error paths.\",\"ObservableStateError witness getter120-160 cached fast path vs swift_getWitnessTable148 is captured; descriptor-specific nongeneric provider allocation classification not closed.\",\"Exact swift_once provider-body first-use effects remain available installed evidence, outside selected reused rows; no missing-provider claim.\",\"Other inherited callee/metadata/witness/error frontiers retain their precise prior dispositions; no17-site/26-row count closure.\"],\"actual_missing_live_evidence\":[\"Exact loaded provider bindings/interposition/default selector/environment and actual cache/table state throughout charged window.\",\"Actual stdout identity/GOT/R=S and persistence/window applicability; pristine files cannot supply live state.\"],\"gates\":[\"Existing Model generic owning metadata design blocker remains separate.\",\"UnitFAILED before Interaction due unrelated target; InteractionUNEXECUTED.\",\"No runtime/cold/resource/currentimage/other-profile/wholeBatchA/P08 pass; no new action proposed/executed.\"]}; total=F[\"inputs\"][\"body\"][\"bytes\"]+sum(c[\"stdout_bytes\"] for c in S[\"captures\"]); lines=S[\"line_count\"]+sum(c[\"stdout_lines\"] for c in S[\"captures\"]); forecast=sum(d[\"bytes\"]*2 for d in F[\"inputs\"].values()); account={\"started_utc\":S[\"started_utc\"],\"auth_utc\":S[\"auth_utc\"],\"processing_before_finalization\":S[\"processing\"],\"transcript_before_finalization\":S[\"transcript\"],\"final_auth_forecast\":forecast,\"protected_control_reserve\":16777216,\"additional_finalization_forecast\":4194304,\"forecast_processing_upper\":S[\"processing\"]+forecast+16777216+4194304,\"combined_all_selected_group_excerpt_bytes\":total,\"combined_lines\":lines,\"limits\":{\"processing\":536870912,\"shared\":8388608,\"excerpt_bytes\":1048576,\"excerpt_lines\":16384},\"actual_final_counters\":\"Authoritative ledger.json AFTER final page.py f emit/save; printed CLOSED is pre-emission. No post-close inspection required.\",\"qualification\":\"All post-auth worker requests and deliberate payloads use exact pre-emission recording. Pre-auth setup conservatively charged; platform envelope excluded; no OS-I/O/rendered transcript certification.\",\"pages_examined\":S[\"pages\"],\"machine_pages_examined\":S[\"current_body_examined_pages\"]}; assert account[\"forecast_processing_upper\"]<536870912 and total<1048576 and lines<16384; provenance={\"freeze\":\"../current-native-static-batchA56-local/freeze.json\",\"helper_sha256\":F[\"helper_sha256\"],\"inputs\":F[\"inputs\"],\"captures\":S[\"captures\"],\"reuse\":F[\"reuse\"],\"omission_boundary\":\"Source pages6-8 audit/Dynamic storage and pages11-12,17-19,21-26 unrelated/reused source portions are not asserted newly examined. Accepted owner/retirement/audit lemmas retain exact premises; all captured machine bodies are fully paged. No omitted semantic expansion body is called infeasible.\"}; report=\"# Batch A56: required cleanup dependency and consolidated eligibility\\n\\nCurrent Semantic and Coordinator normal cleanup both request the exact ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity> metadata before opaque shutdown. This is required successful-path work, separate from guarded refusal/error diagnostics. The exact descriptor/cache/pattern/accessor and allocator-family instantiator are joined in rows.json. The provider consequence is conditional under the stated normal-provider/cache premises, not observed or unavoidable allocation.\\n\\nFixedStorage local callback and limits work stay closed. Its actual token/callback-to-swift_once join is proved; exact provider first-use effects and live binding remain explicit. Available unexamined local failure/codec/indirect paths are distinguished from genuinely unavailable live state in residuals.json. No global eligibility pass follows.\\n\\nSee rows.json, residuals.json, provenance.json and accounting.json; exact raw captures, type/cache data and frozen sources are adjacent. A55 failure and all earlier FALSE recordings remain immutable. A56 uses unchanged delivery logic with the required invocation directory initialized before authentication. No source/compiler/runtime/provider acquisition or index action occurred.\\n\\nFinal hashes/HEAD, end clock, exact final counters and numeric exit are recorded by the final page.py f operation in the adjacent ledger and invocation receipt. Accounting snapshots explicitly precede that operation. The coordinator owns one independent package review.\\n\"; payloads={\"rows.json\":rows,\"residuals.json\":residual,\"provenance.json\":provenance,\"accounting.json\":account,\"README.md\":report}; planned={n:((v if isinstance(v,str) else json.dumps(v,indent=2))+\"\\n\").encode() for n,v in payloads.items()}; foot=sum(p.stat().st_size for p in H.rglob(\"*\") if p.is_file())+sum(p.stat().st_size for p in D.rglob(\"*\") if p.is_file()); assert foot+S[\"transcript\"]+sum(map(len,planned.values()))+1048576<8388608; charge(sum(map(len,planned.values()))*3)\nfor n,z in planned.items():(D/n).write_bytes(z)\nS[\"package_result\"]=str(D); S[\"model_findings_saved_utc\"]=datetime.datetime.now(datetime.timezone.utc).isoformat(); save(); emit({\"s\":\"RESULT_READY\",\"path\":str(D),\"processing\":S[\"processing\"],\"excerpt_bytes\":total,\"excerpt_lines\":lines,\"final_auth_forecast\":forecast,\"finalization_upper\":account[\"forecast_processing_upper\"]})' 'from pathlib import Path; import ast,json,hashlib,datetime,sys; R=Path.cwd(); H=Path(\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\"); P=H/\"ledger.json\"; fb=(H/\"freeze.json\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\"page.py\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"frozen accounting\",\"exec\")); cmd=\"python3 -c \"+chr(39)+sys.argv[1]+chr(39)+\" \"+chr(39)+sys.argv[1]+chr(39); args={\"cmd\":cmd,\"max_output_tokens\":10000}; code=\"// @exec: {\\\"max_output_tokens\\\":12000}\\nconst r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\"requests\"].append({\"code\":code,\"args\":args}); S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode()); save(); D=H.parent/\"current-native-static-batchA56-result\"; rows={\"status\":\"LOCAL_REQUIRED_ROOTSCOPE_METADATA_DEPENDENCY_PROVED_CONDITIONAL_ALLOCATOR_CLASS_BROAD_ELIGIBILITY_OPEN\",\"HEAD\":F[\"HEAD\"],\"semantic\":{\"root\":\"804c-8258 ->8130 Static lifetime83d8-853c ->8484 exact withRoot a6d98-a7094\",\"predicates\":\"Fresh owned mutating phase; operationAllowed(false)==0x12; actual two-slot spans, limits2/2/2, aligned backing. These pass on required admitted entry; refusal witnesses remain guarded, not globally infeasible.\",\"required_cleanup\":\"Normal callback counterSemanticBacking at a6ee8 then exact concrete RootScope GMD a6f10/a6f18 -> opaque shutdown a6f28. Alternate base path a6fc4 -> shutdown a6fd4. Cleanup error retries shutdown a7014 and preserves first error; finishActivation outer normal852c/error84b0 retained.\",\"error_boundary\":\"Failed expand/counterSemanticExpect/caught-error prints are conditional on unsuccessful expansion/checks. Full functional success is not a proof of universal infeasibility. Exact expansion/codec/indirect callback failure feasibility remains available current local work; no allocator conclusion from print names.\"},\"coordinator\":{\"root\":\"86b38-86d30 constructs Static storage then audit/run86be8 before Dynamic controls\",\"run\":\"84638-8481c: used/audit/presence/configuration guards ->84758 exact Static lifetime8848-8b64 -> callback pointer bound at84740 to actual run callback; post-return audits/resetAllStorage847c4 preserved\",\"required_cleanup\":\"Normal callback return89ec/89f0 -> exact SAME RootScope GMD8a28/8a30 ->shutdown8a3c; error cleanup8a78 ->shutdown8a84; first error preserved and finishActivation8ae8/8b54 retained.\",\"operations\":\"Source preserves initial opportunity, ten value rounds, bounded34-fact queue, capacity/invalid/unavailable checks and quiescence; no Dynamic exemption applied to Static branch.\"},\"shared_type\":{\"type\":\"ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity>\",\"gmd\":\"address832016, signed32 length-17, relocation to exact symbolic RootScope/CounterOwnedModel/SemanticCompleteIdentity payload; negative emitted cell is not observed live state\",\"accessor\":\"GiftUIObservableState RootScopeVMa b39c-b3a8 passes exact VMn to swift_getGenericMetadata at b3a4\",\"descriptor\":\"VMn71648 relocation+28 to own VMI89552 and+32 to VMP61680; generic header2parameters/3requirements/4keyarguments\",\"pattern\":\"VMP+0 to actual VMi c9a0-c9a8: w3=48 then tail swift_allocateGenericValueMetadata atc9a4.48 is a literal argument, not allocation bytes.\",\"pristine\":\"VMI exact section flags1 S_ZEROFILL; no live cache/table/binding observation\",\"consequence\":\"Actual required compiler metadata dependency is proved. A47/A48 logical provider graph supports a conditional allocator-family consequence only under its expected-provider, normal valid argument/constraint continuation, absent-cache/table/MISS premises. Current typed construction/full functional success supports valid type inputs; transitive callbacks, prespecialization/table/live state are not all closed here. No observed/unavoidable allocation or success/byte claim. Earlier REQUIRED construction warming remains charged.\",\"historical_qualification\":\"Prior A47/A48/A51/A52 recordingFALSE remains FALSE; logical conditional reuse is not retroqualification.\"},\"fixed\":{\"path\":\"Fixed rootf914-fb10: fa34 helper524bf324 compares MergedGlobals+0x10 to-1; !=-1 ->faf8 helper65bc59c -> swift_once(token,counterDrawingLimits_WZ)\",\"initial_data\":\"MergedGlobals exact section flags1 S_ZEROFILL; pristine zero token is not actual live token. Earlier required drawing setup may initialize it and is still charged.\",\"closed\":\"Reuse exact accepted fixed callback/997/1669/DrawingLimits constructor constants(1,1,2,1,1,2,1,1), no local allocator/metadata calls; source byte-codec assertions preserved.\",\"residual\":\"Exact imported swift_once implementation/dependency first-use effects and loaded binding were not discharged by the selected retained provider rows. Body evidence is available within approved installed-provider authority, not globally absent or a runtime-only blocker. No reacquisition or runtime action performed.\"},\"safety\":\"Reuse exact owner/reader/dispatch/retirement/bridge/linked-writer/fault lemmas under their existing actual backing/lifetime/quiescence premises; no broad U03 closure from these rows\",\"recommendation\":\"No source or annotation/API trial. Add required generic RootScope cleanup barrier to existing Model owning-design/build-realization decision; concrete product ownership does not exempt required generic controls.\"}; residual={\"closed_local\":[\"Current Semantic and Coordinator admitted paths and complete normal/error cleanup metadata origins/type are joined to accepted full artifact.\",\"Direct guard conditions and normal/error finishActivation/first-failure cleanup order identified.\",\"Fixed local callback/limits work remains closed; actual once token/callback import join refreshed.\"],\"proved_dependency\":[\"Same concrete RootScope metadata is requested by REQUIRED normal cleanup in both Semantic and Coordinator. Imported generic allocator class remains conditional under exact provider/cache premises.\"],\"available_unexamined\":[\"Exact semantic expand/codec/CounterRoles/indirect body failure feasibility needed before excluding failure-only print/error paths.\",\"ObservableStateError witness getter120-160 cached fast path vs swift_getWitnessTable148 is captured; descriptor-specific nongeneric provider allocation classification not closed.\",\"Exact swift_once provider-body first-use effects remain available installed evidence, outside selected reused rows; no missing-provider claim.\",\"Other inherited callee/metadata/witness/error frontiers retain their precise prior dispositions; no17-site/26-row count closure.\"],\"actual_missing_live_evidence\":[\"Exact loaded provider bindings/interposition/default selector/environment and actual cache/table state throughout charged window.\",\"Actual stdout identity/GOT/R=S and persistence/window applicability; pristine files cannot supply live state.\"],\"gates\":[\"Existing Model generic owning metadata design blocker remains separate.\",\"UnitFAILED before Interaction due unrelated target; InteractionUNEXECUTED.\",\"No runtime/cold/resource/currentimage/other-profile/wholeBatchA/P08 pass; no new action proposed/executed.\"]}; total=F[\"inputs\"][\"body\"][\"bytes\"]+sum(c[\"stdout_bytes\"] for c in S[\"captures\"]); lines=S[\"line_count\"]+sum(c[\"stdout_lines\"] for c in S[\"captures\"]); forecast=sum(d[\"bytes\"]*2 for d in F[\"inputs\"].values()); account={\"started_utc\":S[\"started_utc\"],\"auth_utc\":S[\"auth_utc\"],\"processing_before_finalization\":S[\"processing\"],\"transcript_before_finalization\":S[\"transcript\"],\"final_auth_forecast\":forecast,\"protected_control_reserve\":16777216,\"additional_finalization_forecast\":4194304,\"forecast_processing_upper\":S[\"processing\"]+forecast+16777216+4194304,\"combined_all_selected_group_excerpt_bytes\":total,\"combined_lines\":lines,\"limits\":{\"processing\":536870912,\"shared\":8388608,\"excerpt_bytes\":1048576,\"excerpt_lines\":16384},\"actual_final_counters\":\"Authoritative ledger.json AFTER final page.py f emit/save; printed CLOSED is pre-emission. No post-close inspection required.\",\"qualification\":\"All post-auth worker requests and deliberate payloads use exact pre-emission recording. Pre-auth setup conservatively charged; platform envelope excluded; no OS-I/O/rendered transcript certification.\",\"pages_examined\":S[\"pages\"],\"machine_pages_examined\":S[\"current_body_examined_pages\"]}; assert account[\"forecast_processing_upper\"]<536870912 and total<1048576 and lines<16384; provenance={\"freeze\":\"../current-native-static-batchA56-local/freeze.json\",\"helper_sha256\":F[\"helper_sha256\"],\"inputs\":F[\"inputs\"],\"captures\":S[\"captures\"],\"reuse\":F[\"reuse\"],\"omission_boundary\":\"Source pages6-8 audit/Dynamic storage and pages11-12,17-19,21-26 unrelated/reused source portions are not asserted newly examined. Accepted owner/retirement/audit lemmas retain exact premises; all captured machine bodies are fully paged. No omitted semantic expansion body is called infeasible.\"}; report=\"# Batch A56: required cleanup dependency and consolidated eligibility\\n\\nCurrent Semantic and Coordinator normal cleanup both request the exact ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity> metadata before opaque shutdown. This is required successful-path work, separate from guarded refusal/error diagnostics. The exact descriptor/cache/pattern/accessor and allocator-family instantiator are joined in rows.json. The provider consequence is conditional under the stated normal-provider/cache premises, not observed or unavoidable allocation.\\n\\nFixedStorage local callback and limits work stay closed. Its actual token/callback-to-swift_once join is proved; exact provider first-use effects and live binding remain explicit. Available unexamined local failure/codec/indirect paths are distinguished from genuinely unavailable live state in residuals.json. No global eligibility pass follows.\\n\\nSee rows.json, residuals.json, provenance.json and accounting.json; exact raw captures, type/cache data and frozen sources are adjacent. A55 failure and all earlier FALSE recordings remain immutable. A56 uses unchanged delivery logic with the required invocation directory initialized before authentication. No source/compiler/runtime/provider acquisition or index action occurred.\\n\\nFinal hashes/HEAD, end clock, exact final counters and numeric exit are recorded by the final page.py f operation in the adjacent ledger and invocation receipt. Accounting snapshots explicitly precede that operation. The coordinator owns one independent package review.\\n\"; payloads={\"rows.json\":rows,\"residuals.json\":residual,\"provenance.json\":provenance,\"accounting.json\":account,\"README.md\":report}; planned={n:((v if isinstance(v,str) else json.dumps(v,indent=2))+\"\\n\").encode() for n,v in payloads.items()}; foot=sum(p.stat().st_size for p in H.rglob(\"*\") if p.is_file())+sum(p.stat().st_size for p in D.rglob(\"*\") if p.is_file()); assert foot+S[\"transcript\"]+sum(map(len,planned.values()))+1048576<8388608; charge(sum(map(len,planned.values()))*3)\nfor n,z in planned.items():(D/n).write_bytes(z)\nS[\"package_result\"]=str(D); S[\"model_findings_saved_utc\"]=datetime.datetime.now(datetime.timezone.utc).isoformat(); save(); emit({\"s\":\"RESULT_READY\",\"path\":str(D),\"processing\":S[\"processing\"],\"excerpt_bytes\":total,\"excerpt_lines\":lines,\"final_auth_forecast\":forecast,\"finalization_upper\":account[\"forecast_processing_upper\"]})'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 -c 'from pathlib import Path; import ast,json,hashlib,datetime,sys; R=Path.cwd(); H=Path(\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\\\"); P=H/\\\"ledger.json\\\"; fb=(H/\\\"freeze.json\\\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\\\"page.py\\\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"frozen accounting\\\",\\\"exec\\\")); cmd=\\\"python3 -c \\\"+chr(39)+sys.argv[1]+chr(39)+\\\" \\\"+chr(39)+sys.argv[1]+chr(39); args={\\\"cmd\\\":cmd,\\\"max_output_tokens\\\":10000}; code=\\\"// @exec: {\\\\\\\"max_output_tokens\\\\\\\":12000}\\\\nconst r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args}); S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode()); save(); D=H.parent/\\\"current-native-static-batchA56-result\\\"; reason=\\\"Experimental functions.exec and nested exec requests/payloads used the recorded prefix. Post-auth collaboration.send_message coordination calls were outside that prefix and not separately pre-emission metered. Full all-tools request qualification is therefore not established; no retroqualification or cap breach inferred.\\\"; S[\\\"recording_qualified\\\"]=False; S[\\\"recording_reason\\\"]=reason\\nfor name in [\\\"rows.json\\\",\\\"accounting.json\\\"]:\\n p=D/name; charge(p.stat().st_size*3); v=json.loads(p.read_bytes()); v[\\\"recording_qualified\\\"]=False; v[\\\"recording_reason\\\"]=reason\\n if name==\\\"accounting.json\\\":v[\\\"qualification\\\"]=reason\\n z=(json.dumps(v,indent=2)+\\\"\\\\n\\\").encode(); charge(len(z)*3); p.write_bytes(z)\\np=D/\\\"README.md\\\"; charge(p.stat().st_size*3); z=p.read_bytes()+(\\\"\\\\nRecording qualification is FALSE: post-auth coordination collaboration.send_message calls were not separately pre-emission metered. The experimental file-tool entry was recorded; this limitation does not retroqualify earlier or current all-tools accounting. Source/machine proof validity is reviewed separately.\\\\n\\\").encode(); charge(len(z)*3); p.write_bytes(z); save(); emit({\\\"s\\\":\\\"QUALIFICATION_LIMIT_SAVED\\\",\\\"recording_qualified\\\":False,\\\"reason\\\":reason,\\\"processing\\\":S[\\\"processing\\\"]})' 'from pathlib import Path; import ast,json,hashlib,datetime,sys; R=Path.cwd(); H=Path(\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\\\"); P=H/\\\"ledger.json\\\"; fb=(H/\\\"freeze.json\\\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\\\"page.py\\\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\\\"charge\\\",\\\"save\\\",\\\"read\\\",\\\"emit\\\"}],type_ignores=[]),\\\"frozen accounting\\\",\\\"exec\\\")); cmd=\\\"python3 -c \\\"+chr(39)+sys.argv[1]+chr(39)+\\\" \\\"+chr(39)+sys.argv[1]+chr(39); args={\\\"cmd\\\":cmd,\\\"max_output_tokens\\\":10000}; code=\\\"// @exec: {\\\\\\\"max_output_tokens\\\\\\\":12000}\\\\nconst r=await tools.exec_command(\\\"+json.dumps(args,separators=(\\\",\\\",\\\":\\\"))+\\\");text(r.output);\\\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\\\"requests\\\"].append({\\\"code\\\":code,\\\"args\\\":args}); S[\\\"transcript\\\"]+=len(code.encode())+len(json.dumps(args,separators=(\\\",\\\",\\\":\\\")).encode()); save(); D=H.parent/\\\"current-native-static-batchA56-result\\\"; reason=\\\"Experimental functions.exec and nested exec requests/payloads used the recorded prefix. Post-auth collaboration.send_message coordination calls were outside that prefix and not separately pre-emission metered. Full all-tools request qualification is therefore not established; no retroqualification or cap breach inferred.\\\"; S[\\\"recording_qualified\\\"]=False; S[\\\"recording_reason\\\"]=reason\\nfor name in [\\\"rows.json\\\",\\\"accounting.json\\\"]:\\n p=D/name; charge(p.stat().st_size*3); v=json.loads(p.read_bytes()); v[\\\"recording_qualified\\\"]=False; v[\\\"recording_reason\\\"]=reason\\n if name==\\\"accounting.json\\\":v[\\\"qualification\\\"]=reason\\n z=(json.dumps(v,indent=2)+\\\"\\\\n\\\").encode(); charge(len(z)*3); p.write_bytes(z)\\np=D/\\\"README.md\\\"; charge(p.stat().st_size*3); z=p.read_bytes()+(\\\"\\\\nRecording qualification is FALSE: post-auth coordination collaboration.send_message calls were not separately pre-emission metered. The experimental file-tool entry was recorded; this limitation does not retroqualify earlier or current all-tools accounting. Source/machine proof validity is reviewed separately.\\\\n\\\").encode(); charge(len(z)*3); p.write_bytes(z); save(); emit({\\\"s\\\":\\\"QUALIFICATION_LIMIT_SAVED\\\",\\\"recording_qualified\\\":False,\\\"reason\\\":reason,\\\"processing\\\":S[\\\"processing\\\"]})'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 -c 'from pathlib import Path; import ast,json,hashlib,datetime,sys; R=Path.cwd(); H=Path(\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\"); P=H/\"ledger.json\"; fb=(H/\"freeze.json\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\"page.py\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"frozen accounting\",\"exec\")); cmd=\"python3 -c \"+chr(39)+sys.argv[1]+chr(39)+\" \"+chr(39)+sys.argv[1]+chr(39); args={\"cmd\":cmd,\"max_output_tokens\":10000}; code=\"// @exec: {\\\"max_output_tokens\\\":12000}\\nconst r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\"requests\"].append({\"code\":code,\"args\":args}); S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode()); save(); D=H.parent/\"current-native-static-batchA56-result\"; reason=\"Experimental functions.exec and nested exec requests/payloads used the recorded prefix. Post-auth collaboration.send_message coordination calls were outside that prefix and not separately pre-emission metered. Full all-tools request qualification is therefore not established; no retroqualification or cap breach inferred.\"; S[\"recording_qualified\"]=False; S[\"recording_reason\"]=reason\nfor name in [\"rows.json\",\"accounting.json\"]:\n p=D/name; charge(p.stat().st_size*3); v=json.loads(p.read_bytes()); v[\"recording_qualified\"]=False; v[\"recording_reason\"]=reason\n if name==\"accounting.json\":v[\"qualification\"]=reason\n z=(json.dumps(v,indent=2)+\"\\n\").encode(); charge(len(z)*3); p.write_bytes(z)\np=D/\"README.md\"; charge(p.stat().st_size*3); z=p.read_bytes()+(\"\\nRecording qualification is FALSE: post-auth coordination collaboration.send_message calls were not separately pre-emission metered. The experimental file-tool entry was recorded; this limitation does not retroqualify earlier or current all-tools accounting. Source/machine proof validity is reviewed separately.\\n\").encode(); charge(len(z)*3); p.write_bytes(z); save(); emit({\"s\":\"QUALIFICATION_LIMIT_SAVED\",\"recording_qualified\":False,\"reason\":reason,\"processing\":S[\"processing\"]})' 'from pathlib import Path; import ast,json,hashlib,datetime,sys; R=Path.cwd(); H=Path(\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local\"); P=H/\"ledger.json\"; fb=(H/\"freeze.json\").read_bytes(); lb=P.read_bytes(); F=json.loads(fb); S=json.loads(lb); sha=lambda z:hashlib.sha256(z).hexdigest(); src=(H/\"page.py\").read_bytes(); t=ast.parse(src); exec(compile(ast.Module(body=[n for n in t.body if isinstance(n,ast.FunctionDef) and n.name in {\"charge\",\"save\",\"read\",\"emit\"}],type_ignores=[]),\"frozen accounting\",\"exec\")); cmd=\"python3 -c \"+chr(39)+sys.argv[1]+chr(39)+\" \"+chr(39)+sys.argv[1]+chr(39); args={\"cmd\":cmd,\"max_output_tokens\":10000}; code=\"// @exec: {\\\"max_output_tokens\\\":12000}\\nconst r=await tools.exec_command(\"+json.dumps(args,separators=(\",\",\":\"))+\");text(r.output);\"; charge((len(fb)+len(lb)+len(src))*3+len(code.encode())*3+len(json.dumps(args).encode())*3+4096); S[\"requests\"].append({\"code\":code,\"args\":args}); S[\"transcript\"]+=len(code.encode())+len(json.dumps(args,separators=(\",\",\":\")).encode()); save(); D=H.parent/\"current-native-static-batchA56-result\"; reason=\"Experimental functions.exec and nested exec requests/payloads used the recorded prefix. Post-auth collaboration.send_message coordination calls were outside that prefix and not separately pre-emission metered. Full all-tools request qualification is therefore not established; no retroqualification or cap breach inferred.\"; S[\"recording_qualified\"]=False; S[\"recording_reason\"]=reason\nfor name in [\"rows.json\",\"accounting.json\"]:\n p=D/name; charge(p.stat().st_size*3); v=json.loads(p.read_bytes()); v[\"recording_qualified\"]=False; v[\"recording_reason\"]=reason\n if name==\"accounting.json\":v[\"qualification\"]=reason\n z=(json.dumps(v,indent=2)+\"\\n\").encode(); charge(len(z)*3); p.write_bytes(z)\np=D/\"README.md\"; charge(p.stat().st_size*3); z=p.read_bytes()+(\"\\nRecording qualification is FALSE: post-auth coordination collaboration.send_message calls were not separately pre-emission metered. The experimental file-tool entry was recorded; this limitation does not retroqualify earlier or current all-tools accounting. Source/machine proof validity is reviewed separately.\\n\").encode(); charge(len(z)*3); p.write_bytes(z); save(); emit({\"s\":\"QUALIFICATION_LIMIT_SAVED\",\"recording_qualified\":False,\"reason\":reason,\"processing\":S[\"processing\"]})'",
+        "max_output_tokens": 10000
+      }
+    },
+    {
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py f '{\\\"status\\\":\\\"CONSOLIDATED_REQUIRED_ROOTSCOPE_METADATA_DEPENDENCY_AND_EXACT_RESIDUALS\\\",\\\"recording_qualified\\\":false,\\\"recording_reason\\\":\\\"Post-auth collaboration coordination requests were not separately pre-emission metered; experimental file requests were recorded; no retroqualification\\\",\\\"result\\\":\\\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-result\\\",\\\"source_unchanged\\\":true,\\\"overall_eligibility\\\":false,\\\"semantic\\\":\\\"Required normal cleanup concrete RootScope metadata at a6f18 flows to shutdown at a6f28\\\",\\\"coordinator\\\":\\\"Same RootScope normal cleanup metadata at 8a30 flows to shutdown at 8a3c\\\",\\\"fixed\\\":\\\"Token not equal to minus one reaches swift_once with exact callback; local callback closed, provider and live effects unresolved\\\",\\\"conditional_allocator\\\":\\\"Exact descriptor, cache, pattern and instantiator joins established; prior provider logical premises retained; no observed or unavoidable allocation claim\\\",\\\"no_further_work\\\":true}'\",\"max_output_tokens\":10000});text(r.output);",
+      "args": {
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/page.py f '{\"status\":\"CONSOLIDATED_REQUIRED_ROOTSCOPE_METADATA_DEPENDENCY_AND_EXACT_RESIDUALS\",\"recording_qualified\":false,\"recording_reason\":\"Post-auth collaboration coordination requests were not separately pre-emission metered; experimental file requests were recorded; no retroqualification\",\"result\":\"Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-result\",\"source_unchanged\":true,\"overall_eligibility\":false,\"semantic\":\"Required normal cleanup concrete RootScope metadata at a6f18 flows to shutdown at a6f28\",\"coordinator\":\"Same RootScope normal cleanup metadata at 8a30 flows to shutdown at 8a3c\",\"fixed\":\"Token not equal to minus one reaches swift_once with exact callback; local callback closed, provider and live effects unresolved\",\"conditional_allocator\":\"Exact descriptor, cache, pattern and instantiator joins established; prior provider logical premises retained; no observed or unavoidable allocation claim\",\"no_further_work\":true}'",
+        "max_output_tokens": 10000
+      }
+    }
+  ],
+  "pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    9,
+    10,
+    14,
+    13,
+    15,
+    16,
+    20
+  ],
+  "errors": [],
+  "auth_utc": "2026-10-24T06:13:15.212177+00:00",
+  "page_count": 26,
+  "line_count": 2465,
+  "predicates": [
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "9d57632523f81e0598a4acc2ef032f805f2102bff0e6c8c9580703934294d234"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime03p08B8SemanticSiyF",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 79398342,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 11062,
+        "lines": 174
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime03p08B8SemanticSiyF",
+        "start": "0x804c",
+        "end": "0x8258",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x804c",
+          "--stop-address=0x8258",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 11062,
+        "stdout_lines": 174,
+        "stdout_sha256": "951b265269645dc444438b721e2c28501f1811ea2012ef2ee1ec2f8095a8d809",
+        "stderr": "",
+        "raw": "capture-1.stdout"
+      }
+    },
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "9d57632523f81e0598a4acc2ef032f805f2102bff0e6c8c9580703934294d234"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab14Runtime03p08B8u8SiyFSi21jk7State20mop7VyAA0b5q27J0V0aB6Schema0bjM0OG_AC0ih4e10K0VyAG0F14s8Core0E16vw9VGtAC0iH5X8OYKXEfU_Tf1ncn_n",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 109583273,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 23722,
+        "lines": 290
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab14Runtime03p08B8u8SiyFSi21jk7State20mop7VyAA0b5q27J0V0aB6Schema0bjM0OG_AC0ih4e10K0VyAG0F14s8Core0E16vw9VGtAC0iH5X8OYKXEfU_Tf1ncn_n",
+        "start": "0x83d8",
+        "end": "0x853c",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x83d8",
+          "--stop-address=0x853c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 12660,
+        "stdout_lines": 116,
+        "stdout_sha256": "8f908d62284c8b452b705891ccfbd693720a200ff9462aa2c5aabe400908c527",
+        "stderr": "",
+        "raw": "capture-2.stdout"
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime03p08B11CoordinatorSiyF",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 130780257,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 35119,
+        "lines": 453
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime03p08B11CoordinatorSiyF",
+        "start": "0x86b38",
+        "end": "0x86d30",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x86b38",
+          "--stop-address=0x86d30",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 11397,
+        "stdout_lines": 163,
+        "stdout_sha256": "7baadedf6dfdb5cfbe073c97b7eb7348fe44e7a2a2cdb94ebb2acc67e58bfdfa",
+        "stderr": "",
+        "raw": "capture-3.stdout"
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime03p08B12FixedStorageSiyF",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 152016496,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 42897,
+        "lines": 605
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime03p08B12FixedStorageSiyF",
+        "start": "0xf914",
+        "end": "0xfb10",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xf914",
+          "--stop-address=0xfb10",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 7778,
+        "stdout_lines": 152,
+        "stdout_sha256": "858bf066b23f798d5ea46ba4c778f1c613a075f7cb36e08486c2b803b0b523d4",
+        "stderr": "",
+        "raw": "capture-4.stdout"
+      }
+    },
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "9d57632523f81e0598a4acc2ef032f805f2102bff0e6c8c9580703934294d234"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 182505135,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 81352,
+        "lines": 829
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n",
+        "start": "0xa6d98",
+        "end": "0xa7094",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xa6d98",
+          "--stop-address=0xa7094",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 38455,
+        "stdout_lines": 224,
+        "stdout_sha256": "ceb234643f50b78783aca2600bb36d4371573f5f57bb5f3866ecaabc22ccf965",
+        "stderr": "",
+        "raw": "capture-5.stdout"
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 204024869,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 83093,
+        "lines": 860
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl",
+        "start": "0x120",
+        "end": "0x160",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x120",
+          "--stop-address=0x160",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 1741,
+        "stdout_lines": 31,
+        "stdout_sha256": "5157a0bb990803aaaa0be0e12847e73f89fb501536a469639548e79151fd8147",
+        "stderr": "",
+        "raw": "capture-6.stdout"
+      }
+    },
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "9d57632523f81e0598a4acc2ef032f805f2102bff0e6c8c9580703934294d234"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 237284147,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 93403,
+        "lines": 1013
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF",
+        "start": "0x84638",
+        "end": "0x8481c",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x84638",
+          "--stop-address=0x8481c",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 10310,
+        "stdout_lines": 153,
+        "stdout_sha256": "9982eaa70be8c550db67e8233f349442c4df1fe62707e46dc38cb4cce9ba8f54",
+        "stderr": "",
+        "raw": "capture-7.stdout"
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_OUTLINED_FUNCTION_65",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 258877664,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 94279,
+        "lines": 1031
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_OUTLINED_FUNCTION_65",
+        "start": "0xbc59c",
+        "end": "0xbc5b0",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbc59c",
+          "--stop-address=0xbc5b0",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 876,
+        "stdout_lines": 18,
+        "stdout_sha256": "910d9cfe1f996e6bb9e7a8b1f59fd3993d57dcad8a18abdeeb023bc7c432b2a3",
+        "stderr": "",
+        "raw": "capture-8.stdout"
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_OUTLINED_FUNCTION_524",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 280470906,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 94819,
+        "lines": 1045
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_OUTLINED_FUNCTION_524",
+        "start": "0xbf324",
+        "end": "0xbf334",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xbf324",
+          "--stop-address=0xbf334",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 540,
+        "stdout_lines": 14,
+        "stdout_sha256": "5f83f4537393dda5624ce5a33eec34d4b441d9e9131b05c4a17d303c63156ba4",
+        "stderr": "",
+        "raw": "capture-9.stdout"
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMi",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 303061917,
+        "forecast": 99547978
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 95261,
+        "lines": 1054
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMi",
+        "start": "0xc9a0",
+        "end": "0xc9a8",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xc9a0",
+          "--stop-address=0xc9a8",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 442,
+        "stdout_lines": 9,
+        "stdout_sha256": "2ea07aa1a2d40627ec8297cfe6eed499c4acd6f255652e4c333830c0c94a3ad4",
+        "stderr": "",
+        "raw": "capture-10.stdout"
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMn",
+        "matches": 1
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMI",
+        "matches": 1
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "frozen meter",
+      "ok": true,
+      "actual": "9d57632523f81e0598a4acc2ef032f805f2102bff0e6c8c9580703934294d234"
+    },
+    {
+      "name": "frozen current selected operation",
+      "ok": true,
+      "actual": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 338490971,
+        "forecast": 101897674
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 117520,
+        "lines": 1303
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "object",
+        "symbol": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5",
+        "start": "0x8848",
+        "end": "0x8b64",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0x8848",
+          "--stop-address=0x8b64",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 22259,
+        "stdout_lines": 249,
+        "stdout_sha256": "890b01f6ce4b8cb4d406b4d44ca4533a1ba47a851423e2541824a95ac7233e97",
+        "stderr": "",
+        "raw": "capture-11.stdout"
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "exact selected symbol",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMa",
+        "matches": 1
+      }
+    },
+    {
+      "name": "decode plus final reserve",
+      "ok": true,
+      "actual": {
+        "processing": 361612213,
+        "forecast": 99547978
+      }
+    },
+    {
+      "name": "actual group excerpt",
+      "ok": true,
+      "actual": {
+        "bytes": 118531,
+        "lines": 1315
+      }
+    },
+    {
+      "name": "known decoder exit0",
+      "ok": true,
+      "actual": {
+        "object": "observable",
+        "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMa",
+        "start": "0xb39c",
+        "end": "0xb3a8",
+        "argv": [
+          "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+          "--disassemble",
+          "--reloc",
+          "--no-show-raw-insn",
+          "--start-address=0xb39c",
+          "--stop-address=0xb3a8",
+          "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o"
+        ],
+        "exit": 0,
+        "stdout_bytes": 1011,
+        "stdout_lines": 12,
+        "stdout_sha256": "47a9f2c6b34ad9787f71c7a24240d0da2a047265e9e2de8272fa2cdbc9c4aee2",
+        "stderr": "",
+        "raw": "capture-12.stdout"
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    },
+    {
+      "name": "LC_SYMTAB",
+      "ok": true,
+      "actual": {
+        "present": true
+      }
+    }
+  ],
+  "captures": [
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime03p08B8SemanticSiyF",
+      "start": "0x804c",
+      "end": "0x8258",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x804c",
+        "--stop-address=0x8258",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 11062,
+      "stdout_lines": 174,
+      "stdout_sha256": "951b265269645dc444438b721e2c28501f1811ea2012ef2ee1ec2f8095a8d809",
+      "stderr": "",
+      "raw": "capture-1.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab14Runtime03p08B8u8SiyFSi21jk7State20mop7VyAA0b5q27J0V0aB6Schema0bjM0OG_AC0ih4e10K0VyAG0F14s8Core0E16vw9VGtAC0iH5X8OYKXEfU_Tf1ncn_n",
+      "start": "0x83d8",
+      "end": "0x853c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x83d8",
+        "--stop-address=0x853c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 12660,
+      "stdout_lines": 116,
+      "stdout_sha256": "8f908d62284c8b452b705891ccfbd693720a200ff9462aa2c5aabe400908c527",
+      "stderr": "",
+      "raw": "capture-2.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime03p08B11CoordinatorSiyF",
+      "start": "0x86b38",
+      "end": "0x86d30",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x86b38",
+        "--stop-address=0x86d30",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 11397,
+      "stdout_lines": 163,
+      "stdout_sha256": "7baadedf6dfdb5cfbe073c97b7eb7348fe44e7a2a2cdb94ebb2acc67e58bfdfa",
+      "stderr": "",
+      "raw": "capture-3.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime03p08B12FixedStorageSiyF",
+      "start": "0xf914",
+      "end": "0xfb10",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xf914",
+        "--stop-address=0xfb10",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 7778,
+      "stdout_lines": 152,
+      "stdout_sha256": "858bf066b23f798d5ea46ba4c778f1c613a075f7cb36e08486c2b803b0b523d4",
+      "stderr": "",
+      "raw": "capture-4.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n",
+      "start": "0xa6d98",
+      "end": "0xa7094",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xa6d98",
+        "--stop-address=0xa7094",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 38455,
+      "stdout_lines": 224,
+      "stdout_sha256": "ceb234643f50b78783aca2600bb36d4371573f5f57bb5f3866ecaabc22ccf965",
+      "stderr": "",
+      "raw": "capture-5.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl",
+      "start": "0x120",
+      "end": "0x160",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x120",
+        "--stop-address=0x160",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1741,
+      "stdout_lines": 31,
+      "stdout_sha256": "5157a0bb990803aaaa0be0e12847e73f89fb501536a469639548e79151fd8147",
+      "stderr": "",
+      "raw": "capture-6.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF",
+      "start": "0x84638",
+      "end": "0x8481c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x84638",
+        "--stop-address=0x8481c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 10310,
+      "stdout_lines": 153,
+      "stdout_sha256": "9982eaa70be8c550db67e8233f349442c4df1fe62707e46dc38cb4cce9ba8f54",
+      "stderr": "",
+      "raw": "capture-7.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_OUTLINED_FUNCTION_65",
+      "start": "0xbc59c",
+      "end": "0xbc5b0",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbc59c",
+        "--stop-address=0xbc5b0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 876,
+      "stdout_lines": 18,
+      "stdout_sha256": "910d9cfe1f996e6bb9e7a8b1f59fd3993d57dcad8a18abdeeb023bc7c432b2a3",
+      "stderr": "",
+      "raw": "capture-8.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_OUTLINED_FUNCTION_524",
+      "start": "0xbf324",
+      "end": "0xbf334",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbf324",
+        "--stop-address=0xbf334",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 540,
+      "stdout_lines": 14,
+      "stdout_sha256": "5f83f4537393dda5624ce5a33eec34d4b441d9e9131b05c4a17d303c63156ba4",
+      "stderr": "",
+      "raw": "capture-9.stdout"
+    },
+    {
+      "object": "observable",
+      "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMi",
+      "start": "0xc9a0",
+      "end": "0xc9a8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc9a0",
+        "--stop-address=0xc9a8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 442,
+      "stdout_lines": 9,
+      "stdout_sha256": "2ea07aa1a2d40627ec8297cfe6eed499c4acd6f255652e4c333830c0c94a3ad4",
+      "stderr": "",
+      "raw": "capture-10.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5",
+      "start": "0x8848",
+      "end": "0x8b64",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x8848",
+        "--stop-address=0x8b64",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 22259,
+      "stdout_lines": 249,
+      "stdout_sha256": "890b01f6ce4b8cb4d406b4d44ca4533a1ba47a851423e2541824a95ac7233e97",
+      "stderr": "",
+      "raw": "capture-11.stdout"
+    },
+    {
+      "object": "observable",
+      "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMa",
+      "start": "0xb39c",
+      "end": "0xb3a8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xb39c",
+        "--stop-address=0xb3a8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1011,
+      "stdout_lines": 12,
+      "stdout_sha256": "47a9f2c6b34ad9787f71c7a24240d0da2a047265e9e2de8272fa2cdbc9c4aee2",
+      "stderr": "",
+      "raw": "capture-12.stdout"
+    }
+  ],
+  "current_body_examined_pages": {
+    "capture-1.stdout": [
+      1,
+      2
+    ],
+    "capture-2.stdout": [
+      1,
+      2
+    ],
+    "capture-5.stdout": [
+      1,
+      2,
+      3
+    ],
+    "capture-6.stdout": [
+      1
+    ],
+    "capture-3.stdout": [
+      1,
+      2
+    ],
+    "capture-4.stdout": [
+      2,
+      1
+    ],
+    "capture-10.stdout": [
+      1
+    ],
+    "capture-7.stdout": [
+      1,
+      2
+    ],
+    "capture-8.stdout": [
+      1
+    ],
+    "capture-9.stdout": [
+      1
+    ],
+    "capture-11.stdout": [
+      1,
+      2,
+      3
+    ],
+    "capture-12.stdout": [
+      1
+    ]
+  },
+  "package_result": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-result",
+  "model_findings_saved_utc": "2026-10-24T06:35:51.571015+00:00",
+  "recording_qualified": false,
+  "recording_reason": "Experimental functions.exec and nested exec requests/payloads used the recorded prefix. Post-auth collaboration.send_message coordination calls were outside that prefix and not separately pre-emission metered. Full all-tools request qualification is therefore not established; no retroqualification or cap breach inferred.",
+  "findings": {
+    "status": "CONSOLIDATED_REQUIRED_ROOTSCOPE_METADATA_DEPENDENCY_AND_EXACT_RESIDUALS",
+    "recording_qualified": false,
+    "recording_reason": "Post-auth collaboration coordination requests were not separately pre-emission metered; experimental file requests were recorded; no retroqualification",
+    "result": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-result",
+    "source_unchanged": true,
+    "overall_eligibility": false,
+    "semantic": "Required normal cleanup concrete RootScope metadata at a6f18 flows to shutdown at a6f28",
+    "coordinator": "Same RootScope normal cleanup metadata at 8a30 flows to shutdown at 8a3c",
+    "fixed": "Token not equal to minus one reaches swift_once with exact callback; local callback closed, provider and live effects unresolved",
+    "conditional_allocator": "Exact descriptor, cache, pattern and instantiator joins established; prior provider logical premises retained; no observed or unavoidable allocation claim",
+    "no_further_work": true
+  },
+  "model_end_utc": "2026-10-24T06:39:48.004089+00:00",
+  "finished_utc": "2026-10-24T06:39:48.035667+00:00",
+  "elapsed_seconds": 1597.605082
+}

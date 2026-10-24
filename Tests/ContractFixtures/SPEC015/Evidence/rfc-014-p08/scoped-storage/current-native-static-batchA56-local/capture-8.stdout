@@ -1,0 +1,18 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000bc59c <_OUTLINED_FUNCTION_65>:
+   bc59c:      	adrp	x0, 0xbc000 <_OUTLINED_FUNCTION_27+0x10>
+		00000000000bc59c:  ARM64_RELOC_ADDEND	0x10
+		00000000000bc59c:  ARM64_RELOC_PAGE21	__MergedGlobals
+   bc5a0:      	add	x0, x0, #0x0
+		00000000000bc5a0:  ARM64_RELOC_ADDEND	0x10
+		00000000000bc5a0:  ARM64_RELOC_PAGEOFF12	__MergedGlobals
+   bc5a4:      	adrp	x1, 0xbc000 <_OUTLINED_FUNCTION_27+0x10>
+		00000000000bc5a4:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime20counterDrawingLimits_WZ
+   bc5a8:      	add	x1, x1, #0x0
+		00000000000bc5a8:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime20counterDrawingLimits_WZ
+   bc5ac:      	b	0xbc5ac <_OUTLINED_FUNCTION_65+0x10>
+		00000000000bc5ac:  ARM64_RELOC_BRANCH26	_swift_once

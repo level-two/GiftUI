@@ -1,0 +1,163 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000086b38 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF>:
+   86b38:      	stp	x22, x21, [sp, #-0x30]!
+   86b3c:      	stp	x20, x19, [sp, #0x10]
+   86b40:      	stp	x29, x30, [sp, #0x20]
+   86b44:      	add	x29, sp, #0x20
+   86b48:      	sub	sp, sp, #0x38, lsl #12  ; =0x38000
+   86b4c:      	sub	sp, sp, #0xbb0
+   86b50:      	bl	0x86b50 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x18>
+		0000000000086b50:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_183
+   86b54:      	stur	x8, [x29, #-0x28]
+   86b58:      	add	x8, sp, #0x40
+   86b5c:      	bl	0x86b5c <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x24>
+		0000000000086b5c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1701
+   86b60:      	add	x8, sp, #0x19, lsl #12  ; =0x19000
+   86b64:      	add	x8, x8, #0x240
+   86b68:      	add	x2, sp, #0x40
+   86b6c:      	mov	w0, #0x0                ; =0
+   86b70:      	mov	w1, #0x0                ; =0
+   86b74:      	bl	0x86b74 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x3c>
+		0000000000086b74:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB14ProfileStorageV10modelOwner08semanticH06limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0K14UISemanticCore014SemanticRecordhP0V0k9UIRuntimeR00cE6LimitsVtcfC
+   86b78:      	add	x8, sp, #0x38, lsl #12  ; =0x38000
+   86b7c:      	add	x8, x8, #0x818
+   86b80:      	add	x0, sp, #0x19, lsl #12  ; =0x19000
+   86b84:      	add	x0, x0, #0x240
+   86b88:      	bl	0x86b88 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x50>
+		0000000000086b88:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0cE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab9Runtime06d3B14ef9V5audit17ij9Core0cE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_n
+   86b8c:      	adrp	x0, 0x86000 <_$s17P08CounterRuntime08exerciseB11Coordinator6models4root8semantic6values7dynamic8geometry11interaction5audit7controlAA0B18ReturnedWorkspacesVyxq_q0_q1_G21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedU0V0aB6Schema0buX0OG_AO0ts4RootV0VyAS0Q14UISemanticCore24SemanticCompleteIdentityVGAZ19SemanticRecordStoreVy0Q9UIDrawing21CanvasSemanticPayloadOy0aB5Table0abX12CanvasValuesOyAA0B6DomainOGGGA4_18CanvasStagedValuesVyAZ23SemanticRecordReferenceVA7_0abX11CanvasTableVyA11_GGSbxn0Q13UIInteraction011Interactionw3KeyS0Vyq_q0_q1_Gn0Q13UIRuntimeCore0C12StorageAuditVAA0B7ControlVztAA0B8GeometryRzAA0B16CandidateBackingR_AA0B16CommittedBackingR0_AA0B10HitBackingR1_A0_8IdentityRt_A0_A36_Rt0_A0_A36_Rt1_r2_lFANSpyA31_GXEfU_+0x2d8>
+		0000000000086b8c:  ARM64_RELOC_PAGE21	l_.str.20.counter static audit
+   86b90:      	add	x0, x0, #0x0
+		0000000000086b90:  ARM64_RELOC_PAGEOFF12	l_.str.20.counter static audit
+   86b94:      	add	x3, sp, #0x38, lsl #12  ; =0x38000
+   86b98:      	add	x3, x3, #0x818
+   86b9c:      	mov	w1, #0x14               ; =20
+   86ba0:      	mov	w2, #0x2                ; =2
+   86ba4:      	bl	0x86ba4 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x6c>
+		0000000000086ba4:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime22counterDiagnosticAudityys12StaticStringV_17GiftUIRuntimeCore0C23ProfileValidationResultOtF
+   86ba8:      	add	x0, sp, #0x38, lsl #12  ; =0x38000
+   86bac:      	add	x0, x0, #0xac4
+   86bb0:      	add	x1, sp, #0x38, lsl #12  ; =0x38000
+   86bb4:      	add	x1, x1, #0x818
+   86bb8:      	bl	0x86bb8 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x80>
+		0000000000086bb8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_602
+   86bbc:      	add	x0, sp, #0x38, lsl #12  ; =0x38000
+   86bc0:      	add	x0, x0, #0xac4
+   86bc4:      	bl	0x86bc4 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x8c>
+		0000000000086bc4:  ARM64_RELOC_BRANCH26	_$s17GiftUIRuntimeCore30RuntimeProfileValidationResultOWOg
+   86bc8:      	mov	x19, x0
+   86bcc:      	add	x0, sp, #0x38, lsl #12  ; =0x38000
+   86bd0:      	add	x0, x0, #0xac4
+   86bd4:      	bl	0x86bd4 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x9c>
+		0000000000086bd4:  ARM64_RELOC_BRANCH26	l___unnamed_20
+   86bd8:      	cmp	w19, #0x1
+   86bdc:      	b.eq	0x86d24 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1ec>
+   86be0:      	add	x20, sp, #0x19, lsl #12 ; =0x19000
+   86be4:      	add	x20, x20, #0x240
+   86be8:      	bl	0x86be8 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0xb0>
+		0000000000086be8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF
+   86bec:      	adds	x21, x0, #0x1
+   86bf0:      	b.vs	0x86d18 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1e0>
+   86bf4:      	add	x8, sp, #0xb4
+   86bf8:      	bl	0x86bf8 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0xc0>
+		0000000000086bf8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1698
+   86bfc:      	add	x8, sp, #0x128
+   86c00:      	add	x2, sp, #0xb4
+   86c04:      	mov	w0, #0x1                ; =1
+   86c08:      	mov	w1, #0x1                ; =1
+   86c0c:      	bl	0x86c0c <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0xd4>
+		0000000000086c0c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime07DynamicB14ProfileStorageV10modelOwner08semanticH06limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0K14UISemanticCore014SemanticRecordhP0V0k9UIRuntimeR00cE6LimitsVtcfC
+   86c10:      	add	x8, sp, #0x38, lsl #12  ; =0x38000
+   86c14:      	add	x8, x8, #0x8fc
+   86c18:      	add	x0, sp, #0x128
+   86c1c:      	bl	0x86c1c <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0xe4>
+		0000000000086c1c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0cE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab9Runtime07d3B14ef9V5audit17ij9Core0cE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_n
+   86c20:      	adrp	x0, 0x86000 <_$s17P08CounterRuntime08exerciseB11Coordinator6models4root8semantic6values7dynamic8geometry11interaction5audit7controlAA0B18ReturnedWorkspacesVyxq_q0_q1_G21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedU0V0aB6Schema0buX0OG_AO0ts4RootV0VyAS0Q14UISemanticCore24SemanticCompleteIdentityVGAZ19SemanticRecordStoreVy0Q9UIDrawing21CanvasSemanticPayloadOy0aB5Table0abX12CanvasValuesOyAA0B6DomainOGGGA4_18CanvasStagedValuesVyAZ23SemanticRecordReferenceVA7_0abX11CanvasTableVyA11_GGSbxn0Q13UIInteraction011Interactionw3KeyS0Vyq_q0_q1_Gn0Q13UIRuntimeCore0C12StorageAuditVAA0B7ControlVztAA0B8GeometryRzAA0B16CandidateBackingR_AA0B16CommittedBackingR0_AA0B10HitBackingR1_A0_8IdentityRt_A0_A36_Rt0_A0_A36_Rt1_r2_lFANSpyA31_GXEfU_+0x2d8>
+		0000000000086c20:  ARM64_RELOC_PAGE21	l_.str.21.counter dynamic audit
+   86c24:      	add	x0, x0, #0x0
+		0000000000086c24:  ARM64_RELOC_PAGEOFF12	l_.str.21.counter dynamic audit
+   86c28:      	add	x3, sp, #0x38, lsl #12  ; =0x38000
+   86c2c:      	add	x3, x3, #0x8fc
+   86c30:      	mov	w1, #0x15               ; =21
+   86c34:      	mov	w2, #0x2                ; =2
+   86c38:      	bl	0x86c38 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x100>
+		0000000000086c38:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime22counterDiagnosticAudityys12StaticStringV_17GiftUIRuntimeCore0C23ProfileValidationResultOtF
+   86c3c:      	add	x0, sp, #0x38, lsl #12  ; =0x38000
+   86c40:      	add	x0, x0, #0x9e0
+   86c44:      	add	x1, sp, #0x38, lsl #12  ; =0x38000
+   86c48:      	add	x1, x1, #0x8fc
+   86c4c:      	bl	0x86c4c <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x114>
+		0000000000086c4c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_602
+   86c50:      	add	x0, sp, #0x38, lsl #12  ; =0x38000
+   86c54:      	add	x0, x0, #0x9e0
+   86c58:      	bl	0x86c58 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x120>
+		0000000000086c58:  ARM64_RELOC_BRANCH26	_$s17GiftUIRuntimeCore30RuntimeProfileValidationResultOWOg
+   86c5c:      	mov	x19, x0
+   86c60:      	add	x0, sp, #0x38, lsl #12  ; =0x38000
+   86c64:      	add	x0, x0, #0x9e0
+   86c68:      	bl	0x86c68 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x130>
+		0000000000086c68:  ARM64_RELOC_BRANCH26	l___unnamed_20
+   86c6c:      	cmp	w19, #0x1
+   86c70:      	b.eq	0x86d28 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1f0>
+   86c74:      	add	x20, sp, #0x128
+   86c78:      	bl	0x86c78 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x140>
+		0000000000086c78:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime07DynamicB14ProfileStorageV3runSiyF
+   86c7c:      	adds	x8, x0, #0x1
+   86c80:      	b.vs	0x86d1c <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1e4>
+   86c84:      	adds	x19, x21, x8
+   86c88:      	b.vs	0x86d20 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1e8>
+   86c8c:      	add	x20, sp, #0x128
+   86c90:      	ldr	x0, [sp, #0x1a0]
+   86c94:      	bl	0x86c94 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x15c>
+		0000000000086c94:  ARM64_RELOC_BRANCH26	_swift_release
+   86c98:      	ldr	x0, [sp, #0x1a8]
+   86c9c:      	bl	0x86c9c <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x164>
+		0000000000086c9c:  ARM64_RELOC_BRANCH26	_swift_release
+   86ca0:      	ldr	x0, [sp, #0x1b8]
+   86ca4:      	bl	0x86ca4 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x16c>
+		0000000000086ca4:  ARM64_RELOC_BRANCH26	_swift_bridgeObjectRelease
+   86ca8:      	add	x8, sp, #0x128
+   86cac:      	bl	0x86cac <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x174>
+		0000000000086cac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1584
+   86cb0:      	add	x0, x8, #0xa0
+   86cb4:      	bl	0x86cb4 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x17c>
+		0000000000086cb4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticRecordRenderViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0kl6SchemaI6ValuesOy0kL7Runtime0L6DomainOGGGWOhTm
+   86cb8:      	ldr	x0, [sp, #0x358]
+   86cbc:      	ldr	x1, [sp, #0x360]
+   86cc0:      	ldr	x2, [sp, #0x368]
+   86cc4:      	ldr	x3, [sp, #0x370]
+   86cc8:      	ldr	x4, [sp, #0x378]
+   86ccc:      	ldr	x5, [sp, #0x380]
+   86cd0:      	ldr	x6, [sp, #0x388]
+   86cd4:      	ldr	x7, [sp, #0x390]
+   86cd8:      	ldp	q0, q1, [x20, #0x270]
+   86cdc:      	ldr	x8, [sp, #0x3b8]
+   86ce0:      	ldrh	w9, [sp, #0x3cc]
+   86ce4:      	ldr	w10, [sp, #0x3c8]
+   86ce8:      	orr	x9, x10, x9, lsl #32
+   86cec:      	ldr	x10, [sp, #0x3c0]
+   86cf0:      	bl	0x86cf0 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1b8>
+		0000000000086cf0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1269
+   86cf4:      	bl	0x86cf4 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1bc>
+		0000000000086cf4:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVy0A16UIRuntimeDynamic0hC16CandidateStorageVy0A14UISemanticCore24SemanticCompleteIdentityVGAD0hc9CommittedJ0VyAIGAD0hc3HitJ0VyAIGGSgWOe
+   86cf8:      	ldur	x8, [x29, #-0x28]
+   86cfc:      	bl	0x86cfc <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1c4>
+		0000000000086cfc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+   86d00:      	b.ne	0x86d2c <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1f4>
+   86d04:      	mov	x0, x19
+   86d08:      	add	sp, sp, #0x38, lsl #12  ; =0x38000
+   86d0c:      	add	sp, sp, #0xbb0
+   86d10:      	ldp	x29, x30, [sp, #0x20]
+   86d14:      	b	0x86d14 <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1dc>
+		0000000000086d14:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_366
+   86d18:      	brk	#0x1
+   86d1c:      	brk	#0x1
+   86d20:      	brk	#0x1
+   86d24:      	brk	#0x1
+   86d28:      	brk	#0x1
+   86d2c:      	bl	0x86d2c <_$s17P08CounterRuntime03p08B11CoordinatorSiyF+0x1f4>
+		0000000000086d2c:  ARM64_RELOC_BRANCH26	___stack_chk_fail

@@ -1,0 +1,134 @@
+{
+  "started_utc": "2026-10-24T06:13:10.430585+00:00",
+  "HEAD": "71e2860943bdf3ecf025e65e5029225870c27356",
+  "setup_processing_upper": 1938928,
+  "helper_sha256": "9d57632523f81e0598a4acc2ef032f805f2102bff0e6c8c9580703934294d234",
+  "inputs": {
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/source-context.txt",
+      "bytes": 132431,
+      "sha256": "e37619763c45a3189107fe9b1c0e14ed346e0984bbfcb5f290ae4bc1773ee528"
+    },
+    "result": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/result.json",
+      "bytes": 8566019,
+      "sha256": "eebe4ac9d01de3e62f5f5156422cb29f3f61f17801fd2ff0015bf0ae298686de"
+    },
+    "current_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py",
+      "bytes": 4658,
+      "sha256": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    "view_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py",
+      "bytes": 2364,
+      "sha256": "1007c0015e21f262d9e812b8ecdbf047767359ef91f80521b1ed0380aff7a256"
+    },
+    "object": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o",
+      "bytes": 2604600,
+      "sha256": "6e821518a1f04adf06cf9792fbd9c2130fa60907abe68fc9fc2dcd04232f9abe"
+    },
+    "observable": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o",
+      "bytes": 254904,
+      "sha256": "ab0d734545f9af91a20b25910e63576659c4eeadc3722c8db2c9e26b27d927b9"
+    },
+    "semantic": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUISemanticCore.o",
+      "bytes": 534808,
+      "sha256": "6a3f93c68416b3c872868d8701206e4de5dae0702e0d790ee6ce4cff4b4298f1"
+    },
+    "runtime": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIRuntimeCore.o",
+      "bytes": 323040,
+      "sha256": "a8683664f6fc9cb4ca3b511e26cdbf43a40fce7fb61a7890b5c95d307c84fd5c"
+    },
+    "drawing": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIDrawing.o",
+      "bytes": 135544,
+      "sha256": "baabad54088fa6f5899dbd5dbf3d515b240fc3f194d810f20dae42b24398abeb"
+    },
+    "execution": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIExecution.o",
+      "bytes": 574800,
+      "sha256": "759fba38e1f391214bfdfcfdbc5f930611974e6b41b995b188583496da14258c"
+    },
+    "source0": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 12910,
+      "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb"
+    },
+    "source1": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 2115,
+      "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653"
+    },
+    "source2": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "bytes": 6845,
+      "sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab"
+    },
+    "source3": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "bytes": 41983,
+      "sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010"
+    },
+    "source4": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "bytes": 1642,
+      "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825"
+    },
+    "source5": {
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "bytes": 13855,
+      "sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8"
+    },
+    "source6": {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "bytes": 34291,
+      "sha256": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639"
+    },
+    "source7": {
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "bytes": 17507,
+      "sha256": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d"
+    },
+    "prior_paths": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/findings.json",
+      "bytes": 6745,
+      "sha256": "ae1e227e6f4b086815612268ff1251420228f65c794f4e47ebf2466903bced0e"
+    },
+    "prior_review": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/final-review.md",
+      "bytes": 10518,
+      "sha256": "b934859f10847bba73369cab80cb152f0068e48b88943f4f2c6aa1bd496072ac"
+    },
+    "current_transfer": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-result/successor-full4h1-validation.json",
+      "bytes": 14209,
+      "sha256": "812de93eba55a79167be2ababd1463378b9e2680c1b1112cfa26883ee89e017c"
+    },
+    "provider_witness": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-result/rows.json",
+      "bytes": 10305,
+      "sha256": "ace2a09d22672332dc1ee2bc6a9e472c05124b13ea87235a1b927d2db1855ae1"
+    },
+    "provider_metadata": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata48-result/rows.json",
+      "bytes": 18276,
+      "sha256": "0f0ebe240689adaae3c23032ccb82561c33f1a984bfcfeb8c2727bfb67a591a6"
+    },
+    "tool_auth": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+    }
+  },
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+  },
+  "reuse": "Accepted current full constructor50 code/symbol/relocation transfer and original79/48/6 frozen controls; no original corpus replay. A51/A52 recordingFALSE not promoted. Sources explicitly SEMANTIC in this new session; provider rows reused only under exact stated premises. No runtime/source action. A55 failed receipt/ledger immutable; A56 corrects required invocation directory before auth. Only task-local path identity is configured; decoder/meter/pager logic unchanged."
+}

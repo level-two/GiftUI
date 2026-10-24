@@ -1,0 +1,36 @@
+{
+  "status": "LOCAL_REQUIRED_ROOTSCOPE_METADATA_DEPENDENCY_PROVED_CONDITIONAL_ALLOCATOR_CLASS_BROAD_ELIGIBILITY_OPEN",
+  "HEAD": "71e2860943bdf3ecf025e65e5029225870c27356",
+  "semantic": {
+    "root": "804c-8258 ->8130 Static lifetime83d8-853c ->8484 exact withRoot a6d98-a7094",
+    "predicates": "Fresh owned mutating phase; operationAllowed(false)==0x12; actual two-slot spans, limits2/2/2, aligned backing. These pass on required admitted entry; refusal witnesses remain guarded, not globally infeasible.",
+    "required_cleanup": "Normal callback counterSemanticBacking at a6ee8 then exact concrete RootScope GMD a6f10/a6f18 -> opaque shutdown a6f28. Alternate base path a6fc4 -> shutdown a6fd4. Cleanup error retries shutdown a7014 and preserves first error; finishActivation outer normal852c/error84b0 retained.",
+    "error_boundary": "Failed expand/counterSemanticExpect/caught-error prints are conditional on unsuccessful expansion/checks. Full functional success is not a proof of universal infeasibility. Exact expansion/codec/indirect callback failure feasibility remains available current local work; no allocator conclusion from print names."
+  },
+  "coordinator": {
+    "root": "86b38-86d30 constructs Static storage then audit/run86be8 before Dynamic controls",
+    "run": "84638-8481c: used/audit/presence/configuration guards ->84758 exact Static lifetime8848-8b64 -> callback pointer bound at84740 to actual run callback; post-return audits/resetAllStorage847c4 preserved",
+    "required_cleanup": "Normal callback return89ec/89f0 -> exact SAME RootScope GMD8a28/8a30 ->shutdown8a3c; error cleanup8a78 ->shutdown8a84; first error preserved and finishActivation8ae8/8b54 retained.",
+    "operations": "Source preserves initial opportunity, ten value rounds, bounded34-fact queue, capacity/invalid/unavailable checks and quiescence; no Dynamic exemption applied to Static branch."
+  },
+  "shared_type": {
+    "type": "ObservableStateRootScope<CounterOwnedModel,SemanticCompleteIdentity>",
+    "gmd": "address832016, signed32 length-17, relocation to exact symbolic RootScope/CounterOwnedModel/SemanticCompleteIdentity payload; negative emitted cell is not observed live state",
+    "accessor": "GiftUIObservableState RootScopeVMa b39c-b3a8 passes exact VMn to swift_getGenericMetadata at b3a4",
+    "descriptor": "VMn71648 relocation+28 to own VMI89552 and+32 to VMP61680; generic header2parameters/3requirements/4keyarguments",
+    "pattern": "VMP+0 to actual VMi c9a0-c9a8: w3=48 then tail swift_allocateGenericValueMetadata atc9a4.48 is a literal argument, not allocation bytes.",
+    "pristine": "VMI exact section flags1 S_ZEROFILL; no live cache/table/binding observation",
+    "consequence": "Actual required compiler metadata dependency is proved. A47/A48 logical provider graph supports a conditional allocator-family consequence only under its expected-provider, normal valid argument/constraint continuation, absent-cache/table/MISS premises. Current typed construction/full functional success supports valid type inputs; transitive callbacks, prespecialization/table/live state are not all closed here. No observed/unavoidable allocation or success/byte claim. Earlier REQUIRED construction warming remains charged.",
+    "historical_qualification": "Prior A47/A48/A51/A52 recordingFALSE remains FALSE; logical conditional reuse is not retroqualification."
+  },
+  "fixed": {
+    "path": "Fixed rootf914-fb10: fa34 helper524bf324 compares MergedGlobals+0x10 to-1; !=-1 ->faf8 helper65bc59c -> swift_once(token,counterDrawingLimits_WZ)",
+    "initial_data": "MergedGlobals exact section flags1 S_ZEROFILL; pristine zero token is not actual live token. Earlier required drawing setup may initialize it and is still charged.",
+    "closed": "Reuse exact accepted fixed callback/997/1669/DrawingLimits constructor constants(1,1,2,1,1,2,1,1), no local allocator/metadata calls; source byte-codec assertions preserved.",
+    "residual": "Exact imported swift_once implementation/dependency first-use effects and loaded binding were not discharged by the selected retained provider rows. Body evidence is available within approved installed-provider authority, not globally absent or a runtime-only blocker. No reacquisition or runtime action performed."
+  },
+  "safety": "Reuse exact owner/reader/dispatch/retirement/bridge/linked-writer/fault lemmas under their existing actual backing/lifetime/quiescence premises; no broad U03 closure from these rows",
+  "recommendation": "No source or annotation/API trial. Add required generic RootScope cleanup barrier to existing Model owning-design/build-realization decision; concrete product ownership does not exempt required generic controls.",
+  "recording_qualified": false,
+  "recording_reason": "Experimental functions.exec and nested exec requests/payloads used the recorded prefix. Post-auth collaboration.send_message coordination calls were outside that prefix and not separately pre-emission metered. Full all-tools request qualification is therefore not established; no retroqualification or cap breach inferred."
+}

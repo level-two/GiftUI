@@ -1,0 +1,2465 @@
+
+===== SOURCE Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift SHA256 9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb =====
+import P08CounterTable
+import GiftUI
+import GiftUIDrawing
+import GiftUIObservableState
+import GiftUISemanticCore
+import GiftUIRuntimeStatic
+#if !hasFeature(Embedded)
+import GiftUIRuntimeDynamic
+#endif
+import P08CounterSchema
+import P08CounterPresentation
+
+private let counterRecordLimits = SemanticRecordLimits(records: 64, paths: 192, depth: 24, fanout: 5, payloads: 64, textScalars: 64, payloadBytes: 4096)!
+private let counterExpansionLimits = SemanticExpansionLimits(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2)!
+private struct CounterProbeSemanticBacking: ~Copyable {
+    var records: InlineArray<128, SemanticRuntimeRecord> = .init(repeating: .init())
+    var paths: InlineArray<384, SemanticPathEntry> = .init(repeating: .init())
+    var payloads: InlineArray<128, CounterPayload?> = .init(repeating: nil)
+    var scalars: InlineArray<128, UInt32> = .init(repeating: 0)
+}
+private func withCounterValues(dynamic: Bool, _ body: (borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>) throws(DrawingError) -> Void) throws(DrawingError) {
+    let limits = StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 32)!
+    #if !hasFeature(Embedded)
+    if dynamic {
+        var storage = DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>(capacity: 1)
+        return try storage.withLifetime(table: CounterValueTable(), limits: limits, body)
+    }
+    #endif
+    var storage = StaticCanvasValueStorage()
+    var backing: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)
+    var entries = backing.mutableSpan
+    try storage.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits, body)
+}
+private func inspectCounter(_ bank: borrowing SemanticRecordView<CounterPayload>, value: UInt8) -> (SemanticCompleteIdentity, Int) {
+    var checks = 0, textCount = 0, actionCount = 0, disabledCount = 0, canvasCount = 0
+    var modelIdentity: SemanticCompleteIdentity?
+    for index: UInt16 in 0..<bank.recordCount {
+        let ref = bank.reference(at: index)!
+        let record = bank.record(ref)!
+        if bank.path(at: record.path)?.component.role == 1 {
+            var target = bank.completeIdentity(for: ref)!
+            // visitCustomBody enters customBody before evaluateStateful binds
+            // State; this is the owning declaration identity, not its record key.
+            counterSemanticExpect(target.append(.init(kind: .customBody)))
+            modelIdentity = target
+        }
+        guard let payload = bank.payload(at: record.payload) else { continue }
+        switch payload {
+        case .canvas:
+            canvasCount += 1
+        case .standard(.text):
+            let expected: InlineArray<9, UInt32> = textCount == 0 ? [67,111,117,110,116,101,114,0,0] : textCount == 1 ? [UInt32(48 + value),0,0,0,0,0,0,0,0] : textCount == 2 ? [73,110,99,114,101,109,101,110,116] : [82,101,115,101,116,0,0,0,0]
+            let count: UInt16 = textCount == 0 ? 7 : textCount == 1 ? 1 : textCount == 2 ? 9 : 5
+            counterSemanticExpect(record.textScalarCount == count); checks += 1
+            for scalar: UInt16 in 0..<count { counterSemanticExpect(bank.scalar(at: record.firstTextScalar + scalar) == expected[Int(scalar)]); checks += 1 }
+            textCount += 1
+        case .standard(.action(let role, let code)):
+            counterSemanticExpect(role == 6 && code == UInt16(actionCount)); actionCount += 1; checks += 1
+        case .standard(.disabled(let disabled)):
+            counterSemanticExpect(disabled == (disabledCount == 0 ? value == 9 : value == 0)); disabledCount += 1; checks += 1
+        default: break
+        }
+    }
+    counterSemanticExpect(textCount == 4 && actionCount == 2 && disabledCount == 2 && canvasCount == 1); checks += 1
+    counterSemanticExpect(bank.recordCount <= 64 && bank.pathCount <= 192 && bank.payloadBytes <= 4096); checks += 1
+    return (modelIdentity!, checks)
+}
+private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPayload>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) throws(SemanticExpansionError) -> Int {
+    var checks = 0
+    var identity: SemanticCompleteIdentity?
+    var key: _GiftUIModelKey<CounterModelSchema>?
+    for value: UInt8 in 0...9 {
+        do throws(ObservableStateError) {
+            if let key { counterSemanticExpect(models.mutate(key, mutation: .fact(value), report: { .dirtied }) == .success(.dirtied)); checks += 1 }
+            try models.beginFrame()
+            try models.withDiscovery { () throws(ObservableStateError) in
+                guard case .success = root.beginCandidate() else { preconditionFailure("counter begin") }
+            }
+            let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+            guard case .success = result else {
+            #if !hasFeature(Embedded)
+            print("counter expansion failed", result)
+            #endif
+            preconditionFailure("counter expansion") }
+            if value == 0 {
+                do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
+                catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+
+            }
+            do throws(DrawingError) {
+                try withCounterValues(dynamic: dynamic) { (values) throws(DrawingError) in
+                    try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CounterValueTable())
+                    counterSemanticExpect(values.count == 1 && values.releaseCount == 0); checks += 1
+                    do throws(SemanticExpansionError) {
+                        try semantic.withCandidateView { bank in
+                            let inspected = inspectCounter(bank, value: value)
+                            identity = inspected.0; checks += inspected.1
+                        }
+                    } catch {
+                    #if !hasFeature(Embedded)
+                    print("counter caught", error)
+                    #endif
+                    preconditionFailure("counter view") }
+                    checks += counterRenderActual(semantic: semantic, models: models, values: values, value: value, dynamic: dynamic)
+                    values.discard()
+                    counterSemanticExpect(values.count == 0 && values.releaseCount == 1); checks += 1
+                }
+            } catch {
+            #if !hasFeature(Embedded)
+            print("counter caught", error)
+            #endif
+            preconditionFailure("counter Canvas transfer") }
+            try models.withDiscovery { () throws(ObservableStateError) in
+                guard case .success = root.finishCandidate(.publish) else { preconditionFailure("counter publish State") }
+            }
+            try models.endFrame()
+            key = root.modelKey(identity: identity!, ordinal: 0)!
+        } catch {
+        #if !hasFeature(Embedded)
+        print("counter caught", error)
+        #endif
+        preconditionFailure("counter model phase") }
+        try semantic.publishCandidate()
+        if value == 0 {
+            try semantic.withPublishedView { _ in
+                do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("published reader reset accepted") }
+                catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+            }
+        }
+    }
+    do throws(ObservableStateError) {
+        // This explicit-final-ticket transfer API refuses while another cache
+        // claim exists. This does not claim that all independent scalar-slot
+        // replacement strategies require reclaiming retained former backing.
+        var transfer = try models.retain(key!)
+        var cache = try models.retain(key!)
+        counterSemanticExpect(root.replace(identity: identity!, ordinal: 0, transferring: &transfer, seed: .init(value: 3)) == .failure(.retainedModel)); checks += 1
+        try models.release(&cache)
+        counterSemanticExpect(root.replace(identity: identity!, ordinal: 0, transferring: &transfer, seed: .init(value: 3)) == .success(.replaced)); checks += 1
+        let replacement = root.modelKey(identity: identity!, ordinal: 0)!
+        counterSemanticExpect(replacement != key); checks += 1
+        try models.beginFrame()
+        try models.pin(replacement)
+        do throws(_GiftUIAccessFailure) {
+            try models.withRead(CounterDomain.self) { (read) throws(_GiftUIAccessFailure) in
+                counterSemanticExpect(try CounterRead<CounterDomain>(replacement, read: read).value == 3); checks += 1
+            }
+        } catch { throw ObservableStateError(accessFailure: error) }
+        try models.endFrame()
+        counterSemanticExpect(models.mutate(key!, mutation: .reset, report: { .dirtied }) == .failure(.staleModel)); checks += 1
+        try root.shutdown(); checks += 1
+    } catch {
+    #if !hasFeature(Embedded)
+    print("counter caught", error)
+    #endif
+    preconditionFailure("counter cache/replacement") }
+    try semantic.resetAfterQuiescence(); checks += 1
+    try semantic.resetAfterQuiescence(); checks += 1
+    do throws(SemanticExpansionError) { try semantic.withPublishedView { _ in preconditionFailure("reset publication visible") } }
+    catch { counterSemanticExpect(error == .invariantViolation); checks += 1 }
+    return checks
+}
+private func counterSemanticBacking(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) -> Int {
+    do throws(SemanticExpansionError) {
+        var namespace = SemanticRecordOwnerNamespace()
+        #if !hasFeature(Embedded)
+        if dynamic {
+            let storage = DynamicSemanticRecordStorage<CounterPayload>(limits: counterRecordLimits, owner: try namespace.issue())
+            return try storage.withLifetime { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: true) }
+        }
+        #endif
+        var storage = StaticSemanticRecordStorage(limits: counterRecordLimits, owner: try namespace.issue())
+        var backing = CounterProbeSemanticBacking()
+        var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
+        var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
+        return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: false) }
+    } catch {
+    #if !hasFeature(Embedded)
+    print("counter caught", error)
+    #endif
+    preconditionFailure("counter semantic backing") }
+}
+package func p08CounterSemantic() -> Int {
+    var checks = 0
+    do throws(ObservableStateError) {
+        var namespace = ObservableModelOwnerNamespace()
+        var storage = CounterStaticRootStorage(identity: try namespace.issue(), schema: 1, needsCapture: false)!
+        let layout = storage.storageLayout
+        counterSemanticExpect(layout.models == 2 && layout.claims == 4 && layout.pins == 2 && layout.captures == 0); checks += 1
+        checks += try storage.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: false) }
+        #if !hasFeature(Embedded)
+        let dynamic = DynamicObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
+        counterSemanticExpect(dynamic.storageLayout.models == 2 && dynamic.storageLayout.claims == 4 && dynamic.storageLayout.pins == 2 && dynamic.storageLayout.captures == 0); checks += 1
+        checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: true) }
+        #endif
+    } catch {
+    #if !hasFeature(Embedded)
+    print("counter caught", error)
+    #endif
+    preconditionFailure("counter root") }
+    return checks
+}
+
+private func counterSemanticExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
+    if !condition {
+    #if !hasFeature(Embedded)
+    print("counter assertion failed", file, line)
+    #endif
+    preconditionFailure("counter assertion") }
+}
+
+===== SOURCE Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift SHA256 7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653 =====
+import GiftUI
+import GiftUIDrawing
+import GiftUISemanticCore
+import P08CounterSchema
+import P08CounterPresentation
+
+package typealias CounterPayload = CanvasSemanticPayload<CounterValueTable.CaptureStorage>
+
+// Finite type metadata only. These inert samples expose the existing API's
+// opaque modifier types; no sample is expanded, bound, stored or used as input.
+// All occurrence paths and child positions come from actual traversal.
+package enum CounterRoles: SemanticDeclarationRoles {
+    @inlinable
+    @inline(__always)
+    static func matches<V, Sample>(_ type: V.Type, _ sample: Sample) -> Bool { V.self == Sample.self }
+    package static func role<V>(of type: V.Type) -> SemanticRecordingRole? {
+        if V.self == CounterScreen<CounterDomain>.self { return .init(rawValue: 1) }
+        if V.self == CounterScreen<CounterDomain>.Body.self { return .init(rawValue: 2) }
+        if V.self == Text<CounterDomain>.self { return .init(rawValue: 3) }
+        if V.self == Button<CounterAction, Text<CounterDomain>>.self { return .init(rawValue: 4) }
+        if V.self == CounterCanvas<CounterDomain>.self { return .init(rawValue: 5) }
+        if V.self == CounterAction.self { return .init(rawValue: 6) }
+        let label = Text<CounterDomain>("")
+        let button = try! Button(action: CounterAction.increment) { Text<CounterDomain>("") }
+        let disabled = button.disabled(false)
+        // The key is used solely to select the generic opaque frame type.
+        let canvas = CounterCanvas<CounterDomain>(model: .init(ownerInstance: 0, allocationGeneration: 0, slot: 0)).frame(width: 48, height: 16)
+        if matches(type, disabled) { return .init(rawValue: 7) }
+        if matches(type, canvas) { return .init(rawValue: 8) }
+        let stack = try! VStack(spacing: 4) { label; label; disabled; disabled; canvas }
+        if matches(type, stack) { return .init(rawValue: 10) }
+        if matches(type, TupleView5(label, label, disabled, disabled, canvas)) { return .init(rawValue: 9) }
+        return nil
+    }
+    package static func modifierDiscriminator<V>(of type: V.Type) -> UInt16 { 0 }
+}
+
+===== SOURCE Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift SHA256 20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab =====
+import GiftUI
+import GiftUIHostConfiguration
+import GiftUIDrawing
+import GiftUIExecution
+import GiftUIInteraction
+import GiftUIObservableState
+import GiftUIRuntimeCore
+import GiftUIRuntimeStatic
+#if !hasFeature(Embedded)
+import GiftUIRuntimeDynamic
+#endif
+import GiftUISemanticCore
+import P08CounterSchema
+
+func exerciseCounterCoordinator<G, C, R, H>(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CounterControl) -> CounterReturnedWorkspaces<G, C, R, H> where G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    guard let assembly = CounterHostAssembly.validate(audit, kind: dynamic ? .macOSDynamic : .macOSStatic) else { preconditionFailure("counter nine-stage assembly") }
+    precondition(assembly.ledger.accessCount == 9 && assembly.ledger.accessedStages == 511 && assembly.ledger.sideEffectCount == 0)
+    precondition(assembly.report.storageAudit == audit && assembly.report.cardinality == P08CounterWorkload.cardinality)
+    var movedGeometry: G? = consume geometry
+    var movedInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
+    return withUnsafeMutablePointer(to: &control) { pointer in
+        let owner = CounterPipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, control: pointer, limits: audit.limits, endpointConfiguration: assembly.endpoint)
+        let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), control: pointer, audit: audit)!
+        let admission = CounterAdmission(control: pointer, limits: audit.limits.execution)
+        #if !hasFeature(Embedded)
+        if dynamic {
+            var coordinator = DynamicRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
+            let checks = runCounterCoordinator(&coordinator, control: pointer) + 3
+            let returned = coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
+            CounterControl.requireVacantRuntimeSlot(at: pointer)
+            return returned
+        }
+        #endif
+        var coordinator = StaticRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
+        let checks = runCounterCoordinator(&coordinator, control: pointer) + 3
+        let returned = coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
+        CounterControl.requireVacantRuntimeSlot(at: pointer)
+        return returned
+    }
+}
+
+func runCounterCoordinator<C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable>(_ coordinator: inout C, control: UnsafeMutablePointer<CounterControl>) -> Int where C.StateChangeFact == UInt8, C.CompletionFact == UInt16, C.OwnerFailure == RuntimeOwnerFailure {
+    var checks = 0
+    func expect(_ condition: Bool) { checks += 1; precondition(condition) }
+    guard case .success(let initial) = coordinator.runOpportunity() else { preconditionFailure("counter initial opportunity") }
+    expect(initial.logicalFrameDisposition == .committed && initial.semanticDisposition == .published)
+    expect(control.pointee.finalized == 1 && control.pointee.commits == 1 && control.pointee.committedRecords == 2)
+    for value: UInt8 in 0...9 {
+        expect(coordinator.submit(stateChange: value).result == .queued)
+        expect(coordinator.submit(completion: 0).result == .queued)
+        expect(coordinator.submit(completion: 0).result == .capacityRefused)
+        guard case .success(let summary) = coordinator.runOpportunity() else { preconditionFailure("counter fact opportunity") }
+        expect(summary.admission.stateChangeFactCount == 1 && summary.admission.completionFactCount == 1)
+        expect(summary.logicalFrameDisposition == .committed && summary.presentationIntentState == .satisfied)
+        expect(control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive && !control.pointee.frameActive)
+    }
+    expect(coordinator.submit(stateChange: 10).result == .invalidValue)
+    for index in 0..<34 { expect(coordinator.submit(stateChange: UInt8(index % 10)).result == .queued) }
+    expect(coordinator.submit(stateChange: 0).result == .capacityRefused)
+    guard case .success(let full) = coordinator.runOpportunity() else { preconditionFailure("counter full bounded queue") }
+    expect(full.admission.stateChangeFactCount == 34)
+    coordinator.quiesce(); coordinator.quiesce()
+    expect(coordinator.isQuiescent && control.pointee.teardowns == 1 && control.pointee.committedRecords == 0)
+    expect(!control.pointee.hasRoot && control.pointee.admission.pendingStateCount == 0)
+    expect(coordinator.submit(stateChange: 0).result == .unavailable)
+    return checks
+}
+
+package func p08CounterCoordinator() -> Int {
+    var models = ObservableModelOwnerNamespace()
+    var semantics = SemanticRecordOwnerNamespace()
+    do {
+        var storage = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+        let staticAudit = storage.audit();
+        #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+            counterDiagnosticAudit("counter static audit", staticAudit)
+        #elseif !hasFeature(Embedded)
+            print("counter static audit", staticAudit)
+        #endif
+        guard case .valid = staticAudit else { preconditionFailure("counter static audit") }
+        var checks = storage.run() + 1
+        #if !hasFeature(Embedded)
+        var dynamic = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+        let dynamicAudit = dynamic.audit();
+            #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+                counterDiagnosticAudit("counter dynamic audit", dynamicAudit)
+            #elseif !hasFeature(Embedded)
+                print("counter dynamic audit", dynamicAudit)
+            #endif
+        guard case .valid = dynamicAudit else { preconditionFailure("counter dynamic audit") }
+        checks += dynamic.run() + 1
+        #endif
+        return checks
+    } catch { preconditionFailure("counter owner namespace") }
+}
+
+===== SOURCE Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift SHA256 f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010 =====
+import P08CounterTable
+import P08CounterSchema
+import GiftUI
+import GiftUIDrawing
+@testable import GiftUIExecution
+import GiftUIInteraction
+import GiftUILayout
+import GiftUIObservableState
+import GiftUIRenderCore
+import GiftUIRenderLowering
+@testable import GiftUIRuntimeCore
+import GiftUISemanticCore
+import GiftUIRuntimeStatic
+#if !hasFeature(Embedded)
+import GiftUIRuntimeDynamic
+#endif
+
+#if hasFeature(Embedded)
+typealias CounterStaticRootStorage = StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>
+#else
+/// Concrete Native owning storage. It lends the same contiguous model slots and
+/// independently borrowed registration fields to the common checked factories.
+struct CounterStaticRootStorage: ~Copyable {
+    private var ownership: ObservableModelOwnership
+    private var models: InlineArray<2, CounterOwnedModel?> = .init { _ in nil }
+    private var identities: InlineArray<2, SemanticCompleteIdentity?> = .init(repeating: nil)
+    private var registration = ObservableStateRootControl()
+    private let schema: UInt16
+    private let needsCapture: Bool
+
+    init?(identity: ObservableModelOwnerIdentity, schema: UInt16, needsCapture: Bool,
+        modelLimit: UInt16 = 2, claimLimit: UInt16 = 4, pinLimit: UInt16 = 2,
+        captureLimit: UInt16? = nil) {
+        guard let ownership = ObservableModelOwnership(identity: identity, modelLimit: modelLimit,
+            claimLimit: claimLimit, pinLimit: pinLimit, captureLimit: captureLimit ?? (needsCapture ? 1 : 0))
+        else { return nil }
+        self.ownership = consume ownership
+        self.schema = schema
+        self.needsCapture = needsCapture
+    }
+
+    var storageLayout: (owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16,
+        pins: UInt16, captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int,
+        liveBytes: Int, candidateBytes: Int) {
+        let capacities = ownership.storageCapacities
+        let modelBytes = MemoryLayout<InlineArray<2, CounterOwnedModel?>>.size
+        let registrationBytes = MemoryLayout<ObservableStateRootControl>.size
+            + MemoryLayout<InlineArray<2, SemanticCompleteIdentity?>>.size
+        let fields = MemoryLayout<ObservableModelOwnership>.size + modelBytes + registrationBytes
+            + MemoryLayout<UInt16>.size + MemoryLayout<Bool>.size
+        let metadataBytes = ObservableModelOwnership.metadataStorageBytes
+            + MemoryLayout<UInt16>.size + MemoryLayout<Bool>.size + MemoryLayout<Self>.size - fields
+        let candidateBytes = ObservableStateRootControl.candidateStorageBytes
+        return (ownership.identity, 2, 4, 2, capacities.captures, metadataBytes, modelBytes,
+            ObservableModelOwnership.framePinStorageBytes, registrationBytes - candidateBytes,
+            candidateBytes)
+    }
+
+    mutating func withLifetime<Result>(
+        limits: ObservableStateLimits = .init(maximumLocations: 2, maximumRegistrations: 2,
+            maximumStagedAssociations: 2)!,
+        _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+            borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>)
+            throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        try Self.withFields(ownership: &ownership, models: &models, identities: &identities,
+            registration: &registration, schema: schema, needsCapture: needsCapture,
+            limits: limits, body)
+    }
+
+    private static func withFields<Result>(ownership: inout ObservableModelOwnership,
+        models: inout InlineArray<2, CounterOwnedModel?>,
+        identities: inout InlineArray<2, SemanticCompleteIdentity?>,
+        registration: inout ObservableStateRootControl, schema: UInt16, needsCapture: Bool,
+        limits: ObservableStateLimits,
+        _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+            borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>)
+            throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        var span = models.mutableSpan
+        return try withObservableModelScope(ownership: &ownership, models: &span,
+            schema: schema, needsCapture: needsCapture) { (scope) throws(ObservableStateError) in
+            try scope.withRoot(identities: &identities, control: &registration, limits: limits) {
+                (root) throws(ObservableStateError) in try body(scope, root)
+            }
+        }
+    }
+}
+#endif
+
+// These are the actual typed owners, not an audited allocation recipe. An
+// activation moves owned workspaces into the scoped pipeline and restores them
+// only after the consuming coordinator has quiesced and ended all its borrows.
+typealias CounterStaticCandidate = StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>
+typealias CounterStaticCommitted = StaticTwoInteractionCommittedStorage<SemanticCompleteIdentity>
+typealias CounterStaticHits = StaticTwoInteractionHitStorage<SemanticCompleteIdentity>
+typealias CounterStaticKeys = InteractionOwnedKeyState<CounterStaticCandidate, CounterStaticCommitted, CounterStaticHits>
+typealias CounterRootLayout = (owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int, liveBytes: Int, candidateBytes: Int)
+let counterSemanticLimits = SemanticRecordLimits(records: 64, paths: 192, depth: 24, fanout: 5, payloads: 128, textScalars: 64, payloadBytes: 4096)!
+let counterCanvasLimits = StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: UInt16(MemoryLayout<CounterValueTable.CaptureStorage>.stride))!
+let counterExecutionLimits = ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2)!
+
+struct CounterSemanticBacking: ~Copyable {
+    var records: InlineArray<128, SemanticRuntimeRecord> = .init(repeating: .init())
+    var paths: InlineArray<384, SemanticPathEntry> = .init(repeating: .init())
+    var payloads: InlineArray<256, CounterPayload?> = .init(repeating: nil)
+    var scalars: InlineArray<128, UInt32> = .init(repeating: 0)
+    static var paddingBytes: Int {
+        let fields = MemoryLayout<InlineArray<128, SemanticRuntimeRecord>>.size + MemoryLayout<InlineArray<384, SemanticPathEntry>>.size + MemoryLayout<InlineArray<256, CounterPayload?>>.size + MemoryLayout<InlineArray<128, UInt32>>.size
+        precondition(MemoryLayout<Self>.size >= fields)
+        return MemoryLayout<Self>.size - fields
+    }
+}
+
+struct CounterStaticWorkspaceBacking {
+    var scopes: InlineArray<1024, UInt8> = .init(repeating: 0)
+    var text: InlineArray<1056, UInt8> = .init(repeating: 0)
+    var path: InlineArray<20, UInt8> = .init(repeating: 0)
+    var plan: InlineArray<112, UInt8> = .init(repeating: 0)
+    var measurement: CounterGeometryMeasurement {
+        .init(layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, drawing: counterDrawingLimits,
+            layoutBytes: UInt64(scopes.count + text.count + MemoryLayout<StaticCounterGeometry>.size - MemoryLayout<QualifiedRender>.size - MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.size),
+            renderBytes: UInt64(MemoryLayout<QualifiedRender>.size), pathBytes: UInt64(path.count),
+            planBytes: UInt64(plan.count + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.size))
+    }
+    mutating func withGeometry(_ body: (consuming StaticCounterGeometry) -> Int) -> Int {
+        withUnsafeMutableBytes(of: &scopes) { s in
+            withUnsafeMutableBytes(of: &text) { t in
+                withUnsafeMutableBytes(of: &path) { p in
+                    withUnsafeMutableBytes(of: &plan) { d in
+                        body(StaticCounterGeometry(scopes: s, text: t, path: p, plan: d))
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct CounterCanvasAudit: RuntimeStaticCanvasAuditMetadata {
+    let table = CounterValueTable()
+    var callableCaseCount: UInt16 { table.callableCaseCount }
+    var declaredEntryCount: UInt16 { table.callableCaseCount }
+    var maximumDeclaredID: UInt16 { table.callableCaseCount }
+    func coverageMultiplicity(for id: UInt16) -> UInt8 { table.captureByteCount(for: id) == nil ? 0 : 1 }
+    func captureByteCount(for id: UInt16) -> UInt16? { table.captureByteCount(for: id) }
+}
+
+
+
+func counterSemanticConfiguration(_ limits: RuntimeProfileLimits) -> SemanticRecordLimits {
+    SemanticRecordLimits(records: limits.maximumSemanticStructuralOccurrences, paths: limits.records.maximumPathEntries, depth: limits.records.maximumPathDepth, fanout: limits.records.maximumPathChildFanout, payloads: counterSemanticLimits.payloads, textScalars: counterSemanticLimits.textScalars, payloadBytes: limits.records.maximumPayloadBytesPerBank)!
+}
+
+// A report is a value, never RuntimeProfileStorage. Each typed physical region
+// contributes to exactly one family, with complete identities partitioned out
+// of Interaction records by counterMeasureInteraction.
+struct CounterSemanticMeasurement {
+    let limits: SemanticRecordLimits
+    let records: CounterExtent
+    let paths: CounterExtent
+    let payloads: CounterExtent
+    let scalars: CounterExtent
+    let controlBytes: Int
+}
+
+func counterValidateBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile: RuntimeProfileKind, limits: RuntimeProfileLimits,
+    root: CounterRootLayout, rootMetadataRegion: CounterStorageRegion, semantic: CounterSemanticMeasurement, geometry: CounterGeometryMeasurement,
+    interaction: borrowing InteractionOwnedKeyState<C, R, H>, geometryType: G.Type,
+    canvasCount: Int, canvasCapacity: UInt16, canvasControlBytes: Int,
+    factoryRegion: CounterStorageRegion,
+    factoryDescriptorRegion: CounterStorageRegion? = nil,
+    geometryRegions: borrowing GR,
+    report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult
+where G: CounterGeometry, C: CounterCandidateBacking & InteractionOwnedBankMeasurementSource, R: CounterCommittedBacking & InteractionOwnedBankMeasurementSource, H: CounterHitBacking & InteractionOwnedBankMeasurementSource,
+    C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    let facts = interaction.ownedStorageMeasurement()
+    let metadata = MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<C>.size - 2 * MemoryLayout<R>.size - 2 * MemoryLayout<H>.size
+    func physical<Record>(_ bank: InteractionOwnedBankMeasurement, record: Record.Type) -> CounterPhysicalBankFacts {
+        .init(bank: bank, recordSize: bank.retainedPayloadBytes == 0 ? MemoryLayout<Record?>.size : MemoryLayout<Record>.size, recordStride: bank.retainedPayloadBytes == 0 ? MemoryLayout<Record?>.stride : MemoryLayout<Record>.stride, recordAlignment: bank.retainedPayloadBytes == 0 ? MemoryLayout<Record?>.alignment : MemoryLayout<Record>.alignment,
+            optionalRecords: bank.retainedPayloadBytes == 0, retainedBytes: bank.inlineSize + bank.retainedPayloadBytes)
+    }
+    let rows = CounterPhysicalInteractionFacts(
+        candidate: physical(facts.candidate, record: InteractionCandidateRecord<SemanticCompleteIdentity>.self),
+        candidateHits: physical(facts.candidateHits, record: InteractionHitRegion<SemanticCompleteIdentity>.self),
+        prepared: physical(facts.prepared, record: BoundActionRecord<SemanticCompleteIdentity>.self),
+        committed: physical(facts.committed, record: BoundActionRecord<SemanticCompleteIdentity>.self),
+        committedHits: physical(facts.committedHits, record: InteractionHitRegion<SemanticCompleteIdentity>.self), stateMetadataBytes: metadata)
+    return counterValidatePhysicalBacking(profile: profile, limits: limits, root: root, rootMetadataRegion: rootMetadataRegion,
+        semantic: semantic, geometry: geometry, interactionFacts: rows, identityCapacities: interaction.identityCapacities,
+        geometryType: geometryType, candidateType: C.self, committedType: R.self, hitType: H.self,
+        canvasCount: canvasCount, canvasCapacity: canvasCapacity, canvasControlBytes: canvasControlBytes,
+        factoryRegion: factoryRegion, factoryDescriptorRegion: factoryDescriptorRegion, geometryRegions: geometryRegions, report: report)
+}
+
+func counterValidatePhysicalBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile: RuntimeProfileKind, limits: RuntimeProfileLimits,
+    root: CounterRootLayout, rootMetadataRegion: CounterStorageRegion, semantic: CounterSemanticMeasurement, geometry: CounterGeometryMeasurement,
+    interactionFacts: CounterPhysicalInteractionFacts, identityCapacities: (perKey: UInt16, perBank: UInt32),
+    descriptorBytes: Int = 0, geometryType: G.Type, candidateType: C.Type, committedType: R.Type, hitType: H.Type,
+    canvasCount: Int, canvasCapacity: UInt16, canvasControlBytes: Int,
+    factoryRegion: CounterStorageRegion,
+    factoryDescriptorRegion: CounterStorageRegion? = nil,
+    geometryRegions: borrowing GR,
+    report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult
+where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & ~Copyable & ~Escapable, R: CounterCommittedBacking & ~Copyable & ~Escapable, H: CounterHitBacking & ~Copyable & ~Escapable,
+    C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    // The concrete scoped render adapter exports exactly the configured view;
+    // inaccessible physical headroom remains measured in the backing regions.
+    guard counterRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .invalid(.insufficientStorage) }
+    let keys = interactionFacts.measurement
+    let keyLimits = identityCapacities
+    let semanticLimits = semantic.limits
+    guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+        let payloadBytes = semantic.payloads.bytes, let scalarBytes = semantic.scalars.bytes,
+        let canvasBytes = CounterExtent.elements(CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, count: canvasCount).bytes else { return .invalid(.arithmeticOverflow) }
+    let interactionMetadata = interactionFacts.stateMetadataBytes
+    let pending = MemoryLayout<InlineArray<2, NormalizedPointerEvent?>>.size + MemoryLayout<InlineArray<34, UInt8>>.size + MemoryLayout<UInt16>.size + MemoryLayout<UInt16?>.size
+    let sealed = MemoryLayout<CounterAdmissionBacking>.size - pending
+    let result = MemoryLayout<RuntimeCompletePipelineResult<RuntimeOwnerFailure>?>.size
+    typealias Admission = CounterAdmission
+    typealias Owner = CounterPipelineOwner<G, C, R, H>
+    typealias Coordinator = StaticRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>
+    var concreteCoordinatorBytes = MemoryLayout<Coordinator>.size
+    #if !hasFeature(Embedded)
+    if profile == .dynamic {
+        concreteCoordinatorBytes = MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>>.size
+    }
+    #endif
+    // Endpoint/sink data now resides in Control but still belongs to the backend
+    // accounting owner. Subtract it once from the combined coordinator/control.
+    // Physical backend arrays in CounterControl remain fully charged below.
+    let coordinator = concreteCoordinatorBytes - MemoryLayout<G>.size
+        - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
+        + MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes
+        - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result
+        + descriptorBytes + Int(factoryRegion.chargedBytes) + Int(factoryDescriptorRegion?.chargedBytes ?? 0)
+    // Bank zero occupies exactly the configured whole-element prefix. Bank one
+    // owns the second configured slice plus any retained allocator tail; never
+    // divide a typed element when Array capacity rounds to an odd count.
+    let firstRecords = CounterExtent.elements(SemanticRuntimeRecord.self, count: Int(semanticLimits.records)).bytes!
+    let firstPaths = CounterExtent.elements(SemanticPathEntry.self, count: Int(semanticLimits.paths)).bytes!
+    let firstPayloads = CounterExtent.elements(CounterPayload?.self, count: Int(semanticLimits.payloads)).bytes!
+    let firstScalars = CounterExtent.elements(UInt32.self, count: Int(semanticLimits.textScalars)).bytes!
+    guard semantic.records.count >= Int(semanticLimits.records) * 2,
+        semantic.paths.count >= Int(semanticLimits.paths) * 2,
+        semantic.payloads.count >= Int(semanticLimits.payloads) * 2,
+        semantic.scalars.count >= Int(semanticLimits.textScalars) * 2 else { return .invalid(.insufficientStorage) }
+    let candidatePayload = firstPayloads + firstScalars
+    let publishedPayload = payloadBytes - firstPayloads + scalarBytes - firstScalars
+    let firstMatch = UInt64(semanticLimits.paths) * UInt64(MemoryLayout<UInt16>.size)
+    let allMatch = UInt64(semantic.paths.count) * UInt64(MemoryLayout<UInt16>.size)
+    let matchControl = 4 * MemoryLayout<UInt32>.size
+    guard firstPaths >= firstMatch, pathBytes >= allMatch,
+        semantic.controlBytes >= matchControl, coordinator >= 0,
+        interactionMetadata >= 0 else { return .invalid(.invariantViolation) }
+    let values: InlineArray<26, UInt64> = [firstPaths - firstMatch, pathBytes - firstPaths - (allMatch - firstMatch), candidatePayload, publishedPayload,
+        allMatch + UInt64(matchControl), keys.candidateIdentityBytes, keys.committedIdentityBytes,
+        UInt64(root.metadataBytes), UInt64(root.modelBytes), UInt64(root.pinBytes),
+        firstRecords + UInt64(semantic.controlBytes - matchControl), recordBytes - firstRecords,
+        geometry.layoutBytes, geometry.renderBytes, canvasBytes + UInt64(canvasControlBytes), geometry.pathBytes, geometry.planBytes,
+        UInt64(root.liveBytes), UInt64(root.candidateBytes), keys.candidateBytes + UInt64(interactionMetadata), keys.committedBytes,
+        UInt64(pending), UInt64(sealed), UInt64(Admission.pointerStateStorageBytes + MemoryLayout<CounterPointerState>.size), UInt64(coordinator), UInt64(result)]
+    for index in 0..<values.count where UInt32(exactly: values[index]) == nil { return .invalid(.arithmeticOverflow) }
+    var reported: InlineArray<26, UInt64> = .init(repeating: 0)
+    var reportOverflow = false
+    func record(_ region: CounterStorageRegion) {
+        precondition((0..<26).contains(region.family))
+        let sum = reported[region.family].addingReportingOverflow(region.chargedBytes)
+        reportOverflow = reportOverflow || sum.overflow
+        reported[region.family] = sum.partialValue
+        report(region)
+    }
+    record(.elements(SemanticPathEntry.self, count: Int(semanticLimits.paths), family: 0, chargedBytes: values[0]))
+    record(.elements(SemanticPathEntry.self, count: semantic.paths.count - Int(semanticLimits.paths), family: 1, chargedBytes: values[1]))
+    record(.elements(CounterPayload?.self, count: Int(semanticLimits.payloads), family: 2))
+    record(.elements(UInt32.self, count: Int(semanticLimits.textScalars), family: 2))
+    record(.elements(CounterPayload?.self, count: semantic.payloads.count - Int(semanticLimits.payloads), family: 3))
+    record(.elements(UInt32.self, count: semantic.scalars.count - Int(semanticLimits.textScalars), family: 3))
+    // Repeated embedded fields, not a contiguous allocation or another bank.
+    record(.elements(UInt16.self, count: semantic.paths.count, family: 4))
+    record(.elements(UInt32.self, count: 4, family: 4))
+    record(rootMetadataRegion)
+    record(.elements(CounterOwnedModel?.self, count: Int(root.models), family: 8))
+    record(.elements(Bool.self, count: Int(root.pins), family: 9))
+    record(.elements(SemanticRuntimeRecord.self, count: Int(semanticLimits.records), family: 10))
+    if profile == .static {
+        record(.inline(CounterSemanticBacking.self, family: 10, chargedBytes: CounterSemanticBacking.paddingBytes, kind: .metadataPadding))
+        record(.inline(StaticSemanticRecordStorage.self, family: 10, chargedBytes: MemoryLayout<StaticSemanticRecordStorage>.size - matchControl, kind: .partition))
+    }
+    #if !hasFeature(Embedded)
+    if profile == .dynamic {
+        record(.inline(UInt16.self, family: 7))
+        record(.elements(Bool.self, count: 2, family: 7))
+        record(.inline(DynamicObservableModelStorage<CounterOwnedModel, CounterModelSchema>.self, family: 7))
+        record(.inline(InlineArray<2, SemanticRecordBankMetadata>.self, family: 10, chargedBytes: MemoryLayout<InlineArray<2, SemanticRecordBankMetadata>>.size - matchControl, kind: .partition))
+        record(.inline([SemanticRuntimeRecord].self, family: 10))
+        record(.inline([SemanticPathEntry].self, family: 10))
+        record(.inline([CounterPayload?].self, family: 10))
+        record(.inline([UInt32].self, family: 10))
+        record(.inline(SemanticRecordLimits.self, family: 10))
+        record(.inline(SemanticRecordOwnerIdentity.self, family: 10))
+        record(.inline(Bool.self, family: 10))
+    }
+    #endif
+    record(.elements(SemanticRuntimeRecord.self, count: semantic.records.count - Int(semanticLimits.records), family: 11))
+    geometryRegions.visitStorageRegions(record)
+    record(.elements(CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, count: canvasCount, family: 14))
+    if profile == .static { record(.inline(StaticCanvasValueStorage.self, family: 14)) }
+    #if !hasFeature(Embedded)
+    if profile == .dynamic { record(.inline(DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>.self, family: 14)) }
+    #endif
+    record(.inline(ObservableStateRootStorage<SemanticCompleteIdentity>.self, family: 17, chargedBytes: root.liveBytes, kind: .partition))
+    record(.inline(ObservableStateRootStorage<SemanticCompleteIdentity>.self, family: 18, chargedBytes: root.candidateBytes, kind: .partition))
+    interactionFacts.visitStorageRegions(record)
+    record(.elements(NormalizedPointerEvent?.self, count: 2, family: 21))
+    record(.inline(InlineArray<34, UInt8>.self, family: 21))
+    record(.inline(UInt16.self, family: 21))
+    record(.inline(UInt16?.self, family: 21))
+    record(.inline(CounterAdmissionBacking.self, family: 22, chargedBytes: sealed, kind: .partition))
+    record(.inline(Admission.Controller?.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
+    record(.inline(CounterPointerState.self, family: 23))
+    let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size
+    if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
+    #if !hasFeature(Embedded)
+    if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
+    #endif
+    // All outer controls, observations, optional controller metadata and padding
+    // remain physically live and are charged here exactly once.
+    record(.inline(CounterControl.self, family: 24, chargedBytes: MemoryLayout<CounterControl>.size - MemoryLayout<CounterEndpoint>.size - Admission.pointerStateStorageBytes - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
+    record(factoryRegion)
+    if let factoryDescriptorRegion { record(factoryDescriptorRegion) }
+    record(.inline(RuntimeCompletePipelineResult<RuntimeOwnerFailure>?.self, family: 25))
+    guard !reportOverflow else { return .invalid(.arithmeticOverflow) }
+    for index in 0..<26 { precondition(reported[index] == values[index], "physical region audit mismatch") }
+    let bytes = RuntimeStorageByteCounts(semanticCandidatePathBytes: UInt32(values[0]), semanticPublishedPathBytes: UInt32(values[1]), semanticCandidatePayloadBytes: UInt32(values[2]), semanticPublishedPayloadBytes: UInt32(values[3]), identityMatchWorkspaceBytes: UInt32(values[4]), interactionCandidateIdentityBytes: UInt32(values[5]), interactionCommittedIdentityBytes: UInt32(values[6]), modelMetadataBytes: UInt32(values[7]), modelOwnerBytes: UInt32(values[8]), framePinBytes: UInt32(values[9]), semanticCandidateBytes: UInt32(values[10]), semanticPublishedBytes: UInt32(values[11]), layoutCandidateBytes: UInt32(values[12]), renderWorkspaceBytes: UInt32(values[13]), canvasCallableBytes: UInt32(values[14]), pathWorkspaceBytes: UInt32(values[15]), drawingPlanBytes: UInt32(values[16]), observableLiveBytes: UInt32(values[17]), observableCandidateBytes: UInt32(values[18]), interactionCandidateBytes: UInt32(values[19]), interactionCommittedBytes: UInt32(values[20]), admissionQueueBytes: UInt32(values[21]), sealedBatchBytes: UInt32(values[22]), pointerStateBytes: UInt32(values[23]), coordinatorStateBytes: UInt32(values[24]), failureStateBytes: UInt32(values[25]))
+    let records = RuntimeRecordLimits(maximumPathEntries: semanticLimits.paths, maximumPathDepth: semanticLimits.depth, maximumPathChildFanout: semanticLimits.fanout, maximumPayloadBytesPerBank: semanticLimits.payloadBytes, maximumIdentityComponentsPerKey: keyLimits.perKey, maximumInteractionIdentityComponents: keyLimits.perBank)
+    let inputs = RuntimeProfileLimitInputs(records: limits.records, models: limits.models, semantic: limits.semantic, maximumSemanticStructuralOccurrences: limits.maximumSemanticStructuralOccurrences, layout: limits.layout, render: limits.render, renderWorkspace: limits.renderWorkspace, renderSink: limits.renderSink, maximumOrdinaryRenderOperations: limits.maximumOrdinaryRenderOperations, execution: limits.execution, observableState: limits.observableState, interaction: limits.interaction, drawing: limits.drawing, staticCanvas: limits.staticCanvas, profile: profile)
+    let rootCapacity = ObservableStateRootStorage<SemanticCompleteIdentity>.storageCapacities
+    let capacities = RuntimeStorageCapacities(candidateRecords: records, publishedRecords: records,
+        models: .init(maximumModelSlots: root.models, maximumOwningTickets: root.claims, maximumFramePins: root.pins, maximumModelCaptureBanks: root.captures),
+        semanticCandidate: .init(maximumDepth: semanticLimits.depth, maximumSemanticNodes: semanticLimits.records, maximumBodyEvaluations: semanticLimits.records, maximumModifierApplications: semanticLimits.records, maximumActionOccurrences: semanticLimits.records),
+        semanticPublished: .init(maximumDepth: semanticLimits.depth, maximumSemanticNodes: semanticLimits.records, maximumBodyEvaluations: semanticLimits.records, maximumModifierApplications: semanticLimits.records, maximumActionOccurrences: semanticLimits.records),
+        semanticCandidateStructuralOccurrences: semanticLimits.records, semanticPublishedStructuralOccurrences: semanticLimits.records,
+        layoutCandidate: geometry.layout, render: geometry.render, renderWorkspace: limits.renderWorkspace,
+        canvasCallableOccurrences: canvasCapacity, staticCanvasCaptureBytes: UInt16(MemoryLayout<CounterValueTable.CaptureStorage>.stride),
+        pathPoints: geometry.drawing.maximumLivePathPoints, pathSubpaths: geometry.drawing.maximumLivePathSubpaths,
+        drawingPlanStrokes: geometry.drawing.maximumPlanStrokes, drawingPlanPoints: geometry.drawing.maximumPlanPoints, drawingPlanSubpaths: geometry.drawing.maximumPlanSubpaths, normalizedStrokeOperations: geometry.drawing.maximumNormalizedStrokeOperations,
+        observableLiveLocations: rootCapacity.locations, observableLiveRegistrations: rootCapacity.registrations, observableCandidateAssociations: rootCapacity.associations,
+        interactionCandidateActions: keys.candidateRecords, interactionCandidateHitRegions: keys.candidateHits, interactionCommittedActions: keys.committedRecords, interactionCommittedHitRegions: keys.committedHits,
+        admissionQueue: counterExecutionLimits, sealedBatch: counterExecutionLimits, pointerStates: 1,
+        coordinatorStatePresent: concreteCoordinatorBytes > 0, failureStatePresent: result > 0, byteCounts: bytes)
+    if profile == .static { return RuntimeProfileValidator.validateStatic(inputs: inputs, capacities: capacities, metadata: CounterCanvasAudit()) }
+    return RuntimeProfileValidator.validateDynamic(inputs: inputs, capacities: capacities)
+}
+
+#if !hasFeature(Embedded)
+typealias CounterDynamicCandidate = DynamicInteractionCandidateStorage<SemanticCompleteIdentity>
+typealias CounterDynamicCommitted = DynamicInteractionCommittedStorage<SemanticCompleteIdentity>
+typealias CounterDynamicHits = DynamicInteractionHitStorage<SemanticCompleteIdentity>
+typealias CounterDynamicKeys = InteractionOwnedKeyState<CounterDynamicCandidate, CounterDynamicCommitted, CounterDynamicHits>
+struct DynamicCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
+    typealias StructuralIdentity = SemanticCompleteIdentity
+    static var profile: RuntimeProfileKind { .dynamic }
+    let limits: RuntimeProfileLimits
+    var root: DynamicObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>
+    var semantic: DynamicSemanticRecordStorage<CounterPayload>
+    var canvas = DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>(capacity: 1)
+    var geometry: DynamicCounterGeometry? = DynamicCounterGeometry()
+    var interaction: CounterDynamicKeys?
+    var control = CounterControl()
+    var used = false
+    init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, limits: RuntimeProfileLimits = counterActualLimits(.dynamic)) {
+        self.limits = limits
+        root = DynamicObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!
+        semantic = DynamicSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner)
+        interaction = CounterDynamicKeys(state: InteractionState(candidateRecords: CounterDynamicCandidate(capacity: 2), candidateHitRegions: CounterDynamicHits(capacity: 2), candidateCommittedRecords: CounterDynamicCommitted(capacity: 2), committedRecords: CounterDynamicCommitted(capacity: 2), committedHitRegions: CounterDynamicHits(capacity: 2)), maximumComponentsPerKey: 24, maximumComponents: 48)!
+    }
+    borrowing func audit() -> RuntimeProfileValidationResult { audit(report: { _ in }) }
+    borrowing func audit(report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
+        guard let geometry, let interaction else { return .invalid(.missingStorage) }
+        let extent = semantic.retainedExtents
+        return counterValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout, rootMetadataRegion: .inline(ObservableModelOwnership.self, family: 7, chargedBytes: root.storageLayout.metadataBytes - MemoryLayout<UInt16>.size - 2 * MemoryLayout<Bool>.size - MemoryLayout<DynamicObservableModelStorage<CounterOwnedModel, CounterModelSchema>>.size, kind: .partition),
+            semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: extent.records), paths: .elements(SemanticPathEntry.self, count: extent.paths), payloads: .elements(CounterPayload?.self, count: extent.payloads), scalars: .elements(UInt32.self, count: extent.scalars), controlBytes: extent.controlBytes),
+            geometry: geometry.storageMeasurement(), interaction: interaction, geometryType: DynamicCounterGeometry.self,
+            canvasCount: canvas.retainedElementCapacity, canvasCapacity: canvas.capacity,
+            canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size,
+            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size - MemoryLayout<DynamicCounterGeometry>.size - MemoryLayout<CounterDynamicKeys>.size - MemoryLayout<CounterControl>.size, kind: .metadataPadding),
+            geometryRegions: geometry, report: report)
+    }
+    mutating func resetAttemptStorage() {
+        precondition(geometry != nil && interaction != nil)
+        geometry!.reset()
+        interaction!.resolveCandidate(.discard)
+        control.admission.finishAttempt()
+    }
+    mutating func resetAllStorage() {
+        control.requireVacantRuntimeSlot()
+        precondition(!used || control.unavailable)
+        resetAttemptStorage()
+        interaction!.resetAllStorage()
+        control.admission.resetAll()
+    }
+
+    mutating func run() -> Int {
+        guard !used, case .valid(let audited) = audit() else { return 0 }
+        used = true
+        precondition(interaction!.configureIdentityLimits(perKey: limits.records.maximumIdentityComponentsPerKey, perBank: limits.records.maximumInteractionIdentityComponents))
+        var movedGeometry = geometry.take()
+        var movedInteraction = interaction.take()
+        var returned: CounterReturnedWorkspaces<DynamicCounterGeometry, CounterDynamicCandidate, CounterDynamicCommitted, CounterDynamicHits>?
+        do throws(ObservableStateError) {
+            try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+                do throws(SemanticExpansionError) {
+                    try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+                        do throws(DrawingError) {
+                            try canvas.withLifetime(table: CounterValueTable(), limits: limits.staticCanvas ?? counterCanvasLimits, configuredCapacity: limits.drawing.maximumCanvasOccurrences) { values in
+                                returned = exerciseCounterCoordinator(models: models, root: root, semantic: semantic, values: values, dynamic: true, geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, audit: audited, control: &control)
+                            }
+                        } catch { preconditionFailure("factory Canvas") }
+                    }
+                } catch { preconditionFailure("factory semantic") }
+            }
+        } catch { preconditionFailure("factory model") }
+        let workspaces = returned.take()!
+        let checks = workspaces.checks
+        geometry = workspaces.geometry; interaction = workspaces.interaction
+        precondition(audit() == .valid(audited))
+        resetAllStorage()
+        precondition(audit() == .valid(audited))
+        return checks + 6
+    }
+}
+#endif
+
+struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
+    typealias StructuralIdentity = SemanticCompleteIdentity
+    static var profile: RuntimeProfileKind { .static }
+    let limits: RuntimeProfileLimits
+    var root: CounterStaticRootStorage
+    var semantic: StaticSemanticRecordStorage
+    var semanticBacking = CounterSemanticBacking()
+    var canvas = StaticCanvasValueStorage()
+    var canvasBacking: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)
+    var workspace = CounterStaticWorkspaceBacking()
+    var interaction: CounterStaticKeys?
+    var control = CounterControl()
+    var used = false
+    init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, limits: RuntimeProfileLimits = counterActualLimits(.static)) {
+        self.limits = limits
+        root = CounterStaticRootStorage(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!
+        semantic = StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner)
+        interaction = CounterStaticKeys(state: InteractionState(candidateRecords: CounterStaticCandidate(capacity: 2)!, candidateHitRegions: CounterStaticHits(capacity: 2)!, candidateCommittedRecords: CounterStaticCommitted(capacity: 2)!, committedRecords: CounterStaticCommitted(capacity: 2)!, committedHitRegions: CounterStaticHits(capacity: 2)!), maximumComponentsPerKey: 24, maximumComponents: 48)!
+    }
+    borrowing func audit() -> RuntimeProfileValidationResult { audit(report: { _ in }) }
+    borrowing func audit(report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
+        guard let interaction else { return .invalid(.missingStorage) }
+        return counterValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout, rootMetadataRegion: .inline(CounterStaticRootStorage.self, family: 7, chargedBytes: root.storageLayout.metadataBytes, kind: .metadataPadding),
+            semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: semanticBacking.records.count), paths: .elements(SemanticPathEntry.self, count: semanticBacking.paths.count), payloads: .elements(CounterPayload?.self, count: semanticBacking.payloads.count), scalars: .elements(UInt32.self, count: semanticBacking.scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
+            geometry: workspace.measurement, interaction: interaction, geometryType: StaticCounterGeometry.self,
+            canvasCount: canvasBacking.count, canvasCapacity: UInt16(canvasBacking.count),
+            canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size,
+            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<CounterStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterStaticWorkspaceBacking>.size - MemoryLayout<CounterStaticKeys>.size - MemoryLayout<CounterControl>.size, kind: .metadataPadding),
+            geometryRegions: workspace, report: report)
+    }
+    mutating func resetAttemptStorage() {
+        precondition(interaction != nil)
+        _ = workspace.withGeometry { geometry in
+            var geometry = consume geometry
+            geometry.reset()
+            return 0
+        }
+        interaction!.resolveCandidate(.discard)
+        control.admission.finishAttempt()
+    }
+    mutating func resetAllStorage() {
+        control.requireVacantRuntimeSlot()
+        precondition(!used || control.unavailable)
+        resetAttemptStorage()
+        interaction!.resetAllStorage()
+        control.admission.resetAll()
+    }
+
+    mutating func run() -> Int {
+        guard !used, case .valid(let audited) = audit() else { return 0 }
+        used = true
+        precondition(interaction!.configureIdentityLimits(perKey: limits.records.maximumIdentityComponentsPerKey, perBank: limits.records.maximumInteractionIdentityComponents))
+        var movedInteraction = interaction.take()
+        var checks = 0
+        do throws(ObservableStateError) {
+            try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+                do throws(SemanticExpansionError) {
+                    var records = semanticBacking.records.mutableSpan
+                    var paths = semanticBacking.paths.mutableSpan
+                    var payloads = semanticBacking.payloads.mutableSpan
+                    var scalars = semanticBacking.scalars.mutableSpan
+                    try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits), records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
+                        do throws(DrawingError) {
+                            var entries = canvasBacking.mutableSpan
+                            try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: limits.drawing.maximumCanvasOccurrences, limits: limits.staticCanvas ?? counterCanvasLimits) { values in
+                                checks = workspace.withGeometry { geometry in
+                                    let measured = geometry.storageMeasurement()
+                                    var returned = exerciseCounterCoordinator(models: models, root: root, semantic: semantic, values: values, dynamic: false, geometry: geometry, interaction: movedInteraction.take()!, audit: audited, control: &control)
+                                    precondition(returned.geometry.storageMeasurement() == measured)
+                                    // The returned raw descriptors are consumed here, while all
+                                    // four physical arrays are still borrowed and immovable.
+                                    returned.geometry.reset()
+                                    movedInteraction = returned.interaction
+                                    return returned.checks + 1
+                                }
+                            }
+                        } catch { preconditionFailure("factory Canvas") }
+                    }
+                } catch { preconditionFailure("factory semantic") }
+            }
+        } catch { preconditionFailure("factory model") }
+        interaction = movedInteraction.take()
+        precondition(audit() == .valid(audited))
+        resetAllStorage()
+        precondition(audit() == .valid(audited))
+        return checks + 6
+    }
+}
+
+
+===== SOURCE Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift SHA256 2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825 =====
+import GiftUI
+import GiftUIRenderCore
+
+// SO-06 physical/session corpus is separately registered as p08CounterScopedStorage;
+// these independent byte-codec controls remain unchanged.
+package func p08CounterFixedStorage() -> Int {
+    var checks = 0
+    var pathBytes: InlineArray<20, UInt8> = .init(repeating: 0)
+    checks += withUnsafeMutableBytes(of: &pathBytes) { bytes in
+        var path = StaticCounterLivePathStorage(region: bytes)!
+        precondition(path.startFirstSubpath(at: Point(x: 4, y: 8)))
+        precondition(path.appendLine(to: Point(x: 40, y: 8)))
+        precondition(!path.appendLine(to: Point(x: 44, y: 8)))
+        precondition(!path.startNextSubpath(at: Point(x: 0, y: 0)))
+        precondition(path.pointCount == 2 && path.subpathCount == 1)
+        precondition(path.point(at: 0) == Point(x: 4, y: 8) && path.point(at: 1) == Point(x: 40, y: 8))
+        precondition(path.subpath(at: 0) == SubpathRange(firstPoint: 0, pointCount: 2))
+        path.reset()
+        precondition(path.pointCount == 0 && path.subpathCount == 0)
+        return 8
+    }
+    var planBytes: InlineArray<112, UInt8> = .init(repeating: 0)
+    checks += withUnsafeMutableBytes(of: &planBytes) { bytes in
+        precondition(!StaticCounterDrawingPlanRecords.stagePoint(Point(x: 1, y: 1), at: 2, in: bytes))
+        precondition(!StaticCounterDrawingPlanRecords.stageSubpath(SubpathRange(firstPoint: 0, pointCount: 2)!, at: 1, in: bytes))
+        precondition(StaticCounterDrawingPlanStorage(region: bytes, capacity: counterDrawingLimits) != nil)
+        precondition(bytes.allSatisfy { $0 == 0 })
+        return 4
+    }
+    return checks
+}
+
+===== SOURCE Sources/GiftUIObservableState/ObservableModelScope.swift SHA256 8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8 =====
+import GiftUI
+
+/// Holds both actual backing borrows for the complete activation callback. The
+/// generic result is Escapable, so neither a scope nor a ticket can be returned.
+@inlinable
+package func withObservableModelScope<Model: ~Copyable, Schema, Result>(
+    ownership: inout ObservableModelOwnership,
+    models: inout MutableSpan<Model?>,
+    schema: UInt16, needsCapture: Bool,
+    _ body: (borrowing ObservableModelScope<Model, Schema>) throws(ObservableStateError) -> Result
+) throws(ObservableStateError) -> Result {
+    if let failure = ownership.operationAllowed() { throw failure }
+    guard models.count == 2 else { throw .modelCapacityExhausted }
+    return try withUnsafeMutablePointer(to: &ownership) { (owner) throws(ObservableStateError) in
+        try models.withUnsafeMutableBufferPointer { (buffer) throws(ObservableStateError) in
+            let scope = ObservableModelScope<Model, Schema>(
+                ownership: owner, models: buffer, schema: schema, needsCapture: needsCapture)
+            defer { scope.finishActivation() }
+            return try body(scope)
+        }
+    }
+}
+
+@usableFromInline
+package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escapable {
+    @usableFromInline let ownership: UnsafeMutablePointer<ObservableModelOwnership>
+    @usableFromInline let models: UnsafeMutableBufferPointer<Model?>
+    @usableFromInline let schema: UInt16
+    @usableFromInline let needsCapture: Bool
+
+    // The private factory is called inside both owning storage borrows above.
+    // Borrowing these descriptors alone is not the backing-lifetime proof.
+    @_lifetime(borrow ownership, borrow models)
+    @inlinable
+    @inline(__always)
+    init(
+        ownership: borrowing UnsafeMutablePointer<ObservableModelOwnership>,
+        models: borrowing UnsafeMutableBufferPointer<Model?>, schema: UInt16, needsCapture: Bool
+    ) {
+        self.ownership = copy ownership
+        self.models = copy models
+        self.schema = schema
+        self.needsCapture = needsCapture
+    }
+
+    @_lifetime(copy self)
+    @inlinable
+    package borrowing func borrowedScope() -> ObservableModelScope<Model, Schema> {
+        ObservableModelScope(borrowing: self)
+    }
+
+    @_lifetime(copy other)
+    @inlinable
+    @inline(__always)
+    init(borrowing other: borrowing ObservableModelScope<Model, Schema>) {
+        ownership = other.ownership
+        models = other.models
+        schema = other.schema
+        needsCapture = other.needsCapture
+    }
+
+    // Concrete joins must match the actual owner backing, not merely a schema
+    // or a numeric identity issued by a different namespace.
+    @inlinable
+    package borrowing func sharesOwner(with other: borrowing ObservableModelScope<Model, Schema>)
+        -> Bool
+    {
+        ownership == other.ownership && models.baseAddress == other.models.baseAddress
+            && schema == other.schema
+    }
+
+    @inlinable
+    package borrowing func validateTicket(_ ticket: borrowing ObservableModelTicket<Schema>)
+        throws(ObservableStateError)
+    {
+        _ = try ownership.pointee.validatedClaim(ticket.requireClaim(), schema: schema)
+    }
+
+    @inlinable
+    package borrowing func validateAssociation(_ key: _GiftUIModelKey<Schema>)
+        throws(ObservableStateError)
+    {
+        try ownership.pointee.validateAssociation(
+            ownership.pointee.address(for: key), schema: schema)
+    }
+
+    @inlinable
+    package borrowing func validateOperation(discovery: Bool = false) throws(ObservableStateError) {
+        if let failure = ownership.pointee.operationAllowed(discovery: discovery) { throw failure }
+    }
+
+    @inlinable
+    package var phase: ObservableModelOwnership.Phase { ownership.pointee.phase }
+
+    @inlinable
+    package borrowing func requireStop() { ownership.pointee.retireActivation() }
+
+    // Called before the root report-storage borrow ends, even if an independent
+    // ticket survives a failed detach. Terminal activation cannot be reopened.
+    @usableFromInline
+    package borrowing func finishStoppedActivation() {
+        if ownership.pointee.phase == .retired { finishActivation() }
+    }
+
+    @usableFromInline
+    borrowing func finishActivation() {
+        let occupied = ownership.pointee.finishActivation()
+        for index in 0 ..< models.count where occupied & (1 << index) != 0 {
+            models[index] = nil
+        }
+    }
+
+    @inlinable
+    package borrowing func attach(
+        _ key: _GiftUIModelKey<Schema>, sink: consuming _GiftUIObservableChangeSink
+    ) throws(ObservableStateError) -> _GiftUIObservationAttachment?
+    where Model: ObservableStateModel, Model.Schema == Schema {
+        let index = try ownership.pointee.callbackIndex(
+            ownership.pointee.address(for: key), schema: schema)
+        guard models[index] != nil else { throw .invariantViolation }
+        return models[index]!.attach(consume sink)
+    }
+
+    @inlinable
+    package borrowing func detach(
+        _ key: _GiftUIModelKey<Schema>, attachment: _GiftUIObservationAttachment
+    ) throws(ObservableStateError)
+    where Model: ObservableStateModel, Model.Schema == Schema {
+        let index = try ownership.pointee.callbackIndex(
+            ownership.pointee.address(for: key), schema: schema)
+        guard models[index] != nil, models[index]!.detach(attachment) else {
+            throw .invariantViolation
+        }
+    }
+
+    @inlinable
+    package borrowing func report(_ key: _GiftUIModelKey<Schema>)
+        -> _GiftUIObservableChangeReportOutcome
+    where Model: ObservableStateModel, Model.Schema == Schema {
+        if phase == .retired { return .invalidPhaseSafetyNotProven }
+        do throws(ObservableStateError) {
+            let index = try ownership.pointee.callbackIndex(
+                ownership.pointee.address(for: key), schema: schema)
+            guard models[index] != nil else { return .invariantViolation }
+            return models[index]!.reportChange()
+        } catch { return .invariantViolation }
+    }
+
+    package borrowing func stageReplacement(
+        transferring ticket: borrowing ObservableModelTicket<Schema>, seed: Schema.Seed,
+        registrationAvailable: Bool, stagingAvailable: Bool
+    ) throws(ObservableStateError) -> ObservableModelOwnership.Replacement
+    where Model: ObservableStateModel, Model.Schema == Schema {
+        let model = Model.materialize(seed)
+        let reservation = try ownership.pointee.reserveReplacement(
+            transferring: ticket.requireClaim(), schema: schema,
+            candidateIsEmpty: model.isEmptyReplacement,
+            registrationAvailable: registrationAvailable, stagingAvailable: stagingAvailable)
+        models[Int(reservation.candidate.slot)] = consume model
+        return reservation
+    }
+
+    package borrowing func discardReplacement(_ reservation: ObservableModelOwnership.Replacement)
+        throws(ObservableStateError)
+    {
+        _ = try ownership.pointee.finishReplacement(reservation, commit: false)
+        models[Int(reservation.candidate.slot)] = nil
+    }
+
+    @_lifetime(copy self)
+    package borrowing func commitReplacement(
+        _ reservation: ObservableModelOwnership.Replacement,
+        transferring ticket: inout ObservableModelTicket<Schema>
+    ) throws(ObservableStateError) -> ObservableModelTicket<Schema> {
+        guard try ticket.requireClaim().address == reservation.former else { throw .staleModel }
+        guard let claim = try ownership.pointee.finishReplacement(reservation, commit: true) else {
+            throw .invariantViolation
+        }
+        ticket.endOwnership()
+        models[Int(reservation.former.slot)] = nil
+        return ObservableModelTicket(claim: claim, lifetime: self)
+    }
+
+    @usableFromInline
+    package borrowing func key(for address: ObservableModelOwnership.Address) -> _GiftUIModelKey<
+        Schema
+    > {
+        ownership.pointee.key(for: address, as: Schema.self)
+    }
+
+    @_lifetime(copy self)
+    @inlinable
+    @inline(__always)
+    package borrowing func materialize(_ seed: consuming Model) throws(ObservableStateError)
+        -> ObservableModelTicket<Schema>
+    {
+        let claim = try ownership.pointee.materialize(schema: schema, needsCapture: needsCapture)
+        models[Int(claim.address.slot)] = consume seed
+        return ObservableModelTicket(claim: claim, lifetime: self)
+    }
+
+    @_lifetime(copy self)
+    package borrowing func retain(_ key: _GiftUIModelKey<Schema>) throws(ObservableStateError)
+        -> ObservableModelTicket<Schema>
+    {
+        let claim = try ownership.pointee.retain(ownership.pointee.address(for: key))
+        return ObservableModelTicket(claim: claim, lifetime: self)
+    }
+
+    @inlinable
+    package borrowing func release(_ ticket: inout ObservableModelTicket<Schema>)
+        throws(ObservableStateError)
+    {
+        if let failure = ownership.pointee.operationAllowed(discovery: true) { throw failure }
+        let claim = try ticket.requireClaim()
+        if let slot = try ownership.pointee.release(claim) { models[Int(slot)] = nil }
+        ticket.endOwnership()
+    }
+
+    @inlinable
+    package borrowing func register(_ ticket: borrowing ObservableModelTicket<Schema>)
+        throws(ObservableStateError)
+    {
+        if let failure = ownership.pointee.operationAllowed(discovery: true) { throw failure }
+        try ownership.pointee.register(ticket.requireClaim().address, schema: schema)
+    }
+
+    package borrowing func unregister(_ key: _GiftUIModelKey<Schema>) throws(ObservableStateError) {
+        if let slot = try ownership.pointee.unregister(ownership.pointee.address(for: key)) {
+            models[Int(slot)] = nil
+        }
+    }
+
+    @inlinable
+    @inline(__always)
+    package borrowing func withDiscovery<Result>(
+        _ body: () throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        try ownership.pointee.beginDiscovery()
+        defer { try? ownership.pointee.endDiscovery() }
+        return try body()
+    }
+
+    @inlinable
+    package borrowing func mutate(
+        _ key: _GiftUIModelKey<Schema>, mutation: Model.Mutation,
+        report: () -> _GiftUIObservableChangeReportOutcome
+    ) -> ObservableStateResult where Model: ObservableModelMutation {
+        mutate(key, operation: { mutation }, report: report)
+    }
+
+    /// The finite host action operation is constructed only after mutation
+    /// authority is acquired; no unchecked model callback is exposed.
+    @inlinable
+    package borrowing func mutate(
+        _ key: _GiftUIModelKey<Schema>, operation: () -> Model.Mutation,
+        report: () -> _GiftUIObservableChangeReportOutcome
+    ) -> ObservableStateResult where Model: ObservableModelMutation {
+        do throws(ObservableStateError) {
+            let index = try ownership.pointee.beginMutation(
+                ownership.pointee.address(for: key), schema: schema)
+            defer { ownership.pointee.endMutation() }
+            guard models[index] != nil else { throw .invariantViolation }
+            let mutation = operation()
+            let prepared = try models[index]!.preflight(mutation)
+            // The only mutable model borrow ends before the report route begins.
+            let changed = models[index]!.commit(prepared)
+            guard changed else { return .success(.unchanged) }
+            switch report() {
+            case .dirtied: return .success(.dirtied)
+            case .coalesced: return .success(.coalesced)
+            case .staleAttachment: return .failure(.staleAttachment)
+            case .invalidPhaseContained: return .failure(.invalidPhaseContained)
+            case .invalidPhaseSafetyNotProven: return .failure(.invalidPhaseSafetyNotProven)
+            case .reentrancyViolation: return .failure(.reentrancyViolation)
+            case .invariantViolation: return .failure(.invariantViolation)
+            }
+        } catch { return .failure(error) }
+    }
+
+    /// The runtime's staged pipeline keeps the activation scope alive across
+    /// these checked transitions. Each successful begin requires one end during
+    /// mandatory attempt cleanup; ordinary lexical callers use withFrame.
+    package borrowing func beginFrame() throws(ObservableStateError) {
+        try ownership.pointee.beginFrame()
+    }
+
+    @inlinable
+    package borrowing func endFrame() throws(ObservableStateError) {
+        try ownership.pointee.endFrame { models[Int($0)] = nil }
+    }
+
+    package borrowing func withFrame<Result>(
+        _ body: () throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        try beginFrame()
+        do {
+            let result = try body()
+            try endFrame()
+            return result
+        } catch {
+            // Cleanup cannot replace the first operation failure.
+            try? endFrame()
+            throw error
+        }
+    }
+
+    @inlinable
+    package borrowing func pin(_ key: _GiftUIModelKey<Schema>) throws(ObservableStateError) {
+        try ownership.pointee.pin(ownership.pointee.address(for: key))
+    }
+
+    @inlinable
+    @inline(__always)
+    package borrowing func withRead<D: _GiftUIReadDomain, Result>(
+        _ domain: D.Type,
+        _ body: (borrowing _GiftUIFrameRead<D>) throws(_GiftUIAccessFailure) -> Result
+    ) throws(_GiftUIAccessFailure) -> Result where D.Slot == ObservableModelReadSlot<Model> {
+        do { try ownership.pointee.beginRead() } catch { throw .invalidPhase }
+        defer { try? ownership.pointee.endRead() }
+        let slots: InlineArray<2, ObservableModelReadSlot<Model>> = .init { index in
+            ObservableModelReadSlot(
+                ownership: UnsafePointer(ownership),
+                model: UnsafePointer(models.baseAddress! + index), schema: schema)
+        }
+        let read = _GiftUIFrameRead<D>(slots: slots.span)
+        return try body(read)
+    }
+}
+
+===== SOURCE Sources/GiftUIObservableState/ObservableStateRootScope.swift SHA256 1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639 =====
+import GiftUI
+import GiftUIExecution
+
+/// Registration/dirty storage is separate from model bytes and ownership. The
+/// activation factory lends this entire value until all model sinks are retired.
+/// Generic compatibility owner. Concrete hosts may own the same typed slots
+/// separately and lend them to the checked scope factory below.
+package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
+    fileprivate var identities: InlineArray<2, Identity?> = .init(repeating: nil)
+    fileprivate var control = ObservableStateRootControl()
+
+    package static var storageCapacities:
+        (locations: UInt16, registrations: UInt16, associations: UInt16)
+    { (2, 2, 2) }
+    package static var candidateStorageBytes: Int {
+        ObservableStateRootControl.candidateStorageBytes
+    }
+    package static var liveStorageBytes: Int { MemoryLayout<Self>.size - candidateStorageBytes }
+    package init() {}
+
+    // Internal generation-exhaustion control; production cannot seed it.
+    init(nextGeneration: UInt32?) { control = .init(nextGeneration: nextGeneration) }
+}
+
+/// Identity-independent registration bookkeeping. It contains no model bytes or
+/// duplicate owner and cannot construct an unchecked root scope.
+@usableFromInline
+package struct ObservableStateRootControl {
+    @usableFromInline
+    struct Record {
+        @usableFromInline
+        var ordinal: UInt16 = 0
+        @usableFromInline
+        var keyOwner: UInt32 = 0
+        @usableFromInline
+        var keyGeneration: UInt32 = 0
+        @usableFromInline
+        var attachment: _GiftUIObservationAttachment?
+        @usableFromInline
+        var published = false
+        @usableFromInline
+        var encountered = false
+
+        @usableFromInline
+        internal init(
+            ordinal: UInt16 = 0, keyOwner: UInt32 = 0, keyGeneration: UInt32 = 0,
+            attachment: _GiftUIObservationAttachment? = nil,
+            published: Bool = false, encountered: Bool = false
+        ) {
+            self.ordinal = ordinal
+            self.keyOwner = keyOwner
+            self.keyGeneration = keyGeneration
+            self.attachment = attachment
+            self.published = published
+            self.encountered = encountered
+        }
+    }
+    @usableFromInline
+    internal var records: InlineArray<2, Record> = .init(repeating: Record())
+    @usableFromInline var reports = ObservableStateRootReports()
+    @usableFromInline
+    var offeredClaims: InlineArray<4, ObservableModelOwnership.Claim?> = .init(
+        repeating: nil)
+    @usableFromInline
+    var nextGeneration: UInt32? = 0
+    @usableFromInline
+    internal var candidateActive = false
+    @usableFromInline
+    internal var operationActive = false
+    @usableFromInline
+    internal var retired = false
+    @usableFromInline var limits = ObservableStateLimits(
+        maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!
+
+    package static var candidateStorageBytes: Int {
+        MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size + MemoryLayout<Bool>.size
+    }
+    package init() {}
+    init(nextGeneration: UInt32?) { self.nextGeneration = nextGeneration }
+
+    @usableFromInline
+    internal mutating func reserve(_ slot: UInt16) throws(ObservableStateError)
+        -> _GiftUIObservationAttachment
+    {
+        guard let generation = nextGeneration else { throw .registrationGenerationExhausted }
+        let successor = generation.addingReportingOverflow(1)
+        nextGeneration = successor.overflow ? nil : successor.partialValue
+        return _GiftUIObservationAttachment(slot: slot, generation: generation)
+    }
+}
+
+/// A fixed callback needs no captured generic metadata or heap context. Its
+/// pointer is lent independently from model storage for the activation interval.
+@usableFromInline
+struct ObservableStateRootReports {
+    @usableFromInline
+    struct Route {
+        @usableFromInline
+        var lifecycle = ObservableStateRegistrationLifecycle()
+        var dirty = false
+
+        @usableFromInline
+        internal init(
+            lifecycle: ObservableStateRegistrationLifecycle =
+                ObservableStateRegistrationLifecycle(),
+            dirty: Bool = false
+        ) {
+            self.lifecycle = lifecycle
+            self.dirty = dirty
+        }
+    }
+    @usableFromInline
+    var routes: InlineArray<2, Route> = .init(repeating: Route())
+    @usableFromInline
+    var mutationReporting = false
+
+    mutating func report(_ attachment: _GiftUIObservationAttachment)
+        -> _GiftUIObservableChangeReportOutcome
+    {
+        guard attachment.slot < 2 else { return .staleAttachment }
+        let slot = Int(attachment.slot)
+        if let failure = routes[slot].lifecycle.acceptReport(attachment) {
+            return failure == .staleAttachment ? .staleAttachment : .invariantViolation
+        }
+        guard mutationReporting else { return .invalidPhaseSafetyNotProven }
+        guard !routes[slot].dirty else { return .coalesced }
+        routes[slot].dirty = true
+        return .dirtied
+    }
+}
+
+@usableFromInline
+func reportObservableStateRoot(
+    _ context: UnsafeMutableRawPointer, _ slot: UInt16, _ generation: UInt32
+) -> UInt8 {
+    context.assumingMemoryBound(to: ObservableStateRootReports.self).pointee.report(
+        _GiftUIObservationAttachment(slot: slot, generation: generation)
+    ).rawValue
+}
+
+extension ObservableModelScope
+where Model: ObservableStateModel & ~Copyable, Schema == Model.Schema {
+    package borrowing func withRoot<Identity: Equatable & Sendable, Result>(
+        storage: inout ObservableStateRootStorage<Identity>,
+        limits: ObservableStateLimits = .init(
+            maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!,
+        _ body: (borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError)
+            -> Result
+    ) throws(ObservableStateError) -> Result {
+        try withRoot(
+            identities: &storage.identities, control: &storage.control, limits: limits, body)
+    }
+
+    @inlinable
+    package borrowing func withRoot<Identity: Equatable & Sendable, Result>(
+        identities: inout InlineArray<2, Identity?>, control: inout ObservableStateRootControl,
+        limits: ObservableStateLimits = .init(
+            maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!,
+        _ body: (borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError)
+            -> Result
+    ) throws(ObservableStateError) -> Result {
+        var span = identities.mutableSpan
+        return try withRoot(identities: &span, control: &control, limits: limits, body)
+    }
+
+    /// Both actual stored fields remain exclusively borrowed until shutdown and
+    /// callback return. No descriptor borrow is substituted for these borrows.
+    @inlinable
+    package borrowing func withRoot<Identity: Equatable & Sendable, Result>(
+        identities: inout MutableSpan<Identity?>,
+        control: inout ObservableStateRootControl,
+        limits: ObservableStateLimits = .init(
+            maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!,
+        _ body: (borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError)
+            -> Result
+    ) throws(ObservableStateError) -> Result {
+        try validateOperation()
+        guard identities.count == 2, limits.maximumLocations <= 2,
+            limits.maximumRegistrations <= 2, limits.maximumStagedAssociations <= 2
+        else { throw .locationCapacityExhausted }
+        control.limits = limits
+        return try identities.withUnsafeMutableBufferPointer {
+            (identities) throws(ObservableStateError) in
+            try withUnsafeMutablePointer(to: &control) { (records) throws(ObservableStateError) in
+                try withUnsafeMutablePointer(to: &records.pointee.reports) {
+                    (reports) throws(ObservableStateError) in
+                    let root = ObservableStateRootScope(
+                        models: borrowedScope(), identities: identities, records: records,
+                        reports: reports)
+                    defer { finishStoppedActivation() }
+                    do throws(ObservableStateError) {
+                        let result = try body(root)
+                        try root.shutdown()
+                        return result
+                    } catch {
+                        try? root.shutdown()
+                        throw error
+                    }
+                }
+            }
+        }
+    }
+}
+
+@usableFromInline
+package struct ObservableStateRootScope<
+    Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable
+>: ~Copyable, ~Escapable {
+    @usableFromInline let models: ObservableModelScope<Model, Model.Schema>
+    @usableFromInline let identities: UnsafeMutableBufferPointer<Identity?>
+    @usableFromInline let records: UnsafeMutablePointer<ObservableStateRootControl>
+
+    @usableFromInline let reports: UnsafeMutablePointer<ObservableStateRootReports>
+
+    @_lifetime(copy models, borrow identities, borrow records, borrow reports)
+    @inlinable
+    @inline(__always)
+    init(
+        models: consuming ObservableModelScope<Model, Model.Schema>,
+        identities: borrowing UnsafeMutableBufferPointer<Identity?>,
+        records: borrowing UnsafeMutablePointer<ObservableStateRootControl>,
+        reports: borrowing UnsafeMutablePointer<ObservableStateRootReports>
+    ) {
+        self.models = consume models
+        self.identities = copy identities
+        self.records = copy records
+        self.reports = copy reports
+    }
+
+    @_lifetime(copy self)
+    @inlinable
+    package borrowing func borrowedRoot() -> ObservableStateRootScope<Model, Identity> {
+        ObservableStateRootScope(borrowing: self)
+    }
+
+    @_lifetime(copy other)
+    @inlinable
+    @inline(__always)
+    init(borrowing other: borrowing ObservableStateRootScope<Model, Identity>) {
+        models = other.models.borrowedScope()
+        identities = other.identities
+        records = other.records
+        reports = other.reports
+    }
+
+    @inlinable
+    package borrowing func belongs(to scope: borrowing ObservableModelScope<Model, Model.Schema>)
+        -> Bool
+    {
+        models.sharesOwner(with: scope)
+    }
+
+    package var isDirty: Bool {
+        reports.pointee.routes[0].dirty || reports.pointee.routes[1].dirty
+    }
+
+    @inlinable
+    internal borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {
+        guard !records.pointee.retired else { throw .invalidPhaseSafetyNotProven }
+        guard !records.pointee.operationActive else { throw .reentrancyViolation }
+        try models.validateOperation(discovery: discovery)
+    }
+
+    package borrowing func beginCandidate() -> ObservableStateResult {
+        do throws(ObservableStateError) {
+            try checkOperation(discovery: true)
+            guard models.phase == .discovering else { throw .invalidPhaseSafetyNotProven }
+            guard !records.pointee.candidateActive else { throw .reentrancyViolation }
+            records.pointee.candidateActive = true
+            for i in 0 ..< 2 { records.pointee.records[i].encountered = false }
+            return .success(.candidateStarted)
+        } catch { return .failure(error) }
+    }
+
+    @inlinable
+    internal borrowing func matching(_ identity: Identity, ordinal: UInt16) -> Int? {
+        for i in 0 ..< 2
+        where identities[i] == identity
+            && records.pointee.records[i].ordinal == ordinal
+        { return i }
+        return nil
+    }
+
+    @inlinable
+    internal borrowing func key(at slot: Int) -> _GiftUIModelKey<Model.Schema> {
+        let record = records.pointee.records[slot]
+        return _GiftUIModelKey(
+            ownerInstance: record.keyOwner, allocationGeneration: record.keyGeneration,
+            slot: UInt16(slot))
+    }
+
+    @inlinable
+    package borrowing func modelKey(identity: Identity, ordinal: UInt16) -> _GiftUIModelKey<
+        Model.Schema
+    >? {
+        guard let slot = matching(identity, ordinal: ordinal),
+            records.pointee.records[slot].published
+        else { return nil }
+        return key(at: slot)
+    }
+
+    @usableFromInline
+    package borrowing func generation(
+        identity: Identity, ordinal: UInt16, publishable: Bool = false
+    ) -> UInt32? {
+        guard let slot = matching(identity, ordinal: ordinal) else { return nil }
+        let record = records.pointee.records[slot]
+        if publishable {
+            guard records.pointee.candidateActive, record.encountered else { return nil }
+        } else if !record.published {
+            return nil
+        }
+        return record.attachment?.generation
+    }
+
+    @inlinable
+    internal borrowing func bind(_ state: inout State<Model.Schema>, slot: Int)
+        throws(ObservableStateError)
+    {
+        let record = records.pointee.records[slot]
+        guard let attachment = record.attachment else { throw .invariantViolation }
+        let binding = _GiftUIBoundState(
+            locationSlot: UInt16(slot), declarationOrdinal: record.ordinal,
+            registrationGeneration: attachment.generation, key: key(at: slot))
+        if let prior = state._giftUIBinding {
+            guard prior.locationSlot == binding.locationSlot,
+                prior.declarationOrdinal == binding.declarationOrdinal,
+                prior.registrationGeneration == binding.registrationGeneration,
+                prior.key == binding.key
+            else {
+                throw .staleModel
+            }
+        } else {
+            state._giftUIBind(binding)
+        }
+    }
+
+    @inlinable
+    borrowing func preserved(
+        _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
+    ) throws(ObservableStateError) -> Bool {
+        try checkOperation(discovery: true)
+        guard models.phase == .discovering, records.pointee.candidateActive else {
+            throw .invalidPhaseSafetyNotProven
+        }
+        guard let slot = matching(identity, ordinal: ordinal) else { return false }
+        try models.pin(key(at: slot))
+        try bind(&state, slot: slot)
+        records.pointee.records[slot].encountered = true
+        return true
+    }
+
+    @inlinable
+    @inline(__always)
+    package borrowing func encounter(
+        identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>
+    ) -> ObservableStateResult {
+        do throws(ObservableStateError) {
+            if try preserved(identity, ordinal: ordinal, state: &state) {
+                return .success(.preserved)
+            }
+            if case .candidate(let key)? = state._giftUIInitial {
+                for i in 0 ..< 4 {
+                    guard let claim = records.pointee.offeredClaims[i],
+                        models.key(for: claim.address) == key
+                    else { continue }
+                    var ticket = ObservableModelTicket<Model.Schema>(claim: claim, lifetime: models)
+                    try install(identity, ordinal: ordinal, state: &state, ticket: &ticket)
+                    records.pointee.offeredClaims[i] = nil
+                    return .success(.materialized)
+                }
+                throw .incompatibleAssociation
+            }
+            guard case .seed(let seed)? = state._giftUIInitial else {
+                throw .incompatibleAssociation
+            }
+            // A fresh typed seed has no prior owner to duplicate. Generation
+            // exhaustion precedes every model metadata/backing capacity check.
+            guard records.pointee.nextGeneration != nil else {
+                throw .registrationGenerationExhausted
+            }
+            var ticket = try models.materialize(Model.materialize(seed))
+            do {
+                try install(identity, ordinal: ordinal, state: &state, ticket: &ticket)
+                return .success(.materialized)
+            } catch {
+                try? models.release(&ticket)
+                throw error
+            }
+        } catch { return .failure(error) }
+    }
+
+    /// Explicitly consumes the host's matching candidate claim after attachment
+    /// succeeds. On failure it remains the caller's ticket and model.
+    @inlinable
+    @inline(__always)
+    package borrowing func encounter(
+        identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
+        transferring ticket: inout ObservableModelTicket<Model.Schema>
+    ) -> ObservableStateResult {
+        do throws(ObservableStateError) {
+            if try preserved(identity, ordinal: ordinal, state: &state) {
+                return .success(.preserved)
+            }
+            guard case .candidate(let descriptor)? = state._giftUIInitial, descriptor == ticket.key
+            else {
+                throw .incompatibleAssociation
+            }
+            try models.validateTicket(ticket)
+            try install(identity, ordinal: ordinal, state: &state, ticket: &ticket)
+            return .success(.materialized)
+        } catch { return .failure(error) }
+    }
+
+    /// Transfers an explicit claim into this activation's bounded candidate set.
+    /// Unused claims are released on candidate completion or activation teardown.
+    package borrowing func offerCandidate(_ ticket: inout ObservableModelTicket<Model.Schema>)
+        -> ObservableStateResult
+    {
+        do throws(ObservableStateError) {
+            try checkOperation()
+            try models.validateTicket(ticket)
+            for i in 0 ..< 4 where records.pointee.offeredClaims[i] == nil {
+                records.pointee.offeredClaims[i] = try ticket.requireClaim()
+                ticket.endOwnership()
+                return .success(.unchanged)
+            }
+            throw .ownerCapacityExhausted
+        } catch { return .failure(error) }
+    }
+
+    private borrowing func releaseOffers() throws(ObservableStateError) {
+        var failure: ObservableStateError?
+        for i in 0 ..< 4 {
+            guard let claim = records.pointee.offeredClaims[i] else { continue }
+            var ticket = ObservableModelTicket<Model.Schema>(claim: claim, lifetime: models)
+            do { try models.release(&ticket) } catch { if failure == nil { failure = error } }
+            records.pointee.offeredClaims[i] = nil
+        }
+        if let failure { throw failure }
+    }
+
+    @inlinable
+    borrowing func install(
+        _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
+        ticket: inout ObservableModelTicket<Model.Schema>
+    ) throws(ObservableStateError) {
+        let key = ticket.key
+        try models.validateAssociation(key)
+        let slot = Int(key._giftUISlot)
+        guard identities[slot] == nil else {
+            throw .locationCapacityExhausted
+        }
+        var locations = 0
+        var registrations = 0
+        var associations = 0
+        for index in 0 ..< 2 {
+            let item = records.pointee.records[index]
+            if identities[index] != nil { locations += 1 }
+            if item.attachment != nil { registrations += 1 }
+            if item.encountered { associations += 1 }
+        }
+        guard locations < Int(records.pointee.limits.maximumLocations) else {
+            throw .locationCapacityExhausted
+        }
+        guard registrations < Int(records.pointee.limits.maximumRegistrations) else {
+            throw .registrationCapacityExhausted
+        }
+        guard associations < Int(records.pointee.limits.maximumStagedAssociations) else {
+            throw .associationStagingCapacityExhausted
+        }
+        let attachment = try records.pointee.reserve(UInt16(slot))
+        try models.pin(key)
+        records.pointee.operationActive = true
+        defer { records.pointee.operationActive = false }
+        identities[slot] = identity
+        records.pointee.records[slot] = .init(
+            ordinal: ordinal,
+            keyOwner: key._giftUIOwnerInstance, keyGeneration: key._giftUIAllocationGeneration,
+            attachment: attachment, encountered: true)
+        reports.pointee.routes[slot] = .init()
+        if let failure = reports.pointee.routes[slot].lifecycle.beginAttachment(attachment) {
+            throw failure
+        }
+        let sink = _GiftUIObservableChangeSink(
+            attachment: attachment, context: UnsafeMutableRawPointer(reports),
+            reportRoute: reportObservableStateRoot)
+        let returned = try models.attach(key, sink: consume sink)
+        if let failure = reports.pointee.routes[slot].lifecycle.acceptAttachmentReturn(returned) {
+            if returned != nil {
+                do { try models.detach(key, attachment: attachment) } catch { models.requireStop() }
+            }
+            identities[slot] = nil
+            records.pointee.records[slot] = .init()
+            throw failure
+        }
+        try models.register(ticket)
+        try bind(&state, slot: slot)
+        try models.release(&ticket)
+    }
+
+    private borrowing func retire(_ slot: Int) throws(ObservableStateError) {
+        guard let attachment = records.pointee.records[slot].attachment else {
+            throw .invariantViolation
+        }
+        let former = key(at: slot)
+        if let failure = reports.pointee.routes[slot].lifecycle.retire(attachment: attachment) {
+            throw failure
+        }
+        var firstFailure: ObservableStateError?
+        do { try models.detach(former, attachment: attachment) } catch { firstFailure = error }
+        do { try models.unregister(former) } catch {
+            if firstFailure == nil { firstFailure = error }
+        }
+        identities[slot] = nil
+        records.pointee.records[slot] = .init()
+        reports.pointee.routes[slot].dirty = false
+        if let firstFailure {
+            models.requireStop()
+            throw firstFailure
+        }
+    }
+
+    package borrowing func finishCandidate(_ disposition: ObservableStateCandidateDisposition)
+        -> ObservableStateResult
+    {
+        do throws(ObservableStateError) {
+            try checkOperation(discovery: true)
+            guard models.phase == .discovering, records.pointee.candidateActive else {
+                throw .invalidPhaseSafetyNotProven
+            }
+            records.pointee.operationActive = true
+            defer {
+                records.pointee.operationActive = false
+                records.pointee.candidateActive = false
+            }
+            var changed = false
+            var failure: ObservableStateError?
+            for i in 0 ..< 2 where identities[i] != nil {
+                let record = records.pointee.records[i]
+                let remove = disposition == .discard ? !record.published : !record.encountered
+                if remove {
+                    do { try retire(i) } catch { if failure == nil { failure = error } }
+                    changed = true
+                } else {
+                    if disposition == .publish {
+                        changed = changed || !record.published
+                        records.pointee.records[i].published = true
+                        reports.pointee.routes[i].dirty = false
+                    }
+                    records.pointee.records[i].encountered = false
+                }
+            }
+            do { try releaseOffers() } catch { if failure == nil { failure = error } }
+            if let failure { throw failure }
+            return .success(
+                disposition == .discard
+                    ? .candidateDiscarded : (changed ? .associationsCommitted : .unchanged))
+        } catch { return .failure(error) }
+    }
+
+    package borrowing func replace(
+        identity: Identity, ordinal: UInt16,
+        transferring ticket: inout ObservableModelTicket<Model.Schema>, seed: Model.Schema.Seed,
+        registrationAvailable: Bool = true, stagingAvailable: Bool = true
+    ) -> ObservableStateResult {
+        do throws(ObservableStateError) {
+            try checkOperation()
+            guard !records.pointee.candidateActive else { throw .reentrancyViolation }
+            guard let old = matching(identity, ordinal: ordinal),
+                records.pointee.records[old].published,
+                key(at: old) == ticket.key
+            else { throw .incompatibleAssociation }
+            try models.validateTicket(ticket)
+            // Target-generation exhaustion precedes retained-owner/capacity checks.
+            guard records.pointee.nextGeneration != nil else {
+                throw .registrationGenerationExhausted
+            }
+            var registrations = 0
+            var associations = 0
+            for index in 0 ..< 2 {
+                if records.pointee.records[index].attachment != nil { registrations += 1 }
+                if identities[index] != nil { associations += 1 }
+            }
+            let reservation = try models.stageReplacement(
+                transferring: ticket, seed: seed,
+                registrationAvailable: registrationAvailable
+                    && registrations < Int(records.pointee.limits.maximumRegistrations),
+                stagingAvailable: stagingAvailable
+                    && associations < Int(records.pointee.limits.maximumStagedAssociations))
+            let candidate = models.key(for: reservation.candidate)
+            let new = Int(reservation.candidate.slot)
+            let attachment = try records.pointee.reserve(UInt16(new))
+            records.pointee.operationActive = true
+            defer { records.pointee.operationActive = false }
+            identities[new] = identity
+            records.pointee.records[new] = .init(
+                ordinal: ordinal,
+                keyOwner: candidate._giftUIOwnerInstance,
+                keyGeneration: candidate._giftUIAllocationGeneration,
+                attachment: attachment)
+            reports.pointee.routes[new] = .init()
+            _ = reports.pointee.routes[new].lifecycle.beginAttachment(attachment)
+            let sink = _GiftUIObservableChangeSink(
+                attachment: attachment, context: UnsafeMutableRawPointer(reports),
+                reportRoute: reportObservableStateRoot)
+            let returned = try models.attach(candidate, sink: consume sink)
+            if let failure = reports.pointee.routes[new].lifecycle.acceptAttachmentReturn(returned)
+            {
+                var cleanupFailed = false
+                if returned != nil {
+                    do { try models.detach(candidate, attachment: attachment) } catch {
+                        cleanupFailed = true
+                    }
+                }
+                identities[new] = nil
+                records.pointee.records[new] = .init()
+                try? models.discardReplacement(reservation)
+                if cleanupFailed { models.requireStop() }
+                throw failure
+            }
+            guard let formerAttachment = records.pointee.records[old].attachment else {
+                throw .invariantViolation
+            }
+            // This is the commit boundary. Retire old routing before invoking its
+            // detach hook; a detach invariant failure cannot roll back B.
+            let retirementFailure = reports.pointee.routes[old].lifecycle.retire(
+                attachment: formerAttachment)
+            records.pointee.records[new].published = true
+            reports.pointee.routes[new].dirty = true
+            var failure = retirementFailure
+            do { try models.detach(ticket.key, attachment: formerAttachment) } catch {
+                if failure == nil { failure = error }
+            }
+            var activated = try models.commitReplacement(reservation, transferring: &ticket)
+            try models.release(&activated)
+            identities[old] = nil
+            records.pointee.records[old] = .init()
+            reports.pointee.routes[old].dirty = false
+            if let failure {
+                models.requireStop()
+                throw failure
+            }
+            return .success(.replaced)
+        } catch { return .failure(error) }
+    }
+
+    @inlinable
+    package borrowing func mutate(_ key: _GiftUIModelKey<Model.Schema>, mutation: Model.Mutation)
+        -> ObservableStateResult where Model: ObservableModelMutation
+    {
+        guard !records.pointee.retired else { return .failure(.invalidPhaseSafetyNotProven) }
+        guard !records.pointee.operationActive else { return .failure(.reentrancyViolation) }
+        reports.pointee.mutationReporting = true
+        defer { reports.pointee.mutationReporting = false }
+        return models.mutate(key, mutation: mutation) {
+            models.report(key)
+        }
+    }
+
+    @usableFromInline
+    package borrowing func mutate(
+        identity: Identity, ordinal: UInt16, matching generation: ObservableTargetGeneration,
+        mutation: Model.Mutation
+    ) -> ObservableStateResult where Model: ObservableModelMutation {
+        do throws(ObservableStateError) {
+            try checkOperation()
+            guard let slot = matching(identity, ordinal: ordinal),
+                records.pointee.records[slot].published,
+                records.pointee.records[slot].attachment?.generation == generation.rawValue
+            else { throw .staleModel }
+            return mutate(key(at: slot), mutation: mutation)
+        } catch { return .failure(error) }
+    }
+
+    @usableFromInline
+    package borrowing func mutate(
+        identity: Identity, ordinal: UInt16, matching generation: ObservableTargetGeneration,
+        operation: () -> Model.Mutation
+    ) -> ObservableStateResult where Model: ObservableModelMutation {
+        do throws(ObservableStateError) {
+            try checkOperation()
+            guard let slot = matching(identity, ordinal: ordinal),
+                records.pointee.records[slot].published,
+                records.pointee.records[slot].attachment?.generation == generation.rawValue
+            else { throw .staleModel }
+            let key = key(at: slot)
+            reports.pointee.mutationReporting = true
+            defer { reports.pointee.mutationReporting = false }
+            return models.mutate(key, operation: operation) { models.report(key) }
+        } catch { return .failure(error) }
+    }
+
+    @usableFromInline
+    package borrowing func shutdown() throws(ObservableStateError) {
+        if records.pointee.retired { return }
+        // A terminal activation still needs to retire all callback routes while
+        // their report storage exists. Normal operations remain forbidden.
+        if models.phase != .retired { try checkOperation() }
+        records.pointee.operationActive = true
+        defer {
+            records.pointee.operationActive = false
+            records.pointee.retired = true
+        }
+        var failure: ObservableStateError?
+        for i in 0 ..< 2 where identities[i] != nil {
+            do { try retire(i) } catch { if failure == nil { failure = error } }
+        }
+        records.pointee.candidateActive = false
+        do { try releaseOffers() } catch { if failure == nil { failure = error } }
+        if let failure { throw failure }
+    }
+}
+
+extension ObservableStateRootScope where Model: ~Copyable {
+    /// Exactly one generated lexical visit. The binder's actual root borrow
+    /// cannot be copied or escaped by a public generic host witness.
+    @inlinable
+    @inline(__always)
+    package borrowing func withBoundDeclaration<Declaration: _GiftUIObservableStateHost, Result>(
+        _ declaration: borrowing Declaration, identity: Identity,
+        body: (borrowing Declaration) throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        var transient = copy declaration
+        try models.withDiscovery { () throws(ObservableStateError) in
+            var visitor = ScopedObservableDeclarationVisitor(
+                root: borrowedRoot(), identity: identity)
+            transient._giftUIVisitObservableStateDeclarations(&visitor)
+            if let failure = visitor.failure { throw failure }
+        }
+        return try body(transient)
+    }
+
+    /// End the body read before returning owned child declarations to traversal.
+    package borrowing func evaluate<Declaration: View & _GiftUIObservableStateHost>(
+        _ declaration: borrowing Declaration, identity: Identity,
+        body: (borrowing Declaration, borrowing _GiftUIFrameRead<Declaration.Domain>)
+            throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) throws(ObservableStateError) -> Declaration.Body
+    where Declaration.Domain.Slot == ObservableModelReadSlot<Model> {
+        try withBoundDeclaration(declaration, identity: identity) {
+            (bound) throws(ObservableStateError) in
+            do throws(_GiftUIAccessFailure) {
+                return try models.withRead(Declaration.Domain.self) {
+                    (read) throws(_GiftUIAccessFailure) in
+                    try body(bound, read)
+                }
+            } catch { throw ObservableStateError(accessFailure: error) }
+        }
+    }
+}
+
+@usableFromInline
+struct ScopedObservableDeclarationVisitor<
+    Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable
+>: ~Copyable, ~Escapable, _GiftUIObservableStateDeclarationVisitor {
+    @usableFromInline
+    let root: ObservableStateRootScope<Model, Identity>
+    @usableFromInline
+    let identity: Identity
+    @usableFromInline
+    var failure: ObservableStateError?
+
+    @_lifetime(copy root)
+    @usableFromInline
+    init(root: consuming ObservableStateRootScope<Model, Identity>, identity: Identity) {
+        self.root = consume root
+        self.identity = identity
+    }
+
+    @inlinable
+    @inline(__always)
+    mutating func visit<Schema: _GiftUIModelSchema>(
+        _ state: inout State<Schema>, declarationOrdinal: UInt16
+    ) {
+        guard failure == nil else { return }
+        guard Schema.self == Model.Schema.self else {
+            failure = .incompatibleAssociation
+            return
+        }
+        let result = withUnsafeMutablePointer(to: &state) { pointer in
+            pointer.withMemoryRebound(to: State<Model.Schema>.self, capacity: 1) { typed in
+                root.encounter(
+                    identity: identity, ordinal: declarationOrdinal, state: &typed.pointee)
+            }
+        }
+        if case .failure(let error) = result { failure = error }
+    }
+}
+
+===== SOURCE Sources/GiftUIObservableState/ObservableModelOwnership.swift SHA256 0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d =====
+import GiftUI
+
+// SPEC-015's selected analyzer/counter capacities. The profile supplies model
+// bytes separately; this ledger never contains or copies capture payloads.
+@usableFromInline
+package struct ObservableModelOwnership: ~Copyable {
+    @usableFromInline
+    package enum Phase: UInt8 {
+        case mutating, writing, reading, discovering, replacing, retired
+    }
+
+    @usableFromInline
+    package struct Address: Equatable {
+        @usableFromInline
+        package let owner: UInt32
+        @usableFromInline
+        package let generation: UInt32
+        @usableFromInline
+        package let slot: UInt16
+
+        @usableFromInline
+        internal init(owner: UInt32, generation: UInt32, slot: UInt16) {
+            self.owner = owner
+            self.generation = generation
+            self.slot = slot
+        }
+    }
+
+    // A claim descriptor is private bookkeeping, not an application ticket.
+    // The profile's noncopyable scoped ticket owns its one release obligation.
+    @usableFromInline
+    package struct Claim: Equatable {
+        @usableFromInline
+        package let address: Address
+        fileprivate let index: UInt16
+        fileprivate let serial: UInt32
+    }
+
+    package struct Replacement {
+        package let former: Address
+        package let candidate: Address
+        fileprivate let formerClaim: Claim
+        fileprivate let candidateClaim: Claim
+    }
+
+    struct Record {
+        var generation: UInt32 = 0
+        var schema: UInt16 = 0
+        var occupied = false
+        var claims: UInt16 = 0
+        var registered = false
+        var pinned = false
+        var ownsCapture = false
+    }
+
+    struct ClaimRecord {
+        var serial: UInt32 = 0
+        var address: Address?
+    }
+
+    package let identity: ObservableModelOwnerIdentity
+    private var generations = ObservableModelAllocationNamespace()
+    private var nextClaimSerial: UInt32? = 0
+    private var records: InlineArray<2, Record> = .init(repeating: Record())
+    private var claims: InlineArray<4, ClaimRecord> = .init(repeating: ClaimRecord())
+    private let modelLimit: UInt16
+    private let claimLimit: UInt16
+    private let pinLimit: UInt16
+    private let captureLimit: UInt16
+    @usableFromInline
+    package private(set) var phase: Phase = .mutating
+    private var activeRead = false
+    private var replacement: Replacement?
+
+    package init?(
+        identity: ObservableModelOwnerIdentity,
+        modelLimit: UInt16 = 2,
+        claimLimit: UInt16 = 4,
+        pinLimit: UInt16 = 2,
+        captureLimit: UInt16
+    ) {
+        guard modelLimit > 0, modelLimit <= 2,
+            claimLimit > 0, claimLimit <= 4,
+            pinLimit > 0, pinLimit <= 2, captureLimit <= 1
+        else { return nil }
+        self.identity = identity
+        self.modelLimit = modelLimit
+        self.claimLimit = claimLimit
+        self.pinLimit = pinLimit
+        self.captureLimit = captureLimit
+    }
+
+    package var storageCapacities: (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
+    {
+        (modelLimit, claimLimit, pinLimit, captureLimit)
+    }
+    // The two actual pinned fields are partitioned out of the ledger exactly once.
+    package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
+    package static var metadataStorageBytes: Int { MemoryLayout<Self>.size - framePinStorageBytes }
+
+    package var occupiedCount: Int {
+        var count = 0
+        for index in 0 ..< Int(modelLimit) where records[index].occupied { count += 1 }
+        return count
+    }
+
+    package var claimCount: Int {
+        var count = 0
+        for index in 0 ..< Int(claimLimit) where claims[index].address != nil { count += 1 }
+        return count
+    }
+
+    package var pinCount: Int {
+        var count = 0
+        for index in 0 ..< Int(modelLimit) where records[index].pinned { count += 1 }
+        return count
+    }
+
+    package var captureCount: Int {
+        var count = 0
+        for index in 0 ..< Int(modelLimit) where records[index].ownsCapture { count += 1 }
+        return count
+    }
+
+    // The activation callback has ended: its nonescapable tickets and readers
+    // cannot remain live. Retire every remaining claim before destroying model
+    // values, while preserving both non-reusing identity cursors.
+    package mutating func finishActivation() -> UInt8 {
+        var occupied: UInt8 = 0
+        for index in 0 ..< Int(modelLimit) {
+            if records[index].occupied { occupied |= 1 << index }
+            records[index] = Record()
+        }
+        for index in 0 ..< Int(claimLimit) { claims[index].address = nil }
+        activeRead = false
+        replacement = nil
+        if phase != .retired { phase = .mutating }
+        return occupied
+    }
+
+    package func key<Schema>(for address: Address, as schema: Schema.Type) -> _GiftUIModelKey<
+        Schema
+    > {
+        _GiftUIModelKey(
+            ownerInstance: address.owner, allocationGeneration: address.generation,
+            slot: address.slot)
+    }
+
+    @inlinable
+    package func address<Schema>(for key: _GiftUIModelKey<Schema>) -> Address {
+        Address(
+            owner: key._giftUIOwnerInstance, generation: key._giftUIAllocationGeneration,
+            slot: key._giftUISlot)
+    }
+
+    @usableFromInline
+    package mutating func retireActivation() { phase = .retired }
+
+    @usableFromInline
+    package func operationAllowed(discovery: Bool = false) -> ObservableStateError? {
+        if phase == .retired { return .invalidPhaseSafetyNotProven }
+        if phase == .replacing || phase == .writing { return .reentrancyViolation }
+        if activeRead { return .invalidPhaseSafetyNotProven }
+        if phase == .mutating || (discovery && phase == .discovering) { return nil }
+        return .invalidPhaseContained
+    }
+
+    private func validate(_ address: Address) throws(ObservableStateError) -> Int {
+        guard address.owner == identity.rawValue, address.slot < modelLimit else {
+            throw .staleModel
+        }
+        let index = Int(address.slot)
+        guard records[index].occupied, records[index].generation == address.generation else {
+            throw .staleModel
+        }
+        return index
+    }
+
+    private func validate(_ claim: Claim) throws(ObservableStateError) -> Int {
+        let index = try validate(claim.address)
+        guard claim.index < claimLimit,
+            claims[Int(claim.index)].address == claim.address,
+            claims[Int(claim.index)].serial == claim.serial
+        else { throw .staleModel }
+        return index
+    }
+
+    @usableFromInline
+    package mutating func beginMutation(_ address: Address, schema: UInt16)
+        throws(ObservableStateError) -> Int
+    {
+        if let failure = operationAllowed() { throw failure }
+        let index = try validate(address)
+        guard records[index].schema == schema else { throw .staleModel }
+        phase = .writing
+        return index
+    }
+
+    @usableFromInline
+    package mutating func endMutation() {
+        // Only the checked operation route can enter this phase. Keeping its
+        // end non-failing avoids inventing a rollback after an admitted commit.
+        if phase == .writing { phase = .mutating }
+    }
+
+    @usableFromInline
+    package func validatedClaim(_ claim: Claim, schema: UInt16)
+        throws(ObservableStateError) -> Int
+    {
+        if let failure = operationAllowed(discovery: true) { throw failure }
+        let index = try validate(claim)
+        guard records[index].schema == schema else { throw .staleModel }
+        return index
+    }
+
+    @usableFromInline
+    package func validateAssociation(_ address: Address, schema: UInt16)
+        throws(ObservableStateError)
+    {
+        if let failure = operationAllowed(discovery: true) { throw failure }
+        let index = try validate(address)
+        guard records[index].schema == schema else { throw .incompatibleAssociation }
+        guard !records[index].registered else { throw .duplicateOwner }
+    }
+
+    @usableFromInline
+    package func callbackIndex(_ address: Address, schema: UInt16)
+        throws(ObservableStateError) -> Int
+    {
+        let index = try validate(address)
+        guard records[index].schema == schema else { throw .incompatibleAssociation }
+        return index
+    }
+
+    private func freeModel() -> Int? {
+        for index in 0 ..< Int(modelLimit) where !records[index].occupied { return index }
+        return nil
+    }
+
+    private func freeClaim() -> Int? {
+        for index in 0 ..< Int(claimLimit) where claims[index].address == nil { return index }
+        return nil
+    }
+
+    private mutating func issueClaim(at index: Int, for address: Address) -> Claim {
+        // Every caller reserves capacity and checks exhaustion before mutation.
+        let serial = nextClaimSerial!
+        let next = serial.addingReportingOverflow(1)
+        nextClaimSerial = next.overflow ? nil : next.partialValue
+        claims[index] = ClaimRecord(serial: serial, address: address)
+        records[Int(address.slot)].claims += 1
+        return Claim(address: address, index: UInt16(index), serial: serial)
+    }
+
+    @usableFromInline
+    package mutating func materialize(schema: UInt16, needsCapture: Bool)
+        throws(ObservableStateError) -> Claim
+    {
+        if let failure = operationAllowed(discovery: true) { throw failure }
+        guard !generations.isExhausted else { throw .modelGenerationExhausted }
+        guard let model = freeModel() else { throw .modelCapacityExhausted }
+        guard let claim = freeClaim(), nextClaimSerial != nil else { throw .ownerCapacityExhausted }
+        guard !needsCapture || (captureLimit == 1 && captureCount == 0) else {
+            throw .modelCapacityExhausted
+        }
+        let generation = try generations.issue()
+        let address = Address(owner: identity.rawValue, generation: generation, slot: UInt16(model))
+        records[model] = Record(
+            generation: generation, schema: schema, occupied: true, ownsCapture: needsCapture)
+        return issueClaim(at: claim, for: address)
+    }
+
+    package mutating func retain(_ address: Address) throws(ObservableStateError) -> Claim {
+        if let failure = operationAllowed() { throw failure }
+        _ = try validate(address)
+        guard let claim = freeClaim(), nextClaimSerial != nil else { throw .ownerCapacityExhausted }
+        return issueClaim(at: claim, for: address)
+    }
+
+    // Returns the slot whose initialized model must now be destroyed by the profile.
+    private mutating func reclaimIfUnowned(_ index: Int) -> UInt16? {
+        guard records[index].occupied, records[index].claims == 0,
+            !records[index].registered, !records[index].pinned
+        else { return nil }
+        records[index].occupied = false
+        records[index].ownsCapture = false
+        return UInt16(index)
+    }
+
+    @usableFromInline
+    package mutating func release(_ claim: Claim) throws(ObservableStateError) -> UInt16? {
+        if let failure = operationAllowed(discovery: true) { throw failure }
+        let index = try validate(claim)
+        claims[Int(claim.index)].address = nil
+        records[index].claims -= 1
+        return reclaimIfUnowned(index)
+    }
+
+    @usableFromInline
+    package mutating func register(_ address: Address, schema: UInt16) throws(ObservableStateError)
+    {
+        if let failure = operationAllowed(discovery: true) { throw failure }
+        let index = try validate(address)
+        guard records[index].schema == schema else { throw .incompatibleAssociation }
+        guard !records[index].registered else { throw .duplicateOwner }
+        records[index].registered = true
+    }
+
+    package mutating func unregister(_ address: Address) throws(ObservableStateError) -> UInt16? {
+        if let failure = operationAllowed(discovery: true) { throw failure }
+        let index = try validate(address)
+        guard records[index].registered else { throw .staleAttachment }
+        records[index].registered = false
+        return reclaimIfUnowned(index)
+    }
+
+    package mutating func beginFrame() throws(ObservableStateError) {
+        if let failure = operationAllowed() { throw failure }
+        phase = .reading
+    }
+
+    @usableFromInline
+    package mutating func beginDiscovery() throws(ObservableStateError) {
+        guard phase != .replacing else { throw .reentrancyViolation }
+        guard phase == .reading, !activeRead else { throw .invalidPhaseSafetyNotProven }
+        phase = .discovering
+    }
+
+    @usableFromInline
+    package mutating func endDiscovery() throws(ObservableStateError) {
+        guard phase == .discovering else { throw .invalidPhaseSafetyNotProven }
+        phase = .reading
+    }
+
+    @usableFromInline
+    package mutating func pin(_ address: Address) throws(ObservableStateError) {
+        guard phase != .replacing else { throw .reentrancyViolation }
+        guard phase == .reading || phase == .discovering, !activeRead else {
+            throw .invalidPhaseSafetyNotProven
+        }
+        let index = try validate(address)
+        if records[index].pinned { return }
+        guard pinCount < Int(pinLimit) else { throw .ownerCapacityExhausted }
+        records[index].pinned = true
+    }
+
+    @usableFromInline
+    package mutating func beginRead() throws(ObservableStateError) {
+        guard phase == .reading, !activeRead else { throw .invalidPhaseSafetyNotProven }
+        activeRead = true
+    }
+
+    package func bind<Schema>(_ key: _GiftUIModelKey<Schema>, schema: UInt16)
+        throws(_GiftUIAccessFailure) -> Int
+    {
+        guard phase == .reading, activeRead else { throw .invalidPhase }
+        guard key._giftUIOwnerInstance == identity.rawValue else { throw .wrongOwner }
+        guard key._giftUISlot < modelLimit else { throw .staleModel }
+        let index = Int(key._giftUISlot)
+        guard records[index].schema == schema else { throw .wrongSchema }
+        guard records[index].occupied, records[index].generation == key._giftUIAllocationGeneration
+        else { throw .staleModel }
+        guard records[index].pinned else { throw .invalidPhase }
+        return index
+    }
+
+    @usableFromInline
+    package mutating func endRead() throws(ObservableStateError) {
+        guard phase == .reading, activeRead else { throw .invalidPhaseSafetyNotProven }
+        activeRead = false
+    }
+
+    @usableFromInline
+    package mutating func endFrame(reclaim: (UInt16) -> Void) throws(ObservableStateError) {
+        guard phase == .reading, !activeRead else { throw .invalidPhaseSafetyNotProven }
+        for index in 0 ..< Int(modelLimit) {
+            records[index].pinned = false
+            if let slot = reclaimIfUnowned(index) { reclaim(slot) }
+        }
+        phase = .mutating
+    }
+
+    package mutating func reserveReplacement(
+        transferring finalClaim: Claim, schema: UInt16, candidateIsEmpty: Bool,
+        registrationAvailable: Bool, stagingAvailable: Bool
+    ) throws(ObservableStateError) -> Replacement {
+        if let failure = operationAllowed() { throw failure }
+        let old = try validate(finalClaim)
+        guard records[old].schema == schema, records[old].registered else {
+            throw .incompatibleAssociation
+        }
+        guard !generations.isExhausted else { throw .modelGenerationExhausted }
+        guard records[old].claims == 1, !records[old].pinned else { throw .retainedModel }
+        guard candidateIsEmpty else { throw .modelCapacityExhausted }
+        guard let model = freeModel() else { throw .modelCapacityExhausted }
+        guard let claim = freeClaim(), nextClaimSerial != nil else { throw .ownerCapacityExhausted }
+        guard registrationAvailable else { throw .registrationCapacityExhausted }
+        guard stagingAvailable else { throw .replacementStagingCapacityExhausted }
+        let generation = try generations.issue()
+        let address = Address(owner: identity.rawValue, generation: generation, slot: UInt16(model))
+        records[model] = Record(generation: generation, schema: schema, occupied: true)
+        let candidate = issueClaim(at: claim, for: address)
+        let reservation = Replacement(
+            former: finalClaim.address, candidate: address, formerClaim: finalClaim,
+            candidateClaim: candidate)
+        replacement = reservation
+        phase = .replacing
+        return reservation
+    }
+
+    package mutating func finishReplacement(_ reservation: Replacement, commit: Bool)
+        throws(ObservableStateError) -> Claim?
+    {
+        guard phase == .replacing, let current = replacement,
+            current.formerClaim == reservation.formerClaim,
+            current.candidateClaim == reservation.candidateClaim
+        else { throw .invariantViolation }
+        let old = try validate(reservation.formerClaim)
+        let new = try validate(reservation.candidateClaim)
+        if commit {
+            records[new].registered = true
+            records[new].ownsCapture = records[old].ownsCapture
+            records[old].registered = false
+            records[old].ownsCapture = false
+            claims[Int(reservation.formerClaim.index)].address = nil
+            records[old].claims = 0
+            records[old].occupied = false
+        } else {
+            claims[Int(reservation.candidateClaim.index)].address = nil
+            records[new].claims = 0
+            records[new].occupied = false
+        }
+        replacement = nil
+        phase = .mutating
+        return commit ? reservation.candidateClaim : nil
+    }
+}

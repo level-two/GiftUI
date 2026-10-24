@@ -1,0 +1,83 @@
+{
+  "started_utc": "2026-10-24T06:13:10.430585+00:00",
+  "auth_utc": "2026-10-24T06:13:15.212177+00:00",
+  "processing_before_finalization": 406307173,
+  "transcript_before_finalization": 273518,
+  "final_auth_forecast": 63194434,
+  "protected_control_reserve": 16777216,
+  "additional_finalization_forecast": 4194304,
+  "forecast_processing_upper": 490473127,
+  "combined_all_selected_group_excerpt_bytes": 250962,
+  "combined_lines": 3780,
+  "limits": {
+    "processing": 536870912,
+    "shared": 8388608,
+    "excerpt_bytes": 1048576,
+    "excerpt_lines": 16384
+  },
+  "actual_final_counters": "Authoritative ledger.json AFTER final page.py f emit/save; printed CLOSED is pre-emission. No post-close inspection required.",
+  "qualification": "Experimental functions.exec and nested exec requests/payloads used the recorded prefix. Post-auth collaboration.send_message coordination calls were outside that prefix and not separately pre-emission metered. Full all-tools request qualification is therefore not established; no retroqualification or cap breach inferred.",
+  "pages_examined": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    9,
+    10,
+    14,
+    13,
+    15,
+    16,
+    20
+  ],
+  "machine_pages_examined": {
+    "capture-1.stdout": [
+      1,
+      2
+    ],
+    "capture-2.stdout": [
+      1,
+      2
+    ],
+    "capture-5.stdout": [
+      1,
+      2,
+      3
+    ],
+    "capture-6.stdout": [
+      1
+    ],
+    "capture-3.stdout": [
+      1,
+      2
+    ],
+    "capture-4.stdout": [
+      2,
+      1
+    ],
+    "capture-10.stdout": [
+      1
+    ],
+    "capture-7.stdout": [
+      1,
+      2
+    ],
+    "capture-8.stdout": [
+      1
+    ],
+    "capture-9.stdout": [
+      1
+    ],
+    "capture-11.stdout": [
+      1,
+      2,
+      3
+    ],
+    "capture-12.stdout": [
+      1
+    ]
+  },
+  "recording_qualified": false,
+  "recording_reason": "Experimental functions.exec and nested exec requests/payloads used the recorded prefix. Post-auth collaboration.send_message coordination calls were outside that prefix and not separately pre-emission metered. Full all-tools request qualification is therefore not established; no retroqualification or cap breach inferred."
+}

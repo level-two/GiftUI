@@ -1,0 +1,382 @@
+{
+  "freeze": "../current-native-static-batchA56-local/freeze.json",
+  "helper_sha256": "9d57632523f81e0598a4acc2ef032f805f2102bff0e6c8c9580703934294d234",
+  "inputs": {
+    "body": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/source-context.txt",
+      "bytes": 132431,
+      "sha256": "e37619763c45a3189107fe9b1c0e14ed346e0984bbfcb5f290ae4bc1773ee528"
+    },
+    "result": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/result.json",
+      "bytes": 8566019,
+      "sha256": "eebe4ac9d01de3e62f5f5156422cb29f3f61f17801fd2ff0015bf0ae298686de"
+    },
+    "current_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/selected-current.py",
+      "bytes": 4658,
+      "sha256": "763cf63e62ff02ef38e35537a770b7f888b815c6054d71570aaee1e19eef2b36"
+    },
+    "view_code": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/view-selected.py",
+      "bytes": 2364,
+      "sha256": "1007c0015e21f262d9e812b8ecdbf047767359ef91f80521b1ed0380aff7a256"
+    },
+    "object": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o",
+      "bytes": 2604600,
+      "sha256": "6e821518a1f04adf06cf9792fbd9c2130fa60907abe68fc9fc2dcd04232f9abe"
+    },
+    "observable": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o",
+      "bytes": 254904,
+      "sha256": "ab0d734545f9af91a20b25910e63576659c4eeadc3722c8db2c9e26b27d927b9"
+    },
+    "semantic": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUISemanticCore.o",
+      "bytes": 534808,
+      "sha256": "6a3f93c68416b3c872868d8701206e4de5dae0702e0d790ee6ce4cff4b4298f1"
+    },
+    "runtime": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIRuntimeCore.o",
+      "bytes": 323040,
+      "sha256": "a8683664f6fc9cb4ca3b511e26cdbf43a40fce7fb61a7890b5c95d307c84fd5c"
+    },
+    "drawing": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIDrawing.o",
+      "bytes": 135544,
+      "sha256": "baabad54088fa6f5899dbd5dbf3d515b240fc3f194d810f20dae42b24398abeb"
+    },
+    "execution": {
+      "path": ".build/contracts/p08-counter-ugr4qej1/GiftUIExecution.o",
+      "bytes": 574800,
+      "sha256": "759fba38e1f391214bfdfcfdbc5f930611974e6b41b995b188583496da14258c"
+    },
+    "source0": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 12910,
+      "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb"
+    },
+    "source1": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 2115,
+      "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653"
+    },
+    "source2": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "bytes": 6845,
+      "sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab"
+    },
+    "source3": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "bytes": 41983,
+      "sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010"
+    },
+    "source4": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "bytes": 1642,
+      "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825"
+    },
+    "source5": {
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "bytes": 13855,
+      "sha256": "8fbcbae675ae704faebdd33e2aa3956e404ecfa0f75fe7c49d8bdd89c9a4c4d8"
+    },
+    "source6": {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "bytes": 34291,
+      "sha256": "1c7279188f67289665fff485c91e6d55a13e1f127bde6ba98928696cf3158639"
+    },
+    "source7": {
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "bytes": 17507,
+      "sha256": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d"
+    },
+    "prior_paths": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/findings.json",
+      "bytes": 6745,
+      "sha256": "ae1e227e6f4b086815612268ff1251420228f65c794f4e47ebf2466903bced0e"
+    },
+    "prior_review": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/final-review.md",
+      "bytes": 10518,
+      "sha256": "b934859f10847bba73369cab80cb152f0068e48b88943f4f2c6aa1bd496072ac"
+    },
+    "current_transfer": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-result/successor-full4h1-validation.json",
+      "bytes": 14209,
+      "sha256": "812de93eba55a79167be2ababd1463378b9e2680c1b1112cfa26883ee89e017c"
+    },
+    "provider_witness": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-provider-batchA44-result/rows.json",
+      "bytes": 10305,
+      "sha256": "ace2a09d22672332dc1ee2bc6a9e472c05124b13ea87235a1b927d2db1855ae1"
+    },
+    "provider_metadata": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata48-result/rows.json",
+      "bytes": 18276,
+      "sha256": "0f0ebe240689adaae3c23032ccb82561c33f1a984bfcfeb8c2727bfb67a591a6"
+    },
+    "tool_auth": {
+      "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+    }
+  },
+  "captures": [
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime03p08B8SemanticSiyF",
+      "start": "0x804c",
+      "end": "0x8258",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x804c",
+        "--stop-address=0x8258",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 11062,
+      "stdout_lines": 174,
+      "stdout_sha256": "951b265269645dc444438b721e2c28501f1811ea2012ef2ee1ec2f8095a8d809",
+      "stderr": "",
+      "raw": "capture-1.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab14Runtime03p08B8u8SiyFSi21jk7State20mop7VyAA0b5q27J0V0aB6Schema0bjM0OG_AC0ih4e10K0VyAG0F14s8Core0E16vw9VGtAC0iH5X8OYKXEfU_Tf1ncn_n",
+      "start": "0x83d8",
+      "end": "0x853c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x83d8",
+        "--stop-address=0x853c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 12660,
+      "stdout_lines": 116,
+      "stdout_sha256": "8f908d62284c8b452b705891ccfbd693720a200ff9462aa2c5aabe400908c527",
+      "stderr": "",
+      "raw": "capture-2.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime03p08B11CoordinatorSiyF",
+      "start": "0x86b38",
+      "end": "0x86d30",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x86b38",
+        "--stop-address=0x86d30",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 11397,
+      "stdout_lines": 163,
+      "stdout_sha256": "7baadedf6dfdb5cfbe073c97b7eb7348fe44e7a2a2cdb94ebb2acc67e58bfdfa",
+      "stderr": "",
+      "raw": "capture-3.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime03p08B12FixedStorageSiyF",
+      "start": "0xf914",
+      "end": "0xfb10",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xf914",
+        "--stop-address=0xfb10",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 7778,
+      "stdout_lines": 152,
+      "stdout_sha256": "858bf066b23f798d5ea46ba4c778f1c613a075f7cb36e08486c2b803b0b523d4",
+      "stderr": "",
+      "raw": "capture-4.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s21GiftUIObservableState20ObservableModelScopeVA2A0dcE0Rz6SchemaQzRs_Ri_zrlE8withRoot10identities7control6limits_qd_0_s11MutableSpanVyqd__SgGz_AA0dcI7ControlVzAA0dC6LimitsVqd_0_AA0dciF0Vyxqd__GAA0dC5ErrorOYKXEtAWYKSQRd__s8SendableRd__r0_lF17P08CounterRuntime0t5OwnedE0V_0stG00teG0O0A14UISemanticCore24SemanticCompleteIdentityVSiTg504$s17st17Runtime0B17Statici132StorageV10withFields33_D69EFE5C5B537970757923F9B4942B56LL9ownership6models10identities12registration6schema12needsCapture6limits_x21ab7State24de37OwnershipVz_s11InlineArrayVy$1_AA0B10ve15VSgGzAQy$1_0X14w6Core24yz31IdentityVSgGzAM010ObservablezE7o18Vzs6UInt16VSbAM010d2Z6p6VxAM20def18VyAS0aB6Schema0B11eg21OG_AM010ObservablezE5f12VyAsXGtAM010d2Z5Q53OYKXEtA15_YKlFZxA10_A15_YKXEfU_xA13_A15_YKXEfU_Si_TG5ACyA_A2_GATyA_A5_GxAWRi_zRi0_zlySiIsgggrzo_A7_Tf1nnncn_n04$s17st14Runtime03p08B8y8SiyFSi21ab7State20def7VyAA0b5v27J0V0aB6Schema0bjM0OG_AC0ih4i10K0VyAG0F14w8Core0E16z17IdentityVGtAC0iH5Q8OYKXEfU_Tf1nnnncn_n",
+      "start": "0xa6d98",
+      "end": "0xa7094",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xa6d98",
+        "--stop-address=0xa7094",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 38455,
+      "stdout_lines": 224,
+      "stdout_sha256": "ceb234643f50b78783aca2600bb36d4371573f5f57bb5f3866ecaabc22ccf965",
+      "stderr": "",
+      "raw": "capture-5.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl",
+      "start": "0x120",
+      "end": "0x160",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x120",
+        "--stop-address=0x160",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1741,
+      "stdout_lines": 31,
+      "stdout_sha256": "5157a0bb990803aaaa0be0e12847e73f89fb501536a469639548e79151fd8147",
+      "stderr": "",
+      "raw": "capture-6.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime06StaticB14ProfileStorageV3runSiyF",
+      "start": "0x84638",
+      "end": "0x8481c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x84638",
+        "--stop-address=0x8481c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 10310,
+      "stdout_lines": 153,
+      "stdout_sha256": "9982eaa70be8c550db67e8233f349442c4df1fe62707e46dc38cb4cce9ba8f54",
+      "stderr": "",
+      "raw": "capture-7.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_OUTLINED_FUNCTION_65",
+      "start": "0xbc59c",
+      "end": "0xbc5b0",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbc59c",
+        "--stop-address=0xbc5b0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 876,
+      "stdout_lines": 18,
+      "stdout_sha256": "910d9cfe1f996e6bb9e7a8b1f59fd3993d57dcad8a18abdeeb023bc7c432b2a3",
+      "stderr": "",
+      "raw": "capture-8.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_OUTLINED_FUNCTION_524",
+      "start": "0xbf324",
+      "end": "0xbf334",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbf324",
+        "--stop-address=0xbf334",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 540,
+      "stdout_lines": 14,
+      "stdout_sha256": "5f83f4537393dda5624ce5a33eec34d4b441d9e9131b05c4a17d303c63156ba4",
+      "stderr": "",
+      "raw": "capture-9.stdout"
+    },
+    {
+      "object": "observable",
+      "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMi",
+      "start": "0xc9a0",
+      "end": "0xc9a8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc9a0",
+        "--stop-address=0xc9a8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 442,
+      "stdout_lines": 9,
+      "stdout_sha256": "2ea07aa1a2d40627ec8297cfe6eed499c4acd6f255652e4c333830c0c94a3ad4",
+      "stderr": "",
+      "raw": "capture-10.stdout"
+    },
+    {
+      "object": "object",
+      "symbol": "_$s17P08CounterRuntime0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5",
+      "start": "0x8848",
+      "end": "0x8b64",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x8848",
+        "--stop-address=0x8b64",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 22259,
+      "stdout_lines": 249,
+      "stdout_sha256": "890b01f6ce4b8cb4d406b4d44ca4533a1ba47a851423e2541824a95ac7233e97",
+      "stderr": "",
+      "raw": "capture-11.stdout"
+    },
+    {
+      "object": "observable",
+      "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMa",
+      "start": "0xb39c",
+      "end": "0xb3a8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xb39c",
+        "--stop-address=0xb3a8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1011,
+      "stdout_lines": 12,
+      "stdout_sha256": "47a9f2c6b34ad9787f71c7a24240d0da2a047265e9e2de8272fa2cdbc9c4aee2",
+      "stderr": "",
+      "raw": "capture-12.stdout"
+    }
+  ],
+  "reuse": "Accepted current full constructor50 code/symbol/relocation transfer and original79/48/6 frozen controls; no original corpus replay. A51/A52 recordingFALSE not promoted. Sources explicitly SEMANTIC in this new session; provider rows reused only under exact stated premises. No runtime/source action. A55 failed receipt/ledger immutable; A56 corrects required invocation directory before auth. Only task-local path identity is configured; decoder/meter/pager logic unchanged.",
+  "omission_boundary": "Source pages6-8 audit/Dynamic storage and pages11-12,17-19,21-26 unrelated/reused source portions are not asserted newly examined. Accepted owner/retirement/audit lemmas retain exact premises; all captured machine bodies are fully paged. No omitted semantic expansion body is called infeasible."
+}

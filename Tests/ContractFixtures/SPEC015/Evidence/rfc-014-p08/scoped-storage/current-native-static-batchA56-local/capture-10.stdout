@@ -1,0 +1,9 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000c9a0 <_$s21GiftUIObservableState010ObservableC9RootScopeVMi>:
+    c9a0:      	mov	w3, #0x30               ; =48
+    c9a4:      	b	0xc9a4 <_$s21GiftUIObservableState010ObservableC9RootScopeVMi+0x4>
+		000000000000c9a4:  ARM64_RELOC_BRANCH26	_swift_allocateGenericValueMetadata

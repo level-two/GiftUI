@@ -1,0 +1,11 @@
+{
+  "started_utc": "2026-10-24T06:13:10.430585+00:00",
+  "deadline_utc": "2026-10-24T08:13:10.430585+00:00",
+  "prior_attempt": "A55 recordingFALSE preserved unchanged",
+  "required_directories_created_before_auth": [
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA56-local/invocation"
+  ],
+  "helper_logic_unchanged": true,
+  "setup_processing_upper": 1938928
+}

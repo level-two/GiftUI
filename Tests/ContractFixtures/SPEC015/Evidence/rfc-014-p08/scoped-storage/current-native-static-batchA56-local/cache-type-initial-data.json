@@ -1,0 +1,76 @@
+{
+  "_$s21GiftUIObservableState010ObservableC9RootScopeVMI": {
+    "row": {
+      "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVMI",
+      "address": 89552,
+      "section": 4,
+      "type": 14
+    },
+    "section": {
+      "name": "__bss",
+      "addr": 86480,
+      "bytes": 3712,
+      "file": 0,
+      "reloff": 0,
+      "nreloc": 0
+    },
+    "flags": 1,
+    "pristine_zerofill": true,
+    "live_state_observed": false
+  },
+  "__MergedGlobals": {
+    "row": {
+      "symbol": "__MergedGlobals",
+      "address": 1021216,
+      "section": 11,
+      "type": 14
+    },
+    "section": {
+      "name": "__bss",
+      "addr": 1011040,
+      "bytes": 10296,
+      "file": 0,
+      "reloff": 0,
+      "nreloc": 0
+    },
+    "flags": 1,
+    "pristine_zerofill": true,
+    "live_state_observed": false
+  },
+  "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD": {
+    "row": {
+      "symbol": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+      "address": 832016,
+      "section": 6,
+      "type": 31
+    },
+    "section": {
+      "name": "__data",
+      "addr": 831640,
+      "bytes": 3600,
+      "file": 834200,
+      "reloff": 1297208,
+      "nreloc": 484
+    },
+    "flags": 0,
+    "pristine_zerofill": false,
+    "live_state_observed": false,
+    "raw_hex": "00000000efffffff0000000000000000",
+    "signed_words": [
+      -73014444032,
+      0
+    ],
+    "relocations": [
+      {
+        "offset": 0,
+        "type": 1,
+        "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD"
+      },
+      {
+        "offset": 0,
+        "type": 0,
+        "target": "_symbolic _____y__________G 21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE 17P08CounterRuntime0H10OwnedModelV 0A14UISemanticCore24SemanticCompleteIdentityV"
+      }
+    ]
+  }
+}

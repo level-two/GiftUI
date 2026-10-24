@@ -1,0 +1,31 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000120 <_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl>:
+     120:      	adrp	x8, 0x0 <ltmp0>
+		0000000000000120:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL
+     124:      	ldr	x0, [x8]
+		0000000000000124:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL
+     128:      	cbz	x0, 0x130 <_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl+0x10>
+     12c:      	ret
+     130:      	stp	x29, x30, [sp, #-0x10]!
+     134:      	mov	x29, sp
+     138:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000138:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc
+     13c:      	ldr	x0, [x0]
+		000000000000013c:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc
+     140:      	adrp	x1, 0x0 <ltmp0>
+		0000000000000140:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+     144:      	ldr	x1, [x1]
+		0000000000000144:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+     148:      	bl	0x148 <_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl+0x28>
+		0000000000000148:  ARM64_RELOC_BRANCH26	_swift_getWitnessTable
+     14c:      	adrp	x8, 0x0 <ltmp0>
+		000000000000014c:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL
+     150:      	add	x8, x8, #0x0
+		0000000000000150:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL
+     154:      	stlr	x0, [x8]
+     158:      	ldp	x29, x30, [sp], #0x10
+     15c:      	ret

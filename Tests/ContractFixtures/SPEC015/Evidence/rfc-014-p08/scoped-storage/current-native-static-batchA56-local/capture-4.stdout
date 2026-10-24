@@ -1,0 +1,152 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000f914 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF>:
+    f914:      	sub	sp, sp, #0x120
+    f918:      	stp	x22, x21, [sp, #0xf0]
+    f91c:      	stp	x20, x19, [sp, #0x100]
+    f920:      	stp	x29, x30, [sp, #0x110]
+    f924:      	add	x29, sp, #0x110
+    f928:      	bl	0xf928 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x14>
+		000000000000f928:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_183
+    f92c:      	stur	x8, [x29, #-0x28]
+    f930:      	mov	x21, #0x28              ; =40
+    f934:      	movk	x21, #0x8, lsl #32
+    f938:      	stp	xzr, xzr, [sp, #0x70]
+    f93c:      	str	wzr, [sp, #0x80]
+    f940:      	add	x20, sp, #0x70
+    f944:      	add	x19, x20, #0x14
+    f948:      	add	x1, sp, #0x70
+    f94c:      	mov	w0, #0x0                ; =0
+    f950:      	mov	x2, x19
+    f954:      	bl	0xf954 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x40>
+		000000000000f954:  ARM64_RELOC_BRANCH26	_$sSw16initializeMemory2as9repeatingSryxGxm_xtlFs5UInt8V_Ttg5
+    f958:      	stp	x20, x19, [sp, #0x8]
+    f95c:      	adrp	x8, 0xf000 <_$s17P08CounterRuntime06StaticB15RenderWorkspaceV5resetyyF+0x4>
+		000000000000f95c:  ARM64_RELOC_PAGE21	lCPI372_0
+    f960:      	ldr	d0, [x8]
+		000000000000f960:  ARM64_RELOC_PAGEOFF12	lCPI372_0
+    f964:      	str	d0, [sp, #0x70]
+    f968:      	movi.2s	v0, #0x1, lsl #16
+    f96c:      	str	s0, [sp, #0x80]
+    f970:      	adrp	x8, 0xf000 <_$s17P08CounterRuntime06StaticB15RenderWorkspaceV5resetyyF+0x4>
+		000000000000f970:  ARM64_RELOC_PAGE21	lCPI372_1
+    f974:      	ldr	d0, [x8]
+		000000000000f974:  ARM64_RELOC_PAGEOFF12	lCPI372_1
+    f978:      	str	d0, [sp]
+    f97c:      	mov	x20, sp
+    f980:      	mov	x0, #0x28               ; =40
+    f984:      	movk	x0, #0x8, lsl #32
+    f988:      	bl	0xf988 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x74>
+		000000000000f988:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB15LivePathStorageV10appendLine2toSb6GiftUI5PointV_tF
+    f98c:      	tbz	w0, #0x0, 0xfad8 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1c4>
+    f990:      	add	x0, x21, #0x4
+    f994:      	mov	x20, sp
+    f998:      	bl	0xf998 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x84>
+		000000000000f998:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB15LivePathStorageV10appendLine2toSb6GiftUI5PointV_tF
+    f99c:      	tbnz	w0, #0x0, 0xfadc <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1c8>
+    f9a0:      	mov	x20, sp
+    f9a4:      	mov	x0, #0x0                ; =0
+    f9a8:      	bl	0xf9a8 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x94>
+		000000000000f9a8:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB15LivePathStorageV16startNextSubpath2atSb6GiftUI5PointV_tF
+    f9ac:      	tbnz	w0, #0x0, 0xfae0 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1cc>
+    f9b0:      	ldrh	w8, [sp, #0x4]
+    f9b4:      	cmp	w8, #0x2
+    f9b8:      	b.ne	0xfae4 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1d0>
+    f9bc:      	ldrh	w8, [sp, #0x6]
+    f9c0:      	cmp	w8, #0x1
+    f9c4:      	b.ne	0xfae8 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1d4>
+    f9c8:      	ldr	x0, [sp, #0x8]
+    f9cc:      	ldr	x8, [x0]
+    f9d0:      	sub	x9, x21, #0x24
+    f9d4:      	cmp	x8, x9
+    f9d8:      	b.ne	0xfaec <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1d8>
+    f9dc:      	ldr	x8, [x0, #0x8]
+    f9e0:      	cmp	x8, x21
+    f9e4:      	b.ne	0xfaf0 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1dc>
+    f9e8:      	ldrb	w8, [x0, #0x10]
+    f9ec:      	ldrb	w9, [x0, #0x11]
+    f9f0:      	orr	w8, w9, w8
+    f9f4:      	cbnz	w8, 0xfaf4 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1e0>
+    f9f8:      	ldrh	w8, [x0, #0x12]
+    f9fc:      	cmp	w8, #0x2
+    fa00:      	b.ne	0xfaf4 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1e0>
+    fa04:      	cbz	x0, 0xfa1c <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x108>
+    fa08:      	ldr	x8, [sp, #0x10]
+    fa0c:      	subs	x1, x8, x0
+    fa10:      	b.mi	0xfb04 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1f0>
+    fa14:      	b.eq	0xfa1c <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x108>
+    fa18:      	bl	0xfa18 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x104>
+		000000000000fa18:  ARM64_RELOC_BRANCH26	_bzero
+    fa1c:      	movi.2d	v0, #0000000000000000
+    fa20:      	stp	q0, q0, [sp, #0x50]
+    fa24:      	stp	q0, q0, [sp, #0x30]
+    fa28:      	stp	q0, q0, [sp, #0x10]
+    fa2c:      	str	q0, [sp]
+    fa30:      	mov	x20, sp
+    fa34:      	bl	0xfa34 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x120>
+		000000000000fa34:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_524
+    fa38:      	b.ne	0xfaf8 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1e4>
+    fa3c:      	bl	0xfa3c <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x128>
+		000000000000fa3c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1183
+    fa40:      	ldp	x2, x3, [x8]
+    fa44:      	ldrh	w4, [x8, #0x10]
+    fa48:      	mov	x19, sp
+    fa4c:      	add	x8, sp, #0x88
+    fa50:      	mov	x0, sp
+    fa54:      	add	x1, x20, #0x70
+    fa58:      	bl	0xfa58 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x144>
+		000000000000fa58:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime06StaticB18DrawingPlanStorageV6region8capacityACSgSw_13GiftUIDrawing0E6LimitsVtcfC
+    fa5c:      	ldrb	w8, [sp, #0x9a]
+    fa60:      	bl	0xfa60 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x14c>
+		000000000000fa60:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_921
+    fa64:      	b.eq	0xfb00 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1ec>
+    fa68:      	mov	x8, #0x0                ; =0
+    fa6c:      	adrp	x9, 0xf000 <_$s17P08CounterRuntime06StaticB15RenderWorkspaceV5resetyyF+0x4>
+		000000000000fa6c:  ARM64_RELOC_PAGE21	lCPI372_2
+    fa70:      	ldr	q0, [x9]
+		000000000000fa70:  ARM64_RELOC_PAGEOFF12	lCPI372_2
+    fa74:      	ldr	q1, [x19, x8]
+    fa78:      	cmtst.16b	v2, v1, v1
+    fa7c:      	umaxv.16b	b2, v2
+    fa80:      	fmov	w9, s2
+    fa84:      	tbnz	w9, #0x0, 0xfa94 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x180>
+    fa88:      	cmp	x8, #0x60
+    fa8c:      	add	x8, x8, #0x10
+    fa90:      	b.ne	0xfa74 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x160>
+    fa94:      	cmeq.16b	v1, v1, #0
+    fa98:      	bic.16b	v0, v0, v1
+    fa9c:      	ext.16b	v1, v0, v0, #0x8
+    faa0:      	zip1.16b	v0, v0, v1
+    faa4:      	addv.8h	h0, v0
+    faa8:      	fmov	w8, s0
+    faac:      	tst	w8, #0xffff
+    fab0:      	b.ne	0xfb08 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1f4>
+    fab4:      	ldur	x8, [x29, #-0x28]
+    fab8:      	bl	0xfab8 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1a4>
+		000000000000fab8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+    fabc:      	b.ne	0xfb0c <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1f8>
+    fac0:      	mov	w0, #0xc                ; =12
+    fac4:      	ldp	x29, x30, [sp, #0x110]
+    fac8:      	ldp	x20, x19, [sp, #0x100]
+    facc:      	ldp	x22, x21, [sp, #0xf0]
+    fad0:      	add	sp, sp, #0x120
+    fad4:      	ret
+    fad8:      	brk	#0x1
+    fadc:      	brk	#0x1
+    fae0:      	brk	#0x1
+    fae4:      	brk	#0x1
+    fae8:      	brk	#0x1
+    faec:      	brk	#0x1
+    faf0:      	brk	#0x1
+    faf4:      	brk	#0x1
+    faf8:      	bl	0xfaf8 <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1e4>
+		000000000000faf8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_65
+    fafc:      	b	0xfa3c <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x128>
+    fb00:      	brk	#0x1
+    fb04:      	brk	#0x1
+    fb08:      	brk	#0x1
+    fb0c:      	bl	0xfb0c <_$s17P08CounterRuntime03p08B12FixedStorageSiyF+0x1f8>
+		000000000000fb0c:  ARM64_RELOC_BRANCH26	___stack_chk_fail

@@ -1,0 +1,12 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-ugr4qej1/GiftUIObservableState.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000b39c <_$s21GiftUIObservableState010ObservableC9RootScopeVMa>:
+    b39c:      	adrp	x2, 0xb000 <_$s21GiftUIObservableState29ObservableSemanticBodyBindingVyxq_q0_G0A14UISemanticCore0e8StatefulG0AARi_zrlAeFP08evaluateJ0_18structuralIdentity06beforeF04bodyAE0eF10EvaluationOy0F00A2UI4ViewPQyd__7FailureQzGqd___0M0QzAE0E14ExpansionErrorOSgyXEARqd___AO01_A11UIFrameReadVy6DomainQzGtAO01_a8UIAccessS0OYKXEtAoPRd__AO01_abC4HostRd__A1_AQQyd__A2_RSAnQ_A1_QYd__A7_RSlFTW+0x3bc>
+		000000000000b39c:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC9RootScopeVMn
+    b3a0:      	add	x2, x2, #0x0
+		000000000000b3a0:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC9RootScopeVMn
+    b3a4:      	b	0xb3a4 <_$s21GiftUIObservableState010ObservableC9RootScopeVMa+0x8>
+		000000000000b3a4:  ARM64_RELOC_BRANCH26	_swift_getGenericMetadata
