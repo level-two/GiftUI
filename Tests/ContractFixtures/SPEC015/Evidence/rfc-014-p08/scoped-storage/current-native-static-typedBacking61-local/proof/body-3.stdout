@@ -1,0 +1,137 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000002844 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF>:
+    2844:      	stp	x22, x21, [sp, #-0x30]!
+    2848:      	stp	x20, x19, [sp, #0x10]
+    284c:      	stp	x29, x30, [sp, #0x20]
+    2850:      	add	x29, sp, #0x20
+    2854:      	sub	sp, sp, #0x270
+    2858:      	bl	0x2858 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x14>
+		0000000000002858:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_72
+    285c:      	stur	x8, [x29, #-0x28]
+    2860:      	str	wzr, [sp, #0x14]
+    2864:      	add	x8, sp, #0xe4
+    2868:      	bl	0x2868 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x24>
+		0000000000002868:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_201
+    286c:      	bl	0x286c <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x28>
+		000000000000286c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV8identity10modelLimit05claimI003pinI007captureI0ACSgAA0dE13OwnerIdentityV_s6UInt16VA3MtcfC
+    2870:      	add	x0, sp, #0xe4
+    2874:      	bl	0x2874 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x30>
+		0000000000002874:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipVSgWOg
+    2878:      	cmp	w0, #0x1
+    287c:      	b.eq	0x299c <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x158>
+    2880:      	add	x0, sp, #0x28
+    2884:      	add	x1, sp, #0xe4
+    2888:      	bl	0x2888 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x44>
+		0000000000002888:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_432
+    288c:      	stp	xzr, xzr, [sp, #0x18]
+    2890:      	sub	x0, x29, #0xf0
+    2894:      	add	x1, sp, #0xe4
+    2898:      	bl	0x2898 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x54>
+		0000000000002898:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_432
+    289c:      	sub	x20, x29, #0xf0
+    28a0:      	bl	0x28a0 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x5c>
+		00000000000028a0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_806
+    28a4:      	bl	0x28a4 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x60>
+		00000000000028a4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_619
+    28a8:      	b.ne	0x29a0 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x15c>
+    28ac:      	add	x0, sp, #0x28
+    28b0:      	add	x1, sp, #0x18
+    28b4:      	add	x4, sp, #0x14
+    28b8:      	mov	w2, #0x2                ; =2
+    28bc:      	mov	x21, #0x0               ; =0
+    28c0:      	mov	w3, #0x1                ; =1
+    28c4:      	bl	0x28c4 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x80>
+		00000000000028c4:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe13exerciseLease33_FD87C69B7F1F31FC6FF7D461BCB7639DLL_12destructionss6UInt32V21GiftUIObservableState20ObservableModelScopeVyAA0eU0ACLLVAA0E6SchemaACLLOG_SpyAFGtAG0tS5ErrorOYKF
+    28c8:      	mov	x19, x0
+    28cc:      	add	x0, sp, #0x28
+    28d0:      	add	x1, sp, #0x18
+    28d4:      	mov	w2, #0x2                ; =2
+    28d8:      	mov	w3, #0x1                ; =1
+    28dc:      	bl	0x28dc <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x98>
+		00000000000028dc:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5
+    28e0:      	cbnz	x21, 0x29b4 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x170>
+    28e4:      	ldr	w8, [sp, #0x14]
+    28e8:      	cmp	w8, #0x3
+    28ec:      	b.ne	0x2990 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x14c>
+    28f0:      	str	wzr, [sp, #0x14]
+    28f4:      	adrp	x0, 0x2000 <_$s17RuntimeCycleProbe3runyy21GiftUIObservableState20ObservableModelScopeVyxq_GRi_zr0_lF+0x34>
+		00000000000028f4:  ARM64_RELOC_PAGE21	_$s20GiftUIRuntimeDynamic0C22ObservableModelStorageCy17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLVAD0J6SchemaAFLLOGMD
+    28f8:      	add	x0, x0, #0x0
+		00000000000028f8:  ARM64_RELOC_PAGEOFF12	_$s20GiftUIRuntimeDynamic0C22ObservableModelStorageCy17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLVAD0J6SchemaAFLLOGMD
+    28fc:      	bl	0x28fc <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0xb8>
+		00000000000028fc:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+    2900:      	mov	w1, #0xe4               ; =228
+    2904:      	bl	0x2904 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0xc0>
+		0000000000002904:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_237
+    2908:      	bl	0x2908 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0xc4>
+		0000000000002908:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_542
+    290c:      	bl	0x290c <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0xc8>
+		000000000000290c:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C22ObservableModelStorageCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0dE13OwnerIdentityV_s6UInt16VSbA4QSgtcfc
+    2910:      	cbz	x0, 0x29c8 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x184>
+    2914:      	mov	x20, x0
+    2918:      	sub	x8, x29, #0xf0
+    291c:      	add	x9, sp, #0x14
+    2920:      	str	x9, [x8, #0x10]
+    2924:      	adrp	x0, 0x2000 <_$s17RuntimeCycleProbe3runyy21GiftUIObservableState20ObservableModelScopeVyxq_GRi_zr0_lF+0x34>
+		0000000000002924:  ARM64_RELOC_PAGE21	_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyFADSpyADG21GiftUIObservableState010ObservableK5ErrorOYKXEfU1_AdF0L10ModelScopeVyAA0gN033_FD87C69B7F1F31FC6FF7D461BCB7639DLLVAA0G6SchemaALLLOGAHYKXEfU_TA
+    2928:      	add	x0, x0, #0x0
+		0000000000002928:  ARM64_RELOC_PAGEOFF12	_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyFADSpyADG21GiftUIObservableState010ObservableK5ErrorOYKXEfU1_AdF0L10ModelScopeVyAA0gN033_FD87C69B7F1F31FC6FF7D461BCB7639DLLVAA0G6SchemaALLLOGAHYKXEfU_TA
+    292c:      	adrp	x2, 0x2000 <_$s17RuntimeCycleProbe3runyy21GiftUIObservableState20ObservableModelScopeVyxq_GRi_zr0_lF+0x34>
+		000000000000292c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$ss6UInt32VN
+    2930:      	ldr	x2, [x2]
+		0000000000002930:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$ss6UInt32VN
+    2934:      	add	x8, sp, #0x4
+    2938:      	sub	x1, x29, #0xf0
+    293c:      	add	x3, sp, #0x3
+    2940:      	bl	0x2940 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0xfc>
+		0000000000002940:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C22ObservableModelStorageCAARi_zrlE12withLifetimeyqd__qd__0A17UIObservableState0dE5ScopeVyxq_GAE0dJ5ErrorOYKXEAJYKlF
+    2944:      	bl	0x2944 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x100>
+		0000000000002944:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_328
+    2948:      	cbnz	x21, 0x29b4 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x170>
+    294c:      	ldr	w8, [sp, #0x4]
+    2950:      	adds	w19, w19, w8
+    2954:      	b.hs	0x2994 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x150>
+    2958:      	ldr	w8, [sp, #0x14]
+    295c:      	cmp	w8, #0x3
+    2960:      	b.ne	0x2998 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x154>
+    2964:      	ldp	x0, x20, [sp, #0x18]
+    2968:      	bl	0x2968 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x124>
+		0000000000002968:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe10LeaseModel33_FD87C69B7F1F31FC6FF7D461BCB7639DLLVSgWOe
+    296c:      	mov	x0, x20
+    2970:      	bl	0x2970 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x12c>
+		0000000000002970:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe10LeaseModel33_FD87C69B7F1F31FC6FF7D461BCB7639DLLVSgWOe
+    2974:      	ldur	x8, [x29, #-0x28]
+    2978:      	bl	0x2978 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x134>
+		0000000000002978:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_25
+    297c:      	b.ne	0x29cc <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x188>
+    2980:      	mov	x0, x19
+    2984:      	add	sp, sp, #0x270
+    2988:      	ldp	x29, x30, [sp, #0x20]
+    298c:      	b	0x298c <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x148>
+		000000000000298c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_260
+    2990:      	brk	#0x1
+    2994:      	brk	#0x1
+    2998:      	brk	#0x1
+    299c:      	brk	#0x1
+    29a0:      	strb	w0, [sp, #0x4]
+    29a4:      	bl	0x29a4 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x160>
+		00000000000029a4:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+    29a8:      	bl	0x29a8 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x164>
+		00000000000029a8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_134
+    29ac:      	add	x0, sp, #0x4
+    29b0:      	bl	0x29b0 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x16c>
+		00000000000029b0:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    29b4:      	ldp	x0, x19, [sp, #0x18]
+    29b8:      	bl	0x29b8 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x174>
+		00000000000029b8:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe10LeaseModel33_FD87C69B7F1F31FC6FF7D461BCB7639DLLVSgWOe
+    29bc:      	mov	x0, x19
+    29c0:      	bl	0x29c0 <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x17c>
+		00000000000029c0:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe10LeaseModel33_FD87C69B7F1F31FC6FF7D461BCB7639DLLVSgWOe
+    29c4:      	brk	#0x1
+    29c8:      	brk	#0x1
+    29cc:      	bl	0x29cc <_$s17RuntimeCycleProbe19giftuiP07FrameLeases6UInt32VyF+0x188>
+		00000000000029cc:  ARM64_RELOC_BRANCH26	___stack_chk_fail

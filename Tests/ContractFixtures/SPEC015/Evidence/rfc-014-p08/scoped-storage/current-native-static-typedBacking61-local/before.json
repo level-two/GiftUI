@@ -1,0 +1,29 @@
+{
+  "snapshot_utc": "2026-10-24T14:40:19.725410+00:00",
+  "purpose": "ordinary implementation assessment; no reopened Batch A proof",
+  "ordinary_limit_bytes": 2147483648,
+  "final_reserve_bytes": 33554432,
+  "long_workload_limit_seconds": 14400,
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": {
+      "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+      "bytes": 3358
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift": {
+      "sha256": "d68702cd43fc9aee3891cb585b3398c5e0b87290b077b1bc1c6f6ad68acf457e",
+      "bytes": 7290
+    },
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift": {
+      "sha256": "2b9469c68fda07c6fa15e56a873b2946ca3377c7be709415212fb9ba33f2ff0d",
+      "bytes": 6031
+    },
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift": {
+      "sha256": "b7502debf7770fa3eaf6e5d2a8d7b89b332868a2d5b4328ed3cdce0eb0e15ddd",
+      "bytes": 10177
+    },
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift": {
+      "sha256": "574193c25323b60ac8309d4149966b23a151c38f5b1ce5eccf8d77e9409833c3",
+      "bytes": 53658
+    }
+  }
+}

@@ -51,8 +51,18 @@ package func p08CounterModel() -> Int {
             precondition(model.commit(reset) == (next != 0) && model.value == 0); checks += 1
         }
         var namespace = ObservableModelOwnerNamespace()
+        #if hasFeature(Embedded)
         var fixed = StaticObservableModelStorage<CounterOwnedModel, CounterModelSchema>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
         checks += try fixed.withLifetime { (models) throws(ObservableStateError) in try counterScopedModel(models) }
+        #else
+        var ownership = ObservableModelOwnership(identity: try namespace.issue(), captureLimit: 0)!
+        var backing: InlineArray<2, CounterOwnedModel?> = .init { _ in nil }
+        var models = backing.mutableSpan
+        checks += try withObservableModelScope(ownership: &ownership, models: &models,
+            schema: 1, needsCapture: false) { (models) throws(ObservableStateError) in
+            try counterScopedModel(models)
+        }
+        #endif
         #if !hasFeature(Embedded)
         let dynamic = DynamicObservableModelStorage<CounterOwnedModel, CounterModelSchema>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
         checks += try dynamic.withLifetime { (models) throws(ObservableStateError) in try counterScopedModel(models) }

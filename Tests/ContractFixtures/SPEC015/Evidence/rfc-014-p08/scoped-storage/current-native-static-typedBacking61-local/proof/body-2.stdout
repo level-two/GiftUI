@@ -1,0 +1,590 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-z7a2tnlz/P08ScopedHostProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000640 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF>:
+     640:      	stp	x28, x27, [sp, #-0x60]!
+     644:      	stp	x26, x25, [sp, #0x10]
+     648:      	stp	x24, x23, [sp, #0x20]
+     64c:      	stp	x22, x21, [sp, #0x30]
+     650:      	stp	x20, x19, [sp, #0x40]
+     654:      	stp	x29, x30, [sp, #0x50]
+     658:      	add	x29, sp, #0x50
+     65c:      	sub	sp, sp, #0x370
+     660:      	adrp	x8, 0x0 <ltmp0>
+		0000000000000660:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+     664:      	ldr	x8, [x8]
+		0000000000000664:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+     668:      	ldr	x8, [x8]
+     66c:      	stur	x8, [x29, #-0x60]
+     670:      	str	xzr, [sp, #0x10]
+     674:      	add	x8, sp, #0x138
+     678:      	mov	w0, #0x0                ; =0
+     67c:      	mov	w1, #0x2                ; =2
+     680:      	mov	w2, #0x4                ; =4
+     684:      	mov	w4, #0x0                ; =0
+     688:      	mov	w3, #0x2                ; =2
+     68c:      	bl	0x68c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x4c>
+		000000000000068c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV8identity10modelLimit05claimI003pinI007captureI0ACSgAA0dE13OwnerIdentityV_s6UInt16VA3MtcfC
+     690:      	add	x0, sp, #0x138
+     694:      	bl	0x694 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x54>
+		0000000000000694:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipVSgWOg
+     698:      	cmp	w0, #0x1
+     69c:      	b.eq	0xe80 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x840>
+     6a0:      	add	x8, sp, #0x1c
+     6a4:      	orr	x23, x8, #0x2
+     6a8:      	add	x0, sp, #0x78
+     6ac:      	add	x1, sp, #0x138
+     6b0:      	mov	w2, #0xb9               ; =185
+     6b4:      	bl	0x6b4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x74>
+		00000000000006b4:  ARM64_RELOC_BRANCH26	_memcpy
+     6b8:      	mov	x24, #0x0               ; =0
+     6bc:      	add	x25, sp, #0x50
+     6c0:      	movi.4h	v0, #0x1, lsl #8
+     6c4:      	adrp	x19, 0x0 <ltmp0>
+		00000000000006c4:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s23GiftUIHostConfiguration32MacOSStaticHostActivationFailureON
+     6c8:      	ldr	x19, [x19]
+		00000000000006c8:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s23GiftUIHostConfiguration32MacOSStaticHostActivationFailureON
+     6cc:      	str	s0, [sp, #0x1c]
+     6d0:      	adrp	x22, 0x0 <ltmp0>
+		00000000000006d0:  ARM64_RELOC_PAGE21	_$s18P08ScopedHostProbe03p08bC10ControllerSiyF8exerciseL_yy21GiftUIObservableState20ObservableModelScopeVys5UInt8VAA0aC6SchemaOGFySpySiGXEfU_ySryAHGXEfU_Tv0_r
+     6d4:      	add	x22, x22, #0x0
+		00000000000006d4:  ARM64_RELOC_PAGEOFF12	_$s18P08ScopedHostProbe03p08bC10ControllerSiyF8exerciseL_yy21GiftUIObservableState20ObservableModelScopeVys5UInt8VAA0aC6SchemaOGFySpySiGXEfU_ySryAHGXEfU_Tv0_r
+     6d8:      	mov	w27, #0x2800000         ; =41943040
+     6dc:      	mov	w28, #0x100             ; =256
+     6e0:      	adrp	x26, 0x0 <ltmp0>
+		00000000000006e0:  ARM64_RELOC_PAGE21	_$s18P08ScopedHostProbe03p08bC10ControllerSiyF8exerciseL_yy21GiftUIObservableState20ObservableModelScopeVys5UInt8VAA0aC6SchemaOGFySpySiGXEfU_ySryAHGXEfU_Tv_r
+     6e4:      	add	x26, x26, #0x0
+		00000000000006e4:  ARM64_RELOC_PAGEOFF12	_$s18P08ScopedHostProbe03p08bC10ControllerSiyF8exerciseL_yy21GiftUIObservableState20ObservableModelScopeVys5UInt8VAA0aC6SchemaOGFySpySiGXEfU_ySryAHGXEfU_Tv_r
+     6e8:      	movi.2d	v0, #0000000000000000
+     6ec:      	stp	q0, q0, [sp, #0x50]
+     6f0:      	str	xzr, [sp, #0x8]
+     6f4:      	add	x0, sp, #0x1f4
+     6f8:      	add	x1, sp, #0x78
+     6fc:      	mov	w2, #0xb9               ; =185
+     700:      	bl	0x700 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0xc0>
+		0000000000000700:  ARM64_RELOC_BRANCH26	_memcpy
+     704:      	add	x20, sp, #0x1f4
+     708:      	mov	w0, #0x0                ; =0
+     70c:      	bl	0x70c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0xcc>
+		000000000000070c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV16operationAllowed9discoveryAA0dC5ErrorOSgSb_tF
+     710:      	and	w8, w0, #0xff
+     714:      	cmp	w8, #0x12
+     718:      	b.ne	0xe60 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x820>
+     71c:      	add	x0, sp, #0x8
+     720:      	add	x1, sp, #0x38
+     724:      	mov	w2, #0x21               ; =33
+     728:      	bl	0x728 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0xe8>
+		0000000000000728:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+     72c:      	add	x0, sp, #0x50
+     730:      	add	x1, sp, #0x20
+     734:      	mov	w2, #0x21               ; =33
+     738:      	bl	0x738 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0xf8>
+		0000000000000738:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+     73c:      	ldr	x8, [sp, #0x8]
+     740:      	cbnz	x8, 0xd2c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6ec>
+     744:      	add	x0, sp, #0x10
+     748:      	sub	x1, x29, #0x78
+     74c:      	bl	0x74c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x10c>
+		000000000000074c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     750:      	ldr	x8, [sp, #0x10]
+     754:      	adds	x8, x8, #0x1
+     758:      	b.vs	0xd30 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6f0>
+     75c:      	str	x8, [sp, #0x10]
+     760:      	ldr	x8, [sp, #0x8]
+     764:      	mov	w9, #0x1                ; =1
+     768:      	strb	w9, [x25, x8]
+     76c:      	adds	x9, x8, #0x1
+     770:      	b.vs	0xd34 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6f4>
+     774:      	adds	x8, x9, #0x1
+     778:      	cset	w10, vs
+     77c:      	cmp	x24, #0x1
+     780:      	b.ne	0x794 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x154>
+     784:      	mov	w11, #0x9               ; =9
+     788:      	strb	w11, [x25, x9]
+     78c:      	tbnz	w10, #0x0, 0xdc8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x788>
+     790:      	b	0x910 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2d0>
+     794:      	mov	w11, #0x2               ; =2
+     798:      	strb	w11, [x25, x9]
+     79c:      	tbnz	w10, #0x0, 0xdcc <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x78c>
+     7a0:      	adds	x9, x8, #0x1
+     7a4:      	cset	w10, vs
+     7a8:      	cmp	x24, #0x2
+     7ac:      	b.ne	0x7d0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x190>
+     7b0:      	mov	w11, #0x9               ; =9
+     7b4:      	strb	w11, [x25, x8]
+     7b8:      	tbnz	w10, #0x0, 0xdd4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x794>
+     7bc:      	mov	w8, #0xa                ; =10
+     7c0:      	strb	w8, [x25, x9]
+     7c4:      	adds	x8, x9, #0x1
+     7c8:      	b.vs	0xdd8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x798>
+     7cc:      	b	0x910 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2d0>
+     7d0:      	mov	w11, #0x3               ; =3
+     7d4:      	strb	w11, [x25, x8]
+     7d8:      	tbnz	w10, #0x0, 0xdd0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x790>
+     7dc:      	adds	x8, x9, #0x1
+     7e0:      	cset	w10, vs
+     7e4:      	cmp	x24, #0x3
+     7e8:      	b.ne	0x804 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x1c4>
+     7ec:      	mov	w11, #0x9               ; =9
+     7f0:      	strb	w11, [x25, x9]
+     7f4:      	tbnz	w10, #0x0, 0xddc <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x79c>
+     7f8:      	bl	0x7f8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x1b8>
+		00000000000007f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_25
+     7fc:      	b.vs	0xde4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7a4>
+     800:      	b	0x910 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2d0>
+     804:      	mov	w11, #0x4               ; =4
+     808:      	strb	w11, [x25, x9]
+     80c:      	tbnz	w10, #0x0, 0xde0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7a0>
+     810:      	adds	x9, x8, #0x1
+     814:      	cset	w10, vs
+     818:      	cmp	x24, #0x4
+     81c:      	b.ne	0x840 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x200>
+     820:      	mov	w11, #0x9               ; =9
+     824:      	strb	w11, [x25, x8]
+     828:      	tbnz	w10, #0x0, 0xdec <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7ac>
+     82c:      	mov	w8, #0xa                ; =10
+     830:      	strb	w8, [x25, x9]
+     834:      	adds	x8, x9, #0x1
+     838:      	b.vs	0xdf0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7b0>
+     83c:      	b	0x910 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2d0>
+     840:      	mov	w11, #0x5               ; =5
+     844:      	strb	w11, [x25, x8]
+     848:      	tbnz	w10, #0x0, 0xde8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7a8>
+     84c:      	adds	x10, x9, #0x1
+     850:      	cset	w8, vs
+     854:      	cmp	x24, #0x5
+     858:      	b.ne	0x884 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x244>
+     85c:      	mov	w11, #0x8               ; =8
+     860:      	strb	w11, [x25, x9]
+     864:      	tbnz	w8, #0x0, 0xdf4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7b4>
+     868:      	mov	w8, #0x9                ; =9
+     86c:      	strb	w8, [x25, x10]
+     870:      	adds	x8, x10, #0x1
+     874:      	b.vs	0xdfc <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7bc>
+     878:      	bl	0x878 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x238>
+		0000000000000878:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_25
+     87c:      	b.vs	0xe00 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7c0>
+     880:      	b	0x910 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2d0>
+     884:      	mov	w11, #0x6               ; =6
+     888:      	strb	w11, [x25, x9]
+     88c:      	tbnz	w8, #0x0, 0xdf8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7b8>
+     890:      	adds	x8, x10, #0x1
+     894:      	cset	w9, vs
+     898:      	cmp	x24, #0x6
+     89c:      	b.ne	0x8c8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x288>
+     8a0:      	mov	w11, #0x8               ; =8
+     8a4:      	strb	w11, [x25, x10]
+     8a8:      	tbnz	w9, #0x0, 0xe08 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7c8>
+     8ac:      	mov	w9, #0x9                ; =9
+     8b0:      	strb	w9, [x25, x8]
+     8b4:      	adds	x8, x8, #0x1
+     8b8:      	b.vs	0xe0c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7cc>
+     8bc:      	bl	0x8bc <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x27c>
+		00000000000008bc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_25
+     8c0:      	b.vs	0xe10 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7d0>
+     8c4:      	b	0x910 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2d0>
+     8c8:      	mov	w11, #0x7               ; =7
+     8cc:      	strb	w11, [x25, x10]
+     8d0:      	tbnz	w9, #0x0, 0xe04 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7c4>
+     8d4:      	str	x8, [sp, #0x8]
+     8d8:      	tst	w24, #0xff
+     8dc:      	b.eq	0xc04 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x5c4>
+     8e0:      	cmp	w24, #0x7
+     8e4:      	b.ne	0xcd0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x690>
+     8e8:      	mov	w9, #0x8                ; =8
+     8ec:      	strb	w9, [x25, x8]
+     8f0:      	adds	x8, x8, #0x1
+     8f4:      	b.vs	0xe14 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7d4>
+     8f8:      	mov	w9, #0x9                ; =9
+     8fc:      	strb	w9, [x25, x8]
+     900:      	adds	x8, x8, #0x1
+     904:      	b.vs	0xe1c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7dc>
+     908:      	bl	0x908 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2c8>
+		0000000000000908:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_25
+     90c:      	b.vs	0xe24 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7e4>
+     910:      	str	x8, [sp, #0x8]
+     914:      	mov	w20, #0x1               ; =1
+     918:      	mov	w8, #0xb                ; =11
+     91c:      	movk	w8, #0x1580, lsl #16
+     920:      	stur	x8, [x29, #-0x88]
+     924:      	stur	wzr, [x29, #-0x80]
+     928:      	mov	w8, #0xb                ; =11
+     92c:      	movk	w8, #0x1580, lsl #16
+     930:      	stur	x8, [x29, #-0x98]
+     934:      	bl	0x934 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2f4>
+		0000000000000934:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_43
+     938:      	bl	0x938 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2f8>
+		0000000000000938:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_14
+     93c:      	tbz	w0, #0x0, 0xd38 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6f8>
+     940:      	cbz	w20, 0xd3c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6fc>
+     944:      	cmp	x24, #0x5
+     948:      	adrp	x8, 0x0 <ltmp0>
+		0000000000000948:  ARM64_RELOC_PAGE21	_$s18P08ScopedHostProbe03p08bC10ControllerSiyF8exerciseL_yy21GiftUIObservableState20ObservableModelScopeVys5UInt8VAA0aC6SchemaOGFySpySiGXEfU_ySryAHGXEfU_Tv1_r
+     94c:      	add	x8, x8, #0x0
+		000000000000094c:  ARM64_RELOC_PAGEOFF12	_$s18P08ScopedHostProbe03p08bC10ControllerSiyF8exerciseL_yy21GiftUIObservableState20ObservableModelScopeVys5UInt8VAA0aC6SchemaOGFySpySiGXEfU_ySryAHGXEfU_Tv1_r
+     950:      	csel	x8, x22, x8, lo
+     954:      	cmp	x24, #0x1
+     958:      	csel	x20, x26, x8, eq
+     95c:      	ldr	x21, [x20, #0x10]
+     960:      	adds	x8, x24, x21
+     964:      	b.vs	0xd40 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x700>
+     968:      	ldr	x9, [sp, #0x8]
+     96c:      	cmp	x9, x8
+     970:      	b.ne	0xd44 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x704>
+     974:      	add	x0, sp, #0x10
+     978:      	sub	x1, x29, #0xb0
+     97c:      	bl	0x97c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x33c>
+		000000000000097c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     980:      	mov	x10, #0x0               ; =0
+     984:      	ldr	x9, [sp, #0x10]
+     988:      	eor	x8, x9, #0x7fffffffffffffff
+     98c:      	add	x9, x9, #0x1
+     990:      	cmp	x10, #0xff
+     994:      	b.eq	0xd14 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6d4>
+     998:      	add	x11, x10, #0x1
+     99c:      	ldrb	w12, [x25, x10]
+     9a0:      	cmp	w12, w11, uxtb
+     9a4:      	b.ne	0xd18 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6d8>
+     9a8:      	cmp	x8, x10
+     9ac:      	b.eq	0xd1c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6dc>
+     9b0:      	str	x9, [sp, #0x10]
+     9b4:      	add	x9, x9, #0x1
+     9b8:      	mov	x10, x11
+     9bc:      	cmp	x24, x11
+     9c0:      	b.ne	0x990 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x350>
+     9c4:      	cbz	x21, 0xa1c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x3dc>
+     9c8:      	add	x0, sp, #0x10
+     9cc:      	sub	x1, x29, #0xc8
+     9d0:      	bl	0x9d0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x390>
+		00000000000009d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     9d4:      	mov	x8, #0x0                ; =0
+     9d8:      	ldr	x10, [sp, #0x10]
+     9dc:      	eor	x9, x10, #0x7fffffffffffffff
+     9e0:      	add	x10, x10, #0x1
+     9e4:      	adds	x11, x24, x8
+     9e8:      	b.vs	0xd20 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6e0>
+     9ec:      	add	x12, x20, x8
+     9f0:      	ldrb	w12, [x12, #0x20]
+     9f4:      	ldrb	w11, [x25, x11]
+     9f8:      	cmp	w11, w12
+     9fc:      	b.ne	0xd24 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6e4>
+     a00:      	cmp	x9, x8
+     a04:      	b.eq	0xd28 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6e8>
+     a08:      	add	x8, x8, #0x1
+     a0c:      	str	x10, [sp, #0x10]
+     a10:      	add	x10, x10, #0x1
+     a14:      	cmp	x21, x8
+     a18:      	b.ne	0x9e4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x3a4>
+     a1c:      	mov	x0, x20
+     a20:      	bl	0xa20 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x3e0>
+		0000000000000a20:  ARM64_RELOC_BRANCH26	_swift_bridgeObjectRelease
+     a24:      	add	x0, sp, #0x10
+     a28:      	sub	x1, x29, #0xe0
+     a2c:      	bl	0xa2c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x3ec>
+		0000000000000a2c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     a30:      	ldr	x8, [sp, #0x10]
+     a34:      	adds	x8, x8, #0x2
+     a38:      	b.vs	0xd48 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x708>
+     a3c:      	str	x8, [sp, #0x10]
+     a40:      	ldr	x20, [sp, #0x8]
+     a44:      	stur	x27, [x29, #-0x88]
+     a48:      	stur	wzr, [x29, #-0x80]
+     a4c:      	stur	x27, [x29, #-0x98]
+     a50:      	bl	0xa50 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x410>
+		0000000000000a50:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_43
+     a54:      	bl	0xa54 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x414>
+		0000000000000a54:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_14
+     a58:      	tbz	w0, #0x0, 0xd4c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x70c>
+     a5c:      	ldr	x8, [sp, #0x8]
+     a60:      	cmp	x8, x20
+     a64:      	b.ne	0xd50 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x710>
+     a68:      	add	x0, sp, #0x10
+     a6c:      	sub	x1, x29, #0xf8
+     a70:      	bl	0xa70 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x430>
+		0000000000000a70:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     a74:      	ldr	x8, [sp, #0x10]
+     a78:      	adds	x8, x8, #0x2
+     a7c:      	b.vs	0xd54 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x714>
+     a80:      	str	x8, [sp, #0x10]
+     a84:      	ldr	x9, [sp, #0x8]
+     a88:      	mov	w10, #0xb               ; =11
+     a8c:      	bl	0xa8c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x44c>
+		0000000000000a8c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+     a90:      	b.vs	0xd58 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x718>
+     a94:      	mov	w10, #0xc               ; =12
+     a98:      	bl	0xa98 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x458>
+		0000000000000a98:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+     a9c:      	b.vs	0xd5c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x71c>
+     aa0:      	mov	w10, #0xd               ; =13
+     aa4:      	bl	0xaa4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x464>
+		0000000000000aa4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+     aa8:      	b.vs	0xd60 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x720>
+     aac:      	mov	w10, #0xe               ; =14
+     ab0:      	bl	0xab0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x470>
+		0000000000000ab0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+     ab4:      	b.vs	0xd64 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x724>
+     ab8:      	mov	w10, #0xf               ; =15
+     abc:      	bl	0xabc <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x47c>
+		0000000000000abc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+     ac0:      	b.vs	0xd68 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x728>
+     ac4:      	mov	w10, #0x10              ; =16
+     ac8:      	bl	0xac8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x488>
+		0000000000000ac8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+     acc:      	b.vs	0xd6c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x72c>
+     ad0:      	mov	w10, #0x11              ; =17
+     ad4:      	bl	0xad4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x494>
+		0000000000000ad4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+     ad8:      	b.vs	0xd70 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x730>
+     adc:      	mov	w10, #0x12              ; =18
+     ae0:      	bl	0xae0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x4a0>
+		0000000000000ae0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+     ae4:      	b.vs	0xd74 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x734>
+     ae8:      	str	x9, [sp, #0x8]
+     aec:      	adds	x10, x20, #0x8
+     af0:      	b.vs	0xd78 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x738>
+     af4:      	cmp	x9, x10
+     af8:      	b.ne	0xd7c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x73c>
+     afc:      	adds	x9, x8, #0x3
+     b00:      	b.vs	0xd80 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x740>
+     b04:      	add	x8, x25, x20
+     b08:      	ldrb	w10, [x8]
+     b0c:      	cmp	w10, #0xb
+     b10:      	b.ne	0xd84 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x744>
+     b14:      	adds	x9, x9, #0x1
+     b18:      	b.vs	0xd88 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x748>
+     b1c:      	ldrb	w10, [x8, #0x1]
+     b20:      	cmp	w10, #0xc
+     b24:      	b.ne	0xd8c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x74c>
+     b28:      	adds	x9, x9, #0x1
+     b2c:      	b.vs	0xd90 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x750>
+     b30:      	ldrb	w10, [x8, #0x2]
+     b34:      	cmp	w10, #0xd
+     b38:      	b.ne	0xd94 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x754>
+     b3c:      	adds	x9, x9, #0x1
+     b40:      	b.vs	0xd98 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x758>
+     b44:      	ldrb	w10, [x8, #0x3]
+     b48:      	cmp	w10, #0xe
+     b4c:      	b.ne	0xd9c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x75c>
+     b50:      	adds	x9, x9, #0x1
+     b54:      	b.vs	0xda0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x760>
+     b58:      	ldrb	w10, [x8, #0x4]
+     b5c:      	cmp	w10, #0xf
+     b60:      	b.ne	0xda4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x764>
+     b64:      	adds	x9, x9, #0x1
+     b68:      	b.vs	0xda8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x768>
+     b6c:      	ldrb	w10, [x8, #0x5]
+     b70:      	cmp	w10, #0x10
+     b74:      	b.ne	0xdac <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x76c>
+     b78:      	adds	x9, x9, #0x1
+     b7c:      	b.vs	0xdb0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x770>
+     b80:      	ldrb	w10, [x8, #0x6]
+     b84:      	cmp	w10, #0x11
+     b88:      	b.ne	0xdb4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x774>
+     b8c:      	adds	x9, x9, #0x1
+     b90:      	b.vs	0xdb8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x778>
+     b94:      	ldrb	w8, [x8, #0x7]
+     b98:      	cmp	w8, #0x12
+     b9c:      	b.ne	0xdbc <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x77c>
+     ba0:      	adds	x8, x9, #0x1
+     ba4:      	b.vs	0xdc0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x780>
+     ba8:      	adds	x8, x8, #0x1
+     bac:      	b.vs	0xdc4 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x784>
+     bb0:      	str	x8, [sp, #0x10]
+     bb4:      	add	x0, sp, #0x20
+     bb8:      	bl	0xbb8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x578>
+		0000000000000bb8:  ARM64_RELOC_BRANCH26	_swift_endAccess
+     bbc:      	add	x0, sp, #0x38
+     bc0:      	bl	0xbc0 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x580>
+		0000000000000bc0:  ARM64_RELOC_BRANCH26	_swift_endAccess
+     bc4:      	add	x20, sp, #0x78
+     bc8:      	bl	0xbc8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x588>
+		0000000000000bc8:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV16finishActivations5UInt8VyF
+     bcc:      	mov	w9, #0x0                ; =0
+     bd0:      	add	x10, sp, #0x1c
+     bd4:      	and	w8, w0, #0xff
+     bd8:      	mov	x11, x9
+     bdc:      	lsr	w9, w8, w9
+     be0:      	tbz	w9, #0x0, 0xbe8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x5a8>
+     be4:      	strh	w28, [x10]
+     be8:      	mov	w9, #0x1                ; =1
+     bec:      	mov	x10, x23
+     bf0:      	tbz	w11, #0x0, 0xbd8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x598>
+     bf4:      	cmp	x24, #0x7
+     bf8:      	add	x24, x24, #0x1
+     bfc:      	b.ne	0x6e8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0xa8>
+     c00:      	b	0xcdc <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x69c>
+     c04:      	mov	w8, #0x3fff000          ; =67104768
+     c08:      	stur	x8, [x29, #-0x88]
+     c0c:      	stur	wzr, [x29, #-0x80]
+     c10:      	stur	x8, [x29, #-0x98]
+     c14:      	bl	0xc14 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x5d4>
+		0000000000000c14:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_43
+     c18:      	bl	0xc18 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x5d8>
+		0000000000000c18:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_14
+     c1c:      	tbz	w0, #0x0, 0xe18 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7d8>
+     c20:      	ldr	x8, [sp, #0x8]
+     c24:      	cmp	x8, #0x7
+     c28:      	b.ne	0xe20 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7e0>
+     c2c:      	add	x0, sp, #0x10
+     c30:      	add	x1, sp, #0x2b0
+     c34:      	bl	0xc34 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x5f4>
+		0000000000000c34:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_9
+     c38:      	ldrb	w8, [sp, #0x50]
+     c3c:      	cmp	w8, #0x1
+     c40:      	b.ne	0xe28 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7e8>
+     c44:      	ldr	x8, [sp, #0x10]
+     c48:      	adds	x8, x8, #0x1
+     c4c:      	b.vs	0xe2c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7ec>
+     c50:      	ldrb	w9, [sp, #0x51]
+     c54:      	cmp	w9, #0x2
+     c58:      	b.ne	0xe30 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7f0>
+     c5c:      	adds	x8, x8, #0x1
+     c60:      	b.vs	0xe34 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7f4>
+     c64:      	ldrb	w9, [sp, #0x52]
+     c68:      	cmp	w9, #0x3
+     c6c:      	b.ne	0xe38 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7f8>
+     c70:      	adds	x8, x8, #0x1
+     c74:      	b.vs	0xe3c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x7fc>
+     c78:      	ldrb	w9, [sp, #0x53]
+     c7c:      	cmp	w9, #0x4
+     c80:      	b.ne	0xe40 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x800>
+     c84:      	adds	x8, x8, #0x1
+     c88:      	b.vs	0xe44 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x804>
+     c8c:      	ldrb	w9, [sp, #0x54]
+     c90:      	cmp	w9, #0x5
+     c94:      	b.ne	0xe48 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x808>
+     c98:      	adds	x8, x8, #0x1
+     c9c:      	b.vs	0xe4c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x80c>
+     ca0:      	ldrb	w9, [sp, #0x55]
+     ca4:      	cmp	w9, #0x6
+     ca8:      	b.ne	0xe50 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x810>
+     cac:      	adds	x8, x8, #0x1
+     cb0:      	b.vs	0xe54 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x814>
+     cb4:      	ldrb	w9, [sp, #0x56]
+     cb8:      	cmp	w9, #0x7
+     cbc:      	b.ne	0xe58 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x818>
+     cc0:      	adds	x8, x8, #0x1
+     cc4:      	b.vs	0xe5c <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x81c>
+     cc8:      	str	x8, [sp, #0x10]
+     ccc:      	b	0xa24 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x3e4>
+     cd0:      	mov	w20, #0x0               ; =0
+     cd4:      	mov	w8, #0x3fff000          ; =67104768
+     cd8:      	b	0x920 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x2e0>
+     cdc:      	add	x0, sp, #0x10
+     ce0:      	add	x1, sp, #0x78
+     ce4:      	mov	x2, #0x0                ; =0
+     ce8:      	bl	0xce8 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6a8>
+		0000000000000ce8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+     cec:      	ldr	x0, [sp, #0x10]
+     cf0:      	ldur	x8, [x29, #-0x60]
+     cf4:      	adrp	x9, 0x0 <ltmp0>
+		0000000000000cf4:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+     cf8:      	ldr	x9, [x9]
+		0000000000000cf8:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+     cfc:      	ldr	x9, [x9]
+     d00:      	cmp	x9, x8
+     d04:      	b.ne	0xe84 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x844>
+     d08:      	add	sp, sp, #0x370
+     d0c:      	ldp	x29, x30, [sp, #0x50]
+     d10:      	b	0xd10 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x6d0>
+		0000000000000d10:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_31
+     d14:      	brk	#0x1
+     d18:      	brk	#0x1
+     d1c:      	brk	#0x1
+     d20:      	brk	#0x1
+     d24:      	brk	#0x1
+     d28:      	brk	#0x1
+     d2c:      	brk	#0x1
+     d30:      	brk	#0x1
+     d34:      	brk	#0x1
+     d38:      	brk	#0x1
+     d3c:      	brk	#0x1
+     d40:      	brk	#0x1
+     d44:      	brk	#0x1
+     d48:      	brk	#0x1
+     d4c:      	brk	#0x1
+     d50:      	brk	#0x1
+     d54:      	brk	#0x1
+     d58:      	brk	#0x1
+     d5c:      	brk	#0x1
+     d60:      	brk	#0x1
+     d64:      	brk	#0x1
+     d68:      	brk	#0x1
+     d6c:      	brk	#0x1
+     d70:      	brk	#0x1
+     d74:      	brk	#0x1
+     d78:      	brk	#0x1
+     d7c:      	brk	#0x1
+     d80:      	brk	#0x1
+     d84:      	brk	#0x1
+     d88:      	brk	#0x1
+     d8c:      	brk	#0x1
+     d90:      	brk	#0x1
+     d94:      	brk	#0x1
+     d98:      	brk	#0x1
+     d9c:      	brk	#0x1
+     da0:      	brk	#0x1
+     da4:      	brk	#0x1
+     da8:      	brk	#0x1
+     dac:      	brk	#0x1
+     db0:      	brk	#0x1
+     db4:      	brk	#0x1
+     db8:      	brk	#0x1
+     dbc:      	brk	#0x1
+     dc0:      	brk	#0x1
+     dc4:      	brk	#0x1
+     dc8:      	brk	#0x1
+     dcc:      	brk	#0x1
+     dd0:      	brk	#0x1
+     dd4:      	brk	#0x1
+     dd8:      	brk	#0x1
+     ddc:      	brk	#0x1
+     de0:      	brk	#0x1
+     de4:      	brk	#0x1
+     de8:      	brk	#0x1
+     dec:      	brk	#0x1
+     df0:      	brk	#0x1
+     df4:      	brk	#0x1
+     df8:      	brk	#0x1
+     dfc:      	brk	#0x1
+     e00:      	brk	#0x1
+     e04:      	brk	#0x1
+     e08:      	brk	#0x1
+     e0c:      	brk	#0x1
+     e10:      	brk	#0x1
+     e14:      	brk	#0x1
+     e18:      	brk	#0x1
+     e1c:      	brk	#0x1
+     e20:      	brk	#0x1
+     e24:      	brk	#0x1
+     e28:      	brk	#0x1
+     e2c:      	brk	#0x1
+     e30:      	brk	#0x1
+     e34:      	brk	#0x1
+     e38:      	brk	#0x1
+     e3c:      	brk	#0x1
+     e40:      	brk	#0x1
+     e44:      	brk	#0x1
+     e48:      	brk	#0x1
+     e4c:      	brk	#0x1
+     e50:      	brk	#0x1
+     e54:      	brk	#0x1
+     e58:      	brk	#0x1
+     e5c:      	brk	#0x1
+     e60:      	strb	w0, [sp, #0x38]
+     e64:      	bl	0xe64 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x824>
+		0000000000000e64:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+     e68:      	mov	x2, x0
+     e6c:      	adrp	x1, 0x0 <ltmp0>
+		0000000000000e6c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+     e70:      	ldr	x1, [x1]
+		0000000000000e70:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+     e74:      	add	x0, sp, #0x38
+     e78:      	bl	0xe78 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x838>
+		0000000000000e78:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+     e7c:      	brk	#0x1
+     e80:      	brk	#0x1
+     e84:      	bl	0xe84 <_$s18P08ScopedHostProbe03p08bC10ControllerSiyF+0x844>
+		0000000000000e84:  ARM64_RELOC_BRANCH26	___stack_chk_fail

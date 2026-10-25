@@ -1,0 +1,24 @@
+{
+  "authority": "Human-approved typed-backing direction; matching focused runtime only under ordinary 4-hour/2GiB/32MiB guard; full awaits actual compiled gate",
+  "start_utc": "2026-10-24T14:45:57.512979+00:00",
+  "deadline_utc": "2026-10-24T18:45:57.512979+00:00",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-7gj3vxnl",
+    "--fresh-focused",
+    "--select-family",
+    "runtime",
+    "--static-resource-entry-v1"
+  ],
+  "guard_armed_before_spawn": true,
+  "output_limit": 2147483648,
+  "reserve": 33554432,
+  "initial_retained_bytes": 25392100,
+  "frozen_inputs_verified": 5
+}

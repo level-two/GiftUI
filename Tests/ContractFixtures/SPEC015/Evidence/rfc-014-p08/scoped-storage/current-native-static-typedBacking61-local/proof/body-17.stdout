@@ -1,0 +1,8 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000003ba0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfcfA3_>:
+    3ba0:      	b	0x3ba0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfcfA3_>
+		0000000000003ba0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_678

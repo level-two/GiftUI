@@ -1,0 +1,100 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000003ba8 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC>:
+    3ba8:      	mov	x7, x30
+    3bac:      	bl	0x3bac <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x4>
+		0000000000003bac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_409
+    3bb0:      	mov	x30, x7
+    3bb4:      	stp	x29, x30, [sp, #0x50]
+    3bb8:      	add	x29, sp, #0x50
+    3bbc:      	sub	sp, sp, #0xa80
+    3bc0:      	mov	x21, x6
+    3bc4:      	mov	x22, x5
+    3bc8:      	mov	x23, x4
+    3bcc:      	mov	x24, x3
+    3bd0:      	mov	x25, x2
+    3bd4:      	mov	x20, x1
+    3bd8:      	mov	x26, x0
+    3bdc:      	mov	x19, x8
+    3be0:      	bl	0x3be0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x38>
+		0000000000003be0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_72
+    3be4:      	stur	x8, [x29, #-0x58]
+    3be8:      	add	x0, sp, #0x9aa
+    3bec:      	bl	0x3bec <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x44>
+		0000000000003bec:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+    3bf0:      	add	x27, sp, #0x6a8
+    3bf4:      	add	x0, sp, #0x6a8
+    3bf8:      	add	x1, sp, #0x9aa
+    3bfc:      	bl	0x3bfc <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x54>
+		0000000000003bfc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_230
+    3c00:      	add	x0, x27, #0xce
+    3c04:      	add	x1, sp, #0x9aa
+    3c08:      	bl	0x3c08 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x60>
+		0000000000003c08:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_230
+    3c0c:      	add	x8, sp, #0x844
+    3c10:      	bl	0x3c10 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x68>
+		0000000000003c10:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC11RootControlVACycfC
+    3c14:      	and	w8, w21, #0xff0000
+    3c18:      	and	w25, w25, #0x1
+    3c1c:      	cmp	w8, #0x10, lsl #12      ; =0x10000
+    3c20:      	csel	w4, w25, w21, eq
+    3c24:      	add	x8, sp, #0x8f0
+    3c28:      	mov	x0, x26
+    3c2c:      	mov	x1, x24
+    3c30:      	mov	x2, x23
+    3c34:      	mov	x3, x22
+    3c38:      	bl	0x3c38 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x90>
+		0000000000003c38:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV8identity10modelLimit05claimI003pinI007captureI0ACSgAA0dE13OwnerIdentityV_s6UInt16VA3MtcfC
+    3c3c:      	add	x0, sp, #0x8f0
+    3c40:      	bl	0x3c40 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x98>
+		0000000000003c40:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipVSgWOg
+    3c44:      	cmp	w0, #0x1
+    3c48:      	b.ne	0x3c58 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0xb0>
+    3c4c:      	add	x0, sp, #0x358
+    3c50:      	bl	0x3c50 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0xa8>
+		0000000000003c50:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe0B17StaticRootStorageVSgWOi0_
+    3c54:      	b	0x3cac <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x104>
+    3c58:      	bl	0x3c58 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0xb0>
+		0000000000003c58:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_980
+    3c5c:      	add	x1, sp, #0x8f0
+    3c60:      	bl	0x3c60 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0xb8>
+		0000000000003c60:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_432
+    3c64:      	add	x0, x21, #0x100
+    3c68:      	add	x1, sp, #0x6a8
+    3c6c:      	bl	0x3c6c <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0xc4>
+		0000000000003c6c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_680
+    3c70:      	add	x0, x21, #0x29c
+    3c74:      	add	x1, sp, #0x844
+    3c78:      	bl	0x3c78 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0xd0>
+		0000000000003c78:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_679
+    3c7c:      	stp	xzr, xzr, [sp, #0xc8]
+    3c80:      	mov	w8, #0x1                ; =1
+    3c84:      	stp	xzr, x8, [sp, #0xd8]
+    3c88:      	stp	xzr, xzr, [sp, #0xe8]
+    3c8c:      	stp	xzr, x8, [sp, #0xf8]
+    3c90:      	strh	w20, [sp, #0x34e]
+    3c94:      	strb	w25, [sp, #0x350]
+    3c98:      	add	x0, sp, #0x8
+    3c9c:      	bl	0x3c9c <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0xf4>
+		0000000000003c9c:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe0B17StaticRootStorageVSgWOi_
+    3ca0:      	add	x0, sp, #0x358
+    3ca4:      	add	x1, sp, #0x8
+    3ca8:      	bl	0x3ca8 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x100>
+		0000000000003ca8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_865
+    3cac:      	add	x1, sp, #0x358
+    3cb0:      	mov	x0, x19
+    3cb4:      	bl	0x3cb4 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x10c>
+		0000000000003cb4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_865
+    3cb8:      	ldur	x8, [x29, #-0x58]
+    3cbc:      	bl	0x3cbc <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x114>
+		0000000000003cbc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_25
+    3cc0:      	b.ne	0x3cd0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x128>
+    3cc4:      	add	sp, sp, #0xa80
+    3cc8:      	ldp	x29, x30, [sp, #0x50]
+    3ccc:      	b	0x3ccc <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x124>
+		0000000000003ccc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_6
+    3cd0:      	bl	0x3cd0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x128>
+		0000000000003cd0:  ARM64_RELOC_BRANCH26	___stack_chk_fail

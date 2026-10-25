@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-10-09
-updated: 2026-10-13
+updated: 2026-10-24
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -18,6 +18,7 @@ related_rfcs:
   - RFC-011
   - RFC-015
 related_adrs:
+  - ADR-041
   - ADR-038
   - ADR-006
   - ADR-008
@@ -60,6 +61,13 @@ target_milestone: ITERATION-003
 ---
 
 # RFC-014: Runtime-Derived Records and Scoped Model Access
+
+**2026-10-24 Native Static construction amendment:** explicit human approval is
+recorded by [ADR-041](../adrs/adr-041-native-static-typed-model-backing.md). Only
+Native generic owning-model construction qualification changes to caller-supplied
+typed backing through the checked factory; shared operations, Embedded/Dynamic
+behavior, ownership/lifetimes and strict zero-heap/resource duties remain. Prior
+reasoning and evidence below are preserved; no P08 exit or unit waiver follows.
 
 **Approved — 2026-10-10.** Finalized under Eugene's explicit conditional
 review-and-close instruction after correcting all review findings. This document

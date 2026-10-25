@@ -1,0 +1,39 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000003c9d4 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5>:
+   3c9d4:      	stp	x22, x21, [sp, #-0x30]!
+   3c9d8:      	stp	x20, x19, [sp, #0x10]
+   3c9dc:      	stp	x29, x30, [sp, #0x20]
+   3c9e0:      	add	x29, sp, #0x20
+   3c9e4:      	mov	x19, x2
+   3c9e8:      	mov	x21, x1
+   3c9ec:      	mov	x20, x0
+   3c9f0:      	bl	0x3c9f0 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5+0x1c>
+		000000000003c9f0:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV16finishActivations5UInt8VyF
+   3c9f4:      	tbnz	x19, #0x3f, 0x3ca50 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5+0x7c>
+   3c9f8:      	cbz	x19, 0x3ca3c <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5+0x68>
+   3c9fc:      	mov	x8, #0x0                ; =0
+   3ca00:      	and	w9, w0, #0xff
+   3ca04:      	cmp	x8, #0x8
+   3ca08:      	b.hs	0x3ca30 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5+0x5c>
+   3ca0c:      	lsr	w10, w9, w8
+   3ca10:      	tbz	w10, #0x0, 0x3ca30 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5+0x5c>
+   3ca14:      	ldr	x10, [x21, x8, lsl #3]
+   3ca18:      	cbz	x10, 0x3ca2c <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5+0x58>
+   3ca1c:      	ldr	w11, [x10]
+   3ca20:      	adds	w11, w11, #0x1
+   3ca24:      	b.hs	0x3ca4c <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5+0x78>
+   3ca28:      	str	w11, [x10]
+   3ca2c:      	str	xzr, [x21, x8, lsl #3]
+   3ca30:      	add	x8, x8, #0x1
+   3ca34:      	cmp	x19, x8
+   3ca38:      	b.ne	0x3ca04 <_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe05LeaseE033_FD87C69B7F1F31FC6FF7D461BCB7639DLLV_AE0L6SchemaAGLLOTg5+0x30>
+   3ca3c:      	ldp	x29, x30, [sp, #0x20]
+   3ca40:      	ldp	x20, x19, [sp, #0x10]
+   3ca44:      	ldp	x22, x21, [sp], #0x30
+   3ca48:      	ret
+   3ca4c:      	brk	#0x1
+   3ca50:      	brk	#0x1

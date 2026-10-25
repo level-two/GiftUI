@@ -1,0 +1,12 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wo_a9okt/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000be6a8 <_OUTLINED_FUNCTION_181>:
+   be6a8:      	adrp	x8, 0xbe000 <_OUTLINED_FUNCTION_118+0xc>
+		00000000000be6a8:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   be6ac:      	ldr	x8, [x8]
+		00000000000be6ac:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   be6b0:      	ldr	x8, [x8]
+   be6b4:      	ret

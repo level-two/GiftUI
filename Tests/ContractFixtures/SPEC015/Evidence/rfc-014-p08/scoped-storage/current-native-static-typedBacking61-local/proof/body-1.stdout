@@ -1,0 +1,112 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wo_a9okt/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000a94 <_$s17P08CounterRuntime03p08B5ModelSiyF>:
+     a94:      	stp	x22, x21, [sp, #-0x30]!
+     a98:      	stp	x20, x19, [sp, #0x10]
+     a9c:      	stp	x29, x30, [sp, #0x20]
+     aa0:      	add	x29, sp, #0x20
+     aa4:      	sub	sp, sp, #0x2a0
+     aa8:      	bl	0xaa8 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x14>
+		0000000000000aa8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_181
+     aac:      	stur	x8, [x29, #-0x28]
+     ab0:      	add	x8, sp, #0x120
+     ab4:      	mov	w0, #0x0                ; =0
+     ab8:      	bl	0xab8 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x24>
+		0000000000000ab8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_294
+     abc:      	add	x0, sp, #0x120
+     ac0:      	bl	0xac0 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x2c>
+		0000000000000ac0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2076
+     ac4:      	b.eq	0xba4 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x110>
+     ac8:      	add	x0, sp, #0x64
+     acc:      	add	x1, sp, #0x120
+     ad0:      	bl	0xad0 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x3c>
+		0000000000000ad0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_812
+     ad4:      	stp	xzr, xzr, [sp, #0x20]
+     ad8:      	mov	w8, #0x1                ; =1
+     adc:      	stp	xzr, x8, [sp, #0x30]
+     ae0:      	stp	xzr, xzr, [sp, #0x40]
+     ae4:      	stp	xzr, x8, [sp, #0x50]
+     ae8:      	sub	x0, x29, #0xe4
+     aec:      	add	x1, sp, #0x120
+     af0:      	bl	0xaf0 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x5c>
+		0000000000000af0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_812
+     af4:      	sub	x20, x29, #0xe4
+     af8:      	bl	0xaf8 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x64>
+		0000000000000af8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2068
+     afc:      	bl	0xafc <_$s17P08CounterRuntime03p08B5ModelSiyF+0x68>
+		0000000000000afc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1197
+     b00:      	b.ne	0xba8 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x114>
+     b04:      	bl	0xb04 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x70>
+		0000000000000b04:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2281
+     b08:      	mov	x21, #0x0               ; =0
+     b0c:      	bl	0xb0c <_$s17P08CounterRuntime03p08B5ModelSiyF+0x78>
+		0000000000000b0c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime18counterScopedModel33_4B5DC7AD21842DC7447ED5709E92C495LLySi21GiftUIObservableState010ObservableF5ScopeVyAA0b5OwnedF0V0aB6Schema0bfT0OGAD0qP5ErrorOYKF
+     b10:      	mov	x19, x0
+     b14:      	bl	0xb14 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x80>
+		0000000000000b14:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2281
+     b18:      	bl	0xb18 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x84>
+		0000000000000b18:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17P08CounterRuntime0j5OwnedE0V_0iJ6Schema0jeM0OTg5
+     b1c:      	cbnz	x21, 0xbbc <_$s17P08CounterRuntime03p08B5ModelSiyF+0x128>
+     b20:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000b20:  ARM64_RELOC_PAGE21	_$s20GiftUIRuntimeDynamic0C22ObservableModelStorageCy17P08CounterRuntime0h5OwnedE0V0gH6Schema0heK0OGMD
+     b24:      	add	x0, x0, #0x0
+		0000000000000b24:  ARM64_RELOC_PAGEOFF12	_$s20GiftUIRuntimeDynamic0C22ObservableModelStorageCy17P08CounterRuntime0h5OwnedE0V0gH6Schema0heK0OGMD
+     b28:      	bl	0xb28 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x94>
+		0000000000000b28:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+     b2c:      	mov	w1, #0x114              ; =276
+     b30:      	bl	0xb30 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x9c>
+		0000000000000b30:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_600
+     b34:      	mov	x20, x0
+     b38:      	mov	w0, #0x1                ; =1
+     b3c:      	bl	0xb3c <_$s17P08CounterRuntime03p08B5ModelSiyF+0xa8>
+		0000000000000b3c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_293
+     b40:      	mov	w6, #0x10000            ; =65536
+     b44:      	bl	0xb44 <_$s17P08CounterRuntime03p08B5ModelSiyF+0xb0>
+		0000000000000b44:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C22ObservableModelStorageCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0dE13OwnerIdentityV_s6UInt16VSbA4QSgtcfc
+     b48:      	cbz	x0, 0xbc0 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x12c>
+     b4c:      	mov	x20, x0
+     b50:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000b50:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime03p08B5ModelSiyFSi21GiftUIObservableState010ObservableE5ScopeVyAA0b5OwnedE0V0aB6Schema0beL0OGAC0iH5ErrorOYKXEfU1_
+     b54:      	add	x0, x0, #0x0
+		0000000000000b54:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime03p08B5ModelSiyFSi21GiftUIObservableState010ObservableE5ScopeVyAA0b5OwnedE0V0aB6Schema0beL0OGAC0iH5ErrorOYKXEfU1_
+     b58:      	adrp	x2, 0x0 <ltmp0>
+		0000000000000b58:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sSiN
+     b5c:      	ldr	x2, [x2]
+		0000000000000b5c:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sSiN
+     b60:      	add	x8, sp, #0x10
+     b64:      	add	x3, sp, #0xf
+     b68:      	mov	x1, #0x0                ; =0
+     b6c:      	bl	0xb6c <_$s17P08CounterRuntime03p08B5ModelSiyF+0xd8>
+		0000000000000b6c:  ARM64_RELOC_BRANCH26	_$s20GiftUIRuntimeDynamic0C22ObservableModelStorageCAARi_zrlE12withLifetimeyqd__qd__0A17UIObservableState0dE5ScopeVyxq_GAE0dJ5ErrorOYKXEAJYKlF
+     b70:      	bl	0xb70 <_$s17P08CounterRuntime03p08B5ModelSiyF+0xdc>
+		0000000000000b70:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1337
+     b74:      	cbnz	x21, 0xbbc <_$s17P08CounterRuntime03p08B5ModelSiyF+0x128>
+     b78:      	add	x8, x19, #0x28
+     b7c:      	ldr	x9, [sp, #0x10]
+     b80:      	adds	x0, x8, x9
+     b84:      	b.vs	0xba0 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x10c>
+     b88:      	ldur	x8, [x29, #-0x28]
+     b8c:      	bl	0xb8c <_$s17P08CounterRuntime03p08B5ModelSiyF+0xf8>
+		0000000000000b8c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_59
+     b90:      	b.ne	0xbc4 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x130>
+     b94:      	add	sp, sp, #0x2a0
+     b98:      	ldp	x29, x30, [sp, #0x20]
+     b9c:      	b	0xb9c <_$s17P08CounterRuntime03p08B5ModelSiyF+0x108>
+		0000000000000b9c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_366
+     ba0:      	brk	#0x1
+     ba4:      	brk	#0x1
+     ba8:      	strb	w0, [sp, #0x10]
+     bac:      	bl	0xbac <_$s17P08CounterRuntime03p08B5ModelSiyF+0x118>
+		0000000000000bac:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+     bb0:      	bl	0xbb0 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x11c>
+		0000000000000bb0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_240
+     bb4:      	add	x0, sp, #0x10
+     bb8:      	bl	0xbb8 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x124>
+		0000000000000bb8:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+     bbc:      	brk	#0x1
+     bc0:      	brk	#0x1
+     bc4:      	bl	0xbc4 <_$s17P08CounterRuntime03p08B5ModelSiyF+0x130>
+		0000000000000bc4:  ARM64_RELOC_BRANCH26	___stack_chk_fail

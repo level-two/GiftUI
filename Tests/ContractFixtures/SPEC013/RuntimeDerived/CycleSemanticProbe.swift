@@ -39,14 +39,26 @@ private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, models
     do throws(ObservableStateError) {
         expect(root.belongs(to: models))
         var foreignNamespace = ObservableModelOwnerNamespace()
+        #if hasFeature(Embedded)
         var foreign = StaticObservableModelStorage<CycleOwnedModel, CycleModelSchema>(identity: try foreignNamespace.issue(), schema: 1, needsCapture: false)!
-        try foreign.withLifetime { (other) throws(ObservableStateError) in
+        #else
+        var ownership = ObservableModelOwnership(identity: try foreignNamespace.issue(), captureLimit: 0)!
+        var backing: InlineArray<2, CycleOwnedModel?> = .init { _ in nil }
+        #endif
+        func rejectForeign(_ other: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>) throws(ObservableStateError) {
             expect(!root.belongs(to: other))
             let rejected = semantic.expand(CycleScene<CycleDomain>(show: true), roles: CycleRoles.self, codec: CanvasSemanticPayloadCodec<CycleRoles, CycleValueTable>.self, limits: limits, binding: ObservableSemanticBodyBinding(models: other.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self))
             guard case .bindingFailure(.incompatibleAssociation) = rejected else { preconditionFailure("foreign owner accepted") }
             checks += 1
             expect(other.phase == .mutating && models.phase == .mutating)
         }
+        #if hasFeature(Embedded)
+        try foreign.withLifetime(rejectForeign)
+        #else
+        var modelSpan = backing.mutableSpan
+        try withObservableModelScope(ownership: &ownership, models: &modelSpan,
+            schema: 1, needsCapture: false, rejectForeign)
+        #endif
         for show in [true, true, false, true] {
             try models.beginFrame()
             try models.withDiscovery { () throws(ObservableStateError) in
@@ -111,7 +123,7 @@ public func giftuiP07CycleSemantic() -> Int {
     var checks = cycleStaticDrawingRollback() + cycleAdmissionBackingProbe() + cycleFactoryProbe() + cycleFactoryCapacityProbe() + cycleConfiguredLimitProbe()
     do throws(ObservableStateError) {
         var namespace = ObservableModelOwnerNamespace()
-        var storage = StaticObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
+        var storage = CycleStaticRootStorage(identity: try namespace.issue(), schema: 1, needsCapture: false)!
         let staticLayout = storage.storageLayout
         precondition(staticLayout.models == 2 && staticLayout.claims == 4 && staticLayout.pins == 2 && staticLayout.captures == 0)
         precondition(staticLayout.pinBytes == 2 * MemoryLayout<Bool>.size)

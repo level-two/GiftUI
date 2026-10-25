@@ -1,0 +1,13 @@
+{
+  "finished_utc": "2026-10-24T14:48:52.002280+00:00",
+  "exit": 0,
+  "guard": {
+    "reason": null
+  },
+  "retained_bytes": 36941818,
+  "output_candidates": [
+    ".build/contracts/p08-scoped-host-z7a2tnlz"
+  ],
+  "within_deadline": true,
+  "within_output_envelope": true
+}

@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-10-13
+updated: 2026-10-24
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -24,6 +24,7 @@ related_rfcs:
   - RFC-011
   - RFC-014
 related_adrs:
+  - ADR-041
   - ADR-039
   - ADR-034
   - ADR-005
@@ -237,6 +238,30 @@ body/draw/action, offer twice or substitute a later error. A producer that refus
 before acquisition leaves its caller responsible for staged values. Successful
 model replacement survives any later candidate/offer failure. Published semantic
 bank retirement and committed routing retirement are independent lifetimes.
+
+### Native Static typed-backed model construction — approved 2026-10-24
+
+[ADR-041](../adrs/adr-041-native-static-typed-model-backing.md) and its
+[explicit approval](../iterations/iteration-003-review/p08-native-typed-backing-approval.md)
+replace only the Native Static generic owning-model construction requirement.
+Native Static callers MUST supply stable, initialized concrete typed backing and
+separate bounded ownership bookkeeping to the existing checked scoped factory.
+Shared generic model/scoped operations, model/schema/owner/generation checks,
+refusal/error ordering and cleanup remain unchanged. The caller MUST preserve all
+backing ownership, initialization/alignment/bounds/disjointness and lifetime proofs;
+a pointer descriptor alone remains insufficient.
+
+The generic owning convenience is not the Native Static construction qualification
+contract. This amendment does not remove or newly mark public APIs unavailable.
+Embedded's existing owning path, shared scope representation and Dynamic behavior
+remain unchanged. No factory signature, compiler pin or resource bound changes.
+
+| Criterion | Required acceptance evidence |
+| --- | --- |
+| RP-TB-001 | Actual mandatory Native construction and matching component/host controls use caller-owned typed backing with the checked factory; migrate the common behavioral oracle, not its outcomes or observations. |
+| RP-TB-002 | Populated-slot destruction, invalid limits/foreign ownership, early errors, repeated activation, tickets/registration retirement and backing-last lifetime retain exact refusal/cleanup semantics; compiler copy/escape negatives remain. |
+| RP-TB-003 | Actual current callers and reached callees establish no rejected owning-convenience dependency or relocated metadata acquisition in backing setup, refusal, scoped operations or destruction. Setup and cleanup remain charged; symbol counts alone do not prove this. |
+| RP-TB-004 | Preserve generic scoped-operation and Dynamic controls, Embedded behavior and all existing strict zero-heap, workload, stack/RAM/flash and complete-path obligations. New artifacts require exact applicability; no earlier resource total transfers automatically. |
 
 ### Compiler, capability and performance contract
 

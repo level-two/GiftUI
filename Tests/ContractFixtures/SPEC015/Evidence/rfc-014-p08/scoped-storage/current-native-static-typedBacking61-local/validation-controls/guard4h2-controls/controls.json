@@ -1,0 +1,121 @@
+{
+  "finished_utc": "2026-10-25T19:32:06.109387+00:00",
+  "passed": true,
+  "cases": [
+    {
+      "case": "success",
+      "passed": true,
+      "terminal": {
+        "finished_utc": "2026-10-25T19:31:28.700297+00:00",
+        "exit": 0,
+        "launch_error": null,
+        "guard": null,
+        "last_output_sample": {
+          "bytes": 0,
+          "candidates": [],
+          "sample_utc": "2026-10-25T19:31:28.678681+00:00",
+          "scan_error": null
+        },
+        "output_sample_final": false,
+        "within_deadline": true,
+        "within_output_envelope_at_last_sample": true,
+        "scanner_still_blocked": false
+      }
+    },
+    {
+      "case": "nonzero",
+      "passed": true,
+      "terminal": {
+        "finished_utc": "2026-10-25T19:31:28.731107+00:00",
+        "exit": 7,
+        "launch_error": null,
+        "guard": null,
+        "last_output_sample": {
+          "bytes": 0,
+          "candidates": [],
+          "sample_utc": "2026-10-25T19:31:28.708681+00:00",
+          "scan_error": null
+        },
+        "output_sample_final": false,
+        "within_deadline": true,
+        "within_output_envelope_at_last_sample": true,
+        "scanner_still_blocked": false
+      }
+    },
+    {
+      "case": "launch-failure",
+      "passed": true,
+      "terminal": {
+        "finished_utc": "2026-10-25T19:31:28.741568+00:00",
+        "exit": null,
+        "launch_error": "FileNotFoundError(2, 'No such file or directory')",
+        "guard": null,
+        "last_output_sample": {
+          "bytes": 0,
+          "candidates": [],
+          "sample_utc": "2026-10-25T19:31:28.732104+00:00",
+          "scan_error": null
+        },
+        "output_sample_final": false,
+        "within_deadline": true,
+        "within_output_envelope_at_last_sample": true,
+        "scanner_still_blocked": false
+      }
+    },
+    {
+      "case": "stalled-scan-term-ignore-child",
+      "passed": true,
+      "terminal": {
+        "finished_utc": "2026-10-25T19:31:34.259781+00:00",
+        "exit": -9,
+        "launch_error": null,
+        "guard": {
+          "reason": "deadline",
+          "triggered_utc": "2026-10-25T19:31:32.743625+00:00",
+          "pid": 37383,
+          "term_remaining_seconds": 1.9991061687469482,
+          "kill_completed_utc": "2026-10-25T19:31:33.747923+00:00",
+          "completed_inside_deadline": true
+        },
+        "last_output_sample": {
+          "bytes": 0,
+          "candidates": [],
+          "sample_utc": "2026-10-25T19:31:28.742579+00:00",
+          "scan_error": null
+        },
+        "output_sample_final": false,
+        "within_deadline": true,
+        "within_output_envelope_at_last_sample": true,
+        "scanner_still_blocked": true
+      }
+    },
+    {
+      "case": "output-limit",
+      "passed": true,
+      "terminal": {
+        "finished_utc": "2026-10-25T19:32:06.106769+00:00",
+        "exit": -15,
+        "launch_error": null,
+        "guard": {
+          "reason": "output_envelope",
+          "triggered_utc": "2026-10-25T19:32:05.843730+00:00",
+          "retained_bytes": 1048576,
+          "kill_completed_utc": "2026-10-25T19:32:06.099130+00:00"
+        },
+        "last_output_sample": {
+          "bytes": 1048576,
+          "candidates": [],
+          "sample_utc": "2026-10-25T19:32:05.843716+00:00",
+          "scan_error": null
+        },
+        "output_sample_final": false,
+        "within_deadline": true,
+        "within_output_envelope_at_last_sample": false,
+        "scanner_still_blocked": false
+      }
+    }
+  ],
+  "child_pid": 37386,
+  "child_confirmation": "Direct elevated ps -p37386 returned no row/exit1 after termination. Initial sandbox ps PermissionError preserved; no guard or workload retry.",
+  "limitations": "Controlled normal OS execution only; scheduling/suspension/OS failure can delay userspace enforcement. Historical lateness cause unproved."
+}

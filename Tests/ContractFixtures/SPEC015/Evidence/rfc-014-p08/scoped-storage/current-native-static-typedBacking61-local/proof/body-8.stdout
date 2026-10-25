@@ -1,0 +1,24 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000c6c8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit17GiftUIRuntimeCore0aE16ValidationResultOyF>:
+    c6c8:      	sub	sp, sp, #0x110
+    c6cc:      	stp	x20, x19, [sp, #0xf0]
+    c6d0:      	stp	x29, x30, [sp, #0x100]
+    c6d4:      	add	x29, sp, #0x100
+    c6d8:      	mov	x0, x20
+    c6dc:      	mov	x19, x8
+    c6e0:      	bl	0xc6e0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit17GiftUIRuntimeCore0aE16ValidationResultOyF+0x18>
+		000000000000c6e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_21
+    c6e4:      	add	x8, sp, #0x4
+    c6e8:      	bl	0xc6e8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit17GiftUIRuntimeCore0aE16ValidationResultOyF+0x20>
+		000000000000c6e8:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm
+    c6ec:      	add	x1, sp, #0x4
+    c6f0:      	bl	0xc6f0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit17GiftUIRuntimeCore0aE16ValidationResultOyF+0x28>
+		000000000000c6f0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_227
+    c6f4:      	ldp	x29, x30, [sp, #0x100]
+    c6f8:      	ldp	x20, x19, [sp, #0xf0]
+    c6fc:      	b	0xc6fc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit17GiftUIRuntimeCore0aE16ValidationResultOyF+0x34>
+		000000000000c6fc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_417

@@ -1,0 +1,23 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000001107c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV17GiftUIRuntimeCore0aeF0AadEP5auditAD0aE16ValidationResultOyFTW>:
+   1107c:      	sub	sp, sp, #0x110
+   11080:      	stp	x20, x19, [sp, #0xf0]
+   11084:      	stp	x29, x30, [sp, #0x100]
+   11088:      	add	x29, sp, #0x100
+   1108c:      	mov	x19, x8
+   11090:      	add	x8, sp, #0x4
+   11094:      	bl	0x11094 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV17GiftUIRuntimeCore0aeF0AadEP5auditAD0aE16ValidationResultOyFTW+0x18>
+		0000000000011094:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit17GiftUIRuntimeCore0aE16ValidationResultOyF
+   11098:      	add	x1, sp, #0x4
+   1109c:      	mov	x0, x19
+   110a0:      	mov	w2, #0xe4               ; =228
+   110a4:      	bl	0x110a4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV17GiftUIRuntimeCore0aeF0AadEP5auditAD0aE16ValidationResultOyFTW+0x28>
+		00000000000110a4:  ARM64_RELOC_BRANCH26	_memcpy
+   110a8:      	ldp	x29, x30, [sp, #0x100]
+   110ac:      	ldp	x20, x19, [sp, #0xf0]
+   110b0:      	add	sp, sp, #0x110
+   110b4:      	ret

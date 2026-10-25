@@ -1,0 +1,39 @@
+{
+  "normalization": "For SO06 role lines only: require exactly14 whitespace fields and field11 =>; replace zero-based fields4 and8 (addresses) with <address>, keep every other field/line/order unchanged. Other lines byte-identical.",
+  "comparisons": [
+    {
+      "name": "mixed_execution_vs_focused",
+      "before_result": ".build/contracts/p08-counter-wo_a9okt/result.json",
+      "after_result": ".build/contracts/p08-counter-iher3bin/result.json",
+      "field": "execution",
+      "equal": true,
+      "before_normalized_sha256": "2cc97101a4ab66797c1a5bc3486e7b3ad212ced231f5523793b345a7bbb13508",
+      "after_normalized_sha256": "2cc97101a4ab66797c1a5bc3486e7b3ad212ced231f5523793b345a7bbb13508"
+    },
+    {
+      "name": "mixed_execution_vs_prior_full",
+      "before_result": ".build/contracts/p08-counter-98512cay/result.json",
+      "after_result": ".build/contracts/p08-counter-iher3bin/result.json",
+      "field": "execution",
+      "equal": true,
+      "before_normalized_sha256": "2cc97101a4ab66797c1a5bc3486e7b3ad212ced231f5523793b345a7bbb13508",
+      "after_normalized_sha256": "2cc97101a4ab66797c1a5bc3486e7b3ad212ced231f5523793b345a7bbb13508"
+    },
+    {
+      "name": "static_resource_log_vs_focused",
+      "before_path": ".build/contracts/p08-counter-wo_a9okt/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-iher3bin/static-resource-v1-execute.log",
+      "equal": true,
+      "before_normalized_sha256": "f0ef5dc8fbf40b95b1651a27fc89da99c5ac3a88f1b3c351e3190dd3b969a03e",
+      "after_normalized_sha256": "f0ef5dc8fbf40b95b1651a27fc89da99c5ac3a88f1b3c351e3190dd3b969a03e"
+    },
+    {
+      "name": "static_resource_log_vs_prior_full",
+      "before_path": ".build/contracts/p08-counter-98512cay/static-resource-v1-execute.log",
+      "after_path": ".build/contracts/p08-counter-iher3bin/static-resource-v1-execute.log",
+      "equal": true,
+      "before_normalized_sha256": "f0ef5dc8fbf40b95b1651a27fc89da99c5ac3a88f1b3c351e3190dd3b969a03e",
+      "after_normalized_sha256": "f0ef5dc8fbf40b95b1651a27fc89da99c5ac3a88f1b3c351e3190dd3b969a03e"
+    }
+  ]
+}

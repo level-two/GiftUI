@@ -126,6 +126,7 @@ features:
       - ADR-037
       - ADR-039
       - ADR-040
+      - ADR-041
     specs: []
     dependencies:
       - giftui-mvp-architecture

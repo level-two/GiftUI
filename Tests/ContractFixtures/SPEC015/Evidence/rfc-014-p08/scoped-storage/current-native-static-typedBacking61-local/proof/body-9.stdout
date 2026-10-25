@@ -1,0 +1,1283 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000d7dc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF>:
+    d7dc:      	mov	x2, x30
+    d7e0:      	bl	0xd7e0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x4>
+		000000000000d7e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_409
+    d7e4:      	mov	x30, x2
+    d7e8:      	stp	x29, x30, [sp, #0x50]
+    d7ec:      	add	x29, sp, #0x50
+    d7f0:      	sub	sp, sp, #0x4, lsl #12   ; =0x4000
+    d7f4:      	sub	sp, sp, #0x6f0
+    d7f8:      	str	x1, [sp, #0x328]
+    d7fc:      	str	x0, [sp, #0x320]
+    d800:      	str	x8, [sp, #0x348]
+    d804:      	bl	0xd804 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x28>
+		000000000000d804:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_72
+    d808:      	stur	x8, [x29, #-0x68]
+    d80c:      	mov	w8, #0xecf4             ; =60660
+    d810:      	add	x19, x20, x8
+    d814:      	mov	w8, #0xdc50             ; =56400
+    d818:      	add	x23, x20, x8
+    d81c:      	ldrh	w27, [x23]
+    d820:      	ldrh	w8, [x23, #0x2]
+    d824:      	str	w8, [sp, #0x330]
+    d828:      	mov	w8, #0xdc54             ; =56404
+    d82c:      	add	x0, sp, #0x4, lsl #12   ; =0x4000
+    d830:      	add	x0, x0, #0x138
+    d834:      	add	x1, x20, x8
+    d838:      	bl	0xd838 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x5c>
+		000000000000d838:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_338
+    d83c:      	ldrh	w26, [x23, #0x5a4]
+    d840:      	ldrh	w24, [x23, #0x5a6]
+    d844:      	mov	w8, #0xe1f8             ; =57848
+    d848:      	add	x0, sp, #0x3, lsl #12   ; =0x3000
+    d84c:      	add	x0, x0, #0xbe0
+    d850:      	add	x1, x20, x8
+    d854:      	mov	w2, #0x558              ; =1368
+    d858:      	bl	0xd858 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x7c>
+		000000000000d858:  ARM64_RELOC_BRANCH26	_memcpy
+    d85c:      	ldrh	w21, [x23, #0xb00]
+    d860:      	ldrh	w25, [x23, #0xb02]
+    d864:      	mov	w8, #0xe754             ; =59220
+    d868:      	add	x0, sp, #0x3, lsl #12   ; =0x3000
+    d86c:      	add	x0, x0, #0x640
+    d870:      	add	x1, x20, x8
+    d874:      	bl	0xd874 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x98>
+		000000000000d874:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_338
+    d878:      	ldrh	w8, [x19]
+    d87c:      	str	w8, [sp, #0x340]
+    d880:      	ldrh	w8, [x19, #0x2]
+    d884:      	str	w8, [sp, #0x334]
+    d888:      	mov	w8, #0xecf8             ; =60664
+    d88c:      	add	x0, sp, #0x3, lsl #12   ; =0x3000
+    d890:      	add	x0, x0, #0xa0
+    d894:      	add	x1, x20, x8
+    d898:      	bl	0xd898 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xbc>
+		000000000000d898:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_338
+    d89c:      	ldrh	w28, [x19, #0x5a4]
+    d8a0:      	ldrh	w8, [x19, #0x5a6]
+    d8a4:      	str	w8, [sp, #0x338]
+    d8a8:      	mov	w8, #0xf29c             ; =62108
+    d8ac:      	add	x0, sp, #0x2, lsl #12   ; =0x2000
+    d8b0:      	add	x0, x0, #0xb38
+    d8b4:      	add	x1, x20, x8
+    d8b8:      	mov	w2, #0x566              ; =1382
+    d8bc:      	bl	0xd8bc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xe0>
+		000000000000d8bc:  ARM64_RELOC_BRANCH26	_memcpy
+    d8c0:      	ldrh	w22, [x19, #0xb0e]
+    d8c4:      	ldr	w19, [x19, #0xb10]
+    d8c8:      	mov	w8, #0xf808             ; =63496
+    d8cc:      	add	x8, x20, x8
+    d8d0:      	bl	0xd8d0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf4>
+		000000000000d8d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_664
+    d8d4:      	mov	x0, x23
+    d8d8:      	bl	0xd8d8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xfc>
+		000000000000d8d8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_884
+    d8dc:      	b.ne	0xd8fc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x120>
+    d8e0:      	mov	w8, #0x2                ; =2
+    d8e4:      	strb	w8, [sp, #0xe6c]
+    d8e8:      	add	x0, sp, #0xe6c
+    d8ec:      	bl	0xd8ec <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x110>
+		000000000000d8ec:  ARM64_RELOC_BRANCH26	_$s17GiftUIRuntimeCore30RuntimeProfileValidationResultOWOi0_
+    d8f0:      	bl	0xd8f0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x114>
+		000000000000d8f0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_554
+    d8f4:      	add	x1, sp, #0xe6c
+    d8f8:      	b	0xdd2c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x550>
+    d8fc:      	add	x23, sp, #0xd70
+    d900:      	str	w27, [sp, #0x2dc]
+    d904:      	strh	w27, [sp, #0xe6c]
+    d908:      	ldr	w8, [sp, #0x330]
+    d90c:      	strh	w8, [sp, #0xe6e]
+    d910:      	mov	x27, x19
+    d914:      	add	x19, sp, #0xe6c
+    d918:      	add	x0, x19, #0x4
+    d91c:      	add	x1, sp, #0x4, lsl #12   ; =0x4000
+    d920:      	add	x1, x1, #0x138
+    d924:      	bl	0xd924 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x148>
+		000000000000d924:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_338
+    d928:      	str	w26, [sp, #0x2e8]
+    d92c:      	strh	w26, [sp, #0x1410]
+    d930:      	str	w24, [sp, #0x2e0]
+    d934:      	strh	w24, [sp, #0x1412]
+    d938:      	bl	0xd938 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x15c>
+		000000000000d938:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_567
+    d93c:      	str	w21, [sp, #0x2e4]
+    d940:      	strh	w21, [sp, #0x196c]
+    d944:      	str	w25, [sp, #0x2d8]
+    d948:      	strh	w25, [sp, #0x196e]
+    d94c:      	add	x0, x19, #0xb04
+    d950:      	add	x1, sp, #0x3, lsl #12   ; =0x3000
+    d954:      	add	x1, x1, #0x640
+    d958:      	bl	0xd958 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x17c>
+		000000000000d958:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_338
+    d95c:      	ldr	w8, [sp, #0x340]
+    d960:      	strh	w8, [sp, #0x1f10]
+    d964:      	ldr	w8, [sp, #0x334]
+    d968:      	strh	w8, [sp, #0x1f12]
+    d96c:      	mov	w8, #0x10a8             ; =4264
+    d970:      	add	x0, x19, x8
+    d974:      	add	x1, sp, #0x3, lsl #12   ; =0x3000
+    d978:      	add	x1, x1, #0xa0
+    d97c:      	bl	0xd97c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1a0>
+		000000000000d97c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_338
+    d980:      	str	w28, [sp, #0x2ec]
+    d984:      	strh	w28, [x23, #0x1744]
+    d988:      	ldr	w8, [sp, #0x338]
+    d98c:      	strh	w8, [x23, #0x1746]
+    d990:      	bl	0xd990 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1b4>
+		000000000000d990:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_467
+    d994:      	mov	x26, x22
+    d998:      	strh	w22, [x23, #0x1cae]
+    d99c:      	mov	x22, x27
+    d9a0:      	str	w27, [sp, #0x2a20]
+    d9a4:      	bl	0xd9a4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1c8>
+		000000000000d9a4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_616
+    d9a8:      	strh	w8, [x23, #0x1cc4]
+    d9ac:      	ldr	w8, [x20]
+    d9b0:      	str	x8, [sp, #0x288]
+    d9b4:      	ldrh	w8, [x20, #0x4]
+    d9b8:      	str	x8, [sp, #0x280]
+    d9bc:      	ldr	w8, [x20, #0x8]
+    d9c0:      	str	x8, [sp, #0x278]
+    d9c4:      	ldrh	w8, [x20, #0xc]
+    d9c8:      	str	x8, [sp, #0x270]
+    d9cc:      	ldr	w8, [x20, #0x10]
+    d9d0:      	str	w8, [sp, #0x26c]
+    d9d4:      	ldur	x8, [x20, #0x14]
+    d9d8:      	str	x8, [sp, #0x290]
+    d9dc:      	ldur	x8, [x20, #0x1c]
+    d9e0:      	str	x8, [sp, #0x2a0]
+    d9e4:      	ldrh	w8, [x20, #0x24]
+    d9e8:      	str	w8, [sp, #0x29c]
+    d9ec:      	ldrh	w8, [x20, #0x26]
+    d9f0:      	str	w8, [sp, #0x2a8]
+    d9f4:      	ldr	x8, [x20, #0x28]
+    d9f8:      	str	x8, [sp, #0x2b0]
+    d9fc:      	ldrh	w8, [x20, #0x30]
+    da00:      	str	w8, [sp, #0x2ac]
+    da04:      	ldur	w5, [x20, #0x32]
+    da08:      	ldrh	w30, [x20, #0x36]
+    da0c:      	ldrh	w21, [x20, #0x38]
+    da10:      	ldrh	w8, [x20, #0x3a]
+    da14:      	str	x8, [sp, #0x310]
+    da18:      	ldrh	w8, [x20, #0x3c]
+    da1c:      	str	x8, [sp, #0x318]
+    da20:      	ldrh	w8, [x20, #0x3e]
+    da24:      	str	x8, [sp, #0x308]
+    da28:      	ldrh	w8, [x20, #0x40]
+    da2c:      	str	w8, [sp, #0x2d4]
+    da30:      	ldrh	w8, [x20, #0x42]
+    da34:      	str	w8, [sp, #0x2d0]
+    da38:      	ldrh	w8, [x20, #0x44]
+    da3c:      	str	w8, [sp, #0x2cc]
+    da40:      	ldur	x8, [x20, #0x46]
+    da44:      	str	x8, [sp, #0x2c0]
+    da48:      	ldur	w8, [x20, #0x4e]
+    da4c:      	str	w8, [sp, #0x2bc]
+    da50:      	ldur	w3, [x20, #0x52]
+    da54:      	ldrh	w7, [x20, #0x56]
+    da58:      	ldr	w4, [x20, #0x58]
+    da5c:      	ldur	x0, [x20, #0x5c]
+    da60:      	ldur	x1, [x20, #0x64]
+    da64:      	ldrh	w2, [x20, #0x6c]
+    da68:      	ldur	w16, [x20, #0x6e]
+    da6c:      	mov	w8, #0x7                ; =7
+    da70:      	add	x9, sp, #0x820
+    da74:      	str	x8, [x9, #0x118]
+    da78:      	mov	w19, #0x3               ; =3
+    da7c:      	strb	w19, [sp, #0x940]
+    da80:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000da80:  ARM64_RELOC_PAGE21	lCPI421_1
+    da84:      	ldr	q0, [x8]
+		000000000000da84:  ARM64_RELOC_PAGEOFF12	lCPI421_1
+    da88:      	add	x9, sp, #0x938
+    da8c:      	str	q0, [x9, #0x20]
+    da90:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000da90:  ARM64_RELOC_PAGE21	lCPI421_0
+    da94:      	ldr	q0, [x8]
+		000000000000da94:  ARM64_RELOC_PAGEOFF12	lCPI421_0
+    da98:      	mov	w8, #0xc1               ; =193
+    da9c:      	str	x8, [x9, #0x30]
+    daa0:      	add	x10, sp, #0x938
+    daa4:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000daa4:  ARM64_RELOC_PAGE21	__MergedGlobals
+    daa8:      	ldr	x8, [x8]
+		000000000000daa8:  ARM64_RELOC_PAGEOFF12	__MergedGlobals
+    daac:      	ldrb	w9, [x20, #0x72]
+    dab0:      	str	w9, [sp, #0x268]
+    dab4:      	ldrh	w14, [x20, #0xf2]
+    dab8:      	ldrh	w27, [x20, #0x424]
+    dabc:      	ldrh	w28, [x20, #0x426]
+    dac0:      	ldrh	w17, [x20, #0x428]
+    dac4:      	ldrh	w6, [x20, #0x42a]
+    dac8:      	ldrh	w9, [x20, #0x42c]
+    dacc:      	str	x9, [sp, #0x2f0]
+    dad0:      	ldrh	w23, [x20, #0x42e]
+    dad4:      	ldr	w15, [x20, #0x430]
+    dad8:      	cmn	x8, #0x1
+    dadc:      	str	q0, [x10, #0x10]
+    dae0:      	b.ne	0xe7d4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xff8>
+    dae4:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dae4:  ARM64_RELOC_ADDEND	0x6
+		000000000000dae4:  ARM64_RELOC_PAGE21	_$s17RuntimeCycleProbe18cycleDrawingLimits13GiftUIDrawing0eF0Vvp
+    dae8:      	add	x8, x8, #0x0
+		000000000000dae8:  ARM64_RELOC_ADDEND	0x6
+		000000000000dae8:  ARM64_RELOC_PAGEOFF12	_$s17RuntimeCycleProbe18cycleDrawingLimits13GiftUIDrawing0eF0Vvp
+    daec:      	ldrh	w25, [x8]
+    daf0:      	ldrh	w9, [x8, #0x2]
+    daf4:      	ldrh	w10, [x8, #0x4]
+    daf8:      	ldrh	w11, [x8, #0x6]
+    dafc:      	ldrh	w12, [x8, #0x8]
+    db00:      	ldrh	w13, [x8, #0xa]
+    db04:      	mov	w8, #0x18               ; =24
+    db08:      	add	x24, sp, #0x4d8
+    db0c:      	str	x8, [x24, #0x38]
+    db10:      	strb	w19, [sp, #0x518]
+    db14:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000db14:  ARM64_RELOC_PAGE21	lCPI421_2
+    db18:      	ldr	q0, [x8]
+		000000000000db18:  ARM64_RELOC_PAGEOFF12	lCPI421_2
+    db1c:      	stur	q0, [x24, #0x48]
+    db20:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000db20:  ARM64_RELOC_PAGE21	lCPI421_3
+    db24:      	ldr	q0, [x8]
+		000000000000db24:  ARM64_RELOC_PAGEOFF12	lCPI421_3
+    db28:      	stur	q0, [x24, #0x58]
+    db2c:      	mov	w8, #0x82               ; =130
+    db30:      	str	x8, [x24, #0x68]
+    db34:      	cmp	w21, #0x62
+    db38:      	b.hi	0xdd14 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x538>
+    db3c:      	ldr	x8, [sp, #0x310]
+    db40:      	cmp	w8, #0x62
+    db44:      	ldr	x8, [sp, #0x318]
+    db48:      	ccmp	w8, #0x13, #0x2, ls
+    db4c:      	b.hi	0xdd14 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x538>
+    db50:      	ldr	x8, [sp, #0x308]
+    db54:      	cmp	w8, #0x80
+    db58:      	b.hi	0xdd14 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x538>
+    db5c:      	str	w30, [sp, #0x210]
+    db60:      	str	w7, [sp, #0x214]
+    db64:      	str	x6, [sp, #0x218]
+    db68:      	str	x5, [sp, #0x220]
+    db6c:      	str	w4, [sp, #0x22c]
+    db70:      	str	x3, [sp, #0x230]
+    db74:      	str	w2, [sp, #0x23c]
+    db78:      	str	x1, [sp, #0x240]
+    db7c:      	str	x0, [sp, #0x248]
+    db80:      	str	x17, [sp, #0x250]
+    db84:      	str	w16, [sp, #0x25c]
+    db88:      	str	x15, [sp, #0x1f0]
+    db8c:      	str	x14, [sp, #0x260]
+    db90:      	str	w13, [sp, #0x1fc]
+    db94:      	str	w12, [sp, #0x200]
+    db98:      	str	w11, [sp, #0x204]
+    db9c:      	str	w10, [sp, #0x208]
+    dba0:      	str	w9, [sp, #0x20c]
+    dba4:      	bl	0xdba4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x3c8>
+		000000000000dba4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_770
+    dba8:      	cmp	w27, #0x7e
+    dbac:      	ldr	x8, [sp, #0x2f0]
+    dbb0:      	b.hi	0xdd14 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x538>
+    dbb4:      	cmp	w28, #0x17a
+    dbb8:      	b.hi	0xdd14 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x538>
+    dbbc:      	cmp	w8, #0x62
+    dbc0:      	b.hi	0xdd14 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x538>
+    dbc4:      	cmp	w23, #0xe0
+    dbc8:      	b.hi	0xdd14 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x538>
+    dbcc:      	add	x8, x8, x8, lsl #3
+    dbd0:      	lsl	x30, x8, #2
+    dbd4:      	mov	w8, #0x1b90             ; =7056
+    dbd8:      	subs	x8, x8, x30
+    dbdc:      	b.lo	0xe854 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1078>
+    dbe0:      	adds	x8, x8, #0x700
+    dbe4:      	b.hs	0xe858 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x107c>
+    dbe8:      	lsl	x7, x23, #2
+    dbec:      	subs	x15, x8, x7
+    dbf0:      	b.lo	0xe85c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1080>
+    dbf4:      	mov	x8, #-0x16              ; =-22
+    dbf8:      	smull	x8, w28, w8
+    dbfc:      	mov	w9, #0x40f8             ; =16632
+    dc00:      	mov	w10, #0x5e8             ; =1512
+    dc04:      	sub	x10, x10, x28, lsl #1
+    dc08:      	add	x8, x8, x9
+    dc0c:      	subs	x16, x8, x10
+    dc10:      	b.lo	0xe860 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1084>
+    dc14:      	str	x23, [sp, #0x1c0]
+    dc18:      	str	x21, [sp, #0x198]
+    dc1c:      	str	w25, [sp, #0x1a4]
+    dc20:      	stp	x26, x22, [sp, #0x1a8]
+    dc24:      	add	x10, sp, #0x3c0
+    dc28:      	ldr	x8, [x10, #0x18]
+    dc2c:      	adds	x17, x8, #0x2a
+    dc30:      	b.hs	0xe864 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1088>
+    dc34:      	mov	x8, #0x0                ; =0
+    dc38:      	mov	w9, #0x7c00             ; =31744
+    dc3c:      	add	x5, x20, x9
+    dc40:      	add	x20, sp, #0xc30
+    dc44:      	add	x23, sp, #0xb60
+    dc48:      	add	x24, sp, #0xa50
+    dc4c:      	stp	x27, x28, [sp, #0x1e0]
+    dc50:      	add	x9, x27, x27, lsl #2
+    dc54:      	lsl	x6, x9, #2
+    dc58:      	add	x0, x7, x30
+    dc5c:      	add	x9, x28, x28, lsl #2
+    dc60:      	lsl	x28, x9, #2
+    dc64:      	ldr	x1, [sp, #0x3c8]
+    dc68:      	ldr	x2, [sp, #0x3d0]
+    dc6c:      	add	x3, x6, #0x64
+    dc70:      	ldr	x19, [x10, #0x20]
+    dc74:      	mov	w9, #0x13b0             ; =5040
+    dc78:      	adrp	x10, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dc78:  ARM64_RELOC_PAGE21	lCPI421_4
+    dc7c:      	ldr	q0, [x10]
+		000000000000dc7c:  ARM64_RELOC_PAGEOFF12	lCPI421_4
+    dc80:      	sub	x4, x9, x6
+    dc84:      	adrp	x9, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dc84:  ARM64_RELOC_PAGE21	lCPI421_5
+    dc88:      	ldr	q1, [x9]
+		000000000000dc88:  ARM64_RELOC_PAGEOFF12	lCPI421_5
+    dc8c:      	mov	w9, #0x5f8              ; =1528
+    dc90:      	adrp	x10, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dc90:  ARM64_RELOC_PAGE21	lCPI421_6
+    dc94:      	ldr	q2, [x10]
+		000000000000dc94:  ARM64_RELOC_PAGEOFF12	lCPI421_6
+    dc98:      	mov	w10, #0x2               ; =2
+    dc9c:      	adrp	x11, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dc9c:  ARM64_RELOC_PAGE21	lCPI421_7
+    dca0:      	ldr	q3, [x11]
+		000000000000dca0:  ARM64_RELOC_PAGEOFF12	lCPI421_7
+    dca4:      	mov	w11, #0x51              ; =81
+    dca8:      	adrp	x12, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dca8:  ARM64_RELOC_PAGE21	lCPI421_8
+    dcac:      	ldr	q4, [x12]
+		000000000000dcac:  ARM64_RELOC_PAGEOFF12	lCPI421_8
+    dcb0:      	adrp	x12, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dcb0:  ARM64_RELOC_PAGE21	lCPI421_9
+    dcb4:      	ldr	q5, [x12]
+		000000000000dcb4:  ARM64_RELOC_PAGEOFF12	lCPI421_9
+    dcb8:      	mov	w12, #0x15              ; =21
+    dcbc:      	add	x13, sp, #0xb60
+    dcc0:      	cmp	x8, #0xd0
+    dcc4:      	b.eq	0xdd5c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x580>
+    dcc8:      	stp	x28, x16, [x24, #0x110]
+    dccc:      	stp	x0, x15, [x24, #0x120]
+    dcd0:      	stp	x9, x1, [x24, #0x130]
+    dcd4:      	str	x2, [x24, #0x140]
+    dcd8:      	stur	q0, [x23, #0x38]
+    dcdc:      	stp	x10, x3, [x23, #0x48]
+    dce0:      	str	x4, [x23, #0x58]
+    dce4:      	stp	q1, q2, [x23, #0x60]
+    dce8:      	str	q3, [x23, #0x80]
+    dcec:      	stp	x11, x17, [x23, #0x90]
+    dcf0:      	str	x19, [x23, #0xa0]
+    dcf4:      	stur	q4, [x23, #0xa8]
+    dcf8:      	stur	q5, [x23, #0xb8]
+    dcfc:      	str	x12, [x23, #0xc8]
+    dd00:      	add	x14, x13, x8
+    dd04:      	ldr	w14, [x14, #0x4]
+    dd08:      	cbnz	w14, 0xe268 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xa8c>
+    dd0c:      	add	x8, x8, #0x8
+    dd10:      	b	0xdcc0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x4e4>
+    dd14:      	mov	w8, #0x3                ; =3
+    dd18:      	strb	w8, [sp, #0xc30]
+    dd1c:      	add	x0, sp, #0xc30
+    dd20:      	bl	0xdd20 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x544>
+		000000000000dd20:  ARM64_RELOC_BRANCH26	_$s17GiftUIRuntimeCore30RuntimeProfileValidationResultOWOi0_
+    dd24:      	bl	0xdd24 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x548>
+		000000000000dd24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_554
+    dd28:      	add	x1, sp, #0xc30
+    dd2c:      	bl	0xdd2c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x550>
+		000000000000dd2c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_240
+    dd30:      	ldr	x0, [sp, #0x348]
+    dd34:      	add	x1, sp, #0x2, lsl #12   ; =0x2000
+    dd38:      	add	x1, x1, #0xa38
+    dd3c:      	bl	0xdd3c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x560>
+		000000000000dd3c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_240
+    dd40:      	ldur	x8, [x29, #-0x68]
+    dd44:      	bl	0xdd44 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x568>
+		000000000000dd44:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_25
+    dd48:      	b.ne	0xe8b0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10d4>
+    dd4c:      	add	sp, sp, #0x4, lsl #12   ; =0x4000
+    dd50:      	add	sp, sp, #0x6f0
+    dd54:      	ldp	x29, x30, [sp, #0x50]
+    dd58:      	b	0xdd58 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x57c>
+		000000000000dd58:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_6
+    dd5c:      	mov	x25, x30
+    dd60:      	stp	x7, x6, [sp, #0x170]
+    dd64:      	str	x5, [sp, #0x180]
+    dd68:      	stp	q5, q4, [sp, #0xc0]
+    dd6c:      	stp	q3, q2, [sp, #0xe0]
+    dd70:      	stp	q1, q0, [sp, #0x100]
+    dd74:      	stp	x4, x3, [sp, #0x128]
+    dd78:      	stp	x2, x1, [sp, #0x138]
+    dd7c:      	stp	x0, x17, [sp, #0x148]
+    dd80:      	str	x15, [sp, #0x158]
+    dd84:      	add	x0, sp, #0xb60
+    dd88:      	str	x16, [sp, #0x1b8]
+    dd8c:      	mov	w1, #0xd0               ; =208
+    dd90:      	bl	0xdd90 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x5b4>
+		000000000000dd90:  ARM64_RELOC_BRANCH26	_bzero
+    dd94:      	strb	wzr, [sp, #0x3bf]
+    dd98:      	str	xzr, [x24, #0xa8]
+    dd9c:      	strb	wzr, [sp, #0xb00]
+    dda0:      	ldr	x26, [sp, #0x1e8]
+    dda4:      	str	x26, [x24, #0xb8]
+    dda8:      	mov	w21, #0x16              ; =22
+    ddac:      	dup.2d	v0, x21
+    ddb0:      	stur	q0, [x24, #0xc0]
+    ddb4:      	mov	w8, #0x2                ; =2
+    ddb8:      	stp	x8, x28, [x24, #0xd0]
+    ddbc:      	add	x0, sp, #0xaf8
+    ddc0:      	bl	0xddc0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x5e4>
+		000000000000ddc0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_238
+    ddc4:      	ldr	x22, [sp, #0x320]
+    ddc8:      	mov	x3, x22
+    ddcc:      	ldr	x27, [sp, #0x328]
+    ddd0:      	mov	x4, x27
+    ddd4:      	bl	0xddd4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x5f8>
+		000000000000ddd4:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe20cycleValidateBacking7profile6limits4root0I14MetadataRegion8semantic8geometry11interaction0M4Type11canvasCount0P8Capacity0P12ControlBytes07factoryK00M7Regions6report17GiftUIRuntimeCore0A23ProfileValidationResultOAQ0A11ProfileKindO_AQ0A13ProfileLimitsV0X17UIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA1_6claimsA1_4pinsA1_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si09candidateT0tAA0b7StorageK0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementV0X13UIInteraction24InteractionOwnedKeyStateVyq_q0_q1_GxmSiA1_SiA12_q2_yA12_XEtAA0B8GeometryRzA17_37InteractionOwnedBankMeasurementSourceR_AA0b9CandidateF0R_A17_A22_R0_AA0b9CommittedF0R0_A17_A22_R1_AA0b3HitF0R1_AA0b7StorageK6SourceR2_0x10UISemanticZ024SemanticCompleteIdentityV8IdentityA17_33InteractionCandidateRecordStoragePRt_A29_A30_A17_33InteractionCommittedRecordStoragePRt0_A29_A30_A17_014InteractionHitK7StoragePRt1_r3_lF6recordL_yyA12_AAA21_RzA17_A22_R_AAA23_R_A17_A22_R0_AAA24_R0_A17_A22_R1_AAA25_R1_AAA26_R2_A29_A33_RSA29_A36_RSA29_A39_RSr3_lFTf0nssn_n
+    ddd8:      	ldr	x10, [sp, #0x1b8]
+    dddc:      	mov	w8, #0x2f4              ; =756
+    dde0:      	sub	x8, x8, x26
+    dde4:      	umull	x9, w8, w21
+    dde8:      	cmp	x9, x10
+    ddec:      	b.lo	0xe868 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x108c>
+    ddf0:      	mov	w9, #0x1                ; =1
+    ddf4:      	str	x9, [x24, #0x70]
+    ddf8:      	strb	wzr, [sp, #0xac8]
+    ddfc:      	str	x8, [x24, #0x80]
+    de00:      	mov	w8, #0x16               ; =22
+    de04:      	dup.2d	v0, x8
+    de08:      	stur	q0, [x24, #0x88]
+    de0c:      	mov	w8, #0x2                ; =2
+    de10:      	stp	x8, x10, [x24, #0x98]
+    de14:      	mov	w21, #0x2               ; =2
+    de18:      	add	x0, sp, #0xac0
+    de1c:      	bl	0xde1c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x640>
+		000000000000de1c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    de20:      	str	x21, [x24, #0x38]
+    de24:      	mov	w26, #0x2               ; =2
+    de28:      	strb	wzr, [sp, #0xa90]
+    de2c:      	ldr	x21, [sp, #0x2f0]
+    de30:      	str	x21, [x24, #0x48]
+    de34:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000de34:  ARM64_RELOC_PAGE21	lCPI421_10
+    de38:      	ldr	q0, [x8]
+		000000000000de38:  ARM64_RELOC_PAGEOFF12	lCPI421_10
+    de3c:      	str	q0, [sp, #0x160]
+    de40:      	stur	q0, [x24, #0x50]
+    de44:      	mov	w8, #0x4                ; =4
+    de48:      	stp	x8, x25, [x24, #0x60]
+    de4c:      	add	x0, sp, #0xa88
+    de50:      	bl	0xde50 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x674>
+		000000000000de50:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    de54:      	add	x25, sp, #0x938
+    de58:      	str	x26, [x25, #0x118]
+    de5c:      	strb	wzr, [sp, #0xa58]
+    de60:      	ldr	x26, [sp, #0x1c0]
+    de64:      	str	x26, [x25, #0x128]
+    de68:      	mov	w8, #0x4                ; =4
+    de6c:      	dup.2d	v0, x8
+    de70:      	str	q0, [sp, #0x1d0]
+    de74:      	stur	q0, [x24, #0x18]
+    de78:      	str	x8, [x24, #0x28]
+    de7c:      	ldr	x8, [sp, #0x170]
+    de80:      	str	x8, [x24, #0x30]
+    de84:      	add	x0, sp, #0xa50
+    de88:      	bl	0xde88 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x6ac>
+		000000000000de88:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    de8c:      	mov	w8, #0xc4               ; =196
+    de90:      	sub	x8, x8, x21
+    de94:      	mov	w9, #0x3                ; =3
+    de98:      	str	x9, [x25, #0xe0]
+    de9c:      	mov	w24, #0x3               ; =3
+    dea0:      	bl	0xdea0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x6c4>
+		000000000000dea0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_611
+    dea4:      	mov	w21, #0x4               ; =4
+    dea8:      	stp	x21, x8, [x25, #0x108]
+    deac:      	add	x0, sp, #0xa18
+    deb0:      	bl	0xdeb0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x6d4>
+		000000000000deb0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    deb4:      	mov	w8, #0x1c0              ; =448
+    deb8:      	str	x24, [x25, #0xa8]
+    debc:      	bl	0xdebc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x6e0>
+		000000000000debc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_894
+    dec0:      	ldr	q0, [sp, #0x1d0]
+    dec4:      	stur	q0, [x25, #0xc0]
+    dec8:      	stp	x21, x9, [x25, #0xd0]
+    decc:      	add	x0, sp, #0x9e0
+    ded0:      	bl	0xded0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x6f4>
+		000000000000ded0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    ded4:      	str	x21, [x25, #0x70]
+    ded8:      	mov	w21, #0x4               ; =4
+    dedc:      	strb	wzr, [sp, #0x9b0]
+    dee0:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dee0:  ARM64_RELOC_PAGE21	lCPI421_11
+    dee4:      	ldr	q0, [x8]
+		000000000000dee4:  ARM64_RELOC_PAGEOFF12	lCPI421_11
+    dee8:      	mov	w24, #0x2               ; =2
+    deec:      	dup.2d	v1, x24
+    def0:      	stp	q0, q1, [x25, #0x80]
+    def4:      	mov	w8, #0x5e8              ; =1512
+    def8:      	str	x8, [x25, #0xa0]
+    defc:      	add	x0, sp, #0x9a8
+    df00:      	bl	0xdf00 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x724>
+		000000000000df00:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    df04:      	str	x21, [x25, #0x38]
+    df08:      	strb	wzr, [sp, #0x978]
+    df0c:      	ldr	q0, [sp, #0x1d0]
+    df10:      	stur	q0, [x25, #0x48]
+    df14:      	stur	q0, [x25, #0x58]
+    df18:      	mov	w8, #0x10               ; =16
+    df1c:      	str	x8, [x25, #0x68]
+    df20:      	add	x0, sp, #0x970
+    df24:      	bl	0xdf24 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x748>
+		000000000000df24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    df28:      	add	x0, sp, #0x938
+    df2c:      	bl	0xdf2c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x750>
+		000000000000df2c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    df30:      	mov	w8, #0x8                ; =8
+    df34:      	add	x26, sp, #0x820
+    df38:      	str	x8, [x26, #0xe0]
+    df3c:      	strb	wzr, [sp, #0x908]
+    df40:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000df40:  ARM64_RELOC_PAGE21	lCPI421_12
+    df44:      	ldr	q0, [x8]
+		000000000000df44:  ARM64_RELOC_PAGEOFF12	lCPI421_12
+    df48:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000df48:  ARM64_RELOC_PAGE21	lCPI421_13
+    df4c:      	ldr	q1, [x8]
+		000000000000df4c:  ARM64_RELOC_PAGEOFF12	lCPI421_13
+    df50:      	stp	q0, q1, [x26, #0xf0]
+    df54:      	mov	w8, #0x40               ; =64
+    df58:      	str	x8, [x26, #0x110]
+    df5c:      	add	x0, sp, #0x900
+    df60:      	bl	0xdf60 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x784>
+		000000000000df60:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    df64:      	mov	w8, #0x9                ; =9
+    df68:      	str	x8, [x26, #0xa8]
+    df6c:      	strb	wzr, [sp, #0x8d0]
+    df70:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000df70:  ARM64_RELOC_PAGE21	lCPI421_14
+    df74:      	ldr	q0, [x8]
+		000000000000df74:  ARM64_RELOC_PAGEOFF12	lCPI421_14
+    df78:      	str	q0, [sp, #0x1c0]
+    df7c:      	stur	q0, [x26, #0xb8]
+    df80:      	bl	0xdf80 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x7a4>
+		000000000000df80:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_938
+    df84:      	stur	q0, [x26, #0xc8]
+    df88:      	str	x24, [x26, #0xd8]
+    df8c:      	add	x0, sp, #0x8c8
+    df90:      	bl	0xdf90 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x7b4>
+		000000000000df90:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    df94:      	mov	w9, #0x2                ; =2
+    df98:      	mov	w21, #0xa               ; =10
+    df9c:      	str	x21, [x26, #0x70]
+    dfa0:      	strb	wzr, [sp, #0x898]
+    dfa4:      	ldr	x25, [sp, #0x1e0]
+    dfa8:      	str	x25, [x26, #0x80]
+    dfac:      	bl	0xdfac <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x7d0>
+		000000000000dfac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_941
+    dfb0:      	str	q0, [sp, #0x2f0]
+    dfb4:      	stur	q0, [x26, #0x88]
+    dfb8:      	ldr	x8, [sp, #0x178]
+    dfbc:      	stp	x9, x8, [x26, #0x98]
+    dfc0:      	add	x0, sp, #0x890
+    dfc4:      	bl	0xdfc4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x7e8>
+		000000000000dfc4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    dfc8:      	str	x21, [x26, #0x38]
+    dfcc:      	mov	w8, #0x3                ; =3
+    dfd0:      	strb	w8, [sp, #0x860]
+    dfd4:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dfd4:  ARM64_RELOC_PAGE21	lCPI421_15
+    dfd8:      	ldr	q0, [x8]
+		000000000000dfd8:  ARM64_RELOC_PAGEOFF12	lCPI421_15
+    dfdc:      	stur	q0, [x26, #0x48]
+    dfe0:      	adrp	x8, 0xd000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe06d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_nTm+0x900>
+		000000000000dfe0:  ARM64_RELOC_PAGE21	lCPI421_16
+    dfe4:      	ldr	q0, [x8]
+		000000000000dfe4:  ARM64_RELOC_PAGEOFF12	lCPI421_16
+    dfe8:      	stur	q0, [x26, #0x58]
+    dfec:      	str	xzr, [x26, #0x68]
+    dff0:      	add	x0, sp, #0x858
+    dff4:      	bl	0xdff4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x818>
+		000000000000dff4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    dff8:      	add	x24, sp, #0x708
+    dffc:      	str	x21, [x24, #0x118]
+    e000:      	mov	w8, #0x2                ; =2
+    e004:      	strb	w8, [sp, #0x828]
+    e008:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e008:  ARM64_RELOC_PAGE21	lCPI421_17
+    e00c:      	ldr	q0, [x8]
+		000000000000e00c:  ARM64_RELOC_PAGEOFF12	lCPI421_17
+    e010:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e010:  ARM64_RELOC_PAGE21	lCPI421_18
+    e014:      	ldr	q1, [x8]
+		000000000000e014:  ARM64_RELOC_PAGEOFF12	lCPI421_18
+    e018:      	stp	q0, q1, [x26, #0x10]
+    e01c:      	mov	w8, #0x64               ; =100
+    e020:      	str	x8, [x26, #0x30]
+    e024:      	add	x0, sp, #0x820
+    e028:      	bl	0xe028 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x84c>
+		000000000000e028:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e02c:      	mov	w8, #0xfc               ; =252
+    e030:      	sub	x8, x8, x25
+    e034:      	mov	w9, #0xb                ; =11
+    e038:      	str	x9, [x24, #0xe0]
+    e03c:      	strb	wzr, [sp, #0x7f0]
+    e040:      	add	x9, x8, x8, lsl #2
+    e044:      	str	x8, [x24, #0xf0]
+    e048:      	lsl	x8, x9, #2
+    e04c:      	ldr	q0, [sp, #0x2f0]
+    e050:      	stur	q0, [x24, #0xf8]
+    e054:      	mov	w25, #0x2               ; =2
+    e058:      	stp	x25, x8, [x24, #0x108]
+    e05c:      	add	x0, sp, #0x7e8
+    e060:      	bl	0xe060 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x884>
+		000000000000e060:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e064:      	bl	0xe064 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x888>
+		000000000000e064:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_238
+    e068:      	ldr	x0, [sp, #0x180]
+    e06c:      	mov	x3, x22
+    e070:      	mov	x4, x27
+    e074:      	bl	0xe074 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x898>
+		000000000000e074:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe0B22StaticWorkspaceBackingV19visitStorageRegionsyyyAA0bH6RegionVXEF04$s17ab427Probe20cycleValidateBacking7profile6limits4root0I14MetadataRegion8semantic8geometry11interaction0M4Type11canvasCount0P8Capacity0P12ControlBytes07factoryK00M7Regions6report17GiftUIRuntimeCore0A23ProfileValidationResultOAQ0A11ProfileKindO_AQ0A13ProfileLimitsV0X17UIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA1_6claimsA1_4pinsA1_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si09candidateT0tAA0b7h270K0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementV0X13UIInteraction24InteractionOwnedKeyStateVyq_q0_q1_GxmSiA1_SiA12_q2_yA12_XEtAA0B8GeometryRzA17_37InteractionOwnedBankMeasurementSourceR_AA0b9CandidateF0R_A17_A22_R0_AA0b9CommittedF0R0_A17_A22_R1_AA0b3HitF0R1_AA0b7h95K6SourceR2_0x10UISemanticZ024SemanticCompleteIdentityV8IdentityA17_33InteractionCandidateRecordh44PRt_A29_A30_A17_33InteractionCommittedRecordh36PRt0_A29_A30_A17_014InteractionHitK7H144PRt1_r3_lF6recordL_yyA12_AAA21_RzA17_A22_R_AAA23_R_A17_A22_R0_AAA24_R0_A17_A22_R1_AAA25_R1_AAA26_R2_A29_A33_RSA29_A36_RSA29_A39_RSr3_lFTf0nssn_ns11InlineArrayVy$25_s6UInt64VGSbAFIgy_Tf1cn_n
+    e078:      	mov	w21, #0xe               ; =14
+    e07c:      	str	x21, [x24, #0xa8]
+    e080:      	strb	wzr, [sp, #0x7b8]
+    e084:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e084:  ARM64_RELOC_PAGE21	lCPI421_19
+    e088:      	ldr	q0, [x8]
+		000000000000e088:  ARM64_RELOC_PAGEOFF12	lCPI421_19
+    e08c:      	stur	q0, [x24, #0xb8]
+    e090:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e090:  ARM64_RELOC_PAGE21	lCPI421_20
+    e094:      	ldr	q0, [x8]
+		000000000000e094:  ARM64_RELOC_PAGEOFF12	lCPI421_20
+    e098:      	str	q0, [sp, #0x180]
+    e09c:      	stur	q0, [x24, #0xc8]
+    e0a0:      	mov	w8, #0x8c               ; =140
+    e0a4:      	str	x8, [x24, #0xd8]
+    e0a8:      	add	x0, sp, #0x7b0
+    e0ac:      	bl	0xe0ac <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x8d0>
+		000000000000e0ac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e0b0:      	str	x21, [x24, #0x70]
+    e0b4:      	mov	w8, #0x1                ; =1
+    e0b8:      	strb	w8, [sp, #0x780]
+    e0bc:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e0bc:  ARM64_RELOC_PAGE21	lCPI421_21
+    e0c0:      	ldr	q0, [x8]
+		000000000000e0c0:  ARM64_RELOC_PAGEOFF12	lCPI421_21
+    e0c4:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e0c4:  ARM64_RELOC_PAGE21	lCPI421_22
+    e0c8:      	ldr	q1, [x8]
+		000000000000e0c8:  ARM64_RELOC_PAGEOFF12	lCPI421_22
+    e0cc:      	stp	q0, q1, [x24, #0x80]
+    e0d0:      	mov	w8, #0x4                ; =4
+    e0d4:      	str	x8, [x24, #0xa0]
+    e0d8:      	add	x0, sp, #0x778
+    e0dc:      	bl	0xe0dc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x900>
+		000000000000e0dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e0e0:      	mov	w8, #0x11               ; =17
+    e0e4:      	str	x8, [x24, #0x38]
+    e0e8:      	strb	w25, [sp, #0x748]
+    e0ec:      	mov	w21, #0x2               ; =2
+    e0f0:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e0f0:  ARM64_RELOC_PAGE21	lCPI421_23
+    e0f4:      	ldr	q0, [x8]
+		000000000000e0f4:  ARM64_RELOC_PAGEOFF12	lCPI421_23
+    e0f8:      	str	q0, [sp, #0x2f0]
+    e0fc:      	stur	q0, [x24, #0x48]
+    e100:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e100:  ARM64_RELOC_PAGE21	lCPI421_24
+    e104:      	ldr	q0, [x8]
+		000000000000e104:  ARM64_RELOC_PAGEOFF12	lCPI421_24
+    e108:      	str	q0, [sp, #0x1d0]
+    e10c:      	stur	q0, [x24, #0x58]
+    e110:      	mov	w8, #0x1f5              ; =501
+    e114:      	str	x8, [x24, #0x68]
+    e118:      	add	x0, sp, #0x740
+    e11c:      	bl	0xe11c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x940>
+		000000000000e11c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e120:      	mov	w8, #0x12               ; =18
+    e124:      	add	x9, sp, #0x5f0
+    e128:      	str	x8, [x9, #0x118]
+    e12c:      	strb	w21, [sp, #0x710]
+    e130:      	ldr	q1, [sp, #0x2f0]
+    e134:      	ldr	q0, [sp, #0x1d0]
+    e138:      	stp	q1, q0, [x24, #0x10]
+    e13c:      	mov	w8, #0x51               ; =81
+    e140:      	str	x8, [x24, #0x30]
+    e144:      	add	x0, sp, #0x708
+    e148:      	bl	0xe148 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x96c>
+		000000000000e148:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e14c:      	add	x8, sp, #0x3e8
+    e150:      	ldr	w0, [sp, #0x330]
+    e154:      	ldr	w1, [sp, #0x2dc]
+    e158:      	bl	0xe158 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x97c>
+		000000000000e158:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+    e15c:      	add	x8, sp, #0x418
+    e160:      	ldr	w0, [sp, #0x2e0]
+    e164:      	ldr	w1, [sp, #0x2e8]
+    e168:      	bl	0xe168 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x98c>
+		000000000000e168:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_116
+    e16c:      	add	x8, sp, #0x448
+    e170:      	ldr	w0, [sp, #0x2d8]
+    e174:      	ldr	w1, [sp, #0x2e4]
+    e178:      	bl	0xe178 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x99c>
+		000000000000e178:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+    e17c:      	add	x8, sp, #0x478
+    e180:      	ldr	w0, [sp, #0x334]
+    e184:      	ldr	w1, [sp, #0x340]
+    e188:      	bl	0xe188 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x9ac>
+		000000000000e188:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_34
+    e18c:      	add	x8, sp, #0x4a8
+    e190:      	ldr	w0, [sp, #0x338]
+    e194:      	ldr	w1, [sp, #0x2ec]
+    e198:      	bl	0xe198 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x9bc>
+		000000000000e198:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_116
+    e19c:      	add	x9, sp, #0x3c0
+    e1a0:      	ldr	x21, [x9, #0x30]
+    e1a4:      	mov	w8, #0xce               ; =206
+    e1a8:      	mul	x24, x21, x8
+    e1ac:      	smulh	x8, x21, x8
+    e1b0:      	cmp	x8, x24, asr #63
+    e1b4:      	b.ne	0xe86c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1090>
+    e1b8:      	tbnz	x24, #0x3f, 0xe870 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1094>
+    e1bc:      	bl	0xe1bc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x9e0>
+		000000000000e1bc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_33
+    e1c0:      	cmp	x21, x8
+    e1c4:      	b.hi	0xe874 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x1098>
+    e1c8:      	ldr	x26, [x9, #0x38]
+    e1cc:      	mov	w8, #0x5                ; =5
+    e1d0:      	str	x8, [x23, #0xd0]
+    e1d4:      	strb	wzr, [sp, #0xc38]
+    e1d8:      	str	x21, [x23, #0xe0]
+    e1dc:      	bl	0xe1dc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xa00>
+		000000000000e1dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_373
+    e1e0:      	stur	q0, [x23, #0xe8]
+    e1e4:      	mov	w8, #0x2                ; =2
+    e1e8:      	stp	x8, x24, [x23, #0xf8]
+    e1ec:      	add	x0, sp, #0xc30
+    e1f0:      	bl	0xe1f0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xa14>
+		000000000000e1f0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e1f4:      	lsl	x8, x21, #8
+    e1f8:      	sub	x25, x8, x21, lsl #4
+    e1fc:      	mov	w8, #0xf0               ; =240
+    e200:      	smulh	x8, x21, x8
+    e204:      	cmp	x8, x25, asr #63
+    e208:      	cset	w8, ne
+    e20c:      	cbz	x26, 0xe270 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xa94>
+    e210:      	tbnz	w8, #0x0, 0xe878 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x109c>
+    e214:      	cmp	x26, x25
+    e218:      	b.ne	0xe87c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10a0>
+    e21c:      	subs	x8, x26, x24
+    e220:      	ldr	x27, [sp, #0x328]
+    e224:      	ldr	x22, [sp, #0x320]
+    e228:      	b.lo	0xe880 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10a4>
+    e22c:      	cmp	x26, x8
+    e230:      	b.lo	0xe884 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10a8>
+    e234:      	bl	0xe234 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xa58>
+		000000000000e234:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_726
+    e238:      	str	x21, [x10, #0x10]
+    e23c:      	mov	w9, #0xf0               ; =240
+    e240:      	dup.2d	v0, x9
+    e244:      	stur	q0, [x10, #0x18]
+    e248:      	mov	w9, #0x4                ; =4
+    e24c:      	stp	x9, x8, [x10, #0x28]
+    e250:      	bl	0xe250 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xa74>
+		000000000000e250:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_554
+    e254:      	bl	0xe254 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xa78>
+		000000000000e254:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e258:      	mov	w9, #0x1                ; =1
+    e25c:      	add	x0, sp, #0xd70
+    e260:      	mov	w8, #0x5a4              ; =1444
+    e264:      	b	0xe2b4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xad8>
+    e268:      	mov	w8, #0x4                ; =4
+    e26c:      	b	0xdd18 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x53c>
+    e270:      	tbnz	w8, #0x0, 0xe89c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10c0>
+    e274:      	tbnz	x25, #0x3f, 0xe8a0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10c4>
+    e278:      	subs	x8, x25, x24
+    e27c:      	b.lo	0xe8a4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10c8>
+    e280:      	cmp	x25, x8
+    e284:      	b.lo	0xe8a8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10cc>
+    e288:      	bl	0xe288 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xaac>
+		000000000000e288:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_629
+    e28c:      	str	x21, [x10, #0x10]
+    e290:      	bl	0xe290 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xab4>
+		000000000000e290:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_77
+    e294:      	ldr	x3, [sp, #0x320]
+    e298:      	ldr	x4, [sp, #0x328]
+    e29c:      	bl	0xe29c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xac0>
+		000000000000e29c:  ARM64_RELOC_BRANCH26	_$s17RuntimeCycleProbe20cycleValidateBacking7profile6limits4root0I14MetadataRegion8semantic8geometry11interaction0M4Type11canvasCount0P8Capacity0P12ControlBytes07factoryK00M7Regions6report17GiftUIRuntimeCore0A23ProfileValidationResultOAQ0A11ProfileKindO_AQ0A13ProfileLimitsV0X17UIObservableState28ObservableModelOwnerIdentityV5owner_s6UInt16V6modelsA1_6claimsA1_4pinsA1_8capturesSi08metadataT0Si05modelT0Si03pinT0Si04liveT0Si09candidateT0tAA0b7StorageK0VAA0B19SemanticMeasurementVAA0B19GeometryMeasurementV0X13UIInteraction24InteractionOwnedKeyStateVyq_q0_q1_GxmSiA1_SiA12_q2_yA12_XEtAA0B8GeometryRzA17_37InteractionOwnedBankMeasurementSourceR_AA0b9CandidateF0R_A17_A22_R0_AA0b9CommittedF0R0_A17_A22_R1_AA0b3HitF0R1_AA0b7StorageK6SourceR2_0x10UISemanticZ024SemanticCompleteIdentityV8IdentityA17_33InteractionCandidateRecordStoragePRt_A29_A30_A17_33InteractionCommittedRecordStoragePRt0_A29_A30_A17_014InteractionHitK7StoragePRt1_r3_lF6recordL_yyA12_AAA21_RzA17_A22_R_AAA23_R_A17_A22_R0_AAA24_R0_A17_A22_R1_AAA25_R1_AAA26_R2_A29_A33_RSA29_A36_RSA29_A39_RSr3_lFTf0nssn_n
+    e2a0:      	cmp	x25, #0x5a4
+    e2a4:      	b.hi	0xe8ac <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10d0>
+    e2a8:      	bl	0xe2a8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xacc>
+		000000000000e2a8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_888
+    e2ac:      	ldr	x27, [sp, #0x328]
+    e2b0:      	ldr	x22, [sp, #0x320]
+    e2b4:      	mov	w21, #0x13              ; =19
+    e2b8:      	bl	0xe2b8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xadc>
+		000000000000e2b8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_479
+    e2bc:      	mov	w10, #0x1               ; =1
+    e2c0:      	mov	w9, #0x5a4              ; =1444
+    e2c4:      	stp	x10, x9, [x0, #0x10]
+    e2c8:      	mov	w24, #0x1               ; =1
+    e2cc:      	bl	0xe2cc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xaf0>
+		000000000000e2cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_506
+    e2d0:      	bl	0xe2d0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xaf4>
+		000000000000e2d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e2d4:      	add	x25, sp, #0x3c0
+    e2d8:      	ldp	x0, x1, [x25, #0x60]
+    e2dc:      	bl	0xe2dc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb00>
+		000000000000e2dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_305
+    e2e0:      	bl	0xe2e0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb04>
+		000000000000e2e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_857
+    e2e4:      	ldp	x0, x1, [x25, #0x90]
+    e2e8:      	bl	0xe2e8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb0c>
+		000000000000e2e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_305
+    e2ec:      	bl	0xe2ec <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb10>
+		000000000000e2ec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_858
+    e2f0:      	ldp	x0, x1, [x25, #0xc0]
+    e2f4:      	bl	0xe2f4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb18>
+		000000000000e2f4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_306
+    e2f8:      	bl	0xe2f8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb1c>
+		000000000000e2f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_858
+    e2fc:      	add	x8, sp, #0x3c0
+    e300:      	ldp	x0, x1, [x8, #0xf0]
+    e304:      	bl	0xe304 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb28>
+		000000000000e304:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_306
+    e308:      	bl	0xe308 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb2c>
+		000000000000e308:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_857
+    e30c:      	add	x25, sp, #0x5f0
+    e310:      	str	x21, [x25, #0xe0]
+    e314:      	mov	w8, #0x3                ; =3
+    e318:      	strb	w8, [sp, #0x6d8]
+    e31c:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e31c:  ARM64_RELOC_PAGE21	lCPI421_25
+    e320:      	ldr	q0, [x8]
+		000000000000e320:  ARM64_RELOC_PAGEOFF12	lCPI421_25
+    e324:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e324:  ARM64_RELOC_PAGE21	lCPI421_26
+    e328:      	ldr	q1, [x8]
+		000000000000e328:  ARM64_RELOC_PAGEOFF12	lCPI421_26
+    e32c:      	stp	q0, q1, [x25, #0xf0]
+    e330:      	mov	w8, #0x2a               ; =42
+    e334:      	str	x8, [x25, #0x110]
+    e338:      	add	x0, sp, #0x6d0
+    e33c:      	bl	0xe33c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb60>
+		000000000000e33c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e340:      	mov	w8, #0x15               ; =21
+    e344:      	str	x8, [x25, #0xa8]
+    e348:      	mov	w21, #0x15              ; =21
+    e34c:      	strb	wzr, [sp, #0x6a0]
+    e350:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e350:  ARM64_RELOC_PAGE21	lCPI421_27
+    e354:      	ldr	q0, [x8]
+		000000000000e354:  ARM64_RELOC_PAGEOFF12	lCPI421_27
+    e358:      	stur	q0, [x25, #0xb8]
+    e35c:      	ldr	q0, [sp, #0x180]
+    e360:      	stur	q0, [x25, #0xc8]
+    e364:      	mov	w8, #0x38               ; =56
+    e368:      	str	x8, [x25, #0xd8]
+    e36c:      	add	x0, sp, #0x698
+    e370:      	bl	0xe370 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xb94>
+		000000000000e370:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e374:      	str	x21, [x25, #0x70]
+    e378:      	strb	w24, [sp, #0x668]
+    e37c:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e37c:  ARM64_RELOC_PAGE21	lCPI421_28
+    e380:      	ldr	q1, [x8]
+		000000000000e380:  ARM64_RELOC_PAGEOFF12	lCPI421_28
+    e384:      	ldr	q0, [sp, #0x1c0]
+    e388:      	stp	q1, q0, [x25, #0x80]
+    e38c:      	mov	w26, #0x2               ; =2
+    e390:      	str	x26, [x25, #0xa0]
+    e394:      	add	x0, sp, #0x660
+    e398:      	bl	0xe398 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xbbc>
+		000000000000e398:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e39c:      	mov	w8, #0x16               ; =22
+    e3a0:      	str	x8, [x25, #0x38]
+    e3a4:      	strb	w26, [sp, #0x630]
+    e3a8:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e3a8:  ARM64_RELOC_PAGE21	lCPI421_29
+    e3ac:      	ldr	q0, [x8]
+		000000000000e3ac:  ARM64_RELOC_PAGEOFF12	lCPI421_29
+    e3b0:      	stur	q0, [x25, #0x48]
+    e3b4:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e3b4:  ARM64_RELOC_PAGE21	lCPI421_30
+    e3b8:      	ldr	q0, [x8]
+		000000000000e3b8:  ARM64_RELOC_PAGEOFF12	lCPI421_30
+    e3bc:      	stur	q0, [x25, #0x58]
+    e3c0:      	mov	w8, #0x115              ; =277
+    e3c4:      	str	x8, [x25, #0x68]
+    e3c8:      	add	x0, sp, #0x628
+    e3cc:      	bl	0xe3cc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xbf0>
+		000000000000e3cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e3d0:      	mov	w24, #0x17              ; =23
+    e3d4:      	add	x21, sp, #0x4d8
+    e3d8:      	str	x24, [x21, #0x118]
+    e3dc:      	strb	w26, [sp, #0x5f8]
+    e3e0:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e3e0:  ARM64_RELOC_PAGE21	lCPI421_31
+    e3e4:      	ldr	q0, [x8]
+		000000000000e3e4:  ARM64_RELOC_PAGEOFF12	lCPI421_31
+    e3e8:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e3e8:  ARM64_RELOC_PAGE21	lCPI421_32
+    e3ec:      	ldr	q1, [x8]
+		000000000000e3ec:  ARM64_RELOC_PAGEOFF12	lCPI421_32
+    e3f0:      	stp	q0, q1, [x25, #0x10]
+    e3f4:      	mov	w8, #0x14               ; =20
+    e3f8:      	str	x8, [x25, #0x30]
+    e3fc:      	add	x0, sp, #0x5f0
+    e400:      	bl	0xe400 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xc24>
+		000000000000e400:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e404:      	str	x24, [x21, #0xe0]
+    e408:      	mov	w25, #0x1               ; =1
+    e40c:      	strb	w25, [sp, #0x5c0]
+    e410:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e410:  ARM64_RELOC_PAGE21	lCPI421_33
+    e414:      	ldr	q0, [x8]
+		000000000000e414:  ARM64_RELOC_PAGEOFF12	lCPI421_33
+    e418:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e418:  ARM64_RELOC_PAGE21	lCPI421_34
+    e41c:      	ldr	q1, [x8]
+		000000000000e41c:  ARM64_RELOC_PAGEOFF12	lCPI421_34
+    e420:      	stp	q0, q1, [x21, #0xf0]
+    e424:      	mov	w8, #0xec               ; =236
+    e428:      	str	x8, [x21, #0x110]
+    e42c:      	add	x0, sp, #0x5b8
+    e430:      	bl	0xe430 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xc54>
+		000000000000e430:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e434:      	mov	w24, #0x18              ; =24
+    e438:      	str	x24, [x21, #0xa8]
+    e43c:      	mov	w26, #0x3               ; =3
+    e440:      	strb	w26, [sp, #0x588]
+    e444:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e444:  ARM64_RELOC_PAGE21	lCPI421_35
+    e448:      	ldr	q0, [x8]
+		000000000000e448:  ARM64_RELOC_PAGEOFF12	lCPI421_35
+    e44c:      	stur	q0, [x21, #0xb8]
+    e450:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e450:  ARM64_RELOC_PAGE21	lCPI421_36
+    e454:      	ldr	q0, [x8]
+		000000000000e454:  ARM64_RELOC_PAGEOFF12	lCPI421_36
+    e458:      	stur	q0, [x21, #0xc8]
+    e45c:      	mov	w8, #0x755              ; =1877
+    e460:      	str	x8, [x21, #0xd8]
+    e464:      	add	x0, sp, #0x580
+    e468:      	bl	0xe468 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xc8c>
+		000000000000e468:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e46c:      	str	x24, [x21, #0x70]
+    e470:      	strb	w26, [sp, #0x550]
+    e474:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e474:  ARM64_RELOC_PAGE21	lCPI421_37
+    e478:      	ldr	q0, [x8]
+		000000000000e478:  ARM64_RELOC_PAGEOFF12	lCPI421_37
+    e47c:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e47c:  ARM64_RELOC_PAGE21	lCPI421_38
+    e480:      	ldr	q1, [x8]
+		000000000000e480:  ARM64_RELOC_PAGEOFF12	lCPI421_38
+    e484:      	stp	q0, q1, [x21, #0x80]
+    e488:      	mov	w8, #0x23               ; =35
+    e48c:      	str	x8, [x21, #0xa0]
+    e490:      	add	x0, sp, #0x548
+    e494:      	bl	0xe494 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xcb8>
+		000000000000e494:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e498:      	add	x0, sp, #0x510
+    e49c:      	bl	0xe49c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xcc0>
+		000000000000e49c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e4a0:      	mov	w8, #0x19               ; =25
+    e4a4:      	add	x9, sp, #0x3c0
+    e4a8:      	str	x8, [x9, #0x118]
+    e4ac:      	strb	w25, [sp, #0x4e0]
+    e4b0:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e4b0:  ARM64_RELOC_PAGE21	lCPI421_39
+    e4b4:      	ldr	q0, [x8]
+		000000000000e4b4:  ARM64_RELOC_PAGEOFF12	lCPI421_39
+    e4b8:      	adrp	x8, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e4b8:  ARM64_RELOC_PAGE21	lCPI421_40
+    e4bc:      	ldr	q1, [x8]
+		000000000000e4bc:  ARM64_RELOC_PAGEOFF12	lCPI421_40
+    e4c0:      	stp	q0, q1, [x21, #0x10]
+    e4c4:      	mov	w8, #0x15               ; =21
+    e4c8:      	str	x8, [x21, #0x30]
+    e4cc:      	add	x0, sp, #0x4d8
+    e4d0:      	bl	0xe4d0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xcf4>
+		000000000000e4d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_11
+    e4d4:      	add	x0, sp, #0x3bf
+    e4d8:      	add	x1, sp, #0xb48
+    e4dc:      	bl	0xe4dc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xd00>
+		000000000000e4dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_74
+    e4e0:      	ldrb	w8, [sp, #0x3bf]
+    e4e4:      	tbz	w8, #0x0, 0xe4f4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xd18>
+    e4e8:      	mov	w8, #0x4                ; =4
+    e4ec:      	strb	w8, [sp, #0xc30]
+    e4f0:      	b	0xdd1c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x540>
+    e4f4:      	add	x0, sp, #0xb60
+    e4f8:      	add	x1, sp, #0xb30
+    e4fc:      	bl	0xe4fc <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xd20>
+		000000000000e4fc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_74
+    e500:      	bl	0xe500 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xd24>
+		000000000000e500:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_663
+    e504:      	ldp	x16, x3, [sp, #0x150]
+    e508:      	ldr	x1, [sp, #0x1b8]
+    e50c:      	ldp	x5, x2, [sp, #0x140]
+    e510:      	ldp	x17, x6, [sp, #0x130]
+    e514:      	ldr	x0, [sp, #0x128]
+    e518:      	ldp	q1, q0, [sp, #0x100]
+    e51c:      	ldp	q3, q2, [sp, #0xe0]
+    e520:      	ldp	q5, q4, [sp, #0xc0]
+    e524:      	add	x4, sp, #0xb60
+    e528:      	ldr	x14, [x4, x8]
+    e52c:      	stp	x28, x1, [x23, #0xd0]
+    e530:      	stp	x2, x3, [x23, #0xe0]
+    e534:      	stp	x9, x5, [x23, #0xf0]
+    e538:      	str	x6, [x23, #0x100]
+    e53c:      	stur	q0, [x20, #0x38]
+    e540:      	stp	x10, x17, [x20, #0x48]
+    e544:      	str	x0, [x20, #0x58]
+    e548:      	stp	q1, q2, [x20, #0x60]
+    e54c:      	str	q3, [x20, #0x80]
+    e550:      	stp	x11, x16, [x20, #0x90]
+    e554:      	str	x19, [x20, #0xa0]
+    e558:      	stur	q4, [x20, #0xa8]
+    e55c:      	stur	q5, [x20, #0xb8]
+    e560:      	str	x12, [x20, #0xc8]
+    e564:      	ldr	x15, [x13, x8]
+    e568:      	cmp	x14, x15
+    e56c:      	b.ne	0xe7d0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xff4>
+    e570:      	add	x8, x8, #0x8
+    e574:      	cmp	x8, #0xd0
+    e578:      	b.ne	0xe528 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xd4c>
+    e57c:      	lsr	x8, x3, #32
+    e580:      	cbnz	x8, 0xe888 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10ac>
+    e584:      	lsr	x8, x5, #32
+    e588:      	cbnz	x8, 0xe88c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10b0>
+    e58c:      	lsr	x8, x6, #32
+    e590:      	cbnz	x8, 0xe890 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10b4>
+    e594:      	lsr	x8, x16, #32
+    e598:      	cbnz	x8, 0xe894 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10b8>
+    e59c:      	lsr	x8, x19, #32
+    e5a0:      	cbnz	x8, 0xe898 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10bc>
+    e5a4:      	mov	w8, #0x15               ; =21
+    e5a8:      	str	w8, [sp, #0x44]
+    e5ac:      	mov	x8, #0x100              ; =256
+    e5b0:      	movk	x8, #0x7fa, lsl #32
+    e5b4:      	stur	x8, [sp, #0x3c]
+    e5b8:      	mov	x8, #0x3a               ; =58
+    e5bc:      	movk	x8, #0x115, lsl #32
+    e5c0:      	stur	x8, [sp, #0x34]
+    e5c4:      	stp	w16, w19, [sp, #0x2c]
+    e5c8:      	mov	w8, #0x51               ; =81
+    e5cc:      	str	w8, [sp, #0x28]
+    e5d0:      	mov	x8, #0x35a3             ; =13731
+    e5d4:      	movk	x8, #0x1f5, lsl #32
+    e5d8:      	str	x8, [sp, #0x20]
+    e5dc:      	mov	x9, #0x90               ; =144
+    e5e0:      	movk	x9, #0xcd0, lsl #32
+    e5e4:      	mov	x10, #0x277d            ; =10109
+    e5e8:      	movk	x10, #0x22, lsl #32
+    e5ec:      	mov	x11, #0x40              ; =64
+    e5f0:      	movk	x11, #0x2, lsl #32
+    e5f4:      	add	x8, sp, #0x354
+    e5f8:      	stp	x10, x9, [sp, #0x10]
+    e5fc:      	stp	w17, w0, [sp, #0x8]
+    e600:      	str	x11, [sp]
+    e604:      	mov	x0, x28
+    e608:      	bl	0xe608 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xe2c>
+		000000000000e608:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_880
+    e60c:      	mov	x22, #0x0               ; =0
+    e610:      	ldr	w8, [sp, #0x26c]
+    e614:      	str	w8, [sp, #0xd80]
+    e618:      	ldr	x8, [sp, #0x288]
+    e61c:      	ldr	x9, [sp, #0x280]
+    e620:      	orr	x8, x8, x9, lsl #32
+    e624:      	ldr	x9, [sp, #0x278]
+    e628:      	ldr	x10, [sp, #0x270]
+    e62c:      	orr	x9, x9, x10, lsl #32
+    e630:      	stp	x8, x9, [x20, #0x140]
+    e634:      	strb	wzr, [sp, #0xd84]
+    e638:      	add	x9, sp, #0xd70
+    e63c:      	ldr	x8, [sp, #0x290]
+    e640:      	stur	x8, [x9, #0x16]
+    e644:      	strb	wzr, [sp, #0xd8e]
+    e648:      	ldr	x8, [sp, #0x198]
+    e64c:      	ldr	x10, [sp, #0x310]
+    e650:      	orr	x8, x8, x10, lsl #16
+    e654:      	ldr	x10, [sp, #0x2a0]
+    e658:      	str	x10, [x9, #0x20]
+    e65c:      	ldr	w10, [sp, #0x29c]
+    e660:      	strh	w10, [sp, #0xd98]
+    e664:      	ldr	x10, [sp, #0x318]
+    e668:      	orr	x8, x8, x10, lsl #32
+    e66c:      	strb	wzr, [sp, #0xd9a]
+    e670:      	ldr	w10, [sp, #0x2a8]
+    e674:      	strh	w10, [sp, #0xd9c]
+    e678:      	ldr	x10, [sp, #0x308]
+    e67c:      	orr	x10, x8, x10, lsl #48
+    e680:      	strb	wzr, [sp, #0xd9e]
+    e684:      	ldr	x8, [sp, #0x2b0]
+    e688:      	str	x8, [x9, #0x30]
+    e68c:      	ldr	w8, [sp, #0x2ac]
+    e690:      	strh	w8, [sp, #0xda8]
+    e694:      	strb	wzr, [sp, #0xdaa]
+    e698:      	ldr	w8, [sp, #0x210]
+    e69c:      	strh	w8, [sp, #0xdb0]
+    e6a0:      	ldr	x8, [sp, #0x220]
+    e6a4:      	bl	0xe6a4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xec8>
+		000000000000e6a4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_987
+    e6a8:      	ldr	w8, [sp, #0x2d4]
+    e6ac:      	strh	w8, [sp, #0xdbe]
+    e6b0:      	ldr	w8, [sp, #0x2d0]
+    e6b4:      	strh	w8, [sp, #0xdc0]
+    e6b8:      	ldr	w8, [sp, #0x2cc]
+    e6bc:      	strh	w8, [sp, #0xdc2]
+    e6c0:      	ldr	x8, [sp, #0x2c0]
+    e6c4:      	stur	x8, [x9, #0x54]
+    e6c8:      	ldr	w8, [sp, #0x2bc]
+    e6cc:      	str	w8, [sp, #0xdcc]
+    e6d0:      	strb	wzr, [sp, #0xdd0]
+    e6d4:      	ldr	w8, [sp, #0x214]
+    e6d8:      	strh	w8, [sp, #0xdd6]
+    e6dc:      	ldr	x8, [sp, #0x230]
+    e6e0:      	stur	w8, [x9, #0x62]
+    e6e4:      	strb	wzr, [sp, #0xdd8]
+    e6e8:      	ldr	w8, [sp, #0x22c]
+    e6ec:      	stur	w8, [x9, #0x6a]
+    e6f0:      	strb	wzr, [sp, #0xdde]
+    e6f4:      	ldr	x11, [sp, #0x248]
+    e6f8:      	ldr	x8, [sp, #0x240]
+    e6fc:      	stp	x11, x8, [x9, #0x70]
+    e700:      	ldr	w8, [sp, #0x23c]
+    e704:      	strh	w8, [sp, #0xdf0]
+    e708:      	strb	wzr, [sp, #0xdf2]
+    e70c:      	ldr	w8, [sp, #0x25c]
+    e710:      	str	w8, [sp, #0xdf4]
+    e714:      	ldr	w8, [sp, #0x268]
+    e718:      	bl	0xe718 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf3c>
+		000000000000e718:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_986
+    e71c:      	ldr	x12, [sp, #0x250]
+    e720:      	str	x10, [sp, #0x340]
+    e724:      	cbz	w12, 0xe748 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf6c>
+    e728:      	bl	0xe728 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf4c>
+		000000000000e728:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_744
+    e72c:      	cbz	w20, 0xe74c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf70>
+    e730:      	lsl	x8, x20, #16
+    e734:      	orr	x8, x8, x20, lsl #32
+    e738:      	orr	x8, x8, x20, lsl #48
+    e73c:      	orr	x22, x8, x12
+    e740:      	mov	x23, x20
+    e744:      	b	0xe74c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf70>
+    e748:      	bl	0xe748 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf6c>
+		000000000000e748:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_744
+    e74c:      	lsl	x8, x13, #32
+    e750:      	orr	x24, x8, x12, lsl #16
+    e754:      	bl	0xe754 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf78>
+		000000000000e754:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_978
+    e758:      	ldrh	w26, [sp, #0x3c0]
+    e75c:      	orr	x19, x11, x9, lsl #32
+    e760:      	bl	0xe760 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf84>
+		000000000000e760:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_983
+    e764:      	str	x8, [sp, #0x338]
+    e768:      	add	x21, sp, #0xe00
+    e76c:      	add	x0, sp, #0xe00
+    e770:      	add	x1, sp, #0x354
+    e774:      	bl	0xe774 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf98>
+		000000000000e774:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_469
+    e778:      	bl	0xe778 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xf9c>
+		000000000000e778:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_359
+    e77c:      	ldr	w9, [sp, #0x1fc]
+    e780:      	ldr	w8, [sp, #0x200]
+    e784:      	stp	w8, w9, [sp, #0x64]
+    e788:      	ldr	w9, [sp, #0x204]
+    e78c:      	ldr	w8, [sp, #0x208]
+    e790:      	stp	w8, w9, [sp, #0x5c]
+    e794:      	ldr	w9, [sp, #0x20c]
+    e798:      	ldr	w8, [sp, #0x1a4]
+    e79c:      	bl	0xe79c <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xfc0>
+		000000000000e79c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_555
+    e7a0:      	ldr	x9, [sp, #0x340]
+    e7a4:      	bl	0xe7a4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xfc8>
+		000000000000e7a4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_450
+    e7a8:      	ldr	x9, [sp, #0x1e8]
+    e7ac:      	bl	0xe7ac <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xfd0>
+		000000000000e7ac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_603
+    e7b0:      	ldr	x2, [sp, #0x1b0]
+    e7b4:      	mov	x4, x19
+    e7b8:      	mov	x5, x2
+    e7bc:      	ldr	x6, [sp, #0x338]
+    e7c0:      	bl	0xe7c0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xfe4>
+		000000000000e7c0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_351
+    e7c4:      	bl	0xe7c4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xfe8>
+		000000000000e7c4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_308
+    e7c8:      	bl	0xe7c8 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0xfec>
+		000000000000e7c8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_581
+    e7cc:      	b	0xdd30 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x554>
+    e7d0:      	brk	#0x1
+    e7d4:      	str	x0, [sp, #0x248]
+    e7d8:      	adrp	x0, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e7d8:  ARM64_RELOC_PAGE21	__MergedGlobals
+    e7dc:      	add	x0, x0, #0x0
+		000000000000e7dc:  ARM64_RELOC_PAGEOFF12	__MergedGlobals
+    e7e0:      	str	x1, [sp, #0x240]
+    e7e4:      	adrp	x1, 0xe000 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x824>
+		000000000000e7e4:  ARM64_RELOC_PAGE21	_$s17RuntimeCycleProbe18cycleDrawingLimits_WZ
+    e7e8:      	add	x1, x1, #0x0
+		000000000000e7e8:  ARM64_RELOC_PAGEOFF12	_$s17RuntimeCycleProbe18cycleDrawingLimits_WZ
+    e7ec:      	str	x14, [sp, #0x260]
+    e7f0:      	mov	x25, x15
+    e7f4:      	str	w16, [sp, #0x25c]
+    e7f8:      	str	x17, [sp, #0x250]
+    e7fc:      	str	w2, [sp, #0x23c]
+    e800:      	str	x3, [sp, #0x230]
+    e804:      	str	w4, [sp, #0x22c]
+    e808:      	str	x5, [sp, #0x220]
+    e80c:      	str	x6, [sp, #0x218]
+    e810:      	str	w7, [sp, #0x214]
+    e814:      	str	w30, [sp, #0x210]
+    e818:      	bl	0xe818 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x103c>
+		000000000000e818:  ARM64_RELOC_BRANCH26	_swift_once
+    e81c:      	ldr	w30, [sp, #0x210]
+    e820:      	ldr	w7, [sp, #0x214]
+    e824:      	ldr	x6, [sp, #0x218]
+    e828:      	ldr	x5, [sp, #0x220]
+    e82c:      	ldr	w4, [sp, #0x22c]
+    e830:      	ldr	x3, [sp, #0x230]
+    e834:      	ldr	w2, [sp, #0x23c]
+    e838:      	ldr	x1, [sp, #0x240]
+    e83c:      	ldr	x0, [sp, #0x248]
+    e840:      	ldr	x17, [sp, #0x250]
+    e844:      	ldr	w16, [sp, #0x25c]
+    e848:      	mov	x15, x25
+    e84c:      	ldr	x14, [sp, #0x260]
+    e850:      	b	0xdae4 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x308>
+    e854:      	brk	#0x1
+    e858:      	brk	#0x1
+    e85c:      	brk	#0x1
+    e860:      	brk	#0x1
+    e864:      	brk	#0x1
+    e868:      	brk	#0x1
+    e86c:      	brk	#0x1
+    e870:      	brk	#0x1
+    e874:      	brk	#0x1
+    e878:      	brk	#0x1
+    e87c:      	brk	#0x1
+    e880:      	brk	#0x1
+    e884:      	brk	#0x1
+    e888:      	brk	#0x1
+    e88c:      	brk	#0x1
+    e890:      	brk	#0x1
+    e894:      	brk	#0x1
+    e898:      	brk	#0x1
+    e89c:      	brk	#0x1
+    e8a0:      	brk	#0x1
+    e8a4:      	brk	#0x1
+    e8a8:      	brk	#0x1
+    e8ac:      	brk	#0x1
+    e8b0:      	bl	0xe8b0 <_$s17RuntimeCycleProbe06StaticB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF+0x10d4>
+		000000000000e8b0:  ARM64_RELOC_BRANCH26	___stack_chk_fail

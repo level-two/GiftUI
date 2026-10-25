@@ -1,0 +1,72 @@
+{
+  "actual_full": {
+    "path": ".build/contracts/p08-counter-iher3bin/result.json",
+    "sha256": "6dc6b3049c95ad555ed46c216acac15186fde4184ad6aa4bfd68e4d4140c71cc",
+    "passed": true,
+    "collection_complete": true,
+    "checks": 442,
+    "commands": 414,
+    "inputs": 201,
+    "reuse_execution": true,
+    "check_exit_distribution": {
+      "0": 220,
+      "1": 193,
+      "None": 28,
+      "-6": 1
+    },
+    "runtime_object": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+    "runtime_object_sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf"
+  },
+  "scope": "Current Native typed-backing constructor/refusal/lifetime/callback/destruction paths in the five fixtures. Generic operation oracles and Dynamic controls retained; Embedded owning source branches retained, no new Embedded execution or universal zeroheap claim.",
+  "transfer": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-typedBacking61-result/full4h2-artifact-transfer.json",
+    "module_count": 18,
+    "all_text_transfers": true,
+    "non_modhash_sections_equal": true,
+    "meaning": "Exact code bytes, raw relocations, symbolic targets and text symbol maps transfer focused concrete caller/setup/callback/cleanup proof. All other section projections match except __swift_modhash compiler build metadata. No new body proof needed."
+  },
+  "matching_reused_prerequisite_objects": {
+    ".build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o": {
+      "sha256": "c45bfcc82b8679e99d0e341f225f8688f480d765d596db0e1cba81173e0cdf22",
+      "same_as_focused_frozen": true
+    },
+    ".build/contracts/p08-scoped-host-z7a2tnlz/P08ScopedHostProbe.o": {
+      "sha256": "626d0a9e18ab5611aa353c9dbd284bd63a75287953799cbb43a79536b4eafc6a",
+      "same_as_focused_frozen": true
+    }
+  },
+  "oracles": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-typedBacking61-result/full4h2-oracles.json",
+    "all_equal": true
+  },
+  "frozen_201_inputs_current_match": true,
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "prerequisites_match_focused": true,
+  "recipe_normalization": "Focused and full OUT directory/cache/output paths differ; same compiler, profile, optimization, lifetime flags, source inputs and prerequisite identities. Full collects additional maintained controls; it is not a different compiler realization.",
+  "text_delta_vs_previous_full_bytes": {
+    "P08CounterRuntime": -88,
+    "RuntimeCycleProbe": 3892,
+    "P08ScopedHostProbe": 144
+  },
+  "visibility_cost": "No library/public API, conformance or annotation change; five fixture files, concrete application-owned typed backing and existing checked factories.",
+  "ordinary_validation_cost": {
+    "full_start_utc": "2026-10-25T19:33:39.923182Z",
+    "finished_utc": "2026-10-25T21:46:35.654549Z",
+    "elapsed_seconds": 7975.731367,
+    "exit": 0,
+    "guard": null,
+    "within_deadline": true,
+    "scanner_error": null,
+    "exact_post_terminal_retained_bytes": 459882130,
+    "final_review_reserve_bytes": 33554432,
+    "limit_bytes": 2147483648,
+    "measurement": "full4h2-final-output.json; scanner last sample remains nonfinal; small subsequent proof writes consume protected reserve"
+  },
+  "history": "full4h1 timeout/late guard and prior review immutable; control ps PermissionError and stale-host precompiler failure preserved. Full4h2 fresh human-authorized retry after independent guard PASS, no partial resume.",
+  "remaining_gates": [
+    "Unit FAILED before tests; Interaction UNEXECUTED, no waiver",
+    "Other current Model/generic conformance or unrelated dependency obligations are not globally discharged by this finite fixture migration",
+    "Provider/error/once/loaded-target/environment/stdout persistence/window/current-image/resource/cold/profile/P08 acceptance remain open as recorded"
+  ],
+  "formal_U02_qualification_claimed": false
+}

@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-14
+updated: 2026-10-24
 related_design_notes:
   - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
@@ -25,6 +25,19 @@ superseded_by: null
 ---
 
 # SPEC-013 Implementation Plan
+
+## Approved Native Static typed-backing package — 2026-10-24
+
+[ADR-041](../adrs/adr-041-native-static-typed-model-backing.md) and the
+[approval record](../iterations/iteration-003-review/p08-native-typed-backing-approval.md)
+authorize the P08 Native construction/conformance migration. RP-TB-001–004 and
+HC-TB-001 map to one finite caller-backing package: preserve common generic/Dynamic
+oracles, matching P07 model/host/root controls, invalid/foreign-owner outcomes,
+populated destruction, repeated activations and escape negatives. Existing Native
+product backing is retained, Embedded aliases/behavior unchanged. Qualify actual
+setup-through-cleanup callees/non-relocation, output equivalence and text/storage
+cost, then applicable validation and one independent package review. Full/profile/
+resource/other-callee acceptance remains open; no P09 migration or unit waiver.
 
 The [RFC-015 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
 is adopted under [explicit acceptance/application](../iterations/iteration-003-review/rfc-015-contract-acceptance.md).

@@ -63,11 +63,16 @@ package func p08ScopedHostController() -> Int {
     var namespace = ObservableModelOwnerNamespace()
     do {
         let identity = try namespace.issue()
+        #if hasFeature(Embedded)
         var storage = StaticObservableModelStorage<UInt8, P08HostSchema>(identity: identity, schema: 1, needsCapture: false)!
+        #else
+        var ownership = ObservableModelOwnership(identity: identity, captureLimit: 0)!
+        var backing: InlineArray<2, UInt8?> = .init(repeating: nil)
+        #endif
         for failure in UInt8(0)...7 {
             var trace = InlineArray<32, UInt8>(repeating: 0)
             var count = 0
-            try storage.withLifetime { models in
+            func exercise(_ models: borrowing ObservableModelScope<UInt8, P08HostSchema>) {
                 withUnsafeMutablePointer(to: &count) { countPointer in
                     var span = trace.mutableSpan
                     span.withUnsafeMutableBufferPointer { buffer in
@@ -100,6 +105,13 @@ package func p08ScopedHostController() -> Int {
                     }
                 }
             }
+            #if hasFeature(Embedded)
+            try storage.withLifetime(exercise)
+            #else
+            var models = backing.mutableSpan
+            try withObservableModelScope(ownership: &ownership, models: &models,
+                schema: 1, needsCapture: false, exercise)
+            #endif
         }
     } catch { preconditionFailure("model backing control failed") }
     return assertions

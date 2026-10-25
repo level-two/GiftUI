@@ -1,0 +1,60 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000004134 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlF>:
+    4134:      	sub	sp, sp, #0x80
+    4138:      	str	x19, [sp, #0x60]
+    413c:      	stp	x29, x30, [sp, #0x70]
+    4140:      	add	x29, sp, #0x70
+    4144:      	add	x11, x20, #0xc0
+    4148:      	tst	x11, #0x7
+    414c:      	b.ne	0x41e0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlF+0xac>
+    4150:      	mov	x19, x4
+    4154:      	ldrh	w9, [x20, #0x346]
+    4158:      	ldrb	w10, [x20, #0x348]
+    415c:      	add	x12, x20, #0x29c
+    4160:      	add	x13, x20, #0x100
+    4164:      	lsr	x14, x0, #32
+    4168:      	lsr	x15, x0, #16
+    416c:      	mov	w16, #0x2               ; =2
+    4170:      	stp	x11, x16, [x29, #-0x20]
+    4174:      	stp	x3, x13, [sp, #0x20]
+    4178:      	str	x12, [sp, #0x30]
+    417c:      	strh	w0, [sp, #0x38]
+    4180:      	strh	w15, [sp, #0x3a]
+    4184:      	strh	w14, [sp, #0x3c]
+    4188:      	stp	x1, x2, [sp, #0x40]
+    418c:      	sub	x11, x29, #0x1
+    4190:      	stp	x3, x11, [sp]
+    4194:      	adrp	x4, 0x4000 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab18Probe09giftuiP07B8u8SiyFSi21jk7State20mop7VyAA0b5q26K0V0B6Schema0bkN0OG_AC0ji4e10L0VyAG0G14s8Core0F16vw9VGtAC0jI5X8OYKXEfU_Tf1ncn_n+0x10>
+		0000000000004194:  ARM64_RELOC_PAGE21	_$s17RuntimeCycleProbe0B17StaticRootStorageV10withFields33_0553F587DA77091D5710C52576C87291LL9ownership6models10identities12registration6schema12needsCapture6limits_x21GiftUIObservableState24ObservableModelOwnershipVz_s11InlineArrayVy$1_AA0b5OwnedZ0VSgGzAQy$1_0V14UISemanticCore24SemanticCompleteIdentityVSgGzAM0yxE7ControlVzs6UInt16VSbAM0yX6LimitsVxAM0yZ5ScopeVyAS0B6Schema0bZ6SchemaOG_AM0yxE5ScopeVyAsXGtAM0yX5ErrorOYKXEtA15_YKlFZxA10_A15_YKXEfU_TA
+    4198:      	add	x4, x4, #0x0
+		0000000000004198:  ARM64_RELOC_PAGEOFF12	_$s17RuntimeCycleProbe0B17StaticRootStorageV10withFields33_0553F587DA77091D5710C52576C87291LL9ownership6models10identities12registration6schema12needsCapture6limits_x21GiftUIObservableState24ObservableModelOwnershipVz_s11InlineArrayVy$1_AA0b5OwnedZ0VSgGzAQy$1_0V14UISemanticCore24SemanticCompleteIdentityVSgGzAM0yxE7ControlVzs6UInt16VSbAM0yX6LimitsVxAM0yZ5ScopeVyAS0B6Schema0bZ6SchemaOG_AM0yxE5ScopeVyAsXGtAM0yX5ErrorOYKXEtA15_YKlFZxA10_A15_YKXEfU_TA
+    419c:      	adrp	x6, 0x4000 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab18Probe09giftuiP07B8u8SiyFSi21jk7State20mop7VyAA0b5q26K0V0B6Schema0bkN0OG_AC0ji4e10L0VyAG0G14s8Core0F16vw9VGtAC0jI5X8OYKXEfU_Tf1ncn_n+0x10>
+		000000000000419c:  ARM64_RELOC_ADDEND	0x10
+		000000000000419c:  ARM64_RELOC_PAGE21	_$s17RuntimeCycleProbe0B10OwnedModelVMf
+    41a0:      	add	x6, x6, #0x0
+		00000000000041a0:  ARM64_RELOC_ADDEND	0x10
+		00000000000041a0:  ARM64_RELOC_PAGEOFF12	_$s17RuntimeCycleProbe0B10OwnedModelVMf
+    41a4:      	adrp	x7, 0x4000 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab18Probe09giftuiP07B8u8SiyFSi21jk7State20mop7VyAA0b5q26K0V0B6Schema0bkN0OG_AC0ji4e10L0VyAG0G14s8Core0F16vw9VGtAC0jI5X8OYKXEfU_Tf1ncn_n+0x10>
+		00000000000041a4:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s11CycleSchema0a5ModelB0ON
+    41a8:      	ldr	x7, [x7]
+		00000000000041a8:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s11CycleSchema0a5ModelB0ON
+    41ac:      	sub	x1, x29, #0x20
+    41b0:      	add	x5, sp, #0x10
+    41b4:      	mov	x0, x20
+    41b8:      	mov	x2, x9
+    41bc:      	mov	x3, x10
+    41c0:      	bl	0x41c0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlF+0x8c>
+		00000000000041c0:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24withObservableModelScope9ownership6models6schema12needsCapture_q0_AA0eF9OwnershipVz_s11MutableSpanVyxSgGzs6UInt16VSbq0_AA0efG0Vyxq_GAA0eC5ErrorOYKXEtASYKRi_zr1_lF
+    41c4:      	cbz	x21, 0x41d0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlF+0x9c>
+    41c8:      	ldurb	w8, [x29, #-0x1]
+    41cc:      	bl	0x41cc <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlF+0x98>
+		00000000000041cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_976
+    41d0:      	ldp	x29, x30, [sp, #0x70]
+    41d4:      	ldr	x19, [sp, #0x60]
+    41d8:      	add	sp, sp, #0x80
+    41dc:      	ret
+    41e0:      	brk	#0x1

@@ -6,13 +6,14 @@ status: approved
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-16
+updated: 2026-10-24
 proposal:
   - PROPOSAL-007
 related_rfcs:
   - RFC-014
   - RFC-013
 related_adrs:
+  - ADR-041
   - ADR-040
   - ADR-007
   - ADR-008
@@ -35,6 +36,13 @@ target_milestone: ITERATION-004
 ---
 
 # RFC-015: P08 Scoped Storage Ownership
+
+**2026-10-24 Native Static construction amendment:** explicit human approval is
+recorded by [ADR-041](../adrs/adr-041-native-static-typed-model-backing.md). Only
+Native generic owning-model construction qualification changes to caller-supplied
+typed backing through the checked factory; shared operations, Embedded/Dynamic
+behavior, ownership/lifetimes and strict zero-heap/resource duties remain. Prior
+reasoning and evidence below are preserved; no P08 exit or unit waiver follows.
 
 **2026-10-16 accepted resource exception:** [ADR-040](../adrs/adr-040-counter-physical-sram-budget.md)
 records the explicit counter-only physical 262,144-byte RAM and sufficient-stack

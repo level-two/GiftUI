@@ -1,0 +1,9 @@
+{
+  "pid": 37513,
+  "process_group": 37513,
+  "guard_pid": 37510,
+  "watchdog_pid": 37512,
+  "caffeinate_pid": 37511,
+  "start_utc": "2026-10-25T19:33:39.923182+00:00",
+  "deadline_utc": "2026-10-25T23:33:39.923182+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "finished_utc": "2026-10-24T14:51:22.478025+00:00",
+  "exit": 0,
+  "guard": {
+    "reason": null
+  },
+  "retained_bytes": 198681721,
+  "output_candidates": [
+    ".build/contracts/p08-counter-wo_a9okt"
+  ],
+  "within_deadline": true,
+  "within_output_envelope": true
+}

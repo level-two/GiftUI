@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-16
+updated: 2026-10-24
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -28,6 +28,7 @@ related_rfcs:
   - RFC-011
   - RFC-014
 related_adrs:
+  - ADR-041
   - ADR-040
   - ADR-039
   - ADR-038
@@ -1533,6 +1534,26 @@ Diagnostics are optional bounded projections after authoritative outcome and
 health transitions. Disabled, filtered, saturated, dropped, or failing
 diagnostics MUST produce identical validation results, policy inputs,
 dispositions, action/fact behavior, and user-visible state.
+
+## Native Static typed-backed construction coverage — approved 2026-10-24
+
+Under [ADR-041](../adrs/adr-041-native-static-typed-model-backing.md) and the
+[dated human approval](../iterations/iteration-003-review/p08-native-typed-backing-approval.md),
+Native Static host/component construction MUST use caller-supplied concrete typed
+model backing and separate bounded ownership bookkeeping through the existing
+checked factory. This replaces generic owning-convenience construction coverage;
+it does not waive any generic scoped-operation, refusal or lifecycle observation.
+
+**HC-TB-001:** matching component prerequisites and model/host controls MUST retain
+the same generic behavioral oracle, identity/generation/phase/report cases,
+independent ownership, populated destruction and early-error/activation cleanup.
+Where one owner formerly persisted across repeated activation/failure iterations,
+the caller ledger and backing MUST persist across those iterations; recreating them
+to erase state is invalid. Charge backing setup, rejected construction and final
+destruction and verify current caller/callee non-relocation and storage/text cost.
+Preserve Dynamic controls and Embedded owner/adapter behavior. No public API removal,
+new factory/slot representation, P09 migration, unit waiver or resource relaxation
+follows; all other host, four-route and P08 acceptance obligations remain.
 
 ## Performance Requirements
 

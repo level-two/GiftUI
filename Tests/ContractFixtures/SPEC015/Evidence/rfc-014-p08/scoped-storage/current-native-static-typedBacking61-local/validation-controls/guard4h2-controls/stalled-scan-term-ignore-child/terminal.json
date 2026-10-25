@@ -1,0 +1,23 @@
+{
+  "finished_utc": "2026-10-25T19:31:34.259781+00:00",
+  "exit": -9,
+  "launch_error": null,
+  "guard": {
+    "reason": "deadline",
+    "triggered_utc": "2026-10-25T19:31:32.743625+00:00",
+    "pid": 37383,
+    "term_remaining_seconds": 1.9991061687469482,
+    "kill_completed_utc": "2026-10-25T19:31:33.747923+00:00",
+    "completed_inside_deadline": true
+  },
+  "last_output_sample": {
+    "bytes": 0,
+    "candidates": [],
+    "sample_utc": "2026-10-25T19:31:28.742579+00:00",
+    "scan_error": null
+  },
+  "output_sample_final": false,
+  "within_deadline": true,
+  "within_output_envelope_at_last_sample": true,
+  "scanner_still_blocked": true
+}

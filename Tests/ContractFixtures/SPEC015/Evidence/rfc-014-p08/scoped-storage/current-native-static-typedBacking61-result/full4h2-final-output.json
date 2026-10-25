@@ -1,0 +1,39 @@
+{
+  "measured_utc": "2026-10-25T22:23:17.840115+00:00",
+  "retained_bytes": 459882130,
+  "reserve": 33554432,
+  "limit": 2147483648,
+  "owned_paths": [
+    ".build/contracts/p08-native-static-typedBacking61",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-typedBacking61-local",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-typedBacking61-result",
+    ".build/contracts/spec-013-runtime-cycle/tmp_92dqehp",
+    ".build/contracts/p08-scoped-host-z7a2tnlz",
+    ".build/contracts/p08-counter-wo_a9okt",
+    ".build/contracts/p08-counter-oc77dnep",
+    ".build/contracts/p08-counter-iher3bin"
+  ],
+  "exact_measurement_after_terminal": true,
+  "within_output_envelope": true,
+  "terminal": {
+    "finished_utc": "2026-10-25T21:46:35.654549+00:00",
+    "exit": 0,
+    "launch_error": null,
+    "guard": null,
+    "last_output_sample": {
+      "bytes": 435168457,
+      "candidates": [
+        ".build/contracts/p08-counter-iher3bin"
+      ],
+      "sample_utc": "2026-10-25T21:46:31.277251+00:00",
+      "scan_error": null
+    },
+    "output_sample_final": false,
+    "within_deadline": true,
+    "within_output_envelope_at_last_sample": true,
+    "scanner_still_blocked": false
+  },
+  "terminal_sha256": "9dc5878ebcc7aef75fcff44251808711ce80d77704f7ba55579c429224506495",
+  "full_result": ".build/contracts/p08-counter-iher3bin/result.json",
+  "full_result_sha256": "6dc6b3049c95ad555ed46c216acac15186fde4184ad6aa4bfd68e4d4140c71cc"
+}

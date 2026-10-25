@@ -1,0 +1,18 @@
+{
+  "finished_utc": "2026-10-25T21:46:35.654549+00:00",
+  "exit": 0,
+  "launch_error": null,
+  "guard": null,
+  "last_output_sample": {
+    "bytes": 435168457,
+    "candidates": [
+      ".build/contracts/p08-counter-iher3bin"
+    ],
+    "sample_utc": "2026-10-25T21:46:31.277251+00:00",
+    "scan_error": null
+  },
+  "output_sample_final": false,
+  "within_deadline": true,
+  "within_output_envelope_at_last_sample": true,
+  "scanner_still_blocked": false
+}

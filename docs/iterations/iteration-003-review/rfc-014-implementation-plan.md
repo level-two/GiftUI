@@ -1,5 +1,18 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+## Approved P08 Native typed-backing amendment — 2026-10-24
+
+The [explicit decision](p08-native-typed-backing-approval.md), extracted as
+[ADR-041](../../adrs/adr-041-native-static-typed-model-backing.md), authorizes only
+Native construction/conformance migration under RP-TB-001–004 / HC-TB-001. Use
+existing typed-backed checked scopes; preserve generic operations, Dynamic controls,
+Embedded behavior, ownership/refusal/lifetime/destruction and strict resource limits.
+Refresh necessary matching P07 controls without reopening its architecture. P08
+requires actual current construction-through-cleanup non-relocation and behavioral
+proof, applicable validation and independent review. This does not release other
+P08/cold/resource duties, restart stopped provider controllers, change P09/P10 order,
+waive the failed/unexecuted unit gate or renew the consumed twelve-hour allowance.
+
 Current P08 U02 startup boundary — **STOP / uncertain startup; session 1/1 consumed**.
 The [independent startup review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/startup-stop-review.md)
 records a wrapper failure after reported session startup, with process output,

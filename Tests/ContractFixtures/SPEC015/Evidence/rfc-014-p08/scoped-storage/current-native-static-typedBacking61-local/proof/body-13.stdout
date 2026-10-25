@@ -1,0 +1,211 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000003d24 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5>:
+    3d24:      	str	x28, [sp, #-0x60]!
+    3d28:      	stp	x27, x26, [sp, #0x10]
+    3d2c:      	stp	x25, x24, [sp, #0x20]
+    3d30:      	stp	x23, x22, [sp, #0x30]
+    3d34:      	stp	x20, x19, [sp, #0x40]
+    3d38:      	stp	x29, x30, [sp, #0x50]
+    3d3c:      	add	x29, sp, #0x50
+    3d40:      	sub	sp, sp, #0x260
+    3d44:      	add	x23, x20, #0xc0
+    3d48:      	tst	x23, #0x7
+    3d4c:      	b.ne	0x3fe8 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x2c4>
+    3d50:      	mov	x19, x3
+    3d54:      	mov	x22, x20
+    3d58:      	mov	x28, x0
+    3d5c:      	mov	x27, x2
+    3d60:      	stur	x1, [x29, #-0x48]
+    3d64:      	str	x21, [sp, #0x10]
+    3d68:      	ldrh	w25, [x20, #0x346]
+    3d6c:      	ldrb	w26, [x20, #0x348]
+    3d70:      	add	x0, sp, #0x19c
+    3d74:      	mov	x1, x20
+    3d78:      	mov	w2, #0xb9               ; =185
+    3d7c:      	bl	0x3d7c <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x58>
+		0000000000003d7c:  ARM64_RELOC_BRANCH26	_memcpy
+    3d80:      	add	x20, sp, #0x19c
+    3d84:      	mov	w0, #0x0                ; =0
+    3d88:      	bl	0x3d88 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x64>
+		0000000000003d88:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV16operationAllowed9discoveryAA0dC5ErrorOSgSb_tF
+    3d8c:      	and	w8, w0, #0xff
+    3d90:      	cmp	w8, #0x12
+    3d94:      	b.ne	0x3e14 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0xf0>
+    3d98:      	str	x19, [sp, #0x8]
+    3d9c:      	add	x19, x22, #0x100
+    3da0:      	tbnz	w19, #0x0, 0x3fec <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x2c8>
+    3da4:      	add	x0, sp, #0xe0
+    3da8:      	mov	x1, x22
+    3dac:      	mov	w2, #0xb9               ; =185
+    3db0:      	bl	0x3db0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x8c>
+		0000000000003db0:  ARM64_RELOC_BRANCH26	_memcpy
+    3db4:      	add	x20, sp, #0xe0
+    3db8:      	mov	w0, #0x0                ; =0
+    3dbc:      	bl	0x3dbc <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x98>
+		0000000000003dbc:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipV16operationAllowed9discoveryAA0dC5ErrorOSgSb_tF
+    3dc0:      	and	w8, w0, #0xff
+    3dc4:      	cmp	w8, #0x12
+    3dc8:      	b.ne	0x3e38 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x114>
+    3dcc:      	lsr	x8, x28, #32
+    3dd0:      	lsr	x9, x28, #16
+    3dd4:      	and	w10, w28, #0xffff
+    3dd8:      	cmp	w10, #0x2
+    3ddc:      	and	w10, w9, #0xffff
+    3de0:      	ccmp	w10, #0x2, #0x2, ls
+    3de4:      	and	w10, w8, #0xffff
+    3de8:      	ccmp	w10, #0x3, #0x2, ls
+    3dec:      	b.lo	0x3e5c <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x138>
+    3df0:      	strb	wzr, [sp, #0x1e]
+    3df4:      	bl	0x3df4 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0xd0>
+		0000000000003df4:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+    3df8:      	mov	x2, x0
+    3dfc:      	adrp	x1, 0x3000 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV17RuntimeCycleProbeE05ownedD15BankMeasurement0A13UIInteraction0d5OwnedkL0VvgTm+0x10>
+		0000000000003dfc:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+    3e00:      	ldr	x1, [x1]
+		0000000000003e00:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+    3e04:      	add	x0, sp, #0x1e
+    3e08:      	bl	0x3e08 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0xe4>
+		0000000000003e08:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    3e0c:      	mov	w24, #0x0               ; =0
+    3e10:      	b	0x3f64 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x240>
+    3e14:      	mov	x24, x0
+    3e18:      	strb	w0, [sp, #0x1e]
+    3e1c:      	bl	0x3e1c <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0xf8>
+		0000000000003e1c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+    3e20:      	mov	x2, x0
+    3e24:      	adrp	x1, 0x3000 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV17RuntimeCycleProbeE05ownedD15BankMeasurement0A13UIInteraction0d5OwnedkL0VvgTm+0x10>
+		0000000000003e24:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+    3e28:      	ldr	x1, [x1]
+		0000000000003e28:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+    3e2c:      	add	x0, sp, #0x1e
+    3e30:      	bl	0x3e30 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x10c>
+		0000000000003e30:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    3e34:      	b	0x3f88 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x264>
+    3e38:      	mov	x24, x0
+    3e3c:      	strb	w0, [sp, #0x1e]
+    3e40:      	bl	0x3e40 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x11c>
+		0000000000003e40:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+    3e44:      	mov	x2, x0
+    3e48:      	adrp	x1, 0x3000 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV17RuntimeCycleProbeE05ownedD15BankMeasurement0A13UIInteraction0d5OwnedkL0VvgTm+0x10>
+		0000000000003e48:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+    3e4c:      	ldr	x1, [x1]
+		0000000000003e4c:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+    3e50:      	add	x0, sp, #0x1e
+    3e54:      	bl	0x3e54 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x130>
+		0000000000003e54:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    3e58:      	b	0x3f64 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x240>
+    3e5c:      	add	x10, sp, #0xa0
+    3e60:      	strh	w28, [x22, #0x340]
+    3e64:      	add	x24, x22, #0x29c
+    3e68:      	strh	w9, [x22, #0x342]
+    3e6c:      	strh	w8, [x22, #0x344]
+    3e70:      	add	x28, x22, #0x2cc
+    3e74:      	stp	x22, x23, [x10]
+    3e78:      	mov	w8, #0x2                ; =2
+    3e7c:      	str	x8, [x10, #0x10]
+    3e80:      	strh	w25, [sp, #0xb8]
+    3e84:      	strb	w26, [sp, #0xba]
+    3e88:      	stp	x19, x8, [x10, #0x20]
+    3e8c:      	mov	w8, #0x10000            ; =65536
+    3e90:      	cmp	w26, #0x0
+    3e94:      	csel	w8, w8, wzr, ne
+    3e98:      	stp	x24, x28, [x10, #0x30]
+    3e9c:      	str	w8, [sp, #0x4]
+    3ea0:      	orr	w3, w8, w25
+    3ea4:      	add	x4, sp, #0xa0
+    3ea8:      	add	x5, sp, #0x1f
+    3eac:      	mov	x0, x22
+    3eb0:      	mov	x1, x23
+    3eb4:      	mov	w2, #0x2                ; =2
+    3eb8:      	mov	x20, x27
+    3ebc:      	ldr	x21, [sp, #0x10]
+    3ec0:      	ldur	x8, [x29, #-0x48]
+    3ec4:      	blr	x8
+    3ec8:      	cbz	x21, 0x3ed8 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x1b4>
+    3ecc:      	mov	x27, x24
+    3ed0:      	ldrb	w24, [sp, #0x1f]
+    3ed4:      	b	0x3f08 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x1e4>
+    3ed8:      	stp	x22, x23, [sp, #0x60]
+    3edc:      	mov	w8, #0x2                ; =2
+    3ee0:      	str	x8, [sp, #0x70]
+    3ee4:      	strh	w25, [sp, #0x78]
+    3ee8:      	strb	w26, [sp, #0x7a]
+    3eec:      	stp	x19, x8, [sp, #0x80]
+    3ef0:      	mov	x27, x24
+    3ef4:      	stp	x24, x28, [sp, #0x90]
+    3ef8:      	add	x20, sp, #0x60
+    3efc:      	bl	0x3efc <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x1d8>
+		0000000000003efc:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8shutdownyyAA0dC5ErrorOYKF17RuntimeCycleProbe0J10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5
+    3f00:      	cbz	x21, 0x3fb4 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x290>
+    3f04:      	mov	x24, x0
+    3f08:      	stp	x22, x23, [sp, #0x20]
+    3f0c:      	mov	w8, #0x2                ; =2
+    3f10:      	str	x8, [sp, #0x30]
+    3f14:      	strh	w25, [sp, #0x38]
+    3f18:      	strb	w26, [sp, #0x3a]
+    3f1c:      	stp	x19, x8, [sp, #0x40]
+    3f20:      	stp	x27, x28, [sp, #0x50]
+    3f24:      	add	x20, sp, #0x20
+    3f28:      	mov	x21, #0x0               ; =0
+    3f2c:      	bl	0x3f2c <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x208>
+		0000000000003f2c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8shutdownyyAA0dC5ErrorOYKF17RuntimeCycleProbe0J10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5
+    3f30:      	strb	w24, [sp, #0x1e]
+    3f34:      	bl	0x3f34 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x210>
+		0000000000003f34:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl
+    3f38:      	mov	x2, x0
+    3f3c:      	adrp	x1, 0x3000 <_$s20GiftUIRuntimeDynamic0C27InteractionCandidateStorageV17RuntimeCycleProbeE05ownedD15BankMeasurement0A13UIInteraction0d5OwnedkL0VvgTm+0x10>
+		0000000000003f3c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorON
+    3f40:      	ldr	x1, [x1]
+		0000000000003f40:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorON
+    3f44:      	add	x0, sp, #0x1e
+    3f48:      	bl	0x3f48 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x224>
+		0000000000003f48:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    3f4c:      	ldr	w8, [sp, #0x4]
+    3f50:      	orr	w3, w8, w25
+    3f54:      	mov	x0, x22
+    3f58:      	mov	x1, x23
+    3f5c:      	mov	w2, #0x2                ; =2
+    3f60:      	bl	0x3f60 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x23c>
+		0000000000003f60:  ARM64_RELOC_BRANCH26	l___unnamed_6
+    3f64:      	ldr	x19, [sp, #0x8]
+    3f68:      	mov	w8, #0x10000            ; =65536
+    3f6c:      	cmp	w26, #0x0
+    3f70:      	csel	w8, w8, wzr, ne
+    3f74:      	orr	w3, w8, w25
+    3f78:      	mov	x0, x22
+    3f7c:      	mov	x1, x23
+    3f80:      	mov	w2, #0x2                ; =2
+    3f84:      	bl	0x3f84 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x260>
+		0000000000003f84:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe0j5OwnedE0V_0J6Schema0jeM0OTg5
+    3f88:      	mov	w20, #0x1               ; =1
+    3f8c:      	strb	w24, [x19]
+    3f90:      	mov	x21, x20
+    3f94:      	add	sp, sp, #0x260
+    3f98:      	ldp	x29, x30, [sp, #0x50]
+    3f9c:      	ldp	x20, x19, [sp, #0x40]
+    3fa0:      	ldp	x23, x22, [sp, #0x30]
+    3fa4:      	ldp	x25, x24, [sp, #0x20]
+    3fa8:      	ldp	x27, x26, [sp, #0x10]
+    3fac:      	ldr	x28, [sp], #0x60
+    3fb0:      	ret
+    3fb4:      	mov	x20, x21
+    3fb8:      	ldr	w19, [sp, #0x4]
+    3fbc:      	orr	w3, w19, w25
+    3fc0:      	mov	x0, x22
+    3fc4:      	mov	x1, x23
+    3fc8:      	mov	w2, #0x2                ; =2
+    3fcc:      	bl	0x3fcc <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x2a8>
+		0000000000003fcc:  ARM64_RELOC_BRANCH26	l___unnamed_6
+    3fd0:      	orr	w3, w19, w25
+    3fd4:      	mov	x0, x22
+    3fd8:      	mov	x1, x23
+    3fdc:      	mov	w2, #0x2                ; =2
+    3fe0:      	bl	0x3fe0 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x2bc>
+		0000000000003fe0:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState20ObservableModelScopeVAARi_zrlE16finishActivationyyF17RuntimeCycleProbe0j5OwnedE0V_0J6Schema0jeM0OTg5
+    3fe4:      	b	0x3f90 <_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5+0x26c>
+    3fe8:      	brk	#0x1
+    3fec:      	brk	#0x1

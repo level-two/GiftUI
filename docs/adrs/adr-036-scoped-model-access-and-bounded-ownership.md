@@ -6,12 +6,13 @@ status: accepted
 authors:
   - codex
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-24
 proposal:
   - PROPOSAL-007
 related_rfcs:
   - RFC-014
 related_adrs:
+  - ADR-041
   - ADR-011
   - ADR-024
   - ADR-025
@@ -44,6 +45,11 @@ Accepted by Eugene on 2026-10-10: “Let's accept ADRs and commit everything.
 And after that let's proceed with specs update.” The
 [acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md)
 preserves the reviewed commits, supersession and downstream contract gate.
+
+The explicit 2026-10-24 [ADR-041](adr-041-native-static-typed-model-backing.md)
+selects caller-supplied typed backing for Native Static construction qualification.
+It preserves this record's shared operations, ownership/cleanup and Embedded/Dynamic
+semantics; the historical reasoning below is retained.
 
 ## Context
 

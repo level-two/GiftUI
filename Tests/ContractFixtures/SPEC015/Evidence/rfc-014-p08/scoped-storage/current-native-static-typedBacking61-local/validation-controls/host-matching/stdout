@@ -1,0 +1,36 @@
+P07TRACE stage admissionAndSeal
+P07TRACE stage applyAdmittedWork
+P07TRACE stage freezeObservableMutation
+P07TRACE stage observableCandidateAndSemanticExpansion
+P07TRACE stage layout
+P07TRACE stage canvasInvocationAndPlan
+P07TRACE stage combinedRenderPreflight
+P07TRACE stage interactionCandidate
+P07TRACE stage semanticAndObservablePublication
+P07TRACE stage candidateAllocation
+P07TRACE stage offerAndProduction
+P07TRACE offer accepted
+P07TRACE provenance FrameProvenance(cycle: GiftUIExecution.RunCycleID(rawValue: 0), semanticRevision: GiftUIExecution.SemanticRevision(rawValue: 0), candidateFrame: GiftUIExecution.CandidateFrameID(rawValue: 0))
+P07TRACE render.begin RenderPlanHeader(surfaceBounds: GiftUI.Rect(origin: GiftUI.Point(x: 0, y: 0), size: GiftUI.Size(width: 100, height: 100)), damageBounds: GiftUI.Rect(origin: GiftUI.Point(x: 0, y: 0), size: GiftUI.Size(width: 100, height: 100)), operationCount: 3, positionedGlyphCount: 2, maximumObservedClipDepth: 2)
+P07TRACE render.glyphs.begin PositionedGlyphOperationHeader(instance: GiftUITextResources.FontInstanceID(resource: GiftUITextResources.FontResourceID(rawValue: GiftUITextResources.TextResourceDigest(word0: 3172261535, word1: 4072319732, word2: 1690382549, word3: 3805304128, word4: 77858140, word5: 3313142806, word6: 2791301836, word7: 960055568)), instanceIndex: 0), clip: GiftUI.Rect(origin: GiftUI.Point(x: 45, y: 0), size: GiftUI.Size(width: 10, height: 20)), color: GiftUI.Color(red: 255, green: 255, blue: 255), glyphCount: 1)
+P07TRACE render.glyph PositionedGlyph(glyph: GiftUITextResources.GlyphID(rawValue: 59), baseline: GiftUI.Point(x: 45, y: 16))
+P07TRACE render.glyphs.end 0
+P07TRACE render.glyphs.begin PositionedGlyphOperationHeader(instance: GiftUITextResources.FontInstanceID(resource: GiftUITextResources.FontResourceID(rawValue: GiftUITextResources.TextResourceDigest(word0: 3172261535, word1: 4072319732, word2: 1690382549, word3: 3805304128, word4: 77858140, word5: 3313142806, word6: 2791301836, word7: 960055568)), instanceIndex: 0), clip: GiftUI.Rect(origin: GiftUI.Point(x: 44, y: 20), size: GiftUI.Size(width: 11, height: 20)), color: GiftUI.Color(red: 255, green: 255, blue: 255), glyphCount: 1)
+P07TRACE render.glyph PositionedGlyph(glyph: GiftUITextResources.GlyphID(rawValue: 91), baseline: GiftUI.Point(x: 44, y: 36))
+P07TRACE render.glyphs.end 0
+P07TRACE render.stroke StraightLineStrokeHeader(color: GiftUI.Color(red: 255, green: 255, blue: 255), lineWidth: 1, lineCap: GiftUI.LineCap.butt, lineJoin: GiftUI.LineJoin.miter, surfaceOrigin: GiftUI.Point(x: 0, y: 40), inheritedClip: GiftUI.Rect(origin: GiftUI.Point(x: 0, y: 0), size: GiftUI.Size(width: 100, height: 40)), pointCount: 2, subpathCount: 1)
+P07TRACE render.point Point(x: 0, y: 43)
+P07TRACE render.point Point(x: 100, y: 40)
+P07TRACE render.subpath SubpathRange(firstPoint: 0, pointCount: 2)
+P07TRACE render.finish 0
+P07TRACE cleanup commitInteractionCandidate
+P07TRACE cleanup resetAttemptStorage
+P07TRACE disposition RuntimePipelineDisposition(semanticDisposition: GiftUIExecution.SemanticCycleDisposition.published, logicalFrameDisposition: GiftUIExecution.LogicalFrameDisposition.committed, presentationIntentState: GiftUIExecution.PresentationIntentState.satisfied, wakeReasons: GiftUIExecution.ExecutionWakeReasons(rawValue: 0), commitsInteractionCandidate: true, preservesPublishedSemanticRevision: true)
+P07TRACE finalized (GiftUIExecution.ExecutionContext(cycle: Optional(GiftUIExecution.RunCycleID(rawValue: 0)), semanticRevision: Optional(GiftUIExecution.SemanticRevision(rawValue: 0)), candidateFrame: Optional(GiftUIExecution.CandidateFrameID(rawValue: 0)), phase: GiftUIExecution.ExecutionPhase.offering), 0, 1, 1, 0, GiftUIObservableState.ObservableModelOwnership.Phase.mutating)
+P07TRACE result completed(GiftUIRuntimeCore.RuntimePipelineCompletion(publication: GiftUIRuntimeCore.RuntimePipelinePublication(semanticRevision: GiftUIExecution.SemanticRevision(rawValue: 0), changed: true), committedPresentationRevision: Optional(GiftUI.PresentationRevision(rawValue: 0)), operational: nil, disposition: GiftUIRuntimeCore.RuntimePipelineDisposition(semanticDisposition: GiftUIExecution.SemanticCycleDisposition.published, logicalFrameDisposition: GiftUIExecution.LogicalFrameDisposition.committed, presentationIntentState: GiftUIExecution.PresentationIntentState.satisfied, wakeReasons: GiftUIExecution.ExecutionWakeReasons(rawValue: 0), commitsInteractionCandidate: true, preservesPublishedSemanticRevision: true)))
+P07TRACE recovery (nil, false, 0)
+P07TRACE summary RunCycleSummary(cycle: GiftUIExecution.RunCycleID(rawValue: 0), admission: GiftUIExecution.AdmissionSummary(inputEventCount: 0, stateChangeFactCount: 0, completionFactCount: 0, semanticActionCount: 0, includesDirtyRederivation: true, includesPresentationRecovery: false), semanticRevision: Optional(GiftUIExecution.SemanticRevision(rawValue: 0)), semanticDisposition: GiftUIExecution.SemanticCycleDisposition.published, logicalFrameDisposition: GiftUIExecution.LogicalFrameDisposition.committed, committedPresentationRevision: Optional(GiftUI.PresentationRevision(rawValue: 0)), presentationIntentState: GiftUIExecution.PresentationIntentState.satisfied, presentationPending: nil, operationalEvents: GiftUIExecution.ExecutionOperationalEvents(rawValue: 0))
+P07TRACE terminal (0, 0, GiftUIObservableState.ObservableModelOwnership.Phase.mutating)
+P07TRACE terminal (0, 0, GiftUIObservableState.ObservableModelOwnership.Phase.mutating)
+P08 schema4 host component assertions=428 failures=0
+P08_SCHEMA4_EVIDENCE /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-z7a2tnlz

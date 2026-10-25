@@ -1,0 +1,12 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-wo_a9okt/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c7478 <_OUTLINED_FUNCTION_2076>:
+   c7478:      	str	x30, [sp, #-0x10]!
+   c747c:      	bl	0xc747c <_OUTLINED_FUNCTION_2076+0x4>
+		00000000000c747c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState24ObservableModelOwnershipVSgWOg
+   c7480:      	cmp	w0, #0x1
+   c7484:      	ldr	x30, [sp], #0x10
+   c7488:      	ret

@@ -1,0 +1,85 @@
+{
+  "saved_utc": "2026-10-24T15:05:06.230276+00:00",
+  "disposition": "PASS_SCOPED_NATIVE_TYPED_BACKING_MECHANISM_FOCUSED",
+  "ordinary_validation_only": true,
+  "formal_U02_qualification_claimed": false,
+  "sources": {
+    "source_freeze_utc": "2026-10-24T14:44:36.165007+00:00",
+    "sources": {
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": "2fec41d84cfb72b2035e84a62825326a12e05649d37bcfb1cc5e39170d869bde",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift": "58000584e17f70ed99aa60d846ea0a2c9a64745df401bf236dda0ad23810a0a5",
+      "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift": "0cb97992159332108a1aab473309787d64560cadceb72e700f6e8d04e2c73ff7",
+      "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift": "f680c39cc6538c84d1a462bbe3322b90cac44537144cb63d1ff4bcc6b7019036",
+      "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift": "c6c8584041ca42a6a0ab818f85d2f4c63f3fe15ed81f941381115ba2f324629e"
+    }
+  },
+  "receipts": {
+    "P07": {
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/result.json",
+      "sha256": "edb4d0272bab21a0a35197c06f26c1b8eda5697d4276b76faadf52dfbe611b91"
+    },
+    "host": {
+      "path": ".build/contracts/p08-scoped-host-z7a2tnlz/result.json",
+      "sha256": "a0ed46a42990ca43e60204d10087103f80e6876ebba4f46027f22cad289815fb"
+    },
+    "focused": {
+      "path": ".build/contracts/p08-counter-wo_a9okt/result.json",
+      "sha256": "5f08f9b6c7b056e2f6f76339d04456eb2c8fee4828012fc2614e32bc0bd413f0"
+    }
+  },
+  "objects": {
+    ".build/contracts/spec-013-runtime-cycle/tmp_92dqehp/macos-static/RuntimeCycleProbe.o": "c45bfcc82b8679e99d0e341f225f8688f480d765d596db0e1cba81173e0cdf22",
+    ".build/contracts/p08-scoped-host-z7a2tnlz/P08ScopedHostProbe.o": "626d0a9e18ab5611aa353c9dbd284bd63a75287953799cbb43a79536b4eafc6a",
+    ".build/contracts/p08-counter-wo_a9okt/P08CounterRuntime.o": "f7a2199611dc9a47e9ddbb4d08fc7c72a4e4af93dafe18032dd5db147a18cdf4"
+  },
+  "assertions": {
+    "P07": 5904,
+    "host": 428,
+    "focused": 1736320
+  },
+  "failures": 0,
+  "actual_path_joins": [
+    {
+      "path": "CounterOwnedModel/CounterModelSchema",
+      "setup": "body-1:0xaa8-0xb04 and seven setup-_OUTLINED_FUNCTION captures: nongeneric ledger init 2/4/2/0, concrete nil stores, ownership memcpy, operationAllowed(false), concrete span count2/schema1",
+      "use_cleanup": "0xb0c counterScopedModel, 0xb18 concrete finishActivation; Dynamic owner begins0xb20 and remains separately preserved"
+    },
+    {
+      "path": "CycleOwnedModel/CycleModelSchema/SemanticCompleteIdentity",
+      "setup": "body-15:0x3ba8-0x3cd4 concrete owner init; body-14 literal storageLayout",
+      "use_cleanup": "giftuiP07CycleSemantic0x1a0b0 -> Int lifetime0x3ff0-0x4134 -> withRoot0x409c; StaticCycleProfileStorage.run0xebb0 -> Void lifetime0x3d24-0x3ff0 -> callback0x3ec4, shutdown0x3efc/0x3f2c, specialized finishActivation0x3f84/0x3fe0; accepted generic operation/cleanup bodies reused with these concrete arguments"
+    },
+    {
+      "path": "LeaseModel/LeaseSchema",
+      "setup": "body-3:0x286c nongeneric ledger init;0x288c concrete nil2;0x28b8 capacity2;0x28c4 same exerciseLease",
+      "use_cleanup": "0x28dc -> body-19 specialized finishActivation; literal destruction count3 checked0x28e8 before Dynamic begins0x28f4; final Optional slot destruction0x2968/0x2970 retained"
+    },
+    {
+      "path": "UInt8/P08HostSchema",
+      "setup": "body-2:ledger init0x68c/concrete Optional2 nil stores0x6cc outside failure0...7 loop0x6e8",
+      "use_cleanup": "unchanged lifecycle trace assertions;0xbb8/0xbc0 endAccess;0xbc8 nongeneric finishActivation,0xbd4-0xbf0 occupied-slot direct nil writes,0xbfc backedge next failure; no ModelStorage/Optional<Model> acquisition relocated into this setup/cleanup"
+    }
+  ],
+  "unused_emitted_accessor_boundary": {
+    "evidence": "../current-native-static-typedBacking61-local/proof/actual-native-joins.json",
+    "fact": "CycleStaticRootStorageVMa and unspecialized generic withLifetime have no current text relocation or encoded direct B/BL caller; actual mandatory Native callers use Int/Void specializations above",
+    "limit": "Actual mandatory current routes only; no reflection, foreign, future generic caller or universal absence claim"
+  },
+  "evidence": [
+    "metadata-origins.json",
+    "actual-native-joins.json",
+    "bodies.json"
+  ],
+  "text_deltas_bytes": {
+    "P08CounterRuntime": -88,
+    "RuntimeCycleProbe": 3892,
+    "P08ScopedHostProbe": 144
+  },
+  "visibility_cost": "No library/API/annotation change; five fixture files, concrete owner plumbing using existing checked factories. Embedded owning aliases/branches and Dynamic shared oracles retained.",
+  "remaining_gates": [
+    "Full current artifact applicability pending single required full run",
+    "Unit failed before tests; Interaction unexecuted",
+    "Existing error/once/provider/live binding/stdout persistence/window/resource/profile and remaining P08 eligibility obligations remain open; no global zeroheap claim"
+  ],
+  "preserved_failure": "focused-first rejected stale host input before compiler; matching schema4 activation host refreshed without bypassing validation"
+}

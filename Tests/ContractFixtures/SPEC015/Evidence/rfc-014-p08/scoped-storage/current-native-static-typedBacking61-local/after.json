@@ -1,0 +1,10 @@
+{
+  "source_freeze_utc": "2026-10-24T14:44:36.165007+00:00",
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": "2fec41d84cfb72b2035e84a62825326a12e05649d37bcfb1cc5e39170d869bde",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift": "58000584e17f70ed99aa60d846ea0a2c9a64745df401bf236dda0ad23810a0a5",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift": "0cb97992159332108a1aab473309787d64560cadceb72e700f6e8d04e2c73ff7",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift": "f680c39cc6538c84d1a462bbe3322b90cac44537144cb63d1ff4bcc6b7019036",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift": "c6c8584041ca42a6a0ab818f85d2f4c63f3fe15ed81f941381115ba2f324629e"
+  }
+}

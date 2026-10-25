@@ -1,0 +1,8 @@
+{
+  "reason": "deadline",
+  "triggered_utc": "2026-10-25T19:31:32.743625+00:00",
+  "pid": 37383,
+  "term_remaining_seconds": 1.9991061687469482,
+  "kill_completed_utc": "2026-10-25T19:31:33.747923+00:00",
+  "completed_inside_deadline": true
+}

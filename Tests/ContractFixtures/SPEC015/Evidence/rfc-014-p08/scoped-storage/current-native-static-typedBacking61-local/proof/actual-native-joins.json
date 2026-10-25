@@ -1,0 +1,318 @@
+{
+  "counter": {
+    "root_reference_joins": [
+      {
+        "pc": "0xc6d98",
+        "owner": "_OUTLINED_FUNCTION_1908",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0D18ModelOwnerIdentityV_s6UInt16VSbA4QSgtcfc",
+        "kind": 2
+      },
+      {
+        "pc": "0xc6d90",
+        "owner": "_OUTLINED_FUNCTION_1907",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0D18ModelOwnerIdentityV_s6UInt16VSbA4QSgtcfc",
+        "kind": 2
+      },
+      {
+        "pc": "0xc5eb8",
+        "owner": "_OUTLINED_FUNCTION_1659",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0xc26b0",
+        "owner": "_OUTLINED_FUNCTION_852",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF",
+        "kind": 2
+      },
+      {
+        "pc": "0xc13d4",
+        "owner": "_OUTLINED_FUNCTION_662",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "kind": 4
+      },
+      {
+        "pc": "0xc13d0",
+        "owner": "_OUTLINED_FUNCTION_662",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "kind": 3
+      },
+      {
+        "pc": "0xba414",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_yA3_18CanvasStagedValuesVyA18_A21_GXEfU_TA",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_yA3_18CanvasStagedValuesVyA18_A21_GXEfU_SiAA0aQ7SessionACLLVnXEfU_TA",
+        "kind": 4
+      },
+      {
+        "pc": "0xba410",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_yA3_18CanvasStagedValuesVyA18_A21_GXEfU_TA",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_yA3_18CanvasStagedValuesVyA18_A21_GXEfU_SiAA0aQ7SessionACLLVnXEfU_TA",
+        "kind": 3
+      },
+      {
+        "pc": "0xba3ac",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_TA",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_yA3_18CanvasStagedValuesVyA18_A21_GXEfU_TA",
+        "kind": 4
+      },
+      {
+        "pc": "0xba3a8",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_TA",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_yA3_18CanvasStagedValuesVyA18_A21_GXEfU_TA",
+        "kind": 3
+      },
+      {
+        "pc": "0xba300",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_TA",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_",
+        "kind": 2
+      },
+      {
+        "pc": "0xba26c",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_TA",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE12withLifetime6limits_qd__0A17UIObservableState0dK6LimitsV_qd__AF0D10ModelScopeVyx6SchemaQzG_AF0dkeN0Vyxq_GtAF0dK5ErrorOYKXEtARYKlF",
+        "kind": 2
+      },
+      {
+        "pc": "0xba250",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_TA",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_TA",
+        "kind": 4
+      },
+      {
+        "pc": "0xba24c",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_TA",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_TA",
+        "kind": 3
+      },
+      {
+        "pc": "0x80e44",
+        "owner": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV3runSiyF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE12withLifetime6limits_qd__0A17UIObservableState0dK6LimitsV_qd__AF0D10ModelScopeVyx6SchemaQzG_AF0dkeN0Vyxq_GtAF0dK5ErrorOYKXEtARYKlF",
+        "kind": 2
+      },
+      {
+        "pc": "0x80810",
+        "owner": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0cE16ValidationResultOyAA0bF6RegionVXE_tF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0x807c8",
+        "owner": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0cE16ValidationResultOyAA0bF6RegionVXE_tF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0x80320",
+        "owner": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0cE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab9Runtime07d3B14ef9V5audit17ij9Core0cE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_n",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0x802d8",
+        "owner": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0cE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab9Runtime07d3B14ef9V5audit17ij9Core0cE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_n",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0x7fd04",
+        "owner": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV4root013GiftUIRuntimeD00D21ObservableRootAdapterCyAA0B10OwnedModelV0H14UISemanticCore24SemanticCompleteIdentityVGvM",
+        "target": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV4root013GiftUIRuntimeD00D21ObservableRootAdapterCyAA0B10OwnedModelV0H14UISemanticCore24SemanticCompleteIdentityVGvM.resume.0",
+        "kind": 4
+      },
+      {
+        "pc": "0x7fd00",
+        "owner": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV4root013GiftUIRuntimeD00D21ObservableRootAdapterCyAA0B10OwnedModelV0H14UISemanticCore24SemanticCompleteIdentityVGvM",
+        "target": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV4root013GiftUIRuntimeD00D21ObservableRootAdapterCyAA0B10OwnedModelV0H14UISemanticCore24SemanticCompleteIdentityVGvM.resume.0",
+        "kind": 3
+      },
+      {
+        "pc": "0x52d64",
+        "owner": "_$s17P08CounterRuntime28counterExerciseScopedStorage7backing5writeSiSwSg_s5Int32Vs6UInt16V_A3ISPys5UInt8VGSgSitXCSgtF",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF",
+        "kind": 2
+      },
+      {
+        "pc": "0x4df98",
+        "owner": "_$s17P08CounterRuntime03p08B11DynamicHostSiyF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0D18ModelOwnerIdentityV_s6UInt16VSbA4QSgtcfc",
+        "kind": 2
+      },
+      {
+        "pc": "0x4dc00",
+        "owner": "_$s17P08CounterRuntime03p08B11DynamicHostSiyF",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF",
+        "kind": 2
+      },
+      {
+        "pc": "0x4d718",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_TA",
+        "kind": 4
+      },
+      {
+        "pc": "0x4d714",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_yA47__A50_tA41_20ObservableStateErrorOYKXEfU_yAX19SemanticRecordStoreVyA12_GAX22SemanticExpansionErrorOYKXEfU_TA",
+        "kind": 3
+      },
+      {
+        "pc": "0x4d5e4",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_TA",
+        "kind": 4
+      },
+      {
+        "pc": "0x4d5e0",
+        "owner": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtF",
+        "target": "_$s17P08CounterRuntime25p08RunPreparedDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5owner5facts11rootStorage08semanticQ006canvasQ07control09failAfterC05early16candidateFailure5reuse8baselineSiAA0A17TypedBackingOwnerACLLVz_AA0ahE5FactsACLLVzSpy013GiftUIRuntimeG00G21ObservableRootAdapterCyAA0B10OwnedModelV18GiftUISemanticCore24SemanticCompleteIdentityVGGSpyAS0g14SemanticRecordQ0Cy13GiftUIDrawing21CanvasSemanticPayloadOy0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGGGGSpyAS0g14CanvasCallableQ0VyAX23SemanticRecordReferenceVA6_0aB17SchemaCanvasTableVyA10_GGGSpyAA0B7ControlVGSbs5UInt8V17GiftUIRuntimeCore0C21CompletePipelineStageOSgSpyAA0aH15ReuseTranscriptACLLVGSgSpyAA0A16ReuseFingerprintACLLVGSgtFSi21GiftUIObservableState20ObservableModelScopeVyAW0aB6Schema0B11ModelSchemaOG_A41_24ObservableStateRootScopeVyAwZGA26_tXEfU_TA",
+        "kind": 3
+      },
+      {
+        "pc": "0x4cd1c",
+        "owner": "_$s17P08CounterRuntime21p08PrepareDynamicHost33_480B1BD841D053AE4FCDC18507668536LL5outer5owner17GiftUIRuntimeCore0C12StorageAuditV5audit_AA0bG8AssemblyV8assemblytAA0aF9OuterViewACLLV_AA0A17TypedBackingOwnerACLLVztF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0x8f38",
+        "owner": "_$s17P08CounterRuntime03p08B8SemanticSiyF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE12withLifetime6limits_qd__0A17UIObservableState0dK6LimitsV_qd__AF0D10ModelScopeVyx6SchemaQzG_AF0dkeN0Vyxq_GtAF0dK5ErrorOYKXEtARYKlF",
+        "kind": 2
+      },
+      {
+        "pc": "0x8eb0",
+        "owner": "_$s17P08CounterRuntime03p08B8SemanticSiyF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0D18ModelOwnerIdentityV_s6UInt16VSbA4QSgtcfc",
+        "kind": 2
+      }
+    ],
+    "unused_generic_accessor_checks": {},
+    "static_root_adapter_text_refs": []
+  },
+  "p07": {
+    "root_reference_joins": [
+      {
+        "pc": "0x557c0",
+        "owner": "_OUTLINED_FUNCTION_834",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCy17RuntimeCycleProbe0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "kind": 4
+      },
+      {
+        "pc": "0x557bc",
+        "owner": "_OUTLINED_FUNCTION_834",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCy17RuntimeCycleProbe0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD",
+        "kind": 3
+      },
+      {
+        "pc": "0x1a17c",
+        "owner": "_$s17RuntimeCycleProbe09giftuiP07B8SemanticSiyF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE12withLifetime6limits_qd__0A17UIObservableState0dK6LimitsV_qd__AF0D10ModelScopeVyx6SchemaQzG_AF0dkeN0Vyxq_GtAF0dK5ErrorOYKXEtARYKlF",
+        "kind": 2
+      },
+      {
+        "pc": "0x1a0fc",
+        "owner": "_$s17RuntimeCycleProbe09giftuiP07B8SemanticSiyF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0x1a0ec",
+        "owner": "_$s17RuntimeCycleProbe09giftuiP07B8SemanticSiyF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0D18ModelOwnerIdentityV_s6UInt16VSbA4QSgtcfc",
+        "kind": 2
+      },
+      {
+        "pc": "0x1a0b0",
+        "owner": "_$s17RuntimeCycleProbe09giftuiP07B8SemanticSiyF",
+        "target": "_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFSi_Tg504$s17ab18Probe09giftuiP07B8u8SiyFSi21jk7State20mop7VyAA0b5q26K0V0B6Schema0bkN0OG_AC0ji4e10L0VyAG0G14s8Core0F16vw9VGtAC0jI5X8OYKXEfU_Tf1ncn_n",
+        "kind": 2
+      },
+      {
+        "pc": "0xebb0",
+        "owner": "_$s17RuntimeCycleProbe06StaticB14ProfileStorageV3runSiyF",
+        "target": "_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlFyt_Tg5",
+        "kind": 2
+      },
+      {
+        "pc": "0xb5c4",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV3runSiyF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE12withLifetime6limits_qd__0A17UIObservableState0dK6LimitsV_qd__AF0D10ModelScopeVyx6SchemaQzG_AF0dkeN0Vyxq_GtAF0dK5ErrorOYKXEtARYKlF",
+        "kind": 2
+      },
+      {
+        "pc": "0xaec0",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0xae78",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0xab60",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab33Probe012cycleFactoryC0SiyFyAA0B13fN7VXEfU2_Tf1cn_n",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0xab1c",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab33Probe012cycleFactoryC0SiyFyAA0B13fN7VXEfU2_Tf1cn_n",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0xa7fc",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe07d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_n",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0xa7b8",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0aE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab7Probe07d3B14ef9V5audit17ij9Core0aE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_n",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE13storageLayout0A17UIObservableState0D18ModelOwnerIdentityV5owner_s6UInt16V6modelsAJ6claimsAJ4pinsAJ8capturesSi13metadataBytesSi05modelU0Si03pinU0Si04liveU0Si09candidateU0tvg",
+        "kind": 2
+      },
+      {
+        "pc": "0xa58c",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV10modelOwner08semanticH06limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0K14UISemanticCore014SemanticRecordhP0V0k9UIRuntimeR00aE6LimitsVtcfC",
+        "target": "_$s20GiftUIRuntimeDynamic0C21ObservableRootAdapterCAARi_zrlE8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACyxq_GSg0A17UIObservableState0D18ModelOwnerIdentityV_s6UInt16VSbA4QSgtcfc",
+        "kind": 2
+      },
+      {
+        "pc": "0xa090",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV4root013GiftUIRuntimeD00D21ObservableRootAdapterCyAA0B10OwnedModelV0H14UISemanticCore24SemanticCompleteIdentityVGvM",
+        "target": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV4root013GiftUIRuntimeD00D21ObservableRootAdapterCyAA0B10OwnedModelV0H14UISemanticCore24SemanticCompleteIdentityVGvM.resume.0",
+        "kind": 4
+      },
+      {
+        "pc": "0xa08c",
+        "owner": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV4root013GiftUIRuntimeD00D21ObservableRootAdapterCyAA0B10OwnedModelV0H14UISemanticCore24SemanticCompleteIdentityVGvM",
+        "target": "_$s17RuntimeCycleProbe07DynamicB14ProfileStorageV4root013GiftUIRuntimeD00D21ObservableRootAdapterCyAA0B10OwnedModelV0H14UISemanticCore24SemanticCompleteIdentityVGvM.resume.0",
+        "kind": 3
+      }
+    ],
+    "unused_generic_accessor_checks": {
+      "_$s17RuntimeCycleProbe0B17StaticRootStorageVMa": {
+        "text_relocations": [],
+        "direct_encoded_B_BL_incoming": [],
+        "scope": "actual current text; not a claim about arbitrary reflection/foreign callers"
+      },
+      "_$s17RuntimeCycleProbe0B17StaticRootStorageV12withLifetime6limits_x21GiftUIObservableState010ObservableL6LimitsV_xAF0M10ModelScopeVyAA0b5OwnedO0V0B6Schema0boR0OG_AF0mleP0VyAL0J14UISemanticCore24SemanticCompleteIdentityVGtAF0mL5ErrorOYKXEtAXYKlF": {
+        "text_relocations": [],
+        "direct_encoded_B_BL_incoming": [],
+        "scope": "actual current text; not a claim about arbitrary reflection/foreign callers"
+      }
+    },
+    "static_root_adapter_text_refs": []
+  },
+  "host": {
+    "root_reference_joins": [],
+    "unused_generic_accessor_checks": {},
+    "static_root_adapter_text_refs": []
+  }
+}

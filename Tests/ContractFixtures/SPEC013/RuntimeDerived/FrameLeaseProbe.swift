@@ -85,12 +85,24 @@ package func giftuiP07FrameLease() -> UInt32 {
     var destructions: UInt32 = 0
     var checks: UInt32 = 0
     do throws(ObservableStateError) {
+        #if hasFeature(Embedded)
         var fixed = StaticObservableModelStorage<LeaseModel, LeaseSchema>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
         checks += try withUnsafeMutablePointer(to: &destructions) { (count) throws(ObservableStateError) in
             try fixed.withLifetime { (models) throws(ObservableStateError) in
                 try exerciseLease(models, destructions: count)
             }
         }
+        #else
+        var ownership = ObservableModelOwnership(identity: try namespace.issue(), captureLimit: 0)!
+        var backing: InlineArray<2, LeaseModel?> = .init { _ in nil }
+        var modelSpan = backing.mutableSpan
+        checks += try withUnsafeMutablePointer(to: &destructions) { (count) throws(ObservableStateError) in
+            try withObservableModelScope(ownership: &ownership, models: &modelSpan,
+                schema: 1, needsCapture: false) { (models: borrowing ObservableModelScope<LeaseModel, LeaseSchema>) throws(ObservableStateError) in
+                try exerciseLease(models, destructions: count)
+            }
+        }
+        #endif
         precondition(destructions == 3)
         #if !hasFeature(Embedded)
         destructions = 0

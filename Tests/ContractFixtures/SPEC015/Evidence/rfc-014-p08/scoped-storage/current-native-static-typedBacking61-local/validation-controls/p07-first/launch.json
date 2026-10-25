@@ -1,0 +1,18 @@
+{
+  "authority": "Human-approved typed-backing direction; matching P07 only, ordinary 4-hour/2GiB/32MiB guard; no full counter authority",
+  "start_utc": "2026-10-24T14:44:39.442623+00:00",
+  "deadline_utc": "2026-10-24T18:44:39.442623+00:00",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-013-runtime-cycle.py",
+    "--profile",
+    "macos-static",
+    "--giftui-build",
+    ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static"
+  ],
+  "guard_armed_before_spawn": true,
+  "output_limit": 2147483648,
+  "reserve": 33554432,
+  "initial_retained_bytes": 179197,
+  "frozen_inputs_verified": 5
+}

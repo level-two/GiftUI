@@ -1,0 +1,16 @@
+{
+  "finished_utc": "2026-10-25T19:31:28.741568+00:00",
+  "exit": null,
+  "launch_error": "FileNotFoundError(2, 'No such file or directory')",
+  "guard": null,
+  "last_output_sample": {
+    "bytes": 0,
+    "candidates": [],
+    "sample_utc": "2026-10-25T19:31:28.732104+00:00",
+    "scan_error": null
+  },
+  "output_sample_final": false,
+  "within_deadline": true,
+  "within_output_envelope_at_last_sample": true,
+  "scanner_still_blocked": false
+}

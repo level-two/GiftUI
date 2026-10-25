@@ -1,0 +1,11 @@
+{
+  "finished_utc": "2026-10-24T14:45:57.663496+00:00",
+  "exit": 1,
+  "guard": {
+    "reason": null
+  },
+  "retained_bytes": 25393540,
+  "output_candidates": [],
+  "within_deadline": true,
+  "within_output_envelope": true
+}

@@ -1,0 +1,77 @@
+{
+  "saved_utc": "2026-10-24T19:53:45.585520+00:00",
+  "disposition": "FOCUSED_MECHANISM_PASS_FULL_INCOMPLETE_TIME_BOUND_FAILED",
+  "full": {
+    "start_utc": "2026-10-24T15:05:09.592059+00:00",
+    "fixed_deadline_utc": "2026-10-24T19:05:09.592059+00:00",
+    "terminal": {
+      "finished_utc": "2026-10-24T19:24:50.248018+00:00",
+      "exit": -15,
+      "guard": {
+        "reason": "deadline",
+        "triggered_utc": "2026-10-24T19:24:48.206595+00:00",
+        "retained_bytes": 275171300
+      },
+      "retained_bytes": 275171300,
+      "output_candidates": [
+        ".build/contracts/p08-counter-oc77dnep"
+      ],
+      "within_deadline": false,
+      "within_output_envelope": true
+    },
+    "exec_session": 94402,
+    "exec_exit": 143,
+    "result_expected": ".build/contracts/p08-counter-oc77dnep/result.json",
+    "result_exists": false,
+    "no_retry": true,
+    "enforcement_delay_seconds": 1178.614536,
+    "delay_cause": "Not established; no OS/process investigation performed."
+  },
+  "guard_provenance": {
+    ".build/contracts/p08-native-static-typedBacking61/full4h1/launch.json": {
+      "sha256": "df708507b3d28196547d87f37aacea7c747d61cbc8c3c70cfbb5697aa031df59",
+      "bytes": 762
+    },
+    ".build/contracts/p08-native-static-typedBacking61/full4h1/ownership.json": {
+      "sha256": "f811bb5dca206455452f87b9fe23ca94ed4c5c7dea7be05e7036c6bb82103561",
+      "bytes": 172
+    },
+    ".build/contracts/p08-native-static-typedBacking61/full4h1/terminal.json": {
+      "sha256": "f5dfad4afb5aba988057ac7a10ff00b1a8f8f89d6f1cbcb40896e16cd761cb4b",
+      "bytes": 372
+    },
+    ".build/contracts/p08-native-static-typedBacking61/full4h1/launch-guard.py": {
+      "sha256": "8dd7f18cae08cb6b6e07be200e742d5055b5a9662ce53af2e23f99a830cd7dda",
+      "bytes": 4834
+    },
+    ".build/contracts/p08-native-static-typedBacking61/full4h1/stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    ".build/contracts/p08-native-static-typedBacking61/full4h1/stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "focused_mechanism": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-typedBacking61-result/focused-mechanism.json",
+    "sha256": "c81a8854dad11fe2426858f42269e1fc2932b3844b9d6c6ae20a77fc44bb4abc",
+    "disposition": "PASS scoped to actual migrated Native constructor/lifetime/callback/cleanup paths; no full transfer"
+  },
+  "source_freeze": {
+    "source_freeze_utc": "2026-10-24T14:44:36.165007+00:00",
+    "sources": {
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": "2fec41d84cfb72b2035e84a62825326a12e05649d37bcfb1cc5e39170d869bde",
+      "Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift": "58000584e17f70ed99aa60d846ea0a2c9a64745df401bf236dda0ad23810a0a5",
+      "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift": "0cb97992159332108a1aab473309787d64560cadceb72e700f6e8d04e2c73ff7",
+      "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift": "f680c39cc6538c84d1a462bbe3322b90cac44537144cb63d1ff4bcc6b7019036",
+      "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift": "c6c8584041ca42a6a0ab818f85d2f4c63f3fe15ed81f941381115ba2f324629e"
+    }
+  },
+  "remaining_gates": [
+    "Full collection incomplete; no final full result and no full artifact applicability transfer",
+    "Unit failed before Interaction execution; no unit waiver",
+    "Other Model/generic, error, once, loaded provider, environment, stdout persistence, current image, resource/cold/profile and P08 eligibility gates remain as previously recorded"
+  ],
+  "actions": "No source edit during full; no retry/new allowance/source/helper investigation. Coordinator owns next disposition/index."
+}

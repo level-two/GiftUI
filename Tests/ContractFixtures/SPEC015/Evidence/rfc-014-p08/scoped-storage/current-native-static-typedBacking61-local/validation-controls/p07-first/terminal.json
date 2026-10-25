@@ -1,0 +1,13 @@
+{
+  "finished_utc": "2026-10-24T14:45:23.749349+00:00",
+  "exit": 0,
+  "guard": {
+    "reason": null
+  },
+  "retained_bytes": 25382308,
+  "output_candidates": [
+    ".build/contracts/spec-013-runtime-cycle/tmp_92dqehp"
+  ],
+  "within_deadline": true,
+  "within_output_envelope": true
+}

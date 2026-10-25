@@ -1,0 +1,15 @@
+{
+  "finished_utc": "2026-10-24T19:24:50.248018+00:00",
+  "exit": -15,
+  "guard": {
+    "reason": "deadline",
+    "triggered_utc": "2026-10-24T19:24:48.206595+00:00",
+    "retained_bytes": 275171300
+  },
+  "retained_bytes": 275171300,
+  "output_candidates": [
+    ".build/contracts/p08-counter-oc77dnep"
+  ],
+  "within_deadline": false,
+  "within_output_envelope": true
+}
