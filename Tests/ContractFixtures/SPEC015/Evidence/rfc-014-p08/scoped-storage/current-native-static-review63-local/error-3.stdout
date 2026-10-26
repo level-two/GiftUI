@@ -1,0 +1,16 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/GiftUIObservableState.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000d840 <_OUTLINED_FUNCTION_5>:
+    d840:      	mov	x2, x0
+    d844:      	adrp	x1, 0xd000 <_$s21GiftUIObservableState010ObservableC16RootTargetAccessVwst+0x48>
+		000000000000d844:  ARM64_RELOC_ADDEND	0x10
+		000000000000d844:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorOMf
+    d848:      	add	x1, x1, #0x0
+		000000000000d848:  ARM64_RELOC_ADDEND	0x10
+		000000000000d848:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorOMf
+    d84c:      	sub	x0, x29, #0x41
+    d850:      	b	0xd850 <_OUTLINED_FUNCTION_5+0x10>
+		000000000000d850:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl

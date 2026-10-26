@@ -1,0 +1,196 @@
+{
+  "review": "63",
+  "status": "PARTIAL_SUBSTANTIVE_EVIDENCE_WHOLE_CALLEE_ELIGIBILITY_INCOMPLETE",
+  "head": "d8cc0c18a914547f9f2cfed526321ddf36ea70bc",
+  "baseline": {
+    "full_result": ".build/contracts/p08-counter-iher3bin/result.json",
+    "full_sha256": "6dc6b3049c95ad555ed46c216acac15186fde4184ad6aa4bfd68e4d4140c71cc",
+    "runtime_sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+    "source_binding": [
+      {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+        "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+        "matches_current_full_input": true,
+        "matches_prior_context_source": true
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+        "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+        "matches_current_full_input": true,
+        "matches_prior_context_source": true
+      },
+      {
+        "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+        "sha256": "e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a",
+        "matches_current_full_input": true,
+        "matches_prior_context_source": true
+      },
+      {
+        "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+        "sha256": "e610496954dce3023b833fc07c785498025bf0e96372ab9430d8f7b5fc12c4a1",
+        "matches_current_full_input": true,
+        "matches_prior_context_source": true
+      },
+      {
+        "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+        "sha256": "4ffc05499e80646af0fb41bbe52f826b232a3bc8f3cb8654295a481819d9717c",
+        "matches_current_full_input": true,
+        "matches_prior_context_source": true
+      },
+      {
+        "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+        "sha256": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951",
+        "matches_current_full_input": true,
+        "matches_prior_context_source": true
+      },
+      {
+        "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+        "sha256": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+        "matches_current_full_input": true,
+        "matches_prior_context_source": true
+      },
+      {
+        "path": "Sources/GiftUIObservableState/ObservableStateValues.swift",
+        "sha256": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae",
+        "matches_current_full_input": true,
+        "matches_prior_context_source": true
+      }
+    ]
+  },
+  "time": {
+    "root_anchor": "2026-10-26T08:59:38Z",
+    "hard_cutoff": "2026-10-26T10:59:38Z",
+    "handoff_utc": "2026-10-26T10:24:01.745356+00:00",
+    "capacity_interruption": "Root-reported model-capacity interruption; same owner and clock, no reset or technical failure inferred."
+  },
+  "method": "Human-approved ordinary static evidence; no cumulative processing or custom per-message accounting, no recorder. Original context and8MiB output/two-hour stop retained. No source/compiler/full/runtime/cold work.",
+  "facts": [
+    {
+      "id": "ERROR_REQUIRED_JOIN",
+      "status": "PROVED_SCOPED",
+      "fact": "Current required retainedModel refusal raw14 at0x21d4 routes0x2188 -> actual outlined1550xe378/e37c -> Error getter0x2fc-33c. Getter own-cache zero calls swift_getWitnessTable with exact Error descriptor/type, then release-caches; outlined5 passes resulting WT to willThrowTypedImpl. CounterSemanticProbe still requires this refusal for Static and Dynamic.",
+      "evidence": [
+        "error-1.stdout",
+        "error-2.stdout",
+        "error-0.stdout",
+        "error-3.stdout"
+      ]
+    },
+    {
+      "id": "ERROR_RESILIENT_CATEGORY",
+      "status": "PRIOR_CATEGORY_NOT_BOUND_TO_CURRENT_DESCRIPTOR",
+      "fact": "The saved whole-object hashes differ (identity.equal=false). A59 nongeneric resilient descriptor/header/own-cache facts have NOT been related to current descriptor bytes/relocations by retained evidence in this review. They cannot establish current Error category or current Error->arena reachability merely from same source/name/address. The old bounded core body facts remain conditional on that descriptor/category premise. Direct CURRENT refusal/getter->swift_getWitnessTable join stands independently.",
+      "identity": {
+        "current": "39d28ca22bf93b83b55f122c3e282745466e69f541b9953be84d8de0d067f237",
+        "A59": "7aa008f300ddec07c238ee427d4ac7bf78726496b7ae0f66a7d31ca9a1c33a8c",
+        "equal": false
+      },
+      "evidence": [
+        "reused/error-descriptor96.json",
+        "reused/error-descriptor-relocations.json",
+        "reused/error-cache-type-and-prior.json",
+        "reused/group-2.stdout"
+      ]
+    },
+    {
+      "id": "ARENA_BINDING_EFFECT",
+      "status": "CONDITIONAL_ALLOCATOR_DEPENDENCY",
+      "fact": "Swift stub1940ef68c is exact indirect-symbol import malloc_type_zone_malloc_with_options, libSystem ordinal5; declared reexport selects installed libsystem_malloc regular export. Arena193c64ef0 takes allocator import for size>8192 or small-request remaining-pool insufficiency. Small sufficient pool atomically bumps and can avoid it. Exact pristine length word65536 plus encoded pointer-looking data is not an all-zero/live arena. Init193cd3fc8 can change length to65520 under config bit, fills static area if configured, and depends on environment/config once193cb5d8c. malloc wrapper checks alignment (actual arena align8 valid), may reach default zone callback/backend or reject invalid input; no success/bytes/unavoidable firstuse/observed allocation claim.",
+      "evidence": [
+        "provider-stub-and-initial-data.json",
+        "selected-provider-metadata.json",
+        "malloc_type_zone_malloc_with_options.stdout",
+        "malloc-0x18030f9d4.stdout",
+        "Swift-0x1940edbb4.stdout",
+        "Swift-0x193ca09c0.stdout",
+        "Swift-0x193cd3fc8.stdout",
+        "Swift-0x193ce7d70.stdout",
+        "reused/group-3.stdout"
+      ]
+    },
+    {
+      "id": "ONCE_PROVIDER_EFFECT",
+      "status": "SCOPED_BODY_CLASSIFICATION",
+      "fact": "Exact Swift stub1940ef34c imports dispatch_once_f through libSystem ordinal5/installed libdispatch regular export. Token=-1 returns; normal zero-token winner CASes thread ownership, calls180346610 ->18035d4a0 authenticated callback, release-swaps epoch and may wake waiters. Contended waiter1803457e8 loops via180378fe8; same-owner recursion traps; wait primitive180345894/wake tail18034584c remain unexamined. Bounded wrapper bodies contain no unconditional allocator call; callback/state/wait bounds remain separate. Fixed DrawingLimits callback lemma can be reused only at its exact current join.",
+      "evidence": [
+        "dispatch_once_f.stdout",
+        "dispatch-0x180346610.stdout",
+        "dispatch-0x18035d4a0.stdout",
+        "dispatch-0x1803457e8.stdout",
+        "dispatch-0x180378fe8.stdout",
+        "reused/group-1.stdout"
+      ]
+    },
+    {
+      "id": "LAYOUT_CURRENT_JOIN",
+      "status": "HELPERS_CLOSED_ROOT_FEASIBILITY_OPEN",
+      "fact": "Current28B RootScope thunk0xaf1c0-1dc tests weak runtimeSupportsNoncopyableTypes then requests exact RootScope MD, or returns fixed Void layout via outlined192. Incoming current text0xbc64c and typeref0xce1eb remain. Current PipelineOwnerVMr0xae474-588 uses constants1843, metadata-state901, layout loads1086, InteractionOwnedKeyState accessor132 and metadata init plumbing968: all selected helper bodies now examined. No direct VMr->RootScope-thunk edge or reflection-only/infeasible current-root conclusion is inferred.",
+      "evidence": [
+        "current-layout-joins.json"
+      ]
+    },
+    {
+      "id": "SEMANTIC_CODEC_ROLES_INDIRECT",
+      "status": "SOURCE_PREDICATES_ONLY_MACHINE_GROUP_NONQUALIFIED",
+      "fact": "CounterRoles source returns finite matching roles or nil after inert sample constructors. RecordWorkspace rejects missing/zero role; RecordSink records codec error; Canvas codec attempts Table.payload then delegates standard codec. Observable binding checks association before callbacks/read/bind and preserves typed failures. These do not establish all callback guards/error arms infeasible or all current compiled metadata/witness origins nonallocating. Role machine group exceeded context limit and was clipped; no eligibility proof uses it.",
+      "evidence": [
+        "current-role-captures.json"
+      ],
+      "context_failure": {
+        "status": "NONQUALIFIED",
+        "captures": 26,
+        "bytes": 1085451,
+        "lines": 7835,
+        "limit_bytes": 1048576,
+        "limit_lines": 16384,
+        "excess_bytes": 36875,
+        "selection_failure": "contains Roles matched names of specialized traversal contexts; combined presentation clipped",
+        "stopped": "No retry, subdivision, relabel or further semantic expansion."
+      }
+    }
+  ],
+  "remaining": [
+    {
+      "kind": "AVAILABLE_LOCAL_DESCRIPTOR_APPLICABILITY_UNESTABLISHED",
+      "needed": "Exact current ObservableStateError descriptor/type/cache bytes and symbolic relocation relation to A59 nongeneric resilient flags/header/cache category. Current whole-object hash differs from A59; no retained exact data transfer establishes category applicability. This is available local object evidence, not provider/live-state absence."
+    },
+    {
+      "kind": "AVAILABLE_LOCAL_UNEXAMINED",
+      "needed": "Actual current owner/caller at0xbc64c, transitive typeref0xce1eb consumers and required PipelineOwner metadata origin/arguments/phase feasibility. All named current helper bodies above are available and now resolved."
+    },
+    {
+      "kind": "AVAILABLE_LOCAL_NONQUALIFIED",
+      "needed": "Actual root->specialized traversal/Table.payload/standard codec/CounterRoles and concrete beforeBody/registration/read callbacks with full controls/type/generic origins.26 complete captured files exist; oversized group is inadmissible as a completed qualified machine proof, not absent evidence."
+    },
+    {
+      "kind": "AVAILABLE_INSTALLED_UNEXAMINED",
+      "needed": "Config initializer193cb5d8c/debug callback effects; concrete resilient witness size vs pool remaining/earlier use; dispatch wait180345894/wake18034584c; allocator backend18032c140/default zone callback if full transitive safety required."
+    },
+    {
+      "kind": "GENUINELY_UNOBSERVED_LIVE",
+      "needed": "Loaded provider/import/authentication/interposition/default-selector applicability; own Error/cache/once initial live state and earlier required-use ordering; arena post-fixup pointer/remaining/config; stdout R=S/persistence/inherited environment; actual charged window/currentimage/resource/cold state. No runtime capture performed."
+    },
+    {
+      "kind": "INDEPENDENT_PRODUCT_GATES",
+      "needed": "Unit FAILED-before-tests / Interaction UNEXECUTED; remaining Model/product/live/resource/profile/P08 gates. Prior accepted constructor/cleanup/operations/typed-backing proofs stay closed only within exact scope; no global eligibility follows."
+    }
+  ],
+  "context_failure": {
+    "status": "NONQUALIFIED",
+    "captures": 26,
+    "bytes": 1085451,
+    "lines": 7835,
+    "limit_bytes": 1048576,
+    "limit_lines": 16384,
+    "excess_bytes": 36875,
+    "selection_failure": "contains Roles matched names of specialized traversal contexts; combined presentation clipped",
+    "stopped": "No retry, subdivision, relabel or further semantic expansion."
+  },
+  "decision": "No complete callee/safety PASS, no new proved unavoidable/observed allocation, and no joined current Error->arena allocator consequence. Current required Error refusal/getter->swift_getWitnessTable is supported. Installed arena/once/body allocator facts are separate conditional facts; current descriptor/category applicability, cold pool feasibility/configuration and other remaining joins are unproved. No automatic source fix/exception selected.",
+  "historical": "A59 and older FALSE evidence unchanged. Reused bounded raw bytes are ordinary inputs here, not retroqualified old recording. Eligibility62 was not run.",
+  "accuracy_correction": {
+    "utc": "2026-10-26T10:26:55.981595+00:00",
+    "original_error": "Narrative incorrectly asserted whole-object equality despite retained equal:false and unequal hashes.",
+    "resolution": "Downgraded current descriptor/category/arena applicability; no new acquisition or inference. Source identity matches do not establish binary descriptor equivalence."
+  }
+}

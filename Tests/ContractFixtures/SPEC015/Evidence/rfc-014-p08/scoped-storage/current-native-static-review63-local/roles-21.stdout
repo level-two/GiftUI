@@ -1,0 +1,60 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000098cb8 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5>:
+   98cb8:      	sub	sp, sp, #0x160
+   98cbc:      	stp	x28, x27, [sp, #0x120]
+   98cc0:      	stp	x22, x21, [sp, #0x130]
+   98cc4:      	stp	x20, x19, [sp, #0x140]
+   98cc8:      	stp	x29, x30, [sp, #0x150]
+   98ccc:      	add	x29, sp, #0x150
+   98cd0:      	mov	x21, x20
+   98cd4:      	mov	x19, x1
+   98cd8:      	mov	x22, x0
+   98cdc:      	sub	x0, x29, #0x78
+   98ce0:      	mov	x1, x20
+   98ce4:      	mov	w2, #0x48               ; =72
+   98ce8:      	bl	0x98ce8 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0x30>
+		0000000000098ce8:  ARM64_RELOC_BRANCH26	_memcpy
+   98cec:      	ldp	x1, x2, [x20, #0x48]
+   98cf0:      	and	x0, x22, #0xffffffffffff
+   98cf4:      	sub	x20, x29, #0x78
+   98cf8:      	bl	0x98cf8 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0x40>
+		0000000000098cf8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5
+   98cfc:      	and	w8, w0, #0xff
+   98d00:      	cmp	w8, #0x4
+   98d04:      	b.ne	0x98d60 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0xa8>
+   98d08:      	and	x0, x22, #0xffffffffffff
+   98d0c:      	add	x20, x21, #0x58
+   98d10:      	bl	0x98d10 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0x58>
+		0000000000098d10:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF
+   98d14:      	tbz	w0, #0x0, 0x98d48 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0x90>
+   98d18:      	add	x0, sp, #0xa
+   98d1c:      	add	x1, x21, #0x58
+   98d20:      	mov	w2, #0xce               ; =206
+   98d24:      	bl	0x98d24 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0x6c>
+		0000000000098d24:  ARM64_RELOC_BRANCH26	_memcpy
+   98d28:      	add	x0, sp, #0xa
+   98d2c:      	bl	0x98d2c <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0x74>
+		0000000000098d2c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   98d30:      	add	x1, sp, #0xa
+   98d34:      	mov	x0, x19
+   98d38:      	mov	w2, #0xce               ; =206
+   98d3c:      	bl	0x98d3c <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0x84>
+		0000000000098d3c:  ARM64_RELOC_BRANCH26	_memcpy
+   98d40:      	mov	w0, #0x4                ; =4
+   98d44:      	b	0x98d60 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0xa8>
+   98d48:      	ldur	x8, [x29, #-0x78]
+   98d4c:      	ldrb	w0, [x8, #0x2f]
+   98d50:      	cmp	w0, #0x4
+   98d54:      	b.ne	0x98d60 <_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5+0xa8>
+   98d58:      	mov	w0, #0x1                ; =1
+   98d5c:      	strb	w0, [x8, #0x2f]
+   98d60:      	ldp	x29, x30, [sp, #0x150]
+   98d64:      	ldp	x20, x19, [sp, #0x140]
+   98d68:      	ldp	x22, x21, [sp, #0x130]
+   98d6c:      	ldp	x28, x27, [sp, #0x120]
+   98d70:      	add	sp, sp, #0x160
+   98d74:      	ret

@@ -1,0 +1,14 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000ac450 <_$s17P08CounterRuntime0B5RolesOMa>:
+   ac450:      	adrp	x0, 0xac000 <_$s20GiftUIRuntimeDynamic0C21InteractionHitStorageVyxG17P08CounterRuntime0hE7BackingAEWI>
+		00000000000ac450:  ARM64_RELOC_ADDEND	0x10
+		00000000000ac450:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime0B5RolesOMf
+   ac454:      	add	x0, x0, #0x0
+		00000000000ac454:  ARM64_RELOC_ADDEND	0x10
+		00000000000ac454:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime0B5RolesOMf
+   ac458:      	b	0xac458 <_$s17P08CounterRuntime0B5RolesOMa+0x8>
+		00000000000ac458:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_596

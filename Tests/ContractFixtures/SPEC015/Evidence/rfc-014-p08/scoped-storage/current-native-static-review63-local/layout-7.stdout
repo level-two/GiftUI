@@ -1,0 +1,16 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c6a64 <_OUTLINED_FUNCTION_1843>:
+   c6a64:      	mov	x19, x0
+   c6a68:      	adrp	x8, 0xc6000 <_OUTLINED_FUNCTION_1685+0x8>
+		00000000000c6a68:  ARM64_RELOC_PAGE21	l_type_layout_27_8_fe_pod
+   c6a6c:      	add	x8, x8, #0x0
+		00000000000c6a6c:  ARM64_RELOC_PAGEOFF12	l_type_layout_27_8_fe_pod
+   c6a70:      	adrp	x9, 0xc6000 <_OUTLINED_FUNCTION_1685+0x8>
+		00000000000c6a70:  ARM64_RELOC_PAGE21	l_type_layout_64_8_fe_pod
+   c6a74:      	add	x9, x9, #0x0
+		00000000000c6a74:  ARM64_RELOC_PAGEOFF12	l_type_layout_64_8_fe_pod
+   c6a78:      	ret

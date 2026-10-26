@@ -1,0 +1,57 @@
+{
+  "source_bindings": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "sha256": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb",
+      "matches_current_full_input": true,
+      "matches_prior_context_source": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+      "matches_current_full_input": true,
+      "matches_prior_context_source": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "sha256": "e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a",
+      "matches_current_full_input": true,
+      "matches_prior_context_source": true
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "sha256": "e610496954dce3023b833fc07c785498025bf0e96372ab9430d8f7b5fc12c4a1",
+      "matches_current_full_input": true,
+      "matches_prior_context_source": true
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "sha256": "4ffc05499e80646af0fb41bbe52f826b232a3bc8f3cb8654295a481819d9717c",
+      "matches_current_full_input": true,
+      "matches_prior_context_source": true
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "sha256": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951",
+      "matches_current_full_input": true,
+      "matches_prior_context_source": true
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "sha256": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+      "matches_current_full_input": true,
+      "matches_prior_context_source": true
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateValues.swift",
+      "sha256": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae",
+      "matches_current_full_input": true,
+      "matches_prior_context_source": true
+    }
+  ],
+  "observable_object_byte_identity": {
+    "current": "39d28ca22bf93b83b55f122c3e282745466e69f541b9953be84d8de0d067f237",
+    "old": "7aa008f300ddec07c238ee427d4ac7bf78726496b7ae0f66a7d31ca9a1c33a8c",
+    "equal": false
+  }
+}

@@ -1,0 +1,58 @@
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/malloc_type_zone_malloc_with_options.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180331e84 <__text>:
+180331e84:     	mov	x8, x3
+180331e88:     	tst	x1, #0xfffffffffffffff7
+180331e8c:     	b.ne	0x180331f20 <__text+0x9c>
+180331e90:     	adrp	x9, 0x1ea471000 <__text+0x6a13f17c>
+180331e94:     	add	x9, x9, #0x830
+180331e98:     	ldr	x9, [x9]
+180331e9c:     	cbnz	x9, 0x180331f18 <__text+0x94>
+180331ea0:     	adrp	x9, 0x1ea471000 <__text+0x6a13f17c>
+180331ea4:     	ldrb	w9, [x9, #0x858]
+180331ea8:     	tbnz	w9, #0x0, 0x180331f18 <__text+0x94>
+180331eac:     	adrp	x9, 0x1ea46f000 <__text+0x6a13d17c>
+180331eb0:     	add	x9, x9, #0x568
+180331eb4:     	ldr	x10, [x9]
+180331eb8:     	adrp	x9, 0x1ecf41000 <__text+0x6cc0f17c>
+180331ebc:     	add	x9, x9, #0x9b8
+180331ec0:     	cmp	x0, x10
+180331ec4:     	b.eq	0x180331f3c <__text+0xb8>
+180331ec8:     	cbz	x0, 0x180331f48 <__text+0xc4>
+180331ecc:     	ldr	w9, [x0, #0x68]
+180331ed0:     	cmp	w9, #0x10
+180331ed4:     	b.lo	0x180331f18 <__text+0x94>
+180331ed8:     	ldr	x5, [x0, #0xc0]
+180331edc:     	cbz	x5, 0x180331f18 <__text+0x94>
+180331ee0:     	mov	x16, x5
+180331ee4:     	mov	x17, #0xe76             ; =3702
+180331ee8:     	autia	x16, x17
+180331eec:     	mov	x17, x16
+180331ef0:     	xpaci	x17
+180331ef4:     	cmp	x16, x17
+180331ef8:     	b.eq	0x180331f00 <__text+0x7c>
+180331efc:     	brk	#0xc470
+180331f00:     	paciza	x16
+180331f04:     	cbz	x16, 0x180331f18 <__text+0x94>
+180331f08:     	mov	x3, x4
+180331f0c:     	mov	x4, x8
+180331f10:     	mov	x16, #0xe76             ; =3702
+180331f14:     	braa	x5, x16
+180331f18:     	mov	x3, x8
+180331f1c:     	b	0x18030f9d4
+180331f20:     	sub	x9, x1, #0x1
+180331f24:     	tst	x1, x9
+180331f28:     	b.ne	0x180331f34 <__text+0xb0>
+180331f2c:     	tst	x2, x9
+180331f30:     	b.eq	0x180331e90 <__text+0xc>
+180331f34:     	mov	x0, #0x0                ; =0
+180331f38:     	ret
+180331f3c:     	ldr	x10, [x9]
+180331f40:     	ldr	x0, [x10]
+180331f44:     	cbnz	x0, 0x180331ecc <__text+0x48>
+180331f48:     	ldr	x9, [x9]
+180331f4c:     	ldr	x0, [x9]
+180331f50:     	b	0x180331ecc <__text+0x48>

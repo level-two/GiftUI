@@ -1,0 +1,142 @@
+{
+  "swift_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+  "input_descriptor_sha256": "30a33f816141c4218747dab8f5d6eb0decc063d7e339f9ed20193e22a53f18eb",
+  "header_sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba",
+  "stubs": [
+    {
+      "stub": "0x1940ef34c",
+      "sections": [
+        {
+          "name": "__auth_stubs",
+          "segment": "__TEXT",
+          "address": 6778973804,
+          "bytes": 3584,
+          "file": 335965804,
+          "flags": 2147484680,
+          "reserved1": 0,
+          "reserved2": 16
+        }
+      ],
+      "symtab": [
+        75326208,
+        40191,
+        193429376,
+        406729643
+      ],
+      "indirect_table": {
+        "offset": 699044,
+        "count": 470
+      },
+      "indirect_index": 78,
+      "symbol_index": 40043,
+      "nlist": {
+        "name": "_dispatch_once_f",
+        "type": 1,
+        "section": 0,
+        "description": 1280,
+        "value": 0
+      },
+      "ordinal": 5,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 335967052,
+        "bytes": 16
+      },
+      "raw_sha256": "2c632322452ab28f55e51b75a8b8f1c47d29c0ee67d888e4172752e57541f10b"
+    },
+    {
+      "stub": "0x1940ef68c",
+      "sections": [
+        {
+          "name": "__auth_stubs",
+          "segment": "__TEXT",
+          "address": 6778973804,
+          "bytes": 3584,
+          "file": 335965804,
+          "flags": 2147484680,
+          "reserved1": 0,
+          "reserved2": 16
+        }
+      ],
+      "symtab": [
+        75326208,
+        40191,
+        193429376,
+        406729643
+      ],
+      "indirect_table": {
+        "offset": 699044,
+        "count": 470
+      },
+      "indirect_index": 130,
+      "symbol_index": 40097,
+      "nlist": {
+        "name": "_malloc_type_zone_malloc_with_options",
+        "type": 1,
+        "section": 0,
+        "description": 1280,
+        "value": 0
+      },
+      "ordinal": 5,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "raw_extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 335967884,
+        "bytes": 16
+      },
+      "raw_sha256": "14b0596a3c6b48742fdf89627fed27f27d200c6e3f6a79fb9102c9183bac66bf"
+    }
+  ],
+  "arena_initial_data": [
+    {
+      "address": "0x1ed0543a0",
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+        "offset": 82953120,
+        "bytes": 64
+      },
+      "sha256": "6f92f9e3d9e5b96de356c17019a45b34bc8e8cddc0ec9ffb61df2c2dccea0c95",
+      "hex": "50b7056d000020000000010000000000b05ef36c84ab1d801832056dacd61e80d0eb0c00000020000000000000000000a8f5d56fe0871d80b05ef36c84ab1d80",
+      "words64": [
+        9007201083832144,
+        65536,
+        9231723396431306416,
+        9232052322207871512,
+        9007199255587792,
+        0,
+        9231684209198101928,
+        9231723396431306416
+      ]
+    },
+    {
+      "address": "0x1ed05b550",
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+        "offset": 82982224,
+        "bytes": 64
+      },
+      "sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+      "hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "words64": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "all_dependencies": [
+    "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+    "/usr/lib/swift/libswiftObjectiveC.dylib",
+    "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/libswiftPrespecialized.dylib"
+  ]
+}

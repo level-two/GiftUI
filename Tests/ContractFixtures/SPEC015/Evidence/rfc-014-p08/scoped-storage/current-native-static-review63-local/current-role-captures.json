@@ -1,0 +1,548 @@
+[
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_",
+    "range": [
+      "0x2130",
+      "0x2188"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x2130",
+      "--stop-address=0x2188",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 2476,
+    "sha256": "b80259ace90234882ef635423b64f4049d94cfa7f27cfcb80d1ccb18a841a5c0",
+    "raw": "roles-0.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ17P08CounterRuntime0V5RolesO_0uV5Table0uv6SchemacY0VyAW0V6DomainOGAU01_a12UIBackgroundE0VTt2g5",
+    "range": [
+      "0xaa6f4",
+      "0xaa794"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xaa6f4",
+      "--stop-address=0xaa794",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 4783,
+    "sha256": "72702f6383629e2d66e1d3759ba2483e1bf58483edad0ef0e42f301a3bfa7fc5",
+    "raw": "roles-1.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO8modifier_10chainIndex6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___s6UInt16VAG0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ak8ModifierE0Rd__lFZ17P08CounterRuntime0V5RolesO_0uV5Table0uv6SchemacY0VyAW0V6DomainOGAU01_a12UIFixedFrameE0VTt2g5",
+    "range": [
+      "0xaa64c",
+      "0xaa6f4"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xaa64c",
+      "--stop-address=0xaa6f4",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 5415,
+    "sha256": "02d06406e59ba7f7123e2a74279c03c9bdf8fb786a0356ad9b323490a2492187",
+    "raw": "roles-2.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOG0rS12Presentation0sC0VyA_GTt1g5",
+    "range": [
+      "0xaa52c",
+      "0xaa5c0"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xaa52c",
+      "--stop-address=0xaa5c0",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 4597,
+    "sha256": "721d661c2119e65853268bb27f82092a8be8c6b7afed193640a4a83f83a3155e",
+    "raw": "roles-3.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a6UITextE0VTt1g5",
+    "range": [
+      "0xaa414",
+      "0xaa52c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xaa414",
+      "--stop-address=0xaa52c",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 8906,
+    "sha256": "05167e87b408b401059947659655e6f94c856bac4fc39e20d97447f406bd6a15",
+    "raw": "roles-4.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a8UIVStackE0VTt1g5",
+    "range": [
+      "0xaa5c0",
+      "0xaa64c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xaa5c0",
+      "--stop-address=0xaa64c",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 4495,
+    "sha256": "bf6f5644a94f94a1c3a7b50794cd6fdbc069014182515b2aabb7af01c045f626",
+    "raw": "roles-5.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AadEP21modifierDiscriminator2ofs6UInt16Vqd__m_tlFZTW",
+    "range": [
+      "0x2190",
+      "0x2198"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x2190",
+      "--stop-address=0x2198",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 342,
+    "sha256": "1464327b06497b5b548703076d0ba43fd72045846d4774a7a91378f9c5a8a96d",
+    "raw": "roles-6.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AadEP4role2ofAD0H13RecordingRoleVSgqd__m_tlFZTW",
+    "range": [
+      "0x218c",
+      "0x2190"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x218c",
+      "--stop-address=0x2190",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 553,
+    "sha256": "dc4fc9381fafae391585745f5b11953d76073ea07696a3490c5aadabc1238417",
+    "raw": "roles-7.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO21modifierDiscriminator2ofs6UInt16Vxm_tlFZ",
+    "range": [
+      "0x2188",
+      "0x218c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x2188",
+      "--stop-address=0x218c",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 385,
+    "sha256": "d3f6b733586d6a7d49e5844d8f15adcc81cbe03fa48adeea60c8ea17e466660f",
+    "raw": "roles-8.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ",
+    "range": [
+      "0x1bac",
+      "0x2130"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x1bac",
+      "--stop-address=0x2130",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 33399,
+    "sha256": "1467565fcd34b94d2c1e1e5af7417033c21c2c6609c70168bf3f635b0116d771",
+    "raw": "roles-9.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI0G23UILayoutModifiedContentVy0aB12Presentation0B6CanvasVyAA0B6DomainOGAJ01_G19UIFixedFramePayloadVG_Ttt0g5",
+    "range": [
+      "0xc68",
+      "0xe98"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc68",
+      "--stop-address=0xe98",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 15679,
+    "sha256": "fe6b165ab6ba2073474e2296e63be381eb9911e084fe3da404ccf608f044f18f",
+    "raw": "roles-10.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI10TupleView5VyAJ4TextVyAA0B6DomainOGAqJ4ViewPAJE8disabledyQrSbFQOyAJ6ButtonVy0aB12Presentation0B6ActionOAQG_Qo_A_AJ0G23UILayoutModifiedContentVyAW0B6CanvasVyAPGAJ01_G19UIFixedFramePayloadVGG_Ttt0g5",
+    "range": [
+      "0x1114",
+      "0x1730"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x1114",
+      "--stop-address=0x1730",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 46605,
+    "sha256": "ea095671319326b98f0b7807a6e5acbea93660aef15b92e32f1d697cb3193d87",
+    "raw": "roles-11.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4ViewPAJE8disabledyQrSbFQOyAJ6ButtonVy0aB12Presentation0B6ActionOAJ4TextVyAA0B6DomainOGG_Qo__Ttt0g5",
+    "range": [
+      "0xe98",
+      "0x1114"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xe98",
+      "--stop-address=0x1114",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 20139,
+    "sha256": "ea49020c4cadb82e6d8ce5277de59f55338b3eefe4e853f1718c64e7255ed9a6",
+    "raw": "roles-12.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI6VStackVyAJ10TupleView5VyAJ4TextVyAA0B6DomainOGAsJ4ViewPAJE8disabledyQrSbFQOyAJ6ButtonVy0aB12Presentation0B6ActionOASG_Qo_A1_AJ0G23UILayoutModifiedContentVyAY0B6CanvasVyARGAJ01_G19UIFixedFramePayloadVGGG_Ttt0g5",
+    "range": [
+      "0x1730",
+      "0x1bac"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x1730",
+      "--stop-address=0x1bac",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 40052,
+    "sha256": "1f0fb5309baaa43da1e03da308fcf422a83835ba09e442d03c818e8c144c4961",
+    "raw": "roles-13.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO7matchesySbxm_q_tr0_lFZ",
+    "range": [
+      "0xc5c",
+      "0xc68"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc5c",
+      "--stop-address=0xc68",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 275,
+    "sha256": "a72e27b0e6f24fb6d73502c4379d1db4be2cea74ba9e3f0f3814c730fa16632c",
+    "raw": "roles-14.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime0B5RolesOMa",
+    "range": [
+      "0xac450",
+      "0xac45c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xac450",
+      "--stop-address=0xac45c",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 708,
+    "sha256": "acb71d59eebc061f08ae28edf7de152f4f79c2427e8af1f507ca7f2cd5001d79",
+    "raw": "roles-15.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore10RecordSinkV16publishExpansionySbAA08SemanticG7SummaryVF0A9UIDrawing06CanvasH12PayloadCodecOy17P08CounterRuntime0O5RolesO0nO5Table0no6SchemakR0VyAJ0O6DomainOGG_Tg5",
+    "range": [
+      "0x98e18",
+      "0x98e9c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x98e18",
+      "--stop-address=0x98e9c",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 2801,
+    "sha256": "7b514d1334e9c641888b068d8863126d6e12970beb25205e14c260be54555797",
+    "raw": "roles-16.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore10RecordSinkV25stageStructuralOccurrence8identitySbAA24SemanticCompleteIdentityV_tF0A9UIDrawing06CanvasJ12PayloadCodecOy17P08CounterRuntime0R5RolesO0qR5Table0qr6SchemanU0VyAK0R6DomainOGG_Tg5",
+    "range": [
+      "0x98d78",
+      "0x98dc0"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x98d78",
+      "--stop-address=0x98dc0",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 1718,
+    "sha256": "e15672b4aceff9eb28a3f6c2a8ac7812ddcacabbbca2662b80919e229d0312c0",
+    "raw": "roles-17.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5",
+    "range": [
+      "0xaa298",
+      "0xaa34c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xaa298",
+      "--stop-address=0xaa34c",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 5601,
+    "sha256": "d7d95afeff2736845a1a9149a74aa80639ebe729283a1c0a64351417d1814cb3",
+    "raw": "roles-18.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceV15enterFixedChild_8identityAA22SemanticExpansionErrorOSgs5UInt8V_AA0J16CompleteIdentityVSgztF17P08CounterRuntime0Q5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0pQ5Table0pq6SchemaU6ValuesOyAN0Q6DomainOGGTg5",
+    "range": [
+      "0xaa34c",
+      "0xaa414"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xaa34c",
+      "--stop-address=0xaa414",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 5275,
+    "sha256": "2d0d698805ee2fefbf1cdeb5209867395dbd776075d51d7970b4120c3e8a05a7",
+    "raw": "roles-19.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceV18leavePathComponentyyF17P08CounterRuntime0J5RolesO_0A9UIDrawing21CanvasSemanticPayloadOy0iJ5Table0ij6SchemaN6ValuesOyAE0J6DomainOGGTg5",
+    "range": [
+      "0x98dc0",
+      "0x98e18"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x98dc0",
+      "--stop-address=0x98e18",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 1815,
+    "sha256": "7a1c1f429c91bf1ec174b2b78651eab8c17f375b54518053bd65fa6468588060",
+    "raw": "roles-20.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceV5enter_8identityAA22SemanticExpansionErrorOSgAA0H13PathComponentV_AA0H16CompleteIdentityVSgztF17P08CounterRuntime0P5RolesO_0A9UIDrawing06CanvasH7PayloadOy0oP5Table0op6SchemaT6ValuesOyAN0P6DomainOGGTg5",
+    "range": [
+      "0x98cb8",
+      "0x98d78"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x98cb8",
+      "--stop-address=0x98d78",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 5234,
+    "sha256": "8741b74f3b7397848effce35d61167ee036b6c63c241d8251308d2e49f143542",
+    "raw": "roles-21.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQyd_2_Gqd___qd_0_mqd_1_mAA0dM6LimitsVqd_2_nt7PayloadQyd_1_Rsz0A2UI4ViewRd__AA0D16DeclarationRolesRd_0_AA0deQ5CodecRd_1_AA0D15StatefulBindingRd_2_6DomainQyd_2_AWRtd__AA0D16CompleteIdentityV8IdentityRtd_2_Ri_d_2_Ri0_d_2_r2_lF0A9UIDrawing06CanvasdQ0Oy15P08CounterTable28P08CounterSchemaCanvasValuesOy17P08CounterRuntime07CounterY0OGG_22P08CounterPresentation13CounterScreenVyA10_GA8_07CounterU0OA2_06CanvasdqV0OyA18_A5_27P08CounterSchemaCanvasTableVyA10_GG0A17UIObservableState010Observabled4BodyX0VyA8_17CounterOwnedModelVA_A10_GTt1t2g5",
+    "range": [
+      "0x3300",
+      "0x68d4"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x3300",
+      "--stop-address=0x68d4",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 624243,
+    "sha256": "8405c967f8fb4f33b70df619851b02d2819d5db70885ba79538a387992eaf0fb",
+    "raw": "roles-22.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH0A23UILayoutModifiedContentVy0qR12Presentation0rV0VyAYGAH01_a12UIFixedFrameW0VGTg5",
+    "range": [
+      "0xa985c",
+      "0xaa298"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa985c",
+      "--stop-address=0xaa298",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 111403,
+    "sha256": "0b47aa44550fcb68696a234a200021d8b026e1be5f48285499495e326c9b78bb",
+    "raw": "roles-23.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5",
+    "range": [
+      "0xa8bc8",
+      "0xa9264"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa8bc8",
+      "--stop-address=0xa9264",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 65723,
+    "sha256": "1f6901c4631b1b6b776eb1bbc47986b07588a7d842f3a2cce09c87936ab1888f",
+    "raw": "roles-24.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAhIPAHE8disabledyQrSbFQOyAH6ButtonVy0qR12Presentation0R6ActionOAH4TextVyAYGG_Qo_Tg5",
+    "range": [
+      "0xa9264",
+      "0xa985c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xa9264",
+      "--stop-address=0xa985c",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 72829,
+    "sha256": "4664ea44a29d6fa125b0f9486744f85279f6b2596fe94977f49375c17796624c",
+    "raw": "roles-25.stdout",
+    "stderr": ""
+  }
+]

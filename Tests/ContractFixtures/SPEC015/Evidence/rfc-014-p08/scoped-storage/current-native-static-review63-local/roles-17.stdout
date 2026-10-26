@@ -1,0 +1,26 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000098d78 <_$s18GiftUISemanticCore10RecordSinkV25stageStructuralOccurrence8identitySbAA24SemanticCompleteIdentityV_tF0A9UIDrawing06CanvasJ12PayloadCodecOy17P08CounterRuntime0R5RolesO0qR5Table0qr6SchemanU0VyAK0R6DomainOGG_Tg5>:
+   98d78:      	sub	sp, sp, #0x70
+   98d7c:      	stp	x20, x19, [sp, #0x50]
+   98d80:      	stp	x29, x30, [sp, #0x60]
+   98d84:      	add	x29, sp, #0x60
+   98d88:      	add	x0, sp, #0x8
+   98d8c:      	mov	x1, x20
+   98d90:      	mov	w2, #0x48               ; =72
+   98d94:      	bl	0x98d94 <_$s18GiftUISemanticCore10RecordSinkV25stageStructuralOccurrence8identitySbAA24SemanticCompleteIdentityV_tF0A9UIDrawing06CanvasJ12PayloadCodecOy17P08CounterRuntime0R5RolesO0qR5Table0qr6SchemanU0VyAK0R6DomainOGG_Tg5+0x1c>
+		0000000000098d94:  ARM64_RELOC_BRANCH26	_memcpy
+   98d98:      	ldp	x0, x1, [x20, #0x48]
+   98d9c:      	add	x20, sp, #0x8
+   98da0:      	bl	0x98da0 <_$s18GiftUISemanticCore10RecordSinkV25stageStructuralOccurrence8identitySbAA24SemanticCompleteIdentityV_tF0A9UIDrawing06CanvasJ12PayloadCodecOy17P08CounterRuntime0R5RolesO0qR5Table0qr6SchemanU0VyAK0R6DomainOGG_Tg5+0x28>
+		0000000000098da0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_Tg5
+   98da4:      	and	w8, w0, #0xff
+   98da8:      	cmp	w8, #0x4
+   98dac:      	cset	w0, eq
+   98db0:      	ldp	x29, x30, [sp, #0x60]
+   98db4:      	ldp	x20, x19, [sp, #0x50]
+   98db8:      	add	sp, sp, #0x70
+   98dbc:      	ret

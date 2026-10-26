@@ -1,0 +1,7 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/Swift-0x1940edbcc.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001940edbcc <__text>:
+1940edbcc:     	b	0x193ce7d70

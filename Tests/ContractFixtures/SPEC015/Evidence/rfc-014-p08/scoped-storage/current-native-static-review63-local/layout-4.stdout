@@ -1,0 +1,10 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c29c0 <_OUTLINED_FUNCTION_901>:
+   c29c0:      	ldr	x1, [x0, #0x10]
+   c29c4:      	mov	w0, #0x13f              ; =319
+   c29c8:      	b	0xc29c8 <_OUTLINED_FUNCTION_901+0x8>
+		00000000000c29c8:  ARM64_RELOC_BRANCH26	_swift_checkMetadataState

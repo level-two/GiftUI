@@ -1,0 +1,48 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000aa5c0 <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a8UIVStackE0VTt1g5>:
+   aa5c0:      	sub	sp, sp, #0xa0
+   aa5c4:      	stp	x20, x19, [sp, #0x80]
+   aa5c8:      	stp	x29, x30, [sp, #0x90]
+   aa5cc:      	add	x29, sp, #0x90
+   aa5d0:      	mov	x19, x1
+   aa5d4:      	adrp	x8, 0xaa000 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH0A23UILayoutModifiedContentVy0qR12Presentation0rV0VyAYGAH01_a12UIFixedFrameW0VGTg5+0x7a4>
+		00000000000aa5d4:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   aa5d8:      	ldr	x8, [x8]
+		00000000000aa5d8:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   aa5dc:      	ldr	x8, [x8]
+   aa5e0:      	stur	x8, [x29, #-0x18]
+   aa5e4:      	and	x8, x0, #0xffffffff000000ff
+   aa5e8:      	stp	x8, xzr, [x29, #-0x40]
+   aa5ec:      	stp	xzr, xzr, [x29, #-0x30]
+   aa5f0:      	sturb	wzr, [x29, #-0x20]
+   aa5f4:      	add	x0, sp, #0x8
+   aa5f8:      	mov	w2, #0x48               ; =72
+   aa5fc:      	bl	0xaa5fc <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a8UIVStackE0VTt1g5+0x3c>
+		00000000000aa5fc:  ARM64_RELOC_BRANCH26	_memcpy
+   aa600:      	ldp	x5, x6, [x19, #0x48]
+   aa604:      	sub	x0, x29, #0x40
+   aa608:      	add	x20, sp, #0x8
+   aa60c:      	mov	w1, #0x1                ; =1
+   aa610:      	mov	w2, #0x0                ; =0
+   aa614:      	mov	x3, #0x0                ; =0
+   aa618:      	mov	x4, #0x0                ; =0
+   aa61c:      	bl	0xaa61c <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a8UIVStackE0VTt1g5+0x5c>
+		00000000000aa61c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5store_4kind10chainIndex4text6limitsAA0D14ExpansionErrorOSgxn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGAA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0yz6SchemaW6ValuesOy0yzP00Z6DomainOGG_Tg5
+   aa620:      	ldur	x8, [x29, #-0x18]
+   aa624:      	adrp	x9, 0xaa000 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH0A23UILayoutModifiedContentVy0qR12Presentation0rV0VyAYGAH01_a12UIFixedFrameW0VGTg5+0x7a4>
+		00000000000aa624:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   aa628:      	ldr	x9, [x9]
+		00000000000aa628:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   aa62c:      	ldr	x9, [x9]
+   aa630:      	cmp	x9, x8
+   aa634:      	b.ne	0xaa648 <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a8UIVStackE0VTt1g5+0x88>
+   aa638:      	ldp	x29, x30, [sp, #0x90]
+   aa63c:      	ldp	x20, x19, [sp, #0x80]
+   aa640:      	add	sp, sp, #0xa0
+   aa644:      	ret
+   aa648:      	bl	0xaa648 <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecO9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVyAA0cdE0Oy14CaptureStorageQy_GGt0A2UI01_ai9PrimitiveE0Rd__lFZ17P08CounterRuntime0S5RolesO_0rS5Table0rs6SchemacV0VyAT0S6DomainOGAR01_a8UIVStackE0VTt1g5+0x88>
+		00000000000aa648:  ARM64_RELOC_BRANCH26	___stack_chk_fail

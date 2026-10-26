@@ -1,0 +1,429 @@
+{
+  "object": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+  "sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+  "selected_layout_symbol": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+  "captures": [
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "range": [
+        "0xae474",
+        "0xae588"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xae474",
+        "--stop-address=0xae588",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 5636,
+      "sha256": "6b4a17ca1dae12aeb3b5aa42f7e72d60a51afc86c722722a519ad3312a6b1d48",
+      "raw": "layout-0.stdout",
+      "stderr": ""
+    },
+    {
+      "symbol": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+      "range": [
+        "0xaf1c0",
+        "0xaf1dc"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xaf1c0",
+        "--stop-address=0xaf1dc",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 2365,
+      "sha256": "5df743770211343da95dcdd750b503728eb2018f154b2776b6ebeea009423322",
+      "raw": "layout-1.stdout",
+      "stderr": ""
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_132",
+      "range": [
+        "0xbe1a0",
+        "0xbe1d4"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbe1a0",
+        "--stop-address=0xbe1d4",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 771,
+      "sha256": "fc7308aa208524d3561562e2eefa483370874e1021f95b2aa5bd20e694ef9a10",
+      "raw": "layout-2.stdout",
+      "stderr": ""
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_192",
+      "range": [
+        "0xbe858",
+        "0xbe868"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbe858",
+        "--stop-address=0xbe868",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 427,
+      "sha256": "41e34b79e79021e86bd1cd8ac71f7adfc7b7f819dacb45eb1e3acde10c95c0c3",
+      "raw": "layout-3.stdout",
+      "stderr": ""
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_901",
+      "range": [
+        "0xc29c0",
+        "0xc29cc"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc29c0",
+        "--stop-address=0xc29cc",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 378,
+      "sha256": "cac549d6b28b83d5436e28e7a5188a3d5b6d8ba6143ac1534ff9f6e72507bfbe",
+      "raw": "layout-4.stdout",
+      "stderr": ""
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_968",
+      "range": [
+        "0xc2e5c",
+        "0xc2e6c"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc2e5c",
+        "--stop-address=0xc2e6c",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 300,
+      "sha256": "3aea83cb9b1ca7785dbd729e273e7be6d56472341612443d610ffa73fb265efe",
+      "raw": "layout-5.stdout",
+      "stderr": ""
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_1086",
+      "range": [
+        "0xc3778",
+        "0xc3784"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc3778",
+        "--stop-address=0xc3784",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 260,
+      "sha256": "f90008039aac7f0835f0849aca17ae61c769596b6d32dafff0defe4450fe7885",
+      "raw": "layout-6.stdout",
+      "stderr": ""
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_1843",
+      "range": [
+        "0xc6a64",
+        "0xc6a7c"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc6a64",
+        "--stop-address=0xc6a7c",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 679,
+      "sha256": "f767836eaa1078ed1563569b4647e40b6e8858ab0f4473edc9e1841e1098610c",
+      "raw": "layout-7.stdout",
+      "stderr": ""
+    }
+  ],
+  "outgoing": [
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae564",
+      "target": "_swift_initStructMetadata"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae55c",
+      "target": "_OUTLINED_FUNCTION_968"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae544",
+      "target": "l_type_layout_13_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae540",
+      "target": "l_type_layout_13_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae534",
+      "target": "l_type_layout_39_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae530",
+      "target": "l_type_layout_39_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae52c",
+      "target": "l_type_layout_1_1_fe_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae528",
+      "target": "l_type_layout_1_1_fe_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae520",
+      "target": "_$sBi64_WV"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae51c",
+      "target": "_$sBi64_WV"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae514",
+      "target": "l_type_layout_10_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae510",
+      "target": "l_type_layout_10_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae50c",
+      "target": "l_type_layout_10_2_fd_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae508",
+      "target": "l_type_layout_10_2_fd_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4fc",
+      "target": "l_type_layout_20_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4f8",
+      "target": "l_type_layout_20_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4ec",
+      "target": "l_type_layout_115_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4e8",
+      "target": "l_type_layout_115_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4e4",
+      "target": "l_type_layout_5_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4e0",
+      "target": "l_type_layout_5_4_0_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4d8",
+      "target": "l_type_layout_22_4_f9_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4d4",
+      "target": "l_type_layout_22_4_f9_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4d0",
+      "target": "_OUTLINED_FUNCTION_1086"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4c4",
+      "target": "_OUTLINED_FUNCTION_132"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4bc",
+      "target": "_OUTLINED_FUNCTION_1086"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4b0",
+      "target": "_OUTLINED_FUNCTION_901"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4a4",
+      "target": "_$sBpWV"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae4a0",
+      "target": "_$sBpWV"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae498",
+      "target": "l_type_layout_26_8_1_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae494",
+      "target": "l_type_layout_26_8_1_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae490",
+      "target": "l_type_layout_164_8_1_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae48c",
+      "target": "l_type_layout_164_8_1_pod"
+    },
+    {
+      "caller": "_$s17P08CounterRuntime0B13PipelineOwnerVMr",
+      "pc": "0xae484",
+      "target": "_OUTLINED_FUNCTION_1843"
+    },
+    {
+      "caller": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+      "pc": "0xaf1d8",
+      "target": "_OUTLINED_FUNCTION_192"
+    },
+    {
+      "caller": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+      "pc": "0xaf1d4",
+      "target": "___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "caller": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+      "pc": "0xaf1d0",
+      "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "caller": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+      "pc": "0xaf1cc",
+      "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "caller": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+      "pc": "0xaf1c4",
+      "target": "_swift_runtimeSupportsNoncopyableTypes"
+    },
+    {
+      "caller": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable",
+      "pc": "0xaf1c0",
+      "target": "_swift_runtimeSupportsNoncopyableTypes"
+    },
+    {
+      "caller": "_OUTLINED_FUNCTION_132",
+      "pc": "0xbe1d0",
+      "target": "_$s17GiftUIInteraction24InteractionOwnedKeyStateVMa"
+    },
+    {
+      "caller": "_OUTLINED_FUNCTION_901",
+      "pc": "0xc29c8",
+      "target": "_swift_checkMetadataState"
+    },
+    {
+      "caller": "_OUTLINED_FUNCTION_1843",
+      "pc": "0xc6a74",
+      "target": "l_type_layout_64_8_fe_pod"
+    },
+    {
+      "caller": "_OUTLINED_FUNCTION_1843",
+      "pc": "0xc6a70",
+      "target": "l_type_layout_64_8_fe_pod"
+    },
+    {
+      "caller": "_OUTLINED_FUNCTION_1843",
+      "pc": "0xc6a6c",
+      "target": "l_type_layout_27_8_fe_pod"
+    },
+    {
+      "caller": "_OUTLINED_FUNCTION_1843",
+      "pc": "0xc6a68",
+      "target": "l_type_layout_27_8_fe_pod"
+    },
+    {
+      "caller": "_OUTLINED_FUNCTION_192",
+      "pc": "0xbe85c",
+      "target": "_$sytN"
+    },
+    {
+      "caller": "_OUTLINED_FUNCTION_192",
+      "pc": "0xbe858",
+      "target": "_$sytN"
+    }
+  ],
+  "incoming_relocations": [
+    {
+      "section": "__text",
+      "pc": "0xbc64c",
+      "target": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable"
+    },
+    {
+      "section": "__const",
+      "pc": "0xc9c94",
+      "target": "_$s17P08CounterRuntime0B13PipelineOwnerVMr"
+    },
+    {
+      "section": "__swift5_typeref",
+      "pc": "0xce1eb",
+      "target": "l_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable"
+    }
+  ]
+}

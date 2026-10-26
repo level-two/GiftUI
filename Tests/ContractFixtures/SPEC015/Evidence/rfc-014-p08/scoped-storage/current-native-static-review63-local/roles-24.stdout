@@ -1,0 +1,486 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000a8bc8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5>:
+   a8bc8:      	stp	x28, x27, [sp, #-0x60]!
+   a8bcc:      	stp	x26, x25, [sp, #0x10]
+   a8bd0:      	stp	x24, x23, [sp, #0x20]
+   a8bd4:      	stp	x22, x21, [sp, #0x30]
+   a8bd8:      	stp	x20, x19, [sp, #0x40]
+   a8bdc:      	stp	x29, x30, [sp, #0x50]
+   a8be0:      	add	x29, sp, #0x50
+   a8be4:      	sub	sp, sp, #0xb70
+   a8be8:      	mov	x19, x20
+   a8bec:      	adrp	x8, 0xa8000 <_$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ010P08CounterD00qfO0VyAM06StaticQ8GeometryVAM0R30TwoInteractionCandidateStorageVy0a10UISemanticC008SemanticE8IdentityVGAM0rtu9CommittedW0VyAVGAM0rtu3HitW0VyAVGG_Tg5+0x54>
+		00000000000a8bec:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   a8bf0:      	ldr	x8, [x8]
+		00000000000a8bf0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   a8bf4:      	ldr	x8, [x8]
+   a8bf8:      	stur	x8, [x29, #-0x68]
+   a8bfc:      	ldrb	w8, [x20, #0x228]
+   a8c00:      	ldrb	w9, [x20, #0x229]
+   a8c04:      	ldrb	w10, [x20, #0x22a]
+   a8c08:      	cmp	w8, #0x4
+   a8c0c:      	ccmp	w9, #0x12, #0x0, eq
+   a8c10:      	ccmp	w10, #0x5, #0x0, eq
+   a8c14:      	b.ne	0xa9058 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x490>
+   a8c18:      	mov	x20, x1
+   a8c1c:      	mov	x21, x0
+   a8c20:      	ldrh	w26, [x19]
+   a8c24:      	ldrh	w27, [x19, #0x12]
+   a8c28:      	ldrh	w23, [x19, #0x14]
+   a8c2c:      	ldrh	w24, [x19, #0x16]
+   a8c30:      	ldrh	w28, [x19, #0x1a]
+   a8c34:      	ldrh	w25, [x19, #0x1c]
+   a8c38:      	ldrb	w22, [x19, #0x2a]
+   a8c3c:      	add	x0, sp, #0x5b2
+   a8c40:      	add	x1, x19, #0x22c
+   a8c44:      	mov	w2, #0xce               ; =206
+   a8c48:      	bl	0xa8c48 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x80>
+		00000000000a8c48:  ARM64_RELOC_BRANCH26	_memcpy
+   a8c4c:      	cmp	w22, #0x4
+   a8c50:      	b.ne	0xa8d40 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x178>
+   a8c54:      	str	w27, [sp, #0x1c]
+   a8c58:      	add	w27, w23, #0x1
+   a8c5c:      	tbnz	w27, #0x10, 0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8c60:      	cmp	w26, w27, uxth
+   a8c64:      	b.lo	0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8c68:      	cmp	w28, w27, uxth
+   a8c6c:      	b.lo	0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8c70:      	sub	x0, x29, #0xb0
+   a8c74:      	add	x1, x19, #0x30
+   a8c78:      	mov	w2, #0x48               ; =72
+   a8c7c:      	bl	0xa8c7c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0xb4>
+		00000000000a8c7c:  ARM64_RELOC_BRANCH26	_memcpy
+   a8c80:      	ldp	x1, x2, [x19, #0x78]
+   a8c84:      	mov	w23, #0x2               ; =2
+   a8c88:      	bfi	x23, x20, #8, #8
+   a8c8c:      	sub	x20, x29, #0xb0
+   a8c90:      	mov	x0, x23
+   a8c94:      	bl	0xa8c94 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0xcc>
+		00000000000a8c94:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5
+   a8c98:      	mov	x22, x0
+   a8c9c:      	and	w8, w0, #0xff
+   a8ca0:      	cmp	w8, #0x4
+   a8ca4:      	b.ne	0xa8d3c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x174>
+   a8ca8:      	add	x20, x19, #0x88
+   a8cac:      	mov	x0, x23
+   a8cb0:      	bl	0xa8cb0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0xe8>
+		00000000000a8cb0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF
+   a8cb4:      	tbz	w0, #0x0, 0xa8d24 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x15c>
+   a8cb8:      	add	x0, sp, #0x416
+   a8cbc:      	add	x1, x19, #0x88
+   a8cc0:      	mov	w2, #0xce               ; =206
+   a8cc4:      	bl	0xa8cc4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0xfc>
+		00000000000a8cc4:  ARM64_RELOC_BRANCH26	_memcpy
+   a8cc8:      	add	x0, sp, #0x416
+   a8ccc:      	bl	0xa8ccc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x104>
+		00000000000a8ccc:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   a8cd0:      	add	x0, sp, #0x4e4
+   a8cd4:      	bl	0xa8cd4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x10c>
+		00000000000a8cd4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+   a8cd8:      	add	x22, sp, #0x278
+   a8cdc:      	add	x0, sp, #0x278
+   a8ce0:      	add	x1, sp, #0x416
+   a8ce4:      	mov	w2, #0xce               ; =206
+   a8ce8:      	bl	0xa8ce8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x120>
+		00000000000a8ce8:  ARM64_RELOC_BRANCH26	_memcpy
+   a8cec:      	add	x0, x22, #0xce
+   a8cf0:      	add	x1, sp, #0x4e4
+   a8cf4:      	mov	w2, #0xce               ; =206
+   a8cf8:      	bl	0xa8cf8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x130>
+		00000000000a8cf8:  ARM64_RELOC_BRANCH26	_memcpy
+   a8cfc:      	add	x0, sp, #0x278
+   a8d00:      	bl	0xa8d00 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x138>
+		00000000000a8d00:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   a8d04:      	mov	x20, x0
+   a8d08:      	add	x0, x22, #0xce
+   a8d0c:      	bl	0xa8d0c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x144>
+		00000000000a8d0c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   a8d10:      	cmp	w20, #0x1
+   a8d14:      	b.ne	0xa8d48 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x180>
+   a8d18:      	cmp	w0, #0x1
+   a8d1c:      	b.eq	0xa8d80 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1b8>
+   a8d20:      	b	0xa8d90 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1c8>
+   a8d24:      	ldur	x8, [x29, #-0xb0]
+   a8d28:      	ldrb	w22, [x8, #0x2f]
+   a8d2c:      	cmp	w22, #0x4
+   a8d30:      	b.ne	0xa8d3c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x174>
+   a8d34:      	mov	w22, #0x1               ; =1
+   a8d38:      	strb	w22, [x8, #0x2f]
+   a8d3c:      	strb	w22, [x19, #0x2a]
+   a8d40:      	strb	w22, [x19, #0x228]
+   a8d44:      	b	0xa9058 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x490>
+   a8d48:      	cmp	w0, #0x1
+   a8d4c:      	b.eq	0xa8d90 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1c8>
+   a8d50:      	add	x0, sp, #0x974
+   a8d54:      	add	x1, sp, #0x278
+   a8d58:      	mov	w2, #0xce               ; =206
+   a8d5c:      	bl	0xa8d5c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x194>
+		00000000000a8d5c:  ARM64_RELOC_BRANCH26	_memcpy
+   a8d60:      	add	x0, sp, #0xa42
+   a8d64:      	add	x1, x22, #0xce
+   a8d68:      	mov	w2, #0xce               ; =206
+   a8d6c:      	bl	0xa8d6c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1a4>
+		00000000000a8d6c:  ARM64_RELOC_BRANCH26	_memcpy
+   a8d70:      	add	x0, sp, #0x974
+   a8d74:      	add	x1, sp, #0xa42
+   a8d78:      	bl	0xa8d78 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1b0>
+		00000000000a8d78:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+   a8d7c:      	tbz	w0, #0x0, 0xa8d90 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1c8>
+   a8d80:      	mov	w8, #0x1                ; =1
+   a8d84:      	strb	w8, [x19, #0x2a]
+   a8d88:      	strb	w8, [x19, #0x228]
+   a8d8c:      	b	0xa9058 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x490>
+   a8d90:      	add	w23, w24, #0x1
+   a8d94:      	tbnz	w23, #0x10, 0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8d98:      	cmp	w25, w23, uxth
+   a8d9c:      	b.lo	0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8da0:      	strh	w23, [x19, #0x16]
+   a8da4:      	strh	w27, [x19, #0x14]
+   a8da8:      	ldr	w8, [sp, #0x1c]
+   a8dac:      	cmp	w8, w27, uxth
+   a8db0:      	b.hs	0xa8dbc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1f4>
+   a8db4:      	strh	w27, [x19, #0x12]
+   a8db8:      	str	w27, [sp, #0x1c]
+   a8dbc:      	add	x0, x19, #0x22c
+   a8dc0:      	add	x1, sp, #0x416
+   a8dc4:      	mov	w2, #0xce               ; =206
+   a8dc8:      	bl	0xa8dc8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x200>
+		00000000000a8dc8:  ARM64_RELOC_BRANCH26	_memcpy
+   a8dcc:      	ldrh	w8, [x19, #0x18]
+   a8dd0:      	str	w8, [sp, #0x18]
+   a8dd4:      	ldrh	w22, [x19, #0x1e]
+   a8dd8:      	ldrb	w24, [x19, #0x2fa]
+   a8ddc:      	ldrh	w20, [x19, #0x2fc]
+   a8de0:      	add	x0, sp, #0x1aa
+   a8de4:      	add	x1, sp, #0x416
+   a8de8:      	mov	w2, #0xce               ; =206
+   a8dec:      	bl	0xa8dec <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x224>
+		00000000000a8dec:  ARM64_RELOC_BRANCH26	_memcpy
+   a8df0:      	strb	wzr, [x19, #0x2fa]
+   a8df4:      	strh	wzr, [x19, #0x2fc]
+   a8df8:      	and	w8, w27, #0xffff
+   a8dfc:      	add	w27, w8, #0x1
+   a8e00:      	lsr	w8, w27, #16
+   a8e04:      	tbnz	w8, #0x0, 0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8e08:      	cmp	w26, w27, uxth
+   a8e0c:      	b.lo	0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8e10:      	cmp	w28, w27, uxth
+   a8e14:      	b.lo	0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8e18:      	mov	x26, x22
+   a8e1c:      	mov	x28, x8
+   a8e20:      	str	w20, [sp, #0x14]
+   a8e24:      	adrp	x0, 0xa8000 <_$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ010P08CounterD00qfO0VyAM06StaticQ8GeometryVAM0R30TwoInteractionCandidateStorageVy0a10UISemanticC008SemanticE8IdentityVGAM0rtu9CommittedW0VyAVGAM0rtu3HitW0VyAVGG_Tg5+0x54>
+		00000000000a8e24:  ARM64_RELOC_PAGE21	_$s6GiftUI4TextVy17P08CounterRuntime0E6DomainOGMD
+   a8e28:      	add	x0, x0, #0x0
+		00000000000a8e28:  ARM64_RELOC_PAGEOFF12	_$s6GiftUI4TextVy17P08CounterRuntime0E6DomainOGMD
+   a8e2c:      	bl	0xa8e2c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x264>
+		00000000000a8e2c:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   a8e30:      	mov	x20, x0
+   a8e34:      	adrp	x0, 0xa8000 <_$s17GiftUIRuntimeCore23RuntimeCompletePipelineO7cleanup5after8acquired5owneryAA0D16CoordinatorStageO_AA0D14CleanupActionsVxztAA0deF5OwnerRzRi_zRi0_zlFZ010P08CounterD00qfO0VyAM06StaticQ8GeometryVAM0R30TwoInteractionCandidateStorageVy0a10UISemanticC008SemanticE8IdentityVGAM0rtu9CommittedW0VyAVGAM0rtu3HitW0VyAVGG_Tg5+0x54>
+		00000000000a8e34:  ARM64_RELOC_PAGE21	_$s6GiftUI0A17UIModifiedContentVyAA6VStackVyAA10TupleView5VyAA4TextVy17P08CounterRuntime0J6DomainOGAmA4ViewPAAE8disabledyQrSbFQOyAA6ButtonVy0iJ12Presentation0J6ActionOAMG_Qo_AwA0a16UILayoutModifiedD0VyAS0J6CanvasVyALGAA01_A19UIFixedFramePayloadVGGGAA01_a12UIBackgroundW0VGMD
+   a8e38:      	add	x0, x0, #0x0
+		00000000000a8e38:  ARM64_RELOC_PAGEOFF12	_$s6GiftUI0A17UIModifiedContentVyAA6VStackVyAA10TupleView5VyAA4TextVy17P08CounterRuntime0J6DomainOGAmA4ViewPAAE8disabledyQrSbFQOyAA6ButtonVy0iJ12Presentation0J6ActionOAMG_Qo_AwA0a16UILayoutModifiedD0VyAS0J6CanvasVyALGAA01_A19UIFixedFramePayloadVGGGAA01_a12UIBackgroundW0VGMD
+   a8e3c:      	bl	0xa8e3c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x274>
+		00000000000a8e3c:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   a8e40:      	mov	x22, x0
+   a8e44:      	add	x0, sp, #0x928
+   a8e48:      	add	x1, x19, #0x30
+   a8e4c:      	mov	w2, #0x48               ; =72
+   a8e50:      	bl	0xa8e50 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x288>
+		00000000000a8e50:  ARM64_RELOC_BRANCH26	_memcpy
+   a8e54:      	ldp	x1, x2, [x19, #0x78]
+   a8e58:      	mov	w8, #0x5                ; =5
+   a8e5c:      	movk	w8, #0x2, lsl #16
+   a8e60:      	orr	x9, x8, #0x10000
+   a8e64:      	cmp	x20, x22
+   a8e68:      	csel	x22, x8, x9, eq
+   a8e6c:      	add	x20, sp, #0x928
+   a8e70:      	mov	x0, x22
+   a8e74:      	bl	0xa8e74 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x2ac>
+		00000000000a8e74:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5
+   a8e78:      	and	w8, w0, #0xff
+   a8e7c:      	cmp	w8, #0x4
+   a8e80:      	b.ne	0xa9248 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x680>
+   a8e84:      	add	x20, x19, #0x88
+   a8e88:      	mov	x0, x22
+   a8e8c:      	bl	0xa8e8c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x2c4>
+		00000000000a8e8c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF
+   a8e90:      	tbz	w0, #0x0, 0xa8f04 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x33c>
+   a8e94:      	str	w24, [sp, #0x10]
+   a8e98:      	add	x0, sp, #0xdc
+   a8e9c:      	add	x1, x19, #0x88
+   a8ea0:      	mov	w2, #0xcc               ; =204
+   a8ea4:      	bl	0xa8ea4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x2dc>
+		00000000000a8ea4:  ARM64_RELOC_BRANCH26	_memcpy
+   a8ea8:      	ldrh	w22, [x19, #0x154]
+   a8eac:      	strh	w22, [sp, #0x1a8]
+   a8eb0:      	add	x0, sp, #0xdc
+   a8eb4:      	bl	0xa8eb4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x2ec>
+		00000000000a8eb4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   a8eb8:      	add	x24, sp, #0x278
+   a8ebc:      	add	x0, sp, #0x278
+   a8ec0:      	add	x1, sp, #0xdc
+   a8ec4:      	mov	w2, #0xce               ; =206
+   a8ec8:      	bl	0xa8ec8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x300>
+		00000000000a8ec8:  ARM64_RELOC_BRANCH26	_memcpy
+   a8ecc:      	add	x0, x24, #0xce
+   a8ed0:      	add	x1, sp, #0x4e4
+   a8ed4:      	mov	w2, #0xce               ; =206
+   a8ed8:      	bl	0xa8ed8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x310>
+		00000000000a8ed8:  ARM64_RELOC_BRANCH26	_memcpy
+   a8edc:      	add	x0, sp, #0x278
+   a8ee0:      	bl	0xa8ee0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x318>
+		00000000000a8ee0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   a8ee4:      	mov	x20, x0
+   a8ee8:      	add	x0, x24, #0xce
+   a8eec:      	bl	0xa8eec <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x324>
+		00000000000a8eec:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   a8ef0:      	cmp	w20, #0x1
+   a8ef4:      	b.ne	0xa8f28 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x360>
+   a8ef8:      	cmp	w0, #0x1
+   a8efc:      	b.eq	0xa8d80 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1b8>
+   a8f00:      	b	0xa8f60 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x398>
+   a8f04:      	ldr	x8, [sp, #0x928]
+   a8f08:      	ldrb	w9, [x8, #0x2f]
+   a8f0c:      	cmp	w9, #0x4
+   a8f10:      	b.ne	0xa8f1c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x354>
+   a8f14:      	mov	w9, #0x1                ; =1
+   a8f18:      	strb	w9, [x8, #0x2f]
+   a8f1c:      	strb	w9, [x19, #0x2a]
+   a8f20:      	strb	w9, [x19, #0x228]
+   a8f24:      	b	0xa9058 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x490>
+   a8f28:      	cmp	w0, #0x1
+   a8f2c:      	b.eq	0xa8f60 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x398>
+   a8f30:      	add	x0, sp, #0x78c
+   a8f34:      	add	x1, sp, #0x278
+   a8f38:      	mov	w2, #0xce               ; =206
+   a8f3c:      	bl	0xa8f3c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x374>
+		00000000000a8f3c:  ARM64_RELOC_BRANCH26	_memcpy
+   a8f40:      	add	x0, sp, #0x85a
+   a8f44:      	add	x1, x24, #0xce
+   a8f48:      	mov	w2, #0xce               ; =206
+   a8f4c:      	bl	0xa8f4c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x384>
+		00000000000a8f4c:  ARM64_RELOC_BRANCH26	_memcpy
+   a8f50:      	add	x0, sp, #0x78c
+   a8f54:      	add	x1, sp, #0x85a
+   a8f58:      	bl	0xa8f58 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x390>
+		00000000000a8f58:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+   a8f5c:      	tbnz	w0, #0x0, 0xa8d80 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1b8>
+   a8f60:      	and	w8, w23, #0xffff
+   a8f64:      	add	w8, w8, #0x1
+   a8f68:      	tbnz	w8, #0x10, 0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8f6c:      	cmp	w25, w8, uxth
+   a8f70:      	b.lo	0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8f74:      	strh	w8, [x19, #0x16]
+   a8f78:      	strh	w27, [x19, #0x14]
+   a8f7c:      	ldr	w8, [sp, #0x1c]
+   a8f80:      	and	w8, w8, #0xffff
+   a8f84:      	cmp	w8, w27, uxth
+   a8f88:      	b.hs	0xa8f90 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x3c8>
+   a8f8c:      	strh	w27, [x19, #0x12]
+   a8f90:      	add	x0, x19, #0x22c
+   a8f94:      	add	x1, sp, #0xdc
+   a8f98:      	mov	w2, #0xce               ; =206
+   a8f9c:      	bl	0xa8f9c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x3d4>
+		00000000000a8f9c:  ARM64_RELOC_BRANCH26	_memcpy
+   a8fa0:      	ldr	w8, [sp, #0x18]
+   a8fa4:      	add	w8, w8, #0x1
+   a8fa8:      	tbnz	w8, #0x10, 0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8fac:      	cmp	w26, w8, uxth
+   a8fb0:      	b.lo	0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a8fb4:      	strh	w8, [x19, #0x18]
+   a8fb8:      	add	x0, sp, #0x740
+   a8fbc:      	add	x1, x19, #0x158
+   a8fc0:      	mov	w2, #0x48               ; =72
+   a8fc4:      	bl	0xa8fc4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x3fc>
+		00000000000a8fc4:  ARM64_RELOC_BRANCH26	_memcpy
+   a8fc8:      	ldp	x0, x1, [x19, #0x1a0]
+   a8fcc:      	add	x20, sp, #0x740
+   a8fd0:      	bl	0xa8fd0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x408>
+		00000000000a8fd0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_Tg5
+   a8fd4:      	and	w8, w0, #0xff
+   a8fd8:      	cmp	w8, #0x4
+   a8fdc:      	b.ne	0xa901c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x454>
+   a8fe0:      	stp	w27, w22, [sp, #0x18]
+   a8fe4:      	mov	x22, x28
+   a8fe8:      	ldp	w28, w26, [sp, #0x10]
+   a8fec:      	ldrh	w23, [x19, #0x2]
+   a8ff0:      	ldrh	w24, [x19, #0xa]
+   a8ff4:      	ldrh	w20, [x19, #0x22]
+   a8ff8:      	ldrh	w27, [x19, #0x1bc]
+   a8ffc:      	mov	w25, #0x1               ; =1
+   a9000:      	strb	w25, [x19, #0x2fa]
+   a9004:      	add	x0, x19, #0x22c
+   a9008:      	bl	0xa9008 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x440>
+		00000000000a9008:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+   a900c:      	cmp	w0, #0x1
+   a9010:      	b.ne	0xa9034 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x46c>
+   a9014:      	strb	w25, [x19, #0x228]
+   a9018:      	b	0xa9058 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x490>
+   a901c:      	ldr	x8, [sp, #0x740]
+   a9020:      	ldrb	w8, [x8, #0x2f]
+   a9024:      	cmp	w8, #0x4
+   a9028:      	b.ne	0xa8d84 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1bc>
+   a902c:      	mov	w8, #0x3                ; =3
+   a9030:      	b	0xa8d84 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1bc>
+   a9034:      	add	w8, w24, #0x1
+   a9038:      	tbnz	w8, #0x10, 0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a903c:      	cmp	w23, w8, uxth
+   a9040:      	b.lo	0xa9050 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x488>
+   a9044:      	strh	w8, [x19, #0xa]
+   a9048:      	cmp	w20, w8, uxth
+   a904c:      	b.hs	0xa9090 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x4c8>
+   a9050:      	strb	wzr, [x19, #0x2a]
+   a9054:      	strb	wzr, [x19, #0x228]
+   a9058:      	ldur	x8, [x29, #-0x68]
+   a905c:      	adrp	x9, 0xa9000 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x438>
+		00000000000a905c:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   a9060:      	ldr	x9, [x9]
+		00000000000a9060:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   a9064:      	ldr	x9, [x9]
+   a9068:      	cmp	x9, x8
+   a906c:      	b.ne	0xa9254 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x68c>
+   a9070:      	add	sp, sp, #0xb70
+   a9074:      	ldp	x29, x30, [sp, #0x50]
+   a9078:      	ldp	x20, x19, [sp, #0x40]
+   a907c:      	ldp	x22, x21, [sp, #0x30]
+   a9080:      	ldp	x24, x23, [sp, #0x20]
+   a9084:      	ldp	x26, x25, [sp, #0x10]
+   a9088:      	ldp	x28, x27, [sp], #0x60
+   a908c:      	ret
+   a9090:      	add	x23, sp, #0x6f0
+   a9094:      	ldrb	w24, [x21, #0x62]
+   a9098:      	ldr	x25, [x19, #0x158]
+   a909c:      	ldp	q0, q1, [x19, #0x160]
+   a90a0:      	stp	q0, q1, [sp, #0x90]
+   a90a4:      	ldp	q0, q1, [x19, #0x180]
+   a90a8:      	stp	q0, q1, [sp, #0xb0]
+   a90ac:      	ldp	x9, x8, [x19, #0x1a0]
+   a90b0:      	stp	x8, x9, [sp]
+   a90b4:      	add	x20, sp, #0x278
+   a90b8:      	add	x0, sp, #0x278
+   a90bc:      	mov	w1, #0x180              ; =384
+   a90c0:      	bl	0xa90c0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x4f8>
+		00000000000a90c0:  ARM64_RELOC_BRANCH26	_bzero
+   a90c4:      	str	xzr, [sp, #0x680]
+   a90c8:      	cmp	w24, #0x1
+   a90cc:      	b.ne	0xa90e4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x51c>
+   a90d0:      	mov	w8, #0xd800             ; =55296
+   a90d4:      	str	w8, [sp, #0x278]
+   a90d8:      	mov	w4, #0x1                ; =1
+   a90dc:      	str	x4, [sp, #0x680]
+   a90e0:      	b	0xa9128 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x560>
+   a90e4:      	add	x0, sp, #0x2c
+   a90e8:      	mov	x1, x21
+   a90ec:      	mov	w2, #0x62               ; =98
+   a90f0:      	bl	0xa90f0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x528>
+		00000000000a90f0:  ARM64_RELOC_BRANCH26	_memcpy
+   a90f4:      	add	x8, sp, #0x680
+   a90f8:      	str	x20, [sp, #0x700]
+   a90fc:      	str	x8, [sp, #0x708]
+   a9100:      	adrp	x8, 0xa9000 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x438>
+		00000000000a9100:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sytN
+   a9104:      	ldr	x8, [x8]
+		00000000000a9104:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sytN
+   a9108:      	adrp	x0, 0xa9000 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x438>
+		00000000000a9108:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.51
+   a910c:      	add	x0, x0, #0x0
+		00000000000a910c:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgqd___AA0dF6WriterVyqd_0_Gqd_0_AA0deF0OXEt0A2UI01_ab9PrimitiveF0Rd__r0_lFZySRys5UInt8VGXEfU_TA.51
+   a9110:      	add	x1, sp, #0x6f0
+   a9114:      	add	x2, x8, #0x8
+   a9118:      	add	x20, sp, #0x2c
+   a911c:      	mov	x21, #0x0               ; =0
+   a9120:      	bl	0xa9120 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x558>
+		00000000000a9120:  ARM64_RELOC_BRANCH26	_$s6GiftUI11BoundedTextV8withUTF8yxxSRys5UInt8VGKXEKlF
+   a9124:      	ldr	x4, [sp, #0x680]
+   a9128:      	ldp	q0, q1, [sp, #0x90]
+   a912c:      	stur	q0, [x23, #0x8]
+   a9130:      	stur	q1, [x23, #0x18]
+   a9134:      	ldp	q0, q1, [sp, #0xb0]
+   a9138:      	stur	q0, [x23, #0x28]
+   a913c:      	str	x25, [sp, #0x6f0]
+   a9140:      	stur	q1, [x23, #0x38]
+   a9144:      	str	xzr, [sp, #0x6c8]
+   a9148:      	str	xzr, [sp, #0x6d0]
+   a914c:      	mov	x8, #-0x4000000000000000 ; =-4611686018427387904
+   a9150:      	str	xzr, [sp, #0x6d8]
+   a9154:      	str	x8, [sp, #0x6e0]
+   a9158:      	strb	wzr, [sp, #0x6e8]
+   a915c:      	add	x0, sp, #0x6c8
+   a9160:      	add	x3, sp, #0x278
+   a9164:      	add	x20, sp, #0x6f0
+   a9168:      	mov	w1, #0x1                ; =1
+   a916c:      	mov	w2, #0x0                ; =0
+   a9170:      	ldp	x6, x5, [sp]
+   a9174:      	bl	0xa9174 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x5ac>
+		00000000000a9174:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5store_4kind10chainIndex4text6limitsAA0D14ExpansionErrorOSgxn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGAA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0yz6SchemaW6ValuesOy0yzP00Z6DomainOGG_Tg5
+   a9178:      	and	w8, w0, #0xff
+   a917c:      	cmp	w8, #0x4
+   a9180:      	b.ne	0xa9238 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x670>
+   a9184:      	add	w8, w27, #0x1
+   a9188:      	lsr	w9, w8, #16
+   a918c:      	tbnz	w9, #0x0, 0xa9258 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x690>
+   a9190:      	strh	w8, [x19, #0x1bc]
+   a9194:      	tbnz	w22, #0x0, 0xa902c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x464>
+   a9198:      	add	x0, sp, #0x680
+   a919c:      	add	x1, x19, #0x30
+   a91a0:      	mov	w2, #0x48               ; =72
+   a91a4:      	bl	0xa91a4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x5dc>
+		00000000000a91a4:  ARM64_RELOC_BRANCH26	_memcpy
+   a91a8:      	add	x20, sp, #0x680
+   a91ac:      	bl	0xa91ac <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x5e4>
+		00000000000a91ac:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5leaveyyF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5
+   a91b0:      	ldr	w8, [sp, #0x1c]
+   a91b4:      	cbz	w8, 0xa925c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x694>
+   a91b8:      	ldp	w8, w9, [sp, #0x18]
+   a91bc:      	sub	w21, w9, #0x1
+   a91c0:      	strh	w21, [x19, #0x154]
+   a91c4:      	sub	w8, w8, #0x1
+   a91c8:      	and	w20, w8, #0xffff
+   a91cc:      	strh	w8, [x19, #0x14]
+   a91d0:      	add	x0, x19, #0x22c
+   a91d4:      	add	x1, sp, #0x1aa
+   a91d8:      	mov	w2, #0xce               ; =206
+   a91dc:      	bl	0xa91dc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x614>
+		00000000000a91dc:  ARM64_RELOC_BRANCH26	_memcpy
+   a91e0:      	strb	w28, [x19, #0x2fa]
+   a91e4:      	strh	w26, [x19, #0x2fc]
+   a91e8:      	cbz	w20, 0xa902c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x464>
+   a91ec:      	add	x0, sp, #0x278
+   a91f0:      	add	x1, x19, #0x30
+   a91f4:      	mov	w2, #0x48               ; =72
+   a91f8:      	bl	0xa91f8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x630>
+		00000000000a91f8:  ARM64_RELOC_BRANCH26	_memcpy
+   a91fc:      	add	x20, sp, #0x278
+   a9200:      	bl	0xa9200 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x638>
+		00000000000a9200:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5leaveyyF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5
+   a9204:      	tst	w21, #0xffff
+   a9208:      	b.eq	0xa9260 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x698>
+   a920c:      	ldr	w8, [sp, #0x1c]
+   a9210:      	sub	w8, w8, #0x2
+   a9214:      	strh	w8, [x19, #0x154]
+   a9218:      	ldr	w8, [sp, #0x18]
+   a921c:      	sub	w8, w8, #0x2
+   a9220:      	strh	w8, [x19, #0x14]
+   a9224:      	add	x0, x19, #0x22c
+   a9228:      	add	x1, sp, #0x5b2
+   a922c:      	mov	w2, #0xce               ; =206
+   a9230:      	bl	0xa9230 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x668>
+		00000000000a9230:  ARM64_RELOC_BRANCH26	_memcpy
+   a9234:      	b	0xa9058 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x490>
+   a9238:      	ldrb	w8, [x25, #0x2f]
+   a923c:      	cmp	w8, #0x4
+   a9240:      	b.ne	0xa8d84 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x1bc>
+   a9244:      	strb	w0, [x25, #0x2f]
+   a9248:      	strb	w0, [x19, #0x2a]
+   a924c:      	strb	w0, [x19, #0x228]
+   a9250:      	b	0xa9058 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x490>
+   a9254:      	bl	0xa9254 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAH4TextVyAYGTg5+0x68c>
+		00000000000a9254:  ARM64_RELOC_BRANCH26	___stack_chk_fail
+   a9258:      	brk	#0x1
+   a925c:      	brk	#0x1
+   a9260:      	brk	#0x1

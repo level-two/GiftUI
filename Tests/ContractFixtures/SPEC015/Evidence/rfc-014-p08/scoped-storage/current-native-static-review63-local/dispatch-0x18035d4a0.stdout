@@ -1,0 +1,12 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch-0x18035d4a0.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000018035d4a0 <__text>:
+18035d4a0:     	pacibsp
+18035d4a4:     	stp	x29, x30, [sp, #-0x10]!
+18035d4a8:     	mov	x29, sp
+18035d4ac:     	blraaz	x1
+18035d4b0:     	ldp	x29, x30, [sp], #0x10
+18035d4b4:     	retab

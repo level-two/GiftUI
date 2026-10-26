@@ -1,0 +1,57 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000aa298 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5>:
+   aa298:      	sub	sp, sp, #0x150
+   aa29c:      	stp	x22, x21, [sp, #0x120]
+   aa2a0:      	stp	x20, x19, [sp, #0x130]
+   aa2a4:      	stp	x29, x30, [sp, #0x140]
+   aa2a8:      	add	x29, sp, #0x140
+   aa2ac:      	mov	x21, x20
+   aa2b0:      	mov	x19, x0
+   aa2b4:      	sub	x0, x29, #0x68
+   aa2b8:      	mov	x1, x20
+   aa2bc:      	mov	w2, #0x48               ; =72
+   aa2c0:      	bl	0xaa2c0 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0x28>
+		00000000000aa2c0:  ARM64_RELOC_BRANCH26	_memcpy
+   aa2c4:      	ldp	x1, x2, [x20, #0x48]
+   aa2c8:      	sub	x20, x29, #0x68
+   aa2cc:      	mov	w0, #0x1                ; =1
+   aa2d0:      	bl	0xaa2d0 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0x38>
+		00000000000aa2d0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0rs6SchemaP6ValuesOy0rS7Runtime0S6DomainOGG_Tg5
+   aa2d4:      	and	w8, w0, #0xff
+   aa2d8:      	cmp	w8, #0x4
+   aa2dc:      	b.ne	0xaa338 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0xa0>
+   aa2e0:      	add	x20, x21, #0x58
+   aa2e4:      	mov	w0, #0x1                ; =1
+   aa2e8:      	bl	0xaa2e8 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0x50>
+		00000000000aa2e8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF
+   aa2ec:      	tbz	w0, #0x0, 0xaa320 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0x88>
+   aa2f0:      	add	x0, sp, #0xa
+   aa2f4:      	add	x1, x21, #0x58
+   aa2f8:      	mov	w2, #0xce               ; =206
+   aa2fc:      	bl	0xaa2fc <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0x64>
+		00000000000aa2fc:  ARM64_RELOC_BRANCH26	_memcpy
+   aa300:      	add	x0, sp, #0xa
+   aa304:      	bl	0xaa304 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0x6c>
+		00000000000aa304:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   aa308:      	add	x1, sp, #0xa
+   aa30c:      	mov	x0, x19
+   aa310:      	mov	w2, #0xce               ; =206
+   aa314:      	bl	0xaa314 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0x7c>
+		00000000000aa314:  ARM64_RELOC_BRANCH26	_memcpy
+   aa318:      	mov	w0, #0x4                ; =4
+   aa31c:      	b	0xaa338 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0xa0>
+   aa320:      	ldur	x8, [x29, #-0x68]
+   aa324:      	ldrb	w0, [x8, #0x2f]
+   aa328:      	cmp	w0, #0x4
+   aa32c:      	b.ne	0xaa338 <_$s18GiftUISemanticCore15RecordWorkspaceV15enterCustomBody_8identityAA22SemanticExpansionErrorOSgqd__m_AA0J16CompleteIdentityVSgzt0A2UI4ViewRd__lF17P08CounterRuntime0R5RolesO_0A9UIDrawing06CanvasJ7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAN0R6DomainOGG0qR12Presentation0R6ScreenVyAXGTtg5+0xa0>
+   aa330:      	mov	w0, #0x1                ; =1
+   aa334:      	strb	w0, [x8, #0x2f]
+   aa338:      	ldp	x29, x30, [sp, #0x140]
+   aa33c:      	ldp	x20, x19, [sp, #0x130]
+   aa340:      	ldp	x22, x21, [sp, #0x120]
+   aa344:      	add	sp, sp, #0x150
+   aa348:      	ret

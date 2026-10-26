@@ -1,0 +1,33 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/GiftUIObservableState.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000002fc <_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl>:
+     2fc:      	adrp	x8, 0x0 <ltmp0>
+		00000000000002fc:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL
+     300:      	ldr	x0, [x8]
+		0000000000000300:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL
+     304:      	cbz	x0, 0x30c <_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl+0x10>
+     308:      	ret
+     30c:      	stp	x29, x30, [sp, #-0x10]!
+     310:      	mov	x29, sp
+     314:      	adrp	x0, 0x0 <ltmp0>
+		0000000000000314:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc
+     318:      	add	x0, x0, #0x0
+		0000000000000318:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorOs0E0AAMc
+     31c:      	adrp	x1, 0x0 <ltmp0>
+		000000000000031c:  ARM64_RELOC_ADDEND	0x10
+		000000000000031c:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorOMf
+     320:      	add	x1, x1, #0x0
+		0000000000000320:  ARM64_RELOC_ADDEND	0x10
+		0000000000000320:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorOMf
+     324:      	bl	0x324 <_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl+0x28>
+		0000000000000324:  ARM64_RELOC_BRANCH26	_swift_getWitnessTable
+     328:      	adrp	x8, 0x0 <ltmp0>
+		0000000000000328:  ARM64_RELOC_PAGE21	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL
+     32c:      	add	x8, x8, #0x0
+		000000000000032c:  ARM64_RELOC_PAGEOFF12	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWL
+     330:      	stlr	x0, [x8]
+     334:      	ldp	x29, x30, [sp], #0x10
+     338:      	ret

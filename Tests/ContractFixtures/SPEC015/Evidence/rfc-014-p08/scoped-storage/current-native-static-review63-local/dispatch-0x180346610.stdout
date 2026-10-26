@@ -1,0 +1,36 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch-0x180346610.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180346610 <__text>:
+180346610:     	pacibsp
+180346614:     	stp	x20, x19, [sp, #-0x20]!
+180346618:     	stp	x29, x30, [sp, #0x10]
+18034661c:     	add	x29, sp, #0x10
+180346620:     	mov	x19, x0
+180346624:     	mov	x0, x1
+180346628:     	mov	x1, x2
+18034662c:     	bl	0x18035d4a0 <__text+0x16e90>
+180346630:     	mrs	x8, TPIDRRO_EL0
+180346634:     	ldr	w8, [x8, #0x18]
+180346638:     	and	w8, w8, #0xfffffffc
+18034663c:     	mov	x9, #0xfffff0000        ; =68719411200
+180346640:     	movk	x9, #0xc180
+180346644:     	ldr	x9, [x9]
+180346648:     	mov	w10, #0x2               ; =2
+18034664c:     	orr	x9, x10, x9, lsl #2
+180346650:     	swpl	x9, x1, [x19]
+180346654:     	cmp	w8, w1
+180346658:     	b.ne	0x180346668 <__text+0x58>
+18034665c:     	ldp	x29, x30, [sp, #0x10]
+180346660:     	ldp	x20, x19, [sp], #0x20
+180346664:     	retab
+180346668:     	mov	x0, x19
+18034666c:     	ldp	x29, x30, [sp, #0x10]
+180346670:     	ldp	x20, x19, [sp], #0x20
+180346674:     	autibsp
+180346678:     	eor	x16, x30, x30, lsl #1
+18034667c:     	tbz	x16, #0x3e, 0x180346684 <__text+0x74>
+180346680:     	brk	#0xc471
+180346684:     	b	0x18034584c

@@ -1,0 +1,21 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/malloc-0x18030f9d4.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000018030f9d4 <__text>:
+18030f9d4:     	pacibsp
+18030f9d8:     	stp	x20, x19, [sp, #-0x20]!
+18030f9dc:     	stp	x29, x30, [sp, #0x10]
+18030f9e0:     	add	x29, sp, #0x10
+18030f9e4:     	mrs	x19, TPIDRRO_EL0
+18030f9e8:     	ldr	x20, [x19, #0x388]
+18030f9ec:     	cmp	x3, #0x1
+18030f9f0:     	csinc	x8, x3, xzr, hi
+18030f9f4:     	str	x8, [x19, #0x388]
+18030f9f8:     	mov	x3, x4
+18030f9fc:     	bl	0x18032c140 <__text+0x1c76c>
+18030fa00:     	str	x20, [x19, #0x388]
+18030fa04:     	ldp	x29, x30, [sp, #0x10]
+18030fa08:     	ldp	x20, x19, [sp], #0x20
+18030fa0c:     	retab

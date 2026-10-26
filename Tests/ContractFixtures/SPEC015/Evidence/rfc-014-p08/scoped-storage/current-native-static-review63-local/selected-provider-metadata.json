@@ -1,0 +1,454 @@
+{
+  "descriptor_origin": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/provider-slices.json",
+  "descriptor_sha256": "d28ff59e3dc30da3f62043874b13f576424869580d191b7ed2157875e2b7196b",
+  "providers": {
+    "/usr/lib/system/libdispatch.dylib": {
+      "base": 6445867008,
+      "uuid": "b2000cd5f580314aa141e036719d854e",
+      "identity": {
+        "name": "/usr/lib/system/libdispatch.dylib",
+        "command": 13,
+        "current_version": 101097474,
+        "compatibility_version": 65536
+      },
+      "dependencies": [
+        {
+          "name": "/usr/lib/system/libdyld.dylib",
+          "command": 12,
+          "current_version": 0,
+          "compatibility_version": 0
+        },
+        {
+          "name": "/usr/lib/system/libcompiler_rt.dylib",
+          "command": 12,
+          "current_version": 6750976,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_kernel.dylib",
+          "command": 12,
+          "current_version": 811180302,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 12,
+          "current_version": 24606722,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_pthread.dylib",
+          "command": 12,
+          "current_version": 35349508,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_malloc.dylib",
+          "command": 12,
+          "current_version": 53256197,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 12,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_blocks.dylib",
+          "command": 12,
+          "current_version": 6291456,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_darwin.dylib",
+          "command": 2147483683,
+          "current_version": 65536,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libunwind.dylib",
+          "command": 12,
+          "current_version": 137626112,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/libobjc.A.dylib",
+          "command": 2147483683,
+          "current_version": 14942208,
+          "compatibility_version": 65536
+        }
+      ],
+      "segments": [
+        {
+          "name": "__TEXT",
+          "vmaddr": 6445867008,
+          "vmsize": 291392,
+          "fileoff": 2859008,
+          "filesize": 291392
+        },
+        {
+          "name": "__DATA_CONST",
+          "vmaddr": 8155609088,
+          "vmsize": 3408,
+          "fileoff": 604160,
+          "filesize": 3408
+        },
+        {
+          "name": "__AUTH_CONST",
+          "vmaddr": 8293913280,
+          "vmsize": 80008,
+          "fileoff": 105353920,
+          "filesize": 80008
+        },
+        {
+          "name": "__AUTH",
+          "vmaddr": 8283766784,
+          "vmsize": 112,
+          "fileoff": 95207424,
+          "filesize": 112
+        },
+        {
+          "name": "__DATA",
+          "vmaddr": 8225495168,
+          "vmsize": 5000,
+          "fileoff": 36935808,
+          "filesize": 5000
+        },
+        {
+          "name": "__DATA_DIRTY",
+          "vmaddr": 8270388416,
+          "vmsize": 15016,
+          "fileoff": 81829056,
+          "filesize": 15016
+        },
+        {
+          "name": "__LINKEDIT",
+          "vmaddr": 8583036928,
+          "vmsize": 600145920,
+          "fileoff": 16384,
+          "filesize": 600145920
+        }
+      ],
+      "text": [
+        6445871424,
+        247556
+      ],
+      "load_commands": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 2859008,
+        "bytes": 4240,
+        "vmaddr": "0x180342000",
+        "role": "image-load-commands",
+        "sha256": "e61d4ba98169292020d0c3b6ea956d6bf34cfc6c459a858aace586b33e4d5a7d"
+      },
+      "exports_extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 11839128,
+        "bytes": 8600,
+        "vmaddr": "0x2004b2698",
+        "role": "exports-trie",
+        "sha256": "579aaa74309aef6c971f818ddb01b17dd8535076d2fad473c7985bce949428bc"
+      },
+      "starts_extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 4128040,
+        "bytes": 1944,
+        "vmaddr": "0x1ffd57d28",
+        "role": "function-starts",
+        "sha256": "f73847bae84176a6eb415917c87383c258faae91eb38a1f5d4ed584f636a0001"
+      }
+    },
+    "/usr/lib/system/libsystem_malloc.dylib": {
+      "base": 6445535232,
+      "uuid": "d969a9073e43395193658c2db3812e9d",
+      "identity": {
+        "name": "/usr/lib/system/libsystem_malloc.dylib",
+        "command": 13,
+        "current_version": 53256197,
+        "compatibility_version": 65536
+      },
+      "dependencies": [
+        {
+          "name": "/usr/lib/system/libcompiler_rt.dylib",
+          "command": 12,
+          "current_version": 6750976,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libdyld.dylib",
+          "command": 12,
+          "current_version": 0,
+          "compatibility_version": 0
+        },
+        {
+          "name": "/usr/lib/system/libsystem_kernel.dylib",
+          "command": 12,
+          "current_version": 811180302,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_platform.dylib",
+          "command": 12,
+          "current_version": 24606722,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_pthread.dylib",
+          "command": 12,
+          "current_version": 35349508,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_featureflags.dylib",
+          "command": 2147483683,
+          "current_version": 6750208,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_c.dylib",
+          "command": 2147483683,
+          "current_version": 114860036,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libsystem_blocks.dylib",
+          "command": 2147483683,
+          "current_version": 6291456,
+          "compatibility_version": 65536
+        },
+        {
+          "name": "/usr/lib/system/libcorecrypto.dylib",
+          "command": 2147483683,
+          "current_version": 126001162,
+          "compatibility_version": 65536
+        }
+      ],
+      "segments": [
+        {
+          "name": "__TEXT",
+          "vmaddr": 6445535232,
+          "vmsize": 328280,
+          "fileoff": 2527232,
+          "filesize": 328280
+        },
+        {
+          "name": "__DATA_CONST",
+          "vmaddr": 8155606304,
+          "vmsize": 2776,
+          "fileoff": 601376,
+          "filesize": 2776
+        },
+        {
+          "name": "__AUTH_CONST",
+          "vmaddr": 8293910472,
+          "vmsize": 2784,
+          "fileoff": 105351112,
+          "filesize": 2784
+        },
+        {
+          "name": "__AUTH",
+          "vmaddr": 8283734016,
+          "vmsize": 32768,
+          "fileoff": 95174656,
+          "filesize": 32768
+        },
+        {
+          "name": "__DATA",
+          "vmaddr": 8225485976,
+          "vmsize": 9188,
+          "fileoff": 36926616,
+          "filesize": 9188
+        },
+        {
+          "name": "__DATA_DIRTY",
+          "vmaddr": 8270387632,
+          "vmsize": 732,
+          "fileoff": 81828272,
+          "filesize": 732
+        },
+        {
+          "name": "__LINKEDIT",
+          "vmaddr": 8583036928,
+          "vmsize": 600145920,
+          "fileoff": 16384,
+          "filesize": 600145920
+        }
+      ],
+      "text": [
+        6445538536,
+        268984
+      ],
+      "load_commands": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 2527232,
+        "bytes": 3144,
+        "vmaddr": "0x1802f1000",
+        "role": "image-load-commands",
+        "sha256": "ab84e54c590f20aafaf448533ba86b80a8158dd7de234b8c2537b21b50eb9e9d"
+      },
+      "exports_extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 11836088,
+        "bytes": 2832,
+        "vmaddr": "0x2004b1ab8",
+        "role": "exports-trie",
+        "sha256": "bd2aa450f280113cde0f33efd602e7e722f1784734b570aeb019db8ac450e9d6"
+      },
+      "starts_extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+        "offset": 4126704,
+        "bytes": 1336,
+        "vmaddr": "0x1ffd577f0",
+        "role": "function-starts",
+        "sha256": "b76204dc67ebcd4447b6a2e8614f2a8eb0b73b2b48fecb1eff32ded3e70e1f0e"
+      }
+    }
+  },
+  "extents": [
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2859008,
+      "bytes": 32,
+      "vmaddr": "0x180342000",
+      "role": "image-header",
+      "sha256": "f7108b3181c2735bec2c1b648a78689fa983a8e157f876940a4aa32ecc6f9de5"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2859008,
+      "bytes": 4240,
+      "vmaddr": "0x180342000",
+      "role": "image-load-commands",
+      "sha256": "e61d4ba98169292020d0c3b6ea956d6bf34cfc6c459a858aace586b33e4d5a7d"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 11839128,
+      "bytes": 8600,
+      "vmaddr": "0x2004b2698",
+      "role": "exports-trie",
+      "sha256": "579aaa74309aef6c971f818ddb01b17dd8535076d2fad473c7985bce949428bc"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 4128040,
+      "bytes": 1944,
+      "vmaddr": "0x1ffd57d28",
+      "role": "function-starts",
+      "sha256": "f73847bae84176a6eb415917c87383c258faae91eb38a1f5d4ed584f636a0001"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2876840,
+      "bytes": 104,
+      "vmaddr": "0x1803465a8",
+      "role": "_dispatch_once_f",
+      "sha256": "4613de33e862da3554691291f01a8f9e2db0e3d89ff4cbbbb049381cab9eeb35"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2527232,
+      "bytes": 32,
+      "vmaddr": "0x1802f1000",
+      "role": "image-header",
+      "sha256": "25a62617a722ce7e7c61e9c3c8e56e2c619937ee454b827b0557aac40782750b"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2527232,
+      "bytes": 3144,
+      "vmaddr": "0x1802f1000",
+      "role": "image-load-commands",
+      "sha256": "ab84e54c590f20aafaf448533ba86b80a8158dd7de234b8c2537b21b50eb9e9d"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 11836088,
+      "bytes": 2832,
+      "vmaddr": "0x2004b1ab8",
+      "role": "exports-trie",
+      "sha256": "bd2aa450f280113cde0f33efd602e7e722f1784734b570aeb019db8ac450e9d6"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 4126704,
+      "bytes": 1336,
+      "vmaddr": "0x1ffd577f0",
+      "role": "function-starts",
+      "sha256": "b76204dc67ebcd4447b6a2e8614f2a8eb0b73b2b48fecb1eff32ded3e70e1f0e"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2793092,
+      "bytes": 208,
+      "vmaddr": "0x180331e84",
+      "role": "_malloc_type_zone_malloc_with_options",
+      "sha256": "66c43d61272132c389d4dd4ad13ada64cafdeb87f9fa61b50d396e365b409224"
+    }
+  ],
+  "captures": [
+    {
+      "symbol": "_dispatch_once_f",
+      "export": {
+        "flags": 0,
+        "address": 6445884840
+      },
+      "range": [
+        "0x1803465a8",
+        "0x180346610"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 2876840,
+        "bytes": 104,
+        "vmaddr": "0x1803465a8",
+        "role": "_dispatch_once_f",
+        "sha256": "4613de33e862da3554691291f01a8f9e2db0e3d89ff4cbbbb049381cab9eeb35"
+      },
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch_once_f.o",
+      "projection_sha256": "d011ea53e845660a67b143b8dff417320b22e9155606c92e7bcdd0c1d7808b80",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch_once_f.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1188,
+      "stdout_sha256": "3198af3c24d847d3e189897ca1e0431a8f5112cd51714a009cfcf844a5034e7f",
+      "stderr": ""
+    },
+    {
+      "symbol": "_malloc_type_zone_malloc_with_options",
+      "export": {
+        "flags": 0,
+        "address": 6445801092
+      },
+      "range": [
+        "0x180331e84",
+        "0x180331f54"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 2793092,
+        "bytes": 208,
+        "vmaddr": "0x180331e84",
+        "role": "_malloc_type_zone_malloc_with_options",
+        "sha256": "66c43d61272132c389d4dd4ad13ada64cafdeb87f9fa61b50d396e365b409224"
+      },
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/malloc_type_zone_malloc_with_options.o",
+      "projection_sha256": "01c974cadeee006cb14775143c0f0cc50e90614a372ae0bf16d60a75387580a8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/malloc_type_zone_malloc_with_options.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 2245,
+      "stdout_sha256": "62e7ad380c8b5d765db898f28d4286808d0a7fb91255dd0618a4c61de8a571c6",
+      "stderr": ""
+    }
+  ]
+}

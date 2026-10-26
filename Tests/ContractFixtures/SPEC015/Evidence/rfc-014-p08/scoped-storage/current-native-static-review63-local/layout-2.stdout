@@ -1,0 +1,20 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000be1a0 <_OUTLINED_FUNCTION_132>:
+   be1a0:      	ldr	x8, [x19, #0x28]
+   be1a4:      	ldp	x9, x10, [x19, #0x38]
+   be1a8:      	ldr	x9, [x9, #0x8]
+   be1ac:      	ldr	x10, [x10, #0x8]
+   be1b0:      	ldr	x11, [x19, #0x48]
+   be1b4:      	ldr	x11, [x11, #0x8]
+   be1b8:      	ldur	q0, [x19, #0x18]
+   be1bc:      	str	q0, [sp]
+   be1c0:      	stp	x8, x9, [sp, #0x10]
+   be1c4:      	stp	x10, x11, [sp, #0x20]
+   be1c8:      	mov	x1, sp
+   be1cc:      	mov	w0, #0x13f              ; =319
+   be1d0:      	b	0xbe1d0 <_OUTLINED_FUNCTION_132+0x30>
+		00000000000be1d0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVMa

@@ -1,0 +1,9 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/GiftUIObservableState.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000e378 <_OUTLINED_FUNCTION_155>:
+    e378:      	sturb	w20, [x29, #-0x41]
+    e37c:      	b	0xe37c <_OUTLINED_FUNCTION_155+0x4>
+		000000000000e37c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl

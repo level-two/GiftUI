@@ -1,0 +1,57 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/Swift-0x193cd3fc8.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000193cd3fc8 <__text>:
+193cd3fc8:     	pacibsp
+193cd3fcc:     	stp	x29, x30, [sp, #-0x10]!
+193cd3fd0:     	mov	x29, sp
+193cd3fd4:     	adrp	x8, 0x1ed06b000 <__text+0x59397038>
+193cd3fd8:     	add	x8, x8, #0xa38
+193cd3fdc:     	ldr	x8, [x8]
+193cd3fe0:     	cmn	x8, #0x1
+193cd3fe4:     	b.ne	0x193cd408c <__text+0xc4>
+193cd3fe8:     	adrp	x8, 0x1ea7fe000 <__text+0x56b2a038>
+193cd3fec:     	add	x8, x8, #0xc51
+193cd3ff0:     	ldrb	w8, [x8]
+193cd3ff4:     	cmp	w8, #0x1
+193cd3ff8:     	b.ne	0x193cd4010 <__text+0x48>
+193cd3ffc:     	adrp	x0, 0x1ed05b000 <__text+0x59387038>
+193cd4000:     	add	x0, x0, #0x750
+193cd4004:     	mov	w1, #0xaa               ; =170
+193cd4008:     	mov	w2, #0x10000            ; =65536
+193cd400c:     	bl	0x1940ef6ec <__text+0x41b724>
+193cd4010:     	adrp	x8, 0x1ea7fe000 <__text+0x56b2a038>
+193cd4014:     	add	x8, x8, #0xc48
+193cd4018:     	ldrb	w8, [x8]
+193cd401c:     	adrp	x9, 0x1ed06b000 <__text+0x59397038>
+193cd4020:     	strb	w8, [x9, #0xa48]
+193cd4024:     	tbz	w8, #0x0, 0x193cd404c <__text+0x84>
+193cd4028:     	adrp	x8, 0x1ed054000 <__text+0x59380038>
+193cd402c:     	add	x8, x8, #0x3a0
+193cd4030:     	ldp	x9, xzr, [x8]
+193cd4034:     	adrp	x10, 0x1ed06b000 <__text+0x59397038>
+193cd4038:     	add	x10, x10, #0x740
+193cd403c:     	mov	w11, #0xfff0            ; =65520
+193cd4040:     	stp	xzr, x11, [x10]
+193cd4044:     	stp	x9, x11, [x8]
+193cd4048:     	b	0x193cd4084 <__text+0xbc>
+193cd404c:     	adrp	x8, 0x1ea7fe000 <__text+0x56b2a038>
+193cd4050:     	add	x8, x8, #0xc4a
+193cd4054:     	ldrb	w8, [x8]
+193cd4058:     	cmp	w8, #0x1
+193cd405c:     	b.ne	0x193cd4084 <__text+0xbc>
+193cd4060:     	adrp	x1, 0x1940f5000 <__text+0x421038>
+193cd4064:     	add	x1, x1, #0xbb0
+193cd4068:     	mov	w0, #0x0                ; =0
+193cd406c:     	ldp	x29, x30, [sp], #0x10
+193cd4070:     	autibsp
+193cd4074:     	eor	x16, x30, x30, lsl #1
+193cd4078:     	tbz	x16, #0x3e, 0x193cd4080 <__text+0xb8>
+193cd407c:     	brk	#0xc471
+193cd4080:     	b	0x193cb755c
+193cd4084:     	ldp	x29, x30, [sp], #0x10
+193cd4088:     	retab
+193cd408c:     	bl	0x1940edbcc <__text+0x419c04>
+193cd4090:     	b	0x193cd3fe8 <__text+0x20>

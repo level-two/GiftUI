@@ -1,0 +1,28 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000098dc0 <_$s18GiftUISemanticCore15RecordWorkspaceV18leavePathComponentyyF17P08CounterRuntime0J5RolesO_0A9UIDrawing21CanvasSemanticPayloadOy0iJ5Table0ij6SchemaN6ValuesOyAE0J6DomainOGGTg5>:
+   98dc0:      	ldr	x8, [x20]
+   98dc4:      	ldrh	w9, [x8, #0x18]
+   98dc8:      	ldrh	w10, [x8, #0xc]
+   98dcc:      	cmp	w9, w10
+   98dd0:      	b.hs	0x98dec <_$s18GiftUISemanticCore15RecordWorkspaceV18leavePathComponentyyF17P08CounterRuntime0J5RolesO_0A9UIDrawing21CanvasSemanticPayloadOy0iJ5Table0ij6SchemaN6ValuesOyAE0J6DomainOGGTg5+0x2c>
+   98dd4:      	ldr	x10, [x20, #0x18]
+   98dd8:      	mov	w11, #0x16              ; =22
+   98ddc:      	umaddl	x9, w9, w11, x10
+   98de0:      	ldrh	w9, [x9, #0x6]
+   98de4:      	strh	w9, [x8, #0x18]
+   98de8:      	b	0x98e00 <_$s18GiftUISemanticCore15RecordWorkspaceV18leavePathComponentyyF17P08CounterRuntime0J5RolesO_0A9UIDrawing21CanvasSemanticPayloadOy0iJ5Table0ij6SchemaN6ValuesOyAE0J6DomainOGGTg5+0x40>
+   98dec:      	ldrb	w9, [x8, #0x2f]
+   98df0:      	cmp	w9, #0x4
+   98df4:      	b.ne	0x98e00 <_$s18GiftUISemanticCore15RecordWorkspaceV18leavePathComponentyyF17P08CounterRuntime0J5RolesO_0A9UIDrawing21CanvasSemanticPayloadOy0iJ5Table0ij6SchemaN6ValuesOyAE0J6DomainOGGTg5+0x40>
+   98df8:      	mov	w9, #0x1                ; =1
+   98dfc:      	strb	w9, [x8, #0x2f]
+   98e00:      	ldrh	w8, [x20, #0x124]
+   98e04:      	cbz	w8, 0x98e14 <_$s18GiftUISemanticCore15RecordWorkspaceV18leavePathComponentyyF17P08CounterRuntime0J5RolesO_0A9UIDrawing21CanvasSemanticPayloadOy0iJ5Table0ij6SchemaN6ValuesOyAE0J6DomainOGGTg5+0x54>
+   98e08:      	sub	w8, w8, #0x1
+   98e0c:      	strh	w8, [x20, #0x124]
+   98e10:      	ret
+   98e14:      	brk	#0x1

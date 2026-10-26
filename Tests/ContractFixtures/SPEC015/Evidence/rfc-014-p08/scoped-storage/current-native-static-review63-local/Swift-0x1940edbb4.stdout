@@ -1,0 +1,12 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/Swift-0x1940edbb4.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001940edbb4 <__text>:
+1940edbb4:     	adrp	x0, 0x1ed05b000 <__text+0x58f6d44c>
+1940edbb8:     	add	x0, x0, #0x550
+1940edbbc:     	adrp	x16, 0x193cd3000
+1940edbc0:     	add	x16, x16, #0xfc8
+1940edbc4:     	paciza	x16
+1940edbc8:     	b	0x193ca09c0

@@ -1,0 +1,34 @@
+{
+  "saved_utc": "2026-10-26T10:24:20.917179+00:00",
+  "retained_new_bytes_before_this_record": 1346712,
+  "output_limit_bytes": 8388608,
+  "within_retained_limit": true,
+  "input_preservation_mismatches": [],
+  "source_binding_matches_current": true,
+  "source_binding_matches_prior_context": true,
+  "no_pending_process": true,
+  "whole_callee_eligibility": false,
+  "fully_conforming_acquisition": false,
+  "context_failure": {
+    "status": "NONQUALIFIED",
+    "captures": 26,
+    "bytes": 1085451,
+    "lines": 7835,
+    "limit_bytes": 1048576,
+    "limit_lines": 16384,
+    "excess_bytes": 36875,
+    "selection_failure": "contains Roles matched names of specialized traversal contexts; combined presentation clipped",
+    "stopped": "No retry, subdivision, relabel or further semantic expansion."
+  },
+  "ordinary_finalization_errors": [
+    "First summary write KeyError: Runtime not in initial map; findings not written. Corrected summary uses current-layout-joins exact Runtime hash.",
+    "Second summary invocation wrote findings/README/binding, then terminal-only NameError inputs undefined. This standalone terminal save uses exact initial inputs map. No semantic acquisition/retry or helper change."
+  ],
+  "accuracy_correction": {
+    "utc": "2026-10-26T10:26:55.981595+00:00",
+    "original_error": "Narrative incorrectly asserted whole-object equality despite retained equal:false and unequal hashes.",
+    "resolution": "Downgraded current descriptor/category/arena applicability; no new acquisition or inference. Source identity matches do not establish binary descriptor equivalence."
+  },
+  "current_error_descriptor_category_bound": false,
+  "current_error_to_arena_consequence_proved": false
+}

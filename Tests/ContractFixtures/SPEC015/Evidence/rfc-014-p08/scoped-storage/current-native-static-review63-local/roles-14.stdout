@@ -1,0 +1,9 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000c5c <_$s17P08CounterRuntime0B5RolesO7matchesySbxm_q_tr0_lFZ>:
+     c5c:      	cmp	x2, x3
+     c60:      	cset	w0, eq
+     c64:      	ret

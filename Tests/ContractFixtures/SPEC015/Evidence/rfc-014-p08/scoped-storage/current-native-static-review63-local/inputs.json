@@ -1,0 +1,32 @@
+{
+  "review_start_anchor_utc": "2026-10-26T08:59:38Z",
+  "deadline_utc": "2026-10-26T10:59:38Z",
+  "acquired_utc": "2026-10-26T09:01:11.443890+00:00",
+  "head": "d8cc0c18a914547f9f2cfed526321ddf36ea70bc",
+  "inputs": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/GiftUIObservableState.o": {
+      "bytes": 254456,
+      "sha256": "39d28ca22bf93b83b55f122c3e282745466e69f541b9953be84d8de0d067f237"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/result.json": {
+      "bytes": 8566019,
+      "sha256": "6dc6b3049c95ad555ed46c216acac15186fde4184ad6aa4bfd68e4d4140c71cc"
+    },
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump": {
+      "bytes": 18272848,
+      "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/provider-slices.json": {
+      "bytes": 26116,
+      "sha256": "30a33f816141c4218747dab8f5d6eb0decc063d7e339f9ed20193e22a53f18eb"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-result/findings.json": {
+      "bytes": 9135,
+      "sha256": "833a309569829654387f8dde1fe6c978377cd1ec66c1422095df28f29642cc4a"
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-typedBacking61-result/full4h2-artifact-transfer.json": {
+      "bytes": 331413,
+      "sha256": "c7766b3c39585f2b4ca1b9c470bc2109f1442565db250b1fee7eaff8a096c4be"
+    }
+  }
+}

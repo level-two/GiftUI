@@ -1,0 +1,31 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch-0x1803457e8.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000001803457e8 <__text>:
+1803457e8:     	pacibsp
+1803457ec:     	sub	sp, sp, #0x30
+1803457f0:     	stp	x20, x19, [sp, #0x10]
+1803457f4:     	stp	x29, x30, [sp, #0x20]
+1803457f8:     	add	x29, sp, #0x20
+1803457fc:     	mov	x19, x0
+180345800:     	mrs	x8, TPIDRRO_EL0
+180345804:     	ldr	x20, [x8, #0x18]
+180345808:     	ldr	x0, [x19]
+18034580c:     	cmn	x0, #0x1
+180345810:     	b.eq	0x18034583c <__text+0x54>
+180345814:     	add	x3, sp, #0x8
+180345818:     	mov	x1, x19
+18034581c:     	mov	x2, x20
+180345820:     	bl	0x180378fe8 <__text+0x33800>
+180345824:     	mov	x8, x0
+180345828:     	ldr	x0, [sp, #0x8]
+18034582c:     	and	w8, w8, #0xffff
+180345830:     	cmp	w8, #0x1
+180345834:     	b.eq	0x180345808 <__text+0x20>
+180345838:     	cbnz	w8, 0x18034580c <__text+0x24>
+18034583c:     	ldp	x29, x30, [sp, #0x20]
+180345840:     	ldp	x20, x19, [sp, #0x10]
+180345844:     	add	sp, sp, #0x30
+180345848:     	retab

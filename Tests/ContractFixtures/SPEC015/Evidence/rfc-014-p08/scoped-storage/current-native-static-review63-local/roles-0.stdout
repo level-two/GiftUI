@@ -1,0 +1,35 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000002130 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_>:
+    2130:      	sub	sp, sp, #0x90
+    2134:      	stp	x20, x19, [sp, #0x70]
+    2138:      	stp	x29, x30, [sp, #0x80]
+    213c:      	add	x29, sp, #0x80
+    2140:      	mov	x19, x21
+    2144:      	mov	x20, x8
+    2148:      	adrp	x0, 0x2000 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ+0x454>
+		0000000000002148:  ARM64_RELOC_PAGE21	l_.str.0.
+    214c:      	add	x0, x0, #0x0
+		000000000000214c:  ARM64_RELOC_PAGEOFF12	l_.str.0.
+    2150:      	mov	x8, sp
+    2154:      	mov	x1, #0x0                ; =0
+    2158:      	mov	w2, #0x2                ; =2
+    215c:      	bl	0x215c <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_+0x2c>
+		000000000000215c:  ARM64_RELOC_BRANCH26	_$s6GiftUI11BoundedTextVyACSgs12StaticStringVcfC
+    2160:      	ldrb	w8, [sp, #0x62]
+    2164:      	cmp	w8, #0x1
+    2168:      	b.ne	0x2174 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_+0x44>
+    216c:      	bl	0x216c <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_+0x3c>
+		000000000000216c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_567
+    2170:      	b	0x2178 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_+0x48>
+    2174:      	bl	0x2174 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_+0x44>
+		0000000000002174:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1824
+    2178:      	bl	0x2178 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_+0x48>
+		0000000000002178:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1633
+    217c:      	ldp	x29, x30, [sp, #0x80]
+    2180:      	ldp	x20, x19, [sp, #0x70]
+    2184:      	b	0x2184 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ0G2UI4TextVyAA0B6DomainOGyXEfU_+0x54>
+		0000000000002184:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2012

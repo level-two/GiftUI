@@ -1,0 +1,137 @@
+[
+  {
+    "provider": "Swift",
+    "selected": "0x1940edbb4",
+    "range": [
+      "0x1940edbb4",
+      "0x1940edbcc"
+    ],
+    "extent": {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 335961012,
+      "bytes": 24,
+      "vmaddr": "0x1940edbb4",
+      "sha256": "7b6cc0cd317855e4c4b63fbc371f47099247160e446105457ea5ff951268774a"
+    },
+    "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/Swift-0x1940edbb4.o",
+    "projection_sha256": "4e13163c4fdb2b3cff07dab79ecf3d380252f56a09ab3a39cd5daf90bfec005e",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/Swift-0x1940edbb4.o"
+    ],
+    "exit": 0,
+    "stdout_sha256": "93c02cac2026461e16073666917e4f37a734ea3b003770d60ab9cb846a57148d",
+    "stdout_bytes": 442,
+    "stderr": ""
+  },
+  {
+    "provider": "Swift",
+    "selected": "0x1940edbcc",
+    "range": [
+      "0x1940edbcc",
+      "0x1940edbd0"
+    ],
+    "extent": {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 335961036,
+      "bytes": 4,
+      "vmaddr": "0x1940edbcc",
+      "sha256": "6d1f319f051f6fba50360dbb2a2d46645f3b6d36bea4000d2236f10e6d760ef8"
+    },
+    "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/Swift-0x1940edbcc.o",
+    "projection_sha256": "cf1da13b68fb5de03bebc73718307bdbc874e6c98d692259f60b49d6e65e42c2",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/Swift-0x1940edbcc.o"
+    ],
+    "exit": 0,
+    "stdout_sha256": "a23dd2b83abc299b34a70bd4c794a9e522536ab79587cf9faa0ba57b16d12c7a",
+    "stdout_bytes": 248,
+    "stderr": ""
+  },
+  {
+    "provider": "dispatch",
+    "selected": "0x180346610",
+    "range": [
+      "0x180346610",
+      "0x180346688"
+    ],
+    "extent": {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2876944,
+      "bytes": 120,
+      "vmaddr": "0x180346610",
+      "sha256": "cbbee933179572c7f5819ff79f1c3747a24ca826c3212153be52f351dff9900e"
+    },
+    "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch-0x180346610.o",
+    "projection_sha256": "083834d68aa5cf206686c5d062272c80ece364e42ee6ba6943b4cc7656cda76b",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch-0x180346610.o"
+    ],
+    "exit": 0,
+    "stdout_sha256": "1cfba1fcadf61f5e5f1a6551be9e38cc16dd976051ef0b81461d8b8cdc87b258",
+    "stdout_bytes": 1327,
+    "stderr": ""
+  },
+  {
+    "provider": "dispatch",
+    "selected": "0x1803457e8",
+    "range": [
+      "0x1803457e8",
+      "0x18034584c"
+    ],
+    "extent": {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2873320,
+      "bytes": 100,
+      "vmaddr": "0x1803457e8",
+      "sha256": "baf2da91e5f54b9db23927eb02f24fd4fa28009ed67541a749a688cce71c1777"
+    },
+    "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch-0x1803457e8.o",
+    "projection_sha256": "af618f38b40cdbd9372c8905a6076b21da73f4893adb9d309ac03e1d56ee54be",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch-0x1803457e8.o"
+    ],
+    "exit": 0,
+    "stdout_sha256": "4136c68f6df003747c5555d94dd059d19482bff380d5c1683d59532993a2a21e",
+    "stdout_bytes": 1107,
+    "stderr": ""
+  },
+  {
+    "provider": "malloc",
+    "selected": "0x18030f9d4",
+    "range": [
+      "0x18030f9d4",
+      "0x18030fa10"
+    ],
+    "extent": {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2652628,
+      "bytes": 60,
+      "vmaddr": "0x18030f9d4",
+      "sha256": "0eda81d9ee7ded21ba43588234773ac0f5ce331cbeaed3c270c3590666e4561b"
+    },
+    "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/malloc-0x18030f9d4.o",
+    "projection_sha256": "716f424a1683f3e607ffed8c4d14c379a27724340a09afd51fbbf3c948f50c89",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--no-show-raw-insn",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/malloc-0x18030f9d4.o"
+    ],
+    "exit": 0,
+    "stdout_sha256": "43021d094b3b44bca09a9a1af9a742f6f15b56e8c68e0feb170c02dfcd6ea51b",
+    "stdout_bytes": 765,
+    "stderr": ""
+  }
+]

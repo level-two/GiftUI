@@ -1,0 +1,108 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000ae474 <_$s17P08CounterRuntime0B13PipelineOwnerVMr>:
+   ae474:      	sub	sp, sp, #0x140
+   ae478:      	stp	x20, x19, [sp, #0x120]
+   ae47c:      	stp	x29, x30, [sp, #0x130]
+   ae480:      	add	x29, sp, #0x130
+   ae484:      	bl	0xae484 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x10>
+		00000000000ae484:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1843
+   ae488:      	stp	x8, x9, [sp, #0x38]
+   ae48c:      	adrp	x8, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae48c:  ARM64_RELOC_PAGE21	l_type_layout_164_8_1_pod
+   ae490:      	add	x8, x8, #0x0
+		00000000000ae490:  ARM64_RELOC_PAGEOFF12	l_type_layout_164_8_1_pod
+   ae494:      	adrp	x9, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae494:  ARM64_RELOC_PAGE21	l_type_layout_26_8_1_pod
+   ae498:      	add	x9, x9, #0x0
+		00000000000ae498:  ARM64_RELOC_PAGEOFF12	l_type_layout_26_8_1_pod
+   ae49c:      	stp	x8, x9, [sp, #0x48]
+   ae4a0:      	adrp	x8, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae4a0:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sBpWV
+   ae4a4:      	ldr	x8, [x8]
+		00000000000ae4a4:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sBpWV
+   ae4a8:      	add	x8, x8, #0x40
+   ae4ac:      	str	x8, [sp, #0x58]
+   ae4b0:      	bl	0xae4b0 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x3c>
+		00000000000ae4b0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_901
+   ae4b4:      	cmp	x1, #0x3f
+   ae4b8:      	b.hi	0xae574 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x100>
+   ae4bc:      	bl	0xae4bc <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x48>
+		00000000000ae4bc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1086
+   ae4c0:      	str	x8, [sp, #0x60]
+   ae4c4:      	bl	0xae4c4 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x50>
+		00000000000ae4c4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_132
+   ae4c8:      	cmp	x1, #0x3f
+   ae4cc:      	b.hi	0xae574 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x100>
+   ae4d0:      	bl	0xae4d0 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x5c>
+		00000000000ae4d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1086
+   ae4d4:      	adrp	x9, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae4d4:  ARM64_RELOC_PAGE21	l_type_layout_22_4_f9_pod
+   ae4d8:      	add	x9, x9, #0x0
+		00000000000ae4d8:  ARM64_RELOC_PAGEOFF12	l_type_layout_22_4_f9_pod
+   ae4dc:      	stp	x8, x9, [sp, #0x68]
+   ae4e0:      	adrp	x8, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae4e0:  ARM64_RELOC_PAGE21	l_type_layout_5_4_0_pod
+   ae4e4:      	add	x8, x8, #0x0
+		00000000000ae4e4:  ARM64_RELOC_PAGEOFF12	l_type_layout_5_4_0_pod
+   ae4e8:      	adrp	x10, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae4e8:  ARM64_RELOC_PAGE21	l_type_layout_115_4_0_pod
+   ae4ec:      	add	x10, x10, #0x0
+		00000000000ae4ec:  ARM64_RELOC_PAGEOFF12	l_type_layout_115_4_0_pod
+   ae4f0:      	stp	x8, x10, [sp, #0x78]
+   ae4f4:      	stp	x8, x8, [sp, #0x88]
+   ae4f8:      	adrp	x10, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae4f8:  ARM64_RELOC_PAGE21	l_type_layout_20_4_0_pod
+   ae4fc:      	add	x10, x10, #0x0
+		00000000000ae4fc:  ARM64_RELOC_PAGEOFF12	l_type_layout_20_4_0_pod
+   ae500:      	stp	x8, x10, [sp, #0x98]
+   ae504:      	stp	x9, x8, [sp, #0xa8]
+   ae508:      	adrp	x9, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae508:  ARM64_RELOC_PAGE21	l_type_layout_10_2_fd_pod
+   ae50c:      	add	x9, x9, #0x0
+		00000000000ae50c:  ARM64_RELOC_PAGEOFF12	l_type_layout_10_2_fd_pod
+   ae510:      	adrp	x10, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae510:  ARM64_RELOC_PAGE21	l_type_layout_10_4_0_pod
+   ae514:      	add	x10, x10, #0x0
+		00000000000ae514:  ARM64_RELOC_PAGEOFF12	l_type_layout_10_4_0_pod
+   ae518:      	stp	x9, x10, [sp, #0xb8]
+   ae51c:      	adrp	x9, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae51c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sBi64_WV
+   ae520:      	ldr	x9, [x9]
+		00000000000ae520:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sBi64_WV
+   ae524:      	add	x9, x9, #0x40
+   ae528:      	adrp	x10, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae528:  ARM64_RELOC_PAGE21	l_type_layout_1_1_fe_pod
+   ae52c:      	add	x10, x10, #0x0
+		00000000000ae52c:  ARM64_RELOC_PAGEOFF12	l_type_layout_1_1_fe_pod
+   ae530:      	adrp	x11, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae530:  ARM64_RELOC_PAGE21	l_type_layout_39_4_0_pod
+   ae534:      	add	x11, x11, #0x0
+		00000000000ae534:  ARM64_RELOC_PAGEOFF12	l_type_layout_39_4_0_pod
+   ae538:      	stp	x9, x10, [sp, #0xc8]
+   ae53c:      	stp	x10, x11, [sp, #0xe8]
+   ae540:      	adrp	x9, 0xae000 <___swift_memcpy50_8+0x8>
+		00000000000ae540:  ARM64_RELOC_PAGE21	l_type_layout_13_4_0_pod
+   ae544:      	add	x9, x9, #0x0
+		00000000000ae544:  ARM64_RELOC_PAGEOFF12	l_type_layout_13_4_0_pod
+   ae548:      	stp	x10, x10, [sp, #0xd8]
+   ae54c:      	stp	x9, x8, [sp, #0xf8]
+   ae550:      	stp	x10, x10, [sp, #0x108]
+   ae554:      	str	x10, [sp, #0x118]
+   ae558:      	add	x3, sp, #0x38
+   ae55c:      	bl	0xae55c <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0xe8>
+		00000000000ae55c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_968
+   ae560:      	mov	w2, #0x1d               ; =29
+   ae564:      	bl	0xae564 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0xf0>
+		00000000000ae564:  ARM64_RELOC_BRANCH26	_swift_initStructMetadata
+   ae568:      	mov	x0, #0x0                ; =0
+   ae56c:      	mov	x1, #0x0                ; =0
+   ae570:      	b	0xae578 <_$s17P08CounterRuntime0B13PipelineOwnerVMr+0x104>
+   ae574:      	mov	w1, #0x3f               ; =63
+   ae578:      	ldp	x29, x30, [sp, #0x130]
+   ae57c:      	ldp	x20, x19, [sp, #0x120]
+   ae580:      	add	sp, sp, #0x140
+   ae584:      	ret

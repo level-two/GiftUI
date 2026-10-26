@@ -1,0 +1,8 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000002188 <_$s17P08CounterRuntime0B5RolesO21modifierDiscriminator2ofs6UInt16Vxm_tlFZ>:
+    2188:      	b	0x2188 <_$s17P08CounterRuntime0B5RolesO21modifierDiscriminator2ofs6UInt16Vxm_tlFZ>
+		0000000000002188:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_591

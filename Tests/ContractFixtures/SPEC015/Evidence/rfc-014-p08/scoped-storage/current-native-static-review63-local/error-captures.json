@@ -1,0 +1,86 @@
+[
+  {
+    "symbol": "_$s21GiftUIObservableState010ObservableC5ErrorOACs0E0AAWl",
+    "range": [
+      "0x2fc",
+      "0x33c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x2fc",
+      "--stop-address=0x33c",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/GiftUIObservableState.o"
+    ],
+    "exit": 0,
+    "bytes": 1809,
+    "sha256": "bf179ac261a8c7159bf009603127895fa2243de33a2bd5ac27448ca2eb9ef60c",
+    "raw": "error-0.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_$s21GiftUIObservableState24ObservableModelOwnershipV18reserveReplacement12transferring6schema16candidateIsEmpty21registrationAvailable07stagingO0AC0H0VAC5ClaimV_s6UInt16VS3btAA0dC5ErrorOYKF",
+    "range": [
+      "0x20cc",
+      "0x2338"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x20cc",
+      "--stop-address=0x2338",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/GiftUIObservableState.o"
+    ],
+    "exit": 0,
+    "bytes": 13930,
+    "sha256": "48bd7f88a6d633448dedd47a96a4ea421a7a613eaec0e51053a5cbc772b6cdf6",
+    "raw": "error-1.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_OUTLINED_FUNCTION_155",
+    "range": [
+      "0xe378",
+      "0xe380"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xe378",
+      "--stop-address=0xe380",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/GiftUIObservableState.o"
+    ],
+    "exit": 0,
+    "bytes": 393,
+    "sha256": "5120b122b04bcdf88d8a010c83a62197497c8423d1944d72edd66934c0f3bedc",
+    "raw": "error-2.stdout",
+    "stderr": ""
+  },
+  {
+    "symbol": "_OUTLINED_FUNCTION_5",
+    "range": [
+      "0xd840",
+      "0xd854"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xd840",
+      "--stop-address=0xd854",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/GiftUIObservableState.o"
+    ],
+    "exit": 0,
+    "bytes": 787,
+    "sha256": "9e8567f4f1fd4010d96ca8ccae311b63ad7a8f1f3ad2880abdaa1f544906251a",
+    "raw": "error-3.stdout",
+    "stderr": ""
+  }
+]

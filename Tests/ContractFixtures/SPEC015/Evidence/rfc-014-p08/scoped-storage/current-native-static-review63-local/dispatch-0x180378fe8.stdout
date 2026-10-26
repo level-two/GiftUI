@@ -1,0 +1,59 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/dispatch-0x180378fe8.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180378fe8 <__text>:
+180378fe8:     	and	x8, x0, #0x3
+180378fec:     	cmp	x8, #0x2
+180378ff0:     	b.ne	0x180379028 <__text+0x40>
+180378ff4:     	dmb	ishld
+180378ff8:     	mov	x8, #0xfffff0000        ; =68719411200
+180378ffc:     	movk	x8, #0xc180
+180379000:     	ldr	x8, [x8]
+180379004:     	lsl	x8, x8, #2
+180379008:     	sub	x8, x8, x0
+18037900c:     	sub	x8, x8, #0xe
+180379010:     	cmn	x8, #0x11
+180379014:     	b.hi	0x18037908c <__text+0xa4>
+180379018:     	mov	w0, #0x0                ; =0
+18037901c:     	mov	x8, #-0x1               ; =-1
+180379020:     	str	x8, [x1]
+180379024:     	ret
+180379028:     	orr	x8, x0, #0x1
+18037902c:     	mov	x4, x0
+180379030:     	cmp	x8, x0
+180379034:     	b.eq	0x180379050 <__text+0x68>
+180379038:     	mov	x9, x0
+18037903c:     	cas	x9, x8, [x1]
+180379040:     	str	x9, [x3]
+180379044:     	mov	x4, x8
+180379048:     	cmp	x9, x0
+18037904c:     	b.ne	0x1803790b4 <__text+0xcc>
+180379050:     	eor	w8, w0, w2
+180379054:     	tst	x8, #0xfffffffc
+180379058:     	b.eq	0x180379094 <__text+0xac>
+18037905c:     	pacibsp
+180379060:     	stp	x29, x30, [sp, #-0x10]!
+180379064:     	mov	x29, sp
+180379068:     	mov	x0, x1
+18037906c:     	mov	x1, x4
+180379070:     	mov	w2, #0x0                ; =0
+180379074:     	mov	w3, #0x2                ; =2
+180379078:     	bl	0x180345894
+18037907c:     	mov	w0, #0x1                ; =1
+180379080:     	ldp	x29, x30, [sp], #0x10
+180379084:     	autibsp
+180379088:     	ret
+18037908c:     	mov	w0, #0x0                ; =0
+180379090:     	ret
+180379094:     	stp	x20, x21, [sp, #-0x10]!
+180379098:     	adrp	x20, 0x180382000 <__text+0x9018>
+18037909c:     	add	x20, x20, #0x2f
+1803790a0:     	adrp	x21, 0x1ea472000 <__text+0x6a0f9018>
+1803790a4:     	add	x21, x21, #0xa38
+1803790a8:     	str	x20, [x21, #0x8]
+1803790ac:     	ldp	x20, x21, [sp], #0x10
+1803790b0:     	brk	#0x1
+1803790b4:     	mov	w0, #0x2                ; =2
+1803790b8:     	ret
