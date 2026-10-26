@@ -1,0 +1,22 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000009974 <_$s17P08CounterRuntime20counterDrawingLimits13GiftUIDrawing0eF0Vvau>:
+    9974:      	mov	x0, x30
+    9978:      	bl	0x9978 <_$s17P08CounterRuntime20counterDrawingLimits13GiftUIDrawing0eF0Vvau+0x4>
+		0000000000009978:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_525
+    997c:      	mov	x30, x0
+    9980:      	b.ne	0x9990 <_$s17P08CounterRuntime20counterDrawingLimits13GiftUIDrawing0eF0Vvau+0x1c>
+    9984:      	adrp	x0, 0x9000 <_$s17P08CounterRuntime0B17StaticRootStorageV8identity6schema12needsCapture10modelLimit05claimL003pinL007captureL0ACSg21GiftUIObservableState28ObservableModelOwnerIdentityV_s6UInt16VSbA4PSgtcfC+0x44>
+		0000000000009984:  ARM64_RELOC_PAGE21	_$s17P08CounterRuntime20counterDrawingLimits13GiftUIDrawing0eF0Vvp
+    9988:      	add	x0, x0, #0x0
+		0000000000009988:  ARM64_RELOC_PAGEOFF12	_$s17P08CounterRuntime20counterDrawingLimits13GiftUIDrawing0eF0Vvp
+    998c:      	ret
+    9990:      	stp	x29, x30, [sp, #-0x10]!
+    9994:      	mov	x29, sp
+    9998:      	bl	0x9998 <_$s17P08CounterRuntime20counterDrawingLimits13GiftUIDrawing0eF0Vvau+0x24>
+		0000000000009998:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_65
+    999c:      	ldp	x29, x30, [sp], #0x10
+    99a0:      	b	0x9984 <_$s17P08CounterRuntime20counterDrawingLimits13GiftUIDrawing0eF0Vvau+0x10>

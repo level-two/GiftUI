@@ -1,0 +1,333 @@
+
+.build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000e1c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ>:
+     e1c:      	mov	x6, x30
+     e20:      	bl	0xe20 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x4>
+		0000000000000e20:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_135
+     e24:      	mov	x30, x6
+     e28:      	stp	x29, x30, [sp, #0x50]
+     e2c:      	add	x29, sp, #0x50
+     e30:      	sub	sp, sp, #0x350
+     e34:      	mov	x19, sp
+     e38:      	mov	x28, x5
+     e3c:      	mov	x21, x4
+     e40:      	str	x3, [x19, #0x98]
+     e44:      	mov	x20, x2
+     e48:      	mov	x22, x1
+     e4c:      	mov	x25, x0
+     e50:      	ldr	x24, [x29, #0x80]
+     e54:      	ldr	x1, [x29, #0x70]
+     e58:      	ldp	x23, x26, [x29, #0xa0]
+     e5c:      	ldr	q0, [x29, #0x60]
+     e60:      	str	q0, [x19, #0x80]
+     e64:      	mov	x0, #0x0                ; =0
+     e68:      	str	x1, [x19, #0x60]
+     e6c:      	bl	0xe6c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x50>
+		0000000000000e6c:  ARM64_RELOC_BRANCH26	_$sSqMa
+     e70:      	ldur	x8, [x0, #-0x8]
+     e74:      	stp	x8, x0, [x19]
+     e78:      	bl	0xe78 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x5c>
+		0000000000000e78:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_7
+     e7c:      	sub	x8, x9, x8
+     e80:      	str	x8, [x19, #0x10]
+     e84:      	mov	sp, x8
+     e88:      	mov	w0, #0xff               ; =255
+     e8c:      	str	x24, [x19, #0x28]
+     e90:      	mov	x1, x24
+     e94:      	bl	0xe94 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x78>
+		0000000000000e94:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing21CanvasSemanticPayloadOMa
+     e98:      	mov	x24, x0
+     e9c:      	mov	x0, #0x0                ; =0
+     ea0:      	mov	x1, x24
+     ea4:      	bl	0xea4 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x88>
+		0000000000000ea4:  ARM64_RELOC_BRANCH26	_$sSqMa
+     ea8:      	ldur	x8, [x0, #-0x8]
+     eac:      	stp	x8, x0, [x19, #0x18]
+     eb0:      	bl	0xeb0 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x94>
+		0000000000000eb0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_7
+     eb4:      	sub	x27, x9, x8
+     eb8:      	mov	sp, x27
+     ebc:      	ldur	x8, [x24, #-0x8]
+     ec0:      	str	x8, [x19, #0x38]
+     ec4:      	bl	0xec4 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0xa8>
+		0000000000000ec4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_7
+     ec8:      	sub	x8, x9, x8
+     ecc:      	str	x8, [x19, #0x30]
+     ed0:      	mov	sp, x8
+     ed4:      	strh	wzr, [x19, #0x1a8]
+     ed8:      	mov	x0, #0x0                ; =0
+     edc:      	str	x24, [x19, #0x68]
+     ee0:      	mov	x1, x24
+     ee4:      	bl	0xee4 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0xc8>
+		0000000000000ee4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewVMa
+     ee8:      	mov	x24, x0
+     eec:      	add	x8, x19, #0x1aa
+     ef0:      	and	x0, x25, #0xffffffffff
+     ef4:      	and	x1, x22, #0xffffffffffff
+     ef8:      	mov	x2, x24
+     efc:      	bl	0xefc <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0xe0>
+		0000000000000efc:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV16completeIdentity3forAA0d8CompleteH0VSgAA0dE9ReferenceV_tF
+     f00:      	stp	x25, x22, [x19, #0x48]
+     f04:      	and	x0, x25, #0xffffffffff
+     f08:      	and	x1, x22, #0xffffffffffff
+     f0c:      	mov	x2, x24
+     f10:      	str	x20, [x19, #0xa0]
+     f14:      	bl	0xf14 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0xf8>
+		0000000000000f14:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF
+     f18:      	mov	x22, x1
+     f1c:      	ldr	q0, [x19, #0x80]
+     f20:      	add	x8, x19, #0x179
+     f24:      	stur	q0, [x8, #0xff]
+     f28:      	str	x23, [x19, #0x288]
+     f2c:      	str	x26, [x19, #0x290]
+     f30:      	add	x1, x19, #0x278
+     f34:      	bl	0xf34 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x118>
+		0000000000000f34:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_176
+     f38:      	mov	x3, x0
+     f3c:      	mov	x0, x21
+     f40:      	mov	x1, x28
+     f44:      	mov	w2, #0x1                ; =1
+     f48:      	ldr	x20, [x19, #0x98]
+     f4c:      	bl	0xf4c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x130>
+		0000000000000f4c:  ARM64_RELOC_BRANCH26	_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE10generation8identity7ordinal11publishables6UInt32VSgq__s6UInt16VSbtF
+     f50:      	str	x0, [x19, #0x40]
+     f54:      	bl	0xf54 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x138>
+		0000000000000f54:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_241
+     f58:      	str	x9, [x19, #0x58]
+     f5c:      	cmp	x9, x8
+     f60:      	b.ne	0xf6c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x150>
+     f64:      	add	x20, x19, #0x1a8
+     f68:      	bl	0xf68 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x14c>
+		0000000000000f68:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_217
+     f6c:      	ldr	x8, [x29, #0x40]
+     f70:      	str	x8, [x19, #0x80]
+     f74:      	ldr	x8, [x29, #0x30]
+     f78:      	str	x8, [x19, #0x78]
+     f7c:      	ldp	x8, x26, [x29, #0x20]
+     f80:      	str	x8, [x19, #0x70]
+     f84:      	ldr	x8, [x29, #0x18]
+     f88:      	str	x8, [x19, #0x98]
+     f8c:      	mov	x0, x24
+     f90:      	ldr	x20, [x19, #0xa0]
+     f94:      	bl	0xf94 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x178>
+		0000000000000f94:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV11isCandidateSbvg
+     f98:      	mov	x8, x0
+     f9c:      	bl	0xf9c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x180>
+		0000000000000f9c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_231
+     fa0:      	tbz	w8, #0x0, 0xff0 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x1d4>
+     fa4:      	and	x8, x22, #0xff0000
+     fa8:      	mov	w25, #0x1               ; =1
+     fac:      	cmp	x8, #0x20, lsl #12      ; =0x20000
+     fb0:      	b.ne	0x1118 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2fc>
+     fb4:      	lsr	x0, x22, #32
+     fb8:      	mov	x8, x27
+     fbc:      	mov	x1, x24
+     fc0:      	ldr	x20, [x19, #0xa0]
+     fc4:      	bl	0xfc4 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x1a8>
+		0000000000000fc4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV7payload2atxSgs6UInt16V_tF
+     fc8:      	mov	x0, x27
+     fcc:      	mov	w1, #0x1                ; =1
+     fd0:      	ldr	x23, [x19, #0x68]
+     fd4:      	mov	x2, x23
+     fd8:      	bl	0xfd8 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x1bc>
+		0000000000000fd8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_123
+     fdc:      	b.ne	0xff8 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x1dc>
+     fe0:      	ldp	x8, x1, [x19, #0x18]
+     fe4:      	ldr	x8, [x8, #0x8]
+     fe8:      	mov	x0, x27
+     fec:      	b	0x1110 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2f4>
+     ff0:      	mov	w25, #0x1               ; =1
+     ff4:      	b	0x1118 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2fc>
+     ff8:      	ldp	x28, x20, [x19, #0x30]
+     ffc:      	ldr	x8, [x20, #0x20]
+    1000:      	mov	x0, x28
+    1004:      	mov	x1, x27
+    1008:      	mov	x2, x23
+    100c:      	blr	x8
+    1010:      	mov	x0, #0x0                ; =0
+    1014:      	ldr	x1, [x19, #0x28]
+    1018:      	bl	0x1018 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x1fc>
+		0000000000001018:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing21CanvasSemanticPayloadOMa
+    101c:      	mov	x1, x0
+    1020:      	mov	x0, x28
+    1024:      	bl	0x1024 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x208>
+		0000000000001024:  ARM64_RELOC_BRANCH26	_swift_getEnumCaseMultiPayload
+    1028:      	cmp	w0, #0x1
+    102c:      	b.ne	0x1040 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x224>
+    1030:      	mov	x22, #0x0               ; =0
+    1034:      	mov	x8, #0x20000000000      ; =2199023255552
+    1038:      	mov	w9, #0x1                ; =1
+    103c:      	b	0x1054 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x238>
+    1040:      	ldr	x22, [x28]
+    1044:      	ldp	x9, x8, [x28, #0x10]
+    1048:      	mov	x10, #-0x200000001      ; =-8589934593
+    104c:      	cmp	x9, x10
+    1050:      	cset	w9, hi
+    1054:      	ldr	x24, [x19, #0x60]
+    1058:      	cbz	w9, 0x1074 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x258>
+    105c:      	mov	x9, #0xfe0000000000     ; =279275953455104
+    1060:      	movk	x9, #0xfcfe, lsl #48
+    1064:      	and	x9, x8, x9
+    1068:      	mov	x10, #0x20000000000     ; =2199023255552
+    106c:      	cmp	x9, x10
+    1070:      	b.eq	0x1104 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2e8>
+    1074:      	lsr	x8, x8, #60
+    1078:      	cmp	x8, #0xb
+    107c:      	b.ne	0x1104 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2e8>
+    1080:      	ldp	x21, x3, [x29, #0xb0]
+    1084:      	ldr	x2, [x29, #0x78]
+    1088:      	lsr	x8, x22, #16
+    108c:      	str	x8, [x19, #0x60]
+    1090:      	ldr	x8, [x3, #0x8]
+    1094:      	bl	0x1094 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x278>
+		0000000000001094:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_157
+    1098:      	and	w8, w0, #0xff0000
+    109c:      	cmp	w8, #0x10, lsl #12      ; =0x10000
+    10a0:      	b.eq	0x10b0 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x294>
+    10a4:      	and	w8, w0, #0xffff
+    10a8:      	cmp	w8, w22, uxth
+    10ac:      	b.eq	0x10b8 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x29c>
+    10b0:      	add	x20, x19, #0x1a8
+    10b4:      	bl	0x10b4 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x298>
+		00000000000010b4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_214
+    10b8:      	ldr	x8, [x19, #0x60]
+    10bc:      	strh	w8, [x19, #0x278]
+    10c0:      	ldr	x21, [x21, #0x10]
+    10c4:      	add	x0, x19, #0x278
+    10c8:      	ldr	x25, [x19, #0x10]
+    10cc:      	mov	x8, x25
+    10d0:      	bl	0x10d0 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2b4>
+		00000000000010d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_173
+    10d4:      	mov	x0, x25
+    10d8:      	mov	w1, #0x1                ; =1
+    10dc:      	mov	x2, x24
+    10e0:      	bl	0x10e0 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2c4>
+		00000000000010e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_123
+    10e4:      	b.ne	0x123c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x420>
+    10e8:      	bl	0x10e8 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2cc>
+		00000000000010e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_143
+    10ec:      	ldp	x8, x1, [x19]
+    10f0:      	ldr	x8, [x8, #0x8]
+    10f4:      	mov	x0, x25
+    10f8:      	blr	x8
+    10fc:      	mov	w25, #0x0               ; =0
+    1100:      	b	0x1278 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x45c>
+    1104:      	ldr	x8, [x20, #0x8]
+    1108:      	mov	x0, x28
+    110c:      	mov	x1, x23
+    1110:      	blr	x8
+    1114:      	bl	0x1114 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2f8>
+		0000000000001114:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_231
+    1118:      	str	x9, [x19, #0x60]
+    111c:      	mov	x28, x26
+    1120:      	add	x20, x19, #0x1a8
+    1124:      	bl	0x1124 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x308>
+		0000000000001124:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+    1128:      	ldp	x21, x20, [x29, #0x90]
+    112c:      	ldr	x23, [x29, #0x88]
+    1130:      	ldp	x26, x24, [x29, #0x50]
+    1134:      	ldr	x27, [x29, #0x48]
+    1138:      	ldrh	w22, [x29, #0x38]
+    113c:      	add	x0, x19, #0x278
+    1140:      	add	x1, x19, #0x1aa
+    1144:      	bl	0x1144 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x328>
+		0000000000001144:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_121
+    1148:      	add	x0, x19, #0x278
+    114c:      	bl	0x114c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x330>
+		000000000000114c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+    1150:      	cmp	w0, #0x1
+    1154:      	b.ne	0x1164 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x348>
+    1158:      	add	x8, x19, #0xda
+    115c:      	bl	0x115c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x340>
+		000000000000115c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVACycfC
+    1160:      	b	0x1170 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x354>
+    1164:      	add	x0, x19, #0xda
+    1168:      	add	x1, x19, #0x1aa
+    116c:      	bl	0x116c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x350>
+		000000000000116c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_121
+    1170:      	stp	x27, x26, [x19, #0xa8]
+    1174:      	stp	x24, x23, [x19, #0xb8]
+    1178:      	stp	x21, x20, [x19, #0xc8]
+    117c:      	add	x1, x19, #0xa8
+    1180:      	bl	0x1180 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x364>
+		0000000000001180:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_221
+    1184:      	mov	x21, x0
+    1188:      	add	x0, x19, #0xda
+    118c:      	ldr	x1, [x19, #0x98]
+    1190:      	ldp	x27, x24, [x19, #0x70]
+    1194:      	mov	x2, x27
+    1198:      	mov	x3, x28
+    119c:      	mov	x4, x24
+    11a0:      	mov	x5, x22
+    11a4:      	mov	x6, x21
+    11a8:      	ldr	x23, [x19, #0x80]
+    11ac:      	mov	x20, x23
+    11b0:      	bl	0x11b0 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x394>
+		00000000000011b0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction24InteractionOwnedKeyStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE13appendFailure8identity6bounds4clip10paintOrderAA0C5ErrorOSg0A14UISemanticCore24SemanticCompleteIdentityV_0A2UI4RectVAQs6UInt16VtF
+    11b4:      	bl	0x11b4 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x398>
+		00000000000011b4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_167
+    11b8:      	b.eq	0x11c4 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x3a8>
+    11bc:      	add	x20, x19, #0x1a8
+    11c0:      	bl	0x11c0 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x3a4>
+		00000000000011c0:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction26InteractionVisibleFailuresV6insertyyAA0C5ErrorOF
+    11c4:      	ldrh	w0, [x19, #0x1a8]
+    11c8:      	bl	0x11c8 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x3ac>
+		00000000000011c8:  ARM64_RELOC_BRANCH26	_$s17GiftUIInteraction28InteractionFailurePrecedenceO6select4fromAA0C5ErrorOSgAA0C15VisibleFailuresV_tFZ
+    11cc:      	bl	0x11cc <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x3b0>
+		00000000000011cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_167
+    11d0:      	b.ne	0x122c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x410>
+    11d4:      	tbnz	w25, #0x0, 0x1284 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x468>
+    11d8:      	mov	x8, #0x100000000        ; =4294967296
+    11dc:      	ldr	x9, [x19, #0x58]
+    11e0:      	cmp	x9, x8
+    11e4:      	b.eq	0x1288 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x46c>
+    11e8:      	ldrb	w8, [x29, #0x10]
+    11ec:      	sub	sp, sp, #0x20
+    11f0:      	ldr	x9, [x19, #0x68]
+    11f4:      	stp	x21, x9, [sp, #0x8]
+    11f8:      	ldp	x10, x9, [x19, #0x48]
+    11fc:      	bl	0x11fc <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x3e0>
+		00000000000011fc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_182
+    1200:      	ldr	x8, [x19, #0x40]
+    1204:      	str	w8, [sp, #0x4]
+    1208:      	ldr	x8, [x19, #0x60]
+    120c:      	strh	w8, [sp, #0x2]
+    1210:      	strh	w22, [sp]
+    1214:      	ldp	x4, x2, [x19, #0x98]
+    1218:      	mov	x5, x27
+    121c:      	mov	x6, x28
+    1220:      	bl	0x1220 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x404>
+		0000000000001220:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_204
+    1224:      	add	sp, sp, #0x20
+    1228:      	b	0x1230 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x414>
+    122c:      	bl	0x122c <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x410>
+		000000000000122c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_208
+    1230:      	sub	sp, x29, #0x50
+    1234:      	ldp	x29, x30, [sp, #0x50]
+    1238:      	b	0x1238 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x41c>
+		0000000000001238:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1
+    123c:      	add	x8, x19, #0x278
+    1240:      	mov	x20, x25
+    1244:      	bl	0x1244 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x428>
+		0000000000001244:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_205
+    1248:      	bl	0x1248 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x42c>
+		0000000000001248:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_143
+    124c:      	ldrh	w20, [x19, #0x278]
+    1250:      	ldur	x8, [x24, #-0x8]
+    1254:      	ldr	x8, [x8, #0x8]
+    1258:      	mov	x0, x25
+    125c:      	mov	x1, x24
+    1260:      	blr	x8
+    1264:      	mov	w25, #0x0               ; =0
+    1268:      	cmp	w20, w22, lsr #16
+    126c:      	b.ne	0x1278 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x45c>
+    1270:      	mov	x28, x26
+    1274:      	b	0x1128 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x30c>
+    1278:      	mov	w0, #0x7                ; =7
+    127c:      	ldr	x9, [x19, #0x60]
+    1280:      	b	0x1118 <_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ+0x2fc>
+    1284:      	brk	#0x1
+    1288:      	brk	#0x1

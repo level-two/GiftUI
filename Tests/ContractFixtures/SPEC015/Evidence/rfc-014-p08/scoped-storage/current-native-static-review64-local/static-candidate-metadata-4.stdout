@@ -1,0 +1,18 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000bbb9c <___swift_instantiateGenericMetadata>:
+   bbb9c:      	sub	sp, sp, #0x30
+   bbba0:      	stp	x29, x30, [sp, #0x20]
+   bbba4:      	add	x29, sp, #0x20
+   bbba8:      	stp	x1, x2, [sp, #0x8]
+   bbbac:      	str	x3, [sp, #0x18]
+   bbbb0:      	add	x1, sp, #0x8
+   bbbb4:      	mov	x2, x4
+   bbbb8:      	bl	0xbbbb8 <___swift_instantiateGenericMetadata+0x1c>
+		00000000000bbbb8:  ARM64_RELOC_BRANCH26	_swift_getGenericMetadata
+   bbbbc:      	ldp	x29, x30, [sp, #0x20]
+   bbbc0:      	add	sp, sp, #0x30
+   bbbc4:      	ret

@@ -1,0 +1,10 @@
+
+.build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000e9a4 <_OUTLINED_FUNCTION_157>:
+    e9a4:      	mov	x0, x24
+    e9a8:      	mov	x1, x24
+    e9ac:      	mov	x20, x2
+    e9b0:      	br	x8

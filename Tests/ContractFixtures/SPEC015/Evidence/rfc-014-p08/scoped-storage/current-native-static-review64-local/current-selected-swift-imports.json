@@ -1,0 +1,49 @@
+{
+  "executable": ".build/contracts/p08-counter-iher3bin/counter-static-resource-v1",
+  "sha256": "f3444866b585d6605c2507089720244be02a9dd8cf5f4dc39b1137df1a3c8e1a",
+  "bytes": 6646568,
+  "selected_imports": [
+    {
+      "name": "_swift_getGenericMetadata",
+      "nlist_index": 35970,
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "nlist_hex": "74491100010000030000000000000000",
+      "stubs": [
+        {
+          "section": "__stubs",
+          "stub": "0x1001de2f0",
+          "indirect_index": 74
+        }
+      ]
+    },
+    {
+      "name": "_swift_getTypeByMangledNameInContext2",
+      "nlist_index": 35979,
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "nlist_hex": "734a1100010000030000000000000000",
+      "stubs": [
+        {
+          "section": "__stubs",
+          "stub": "0x1001de35c",
+          "indirect_index": 83
+        }
+      ]
+    },
+    {
+      "name": "_swift_getWitnessTable",
+      "nlist_index": 35981,
+      "ordinal": 3,
+      "dependency": "/usr/lib/swift/libswiftCore.dylib",
+      "nlist_hex": "ce4a1100010000030000000000000000",
+      "stubs": [
+        {
+          "section": "__stubs",
+          "stub": "0x1001de374",
+          "indirect_index": 85
+        }
+      ]
+    }
+  ]
+}

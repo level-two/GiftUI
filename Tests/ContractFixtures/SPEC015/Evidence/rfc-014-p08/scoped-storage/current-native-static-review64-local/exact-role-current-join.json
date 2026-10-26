@@ -1,0 +1,27 @@
+{
+  "object": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+  "sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+  "selection": {
+    "symbol": "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ",
+    "range": [
+      "0x1bac",
+      "0x2130"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x1bac",
+      "--stop-address=0x2130",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 33399,
+    "sha256": "1467565fcd34b94d2c1e1e5af7417033c21c2c6609c70168bf3f635b0116d771",
+    "raw": "roles-9.stdout",
+    "stderr": ""
+  },
+  "incoming_direct_branches": [],
+  "scope_note": "Exact root role function only; old26-body overlarge selection is not requalified or subdivided. Other old matches remain unexamined."
+}

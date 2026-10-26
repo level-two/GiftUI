@@ -1,0 +1,466 @@
+{
+  "object": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+  "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5",
+  "range": [
+    "0x74cac",
+    "0x754fc"
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x74cac",
+    "--stop-address=0x754fc",
+    ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "raw_sha256": "08b90d5b4bde2ec2e37b99d8d484c7260ea7425f1d7e9a06d0ff91f5e4796174",
+  "raw_bytes": 73733,
+  "joins": [
+    {
+      "pc": "0x754c8",
+      "target": "_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyqd__s5UInt8V_qd__AA0deH0VyxGAA0D14ExpansionErrorOYKXEtAKYKlF6$deferL_yyr__lF0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0pq6SchemaN6ValuesOy0pQ7Runtime0Q6DomainOGG_ytTg5Tm"
+    },
+    {
+      "pc": "0x754c0",
+      "target": "_$s18GiftUISemanticCore24SemanticRecordRenderViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0kl6SchemaI6ValuesOy0kL7Runtime0L6DomainOGGGWOhTm"
+    },
+    {
+      "pc": "0x754b8",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0jk6SchemaH6ValuesOy0jK7Runtime0K6DomainOGGGMD"
+    },
+    {
+      "pc": "0x754b4",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0jk6SchemaH6ValuesOy0jK7Runtime0K6DomainOGGGMD"
+    },
+    {
+      "pc": "0x7547c",
+      "target": "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE15finishCandidateAA0C5ErrorOSgyF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AH0klc9CommittedM0VyAMGAH0klc3HitM0VyAMGTg5"
+    },
+    {
+      "pc": "0x75468",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x75458",
+      "target": "_$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ"
+    },
+    {
+      "pc": "0x7541c",
+      "target": "_$s17P08CounterRuntime17counterActionCode33_F69033F4DB287CAFB71641A3EEA15F2ALL_4banks6UInt16V18GiftUISemanticCore23SemanticRecordReferenceV_AG0sT4ViewVy0P9UIDrawing06CanvasS7PayloadOy0aB5Table0ab6SchemaX6ValuesOyAA0B6DomainOGGGtF"
+    },
+    {
+      "pc": "0x753fc",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x753e8",
+      "target": "_$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ"
+    },
+    {
+      "pc": "0x753d8",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_"
+    },
+    {
+      "pc": "0x753d0",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x7539c",
+      "target": "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE16assignGeneration_2toAA0C5ErrorOSg0A11UIExecution06ActionF0V_8IdentityQztF17P08CounterRuntime09StaticTwoC16CandidateStorageVy0A14UISemanticCore016SemanticCompleteK0VG_AN0opc9CommittedR0VyASGAN0opc3HitR0VyASGTg5"
+    },
+    {
+      "pc": "0x75360",
+      "target": "_$s15GiftUIExecution25ActionGenerationAllocatorV7reserveAA0cD0VSgyF"
+    },
+    {
+      "pc": "0x75340",
+      "target": "_$s17GiftUIRuntimeCore30RuntimeRecordInteractionBridgeO6append6record8semantic4root0K8Identity0K7Ordinal10actionType5roles9isEnabled6bounds4clip10paintOrder11interaction0A13UIInteraction0F21CandidateAppendResultO0a10UISemanticC008SemanticE9ReferenceV_AT08SemanticE4ViewVy0A9UIDrawing21CanvasSemanticPayloadOyq5_GG0A17UIObservableState24ObservableStateRootScopeVyq1_q2_Gq2_s6UInt16Vq3_mq4_mSb0A2UI4RectVA10_A7_AQ0F13OwnedKeyStateVyxq_q0_GztAQ0fyE7StorageRzAQ0f9CommittedE7StorageR_AQ0F16HitRegionStorageR0_A2_20ObservableStateModelR1_SQR2_s8SendableR2_A8_0A8UIActionR3_AT24SemanticDeclarationRolesR4_AT016SemanticCompleteL0V0L0RtzA22_A23_Rt_A22_A23_Rt0_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_r6_lFZ"
+    },
+    {
+      "pc": "0x752e8",
+      "target": "_$s17P08CounterRuntime0B10OwnedModelVMf"
+    },
+    {
+      "pc": "0x752e4",
+      "target": "_$s17P08CounterRuntime0B10OwnedModelVMf"
+    },
+    {
+      "pc": "0x752e0",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVN"
+    },
+    {
+      "pc": "0x752dc",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVN"
+    },
+    {
+      "pc": "0x752d4",
+      "target": "_$s22P08CounterPresentation0B6ActionON"
+    },
+    {
+      "pc": "0x752d0",
+      "target": "_$s22P08CounterPresentation0B6ActionON"
+    },
+    {
+      "pc": "0x752c8",
+      "target": "_$s17P08CounterRuntime0B5RolesOMf"
+    },
+    {
+      "pc": "0x752c4",
+      "target": "_$s17P08CounterRuntime0B5RolesOMf"
+    },
+    {
+      "pc": "0x752ac",
+      "target": "_$s17P08CounterRuntime0B10OwnedModelV21GiftUIObservableState010ObservablehE0AAWP"
+    },
+    {
+      "pc": "0x752a8",
+      "target": "_$s17P08CounterRuntime0B10OwnedModelV21GiftUIObservableState010ObservablehE0AAWP"
+    },
+    {
+      "pc": "0x752a0",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP"
+    },
+    {
+      "pc": "0x7529c",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP"
+    },
+    {
+      "pc": "0x75298",
+      "target": "_$s22P08CounterPresentation0B6ActionOAC6GiftUI0E8UIActionAAWl"
+    },
+    {
+      "pc": "0x75290",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl"
+    },
+    {
+      "pc": "0x75288",
+      "target": "_$s6GiftUI4TextVy17P08CounterRuntime0E6DomainOGACyxGAA4ViewAAWlTm"
+    },
+    {
+      "pc": "0x75284",
+      "target": "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVyxG17GiftUIInteraction0fg6RegionH0AAMc"
+    },
+    {
+      "pc": "0x75280",
+      "target": "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVyxG17GiftUIInteraction0fg6RegionH0AAMc"
+    },
+    {
+      "pc": "0x7527c",
+      "target": "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "pc": "0x75278",
+      "target": "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "pc": "0x75274",
+      "target": "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGACyxG0I13UIInteraction0fg6RegionH0AAWL"
+    },
+    {
+      "pc": "0x75270",
+      "target": "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGACyxG0I13UIInteraction0fg6RegionH0AAWL"
+    },
+    {
+      "pc": "0x75268",
+      "target": "_$s6GiftUI4TextVy17P08CounterRuntime0E6DomainOGACyxGAA4ViewAAWlTm"
+    },
+    {
+      "pc": "0x75264",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageVyxG17GiftUIInteraction0fg6RecordH0AAMc"
+    },
+    {
+      "pc": "0x75260",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageVyxG17GiftUIInteraction0fg6RecordH0AAMc"
+    },
+    {
+      "pc": "0x75258",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGACyxG0I13UIInteraction0fg6RecordH0AAWL"
+    },
+    {
+      "pc": "0x75254",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGACyxG0I13UIInteraction0fg6RecordH0AAWL"
+    },
+    {
+      "pc": "0x7524c",
+      "target": "_$s6GiftUI4TextVy17P08CounterRuntime0E6DomainOGACyxGAA4ViewAAWlTm"
+    },
+    {
+      "pc": "0x75248",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVyxG17GiftUIInteraction0fg6RecordH0AAMc"
+    },
+    {
+      "pc": "0x75244",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVyxG17GiftUIInteraction0fg6RecordH0AAMc"
+    },
+    {
+      "pc": "0x7523c",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGACyxG0I13UIInteraction0fg6RecordH0AAWL"
+    },
+    {
+      "pc": "0x75238",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGACyxG0I13UIInteraction0fg6RecordH0AAWL"
+    },
+    {
+      "pc": "0x75230",
+      "target": "___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "pc": "0x7522c",
+      "target": "_$s15P08CounterTable0aB18SchemaCanvasValuesOy0aB7Runtime0B6DomainOGMD"
+    },
+    {
+      "pc": "0x75228",
+      "target": "_$s15P08CounterTable0aB18SchemaCanvasValuesOy0aB7Runtime0B6DomainOGMD"
+    },
+    {
+      "pc": "0x75220",
+      "target": "___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "pc": "0x7521c",
+      "target": "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "pc": "0x75218",
+      "target": "_$s17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "pc": "0x75210",
+      "target": "___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "pc": "0x75208",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "pc": "0x75204",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "pc": "0x751fc",
+      "target": "___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "pc": "0x751f4",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "pc": "0x751f0",
+      "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+    },
+    {
+      "pc": "0x751d0",
+      "target": "_$s17P08CounterRuntime22counterActionIsEnabled33_F69033F4DB287CAFB71641A3EEA15F2ALL_4bankSb18GiftUISemanticCore23SemanticRecordReferenceV_AE0sT4ViewVy0P9UIDrawing06CanvasS7PayloadOy0aB5Table0ab6SchemaX6ValuesOyAA0B6DomainOGGGtF"
+    },
+    {
+      "pc": "0x751c0",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x751b0",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x7519c",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x7517c",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg"
+    },
+    {
+      "pc": "0x75170",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x7515c",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewV16completeIdentity3forAA0d8CompleteH0VSgAA0dE9ReferenceV_tF"
+    },
+    {
+      "pc": "0x75130",
+      "target": "_$s17P08CounterRuntime15QualifiedLayoutV4clip2of6GiftUI4RectVSg0H14UISemanticCore23SemanticRecordReferenceV_tF"
+    },
+    {
+      "pc": "0x75120",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x7510c",
+      "target": "_$s17P08CounterRuntime06StaticB21ResolvedLayoutStorageV10renderViewAA0dbefI0Vvg"
+    },
+    {
+      "pc": "0x750f0",
+      "target": "_$s17P08CounterRuntime15QualifiedLayoutV6bounds2of6GiftUI4RectVSg0H14UISemanticCore23SemanticRecordReferenceV_tF"
+    },
+    {
+      "pc": "0x750e0",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x750cc",
+      "target": "_$s17P08CounterRuntime06StaticB21ResolvedLayoutStorageV10renderViewAA0dbefI0Vvg"
+    },
+    {
+      "pc": "0x750b8",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg"
+    },
+    {
+      "pc": "0x750b0",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x75094",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF"
+    },
+    {
+      "pc": "0x75064",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewV9reference2atAA0dE9ReferenceVSgs6UInt16V_tF"
+    },
+    {
+      "pc": "0x75038",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewV11recordCounts6UInt16Vvg"
+    },
+    {
+      "pc": "0x7502c",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x7501c",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_"
+    },
+    {
+      "pc": "0x75014",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x74fb0",
+      "target": "_$s21GiftUIObservableState010ObservableC9RootScopeVAARi_zrlE8matching_7ordinalSiSgq__s6UInt16VtF17P08CounterRuntime0K10OwnedModelV_0A14UISemanticCore24SemanticCompleteIdentityVTg5"
+    },
+    {
+      "pc": "0x74f98",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x74f68",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityV6appendySbAA0D13PathComponentVF"
+    },
+    {
+      "pc": "0x74f5c",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x74f40",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg"
+    },
+    {
+      "pc": "0x74f34",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x74f1c",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewV16completeIdentity3forAA0d8CompleteH0VSgAA0dE9ReferenceV_tF"
+    },
+    {
+      "pc": "0x74ef4",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewV9reference2atAA0dE9ReferenceVSgs6UInt16V_tF"
+    },
+    {
+      "pc": "0x74ec8",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewV11recordCounts6UInt16Vvg"
+    },
+    {
+      "pc": "0x74ebc",
+      "target": "___swift_instantiateConcreteTypeFromMangledName"
+    },
+    {
+      "pc": "0x74eb8",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0jk6SchemaH6ValuesOy0jK7Runtime0K6DomainOGGGMD"
+    },
+    {
+      "pc": "0x74eb4",
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVy0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0jk6SchemaH6ValuesOy0jK7Runtime0K6DomainOGGGMD"
+    },
+    {
+      "pc": "0x74eb0",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_"
+    },
+    {
+      "pc": "0x74e94",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x74e74",
+      "target": "_swift_willThrowTypedImpl"
+    },
+    {
+      "pc": "0x74e6c",
+      "target": "_$s18GiftUISemanticCore22SemanticExpansionErrorON"
+    },
+    {
+      "pc": "0x74e68",
+      "target": "_$s18GiftUISemanticCore22SemanticExpansionErrorON"
+    },
+    {
+      "pc": "0x74e60",
+      "target": "_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl"
+    },
+    {
+      "pc": "0x74e08",
+      "target": "_swift_willThrowTypedImpl"
+    },
+    {
+      "pc": "0x74e00",
+      "target": "_$s18GiftUISemanticCore22SemanticExpansionErrorON"
+    },
+    {
+      "pc": "0x74dfc",
+      "target": "_$s18GiftUISemanticCore22SemanticExpansionErrorON"
+    },
+    {
+      "pc": "0x74df4",
+      "target": "_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl"
+    },
+    {
+      "pc": "0x74de4",
+      "target": "_$s18GiftUISemanticCore19SemanticRecordStoreV16hasPendingCanvasySbAA0dE11BankBuffersVyxGF0A9UIDrawing0iD7PayloadOy15P08CounterTable0no6SchemaI6ValuesOy0nO7Runtime0O6DomainOGG_Tg5"
+    },
+    {
+      "pc": "0x74d80",
+      "target": "_$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg0A9UIDrawing06CanvasD7PayloadOy15P08CounterTable0lm6SchemaJ6ValuesOy0lM7Runtime0M6DomainOGG_Tg5"
+    },
+    {
+      "pc": "0x74d78",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x74d64",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x74d54",
+      "target": "_$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ"
+    },
+    {
+      "pc": "0x74d48",
+      "target": "_memcpy"
+    },
+    {
+      "pc": "0x74d38",
+      "target": "_$s17P08CounterRuntime0B7ControlV07requireC5Claim2at_ySpyACG_s6UInt64VtFZ"
+    },
+    {
+      "pc": "0x74d24",
+      "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_"
+    },
+    {
+      "pc": "0x74cf8",
+      "target": "_$s17GiftUIInteraction16InteractionStateVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE14beginCandidate6limitsAA0C5ErrorOSgAA0C6LimitsV_tF17P08CounterRuntime09StaticTwocF7StorageVy0A14UISemanticCore24SemanticCompleteIdentityVG_AK0mnc9CommittedO0VyAPGAK0mnc3HitO0VyAPGTg5"
+    },
+    {
+      "pc": "0x74cd8",
+      "target": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE8boundaryy15GiftUIExecution15RunCycleFailureOy0G13UIRuntimeCore0ceK0OGSgAH0c8CompleteD5StageOFAA06StaticB8GeometryV_AA0P30TwoInteractionCandidateStorageVy0g10UISemanticM008SemanticN8IdentityVGAA0prs9CommittedU0VyAUGAA0prs3HitU0VyAUGTg5"
+    }
+  ]
+}

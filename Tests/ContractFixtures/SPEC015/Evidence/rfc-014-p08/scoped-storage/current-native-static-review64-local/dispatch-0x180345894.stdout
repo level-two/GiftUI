@@ -1,0 +1,46 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review64-local/dispatch-0x180345894.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000180345894 <__text>:
+180345894:     	pacibsp
+180345898:     	stp	x22, x21, [sp, #-0x30]!
+18034589c:     	stp	x20, x19, [sp, #0x10]
+1803458a0:     	stp	x29, x30, [sp, #0x20]
+1803458a4:     	add	x29, sp, #0x20
+1803458a8:     	mov	x20, x3
+1803458ac:     	mov	x21, x2
+1803458b0:     	mov	x22, x0
+1803458b4:     	mov	w19, w1
+1803458b8:     	orr	w0, w20, #0x1000000
+1803458bc:     	mov	x1, x22
+1803458c0:     	mov	x2, x19
+1803458c4:     	mov	x3, x21
+1803458c8:     	bl	0x18037f904 <__text+0x3a070>
+1803458cc:     	cmp	w0, #0x0
+1803458d0:     	b.gt	0x1803458fc <__text+0x68>
+1803458d4:     	cmn	w0, #0x4
+1803458d8:     	b.ne	0x1803458e4 <__text+0x50>
+1803458dc:     	cbz	w21, 0x1803458b8 <__text+0x24>
+1803458e0:     	b	0x18034590c <__text+0x78>
+1803458e4:     	cmn	w0, #0xf
+1803458e8:     	b.le	0x180345904 <__text+0x70>
+1803458ec:     	cmn	w0, #0xe
+1803458f0:     	b.eq	0x18034590c <__text+0x78>
+1803458f4:     	cbz	w0, 0x180345910 <__text+0x7c>
+1803458f8:     	b	0x180345930 <__text+0x9c>
+1803458fc:     	mov	w0, #0x42               ; =66
+180345900:     	b	0x180345910 <__text+0x7c>
+180345904:     	cmn	w0, #0x3c
+180345908:     	b.ne	0x180345920 <__text+0x8c>
+18034590c:     	neg	w0, w0
+180345910:     	ldp	x29, x30, [sp, #0x20]
+180345914:     	ldp	x20, x19, [sp, #0x10]
+180345918:     	ldp	x22, x21, [sp], #0x30
+18034591c:     	retab
+180345920:     	cmn	w0, #0x69
+180345924:     	b.ne	0x180345930 <__text+0x9c>
+180345928:     	mov	x0, x19
+18034592c:     	bl	0x1803790bc <__text+0x33828>
+180345930:     	bl	0x1803790e4 <__text+0x33850>

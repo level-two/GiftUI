@@ -1,0 +1,206 @@
+{
+  "object": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+  "sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+  "selected": [
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMa",
+      "section": "__text",
+      "address": "0xa5450",
+      "end": "0xa545c",
+      "bytes": 12,
+      "sha256": "5142e2496c2cd1a103e864efe661163231bbab7242e22e9faaacc0f6d63fe410"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn",
+      "section": "__constg_swiftt",
+      "address": "0xd7dd0",
+      "end": "0xd7e0c",
+      "bytes": 60,
+      "sha256": "555313e7b69ccc674659c6d410e9751203984de718463f79979ebb2f8e5c00e4",
+      "hex": "d1000000fcfffffff8fffffff4fffffff0ffffff0300000004000000e4ffffffe0ffffff01000100020000008000000080000000ccffffffc9ffffff",
+      "relocations": [
+        {
+          "pc": "0xd7e08",
+          "raw": "0x1c00267d",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+        },
+        {
+          "pc": "0xd7e08",
+          "raw": "0xc001277",
+          "target": "l_got.$sSQMp"
+        },
+        {
+          "pc": "0xd7e04",
+          "raw": "0x1c00267d",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+        },
+        {
+          "pc": "0xd7e04",
+          "raw": "0xc0029cd",
+          "target": "_symbolic x"
+        },
+        {
+          "pc": "0xd7df0",
+          "raw": "0x1c00267d",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+        },
+        {
+          "pc": "0xd7df0",
+          "raw": "0xc001382",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMP"
+        },
+        {
+          "pc": "0xd7dec",
+          "raw": "0x1c00267d",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+        },
+        {
+          "pc": "0xd7dec",
+          "raw": "0xc001380",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMI"
+        },
+        {
+          "pc": "0xd7de0",
+          "raw": "0x1c00267d",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+        },
+        {
+          "pc": "0xd7de0",
+          "raw": "0xc001381",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMF"
+        },
+        {
+          "pc": "0xd7ddc",
+          "raw": "0x1c00267d",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+        },
+        {
+          "pc": "0xd7ddc",
+          "raw": "0xc00267c",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMa"
+        },
+        {
+          "pc": "0xd7dd8",
+          "raw": "0x1c00267d",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+        },
+        {
+          "pc": "0xd7dd8",
+          "raw": "0xc00137f",
+          "target": "l_.str.36.StaticTwoInteractionCandidateStorage"
+        },
+        {
+          "pc": "0xd7dd4",
+          "raw": "0x1c00267d",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+        },
+        {
+          "pc": "0xd7dd4",
+          "raw": "0xc0026b7",
+          "target": "_$s17P08CounterRuntimeMXM"
+        }
+      ]
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMr",
+      "section": "__text",
+      "address": "0xad1e8",
+      "end": "0xad1f4",
+      "bytes": 12,
+      "sha256": "10114fe037cc12c29092a2e051893245f713121b2d6a6c370913486a60cc48df"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMI",
+      "section": "__bss",
+      "address": "0xf9dc0",
+      "end": "0xf9e40",
+      "bytes": 128,
+      "relocations": [],
+      "initial_storage": "Mach-O S_ZEROFILL; VM zero initialization, no file body",
+      "file_bytes": 0,
+      "reserved_vm_bytes": 128
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMP",
+      "section": "__const",
+      "address": "0xc9818",
+      "end": "0xc9830",
+      "bytes": 24,
+      "sha256": "5dd6d55e3a0d189547adfc1147f3d6663dd547bfe47410daa4b7b539bdbcc3e7",
+      "hex": "00000000fcffffff00000040f4ffffff0000000000000000",
+      "relocations": [
+        {
+          "pc": "0xc9824",
+          "raw": "0x1c001382",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMP"
+        },
+        {
+          "pc": "0xc9824",
+          "raw": "0xc00137e",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVWV"
+        },
+        {
+          "pc": "0xc981c",
+          "raw": "0x1c001382",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMP"
+        },
+        {
+          "pc": "0xc981c",
+          "raw": "0xc000f03",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMr"
+        },
+        {
+          "pc": "0xc9818",
+          "raw": "0x1c001382",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMP"
+        },
+        {
+          "pc": "0xc9818",
+          "raw": "0xc00122b",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMi"
+        }
+      ]
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD",
+      "section": "__data",
+      "address": "0xcd188",
+      "end": "0xcd190",
+      "bytes": 8,
+      "sha256": "db8e8416452df2b1e3e9f771e02820cb6b740504b76b122d45cef7d69b559977",
+      "hex": "00000000f4ffffff",
+      "relocations": [
+        {
+          "pc": "0xcd188",
+          "raw": "0x1c00267f",
+          "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGMD"
+        },
+        {
+          "pc": "0xcd188",
+          "raw": "0xc002985",
+          "target": "_symbolic _____y_____G 17P08CounterRuntime36StaticTwoInteractionCandidateStorageV 18GiftUISemanticCore24SemanticCompleteIdentityV"
+        }
+      ]
+    },
+    {
+      "symbol": "___swift_instantiateConcreteTypeFromMangledName",
+      "section": "__text",
+      "address": "0xbe4",
+      "end": "0xc24",
+      "bytes": 64,
+      "sha256": "511fd45a18eef8ff00ca862f47a6c039af35ba0932558d9f9b853671ddb44a79"
+    },
+    {
+      "symbol": "___swift_instantiateGenericMetadata",
+      "section": "__text",
+      "address": "0xbbb9c",
+      "end": "0xbbbc8",
+      "bytes": 44,
+      "sha256": "dd11fb873fe62e6b68a28627f39cb80cb1da2fa7edd5908cad1c6b0d8e68c6f9"
+    }
+  ],
+  "accuracy_correction": {
+    "superseded": "Initial query treated zerofill file offset as file-backed and printed instruction bytes for VMI. Those bytes were not cache data and supply no semantic premise. Corrected before cache-state reasoning.",
+    "superseded_initial_bss_file_read_hex": "000000900000009100000094df0200ebc00b0054f40300aa000000900000009100000094df0200eb400b0054f90300aa000000900000009100000094df0200ebc00a005408000090080140f9df0208eb800a0054f80300aa0000009000000091a8d302d1010080d242008052000000947f1e023900000094f50300aa00000090"
+  }
+}

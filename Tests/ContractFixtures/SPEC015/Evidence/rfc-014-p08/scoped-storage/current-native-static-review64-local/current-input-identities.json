@@ -1,0 +1,183 @@
+{
+  "budget_anchor": "2026-10-26T11:01:30Z",
+  "hard_cutoff": "2026-10-26T13:01:30Z",
+  "ordinary_identity_check_utc": "2026-10-26T11:31:53.015520+00:00",
+  "result": {
+    "path": ".build/contracts/p08-counter-iher3bin/result.json",
+    "bytes": 8566019,
+    "sha256": "6dc6b3049c95ad555ed46c216acac15186fde4184ad6aa4bfd68e4d4140c71cc",
+    "passed": true,
+    "collection_complete": true,
+    "inputs": 201,
+    "checks": 442,
+    "commands": 414
+  },
+  "sources": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 2115,
+      "sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+      "producer_input_sha256": "7cdfff4255780ed12524c393292f340cde11acd983d07afb5ee0c4205e887653",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift",
+      "bytes": 1724,
+      "sha256": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+      "producer_input_sha256": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "bytes": 6845,
+      "sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab",
+      "producer_input_sha256": "20e9a8876dabcc9029c2f98c898cd1d2aa881deebef496a6d9e51db343ba0cab",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "bytes": 41983,
+      "sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+      "producer_input_sha256": "f7152c3e886322e482aaa040b98f15ac820d0aa9a15af86260229bc56df64010",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 119153,
+      "sha256": "e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a",
+      "producer_input_sha256": "e0565174b58a89c7a8b150088a78c4272da08cea323e33a19cf7da06b25be40a",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "bytes": 2070,
+      "sha256": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+      "producer_input_sha256": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 257744,
+      "sha256": "b70c0bbd92ca2d92c74a2d82db3d79f5a3776072f461ad378f541c6d9d6ca411",
+      "producer_input_sha256": "b70c0bbd92ca2d92c74a2d82db3d79f5a3776072f461ad378f541c6d9d6ca411",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "bytes": 1642,
+      "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+      "producer_input_sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "bytes": 6232,
+      "sha256": "6c0fe638dbf5a00e2d88726be77b550013f1c2549a07ef1e9ee82c7264e72e65",
+      "producer_input_sha256": "6c0fe638dbf5a00e2d88726be77b550013f1c2549a07ef1e9ee82c7264e72e65",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift",
+      "bytes": 1973,
+      "sha256": "0ba4dd8df9fcb3989d6da1f59dde68587b4bf85818340ba3d5958419cab9a570",
+      "producer_input_sha256": "0ba4dd8df9fcb3989d6da1f59dde68587b4bf85818340ba3d5958419cab9a570",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "bytes": 3534,
+      "sha256": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951",
+      "producer_input_sha256": "7c0348c6f27e2343ac33dc66e9e754b485e8dc5bfc7dd326d15f0c0b6569c951",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7509,
+      "sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+      "producer_input_sha256": "47a9d66f1f4d6876b11e373d714c5346507847123a5776a2a318c10ee27b3e2e",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "bytes": 6284,
+      "sha256": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+      "producer_input_sha256": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+      "matches_current_producer": true
+    },
+    {
+      "path": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "bytes": 2881,
+      "sha256": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1",
+      "producer_input_sha256": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1",
+      "matches_current_producer": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+      "bytes": 2612120,
+      "sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+      "producer_artifact": {
+        "sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+        "bytes": 2612120
+      },
+      "matches_current_producer": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o",
+      "bytes": 323040,
+      "sha256": "e34d4c0526b1385ddadaab9e5cf5ce74dcaf18583952e5baea73ef12f777a303",
+      "producer_artifact": {
+        "sha256": "e34d4c0526b1385ddadaab9e5cf5ce74dcaf18583952e5baea73ef12f777a303",
+        "bytes": 323040
+      },
+      "matches_current_producer": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-iher3bin/GiftUIDrawing.o",
+      "bytes": 135544,
+      "sha256": "850380ace06087a02041bede71cb764ac5978af97cdb052a4e3fa7d680343803",
+      "producer_artifact": {
+        "sha256": "850380ace06087a02041bede71cb764ac5978af97cdb052a4e3fa7d680343803",
+        "bytes": 135544
+      },
+      "matches_current_producer": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-iher3bin/GiftUIObservableState.o",
+      "bytes": 254456,
+      "sha256": "39d28ca22bf93b83b55f122c3e282745466e69f541b9953be84d8de0d067f237",
+      "producer_artifact": {
+        "sha256": "39d28ca22bf93b83b55f122c3e282745466e69f541b9953be84d8de0d067f237",
+        "bytes": 254456
+      },
+      "matches_current_producer": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-iher3bin/GiftUISemanticCore.o",
+      "bytes": 534808,
+      "sha256": "f5af7b9369801969affe60ba231b31a6c004c803af666ccd7eb608fb1610a049",
+      "producer_artifact": {
+        "sha256": "f5af7b9369801969affe60ba231b31a6c004c803af666ccd7eb608fb1610a049",
+        "bytes": 534808
+      },
+      "matches_current_producer": true
+    },
+    {
+      "path": ".build/contracts/p08-counter-iher3bin/counter-static-resource-v1",
+      "bytes": 6646568,
+      "sha256": "f3444866b585d6605c2507089720244be02a9dd8cf5f4dc39b1137df1a3c8e1a",
+      "producer_artifact": {
+        "sha256": "f3444866b585d6605c2507089720244be02a9dd8cf5f4dc39b1137df1a3c8e1a",
+        "bytes": 6646568
+      },
+      "matches_current_producer": true
+    }
+  ],
+  "tool": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "bytes": 18272848,
+    "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
+  },
+  "scope": "Ordinary static read-only review64; no cumulative-processing/per-message billing for this approved follow-up; no code/compiler/runtime action."
+}

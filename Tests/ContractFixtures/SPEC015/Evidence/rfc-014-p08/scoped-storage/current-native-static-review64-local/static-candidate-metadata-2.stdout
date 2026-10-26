@@ -1,0 +1,8 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000bca3c <_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMi>:
+   bca3c:      	b	0xbca3c <_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMi>
+		00000000000bca3c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B16ConfiguredRender33_480B1BD841D053AE4FCDC18507668536LLVMi

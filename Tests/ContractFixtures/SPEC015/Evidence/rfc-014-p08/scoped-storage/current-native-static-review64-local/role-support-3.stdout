@@ -1,0 +1,12 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c727c <_OUTLINED_FUNCTION_2030>:
+   c727c:      	adrp	x0, 0xc7000 <_OUTLINED_FUNCTION_1968+0x4>
+		00000000000c727c:  ARM64_RELOC_PAGE21	_$s22P08CounterPresentation0B6ScreenVy0aB7Runtime0B6DomainOGMD
+   c7280:      	add	x0, x0, #0x0
+		00000000000c7280:  ARM64_RELOC_PAGEOFF12	_$s22P08CounterPresentation0B6ScreenVy0aB7Runtime0B6DomainOGMD
+   c7284:      	b	0xc7284 <_OUTLINED_FUNCTION_2030+0x8>
+		00000000000c7284:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName

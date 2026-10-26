@@ -1,0 +1,248 @@
+{
+  "environment_keys": [
+    {
+      "address": "0x1940f28a3",
+      "value": "SWIFT_DEBUG_ENABLE_METADATA_ALLOCATION_ITERATION=",
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 335980707,
+        "bytes": 96,
+        "vmaddr": "0x1940f28a3",
+        "role": "selected config key",
+        "sha256": "cdaf378da6ea4564f7aa7d083e2afd888b49d4e6a10b3fd42cf0f173afccbee1"
+      }
+    },
+    {
+      "address": "0x1940f2906",
+      "value": "SWIFT_DEBUG_ENABLE_METADATA_BACKTRACE_LOGGING=",
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 335980806,
+        "bytes": 96,
+        "vmaddr": "0x1940f2906",
+        "role": "selected config key",
+        "sha256": "9c2cab1267e84c999f62efaf127e565daf4bbd6195b5d4b205f76cc9a513e88d"
+      }
+    },
+    {
+      "address": "0x1940f2a36",
+      "value": "SWIFT_DEBUG_ENABLE_MALLOC_SCRIBBLE=",
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 335981110,
+        "bytes": 96,
+        "vmaddr": "0x1940f2a36",
+        "role": "selected config key",
+        "sha256": "1eff61fe43daaee08e6ffb3dd68882ac280155bd8784ecdca0f908ea8b68fd31"
+      }
+    }
+  ],
+  "stub_imports": [
+    {
+      "stub": "0x1940efb4c",
+      "section": [
+        "__auth_stubs",
+        6778973804,
+        3584,
+        0,
+        16
+      ],
+      "indirect_index": 206,
+      "nlist_index": 40173,
+      "name": "_strdup",
+      "ordinal": 5,
+      "dependency": "/usr/lib/libSystem.B.dylib",
+      "nlist_hex": "21154616010000050000000000000000",
+      "extents": [
+        {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+          "offset": 699868,
+          "bytes": 4,
+          "vmaddr": "0x1ffa12ddc",
+          "role": "selected indirect index",
+          "sha256": "ee29df221e734296a3e4f67652ff2ffd9549433e13c15c3f8769f763e2b9f5c1"
+        },
+        {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+          "offset": 75968976,
+          "bytes": 16,
+          "vmaddr": "0x2041db1d0",
+          "role": "selected nlist",
+          "sha256": "fe8b72b86104619af126b02520c059bc2e09a501cf0c6c458b97777d2fbe5963"
+        },
+        {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+          "offset": 567121057,
+          "bytes": 128,
+          "vmaddr": "0x2216414a1",
+          "role": "selected imported name",
+          "sha256": "efb0e87482ee0460503d4da12ae9c3046baa0bcd21d8588f858793cf0bed79ea"
+        }
+      ],
+      "header_extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331116544,
+        "bytes": 5768,
+        "vmaddr": "0x193c4f000",
+        "role": "provider load commands",
+        "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba"
+      }
+    },
+    {
+      "stub": "0x18037f904",
+      "section": [
+        "__auth_stubs",
+        6446118980,
+        3088,
+        0,
+        16
+      ],
+      "indirect_index": 12,
+      "nlist_index": 2332,
+      "name": "___ulock_wait",
+      "ordinal": 3,
+      "dependency": "/usr/lib/system/libsystem_kernel.dylib",
+      "nlist_hex": "b04d0200010000030000000000000000",
+      "extents": [
+        {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+          "offset": 24944,
+          "bytes": 4,
+          "vmaddr": "0x1ff96e170",
+          "role": "selected indirect index",
+          "sha256": "5d8683f957c06605e16844e61be61389c90d4365ee1839c17c8545dae0f5c8da"
+        },
+        {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+          "offset": 55554128,
+          "bytes": 16,
+          "vmaddr": "0x202e63050",
+          "role": "selected nlist",
+          "sha256": "df158a691d82589afc6d19a52a73798c2dd707663462e9151966f837d989525e"
+        },
+        {
+          "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+          "offset": 193580336,
+          "bytes": 128,
+          "vmaddr": "0x20b204d30",
+          "role": "selected imported name",
+          "sha256": "fe4f31d421102b7f4ddf5495d987628c3a61315a01010ef9d8c307a5c1865b3f"
+        }
+      ],
+      "header_extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 2859008,
+        "bytes": 4240,
+        "vmaddr": "0x180342000",
+        "role": "provider load commands",
+        "sha256": "e61d4ba98169292020d0c3b6ea956d6bf34cfc6c459a858aace586b33e4d5a7d"
+      }
+    }
+  ],
+  "all_extents": [
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 335980707,
+      "bytes": 96,
+      "vmaddr": "0x1940f28a3",
+      "role": "selected config key",
+      "sha256": "cdaf378da6ea4564f7aa7d083e2afd888b49d4e6a10b3fd42cf0f173afccbee1"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 335980806,
+      "bytes": 96,
+      "vmaddr": "0x1940f2906",
+      "role": "selected config key",
+      "sha256": "9c2cab1267e84c999f62efaf127e565daf4bbd6195b5d4b205f76cc9a513e88d"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 335981110,
+      "bytes": 96,
+      "vmaddr": "0x1940f2a36",
+      "role": "selected config key",
+      "sha256": "1eff61fe43daaee08e6ffb3dd68882ac280155bd8784ecdca0f908ea8b68fd31"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331116544,
+      "bytes": 32,
+      "vmaddr": "0x193c4f000",
+      "role": "provider header",
+      "sha256": "e5220004d3ac4e32b374e3651f50adac83acf81a939b08e1e91b48e11d55227b"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331116544,
+      "bytes": 5768,
+      "vmaddr": "0x193c4f000",
+      "role": "provider load commands",
+      "sha256": "5ad94c7ee48178fcc8bef7976dea9777cd91c1ca3b3a326f1b86b242978d70ba"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 699868,
+      "bytes": 4,
+      "vmaddr": "0x1ffa12ddc",
+      "role": "selected indirect index",
+      "sha256": "ee29df221e734296a3e4f67652ff2ffd9549433e13c15c3f8769f763e2b9f5c1"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 75968976,
+      "bytes": 16,
+      "vmaddr": "0x2041db1d0",
+      "role": "selected nlist",
+      "sha256": "fe8b72b86104619af126b02520c059bc2e09a501cf0c6c458b97777d2fbe5963"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 567121057,
+      "bytes": 128,
+      "vmaddr": "0x2216414a1",
+      "role": "selected imported name",
+      "sha256": "efb0e87482ee0460503d4da12ae9c3046baa0bcd21d8588f858793cf0bed79ea"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2859008,
+      "bytes": 32,
+      "vmaddr": "0x180342000",
+      "role": "provider header",
+      "sha256": "f7108b3181c2735bec2c1b648a78689fa983a8e157f876940a4aa32ecc6f9de5"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 2859008,
+      "bytes": 4240,
+      "vmaddr": "0x180342000",
+      "role": "provider load commands",
+      "sha256": "e61d4ba98169292020d0c3b6ea956d6bf34cfc6c459a858aace586b33e4d5a7d"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 24944,
+      "bytes": 4,
+      "vmaddr": "0x1ff96e170",
+      "role": "selected indirect index",
+      "sha256": "5d8683f957c06605e16844e61be61389c90d4365ee1839c17c8545dae0f5c8da"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 55554128,
+      "bytes": 16,
+      "vmaddr": "0x202e63050",
+      "role": "selected nlist",
+      "sha256": "df158a691d82589afc6d19a52a73798c2dd707663462e9151966f837d989525e"
+    },
+    {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+      "offset": 193580336,
+      "bytes": 128,
+      "vmaddr": "0x20b204d30",
+      "role": "selected imported name",
+      "sha256": "fe4f31d421102b7f4ddf5495d987628c3a61315a01010ef9d8c307a5c1865b3f"
+    }
+  ]
+}

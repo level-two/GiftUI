@@ -1,0 +1,12 @@
+
+.build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000e78c <_OUTLINED_FUNCTION_123>:
+    e78c:      	str	x30, [sp, #-0x10]!
+    e790:      	bl	0xe790 <_OUTLINED_FUNCTION_123+0x4>
+		000000000000e790:  ARM64_RELOC_BRANCH26	___swift_getEnumTagSinglePayload
+    e794:      	cmp	w0, #0x1
+    e798:      	ldr	x30, [sp], #0x10
+    e79c:      	ret

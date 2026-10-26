@@ -1,0 +1,21 @@
+
+Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review64-local/dispatch-0x18034584c.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000018034584c <__text>:
+18034584c:     	mrs	x8, TPIDRRO_EL0
+180345850:     	ldr	w8, [x8, #0x18]
+180345854:     	eor	w8, w1, w8
+180345858:     	cmp	w8, #0x4
+18034585c:     	b.hs	0x180345874 <__text+0x28>
+180345860:     	mov	w1, #0x102              ; =258
+180345864:     	eor	x16, x30, x30, lsl #1
+180345868:     	tbz	x16, #0x3e, 0x180345870 <__text+0x24>
+18034586c:     	brk	#0xc471
+180345870:     	b	0x180345934 <__text+0xe8>
+180345874:     	pacibsp
+180345878:     	stp	x29, x30, [sp, #-0x10]!
+18034587c:     	mov	x29, sp
+180345880:     	mov	x0, x1
+180345884:     	bl	0x180378fc0 <__text+0x33774>

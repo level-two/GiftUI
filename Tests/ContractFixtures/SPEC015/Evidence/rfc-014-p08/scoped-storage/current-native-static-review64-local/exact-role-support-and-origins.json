@@ -1,0 +1,272 @@
+{
+  "captures": [
+    {
+      "symbol": "_OUTLINED_FUNCTION_2035",
+      "range": [
+        "0xc72b8",
+        "0xc72c4"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc72b8",
+        "--stop-address=0xc72c4",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 932,
+      "sha256": "c67615434a60559c7f78e31683b5e877e542e432bcd1ef3489185524da704534",
+      "raw": "role-support-0.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_2034",
+      "range": [
+        "0xc72ac",
+        "0xc72b8"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc72ac",
+        "--stop-address=0xc72b8",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 956,
+      "sha256": "fcaacfb1b02349c834633aa06d71b5e32511e47e2ff13f32071269c326711de2",
+      "raw": "role-support-1.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_2033",
+      "range": [
+        "0xc72a0",
+        "0xc72ac"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc72a0",
+        "--stop-address=0xc72ac",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 736,
+      "sha256": "06a008e2874356481ec11b0c34f5364f58e69c6346670be6ad39f1dbe88b426d",
+      "raw": "role-support-2.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_2030",
+      "range": [
+        "0xc727c",
+        "0xc7288"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc727c",
+        "--stop-address=0xc7288",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 620,
+      "sha256": "99293060f4ac15481c523a1b07db56bd215c070a0f6bf50a9ceb9c59eb86c966",
+      "raw": "role-support-3.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_2029",
+      "range": [
+        "0xc7270",
+        "0xc727c"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc7270",
+        "--stop-address=0xc727c",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 1044,
+      "sha256": "1162697e06b277327d52d205bf36249812261e490e24ea03ac1152723b9992e4",
+      "raw": "role-support-4.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_2028",
+      "range": [
+        "0xc7264",
+        "0xc7270"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc7264",
+        "--stop-address=0xc7270",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 594,
+      "sha256": "cb4bc98e1fb7e369b269c4f7213d32b97e0bcbdbf4166cf43eca9c14403a7940",
+      "raw": "role-support-5.stdout"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AadEP4role2ofAD0H13RecordingRoleVSgqd__m_tlFZTW",
+      "range": [
+        "0x218c",
+        "0x2190"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x218c",
+        "--stop-address=0x2190",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 553,
+      "sha256": "dc4fc9381fafae391585745f5b11953d76073ea07696a3490c5aadabc1238417",
+      "raw": "role-support-6.stdout"
+    }
+  ],
+  "targets": [
+    "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ",
+    "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AadEP4role2ofAD0H13RecordingRoleVSgqd__m_tlFZTW",
+    "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP"
+  ],
+  "incoming": [
+    {
+      "section": "__text",
+      "pc": "0x759c0",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+        "address": 480508,
+        "section": 1,
+        "type": 15
+      }
+    },
+    {
+      "section": "__text",
+      "pc": "0x759bc",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+        "address": 480508,
+        "section": 1,
+        "type": 15
+      }
+    },
+    {
+      "section": "__text",
+      "pc": "0x752a0",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5",
+        "address": 478380,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "section": "__text",
+      "pc": "0x7529c",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5",
+        "address": 478380,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "section": "__text",
+      "pc": "0x74a64",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00ogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0og9CommittedQ0VyARGAM0og3HitQ0VyARGTg5",
+        "address": 476328,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "section": "__text",
+      "pc": "0x74a60",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0ijO00ogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAM0og9CommittedQ0VyARGAM0og3HitQ0VyARGTg5",
+        "address": 476328,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "section": "__text",
+      "pc": "0x74250",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+        "address": 474388,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "section": "__text",
+      "pc": "0x7424c",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahP0ALLLVAA0a9CommittedP0ALLLVAA0a3HitP0ALLLVTg5",
+        "address": 474388,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "section": "__text",
+      "pc": "0x218c",
+      "target": "_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AadEP4role2ofAD0H13RecordingRoleVSgqd__m_tlFZTW",
+        "address": 8588,
+        "section": 1,
+        "type": 31
+      }
+    },
+    {
+      "section": "__const",
+      "pc": "0xc8918",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAMc",
+        "address": 821520,
+        "section": 2,
+        "type": 15
+      }
+    },
+    {
+      "section": "__const",
+      "pc": "0xd17f8",
+      "target": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AadEP4role2ofAD0H13RecordingRoleVSgqd__m_tlFZTW",
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+        "address": 858096,
+        "section": 10,
+        "type": 15
+      }
+    }
+  ]
+}

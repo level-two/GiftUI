@@ -1,0 +1,179 @@
+{
+  "review": "64",
+  "status": "CONSOLIDATED_PARTIAL_STATIC_DEPENDENCY_AND_EXACT_RESIDUAL_SET",
+  "complete_callee_eligibility": false,
+  "current_error_category_applicable": true,
+  "whole_objects_equal": false,
+  "observed_allocation": false,
+  "source_changed": false,
+  "runtime_action": false,
+  "clock": {
+    "fixed_anchor": "2026-10-26T11:01:30Z",
+    "hard_cutoff": "2026-10-26T13:01:30Z",
+    "saved_utc": "2026-10-26T11:34:59.008696+00:00"
+  },
+  "authority": "Human-authorized one bounded ordinary static follow-up. Two-hour/8MiB/original excerpt rules retained; cumulative512MiB and custom per-message billing removed only for this review.",
+  "baseline": "current-input-identities.json in sibling local directory; all14selected source and6artifact hashes match actual accepted full iher3bin",
+  "facts": [
+    {
+      "id": "E64-ERROR",
+      "status": "CURRENT_CATEGORY_BOUND_CONDITIONAL_ARENA_EFFECT",
+      "fact": "Current Error descriptor96B, metadata64B, getter-cache8B, complete symbols and relevant section bytes/relocations equal A59. Only modulehash data differs; whole objects remain unequal. Therefore current required reserveReplacement raw14 -> outlined155 -> Error getter zero-cache -> swift_getWitnessTable can use the prior nongeneric resilient category/core arena lemma. Arena may satisfy a small request from its static pool; size>8192 or insufficient remaining pool reaches the exact allocator-family import. No current unavoidable/observed allocation or complete pool-capacity proof.",
+      "citations": [
+        "../current-native-static-review64-local/current-error-data-relation.json",
+        "../current-native-static-review63-local/error-0.stdout",
+        "../current-native-static-review63-local/error-1.stdout",
+        "../current-native-static-review63-local/error-2.stdout",
+        "../current-native-static-review63-local/reused/group-2.stdout",
+        "../current-native-static-review63-local/reused/group-3.stdout"
+      ],
+      "limits": [
+        "Pristine encoded arena data is not loaded/authenticated pointer state.",
+        "Exact concrete witness request size and cumulative prior arena use remain unclosed."
+      ]
+    },
+    {
+      "id": "E64-STATIC-BRIDGE",
+      "status": "REQUIRED_STATIC_COMPONENT_METADATA_AND_ROLE_DISPATCH_PROVED",
+      "fact": "Current StaticCounterGeometry builder0x74cac-0x754fc passes CounterAction metadata and CounterRoles WT to exact Canvas bridge append0xe1c-0x128c at0x75340. Source StaticCounterProfileStorage.run invokes exerciseCounterCoordinator(dynamic:false). The bridge unconditionally obtains Optional<Action>, CanvasSemanticPayload/Optional and SemanticRecordView metadata before its record validity branches. On candidate action + present standard action payload,0x1090 loads Roles WT slot8; outlined157 at0xe9a4 tailcalls it with Action metadata. The actual CounterRoles WT slot points to0x218c then role0x1bac. Its initial TupleView5/VStack/opaque-disabled metadata requests precede the first type comparison. For the concrete Action metadata, comparison0x1c84/1c88 selects role6 at0x1d14; inert Button/VStack construction and its try!-error path are skipped AFTER those initial requests.",
+      "citations": [
+        "../current-native-static-review64-local/static-interaction-caller.json",
+        "../current-native-static-review64-local/static-interaction-caller.stdout",
+        "../current-native-static-review64-local/canvas-bridge-append.json",
+        "../current-native-static-review64-local/canvas-bridge-append.stdout",
+        "../current-native-static-review64-local/canvas-bridge-helpers.json",
+        "../current-native-static-review64-local/exact-role-support-and-origins.json",
+        "../current-native-static-review64-local/exact-role-main.stdout",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+        "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift"
+      ],
+      "limits": [
+        "This selected Coordinator Static conformance invocation is mandatory but not silently equated to resource-entry-v1 Graph/StaticScoped/Host invocation.",
+        "Other Host observer and traversal specializations pass the WT structurally; their full root controls have not been re-proved here.",
+        "Correct payload/code source path supports the valid action continuation; malformed/foreign/refusal branches are not globally declared infeasible."
+      ]
+    },
+    {
+      "id": "E64-GENERIC-CANDIDATE",
+      "status": "EXACT_CURRENT_TYPE_OWN_CACHE_CONDITIONAL_FACTORY_APPLICABILITY",
+      "fact": "At required Static builder0x751fc the signed-negative MD requests StaticTwoInteractionCandidateStorage<SemanticCompleteIdentity>. Exact12B symbolic payload relates nominal VMn and Identity VMn; generic struct descriptorflags0xd1, header1 parameter/1 requirement/2 keyargs, Eq requirement, own128B VMI S_ZEROFILL; accessor0xa5450 passes descriptor then tailcalls instantiateGenericMetadata->swift_getGenericMetadata. Current executable import is ordinal3 installed Swift, regular exports. A47/A48 struct-own-cache empty-lookup/factory lemma is reusable conditionally for a valid concrete metadata+Eq key, normal argument/constraint/once/lock returns, expected declared provider/default path and first required cache acquisition. If those conditions hold, first own-cache miss reaches malloc_good_size/malloc_type_malloc before success testing. Earlier REQUIRED setup warming moves this first acquisition earlier in charged work and is not an exemption.",
+      "citations": [
+        "../current-native-static-review64-local/static-candidate-metadata-selected.json",
+        "../current-native-static-review64-local/static-candidate-metadata-captures.json",
+        "../current-native-static-review64-local/static-candidate-metadata-0.stdout",
+        "../current-native-static-review64-local/static-candidate-metadata-3.stdout",
+        "../current-native-static-review64-local/static-candidate-metadata-4.stdout",
+        "../current-native-static-review64-local/current-selected-swift-imports.json",
+        "../current-native-static-review64-local/selected-swift-provider-exports.json",
+        "../current-native-static-metadata47-result/rows.json",
+        "../current-native-static-metadata48-result/rows.json"
+      ],
+      "limits": [
+        "This is a conditional current dependency/candidate, not an unconditional defect or observed allocation.",
+        "The current simple type is well-typed and required functional route succeeds; full parser/requirement/prespecialization effects for this new key are not independently closed.",
+        "A47/A48 historical recordingFALSE is unchanged; their conditional body graph is ordinary logical reuse here.",
+        "Initial mistaken file-backed BSS hex was discarded/corrected before cache-state reasoning; exactflags1/fileoffset0 are retained."
+      ]
+    },
+    {
+      "id": "E64-FIXED-ONCE",
+      "status": "CURRENT_FIXED_CALLBACK_AND_INSTALLED_ONCE_WRAPPERS_JOINED",
+      "fact": "Current Fixed0x10534-0x10730 tests token via helper5250xc081c; token!=-1 reaches helper650xbda7c with exact MergedGlobals+0x10 and callback0x9908. Callback supplies(1,1,2,1,1,2,1,1) through helpers999/1661 to current DrawingLimits0x43e4-0x447c. All constructor guards pass, no calls in constructor; initialized globals are finite scalar stores. Current swift_once import ordinal3 selects regular installed Swift export0x193c52a64, which returns on token=-1 or rearranges callback/context and tails dispatch_once_f. Winner callback/client callout/epoch effects are prior bounded bodies; contention wait0x180345894 calls exact ___ulock_wait via kernel ordinal3, retries EINTR with no timeout and has explicit error/trap cases. Wake0x18034584c checks thread ownership and tails0x180345934 or fatal path.",
+      "citations": [
+        "../current-native-static-review64-local/fixed-current-captures.json",
+        "../current-native-static-review64-local/fixed-current-helpers.json",
+        "../current-native-static-review64-local/fixed-drawing-constructor.stdout",
+        "../current-native-static-review64-local/current-swift-once-import.json",
+        "../current-native-static-review64-local/selected-swift-provider-exports.json",
+        "../current-native-static-review63-local/reused/group-1.stdout",
+        "../current-native-static-review64-local/dispatch-0x180345894.stdout",
+        "../current-native-static-review64-local/dispatch-0x18034584c.stdout",
+        "../current-native-static-review64-local/selected-config-and-wait-imports.json"
+      ],
+      "limits": [
+        "No global once safety/termination PASS: kernel wait/wake transitive implementation, recursion/contention/process state and exact loaded bindings remain separate.",
+        "No allocation is inferred merely because once is reached. The finite Fixed callback itself is nonallocating under its exact guards."
+      ]
+    },
+    {
+      "id": "E64-PROVIDER-STATE",
+      "status": "CONFIG_AND_ZONE_BODY_EFFECTS_CLASSIFIED_NOT_LIVE_STATE",
+      "fact": "Complete Swift config initializer0x193cb5d8c-0x193cb6b0c iterates inherited environment; empty/no-matching-key continuation is distinct from parsing/logging/strdup cases. Exact keys for arena iteration/backtrace/scribble flags are saved. Selected Swift stub0x1940efb4c imports strdup ordinal5 libSystem; no observed inherited env or loaded target is asserted. Malloc backend0x18032c140-0x18032c3c8 selects current/default zone and authenticated zone callback, or malloc/calloc/memalign alternatives; instrumentation/logger and flag/error controls remain explicit.",
+      "citations": [
+        "../current-native-static-review64-local/provider64-captures.json",
+        "../current-native-static-review64-local/Swift-0x193cb5d8c.stdout",
+        "../current-native-static-review64-local/selected-config-and-wait-imports.json",
+        "../current-native-static-review64-local/malloc-0x18032c140.stdout"
+      ],
+      "limits": [
+        "Current zone identity/callbacks/config/arena post-fixup values are unobserved.",
+        "Installed strdup/default-zone/allocator leaf bodies remain available unexamined; their names are not used as an allocation proof."
+      ]
+    },
+    {
+      "id": "E64-LAYOUT",
+      "status": "EXACT_TYPE_REFERENCE_ORIGINS_IDENTIFIED_FEASIBILITY_NOT_CLOSED",
+      "fact": "RootScope28B thunk has one executable incoming wrapper0xbc64c-0xbc650, a single tailbranch. Its selected typeref09 records are referenced by field metadata for CounterExecutionBinding, PipelineOwner, HostSuppliedStorage and DynamicHostSuppliedStorage. The current complete PipelineOwner metadata completion body/helpers from review63 do not provide a direct call to that RootScope thunk. This identifies the type-reflection/layout origin; it does not prove no runtime field-type consumer can invoke it.",
+      "citations": [
+        "../current-native-static-review64-local/layout-thunk-direct-owner.json",
+        "../current-native-static-review64-local/layout-thunk-direct-owner.stdout",
+        "../current-native-static-review64-local/layout-selected-typeref-origins.json",
+        "../current-native-static-review63-local/current-layout-joins.json"
+      ],
+      "limits": [
+        "Actual required runtime consumption of these field typerefs and generic PipelineOwner metadata completion remains available-local work; no reflection-only/unreachable exemption is inferred."
+      ]
+    },
+    {
+      "id": "E64-CODEC-FAILURE",
+      "status": "SOURCE_CONTROL_SCOPE_PLUS_ONE_QUALIFIED_CURRENT_ACTION_DISPATCH_NOT_ALL_TRAVERSAL",
+      "fact": "Current Canvas codec first attempts generated Table.payload then standard codec. Generated payload checks exact CounterCanvas<Domain> before rebinding; standard primitive/modifier fail closed on unknown types, text uses bounded scalar scratch, action obtains nonzero Roles role then stores code. Current CounterScreen has only increment0/reset1 actions and the bridge checks role/code/generation before staging. The exact current Action invocation above excludes late inert-sample try! failure, not all generic traversal/sample/error arms. Full compiled traversal/Table.payload/codec and Observable beforeBody/register/read/bind callback controls remain unexamined as a whole.",
+      "citations": [
+        "../current-native-static-review64-local/current-input-identities.json",
+        "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+        "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+        ".build/contracts/p08-counter-iher3bin/CounterTable.swift",
+        "../current-native-static-review63-result/findings.json"
+      ],
+      "limits": [
+        "Review63 oversized26-body group remains NONQUALIFIED, not silently subdivided/repaired or a complete proof.",
+        "This review selected one exact current role/body with a concrete Action caller. It does not requalify all old26 captures."
+      ]
+    }
+  ],
+  "remaining": [
+    {
+      "id": "R64-1",
+      "kind": "AVAILABLE_LOCAL_PROVIDER_APPLICABILITY",
+      "predicate": "New CandidateStorage<SemanticCompleteIdentity> valid-key parser/requirement/prespecialization continuation and any preceding REQUIRED acquisition must be related to the parametric A47/A48 graph before upgrading the conditional candidate to an unconditional implementation selection. Related committed/hit witness caches and eager Role sample-type metadata have actual calls but their exact own-cache/factory preconditions are not all joined.",
+      "scope": "Mandatory NativeStatic Coordinator conformance; selected3-root invocation transfer remains separate."
+    },
+    {
+      "id": "R64-2",
+      "kind": "AVAILABLE_LOCAL_UNEXAMINED",
+      "predicate": "Field typeref09 consumers for CounterExecutionBinding/PipelineOwner/HostSuppliedStorage must be shown actually requested or irrelevant in charged execution. No direct-code incoming beyond wrapper was found; absence of a direct branch alone cannot exclude runtime reflection/layout invocation."
+    },
+    {
+      "id": "R64-3",
+      "kind": "AVAILABLE_LOCAL_UNEXAMINED",
+      "predicate": "Complete actual specialized Semantic traversal -> Canvas Table.payload/standard codec -> beforeBody/register/read/bind callbacks and guarded diagnostic/typed-error/try!-failure arms, with exact type and state origins. The one current Action branch is closed only as stated, not all occurrences. No absent-evidence claim."
+    },
+    {
+      "id": "R64-4",
+      "kind": "AVAILABLE_INSTALLED_UNEXAMINED_PLUS_STATE",
+      "predicate": "Concrete Error WT size/protocol requirement count and cumulative arena use determine small-pool sufficiency; exact kernel wait/wake tails, allocator zone leaves/config parser/debug callbacks are available code. Runtime zone registration/callback identity, state, contention/recursion and loaded bindings are not established by pristine code."
+    },
+    {
+      "id": "R64-5",
+      "kind": "GENUINELY_UNOBSERVED_LIVE",
+      "predicate": "Loaded Swift/libSystem UUID/GOT/interposition/authentication/default-selector applicability; live own-cache/prespecialization/table/once state at charged first use; actual post-fixup arena pointers/remaining/config and inherited env; stdout R=S/unbuffered persistence, actual measurement window/current image/cold/resource observations. No runtime action performed."
+    },
+    {
+      "id": "R64-6",
+      "kind": "INDEPENDENT_ACCEPTANCE_GATES",
+      "predicate": "Unit FAILED before Interaction tests; Interaction UNEXECUTED. Existing Model/API/profile/resource/P08 obligations remain open. Functional442PASS is not resource or callee eligibility and includes negative/reused receipts, not442fresh compilations. Accepted prior construction/cleanup/operations/typedBacking scopes remain closed exactly; no oldFALSE recording is retroqualified."
+    }
+  ],
+  "decision": "No complete eligibility or unconditional/observed allocation claim. Current Error category reuse repaired by exact data identity; conditional arena effect stands. A separate mandatory Static Coordinator bridge now has exact generic metadata/witness/Role acquisition, with a current valid-key own-cache conditional factory candidate. This supports a finite specialization/bridge assessment, not automatic source edits, API change, prewarming or a global allocator verdict. No further acquisition selected after consolidation.",
+  "citation_resolution": "Paths beginning ../ are relative to this result directory; other paths are repository-root relative. Source and artifact identities are in sibling local/current-input-identities.json. Canonical large inputs are referenced, not copied."
+}

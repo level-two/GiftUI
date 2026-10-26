@@ -1,0 +1,33 @@
+{
+  "object": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+  "object_sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+  "owner": {
+    "symbol": "l_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable",
+    "address": 771660,
+    "section": 1,
+    "type": 14
+  },
+  "range": [
+    "0xbc64c",
+    "0xbc650"
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0xbc64c",
+    "--stop-address=0xbc650",
+    ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 838,
+  "sha256": "38a1aa021c69a3af5c4a08be245ca857be2166e79fc154033b7f8559ec2d23fe",
+  "incoming_relocations": [
+    {
+      "section": "__swift5_typeref",
+      "pc": "0xce04d",
+      "target": "l_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable"
+    }
+  ]
+}

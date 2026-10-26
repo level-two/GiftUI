@@ -1,0 +1,19 @@
+{
+  "new_complete_raw_stdout": {
+    "bytes": 243951,
+    "lines": 3052
+  },
+  "all14_current_sources_complete_file_upper_bound": {
+    "bytes": 461689,
+    "lines": 7748
+  },
+  "combined_conservative_upper_including_all_reused_selected_rows_and_bodies": {
+    "bytes": 829760,
+    "lines": 13397
+  },
+  "original_group_limits": {
+    "bytes": 1048576,
+    "lines": 16384
+  },
+  "meaning": "Conservative union upper bound includes all14source files even though only selected source bodies/spans were read. This does not reset/subdivide any semantic group. The old oversized26-body group is excluded from proof and remains NONQUALIFIED. Prior A47/A48 body graph is cited as accepted conditional lemma; its entire24-body corpus was not reopened."
+}

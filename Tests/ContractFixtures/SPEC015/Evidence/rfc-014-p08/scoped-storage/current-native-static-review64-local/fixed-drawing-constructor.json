@@ -1,0 +1,21 @@
+{
+  "object": ".build/contracts/p08-counter-iher3bin/GiftUIDrawing.o",
+  "object_sha256": "850380ace06087a02041bede71cb764ac5978af97cdb052a4e3fa7d680343803",
+  "symbol": "_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC",
+  "range": [
+    "0x43e4",
+    "0x447c"
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x43e4",
+    "--stop-address=0x447c",
+    ".build/contracts/p08-counter-iher3bin/GiftUIDrawing.o"
+  ],
+  "exit": 0,
+  "bytes": 3511,
+  "sha256": "196e70832bd36fbb265ca88de030b2a4ef4ef4b00a51d80c6a9d27cf77003c04"
+}

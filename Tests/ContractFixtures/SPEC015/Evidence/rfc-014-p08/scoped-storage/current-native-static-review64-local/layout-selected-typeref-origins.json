@@ -1,0 +1,99 @@
+{
+  "object_sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+  "selected_typerefs": [
+    {
+      "reference_pc": "0xce04d",
+      "owner": {
+        "symbol": "_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable.11",
+        "address": 843852,
+        "section": 7,
+        "type": 31
+      },
+      "end": "0xce052",
+      "hex": "09ffffffff00",
+      "sha256": "41a5d89e0811414124e439e3bca296215d2835e538345e1f3dd4146fd163b838",
+      "incoming": [
+        {
+          "pc": "0xce04d",
+          "section": "__swift5_typeref",
+          "type": 1,
+          "owner": {
+            "symbol": "_get_type_metadata 21GiftUIObservableState010ObservableC9RootScopeVy17P08CounterRuntime0H10OwnedModelV0A14UISemanticCore24SemanticCompleteIdentityVG noncopyable.11",
+            "address": 843852,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "pc": "0xd99fc",
+          "section": "__swift5_fieldmd",
+          "type": 0,
+          "owner": {
+            "symbol": "_$s17P08CounterRuntime0B16ExecutionBindingVMF",
+            "address": 891344,
+            "section": 15,
+            "type": 14
+          }
+        }
+      ]
+    },
+    {
+      "reference_pc": "0xce1eb",
+      "owner": {
+        "symbol": "_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable.13",
+        "address": 844266,
+        "section": 7,
+        "type": 31
+      },
+      "end": "0xce1f0",
+      "hex": "09ffffffff00",
+      "sha256": "41a5d89e0811414124e439e3bca296215d2835e538345e1f3dd4146fd163b838",
+      "incoming": [
+        {
+          "pc": "0xce1eb",
+          "section": "__swift5_typeref",
+          "type": 1,
+          "owner": {
+            "symbol": "_get_type_metadata 17P08CounterRuntime0B8GeometryRzAA0B16CandidateBackingR_AA0b9CommittedF0R0_AA0b3HitF0R1_18GiftUISemanticCore24SemanticCompleteIdentityV0N0Rt_AhIRt0_AhIRt1_Ri_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_r2_l0I17UIObservableState010ObservableP9RootScopeVyAA0B10OwnedModelVAHG noncopyable.13",
+            "address": 844266,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "pc": "0xdaef4",
+          "section": "__swift5_fieldmd",
+          "type": 0,
+          "owner": {
+            "symbol": "_$s17P08CounterRuntime0B26DynamicHostSuppliedStorageVMF",
+            "address": 896724,
+            "section": 15,
+            "type": 14
+          }
+        },
+        {
+          "pc": "0xdad1c",
+          "section": "__swift5_fieldmd",
+          "type": 0,
+          "owner": {
+            "symbol": "_$s17P08CounterRuntime0B19HostSuppliedStorageVMF",
+            "address": 896252,
+            "section": 15,
+            "type": 14
+          }
+        },
+        {
+          "pc": "0xd9f74",
+          "section": "__swift5_fieldmd",
+          "type": 0,
+          "owner": {
+            "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVMF",
+            "address": 892756,
+            "section": 15,
+            "type": 14
+          }
+        }
+      ]
+    }
+  ]
+}

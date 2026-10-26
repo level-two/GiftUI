@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "_OUTLINED_FUNCTION_525",
+    "range": [
+      "0xc081c",
+      "0xc082c"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc081c",
+      "--stop-address=0xc082c",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 513,
+    "sha256": "abdd831daeff247a301c8fd2089994a3d3ec47d99cc3c9817d2cf05d5bbdaa0f",
+    "raw": "fixed-helper-525.stdout"
+  },
+  {
+    "symbol": "_OUTLINED_FUNCTION_65",
+    "range": [
+      "0xbda7c",
+      "0xbda90"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xbda7c",
+      "--stop-address=0xbda90",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 850,
+    "sha256": "2c5a38d240b6ff7b290fe40464945a684fcefe3ddc0b83ad4e177c0292ccde2d",
+    "raw": "fixed-helper-65.stdout"
+  },
+  {
+    "symbol": "_OUTLINED_FUNCTION_1180",
+    "range": [
+      "0xc3e9c",
+      "0xc3ea8"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc3e9c",
+      "--stop-address=0xc3ea8",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 501,
+    "sha256": "913681a306d84b7c7eafb100b1154e97ac165d4b78cd147497bef1fac2208117",
+    "raw": "fixed-helper-1180.stdout"
+  },
+  {
+    "symbol": "_OUTLINED_FUNCTION_999",
+    "range": [
+      "0xc30f0",
+      "0xc30fc"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc30f0",
+      "--stop-address=0xc30fc",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 286,
+    "sha256": "8661b2e96b668c3e577d4709871470aa0f4a5378e153429d6503d725a4f0f091",
+    "raw": "fixed-helper-999.stdout"
+  },
+  {
+    "symbol": "_OUTLINED_FUNCTION_1661",
+    "range": [
+      "0xc5ecc",
+      "0xc5edc"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0xc5ecc",
+      "--stop-address=0xc5edc",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 603,
+    "sha256": "6f2d315619321c29287efa1e34b68256f0b9caf54c59adc40852540cf1312163",
+    "raw": "fixed-helper-1661.stdout"
+  }
+]

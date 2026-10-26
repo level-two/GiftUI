@@ -1,0 +1,44 @@
+
+.build/contracts/p08-counter-iher3bin/GiftUIDrawing.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000043e4 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC>:
+    43e4:      	mov	x8, x2
+    43e8:      	mov	x9, x0
+    43ec:      	mov	x0, #0x0                ; =0
+    43f0:      	mov	w2, #0x10000            ; =65536
+    43f4:      	cmp	w9, #0x1
+    43f8:      	b.lt	0x4470 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x8c>
+    43fc:      	tst	w1, #0xffff
+    4400:      	b.eq	0x4470 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x8c>
+    4404:      	tst	w8, #0xffff
+    4408:      	b.eq	0x4470 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x8c>
+    440c:      	tst	w3, #0xffff
+    4410:      	b.eq	0x4470 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x8c>
+    4414:      	tst	w4, #0xffff
+    4418:      	b.eq	0x4470 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x8c>
+    441c:      	tst	w5, #0xffff
+    4420:      	b.eq	0x4470 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x8c>
+    4424:      	tst	w6, #0xffff
+    4428:      	b.eq	0x4470 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x8c>
+    442c:      	tst	w7, #0xffff
+    4430:      	b.eq	0x4470 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x8c>
+    4434:      	and	w11, w7, #0xffff
+    4438:      	cmp	w11, w4, uxth
+    443c:      	mov	x10, x0
+    4440:      	b.lo	0x4474 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x90>
+    4444:      	mov	w9, w9
+    4448:      	and	w10, w1, #0xffff
+    444c:      	orr	x9, x9, x10, lsl #32
+    4450:      	orr	x0, x9, x8, lsl #48
+    4454:      	lsl	w8, w4, #16
+    4458:      	bfxil	x8, x3, #0, #16
+    445c:      	and	w9, w5, #0xffff
+    4460:      	orr	x8, x8, x9, lsl #32
+    4464:      	mov	x2, x11
+    4468:      	orr	x10, x8, x6, lsl #48
+    446c:      	b	0x4474 <_$s13GiftUIDrawing13DrawingLimitsV16maximumLineWidth0E17CanvasOccurrences0E14LivePathPoints0ejK8Subpaths0E11PlanStrokes0enL00enM00E26NormalizedStrokeOperationsACSgs5Int32V_s6UInt16VA6PtcfC+0x90>
+    4470:      	mov	x10, x0
+    4474:      	mov	x1, x10
+    4478:      	ret

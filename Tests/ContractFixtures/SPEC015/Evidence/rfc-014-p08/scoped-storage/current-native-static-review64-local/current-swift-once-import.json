@@ -1,0 +1,8 @@
+{
+  "name": "_swift_once",
+  "nlist_index": 35987,
+  "nlist_hex": "8d4b1100010000030000000000000000",
+  "ordinal": 3,
+  "dependency": "/usr/lib/swift/libswiftCore.dylib",
+  "executable_sha256": "f3444866b585d6605c2507089720244be02a9dd8cf5f4dc39b1137df1a3c8e1a"
+}

@@ -1,0 +1,137 @@
+{
+  "captures": [
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMa",
+      "range": [
+        "0xa5450",
+        "0xa545c"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xa5450",
+        "--stop-address=0xa545c",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 1073,
+      "sha256": "bba16ca6401a5eddd1cb25d05c5ed9277cca81bb633d1e37e94b02138276732b",
+      "raw": "static-candidate-metadata-0.stdout"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMr",
+      "range": [
+        "0xad1e8",
+        "0xad1f4"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xad1e8",
+        "--stop-address=0xad1f4",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 710,
+      "sha256": "3933bc6cef37347d35492c988807d0564d5dd2457af34f805e03d7c56c63b8e7",
+      "raw": "static-candidate-metadata-1.stdout"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMi",
+      "range": [
+        "0xbca3c",
+        "0xbca40"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbca3c",
+        "--stop-address=0xbca40",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 426,
+      "sha256": "7dba6dd3ac0e292c0189c05fbcd5a522f60d05f93d5750b5d9d732e36b9c2f38",
+      "raw": "static-candidate-metadata-2.stdout"
+    },
+    {
+      "symbol": "___swift_instantiateConcreteTypeFromMangledName",
+      "range": [
+        "0xbe4",
+        "0xc24"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbe4",
+        "--stop-address=0xc24",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 1009,
+      "sha256": "69a15cea1f0613381118698513740d2d6032265005f58e6d4f55a533055b427d",
+      "raw": "static-candidate-metadata-3.stdout"
+    },
+    {
+      "symbol": "___swift_instantiateGenericMetadata",
+      "range": [
+        "0xbbb9c",
+        "0xbbbc8"
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbbb9c",
+        "--stop-address=0xbbbc8",
+        ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "bytes": 661,
+      "sha256": "9cb0dadee4c3bea0cc8d411ca0184c027e2b0980c9fb7d051645f68d1e33286a",
+      "raw": "static-candidate-metadata-4.stdout"
+    }
+  ],
+  "symbolic_payload": {
+    "symbol": "_symbolic _____y_____G 17P08CounterRuntime36StaticTwoInteractionCandidateStorageV 18GiftUISemanticCore24SemanticCompleteIdentityV",
+    "range": [
+      "0xce8e8",
+      "0xce8f6"
+    ],
+    "hex": "01ffffffff7902e1eaffbf470000",
+    "sha256": "dedd4bef6fa704937ee3a360d33c047fa5f186f6800e9dc9c6df459d1cb12ead",
+    "relocations": [
+      {
+        "pc": "0xce8ef",
+        "type": 7,
+        "target": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVMn"
+      },
+      {
+        "pc": "0xce8e9",
+        "type": 1,
+        "target": "_symbolic _____y_____G 17P08CounterRuntime36StaticTwoInteractionCandidateStorageV 18GiftUISemanticCore24SemanticCompleteIdentityV"
+      },
+      {
+        "pc": "0xce8e9",
+        "type": 0,
+        "target": "_$s17P08CounterRuntime36StaticTwoInteractionCandidateStorageVMn"
+      }
+    ]
+  },
+  "bss_section": [
+    {
+      "address": "0xf84b0",
+      "file_offset": 0,
+      "flags": "0x1"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+
+.build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000e834 <_OUTLINED_FUNCTION_135>:
+    e834:      	stp	x28, x27, [sp, #-0x60]!
+    e838:      	stp	x26, x25, [sp, #0x10]
+    e83c:      	stp	x24, x23, [sp, #0x20]
+    e840:      	stp	x22, x21, [sp, #0x30]
+    e844:      	stp	x20, x19, [sp, #0x40]
+    e848:      	ret

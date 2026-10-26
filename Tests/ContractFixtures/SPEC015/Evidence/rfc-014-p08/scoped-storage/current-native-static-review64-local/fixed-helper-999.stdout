@@ -1,0 +1,9 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c30f0 <_OUTLINED_FUNCTION_999>:
+   c30f0:      	mov	w3, #0x1                ; =1
+   c30f4:      	mov	w4, #0x1                ; =1
+   c30f8:      	ret

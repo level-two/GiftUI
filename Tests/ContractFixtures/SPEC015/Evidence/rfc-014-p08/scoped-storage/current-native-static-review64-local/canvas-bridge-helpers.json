@@ -1,0 +1,60 @@
+{
+  "object": ".build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o",
+  "object_sha256": "e34d4c0526b1385ddadaab9e5cf5ce74dcaf18583952e5baea73ef12f777a303",
+  "captures": [
+    {
+      "symbol": "_OUTLINED_FUNCTION_157",
+      "start": "0xe9a4",
+      "end": "0xe9b4",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xe9a4",
+        "--stop-address=0xe9b4",
+        ".build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 274,
+      "sha256": "5e7f444970865c1e4a3ceae7f607fcf8760e7b359762136cbf91529b65eb170e",
+      "raw": "canvas-bridge-helper-0.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_135",
+      "start": "0xe834",
+      "end": "0xe84c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xe834",
+        "--stop-address=0xe84c",
+        ".build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 400,
+      "sha256": "92d9c5baacfbc3e7b5e96c59e571e2d023fc91cd8e7c0665a41d12b7739ab520",
+      "raw": "canvas-bridge-helper-1.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_123",
+      "start": "0xe78c",
+      "end": "0xe7a0",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xe78c",
+        "--stop-address=0xe7a0",
+        ".build/contracts/p08-counter-iher3bin/GiftUIRuntimeCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 423,
+      "sha256": "a358ad64d4e93a8f47d2304055b12e457d6d8aa911957a0748a148ca15819453",
+      "raw": "canvas-bridge-helper-2.stdout"
+    }
+  ]
+}

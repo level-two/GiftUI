@@ -1,0 +1,36 @@
+
+.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000009908 <_$s17P08CounterRuntime20counterDrawingLimits_WZ>:
+    9908:      	stp	x29, x30, [sp, #-0x10]!
+    990c:      	mov	x29, sp
+    9910:      	mov	w0, #0x1                ; =1
+    9914:      	mov	w1, #0x1                ; =1
+    9918:      	mov	w2, #0x2                ; =2
+    991c:      	bl	0x991c <_$s17P08CounterRuntime20counterDrawingLimits_WZ+0x14>
+		000000000000991c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_999
+    9920:      	bl	0x9920 <_$s17P08CounterRuntime20counterDrawingLimits_WZ+0x18>
+		0000000000009920:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1661
+    9924:      	and	w8, w2, #0xff0000
+    9928:      	cmp	w8, #0x10, lsl #12      ; =0x10000
+    992c:      	b.eq	0x9970 <_$s17P08CounterRuntime20counterDrawingLimits_WZ+0x68>
+    9930:      	bl	0x9930 <_$s17P08CounterRuntime20counterDrawingLimits_WZ+0x28>
+		0000000000009930:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1180
+    9934:      	str	w0, [x8]
+    9938:      	lsr	x9, x0, #32
+    993c:      	strh	w9, [x8, #0x4]
+    9940:      	lsr	x9, x0, #48
+    9944:      	strh	w9, [x8, #0x6]
+    9948:      	lsr	x9, x1, #16
+    994c:      	strh	w1, [x8, #0x8]
+    9950:      	lsr	x10, x1, #32
+    9954:      	strh	w9, [x8, #0xa]
+    9958:      	lsr	x9, x1, #48
+    995c:      	strh	w10, [x8, #0xc]
+    9960:      	strh	w9, [x8, #0xe]
+    9964:      	strh	w2, [x8, #0x10]
+    9968:      	ldp	x29, x30, [sp], #0x10
+    996c:      	ret
+    9970:      	brk	#0x1

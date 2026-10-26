@@ -1,0 +1,65 @@
+[
+  {
+    "symbol": "_$s17P08CounterRuntime03p08B12FixedStorageSiyF",
+    "range": [
+      "0x10534",
+      "0x10730"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x10534",
+      "--stop-address=0x10730",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 7916,
+    "lines": 152,
+    "sha256": "28bb197729a67cec4c3335305ea9ba8837a65c2e0bcb24acad1dd6927a80d828",
+    "raw": "fixed-current-0.stdout"
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime20counterDrawingLimits_WZ",
+    "range": [
+      "0x9908",
+      "0x9974"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x9908",
+      "--stop-address=0x9974",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 1559,
+    "lines": 36,
+    "sha256": "7349d7e5ffe0d1a76cdb61d0d494afc1270ba83fb72e413174402e2203d73227",
+    "raw": "fixed-current-1.stdout"
+  },
+  {
+    "symbol": "_$s17P08CounterRuntime20counterDrawingLimits13GiftUIDrawing0eF0Vvau",
+    "range": [
+      "0x9974",
+      "0x99a4"
+    ],
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+      "--disassemble",
+      "--reloc",
+      "--no-show-raw-insn",
+      "--start-address=0x9974",
+      "--stop-address=0x99a4",
+      ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+    ],
+    "exit": 0,
+    "bytes": 1418,
+    "lines": 22,
+    "sha256": "346e38bf4ac5f98d8c0f0a2be3451f64a0b38d44659336e2f40937ee6c0a7548",
+    "raw": "fixed-current-2.stdout"
+  }
+]
