@@ -63,7 +63,7 @@ def module(name, sources):
     run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
                '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
 
-module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore/GiftUISemanticCore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordStore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordExpansion.swift', *[ROOT / 'Sources/GiftUISemanticCore' / name for name in ('SemanticStandardPayload.swift', 'SemanticLayoutView.swift', 'SemanticRenderView.swift', 'SemanticRecordLayoutView.swift', 'SemanticRecordRenderView.swift')]])
+module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore/GiftUISemanticCore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordStore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordExpansion.swift', *[ROOT / 'Sources/GiftUISemanticCore' / name for name in ('SemanticRecordPayload.swift', 'SemanticStandardPayload.swift', 'SemanticLayoutView.swift', 'SemanticRenderView.swift', 'SemanticRecordLayoutView.swift', 'SemanticRecordRenderView.swift')]])
 module('GiftUITextResources', sorted((ROOT / 'Sources/GiftUITextResources').glob('*.swift')))
 module('GiftUIReferenceTextResources', sorted((ROOT / 'Sources/GiftUIReferenceTextResources').glob('*.swift')) + sorted((ROOT / 'Sources/GiftUIReferenceTextResources/Generated').glob('*.swift')) + sorted((ROOT / 'Sources/GiftUIReferenceTextResources/PiCompactGenerated').glob('*.swift')))
 module('GiftUILayout', sorted((ROOT / 'Sources/GiftUILayout').glob('*.swift')))
@@ -113,8 +113,8 @@ for name, source, diagnostic in (
                ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', negative,
                '-o', out / (name + '.o')], failure=diagnostic)
 for name, source, diagnostic in (
-    ('escape-semantic', 'struct Escape<P>: ~Copyable { let owner: ScopedSemanticOwner<P> }', 'non-Escapable'),
-    ('copy-semantic', 'func copySemantic<P>(_ owner: borrowing ScopedSemanticOwner<P>) { let other = copy owner; _ = other }', 'noncopyable'),
+    ('escape-semantic', 'struct Escape: ~Copyable { let owner: ScopedSemanticOwner }', 'non-Escapable'),
+    ('copy-semantic', 'func copySemantic(_ owner: borrowing ScopedSemanticOwner) { let other = copy owner; _ = other }', 'noncopyable'),
 ):
     negative = out / (name + '.swift')
     negative.write_text(source + '\n')

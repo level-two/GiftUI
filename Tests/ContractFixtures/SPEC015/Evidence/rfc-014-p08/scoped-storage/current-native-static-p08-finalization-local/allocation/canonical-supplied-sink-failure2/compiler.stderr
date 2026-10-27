@@ -1,0 +1,103 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:140:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 38 | package struct CanvasStagedMetadata {
+ 39 |     @usableFromInline
+ 40 |     package internal(set) var count: UInt16 = 0
+    |                               `- note: setter for property 'count' is not '@usableFromInline' or public
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    :
+138 |         entries[Int(count)] = CanvasStagedEntry(
+139 |             identity: identity, witness: id, value: consume value)
+140 |         state.pointee.count += 1
+    |         `- warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+141 |     }
+142 |     @inlinable
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:163:13: warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 40 |     package internal(set) var count: UInt16 = 0
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    |                               `- note: setter for property 'releases' is not '@usableFromInline' or public
+ 43 |     @inlinable
+ 44 |     package init() {}
+    :
+161 |             guard entries[Int(index)]?.value != nil else { return }
+162 |             entries[Int(index)]!.value = nil
+163 |             state.pointee.releases += 1
+    |             `- warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+164 |             return
+165 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:173:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 38 | package struct CanvasStagedMetadata {
+ 39 |     @usableFromInline
+ 40 |     package internal(set) var count: UInt16 = 0
+    |                               `- note: setter for property 'count' is not '@usableFromInline' or public
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    :
+171 |             entries[Int(index)] = nil
+172 |         }
+173 |         state.pointee.count = 0
+    |         `- warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+174 |     }
+175 | }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift:81:28: error: 'self' is borrowed and cannot be consumed
+ 79 | 
+ 80 |     @inlinable
+ 81 |     package borrowing func ownsPendingCandidate(
+    |                            `- error: 'self' is borrowed and cannot be consumed
+ 82 |         owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, required: Bool
+ 83 |     ) -> Bool {
+ 84 |         if state.pointee.count == 0 { return !required }
+ 85 |         guard let expected = state.pointee.owner else { return false }
+ 86 |         return expected == owner && state.pointee.bank == bank
+    |                                     `- note: consumed here
+ 87 |             && state.pointee.revision == revision
+ 88 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift:81:28: error: 'self' is borrowed and cannot be consumed
+ 79 | 
+ 80 |     @inlinable
+ 81 |     package borrowing func ownsPendingCandidate(
+    |                            `- error: 'self' is borrowed and cannot be consumed
+ 82 |         owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, required: Bool
+ 83 |     ) -> Bool {
+    :
+ 85 |         guard let expected = state.pointee.owner else { return false }
+ 86 |         return expected == owner && state.pointee.bank == bank
+ 87 |             && state.pointee.revision == revision
+    |                `- note: consumed here
+ 88 |     }
+ 89 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift:113:28: error: 'self' is borrowed and cannot be consumed
+111 | 
+112 |     @inlinable
+113 |     package borrowing func primitive<Value: _GiftUISemanticPrimitivePayload>(
+    |                            `- error: 'self' is borrowed and cannot be consumed
+114 |         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
+115 |     ) -> SemanticExpansionError? {
+    :
+118 |                 UInt64(MemoryLayout<Table.CaptureStorage?>.stride)
+119 |                 + UInt64(MemoryLayout<UInt16>.stride)
+120 |             return writer.storeCanvas(additionalBytes: bytes) { ordinal, reference in
+    |                                                               `- note: consumed here
+121 |                 let index = state.pointee.count
+122 |                 guard index < capacity else { return .capacityExhausted }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift:176:9: error: 'pending' is borrowed and cannot be consumed
+174 |     package static func stage<Codec: CanvasSemanticPayloadCodec & ~Escapable>(
+175 |         from semantic: borrowing SemanticRecordStore,
+176 |         pending: borrowing Codec,
+    |         `- error: 'pending' is borrowed and cannot be consumed
+177 |         into values: borrowing CanvasStagedValues<SemanticRecordReference, Codec.Table>,
+178 |         table: borrowing Codec.Table
+    :
+187 |         var cursor: UInt16 = 0
+188 |         do throws(SemanticExpansionError) {
+189 |             try semantic.takePendingCanvas { (identity, ordinal) throws(SemanticExpansionError) in
+    |                                            `- note: consumed here
+190 |                 guard cursor < pending.state.pointee.count,
+191 |                     let owner = pending.state.pointee.owner, owner == identity.owner,

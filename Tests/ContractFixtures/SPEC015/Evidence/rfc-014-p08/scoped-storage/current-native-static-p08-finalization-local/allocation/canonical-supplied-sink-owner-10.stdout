@@ -1,0 +1,61 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000020530 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV4bank5owner0H6Number6limits9expansionAcA0dE11BankBuffersVh_AA0dE13OwnerIdentityVs5UInt8VAA0dE6LimitsVAA0d9ExpansionR0VtcfC>:
+   20530:      	sub	sp, sp, #0x90
+   20534:      	stp	x28, x27, [sp, #0x30]
+   20538:      	stp	x26, x25, [sp, #0x40]
+   2053c:      	stp	x24, x23, [sp, #0x50]
+   20540:      	stp	x22, x21, [sp, #0x60]
+   20544:      	stp	x20, x19, [sp, #0x70]
+   20548:      	stp	x29, x30, [sp, #0x80]
+   2054c:      	add	x29, sp, #0x80
+   20550:      	str	w6, [sp, #0x2c]
+   20554:      	mov	x20, x5
+   20558:      	mov	x21, x4
+   2055c:      	mov	x22, x3
+   20560:      	mov	x23, x2
+   20564:      	mov	x24, x1
+   20568:      	mov	x1, x0
+   2056c:      	mov	x25, x8
+   20570:      	lsr	x26, x3, #16
+   20574:      	lsr	x27, x3, #32
+   20578:      	lsr	x28, x3, #48
+   2057c:      	lsr	x19, x4, #16
+   20580:      	lsr	x9, x4, #32
+   20584:      	lsr	x8, x5, #16
+   20588:      	stp	x9, x8, [sp, #0x8]
+   2058c:      	lsr	x9, x5, #32
+   20590:      	lsr	x8, x5, #48
+   20594:      	stp	x9, x8, [sp, #0x18]
+   20598:      	mov	x0, x25
+   2059c:      	bl	0x2059c <_$s18GiftUISemanticCore23SemanticRecordSinkStateV4bank5owner0H6Number6limits9expansionAcA0dE11BankBuffersVh_AA0dE13OwnerIdentityVs5UInt8VAA0dE6LimitsVAA0d9ExpansionR0VtcfC+0x6c>
+		000000000002059c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_308
+   205a0:      	str	w24, [x25, #0x48]
+   205a4:      	strb	w23, [x25, #0x4c]
+   205a8:      	strh	w22, [x25, #0x50]
+   205ac:      	strh	w26, [x25, #0x52]
+   205b0:      	strh	w27, [x25, #0x54]
+   205b4:      	strh	w28, [x25, #0x56]
+   205b8:      	strh	w21, [x25, #0x58]
+   205bc:      	strh	w19, [x25, #0x5a]
+   205c0:      	ldp	x9, x8, [sp, #0x8]
+   205c4:      	str	w9, [x25, #0x5c]
+   205c8:      	strh	w20, [x25, #0x60]
+   205cc:      	strh	w8, [x25, #0x62]
+   205d0:      	ldp	x10, x8, [sp, #0x18]
+   205d4:      	strh	w10, [x25, #0x64]
+   205d8:      	strh	w8, [x25, #0x66]
+   205dc:      	ldr	w8, [sp, #0x2c]
+   205e0:      	strh	w8, [x25, #0x68]
+   205e4:      	stur	xzr, [x25, #0x6a]
+   205e8:      	ldp	x29, x30, [sp, #0x80]
+   205ec:      	ldp	x20, x19, [sp, #0x70]
+   205f0:      	ldp	x22, x21, [sp, #0x60]
+   205f4:      	ldp	x24, x23, [sp, #0x50]
+   205f8:      	ldp	x26, x25, [sp, #0x40]
+   205fc:      	ldp	x28, x27, [sp, #0x30]
+   20600:      	add	sp, sp, #0x90
+   20604:      	ret

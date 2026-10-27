@@ -1,0 +1,55 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000028e0 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k8UIVStackR0V_Tg5>:
+    28e0:      	sub	sp, sp, #0x90
+    28e4:      	stp	x20, x19, [sp, #0x70]
+    28e8:      	stp	x29, x30, [sp, #0x80]
+    28ec:      	add	x29, sp, #0x80
+    28f0:      	mov	x19, x20
+    28f4:      	mov	x20, x1
+    28f8:      	adrp	x8, 0x2000 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ+0x450>
+		00000000000028f8:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+    28fc:      	ldr	x8, [x8]
+		00000000000028fc:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+    2900:      	ldr	x8, [x8]
+    2904:      	stur	x8, [x29, #-0x18]
+    2908:      	add	x0, sp, #0x8
+    290c:      	mov	x1, x19
+    2910:      	mov	w2, #0x48               ; =72
+    2914:      	bl	0x2914 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k8UIVStackR0V_Tg5+0x34>
+		0000000000002914:  ARM64_RELOC_BRANCH26	_memcpy
+    2918:      	ldr	w8, [x19, #0x48]
+    291c:      	ldrb	w9, [x19, #0x4c]
+    2920:      	ldr	x10, [x19, #0x58]
+    2924:      	ldr	d0, [x19, #0x50]
+    2928:      	str	d0, [sp, #0x50]
+    292c:      	str	x10, [sp, #0x58]
+    2930:      	str	w8, [sp, #0x60]
+    2934:      	strb	w9, [sp, #0x64]
+    2938:      	and	x0, x20, #0xffffffff000000ff
+    293c:      	add	x20, sp, #0x8
+    2940:      	mov	x1, #0x0                ; =0
+    2944:      	mov	x2, #0x0                ; =0
+    2948:      	mov	x3, #0x0                ; =0
+    294c:      	mov	w4, #0x1                ; =1
+    2950:      	mov	w5, #0x0                ; =0
+    2954:      	bl	0x2954 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k8UIVStackR0V_Tg5+0x74>
+		0000000000002954:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF
+    2958:      	ldur	x8, [x29, #-0x18]
+    295c:      	adrp	x9, 0x2000 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ+0x450>
+		000000000000295c:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+    2960:      	ldr	x9, [x9]
+		0000000000002960:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+    2964:      	ldr	x9, [x9]
+    2968:      	cmp	x9, x8
+    296c:      	b.ne	0x2980 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k8UIVStackR0V_Tg5+0xa0>
+    2970:      	ldp	x29, x30, [sp, #0x80]
+    2974:      	ldp	x20, x19, [sp, #0x70]
+    2978:      	add	sp, sp, #0x90
+    297c:      	b	0x297c <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k8UIVStackR0V_Tg5+0x9c>
+		000000000000297c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore23SemanticRecordSinkStateV05stageD6ResultySbAA0D14ExpansionErrorOSgF
+    2980:      	bl	0x2980 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k8UIVStackR0V_Tg5+0xa0>
+		0000000000002980:  ARM64_RELOC_BRANCH26	___stack_chk_fail

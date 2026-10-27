@@ -1,0 +1,20 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000203e8 <_$s18GiftUISemanticCore18SemanticRecordViewV4bank6number5ownerAcA0dE11BankBuffersVh_s5UInt8VAA0dE13OwnerIdentityVtcfC>:
+   203e8:      	ldr	x9, [x0]
+   203ec:      	ldr	w10, [x9, #0x4]
+   203f0:      	str	x9, [x8]
+   203f4:      	ldur	q0, [x0, #0x8]
+   203f8:      	stur	q0, [x8, #0x8]
+   203fc:      	ldur	q0, [x0, #0x18]
+   20400:      	stur	q0, [x8, #0x18]
+   20404:      	ldur	q0, [x0, #0x28]
+   20408:      	stur	q0, [x8, #0x28]
+   2040c:      	ldur	q0, [x0, #0x38]
+   20410:      	stur	q0, [x8, #0x38]
+   20414:      	strb	w1, [x8, #0x48]
+   20418:      	stp	w10, w2, [x8, #0x4c]
+   2041c:      	ret

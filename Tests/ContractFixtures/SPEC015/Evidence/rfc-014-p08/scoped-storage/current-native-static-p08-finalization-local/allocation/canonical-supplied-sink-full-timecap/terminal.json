@@ -1,0 +1,46 @@
+{
+  "finished_utc": "2026-10-27T12:24:21.817770+00:00",
+  "exit": -15,
+  "launch_error": null,
+  "guard": {
+    "reason": "deadline",
+    "triggered_utc": "2026-10-27T12:24:20.732149+00:00",
+    "pid": 95239,
+    "term_remaining_seconds": 2.9984829425811768,
+    "kill_completed_utc": "2026-10-27T12:24:21.734382+00:00",
+    "completed_inside_deadline": true
+  },
+  "last_output_sample": {
+    "bytes": 801118333,
+    "candidates": [
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-d35k88mw",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-zakhy6yf",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-finalization-canonical-candidate",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-kbqotrkg",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp26qxkfnq",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp5qao517s",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation",
+      "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink1",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink2",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink3",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/validation",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0vsx7jxp",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-records/tmpkina5lvq",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-006-records/tmp6l6qa0mu",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-p8geas9g",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-007-bank-layout",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas",
+      "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-56fe9ffb",
+      "/Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys"
+    ],
+    "sample_utc": "2026-10-27T12:24:17.347765+00:00",
+    "scan_error": null
+  },
+  "output_sample_final": false,
+  "within_deadline": true,
+  "within_output_envelope_at_last_sample": true,
+  "scanner_still_blocked": false
+}

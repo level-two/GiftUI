@@ -1,0 +1,76 @@
+{
+  "fixed_start": "2026-10-26T12:26:06Z",
+  "hard_cutoff": "2026-10-26T14:26:06Z",
+  "acquired_utc": "2026-10-26T12:29:23.259636+00:00",
+  "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+  "starts_extent": {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "offset": 5313112,
+    "bytes": 28160,
+    "sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+    "file_bytes": 601341952,
+    "device": 16777230,
+    "inode": 575286,
+    "mtime_ns": 1786589515000000000,
+    "role": "function-starts",
+    "vmaddr": 8588333656
+  },
+  "starts_actual_sha256": "0b781a1ea08b28cc4374dc348141014ef7068b57f2dd383b9232e7bcc416f7df",
+  "captures": [
+    {
+      "selected": "0x193c52d6c",
+      "range": [
+        "0x193c52d6c",
+        "0x193c52da0"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331132268,
+        "bytes": 52,
+        "vmaddr": "0x193c52d6c",
+        "role": "necessary generic cache entry/pattern",
+        "sha256": "63a4c3695ce2ddd7c0f29d2acb666956f87fa2b0a0f21ae3a5e32a556a4f2ee9"
+      },
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/swift-0x193c52d6c.o",
+      "sha256": "94c828d695ddef351f03992186c11fdbfe809380e28c367b56fbadcb311233dd",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/swift-0x193c52d6c.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 685,
+      "stdout_sha256": "ebce47bc9d1a535813c67cb4fc567bdafb79ccd7018ff93a2fc5aec4be763b03",
+      "stderr": ""
+    },
+    {
+      "selected": "0x193ca6710",
+      "range": [
+        "0x193ca6710",
+        "0x193ca6dc4"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331474704,
+        "bytes": 1716,
+        "vmaddr": "0x193ca6710",
+        "role": "necessary generic cache entry/pattern",
+        "sha256": "395015cb73010481694d1f429d9d2e1a85091486f2a12413fbe8b3280a54cde8"
+      },
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/swift-0x193ca6710.o",
+      "sha256": "aee5252989afb6b41944da8ac462a44753dc608c37f095a9dc1d50b3555e2cf3",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--no-show-raw-insn",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/swift-0x193ca6710.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 16018,
+      "stdout_sha256": "0b331c8cf4dcdc63b90110a3c18d81eec3d6fbdb6f4ad9b42704c47542b4ddbe",
+      "stderr": ""
+    }
+  ],
+  "path_move": "Initial local-root captures moved unchanged into allocation subfolder for disjoint branch ownership."
+}

@@ -1,0 +1,164 @@
+{
+  "status": "STOP_FROZEN_TERMINAL_RESERVE_GUARD",
+  "eligibility_complete": false,
+  "recording_qualified": false,
+  "current_baseline": {
+    "object": {
+      "path": ".build/contracts/p08-counter-dt4nfsxd/P08CounterRuntime.o",
+      "bytes": 2597072,
+      "sha256": "75d3ba94b7be7ac19215e493f35f6a43e116897dfd21bf6892a9ba2a515414c5",
+      "role": "semantic current exact source/module argument/data joins"
+    },
+    "executable": {
+      "path": ".build/contracts/p08-counter-dt4nfsxd/counter-static-resource-v1",
+      "bytes": 6623048,
+      "sha256": "7b08503cd08761ed4a4cbc4f1a4560c3d8d5d722ddc06abbdb126810319e0417",
+      "role": "semantic current import/metadata data and executable applicability; no execution"
+    },
+    "current_result": {
+      "path": ".build/contracts/p08-counter-dt4nfsxd/result.json",
+      "bytes": 8566019,
+      "sha256": "ccc841513e7c8e6a791de6d419a0b145f28a5aebf793400cf6fe7639a8ca7a37",
+      "role": "semantic current source/compiler/command/artifact binding"
+    },
+    "interaction_source": {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "bytes": 16877,
+      "sha256": "26e04b95f119e104c8d218b5d7c36c518ad6929023105df363f9190573b24ba7",
+      "role": "semantic current type/method body with exact producer binding"
+    },
+    "scoped_source": {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 257744,
+      "sha256": "b70c0bbd92ca2d92c74a2d82db3d79f5a3776072f461ad378f541c6d9d6ca411",
+      "role": "semantic current caller/type/input origin with exact producer binding"
+    }
+  },
+  "helper_identity": {
+    "page": "7d256c381c969204026a8bfdacf94af9c25e2bd78a63125f032cfa3e781ea41c",
+    "decoder": {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/decode-swift-group.py",
+      "bytes": 7007,
+      "sha256": "20bd2b3188155ad0532cbfdbf73f763bffa8fd310f7ae728a354dad53579c951",
+      "role": "frozen one-invocation selected-projection decoder"
+    }
+  },
+  "method_control": {
+    "path": "delivery-control.json",
+    "claim": "Complete ordered two-image instruction text equaled the two prior separate outputs; only blank lines and file-format/path banners were removed."
+  },
+  "findings": [
+    {
+      "id": "M47-01",
+      "disposition": "EXACT_PRISTINE_CALLBACK_TARGET_JOIN",
+      "fact": "The selected cache mapping has slide-info version 5, page size 16384 and value_add 0x180000000. Clone/resolver words lie on the actual selected page chain. The authenticated-pointer 34-bit runtime-offset rule resolves them to 0x193cf0f64 and 0x193cf0fb0, rather than merely guessing from low 32 bits. Actual loaded rebasing/authentication remains unobserved.",
+      "citations": [
+        "callback-slide-metadata.json",
+        "callback-v5-join.json",
+        "group-1.stdout lines 1-27"
+      ]
+    },
+    {
+      "id": "M47-02",
+      "disposition": "CLONE_EFFECT_CLOSED_WITH_EXACT_LOCAL_PRECONDITIONS",
+      "fact": "The complete clone 0x193cf0f64-0x193cf0f88 signs the same vtable and copies the captured payload from [x0+8] to [x1+8]; it does not dereference/write through that captured core-state pointer. With the reused wrapper destination on its separate local stack, the preceding clone does not consume or alter the core arena. Thus the two initial 128-byte constructor requests fit the proven 2 KiB initial arena on this direct-core/parser path. This excludes only those initial constructor growth alternatives; subsequent node/argument footprint is not closed.",
+      "citations": [
+        "group-1.stdout lines 6-15",
+        "A46 swift-1.stdout / swift-4.stdout exact hashes retained in prior finding identity"
+      ]
+    },
+    {
+      "id": "M47-03",
+      "disposition": "CURRENT_CONCRETE_TYPE_AND_ACCESSOR_JOIN",
+      "fact": "Current executable chained-pointer format 6 and exact chain membership map slots 0x100260188 and 0x1002601a0 to InteractionState descriptor 0x1001fc164 and InteractionOwnedKeyState descriptor 0x1001fc02c. Both flags are 0xf1 (struct kind 17, generic bit set); exact names are present in the current executable symbol table. Their accessors 0x100077068 and 0x100077074 supply their exact descriptors and branch to stub 0x1001dafa0, whose indirect-symbol record is _swift_getGenericMetadata. The three concrete access types remain those in the exact 22-byte symbolic payload.",
+      "citations": [
+        "current-context-rebase.json",
+        "current-context-slot-join.json",
+        "current-accessors.stdout",
+        "current-generic-metadata-join.json"
+      ]
+    },
+    {
+      "id": "M47-04",
+      "disposition": "EXACT_CURRENT_OWN_CACHE_ORIGIN_AND_COLD_LOOKUP_CONDITION",
+      "fact": "The two descriptor-relative cache fields resolve to their own MI symbols 0x1002a5d70/0x1002a5cf0 in emitted __bss (section type 1); these are not the witness fallback globals. Provider cc6fe8 selects the struct descriptor generic-context field at +28, joins its own cache, and invokes once callback 0x193c52da0 when token +0x48 is not -1. The complete callback clears lookup fields and records signature data. Private lookup 0x193cdb294 reaches miss factory 0x193cdb41c when its actual recent/bucket state is empty. Unexamined signature extractor 0x193cdac40 effects and any intervening alias/state writes remain explicit; pristine BSS is not proof of a past live empty state.",
+      "citations": [
+        "current-instantiation-cache.json",
+        "group-5.stdout lines 253-425,886-895",
+        "group-6.stdout complete lines 1-219"
+      ]
+    },
+    {
+      "id": "M47-05",
+      "disposition": "TYPE_NODE_AND_ACCESSOR_CONDITIONS_IDENTIFIED_NOT_COMPLETE_FEASIBILITY",
+      "fact": "For context-reference tag 2 the callback resolver uses indirect-descriptor handling; struct descriptor bit 4 produces f5/f4 nodes. Exact retained jump rows map f4 to 0x193cf57a4 and f5 to 0x193cf7118. The f5 helper 0x193cfaa24 extracts a nonnull descriptor through the fast f5 branch of 0x193ce8c88; normal continuation calls 0x193cfafe4. That complete body invokes its descriptor accessor at descriptor+12 only after argument-builder 0x193cedc64 returns the normal result, with 0/1/2/3-argument calling forms explicitly preserved. The current builder has descriptor/generic-count and result/error predicates; its full relevant type-argument/witness production and all parser cumulative arena effects remain captured but not completely model-examined. No actual required allocation or complete valid-cold instantiation is inferred from a name or isolated call.",
+      "citations": [
+        "group-1.stdout lines 1733-1765",
+        "group-2.stdout lines 6-137",
+        "group-3.stdout complete",
+        "group-4.stdout lines 1-80,692-851",
+        "selected jump rows in ledger.json"
+      ]
+    },
+    {
+      "id": "M47-06",
+      "disposition": "ALLOCATOR_CONSEQUENCE_STILL_PRECISELY_UNEXAMINED",
+      "fact": "The miss factory 0x193cdb41c-0x193cdb6cc (688 bytes) and signature extractor 0x193cdac40-0x193cdadbc (380 bytes) are within already authorized frozen provider text. Their final capture stopped at the frozen reserve forecast before any projection or decoder launch. Separately, the current instantiator has literal first word 0x52800b03 and a branch to stub 0x1001daec8; the owned-key instantiator branches to that same local instantiator. That stub import was not joined, so it is not relabeled as a proved allocator. The captured _swift_allocateGenericValueMetadata body calls 0x193c64ef0, whose small-arena growth branch calls imported stub 0x1940ef68c; the selected import and actual applicable growth/state consequence remain unproved.",
+      "citations": [
+        "current-instantiation-cache.json",
+        "group-4.stdout lines 1539-1668",
+        "group-5.stdout lines 6-247",
+        "ledger.json failed complete-decode-and-terminal-reserve predicate"
+      ]
+    }
+  ],
+  "consolidated_residuals": [
+    {
+      "class": "selected current metadata required path",
+      "category": "AVAILABLE_UNEXAMINED_LOCAL",
+      "required": [
+        "miss factory 0x193cdb41c allocation/instantiation consequence",
+        "signature extractor 0x193cdac40 and exact cache-state nonmutation premises",
+        "complete actual three-type argument/witness builder and parser footprint effects",
+        "current instantiator branch stub 0x1001daec8 exact import and relevant provider growth stub binding"
+      ],
+      "scope": "All are concrete available inputs/joins, not provider absence and not solely a runtime-capture blocker."
+    },
+    {
+      "class": "loaded/current process applicability",
+      "category": "EXACT_LIVE_STATE_GAP",
+      "required": [
+        "actual Swift loaded UUID/GOT/interposition and selector/hook state",
+        "actual cache warmth/initial state at applicable entry",
+        "inherited environment and stdout R=S/unbuffered persistence/window"
+      ],
+      "scope": "No new runtime action was performed; pristine bytes and functional PASS do not capture these facts. Allowed cold feasibility must be distinguished from observed past state."
+    },
+    {
+      "class": "other current mapped roots/callees",
+      "category": "AVAILABLE_UNEXAMINED_WHERE_NOT_PROVED",
+      "scope": "Host/Scoped/Route allocator/error/metadata/once/witness/indirect frontiers still require their exact current applicability; original 17-site/56-group/1892-site orientation is not closure. Existing reviewed local safety/constructor/memory/fault/linked-writer lemmas are reused only within their accepted premises."
+    },
+    {
+      "class": "Batch B/C",
+      "category": "GATED",
+      "scope": "Resource/cold/current-image/physical-profile obligations remain separate. No zeroheap/P08, allocation-success/bytes, timing improvement or old image resource transfer."
+    }
+  ],
+  "terminal_guard": {
+    "saved_processing": 439500950,
+    "forecast": 107985148,
+    "sum": 547486098,
+    "limit": 536870912,
+    "excess": 10615186,
+    "single_body_same_forecast_reduction_only": 65536,
+    "decoder_launched": false,
+    "projection_generated": false,
+    "exception": {
+      "type": "RuntimeError",
+      "message": "complete decode and terminal reserve",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/decode-swift-group.py\", line 43, in <module>\n    caps=S.setdefault('swift_captures',[]);forecast=F['tool']['bytes']+len(selected)*65536+sum(v['bytes']*2 for v in F['inputs'].values())+16777216;check('complete decode and terminal reserve',S['processing']+forecast<536870912,{'processing':S['processing'],'forecast':forecast});projections=[];pending=[]\n  File \"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/decode-swift-group.py\", line 6, in check\n    if not ok:raise RuntimeError(name)\nRuntimeError: complete decode and terminal reserve\n"
+    }
+  },
+  "no_source_correction_justified_by_this_result": true
+}

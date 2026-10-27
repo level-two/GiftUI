@@ -31,7 +31,7 @@ private func withCounterValues(dynamic: Bool, _ body: (borrowing CanvasStagedVal
     var entries = backing.mutableSpan
     try storage.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits, body)
 }
-private func inspectCounter(_ bank: borrowing SemanticRecordView<CounterPayload>, value: UInt8) -> (SemanticCompleteIdentity, Int) {
+private func inspectCounter(_ bank: borrowing SemanticRecordView, value: UInt8) -> (SemanticCompleteIdentity, Int) {
     var checks = 0, textCount = 0, actionCount = 0, disabledCount = 0, canvasCount = 0
     var modelIdentity: SemanticCompleteIdentity?
     for index: UInt16 in 0..<bank.recordCount {
@@ -65,7 +65,7 @@ private func inspectCounter(_ bank: borrowing SemanticRecordView<CounterPayload>
     counterSemanticExpect(bank.recordCount <= 64 && bank.pathCount <= 192 && bank.payloadBytes <= 4096); checks += 1
     return (modelIdentity!, checks)
 }
-private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPayload>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) throws(SemanticExpansionError) -> Int {
+private func exerciseCounter(_ semantic: borrowing SemanticRecordStore, semanticCodec: borrowing CounterSemanticCodec, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) throws(SemanticExpansionError) -> Int {
     var checks = 0
     var identity: SemanticCompleteIdentity?
     var key: _GiftUIModelKey<CounterModelSchema>?
@@ -76,7 +76,7 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
             try models.withDiscovery { () throws(ObservableStateError) in
                 guard case .success = root.beginCandidate() else { preconditionFailure("counter begin") }
             }
-            let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+            let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: semanticCodec, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
             guard case .success = result else {
             #if !hasFeature(Embedded)
             print("counter expansion failed", result)
@@ -89,7 +89,7 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
             }
             do throws(DrawingError) {
                 try withCounterValues(dynamic: dynamic) { (values) throws(DrawingError) in
-                    try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CounterValueTable())
+                    try CanvasSemanticTransfer.stage(from: semantic, pending: semanticCodec, into: values, table: CounterValueTable())
                     counterSemanticExpect(values.count == 1 && values.releaseCount == 0); checks += 1
                     do throws(SemanticExpansionError) {
                         try semantic.withCandidateView { bank in
@@ -163,17 +163,22 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
 private func counterSemanticBacking(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) -> Int {
     do throws(SemanticExpansionError) {
         var namespace = SemanticRecordOwnerNamespace()
+        var pending = CounterPendingBacking()
         #if !hasFeature(Embedded)
         if dynamic {
-            let storage = DynamicSemanticRecordStorage<CounterPayload>(limits: counterRecordLimits, owner: try namespace.issue())
-            return try storage.withLifetime { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: true) }
+            let storage = DynamicSemanticRecordStorage(limits: counterRecordLimits, owner: try namespace.issue())
+            return try pending.withLifetime { (semanticCodec) throws(SemanticExpansionError) in
+                try storage.withLifetime { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, semanticCodec: semanticCodec, models: models, root: root, dynamic: true) }
+            }
         }
         #endif
         var storage = StaticSemanticRecordStorage(limits: counterRecordLimits, owner: try namespace.issue())
         var backing = CounterProbeSemanticBacking()
         var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
-        return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: false) }
+        return try pending.withLifetime { (semanticCodec) throws(SemanticExpansionError) in
+            try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, semanticCodec: semanticCodec, models: models, root: root, dynamic: false) }
+        }
     } catch {
     #if !hasFeature(Embedded)
     print("counter caught", error)

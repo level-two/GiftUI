@@ -1,0 +1,43 @@
+{
+  "committed_product": {
+    "object": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+    "sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+    "traversal_cells": [
+      {
+        "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesO0A9UIDrawing06CanvasD7PayloadOy0iJ5Table0ij6SchemaN6ValuesOyAF0J6DomainOGGGAA0G4SinkVyAI0ndO5CodecOyAhL0ijqnP0VyAPGGG0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAPGGMD",
+        "address": 840232,
+        "section": 6,
+        "type": 31
+      }
+    ],
+    "workspace_cells": []
+  },
+  "current": {
+    "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o",
+    "sha256": "db222f474c2fc3cb4796a8c1ba91f895d1b8d3ecbe80438be0be264cccfb778c",
+    "traversal_cells": [
+      {
+        "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesOGAF0jG4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAF0J6DomainOGGMD",
+        "address": 854304,
+        "section": 6,
+        "type": 31
+      }
+    ],
+    "workspace_cells": [
+      {
+        "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVy17P08CounterRuntime0G5RolesOGMD",
+        "address": 851304,
+        "section": 6,
+        "type": 31
+      }
+    ]
+  },
+  "current_selected_call": {
+    "raw": "canonical-supplied-sink-reached-10.stdout",
+    "guard": "after appendRecord returns no failure at ac520\u2013ac528",
+    "metadata": "ac588\u2013ac594",
+    "witness": "ac59c\u2013ac5b0",
+    "use": "ac5b4\u2013ac5cc passes traversal metadata x1 and visitor witness x2 to disabled View children witness x27; this is a real charged generic-operation dependency, not a VWT/drop inference."
+  },
+  "baseline_relation": "Committed product uses RecordWorkspace<Roles,CanvasSemanticPayload<Capture>> and RecordSink<CanvasCodec<Roles,Table>> inside the same generic traversal algorithm. Current canonical migration removes Workspace Payload and uses concrete CounterRecordSink. Keys/whole objects differ; no byte-identity, cache-sharing, nonallocation or changed-key eligibility claim."
+}

@@ -1,0 +1,35 @@
+CanvasStoreProbe: /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpep76yfk1/macos-static
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift:181:111: error: invalid conversion of thrown error type 'any Error' to 'SemanticExpansionError'
+179 |     var captures = captureBacking.mutableSpan
+180 |     var ordinals = ordinalBacking.mutableSpan
+181 |     try foreignStorage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { foreign in
+    |                                                                                                               `- error: invalid conversion of thrown error type 'any Error' to 'SemanticExpansionError'
+182 |         try withCanvasSemanticPayloadCodec(metadata: &metadata, captures: &captures,
+183 |             payloadOrdinals: &ordinals, capacity: 48, codec: ProbeSemanticCodec.self) { other in
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift:183:87: error: invalid conversion of thrown error type 'any Error' to 'SemanticExpansionError'
+181 |     try foreignStorage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { foreign in
+182 |         try withCanvasSemanticPayloadCodec(metadata: &metadata, captures: &captures,
+183 |             payloadOrdinals: &ordinals, capacity: 48, codec: ProbeSemanticCodec.self) { other in
+    |                                                                                       `- error: invalid conversion of thrown error type 'any Error' to 'SemanticExpansionError'
+184 |             let result = foreign.expand(CounterCanvasRoot<CanvasDomain>(model: key), roles: Roles.self,
+185 |                 codec: other, limits: expansion, binding: Binding(models: scope.borrowedScope()))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift:76:13: warning: variable 'slots' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+ 74 |         expect(CounterSchemaCanvasTable<TableCounterDomain>.caseID(for: first) == 1)
+ 75 |         expect(CounterSchemaCanvasTable<TableCounterDomain>.caseID(for: second) == 2)
+ 76 |         var slots: InlineArray<1, CounterSlot> = .init(repeating: CounterSlot(value: 7, trace: pointer))
+    |             `- warning: variable 'slots' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+ 77 |         var workspace = CanvasWorkspace(trace: pointer)
+ 78 |         do throws(DrawingError) {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift:110:13: warning: variable 'analyzerSlots' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+108 |         else { preconditionFailure("missing generated Analyzer payload") }
+109 |         expect(AnalyzerSchemaCanvasTable<TableAnalyzerDomain>.caseID(for: analyzerPayload) == 1)
+110 |         var analyzerSlots: InlineArray<1, AnalyzerSlot> = .init(repeating: AnalyzerSlot(count: 2, trace: pointer))
+    |             `- warning: variable 'analyzerSlots' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+111 |         do throws(DrawingError) {
+112 |             try workspace.withCanvasContext(identity: 1, surfaceOrigin: Point(x: 10, y: 20), inheritedClip: CanvasLayout().rootBounds) { (context) throws(DrawingError) in
+
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>
+

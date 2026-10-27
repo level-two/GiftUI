@@ -1,0 +1,28 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000020760 <_$s18GiftUISemanticCore18SemanticRecordViewV7payload2atAA0dE7PayloadOSgs6UInt16V_tF>:
+   20760:      	stp	x20, x19, [sp, #-0x20]!
+   20764:      	stp	x29, x30, [sp, #0x10]
+   20768:      	bl	0x20768 <_$s18GiftUISemanticCore18SemanticRecordViewV7payload2atAA0dE7PayloadOSgs6UInt16V_tF+0x8>
+		0000000000020768:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_562
+   2076c:      	tbz	w0, #0x0, 0x20798 <_$s18GiftUISemanticCore18SemanticRecordViewV7payload2atAA0dE7PayloadOSgs6UInt16V_tF+0x38>
+   20770:      	ldr	x8, [x20]
+   20774:      	ldrh	w8, [x8, #0xe]
+   20778:      	cmp	w8, w19, uxth
+   2077c:      	b.ls	0x20798 <_$s18GiftUISemanticCore18SemanticRecordViewV7payload2atAA0dE7PayloadOSgs6UInt16V_tF+0x38>
+   20780:      	ldr	x8, [x20, #0x28]
+   20784:      	and	x9, x19, #0xffff
+   20788:      	add	x8, x8, x9, lsl #5
+   2078c:      	ldp	x0, x1, [x8]
+   20790:      	ldp	x2, x3, [x8, #0x10]
+   20794:      	b	0x207a4 <_$s18GiftUISemanticCore18SemanticRecordViewV7payload2atAA0dE7PayloadOSgs6UInt16V_tF+0x44>
+   20798:      	bl	0x20798 <_$s18GiftUISemanticCore18SemanticRecordViewV7payload2atAA0dE7PayloadOSgs6UInt16V_tF+0x38>
+		0000000000020798:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_910
+   2079c:      	mov	x3, #0x20000000000      ; =2199023255552
+   207a0:      	mov	x2, #-0x400000000       ; =-17179869184
+   207a4:      	ldp	x29, x30, [sp, #0x10]
+   207a8:      	ldp	x20, x19, [sp], #0x20
+   207ac:      	ret

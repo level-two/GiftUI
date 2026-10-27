@@ -1,0 +1,18 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000020580 <_$s18GiftUISemanticCore18SemanticRecordViewV11isCandidateSbvg>:
+   20580:      	stp	x29, x30, [sp, #-0x10]!
+   20584:      	bl	0x20584 <_$s18GiftUISemanticCore18SemanticRecordViewV11isCandidateSbvg+0x4>
+		0000000000020584:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_470
+   20588:      	tbz	w0, #0x0, 0x205a0 <_$s18GiftUISemanticCore18SemanticRecordViewV11isCandidateSbvg+0x20>
+   2058c:      	ldr	x8, [x20]
+   20590:      	ldrb	w8, [x8]
+   20594:      	cmp	w8, #0x2
+   20598:      	cset	w0, eq
+   2059c:      	b	0x205a4 <_$s18GiftUISemanticCore18SemanticRecordViewV11isCandidateSbvg+0x24>
+   205a0:      	mov	w0, #0x0                ; =0
+   205a4:      	ldp	x29, x30, [sp], #0x10
+   205a8:      	ret

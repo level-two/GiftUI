@@ -1,0 +1,153 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift:40:8: error: type 'CounterSemanticCodec' does not conform to protocol 'SemanticRecordPayloadCodec'
+ 38 | 
+ 39 | // Concrete attempt-owned capture backing; it is not a consumer payload pool.
+ 40 | struct CounterSemanticCodec: CanvasSemanticPayloadCodec, ~Escapable {
+    |        |- error: type 'CounterSemanticCodec' does not conform to protocol 'SemanticRecordPayloadCodec'
+    |        `- note: add stubs for conformance
+ 41 |     typealias Roles = CounterRoles
+ 42 |     typealias Table = CounterValueTable
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.prepare:2:35: note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+1 | protocol SemanticRecordPayloadCodec {
+2 | @inlinable package borrowing func prepare(maximumSemanticNodes: UInt16) -> GiftUISemanticCore.SemanticExpansionError?}
+  |                                   `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+3 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift:74:28: note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+ 72 | extension CanvasSemanticPayloadCodec {
+ 73 |     @inlinable
+ 74 |     package borrowing func prepare(maximumSemanticNodes: UInt16) -> SemanticExpansionError? {
+    |                            `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+ 75 |         guard state.pointee.count == 0 else { return .reentrancyViolation }
+ 76 |         guard capacity >= maximumSemanticNodes else { return .capacityExhausted }
+    :
+ 79 | 
+ 80 |     @inlinable
+ 81 |     package borrowing func ownsPendingCandidate(
+    |                            `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+ 82 |         owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, required: Bool
+ 83 |     ) -> Bool {
+    :
+112 | 
+113 |     @inlinable
+114 |     package borrowing func primitive<Value: _GiftUISemanticPrimitivePayload>(
+    |                            `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+115 |         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
+116 |     ) -> SemanticExpansionError? {
+    :
+146 | 
+147 |     @inlinable
+148 |     package borrowing func modifier<Value: _GiftUISemanticModifierPayload>(
+    |                            `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+149 |         _ value: borrowing Value, chainIndex: UInt16,
+150 |         writer: borrowing SemanticPayloadWriter
+    :
+155 | 
+156 |     @inlinable
+157 |     package borrowing func action<Value: GiftUIAction>(
+    |                            `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+158 |         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
+159 |     ) -> SemanticExpansionError? {
+    :
+162 | 
+163 |     @inlinable
+164 |     package borrowing func discardPending() {
+    |                            `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+165 |         for index in 0 ..< Int(state.pointee.count) {
+166 |             captures[index] = nil
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.discardPending:2:35: note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+1 | protocol SemanticRecordPayloadCodec {
+2 | @inlinable package borrowing func discardPending()}
+  |                                   `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+3 | 
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.ownsPendingCandidate:2:35: note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+1 | protocol SemanticRecordPayloadCodec {
+2 | @inlinable package borrowing func ownsPendingCandidate(owner: GiftUISemanticCore.SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, required: Bool) -> Bool}
+  |                                   `- note: candidate would match if 'CounterSemanticCodec' conformed to 'Escapable'
+3 | 
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.prepare:2:16: note: protocol requires function 'prepare(maximumSemanticNodes:)' with type '(UInt16) -> SemanticExpansionError?'
+1 | protocol SemanticRecordPayloadCodec {
+2 | borrowing func prepare(maximumSemanticNodes: UInt16) -> GiftUISemanticCore.SemanticExpansionError?}
+  |                `- note: protocol requires function 'prepare(maximumSemanticNodes:)' with type '(UInt16) -> SemanticExpansionError?'
+3 | 
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.discardPending:2:16: note: protocol requires function 'discardPending()' with type '() -> ()'
+1 | protocol SemanticRecordPayloadCodec {
+2 | borrowing func discardPending()}
+  |                `- note: protocol requires function 'discardPending()' with type '() -> ()'
+3 | 
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.ownsPendingCandidate:2:16: note: protocol requires function 'ownsPendingCandidate(owner:bank:revision:required:)' with type '(SemanticRecordOwnerIdentity, UInt8, UInt32, Bool) -> Bool'
+1 | protocol SemanticRecordPayloadCodec {
+2 | borrowing func ownsPendingCandidate(owner: GiftUISemanticCore.SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, required: Bool) -> Bool}
+  |                `- note: protocol requires function 'ownsPendingCandidate(owner:bank:revision:required:)' with type '(SemanticRecordOwnerIdentity, UInt8, UInt32, Bool) -> Bool'
+3 | 
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.primitive:2:16: note: protocol requires function 'primitive(_:writer:)' with type '<Value> (borrowing Value, writer: borrowing SemanticPayloadWriter) -> SemanticExpansionError?'
+1 | protocol SemanticRecordPayloadCodec {
+2 | borrowing func primitive<Value>(_ value: borrowing Value, writer: borrowing GiftUISemanticCore.SemanticPayloadWriter) -> GiftUISemanticCore.SemanticExpansionError? where Value : GiftUI._GiftUISemanticPrimitivePayload}
+  |                `- note: protocol requires function 'primitive(_:writer:)' with type '<Value> (borrowing Value, writer: borrowing SemanticPayloadWriter) -> SemanticExpansionError?'
+3 | 
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.modifier:2:16: note: protocol requires function 'modifier(_:chainIndex:writer:)' with type '<Value> (borrowing Value, chainIndex: UInt16, writer: borrowing SemanticPayloadWriter) -> SemanticExpansionError?'
+1 | protocol SemanticRecordPayloadCodec {
+2 | borrowing func modifier<Value>(_ value: borrowing Value, chainIndex: UInt16, writer: borrowing GiftUISemanticCore.SemanticPayloadWriter) -> GiftUISemanticCore.SemanticExpansionError? where Value : GiftUI._GiftUISemanticModifierPayload}
+  |                `- note: protocol requires function 'modifier(_:chainIndex:writer:)' with type '<Value> (borrowing Value, chainIndex: UInt16, writer: borrowing SemanticPayloadWriter) -> SemanticExpansionError?'
+3 | 
+
+GiftUISemanticCore.SemanticRecordPayloadCodec.action:2:16: note: protocol requires function 'action(_:writer:)' with type '<Value> (borrowing Value, writer: borrowing SemanticPayloadWriter) -> SemanticExpansionError?'
+1 | protocol SemanticRecordPayloadCodec {
+2 | borrowing func action<Value>(_ value: borrowing Value, writer: borrowing GiftUISemanticCore.SemanticPayloadWriter) -> GiftUISemanticCore.SemanticExpansionError? where Value : GiftUI.GiftUIAction}
+  |                `- note: protocol requires function 'action(_:writer:)' with type '<Value> (borrowing Value, writer: borrowing SemanticPayloadWriter) -> SemanticExpansionError?'
+3 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift:100:27: error: referencing instance method 'primitive(_:writer:)' on 'CanvasSemanticPayloadCodec' requires that 'CounterSemanticCodec' conform to 'Escapable'
+ 98 |         identity: borrowing Identity, payload: borrowing Value
+ 99 |     ) -> Bool {
+100 |         let error = codec.primitive(payload, writer: state.payloadWriter())
+    |                           `- error: referencing instance method 'primitive(_:writer:)' on 'CanvasSemanticPayloadCodec' requires that 'CounterSemanticCodec' conform to 'Escapable'
+101 |         return state.stageSemanticResult(error)
+102 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift:72:1: note: 'where Self: Escapable' is implicit here
+ 70 | }
+ 71 | 
+ 72 | extension CanvasSemanticPayloadCodec {
+    | `- note: 'where Self: Escapable' is implicit here
+ 73 |     @inlinable
+ 74 |     package borrowing func prepare(maximumSemanticNodes: UInt16) -> SemanticExpansionError? {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift:106:27: error: referencing instance method 'modifier(_:chainIndex:writer:)' on 'CanvasSemanticPayloadCodec' requires that 'CounterSemanticCodec' conform to 'Escapable'
+104 |         identity: borrowing Identity, payload: borrowing Value, chainIndex: UInt16
+105 |     ) -> Bool {
+106 |         let error = codec.modifier(payload, chainIndex: chainIndex, writer: state.payloadWriter())
+    |                           `- error: referencing instance method 'modifier(_:chainIndex:writer:)' on 'CanvasSemanticPayloadCodec' requires that 'CounterSemanticCodec' conform to 'Escapable'
+107 |         return state.stageModifierResult(error)
+108 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift:72:1: note: 'where Self: Escapable' is implicit here
+ 70 | }
+ 71 | 
+ 72 | extension CanvasSemanticPayloadCodec {
+    | `- note: 'where Self: Escapable' is implicit here
+ 73 |     @inlinable
+ 74 |     package borrowing func prepare(maximumSemanticNodes: UInt16) -> SemanticExpansionError? {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift:112:27: error: referencing instance method 'action(_:writer:)' on 'CanvasSemanticPayloadCodec' requires that 'CounterSemanticCodec' conform to 'Escapable'
+110 |         identity: borrowing Identity, action: borrowing Value
+111 |     ) -> Bool {
+112 |         let error = codec.action(action, writer: state.payloadWriter())
+    |                           `- error: referencing instance method 'action(_:writer:)' on 'CanvasSemanticPayloadCodec' requires that 'CounterSemanticCodec' conform to 'Escapable'
+113 |         return state.stageActionResult(error)
+114 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift:72:1: note: 'where Self: Escapable' is implicit here
+ 70 | }
+ 71 | 
+ 72 | extension CanvasSemanticPayloadCodec {
+    | `- note: 'where Self: Escapable' is implicit here
+ 73 |     @inlinable
+ 74 |     package borrowing func prepare(maximumSemanticNodes: UInt16) -> SemanticExpansionError? {

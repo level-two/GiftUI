@@ -2,6 +2,7 @@ import GiftUI
 
 package struct CounterTrace: Canvas {
     package let model: CounterModel
+    @usableFromInline
     package let offset: GeometryScalar
     package init(model: CounterModel, offset: GeometryScalar) { self.model = model; self.offset = offset }
     package func draw(in bounds: Rect, context drawing: inout GraphicsContext) throws(DrawingError) {
@@ -18,6 +19,7 @@ package struct CounterTrace: Canvas {
     }
 }
 package struct CounterCanvasRoot: View {
+    @usableFromInline
     package let model: CounterModel
     package init(model: CounterModel) { self.model = model }
     package var body: some View {

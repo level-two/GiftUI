@@ -55,7 +55,7 @@ struct CounterRenderSink: DrawingOperationSink {
 
 // Actual algorithm join; no expected geometry is supplied to the runtime.
 private func renderCounter<G: CounterGeometry>(geometry: inout G,
-    semantic: borrowing SemanticRecordStore<CounterPayload>,
+    semantic: borrowing SemanticRecordStore,
     models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
     values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>,
     value: UInt8, limits: RuntimeProfileLimits) -> Int {
@@ -103,7 +103,7 @@ private func renderCounter<G: CounterGeometry>(geometry: inout G,
     return checks
 }
 
-func counterRenderActual(semantic: borrowing SemanticRecordStore<CounterPayload>, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, value: UInt8, dynamic: Bool) -> Int {
+func counterRenderActual(semantic: borrowing SemanticRecordStore, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, value: UInt8, dynamic: Bool) -> Int {
     #if !hasFeature(Embedded)
     if dynamic {
         var geometry = DynamicCounterGeometry()

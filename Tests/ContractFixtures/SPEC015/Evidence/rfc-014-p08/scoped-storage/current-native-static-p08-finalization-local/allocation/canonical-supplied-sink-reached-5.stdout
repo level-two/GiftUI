@@ -1,0 +1,26 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000238c <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE14discardPendingyyF17P08CounterRuntime0jdF0V_Tgq5>:
+    238c:      	ldr	x8, [x20]
+    2390:      	ldrh	w9, [x8]
+    2394:      	cbz	x9, 0x23c4 <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE14discardPendingyyF17P08CounterRuntime0jdF0V_Tgq5+0x38>
+    2398:      	ldr	x11, [x20, #0x8]
+    239c:      	ldr	x10, [x20, #0x18]
+    23a0:      	add	x11, x11, #0xa
+    23a4:      	mov	w12, #0x1               ; =1
+    23a8:      	mov	w13, #0xffff            ; =65535
+    23ac:      	stur	xzr, [x11, #-0xa]
+    23b0:      	sturh	wzr, [x11, #-0x2]
+    23b4:      	strb	w12, [x11], #0xc
+    23b8:      	strh	w13, [x10], #0x2
+    23bc:      	subs	x9, x9, #0x1
+    23c0:      	b.ne	0x23ac <_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE14discardPendingyyF17P08CounterRuntime0jdF0V_Tgq5+0x20>
+    23c4:      	strh	wzr, [x8]
+    23c8:      	str	wzr, [x8, #0x4]
+    23cc:      	mov	w9, #0x1                ; =1
+    23d0:      	strh	w9, [x8, #0x8]
+    23d4:      	str	wzr, [x8, #0xc]
+    23d8:      	ret

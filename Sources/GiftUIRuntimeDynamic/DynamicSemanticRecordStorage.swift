@@ -2,11 +2,11 @@ import GiftUISemanticCore
 
 /// Dynamic owns exactly the configured typed extents. Initialization may
 /// allocate; activation and growth never exceed those extents.
-package final class DynamicSemanticRecordStorage<Payload> {
+package final class DynamicSemanticRecordStorage {
     private var metadata: InlineArray<2, SemanticRecordBankMetadata> = .init(repeating: .init())
     private var records: [SemanticRuntimeRecord]
     private var paths: [SemanticPathEntry]
-    private var payloads: [Payload?]
+    private var payloads: [SemanticRecordPayload?]
     private var scalars: [UInt32]
     private let limits: SemanticRecordLimits
     private let owner: SemanticRecordOwnerIdentity
@@ -31,12 +31,12 @@ package final class DynamicSemanticRecordStorage<Payload> {
             records.capacity, paths.capacity, payloads.capacity, scalars.capacity,
             records.capacity * MemoryLayout<SemanticRuntimeRecord>.stride,
             paths.capacity * MemoryLayout<SemanticPathEntry>.stride,
-            payloads.capacity * MemoryLayout<Payload?>.stride + scalars.capacity
+            payloads.capacity * MemoryLayout<SemanticRecordPayload?>.stride + scalars.capacity
                 * MemoryLayout<UInt32>.stride,
             MemoryLayout<InlineArray<2, SemanticRecordBankMetadata>>.size
                 + MemoryLayout<[SemanticRuntimeRecord]>.size
                 + MemoryLayout<[SemanticPathEntry]>.size
-                + MemoryLayout<[Payload?]>.size + MemoryLayout<[UInt32]>.size
+                + MemoryLayout<[SemanticRecordPayload?]>.size + MemoryLayout<[UInt32]>.size
                 + MemoryLayout<SemanticRecordLimits>.size
                 + MemoryLayout<SemanticRecordOwnerIdentity>.size
                 + MemoryLayout<Bool>.size
@@ -48,7 +48,7 @@ package final class DynamicSemanticRecordStorage<Payload> {
 
     package func withLifetime<Result>(
         configuredLimits: SemanticRecordLimits? = nil,
-        _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result
+        _ body: (borrowing SemanticRecordStore) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
         guard !active else { throw .reentrancyViolation }
         active = true

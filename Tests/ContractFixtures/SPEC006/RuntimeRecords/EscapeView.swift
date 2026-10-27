@@ -1,4 +1,4 @@
 import GiftUISemanticCore
-func escape(_ store: borrowing SemanticRecordStore<UInt32>) throws(SemanticExpansionError) -> SemanticRecordView<UInt32> {
+func escape(_ store: borrowing SemanticRecordStore) throws(SemanticExpansionError) -> SemanticRecordView {
     try store.withPublishedView { view in view }
 }

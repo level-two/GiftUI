@@ -24,10 +24,10 @@ let counterSurface = Rect(origin: Point(x: 0, y: 0), size: Size(width: 100, heig
 // by a recorded answer; each method invokes its maintained focused algorithm.
 protocol CounterGeometry: ~Copyable, ~Escapable {
     borrowing func storageMeasurement() -> CounterGeometryMeasurement
-    mutating func layout(_ bank: borrowing SemanticRecordView<CounterPayload>, limits: RuntimeProfileLimits) -> LayoutResult
+    mutating func layout(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> LayoutResult
     mutating func draw(source: inout CounterSource, context: ExecutionContext, limits: RuntimeProfileLimits) -> DrawingPlanResult
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CounterPayload>, limits: RuntimeProfileLimits) -> RenderProductionResult
-    mutating func produce<S: DrawingOperationSink>(_ bank: borrowing SemanticRecordView<CounterPayload>, header: RenderPlanHeader, sink: inout S, limits: RuntimeProfileLimits) -> RenderProductionResult
+    mutating func preflight(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> RenderProductionResult
+    mutating func produce<S: DrawingOperationSink>(_ bank: borrowing SemanticRecordView, header: RenderPlanHeader, sink: inout S, limits: RuntimeProfileLimits) -> RenderProductionResult
     func verifyPlan(canvas: SemanticRecordReference, value: UInt8) -> Int
     func bounds(_ record: SemanticRecordReference) -> Rect?
     func clip(_ record: SemanticRecordReference) -> Rect?
@@ -51,14 +51,14 @@ struct DynamicCounterGeometry: CounterGeometry {
     var resolved = DynamicResolvedLayoutStorage(limits: counterLayoutLimits)
     var plan = DynamicDrawingPlanWorkspace(capacity: counterDrawingLimits)
     var render = DynamicRenderWorkspace(capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity)
-    mutating func layout(_ bank: borrowing SemanticRecordView<CounterPayload>, limits: RuntimeProfileLimits) -> LayoutResult {
+    mutating func layout(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> LayoutResult {
         GiftUILayout.layout(semantic: SemanticRecordLayoutView(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 120)!, limits: limits.layout, workspace: &workspace, sink: &resolved)
     }
     mutating func draw(source: inout CounterSource, context: ExecutionContext, limits: RuntimeProfileLimits) -> DrawingPlanResult {
         precondition(plan.configure(limits: limits.drawing))
         return CanvasPlanProducer.derive(source: &source, layout: resolved.renderView, executionContext: context, limits: limits.drawing, workspace: &plan)
     }
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CounterPayload>, limits: RuntimeProfileLimits) -> RenderProductionResult {
+    mutating func preflight(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> RenderProductionResult {
         let result = withCounterRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: resolved.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &render) }
         if case .success(let header) = result {
             guard header.operationCount >= plan.summary.normalizedStrokeOperationCount,
@@ -66,7 +66,7 @@ struct DynamicCounterGeometry: CounterGeometry {
         }
         return result
     }
-    mutating func produce<S: DrawingOperationSink>(_ bank: borrowing SemanticRecordView<CounterPayload>, header: RenderPlanHeader, sink: inout S, limits: RuntimeProfileLimits) -> RenderProductionResult {
+    mutating func produce<S: DrawingOperationSink>(_ bank: borrowing SemanticRecordView, header: RenderPlanHeader, sink: inout S, limits: RuntimeProfileLimits) -> RenderProductionResult {
         return withCounterRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: resolved.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &render, sink: &sink) }
     }
     func verifyPlan(canvas: SemanticRecordReference, value: UInt8) -> Int { counterVerifyPlan(plan, canvas: canvas, bounds: resolved.renderView.bounds(of: canvas)!, value: value) }
@@ -107,7 +107,7 @@ struct StaticCounterGeometry: CounterGeometry {
         render = QualifiedRender(base: StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity)!)
     }
     var view: QualifiedLayout { QualifiedLayout(base: resolved.renderView, references: references) }
-    mutating func layout(_ bank: borrowing SemanticRecordView<CounterPayload>, limits: RuntimeProfileLimits) -> LayoutResult {
+    mutating func layout(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> LayoutResult {
         references = .init(repeating: nil)
         for index: UInt16 in 0..<bank.recordCount { references[Int(index)] = bank.reference(at: index) }
         return GiftUILayout.layout(semantic: LocalSemantic(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 120)!, limits: limits.layout, workspace: &workspace, sink: &resolved)
@@ -116,7 +116,7 @@ struct StaticCounterGeometry: CounterGeometry {
         precondition(plan.withBase { $0.configure(limits: limits.drawing) })
         return CanvasPlanProducer.derive(source: &source, layout: view, executionContext: context, limits: limits.drawing, workspace: &plan)
     }
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CounterPayload>, limits: RuntimeProfileLimits) -> RenderProductionResult {
+    mutating func preflight(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> RenderProductionResult {
         let layout = view
         let result = withCounterRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &render) }
         if case .success(let header) = result {
@@ -125,7 +125,7 @@ struct StaticCounterGeometry: CounterGeometry {
         }
         return result
     }
-    mutating func produce<S: DrawingOperationSink>(_ bank: borrowing SemanticRecordView<CounterPayload>, header: RenderPlanHeader, sink: inout S, limits: RuntimeProfileLimits) -> RenderProductionResult {
+    mutating func produce<S: DrawingOperationSink>(_ bank: borrowing SemanticRecordView, header: RenderPlanHeader, sink: inout S, limits: RuntimeProfileLimits) -> RenderProductionResult {
         let layout = view
         return withCounterRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &render, sink: &sink) }
     }

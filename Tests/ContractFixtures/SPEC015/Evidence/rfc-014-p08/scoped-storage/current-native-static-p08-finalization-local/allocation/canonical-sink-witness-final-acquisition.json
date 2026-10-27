@@ -1,0 +1,39 @@
+{
+  "acquired_utc": "2026-10-27T07:23:58.322403+00:00",
+  "functions": [
+    {
+      "lo": "0x193ceef64",
+      "hi": "0x193ceefb0",
+      "bytes": 76,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331771748,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-0.bin",
+      "sha256": "6389f7f903abf211f598450ffa0eb09c21d12629a1feb01b665fd531b3403885",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-0.o",
+      "projection_sha256": "eb4ae0fda05fb680bfe32fbf667967b5deabd1c7a99a47b24943a1b99fc66af0"
+    },
+    {
+      "lo": "0x193d0bde8",
+      "hi": "0x193d0c3cc",
+      "bytes": 1508,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331890152,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-1.bin",
+      "sha256": "d41272ce4509ca8ffefbf33878eef0f3c1f6a76d29ec122a242b933453a5b5c3",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-1.o",
+      "projection_sha256": "949ff2c5a734243bf7de54981ff970183fa85d434ae1b515f376f80b94fc7230"
+    }
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-0.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-1.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 15106,
+  "stdout_lines": 408,
+  "stdout_sha256": "23c87432b5f57b77d25cf943ddd1bd492bfbe20eb3de72d52fae44556abda60a",
+  "stderr_bytes": 0
+}

@@ -101,6 +101,7 @@ let counterCanvasLimits = StaticCanvasLimits(maximumStaticCallableCases: 1, maxi
 let counterExecutionLimits = ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2)!
 
 struct CounterSemanticBacking: ~Copyable {
+    var pending = CounterPendingBacking()
     var records: InlineArray<128, SemanticRuntimeRecord> = .init(repeating: .init())
     var paths: InlineArray<384, SemanticPathEntry> = .init(repeating: .init())
     var payloads: InlineArray<256, CounterPayload?> = .init(repeating: nil)
@@ -108,7 +109,7 @@ struct CounterSemanticBacking: ~Copyable {
     static var paddingBytes: Int {
         let fields = MemoryLayout<InlineArray<128, SemanticRuntimeRecord>>.size + MemoryLayout<InlineArray<384, SemanticPathEntry>>.size + MemoryLayout<InlineArray<256, CounterPayload?>>.size + MemoryLayout<InlineArray<128, UInt32>>.size
         precondition(MemoryLayout<Self>.size >= fields)
-        return MemoryLayout<Self>.size - fields
+        return MemoryLayout<Self>.size - fields - MemoryLayout<CounterPendingBacking>.size
     }
 }
 
@@ -304,6 +305,10 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
     record(.elements(SemanticRuntimeRecord.self, count: semantic.records.count - Int(semanticLimits.records), family: 11))
     geometryRegions.visitStorageRegions(record)
     record(.elements(CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, count: canvasCount, family: 14))
+    record(.elements(CounterValueTable.CaptureStorage?.self, count: Int(CounterPendingBacking.capacity), family: 14))
+    record(.elements(UInt16.self, count: Int(CounterPendingBacking.capacity), family: 14))
+    record(.inline(CanvasPendingMetadata.self, family: 14))
+    record(.inline(CounterPendingBacking.self, family: 14, chargedBytes: CounterPendingBacking.paddingBytes, kind: .metadataPadding))
     if profile == .static { record(.inline(StaticCanvasValueStorage.self, family: 14)) }
     #if !hasFeature(Embedded)
     if profile == .dynamic { record(.inline(DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>.self, family: 14)) }
@@ -362,7 +367,8 @@ struct DynamicCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
     static var profile: RuntimeProfileKind { .dynamic }
     let limits: RuntimeProfileLimits
     var root: DynamicObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>
-    var semantic: DynamicSemanticRecordStorage<CounterPayload>
+    var semantic: DynamicSemanticRecordStorage
+    var pending = CounterPendingBacking()
     var canvas = DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>(capacity: 1)
     var geometry: DynamicCounterGeometry? = DynamicCounterGeometry()
     var interaction: CounterDynamicKeys?
@@ -382,8 +388,8 @@ struct DynamicCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
             semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: extent.records), paths: .elements(SemanticPathEntry.self, count: extent.paths), payloads: .elements(CounterPayload?.self, count: extent.payloads), scalars: .elements(UInt32.self, count: extent.scalars), controlBytes: extent.controlBytes),
             geometry: geometry.storageMeasurement(), interaction: interaction, geometryType: DynamicCounterGeometry.self,
             canvasCount: canvas.retainedElementCapacity, canvasCapacity: canvas.capacity,
-            canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size,
-            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size - MemoryLayout<DynamicCounterGeometry>.size - MemoryLayout<CounterDynamicKeys>.size - MemoryLayout<CounterControl>.size, kind: .metadataPadding),
+            canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size + MemoryLayout<CounterPendingBacking>.size,
+            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<CounterPendingBacking>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size - MemoryLayout<DynamicCounterGeometry>.size - MemoryLayout<CounterDynamicKeys>.size - MemoryLayout<CounterControl>.size, kind: .metadataPadding),
             geometryRegions: geometry, report: report)
     }
     mutating func resetAttemptStorage() {
@@ -411,12 +417,15 @@ struct DynamicCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
             try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
                 do throws(SemanticExpansionError) {
                     try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+return try pending.withLifetime { semanticCodec in
                         do throws(DrawingError) {
                             try canvas.withLifetime(table: CounterValueTable(), limits: limits.staticCanvas ?? counterCanvasLimits, configuredCapacity: limits.drawing.maximumCanvasOccurrences) { values in
-                                returned = exerciseCounterCoordinator(models: models, root: root, semantic: semantic, values: values, dynamic: true, geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, audit: audited, control: &control)
+                                returned = exerciseCounterCoordinator(models: models, root: root, semantic: semantic, semanticCodec: copy semanticCodec, values: values, dynamic: true, geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, audit: audited, control: &control)
                             }
                         } catch { preconditionFailure("factory Canvas") }
-                    }
+
+}
+}
                 } catch { preconditionFailure("factory semantic") }
             }
         } catch { preconditionFailure("factory model") }
@@ -457,7 +466,7 @@ struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
             semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: semanticBacking.records.count), paths: .elements(SemanticPathEntry.self, count: semanticBacking.paths.count), payloads: .elements(CounterPayload?.self, count: semanticBacking.payloads.count), scalars: .elements(UInt32.self, count: semanticBacking.scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
             geometry: workspace.measurement, interaction: interaction, geometryType: StaticCounterGeometry.self,
             canvasCount: canvasBacking.count, canvasCapacity: UInt16(canvasBacking.count),
-            canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size,
+            canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size + MemoryLayout<CounterPendingBacking>.size,
             factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<CounterStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterStaticWorkspaceBacking>.size - MemoryLayout<CounterStaticKeys>.size - MemoryLayout<CounterControl>.size, kind: .metadataPadding),
             geometryRegions: workspace, report: report)
     }
@@ -493,12 +502,13 @@ struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
                     var payloads = semanticBacking.payloads.mutableSpan
                     var scalars = semanticBacking.scalars.mutableSpan
                     try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits), records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
+return try semanticBacking.pending.withLifetime { semanticCodec in
                         do throws(DrawingError) {
                             var entries = canvasBacking.mutableSpan
                             try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: limits.drawing.maximumCanvasOccurrences, limits: limits.staticCanvas ?? counterCanvasLimits) { values in
                                 checks = workspace.withGeometry { geometry in
                                     let measured = geometry.storageMeasurement()
-                                    var returned = exerciseCounterCoordinator(models: models, root: root, semantic: semantic, values: values, dynamic: false, geometry: geometry, interaction: movedInteraction.take()!, audit: audited, control: &control)
+                                    var returned = exerciseCounterCoordinator(models: models, root: root, semantic: semantic, semanticCodec: copy semanticCodec, values: values, dynamic: false, geometry: geometry, interaction: movedInteraction.take()!, audit: audited, control: &control)
                                     precondition(returned.geometry.storageMeasurement() == measured)
                                     // The returned raw descriptors are consumed here, while all
                                     // four physical arrays are still borrowed and immovable.
@@ -508,7 +518,9 @@ struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
                                 }
                             }
                         } catch { preconditionFailure("factory Canvas") }
-                    }
+
+}
+}
                 } catch { preconditionFailure("factory semantic") }
             }
         } catch { preconditionFailure("factory model") }

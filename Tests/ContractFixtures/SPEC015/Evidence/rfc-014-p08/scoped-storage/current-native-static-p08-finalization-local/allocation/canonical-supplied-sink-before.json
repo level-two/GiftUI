@@ -1,0 +1,43 @@
+{
+  "saved_utc": "2026-10-27T08:04:15.776438+00:00",
+  "files": {
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "sha256": "b88705169f8ca4f32f766eaf6c74099be5f17d2cd66b90d91cb9d0d5ec2ffa53"
+    },
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "sha256": "e56c415c0c17c41bf3b49efe29f1a52f7a22ad078d6a6de796e29270c5dbc691"
+    },
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "sha256": "e407419691ce56aaf826bbc7cafd3664f4a7d11d5f44cb2185adbde718bd46b2"
+    },
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "sha256": "2fd5da521f895a8a9d9125bf1154778bc4bc1e84a04e20692a439183a3c65fb2"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "sha256": "05b04cc903ddc95d697e6abd9b24dcc21acb8ebe4d5031c0d5d4091acd824161"
+    },
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+      "sha256": "2425cad550cacfb8cc87ecc1586858187f6c100a5577225e9b54ec275dab8b03"
+    },
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift",
+      "sha256": "9ebb24d39e723394ae4540cf72f9d873954f2d4be411000e17f17cc6c599e9eb"
+    },
+    "Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift",
+      "sha256": "0635eee88d820f313983df20d2147fd219e34692af648f7ca58574f82949f67a"
+    },
+    "Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift": {
+      "snapshot": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift",
+      "sha256": "96095d4bfd6abe14597e0766f0ab9b896f258109c5bd49c260b287261a263e22"
+    }
+  },
+  "previous_60_source_freeze": "canonical-source-freeze.json",
+  "note": "Preserves current failed generic RecordSink strategy before root-authorized supplied concrete Sink mechanism; no prior evidence superseded."
+}

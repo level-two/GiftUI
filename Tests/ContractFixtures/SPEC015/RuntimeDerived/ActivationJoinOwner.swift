@@ -32,25 +32,26 @@ typealias P08ActivationCoordinator = StaticRuntimeExecutionCoordinator<
 struct P08ActivationSuppliedStorage<Geometry: CycleGeometry>: ~Copyable, ~Escapable {
     private let models: ObservableModelScope<CycleOwnedModel, CycleModelSchema>
     private let root: ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>
-    private let semantic: SemanticRecordStore<CyclePayload>
+    private let semantic: SemanticRecordStore
+    private let semanticCodec: CycleSemanticCodec
     private let values: CanvasStagedValues<SemanticRecordReference, CycleValueTable>
     private let control: P08ActivationControl
     let audit: RuntimeStorageAudit
     var geometry: Geometry
     var interaction: CycleStaticKeys
 
-    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
+    @_lifetime(copy models, copy root, copy semantic, copy semanticCodec, copy values, borrow control)
     init(
         models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>,
         root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>,
-        semantic: consuming SemanticRecordStore<CyclePayload>,
+        semantic: consuming SemanticRecordStore, semanticCodec: consuming CycleSemanticCodec,
         values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>,
         control: borrowing UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit,
         geometry: consuming Geometry, interaction: consuming CycleStaticKeys
     ) {
         self.models = consume models
         self.root = consume root
-        self.semantic = consume semantic
+        self.semantic = consume semantic; self.semanticCodec = consume semanticCodec
         self.values = consume values
         self.control = P08ActivationControl(pointer: control)
         self.audit = audit
@@ -66,9 +67,11 @@ struct P08ActivationSuppliedStorage<Geometry: CycleGeometry>: ~Copyable, ~Escapa
         CycleOwnedModel, SemanticCompleteIdentity
     > { root.borrowedRoot() }
     @_lifetime(copy self)
-    borrowing func borrowedSemantic() -> SemanticRecordStore<CyclePayload> {
+    borrowing func borrowedSemantic() -> SemanticRecordStore {
         semantic.borrowedStore()
     }
+    @_lifetime(copy self)
+    borrowing func borrowedPending() -> CycleSemanticCodec { semanticCodec }
     @_lifetime(copy self)
     borrowing func borrowedValues() -> CanvasStagedValues<SemanticRecordReference, CycleValueTable>
     { values.borrowedValues() }
@@ -80,11 +83,11 @@ struct P08ActivationSuppliedStorage<Geometry: CycleGeometry>: ~Copyable, ~Escapa
 typealias P08ActivationSupplied = P08ActivationSuppliedStorage<StaticCycleGeometry>
 
 extension CyclePipelineOwner {
-    @_lifetime(copy models, copy root, copy semantic, copy values, copy scopedControl)
+    @_lifetime(copy models, copy root, copy semantic, copy semanticCodec, copy values, copy scopedControl)
     init(
         models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>,
         root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>,
-        semantic: consuming SemanticRecordStore<CyclePayload>,
+        semantic: consuming SemanticRecordStore, semanticCodec: consuming CycleSemanticCodec,
         values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>,
         geometry: consuming Geometry,
         interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>,
@@ -92,7 +95,7 @@ extension CyclePipelineOwner {
     ) {
         self.models = consume models
         self.root = consume root
-        self.semantic = consume semantic
+        self.semantic = consume semantic; self.semanticCodec = consume semanticCodec
         self.values = consume values
         self.limits = limits
         self.geometry = consume geometry
@@ -137,7 +140,7 @@ enum P08ActivationState: ~Copyable, ~Escapable {
             p08CheckActivationSpan(activationSpan)
             let pipeline = P08ActivationPipeline(
                 models: supplied.borrowedModels(), root: supplied.borrowedRoot(),
-                semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(),
+                semantic: supplied.borrowedSemantic(), semanticCodec: supplied.borrowedPending(), values: supplied.borrowedValues(),
                 geometry: supplied.geometry, interaction: supplied.interaction,
                 scopedControl: supplied.borrowedControl(), limits: supplied.audit.limits)
             let binding = CycleExecutionBinding(

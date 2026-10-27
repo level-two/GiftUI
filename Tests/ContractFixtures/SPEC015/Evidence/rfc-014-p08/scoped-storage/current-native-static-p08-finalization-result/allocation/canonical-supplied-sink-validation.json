@@ -1,0 +1,99 @@
+{
+  "status": "SIX_CURRENT_MAINTAINED_GATES_PASS; FULL_TIME_CAP_INCOMPLETE",
+  "sources": {
+    "freeze": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-source-freeze.json",
+    "sha256": "21386a8706f0f9f767d21fe02e038f5b62d29393c33b405d2b9622b8579de254",
+    "count": 62,
+    "all_current": true
+  },
+  "completed": [
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmp0vsx7jxp/macos-static/result.json",
+      "sha256": "89bcedd1c98ebc8d934cf3f3f71ede3b0bb0f6f4f8accba57309d7f59c14b04d",
+      "input_count": 169,
+      "current_input_mismatches": [],
+      "artifact_count": 143,
+      "artifact_hash_mismatches": [],
+      "maintained_process_exit": 0,
+      "passed_field": null,
+      "checks_count": 33
+    },
+    {
+      "receipt": ".build/contracts/p08-scoped-host-p8geas9g/result.json",
+      "sha256": "6f3891e2c9efc41663865a43a099b43d1ad6949deb8941a4f36766fdce50084a",
+      "input_count": 87,
+      "current_input_mismatches": [],
+      "artifact_count": 93,
+      "artifact_hash_mismatches": [],
+      "maintained_process_exit": 0,
+      "passed_field": null,
+      "checks_count": 37
+    },
+    {
+      "receipt": ".build/contracts/spec-006-records/tmp6l6qa0mu/macos-static/result.json",
+      "sha256": "37bca2c6950178a72daecee427f3d68fdc6776f43d92883166b4cd88c7e075ed",
+      "input_count": 34,
+      "current_input_mismatches": [],
+      "artifact_count": 45,
+      "artifact_hash_mismatches": [],
+      "maintained_process_exit": 0,
+      "passed_field": null,
+      "checks_count": 10
+    },
+    {
+      "receipt": ".build/contracts/spec-007-bank-layout/tmp5e6708kq/macos-static/result.json",
+      "sha256": "33f65889be1a3ccdcacccc1eb641ae2249a8ebad20629b4ec5e0c93eae0d584b",
+      "input_count": 61,
+      "current_input_mismatches": [],
+      "artifact_count": 67,
+      "artifact_hash_mismatches": [],
+      "maintained_process_exit": 0,
+      "passed_field": null,
+      "checks_count": 14
+    },
+    {
+      "receipt": ".build/contracts/spec-011-owned-keys/tmpomd3pfpe/macos-static/result.json",
+      "sha256": "685aec42eb54c8dff79002237c23eba083c56c9a7da8d466eb87bbaa5de94c49",
+      "input_count": 131,
+      "current_input_mismatches": [],
+      "artifact_count": 130,
+      "artifact_hash_mismatches": [],
+      "maintained_process_exit": 0,
+      "passed_field": null,
+      "checks_count": 43
+    },
+    {
+      "receipt": ".build/contracts/spec-012-protocol-canvas/tmp3zl3mlhc/macos-static/result.json",
+      "sha256": "0cdf4344c3da039f11a8df79ad1e3e74340c4c950edaae7687b3d0a3c77bc6d7",
+      "input_count": 94,
+      "current_input_mismatches": [],
+      "artifact_count": 185,
+      "artifact_hash_mismatches": [],
+      "maintained_process_exit": 0,
+      "passed_field": null,
+      "checks_count": 43
+    }
+  ],
+  "failed_attempts_preserved": [
+    "validation/components:2standardEscapable-origin diagnostics; exact4annotations corrected",
+    "validation/components-standard-lifetime:5generatedvisibility diagnostics; exact3fieldattrs corrected",
+    "validation/canvas-visibility:2typedthrows diagnostics; exact2callbacksignatures corrected"
+  ],
+  "full": {
+    "capture": ".build/contracts/p08-native-static-p08-finalization/validation/full1",
+    "session": 11304,
+    "pid": 95239,
+    "start": "2026-10-27T10:03:35.822574Z",
+    "effective_deadline": "2026-10-27T12:24:23.730598Z",
+    "absolute_cap": "2026-10-27T12:24:28.720613Z",
+    "status": "STOP deadline exit-15; no complete receipt/execution logs, no aggregate pass",
+    "terminal": "canonical-supplied-sink-terminal.json",
+    "issued_commands": 422,
+    "finished": "2026-10-27T12:24:21.817770Z",
+    "after_exit12hashes_match": true
+  },
+  "scope": "Current macOS Static Native validation only; global P08/changed Workspace+Traversal carrier eligibility/unit/profile/live/resource gaps remain OPEN. UnitFAILED/InteractionUNEXECUTED.",
+  "source_support_deltas": "Exactly4standard-codec lifetime annotations,3authoring fixture usable fields,2foreign-control typedthrows callbacks; root doc-only mechanism amendment. All62 current source hashes frozen; Counter library/code unaffected by last component corrections.",
+  "final_independent_review": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-final-review.md",
+  "final_doc_only_link_refresh": "One root-owned review link, excluded from compiler/test receipt inputs; no producer/rerun."
+}

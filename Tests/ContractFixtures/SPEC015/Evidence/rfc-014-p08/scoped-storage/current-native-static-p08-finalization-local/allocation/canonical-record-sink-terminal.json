@@ -1,0 +1,460 @@
+{
+  "group": "current RecordSink cache payload descriptor pattern and own zero-fill cache plus exact helper ABI joins",
+  "captures": [
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_769",
+      "start": "0xc6054",
+      "end": "0xc6060",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc6054",
+        "--stop-address=0xc6060",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 277,
+      "stdout_lines": 9,
+      "stdout_sha256": "2b98d92ab0d24ca348c068906998df5375ad7234f7bb0dbdf82ec19a131ca668",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-terminal-0.stdout"
+    },
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_620",
+      "start": "0xc52d8",
+      "end": "0xc52e8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc52d8",
+        "--stop-address=0xc52e8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 313,
+      "stdout_lines": 10,
+      "stdout_sha256": "caabf97aca0ad56f34fa38f6b598ff446b0c2973b390dbfc69b1399f1fb4e578",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-terminal-1.stdout"
+    },
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_902",
+      "start": "0xc6b28",
+      "end": "0xc6b30",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc6b28",
+        "--stop-address=0xc6b30",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 256,
+      "stdout_lines": 8,
+      "stdout_sha256": "965b4dfaf1fc1eb702dcf3af1614ab1ceebb9eb4d18d9d0754914dae30f99f62",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-terminal-2.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "___swift_instantiateGenericMetadata",
+      "start": "0x29048",
+      "end": "0x29074",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x29048",
+        "--stop-address=0x29074",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 688,
+      "stdout_lines": 18,
+      "stdout_sha256": "d13d7ca20e6bf33390b1a431cd9f9005b4f5dcbc983e157d8f2fb7f63ab6e0a1",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-terminal-3.stdout"
+    }
+  ],
+  "data": [
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVy0A9UIDrawing26CanvasSemanticPayloadCodecVy17P08CounterRuntime0L5RolesO0kL5Table0kl6SchemagO0VyAG0L6DomainOGGGMD",
+      "section": {
+        "name": "__data",
+        "addr": 853864,
+        "bytes": 3480,
+        "file": 856424,
+        "reloff": 1321272,
+        "nreloc": 466
+      },
+      "start": "0xd08e0",
+      "end": "0xd08e8",
+      "bss_zero_fill": false,
+      "bytes": 8,
+      "raw_hex": "00000000e1ffffff",
+      "raw_sha256": "97ae02377b0e422aaaf7337d292a3e85f3975a9df2019b27f7b791169a485ccf",
+      "relocations": [
+        {
+          "address": "0xd08e0",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVy0A9UIDrawing26CanvasSemanticPayloadCodecVy17P08CounterRuntime0L5RolesO0kL5Table0kl6SchemagO0VyAG0L6DomainOGGGMD"
+        },
+        {
+          "address": "0xd08e0",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_symbolic _____y_____y__________y_____GGG 18GiftUISemanticCore10RecordSinkVAARi0_zrlE 0A9UIDrawing26CanvasSemanticPayloadCodecV 17P08CounterRuntime0L5RolesO 0kL5Table0kl6SchemagO0V AG0L6DomainO"
+        }
+      ]
+    },
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "_symbolic _____y_____y__________y_____GGG 18GiftUISemanticCore10RecordSinkVAARi0_zrlE 0A9UIDrawing26CanvasSemanticPayloadCodecV 17P08CounterRuntime0L5RolesO 0kL5Table0kl6SchemagO0V AG0L6DomainO",
+      "section": {
+        "name": "__swift5_typeref",
+        "addr": 857344,
+        "bytes": 6529,
+        "file": 859904,
+        "reloff": 1325000,
+        "nreloc": 1036
+      },
+      "start": "0xd17bc",
+      "end": "0xd17db",
+      "bss_zero_fill": false,
+      "bytes": 31,
+      "raw_hex": "0243fdffbf79023dfdffbf7901f3ffffff0232fdffbf7901e8ffffff474747",
+      "raw_sha256": "f820fdcc47f8586136f59b732bc752a585a9d8938008665f2aa950f3842a5c3b",
+      "relocations": [
+        {
+          "address": "0xd17bd",
+          "type": 7,
+          "pcrel": 1,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0xd17c3",
+          "type": 7,
+          "pcrel": 1,
+          "length": 2,
+          "external": 1,
+          "target": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "address": "0xd17c9",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_symbolic _____y_____y__________y_____GGG 18GiftUISemanticCore10RecordSinkVAARi0_zrlE 0A9UIDrawing26CanvasSemanticPayloadCodecV 17P08CounterRuntime0L5RolesO 0kL5Table0kl6SchemagO0V AG0L6DomainO"
+        },
+        {
+          "address": "0xd17c9",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s17P08CounterRuntime0B5RolesOMn"
+        },
+        {
+          "address": "0xd17ce",
+          "type": 7,
+          "pcrel": 1,
+          "length": 2,
+          "external": 1,
+          "target": "_$s15P08CounterTable0ab12SchemaCanvasC0VMn"
+        },
+        {
+          "address": "0xd17d4",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_symbolic _____y_____y__________y_____GGG 18GiftUISemanticCore10RecordSinkVAARi0_zrlE 0A9UIDrawing26CanvasSemanticPayloadCodecV 17P08CounterRuntime0L5RolesO 0kL5Table0kl6SchemagO0V AG0L6DomainO"
+        },
+        {
+          "address": "0xd17d4",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s17P08CounterRuntime0B6DomainOMn"
+        }
+      ]
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVMn",
+      "section": {
+        "name": "__constg_swiftt",
+        "addr": 195896,
+        "bytes": 2522,
+        "file": 198024,
+        "reloff": 312016,
+        "nreloc": 482
+      },
+      "start": "0x304a8",
+      "end": "0x304f4",
+      "bss_zero_fill": false,
+      "bytes": 76,
+      "raw_hex": "f1000000fcfffffff8fffffff4fffffff0ffffff0a00000004000000e4ffffffe0ffffff01000200020000008000000080000000ccffffffc8ffffff05000000c0ffffff0000020002000000",
+      "raw_sha256": "2f4d363e581c93e6f0cb95ee2406e3b978c15e943b4443cd6e9ceb92d1f95757",
+      "relocations": [
+        {
+          "address": "0x304ac",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304ac",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCoreMXM"
+        },
+        {
+          "address": "0x304b0",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304b0",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "l_.str.10.RecordSink"
+        },
+        {
+          "address": "0x304b4",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304b4",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMa"
+        },
+        {
+          "address": "0x304b8",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304b8",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMF"
+        },
+        {
+          "address": "0x304c4",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304c4",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMI"
+        },
+        {
+          "address": "0x304c8",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304c8",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMP"
+        },
+        {
+          "address": "0x304dc",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304dc",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_symbolic x"
+        },
+        {
+          "address": "0x304e0",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304e0",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore26SemanticRecordPayloadCodecMp"
+        },
+        {
+          "address": "0x304e8",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMn"
+        },
+        {
+          "address": "0x304e8",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_symbolic x"
+        }
+      ]
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVMP",
+      "section": {
+        "name": "__const",
+        "addr": 181984,
+        "bytes": 4012,
+        "file": 184112,
+        "reloff": 301288,
+        "nreloc": 560
+      },
+      "start": "0x2d530",
+      "end": "0x2d540",
+      "bss_zero_fill": false,
+      "bytes": 16,
+      "raw_hex": "00000000fcffffff00000040f4ffffff",
+      "raw_sha256": "13903434301588c761695223ff6c2632e6b9c3eecc6c96038d13610ec1d84ce8",
+      "relocations": [
+        {
+          "address": "0x2d530",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMP"
+        },
+        {
+          "address": "0x2d530",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMi"
+        },
+        {
+          "address": "0x2d534",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMP"
+        },
+        {
+          "address": "0x2d534",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMr"
+        },
+        {
+          "address": "0x2d53c",
+          "type": 1,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVMP"
+        },
+        {
+          "address": "0x2d53c",
+          "type": 0,
+          "pcrel": 0,
+          "length": 2,
+          "external": 1,
+          "target": "_$s18GiftUISemanticCore10RecordSinkVWV"
+        }
+      ]
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVMI",
+      "section": {
+        "name": "__bss",
+        "addr": 236336,
+        "bytes": 6016,
+        "file": 0,
+        "reloff": 0,
+        "nreloc": 0
+      },
+      "start": "0x3b1b0",
+      "end": "0x3b230",
+      "bss_zero_fill": true,
+      "bytes": 128,
+      "raw_hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "raw_sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca",
+      "relocations": []
+    }
+  ],
+  "raw_capture_bytes": 1534,
+  "raw_capture_lines": 45
+}

@@ -1,0 +1,11 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c7b1c <_OUTLINED_FUNCTION_1107>:
+   c7b1c:      	adrp	x1, 0xc7000 <_OUTLINED_FUNCTION_962+0x8>
+		00000000000c7b1c:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore10RecordSinkVy0A9UIDrawing26CanvasSemanticPayloadCodecVy17P08CounterRuntime0L5RolesO0kL5Table0kl6SchemagO0VyAG0L6DomainOGGGMD
+   c7b20:      	add	x1, x1, #0x0
+		00000000000c7b20:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore10RecordSinkVy0A9UIDrawing26CanvasSemanticPayloadCodecVy17P08CounterRuntime0L5RolesO0kL5Table0kl6SchemagO0VyAG0L6DomainOGGGMD
+   c7b24:      	ret

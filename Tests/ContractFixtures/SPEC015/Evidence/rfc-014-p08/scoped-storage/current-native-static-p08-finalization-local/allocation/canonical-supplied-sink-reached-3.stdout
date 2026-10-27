@@ -1,0 +1,152 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000003454 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n>:
+    3454:      	sub	sp, sp, #0x100
+    3458:      	str	x22, [sp, #0xd0]
+    345c:      	stp	x20, x19, [sp, #0xe0]
+    3460:      	stp	x29, x30, [sp, #0xf0]
+    3464:      	add	x29, sp, #0xf0
+    3468:      	ldrh	w8, [x0]
+    346c:      	cbz	w8, 0x3494 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x40>
+    3470:      	mov	w22, #0x2               ; =2
+    3474:      	strb	w22, [sp, #0x8]
+    3478:      	bl	0x3478 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x24>
+		0000000000003478:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+    347c:      	mov	x2, x0
+    3480:      	adrp	x1, 0x3000 <_$ss11InlineArrayV9repeatingAByxq_Gq__tcfC$13__Su_S3itSgTt1g5+0x80>
+		0000000000003480:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    3484:      	ldr	x1, [x1]
+		0000000000003484:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    3488:      	add	x0, sp, #0x8
+    348c:      	bl	0x348c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x38>
+		000000000000348c:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    3490:      	b	0x34d0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x7c>
+    3494:      	ldr	x9, [x1, #0x8]
+    3498:      	cmp	x9, w3, uxth
+    349c:      	b.lo	0x34b0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x5c>
+    34a0:      	and	x13, x3, #0xffff
+    34a4:      	ldr	x8, [x2, #0x8]
+    34a8:      	cmp	x8, x13
+    34ac:      	b.hs	0x34f4 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0xa0>
+    34b0:      	strb	wzr, [sp, #0x8]
+    34b4:      	bl	0x34b4 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x60>
+		00000000000034b4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+    34b8:      	mov	x2, x0
+    34bc:      	adrp	x1, 0x3000 <_$ss11InlineArrayV9repeatingAByxq_Gq__tcfC$13__Su_S3itSgTt1g5+0x80>
+		00000000000034bc:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    34c0:      	ldr	x1, [x1]
+		00000000000034c0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    34c4:      	add	x0, sp, #0x8
+    34c8:      	bl	0x34c8 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x74>
+		00000000000034c8:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    34cc:      	mov	w22, #0x0               ; =0
+    34d0:      	mov	w19, #0x1               ; =1
+    34d4:      	mov	w22, w22
+    34d8:      	mov	x0, x22
+    34dc:      	mov	x21, x19
+    34e0:      	ldp	x29, x30, [sp, #0xf0]
+    34e4:      	ldp	x20, x19, [sp, #0xe0]
+    34e8:      	ldr	x22, [sp, #0xd0]
+    34ec:      	add	sp, sp, #0x100
+    34f0:      	ret
+    34f4:      	ldrb	w10, [x0, #0x8]
+    34f8:      	cmp	w10, #0x1
+    34fc:      	b.ne	0x3534 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0xe0>
+    3500:      	add	x10, sp, #0x70
+    3504:      	ldr	x12, [x1]
+    3508:      	ldr	x11, [x2]
+    350c:      	add	x14, x12, #0xa
+    3510:      	mov	x15, x11
+    3514:      	cbz	x13, 0x353c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0xe8>
+    3518:      	ldrb	w16, [x14], #0xc
+    351c:      	cmp	w16, #0x1
+    3520:      	b.ne	0x3534 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0xe0>
+    3524:      	ldrsh	w16, [x15], #0x2
+    3528:      	sub	x13, x13, #0x1
+    352c:      	cmn	w16, #0x1
+    3530:      	b.eq	0x3514 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0xc0>
+    3534:      	mov	w22, #0x3               ; =3
+    3538:      	b	0x3474 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x20>
+    353c:      	cbz	x12, 0x3588 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x134>
+    3540:      	add	x9, x9, x9, lsl #1
+    3544:      	lsl	x9, x9, #2
+    3548:      	mov	w10, #0xc               ; =12
+    354c:      	udiv	x9, x9, x10
+    3550:      	cbz	x11, 0x35c0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x16c>
+    3554:      	stp	x0, x12, [sp, #0x10]
+    3558:      	stp	x9, x11, [sp, #0x20]
+    355c:      	str	x8, [sp, #0x30]
+    3560:      	strh	w3, [sp, #0x38]
+    3564:      	add	x8, sp, #0x8
+    3568:      	add	x0, sp, #0x10
+    356c:      	add	x1, sp, #0x7
+    3570:      	mov	x20, x6
+    3574:      	blr	x5
+    3578:      	cbz	x21, 0x35f4 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x1a0>
+    357c:      	ldrb	w22, [sp, #0x7]
+    3580:      	add	x20, sp, #0x10
+    3584:      	b	0x3638 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x1e4>
+    3588:      	cbz	x11, 0x3604 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x1b0>
+    358c:      	stp	xzr, xzr, [sp, #0x78]
+    3590:      	str	x0, [sp, #0x70]
+    3594:      	stp	x11, x8, [x10, #0x18]
+    3598:      	strh	w3, [x10, #0x28]
+    359c:      	add	x8, sp, #0x8
+    35a0:      	add	x0, sp, #0x70
+    35a4:      	add	x1, sp, #0x7
+    35a8:      	mov	x20, x6
+    35ac:      	blr	x5
+    35b0:      	cbz	x21, 0x3640 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x1ec>
+    35b4:      	ldrb	w22, [sp, #0x7]
+    35b8:      	add	x20, sp, #0x70
+    35bc:      	b	0x3638 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x1e4>
+    35c0:      	stp	x0, x12, [sp, #0x40]
+    35c4:      	stp	xzr, xzr, [sp, #0x58]
+    35c8:      	str	x9, [sp, #0x50]
+    35cc:      	strh	w3, [sp, #0x68]
+    35d0:      	add	x8, sp, #0x8
+    35d4:      	add	x0, sp, #0x40
+    35d8:      	add	x1, sp, #0x7
+    35dc:      	mov	x20, x6
+    35e0:      	blr	x5
+    35e4:      	cbz	x21, 0x3650 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x1fc>
+    35e8:      	ldrb	w22, [sp, #0x7]
+    35ec:      	add	x20, sp, #0x40
+    35f0:      	b	0x3638 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x1e4>
+    35f4:      	mov	x19, x21
+    35f8:      	ldr	x22, [sp, #0x8]
+    35fc:      	add	x20, sp, #0x10
+    3600:      	b	0x366c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x218>
+    3604:      	str	x0, [x10, #0x30]
+    3608:      	movi.2d	v0, #0000000000000000
+    360c:      	stur	q0, [x10, #0x38]
+    3610:      	stur	q0, [x10, #0x48]
+    3614:      	strh	w3, [x10, #0x58]
+    3618:      	add	x8, sp, #0x8
+    361c:      	sub	x0, x29, #0x50
+    3620:      	add	x1, sp, #0x7
+    3624:      	mov	x20, x6
+    3628:      	blr	x5
+    362c:      	cbz	x21, 0x3660 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x20c>
+    3630:      	ldrb	w22, [sp, #0x7]
+    3634:      	sub	x20, x29, #0x50
+    3638:      	bl	0x3638 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x1e4>
+		0000000000003638:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE14discardPendingyyF17P08CounterRuntime0jdF0V_Tgq5
+    363c:      	b	0x34d0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x7c>
+    3640:      	mov	x19, x21
+    3644:      	ldr	x22, [sp, #0x8]
+    3648:      	add	x20, sp, #0x70
+    364c:      	b	0x366c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x218>
+    3650:      	mov	x19, x21
+    3654:      	ldr	x22, [sp, #0x8]
+    3658:      	add	x20, sp, #0x40
+    365c:      	b	0x366c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x218>
+    3660:      	mov	x19, x21
+    3664:      	ldr	x22, [sp, #0x8]
+    3668:      	sub	x20, x29, #0x50
+    366c:      	bl	0x366c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x218>
+		000000000000366c:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE14discardPendingyyF17P08CounterRuntime0jdF0V_Tgq5
+    3670:      	b	0x34d8 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lF17P08CounterRuntime07CountereG0V_SiTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRSi_TG5AZSiAVIggrzo_Tf1nnnnnc_n+0x84>

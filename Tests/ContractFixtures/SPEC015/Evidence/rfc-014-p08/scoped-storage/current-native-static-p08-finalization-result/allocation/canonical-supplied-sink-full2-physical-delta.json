@@ -1,0 +1,101 @@
+{
+  "strict_original_comparison": "FALSE remains preserved in full2-oracles.json; this is exact field-difference classification, NOT an oracle normalization or replacement.",
+  "normalized_line_count": 3673,
+  "differing_line_count": 2,
+  "differences": [
+    {
+      "line": 3105,
+      "prefix": "counter static audit valid(GiftUIRuntimeCore.RuntimeStorageAudit(profile: GiftUI",
+      "same_named_field_sequence": true,
+      "all_other_text_identical": true,
+      "changes": [
+        {
+          "field": "semanticCandidatePayloadBytes",
+          "before": 4864,
+          "after": 4352,
+          "delta": -512
+        },
+        {
+          "field": "semanticPublishedPayloadBytes",
+          "before": 4864,
+          "after": 4352,
+          "delta": -512
+        },
+        {
+          "field": "canvasCallableBytes",
+          "before": 32,
+          "after": 384,
+          "delta": 352
+        },
+        {
+          "field": "coordinatorStateBytes",
+          "before": 100792,
+          "after": 100840,
+          "delta": 48
+        },
+        {
+          "field": "totalProfileBytes",
+          "before": 129333,
+          "after": 128709,
+          "delta": -624
+        }
+      ]
+    },
+    {
+      "line": 3389,
+      "prefix": "counter dynamic audit valid(GiftUIRuntimeCore.RuntimeStorageAudit(profile: GiftU",
+      "same_named_field_sequence": true,
+      "all_other_text_identical": true,
+      "changes": [
+        {
+          "field": "semanticCandidatePayloadBytes",
+          "before": 4864,
+          "after": 4352,
+          "delta": -512
+        },
+        {
+          "field": "semanticPublishedPayloadBytes",
+          "before": 5932,
+          "after": 6464,
+          "delta": 532
+        },
+        {
+          "field": "canvasCallableBytes",
+          "before": 46,
+          "after": 398,
+          "delta": 352
+        },
+        {
+          "field": "coordinatorStateBytes",
+          "before": 100809,
+          "after": 100857,
+          "delta": 48
+        },
+        {
+          "field": "totalProfileBytes",
+          "before": 160057,
+          "after": 160477,
+          "delta": 420
+        }
+      ]
+    }
+  ],
+  "all_differences_in_named_audit_fields": true,
+  "source_basis": "Approved canonical+pending representation changes derive physical charges under unchanged4096Counter/7168Cycle limits. Review must assess these exact deltas; no expected-failure/refusal/guard/numericlimit changed.",
+  "source_explanation": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "lines": "234\u2013251,258\u2013262,273\u2013278",
+      "fact": "Candidate is configured whole-element payload+scalar prefix. Published takes the remaining actual typed payload/scalar extent, retaining allocator tail; actual layout drives charges. Canvas family14 includes canvasControlBytes. Coordinator uses concrete MemoryLayout plus precise factory partition, not a retuned threshold."
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift",
+      "lines": "17\u201335",
+      "fact": "retainedExtents uses actual Array.capacity times current element stride; changed canonical element layout may change allocator-rounded capacity and retained published tail. No count/limit adjustment or unmeasured zero-capacity assumption."
+    },
+    {
+      "path": "docs/implementation-designs/spec-006-runtime-record-banks.md",
+      "fact": "Approved physical canonical/pending accounting distinguishes representation-derived charges from unchanged7168Cycle/4096Counter limits. Exact current outputs equal retained canonical-focused baseline; original committed-product strict difference remains explicit."
+    }
+  ]
+}

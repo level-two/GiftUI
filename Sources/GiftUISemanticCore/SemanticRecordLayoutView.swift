@@ -2,13 +2,8 @@ import GiftUI
 
 /// Finite payload codecs project bounded values; they cannot evaluate bodies or
 /// resolve models. Canvas's separately owned codec uses the same consumer seam.
-package protocol SemanticRecordConsumerPayload {
-    var layoutPrimitive: SemanticLayoutPrimitive? { get }
-    var layoutModifier: SemanticLayoutModifier? { get }
-    var renderScope: SemanticRenderScope { get }
-}
 
-extension SemanticStandardPayload: SemanticRecordConsumerPayload {
+extension SemanticStandardPayload {
     package var layoutPrimitive: SemanticLayoutPrimitive? {
         switch self {
         case .vStack(let value): .vStack(alignment: value.alignment, spacing: value.spacing)
@@ -48,12 +43,12 @@ extension SemanticStandardPayload: SemanticRecordConsumerPayload {
 /// This view contains only a scoped borrow of the canonical record bank. Each
 /// modifier record is its own one-modifier wrapper, including passthrough style
 /// scopes. Transparent declaration records add neither scope nor layout depth.
-package struct SemanticRecordLayoutView<Payload: SemanticRecordConsumerPayload>:
-    SemanticLayoutView, ~Escapable
+package struct SemanticRecordLayoutView:
+    SemanticLayoutView, BitwiseCopyable, ~Escapable
 {
-    private let view: SemanticRecordView<Payload>
+    private let view: SemanticRecordView
     @_lifetime(copy view)
-    package init(_ view: borrowing SemanticRecordView<Payload>) { self.view = copy view }
+    package init(_ view: borrowing SemanticRecordView) { self.view = copy view }
     package var rootIdentity: SemanticRecordReference { view.rootReference }
     package var scopeCount: UInt16 {
         var count: UInt16 = 0

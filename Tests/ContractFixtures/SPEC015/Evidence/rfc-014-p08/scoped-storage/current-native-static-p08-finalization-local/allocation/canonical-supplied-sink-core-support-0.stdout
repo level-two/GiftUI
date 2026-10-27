@@ -1,0 +1,43 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000020fec <_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF>:
+   20fec:      	sub	sp, sp, #0x60
+   20ff0:      	stp	x26, x25, [sp, #0x10]
+   20ff4:      	stp	x24, x23, [sp, #0x20]
+   20ff8:      	stp	x22, x21, [sp, #0x30]
+   20ffc:      	stp	x20, x19, [sp, #0x40]
+   21000:      	stp	x29, x30, [sp, #0x50]
+   21004:      	add	x29, sp, #0x50
+   21008:      	mov	x19, x5
+   2100c:      	mov	x21, x4
+   21010:      	mov	x22, x3
+   21014:      	mov	x23, x2
+   21018:      	mov	x25, x1
+   2101c:      	mov	x26, x0
+   21020:      	ldr	x2, [x20, #0x50]
+   21024:      	mov	x0, #0x0                ; =0
+   21028:      	mov	x3, #0x0                ; =0
+   2102c:      	bl	0x2102c <_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF+0x40>
+		000000000002102c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV14preflightStore9textCount6limits15additionalBytesAA0D14ExpansionErrorOSgSi_AA0dE6LimitsVs6UInt64VtF
+   21030:      	mov	x24, x0
+   21034:      	bl	0x21034 <_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF+0x48>
+		0000000000021034:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_430
+   21038:      	b.ne	0x21060 <_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF+0x74>
+   2103c:      	str	xzr, [sp]
+   21040:      	bl	0x21040 <_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF+0x54>
+		0000000000021040:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_483
+   21044:      	mov	x2, x23
+   21048:      	mov	x3, x22
+   2104c:      	mov	x4, x21
+   21050:      	mov	x5, x19
+   21054:      	mov	x6, #0x0                ; =0
+   21058:      	mov	x7, #0x0                ; =0
+   2105c:      	bl	0x2105c <_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF+0x70>
+		000000000002105c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF
+   21060:      	mov	x0, x24
+   21064:      	ldp	x29, x30, [sp, #0x50]
+   21068:      	b	0x21068 <_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF+0x7c>
+		0000000000021068:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_210

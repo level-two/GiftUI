@@ -1,0 +1,10 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c52d8 <_OUTLINED_FUNCTION_620>:
+   c52d8:      	mov	x1, x0
+   c52dc:      	ldur	x8, [x0, #-0x8]
+   c52e0:      	ldr	x8, [x8, #0x8]
+   c52e4:      	ret

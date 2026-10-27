@@ -97,7 +97,7 @@ typealias CycleStaticCommitted = StaticSixInteractionCommittedStorage<SemanticCo
 typealias CycleStaticHits = StaticSixInteractionHitStorage<SemanticCompleteIdentity>
 typealias CycleStaticKeys = InteractionOwnedKeyState<CycleStaticCandidate, CycleStaticCommitted, CycleStaticHits>
 typealias CycleRootLayout = (owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int, liveBytes: Int, candidateBytes: Int)
-let cycleSemanticLimits = SemanticRecordLimits(records: 126, paths: 378, depth: 34, fanout: 5, payloads: 98, textScalars: 224, payloadBytes: UInt32(98 * MemoryLayout<CyclePayload?>.stride + 224 * 4))!
+let cycleSemanticLimits = SemanticRecordLimits(records: 126, paths: 378, depth: 34, fanout: 5, payloads: 98, textScalars: 224, payloadBytes: 7168)!
 let cycleCanvasLimits = StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: UInt16(MemoryLayout<CycleValueTable.CaptureStorage>.stride))!
 let cycleExecutionLimits = ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!
 
@@ -284,6 +284,10 @@ where G: CycleGeometry, C: CycleCandidateBacking & InteractionOwnedBankMeasureme
     record(.elements(SemanticRuntimeRecord.self, count: semantic.records.count - Int(semanticLimits.records), family: 11))
     geometryRegions.visitStorageRegions(record)
     record(.elements(CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?.self, count: canvasCount, family: 14))
+    record(.elements(CycleValueTable.CaptureStorage?.self, count: Int(CyclePendingBacking.capacity), family: 14))
+    record(.elements(UInt16.self, count: Int(CyclePendingBacking.capacity), family: 14))
+    record(.inline(CanvasPendingMetadata.self, family: 14))
+    record(.inline(CyclePendingBacking.self, family: 14, chargedBytes: CyclePendingBacking.paddingBytes, kind: .metadataPadding))
     if profile == .static { record(.inline(StaticCanvasValueStorage.self, family: 14)) }
     #if !hasFeature(Embedded)
     if profile == .dynamic { record(.inline(DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>.self, family: 14)) }
@@ -337,7 +341,8 @@ struct DynamicCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
     static var profile: RuntimeProfileKind { .dynamic }
     let limits: RuntimeProfileLimits
     var root: DynamicObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>
-    var semantic: DynamicSemanticRecordStorage<CyclePayload>
+    var semantic: DynamicSemanticRecordStorage
+    var semanticPending = CyclePendingBacking()
     var canvas = DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>(capacity: 5)
     var geometry: DynamicCycleGeometry? = DynamicCycleGeometry()
     var interaction: CycleDynamicKeys?
@@ -357,11 +362,12 @@ struct DynamicCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
             semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: extent.records), paths: .elements(SemanticPathEntry.self, count: extent.paths), payloads: .elements(CyclePayload?.self, count: extent.payloads), scalars: .elements(UInt32.self, count: extent.scalars), controlBytes: extent.controlBytes),
             geometry: geometry.storageMeasurement(), interaction: interaction, geometryType: DynamicCycleGeometry.self,
             canvasCount: canvas.retainedElementCapacity, canvasCapacity: canvas.capacity,
-            canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>>.size,
-            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>>.size - MemoryLayout<DynamicCycleGeometry>.size - MemoryLayout<CycleDynamicKeys>.size - MemoryLayout<CycleControl>.size, kind: .metadataPadding),
+            canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>>.size + MemoryLayout<CyclePendingBacking>.size,
+            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<CyclePendingBacking>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>>.size - MemoryLayout<DynamicCycleGeometry>.size - MemoryLayout<CycleDynamicKeys>.size - MemoryLayout<CycleControl>.size, kind: .metadataPadding),
             geometryRegions: geometry, report: report)
     }
     mutating func resetAttemptStorage() {
+        precondition(semanticPending.isClear())
         precondition(geometry != nil && interaction != nil)
         geometry!.reset()
         interaction!.resolveCandidate(.discard)
@@ -385,11 +391,13 @@ struct DynamicCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
                 cycleRejectForeignBinding(models: models, root: root, audit: audited, control: &control)
                 do throws(SemanticExpansionError) {
                     try semantic.withLifetime(configuredLimits: cycleSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
-                        do throws(DrawingError) {
-                            try canvas.withLifetime(table: CycleValueTable(), limits: limits.staticCanvas ?? cycleCanvasLimits, configuredCapacity: limits.drawing.maximumCanvasOccurrences) { values in
-                                returned = exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: true, geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, audit: audited, control: &control)
-                            }
-                        } catch { preconditionFailure("factory Canvas") }
+                        try semanticPending.withLifetime { (semanticCodec) throws(SemanticExpansionError) in
+                            do throws(DrawingError) {
+                                try canvas.withLifetime(table: CycleValueTable(), limits: limits.staticCanvas ?? cycleCanvasLimits, configuredCapacity: limits.drawing.maximumCanvasOccurrences) { values in
+                                    returned = exercisePipeline(models: models, root: root, semantic: semantic, semanticCodec: semanticCodec, values: values, dynamic: true, geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, audit: audited, control: &control)
+                                }
+                            } catch { preconditionFailure("factory Canvas") }
+                        }
                     }
                 } catch { preconditionFailure("factory semantic") }
             }
@@ -412,6 +420,7 @@ struct StaticCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
     var root: CycleStaticRootStorage
     var semantic: StaticSemanticRecordStorage
     var semanticBacking = CycleSemanticBacking()
+    var semanticPending = CyclePendingBacking()
     var canvas = StaticCanvasValueStorage()
     var canvasBacking: InlineArray<5, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?> = .init(repeating: nil)
     var workspace = CycleStaticWorkspaceBacking()
@@ -431,11 +440,12 @@ struct StaticCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
             semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: semanticBacking.records.count), paths: .elements(SemanticPathEntry.self, count: semanticBacking.paths.count), payloads: .elements(CyclePayload?.self, count: semanticBacking.payloads.count), scalars: .elements(UInt32.self, count: semanticBacking.scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CycleSemanticBacking.paddingBytes),
             geometry: workspace.measurement, interaction: interaction, geometryType: StaticCycleGeometry.self,
             canvasCount: canvasBacking.count, canvasCapacity: UInt16(canvasBacking.count),
-            canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size,
-            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<CycleStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CycleSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<5, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?>>.size - MemoryLayout<CycleStaticWorkspaceBacking>.size - MemoryLayout<CycleStaticKeys>.size - MemoryLayout<CycleControl>.size, kind: .metadataPadding),
+            canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size + MemoryLayout<CyclePendingBacking>.size,
+            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<CyclePendingBacking>.size - MemoryLayout<CycleStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CycleSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<5, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?>>.size - MemoryLayout<CycleStaticWorkspaceBacking>.size - MemoryLayout<CycleStaticKeys>.size - MemoryLayout<CycleControl>.size, kind: .metadataPadding),
             geometryRegions: workspace, report: report)
     }
     mutating func resetAttemptStorage() {
+        precondition(semanticPending.isClear())
         precondition(interaction != nil)
         _ = workspace.withGeometry { geometry in
             var geometry = consume geometry
@@ -466,21 +476,23 @@ struct StaticCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
                     var payloads = semanticBacking.payloads.mutableSpan
                     var scalars = semanticBacking.scalars.mutableSpan
                     try semantic.withLifetime(configuredLimits: cycleSemanticConfiguration(limits), records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
-                        do throws(DrawingError) {
-                            var entries = canvasBacking.mutableSpan
-                            try canvas.withLifetime(entries: &entries, table: CycleValueTable(), capacity: limits.drawing.maximumCanvasOccurrences, limits: limits.staticCanvas ?? cycleCanvasLimits) { values in
-                                checks = workspace.withGeometry { geometry in
-                                    let measured = geometry.storageMeasurement()
-                                    var returned = exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: false, geometry: geometry, interaction: movedInteraction.take()!, audit: audited, control: &control)
-                                    precondition(returned.geometry.storageMeasurement() == measured)
-                                    // The returned raw descriptors are consumed here, while all
-                                    // four physical arrays are still borrowed and immovable.
-                                    returned.geometry.reset()
-                                    movedInteraction = returned.interaction
-                                    return returned.checks + 1
+                        try semanticPending.withLifetime { (semanticCodec) throws(SemanticExpansionError) in
+                            do throws(DrawingError) {
+                                var entries = canvasBacking.mutableSpan
+                                try canvas.withLifetime(entries: &entries, table: CycleValueTable(), capacity: limits.drawing.maximumCanvasOccurrences, limits: limits.staticCanvas ?? cycleCanvasLimits) { values in
+                                    checks = workspace.withGeometry { geometry in
+                                        let measured = geometry.storageMeasurement()
+                                        var returned = exercisePipeline(models: models, root: root, semantic: semantic, semanticCodec: semanticCodec, values: values, dynamic: false, geometry: geometry, interaction: movedInteraction.take()!, audit: audited, control: &control)
+                                        precondition(returned.geometry.storageMeasurement() == measured)
+                                        // The returned raw descriptors are consumed here, while all
+                                        // four physical arrays are still borrowed and immovable.
+                                        returned.geometry.reset()
+                                        movedInteraction = returned.interaction
+                                        return returned.checks + 1
+                                    }
                                 }
-                            }
-                        } catch { preconditionFailure("factory Canvas") }
+                            } catch { preconditionFailure("factory Canvas") }
+                        }
                     }
                 } catch { preconditionFailure("factory semantic") }
             }

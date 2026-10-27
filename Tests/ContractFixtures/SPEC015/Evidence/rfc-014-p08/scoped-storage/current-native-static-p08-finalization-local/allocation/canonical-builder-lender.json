@@ -1,0 +1,96 @@
+{
+  "group": "current Static interaction builder and complete selected Counter typed lender specializations",
+  "inputs": {
+    "path": ".build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o",
+    "bytes": 2641824,
+    "sha256": "17245735a5b74b2a4eacc44ecaef0e61bd43132d10febedbf4a5f3a8bac7d289"
+  },
+  "captures": [
+    {
+      "symbol": "_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_q0_SryAOGAYYKXEfU_q0_SryARGAYYKXEfU_6$deferL_yyAwZRzAAA_R_r1_lF17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA4_13CounterDomainOGSiTg5Tm",
+      "start": "0x9c120",
+      "end": "0x9c170",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x9c120",
+        "--stop-address=0x9c170",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 2391,
+      "stdout_lines": 26,
+      "stdout_sha256": "840cd3637d4d62e50980681717c0377f0829b1281bb37880f7317c01f1ebbbd2",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-builder-lender-0.stdout"
+    },
+    {
+      "symbol": "_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5",
+      "start": "0x9be94",
+      "end": "0x9c00c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x9be94",
+        "--stop-address=0x9c00c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 11822,
+      "stdout_lines": 102,
+      "stdout_sha256": "b45c84f8d7b528c87720c17cfa6e9203a35e362c80824da767e209a98ada7c94",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-builder-lender-1.stdout"
+    },
+    {
+      "symbol": "_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5",
+      "start": "0x9c00c",
+      "end": "0x9c120",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x9c00c",
+        "--stop-address=0x9c120",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 8460,
+      "stdout_lines": 77,
+      "stdout_sha256": "18a446248122d761054a37359ac92d61f87c2211b9d3ef49ac32ce0dc52cb9c3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-builder-lender-2.stdout"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE25buildInteractionCandidate17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0o3TwogH7StorageVy0i10UISemanticK024SemanticCompleteIdentityVGAA0oqg9CommittedR0VyAQGAA0oqg3HitR0VyAQGTg5",
+      "start": "0x76b58",
+      "end": "0x77b74",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x76b58",
+        "--stop-address=0x77b74",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 115152,
+      "stdout_lines": 1140,
+      "stdout_sha256": "eda9d331dbbb0f27483dd58e87c927a1d16f62b493eee55a7687a30b116b0991",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-builder-lender-3.stdout"
+    }
+  ],
+  "total_bytes": 137825,
+  "total_lines": 1345
+}

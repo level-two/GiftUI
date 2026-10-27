@@ -1,2 +1,2 @@
 import GiftUISemanticCore
-func escape(_ view: borrowing SemanticRecordView<SemanticStandardPayload>) -> [SemanticRecordRenderView<SemanticStandardPayload>] { [SemanticRecordRenderView(view)] }
+func escape(_ view: borrowing SemanticRecordView) -> [SemanticRecordRenderView] { [SemanticRecordRenderView(view)] }

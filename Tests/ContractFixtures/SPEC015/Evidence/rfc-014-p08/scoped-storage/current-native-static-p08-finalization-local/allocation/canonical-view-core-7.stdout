@@ -1,0 +1,7 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000020420 <_$s18GiftUISemanticCore18SemanticRecordViewVWOh>:
+   20420:      	ret

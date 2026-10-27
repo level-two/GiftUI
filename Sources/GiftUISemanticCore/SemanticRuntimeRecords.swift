@@ -48,12 +48,14 @@ package struct SemanticCompleteIdentity: Equatable, Sendable {
         repeating: .init(kind: .root))
     @usableFromInline
     package private(set) var count: UInt16 = 0
+    @usableFromInline
     package init() {}
     @usableFromInline
     package func component(at index: UInt16) -> SemanticPathComponent? {
         guard index < count else { return nil }
         return components[Int(index)]
     }
+    @usableFromInline
     package mutating func append(_ component: SemanticPathComponent) -> Bool {
         guard count < Self.capacity, component.isValid, (count == 0) == (component.kind == .root)
         else { return false }
@@ -166,8 +168,9 @@ package struct SemanticRuntimeRecord: Sendable {
     package init() {}
 }
 
+@frozen
 @usableFromInline
-package struct SemanticRecordOwnerIdentity: Equatable, Sendable {
+package struct SemanticRecordOwnerIdentity: Equatable, Sendable, BitwiseCopyable {
     package let rawValue: UInt32
     fileprivate init(_ rawValue: UInt32) { self.rawValue = rawValue }
 }
@@ -186,9 +189,13 @@ package struct SemanticRecordOwnerNamespace: ~Copyable {
 
 @usableFromInline
 package struct SemanticRecordReference: Equatable, Sendable {
+    @usableFromInline
     package let owner: SemanticRecordOwnerIdentity
+    @usableFromInline
     package let bank: UInt8
+    @usableFromInline
     package let revision: UInt32
+    @usableFromInline
     package let ordinal: UInt16
 
     @usableFromInline
@@ -239,8 +246,9 @@ package struct SemanticRecordBankMetadata {
 /// Trusted profile adapter input. Each typed buffer is fully initialized,
 /// pairwise disjoint and stable for the complete enclosing storage lifetime.
 /// Only scoped store/view APIs expose its contents to consumers.
+@frozen
 @usableFromInline
-package struct SemanticRecordBankBuffers<Payload> {
+package struct SemanticRecordBankBuffers {
     @usableFromInline
     package let metadata: UnsafeMutablePointer<SemanticRecordBankMetadata>
     @usableFromInline
@@ -248,7 +256,7 @@ package struct SemanticRecordBankBuffers<Payload> {
     @usableFromInline
     package let paths: UnsafeMutableBufferPointer<SemanticPathEntry>
     @usableFromInline
-    package let payloads: UnsafeMutableBufferPointer<Payload?>
+    package let payloads: UnsafeMutableBufferPointer<SemanticRecordPayload?>
     @usableFromInline
     package let scalars: UnsafeMutableBufferPointer<UInt32>
     @usableFromInline
@@ -256,7 +264,8 @@ package struct SemanticRecordBankBuffers<Payload> {
         metadata: UnsafeMutablePointer<SemanticRecordBankMetadata>,
         records: UnsafeMutableBufferPointer<SemanticRuntimeRecord>,
         paths: UnsafeMutableBufferPointer<SemanticPathEntry>,
-        payloads: UnsafeMutableBufferPointer<Payload?>, scalars: UnsafeMutableBufferPointer<UInt32>
+        payloads: UnsafeMutableBufferPointer<SemanticRecordPayload?>,
+        scalars: UnsafeMutableBufferPointer<UInt32>
     ) {
         self.metadata = metadata
         self.records = records
@@ -376,9 +385,25 @@ package struct SemanticRecordBankBuffers<Payload> {
 
     @inlinable
     package func store(
-        _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind, chainIndex: UInt16 = 0,
-        text: borrowing Span<UInt32>, limits: SemanticRecordLimits
+        _ value: consuming SemanticRecordPayload, kind: SemanticRuntimeRecord.Kind,
+        chainIndex: UInt16 = 0,
+        text: borrowing Span<UInt32>, limits: SemanticRecordLimits, additionalBytes: UInt64 = 0
     ) -> SemanticExpansionError? {
+        if let failure = preflightStore(
+            textCount: text.count, limits: limits, additionalBytes: additionalBytes)
+        {
+            return failure
+        }
+        commitStore(
+            consume value, kind: kind, chainIndex: chainIndex, text: text,
+            additionalBytes: additionalBytes)
+        return nil
+    }
+
+    @inlinable
+    func preflightStore(textCount: Int, limits: SemanticRecordLimits, additionalBytes: UInt64 = 0)
+        -> SemanticExpansionError?
+    {
         if let failure = metadata.pointee.failure { return failure }
         let path = metadata.pointee.activePath
         guard metadata.pointee.phase == .expanding, path < metadata.pointee.paths else {
@@ -388,14 +413,32 @@ package struct SemanticRecordBankBuffers<Payload> {
         guard record < metadata.pointee.records, records[Int(record)].path == path,
             records[Int(record)].payload == .max
         else { return fail(.invalidIdentity) }
-        guard text.count <= Int(limits.textScalars) else { return .capacityExhausted }
-        let scalarEnd = UInt32(metadata.pointee.scalars) + UInt32(text.count)
+        guard textCount <= Int(limits.textScalars) else { return .capacityExhausted }
+        let scalarEnd = UInt32(metadata.pointee.scalars) + UInt32(textCount)
         let bytes =
-            UInt64(metadata.pointee.payloadBytes) + UInt64(MemoryLayout<Payload?>.stride) + UInt64(
-                text.count) * 4
+            UInt64(metadata.pointee.payloadBytes)
+            + UInt64(MemoryLayout<SemanticRecordPayload?>.stride) + UInt64(
+                textCount) * 4 + UInt64(additionalBytes)
         guard metadata.pointee.payloads < limits.payloads, scalarEnd <= limits.textScalars,
             bytes <= limits.payloadBytes
         else { return fail(.capacityExhausted) }
+        return nil
+    }
+
+    /// Called only after the complete preflight and any typed side-pool
+    /// reservation have succeeded. No fallible operation follows reservation.
+    @inlinable
+    func commitStore(
+        _ value: consuming SemanticRecordPayload, kind: SemanticRuntimeRecord.Kind,
+        chainIndex: UInt16, text: borrowing Span<UInt32>, additionalBytes: UInt64
+    ) {
+        let path = metadata.pointee.activePath
+        let record = paths[Int(path)].nearestRecord
+        let scalarEnd = UInt32(metadata.pointee.scalars) + UInt32(text.count)
+        let bytes =
+            UInt64(metadata.pointee.payloadBytes)
+            + UInt64(MemoryLayout<SemanticRecordPayload?>.stride) + UInt64(text.count) * 4
+            + UInt64(additionalBytes)
         let payloadIndex = metadata.pointee.payloads
         payloads[Int(payloadIndex)] = consume value
         for index in 0 ..< text.count {
@@ -409,7 +452,6 @@ package struct SemanticRecordBankBuffers<Payload> {
         metadata.pointee.payloads += 1
         metadata.pointee.scalars = UInt16(scalarEnd)
         metadata.pointee.payloadBytes = UInt32(bytes)
-        return nil
     }
 
     /// Parent-first candidate traversal; each node scans at most K children of

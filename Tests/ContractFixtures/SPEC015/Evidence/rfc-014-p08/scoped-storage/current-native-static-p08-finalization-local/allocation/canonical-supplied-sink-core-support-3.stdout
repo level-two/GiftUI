@@ -1,0 +1,67 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000001e290 <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF>:
+   1e290:      	lsr	x8, x7, #32
+   1e294:      	cbnz	x8, 0x1e368 <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0xd8>
+   1e298:      	ldr	x8, [x20]
+   1e29c:      	ldrh	w9, [x8, #0x10]
+   1e2a0:      	adds	w9, w9, w7
+   1e2a4:      	b.hs	0x1e36c <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0xdc>
+   1e2a8:      	ldr	x10, [sp]
+   1e2ac:      	ldr	w11, [x8, #0x14]
+   1e2b0:      	add	x11, x11, x7, lsl #2
+   1e2b4:      	add	x11, x11, #0x20
+   1e2b8:      	adds	x10, x11, x10
+   1e2bc:      	b.hs	0x1e370 <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0xe0>
+   1e2c0:      	ldrh	w11, [x8, #0x18]
+   1e2c4:      	ldr	x12, [x20, #0x18]
+   1e2c8:      	mov	w13, #0x16              ; =22
+   1e2cc:      	umaddl	x11, w11, w13, x12
+   1e2d0:      	ldrh	w11, [x11, #0x12]
+   1e2d4:      	ldrh	w12, [x8, #0xe]
+   1e2d8:      	ldr	x13, [x20, #0x28]
+   1e2dc:      	add	x13, x13, x12, lsl #5
+   1e2e0:      	stp	x0, x1, [x13]
+   1e2e4:      	stp	x2, x3, [x13, #0x10]
+   1e2e8:      	cbz	x7, 0x1e30c <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0x7c>
+   1e2ec:      	ldr	x13, [x20, #0x38]
+   1e2f0:      	ldrh	w14, [x8, #0x10]
+   1e2f4:      	add	x13, x13, x14, lsl #2
+   1e2f8:      	mov	x14, x7
+   1e2fc:      	ldr	w15, [x6], #0x4
+   1e300:      	str	w15, [x13], #0x4
+   1e304:      	subs	x14, x14, #0x1
+   1e308:      	b.ne	0x1e2fc <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0x6c>
+   1e30c:      	ldr	x13, [x20, #0x8]
+   1e310:      	mov	w14, #0x14              ; =20
+   1e314:      	umaddl	x11, w11, w14, x13
+   1e318:      	strb	w4, [x11, #0xa]
+   1e31c:      	strh	w12, [x11, #0xc]
+   1e320:      	ldrh	w12, [x8, #0x10]
+   1e324:      	strh	w12, [x11, #0xe]
+   1e328:      	lsr	x12, x7, #16
+   1e32c:      	cbnz	x12, 0x1e374 <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0xe4>
+   1e330:      	strh	w7, [x11, #0x10]
+   1e334:      	strh	w5, [x11, #0x12]
+   1e338:      	ldrh	w11, [x8, #0xe]
+   1e33c:      	add	w11, w11, #0x1
+   1e340:      	lsr	w12, w11, #16
+   1e344:      	tbnz	w12, #0x0, 0x1e378 <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0xe8>
+   1e348:      	strh	w11, [x8, #0xe]
+   1e34c:      	lsr	w11, w9, #16
+   1e350:      	cbnz	w11, 0x1e37c <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0xec>
+   1e354:      	strh	w9, [x8, #0x10]
+   1e358:      	lsr	x9, x10, #32
+   1e35c:      	cbnz	x9, 0x1e380 <_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF+0xf0>
+   1e360:      	str	w10, [x8, #0x14]
+   1e364:      	ret
+   1e368:      	brk	#0x1
+   1e36c:      	brk	#0x1
+   1e370:      	brk	#0x1
+   1e374:      	brk	#0x1
+   1e378:      	brk	#0x1
+   1e37c:      	brk	#0x1
+   1e380:      	brk	#0x1

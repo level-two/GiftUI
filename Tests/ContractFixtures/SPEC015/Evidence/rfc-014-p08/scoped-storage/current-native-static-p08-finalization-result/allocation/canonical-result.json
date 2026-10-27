@@ -1,0 +1,271 @@
+{
+  "disposition": "STOP / charged-lifecycle compiled non-relocation gate FAIL",
+  "not_a_blanket_metadata_ban": true,
+  "heap_contract_disposition": "Current: sink_qualification_2026_10_27 establishes a supported feasible allowed-normal/default-provider first-required-use cold-private-Sink-cache allocator-entry counterexample. Earlier conditional/unproved-conjunction findings are preserved as historical. This does not claim observed or every-state allocation, malloc success, allocation bytes, or full P08/resource qualification. Metadata presence alone is not the finding.",
+  "positive": {
+    "nongeneric_consumer": "Current Static builder76b58\u201377b74 calls nongeneric View init76d7c, destroy77aec and reader defer77af4. Old capture-parameterized consumer View metadata argument is absent at that cleanup.",
+    "lender": "Actual Int/Void typed lenders9be94\u20139c120 build pointer descriptors and converge through fixed pending-slot/ordinal clearing9c120\u20139c170 after normal/error callbacks; callback targets are not declared globally safe merely from lender bodies.",
+    "static_view_vwt": "Runtime outlined View destroy loads static ViewVN; current Core metadata relocation binds its VWT destroy slot to the symbol ___swift_noop_void_return. Core duplicate outlined destroy returns. The former generic factory call is absent at these concrete View cleanup sites; the final VWT target body and complete cleanup closure were not separately expanded after the Sink gate failure.",
+    "reader_retirement": "Both retained defer bodies decrement readers; underflow traps; only zero readers with retired phase4 call canonical bank.clear. Its entire transitive closure was not completed after the Sink failure."
+  },
+  "failing_current_path": {
+    "mandatory_context": "The actual StaticCounterGeometry/StaticTwoInteraction storage specialization of CounterPipelineOwner.beginObservableCandidateAndExpandSemantics; separate from the three-root resource-entry-v1 restriction.",
+    "normal_branch": "Success publishExpansion6d870 returns true;6d888/6d88c supplies the exact RecordSink cell in x1;6d89c and6d8c4 call merged destroy before Canvas transfer6d90c.",
+    "actual_type": "RecordSink<CanvasSemanticPayloadCodec<CounterRoles,P08CounterSchemaCanvasTable<CounterDomain>>>",
+    "cell": {
+      "address": "0xd08e0",
+      "raw_hex": "00000000e1ffffff",
+      "signed_length": -31,
+      "symbolic_payload": "0xd17bc,31bytes; actual relocations bind current RecordSink/Codec/Roles/Table/Domain descriptors"
+    },
+    "helper": "Merged be4d0 preserves x1 through helper769, moves it into x0 atbe4dc, instantiates atbe4e0, then uses returned VWT destroy; initialnegativecell takes localbe4\u2013c24 helper branch to swift_getTypeByMangledNameInContext2 with x2=x3=0.",
+    "descriptor": "Current Core RecordSinkVMn304a8,76B, flags0xf1 generic struct, one parameter/two requirements/two key arguments; actual accessor/MI/MP symbolic relocation bindings retained. MI3b1b0 is128B zero-fill; MP2d530 points to actual instantiator/completer/VWT.",
+    "accessor": "Core RecordSinkVMa213e8\u2192__swift_instantiateGenericMetadata29048\u2192swift_getGenericMetadata29064, using descriptor in x4 and argument vector.",
+    "conditional_consequence": "Reuse accepted provider generic-metadata regular-entry/cache-MISS/factory allocator lemma only for this exact current descriptor/key under normal valid completion and cold own cache. Earlier REQUIRED same-type warming would charge that first acquisition rather than exempt it.",
+    "premises": [
+      "expected installed provider/default selector and no interposition/override",
+      "normal parser resolves this emitted31-byte symbolic key through current descriptor-selected accessor; no applicable prespecialized bypass",
+      "actual generic arguments and requirement/signature callbacks return normally for the current typed key",
+      "normal once/lock/signature/allocator-entry support conditions from accepted lemma",
+      "the relevant descriptor-owned cache is absent/empty at first required use, rather than treating on-disk zero fill as observed live state"
+    ],
+    "explicit_unproved_conjunction": "The actual conjunction of parser/accessor/requirements/default loaded binding/no bypass/cold cache is not observed or established solely by well-typed functional success. No allocator success, allocated bytes, every-state or observed allocation conclusion."
+  },
+  "proofs": [
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender.json",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core.json",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-static-vwt.json",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-cell.json",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required.json",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-factory.json",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal.json"
+  ],
+  "accepted_provider_reuse": [
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/generic-metadata-dispatch.json",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/generic-entry-pattern.json"
+  ],
+  "remaining": [
+    "charged Sink lifecycle non-relocation gate FAIL; no further candidate/repair/producer selected",
+    "full constructor/traversal/capture/codec/setup/drop safety closure incomplete after decisive gate failure",
+    "remaining layout/thunk/codec/error/once/provider and live/cache/environment/stdout/window/resource/P08 gates remain open",
+    "old failed safety acquisition and historical FALSE recording claims remain unchanged",
+    "unit FAILED / Interaction UNEXECUTED; P09/P10 work not performed"
+  ],
+  "source_disposition": "All60 frozen source/fixture/driver/note inputs retained; no source edits, staging or commit after terminal classification; no new remedy proposed.",
+  "citation_correction": {
+    "prior_erroneous_reference": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/generic-metadata-entry-pattern.json",
+    "actual_retained_reference": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/generic-entry-pattern.json",
+    "history": "The previous terminal result cited a nonexistent filename. Corrected during the authorized Sink qualification follow-up; the prior citation error and earlier conditional verdict are preserved, not retroqualified."
+  },
+  "current_qualification": "SUPPORTED feasible allowed-normal first-use allocator-entry counterexample; implementation acceptance blocked",
+  "sink_qualification_followup": {
+    "scope": "Same P08 finalization package, exact current31-byte RecordSink key; static installed-provider evidence only. Original deadline2026-10-26T22:41:04.994801Z; no new source, compiler, test or runtime producer.",
+    "decision": "Substantive partial static facts only. Joint feasibility of the current parser/requirements/default-provider/cold-cache conjunction remains unproved. Neither safe-path qualification nor a proved actual heap defect is claimed. No speculative Sink refactor is selected to bypass the proof ceiling.",
+    "closed_scoped_facts": [
+      {
+        "id": "DEFAULT_HOOK",
+        "fact": "Selected initializer193c52ad4 calls __NSGetMachExecuteHeader and getsectiondata for literal __DATA/__swift63_hooks. Both exact current executables lack that section in complete retained load-command projections. Under the selected normal installed-provider route, getter193c52a84 returnsnull and wrapper193cf08c8 sets direct-core sentinel1. Conformance getter193c9ec44 shares the same section-derived null pointer. This is a static route relation, not observation of loaded bindings or mutable selector state.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connections-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-imports.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-executable-hooks.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-checks-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-argument-acquisition.json"
+        ]
+      },
+      {
+        "id": "LITERAL_X_CALLBACK",
+        "fact": "Actual requirement parameter x has length1. Its exact operator-table row selects193d2050c, which calls193d2f9a4 with depth/index0 and builds nodekind0x27 with zero index children. Exact completion-table row selects193cf6490; retained full interpreter reaches193cf71ac\u2192193cfd98c\u2192the bound callback193cf50dc. That callback reads the existing Codec argument at depth/index0; the even metadata pointer returns directly. Bound clones copy only the context pointer; local destructors return; second callback reads indexed argument and third returnsnull. These selected callbacks do not write the Sink cache.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-x-operator-row.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-x-completion-row.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connections-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-argument-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-parameter-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata46-local/swift-5.stdout",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata46-local/swift-9.stdout",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-1.stdout"
+        ]
+      },
+      {
+        "id": "KIND5_CODEC_MASK",
+        "fact": "Sink requirementkind5 has index0/flags2 and ORs2 into its local parameter-mask vector. Actual Codec descriptorf1 has two parameters/two requirements/four keys, generic-header flags0 and trailingmask2 atVMn+72. Actual kind17 struct route through193d09a0c selects193cd9af0; the complete selected struct tail helpers computeVMn+72 with optional flags absent. Validator193d07c34 computes2 & ~allowed2=0 and takes its normal return. The mistakenly captured class-tail family is unselected and supplies no part of this conclusion.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-codec-descriptor.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-checks-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-tail.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-acquisition.json"
+        ]
+      },
+      {
+        "id": "CURRENT_DIRECT_CONFORMANCE",
+        "fact": "Current Drawing object has exact Codec:SemanticRecordPayloadCodec Mc with flags0, direct nominal/protocol references and direct56-byte WP, no conditional witness factory. The actual counter executable contains the exact __swift5_proto row10025ae30\u2192Mc1001e8ebc, which binds Codec descriptor10020a9c0 and WP10026ddd8. Ordinary lookup/scanner bodies reach the relevant protocol/type matching and witness-return callees. These static registration/data facts do not prove those remaining callee returns or a loaded registry/cache state.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-codec-conformance.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-linked-conformance.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-checks-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-acquisition.json"
+        ]
+      },
+      {
+        "id": "PARENT_EXCLUDED",
+        "fact": "For the successful current f5 descriptor route, cf7b80 zeroes parentout[sp110]; cf7ba0 passes it tox4 ofcfaa24; successful f5 fastpathcfaacc\u2192cfaad4..cfaafc writes only descriptorout[x3], leaving parentoutzero. cf7bc0 reloadsx4; cfafe4 forwards it to builderx3; cedc94 savesx20; ceddf8 null-branches tocee170, excluding the sole parent-helper callcee164\u2192ced698. Current VMn+4 relocation binds the module descriptor, independently of source-name inference. Full cfaa24 guard context must be counted; M47-05 alone did not establish unchanged parentout. Independently confirmed by the existing reviewer.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-1.stdout",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-3.stdout",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-4.stdout",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-result/rows.json"
+        ]
+      }
+    ],
+    "exact_available_local_residuals": [
+      {
+        "range": "0x193d041b0\u20130x193d046c8",
+        "machine_bytes": 1304,
+        "complete_line_forecast": 333,
+        "purpose": "Actual scanner witness resolver return of direct current WP; not acquired."
+      },
+      {
+        "range": "0x193d0a424\u20130x193d0a570",
+        "machine_bytes": 332,
+        "complete_line_forecast": 90,
+        "purpose": "Actual metadata/descriptor projection used by matching branch; not acquired."
+      },
+      {
+        "range": "0x193c585e0\u20130x193c58868",
+        "machine_bytes": 648,
+        "complete_line_forecast": 169,
+        "purpose": "Complete equality predicate if selected by projection result; conservatively reserved, not acquired."
+      }
+    ],
+    "bounds": {
+      "complete_group_byte_limit": 1048576,
+      "complete_group_line_limit": 16384,
+      "retained_proof_byte_limit": 8388608,
+      "historical_acquired_assembled_bytes": 672143,
+      "historical_acquired_assembled_lines": 17398,
+      "historical_acquisition_qualified": false,
+      "historical_unselected_class_bytes": 51883,
+      "historical_unselected_class_lines": 1377,
+      "previous_required_union_bytes": 620260,
+      "previous_required_union_lines": 16021,
+      "excluded_parent_complete_bytes": 14543,
+      "excluded_parent_complete_lines": 377,
+      "added_complete_cfaa24_guard_lines": 219,
+      "corrected_required_union_lines_before_missing_helpers": 15863,
+      "all_three_missing_helper_line_reserve": 592,
+      "prospective_complete_required_lines": 16455,
+      "excess_lines": 71,
+      "interpretation": "No fit. A prospective complete logical selection does not retroqualify the historical over-limit acquisition. All captured bodies and prior counts remain retained. The final helper batch occurred while the overall group ruling was pending; no further capture followed the HOLD. No slicing, deletion or false closed lemma is used."
+    },
+    "explicit_limits": [
+      "Actual current joint normal registered-image lookup\u2192WP return remains an available local static proof gap, not a missing provider or live-only fact.",
+      "Loaded provider binding/interposition, mutable cache/environment and exact execution window are unobserved.",
+      "The existing factory lemma remains conditional; metadata acquisition alone is not allocator proof. No observed, unconditional, every-state, allocator-success or allocated-byte claim.",
+      "A diagnostic search of the old ledger returned oversized/clipped text. That display is NONQUALIFIED and is not semantic evidence. Prior clipped diagnostics and all historical FALSE qualifications remain unchanged."
+    ],
+    "next_action": "STOP. No more acquisition, source candidate, component/full/live validation or commit is authorized by this disposition."
+  },
+  "sink_qualification_2026_10_27": {
+    "dated_utc": "2026-10-27T07:45:09.648834+00:00",
+    "authority": "27Oct human increased only this exact complete causal-group line allowance from16384 to32768;1MiB group bytes/8MiB retained proof and all safety boundaries remain. Authorized continuation07:17:03\u201309:17:03UTC, not retroactive extension.",
+    "decision": "SUPPORTED jointly feasible allocator-entry counterexample for the exact current RecordSink key in an allowed normal/default-provider/first-required-use class. Implementation acceptance remains blocked. No observed or every-state heap allocation, allocator success, allocated-byte total, whole safety/resource/P08 PASS is claimed.",
+    "exact_current_key": "RecordSink<CanvasSemanticPayloadCodec<CounterRoles,P08CounterSchemaCanvasTable<CounterDomain>>>;31-byte symbolic key at Runtime0xd17bc, negative-length cell0xd08e0; current normal publishExpansion success cleanup0x6d888/0x6d89c/0x6d8c4 before transfer0x6d90c.",
+    "joint_allowed_class": [
+      "The current correctly registered executable and authenticated installed default providers operate normally: valid pointer authentication, normal completed initialization/locks/hash, no interposition or custom hooks. Both current executables statically lack __DATA/__swift63_hooks; the selected initializer/getters therefore select the retained direct-core/default-conformance routes. This is an allowed operating class, not an observation of loaded bindings/registry/cache.",
+      "The actual current Codec metadata represents the two concrete Roles/Table arguments. Their actual descriptors52/d1 have bit5 clear. Literal-x callback and kind5 mask2 routes are those already retained; the current requirements can jointly return normally.",
+      "Choose the first REQUIRED acquisition of this private concrete Sink metadata within charged construction/traversal/cleanup. Its distinct zero-fill MI has not yet acquired this key. Codec metadata/conformance and global conformance-cache state do not alias or warm that Sink MI. If an earlier REQUIRED use acquires the same key, that earlier first use remains charged; no outside-window prewarming or exemption is introduced.",
+      "Normal executable registration makes the actual linked __swift5_proto Mc available to ordinary lookup. The current protocol/nominal/direct-WP relation and selected match/projection/equality/requirement-return branches support the normal matching route. A valid existing conformance-cache entry can return that WP; on a miss normal direct-WP resolution and insertion can complete. Cache-growth allocation on the required lookup is already an earlier charged allocator path, rather than a reason to assume the Sink path allocation-free.",
+      "With normal requirement completion and the default regular accessor, no applicable selected prespecialized bypass precedes the retained own-cache lookup. Cold own-MI miss reaches the accepted regular factory lemma and its actual malloc-family entries. A normal successful allocation is feasible; allocation success/bytes and actual mutable cache state were not measured."
+    ],
+    "new_closed_returns": [
+      {
+        "id": "MATCH_AND_DIRECT_WP",
+        "fact": "d0a424 sees current Codec f1 without0x30000 alternatives and returns its exact descriptor.585e4\u2192586a0 returns true for the identical current Mc descriptor. d041b0 uses generic-param vector/count2 and flags0/no conformance requirements; after scalar arguments validate, cce9e0 selects the relative direct WP with no conditional witness factory/special-conformance projection.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-argument-descriptors.json"
+        ]
+      },
+      {
+        "id": "READER_PREPARATION",
+        "fact": "d046c8 sets reader state0,count0/cap8. Current Codec parent is exact DrawingMXM flags0/parent0 with no parent-field relocation. cee844 visits that nongeneric module and appends one local record for the two scalar Codec parameters into capacity8. Generic-header flags0 yield argument offset0; ceef64 returns actual argument0/1. Stored visitor function slots and arena chainhead remain0; complete d1ea6c returns immediately. No selected growth or parent metadata lookup is needed.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-codec-descriptor.json"
+        ]
+      },
+      {
+        "id": "NORMAL_CACHE_PREFIX",
+        "fact": "Actual struct kind0x200 takes d09160\u2192c58310\u21920, so the selected miss route has no superclass. d0ce2c scans the registered current Mc and resolves the matching direct WP. d0bde8 calls the complete cache lookup/hash/insert support. The chosen16-byte hash has finite loads/arithmetic/return. If entry-vector growth is selected, d0cbf8 reaches malloc_good_size at193d0cc34 and malloc_type_malloc at193d0cc4c; otherwise a normal non-growing return forwards the WP without writing Sink MI. This is not a claim that a particular global cache was empty.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-hash-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-superclass-acquisition.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-superclass-leaf-acquisition.json"
+        ]
+      },
+      {
+        "id": "DISTINCT_COLD_SINK_FACTORY",
+        "fact": "The saved actual caller/cell/helper/descriptor/MI/accessor joins remain unchanged. Normal requirement return reaches current RecordSink VMa\u2192regular swift_getGenericMetadata; the accepted own-cache miss/factory bodies reach malloc_good_size193cdb524 and malloc_type_malloc193cdb53c. The source of the required dependency is current cleanup, not the removed generic consumer View. Metadata presence alone was never the criterion.",
+        "evidence": [
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/generic-entry-pattern.json",
+          "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/generic-metadata-dispatch.json"
+        ]
+      }
+    ],
+    "bounds": {
+      "complete_group_line_limit": 32768,
+      "complete_group_byte_limit": 1048576,
+      "retained_proof_byte_limit": 8388608,
+      "historical_acquired_assembled_lines": 17398,
+      "historical_acquired_assembled_bytes": 672143,
+      "historical_acquisition_qualified": false,
+      "prior_required_lines_before_three_missing_helpers": 15863,
+      "new_complete_stdout_lines": 4475,
+      "new_complete_stdout_bytes": 170286,
+      "current_logical_required_lines": 20338,
+      "conservative_complete_disassembly_presentation_lines": 20583,
+      "conservative_complete_disassembly_presentation_bytes": 793786,
+      "conservative_calculation": "620260B/16021lines prior required minus parent14543B/377lines, plus ENTIRE retained A47 group3 17783B/464lines, plus ten complete new groups170286B/4475lines. Entire group3 deliberately double-counts already covered cfafe4/regular-entry context; exact selected cfaa24 contributes219lines, giving20338 logical lines. No necessary function is clipped or split.",
+      "new_selected_scalar_data_bytes": 156,
+      "conservative_context_with_new_scalar_data_bytes": 793942,
+      "scalar_data_calculation": "reader constants8+16, module12, current Roles/Table descriptors28+60, four selected callback slots32. Raw/projection/manifest preservation is also included in the separate retained8MiB measurement.",
+      "prior_16455_no_fit": "Preserved historical16,384-line disposition. Today actual three-helper combined589lines replaces the old592-line forecast; continuation has explicit32768-line authority, not retroqualification.",
+      "qualifications": "Historical wrong-class capture,17,398-line acquisition breach, clipped diagnostic displays and wrong-citation correction remain unchanged. The complete currently relied semantic selection is assessed under today\u2019s explicitly amended line allowance; historical acquisition-wide PASS is not claimed."
+    },
+    "preservation_and_other_gates": [
+      "All60 candidate source files, prior failed snapshots/raws/reviews and four strict functional output comparisons remain preserved; no source edit, producer, full, live or cold experiment in this continuation.",
+      "Nongeneric View initializer/static cleanup/reader-defer positive remains separate. P07 5914/0, schema4 428/0 and focused1736320/0 remain functional passes; focused aggregate/collection_complete remain false.",
+      "Unit FAILED before tests; Interaction UNEXECUTED. Required changed component gates, complete safety closure, remaining provider/once/live/window/resource/P08 gates and necessary full validation remain unexecuted/open.",
+      "Exact installed-provider binding/interposition, live registry/cache/environment and actual charged-window observations remain unobserved. Existential normal/default/first-required-use qualification does not claim those live facts.",
+      "No implementation acceptance, source refactor, full/live producer or commit follows from this evidence owner. Root selects any next authorized engineering action after independent final review."
+    ],
+    "review_status": "Existing independent reviewer accepted the joint-feasibility threshold; final dated saved-amendment/count review pending.",
+    "evidence": [
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-hash-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-superclass-acquisition.json",
+      "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-superclass-leaf-acquisition.json"
+    ]
+  }
+}

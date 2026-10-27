@@ -1,0 +1,79 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000009bc84 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n>:
+   9bc84:      	sub	sp, sp, #0x110
+   9bc88:      	stp	x28, x24, [sp, #0xd0]
+   9bc8c:      	stp	x23, x22, [sp, #0xe0]
+   9bc90:      	stp	x20, x19, [sp, #0xf0]
+   9bc94:      	stp	x29, x30, [sp, #0x100]
+   9bc98:      	add	x29, sp, #0x100
+   9bc9c:      	mov	x19, x6
+   9bca0:      	ldr	x9, [x1]
+   9bca4:      	cbz	x9, 0x9bce8 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0x64>
+   9bca8:      	ldr	x10, [x1, #0x8]
+   9bcac:      	add	x10, x10, x10, lsl #1
+   9bcb0:      	lsl	x10, x10, #2
+   9bcb4:      	mov	w12, #0xc               ; =12
+   9bcb8:      	ldr	x11, [x2]
+   9bcbc:      	udiv	x10, x10, x12
+   9bcc0:      	cbz	x11, 0x9bd18 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0x94>
+   9bcc4:      	ldr	x12, [x2, #0x8]
+   9bcc8:      	and	x12, x12, #0x3fffffffffffffff
+   9bccc:      	stp	x0, x9, [sp, #0x10]
+   9bcd0:      	stp	x10, x11, [sp, #0x20]
+   9bcd4:      	str	x12, [sp, #0x30]
+   9bcd8:      	strh	w3, [sp, #0x38]
+   9bcdc:      	add	x22, sp, #0x10
+   9bce0:      	add	x0, sp, #0x10
+   9bce4:      	b	0x9bd50 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0xcc>
+   9bce8:      	add	x9, sp, #0x70
+   9bcec:      	ldr	x10, [x2]
+   9bcf0:      	cbz	x10, 0x9bd34 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0xb0>
+   9bcf4:      	ldr	x11, [x2, #0x8]
+   9bcf8:      	and	x11, x11, #0x3fffffffffffffff
+   9bcfc:      	stp	x0, xzr, [sp, #0x70]
+   9bd00:      	stp	xzr, x10, [sp, #0x80]
+   9bd04:      	str	x11, [x9, #0x20]
+   9bd08:      	strh	w3, [x9, #0x28]
+   9bd0c:      	add	x22, sp, #0x70
+   9bd10:      	add	x0, sp, #0x70
+   9bd14:      	b	0x9bd50 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0xcc>
+   9bd18:      	stp	x0, x9, [sp, #0x40]
+   9bd1c:      	stp	xzr, xzr, [sp, #0x58]
+   9bd20:      	str	x10, [sp, #0x50]
+   9bd24:      	strh	w3, [sp, #0x68]
+   9bd28:      	add	x22, sp, #0x40
+   9bd2c:      	add	x0, sp, #0x40
+   9bd30:      	b	0x9bd50 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0xcc>
+   9bd34:      	str	x0, [x9, #0x30]
+   9bd38:      	movi.2d	v0, #0000000000000000
+   9bd3c:      	stur	q0, [x9, #0x38]
+   9bd40:      	stur	q0, [x9, #0x48]
+   9bd44:      	strh	w3, [x9, #0x58]
+   9bd48:      	sub	x22, x29, #0x60
+   9bd4c:      	sub	x0, x29, #0x60
+   9bd50:      	add	x1, sp, #0xf
+   9bd54:      	mov	x20, x5
+   9bd58:      	blr	x4
+   9bd5c:      	cbz	x21, 0x9bd78 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0xf4>
+   9bd60:      	ldrb	w24, [sp, #0xf]
+   9bd64:      	mov	x20, x22
+   9bd68:      	bl	0x9bd68 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0xe4>
+		000000000009bd68:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE14discardPendingyyF17P08CounterRuntime0jdF0V_Tgq5
+   9bd6c:      	mov	w23, #0x1               ; =1
+   9bd70:      	strb	w24, [x19]
+   9bd74:      	b	0x9bd84 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0x100>
+   9bd78:      	mov	x23, x21
+   9bd7c:      	mov	x20, x22
+   9bd80:      	bl	0x9bd80 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5codec_q_AA0D15PendingMetadataVz_s11MutableSpanVy5Table_14CaptureStorageQZSgGzAKys6UInt16VGzARxmq_x0A14UISemanticCore0E14ExpansionErrorOYKXEtAVYKAA0defG0RzRi0_zr0_lFq_SpyAIGAVYKXEfU_17P08CounterRuntime07CountereG0V_ytTg504$s17z18CounterRuntime0B13eg4Vx18av8Core0D14xY30OIggrzo_ACxAFIegnrzo_lTRyt_TG5A_ytAVIggrzo_Tf1nnnnnc_n+0xfc>
+		000000000009bd80:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE14discardPendingyyF17P08CounterRuntime0jdF0V_Tgq5
+   9bd84:      	mov	x21, x23
+   9bd88:      	ldp	x29, x30, [sp, #0x100]
+   9bd8c:      	ldp	x20, x19, [sp, #0xf0]
+   9bd90:      	ldp	x23, x22, [sp, #0xe0]
+   9bd94:      	ldp	x28, x24, [sp, #0xd0]
+   9bd98:      	add	sp, sp, #0x110
+   9bd9c:      	ret

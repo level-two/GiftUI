@@ -1,0 +1,63 @@
+{
+  "acquired_utc": "2026-10-27T07:22:39.517987+00:00",
+  "functions": [
+    {
+      "lo": "0x193d0d7c0",
+      "hi": "0x193d0d7c4",
+      "bytes": 4,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331896768,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-0.bin",
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-0.o",
+      "projection_sha256": "25bf772192d50d87700be2f08ca638175f586ce29404d063378e0cefd728d3ac"
+    },
+    {
+      "lo": "0x193d0d88c",
+      "hi": "0x193d0d890",
+      "bytes": 4,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331896972,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-1.bin",
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-1.o",
+      "projection_sha256": "9d3fd0db7b09e8b297710b615d8fc52a247125f9d30650010d98220e995343ef"
+    },
+    {
+      "lo": "0x193d0d954",
+      "hi": "0x193d0d958",
+      "bytes": 4,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331897172,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-2.bin",
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-2.o",
+      "projection_sha256": "80a25b8f8cc3d25d7a783fbe8bae3c3dd2306d1465347ba3073af8d1726120f0"
+    },
+    {
+      "lo": "0x193d0d8b4",
+      "hi": "0x193d0d8c0",
+      "bytes": 12,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331897012,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-3.bin",
+      "sha256": "19daf2925c881152797194e2bfc73dd1c4e83fbc584ff64c28e9643fcd4c8392",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-3.o",
+      "projection_sha256": "f56488b705965a47fc7e2e3fa0fe5f666bd96a851dd03dcd9b5e2f662e470843"
+    }
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-0.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-1.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-2.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-3.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 1166,
+  "stdout_lines": 30,
+  "stdout_sha256": "4939cb9b1662bde6b1aea2a4fce2c05bba99bb02f288782f4385a12a371fc7e8",
+  "stderr_bytes": 0
+}

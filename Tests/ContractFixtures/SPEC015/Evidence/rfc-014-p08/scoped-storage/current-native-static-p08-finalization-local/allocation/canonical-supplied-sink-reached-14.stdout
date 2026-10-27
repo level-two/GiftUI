@@ -1,0 +1,8 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000002a414 <_OUTLINED_FUNCTION_468>:
+   2a414:      	mov	w0, #0x1                ; =1
+   2a418:      	ret

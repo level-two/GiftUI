@@ -1,0 +1,47 @@
+{
+  "scope": "Three directly changed compiler modules; whole canonical package cost versus committed product, not allocation proof or all-resource certification. Existing configured caps unchanged.",
+  "modules": [
+    {
+      "module": "GiftUISemanticCore.o",
+      "baseline": {
+        "path": ".build/contracts/p08-counter-iher3bin/GiftUISemanticCore.o",
+        "sha256": "f5af7b9369801969affe60ba231b31a6c004c803af666ccd7eb608fb1610a049",
+        "text_bytes": 175884
+      },
+      "current": {
+        "path": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o",
+        "sha256": "3575434182b4a819be05e57aac4767a5542b7a7cdb6f3a13e19fc8f72651662b",
+        "text_bytes": 178760
+      },
+      "text_delta": 2876
+    },
+    {
+      "module": "GiftUIDrawing.o",
+      "baseline": {
+        "path": ".build/contracts/p08-counter-iher3bin/GiftUIDrawing.o",
+        "sha256": "850380ace06087a02041bede71cb764ac5978af97cdb052a4e3fa7d680343803",
+        "text_bytes": 33480
+      },
+      "current": {
+        "path": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUIDrawing.o",
+        "sha256": "37d2789bb58233c388335fcb88839f11ea3f75210bf226abd583fda830dd4e22",
+        "text_bytes": 34200
+      },
+      "text_delta": 720
+    },
+    {
+      "module": "P08CounterRuntime.o",
+      "baseline": {
+        "path": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+        "sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+        "text_bytes": 820296
+      },
+      "current": {
+        "path": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o",
+        "sha256": "db222f474c2fc3cb4796a8c1ba91f895d1b8d3ecbe80438be0be264cccfb778c",
+        "text_bytes": 833488
+      },
+      "text_delta": 13192
+    }
+  ]
+}

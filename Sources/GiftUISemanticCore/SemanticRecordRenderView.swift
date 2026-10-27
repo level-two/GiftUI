@@ -3,12 +3,12 @@ import GiftUI
 /// Render independently borrows the same bank while consuming owned geometry.
 /// Structural records are skipped using the bank's own parent/sibling links;
 /// no projected node table or retained Layout borrow is created.
-package struct SemanticRecordRenderView<Payload: SemanticRecordConsumerPayload>:
-    SemanticRenderView, ~Escapable
+package struct SemanticRecordRenderView:
+    SemanticRenderView, BitwiseCopyable, ~Escapable
 {
-    private let view: SemanticRecordView<Payload>
+    private let view: SemanticRecordView
     @_lifetime(copy view)
-    package init(_ view: borrowing SemanticRecordView<Payload>) { self.view = copy view }
+    package init(_ view: borrowing SemanticRecordView) { self.view = copy view }
     package var rootIdentity: SemanticRecordReference {
         semanticIdentity(at: 0) ?? view.rootReference
     }

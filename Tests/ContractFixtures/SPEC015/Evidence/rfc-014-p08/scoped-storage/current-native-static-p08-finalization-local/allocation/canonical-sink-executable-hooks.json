@@ -1,0 +1,388 @@
+[
+  {
+    "path": ".build/contracts/p08-counter-qzv33chp/counter",
+    "bytes": 6680392,
+    "sha256": "dcc80e96f44c7b6eeee68f626391eabb02b23bf03aecb7a3e7a1c9d6e138ac2c",
+    "receipt": {
+      "sha256": "dcc80e96f44c7b6eeee68f626391eabb02b23bf03aecb7a3e7a1c9d6e138ac2c",
+      "bytes": 6680392
+    },
+    "loadcommands_sha256": "5a9826ddcd766bdc91ced4f1b33ef5c349512c8507dd436ae20e8894fca6acd6",
+    "sections": [
+      {
+        "section": "__text",
+        "segment": "__TEXT",
+        "address": "0x100000d88",
+        "bytes": 1976400
+      },
+      {
+        "section": "__stubs",
+        "segment": "__TEXT",
+        "address": "0x1001e35d8",
+        "bytes": 1224
+      },
+      {
+        "section": "__const",
+        "segment": "__TEXT",
+        "address": "0x1001e3aa0",
+        "bytes": 115648
+      },
+      {
+        "section": "__swift5_typeref",
+        "segment": "__TEXT",
+        "address": "0x1001ffe60",
+        "bytes": 22391
+      },
+      {
+        "section": "__cstring",
+        "segment": "__TEXT",
+        "address": "0x1002055e0",
+        "bytes": 11654
+      },
+      {
+        "section": "__swift5_entry",
+        "segment": "__TEXT",
+        "address": "0x100208368",
+        "bytes": 8
+      },
+      {
+        "section": "__constg_swiftt",
+        "segment": "__TEXT",
+        "address": "0x100208370",
+        "bytes": 46872
+      },
+      {
+        "section": "__swift5_fieldmd",
+        "segment": "__TEXT",
+        "address": "0x100213a88",
+        "bytes": 235688
+      },
+      {
+        "section": "__swift5_types",
+        "segment": "__TEXT",
+        "address": "0x10024d330",
+        "bytes": 3560
+      },
+      {
+        "section": "__swift5_reflstr",
+        "segment": "__TEXT",
+        "address": "0x10024e120",
+        "bytes": 44043
+      },
+      {
+        "section": "__swift5_assocty",
+        "segment": "__TEXT",
+        "address": "0x100258d2c",
+        "bytes": 6952
+      },
+      {
+        "section": "__swift5_protos",
+        "segment": "__TEXT",
+        "address": "0x10025a854",
+        "bytes": 440
+      },
+      {
+        "section": "__swift5_proto",
+        "segment": "__TEXT",
+        "address": "0x10025aa0c",
+        "bytes": 3708
+      },
+      {
+        "section": "__swift5_types2",
+        "segment": "__TEXT",
+        "address": "0x10025b888",
+        "bytes": 208
+      },
+      {
+        "section": "__swift5_builtin",
+        "segment": "__TEXT",
+        "address": "0x10025b958",
+        "bytes": 1040
+      },
+      {
+        "section": "__swift5_mpenum",
+        "segment": "__TEXT",
+        "address": "0x10025bd68",
+        "bytes": 1272
+      },
+      {
+        "section": "__objc_methname",
+        "segment": "__TEXT",
+        "address": "0x10025c260",
+        "bytes": 216
+      },
+      {
+        "section": "__objc_methtype",
+        "segment": "__TEXT",
+        "address": "0x10025c338",
+        "bytes": 1
+      },
+      {
+        "section": "__objc_classname",
+        "segment": "__TEXT",
+        "address": "0x10025c340",
+        "bytes": 57
+      },
+      {
+        "section": "__swift5_capture",
+        "segment": "__TEXT",
+        "address": "0x10025c37c",
+        "bytes": 160
+      },
+      {
+        "section": "__unwind_info",
+        "segment": "__TEXT",
+        "address": "0x10025c41c",
+        "bytes": 25272
+      },
+      {
+        "section": "__eh_frame",
+        "segment": "__TEXT",
+        "address": "0x1002626d8",
+        "bytes": 14128
+      },
+      {
+        "section": "__got",
+        "segment": "__DATA_CONST",
+        "address": "0x100268000",
+        "bytes": 2368
+      },
+      {
+        "section": "__const",
+        "segment": "__DATA_CONST",
+        "address": "0x100268940",
+        "bytes": 180072
+      },
+      {
+        "section": "__objc_classlist",
+        "segment": "__DATA_CONST",
+        "address": "0x1002948a8",
+        "bytes": 8
+      },
+      {
+        "section": "__objc_imageinfo",
+        "segment": "__DATA_CONST",
+        "address": "0x1002948b0",
+        "bytes": 8
+      },
+      {
+        "section": "__objc_const",
+        "segment": "__DATA",
+        "address": "0x100298000",
+        "bytes": 648
+      },
+      {
+        "section": "__data",
+        "segment": "__DATA",
+        "address": "0x100298288",
+        "bytes": 10368
+      },
+      {
+        "section": "__bss",
+        "segment": "__DATA",
+        "address": "0x10029ab10",
+        "bytes": 142752
+      },
+      {
+        "section": "__common",
+        "segment": "__DATA",
+        "address": "0x1002bd8b0",
+        "bytes": 65
+      }
+    ],
+    "swift63_hooks_present": false
+  },
+  {
+    "path": ".build/contracts/p08-counter-qzv33chp/counter-static-resource-v1",
+    "bytes": 6680008,
+    "sha256": "fa199889840826997e6dfa05027651cbf2c0dfc1772619433b8b2060a518738d",
+    "receipt": {
+      "sha256": "fa199889840826997e6dfa05027651cbf2c0dfc1772619433b8b2060a518738d",
+      "bytes": 6680008
+    },
+    "loadcommands_sha256": "56ab08f171f740b9b07963873599137358539fc05529870c2784746e381e808e",
+    "sections": [
+      {
+        "section": "__text",
+        "segment": "__TEXT",
+        "address": "0x100000d88",
+        "bytes": 1976104
+      },
+      {
+        "section": "__stubs",
+        "segment": "__TEXT",
+        "address": "0x1001e34b0",
+        "bytes": 1188
+      },
+      {
+        "section": "__swift5_entry",
+        "segment": "__TEXT",
+        "address": "0x1001e3954",
+        "bytes": 8
+      },
+      {
+        "section": "__const",
+        "segment": "__TEXT",
+        "address": "0x1001e3960",
+        "bytes": 115648
+      },
+      {
+        "section": "__constg_swiftt",
+        "segment": "__TEXT",
+        "address": "0x1001ffd20",
+        "bytes": 46872
+      },
+      {
+        "section": "__swift5_typeref",
+        "segment": "__TEXT",
+        "address": "0x10020b438",
+        "bytes": 22391
+      },
+      {
+        "section": "__swift5_fieldmd",
+        "segment": "__TEXT",
+        "address": "0x100210bb0",
+        "bytes": 235688
+      },
+      {
+        "section": "__swift5_types",
+        "segment": "__TEXT",
+        "address": "0x10024a458",
+        "bytes": 3560
+      },
+      {
+        "section": "__cstring",
+        "segment": "__TEXT",
+        "address": "0x10024b240",
+        "bytes": 11638
+      },
+      {
+        "section": "__swift5_reflstr",
+        "segment": "__TEXT",
+        "address": "0x10024dfc0",
+        "bytes": 44043
+      },
+      {
+        "section": "__swift5_assocty",
+        "segment": "__TEXT",
+        "address": "0x100258bcc",
+        "bytes": 6952
+      },
+      {
+        "section": "__swift5_protos",
+        "segment": "__TEXT",
+        "address": "0x10025a6f4",
+        "bytes": 440
+      },
+      {
+        "section": "__swift5_proto",
+        "segment": "__TEXT",
+        "address": "0x10025a8ac",
+        "bytes": 3708
+      },
+      {
+        "section": "__swift5_types2",
+        "segment": "__TEXT",
+        "address": "0x10025b728",
+        "bytes": 208
+      },
+      {
+        "section": "__swift5_builtin",
+        "segment": "__TEXT",
+        "address": "0x10025b7f8",
+        "bytes": 1040
+      },
+      {
+        "section": "__swift5_mpenum",
+        "segment": "__TEXT",
+        "address": "0x10025bc08",
+        "bytes": 1272
+      },
+      {
+        "section": "__objc_methname",
+        "segment": "__TEXT",
+        "address": "0x10025c100",
+        "bytes": 216
+      },
+      {
+        "section": "__objc_methtype",
+        "segment": "__TEXT",
+        "address": "0x10025c1d8",
+        "bytes": 1
+      },
+      {
+        "section": "__objc_classname",
+        "segment": "__TEXT",
+        "address": "0x10025c1e0",
+        "bytes": 57
+      },
+      {
+        "section": "__swift5_capture",
+        "segment": "__TEXT",
+        "address": "0x10025c21c",
+        "bytes": 160
+      },
+      {
+        "section": "__unwind_info",
+        "segment": "__TEXT",
+        "address": "0x10025c2bc",
+        "bytes": 25272
+      },
+      {
+        "section": "__eh_frame",
+        "segment": "__TEXT",
+        "address": "0x100262578",
+        "bytes": 14128
+      },
+      {
+        "section": "__got",
+        "segment": "__DATA_CONST",
+        "address": "0x100268000",
+        "bytes": 2336
+      },
+      {
+        "section": "__const",
+        "segment": "__DATA_CONST",
+        "address": "0x100268920",
+        "bytes": 180072
+      },
+      {
+        "section": "__objc_classlist",
+        "segment": "__DATA_CONST",
+        "address": "0x100294888",
+        "bytes": 8
+      },
+      {
+        "section": "__objc_imageinfo",
+        "segment": "__DATA_CONST",
+        "address": "0x100294890",
+        "bytes": 8
+      },
+      {
+        "section": "__objc_const",
+        "segment": "__DATA",
+        "address": "0x100298000",
+        "bytes": 648
+      },
+      {
+        "section": "__data",
+        "segment": "__DATA",
+        "address": "0x100298288",
+        "bytes": 10368
+      },
+      {
+        "section": "__bss",
+        "segment": "__DATA",
+        "address": "0x10029ab10",
+        "bytes": 142752
+      },
+      {
+        "section": "__common",
+        "segment": "__DATA",
+        "address": "0x1002bd8b0",
+        "bytes": 65
+      }
+    ],
+    "swift63_hooks_present": false
+  }
+]

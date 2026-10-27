@@ -1,0 +1,14 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c0cd8 <_OUTLINED_FUNCTION_40>:
+   c0cd8:      	add	x29, sp, #0x10
+   c0cdc:      	adrp	x9, 0xc0000 <_$s17P08CounterRuntime0B18OwnedSchedulerHost33_61E6B85DAB75F632ED60124EE3523C4FLLV23GiftUIHostConfiguration15MVPHostInstanceAA12OwnerFailureAeFP_SQWT>
+		00000000000c0cdc:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   c0ce0:      	ldr	x9, [x9]
+		00000000000c0ce0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   c0ce4:      	ldr	x9, [x9]
+   c0ce8:      	str	x9, [sp, #0x8]
+   c0cec:      	ret

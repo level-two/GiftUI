@@ -225,7 +225,7 @@ def scoped_variant(label, source, diagnostic=None, supplemental=False):
     if object_path.exists(): object_path.unlink()
 
 origins = ('geometry', 'candidateRecords', 'candidateHitRegions', 'candidateCommittedRecords',
-           'committedRecords', 'committedHitRegions', 'models', 'root', 'semantic', 'values', 'control', 'activationSpan')
+           'committedRecords', 'committedHitRegions', 'models', 'root', 'semantic', 'semanticCodec', 'values', 'control', 'activationSpan')
 constraints = 'where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & ~Copyable & ~Escapable, R: CounterCommittedBacking & ~Copyable & ~Escapable, H: CounterHitBacking & ~Copyable & ~Escapable, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity'
 for route in ('static', 'dynamic'):
     if route == 'dynamic' and is_embedded: continue
@@ -236,11 +236,11 @@ for route in ('static', 'dynamic'):
         generic = '' if mode == 'direct' else '<G, C, R, H>'
         where = '' if mode == 'direct' else constraints
         g, c, r, h = types
-        parameters = ('geometry: consuming ' + g + ', candidateRecords: consuming ' + c + ', candidateHitRegions: consuming ' + h + ', candidateCommittedRecords: consuming ' + r + ', committedRecords: consuming ' + r + ', committedHitRegions: consuming ' + h + ', models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly')
+        parameters = ('geometry: consuming ' + g + ', candidateRecords: consuming ' + c + ', candidateHitRegions: consuming ' + h + ', candidateCommittedRecords: consuming ' + r + ', committedRecords: consuming ' + r + ', committedHitRegions: consuming ' + h + ', models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore, semanticCodec: consuming CounterSemanticCodec, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly')
         result = owner + '<' + ', '.join(types) + '>'
         body = ('let state = InteractionState(candidateRecords: candidateRecords, candidateHitRegions: candidateHitRegions, candidateCommittedRecords: candidateCommittedRecords, committedRecords: committedRecords, committedHitRegions: committedHitRegions)\n'
                 'let interaction = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!\n'
-                'let supplied = ' + supplied + '<' + ', '.join(types) + '>(models: models, root: root, semantic: semantic, values: values, scopedControl: control, audit: assembly.report.storageAudit, geometry: geometry, interaction: interaction)\n'
+                'let supplied = ' + supplied + '<' + ', '.join(types) + '>(models: models, root: root, semantic: semantic, semanticCodec: copy semanticCodec, values: values, scopedControl: control, audit: assembly.report.storageAudit, geometry: geometry, interaction: interaction)\n'
                 'return ' + result + '(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)')
         for origin in origins:
             stem = 'so06-union-' + route + '-' + mode + '-' + origin
@@ -266,10 +266,10 @@ for route in ('static', 'dynamic'):
         where = '' if mode == 'direct' else constraints
         g, c, r, h = types
         specialization = '<' + ', '.join(types) + '>'
-        parameters = ('geometry: consuming ' + g + ', candidateRecords: consuming ' + c + ', candidateHitRegions: consuming ' + h + ', candidateCommittedRecords: consuming ' + r + ', committedRecords: consuming ' + r + ', committedHitRegions: consuming ' + h + ', models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly')
+        parameters = ('geometry: consuming ' + g + ', candidateRecords: consuming ' + c + ', candidateHitRegions: consuming ' + h + ', candidateCommittedRecords: consuming ' + r + ', committedRecords: consuming ' + r + ', committedHitRegions: consuming ' + h + ', models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore, semanticCodec: consuming CounterSemanticCodec, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: consuming CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly')
         prefix = ('let state = InteractionState(candidateRecords: candidateRecords, candidateHitRegions: candidateHitRegions, candidateCommittedRecords: candidateCommittedRecords, committedRecords: committedRecords, committedHitRegions: committedHitRegions)\n'
                   'let interaction = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!\n'
-                  'let supplied = ' + supplied + specialization + '(models: models, root: root, semantic: semantic, values: values, scopedControl: control, audit: assembly.report.storageAudit, geometry: geometry, interaction: interaction)\n')
+                  'let supplied = ' + supplied + specialization + '(models: models, root: root, semantic: semantic, semanticCodec: copy semanticCodec, values: values, scopedControl: control, audit: assembly.report.storageAudit, geometry: geometry, interaction: interaction)\n')
         active_type = 'SignalAnalyzerPresetHostInstance<' + owner + specialization + '>'
         active_body = (prefix + 'let owner = ' + owner + specialization + '(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)\n'
                        'var host = SignalAnalyzerPresetHostInstances.' + factory + '(report: assembly.report, owner: owner)!\n'
@@ -316,9 +316,9 @@ def actual_host_backing_source(route, negative):
     prefix = 'var escaped: ' + host + '? = nil\n' if negative else ''
     terminal = 'escaped = consume host\nreturn 1' if negative else 'host.teardown()\nreturn 1'
     after = '\nif var host = escaped.take() { host.teardown() }\nreturn count' if negative else '\nreturn count'
-    return ('fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {\n' + prefix +
+    return ('fileprivate func probe(_ owner: inout P08TypedBackingOwner, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore, semanticCodec: borrowing CounterSemanticCodec, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing CounterHostControl, activationSpan: Span<UInt8>, assembly: CounterHostAssembly) -> Int {\n' + prefix +
             'let count = withP08Storage(backing: &owner) { session in\n'
-            'let supplied = session.' + transfer + '(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)\n'
+            'let supplied = session.' + transfer + '(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), semanticCodec: copy semanticCodec, values: values.borrowedValues(), control: control.borrowed(), audit: assembly.report.storageAudit)\n'
             'let current = ' + owner + '(supplied: supplied, activationSpan: activationSpan, assembly: assembly, failAfterRuntime: false)\n'
             'var host = SignalAnalyzerPresetHostInstances.' + factory + '(report: assembly.report, owner: current)!\n'
             'precondition(host.activate() == .active)\n' + terminal + '\n}' + after + '\n}')
@@ -353,7 +353,7 @@ if not is_embedded:
     ):
         scoped_variant(stem + '-positive', positive)
         scoped_variant(stem + '-negative', negative, diagnostic)
-assert len(planned_scoped_labels) == (202 if is_embedded else 384), 'scoped corpus inventory changed'
+assert len(planned_scoped_labels) == (214 if is_embedded else 408), 'scoped corpus inventory changed'
 # Supplementary concrete endpoint-field projections do not replace any original
 # lifetime label or native executable control. Actual runtime offers are the
 # positive behavioral exercise of this same source seam.

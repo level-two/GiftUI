@@ -1,0 +1,33 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000027f4 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k6UITextR0V_Tg5>:
+    27f4:      	sub	sp, sp, #0x80
+    27f8:      	stp	x20, x19, [sp, #0x60]
+    27fc:      	stp	x29, x30, [sp, #0x70]
+    2800:      	add	x29, sp, #0x70
+    2804:      	mov	x19, x1
+    2808:      	mov	x0, sp
+    280c:      	mov	x1, x20
+    2810:      	mov	w2, #0x48               ; =72
+    2814:      	bl	0x2814 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k6UITextR0V_Tg5+0x20>
+		0000000000002814:  ARM64_RELOC_BRANCH26	_memcpy
+    2818:      	ldr	w8, [x20, #0x48]
+    281c:      	ldrb	w9, [x20, #0x4c]
+    2820:      	ldr	x10, [x20, #0x58]
+    2824:      	ldr	d0, [x20, #0x50]
+    2828:      	str	d0, [sp, #0x48]
+    282c:      	str	x10, [sp, #0x50]
+    2830:      	str	w8, [sp, #0x58]
+    2834:      	strb	w9, [sp, #0x5c]
+    2838:      	mov	x1, sp
+    283c:      	mov	x0, x19
+    2840:      	bl	0x2840 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k6UITextR0V_Tg5+0x4c>
+		0000000000002840:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgx_AA0dF6WriterVAA0d6RecordF0OAA0deF0OXEt0A2UI01_ab9PrimitiveF0RzlFZAP01_a6UITextF0V_Tt2g504$s18ab6Core28defg13O9primitive_6i6AA0D14kl11OSgx_AA0dF6m13Vt0A2UI01_ab9p12F0RzlFZAA0d6N16F0OAA0deF0OXEfU_Tf1nnc_n
+    2844:      	ldp	x29, x30, [sp, #0x70]
+    2848:      	ldp	x20, x19, [sp, #0x60]
+    284c:      	add	sp, sp, #0x80
+    2850:      	b	0x2850 <_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k6UITextR0V_Tg5+0x5c>
+		0000000000002850:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore23SemanticRecordSinkStateV05stageD6ResultySbAA0D14ExpansionErrorOSgF

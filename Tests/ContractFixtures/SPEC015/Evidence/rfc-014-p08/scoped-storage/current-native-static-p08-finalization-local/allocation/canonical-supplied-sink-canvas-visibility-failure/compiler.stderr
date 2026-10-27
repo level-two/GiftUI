@@ -1,0 +1,81 @@
+CounterCanvas: /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmp0a7_04zc/macos-static
+/Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmp0a7_04zc/macos-static/CounterCanvas.swift:60:43: warning: extraneous duplicate parameter name; 'context' already has an argument label
+58 |     @inlinable
+59 | @inline(__always)
+60 | package func _giftUIDraw(in bounds: Rect, context context: inout GraphicsContext,
+   |                                           `- warning: extraneous duplicate parameter name; 'context' already has an argument label
+61 |     read: borrowing _GiftUIFrameRead<D>) throws(DrawingError) {}
+62 | }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmp0a7_04zc/macos-static/CounterCanvas.swift:14:113: error: property 'offset' is package and cannot be referenced from an '@inlinable' function
+ 9 | 
+10 |     package let model:_GiftUIModelKey<CounterModelSchema>
+11 |     package let offset: GeometryScalar
+   |                 `- note: property 'offset' is not '@usableFromInline' or public
+12 | @inlinable
+13 | 
+14 |     package init(model: _GiftUIModelKey<CounterModelSchema>, offset: GeometryScalar) { self.model = model; self.offset = offset }
+   |                                                                                                                 `- error: property 'offset' is package and cannot be referenced from an '@inlinable' function
+15 |     @inlinable
+16 | @inline(__always)
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmp0a7_04zc/macos-static/CounterCanvas.swift:21:16: error: property 'offset' is package and cannot be referenced from an '@inlinable' function
+ 9 | 
+10 |     package let model:_GiftUIModelKey<CounterModelSchema>
+11 |     package let offset: GeometryScalar
+   |                 `- note: property 'offset' is not '@usableFromInline' or public
+12 | @inlinable
+13 | 
+   :
+19 | 
+20 |         try drawing.withPath { (context, path) throws(DrawingError) in
+21 |             if offset >= 0 {
+   |                `- error: property 'offset' is package and cannot be referenced from an '@inlinable' function
+22 |                 let value = (try CounterRead<D>(model, drawingRead: read)).value
+23 |                 try path.move(to: Point(x: offset, y: GeometryScalar(value)))
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmp0a7_04zc/macos-static/CounterCanvas.swift:23:44: error: property 'offset' is package and cannot be referenced from an '@inlinable' function
+ 9 | 
+10 |     package let model:_GiftUIModelKey<CounterModelSchema>
+11 |     package let offset: GeometryScalar
+   |                 `- note: property 'offset' is not '@usableFromInline' or public
+12 | @inlinable
+13 | 
+   :
+21 |             if offset >= 0 {
+22 |                 let value = (try CounterRead<D>(model, drawingRead: read)).value
+23 |                 try path.move(to: Point(x: offset, y: GeometryScalar(value)))
+   |                                            `- error: property 'offset' is package and cannot be referenced from an '@inlinable' function
+24 |             } else {
+25 |                 try path.move(to: Point(x: 0, y: 0))
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmp0a7_04zc/macos-static/CounterCanvas.swift:45:36: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+34 | package struct CounterCanvasRoot<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+35 | 
+36 |     package let model:_GiftUIModelKey<CounterModelSchema>
+   |                 `- note: property 'model' is not '@usableFromInline' or public
+37 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+38 | @ViewBuilder
+   :
+43 |     
+44 |         try HStack {() throws(_GiftUIAccessFailure) in 
+45 |             CounterTrace<D>(model: model, offset: 0)
+   |                                    `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+46 |             CounterTrace<D>(model: model, offset: 2)
+47 |         }
+
+/Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmp0a7_04zc/macos-static/CounterCanvas.swift:46:36: error: property 'model' is package and cannot be referenced from an '@inlinable' function
+34 | package struct CounterCanvasRoot<D:CounterReadDomain>: View {@usableFromInline package typealias Domain = D
+35 | 
+36 |     package let model:_GiftUIModelKey<CounterModelSchema>
+   |                 `- note: property 'model' is not '@usableFromInline' or public
+37 |     package init(model: _GiftUIModelKey<CounterModelSchema>) { self.model = model }
+38 | @ViewBuilder
+   :
+44 |         try HStack {() throws(_GiftUIAccessFailure) in 
+45 |             CounterTrace<D>(model: model, offset: 0)
+46 |             CounterTrace<D>(model: model, offset: 2)
+   |                                    `- error: property 'model' is package and cannot be referenced from an '@inlinable' function
+47 |         }
+48 | }
+

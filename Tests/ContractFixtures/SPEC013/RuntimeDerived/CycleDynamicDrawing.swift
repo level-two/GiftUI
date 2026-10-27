@@ -14,7 +14,7 @@ import GiftUIInteraction
 @testable import GiftUIRuntimeDynamic
 
 package func cycleDynamicDrawing(
-    semantic: borrowing SemanticRecordStore<CanvasSemanticPayload<CycleValueTable.CaptureStorage>>,
+    semantic: borrowing SemanticRecordStore,
     models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>,
     values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>,
     shown: Bool

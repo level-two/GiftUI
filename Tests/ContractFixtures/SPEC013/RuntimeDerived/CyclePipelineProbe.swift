@@ -13,13 +13,13 @@ import GiftUISemanticCore
 import CycleSchema
 import CyclePresentation
 
-func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CycleControl) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource, H: CycleHitBacking & InteractionOwnedBankMeasurementSource, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore, semanticCodec: borrowing CycleSemanticCodec, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CycleControl) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource, H: CycleHitBacking & InteractionOwnedBankMeasurementSource, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     cycleTrace("begin", dynamic ? "dynamic" : "static")
     defer { cycleTrace("end", dynamic ? "dynamic" : "static") }
     var transferredGeometry: G? = consume geometry
     var transferredInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
     return withUnsafeMutablePointer(to: &control) { trace in
-        var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: transferredGeometry.take()!, interaction: transferredInteraction.take()!, control: trace, limits: audit.limits)
+        var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), semanticCodec: copy semanticCodec, values: values.borrowedValues(), geometry: transferredGeometry.take()!, interaction: transferredInteraction.take()!, control: trace, limits: audit.limits)
         var admission = CycleAdmission(control: trace, limits: audit.limits.execution)
         var checks = 0
         func expect(_ value: Bool) { checks += 1; precondition(value) }

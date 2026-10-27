@@ -1,0 +1,32 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000206ac <_$s18GiftUISemanticCore23SemanticRecordSinkStateV13payloadWriterAA0d7PayloadI0VyF>:
+   206ac:      	sub	sp, sp, #0x90
+   206b0:      	stp	x22, x21, [sp, #0x60]
+   206b4:      	stp	x20, x19, [sp, #0x70]
+   206b8:      	stp	x29, x30, [sp, #0x80]
+   206bc:      	add	x29, sp, #0x80
+   206c0:      	mov	x19, x8
+   206c4:      	add	x0, sp, #0x8
+   206c8:      	mov	x1, x20
+   206cc:      	bl	0x206cc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV13payloadWriterAA0d7PayloadI0VyF+0x20>
+		00000000000206cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_308
+   206d0:      	ldr	q0, [x20, #0x50]
+   206d4:      	stur	q0, [sp, #0x50]
+   206d8:      	ldr	w21, [x20, #0x48]
+   206dc:      	ldrb	w20, [x20, #0x4c]
+   206e0:      	add	x1, sp, #0x8
+   206e4:      	mov	x0, x19
+   206e8:      	mov	w2, #0x58               ; =88
+   206ec:      	bl	0x206ec <_$s18GiftUISemanticCore23SemanticRecordSinkStateV13payloadWriterAA0d7PayloadI0VyF+0x40>
+		00000000000206ec:  ARM64_RELOC_BRANCH26	_memcpy
+   206f0:      	str	w21, [x19, #0x58]
+   206f4:      	strb	w20, [x19, #0x5c]
+   206f8:      	ldp	x29, x30, [sp, #0x80]
+   206fc:      	ldp	x20, x19, [sp, #0x70]
+   20700:      	ldp	x22, x21, [sp, #0x60]
+   20704:      	add	sp, sp, #0x90
+   20708:      	ret

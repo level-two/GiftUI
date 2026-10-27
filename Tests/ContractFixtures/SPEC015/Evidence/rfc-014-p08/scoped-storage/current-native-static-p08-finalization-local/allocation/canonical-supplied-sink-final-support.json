@@ -1,0 +1,136 @@
+{
+  "captures": [
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o",
+      "object_sha256": "3575434182b4a819be05e57aac4767a5542b7a7cdb6f3a13e19fc8f72651662b",
+      "symbol": "_OUTLINED_FUNCTION_430",
+      "start": "0x2a1c8",
+      "end": "0x2a1d4",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x2a1c8",
+        "--stop-address=0x2a1d4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-final-support-0.stdout",
+      "stdout_bytes": 317,
+      "stdout_lines": 9,
+      "stdout_sha256": "fbe64e087b812fbed52c144f700250c650f449bb3284fbc81b051814a1dc39ba",
+      "stderr_bytes": 0
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o",
+      "object_sha256": "3575434182b4a819be05e57aac4767a5542b7a7cdb6f3a13e19fc8f72651662b",
+      "symbol": "_OUTLINED_FUNCTION_483",
+      "start": "0x2a4dc",
+      "end": "0x2a4e8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x2a4dc",
+        "--stop-address=0x2a4e8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-final-support-1.stdout",
+      "stdout_bytes": 310,
+      "stdout_lines": 9,
+      "stdout_sha256": "3dc89df14b9fbf62cd3fce0986e151b958a2b7ea2e5e33c4fbca2137b5a8aaeb",
+      "stderr_bytes": 0
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o",
+      "object_sha256": "3575434182b4a819be05e57aac4767a5542b7a7cdb6f3a13e19fc8f72651662b",
+      "symbol": "_OUTLINED_FUNCTION_210",
+      "start": "0x29668",
+      "end": "0x29680",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x29668",
+        "--stop-address=0x29680",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-final-support-2.stdout",
+      "stdout_bytes": 456,
+      "stdout_lines": 12,
+      "stdout_sha256": "bcb8d5ca57d4e59d8ee3cffdb5d3b387af7e354ca4ef7c8d806ae51d46bd2f52",
+      "stderr_bytes": 0
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o",
+      "object_sha256": "3575434182b4a819be05e57aac4767a5542b7a7cdb6f3a13e19fc8f72651662b",
+      "symbol": "_OUTLINED_FUNCTION_434",
+      "start": "0x2a1f0",
+      "end": "0x2a1f8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x2a1f0",
+        "--stop-address=0x2a1f8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-final-support-3.stdout",
+      "stdout_bytes": 281,
+      "stdout_lines": 8,
+      "stdout_sha256": "0c9192021f8a53872ed871464a2305d16fabb08fa4b0fc4a8915a33f70b963ef",
+      "stderr_bytes": 0
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o",
+      "object_sha256": "3575434182b4a819be05e57aac4767a5542b7a7cdb6f3a13e19fc8f72651662b",
+      "symbol": "___swift_noop_void_return",
+      "start": "0x245d0",
+      "end": "0x245d4",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x245d0",
+        "--stop-address=0x245d4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-final-support-4.stdout",
+      "stdout_bytes": 257,
+      "stdout_lines": 7,
+      "stdout_sha256": "1db656a8dc6452f57924a5b051c4a366d9cab69dc73a39363ce110327e322d7c",
+      "stderr_bytes": 0
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o",
+      "object_sha256": "db222f474c2fc3cb4796a8c1ba91f895d1b8d3ecbe80438be0be264cccfb778c",
+      "symbol": "_$s18GiftUISemanticCore28SemanticStandardPayloadCodecO9primitive_6writer8wrappingAA0D14ExpansionErrorOSgx_AA0dF6WriterVAA0d6RecordF0OAA0deF0OXEt0A2UI01_ab9PrimitiveF0RzlFZAP01_a6UITextF0V_Tt2g504$s18ab6Core28defg13O9primitive_6i6AA0D14kl11OSgx_AA0dF6m13Vt0A2UI01_ab9p12F0RzlFZAA0d6N16F0OAA0deF0OXEfU_Tf1nnc_n",
+      "start": "0x9b774",
+      "end": "0x9b8ac",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x9b774",
+        "--stop-address=0x9b8ac",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-final-support-5.stdout",
+      "stdout_bytes": 9367,
+      "stdout_lines": 99,
+      "stdout_sha256": "3fa8fe534abdb2fd24b438367f9be58ed7746f6be07d96c1aa9a74cad16ef93e",
+      "stderr_bytes": 0
+    }
+  ]
+}

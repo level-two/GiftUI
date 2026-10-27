@@ -1,0 +1,46 @@
+{
+  "acquired_utc": "2026-10-27T07:29:16.355704+00:00",
+  "functions": [
+    {
+      "lo": "0x193cee844",
+      "hi": "0x193ceed80",
+      "bytes": 1340,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331769924,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-0.bin",
+      "sha256": "397edc70f30d93ec75b64764233c8471fb87fd34c754996b83c8085b2ca4bdc1",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-0.o",
+      "projection_sha256": "b5b32009ffd1fa6ae259932db6c90bfc1bf2aa1c6637f05db162e63d7c0f7b38"
+    },
+    {
+      "lo": "0x193d0c7e8",
+      "hi": "0x193d0c8b4",
+      "bytes": 204,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331892712,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-1.bin",
+      "sha256": "a1309a2b54faacf9d7c73f7e03c0eddc72a836a7d0960be6bd4b5e5d02201d39",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-1.o",
+      "projection_sha256": "b1efcf3ced7e909c0e7d93fd3eba6665d5f9a45e01c5e45606763140e495bc57"
+    }
+  ],
+  "constant": {
+    "vm": "0x194104d60",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+    "offset": 336055648,
+    "hex": "0000000008000000",
+    "sha256": "7b742c398b1a841a160d67298c4e11857acc1db71c3f90509722ca74733cb814"
+  },
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-0.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-1.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 15200,
+  "stdout_lines": 398,
+  "stdout_sha256": "cb51f9aab32362bf93c7e4129148f575486e9eaaab96000c38e40f55742f0185",
+  "stderr_bytes": 0
+}

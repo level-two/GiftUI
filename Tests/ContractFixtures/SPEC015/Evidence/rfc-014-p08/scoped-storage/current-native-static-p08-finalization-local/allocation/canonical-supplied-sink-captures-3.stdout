@@ -1,0 +1,101 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000008293c <_$s17P08CounterRuntime0B14PendingBackingVACycfCTm>:
+   8293c:      	sub	sp, sp, #0x20
+   82940:      	stp	x29, x30, [sp, #0x10]
+   82944:      	bl	0x82944 <_$s17P08CounterRuntime0B14PendingBackingVACycfCTm+0x8>
+		0000000000082944:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_40
+   82948:      	add	x9, x8, #0x10c
+   8294c:      	strh	wzr, [x8]
+   82950:      	str	wzr, [x8, #0x4]
+   82954:      	mov	w10, #0x1               ; =1
+   82958:      	strh	w10, [x8, #0x8]
+   8295c:      	str	wzr, [x8, #0xc]
+   82960:      	str	xzr, [x8, #0x10]
+   82964:      	strh	wzr, [x8, #0x18]
+   82968:      	strb	w10, [x8, #0x1a]
+   8296c:      	stur	xzr, [x8, #0x1c]
+   82970:      	strh	wzr, [x8, #0x24]
+   82974:      	strb	w10, [x8, #0x26]
+   82978:      	str	xzr, [x8, #0x28]
+   8297c:      	strh	wzr, [x8, #0x30]
+   82980:      	strb	w10, [x8, #0x32]
+   82984:      	stur	xzr, [x8, #0x34]
+   82988:      	strh	wzr, [x8, #0x3c]
+   8298c:      	strb	w10, [x8, #0x3e]
+   82990:      	str	xzr, [x8, #0x40]
+   82994:      	strh	wzr, [x8, #0x48]
+   82998:      	strb	w10, [x8, #0x4a]
+   8299c:      	stur	xzr, [x8, #0x4c]
+   829a0:      	strh	wzr, [x8, #0x54]
+   829a4:      	strb	w10, [x8, #0x56]
+   829a8:      	str	xzr, [x8, #0x58]
+   829ac:      	strh	wzr, [x8, #0x60]
+   829b0:      	strb	w10, [x8, #0x62]
+   829b4:      	stur	xzr, [x8, #0x64]
+   829b8:      	strh	wzr, [x8, #0x6c]
+   829bc:      	strb	w10, [x8, #0x6e]
+   829c0:      	str	xzr, [x8, #0x70]
+   829c4:      	strh	wzr, [x8, #0x78]
+   829c8:      	strb	w10, [x8, #0x7a]
+   829cc:      	stur	xzr, [x8, #0x7c]
+   829d0:      	strh	wzr, [x8, #0x84]
+   829d4:      	strb	w10, [x8, #0x86]
+   829d8:      	str	xzr, [x8, #0x88]
+   829dc:      	strh	wzr, [x8, #0x90]
+   829e0:      	strb	w10, [x8, #0x92]
+   829e4:      	stur	xzr, [x8, #0x94]
+   829e8:      	strh	wzr, [x8, #0x9c]
+   829ec:      	strb	w10, [x8, #0x9e]
+   829f0:      	str	xzr, [x8, #0xa0]
+   829f4:      	strh	wzr, [x8, #0xa8]
+   829f8:      	strb	w10, [x8, #0xaa]
+   829fc:      	stur	xzr, [x8, #0xac]
+   82a00:      	strh	wzr, [x8, #0xb4]
+   82a04:      	strb	w10, [x8, #0xb6]
+   82a08:      	str	xzr, [x8, #0xb8]
+   82a0c:      	strh	wzr, [x8, #0xc0]
+   82a10:      	strb	w10, [x8, #0xc2]
+   82a14:      	stur	xzr, [x8, #0xc4]
+   82a18:      	strh	wzr, [x8, #0xcc]
+   82a1c:      	strb	w10, [x8, #0xce]
+   82a20:      	str	xzr, [x8, #0xd0]
+   82a24:      	strh	wzr, [x8, #0xd8]
+   82a28:      	strb	w10, [x8, #0xda]
+   82a2c:      	stur	xzr, [x8, #0xdc]
+   82a30:      	strh	wzr, [x8, #0xe4]
+   82a34:      	strb	w10, [x8, #0xe6]
+   82a38:      	str	xzr, [x8, #0xe8]
+   82a3c:      	strh	wzr, [x8, #0xf0]
+   82a40:      	strb	w10, [x8, #0xf2]
+   82a44:      	stur	xzr, [x8, #0xf4]
+   82a48:      	strh	wzr, [x8, #0xfc]
+   82a4c:      	strb	w10, [x8, #0xfe]
+   82a50:      	str	xzr, [x8, #0x100]
+   82a54:      	strh	wzr, [x8, #0x108]
+   82a58:      	strb	w10, [x8, #0x10a]
+   82a5c:      	str	xzr, [x9]
+   82a60:      	strh	wzr, [x8, #0x114]
+   82a64:      	strb	w10, [x8, #0x116]
+   82a68:      	str	xzr, [x8, #0x118]
+   82a6c:      	strh	wzr, [x8, #0x120]
+   82a70:      	strb	w10, [x8, #0x122]
+   82a74:      	str	xzr, [x9, #0x18]
+   82a78:      	strh	wzr, [x8, #0x12c]
+   82a7c:      	strb	w10, [x8, #0x12e]
+   82a80:      	movi.2d	v0, #0xffffffffffffffff
+   82a84:      	stp	q0, q0, [x8, #0x140]
+   82a88:      	str	q0, [x8, #0x130]
+   82a8c:      	bl	0x82a8c <_$s17P08CounterRuntime0B14PendingBackingVACycfCTm+0x150>
+		0000000000082a8c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_182
+   82a90:      	bl	0x82a90 <_$s17P08CounterRuntime0B14PendingBackingVACycfCTm+0x154>
+		0000000000082a90:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1612
+   82a94:      	b.ne	0x82aa0 <_$s17P08CounterRuntime0B14PendingBackingVACycfCTm+0x164>
+   82a98:      	ldp	x29, x30, [sp, #0x10]
+   82a9c:      	b	0x82a9c <_$s17P08CounterRuntime0B14PendingBackingVACycfCTm+0x160>
+		0000000000082a9c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_985
+   82aa0:      	bl	0x82aa0 <_$s17P08CounterRuntime0B14PendingBackingVACycfCTm+0x164>
+		0000000000082aa0:  ARM64_RELOC_BRANCH26	___stack_chk_fail

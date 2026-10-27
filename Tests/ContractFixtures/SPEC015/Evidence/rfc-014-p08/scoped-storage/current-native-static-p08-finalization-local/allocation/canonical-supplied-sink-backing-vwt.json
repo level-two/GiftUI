@@ -1,0 +1,103 @@
+{
+  "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o",
+  "sha256": "db222f474c2fc3cb4796a8c1ba91f895d1b8d3ecbe80438be0be264cccfb778c",
+  "projections": [
+    {
+      "symbol": "_$s17P08CounterRuntime0B14PendingBackingVWV",
+      "address": "0xd59a0",
+      "file_offset": 877472,
+      "bytes_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600100000000000060010000000000000300820200000000",
+      "relocations": [
+        {
+          "offset": 56,
+          "target": "_$s17P08CounterRuntime0B14PendingBackingVwst",
+          "raw_info": "0xe000eef"
+        },
+        {
+          "offset": 48,
+          "target": "_$s17P08CounterRuntime0B14PendingBackingVwet",
+          "raw_info": "0xe000eed"
+        },
+        {
+          "offset": 40,
+          "target": "___swift_memcpy352_4",
+          "raw_info": "0xe0028a3"
+        },
+        {
+          "offset": 32,
+          "target": "___swift_memcpy352_4",
+          "raw_info": "0xe0028a3"
+        },
+        {
+          "offset": 24,
+          "target": "___swift_cannot_copy_noncopyable_type",
+          "raw_info": "0xe002874"
+        },
+        {
+          "offset": 16,
+          "target": "___swift_cannot_copy_noncopyable_type",
+          "raw_info": "0xe002874"
+        },
+        {
+          "offset": 8,
+          "target": "___swift_noop_void_return",
+          "raw_info": "0xe0028c3"
+        },
+        {
+          "offset": 0,
+          "target": "___swift_cannot_copy_noncopyable_type",
+          "raw_info": "0xe002874"
+        }
+      ]
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B15SemanticBackingVWV",
+      "address": "0xd7440",
+      "file_offset": 884288,
+      "bytes_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000604e000000000000604e00000000000003008202fdffff7f",
+      "relocations": [
+        {
+          "offset": 56,
+          "target": "_$s17P08CounterRuntime0B15SemanticBackingVwst",
+          "raw_info": "0xe001025"
+        },
+        {
+          "offset": 48,
+          "target": "_$s17P08CounterRuntime0B15SemanticBackingVwet",
+          "raw_info": "0xe001024"
+        },
+        {
+          "offset": 40,
+          "target": "___swift_memcpy20064_4",
+          "raw_info": "0xe002892"
+        },
+        {
+          "offset": 32,
+          "target": "___swift_memcpy20064_4",
+          "raw_info": "0xe002892"
+        },
+        {
+          "offset": 24,
+          "target": "___swift_cannot_copy_noncopyable_type",
+          "raw_info": "0xe002874"
+        },
+        {
+          "offset": 16,
+          "target": "___swift_cannot_copy_noncopyable_type",
+          "raw_info": "0xe002874"
+        },
+        {
+          "offset": 8,
+          "target": "___swift_noop_void_return",
+          "raw_info": "0xe0028c3"
+        },
+        {
+          "offset": 0,
+          "target": "___swift_cannot_copy_noncopyable_type",
+          "raw_info": "0xe002874"
+        }
+      ]
+    }
+  ],
+  "interpretation": "Static concrete noncopyable value witnesses: destroy slot +8 binds ___swift_noop_void_return; take uses fixed memcpy352_4 / memcpy20064_4; copy slots trap, not permitted operations."
+}

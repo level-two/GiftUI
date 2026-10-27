@@ -13,14 +13,14 @@ import GiftUISemanticCore
 import CycleSchema
 import P07TargetWorkspace
 
-typealias StaticCyclePayload = CanvasSemanticPayload<CycleValueTable.CaptureStorage>
+typealias StaticCyclePayload = SemanticRecordPayload
 // Only a finite assembly adapter: local IDs refer to the current borrowed bank.
 // The existing target workspace still owns all layout records and algorithms.
 struct LocalSemantic: ~Escapable, SemanticLayoutView {
-    let bank: SemanticRecordView<StaticCyclePayload>
-    let base: SemanticRecordLayoutView<StaticCyclePayload>
+    let bank: SemanticRecordView
+    let base: SemanticRecordLayoutView
     @_lifetime(borrow bank)
-    init(_ bank: borrowing SemanticRecordView<StaticCyclePayload>) { self.bank = copy bank; base = SemanticRecordLayoutView(bank) }
+    init(_ bank: borrowing SemanticRecordView) { self.bank = copy bank; base = SemanticRecordLayoutView(bank) }
     var rootIdentity: UInt16 { base.rootIdentity.ordinal + 1 }
     var scopeCount: UInt16 { base.scopeCount }
     func reference(_ id: UInt16) -> SemanticRecordReference? { id == 0 ? nil : bank.reference(at: id - 1) }
@@ -53,7 +53,7 @@ struct QualifiedLayout: ResolvedRenderLayoutView {
     func glyph(of ref: SemanticRecordReference, at index: UInt16) -> ResolvedRenderGlyph? { guard let id = local(ref) else { return nil }; return base.glyph(of: id, at: index) }
 }
 package func cycleStaticDrawing(
-    semantic: borrowing SemanticRecordStore<CanvasSemanticPayload<CycleValueTable.CaptureStorage>>,
+    semantic: borrowing SemanticRecordStore,
     models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>,
     values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, shown: Bool
 ) -> Int {

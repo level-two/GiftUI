@@ -1,0 +1,21 @@
+{
+  "object": ".build/contracts/p08-counter-iher3bin/P08CounterRuntime.o",
+  "object_sha256": "5bee744cba35db18092920051c9aec5f376d447adeaaf80b4afceeba4fed8baf",
+  "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesO0A9UIDrawing06CanvasD7PayloadOy0qR5Table0qr6SchemaV6ValuesOyAO0rN0OGGG_AA0O4SinkVyAR0vdW5CodecOyAqU0qryvX0VyAYGGG0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAYGAhIPAHE8disabledyQrSbFQOyAH6ButtonVy0qR12Presentation0R6ActionOAH4TextVyAYGG_Qo_Tg5",
+  "start": "0xa9264",
+  "end": "0xa985c",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0xa9264",
+    "--stop-address=0xa985c",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-iher3bin/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "raw": "canonical-supplied-sink-baseline-traversal.stdout",
+  "stdout_bytes": 72855,
+  "stdout_lines": 448,
+  "stdout_sha256": "f409c5763bb097162a1f8aecaf3201eccfd4e30c4e44e7ad5bc88d5cb3aea519"
+}

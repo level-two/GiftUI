@@ -1,0 +1,92 @@
+{
+  "group": "actual Static expansion specialization and exact current RecordSink-cell loading helpers",
+  "input": "17245735a5b74b2a4eacc44ecaef0e61bd43132d10febedbf4a5f3a8bac7d289",
+  "captures": [
+    {
+      "symbol": "_OUTLINED_FUNCTION_1107",
+      "start": "0xc7b1c",
+      "end": "0xc7b28",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc7b1c",
+        "--stop-address=0xc7b28",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 691,
+      "stdout_lines": 11,
+      "stdout_sha256": "c32f022232b2158d15294e49fc00092a2bb12e4b8d89cd4349968626b4caae80",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-required-0.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_530",
+      "start": "0xc4abc",
+      "end": "0xc4ad4",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc4abc",
+        "--stop-address=0xc4ad4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 947,
+      "stdout_lines": 15,
+      "stdout_sha256": "f475a4a2698a0ca2f258913a090c5cd5e79b32300763a0053c746932ef054b4b",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-required-1.stdout"
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_155",
+      "start": "0xc2694",
+      "end": "0xc26a8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc2694",
+        "--stop-address=0xc26a8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 916,
+      "stdout_lines": 14,
+      "stdout_sha256": "515830e07c914afd6cf3975efd189b6b2e96cdb930ac3932cd9d383bae5afb52",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-required-2.stdout"
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+      "start": "0x6cf64",
+      "end": "0x70b04",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x6cf64",
+        "--stop-address=0x70b04",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 448056,
+      "stdout_lines": 4238,
+      "stdout_sha256": "38e7a7840c842f16a67a2fcdf7c6b2b54d6d21446788dee42bce67bd5aa11a6f",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-required-3.stdout"
+    }
+  ],
+  "bytes": 450610,
+  "lines": 4278
+}

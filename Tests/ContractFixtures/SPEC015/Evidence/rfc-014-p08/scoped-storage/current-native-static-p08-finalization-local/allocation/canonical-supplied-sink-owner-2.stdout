@@ -1,0 +1,22 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000227c <_$s17P08CounterRuntime0B13SemanticCodecV13GiftUIDrawing06Canvasd7PayloadE0AadEP04makeE05state8captures15payloadOrdinals8capacityxSpyAD0H15PendingMetadataVG_Sry5Table_14CaptureStorageQZSgGSrys6UInt16VGAUtFZTW>:
+    227c:      	sub	sp, sp, #0x50
+    2280:      	stp	x20, x19, [sp, #0x30]
+    2284:      	stp	x29, x30, [sp, #0x40]
+    2288:      	add	x29, sp, #0x40
+    228c:      	mov	x19, x8
+    2290:      	mov	x8, sp
+    2294:      	bl	0x2294 <_$s17P08CounterRuntime0B13SemanticCodecV13GiftUIDrawing06Canvasd7PayloadE0AadEP04makeE05state8captures15payloadOrdinals8capacityxSpyAD0H15PendingMetadataVG_Sry5Table_14CaptureStorageQZSgGSrys6UInt16VGAUtFZTW+0x18>
+		0000000000002294:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B13SemanticCodecV04makeE05state8captures15payloadOrdinals8capacityACSpy13GiftUIDrawing21CanvasPendingMetadataVG_Sry0aB5Table0ab6SchemaN6ValuesOyAA0B6DomainOGSgGSrys6UInt16VGAVtFZ
+    2298:      	ldp	q0, q1, [sp]
+    229c:      	stp	q0, q1, [x19]
+    22a0:      	ldur	q0, [sp, #0x1a]
+    22a4:      	stur	q0, [x19, #0x1a]
+    22a8:      	ldp	x29, x30, [sp, #0x40]
+    22ac:      	ldp	x20, x19, [sp, #0x30]
+    22b0:      	add	sp, sp, #0x50
+    22b4:      	ret

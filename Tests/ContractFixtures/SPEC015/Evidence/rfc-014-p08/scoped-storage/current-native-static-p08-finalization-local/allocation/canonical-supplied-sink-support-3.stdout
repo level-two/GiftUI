@@ -1,0 +1,9 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c91bc <_OUTLINED_FUNCTION_1612>:
+   c91bc:      	ldr	x9, [sp, #0x8]
+   c91c0:      	cmp	x8, x9
+   c91c4:      	ret

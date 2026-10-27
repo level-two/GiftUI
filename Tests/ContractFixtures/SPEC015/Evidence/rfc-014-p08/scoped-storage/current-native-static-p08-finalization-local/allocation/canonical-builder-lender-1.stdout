@@ -1,0 +1,102 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000009be94 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5>:
+   9be94:      	sub	sp, sp, #0xf0
+   9be98:      	stp	x20, x19, [sp, #0xd0]
+   9be9c:      	stp	x29, x30, [sp, #0xe0]
+   9bea0:      	add	x29, sp, #0xe0
+   9bea4:      	ldr	x8, [x1]
+   9bea8:      	cbz	x8, 0x9bf04 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x70>
+   9beac:      	ldr	x9, [x1, #0x8]
+   9beb0:      	add	x9, x9, x9, lsl #1
+   9beb4:      	lsl	x9, x9, #2
+   9beb8:      	mov	w11, #0xc               ; =12
+   9bebc:      	ldr	x10, [x2]
+   9bec0:      	udiv	x9, x9, x11
+   9bec4:      	cbz	x10, 0x9bf4c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0xb8>
+   9bec8:      	ldr	x11, [x2, #0x8]
+   9becc:      	and	x11, x11, #0x3fffffffffffffff
+   9bed0:      	stp	x0, x8, [sp, #0x10]
+   9bed4:      	stp	x9, x10, [sp, #0x20]
+   9bed8:      	str	x11, [sp, #0x30]
+   9bedc:      	strh	w3, [sp, #0x38]
+   9bee0:      	add	x8, sp, #0x8
+   9bee4:      	add	x0, sp, #0x10
+   9bee8:      	add	x1, sp, #0x7
+   9beec:      	mov	x20, x5
+   9bef0:      	blr	x4
+   9bef4:      	cbz	x21, 0x9bf80 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0xec>
+   9bef8:      	ldrb	w20, [sp, #0x7]
+   9befc:      	add	x0, sp, #0x10
+   9bf00:      	b	0x9bfc0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x12c>
+   9bf04:      	add	x8, sp, #0x70
+   9bf08:      	ldr	x9, [x2]
+   9bf0c:      	cbz	x9, 0x9bf8c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0xf8>
+   9bf10:      	ldr	x10, [x2, #0x8]
+   9bf14:      	and	x10, x10, #0x3fffffffffffffff
+   9bf18:      	stp	xzr, xzr, [sp, #0x78]
+   9bf1c:      	str	x0, [sp, #0x70]
+   9bf20:      	stp	x9, x10, [x8, #0x18]
+   9bf24:      	strh	w3, [x8, #0x28]
+   9bf28:      	add	x8, sp, #0x8
+   9bf2c:      	add	x0, sp, #0x70
+   9bf30:      	add	x1, sp, #0x7
+   9bf34:      	mov	x20, x5
+   9bf38:      	blr	x4
+   9bf3c:      	cbz	x21, 0x9bfd0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x13c>
+   9bf40:      	ldrb	w20, [sp, #0x7]
+   9bf44:      	add	x0, sp, #0x70
+   9bf48:      	b	0x9bfc0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x12c>
+   9bf4c:      	stp	x0, x8, [sp, #0x40]
+   9bf50:      	stp	xzr, xzr, [sp, #0x58]
+   9bf54:      	str	x9, [sp, #0x50]
+   9bf58:      	strh	w3, [sp, #0x68]
+   9bf5c:      	add	x8, sp, #0x8
+   9bf60:      	add	x0, sp, #0x40
+   9bf64:      	add	x1, sp, #0x7
+   9bf68:      	mov	x20, x5
+   9bf6c:      	blr	x4
+   9bf70:      	cbz	x21, 0x9bfdc <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x148>
+   9bf74:      	ldrb	w20, [sp, #0x7]
+   9bf78:      	add	x0, sp, #0x40
+   9bf7c:      	b	0x9bfc0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x12c>
+   9bf80:      	mov	x19, x21
+   9bf84:      	add	x0, sp, #0x10
+   9bf88:      	b	0x9bff0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x15c>
+   9bf8c:      	str	x0, [x8, #0x30]
+   9bf90:      	movi.2d	v0, #0000000000000000
+   9bf94:      	stur	q0, [x8, #0x38]
+   9bf98:      	stur	q0, [x8, #0x48]
+   9bf9c:      	strh	w3, [x8, #0x58]
+   9bfa0:      	add	x8, sp, #0x8
+   9bfa4:      	sub	x0, x29, #0x40
+   9bfa8:      	add	x1, sp, #0x7
+   9bfac:      	mov	x20, x5
+   9bfb0:      	blr	x4
+   9bfb4:      	cbz	x21, 0x9bfe8 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x154>
+   9bfb8:      	ldrb	w20, [sp, #0x7]
+   9bfbc:      	sub	x0, x29, #0x40
+   9bfc0:      	bl	0x9bfc0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x12c>
+		000000000009bfc0:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_q0_SryAOGAYYKXEfU_q0_SryARGAYYKXEfU_6$deferL_yyAwZRzAAA_R_r1_lF17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA4_13CounterDomainOGSiTg5Tm
+   9bfc4:      	mov	w19, #0x1               ; =1
+   9bfc8:      	mov	w0, w20
+   9bfcc:      	b	0x9bff8 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x164>
+   9bfd0:      	mov	x19, x21
+   9bfd4:      	add	x0, sp, #0x70
+   9bfd8:      	b	0x9bff0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x15c>
+   9bfdc:      	mov	x19, x21
+   9bfe0:      	add	x0, sp, #0x40
+   9bfe4:      	b	0x9bff0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x15c>
+   9bfe8:      	mov	x19, x21
+   9bfec:      	sub	x0, x29, #0x40
+   9bff0:      	bl	0x9bff0 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGSiTg5+0x15c>
+		000000000009bff0:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_q0_SryAOGAYYKXEfU_q0_SryARGAYYKXEfU_6$deferL_yyAwZRzAAA_R_r1_lF17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA4_13CounterDomainOGSiTg5Tm
+   9bff4:      	ldr	x0, [sp, #0x8]
+   9bff8:      	mov	x21, x19
+   9bffc:      	ldp	x29, x30, [sp, #0xe0]
+   9c000:      	ldp	x20, x19, [sp, #0xd0]
+   9c004:      	add	sp, sp, #0xf0
+   9c008:      	ret

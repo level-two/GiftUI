@@ -1,0 +1,159 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000003e3c8 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC>:
+   3e3c8:      	stp	x20, x19, [sp, #-0x20]!
+   3e3cc:      	stp	x29, x30, [sp, #0x10]
+   3e3d0:      	add	x29, sp, #0x10
+   3e3d4:      	sub	sp, sp, #0x4, lsl #12   ; =0x4000
+   3e3d8:      	sub	sp, sp, #0xe70
+   3e3dc:      	mov	x19, x8
+   3e3e0:      	mov	x8, #0x0                ; =0
+   3e3e4:      	bl	0x3e3e4 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x1c>
+		000000000003e3e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_160
+   3e3e8:      	stur	x9, [x29, #-0x18]
+   3e3ec:      	strh	wzr, [sp, #0x8]
+   3e3f0:      	add	x9, sp, #0x8
+   3e3f4:      	add	x10, x9, #0x10c
+   3e3f8:      	str	wzr, [sp, #0xc]
+   3e3fc:      	str	xzr, [x10]
+   3e400:      	str	xzr, [x10, #0x18]
+   3e404:      	mov	w10, #0x1               ; =1
+   3e408:      	strh	w10, [sp, #0x10]
+   3e40c:      	str	wzr, [sp, #0x14]
+   3e410:      	str	xzr, [sp, #0x18]
+   3e414:      	strh	wzr, [sp, #0x20]
+   3e418:      	strb	w10, [sp, #0x22]
+   3e41c:      	stur	xzr, [sp, #0x24]
+   3e420:      	strh	wzr, [sp, #0x2c]
+   3e424:      	strb	w10, [sp, #0x2e]
+   3e428:      	str	xzr, [sp, #0x30]
+   3e42c:      	strh	wzr, [sp, #0x38]
+   3e430:      	strb	w10, [sp, #0x3a]
+   3e434:      	stur	xzr, [sp, #0x3c]
+   3e438:      	strh	wzr, [sp, #0x44]
+   3e43c:      	strb	w10, [sp, #0x46]
+   3e440:      	str	xzr, [sp, #0x48]
+   3e444:      	strh	wzr, [sp, #0x50]
+   3e448:      	strb	w10, [sp, #0x52]
+   3e44c:      	stur	xzr, [sp, #0x54]
+   3e450:      	strh	wzr, [sp, #0x5c]
+   3e454:      	strb	w10, [sp, #0x5e]
+   3e458:      	str	xzr, [sp, #0x60]
+   3e45c:      	strh	wzr, [sp, #0x68]
+   3e460:      	strb	w10, [sp, #0x6a]
+   3e464:      	stur	xzr, [sp, #0x6c]
+   3e468:      	strh	wzr, [sp, #0x74]
+   3e46c:      	strb	w10, [sp, #0x76]
+   3e470:      	str	xzr, [sp, #0x78]
+   3e474:      	strh	wzr, [sp, #0x80]
+   3e478:      	strb	w10, [sp, #0x82]
+   3e47c:      	stur	xzr, [sp, #0x84]
+   3e480:      	strh	wzr, [sp, #0x8c]
+   3e484:      	strb	w10, [sp, #0x8e]
+   3e488:      	str	xzr, [sp, #0x90]
+   3e48c:      	strh	wzr, [sp, #0x98]
+   3e490:      	strb	w10, [sp, #0x9a]
+   3e494:      	stur	xzr, [x9, #0x94]
+   3e498:      	strh	wzr, [sp, #0xa4]
+   3e49c:      	strb	w10, [sp, #0xa6]
+   3e4a0:      	str	xzr, [sp, #0xa8]
+   3e4a4:      	strh	wzr, [sp, #0xb0]
+   3e4a8:      	strb	w10, [sp, #0xb2]
+   3e4ac:      	stur	xzr, [x9, #0xac]
+   3e4b0:      	strh	wzr, [sp, #0xbc]
+   3e4b4:      	strb	w10, [sp, #0xbe]
+   3e4b8:      	str	xzr, [sp, #0xc0]
+   3e4bc:      	strh	wzr, [sp, #0xc8]
+   3e4c0:      	strb	w10, [sp, #0xca]
+   3e4c4:      	stur	xzr, [x9, #0xc4]
+   3e4c8:      	strh	wzr, [sp, #0xd4]
+   3e4cc:      	strb	w10, [sp, #0xd6]
+   3e4d0:      	str	xzr, [sp, #0xd8]
+   3e4d4:      	strh	wzr, [sp, #0xe0]
+   3e4d8:      	strb	w10, [sp, #0xe2]
+   3e4dc:      	stur	xzr, [x9, #0xdc]
+   3e4e0:      	strh	wzr, [sp, #0xec]
+   3e4e4:      	strb	w10, [sp, #0xee]
+   3e4e8:      	str	xzr, [sp, #0xf0]
+   3e4ec:      	strh	wzr, [sp, #0xf8]
+   3e4f0:      	strb	w10, [sp, #0xfa]
+   3e4f4:      	stur	xzr, [x9, #0xf4]
+   3e4f8:      	strh	wzr, [sp, #0x104]
+   3e4fc:      	strb	w10, [sp, #0x106]
+   3e500:      	str	xzr, [sp, #0x108]
+   3e504:      	strh	wzr, [sp, #0x110]
+   3e508:      	strb	w10, [sp, #0x112]
+   3e50c:      	strh	wzr, [sp, #0x11c]
+   3e510:      	strb	w10, [sp, #0x11e]
+   3e514:      	str	xzr, [sp, #0x120]
+   3e518:      	strh	wzr, [sp, #0x128]
+   3e51c:      	strb	w10, [sp, #0x12a]
+   3e520:      	strb	w10, [sp, #0x136]
+   3e524:      	movi.2d	v0, #0xffffffffffffffff
+   3e528:      	add	x10, sp, #0x59
+   3e52c:      	stur	q0, [x10, #0xff]
+   3e530:      	add	x10, sp, #0x49
+   3e534:      	stur	q0, [x10, #0xff]
+   3e538:      	add	x10, sp, #0x39
+   3e53c:      	stur	q0, [x10, #0xff]
+   3e540:      	mov	x10, #-0x1              ; =-1
+   3e544:      	movi	d0, #0x0000000000ffff
+   3e548:      	strh	wzr, [sp, #0x134]
+   3e54c:      	add	x11, x9, x8
+   3e550:      	strh	w10, [x11, #0x168]
+   3e554:      	str	x10, [x11, #0x160]
+   3e558:      	strb	wzr, [x11, #0x16a]
+   3e55c:      	add	x11, x11, #0x16c
+   3e560:      	str	d0, [x11]
+   3e564:      	add	x8, x8, #0x14
+   3e568:      	cmp	x8, #0xa00
+   3e56c:      	b.ne	0x3e54c <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x184>
+   3e570:      	mov	x8, #-0x2100            ; =-8448
+   3e574:      	add	x9, sp, #0x8
+   3e578:      	mov	w10, #0x2c60            ; =11360
+   3e57c:      	mov	w11, #0x2c66            ; =11366
+   3e580:      	mov	x12, #-0x1              ; =-1
+   3e584:      	movi	d0, #0xffffffff00000000
+   3e588:      	mov	w13, #0x2c6e            ; =11374
+   3e58c:      	add	x14, x9, x8
+   3e590:      	add	x15, x14, x10
+   3e594:      	str	wzr, [x14, #0x2c60]
+   3e598:      	bl	0x3e598 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x1d0>
+		000000000003e598:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1234
+   3e59c:      	b.ne	0x3e58c <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x1c4>
+   3e5a0:      	mov	x8, #-0x2000            ; =-8192
+   3e5a4:      	add	x9, sp, #0x8
+   3e5a8:      	movi.2d	v0, #0000000000000000
+   3e5ac:      	adrp	x10, 0x3e000 <_$s17P08CounterRuntime21p08ReuseCurrentSource33_480B1BD841D053AE4FCDC18507668536LL4host7control5routeSi23GiftUIHostConfiguration32SignalAnalyzerPresetHostInstanceVyxGz_SpyAA0B7ControlVGs12StaticStringVtAG0stU9LiveOwnerRzAA0aE11ObservationACLLRzRi_zRi0_zlFAA0b7DynamicV5OwnerVyAA0A14GeometryAccessACLLVAA0A15CandidateAccessACLLVAA0A15CommittedAccessACLLVAA0A9HitAccessACLLVG_Tg5+0x4c>
+		000000000003e5ac:  ARM64_RELOC_PAGE21	lCPI1140_0
+   3e5b0:      	ldr	q1, [x10]
+		000000000003e5b0:  ARM64_RELOC_PAGEOFF12	lCPI1140_0
+   3e5b4:      	add	x10, x9, x8
+   3e5b8:      	str	q0, [x10, #0x4c60]
+   3e5bc:      	str	q1, [x10, #0x4c70]
+   3e5c0:      	adds	x8, x8, #0x20
+   3e5c4:      	b.ne	0x3e5b4 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x1ec>
+   3e5c8:      	mov	w8, #0x4c60             ; =19552
+   3e5cc:      	add	x9, sp, #0x8
+   3e5d0:      	add	x0, x9, x8
+   3e5d4:      	mov	w1, #0x200              ; =512
+   3e5d8:      	bl	0x3e5d8 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x210>
+		000000000003e5d8:  ARM64_RELOC_BRANCH26	_bzero
+   3e5dc:      	bl	0x3e5dc <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x214>
+		000000000003e5dc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_826
+   3e5e0:      	bl	0x3e5e0 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x218>
+		000000000003e5e0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1207
+   3e5e4:      	ldur	x8, [x29, #-0x18]
+   3e5e8:      	bl	0x3e5e8 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x220>
+		000000000003e5e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_60
+   3e5ec:      	b.ne	0x3e600 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x238>
+   3e5f0:      	add	sp, sp, #0x4, lsl #12   ; =0x4000
+   3e5f4:      	add	sp, sp, #0xe70
+   3e5f8:      	ldp	x29, x30, [sp, #0x10]
+   3e5fc:      	b	0x3e5fc <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x234>
+		000000000003e5fc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_592
+   3e600:      	bl	0x3e600 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x238>
+		000000000003e600:  ARM64_RELOC_BRANCH26	___stack_chk_fail

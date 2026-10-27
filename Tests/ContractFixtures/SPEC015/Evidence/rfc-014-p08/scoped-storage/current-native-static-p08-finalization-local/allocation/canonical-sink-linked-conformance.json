@@ -1,0 +1,28 @@
+{
+  "executable": ".build/contracts/p08-counter-qzv33chp/counter",
+  "sha256": "dcc80e96f44c7b6eeee68f626391eabb02b23bf03aecb7a3e7a1c9d6e138ac2c",
+  "conformance_symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AAMc",
+  "address": "0x1001e8ebc",
+  "raw16": "2d560800001b0200144f080000000000",
+  "flags": 0,
+  "type_descriptor": "0x10020a9c0",
+  "witness_pattern": "0x10026ddd8",
+  "protocol_relative_field_target_tagged": "0x10026e4e9",
+  "swift5_proto_section": {
+    "name": "__swift5_proto",
+    "addr": 4297435660,
+    "bytes": 3708,
+    "file": 2468364,
+    "reloff": 0,
+    "nreloc": 0
+  },
+  "matching_entry": [
+    {
+      "address": "0x10025ae30",
+      "file_offset": 2469424,
+      "raw": "8ce0f8ff",
+      "target": "0x1001e8ebc"
+    }
+  ],
+  "note": "Exact linked executable protocol-conformance registration section reference; not observation of loaded registry/cache or successful runtime lookup."
+}

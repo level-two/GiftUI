@@ -1,0 +1,89 @@
+{
+  "object": ".build/contracts/p08-counter-qzv33chp/GiftUIDrawing.o",
+  "object_sha256": "cc89dca67b9c2b4c31c86fdf376024abf68e0828c82f322ac4975e2e4abf62b5",
+  "data": [
+    {
+      "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AAMc",
+      "address": "0x835c",
+      "hi": "0x836c",
+      "bytes": 16,
+      "hex": "01000000fcfffffff8ffffff00000000",
+      "relocations": [
+        {
+          "offset": 8,
+          "raw": "0x1c0002ed",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AAMc"
+        },
+        {
+          "offset": 8,
+          "raw": "0xc0002ee",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AAWP"
+        },
+        {
+          "offset": 4,
+          "raw": "0x1c0002ed",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AAMc"
+        },
+        {
+          "offset": 4,
+          "raw": "0xc0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 0,
+          "raw": "0x1c0002ed",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AAMc"
+        },
+        {
+          "offset": 0,
+          "raw": "0xc000134",
+          "symbol": "l_got.$s18GiftUISemanticCore26SemanticRecordPayloadCodecMp"
+        }
+      ]
+    },
+    {
+      "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AAWP",
+      "address": "0x8998",
+      "hi": "0x89d0",
+      "bytes": 56,
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "relocations": [
+        {
+          "offset": 48,
+          "raw": "0xe0002f1",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AaeFP6action_6writerAE0D14ExpansionErrorOSgqd___AE0dE6WriterVt0A2UI0A8UIActionRd__lFTW"
+        },
+        {
+          "offset": 40,
+          "raw": "0xe0002f3",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AaeFP8modifier_10chainIndex6writerAE0D14ExpansionErrorOSgqd___s6UInt16VAE0dE6WriterVt0A2UI01_ag8ModifierE0Rd__lFTW"
+        },
+        {
+          "offset": 32,
+          "raw": "0xe0002f4",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AaeFP9primitive_6writerAE0D14ExpansionErrorOSgqd___AE0dE6WriterVt0A2UI01_ag9PrimitiveE0Rd__lFTW"
+        },
+        {
+          "offset": 24,
+          "raw": "0xe0002f0",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AaeFP20ownsPendingCandidate5owner4bank8revision8requiredSbAE0dI13OwnerIdentityV_s5UInt8Vs6UInt32VSbtFTW"
+        },
+        {
+          "offset": 16,
+          "raw": "0xe0002ef",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AaeFP14discardPendingyyFTW"
+        },
+        {
+          "offset": 8,
+          "raw": "0xe0002f2",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AaeFP7prepare07maximumD5NodesAE0D14ExpansionErrorOSgs6UInt16V_tFTW"
+        },
+        {
+          "offset": 0,
+          "raw": "0xe0002ed",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVyxq_G0A14UISemanticCore0d6RecordeF0AAMc"
+        }
+      ]
+    }
+  ]
+}

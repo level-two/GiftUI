@@ -1,0 +1,42 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000206dc <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF>:
+   206dc:      	stp	x22, x21, [sp, #-0x30]!
+   206e0:      	stp	x20, x19, [sp, #0x10]
+   206e4:      	stp	x29, x30, [sp, #0x20]
+   206e8:      	add	x29, sp, #0x20
+   206ec:      	bl	0x206ec <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x10>
+		00000000000206ec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_485
+   206f0:      	bl	0x206f0 <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x14>
+		00000000000206f0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore18SemanticRecordViewV5validSbvg
+   206f4:      	tbz	w0, #0x0, 0x20744 <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x68>
+   206f8:      	ldr	w8, [x20, #0x50]
+   206fc:      	cmp	w8, w21
+   20700:      	b.ne	0x20744 <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x68>
+   20704:      	lsr	x8, x21, #32
+   20708:      	ldrb	w9, [x20, #0x48]
+   2070c:      	cmp	w9, w8, uxtb
+   20710:      	b.ne	0x20744 <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x68>
+   20714:      	ldr	w8, [x20, #0x4c]
+   20718:      	cmp	w8, w19
+   2071c:      	b.ne	0x20744 <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x68>
+   20720:      	bl	0x20720 <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x44>
+		0000000000020720:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_568
+   20724:      	b.ls	0x20744 <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x68>
+   20728:      	ldr	x8, [x20, #0x8]
+   2072c:      	ubfx	x9, x19, #32, #16
+   20730:      	mov	w10, #0x14              ; =20
+   20734:      	umaddl	x8, w9, w10, x8
+   20738:      	ldp	x0, x1, [x8]
+   2073c:      	ldr	w2, [x8, #0x10]
+   20740:      	b	0x20750 <_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF+0x74>
+   20744:      	mov	x0, #0x0                ; =0
+   20748:      	mov	w2, #0x0                ; =0
+   2074c:      	mov	w1, #0x50000            ; =327680
+   20750:      	ldp	x29, x30, [sp, #0x20]
+   20754:      	ldp	x20, x19, [sp, #0x10]
+   20758:      	ldp	x22, x21, [sp], #0x30
+   2075c:      	ret

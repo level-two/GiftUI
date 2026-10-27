@@ -1,0 +1,7 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000ae814 <_$s17P08CounterRuntime0B10RecordSinkVWOh>:
+   ae814:      	ret

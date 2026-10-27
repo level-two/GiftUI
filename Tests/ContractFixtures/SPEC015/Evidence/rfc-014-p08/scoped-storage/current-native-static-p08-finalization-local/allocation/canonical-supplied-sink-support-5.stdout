@@ -1,0 +1,21 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c03e8 <_OUTLINED_FUNCTION_4>:
+   c03e8:      	add	x29, sp, #0x10
+   c03ec:      	adrp	x9, 0xc0000 <_$s17P08CounterRuntime0B18OwnedSchedulerHost33_61E6B85DAB75F632ED60124EE3523C4FLLV23GiftUIHostConfiguration15MVPHostInstanceAA12OwnerFailureAeFP_SQWT>
+		00000000000c03ec:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   c03f0:      	ldr	x9, [x9]
+		00000000000c03f0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   c03f4:      	ldr	x9, [x9]
+   c03f8:      	str	x9, [sp, #0x8]
+   c03fc:      	ldr	x9, [sp, #0x8]
+   c0400:      	adrp	x10, 0xc0000 <_$s17P08CounterRuntime0B18OwnedSchedulerHost33_61E6B85DAB75F632ED60124EE3523C4FLLV23GiftUIHostConfiguration15MVPHostInstanceAA12OwnerFailureAeFP_SQWT>
+		00000000000c0400:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   c0404:      	ldr	x10, [x10]
+		00000000000c0404:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   c0408:      	ldr	x10, [x10]
+   c040c:      	cmp	x10, x9
+   c0410:      	ret

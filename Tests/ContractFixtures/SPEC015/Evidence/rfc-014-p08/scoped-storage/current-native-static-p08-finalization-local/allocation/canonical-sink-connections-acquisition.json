@@ -1,0 +1,496 @@
+{
+  "authority": "root-approved direct selected Sink default-choice and requirement connections, unchanged original cutoff",
+  "acquired_utc": "2026-10-26T21:12:10.163513+00:00",
+  "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+  "v5": {
+    "format": {
+      "version": 5,
+      "page_size": 16384,
+      "page_starts_count": 7914,
+      "value_add": "0x180000000",
+      "auth_pointer_rule": "target=value_add+(word & ((1<<34)-1)); next=((word>>52)&0x7ff)*8; auth=word>>63"
+    },
+    "page_index": 1567,
+    "page_start": 0,
+    "chain_steps": 1613,
+    "page_extent": {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+      "offset": 130088960,
+      "bytes": 16384,
+      "sha256": "2d337f47443d647d9aed46ffb64ded19988d37480fffd21251f2eb992ff657bd",
+      "file_bytes": 234569728,
+      "device": 16777230,
+      "inode": 575282,
+      "mtime_ns": 1786589515000000000,
+      "role": "approved sole callback chain page",
+      "vmaddr": 8318648320
+    },
+    "page_sha256": "8b49ed0ce3d5760d43ce767446745707b73ef10c19817657e0d7437aaaa230b7",
+    "start_extent": {
+      "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.02.dylddata",
+      "offset": 234094206,
+      "bytes": 2,
+      "sha256": "2d337f47443d647d9aed46ffb64ded19988d37480fffd21251f2eb992ff657bd",
+      "file_bytes": 234569728,
+      "device": 16777230,
+      "inode": 575282,
+      "mtime_ns": 1786589515000000000,
+      "role": "approved selected v5 page-start",
+      "vmaddr": 8318655296
+    },
+    "start_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+    "callbacks": [
+      {
+        "vptr": "0x1efd49b50",
+        "role": "local clone",
+        "slot": "0x1efd49b68",
+        "word": "0x80165b9413cf5090",
+        "target": "0x193cf5090",
+        "on_selected_v5_chain": true
+      },
+      {
+        "vptr": "0x1efd49b50",
+        "role": "local destruction",
+        "slot": "0x1efd49b70",
+        "word": "0x8017820413cf50b4",
+        "target": "0x193cf50b4",
+        "on_selected_v5_chain": true
+      },
+      {
+        "vptr": "0x1efd49b50",
+        "role": "invoke",
+        "slot": "0x1efd49b80",
+        "word": "0x803778a413cf50dc",
+        "target": "0x193cf50dc",
+        "on_selected_v5_chain": true
+      },
+      {
+        "vptr": "0x1efd49b98",
+        "role": "local clone",
+        "slot": "0x1efd49bb0",
+        "word": "0x80165b9413cf51b4",
+        "target": "0x193cf51b4",
+        "on_selected_v5_chain": true
+      },
+      {
+        "vptr": "0x1efd49b98",
+        "role": "local destruction",
+        "slot": "0x1efd49bb8",
+        "word": "0x8017820413cf51d8",
+        "target": "0x193cf51d8",
+        "on_selected_v5_chain": true
+      },
+      {
+        "vptr": "0x1efd49b98",
+        "role": "invoke",
+        "slot": "0x1efd49bc8",
+        "word": "0x803778a413cf5200",
+        "target": "0x193cf5200",
+        "on_selected_v5_chain": true
+      },
+      {
+        "vptr": "0x1efd49be0",
+        "role": "local clone",
+        "slot": "0x1efd49bf8",
+        "word": "0x8016e38013cf529c",
+        "target": "0x193cf529c",
+        "on_selected_v5_chain": true
+      },
+      {
+        "vptr": "0x1efd49be0",
+        "role": "local destruction",
+        "slot": "0x1efd49c00",
+        "word": "0x8015bb5c13cf52c0",
+        "target": "0x193cf52c0",
+        "on_selected_v5_chain": true
+      },
+      {
+        "vptr": "0x1efd49be0",
+        "role": "invoke",
+        "slot": "0x1efd49c10",
+        "word": "0x80344ab013cf52e8",
+        "target": "0x193cf52e8",
+        "on_selected_v5_chain": true
+      }
+    ]
+  },
+  "selected": [
+    {
+      "origins": [
+        "0x193c52ad4"
+      ],
+      "range": [
+        "0x193c52ad4",
+        "0x193c52b2c"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331131604,
+        "bytes": 88,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774139604
+      },
+      "raw_sha256": "f2ff60055fd2ec79e7d1ab69344d670170f07d3bed4af365295ea193ce729db1",
+      "raw": "canonical-sink-connection-0.bin",
+      "projection": "canonical-sink-connection-0.o",
+      "projection_sha256": "9c823dff4d684882b3ef3fb5b69064059896ce9d163652073b2655f7750ddc81"
+    },
+    {
+      "origins": [
+        "0x193ce9738"
+      ],
+      "range": [
+        "0x193ce9738",
+        "0x193ce9bd4"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331749176,
+        "bytes": 1180,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774757176
+      },
+      "raw_sha256": "d7089b68c3996013fff90dea6bc850908ac3e374e2d246544bd0979184f82c84",
+      "raw": "canonical-sink-connection-1.bin",
+      "projection": "canonical-sink-connection-1.o",
+      "projection_sha256": "f1c059f7027f06c48db99d7e0c4dcecede6570866f95ba677d2d6af72a3e9a8a"
+    },
+    {
+      "origins": [
+        "0x193cea26c"
+      ],
+      "range": [
+        "0x193cea26c",
+        "0x193cea538"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331752044,
+        "bytes": 716,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774760044
+      },
+      "raw_sha256": "4342b4e5365ced57708311cc973d6adafed51a9253a0239fcf1f0a317df3b184",
+      "raw": "canonical-sink-connection-2.bin",
+      "projection": "canonical-sink-connection-2.o",
+      "projection_sha256": "6b31db424ee3e9615a7336422079950b14c329efac99bfb5ade72cc9e1a91442"
+    },
+    {
+      "origins": [
+        "0x193cf5090"
+      ],
+      "range": [
+        "0x193cf5090",
+        "0x193cf50b4"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331796624,
+        "bytes": 36,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774804624
+      },
+      "raw_sha256": "46a7e345faec3a2329b0a4026645c65542925b9f04a810ae16ebad8ea77fa31e",
+      "raw": "canonical-sink-connection-3.bin",
+      "projection": "canonical-sink-connection-3.o",
+      "projection_sha256": "a609d0daded71476b091e87c949f14538d5f3752ab2230b742e9cd77cf4ec8e2"
+    },
+    {
+      "origins": [
+        "0x193cf50b4"
+      ],
+      "range": [
+        "0x193cf50b4",
+        "0x193cf50b8"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331796660,
+        "bytes": 4,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774804660
+      },
+      "raw_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "raw": "canonical-sink-connection-4.bin",
+      "projection": "canonical-sink-connection-4.o",
+      "projection_sha256": "5dc3cd32b9bb097a92a00db6150b35a16c2cdaf9560553a27ab075cb7c1c4cd6"
+    },
+    {
+      "origins": [
+        "0x193cf50dc"
+      ],
+      "range": [
+        "0x193cf50dc",
+        "0x193cf5144"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331796700,
+        "bytes": 104,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774804700
+      },
+      "raw_sha256": "74e4f77a5dec489a8967e80ad8fac9a7216a51047c51c03502ba896d8acc4caa",
+      "raw": "canonical-sink-connection-5.bin",
+      "projection": "canonical-sink-connection-5.o",
+      "projection_sha256": "64331baf89a697a904c7b91bda2b8612cb0beb1b683795b4552c5ca68d7570ae"
+    },
+    {
+      "origins": [
+        "0x193cf51b4"
+      ],
+      "range": [
+        "0x193cf51b4",
+        "0x193cf51d8"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331796916,
+        "bytes": 36,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774804916
+      },
+      "raw_sha256": "df1c1651a424425671b14edc300951f6bf427ea66b249705c9cfd3a0bcce9cca",
+      "raw": "canonical-sink-connection-6.bin",
+      "projection": "canonical-sink-connection-6.o",
+      "projection_sha256": "574939ffba1de1e0546e6b3144424af78d9c99f38cceae1203ede66c15fb8a52"
+    },
+    {
+      "origins": [
+        "0x193cf51d8"
+      ],
+      "range": [
+        "0x193cf51d8",
+        "0x193cf51dc"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331796952,
+        "bytes": 4,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774804952
+      },
+      "raw_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "raw": "canonical-sink-connection-7.bin",
+      "projection": "canonical-sink-connection-7.o",
+      "projection_sha256": "c60515b27e299e9857de8a2ad98792ec5fefb1646b276479175b6e77a72b7bb9"
+    },
+    {
+      "origins": [
+        "0x193cf5200"
+      ],
+      "range": [
+        "0x193cf5200",
+        "0x193cf522c"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331796992,
+        "bytes": 44,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774804992
+      },
+      "raw_sha256": "91ab0b4022c6a45a4dca45bda1cb4cc86d1410c5461ffccdaa7ac3c1bb19033d",
+      "raw": "canonical-sink-connection-8.bin",
+      "projection": "canonical-sink-connection-8.o",
+      "projection_sha256": "2d3486668ef6a6f302d2a39ba8c502aebe69a1828bf0f382a62aee7e80f66daa"
+    },
+    {
+      "origins": [
+        "0x193cf529c"
+      ],
+      "range": [
+        "0x193cf529c",
+        "0x193cf52c0"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331797148,
+        "bytes": 36,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774805148
+      },
+      "raw_sha256": "8723c79e0ff63e49f138c4f79d68eb8fbfc4f865e0cdf7a24be30eab32a6b912",
+      "raw": "canonical-sink-connection-9.bin",
+      "projection": "canonical-sink-connection-9.o",
+      "projection_sha256": "f3d871c8594047ccd7b8d24b6158ce1767e29c4110edb6ffe79cc7ccda906d8d"
+    },
+    {
+      "origins": [
+        "0x193cf52c0"
+      ],
+      "range": [
+        "0x193cf52c0",
+        "0x193cf52c4"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331797184,
+        "bytes": 4,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774805184
+      },
+      "raw_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "raw": "canonical-sink-connection-10.bin",
+      "projection": "canonical-sink-connection-10.o",
+      "projection_sha256": "df14e3d5243b4883f103155a31cc8272cb9c38d5cf310d7e6769ff805f24c674"
+    },
+    {
+      "origins": [
+        "0x193cf52e8"
+      ],
+      "range": [
+        "0x193cf52e8",
+        "0x193cf52f0"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331797224,
+        "bytes": 8,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774805224
+      },
+      "raw_sha256": "d3c844a0173107453aa9896cdb7276470625501e7ff067cd764c7a160ece5ca3",
+      "raw": "canonical-sink-connection-11.bin",
+      "projection": "canonical-sink-connection-11.o",
+      "projection_sha256": "e6d212a54d4b3beb27fd673058612022e9a3a71c5faadb38dec199113d57545d"
+    },
+    {
+      "origins": [
+        "0x193d07c34"
+      ],
+      "range": [
+        "0x193d07c34",
+        "0x193d0828c"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331873332,
+        "bytes": 1624,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774881332
+      },
+      "raw_sha256": "be1f7d463dfe0adeb9157e576e98a20ed6ab0133aec786586727792a131370d4",
+      "raw": "canonical-sink-connection-12.bin",
+      "projection": "canonical-sink-connection-12.o",
+      "projection_sha256": "86b887d4c656986fe4a02963d0538ee814bb2d0b8b4cd79944f1f074826e3444"
+    },
+    {
+      "origins": [
+        "0x193d1cc44"
+      ],
+      "range": [
+        "0x193d1cc44",
+        "0x193d1cc90"
+      ],
+      "extent": {
+        "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+        "offset": 331959364,
+        "bytes": 76,
+        "sha256": "3c641837e0d2511695af585b36da1a7a3dfacc7a0dc21db851148a6bb1c3f8dc",
+        "file_bytes": 1715355648,
+        "device": 16777230,
+        "inode": 575280,
+        "mtime_ns": 1786589515000000000,
+        "role": "__TEXT",
+        "vmaddr": 6774967364
+      },
+      "raw_sha256": "d3ad18388116bc508b33a9c321f6f13e2fde2294ae143c830ad4c43e2341688a",
+      "raw": "canonical-sink-connection-13.bin",
+      "projection": "canonical-sink-connection-13.o",
+      "projection_sha256": "4301ccee11aa4dc85f08e5a88bd7ed1a3eb1a752fb22d7ddaf92737d500ee0d5"
+    }
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-0.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-1.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-2.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-3.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-4.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-5.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-6.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-7.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-8.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-9.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-10.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-11.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-12.o",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-13.o"
+  ],
+  "capture": {
+    "exit": 0,
+    "stdout_bytes": 41083,
+    "stdout_lines": 1074,
+    "stdout_sha256": "6340f7b836aac2429a86379f95bb90af79f6dd91c8c0187cb3b98a97ef12c9d3",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

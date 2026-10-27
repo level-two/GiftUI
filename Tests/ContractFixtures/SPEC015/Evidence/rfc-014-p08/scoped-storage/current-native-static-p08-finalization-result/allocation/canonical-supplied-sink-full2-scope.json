@@ -1,0 +1,1984 @@
+{
+  "status": "FINAL_INDEPENDENTLY_ACCEPTED_SCOPED_PACKAGE; ROOT_STAGING_ONLY",
+  "base_historical_scope": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-scope.json",
+  "base_scope_sha256": "b8a3a27779245511bcc4d079f18542368a8e26fe064479798026671d480a3bc8",
+  "source_freeze": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-source-freeze.json",
+  "source_count": 62,
+  "evidence": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata46-local/swift-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata46-local/swift-5.stdout",
+      "bytes": 50237,
+      "sha256": "66c670a9ebe9c42980b2ae4151078f5a316826117e03c028507d6386a44fa50b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata46-local/swift-9.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata46-local/swift-9.stdout",
+      "bytes": 11627,
+      "sha256": "188ed9796214b72a8f20cd2431b4702aab71cbed716743caeaa2178f5d8ceadc"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-1.stdout",
+      "bytes": 250319,
+      "sha256": "167075111479d7e0baf74c3b41ee22fdc97c7110927c9471825cfada1f351c63"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-3.stdout",
+      "bytes": 17783,
+      "sha256": "9c9cf41344d058eb2605eda5c01257460cc3292c6d77d8e9389e8e5eecd17013"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/group-4.stdout",
+      "bytes": 64871,
+      "sha256": "3adf0bbb42882f58da5a948523ccd7845bcb3ec4aba4386511dc3543e54342ad"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-result/rows.json",
+      "bytes": 11148,
+      "sha256": "6dec467cd9b5fe2edc648befc6c5ec659a0259796eb22f67c69e74b273d802eb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender-0.stdout",
+      "bytes": 2391,
+      "sha256": "840cd3637d4d62e50980681717c0377f0829b1281bb37880f7317c01f1ebbbd2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender-1.stdout",
+      "bytes": 11822,
+      "sha256": "b45c84f8d7b528c87720c17cfa6e9203a35e362c80824da767e209a98ada7c94"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender-2.stdout",
+      "bytes": 8460,
+      "sha256": "18a446248122d761054a37359ac92d61f87c2211b9d3ef49ac32ce0dc52cb9c3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender-3.stdout",
+      "bytes": 115152,
+      "sha256": "eda9d331dbbb0f27483dd58e87c927a1d16f62b493eee55a7687a30b116b0991"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-builder-lender.json",
+      "bytes": 5152,
+      "sha256": "9a36ff5447fb36fed60dc3f7864ad5eaebb6b19521b144f9bededa47eb1018ad"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-cell.json",
+      "bytes": 70030,
+      "sha256": "abcae1ff5d711f092120ca2bb1099e137240e0b5704c4046ba34c3865b8ff5c7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-factory-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-factory-0.stdout",
+      "bytes": 1119,
+      "sha256": "8643562e8284d31cdad1730718b0fa119ecd10fb5cde767c88a3995d9198425c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-factory-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-factory-1.stdout",
+      "bytes": 1035,
+      "sha256": "853b02208cf9a19eceeb1559ad827954e9b5d92720ce270f8836d3982aec59b5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-factory-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-factory-2.stdout",
+      "bytes": 732,
+      "sha256": "14150ed1c1355aba9c09a2bd4ec41ba03cc62048797f132b6b20d8e8705d4594"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-factory.json",
+      "bytes": 5431,
+      "sha256": "190ad44ac673ae2d8604c01b7bd2ef7d385a0fba02be583d2c139d206a50d10e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required-0.stdout",
+      "bytes": 691,
+      "sha256": "c32f022232b2158d15294e49fc00092a2bb12e4b8d89cd4349968626b4caae80"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required-1.stdout",
+      "bytes": 947,
+      "sha256": "f475a4a2698a0ca2f258913a090c5cd5e79b32300763a0053c746932ef054b4b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required-2.stdout",
+      "bytes": 916,
+      "sha256": "515830e07c914afd6cf3975efd189b6b2e96cdb930ac3932cd9d383bae5afb52"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required-3.stdout",
+      "bytes": 448056,
+      "sha256": "38e7a7840c842f16a67a2fcdf7c6b2b54d6d21446788dee42bce67bd5aa11a6f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-required.json",
+      "bytes": 3787,
+      "sha256": "ed1add8cb5f8e4b1348c59582bf48e05f67604590ad680938e5a9f8867b901b2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal-0.stdout",
+      "bytes": 277,
+      "sha256": "2b98d92ab0d24ca348c068906998df5375ad7234f7bb0dbdf82ec19a131ca668"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal-1.stdout",
+      "bytes": 313,
+      "sha256": "caabf97aca0ad56f34fa38f6b598ff446b0c2973b390dbfc69b1399f1fb4e578"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal-2.stdout",
+      "bytes": 256,
+      "sha256": "965b4dfaf1fc1eb702dcf3af1614ab1ceebb9eb4d18d9d0754914dae30f99f62"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal-3.stdout",
+      "bytes": 688,
+      "sha256": "d13d7ca20e6bf33390b1a431cd9f9005b4f5dcbc983e157d8f2fb7f63ab6e0a1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-record-sink-terminal.json",
+      "bytes": 14293,
+      "sha256": "0d9493965bbae7ec6475a3635d80fe3ccf0ac5d387624daaacfea64b33032497"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-argument-0.bin",
+      "bytes": 484,
+      "sha256": "4baed05b4110acba87ac51bc89296fedc069a58c93c063d8975b01dcfe4b9154"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-argument-1.bin",
+      "bytes": 80,
+      "sha256": "1cc82fe26927028ab140cea4e414620da14cf17977f70ed00fbdee5a23d8eb1b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-argument-2.bin",
+      "bytes": 808,
+      "sha256": "73544487f44d255a4c08c7a329f6076cc8696a9eb064ef1197a9a6c438eb91df"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-argument-acquisition.json",
+      "bytes": 3127,
+      "sha256": "8781966362d18b1befd5ac7474146a13208eff363ece9da39775333806a4c0ca"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-argument-descriptors.json",
+      "bytes": 948,
+      "sha256": "7b01e396c52979ac54cbe2ef8ecdee9d62fe84710259c0ec16ffac8e3b3aa66f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-0.bin",
+      "bytes": 256,
+      "sha256": "ef1775ce9f932c4bd1fb3bccb20f7f0cff6e7953183298067a8024d4ee834ddd"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-1.bin",
+      "bytes": 1408,
+      "sha256": "e7f638fc73d18c721caa365a5c0edc4cb7b43584e5c5a30c74c7077fbd490c10"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-2.bin",
+      "bytes": 376,
+      "sha256": "6bc2355bc75c229992c09cdaa80be5df8605bea5ecfdf147f511ba79886b5669"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-checks-acquisition.json",
+      "bytes": 3102,
+      "sha256": "70bd0ea726726cc49feb6ccb0b4d4071cf86bf86109e25dd703348a96511c68c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-codec-conformance.json",
+      "bytes": 3575,
+      "sha256": "6f91cc60315c53cc4a7bd26435c9e6d0f2c62f9e3f4b7f540a09fc50af241bb3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-codec-descriptor.json",
+      "bytes": 3357,
+      "sha256": "fd36e6a65bee24f24d05aff512a3ac67b770815e17b6bfe9600d0a6810fd5a0d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-0.bin",
+      "bytes": 580,
+      "sha256": "e017a8069aa86403f1083fbd737550a4f1b95712f7b1670a126912be080d8328"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-1.bin",
+      "bytes": 560,
+      "sha256": "82673aa893af109606f47eac13fed97fc6805c6daaeb9d77b221afa6efb69f86"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-2.bin",
+      "bytes": 564,
+      "sha256": "ccb8af0f6fb70b6fba601df2795527d4efe77223dff2842cbfee73c2148ce609"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-acquisition.json",
+      "bytes": 3189,
+      "sha256": "ee98373cd42642f5d0337781cd84bd1622a83468abd8c172dd841eb97ee52e40"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-0.bin",
+      "bytes": 88,
+      "sha256": "f2ff60055fd2ec79e7d1ab69344d670170f07d3bed4af365295ea193ce729db1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-1.bin",
+      "bytes": 1180,
+      "sha256": "d7089b68c3996013fff90dea6bc850908ac3e374e2d246544bd0979184f82c84"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-10.bin",
+      "bytes": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-11.bin",
+      "bytes": 8,
+      "sha256": "d3c844a0173107453aa9896cdb7276470625501e7ff067cd764c7a160ece5ca3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-12.bin",
+      "bytes": 1624,
+      "sha256": "be1f7d463dfe0adeb9157e576e98a20ed6ab0133aec786586727792a131370d4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-13.bin",
+      "bytes": 76,
+      "sha256": "d3ad18388116bc508b33a9c321f6f13e2fde2294ae143c830ad4c43e2341688a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-2.bin",
+      "bytes": 716,
+      "sha256": "4342b4e5365ced57708311cc973d6adafed51a9253a0239fcf1f0a317df3b184"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-3.bin",
+      "bytes": 36,
+      "sha256": "46a7e345faec3a2329b0a4026645c65542925b9f04a810ae16ebad8ea77fa31e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-4.bin",
+      "bytes": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-5.bin",
+      "bytes": 104,
+      "sha256": "74e4f77a5dec489a8967e80ad8fac9a7216a51047c51c03502ba896d8acc4caa"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-6.bin",
+      "bytes": 36,
+      "sha256": "df1c1651a424425671b14edc300951f6bf427ea66b249705c9cfd3a0bcce9cca"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-7.bin",
+      "bytes": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-8.bin",
+      "bytes": 44,
+      "sha256": "91ab0b4022c6a45a4dca45bda1cb4cc86d1410c5461ffccdaa7ac3c1bb19033d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-9.bin",
+      "bytes": 36,
+      "sha256": "8723c79e0ff63e49f138c4f79d68eb8fbfc4f865e0cdf7a24be30eab32a6b912"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connections-acquisition.json",
+      "bytes": 18896,
+      "sha256": "91d1011c0bc88ba9e465bb200f9f2c188b962da1814e3a27554812b8b483c2c0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940eeeac-indirect.bin",
+      "bytes": 4,
+      "sha256": "05f31c418073ce0d997b3b0de5f37defcb462554f27e4ae963349c57128fecf4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940eeeac-name.bin",
+      "bytes": 128,
+      "sha256": "8a4afd102be4652e4196d6d728b1e17e0aa81fb0a875b8f778279293fc07990f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940eeeac-nlist.bin",
+      "bytes": 16,
+      "sha256": "f267e31c1d0eab16fce65736a4fde7bc9b487675d071589f076ed43f7699ab39"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940ef54c-indirect.bin",
+      "bytes": 4,
+      "sha256": "8597ef31776481b69bf7678141b439f39561162d056e6482ff6ad23067397dae"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940ef54c-name.bin",
+      "bytes": 128,
+      "sha256": "739b8c011ee6564a5c7401f38f0a1803e193345aedf2b7acff0a8aaa576642ff"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940ef54c-nlist.bin",
+      "bytes": 16,
+      "sha256": "865408f883798646d3448c3377016f01b488e73e35d87a59551aa77b8566bea1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-0.bin",
+      "bytes": 784,
+      "sha256": "ab093164149fe1c0363bcde78f681c16fd9f6a023eddba59fcaac41a610783f3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-1.bin",
+      "bytes": 260,
+      "sha256": "7a7b7f4e502bb9796dfa5e69618021d98ff220a77c7f4ed5f890d820712afe65"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-2.bin",
+      "bytes": 924,
+      "sha256": "783acf10b0e7563dd63c4efe5c22798ce63c43773876588a4e015cccce8b75f0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-3.bin",
+      "bytes": 6264,
+      "sha256": "755e2afb337b921fc37ee7f90bd5e7b230a8dbed2d26e8d086626c5ef1741791"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-checks-acquisition.json",
+      "bytes": 4087,
+      "sha256": "4933ada34cc228b515436b6f8806ad6e62c7d8a0318b14cb7dfbf71f29b5f690"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-imports.json",
+      "bytes": 2994,
+      "sha256": "9e8782769bc0fbbe50b4025b16e990f99519f1ca1c77fa814f9552796cac4288"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-literal-strings.bin",
+      "bytes": 64,
+      "sha256": "cb2748231fadcbbb75e9748d9bd0844ee18be631424e4a9010697bb9e4a25a1e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-executable-hooks.json",
+      "bytes": 9224,
+      "sha256": "252eedbe44a69986866f997c0cd81e4c4ff5291f5be85b7c412d0b1cc90d7ea0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-0.bin",
+      "bytes": 644,
+      "sha256": "d4cc13c51096eb35c318cbabef07e4c490c5f857b119a3cd61724c796d35ae6b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-1.bin",
+      "bytes": 964,
+      "sha256": "6c39ea98f4aa16cdd2c2f3cb7e0388dec2077af761f6f8178f71ba35608a55f7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-2.bin",
+      "bytes": 700,
+      "sha256": "2fc7ee662223f528bbb4ad7edce9a43f1e27948b824c75eddb5fead6d71de1f7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-3.bin",
+      "bytes": 912,
+      "sha256": "882bcdb4ccbc2893d7cf1f788c621638a3b98dd6bc6db0b4cbb21b59768ed312"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-4.bin",
+      "bytes": 1220,
+      "sha256": "e4dea695b6c9536baae559183ac48db174de7ae968f84d3d101c2c56f6cd24d1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-final-connect-acquisition.json",
+      "bytes": 5103,
+      "sha256": "a2293a75f352e0b5842b849fa4c639f71528123265d51c44d7b0a7125fa0681b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-linked-conformance.json",
+      "bytes": 958,
+      "sha256": "9ccfb18bf993b029c2ca635a084581e024aa5aa563f66154553dd3de70debf7f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-hash-acquisition.json",
+      "bytes": 910,
+      "sha256": "8317961ae8526074e6c6082c0377c9b468a510dc5605a011ed92844d174b1933"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-0.bin",
+      "bytes": 52,
+      "sha256": "b4fdce19d2b842b12e722beb65f2e30f681f897e73359eebd12b973db5ca28bc"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-1.bin",
+      "bytes": 484,
+      "sha256": "a8de8f22f2df980477958140a790ab42dca0b06d0e7da49c790c31cbded32d28"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-2.bin",
+      "bytes": 780,
+      "sha256": "31d5cb76adc0abee38e6b5f76036fa651b2dc05863cd5f465b0e93dcdcc5d632"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-acquisition.json",
+      "bytes": 4113,
+      "sha256": "c362aa167c5dd23cbe1c2c4db29a1053761f8612636e40ad9a1c1c24134440d7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-parameter-0.bin",
+      "bytes": 164,
+      "sha256": "625bf3d47f31e108f962d32ce0b2f53b3660305c5c3be5224b9733cf14afb590"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-parameter-1.bin",
+      "bytes": 644,
+      "sha256": "fada8439e4b47551d065b9e5e8faf1a052aa21dab0634bd1bf4acbdd4ea35e22"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-parameter-2.bin",
+      "bytes": 912,
+      "sha256": "8c6ad22eb39c039ad841a284ca25ab0931f12e7a546cba497c409578630a3f61"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-parameter-acquisition.json",
+      "bytes": 3149,
+      "sha256": "721eaa5112edcef3bb6e005ef64b39b26d18e285d925933fa01137d1fe6d4d31"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193c52a84.bin",
+      "bytes": 80,
+      "sha256": "4f716e37704d7f33058d86176a6f4707af3ff95c244a98c4582f9d7955d24b06"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193ce9f30.bin",
+      "bytes": 728,
+      "sha256": "48af9ef444233108320ffbbeab4f2f385389390a00539bed6a20aaba7893a8b8"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193ced698.bin",
+      "bytes": 1484,
+      "sha256": "b57b709d482ec0595819ff9a3788151e6923585a2c0306115a67f39c660e2ebb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193d04854.bin",
+      "bytes": 10744,
+      "sha256": "69c5eee4187ea1759609f5cf8b445883280c495728db050da9429296dc6ed79b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-acquisition.json",
+      "bytes": 6694,
+      "sha256": "0c553f3175fd53bbca946fe92ea69700f27617abfe681fa6c36bde7ae245abd2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-0.bin",
+      "bytes": 1340,
+      "sha256": "397edc70f30d93ec75b64764233c8471fb87fd34c754996b83c8085b2ca4bdc1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-1.bin",
+      "bytes": 204,
+      "sha256": "a1309a2b54faacf9d7c73f7e03c0eddc72a836a7d0960be6bd4b5e5d02201d39"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-reader-close-acquisition.json",
+      "bytes": 2521,
+      "sha256": "f84bb5f965bda90231774a1dd0d596cb2350896bed98a17c21b93173af2307f5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-requirement-vtables.bin",
+      "bytes": 216,
+      "sha256": "eaf26c247aa241f5552e5fa4a7d4458fa82aa3e4b69274e9a2b0023d2bad8666"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-0.bin",
+      "bytes": 1304,
+      "sha256": "b9b83d57562defbbd7d5c3e8c4d017871621fda54c4a14cba9b830c85f69baf4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-1.bin",
+      "bytes": 332,
+      "sha256": "9b283ef2da40d9636a0982bdd9ae0b471e673fc1d0be4c84d9bf612935c7c0f5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-2.bin",
+      "bytes": 648,
+      "sha256": "01de7776938e8a5a241fa59b84e9e0afa2d75bbb6b4d3dc73e48ac02abe6c8ec"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-acquisition.json",
+      "bytes": 3372,
+      "sha256": "95c3c974527dbb1114515e7d735c97ac05119c9de344de6bcc43ed0baf991253"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-superclass-acquisition.json",
+      "bytes": 916,
+      "sha256": "1485f9ae15a700ad5375b96cec69617f998c1557983b4cd2f94eacc4ae942d42"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-superclass-leaf-acquisition.json",
+      "bytes": 920,
+      "sha256": "b251859aec232f705ce2c2e35b6ada2240978dbb8c78796f1e2ab007a7571eb8"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-tail.json",
+      "bytes": 856,
+      "sha256": "7b1866ac51209c677aec010f59e2c8756946406136294190cd994a2e20abeec4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-0.bin",
+      "bytes": 1904,
+      "sha256": "0e08021d1cb8591294937f498adbef4037e0a0b364e18ce361ddfad178d49841"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-1.bin",
+      "bytes": 5348,
+      "sha256": "5b21e8cc47b6868d20e1e4d896f794182016b303234820304037b00fa684948f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-2.bin",
+      "bytes": 396,
+      "sha256": "b82c6eecd1862fa624a67d7c10ff86a6516ac7aaa4877f6172a1198364f4d2bd"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-acquisition.json",
+      "bytes": 3102,
+      "sha256": "21f1be820dd86dbdf0d5b69bdbd92bc62469a8039a40fa8f37a7a0e2a2272706"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-0.bin",
+      "bytes": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-1.bin",
+      "bytes": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-2.bin",
+      "bytes": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-3.bin",
+      "bytes": 12,
+      "sha256": "19daf2925c881152797194e2bfc73dd1c4e83fbc584ff64c28e9643fcd4c8392"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-callback-acquisition.json",
+      "bytes": 4092,
+      "sha256": "072f1c96ca6ebef6eacb2e0753cdda5ad2a3efddb1118264d048cdb78569f629"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-0.bin",
+      "bytes": 76,
+      "sha256": "6389f7f903abf211f598450ffa0eb09c21d12629a1feb01b665fd531b3403885"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-1.bin",
+      "bytes": 1508,
+      "sha256": "d41272ce4509ca8ffefbf33878eef0f3c1f6a76d29ec122a242b933453a5b5c3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-witness-final-acquisition.json",
+      "bytes": 2241,
+      "sha256": "e3b9dff0bda40bdbe878f1194faf0a40b17b41f21766c0df4fbd97f392105e6f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-x-completion-row.json",
+      "bytes": 370,
+      "sha256": "7206848e0d51992f8433404fc94e50f760a749083e91c3b8c20de52959dab09b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-x-operator-row.json",
+      "bytes": 371,
+      "sha256": "dc60c529ffd042ff425c7f9034bdd43b91e6de343780af17df4967f5f648b168"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-source-freeze.json",
+      "bytes": 8666,
+      "sha256": "7747e9184f3165952bc23119977ab960de106fa660c3576f4517425d53926ce5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-design-before.md",
+      "bytes": 15706,
+      "sha256": "437620027b766877a1ceee7ded2e40063b54ec932bde66f0a3f0a4f8c8483e9a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-design-freeze-before.json",
+      "bytes": 13666,
+      "sha256": "ed573c03139b7cead6ce210ef7e9ac94b9ef735917f7ef3becbc4c9cdfbca22e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-backing-vwt.json",
+      "bytes": 3326,
+      "sha256": "0a2bd497c0cd6d4b9fd7372102dc162438d5f85db9cc0521c3e63a15d5bb440c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-baseline-relation.json",
+      "bytes": 2276,
+      "sha256": "dbde4722b17deb3dfd61994f0efa5a19ae6a9c547ef802db1dba6bb7419b3554"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-baseline-traversal.json",
+      "bytes": 1248,
+      "sha256": "f2ed4167359451dd46e3f8f9e7891223cc150ec4675e571f74271b760f55ba0c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-baseline-traversal.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-baseline-traversal.stdout",
+      "bytes": 72855,
+      "sha256": "f409c5763bb097162a1f8aecaf3201eccfd4e30c4e44e7ad5bc88d5cb3aea519"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before-alias.diff",
+      "bytes": 49807,
+      "sha256": "c904827097f1a1d935e2817d8b9c662085bda72916ea0c54e0a18edd4f173483"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before.json",
+      "bytes": 3883,
+      "sha256": "1d23a3fb9e9bee0103b94c12b8b00ccb964e9fbd6535baf633e997b25a978d7d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "bytes": 9385,
+      "sha256": "2fd5da521f895a8a9d9125bf1154778bc4bc1e84a04e20692a439183a3c65fb2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "bytes": 13334,
+      "sha256": "b88705169f8ca4f32f766eaf6c74099be5f17d2cd66b90d91cb9d0d5ec2ffa53"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "bytes": 18435,
+      "sha256": "e56c415c0c17c41bf3b49efe29f1a52f7a22ad078d6a6de796e29270c5dbc691"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7629,
+      "sha256": "e407419691ce56aaf826bbc7cafd3664f4a7d11d5f44cb2185adbde718bd46b2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift",
+      "bytes": 25217,
+      "sha256": "0635eee88d820f313983df20d2147fd219e34692af648f7ca58574f82949f67a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift",
+      "bytes": 9513,
+      "sha256": "96095d4bfd6abe14597e0766f0ab9b896f258109c5bd49c260b287261a263e22"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift",
+      "bytes": 17638,
+      "sha256": "9ebb24d39e723394ae4540cf72f9d873954f2d4be411000e17f17cc6c599e9eb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+      "bytes": 12950,
+      "sha256": "2425cad550cacfb8cc87ecc1586858187f6c100a5577225e9b54ec275dab8b03"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-before/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 3430,
+      "sha256": "05b04cc903ddc95d697e6abd9b24dcc21acb8ebe4d5031c0d5d4091acd824161"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-builder.json",
+      "bytes": 1129,
+      "sha256": "37c994afc3e300a5bf63b1aef2a7352331c83e039c2849c89d0a3dbd80e20d0e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-builder.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-builder.stdout",
+      "bytes": 419751,
+      "sha256": "326644550e90bb98a57b7ec19b86b90c50b1a88ceda9fdad36db47af53a895ce"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-throws-failure/CanvasSemanticProbe.swift",
+      "bytes": 21560,
+      "sha256": "50a89637bc634751470f5ddc6fd6a23fdbd4802446da012b2478e2e6cb801fc1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-throws-failure/compiler.stderr",
+      "bytes": 3564,
+      "sha256": "18ab0e267112f4ea40ad8d37cb49c21b0dbea7a228e05f802561ca4bd350a6ab"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-throws-failure/source-freeze.json",
+      "bytes": 14541,
+      "sha256": "abac5aeaa167857cc4f71d9b2862bb4be4dd06eee6c98401d9a550f13cfc76b8"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-visibility-failure/Tests/ContractFixtures/SPEC012/RuntimeDerived/AnalyzerCanvas.swift",
+      "bytes": 883,
+      "sha256": "52a9ee86c3b6439d1e054f0a32b0df42ffb8d3d97a6bad9ba10c5bad9333bf2b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-visibility-failure/Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift",
+      "bytes": 1283,
+      "sha256": "75774a2bcd90884153acfb7826d11ed48f9923693c390ff61ab3e38e3c595f81"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-visibility-failure/compiler.stderr",
+      "bytes": 5027,
+      "sha256": "4748c03c3a628caf8abeca56df9b57731f577532c61338285a2cabe1f7360683"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-visibility-failure/source-freeze.json",
+      "bytes": 13666,
+      "sha256": "ed573c03139b7cead6ce210ef7e9ac94b9ef735917f7ef3becbc4c9cdfbca22e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-0.stdout",
+      "bytes": 2728,
+      "sha256": "3973dbd24124a8b4b28a293d4cd3a69c4de2fef3086efd1a8aad5c97f29fe7eb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-1.stdout",
+      "bytes": 3992,
+      "sha256": "fef429a95094b4545171fe7d152dbfe8106d7a67925ba965ecc850e720cf8542"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-2.stdout",
+      "bytes": 4515,
+      "sha256": "7f750c1b52284b03015284a2db112cf6879cddfa80d477da5ab8a9f769e0f28d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-3.stdout",
+      "bytes": 4282,
+      "sha256": "d6ea8cb9e143ae71d4ee6ff667948f69c54ea0898b0efdc68992ea19d57408d9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-4.stdout",
+      "bytes": 893,
+      "sha256": "01f2b58fa54bed9e9a41ea5d6fcb7941e11f195542d3fa28d6edb7b4f06667fb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures-5.stdout",
+      "bytes": 7352,
+      "sha256": "9903fb4d63544e93cf1271a7a1e42e831ebfeafea1d39c29a749fcd017f216cc"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-captures.json",
+      "bytes": 5454,
+      "sha256": "ae188cc8163002379b071122eab72833dbef2d78ba641a0847b97ddfee982c24"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-commands.json",
+      "bytes": 116986,
+      "sha256": "73602452f97f4d870b4a59b3b900e4b5dfc6a9463e95e34f0ae267430f83c4e2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-compiled-inputs.json",
+      "bytes": 49407,
+      "sha256": "5c4a6d7d3d5ecebc2685180e5996e74250df6e3f1741913d35e7a673f233a18e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-component-failure/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift",
+      "bytes": 28564,
+      "sha256": "1a3ceab58106df5115f941549e20557843a3eee9038b15f3ea10d8b2e5831958"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-component-failure/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift",
+      "bytes": 12967,
+      "sha256": "50c53f36c1e628423148887fa115de36c327b6bc7124348e4adf24bea33d3338"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-component-failure/compiler.stderr",
+      "bytes": 1316,
+      "sha256": "bb9147524daccea99fadcdddb0a62e8480bae3b90168af76e97e65eec5c42752"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-component-failure/source-freeze.json",
+      "bytes": 12993,
+      "sha256": "ca0b97b17a339baabaa7b2ffcc2bf705a00a4b6b4af93c5986cac7f4d5915048"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-0.stdout",
+      "bytes": 2949,
+      "sha256": "b12566ee59d663de2c138313212ca381d23b704e44d0990f80b8d5e6d2935443"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-1.stdout",
+      "bytes": 1704,
+      "sha256": "78b6e7c1791f9a74788f573248da20f95b96deaf7eb8f9121391431a9560d9c9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-2.stdout",
+      "bytes": 4598,
+      "sha256": "ce870c0b535e92ecd8c96bcc7f83ae2eda3d90653adbe81356c2e8a77acda531"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-3.stdout",
+      "bytes": 4208,
+      "sha256": "4a36fa6d1edc47b9eebe147c9d76fef61b42d34aa4ee72f24077f0ba57b7d4af"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support-4.stdout",
+      "bytes": 1662,
+      "sha256": "0902c2005eb7cc6956825b05b05c58a3631a7e6f158fe605fe87599afef65bef"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-core-support.json",
+      "bytes": 4946,
+      "sha256": "4b663d694abf02a3320eef1890ea4074d9a426eb16a9def36234a2b159588a03"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-cost.json",
+      "bytes": 1880,
+      "sha256": "de51cdf4cc8d06f36bfddfbecd7031525f79072df0455ce5895de7899999997d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure-diagnostics.json",
+      "bytes": 2806,
+      "sha256": "91e8c076a32c79df30749ae23f6493935f4995e56a62319f8a18808506857e1b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "bytes": 9099,
+      "sha256": "8573aed65aea7f10eec97cafc121b51d7c1b09b6e99361af7c116a03124e929f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "bytes": 9059,
+      "sha256": "dc8f6daf31251a8eaaed301cd12ca64ab406073fb94cab3b276370e79329acab"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "bytes": 22392,
+      "sha256": "b6549eac20ebe1905c67003ec95d8b123ba52208a18bc360609edca438551b34"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7625,
+      "sha256": "35a79402b6e69569f54b18933523c2007c4f1f11a54eaa6ed950c4d877340d9a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift",
+      "bytes": 28564,
+      "sha256": "1a3ceab58106df5115f941549e20557843a3eee9038b15f3ea10d8b2e5831958"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift",
+      "bytes": 12967,
+      "sha256": "50c53f36c1e628423148887fa115de36c327b6bc7124348e4adf24bea33d3338"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift",
+      "bytes": 21560,
+      "sha256": "50a89637bc634751470f5ddc6fd6a23fdbd4802446da012b2478e2e6cb801fc1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+      "bytes": 16762,
+      "sha256": "311ce74277c3ba3c6e253755e2223b4874703057792687a282fa8e1e107845f2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 7258,
+      "sha256": "2aae79f399ada458e0132054d49c20c913c25b3f45f61e234f443576fe4e4d17"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/canonical-supplied-sink-commands.json",
+      "bytes": 114712,
+      "sha256": "71c683201c8171f9917b5ca08f96b63ea0f5ca745fa7834180c89f5c342174ad"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/canonical-supplied-sink-source-freeze.json",
+      "bytes": 10155,
+      "sha256": "53cfaaf828f2579a828c6dc56791711a8f58ad9aa00a7e067d749be9e31ecf18"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/canonical-supplied-sink.diff",
+      "bytes": 49866,
+      "sha256": "af8ad4b1aad7cd5b930536e087690a4f651afe724b365aed183fbd95f85ccc34"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/compiler.stderr",
+      "bytes": 739,
+      "sha256": "672df78c1e8f8899d17af43b2ff07d33f3c83bd3ee3e97c32b8142d2dbff268a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "bytes": 9099,
+      "sha256": "8573aed65aea7f10eec97cafc121b51d7c1b09b6e99361af7c116a03124e929f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "bytes": 9059,
+      "sha256": "dc8f6daf31251a8eaaed301cd12ca64ab406073fb94cab3b276370e79329acab"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "bytes": 22394,
+      "sha256": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7625,
+      "sha256": "35a79402b6e69569f54b18933523c2007c4f1f11a54eaa6ed950c4d877340d9a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift",
+      "bytes": 28564,
+      "sha256": "1a3ceab58106df5115f941549e20557843a3eee9038b15f3ea10d8b2e5831958"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift",
+      "bytes": 12967,
+      "sha256": "50c53f36c1e628423148887fa115de36c327b6bc7124348e4adf24bea33d3338"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift",
+      "bytes": 21560,
+      "sha256": "50a89637bc634751470f5ddc6fd6a23fdbd4802446da012b2478e2e6cb801fc1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+      "bytes": 16762,
+      "sha256": "311ce74277c3ba3c6e253755e2223b4874703057792687a282fa8e1e107845f2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 7258,
+      "sha256": "2aae79f399ada458e0132054d49c20c913c25b3f45f61e234f443576fe4e4d17"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/canonical-supplied-sink-commands.json",
+      "bytes": 115545,
+      "sha256": "5b4d9aaf1d9d363cd1ac58bcd5c01dba31f8b5b2dfb8599dccf24c690fa739fa"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/canonical-supplied-sink-source-freeze.json",
+      "bytes": 10916,
+      "sha256": "2e4a2daa870092285a8066ce23267f59c1a35af3178327901210b6fabda82bab"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/canonical-supplied-sink.diff",
+      "bytes": 49868,
+      "sha256": "b8528e77339f9ee53edb7c3b43e7dbf97bc03d91e7081ebd44ef0d3d1c243625"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/compiler.stderr",
+      "bytes": 6064,
+      "sha256": "136c39469de4ae7f7f95bf69c4035eeb32b1d25db16b51b05f64ff1cd91cbc6b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "bytes": 9506,
+      "sha256": "dab8b9484d6f540ae7e5951107a71313e65c839ac8e7a08dbaa594a0df84bac2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "bytes": 9059,
+      "sha256": "dc8f6daf31251a8eaaed301cd12ca64ab406073fb94cab3b276370e79329acab"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "bytes": 22394,
+      "sha256": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "bytes": 7625,
+      "sha256": "35a79402b6e69569f54b18933523c2007c4f1f11a54eaa6ed950c4d877340d9a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift",
+      "bytes": 28564,
+      "sha256": "1a3ceab58106df5115f941549e20557843a3eee9038b15f3ea10d8b2e5831958"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift",
+      "bytes": 12967,
+      "sha256": "50c53f36c1e628423148887fa115de36c327b6bc7124348e4adf24bea33d3338"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift",
+      "bytes": 21560,
+      "sha256": "50a89637bc634751470f5ddc6fd6a23fdbd4802446da012b2478e2e6cb801fc1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+      "bytes": 16762,
+      "sha256": "311ce74277c3ba3c6e253755e2223b4874703057792687a282fa8e1e107845f2"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 7258,
+      "sha256": "2aae79f399ada458e0132054d49c20c913c25b3f45f61e234f443576fe4e4d17"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/canonical-supplied-sink-commands.json",
+      "bytes": 122807,
+      "sha256": "354b75c422c37ed6421cbdb1d4ffb45b3e5f42af1b1be680748e71c9145efa7d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/canonical-supplied-sink-source-freeze.json",
+      "bytes": 11847,
+      "sha256": "5f02f75a5ea7670533e866b4b6a9ab7b6c2ecf0fa4940f458b20e9d0a7e34fba"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/canonical-supplied-sink.diff",
+      "bytes": 54178,
+      "sha256": "9f1a86284b95c2ea9301d7bc707a2f1e013935991adc0ce87062d166e92b9ed3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/compiler.stderr",
+      "bytes": 10816,
+      "sha256": "c993672567036dc5a851214209d84822a7c5c423ded6e2a00b436b474b8130f6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-link-freeze-before.json",
+      "bytes": 14742,
+      "sha256": "92d4468f38da7ffe978481462e08c918a26e5384559ef4b92e59e8e32f514d14"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-0.stdout",
+      "bytes": 317,
+      "sha256": "fbe64e087b812fbed52c144f700250c650f449bb3284fbc81b051814a1dc39ba"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-1.stdout",
+      "bytes": 310,
+      "sha256": "3dc89df14b9fbf62cd3fce0986e151b958a2b7ea2e5e33c4fbca2137b5a8aaeb"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-2.stdout",
+      "bytes": 456,
+      "sha256": "bcb8d5ca57d4e59d8ee3cffdb5d3b387af7e354ca4ef7c8d806ae51d46bd2f52"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-3.stdout",
+      "bytes": 281,
+      "sha256": "0c9192021f8a53872ed871464a2305d16fabb08fa4b0fc4a8915a33f70b963ef"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-4.stdout",
+      "bytes": 257,
+      "sha256": "1db656a8dc6452f57924a5b051c4a366d9cab69dc73a39363ce110327e322d7c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support-5.stdout",
+      "bytes": 9367,
+      "sha256": "3fa8fe534abdb2fd24b438367f9be58ed7746f6be07d96c1aa9a74cad16ef93e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-final-support.json",
+      "bytes": 6151,
+      "sha256": "2b3bbcc6eb2dc6f8293ba177387948d6eab681094e4386920a85b873cf14af08"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full-timecap/launch.json",
+      "bytes": 1032,
+      "sha256": "0aefb7d5f40e097a983f3e59e1c6c64d760ba6c3c57dfb95c337547a0fd55d93"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full-timecap/ownership.json",
+      "bytes": 224,
+      "sha256": "f558ec5631f965eace9db8c5055336c444ccc52c1b0575987ac75bbb51c1636e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full-timecap/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full-timecap/stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full-timecap/terminal.json",
+      "bytes": 2668,
+      "sha256": "3d0feb49e59f773f643301e3f705b083bbff29bd227045a100e1b5d957725e4d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full2-closure/launch.json",
+      "bytes": 1023,
+      "sha256": "624ab837bb7ea78707996d3dd5705414e26ba09eba7d07201a8cdf4bd7b73285"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full2-closure/ownership.json",
+      "bytes": 219,
+      "sha256": "bf6f3f7864362b3a5b46cd32e78cf15cadc5a8db65a03931735cb70f55a8d75d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full2-closure/plan.json",
+      "bytes": 5548,
+      "sha256": "3da7cead69c600688eb224e7a37c3c8ccf4218dd788cfbc1a86520037f1b3bee"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full2-closure/source-freeze.json",
+      "bytes": 15446,
+      "sha256": "21386a8706f0f9f767d21fe02e038f5b62d29393c33b405d2b9622b8579de254"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full2-closure/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full2-closure/stdout",
+      "bytes": 138,
+      "sha256": "2f3c60db62e2c36d4edcb1bc098f909a53e658d0198e8590a45461f02281b343"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full2-closure/terminal.json",
+      "bytes": 2487,
+      "sha256": "f49480247dc026bdcabc27fa0c051478daf3a04c4cbbc2621ab7d65961519be9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-full2-final-freeze-before.json",
+      "bytes": 15446,
+      "sha256": "21386a8706f0f9f767d21fe02e038f5b62d29393c33b405d2b9622b8579de254"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-0.stdout",
+      "bytes": 271,
+      "sha256": "68d1fe4801aec4a24148b64f61ee1675e029fde8fdbda72cde2d4a0714bbd20c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-1.stdout",
+      "bytes": 578,
+      "sha256": "a53dc2794cc516cc6e8393f767dfce03bb40dc35e8ac82482c040837855714a6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-10.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-10.stdout",
+      "bytes": 2574,
+      "sha256": "82b60ff79acedfbea9efca4b60f7c8334d39e9a865ba22aa367faebdd1b21224"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-2.stdout",
+      "bytes": 1391,
+      "sha256": "9809f4ae885641c45362507419231b51a3174e5103784bac82b18b58a0f98c8b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-3.stdout",
+      "bytes": 1309,
+      "sha256": "7e05a48615e28f6f0740aa594092dc7625d0b6b376288d581a9cf3269e9c6a5e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-4.stdout",
+      "bytes": 878,
+      "sha256": "66a4ce9a73440c664a3688045bee48df20c3c9241b591de79725e0cdd5e9aa0d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-5.stdout",
+      "bytes": 1880,
+      "sha256": "47ca9f30e8ad3d3fb241bd206e2afed6b2585206bb24256ff01ce294e4466c7c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-6.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-6.stdout",
+      "bytes": 2605,
+      "sha256": "612f5a9fa701819ee51c3115a01ea8212441f8f3b48fd780bb30ee36abe3e07e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-7.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-7.stdout",
+      "bytes": 5135,
+      "sha256": "2fe3b7b7419beb5028c1cea183e9989db42819ed9127bfedaac1e55fc5566336"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-8.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-8.stdout",
+      "bytes": 1443,
+      "sha256": "0cf5701660947f60bd08aa37012a5c36818b3cba2ac449b86fe8fa5f5722a93a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-9.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owner-9.stdout",
+      "bytes": 2281,
+      "sha256": "32f72c5b1b67cdab95a38f6505d09b54baa54f5633adf1b053014ea5bac7d5b6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-owners.json",
+      "bytes": 11036,
+      "sha256": "6c0fcb9d1723625350490531b8af379c80a894401328acae5c0fe8a349a3fd4c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-pending-init-target.json",
+      "bytes": 927,
+      "sha256": "3fc4cf9269f7b1a2feacfd2ad96d63c0c2a345ac1c9fb0795e0aea3b653f5b55"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-pending-init-target.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-pending-init-target.stdout",
+      "bytes": 1128,
+      "sha256": "2cc1e44a430a1c812ce2265b0accc989462a8bf82074edb574a0f7817c1b496a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-0.stdout",
+      "bytes": 321,
+      "sha256": "163f730733bbfacf7112aefc9ffacc96c370171fb712cf73ec42a8eca7f787e1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-1.stdout",
+      "bytes": 314,
+      "sha256": "f2f5411e781eab4a4095e648312bd88d555c9efd0ae34ef2ce532ea12affba0f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-10.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-10.stdout",
+      "bytes": 57712,
+      "sha256": "7b723fb915c090e6cbf7e34a31c46210bbc5eee0412b0d2c1aef36395c40033f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-11.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-11.stdout",
+      "bytes": 80839,
+      "sha256": "a68fed6f7b9a8085ec64c89caa191a880bb0b570d99cfaa37844941c6a795f4c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-12.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-12.stdout",
+      "bytes": 3964,
+      "sha256": "200cf79dbe841fae12e4c7f2dfa74b1fd7b9a8a2e933a985e7d2ceef8723d8c3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-13.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-13.stdout",
+      "bytes": 389,
+      "sha256": "a35c8aa0f6999bbde1cc1fe5ed94367fc4dd038001958f0f719571f7855819ae"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-14.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-14.stdout",
+      "bytes": 303,
+      "sha256": "a059512aa8673fcaf6c5ebedeb3959cb193620b7f3c4de08b015d053110d17f7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-15.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-15.stdout",
+      "bytes": 303,
+      "sha256": "dda6d9da01a4cd092f759040913593598a07202ab0741bba0ee986a70773c99e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-2.stdout",
+      "bytes": 372,
+      "sha256": "4428c7d9b65ca18c0f5c361300d17b9ebaca576d3607023f31d199f4cce94906"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-3.stdout",
+      "bytes": 18550,
+      "sha256": "c9481df5d3c2f2e826e0011246ffe3c8ba912fc7cbcc5b8cc053b2ce5b11c323"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-4.stdout",
+      "bytes": 7707,
+      "sha256": "dad81eea455a4d5bc0b9e630b455728cf2dec56439e38f7c6f0a20d7e44eb912"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-5.stdout",
+      "bytes": 1273,
+      "sha256": "145abfde09920adbdf7ffc1beeba1bd02a57c9aaddbdaeb77b805d53c2ab3996"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-6.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-6.stdout",
+      "bytes": 32024,
+      "sha256": "327e9b06cda54471fdcf792bb507ef09897040488f272b2d29f80b61af40acfa"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-7.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-7.stdout",
+      "bytes": 3713,
+      "sha256": "46997e05db3b70d6f733b9add2ec153147c7264dcba00f6804353bf61f5c7c7e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-8.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-8.stdout",
+      "bytes": 2310,
+      "sha256": "bd904b9a7b668c1621e7137c053f60660badb9d9a376fe4d4922e3fbafc37089"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-9.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-9.stdout",
+      "bytes": 45866,
+      "sha256": "158e0ababafc5f0c9ee6d01f35d59294dc48f562d9d894e9cd5d00575cdfee8c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached.json",
+      "bytes": 16906,
+      "sha256": "84589832b0db244ececc36cfd4e18ec8fc2b9b057fe519c38332b95a3e550666"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-source-freeze-before-alias.json",
+      "bytes": 9639,
+      "sha256": "3cb9a44a117ce785e168d0b7428c4fc2c8f1d3f7b575462308d795ad4f5cac29"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-source-freeze.json",
+      "bytes": 16306,
+      "sha256": "9d340955262cf6ed582e3c8834f1ba55ac3dc644956fb50fb35cbd2ff1b1280f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-0.stdout",
+      "bytes": 8511,
+      "sha256": "f0b4d50873ad0cc858cc6a22451b5ee6143b7bb21957ecff30edb7228d6f86d1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-1.stdout",
+      "bytes": 704,
+      "sha256": "cec6aad042dbd08168e40a9bc2d5f20df2599af682e7bcf61f13c887d2c3f13d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-10.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-10.stdout",
+      "bytes": 393,
+      "sha256": "d71b0ad73904b8912e5b4b4139ccf9c5dfeacf484fe8ed3e3458e8d3235d7691"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-11.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-11.stdout",
+      "bytes": 537,
+      "sha256": "98479d0bbdc77528ece9e3aef764f022578327fc74b59e39f6344ee03cf4513f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-12.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-12.stdout",
+      "bytes": 295,
+      "sha256": "c60394909b916f2cd0cd48abe10f2b8a69d994e27dfdbc38a2cbf44568d0e53d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-2.stdout",
+      "bytes": 511,
+      "sha256": "3072f2d4a8efce6895a6a20a696be3a06edaf7737cda88848a4f1ee839ba450d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-3.stdout",
+      "bytes": 316,
+      "sha256": "8c587a6a0302ee5fdcc0638b397a7bd42cf6b8ce172a6f77e3b6a6c38d116698"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-4.stdout",
+      "bytes": 287,
+      "sha256": "ce1960ab1ff3c8c829543feec97ad1b60ef29cfe25235cd2a2f9f8544341e4ba"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-5.stdout",
+      "bytes": 1153,
+      "sha256": "b28c4aa7d61091b3d85a3bfd745a16d6bb0c638614634e8f86099bbf2e560cb3"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-6.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-6.stdout",
+      "bytes": 449,
+      "sha256": "3c02e0fac421fa8be8af31bf531625c116ebfaab7080092503e9e25d7296986a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-7.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-7.stdout",
+      "bytes": 511,
+      "sha256": "2e60570a331cccbae7977e0b33bf1d46fcd66937410c35cf558fc39b085ec1f4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-8.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-8.stdout",
+      "bytes": 398,
+      "sha256": "a7eb616c5bd6cac3687cec6a9b67da7b9bbaeb769cb7dac9aed34944a5eb695e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-9.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support-9.stdout",
+      "bytes": 314,
+      "sha256": "f2f5411e781eab4a4095e648312bd88d555c9efd0ae34ef2ce532ea12affba0f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-support.json",
+      "bytes": 10315,
+      "sha256": "2695b5e07083b89858d37fcb8f0c6b640643f86fbf7242863b56cf3b7263e872"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-validation-plan.json",
+      "bytes": 14993,
+      "sha256": "cf6e208773201988e465a54d2d2f8d8c29c63896163846c4f85b7b1f5a6e6261"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-0.stdout",
+      "bytes": 868,
+      "sha256": "5a9dc562f9ba2f1d2f711b56e29021113a710a2309db78f3a7bd6d3a4ced2523"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-1.stdout",
+      "bytes": 11111,
+      "sha256": "631bfa8f9f26e8c8ff5a9fa43cdf9b2027fdb40faf19fd39dd63ae8935c4fb82"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-2.stdout",
+      "bytes": 776,
+      "sha256": "e2af82cfbbbd18b677718a6e3471e8f80ddf63b8e8e73fff1092ec2882795f93"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-3.stdout",
+      "bytes": 872,
+      "sha256": "2141f9e3c7fb77fcc7521dee13dc8e33e374cc9f5d9c978f9ddfb87f4b4ef3c9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-4.stdout",
+      "bytes": 2521,
+      "sha256": "d593eba2fc7e41d7a0738546e28bfd905ea39fbba95d531c62397ee44c32b265"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-5.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-5.stdout",
+      "bytes": 1584,
+      "sha256": "732992dbb68c817d2d8354795781e850a16804e70303f982540ce72b525c6a66"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-6.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-6.stdout",
+      "bytes": 1130,
+      "sha256": "d1e2bab2448dec09a9cb83d8b42d6b1fe6f9050e7924fbb0ef5f19238a89cbf4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-7.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-7.stdout",
+      "bytes": 240,
+      "sha256": "935757760a1dbdd65f41484ac68b464cedc4721f16be4cd8741c052bfe4fa005"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-8.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-8.stdout",
+      "bytes": 1575,
+      "sha256": "c79e1aa81dc360cadcfca0cff2e4448dab4eb9b9141d92dd9d1649e9c5edbf96"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-9.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core-9.stdout",
+      "bytes": 1576,
+      "sha256": "a93b3224d61d84e70269f253cfd53e3c2e09b0440322fa2a1fcc0d19a52e7c26"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-core.json",
+      "bytes": 9187,
+      "sha256": "a562d1bd8f09b29a6a85a46a763c86f17efe0b92a860e3fd634d9f5c24906992"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-view-static-vwt.json",
+      "bytes": 3260,
+      "sha256": "8047145c1b63266a4b9df45e1e8575c5539fcec5a1d9d77f1fd6ab94fd46aa02"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/generic-entry-pattern.json",
+      "bytes": 3304,
+      "sha256": "f49afbd088e0cbffe7f4574a5d398ae81578cbed290a26fbf1f57c5c88814d39"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/generic-metadata-dispatch.json",
+      "bytes": 932,
+      "sha256": "bef2aa10b0da28a8fb612925aafeeaa33c7bb537e676ed16fa5cbbe4cbd6f7cc"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-result.json",
+      "bytes": 32888,
+      "sha256": "20d2bb9f795168dd2b771c86fcd0561c13ce45126eb0a645a0ef71b951f31e14"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-README.md",
+      "bytes": 1797,
+      "sha256": "2cff1fe8782460c40048c9db0ad3a1375989e55c8b0e0e4e401a14991910fde7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-final-review.md",
+      "bytes": 5756,
+      "sha256": "9d6c549e3ce804b0af323d84e7fce8fa1359b9bc8ecb722e74dfab69a7645080"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full-transfer.json",
+      "bytes": 262844,
+      "sha256": "ab7407d336f5c7cbaea101c9fe1a5fbf13850d75b5ed2aef13f9c204d2859ad7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-README.md",
+      "bytes": 2286,
+      "sha256": "4bddfc055f0d962419806fcf9a0ce0cb42fe84c78e76c809fef68e2e30ec1b8e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-accounting.json",
+      "bytes": 2982,
+      "sha256": "bcdce666baff4d0beb431a40103dcfaf0dab000b4675f1f440d88c29f8bf1535"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-oracles.json",
+      "bytes": 9134,
+      "sha256": "0cc3b9838515c386b4254e953144e4d60ebe6555694e39103c46706d52b840a0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-physical-delta.json",
+      "bytes": 3727,
+      "sha256": "c9842037a701421a66cc5d4a0b86364bec2e086a532a386e404a30939211d762"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-review.md",
+      "bytes": 8669,
+      "sha256": "630a9cb17bfc1cbcebbaae741ca46b474aebb386649bd1795b59c6f8c3a55b51"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-transfer.json",
+      "bytes": 13775,
+      "sha256": "2259561a3722d99fc42b8f1fd40794a0677e35edd0889746034c9772366c3ef0"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-validation.json",
+      "bytes": 3808,
+      "sha256": "c1cc5725a0cb9c3320082aa11fc2679fa0f1cb07afcdce2ece0f2be087e956df"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-result.json",
+      "bytes": 10236,
+      "sha256": "62b0c3062c478d3b7920ceaa4ed3823ad4756c110f5b35b0969a1d14949f74fa"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-scope.json",
+      "bytes": 131946,
+      "sha256": "b8a3a27779245511bcc4d079f18542368a8e26fe064479798026671d480a3bc8"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-terminal.json",
+      "bytes": 3970,
+      "sha256": "61d72688e71f952d7aa5182e41d4566a267400cd15c9a4c65e3bcb48047b95d6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-validation.json",
+      "bytes": 4569,
+      "sha256": "798f7058b0d44c7e4f7fdeb3128b179d4986b19e770bdaa321ea9b2bd62b8c92"
+    }
+  ],
+  "evidence_bytes": 4236921,
+  "scope": "Exact prior manifest-derived proof/raw/failure closure plus compact full2 successor and launch/terminal preservation; no directory-wide history or build corpus. Full1 STOP files are unchanged. Final full2 independent review path will be added once saved.",
+  "source_dependencies": "Build receipts/objects/logs retained under .build with exact hashes in validation/oracles/transfer; installed provider/tool inputs remain named reproducibility dependencies of accepted historical proof.",
+  "not_acceptance": "Accepted only scoped direct ownership correction/current maintained validation. Changed Workspace/Traversal eligibility and globalP08/unit/live/profile/resource gates remain OPEN. Root alone stages/commits.",
+  "source_freeze_sha256": "9d340955262cf6ed582e3c8834f1ba55ac3dc644956fb50fb35cbd2ff1b1280f",
+  "final_independent_review": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-review.md",
+  "final_independent_review_sha256": "630a9cb17bfc1cbcebbaae741ca46b474aebb386649bd1795b59c6f8c3a55b51",
+  "self_handling": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-scope.json",
+    "included_in_approved_stage_list": true,
+    "excluded_from_own_hashed_evidence_rows": true,
+    "reason": "A file cannot contain its own cryptographic content hash without recursion; final scope SHA is reported externally to root, and approved path-list SHA below binds its inclusion."
+  },
+  "historical_manifest_handling": "Full1 STOP records/review remain byte-identical. Historical before/source-freeze hashes are snapshots, preserved in before copies; current full2 scope rows bind current metadata after root doc-only acceptance update.",
+  "approved_stage_paths": {
+    "path": "/tmp/giftui-p08-approved-paths.txt",
+    "count": 454,
+    "sha256": "a49cebbeb16cc3d215a37c53d54f880f0bd1eea44496653a0fc09b01c8eddda0",
+    "format": "One exact repository-relative path per line;62sources +finite evidence +scope itself; no directory patterns/unrelated files."
+  }
+}

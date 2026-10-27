@@ -1,11 +1,11 @@
 import GiftUISemanticCore
 
-struct ScopedSemanticOwner<Payload>: ~Copyable, ~Escapable {
-    let semantic: SemanticRecordStore<Payload>
+struct ScopedSemanticOwner: ~Copyable, ~Escapable {
+    let semantic: SemanticRecordStore
     @_lifetime(copy semantic)
-    init(semantic: consuming SemanticRecordStore<Payload>) { self.semantic = consume semantic }
+    init(semantic: consuming SemanticRecordStore) { self.semantic = consume semantic }
 }
-func forwardSemantic<Payload>(_ semantic: borrowing SemanticRecordStore<Payload>) {
+func forwardSemantic(_ semantic: borrowing SemanticRecordStore) {
     let owner = ScopedSemanticOwner(semantic: semantic.borrowedStore())
     _ = owner
 }

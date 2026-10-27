@@ -31,6 +31,7 @@ extension StaticCycleProfileStorage {
                         records: &records, paths: &paths, payloads: &payloads, scalars: &scalars
                     ) {
                         (semantic) throws(SemanticExpansionError) in
+return try semanticPending.withLifetime { semanticCodec in
                         do throws(DrawingError) {
                             var entries = canvasBacking.mutableSpan
                             try canvas.withLifetime(
@@ -45,7 +46,7 @@ extension StaticCycleProfileStorage {
                                             let supplied = P08ActivationSupplied(
                                                 models: models.borrowedScope(),
                                                 root: root.borrowedRoot(),
-                                                semantic: semantic.borrowedStore(),
+                                                semantic: semantic.borrowedStore(), semanticCodec: copy semanticCodec,
                                                 values: values.borrowedValues(), control: pointer,
                                                 audit: audit,
                                                 geometry: geometry,
@@ -67,7 +68,9 @@ extension StaticCycleProfileStorage {
                                 }
                             }
                         } catch { preconditionFailure("Canvas scope") }
-                    }
+
+}
+}
                 } catch { preconditionFailure("semantic scope") }
             }
         } catch { preconditionFailure("model scope") }

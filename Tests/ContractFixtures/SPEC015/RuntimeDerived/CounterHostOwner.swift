@@ -40,25 +40,26 @@ struct CounterHostSuppliedStorage<Geometry, Candidate, Committed, Hits>: ~Copyab
 where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     private let models: ObservableModelScope<CounterOwnedModel, CounterModelSchema>
     private let root: ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>
-    private let semantic: SemanticRecordStore<CounterPayload>
+    private let semantic: SemanticRecordStore
+    private let semanticCodec: CounterSemanticCodec
     private let values: CanvasStagedValues<SemanticRecordReference, CounterValueTable>
     private let control: CounterHostControl
     let audit: RuntimeStorageAudit
     private var geometry: Geometry
     private var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
 
-    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control, copy geometry, copy interaction)
+    @_lifetime(copy models, copy root, copy semantic, copy semanticCodec, copy values, borrow control, copy geometry, copy interaction)
     init(
         models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
         root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
-        semantic: consuming SemanticRecordStore<CounterPayload>,
+        semantic: consuming SemanticRecordStore, semanticCodec: consuming CounterSemanticCodec,
         values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>,
         control: borrowing UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit,
         geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>
     ) {
         self.models = consume models
         self.root = consume root
-        self.semantic = consume semantic
+        self.semantic = consume semantic; self.semanticCodec = consume semanticCodec
         self.values = consume values
         self.control = CounterHostControl(pointer: control)
         self.audit = audit
@@ -67,15 +68,15 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     }
     @_lifetime(copy self)
     consuming func intoPipeline(limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) -> CounterPipelineOwner<Geometry, Candidate, Committed, Hits> {
-        CounterPipelineOwner(models: models, root: root, semantic: semantic, values: values, geometry: geometry, interaction: interaction, scopedControl: control, limits: limits, endpointConfiguration: endpointConfiguration)
+        CounterPipelineOwner(models: models, root: root, semantic: semantic, semanticCodec: semanticCodec, values: values, geometry: geometry, interaction: interaction, scopedControl: control, limits: limits, endpointConfiguration: endpointConfiguration)
     }
     @_lifetime(copy self)
     consuming func retireInertStorage() -> CounterRetiredStorage<Geometry, Candidate, Committed, Hits> {
         CounterRetiredStorage(semantic: semantic, geometry: geometry, interaction: interaction)
     }
-    @_lifetime(copy models, copy root, copy semantic, copy values, copy scopedControl, copy geometry, copy interaction)
-    init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, scopedControl: consuming CounterHostControl, audit: RuntimeStorageAudit, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>) {
-        self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values; self.control = consume scopedControl; self.audit = audit; self.geometry = consume geometry; self.interaction = consume interaction
+    @_lifetime(copy models, copy root, copy semantic, copy semanticCodec, copy values, copy scopedControl, copy geometry, copy interaction)
+    init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore, semanticCodec: consuming CounterSemanticCodec, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, scopedControl: consuming CounterHostControl, audit: RuntimeStorageAudit, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>) {
+        self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.semanticCodec = consume semanticCodec; self.values = consume values; self.control = consume scopedControl; self.audit = audit; self.geometry = consume geometry; self.interaction = consume interaction
     }
     @_lifetime(copy self)
     borrowing func borrowedModels(selection: CounterProfileConstructionInput = .supplied) -> ObservableModelScope<CounterOwnedModel, CounterModelSchema> {
@@ -86,9 +87,11 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         CounterOwnedModel, SemanticCompleteIdentity
     > { switch selection { case .supplied: return root.borrowedRoot() } }
     @_lifetime(copy self)
-    borrowing func borrowedSemantic() -> SemanticRecordStore<CounterPayload> {
+    borrowing func borrowedSemantic() -> SemanticRecordStore {
         semantic.borrowedStore()
     }
+    @_lifetime(copy self)
+    borrowing func borrowedPending() -> CounterSemanticCodec { semanticCodec }
     @_lifetime(copy self)
     borrowing func borrowedValues() -> CanvasStagedValues<SemanticRecordReference, CounterValueTable>
     { values.borrowedValues() }

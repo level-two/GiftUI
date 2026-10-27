@@ -9,9 +9,10 @@ import GiftUISemanticCore
 /// checks, mutation preflight, exclusive commit and synchronous reporting.
 @usableFromInline
 package enum RuntimeRecordInteractionBridge {
+    @inlinable
     package static func append<Candidate, Committed, Hits, Model, RootIdentity, Action, Roles>(
         record: SemanticRecordReference,
-        semantic: borrowing SemanticRecordView<SemanticStandardPayload>,
+        semantic: borrowing SemanticRecordView,
         root: borrowing ObservableStateRootScope<Model, RootIdentity>, rootIdentity: RootIdentity,
         rootOrdinal: UInt16, actionType: Action.Type, roles: Roles.Type,
         isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,
@@ -30,20 +31,25 @@ package enum RuntimeRecordInteractionBridge {
             record: record, semantic: semantic, root: root, rootIdentity: rootIdentity,
             rootOrdinal: rootOrdinal, actionType: actionType, roles: roles,
             isEnabled: isEnabled, bounds: bounds, clip: clip, paintOrder: paintOrder,
-            interaction: &interaction, projection: { $0 })
+            interaction: &interaction,
+            projection: { value in
+                if case .standard(let standard) = value { return standard }
+                return nil
+            })
     }
 
     @inline(__always)
+    @inlinable
     static func appendProjected<
-        Candidate, Committed, Hits, Model, RootIdentity, Action, Roles, Payload
+        Candidate, Committed, Hits, Model, RootIdentity, Action, Roles
     >(
         record: SemanticRecordReference,
-        semantic: borrowing SemanticRecordView<Payload>,
+        semantic: borrowing SemanticRecordView,
         root: borrowing ObservableStateRootScope<Model, RootIdentity>, rootIdentity: RootIdentity,
         rootOrdinal: UInt16, actionType: Action.Type, roles: Roles.Type,
         isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,
         interaction: inout InteractionOwnedKeyState<Candidate, Committed, Hits>,
-        projection: (Payload) -> SemanticStandardPayload?
+        projection: (SemanticRecordPayload) -> SemanticStandardPayload?
     ) -> InteractionCandidateAppendResult
     where
         Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,

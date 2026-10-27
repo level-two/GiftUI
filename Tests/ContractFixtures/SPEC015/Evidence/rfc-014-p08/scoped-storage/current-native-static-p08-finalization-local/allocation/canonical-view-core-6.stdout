@@ -1,0 +1,21 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000af674 <_$s18GiftUISemanticCore18SemanticRecordViewVWOh>:
+   af674:      	stp	x20, x19, [sp, #-0x20]!
+   af678:      	stp	x29, x30, [sp, #0x10]
+   af67c:      	add	x29, sp, #0x10
+   af680:      	mov	x19, x0
+   af684:      	adrp	x1, 0xaf000 <_$s17P08CounterRuntime03p08B11DynamicHostSiyFSiSpyAA0aF15ReuseTranscript33_480B1BD841D053AE4FCDC18507668536LLVGXEfU0_SiAA0A17TypedBackingOwnerADLLVz_AA0aE9OuterViewADLLV13GiftUIDrawing26CanvasSemanticPayloadCodecVyAA0B5RolesO0aB5Table0ab6SchemauZ0VyAA0B6DomainOGGtXEfU_TA+0x23c>
+		00000000000af684:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore18SemanticRecordViewVN
+   af688:      	ldr	x1, [x1]
+		00000000000af688:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore18SemanticRecordViewVN
+   af68c:      	ldur	x8, [x1, #-0x8]
+   af690:      	ldr	x8, [x8, #0x8]
+   af694:      	blr	x8
+   af698:      	mov	x0, x19
+   af69c:      	ldp	x29, x30, [sp, #0x10]
+   af6a0:      	ldp	x20, x19, [sp], #0x20
+   af6a4:      	ret

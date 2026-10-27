@@ -1,0 +1,107 @@
+{
+  "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o",
+  "object_sha256": "3575434182b4a819be05e57aac4767a5542b7a7cdb6f3a13e19fc8f72651662b",
+  "captures": [
+    {
+      "symbol": "_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF",
+      "start": "0x20fec",
+      "end": "0x2106c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x20fec",
+        "--stop-address=0x2106c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-core-support-0.stdout",
+      "stdout_bytes": 2949,
+      "stdout_lines": 43,
+      "stdout_sha256": "b12566ee59d663de2c138313212ca381d23b704e44d0990f80b8d5e6d2935443",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF",
+      "start": "0x207c4",
+      "end": "0x20818",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x207c4",
+        "--stop-address=0x20818",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-core-support-1.stdout",
+      "stdout_bytes": 1704,
+      "stdout_lines": 29,
+      "stdout_sha256": "78b6e7c1791f9a74788f573248da20f95b96deaf7eb8f9121391431a9560d9c9",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore25SemanticRecordBankBuffersV14preflightStore9textCount6limits15additionalBytesAA0D14ExpansionErrorOSgSi_AA0dE6LimitsVs6UInt64VtF",
+      "start": "0x1e1b0",
+      "end": "0x1e290",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x1e1b0",
+        "--stop-address=0x1e290",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-core-support-2.stdout",
+      "stdout_bytes": 4598,
+      "stdout_lines": 63,
+      "stdout_sha256": "ce870c0b535e92ecd8c96bcc7f83ae2eda3d90653adbe81356c2e8a77acda531",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore25SemanticRecordBankBuffersV11commitStore_4kind10chainIndex4text15additionalBytesyAA0dE7PayloadOn_AA0d7RuntimeE0V4KindOs6UInt16Vs4SpanVys6UInt32VGs6UInt64VtF",
+      "start": "0x1e290",
+      "end": "0x1e384",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x1e290",
+        "--stop-address=0x1e384",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-core-support-3.stdout",
+      "stdout_bytes": 4208,
+      "stdout_lines": 67,
+      "stdout_sha256": "4a36fa6d1edc47b9eebe147c9d76fef61b42d34aa4ee72f24077f0ba57b7d4af",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore23SemanticRecordSinkStateV05stageD6ResultySbAA0D14ExpansionErrorOSgF",
+      "start": "0x20770",
+      "end": "0x207c4",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x20770",
+        "--stop-address=0x207c4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-core-support-4.stdout",
+      "stdout_bytes": 1662,
+      "stdout_lines": 29,
+      "stdout_sha256": "0902c2005eb7cc6956825b05b05c58a3631a7e6f158fe605fe87599afef65bef",
+      "stderr_bytes": 0
+    }
+  ],
+  "diagnostics": "Initial selection stopped after five saved captures: Text primitive specialization is in Runtime, not Core. Later exact Text-name lookup attempts failed before any new raw capture; five-body manifest was already saved. Exact retained branch relocation now selects its Runtime definition; no parser changes or source work."
+}

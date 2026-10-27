@@ -1,0 +1,52 @@
+{
+  "functions": [
+    {
+      "lo": "0x193c9ff80",
+      "hi": "0x193ca0080",
+      "bytes": 256,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331448192,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-0.bin",
+      "sha256": "ef1775ce9f932c4bd1fb3bccb20f7f0cff6e7953183298067a8024d4ee834ddd",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-0.o",
+      "projection_sha256": "7b964aad3c1a17851d4f367d4cdc842a0b1f1f5e7284071cf0a7fd02e013df38"
+    },
+    {
+      "lo": "0x193d09a0c",
+      "hi": "0x193d09f8c",
+      "bytes": 1408,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331880972,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-1.bin",
+      "sha256": "e7f638fc73d18c721caa365a5c0edc4cb7b43584e5c5a30c74c7077fbd490c10",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-1.o",
+      "projection_sha256": "171f95a434aebc1eea411ab8a5275ae868e6aac5e6b0d1c92cd859f64c6a6fc5"
+    },
+    {
+      "lo": "0x193cab750",
+      "hi": "0x193cab8c8",
+      "bytes": 376,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331495248,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-2.bin",
+      "sha256": "6bc2355bc75c229992c09cdaa80be5df8605bea5ecfdf147f511ba79886b5669",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-2.o",
+      "projection_sha256": "0e6c0e776cf01f6a193c4248acaecd2de84aa9e020de4c569d2f7663b0a7787a"
+    }
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-0.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-1.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-check-2.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 19647,
+  "stdout_lines": 528,
+  "stdout_sha256": "2f753eeb3cfcf2089ce22c7ae15b9673a1ccb223a1dd5a85e687d94458576ffe",
+  "stderr_bytes": 0,
+  "cumulative_context_bytes": 186497,
+  "cumulative_context_lines": 4885
+}

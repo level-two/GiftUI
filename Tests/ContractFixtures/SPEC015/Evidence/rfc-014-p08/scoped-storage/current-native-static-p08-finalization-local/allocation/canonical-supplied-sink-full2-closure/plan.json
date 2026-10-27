@@ -1,0 +1,98 @@
+{
+  "authority": "Explicit human one full-only run; independent fresh4h, no source/test/tooling/guard change or partial resume. Full1 timeout/STOP unchanged.",
+  "source_freeze": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-source-freeze.json",
+  "source_freeze_sha256": "21386a8706f0f9f767d21fe02e038f5b62d29393c33b405d2b9622b8579de254",
+  "sources": 62,
+  "all_current": true,
+  "reused_prerequisites": [
+    {
+      "receipt": ".build/contracts/spec-013-runtime-cycle/tmp0vsx7jxp/macos-static/result.json",
+      "sha256": "89bcedd1c98ebc8d934cf3f3f71ede3b0bb0f6f4f8accba57309d7f59c14b04d",
+      "inputs": 169,
+      "artifacts": 143,
+      "all_existing_input_artifact_hashes_match": true
+    },
+    {
+      "receipt": ".build/contracts/p08-scoped-host-p8geas9g/result.json",
+      "sha256": "6f3891e2c9efc41663865a43a099b43d1ad6949deb8941a4f36766fdce50084a",
+      "inputs": 87,
+      "artifacts": 93,
+      "all_existing_input_artifact_hashes_match": true
+    },
+    {
+      "receipt": ".build/contracts/spec-006-records/tmp6l6qa0mu/macos-static/result.json",
+      "sha256": "37bca2c6950178a72daecee427f3d68fdc6776f43d92883166b4cd88c7e075ed",
+      "inputs": 34,
+      "artifacts": 45,
+      "all_existing_input_artifact_hashes_match": true
+    },
+    {
+      "receipt": ".build/contracts/spec-007-bank-layout/tmp5e6708kq/macos-static/result.json",
+      "sha256": "33f65889be1a3ccdcacccc1eb641ae2249a8ebad20629b4ec5e0c93eae0d584b",
+      "inputs": 61,
+      "artifacts": 67,
+      "all_existing_input_artifact_hashes_match": true
+    },
+    {
+      "receipt": ".build/contracts/spec-011-owned-keys/tmpomd3pfpe/macos-static/result.json",
+      "sha256": "685aec42eb54c8dff79002237c23eba083c56c9a7da8d466eb87bbaa5de94c49",
+      "inputs": 131,
+      "artifacts": 130,
+      "all_existing_input_artifact_hashes_match": true
+    },
+    {
+      "receipt": ".build/contracts/spec-012-protocol-canvas/tmp3zl3mlhc/macos-static/result.json",
+      "sha256": "0cdf4344c3da039f11a8df79ad1e3e74340c4c950edaae7687b3d0a3c77bc6d7",
+      "inputs": 94,
+      "artifacts": 185,
+      "all_existing_input_artifact_hashes_match": true
+    }
+  ],
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0vsx7jxp/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-p8geas9g",
+    "--collect-failures",
+    "--static-resource-entry-v1"
+  ],
+  "duration_seconds": 14400,
+  "output_limit": 2147483648,
+  "reserve_bytes": 33554432,
+  "forecast_bytes": 805306368,
+  "initial_cumulative_owned_bytes": 801156835,
+  "usage_roots": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-d35k88mw",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-zakhy6yf",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-finalization-canonical-candidate",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-kbqotrkg",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp26qxkfnq",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp5qao517s",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink1",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink2",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink3",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/validation",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0vsx7jxp",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-records/tmpkina5lvq",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-records/tmp6l6qa0mu",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-p8geas9g",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-007-bank-layout",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-56fe9ffb",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys"
+  ],
+  "usage_definition": "Original fixed historical roots +every new child since recorded initial phase snapshot, deduplicated by ancestor; includes full1 and full2. Subsequent scans fresh.",
+  "guard": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-typedBacking61-local/launch-full4h2.py",
+  "guard_sha256": "2e2cf6378f9d870c5b6c9c2156ea111d7f357b5af200fbf8a0c17a59657ce2d0",
+  "no_automatic_second_attempt": true,
+  "actual_build": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46",
+  "selection_note": "Uses original recorded output-parent child snapshot plus full2 initial owned roots; prior ownership-only listing included unrelated old roots and its clipped display was not used as identity proof."
+}

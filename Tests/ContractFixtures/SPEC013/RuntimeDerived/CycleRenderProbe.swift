@@ -41,7 +41,7 @@ package struct CycleRenderSink: DrawingOperationSink {
 }
 package let cycleRenderLimits = RenderLimits(maximumOperations: 128, maximumPositionedGlyphs: 224, maximumClipDepth: 19)!
 package let cycleRenderCapacity = RenderWorkspaceCapacity(maximumSemanticScopes: 98, maximumLayoutScopes: 98, maximumTraversalDepth: 19, maximumTextLines: 128)!
-package func cycleRender<Layout: ResolvedRenderLayoutView, Plan: DrawingPlanView, Workspace: RenderProductionWorkspace>(semantic: borrowing SemanticRecordStore<CanvasSemanticPayload<CycleValueTable.CaptureStorage>>, layout: borrowing Layout, plan: borrowing Plan, workspace: inout Workspace, shown: Bool) -> Int where Layout.Identity == SemanticRecordReference, Plan.Identity == SemanticRecordReference, Workspace.Identity == SemanticRecordReference {
+package func cycleRender<Layout: ResolvedRenderLayoutView, Plan: DrawingPlanView, Workspace: RenderProductionWorkspace>(semantic: borrowing SemanticRecordStore, layout: borrowing Layout, plan: borrowing Plan, workspace: inout Workspace, shown: Bool) -> Int where Layout.Identity == SemanticRecordReference, Plan.Identity == SemanticRecordReference, Workspace.Identity == SemanticRecordReference {
     let layout = copy layout
     let plan = copy plan
     var sink = CycleRenderSink()

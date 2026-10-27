@@ -1,0 +1,183 @@
+{
+  "group": "exact current RecordSink normal-cleanup merged helper, local mangled-name instantiation helper and descriptor-selected accessor",
+  "captures": [
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageVSgWOhTm",
+      "start": "0xbe4d0",
+      "end": "0xbe4fc",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbe4d0",
+        "--stop-address=0xbe4fc",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1119,
+      "stdout_lines": 21,
+      "stdout_sha256": "8643562e8284d31cdad1730718b0fa119ecd10fb5cde767c88a3995d9198425c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-factory-0.stdout"
+    },
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "___swift_instantiateConcreteTypeFromMangledName",
+      "start": "0xbe4",
+      "end": "0xc24",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xbe4",
+        "--stop-address=0xc24",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1035,
+      "stdout_lines": 23,
+      "stdout_sha256": "853b02208cf9a19eceeb1559ad827954e9b5d92720ce270f8836d3982aec59b5",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-factory-1.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVMa",
+      "start": "0x213e8",
+      "end": "0x213f4",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x213e8",
+        "--stop-address=0x213f4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 732,
+      "stdout_lines": 12,
+      "stdout_sha256": "14150ed1c1355aba9c09a2bd4ec41ba03cc62048797f132b6b20d8e8705d4594",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-record-sink-factory-2.stdout"
+    }
+  ],
+  "bytes": 2886,
+  "lines": 56,
+  "descriptor_symbols": [
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVyxGAA017SemanticExpansionE0AARi0_zrlWp",
+      "address": "0x2d8e8",
+      "section": {
+        "name": "__data",
+        "addr": 186104,
+        "bytes": 864,
+        "file": 188232,
+        "reloff": 305768,
+        "nreloc": 97
+      }
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVyxGAA017SemanticExpansionE0AARi0_zrlMA",
+      "address": "0x2e934",
+      "section": {
+        "name": "__swift5_assocty",
+        "addr": 190580,
+        "bytes": 264,
+        "file": 192708,
+        "reloff": 308048,
+        "nreloc": 88
+      }
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVyxGAA017SemanticExpansionE0AARi0_zrlMcMK",
+      "address": "0x3aab0",
+      "section": {
+        "name": "__bss",
+        "addr": 236336,
+        "bytes": 6016,
+        "file": 0,
+        "reloff": 0,
+        "nreloc": 0
+      }
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVWV",
+      "address": "0x2f878",
+      "section": {
+        "name": "__const",
+        "addr": 190848,
+        "bytes": 5048,
+        "file": 192976,
+        "reloff": 308752,
+        "nreloc": 408
+      }
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVMI",
+      "address": "0x3b1b0",
+      "section": {
+        "name": "__bss",
+        "addr": 236336,
+        "bytes": 6016,
+        "file": 0,
+        "reloff": 0,
+        "nreloc": 0
+      }
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVMF",
+      "address": "0x310f8",
+      "section": {
+        "name": "__swift5_fieldmd",
+        "addr": 198420,
+        "bytes": 3248,
+        "file": 200548,
+        "reloff": 315872,
+        "nreloc": 860
+      }
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVMP",
+      "address": "0x2d530",
+      "section": {
+        "name": "__const",
+        "addr": 181984,
+        "bytes": 4012,
+        "file": 184112,
+        "reloff": 301288,
+        "nreloc": 560
+      }
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVMn",
+      "address": "0x304a8",
+      "section": {
+        "name": "__constg_swiftt",
+        "addr": 195896,
+        "bytes": 2522,
+        "file": 198024,
+        "reloff": 312016,
+        "nreloc": 482
+      }
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore10RecordSinkVyxGAA017SemanticExpansionE0AARi0_zrlMc",
+      "address": "0x2ce2c",
+      "section": {
+        "name": "__const",
+        "addr": 181984,
+        "bytes": 4012,
+        "file": 184112,
+        "reloff": 301288,
+        "nreloc": 560
+      }
+    }
+  ]
+}

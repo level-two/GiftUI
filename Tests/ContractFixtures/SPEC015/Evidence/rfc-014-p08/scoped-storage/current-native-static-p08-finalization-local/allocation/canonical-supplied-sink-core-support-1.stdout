@@ -1,0 +1,29 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000207c4 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF>:
+   207c4:      	mov	x1, x30
+   207c8:      	bl	0x207c8 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF+0x4>
+		00000000000207c8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_430
+   207cc:      	mov	x30, x1
+   207d0:      	b.ne	0x207ec <_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF+0x28>
+   207d4:      	ldrh	w8, [x20, #0x6e]
+   207d8:      	add	w8, w8, #0x1
+   207dc:      	lsr	w9, w8, #16
+   207e0:      	tbnz	w9, #0x0, 0x20814 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF+0x50>
+   207e4:      	strh	w8, [x20, #0x6e]
+   207e8:      	b	0x20800 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF+0x3c>
+   207ec:      	ldr	x8, [x20]
+   207f0:      	ldrb	w9, [x8, #0x2f]
+   207f4:      	cmp	w9, #0x4
+   207f8:      	b.ne	0x20800 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF+0x3c>
+   207fc:      	strb	w0, [x8, #0x2f]
+   20800:      	mov	x1, x30
+   20804:      	bl	0x20804 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF+0x40>
+		0000000000020804:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_430
+   20808:      	mov	x30, x1
+   2080c:      	cset	w0, eq
+   20810:      	ret
+   20814:      	brk	#0x1

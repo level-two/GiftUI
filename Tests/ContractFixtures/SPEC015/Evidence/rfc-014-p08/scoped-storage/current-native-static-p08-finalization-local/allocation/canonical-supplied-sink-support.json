@@ -1,0 +1,266 @@
+{
+  "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o",
+  "object_sha256": "db222f474c2fc3cb4796a8c1ba91f895d1b8d3ecbe80438be0be264cccfb778c",
+  "captures": [
+    {
+      "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE9primitive_6writer0A14UISemanticCore0D14ExpansionErrorOSgqd___AF0dE6WriterVt0A2UI01_ai9PrimitiveE0Rd__lF17P08CounterRuntime0qdF0V_0pQ12Presentation0qC0VyAN0Q6DomainOGTg5",
+      "start": "0x24c4",
+      "end": "0x2650",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x24c4",
+        "--stop-address=0x2650",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-0.stdout",
+      "stdout_bytes": 8511,
+      "stdout_lines": 113,
+      "stdout_sha256": "f0b4d50873ad0cc858cc6a22451b5ee6143b7bb21957ecff30edb7228d6f86d1",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_40",
+      "start": "0xc0cd8",
+      "end": "0xc0cf0",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc0cd8",
+        "--stop-address=0xc0cf0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-1.stdout",
+      "stdout_bytes": 704,
+      "stdout_lines": 14,
+      "stdout_sha256": "cec6aad042dbd08168e40a9bc2d5f20df2599af682e7bcf61f13c887d2c3f13d",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_182",
+      "start": "0xc1d70",
+      "end": "0xc1d80",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc1d70",
+        "--stop-address=0xc1d80",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-2.stdout",
+      "stdout_bytes": 511,
+      "stdout_lines": 12,
+      "stdout_sha256": "3072f2d4a8efce6895a6a20a696be3a06edaf7737cda88848a4f1ee839ba450d",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_1612",
+      "start": "0xc91bc",
+      "end": "0xc91c8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc91bc",
+        "--stop-address=0xc91c8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-3.stdout",
+      "stdout_bytes": 316,
+      "stdout_lines": 9,
+      "stdout_sha256": "8c587a6a0302ee5fdcc0638b397a7bd42cf6b8ce172a6f77e3b6a6c38d116698",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_985",
+      "start": "0xc6608",
+      "end": "0xc6610",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc6608",
+        "--stop-address=0xc6610",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-4.stdout",
+      "stdout_bytes": 287,
+      "stdout_lines": 8,
+      "stdout_sha256": "ce1960ab1ff3c8c829543feec97ad1b60ef29cfe25235cd2a2f9f8544341e4ba",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_4",
+      "start": "0xc03e8",
+      "end": "0xc0414",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc03e8",
+        "--stop-address=0xc0414",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-5.stdout",
+      "stdout_bytes": 1153,
+      "stdout_lines": 21,
+      "stdout_sha256": "b28c4aa7d61091b3d85a3bfd745a16d6bb0c638614634e8f86099bbf2e560cb3",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_1959",
+      "start": "0xca504",
+      "end": "0xca50c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xca504",
+        "--stop-address=0xca50c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-6.stdout",
+      "stdout_bytes": 449,
+      "stdout_lines": 9,
+      "stdout_sha256": "3c02e0fac421fa8be8af31bf531625c116ebfaab7080092503e9e25d7296986a",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_160",
+      "start": "0xc1b30",
+      "end": "0xc1b40",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc1b30",
+        "--stop-address=0xc1b40",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-7.stdout",
+      "stdout_bytes": 511,
+      "stdout_lines": 12,
+      "stdout_sha256": "2e60570a331cccbae7977e0b33bf1d46fcd66937410c35cf558fc39b085ec1f4",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_1234",
+      "start": "0xc7840",
+      "end": "0xc7854",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc7840",
+        "--stop-address=0xc7854",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-8.stdout",
+      "stdout_bytes": 398,
+      "stdout_lines": 11,
+      "stdout_sha256": "a7eb616c5bd6cac3687cec6a9b67da7b9bbaeb769cb7dac9aed34944a5eb695e",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_826",
+      "start": "0xc5a58",
+      "end": "0xc5a64",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc5a58",
+        "--stop-address=0xc5a64",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-9.stdout",
+      "stdout_bytes": 314,
+      "stdout_lines": 9,
+      "stdout_sha256": "f2f5411e781eab4a4095e648312bd88d555c9efd0ae34ef2ce532ea12affba0f",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_1207",
+      "start": "0xc7690",
+      "end": "0xc7698",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc7690",
+        "--stop-address=0xc7698",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-10.stdout",
+      "stdout_bytes": 393,
+      "stdout_lines": 9,
+      "stdout_sha256": "d71b0ad73904b8912e5b4b4139ccf9c5dfeacf484fe8ed3e3458e8d3235d7691",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_60",
+      "start": "0xc1064",
+      "end": "0xc1078",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc1064",
+        "--stop-address=0xc1078",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-11.stdout",
+      "stdout_bytes": 537,
+      "stdout_lines": 13,
+      "stdout_sha256": "98479d0bbdc77528ece9e3aef764f022578327fc74b59e39f6344ee03cf4513f",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_OUTLINED_FUNCTION_592",
+      "start": "0xc4334",
+      "end": "0xc433c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xc4334",
+        "--stop-address=0xc433c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "canonical-supplied-sink-support-12.stdout",
+      "stdout_bytes": 295,
+      "stdout_lines": 8,
+      "stdout_sha256": "c60394909b916f2cd0cd48abe10f2b8a69d994e27dfdbc38a2cbf44568d0e53d",
+      "stderr_bytes": 0
+    }
+  ]
+}

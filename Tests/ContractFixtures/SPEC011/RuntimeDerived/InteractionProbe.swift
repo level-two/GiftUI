@@ -30,25 +30,25 @@ private enum Roles: SemanticDeclarationRoles {
     static func role<V>(of type: V.Type) -> SemanticRecordingRole? { V.self == Action.self ? .init(rawValue: 9) : nil }
     static func modifierDiscriminator<V>(of type: V.Type) -> UInt16 { 0 }
 }
-private struct Backing<Payload>: ~Copyable {
+private struct Backing: ~Copyable {
     var metadata: InlineArray<2, SemanticRecordBankMetadata> = .init(repeating: .init())
     var records: InlineArray<12, SemanticRuntimeRecord> = .init(repeating: .init())
     var paths: InlineArray<48, SemanticPathEntry> = .init(repeating: .init())
-    var payloads: InlineArray<12, Payload?> = .init(repeating: nil)
+    var payloads: InlineArray<12, SemanticRecordPayload?> = .init(repeating: nil)
     var scalars: InlineArray<2, UInt32> = .init(repeating: 0)
-    mutating func withStore<Result>(owner: SemanticRecordOwnerIdentity, _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result) throws(SemanticExpansionError) -> Result {
+    mutating func withStore<Result>(owner: SemanticRecordOwnerIdentity, _ body: (borrowing SemanticRecordStore) throws(SemanticExpansionError) -> Result) throws(SemanticExpansionError) -> Result {
         var m = metadata.mutableSpan; var r = records.mutableSpan; var p = paths.mutableSpan; var v = payloads.mutableSpan; var s = scalars.mutableSpan
         return try withSemanticRecordStore(metadata: &m, records: &r, paths: &p, payloads: &v, scalars: &s, limits: .init(records: 6, paths: 24, depth: 34, fanout: 5, payloads: 6, textScalars: 1, payloadBytes: 1024)!, owner: owner, body)
     }
 }
-private func emit(_ store: borrowing SemanticRecordStore<SemanticStandardPayload>, branch: UInt8, role: UInt16 = 2, modifier: UInt16 = 0, actionRole: UInt16 = 9, code: UInt16 = 1) throws(SemanticExpansionError) {
+private func emit(_ store: borrowing SemanticRecordStore, branch: UInt8, role: UInt16 = 2, modifier: UInt16 = 0, actionRole: UInt16 = 9, code: UInt16 = 1) throws(SemanticExpansionError) {
     let bank = store.expansionBank(try store.beginCandidate())!
     for component in [SemanticPathComponent(kind: .root), .init(kind: .declarationRole, role: 1), .init(kind: .conditionalBranch, ordinal: branch), .init(kind: .declarationRole, role: role, modifier: modifier)] {
         if let error = bank.enter(component, limits: store.limits) { throw error }
         if component.kind == .declarationRole, let error = bank.appendRecord(limits: store.limits) { throw error }
     }
     let empty: InlineArray<0, UInt32> = .init(repeating: 0)
-    if let error = bank.store(.action(role: actionRole, code: code), kind: .action, text: empty.span, limits: store.limits) { throw error }
+    if let error = bank.store(.standard(.action(role: actionRole, code: code)), kind: .action, text: empty.span, limits: store.limits) { throw error }
     for _ in 0..<4 { bank.leave() }
     bank.metadata.pointee.phase = .candidate
 }
@@ -137,7 +137,7 @@ private func keyChecks() -> UInt32 {
     tiny.resolveCandidate(.discard)
     return checks
 }
-private func bankChecks(_ store: borrowing SemanticRecordStore<SemanticStandardPayload>) throws(SemanticExpansionError) -> UInt32 {
+private func bankChecks(_ store: borrowing SemanticRecordStore) throws(SemanticExpansionError) -> UInt32 {
     var checks: UInt32 = 0; var state = storage(); var generations = RuntimeActionGenerationAllocator<SemanticCompleteIdentity>()
     var captured: CapturedAction<SemanticCompleteIdentity>?
     var stale: SemanticRecordReference?
@@ -166,7 +166,7 @@ private func bankChecks(_ store: borrowing SemanticRecordStore<SemanticStandardP
     expect(generations.committedReservationCount == 1 && generations.retiredReservationCount == 10, &checks)
     return checks
 }
-private func hostChecks<C, R, H>(_ scope: borrowing ObservableModelScope<RootModel, RootSchema>, _ root: borrowing ObservableStateRootScope<RootModel, UInt8>, _ trace: UnsafeMutablePointer<RootTrace>, _ store: borrowing SemanticRecordStore<SemanticStandardPayload>, _ state: inout InteractionOwnedKeyState<C, R, H>) throws(ObservableStateError) -> UInt32 where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
+private func hostChecks<C, R, H>(_ scope: borrowing ObservableModelScope<RootModel, RootSchema>, _ root: borrowing ObservableStateRootScope<RootModel, UInt8>, _ trace: UnsafeMutablePointer<RootTrace>, _ store: borrowing SemanticRecordStore, _ state: inout InteractionOwnedKeyState<C, R, H>) throws(ObservableStateError) -> UInt32 where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
     R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
     H: InteractionHitRegionStorage & ~Copyable & ~Escapable,
     C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
@@ -186,7 +186,7 @@ private func hostChecks<C, R, H>(_ scope: borrowing ObservableModelScope<RootMod
                 try store.withCandidateView { view in
                     let expected: InteractionError = invalid == 0 ? .incompatibleActionDomain : .invalidActionValue
                     if invalid == 0 {
-                        expect(RuntimeRecordInteractionBridge.appendProjected(record: view.reference(at: 1)!, semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0, actionType: Action.self, roles: Roles.self, isEnabled: true, bounds: rect, clip: rect, paintOrder: 0, interaction: &state, projection: { $0 }) == .failure(expected), &checks)
+                        expect(RuntimeRecordInteractionBridge.appendProjected(record: view.reference(at: 1)!, semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0, actionType: Action.self, roles: Roles.self, isEnabled: true, bounds: rect, clip: rect, paintOrder: 0, interaction: &state, projection: { value in if case .standard(let standard) = value { return standard }; return nil }) == .failure(expected), &checks)
                     } else {
                         expect(RuntimeRecordInteractionBridge.append(record: view.reference(at: 1)!, semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0, actionType: Action.self, roles: Roles.self, isEnabled: true, bounds: rect, clip: rect, paintOrder: 0, interaction: &state) == .failure(expected), &checks)
                     }
@@ -261,7 +261,7 @@ private func hostChecks<C, R, H>(_ scope: borrowing ObservableModelScope<RootMod
 @_cdecl("giftui_p05_interaction") public func giftuiP05Interaction() -> UInt32 {
     var checks = keyChecks()
     do throws(SemanticExpansionError) {
-        var namespace = SemanticRecordOwnerNamespace(); var backing = Backing<SemanticStandardPayload>()
+        var namespace = SemanticRecordOwnerNamespace(); var backing = Backing()
         checks += try backing.withStore(owner: namespace.issue()) { (store) throws(SemanticExpansionError) in try bankChecks(store) }
         checks += try backing.withStore(owner: namespace.issue()) { (store) throws(SemanticExpansionError) in
             do throws(ObservableStateError) {
@@ -287,7 +287,7 @@ where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
 {
     var checks: UInt32 = 0
     var namespace = SemanticRecordOwnerNamespace()
-    var backing = Backing<SemanticStandardPayload>()
+    var backing = Backing()
     do throws(SemanticExpansionError) {
         checks += try backing.withStore(owner: namespace.issue()) { (store) throws(SemanticExpansionError) in
             do throws(ObservableStateError) {
@@ -303,7 +303,7 @@ where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
         }
     } catch { preconditionFailure() }
     state.resetAllStorage()
-    var canvas = Backing<CanvasSemanticPayload<UInt8>>()
+    var canvas = Backing()
     do throws(SemanticExpansionError) {
         checks += try canvas.withStore(owner: namespace.issue()) { (store) throws(SemanticExpansionError) in
             let bank = store.expansionBank(try store.beginCandidate())!

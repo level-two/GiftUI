@@ -49,7 +49,7 @@ private struct EmptyBinding: SemanticStatefulBinding {
 private struct Backing: ~Copyable {
     var records: InlineArray<252, SemanticRuntimeRecord> = .init(repeating: .init())
     var paths: InlineArray<756, SemanticPathEntry> = .init(repeating: .init())
-    var payloads: InlineArray<196, SemanticStandardPayload?> = .init(repeating: nil)
+    var payloads: InlineArray<196, SemanticRecordPayload?> = .init(repeating: nil)
     var scalars: InlineArray<448, UInt32> = .init(repeating: 0)
 }
 private struct Sink: LayoutResultSink, LayoutResultSinkState {
@@ -70,7 +70,7 @@ private struct Sink: LayoutResultSink, LayoutResultSinkState {
 }
 private let expansion = SemanticExpansionLimits(maximumDepth: 34, maximumSemanticNodes: 48, maximumBodyEvaluations: 14, maximumModifierApplications: 50, maximumActionOccurrences: 6)!
 private func check(_ yes: Bool, _ count: inout UInt32) { count += 1; precondition(yes) }
-private func exercise(_ store: borrowing SemanticRecordStore<SemanticStandardPayload>) throws(SemanticExpansionError) -> UInt32 {
+private func exercise(_ store: borrowing SemanticRecordStore) throws(SemanticExpansionError) -> UInt32 {
     var checks: UInt32 = 0
     var workspace = BankLayoutWorkspace()
     var sink = Sink()
@@ -78,7 +78,7 @@ private func exercise(_ store: borrowing SemanticRecordStore<SemanticStandardPay
     var previous: SemanticRecordReference?
     for iteration in 0..<8 {
         let width: Int32 = iteration == 7 ? -1 : 100
-        let result = store.expand(GeometryRoot(width: width), roles: Roles.self, codec: SemanticStandardPayloadCodec<Roles>.self, limits: expansion, binding: EmptyBinding())
+        let result = store.expand(GeometryRoot(width: width), roles: Roles.self, codec: LayoutPayloadCodec(), limits: expansion, binding: EmptyBinding())
         guard case .success = result else { preconditionFailure() }
         try store.withCandidateView { (bank) throws(SemanticExpansionError) in
             let view = SemanticRecordLayoutView(bank)
@@ -131,9 +131,9 @@ private func exercise(_ store: borrowing SemanticRecordStore<SemanticStandardPay
 @_cdecl("giftui_p05_layout") public func giftuiP05Layout() -> UInt32 {
     do throws(SemanticExpansionError) {
         var namespace = SemanticRecordOwnerNamespace()
-        let limits = SemanticRecordLimits(records: 126, paths: 378, depth: 34, fanout: 5, payloads: 98, textScalars: 224, payloadBytes: UInt32(98 * MemoryLayout<SemanticStandardPayload?>.stride + 224 * 4))!
+        let limits = SemanticRecordLimits(records: 126, paths: 378, depth: 34, fanout: 5, payloads: 98, textScalars: 224, payloadBytes: UInt32(98 * MemoryLayout<SemanticRecordPayload?>.stride + 224 * 4))!
         #if GIFTUI_DYNAMIC_PROFILE
-        let storage = DynamicSemanticRecordStorage<SemanticStandardPayload>(limits: limits, owner: try namespace.issue())
+        let storage = DynamicSemanticRecordStorage(limits: limits, owner: try namespace.issue())
         return try storage.withLifetime { (store) throws(SemanticExpansionError) in try exercise(store) }
         #else
         var storage = StaticSemanticRecordStorage(limits: limits, owner: try namespace.issue())
@@ -143,4 +143,75 @@ private func exercise(_ store: borrowing SemanticRecordStore<SemanticStandardPay
         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (store) throws(SemanticExpansionError) in try exercise(store) }
         #endif
     } catch { preconditionFailure() }
+}
+
+private struct LayoutPayloadCodec: SemanticRecordPayloadCodec {
+    typealias Sink = LayoutRecordSink
+    @_lifetime(copy state)
+    borrowing func makeSink(state: consuming SemanticRecordSinkState) -> LayoutRecordSink {
+        LayoutRecordSink(state: consume state, codec: self)
+    }
+    borrowing func primitive<Value: _GiftUISemanticPrimitivePayload>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
+    ) -> SemanticExpansionError? {
+        SemanticStandardPayloadCodec.primitive(value, writer: writer)
+    }
+    borrowing func modifier<Value: _GiftUISemanticModifierPayload>(
+        _ value: borrowing Value, chainIndex: UInt16, writer: borrowing SemanticPayloadWriter
+    ) -> SemanticExpansionError? {
+        SemanticStandardPayloadCodec.modifier(value, chainIndex: chainIndex, writer: writer)
+    }
+    borrowing func action<Value: GiftUIAction>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
+    ) -> SemanticExpansionError? {
+        SemanticStandardPayloadCodec.action(value, writer: writer, roles: Roles.self)
+    }
+}
+
+private struct LayoutRecordSink: SemanticExpansionSink, ~Escapable {
+    typealias Identity = SemanticCompleteIdentity
+    var state: SemanticRecordSinkState
+    let codec: LayoutPayloadCodec
+
+    @_lifetime(copy state)
+    init(state: consuming SemanticRecordSinkState, codec: borrowing LayoutPayloadCodec) {
+        self.state = consume state
+        self.codec = copy codec
+    }
+    var stagingFailure: SemanticExpansionError? { state.stagingFailure }
+    var maximumStructuralOccurrences: UInt16 { state.maximumStructuralOccurrences }
+    var maximumBodyEvaluations: UInt16 { state.maximumBodyEvaluations }
+    var maximumSemanticOccurrences: UInt16 { state.maximumSemanticOccurrences }
+    var maximumModifierApplications: UInt16 { state.maximumModifierApplications }
+    var maximumActionOccurrences: UInt16 { state.maximumActionOccurrences }
+    mutating func beginExpansion() -> Bool { state.beginExpansion() }
+    mutating func stageStructuralOccurrence(identity: borrowing Identity) -> Bool {
+        state.stageStructuralOccurrence(identity: identity)
+    }
+    mutating func stageBodyEvaluation(identity: borrowing Identity) -> Bool {
+        state.stageBodyEvaluation(identity: identity)
+    }
+    mutating func stageSemanticOccurrence<Value: _GiftUISemanticPrimitivePayload>(
+        identity: borrowing Identity, payload: borrowing Value
+    ) -> Bool {
+        let error = codec.primitive(payload, writer: state.payloadWriter())
+        return state.stageSemanticResult(error)
+    }
+    mutating func stageModifierApplication<Value: _GiftUISemanticModifierPayload>(
+        identity: borrowing Identity, payload: borrowing Value, chainIndex: UInt16
+    ) -> Bool {
+        let error = codec.modifier(payload, chainIndex: chainIndex, writer: state.payloadWriter())
+        return state.stageModifierResult(error)
+    }
+    mutating func stageActionOccurrence<Value: GiftUIAction>(
+        identity: borrowing Identity, action: borrowing Value
+    ) -> Bool {
+        let error = codec.action(action, writer: state.payloadWriter())
+        return state.stageActionResult(error)
+    }
+    mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
+        state.publishExpansion(summary)
+    }
+    mutating func discardExpansion() { state.discardExpansion() }
+    mutating func resetExpansion() { state.resetExpansion() }
 }

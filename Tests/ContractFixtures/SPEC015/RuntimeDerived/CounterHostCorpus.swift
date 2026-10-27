@@ -23,7 +23,7 @@ struct CounterSemanticSnapshot: Equatable {
         return true
     }
     init() {}
-    init(_ bank: borrowing SemanticRecordView<CounterPayload>) {
+    init(_ bank: borrowing SemanticRecordView) {
         for index: UInt16 in 0..<bank.recordCount {
             let record = bank.record(bank.reference(at: index)!)!
             guard let payload = bank.payload(at: record.payload) else { continue }

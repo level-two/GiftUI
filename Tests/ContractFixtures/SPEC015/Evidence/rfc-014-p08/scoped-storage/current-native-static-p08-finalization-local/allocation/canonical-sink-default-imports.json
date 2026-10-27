@@ -1,0 +1,51 @@
+[
+  {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940eeeac-indirect.bin",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "offset": 699060,
+    "bytes": 4,
+    "sha256": "05f31c418073ce0d997b3b0de5f37defcb462554f27e4ae963349c57128fecf4"
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940eeeac-nlist.bin",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "offset": 75965568,
+    "bytes": 16,
+    "sha256": "f267e31c1d0eab16fce65736a4fde7bc9b487675d071589f076ed43f7699ab39"
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940eeeac-name.bin",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "offset": 567109432,
+    "bytes": 128,
+    "sha256": "8a4afd102be4652e4196d6d728b1e17e0aa81fb0a875b8f778279293fc07990f"
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940ef54c-indirect.bin",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "offset": 699484,
+    "bytes": 4,
+    "sha256": "8597ef31776481b69bf7678141b439f39561162d056e6482ff6ad23067397dae"
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940ef54c-nlist.bin",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "offset": 75967424,
+    "bytes": 16,
+    "sha256": "865408f883798646d3448c3377016f01b488e73e35d87a59551aa77b8566bea1"
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-0x1940ef54c-name.bin",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
+    "offset": 572216579,
+    "bytes": 128,
+    "sha256": "739b8c011ee6564a5c7401f38f0a1803e193345aedf2b7acff0a8aaa576642ff"
+  },
+  {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-literal-strings.bin",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+    "offset": 335978288,
+    "bytes": 64,
+    "sha256": "cb2748231fadcbbb75e9748d9bd0844ee18be631424e4a9010697bb9e4a25a1e"
+  }
+]

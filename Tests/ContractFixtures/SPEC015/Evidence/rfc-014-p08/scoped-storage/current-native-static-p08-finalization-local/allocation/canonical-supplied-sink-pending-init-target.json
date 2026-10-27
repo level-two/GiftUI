@@ -1,0 +1,21 @@
+{
+  "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o",
+  "object_sha256": "db222f474c2fc3cb4796a8c1ba91f895d1b8d3ecbe80438be0be264cccfb778c",
+  "symbol": "_$s17P08CounterRuntime07DynamicB14ProfileStorageV7pendingAA0B14PendingBackingVvpfi",
+  "start": "0x8291c",
+  "end": "0x8293c",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x8291c",
+    "--stop-address=0x8293c",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "raw": "canonical-supplied-sink-pending-init-target.stdout",
+  "stdout_bytes": 1128,
+  "stdout_lines": 17,
+  "stdout_sha256": "2cc1e44a430a1c812ce2265b0accc989462a8bf82074edb574a0f7817c1b496a"
+}

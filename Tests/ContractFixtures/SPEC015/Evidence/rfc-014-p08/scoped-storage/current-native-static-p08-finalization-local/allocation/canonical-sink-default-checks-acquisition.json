@@ -1,0 +1,64 @@
+{
+  "functions": [
+    {
+      "lo": "0x193cd6f24",
+      "hi": "0x193cd7234",
+      "bytes": 784,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331673380,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-0.bin",
+      "sha256": "ab093164149fe1c0363bcde78f681c16fd9f6a023eddba59fcaac41a610783f3",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-0.o",
+      "projection_sha256": "b462370bed34107ed0f721051c768d1ca6298a5b5b2ce8460d1020ac4e994ea9"
+    },
+    {
+      "lo": "0x193d08a54",
+      "hi": "0x193d08b58",
+      "bytes": 260,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331876948,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-1.bin",
+      "sha256": "7a7b7f4e502bb9796dfa5e69618021d98ff220a77c7f4ed5f890d820712afe65",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-1.o",
+      "projection_sha256": "a7b0becf42fc10ba0d58f972baf0f071543d43073498367f24317b4f141d9feb"
+    },
+    {
+      "lo": "0x193cf08c8",
+      "hi": "0x193cf0c64",
+      "bytes": 924,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331778248,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-2.bin",
+      "sha256": "783acf10b0e7563dd63c4efe5c22798ce63c43773876588a4e015cccce8b75f0",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-2.o",
+      "projection_sha256": "971aa8bd8487654969e60d39055fb054d3dfa1ac5b4985bfac8ca47d10eb7f4d"
+    },
+    {
+      "lo": "0x193d0a570",
+      "hi": "0x193d0bde8",
+      "bytes": 6264,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331883888,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-3.bin",
+      "sha256": "755e2afb337b921fc37ee7f90bd5e7b230a8dbed2d26e8d086626c5ef1741791",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-3.o",
+      "projection_sha256": "f7a0250f8da2c85a759de6389a8eddf5e7c1a3161b889f1d29fe45dc41d253ed"
+    }
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-0.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-1.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-2.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-default-check-3.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 80234,
+  "stdout_lines": 2082,
+  "stdout_sha256": "08e64bde1aecf7df28b5cb571ee547ca9e16d6d3c067293888066df4922e874f",
+  "stderr_bytes": 0,
+  "cumulative_context_bytes": 274890,
+  "cumulative_context_lines": 7185
+}

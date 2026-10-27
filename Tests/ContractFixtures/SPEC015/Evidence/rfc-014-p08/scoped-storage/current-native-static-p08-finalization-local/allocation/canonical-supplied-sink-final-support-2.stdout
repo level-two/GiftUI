@@ -1,0 +1,12 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000029668 <_OUTLINED_FUNCTION_210>:
+   29668:      	ldp	x20, x19, [sp, #0x40]
+   2966c:      	ldp	x22, x21, [sp, #0x30]
+   29670:      	ldp	x24, x23, [sp, #0x20]
+   29674:      	ldp	x26, x25, [sp, #0x10]
+   29678:      	add	sp, sp, #0x60
+   2967c:      	ret

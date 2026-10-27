@@ -1,0 +1,23 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000022b8 <_$s17P08CounterRuntime0B13SemanticCodecV18GiftUISemanticCore0d13RecordPayloadE0AadEP8makeSink5state0L0QzAD0diL5StateVn_tFTW>:
+    22b8:      	sub	sp, sp, #0xd0
+    22bc:      	stp	x20, x19, [sp, #0xb0]
+    22c0:      	stp	x29, x30, [sp, #0xc0]
+    22c4:      	add	x29, sp, #0xc0
+    22c8:      	mov	x19, x8
+    22cc:      	add	x8, sp, #0x8
+    22d0:      	bl	0x22d0 <_$s17P08CounterRuntime0B13SemanticCodecV18GiftUISemanticCore0d13RecordPayloadE0AadEP8makeSink5state0L0QzAD0diL5StateVn_tFTW+0x18>
+		00000000000022d0:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B13SemanticCodecV8makeSink5stateAA0b6RecordG0V18GiftUISemanticCore0diG5StateVn_tF
+    22d4:      	add	x1, sp, #0x8
+    22d8:      	mov	x0, x19
+    22dc:      	mov	w2, #0xa2               ; =162
+    22e0:      	bl	0x22e0 <_$s17P08CounterRuntime0B13SemanticCodecV18GiftUISemanticCore0d13RecordPayloadE0AadEP8makeSink5state0L0QzAD0diL5StateVn_tFTW+0x28>
+		00000000000022e0:  ARM64_RELOC_BRANCH26	_memcpy
+    22e4:      	ldp	x29, x30, [sp, #0xc0]
+    22e8:      	ldp	x20, x19, [sp, #0xb0]
+    22ec:      	add	sp, sp, #0xd0
+    22f0:      	ret

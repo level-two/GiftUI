@@ -1,0 +1,21 @@
+{
+  "object": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o",
+  "object_sha256": "db222f474c2fc3cb4796a8c1ba91f895d1b8d3ecbe80438be0be264cccfb778c",
+  "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+  "start": "0x6d15c",
+  "end": "0x70964",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x6d15c",
+    "--stop-address=0x70964",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 419751,
+  "stdout_lines": 3961,
+  "stdout_sha256": "326644550e90bb98a57b7ec19b86b90c50b1a88ceda9fdad36db47af53a895ce",
+  "stderr_bytes": 0
+}

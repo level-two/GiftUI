@@ -57,7 +57,7 @@ def module(name, sources):
     run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
                '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
 
-module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore/GiftUISemanticCore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordStore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordExpansion.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticStandardPayload.swift'])
+module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore/GiftUISemanticCore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordStore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordExpansion.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticStandardPayload.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordPayload.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticLayoutView.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRenderView.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift'])
 module('GiftUIExecution', [ROOT / 'Sources/GiftUIExecution/ObservableTargetGeneration.swift'])
 module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name for name in (
     'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
@@ -97,7 +97,7 @@ commands.append(shlex.join(escape_cmd))
 (out / 'commands.txt').write_text('\n'.join(commands) + '\n')
 negative = subprocess.run(escape_cmd, cwd=ROOT, text=True, capture_output=True)
 (out / 'escape.log').write_text(negative.stdout + negative.stderr)
-assert negative.returncode != 0 and ("requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'" in negative.stderr), negative.stderr
+assert negative.returncode != 0 and ("requires that 'SemanticRecordView' conform to 'Escapable'" in negative.stderr), negative.stderr
 checks.append({'name': 'borrowed-view-escape-rejected', 'exit': negative.returncode, 'expected_failure': True})
 if profile.startswith('macos'):
     main = out / 'Main.swift'

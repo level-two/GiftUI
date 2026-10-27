@@ -1,0 +1,77 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000009c00c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5>:
+   9c00c:      	sub	sp, sp, #0x100
+   9c010:      	stp	x23, x22, [sp, #0xd0]
+   9c014:      	stp	x20, x19, [sp, #0xe0]
+   9c018:      	stp	x29, x30, [sp, #0xf0]
+   9c01c:      	add	x29, sp, #0xf0
+   9c020:      	mov	x19, x6
+   9c024:      	ldr	x9, [x1]
+   9c028:      	cbz	x9, 0x9c06c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0x60>
+   9c02c:      	ldr	x10, [x1, #0x8]
+   9c030:      	add	x10, x10, x10, lsl #1
+   9c034:      	lsl	x10, x10, #2
+   9c038:      	mov	w12, #0xc               ; =12
+   9c03c:      	ldr	x11, [x2]
+   9c040:      	udiv	x10, x10, x12
+   9c044:      	cbz	x11, 0x9c09c <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0x90>
+   9c048:      	ldr	x12, [x2, #0x8]
+   9c04c:      	and	x12, x12, #0x3fffffffffffffff
+   9c050:      	stp	x0, x9, [sp, #0x10]
+   9c054:      	stp	x10, x11, [sp, #0x20]
+   9c058:      	str	x12, [sp, #0x30]
+   9c05c:      	strh	w3, [sp, #0x38]
+   9c060:      	add	x22, sp, #0x10
+   9c064:      	add	x0, sp, #0x10
+   9c068:      	b	0x9c0d4 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0xc8>
+   9c06c:      	add	x9, sp, #0x70
+   9c070:      	ldr	x10, [x2]
+   9c074:      	cbz	x10, 0x9c0b8 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0xac>
+   9c078:      	ldr	x11, [x2, #0x8]
+   9c07c:      	and	x11, x11, #0x3fffffffffffffff
+   9c080:      	stp	x0, xzr, [sp, #0x70]
+   9c084:      	stp	xzr, x10, [sp, #0x80]
+   9c088:      	str	x11, [x9, #0x20]
+   9c08c:      	strh	w3, [x9, #0x28]
+   9c090:      	add	x22, sp, #0x70
+   9c094:      	add	x0, sp, #0x70
+   9c098:      	b	0x9c0d4 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0xc8>
+   9c09c:      	stp	x0, x9, [sp, #0x40]
+   9c0a0:      	stp	xzr, xzr, [sp, #0x58]
+   9c0a4:      	str	x10, [sp, #0x50]
+   9c0a8:      	strh	w3, [sp, #0x68]
+   9c0ac:      	add	x22, sp, #0x40
+   9c0b0:      	add	x0, sp, #0x40
+   9c0b4:      	b	0x9c0d4 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0xc8>
+   9c0b8:      	str	x0, [x9, #0x30]
+   9c0bc:      	movi.2d	v0, #0000000000000000
+   9c0c0:      	stur	q0, [x9, #0x38]
+   9c0c4:      	stur	q0, [x9, #0x48]
+   9c0c8:      	strh	w3, [x9, #0x58]
+   9c0cc:      	sub	x22, x29, #0x50
+   9c0d0:      	sub	x0, x29, #0x50
+   9c0d4:      	add	x1, sp, #0xf
+   9c0d8:      	mov	x20, x5
+   9c0dc:      	blr	x4
+   9c0e0:      	cbz	x21, 0x9c0fc <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0xf0>
+   9c0e4:      	ldrb	w23, [sp, #0xf]
+   9c0e8:      	mov	x0, x22
+   9c0ec:      	bl	0x9c0ec <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0xe0>
+		000000000009c0ec:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_q0_SryAOGAYYKXEfU_q0_SryARGAYYKXEfU_6$deferL_yyAwZRzAAA_R_r1_lF17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA4_13CounterDomainOGSiTg5Tm
+   9c0f0:      	mov	w20, #0x1               ; =1
+   9c0f4:      	strb	w23, [x19]
+   9c0f8:      	b	0x9c108 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0xfc>
+   9c0fc:      	mov	x20, x21
+   9c100:      	mov	x0, x22
+   9c104:      	bl	0x9c104 <_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA1_13CounterDomainOGytTg5+0xf8>
+		000000000009c104:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing30withCanvasSemanticPayloadCodec8metadata8captures15payloadOrdinals8capacity5roles5table_q0_AA0D15PendingMetadataVz_s11MutableSpanVy14CaptureStorageQy_SgGzALys6UInt16VGzARxmq_mq0_AA0defG0Vyxq_G0A14UISemanticCore0E14ExpansionErrorOYKXEtAYYKAW0E16DeclarationRolesRzAA0D10ValueTableR_r1_lFq0_SpyAJGAYYKXEfU_q0_SryAOGAYYKXEfU_q0_SryARGAYYKXEfU_6$deferL_yyAwZRzAAA_R_r1_lF17P08CounterRuntime12CounterRolesO_15P08CounterTable016P08CounterSchemaD5TableVyA4_13CounterDomainOGSiTg5Tm
+   9c108:      	mov	x21, x20
+   9c10c:      	ldp	x29, x30, [sp, #0xf0]
+   9c110:      	ldp	x20, x19, [sp, #0xe0]
+   9c114:      	ldp	x23, x22, [sp, #0xd0]
+   9c118:      	add	sp, sp, #0x100
+   9c11c:      	ret

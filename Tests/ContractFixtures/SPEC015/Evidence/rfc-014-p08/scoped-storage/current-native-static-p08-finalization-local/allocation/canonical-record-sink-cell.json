@@ -1,0 +1,1377 @@
+{
+  "object": ".build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o",
+  "object_sha256": "17245735a5b74b2a4eacc44ecaef0e61bd43132d10febedbf4a5f3a8bac7d289",
+  "exact_cell": {
+    "symbol": "_$s18GiftUISemanticCore10RecordSinkVy0A9UIDrawing26CanvasSemanticPayloadCodecVy17P08CounterRuntime0L5RolesO0kL5Table0kl6SchemagO0VyAG0L6DomainOGGGMD",
+    "address": 854240,
+    "section": 6,
+    "type": 31
+  },
+  "cell_hex": "00000000e1ffffff",
+  "references": [
+    {
+      "pc": "0xc7b20",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_OUTLINED_FUNCTION_1107",
+        "address": 817948,
+        "section": 1,
+        "type": 14
+      },
+      "end": "0xc7b28"
+    },
+    {
+      "pc": "0xc7b1c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_OUTLINED_FUNCTION_1107",
+        "address": 817948,
+        "section": 1,
+        "type": 14
+      },
+      "end": "0xc7b28"
+    },
+    {
+      "pc": "0xc4ac0",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_OUTLINED_FUNCTION_530",
+        "address": 805564,
+        "section": 1,
+        "type": 14
+      },
+      "end": "0xc4ad4"
+    },
+    {
+      "pc": "0xc4abc",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_OUTLINED_FUNCTION_530",
+        "address": 805564,
+        "section": 1,
+        "type": 14
+      },
+      "end": "0xc4ad4"
+    },
+    {
+      "pc": "0xc2698",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_OUTLINED_FUNCTION_155",
+        "address": 796308,
+        "section": 1,
+        "type": 14
+      },
+      "end": "0xc26a8"
+    },
+    {
+      "pc": "0xc2694",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_OUTLINED_FUNCTION_155",
+        "address": 796308,
+        "section": 1,
+        "type": 14
+      },
+      "end": "0xc26a8"
+    },
+    {
+      "pc": "0x6e188",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e184",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e170",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e16c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e13c",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e138",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e104",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e100",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e0c0",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e0bc",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e090",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e08c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e010",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6e00c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6dfe0",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6dfdc",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6dbb0",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6dbac",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6db80",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6db7c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6da88",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6da84",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6d974",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6d970",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6d938",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6d934",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6d88c",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6d888",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+        "address": 446308,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x70b04"
+    },
+    {
+      "pc": "0x6a5e8",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a5e4",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a5d0",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a5cc",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a59c",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a598",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a564",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a560",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a520",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a51c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a4f0",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a4ec",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a470",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a46c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a440",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a43c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a010",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x6a00c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69fe0",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69fdc",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69ee8",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69ee4",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69dd4",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69dd0",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69d98",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69d94",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69cf0",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x69cec",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+        "address": 431064,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x6cf64"
+    },
+    {
+      "pc": "0x66a5c",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66a58",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66a44",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66a40",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66a10",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66a0c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x669d8",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x669d4",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66994",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66990",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66964",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66960",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x668e4",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x668e0",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x668b4",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x668b0",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66484",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66480",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66454",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66450",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x6635c",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66358",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66248",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66244",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x6620c",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66208",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66164",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x66160",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+        "address": 415820,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x693d8"
+    },
+    {
+      "pc": "0x4a60",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4a5c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4a3c",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4a38",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4a28",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4a24",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x49f4",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x49f0",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x49c8",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x49c4",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4990",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x498c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4948",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4944",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4924",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4920",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x48f4",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x48f0",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4880",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x487c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4850",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x484c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x44c8",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x44c4",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4498",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4494",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x439c",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4398",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4268",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4264",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x4240",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x423c",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x41f8",
+      "reloc_type": 4,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    },
+    {
+      "pc": "0x41f4",
+      "reloc_type": 3,
+      "owner": {
+        "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0O0A9UIDrawing06CanvasduV0VyA8_15P08CounterTable27P08CounterSchemaCanvasTableVyA5_GG0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+        "address": 15084,
+        "section": 1,
+        "type": 31
+      },
+      "end": "0x74c0"
+    }
+  ]
+}

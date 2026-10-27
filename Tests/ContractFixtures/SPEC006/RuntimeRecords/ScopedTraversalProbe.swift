@@ -217,15 +217,15 @@ private enum RecordRoles: SemanticDeclarationRoles {
 private struct SemanticBacking: ~Copyable {
     var records: InlineArray<252, SemanticRuntimeRecord> = .init(repeating: .init())
     var paths: InlineArray<756, SemanticPathEntry> = .init(repeating: .init())
-    var payloads: InlineArray<196, SemanticStandardPayload?> = .init(repeating: nil)
+    var payloads: InlineArray<196, SemanticRecordPayload?> = .init(repeating: nil)
     var scalars: InlineArray<448, UInt32> = .init(repeating: 0)
 }
 private let semanticLimits = SemanticExpansionLimits(maximumDepth: 34, maximumSemanticNodes: 48, maximumBodyEvaluations: 14, maximumModifierApplications: 50, maximumActionOccurrences: 6)!
 private func recordLimits() -> SemanticRecordLimits {
     SemanticRecordLimits(records: 126, paths: 378, depth: 34, fanout: 5, payloads: 98, textScalars: 224,
-                         payloadBytes: UInt32(98 * MemoryLayout<SemanticStandardPayload?>.stride + 224 * 4))!
+                         payloadBytes: UInt32(98 * MemoryLayout<SemanticRecordPayload?>.stride + 224 * 4))!
 }
-private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStandardPayload>,
+private func derivedChecks(_ store: borrowing SemanticRecordStore,
     _ scope: borrowing ObservableModelScope<RootModel, RootSchema>,
     _ root: borrowing ObservableStateRootScope<RootModel, SemanticCompleteIdentity>,
     _ trace: UnsafeMutablePointer<RootTrace>
@@ -233,7 +233,7 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
     var checks: UInt32 = 0
     var peakRecords: UInt16 = 0; var peakPaths: UInt16 = 0; var peakPayloads: UInt16 = 0
     var peakScalars: UInt16 = 0; var peakDepth: UInt16 = 0; var peakBytes: UInt32 = 0
-    func observe(_ view: borrowing SemanticRecordView<SemanticStandardPayload>) {
+    func observe(_ view: borrowing SemanticRecordView) {
         peakRecords = max(peakRecords, view.recordCount); peakPaths = max(peakPaths, view.pathCount)
         peakPayloads = max(peakPayloads, view.payloadCount); peakScalars = max(peakScalars, view.scalarCount)
         peakBytes = max(peakBytes, view.payloadBytes)
@@ -247,7 +247,7 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
         try scope.withDiscovery { expect(root.beginCandidate() == .success(.candidateStarted)) }
         let declaration = RecordParent(candidate: key, seed: RootSeed(trace: trace, value: 37))
         let binding = ObservableSemanticBodyBinding(models: scope.borrowedScope(), root: root.borrowedRoot(), domain: RootDomain.self)
-        let result = store.expand(declaration, roles: RecordRoles.self, codec: SemanticStandardPayloadCodec<RecordRoles>.self,
+        let result = store.expand(declaration, roles: RecordRoles.self, codec: RecordPayloadCodec(),
                                   limits: semanticLimits, binding: consume binding)
         guard case .success(let summary) = result else { preconditionFailure() }
         expect(summary.bodyEvaluationCount == 2 && summary.semanticNodeCount == 1 && summary.modifierApplicationCount == 1)
@@ -260,7 +260,7 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
                 expect(view.record(view.reference(at: 0)!)!.firstChild == 1)
                 expect(view.record(view.reference(at: 1)!)!.firstChild == 2)
                 expect(view.record(view.reference(at: 2)!)!.firstChild == 3)
-                expect(view.payload(at: 0) == .text && view.payload(at: 1) == .disabled(false))
+                expect(view.payload(at: 0) == .standard(.text) && view.payload(at: 1) == .standard(.disabled(false)))
                 expect(view.scalar(at: 0) == 51 && view.scalar(at: 1) == 55)
                 var bodyKey = view.completeIdentity(for: view.reference(at: 0)!)!
                 expect(bodyKey.append(.init(kind: .customBody)))
@@ -270,7 +270,7 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
             for alternate in [false, true, false] {
                 let access = ObservableSemanticBodyBinding(models: scope.borrowedScope(), root: root.borrowedRoot(), domain: RootDomain.self)
                 let result = store.expand(PerturbRoot(alternate: alternate, trace: trace), roles: RecordRoles.self,
-                    codec: SemanticStandardPayloadCodec<RecordRoles>.self, limits: semanticLimits, binding: consume access)
+                    codec: RecordPayloadCodec(), limits: semanticLimits, binding: consume access)
                 guard case .success(let summary) = result else { preconditionFailure() }
                 expect(summary.bodyEvaluationCount == 1 && summary.semanticNodeCount == (alternate ? 2 : 1))
                 try store.withCandidateView { (view) throws(SemanticExpansionError) in
@@ -286,7 +286,7 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
             for amount: GeometryScalar in [1, 9] {
                 let access = ObservableSemanticBodyBinding(models: scope.borrowedScope(), root: root.borrowedRoot(), domain: RootDomain.self)
                 let result = store.expand(ModifierRoot(amount: amount), roles: RecordRoles.self,
-                    codec: SemanticStandardPayloadCodec<RecordRoles>.self, limits: semanticLimits, binding: consume access)
+                    codec: RecordPayloadCodec(), limits: semanticLimits, binding: consume access)
                 guard case .success(let summary) = result else { preconditionFailure() }
                 expect(summary.modifierApplicationCount == 2 && summary.semanticNodeCount == 1)
                 try store.withCandidateView { (view) throws(SemanticExpansionError) in
@@ -294,16 +294,16 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
                     expect(view.recordCount == 4 && view.payloadCount == 3)
                     expect(view.record(view.reference(at: 2)!)!.modifierChainIndex == 0)
                     expect(view.record(view.reference(at: 1)!)!.modifierChainIndex == 1)
-                    expect(view.payload(at: 0) == .text)
-                    expect(view.payload(at: 1) == .padding(.init(edges: .all, length: amount)))
-                    expect(view.payload(at: 2) == .disabled(false))
+                    expect(view.payload(at: 0) == .standard(.text))
+                    expect(view.payload(at: 1) == .standard(.padding(.init(edges: .all, length: amount))))
+                    expect(view.payload(at: 2) == .standard(.disabled(false)))
                     let current = view.completeIdentity(for: view.reference(at: 3)!)!
                     if let textIdentity { expect(textIdentity == current) } else { textIdentity = current }
                 }
                 try store.publishCandidate()
             }
             let actionAccess = ObservableSemanticBodyBinding(models: scope.borrowedScope(), root: root.borrowedRoot(), domain: RootDomain.self)
-            let actionResult = store.expand(ActionRoot(), roles: RecordRoles.self, codec: SemanticStandardPayloadCodec<RecordRoles>.self, limits: semanticLimits, binding: consume actionAccess)
+            let actionResult = store.expand(ActionRoot(), roles: RecordRoles.self, codec: RecordPayloadCodec(), limits: semanticLimits, binding: consume actionAccess)
             guard case .success(let actionSummary) = actionResult else { preconditionFailure() }
             expect(actionSummary.semanticNodeCount == 2 && actionSummary.actionOccurrenceCount == 1)
             try store.withCandidateView { (view) throws(SemanticExpansionError) in
@@ -311,20 +311,20 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
                 expect(view.recordCount == 3 && view.payloadCount == 2)
                 expect(view.record(view.reference(at: 1)!)!.kind == .action)
                 expect(view.record(view.reference(at: 1)!)!.firstChild == 2)
-                expect(view.payload(at: 0) == .action(role: 13, code: 1) && view.payload(at: 1) == .text)
+                expect(view.payload(at: 0) == .standard(.action(role: 13, code: 1)) && view.payload(at: 1) == .standard(.text))
             }
             try store.publishCandidate()
             let invalid = ObservableSemanticBodyBinding(models: scope.borrowedScope(), root: root.borrowedRoot(), domain: RootDomain.self)
-            let unknown = store.expand(UnknownRoot(), roles: RecordRoles.self, codec: SemanticStandardPayloadCodec<RecordRoles>.self, limits: semanticLimits, binding: consume invalid)
+            let unknown = store.expand(UnknownRoot(), roles: RecordRoles.self, codec: RecordPayloadCodec(), limits: semanticLimits, binding: consume invalid)
             expect(unknown == .semanticFailure(.invalidIdentity))
-            try store.withPublishedView { (view) throws(SemanticExpansionError) in expect(view.payload(at: 0) == .action(role: 13, code: 1)) }
+            try store.withPublishedView { (view) throws(SemanticExpansionError) in expect(view.payload(at: 0) == .standard(.action(role: 13, code: 1))) }
         } catch { preconditionFailure("record storage rejected admitted fixture") }
         // Reuse both semantic banks repeatedly, then revisit the State identity.
         // A new seed must not rematerialize the already-associated child.
         try scope.withDiscovery { expect(root.beginCandidate() == .success(.candidateStarted)) }
         let reused = ObservableSemanticBodyBinding(models: scope.borrowedScope(), root: root.borrowedRoot(), domain: RootDomain.self)
         let repeated = store.expand(RecordParent(candidate: key, seed: RootSeed(trace: trace, value: 99)), roles: RecordRoles.self,
-            codec: SemanticStandardPayloadCodec<RecordRoles>.self, limits: semanticLimits, binding: consume reused)
+            codec: RecordPayloadCodec(), limits: semanticLimits, binding: consume reused)
         guard case .success = repeated else { preconditionFailure() }
         expect(trace.pointee.parentBodies == 2 && trace.pointee.childBodies == 2)
         expect(trace.pointee.materializations == 2 && trace.pointee.attachments == 2)
@@ -380,7 +380,7 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
             return try root.withLifetime { (scope, owner) throws(ObservableStateError) in
                 do throws(SemanticExpansionError) {
                     var namespace = SemanticRecordOwnerNamespace()
-                    let storage = DynamicSemanticRecordStorage<SemanticStandardPayload>(limits: recordLimits(), owner: try namespace.issue())
+                    let storage = DynamicSemanticRecordStorage(limits: recordLimits(), owner: try namespace.issue())
                     return try storage.withLifetime { (store) throws(SemanticExpansionError) in
                         do throws(ObservableStateError) { return try derivedChecks(store, scope, owner, trace.baseAddress!) }
                         catch { preconditionFailure("owner failure") }
@@ -391,3 +391,74 @@ private func derivedChecks(_ store: borrowing SemanticRecordStore<SemanticStanda
     } catch { return 0 }
 }
 #endif
+
+private struct RecordPayloadCodec: SemanticRecordPayloadCodec {
+    typealias Sink = SuppliedRecordSink
+    @_lifetime(copy state)
+    borrowing func makeSink(state: consuming SemanticRecordSinkState) -> SuppliedRecordSink {
+        SuppliedRecordSink(state: consume state, codec: self)
+    }
+    borrowing func primitive<Value: _GiftUISemanticPrimitivePayload>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
+    ) -> SemanticExpansionError? {
+        SemanticStandardPayloadCodec.primitive(value, writer: writer)
+    }
+    borrowing func modifier<Value: _GiftUISemanticModifierPayload>(
+        _ value: borrowing Value, chainIndex: UInt16, writer: borrowing SemanticPayloadWriter
+    ) -> SemanticExpansionError? {
+        SemanticStandardPayloadCodec.modifier(value, chainIndex: chainIndex, writer: writer)
+    }
+    borrowing func action<Value: GiftUIAction>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
+    ) -> SemanticExpansionError? {
+        SemanticStandardPayloadCodec.action(value, writer: writer, roles: RecordRoles.self)
+    }
+}
+
+private struct SuppliedRecordSink: SemanticExpansionSink, ~Escapable {
+    typealias Identity = SemanticCompleteIdentity
+    var state: SemanticRecordSinkState
+    let codec: RecordPayloadCodec
+
+    @_lifetime(copy state)
+    init(state: consuming SemanticRecordSinkState, codec: borrowing RecordPayloadCodec) {
+        self.state = consume state
+        self.codec = copy codec
+    }
+    var stagingFailure: SemanticExpansionError? { state.stagingFailure }
+    var maximumStructuralOccurrences: UInt16 { state.maximumStructuralOccurrences }
+    var maximumBodyEvaluations: UInt16 { state.maximumBodyEvaluations }
+    var maximumSemanticOccurrences: UInt16 { state.maximumSemanticOccurrences }
+    var maximumModifierApplications: UInt16 { state.maximumModifierApplications }
+    var maximumActionOccurrences: UInt16 { state.maximumActionOccurrences }
+    mutating func beginExpansion() -> Bool { state.beginExpansion() }
+    mutating func stageStructuralOccurrence(identity: borrowing Identity) -> Bool {
+        state.stageStructuralOccurrence(identity: identity)
+    }
+    mutating func stageBodyEvaluation(identity: borrowing Identity) -> Bool {
+        state.stageBodyEvaluation(identity: identity)
+    }
+    mutating func stageSemanticOccurrence<Value: _GiftUISemanticPrimitivePayload>(
+        identity: borrowing Identity, payload: borrowing Value
+    ) -> Bool {
+        let error = codec.primitive(payload, writer: state.payloadWriter())
+        return state.stageSemanticResult(error)
+    }
+    mutating func stageModifierApplication<Value: _GiftUISemanticModifierPayload>(
+        identity: borrowing Identity, payload: borrowing Value, chainIndex: UInt16
+    ) -> Bool {
+        let error = codec.modifier(payload, chainIndex: chainIndex, writer: state.payloadWriter())
+        return state.stageModifierResult(error)
+    }
+    mutating func stageActionOccurrence<Value: GiftUIAction>(
+        identity: borrowing Identity, action: borrowing Value
+    ) -> Bool {
+        let error = codec.action(action, writer: state.payloadWriter())
+        return state.stageActionResult(error)
+    }
+    mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
+        state.publishExpansion(summary)
+    }
+    mutating func discardExpansion() { state.discardExpansion() }
+    mutating func resetExpansion() { state.resetExpansion() }
+}

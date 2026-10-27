@@ -1,0 +1,80 @@
+{
+  "acquired_utc": "2026-10-27T07:32:53.898964+00:00",
+  "functions": [
+    {
+      "lo": "0x193d1ea6c",
+      "hi": "0x193d1eaa0",
+      "bytes": 52,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331967084,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-0.bin",
+      "sha256": "b4fdce19d2b842b12e722beb65f2e30f681f897e73359eebd12b973db5ca28bc",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-0.o",
+      "projection_sha256": "f7f7341cdc5e517e6209d2f5606de9874d6e64ac3adb047a0c3554065f5721e0"
+    },
+    {
+      "lo": "0x193cdd600",
+      "hi": "0x193cdd7e4",
+      "bytes": 484,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331699712,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-1.bin",
+      "sha256": "a8de8f22f2df980477958140a790ab42dca0b06d0e7da49c790c31cbded32d28",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-1.o",
+      "projection_sha256": "6252bc7767ad78c308ccac4c2f1614c62990e6999e4d2bc1dc080230d94ad6cb"
+    },
+    {
+      "lo": "0x193cdd7e4",
+      "hi": "0x193cddaf0",
+      "bytes": 780,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331700196,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-2.bin",
+      "sha256": "31d5cb76adc0abee38e6b5f76036fa651b2dc05863cd5f465b0e93dcdcc5d632",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-2.o",
+      "projection_sha256": "55ac1ad47a4aa97a4cec555b7af7377cdc10a497e17e25c3243aa0a2a8fbcf31"
+    }
+  ],
+  "arena_constant": {
+    "vm": "0x194104d40",
+    "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+    "offset": 336055616,
+    "hex": "00000000000000006009000000000000",
+    "sha256": "e70ec528b39ce59be15457ce12d8440bdbd6b78ba586a036b3c02b1dbeba27f1"
+  },
+  "codec_module_parent": {
+    "symbol": "_$s13GiftUIDrawingMXM",
+    "object_sha256": "cc89dca67b9c2b4c31c86fdf376024abf68e0828c82f322ac4975e2e4abf62b5",
+    "hex": "0000000000000000f8ffffff",
+    "sha256": "47db364ad24d4a7faa5125c69bd6fe9be08415d60e2bb9cbb8e7ca409ed55fb4",
+    "address": "0x9840",
+    "flags": 0,
+    "parent_field_hex": "00000000",
+    "relocations": [
+      {
+        "offset": 8,
+        "raw": "0x1c0002ff",
+        "symbol": "_$s13GiftUIDrawingMXM"
+      },
+      {
+        "offset": 8,
+        "raw": "0xc00014e",
+        "symbol": "l_.str.13.GiftUIDrawing"
+      }
+    ],
+    "parent_field_has_relocation": false
+  },
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-0.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-1.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-2.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 12784,
+  "stdout_lines": 347,
+  "stdout_sha256": "47656b521a0c4492b293acd873cc7fb597d4825085520e68c60a1e56f9a3660e",
+  "stderr_bytes": 0
+}

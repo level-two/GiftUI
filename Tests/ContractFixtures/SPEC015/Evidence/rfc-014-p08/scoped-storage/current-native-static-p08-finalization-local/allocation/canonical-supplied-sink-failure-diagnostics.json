@@ -1,0 +1,41 @@
+{
+  "scope": "Exact six completed failed-producer raw stderr streams; no semantic-body extraction/normalization. Existing source snapshots/freeze/audit-miss history retained.",
+  "files": [
+    {
+      "original": ".build/contracts/p08-native-static-p08-finalization/supplied-sink1/artifacts/00-GiftUISemanticCore.stderr",
+      "preserved": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure1/compiler.stderr",
+      "bytes": 739,
+      "sha256": "672df78c1e8f8899d17af43b2ff07d33f3c83bd3ee3e97c32b8142d2dbff268a"
+    },
+    {
+      "original": ".build/contracts/p08-native-static-p08-finalization/supplied-sink2/artifacts/09-GiftUIDrawing.stderr",
+      "preserved": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure2/compiler.stderr",
+      "bytes": 6064,
+      "sha256": "136c39469de4ae7f7f95bf69c4035eeb32b1d25db16b51b05f64ff1cd91cbc6b"
+    },
+    {
+      "original": ".build/contracts/p08-native-static-p08-finalization/supplied-sink3/artifacts/18-P08CounterRuntime.stderr",
+      "preserved": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-failure3/compiler.stderr",
+      "bytes": 10816,
+      "sha256": "c993672567036dc5a851214209d84822a7c5c423ded6e2a00b436b474b8130f6"
+    },
+    {
+      "original": ".build/contracts/p08-native-static-p08-finalization/validation/components/stderr",
+      "preserved": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-component-failure/compiler.stderr",
+      "bytes": 1316,
+      "sha256": "bb9147524daccea99fadcdddb0a62e8480bae3b90168af76e97e65eec5c42752"
+    },
+    {
+      "original": ".build/contracts/p08-native-static-p08-finalization/validation/components-standard-lifetime/stderr",
+      "preserved": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-visibility-failure/compiler.stderr",
+      "bytes": 5027,
+      "sha256": "4748c03c3a628caf8abeca56df9b57731f577532c61338285a2cabe1f7360683"
+    },
+    {
+      "original": ".build/contracts/p08-native-static-p08-finalization/validation/canvas-visibility/stderr",
+      "preserved": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-canvas-throws-failure/compiler.stderr",
+      "bytes": 3564,
+      "sha256": "18ab0e267112f4ea40ad8d37cb49c21b0dbea7a228e05f802561ca4bd350a6ab"
+    }
+  ]
+}

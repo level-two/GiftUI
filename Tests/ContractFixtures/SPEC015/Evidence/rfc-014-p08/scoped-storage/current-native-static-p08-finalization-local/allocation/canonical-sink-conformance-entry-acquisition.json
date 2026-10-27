@@ -1,0 +1,51 @@
+{
+  "acquired_utc": "2026-10-27T07:24:59.186005+00:00",
+  "functions": [
+    {
+      "lo": "0x193c5d07c",
+      "hi": "0x193c5d2c0",
+      "bytes": 580,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331174012,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-0.bin",
+      "sha256": "e017a8069aa86403f1083fbd737550a4f1b95712f7b1670a126912be080d8328",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-0.o",
+      "projection_sha256": "7034efff47ac9a1883230e0a98e7fbcc2df3cd126ac736a03728c3e37a48fde8"
+    },
+    {
+      "lo": "0x193d0c5b8",
+      "hi": "0x193d0c7e8",
+      "bytes": 560,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331892152,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-1.bin",
+      "sha256": "82673aa893af109606f47eac13fed97fc6805c6daaeb9d77b221afa6efb69f86",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-1.o",
+      "projection_sha256": "18ab93038b78a4a77ecb61b8e1efa1f691ea25f686b4720609e81ad8a8b370d9"
+    },
+    {
+      "lo": "0x193d0cbf8",
+      "hi": "0x193d0ce2c",
+      "bytes": 564,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331893752,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-2.bin",
+      "sha256": "ccb8af0f6fb70b6fba601df2795527d4efe77223dff2842cbfee73c2148ce609",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-2.o",
+      "projection_sha256": "d7781b9c4c7ee13dbe997768b00327c6bebebb7e94136463f84cc08c9172e121"
+    }
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-0.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-1.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-conformance-entry-2.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 16804,
+  "stdout_lines": 444,
+  "stdout_sha256": "8d1445dcd4e1b3f769058285ae7c11fd48609a8938383657287ca2ecedaba768",
+  "stderr_bytes": 0
+}

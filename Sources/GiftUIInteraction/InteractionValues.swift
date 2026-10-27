@@ -5,6 +5,7 @@ import GiftUIExecution
 package struct BoundedApplicationAction: Equatable, Hashable, Sendable {
     @usableFromInline package let code: UInt16
 
+    @usableFromInline
     package init(code: UInt16) {
         self.code = code
     }

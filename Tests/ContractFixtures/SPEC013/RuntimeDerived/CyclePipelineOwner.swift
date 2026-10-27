@@ -104,7 +104,8 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     typealias OwnerFailure = RuntimeOwnerFailure
     let models: ObservableModelScope<CycleOwnedModel, CycleModelSchema>
     let root: ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>
-    let semantic: SemanticRecordStore<CyclePayload>
+    let semantic: SemanticRecordStore
+    let semanticCodec: CycleSemanticCodec
     let values: CanvasStagedValues<SemanticRecordReference, CycleValueTable>
     let control: UnsafeMutablePointer<CycleControl>
     var geometry: Geometry
@@ -138,9 +139,9 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     var hasAllocatedCandidateFrame: Bool { phase.context.candidateFrame != nil }
     var quiescent = false
     var presentationTeardownComplete = false
-    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
-    init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>, limits: RuntimeProfileLimits) {
-        self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
+    @_lifetime(copy models, copy root, copy semantic, copy semanticCodec, copy values, borrow control)
+    init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore, semanticCodec: consuming CycleSemanticCodec, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>, limits: RuntimeProfileLimits) {
+        self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.semanticCodec = consume semanticCodec; self.values = consume values
         self.limits = limits
         self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
         precondition(self.root.belongs(to: self.models))
@@ -283,14 +284,14 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
             }
             observableCandidate = true
         } catch { return .failure(.focusedOwner(.observableState(error))) }
-        let result = semantic.expand(CycleScene<CycleDomain>(show: control.pointee.show), roles: CycleRoles.self, codec: CanvasSemanticPayloadCodec<CycleRoles, CycleValueTable>.self, limits: limits.semantic, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self))
+        let result = semantic.expand(CycleScene<CycleDomain>(show: control.pointee.show), roles: CycleRoles.self, codec: semanticCodec, limits: limits.semantic, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self))
         switch result {
         case .success: semanticCandidate = true
         case .semanticFailure(let error): discardLocalCandidates(); return .failure(.focusedOwner(.semantic(error)))
         case .bindingFailure(let error): discardLocalCandidates(); return .failure(.focusedOwner(.observableState(error)))
         case .accessFailure: discardLocalCandidates(); return .failure(.focusedOwner(.observableState(.staleModel)))
         }
-        do throws(DrawingError) { try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CycleValueTable()) }
+        do throws(DrawingError) { try CanvasSemanticTransfer.stage(from: semantic, pending: semanticCodec, into: values, table: CycleValueTable()) }
         catch {
             discardLocalCandidates()
             let production: DrawingProductionError = switch error {
@@ -417,7 +418,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     }
     mutating func discardLocalCandidates() {
         values.discard()
-        if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate() } catch { quiescent = true }; semanticCandidate = false }
+        if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate(using: semanticCodec) } catch { quiescent = true }; semanticCandidate = false }
         if observableCandidate {
             do throws(ObservableStateError) { try models.withDiscovery { () throws(ObservableStateError) in
                 if case .failure(let error) = root.finishCandidate(.discard) { throw error }
@@ -437,7 +438,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         case .resetRenderWorkspace: geometry.resetRender()
         case .resetDrawingPlan: geometry.resetPlan()
         case .resetLayoutCandidate: geometry.resetLayout()
-        case .discardSemanticCandidate: if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate() } catch { quiescent = true }; semanticCandidate = false }
+        case .discardSemanticCandidate: if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate(using: semanticCodec) } catch { quiescent = true }; semanticCandidate = false }
         case .discardObservableCandidate:
             if observableCandidate { discardLocalCandidates() }
         case .discardInteractionCandidate: interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false

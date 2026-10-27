@@ -5,10 +5,10 @@ private struct Banks: ~Copyable {
     var metadata: InlineArray<2, SemanticRecordBankMetadata> = .init(repeating: .init())
     var records: InlineArray<24, SemanticRuntimeRecord> = .init(repeating: .init())
     var paths: InlineArray<96, SemanticPathEntry> = .init(repeating: .init())
-    var payloads: InlineArray<24, UInt32?> = .init(repeating: nil)
+    var payloads: InlineArray<24, SemanticRecordPayload?> = .init(repeating: nil)
     var scalars: InlineArray<64, UInt32> = .init(repeating: 0)
     mutating func withStore<Result>(_ limits: SemanticRecordLimits, owner: SemanticRecordOwnerIdentity,
-        _ body: (borrowing SemanticRecordStore<UInt32>) throws(SemanticExpansionError) -> Result
+        _ body: (borrowing SemanticRecordStore) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
         var m = metadata.mutableSpan; var r = records.mutableSpan; var p = paths.mutableSpan
         var v = payloads.mutableSpan; var s = scalars.mutableSpan
@@ -22,11 +22,11 @@ private func limits(records: UInt16 = 12, paths: UInt16 = 48, depth: UInt16 = 34
                          payloads: payloads, textScalars: scalars, payloadBytes: bytes)!
 }
 private func expect(_ value: Bool, _ count: inout UInt32) { count += 1; precondition(value) }
-private func enter(_ bank: SemanticRecordBankBuffers<UInt32>, _ component: SemanticPathComponent,
+private func enter(_ bank: SemanticRecordBankBuffers, _ component: SemanticPathComponent,
                    _ limits: SemanticRecordLimits) throws(SemanticExpansionError) {
     if let failure = bank.enter(component, limits: limits) { throw failure }
 }
-private func tree(_ store: borrowing SemanticRecordStore<UInt32>, branch: UInt8, marker: UInt32) throws(SemanticExpansionError) {
+private func tree(_ store: borrowing SemanticRecordStore, branch: UInt8, marker: UInt32) throws(SemanticExpansionError) {
     let number = try store.beginCandidate(); let bank = store.expansionBank(number)!
     try enter(bank, .init(kind: .root), store.limits)
     try enter(bank, .init(kind: .declarationRole, role: 1), store.limits)
@@ -36,17 +36,17 @@ private func tree(_ store: borrowing SemanticRecordStore<UInt32>, branch: UInt8,
     try enter(bank, .init(kind: .declarationRole, role: 2), store.limits)
     if let failure = bank.appendRecord(limits: store.limits) { throw failure }
     let text: InlineArray<2, UInt32> = [65, 0x1F600]
-    if let failure = bank.store(marker, kind: .primitive, text: text.span, limits: store.limits) { throw failure }
+    if let failure = bank.store(.standard(.action(role: 1, code: UInt16(marker))), kind: .primitive, text: text.span, limits: store.limits) { throw failure }
     for _ in 0..<5 { bank.leave() }
     bank.metadata.pointee.phase = .candidate
 }
-private func lifetimeChecks(_ store: borrowing SemanticRecordStore<UInt32>) throws(SemanticExpansionError) -> UInt32 {
+private func lifetimeChecks(_ store: borrowing SemanticRecordStore) throws(SemanticExpansionError) -> UInt32 {
     var checks: UInt32 = 0
     try tree(store, branch: 0, marker: 11)
     // A complete candidate is borrowed successfully but not globally published.
     try store.withCandidateView { (candidate) throws(SemanticExpansionError) in
         expect(candidate.recordCount == 2 && candidate.pathCount == 5, &checks)
-        expect(candidate.payload(at: 0) == 11 && candidate.scalar(at: 1) == 0x1F600, &checks)
+        expect(candidate.payload(at: 0) == .standard(.action(role: 1, code: 11)) && candidate.scalar(at: 1) == 0x1F600, &checks)
     }
     do throws(SemanticExpansionError) { try store.withPublishedView { _ in () }; preconditionFailure() }
     catch { expect(error == .invariantViolation, &checks) }
@@ -62,11 +62,11 @@ private func lifetimeChecks(_ store: borrowing SemanticRecordStore<UInt32>) thro
             expect(old.record(next.reference(at: 1)!) == nil, &checks)
         }
         try store.publishCandidate()
-        expect(old.payload(at: 0) == 11, &checks)
+        expect(old.payload(at: 0) == .standard(.action(role: 1, code: 11)), &checks)
         do throws(SemanticExpansionError) { _ = try store.beginCandidate(); preconditionFailure() }
         catch { expect(error == .capacityExhausted, &checks) }
         try store.withPublishedView { (next) throws(SemanticExpansionError) in
-            expect(next.payload(at: 0) == 22 && next.path(at: 2)!.matchedPath == .max, &checks)
+            expect(next.payload(at: 0) == .standard(.action(role: 1, code: 22)) && next.path(at: 2)!.matchedPath == .max, &checks)
             expect(next.componentComparisons <= UInt32(next.pathCount) * UInt32(store.limits.fanout), &checks)
         }
     }
@@ -79,7 +79,7 @@ private func lifetimeChecks(_ store: borrowing SemanticRecordStore<UInt32>) thro
         expect(next.completeIdentity(for: next.reference(at: 1)!) == independentKey, &checks)
     }
     try store.discardCandidate()
-    try store.withPublishedView { (current) throws(SemanticExpansionError) in expect(current.payload(at: 0) == 22, &checks) }
+    try store.withPublishedView { (current) throws(SemanticExpansionError) in expect(current.payload(at: 0) == .standard(.action(role: 1, code: 22)), &checks) }
     // Equal full paths match every prefix despite different payload values.
     try tree(store, branch: 1, marker: 44)
     try store.publishCandidate()
@@ -98,7 +98,7 @@ private func lifetimeChecks(_ store: borrowing SemanticRecordStore<UInt32>) thro
         // Every independent pool boundary rejects first excess. The complete
         // published bank is unaffected by the failed attempt.
         for small in [limits(records: 1), limits(paths: 4), limits(depth: 4),
-                      limits(payloads: 0), limits(scalars: 1), limits(bytes: UInt32(MemoryLayout<UInt32?>.stride) + 7)] {
+                      limits(payloads: 0), limits(scalars: 1), limits(bytes: UInt32(MemoryLayout<SemanticRecordPayload?>.stride) + 7)] {
             checks += try banks.withStore(small, owner: namespace.issue()) { (store) throws(SemanticExpansionError) in
                 var local: UInt32 = 0
                 let initial = store.expansionBank(try store.beginCandidate())!
@@ -119,14 +119,14 @@ private func lifetimeChecks(_ store: borrowing SemanticRecordStore<UInt32>) thro
                 return local
             }
         }
-        checks += try banks.withStore(limits(records: 2, paths: 5, depth: 5, fanout: 1, payloads: 1, scalars: 2, bytes: UInt32(MemoryLayout<UInt32?>.stride) + 8), owner: namespace.issue()) {
+        checks += try banks.withStore(limits(records: 2, paths: 5, depth: 5, fanout: 1, payloads: 1, scalars: 2, bytes: UInt32(MemoryLayout<SemanticRecordPayload?>.stride) + 8), owner: namespace.issue()) {
             (store) throws(SemanticExpansionError) in
             try tree(store, branch: 0, marker: 1)
             try store.publishCandidate()
             return try store.withPublishedView { (view) throws(SemanticExpansionError) in
                 var local: UInt32 = 0
                 expect(view.recordCount == 2 && view.pathCount == 5 && view.payloadCount == 1 && view.scalarCount == 2, &local)
-                expect(view.payloadBytes == UInt32(MemoryLayout<UInt32?>.stride) + 8, &local)
+                expect(view.payloadBytes == UInt32(MemoryLayout<SemanticRecordPayload?>.stride) + 8, &local)
                 return local
             }
         }

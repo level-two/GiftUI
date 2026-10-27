@@ -1,0 +1,134 @@
+{
+  "object": {
+    "path": ".build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o",
+    "bytes": 544632,
+    "sha256": "28f6dd1c41505cc69e6d627621e3eb26cdb181e4964321bea98e7c4c7cf088c4"
+  },
+  "metadata": {
+    "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewVN",
+    "address": 194408,
+    "section": 10,
+    "type": 15
+  },
+  "metadata_range": [
+    "0x2f760",
+    "0x2f780"
+  ],
+  "metadata_raw_hex": "0000000000000000000200000000000000000000000000000000000008000000",
+  "metadata_raw_sha256": "763c503061a06d870d98a565968cc8de9e1bc56817af5ed6dc6159abdf93c2f3",
+  "metadata_relocations": [
+    {
+      "address": "0x2f760",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVWV",
+      "symbol_index": 1530
+    },
+    {
+      "address": "0x2f770",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVMn",
+      "symbol_index": 1894
+    }
+  ],
+  "vwt": {
+    "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewVWV",
+    "address": 194304,
+    "section": 10,
+    "type": 14
+  },
+  "vwt_range": [
+    "0x2f700",
+    "0x2f758"
+  ],
+  "vwt_raw_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000540000000000000058000000000000000700020001000000",
+  "vwt_raw_sha256": "c652f4308873cc44a78e733e8ce6e1fa10c96cac49455a6751cd774c2fe47b28",
+  "vwt_relocations": [
+    {
+      "address": "0x2f700",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVwCP",
+      "symbol_index": 1220
+    },
+    {
+      "address": "0x2f708",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "___swift_noop_void_return",
+      "symbol_index": 2769
+    },
+    {
+      "address": "0x2f710",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "___swift_memcpy84_8",
+      "symbol_index": 2766
+    },
+    {
+      "address": "0x2f718",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "___swift_memcpy84_8",
+      "symbol_index": 2766
+    },
+    {
+      "address": "0x2f720",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "___swift_memcpy84_8",
+      "symbol_index": 2766
+    },
+    {
+      "address": "0x2f728",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "___swift_memcpy84_8",
+      "symbol_index": 2766
+    },
+    {
+      "address": "0x2f730",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVwet",
+      "symbol_index": 1140
+    },
+    {
+      "address": "0x2f738",
+      "type": 0,
+      "length": 3,
+      "pcrel": 0,
+      "external": 1,
+      "target": "_$s18GiftUISemanticCore18SemanticRecordViewVwst",
+      "symbol_index": 1142
+    }
+  ],
+  "destroy_slot": {
+    "address": "0x2f708",
+    "type": 0,
+    "length": 3,
+    "pcrel": 0,
+    "external": 1,
+    "target": "___swift_noop_void_return",
+    "symbol_index": 2769
+  }
+}

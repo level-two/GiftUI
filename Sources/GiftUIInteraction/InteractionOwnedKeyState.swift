@@ -83,8 +83,9 @@ where
     /// Validates while the caller holds the candidate-bank borrow and copies its
     /// complete key synchronously. A stale/wrong-bank reference never stages.
     @inline(__always)
-    package mutating func append<Payload>(
-        record: SemanticRecordReference, in view: borrowing SemanticRecordView<Payload>,
+    @inlinable
+    package mutating func append(
+        record: SemanticRecordReference, in view: borrowing SemanticRecordView,
         isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,
         action: BoundedApplicationAction, targetGeneration: ObservableTargetGeneration
     ) -> InteractionCandidateAppendResult {

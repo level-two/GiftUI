@@ -162,7 +162,7 @@ package protocol SemanticExpansionWorkspace {
 }
 
 @usableFromInline
-package protocol SemanticExpansionSink {
+package protocol SemanticExpansionSink: ~Escapable {
     associatedtype Identity: Equatable
 
     /// A reported independent path/payload bound preserves the exact local error.
@@ -508,7 +508,9 @@ struct SemanticExpansionAttempt {
 
     @inlinable
     @inline(__always)
-    mutating func begin<Workspace: SemanticExpansionWorkspace, Sink: SemanticExpansionSink>(
+    mutating func begin<
+        Workspace: SemanticExpansionWorkspace, Sink: SemanticExpansionSink & ~Escapable
+    >(
         workspace: inout Workspace,
         sink: inout Sink
     ) -> SemanticExpansionError? where Workspace.Identity == Sink.Identity {
@@ -647,7 +649,7 @@ struct SemanticExpansionAttempt {
     ) -> SemanticExpansionError?
     where
         Workspace: SemanticExpansionWorkspace,
-        Sink: SemanticExpansionSink,
+        Sink: SemanticExpansionSink & ~Escapable,
         Workspace.Identity == Sink.Identity
     {
         if let error = reserveBodyEvaluation() {
@@ -671,7 +673,7 @@ struct SemanticExpansionAttempt {
     ) -> SemanticExpansionError?
     where
         Workspace: SemanticExpansionWorkspace,
-        Sink: SemanticExpansionSink,
+        Sink: SemanticExpansionSink & ~Escapable,
         Workspace.Identity == Sink.Identity
     {
         guard firstFailure == nil else { return firstFailure }
@@ -701,7 +703,7 @@ struct SemanticExpansionAttempt {
     where
         Payload: _GiftUISemanticPrimitivePayload,
         Workspace: SemanticExpansionWorkspace,
-        Sink: SemanticExpansionSink,
+        Sink: SemanticExpansionSink & ~Escapable,
         Workspace.Identity == Sink.Identity
     {
         guard firstFailure == nil else { return firstFailure }
@@ -735,7 +737,7 @@ struct SemanticExpansionAttempt {
     where
         Payload: _GiftUISemanticModifierPayload,
         Workspace: SemanticExpansionWorkspace,
-        Sink: SemanticExpansionSink,
+        Sink: SemanticExpansionSink & ~Escapable,
         Workspace.Identity == Sink.Identity
     {
         guard firstFailure == nil else { return firstFailure }
@@ -774,7 +776,7 @@ struct SemanticExpansionAttempt {
     where
         Action: GiftUIAction,
         Workspace: SemanticExpansionWorkspace,
-        Sink: SemanticExpansionSink,
+        Sink: SemanticExpansionSink & ~Escapable,
         Workspace.Identity == Sink.Identity
     {
         guard firstFailure == nil else { return firstFailure }
@@ -816,7 +818,7 @@ struct SemanticExpansionAttempt {
     ) -> SemanticExpansionResult
     where
         Workspace: SemanticExpansionWorkspace,
-        Sink: SemanticExpansionSink,
+        Sink: SemanticExpansionSink & ~Escapable,
         Workspace.Identity == Sink.Identity
     {
         if let firstFailure {
@@ -857,7 +859,7 @@ struct SemanticExpansionAttempt {
     ) -> SemanticExpansionError
     where
         Workspace: SemanticExpansionWorkspace,
-        Sink: SemanticExpansionSink,
+        Sink: SemanticExpansionSink & ~Escapable,
         Workspace.Identity == Sink.Identity
     {
         let error = record(error)
@@ -886,7 +888,7 @@ struct SemanticExpansionAttempt {
     )
     where
         Workspace: SemanticExpansionWorkspace,
-        Sink: SemanticExpansionSink,
+        Sink: SemanticExpansionSink & ~Escapable,
         Workspace.Identity == Sink.Identity
     {
         if workspaceBegan {
@@ -969,7 +971,7 @@ struct SemanticExpansionTraversal<Workspace, Sink, StateBinding>: ~Copyable, ~Es
     _GiftUISemanticTraversalVisitor
 where
     Workspace: SemanticExpansionWorkspace,
-    Sink: SemanticExpansionSink,
+    Sink: SemanticExpansionSink & ~Escapable,
     StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable,
     Workspace.Identity == Sink.Identity,
     Workspace.Identity == StateBinding.Identity
@@ -1001,7 +1003,7 @@ where
     @usableFromInline
     var nextModifierChainIndex: UInt16 = 0
 
-    @_lifetime(copy stateBinding)
+    @_lifetime(copy stateBinding, copy sink)
     @usableFromInline
     init(
         attempt: SemanticExpansionAttempt,
@@ -1013,6 +1015,29 @@ where
         self.workspace = workspace
         self.sink = sink
         self.stateBinding = consume stateBinding
+    }
+
+    /// Finish while the sink and body binding still share this lexical owner.
+    /// Only escapable observations are returned; a borrowed codec never needs
+    /// to be copied back out of the traversal's combined lifetime.
+    @inlinable
+    @inline(__always)
+    mutating func finalizeExpansion() -> BoundSemanticExpansionResult<StateBinding.Failure> {
+        if let failure = bindingFailure {
+            attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
+            return .bindingFailure(failure)
+        }
+        if let failure = accessFailure {
+            attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
+            return .accessFailure(failure)
+        }
+        if let failure {
+            return .semanticFailure(attempt.fail(failure, workspace: &workspace, sink: &sink))
+        }
+        switch attempt.succeed(workspace: &workspace, sink: &sink) {
+        case .success(let summary): return .success(summary)
+        case .failure(let error): return .semanticFailure(error)
+        }
     }
 
     @inlinable
@@ -1527,22 +1552,43 @@ where
     var traversal = SemanticExpansionTraversal(
         attempt: attempt, workspace: workspace, sink: sink, stateBinding: consume stateBinding)
     traversal.expandRoot(root)
-    attempt = traversal.attempt
+    let result = traversal.finalizeExpansion()
     workspace = traversal.workspace
     sink = traversal.sink
-    if let failure = traversal.bindingFailure {
-        attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
-        return .bindingFailure(failure)
+    return result
+}
+
+/// Record expansion transfers its local sink into the traversal. Its scoped
+/// codec remains owned there until finalization and cannot escape via inout.
+@inlinable
+@inline(__always)
+func expandSemanticTreeConsumingSinkWithStateBinding<
+    Root: View,
+    Workspace: SemanticExpansionWorkspace,
+    Sink: SemanticExpansionSink & ~Escapable,
+    StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable
+>(
+    _ root: borrowing Root,
+    limits: SemanticExpansionLimits,
+    workspace: inout Workspace,
+    sink: consuming Sink,
+    stateBinding: consuming StateBinding
+) -> BoundSemanticExpansionResult<StateBinding.Failure>
+where
+    Root.Domain == StateBinding.Domain,
+    Workspace.Identity == Sink.Identity,
+    Workspace.Identity == StateBinding.Identity
+{
+    var localSink = consume sink
+    var attempt = SemanticExpansionAttempt(limits: limits)
+    if let error = attempt.begin(workspace: &workspace, sink: &localSink) {
+        return .semanticFailure(error)
     }
-    if let failure = traversal.accessFailure {
-        attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
-        return .accessFailure(failure)
-    }
-    if let failure = traversal.failure {
-        return .semanticFailure(attempt.fail(failure, workspace: &workspace, sink: &sink))
-    }
-    switch attempt.succeed(workspace: &workspace, sink: &sink) {
-    case .success(let summary): return .success(summary)
-    case .failure(let error): return .semanticFailure(error)
-    }
+    var traversal = SemanticExpansionTraversal(
+        attempt: attempt, workspace: workspace, sink: localSink,
+        stateBinding: consume stateBinding)
+    traversal.expandRoot(root)
+    let result = traversal.finalizeExpansion()
+    workspace = traversal.workspace
+    return result
 }

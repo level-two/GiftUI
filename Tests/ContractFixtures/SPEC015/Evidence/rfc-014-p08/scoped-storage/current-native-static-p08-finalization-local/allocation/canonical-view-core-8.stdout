@@ -1,0 +1,28 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000009c45c <_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyxs5UInt8V_xAA0deH0VAA0D14ExpansionErrorOYKXEtAJYKlF6$deferL_yylF>:
+   9c45c:      	ldr	x8, [x0]
+   9c460:      	ldrh	w9, [x8, #0x8]
+   9c464:      	sub	w9, w9, #0x1
+   9c468:      	tst	w9, #0xffff0000
+   9c46c:      	b.ne	0x9c4ac <_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyxs5UInt8V_xAA0deH0VAA0D14ExpansionErrorOYKXEtAJYKlF6$deferL_yylF+0x50>
+   9c470:      	strh	w9, [x8, #0x8]
+   9c474:      	tst	w9, #0xffff
+   9c478:      	b.eq	0x9c480 <_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyxs5UInt8V_xAA0deH0VAA0D14ExpansionErrorOYKXEtAJYKlF6$deferL_yylF+0x24>
+   9c47c:      	ret
+   9c480:      	ldrb	w8, [x8]
+   9c484:      	cmp	w8, #0x4
+   9c488:      	b.ne	0x9c47c <_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyxs5UInt8V_xAA0deH0VAA0D14ExpansionErrorOYKXEtAJYKlF6$deferL_yylF+0x20>
+   9c48c:      	stp	x20, x19, [sp, #-0x20]!
+   9c490:      	stp	x29, x30, [sp, #0x10]
+   9c494:      	add	x29, sp, #0x10
+   9c498:      	mov	x20, x0
+   9c49c:      	bl	0x9c49c <_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyxs5UInt8V_xAA0deH0VAA0D14ExpansionErrorOYKXEtAJYKlF6$deferL_yylF+0x40>
+		000000000009c49c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5clearyyF
+   9c4a0:      	ldp	x29, x30, [sp, #0x10]
+   9c4a4:      	ldp	x20, x19, [sp], #0x20
+   9c4a8:      	ret
+   9c4ac:      	brk	#0x1

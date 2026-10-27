@@ -20,9 +20,7 @@ package enum SemanticStandardPayload: Equatable, Sendable {
 }
 
 @usableFromInline
-package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
-    SemanticRecordPayloadCodec
-{
+package enum SemanticStandardPayloadCodec {
     @usableFromInline
     package typealias Payload = SemanticStandardPayload
 
@@ -39,33 +37,33 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
     }
     @inlinable
     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
-        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
     ) -> SemanticExpansionError? {
-        primitive(value, writer: writer, wrapping: { $0 })
+        primitive(value, writer: writer, wrapping: { .standard($0) })
     }
     @inlinable
-    package static func primitive<Value: _GiftUISemanticPrimitivePayload, Target>(
-        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,
-        wrapping wrap: (Payload) -> Target
+    package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter,
+        wrapping wrap: (Payload) -> SemanticRecordPayload
     ) -> SemanticExpansionError? {
         if Value.self == _GiftUIVStackPayload.self {
             return writer.store(
-                wrap(.vStack(project(value, as: _GiftUIVStackPayload.self))), kind: .primitive)
+                wrap(.vStack(Self.project(value, as: _GiftUIVStackPayload.self))), kind: .primitive)
         }
         if Value.self == _GiftUIHStackPayload.self {
             return writer.store(
-                wrap(.hStack(project(value, as: _GiftUIHStackPayload.self))), kind: .primitive)
+                wrap(.hStack(Self.project(value, as: _GiftUIHStackPayload.self))), kind: .primitive)
         }
         if Value.self == _GiftUIZStackPayload.self {
             return writer.store(
-                wrap(.zStack(project(value, as: _GiftUIZStackPayload.self))), kind: .primitive)
+                wrap(.zStack(Self.project(value, as: _GiftUIZStackPayload.self))), kind: .primitive)
         }
         if Value.self == _GiftUISpacerPayload.self {
             return writer.store(
-                wrap(.spacer(project(value, as: _GiftUISpacerPayload.self))), kind: .primitive)
+                wrap(.spacer(Self.project(value, as: _GiftUISpacerPayload.self))), kind: .primitive)
         }
         if Value.self == _GiftUITextPayload.self {
-            let text = project(value, as: _GiftUITextPayload.self)
+            let text = Self.project(value, as: _GiftUITextPayload.self)
             var scalars: InlineArray<96, UInt32> = .init(repeating: 0)
             var count = 0
             switch text.content {
@@ -116,46 +114,46 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
     @inlinable
     package static func modifier<Value: _GiftUISemanticModifierPayload>(
         _ value: borrowing Value, chainIndex: UInt16,
-        writer: borrowing SemanticPayloadWriter<Payload>
+        writer: borrowing SemanticPayloadWriter
     ) -> SemanticExpansionError? {
-        modifier(value, chainIndex: chainIndex, writer: writer, wrapping: { $0 })
+        modifier(value, chainIndex: chainIndex, writer: writer, wrapping: { .standard($0) })
     }
     @inlinable
-    package static func modifier<Value: _GiftUISemanticModifierPayload, Target>(
+    package static func modifier<Value: _GiftUISemanticModifierPayload>(
         _ value: borrowing Value, chainIndex: UInt16,
-        writer: borrowing SemanticPayloadWriter<Target>,
-        wrapping wrap: (Payload) -> Target
+        writer: borrowing SemanticPayloadWriter,
+        wrapping wrap: (Payload) -> SemanticRecordPayload
     ) -> SemanticExpansionError? {
         let owned: Payload
         if Value.self == _GiftUIPaddingPayload.self {
-            owned = .padding(project(value, as: _GiftUIPaddingPayload.self))
+            owned = .padding(Self.project(value, as: _GiftUIPaddingPayload.self))
         } else if Value.self == _GiftUIPaddingInsetsPayload.self {
-            owned = .insets(project(value, as: _GiftUIPaddingInsetsPayload.self))
+            owned = .insets(Self.project(value, as: _GiftUIPaddingInsetsPayload.self))
         } else if Value.self == _GiftUIFixedFramePayload.self {
-            owned = .fixedFrame(project(value, as: _GiftUIFixedFramePayload.self))
+            owned = .fixedFrame(Self.project(value, as: _GiftUIFixedFramePayload.self))
         } else if Value.self == _GiftUIFlexibleFramePayload.self {
-            owned = .flexibleFrame(project(value, as: _GiftUIFlexibleFramePayload.self))
+            owned = .flexibleFrame(Self.project(value, as: _GiftUIFlexibleFramePayload.self))
         } else if Value.self == _GiftUIForegroundStylePayload.self {
-            owned = .foreground(project(value, as: _GiftUIForegroundStylePayload.self).color)
+            owned = .foreground(Self.project(value, as: _GiftUIForegroundStylePayload.self).color)
         } else if Value.self == _GiftUIBackgroundPayload.self {
-            owned = .background(project(value, as: _GiftUIBackgroundPayload.self).color)
+            owned = .background(Self.project(value, as: _GiftUIBackgroundPayload.self).color)
         } else if Value.self == DisabledSemanticPayload.self {
-            owned = .disabled(project(value, as: DisabledSemanticPayload.self).isDisabled)
+            owned = .disabled(Self.project(value, as: DisabledSemanticPayload.self).isDisabled)
         } else {
             return .invariantViolation
         }
         return writer.store(wrap(owned), kind: .modifier, chainIndex: chainIndex)
     }
     @inlinable
-    package static func action<Value: GiftUIAction>(
-        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+    package static func action<Roles: SemanticDeclarationRoles, Value: GiftUIAction>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter, roles: Roles.Type
     ) -> SemanticExpansionError? {
-        action(value, writer: writer, wrapping: { $0 })
+        action(value, writer: writer, roles: roles, wrapping: { .standard($0) })
     }
     @inlinable
-    package static func action<Value: GiftUIAction, Target>(
-        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,
-        wrapping wrap: (Payload) -> Target
+    package static func action<Roles: SemanticDeclarationRoles, Value: GiftUIAction>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter, roles: Roles.Type,
+        wrapping wrap: (Payload) -> SemanticRecordPayload
     ) -> SemanticExpansionError? {
         guard let role = Roles.role(of: Value.self), role.rawValue != 0 else {
             return .invalidIdentity

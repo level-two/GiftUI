@@ -16,7 +16,7 @@ import GiftUIRuntimeDynamic
 import CycleSchema
 import P07TargetWorkspace
 
-typealias CyclePayload = CanvasSemanticPayload<CycleValueTable.CaptureStorage>
+typealias CyclePayload = SemanticRecordPayload
 typealias CycleSource = ObservableCanvasInvocationSource<CycleOwnedModel, CycleModelSchema, SemanticRecordReference, CycleValueTable>
 let cycleLayoutLimits = LayoutLimits(maximumScopes: 98, maximumDepth: 19, maximumTextScalars: 224, maximumTextLines: 128, maximumPositionedGlyphs: 224)!
 let cycleDrawingLimits = DrawingLimits(maximumLineWidth: 4, maximumCanvasOccurrences: 5, maximumLivePathPoints: 202, maximumLivePathSubpaths: 12, maximumPlanStrokes: 5, maximumPlanPoints: 832, maximumPlanSubpaths: 16, maximumNormalizedStrokeOperations: 5)!
@@ -26,10 +26,10 @@ let cycleSurface = Rect(origin: Point(x: 0, y: 0), size: Size(width: 100, height
 // by a recorded answer; each method invokes its maintained focused algorithm.
 protocol CycleGeometry {
     borrowing func storageMeasurement() -> CycleGeometryMeasurement
-    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> LayoutResult
+    mutating func layout(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> LayoutResult
     mutating func draw(source: inout CycleSource, context: ExecutionContext, limits: RuntimeProfileLimits) -> DrawingPlanResult
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> RenderProductionResult
-    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult
+    mutating func preflight(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> RenderProductionResult
+    mutating func produce(_ bank: borrowing SemanticRecordView, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult
     func bounds(_ record: SemanticRecordReference) -> Rect?
     func clip(_ record: SemanticRecordReference) -> Rect?
     mutating func resetLayout()
@@ -52,14 +52,14 @@ struct DynamicCycleGeometry: CycleGeometry {
     var resolved = DynamicResolvedLayoutStorage(limits: cycleLayoutLimits)
     var plan = DynamicDrawingPlanWorkspace(capacity: cycleDrawingLimits)
     var render = DynamicRenderWorkspace(capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)
-    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> LayoutResult {
+    mutating func layout(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> LayoutResult {
         GiftUILayout.layout(semantic: SemanticRecordLayoutView(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: limits.layout, workspace: &workspace, sink: &resolved)
     }
     mutating func draw(source: inout CycleSource, context: ExecutionContext, limits: RuntimeProfileLimits) -> DrawingPlanResult {
         precondition(plan.configure(limits: limits.drawing))
         return CanvasPlanProducer.derive(source: &source, layout: resolved.renderView, executionContext: context, limits: limits.drawing, workspace: &plan)
     }
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> RenderProductionResult {
+    mutating func preflight(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> RenderProductionResult {
         let result = withCycleRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: resolved.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &render) }
         if case .success(let header) = result {
             guard header.operationCount >= plan.summary.normalizedStrokeOperationCount,
@@ -67,7 +67,7 @@ struct DynamicCycleGeometry: CycleGeometry {
         }
         return result
     }
-    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult {
+    mutating func produce(_ bank: borrowing SemanticRecordView, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult {
         return withCycleRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: resolved.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &render, sink: &sink) }
     }
     func bounds(_ record: SemanticRecordReference) -> Rect? { resolved.renderView.bounds(of: record) }
@@ -107,7 +107,7 @@ struct StaticCycleGeometry: CycleGeometry {
         render = QualifiedRender(base: StaticSignalAnalyzerNRFRenderWorkspace(region: text, capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)!)
     }
     var view: QualifiedLayout { QualifiedLayout(base: resolved.renderView, references: references) }
-    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> LayoutResult {
+    mutating func layout(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> LayoutResult {
         references = .init(repeating: nil)
         for index: UInt16 in 0..<bank.recordCount { references[Int(index)] = bank.reference(at: index) }
         return GiftUILayout.layout(semantic: LocalSemantic(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: limits.layout, workspace: &workspace, sink: &resolved)
@@ -116,7 +116,7 @@ struct StaticCycleGeometry: CycleGeometry {
         precondition(plan.withBase { $0.configure(limits: limits.drawing) })
         return CanvasPlanProducer.derive(source: &source, layout: view, executionContext: context, limits: limits.drawing, workspace: &plan)
     }
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> RenderProductionResult {
+    mutating func preflight(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> RenderProductionResult {
         let layout = view
         let result = withCycleRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &render) }
         if case .success(let header) = result {
@@ -125,7 +125,7 @@ struct StaticCycleGeometry: CycleGeometry {
         }
         return result
     }
-    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult {
+    mutating func produce(_ bank: borrowing SemanticRecordView, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult {
         let layout = view
         return withCycleRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &render, sink: &sink) }
     }

@@ -1,57 +1,110 @@
 import GiftUI
 
 @usableFromInline
-package protocol SemanticRecordPayloadCodec {
-    associatedtype Payload
-    static func primitive<Value: _GiftUISemanticPrimitivePayload>(
-        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+package protocol SemanticRecordPayloadCodec: ~Escapable {
+    associatedtype Sink: SemanticExpansionSink & ~Escapable
+    where Sink.Identity == SemanticCompleteIdentity
+
+    @_lifetime(copy self, copy state)
+    borrowing func makeSink(state: consuming SemanticRecordSinkState) -> Sink
+
+    borrowing func prepare(maximumSemanticNodes: UInt16) -> SemanticExpansionError?
+    borrowing func discardPending()
+    borrowing func ownsPendingCandidate(
+        owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, required: Bool
+    ) -> Bool
+    borrowing func primitive<Value: _GiftUISemanticPrimitivePayload>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
     ) -> SemanticExpansionError?
-    static func modifier<Value: _GiftUISemanticModifierPayload>(
+    borrowing func modifier<Value: _GiftUISemanticModifierPayload>(
         _ value: borrowing Value, chainIndex: UInt16,
-        writer: borrowing SemanticPayloadWriter<Payload>
+        writer: borrowing SemanticPayloadWriter
     ) -> SemanticExpansionError?
-    static func action<Value: GiftUIAction>(
-        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
+    borrowing func action<Value: GiftUIAction>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter
     ) -> SemanticExpansionError?
 }
 
+extension SemanticRecordPayloadCodec where Self: ~Escapable {
+    @inlinable
+    package borrowing func prepare(maximumSemanticNodes: UInt16) -> SemanticExpansionError? { nil }
+    @inlinable
+    package borrowing func discardPending() {}
+    @inlinable
+    package borrowing func ownsPendingCandidate(
+        owner: SemanticRecordOwnerIdentity, bank: UInt8, revision: UInt32, required: Bool
+    ) -> Bool { !required }
+}
+
 @usableFromInline
-package struct SemanticPayloadWriter<Payload>: ~Copyable, ~Escapable {
+package struct SemanticPayloadWriter: ~Copyable, ~Escapable {
     @usableFromInline
-    internal let bank: SemanticRecordBankBuffers<Payload>
+    internal let bank: SemanticRecordBankBuffers
     @usableFromInline
     internal let limits: SemanticRecordLimits
+    @usableFromInline
+    internal let owner: SemanticRecordOwnerIdentity
+    @usableFromInline
+    internal let bankNumber: UInt8
     @_lifetime(borrow bank)
     @usableFromInline
     init(
-        bank: borrowing SemanticRecordBankBuffers<Payload>, limits: SemanticRecordLimits
+        bank: borrowing SemanticRecordBankBuffers, limits: SemanticRecordLimits,
+        owner: SemanticRecordOwnerIdentity, bankNumber: UInt8
     ) {
         self.bank = copy bank
         self.limits = limits
+        self.owner = owner
+        self.bankNumber = bankNumber
     }
     @inlinable
     package borrowing func store(
-        _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind,
+        _ value: consuming SemanticRecordPayload, kind: SemanticRuntimeRecord.Kind,
         chainIndex: UInt16 = 0, text: borrowing Span<UInt32>
     ) -> SemanticExpansionError? {
         bank.store(consume value, kind: kind, chainIndex: chainIndex, text: text, limits: limits)
     }
     @inlinable
     package borrowing func store(
-        _ value: consuming Payload, kind: SemanticRuntimeRecord.Kind,
+        _ value: consuming SemanticRecordPayload, kind: SemanticRuntimeRecord.Kind,
         chainIndex: UInt16 = 0
     ) -> SemanticExpansionError? {
         let empty: InlineArray<0, UInt32> = .init(repeating: 0)
         return store(consume value, kind: kind, chainIndex: chainIndex, text: empty.span)
     }
+
+    /// Canvas reserves its dense typed slot only after every canonical guard.
+    /// The callback may refuse before mutation; a successful reservation is
+    /// followed by an infallible canonical marker commit.
+    @inlinable
+    package borrowing func storeCanvas(
+        additionalBytes: UInt64,
+        reserve: (UInt16, SemanticRecordReference) -> SemanticExpansionError?
+    ) -> SemanticExpansionError? {
+        if let failure = bank.preflightStore(
+            textCount: 0, limits: limits, additionalBytes: additionalBytes)
+        {
+            return failure
+        }
+        let record = bank.paths[Int(bank.metadata.pointee.activePath)].nearestRecord
+        let reference = SemanticRecordReference(
+            owner: owner, bank: bankNumber, revision: bank.metadata.pointee.revision,
+            ordinal: record)
+        if let failure = reserve(bank.metadata.pointee.payloads, reference) { return failure }
+        let empty: InlineArray<0, UInt32> = .init(repeating: 0)
+        bank.commitStore(
+            .canvas, kind: .pendingCanvas, chainIndex: 0, text: empty.span,
+            additionalBytes: additionalBytes)
+        return nil
+    }
 }
 
 @usableFromInline
-struct RecordWorkspace<Roles: SemanticDeclarationRoles, Payload>: SemanticExpansionWorkspace {
+struct RecordWorkspace<Roles: SemanticDeclarationRoles>: SemanticExpansionWorkspace {
     @usableFromInline
     typealias Identity = SemanticCompleteIdentity
     @usableFromInline
-    let bank: SemanticRecordBankBuffers<Payload>
+    let bank: SemanticRecordBankBuffers
     @usableFromInline
     let limits: SemanticRecordLimits
     @usableFromInline
@@ -60,7 +113,7 @@ struct RecordWorkspace<Roles: SemanticDeclarationRoles, Payload>: SemanticExpans
     var isExpanding = false
     @inlinable
     @inline(__always)
-    init(bank: SemanticRecordBankBuffers<Payload>, limits: SemanticRecordLimits) {
+    init(bank: SemanticRecordBankBuffers, limits: SemanticRecordLimits) {
         self.bank = bank
         self.limits = limits
     }
@@ -132,142 +185,41 @@ struct RecordWorkspace<Roles: SemanticDeclarationRoles, Payload>: SemanticExpans
     }
 }
 
-@usableFromInline
-struct RecordSink<Codec: SemanticRecordPayloadCodec>: SemanticExpansionSink {
-    @usableFromInline
-    typealias Identity = SemanticCompleteIdentity
-    @usableFromInline
-    let bank: SemanticRecordBankBuffers<Codec.Payload>
-    @usableFromInline
-    let limits: SemanticRecordLimits
-    @usableFromInline
-    let expansion: SemanticExpansionLimits
-    @usableFromInline
-    var bodyCount: UInt16 = 0
-    @usableFromInline
-    var semanticCount: UInt16 = 0
-    @usableFromInline
-    var modifierCount: UInt16 = 0
-    @usableFromInline
-    var actionCount: UInt16 = 0
-    @inlinable
-    @inline(__always)
-    init(
-        bank: SemanticRecordBankBuffers<Codec.Payload>, limits: SemanticRecordLimits,
-        expansion: SemanticExpansionLimits
-    ) {
-        self.bank = bank
-        self.limits = limits
-        self.expansion = expansion
-    }
-    @usableFromInline
-    var stagingFailure: SemanticExpansionError? { bank.metadata.pointee.failure }
-    @usableFromInline
-    var maximumStructuralOccurrences: UInt16 { limits.records }
-    @usableFromInline
-    var maximumBodyEvaluations: UInt16 { expansion.maximumBodyEvaluations }
-    @usableFromInline
-    var maximumSemanticOccurrences: UInt16 { expansion.maximumSemanticNodes }
-    @usableFromInline
-    var maximumModifierApplications: UInt16 { expansion.maximumModifierApplications }
-    @usableFromInline
-    var maximumActionOccurrences: UInt16 { expansion.maximumActionOccurrences }
-    @usableFromInline
-    mutating func beginExpansion() -> Bool { bank.metadata.pointee.phase == .expanding }
-    @usableFromInline
-    mutating func stageStructuralOccurrence(identity: borrowing Identity) -> Bool {
-        bank.appendRecord(limits: limits) == nil
-    }
-    @usableFromInline
-    mutating func stageBodyEvaluation(identity: borrowing Identity) -> Bool {
-        bodyCount += 1
-        return true
-    }
-    @inlinable
-    @inline(__always)
-    mutating func stageSemanticOccurrence<Value: _GiftUISemanticPrimitivePayload>(
-        identity: borrowing Identity, payload: borrowing Value
-    ) -> Bool {
-        let writer = SemanticPayloadWriter(bank: bank, limits: limits)
-        if let error = Codec.primitive(payload, writer: writer) {
-            _ = bank.fail(error)
-            return false
-        }
-        semanticCount += 1
-        return true
-    }
-    @inlinable
-    @inline(__always)
-    mutating func stageModifierApplication<Value: _GiftUISemanticModifierPayload>(
-        identity: borrowing Identity, payload: borrowing Value, chainIndex: UInt16
-    ) -> Bool {
-        let writer = SemanticPayloadWriter(bank: bank, limits: limits)
-        if let error = Codec.modifier(payload, chainIndex: chainIndex, writer: writer) {
-            _ = bank.fail(error)
-            return false
-        }
-        modifierCount += 1
-        return true
-    }
-    @inlinable
-    @inline(__always)
-    mutating func stageActionOccurrence<Value: GiftUIAction>(
-        identity: borrowing Identity, action: borrowing Value
-    ) -> Bool {
-        let writer = SemanticPayloadWriter(bank: bank, limits: limits)
-        if let error = Codec.action(action, writer: writer) {
-            _ = bank.fail(error)
-            return false
-        }
-        semanticCount += 1
-        actionCount += 1
-        return true
-    }
-    @inlinable
-    mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
-        guard bank.metadata.pointee.phase == .expanding, bank.metadata.pointee.failure == nil,
-            bank.metadata.pointee.activePath == .max, summary.bodyEvaluationCount == bodyCount,
-            summary.semanticNodeCount == semanticCount,
-            summary.modifierApplicationCount == modifierCount,
-            summary.actionOccurrenceCount == actionCount
-        else { return false }
-        bank.metadata.pointee.summary = summary
-        bank.metadata.pointee.phase = .candidate
-        return true
-    }
-    @usableFromInline
-    mutating func discardExpansion() {}
-    @usableFromInline
-    mutating func resetExpansion() {}
-}
-
 extension SemanticRecordStore {
     @inlinable
     @inline(__always)
     package borrowing func expand<
-        Root: View, Roles: SemanticDeclarationRoles, Codec: SemanticRecordPayloadCodec,
+        Root: View, Roles: SemanticDeclarationRoles, Codec: SemanticRecordPayloadCodec & ~Escapable,
         Binding: SemanticStatefulBinding & ~Copyable & ~Escapable
     >(
-        _ root: borrowing Root, roles: Roles.Type, codec: Codec.Type,
+        _ root: borrowing Root, roles: Roles.Type, codec: borrowing Codec,
         limits: SemanticExpansionLimits, binding: consuming Binding
     ) -> BoundSemanticExpansionResult<Binding.Failure>
     where
-        Root.Domain == Binding.Domain, Binding.Identity == SemanticCompleteIdentity,
-        Codec.Payload == Payload
+        Root.Domain == Binding.Domain, Binding.Identity == SemanticCompleteIdentity
     {
         let number: UInt8
         do throws(SemanticExpansionError) { number = try beginCandidate() } catch {
             return .semanticFailure(error)
         }
         guard let bank = expansionBank(number) else { return .semanticFailure(.invariantViolation) }
-        var workspace = RecordWorkspace<Roles, Payload>(bank: bank, limits: self.limits)
-        var sink = RecordSink<Codec>(bank: bank, limits: self.limits, expansion: limits)
-        let result = expandSemanticTreeWithStateBinding(
-            root, limits: limits, workspace: &workspace, sink: &sink, stateBinding: consume binding)
+        if let error = codec.prepare(maximumSemanticNodes: limits.maximumSemanticNodes) {
+            bank.clear()
+            return .semanticFailure(error)
+        }
+        var workspace = RecordWorkspace<Roles>(bank: bank, limits: self.limits)
+        let state = SemanticRecordSinkState(
+            bank: bank, owner: owner, bankNumber: number,
+            limits: self.limits, expansion: limits)
+        let sink = codec.makeSink(state: consume state)
+        let result = expandSemanticTreeConsumingSinkWithStateBinding(
+            root, limits: limits, workspace: &workspace, sink: consume sink,
+            stateBinding: consume binding)
         switch result {
         case .success: break
         default:
             // This attempt cannot have lent a view before completion.
+            codec.discardPending()
             bank.clear()
         }
         return result

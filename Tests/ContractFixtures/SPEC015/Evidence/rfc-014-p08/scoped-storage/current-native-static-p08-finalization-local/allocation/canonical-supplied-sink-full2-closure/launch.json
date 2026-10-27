@@ -1,0 +1,28 @@
+{
+  "authority": "Human-authorized fresh typedBacking61 full retry after guard review",
+  "start_utc": "2026-10-27T13:31:07.737997+00:00",
+  "deadline_utc": "2026-10-27T17:31:07.737997+00:00",
+  "duration_seconds": 14400,
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--profile",
+    "macos-static",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0vsx7jxp/macos-static",
+    "--host-build",
+    ".build/contracts/p08-scoped-host-p8geas9g",
+    "--collect-failures",
+    "--static-resource-entry-v1"
+  ],
+  "guard_pid": 6373,
+  "watchdog_pid": 6376,
+  "caffeinate_pid": 6375,
+  "guard_armed_before_spawn": true,
+  "wall_and_monotonic_deadlines": true,
+  "output_limit": 2147483648,
+  "reserve": 33554432,
+  "initial_retained_bytes": 801156835,
+  "forecast_bytes": 805306368,
+  "os_limitation": "Process scheduling, suspension or OS failure can delay userspace enforcement; task-local caffeinate mitigates normal idle/system sleep, no absolute OS guarantee."
+}

@@ -1,0 +1,39 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000020884 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF>:
+   20884:      	ldr	x8, [x20]
+   20888:      	ldrb	w9, [x8]
+   2088c:      	cmp	w9, #0x1
+   20890:      	b.ne	0x208fc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x78>
+   20894:      	ldrb	w9, [x8, #0x2f]
+   20898:      	cmp	w9, #0x4
+   2089c:      	b.ne	0x208fc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x78>
+   208a0:      	ldrsh	w9, [x8, #0x18]
+   208a4:      	cmn	w9, #0x1
+   208a8:      	b.ne	0x208fc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x78>
+   208ac:      	ldrh	w9, [x20, #0x6a]
+   208b0:      	cmp	w9, w0, lsr #16
+   208b4:      	b.ne	0x208fc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x78>
+   208b8:      	ldrh	w9, [x20, #0x6c]
+   208bc:      	cmp	w9, w0, uxth
+   208c0:      	b.ne	0x208fc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x78>
+   208c4:      	lsr	x9, x0, #32
+   208c8:      	ldrh	w10, [x20, #0x6e]
+   208cc:      	cmp	w10, w9, uxth
+   208d0:      	b.ne	0x208fc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x78>
+   208d4:      	lsr	x9, x0, #48
+   208d8:      	ldrh	w10, [x20, #0x70]
+   208dc:      	cmp	w10, w9
+   208e0:      	b.ne	0x208fc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x78>
+   208e4:      	stur	x0, [x8, #0x24]
+   208e8:      	strh	w1, [x8, #0x2c]
+   208ec:      	strb	wzr, [x8, #0x2e]
+   208f0:      	mov	w9, #0x2                ; =2
+   208f4:      	strb	w9, [x8]
+   208f8:      	b	0x208f8 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x74>
+		00000000000208f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_468
+   208fc:      	b	0x208fc <_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF+0x78>
+		00000000000208fc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_232

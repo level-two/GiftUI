@@ -1,0 +1,12 @@
+{
+  "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+  "offset": 331403768,
+  "address": "0x193c951f8",
+  "bytes": 4,
+  "hex": "ec050000",
+  "sha256": "70d447ee569695e2ec85639b7c9eb8ef13dcc1a4443de28b3f2f200476f3461e",
+  "dispatch_base": "0x193d1ff20",
+  "actual_literal": "x",
+  "index": 119,
+  "target": "0x193d2050c"
+}

@@ -1,0 +1,59 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000002998 <_$s17P08CounterRuntime0B10RecordSinkV24stageModifierApplication8identity7payload10chainIndexSb18GiftUISemanticCore24SemanticCompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlFAM01_m12UIFixedFrameU0V_Tg5>:
+    2998:      	sub	sp, sp, #0xa0
+    299c:      	stp	x22, x21, [sp, #0x70]
+    29a0:      	stp	x20, x19, [sp, #0x80]
+    29a4:      	stp	x29, x30, [sp, #0x90]
+    29a8:      	add	x29, sp, #0x90
+    29ac:      	mov	x19, x20
+    29b0:      	mov	x21, x3
+    29b4:      	mov	x20, x2
+    29b8:      	mov	x22, x1
+    29bc:      	adrp	x8, 0x2000 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ+0x450>
+		00000000000029bc:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+    29c0:      	ldr	x8, [x8]
+		00000000000029c0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+    29c4:      	ldr	x8, [x8]
+    29c8:      	stur	x8, [x29, #-0x28]
+    29cc:      	add	x0, sp, #0x8
+    29d0:      	mov	x1, x19
+    29d4:      	mov	w2, #0x48               ; =72
+    29d8:      	bl	0x29d8 <_$s17P08CounterRuntime0B10RecordSinkV24stageModifierApplication8identity7payload10chainIndexSb18GiftUISemanticCore24SemanticCompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlFAM01_m12UIFixedFrameU0V_Tg5+0x40>
+		00000000000029d8:  ARM64_RELOC_BRANCH26	_memcpy
+    29dc:      	ldr	w8, [x19, #0x48]
+    29e0:      	ldrb	w9, [x19, #0x4c]
+    29e4:      	ldr	x10, [x19, #0x58]
+    29e8:      	ldr	d0, [x19, #0x50]
+    29ec:      	str	d0, [sp, #0x50]
+    29f0:      	str	x10, [sp, #0x58]
+    29f4:      	str	w8, [sp, #0x60]
+    29f8:      	strb	w9, [sp, #0x64]
+    29fc:      	and	x0, x22, #0xffffffffff
+    2a00:      	and	x1, x20, #0xffffffffffffff
+    2a04:      	add	x20, sp, #0x8
+    2a08:      	mov	x2, #0x0                ; =0
+    2a0c:      	mov	x3, #0x6000000000000000 ; =6917529027641081856
+    2a10:      	mov	x5, x21
+    2a14:      	mov	w4, #0x3                ; =3
+    2a18:      	bl	0x2a18 <_$s17P08CounterRuntime0B10RecordSinkV24stageModifierApplication8identity7payload10chainIndexSb18GiftUISemanticCore24SemanticCompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlFAM01_m12UIFixedFrameU0V_Tg5+0x80>
+		0000000000002a18:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore21SemanticPayloadWriterV5store_4kind10chainIndexAA0D14ExpansionErrorOSgAA0d6RecordE0On_AA0d7RuntimeM0V4KindOs6UInt16VtF
+    2a1c:      	ldur	x8, [x29, #-0x28]
+    2a20:      	adrp	x9, 0x2000 <_$s17P08CounterRuntime0B5RolesO4role2of18GiftUISemanticCore21SemanticRecordingRoleVSgxm_tlFZ+0x450>
+		0000000000002a20:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+    2a24:      	ldr	x9, [x9]
+		0000000000002a24:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+    2a28:      	ldr	x9, [x9]
+    2a2c:      	cmp	x9, x8
+    2a30:      	b.ne	0x2a48 <_$s17P08CounterRuntime0B10RecordSinkV24stageModifierApplication8identity7payload10chainIndexSb18GiftUISemanticCore24SemanticCompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlFAM01_m12UIFixedFrameU0V_Tg5+0xb0>
+    2a34:      	ldp	x29, x30, [sp, #0x90]
+    2a38:      	ldp	x20, x19, [sp, #0x80]
+    2a3c:      	ldp	x22, x21, [sp, #0x70]
+    2a40:      	add	sp, sp, #0xa0
+    2a44:      	b	0x2a44 <_$s17P08CounterRuntime0B10RecordSinkV24stageModifierApplication8identity7payload10chainIndexSb18GiftUISemanticCore24SemanticCompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlFAM01_m12UIFixedFrameU0V_Tg5+0xac>
+		0000000000002a44:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore23SemanticRecordSinkStateV19stageModifierResultySbAA0D14ExpansionErrorOSgF
+    2a48:      	bl	0x2a48 <_$s17P08CounterRuntime0B10RecordSinkV24stageModifierApplication8identity7payload10chainIndexSb18GiftUISemanticCore24SemanticCompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlFAM01_m12UIFixedFrameU0V_Tg5+0xb0>
+		0000000000002a48:  ARM64_RELOC_BRANCH26	___stack_chk_fail

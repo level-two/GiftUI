@@ -1,0 +1,19 @@
+ScopedTraversal: /Users/eugene/work/GiftUI/.build/contracts/spec-006-records/tmpkina5lvq/macos-static
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:397:21: error: cannot copy the lifetime of an Escapable type
+395 | private struct RecordPayloadCodec: SemanticRecordPayloadCodec {
+396 |     typealias Sink = SuppliedRecordSink
+397 |     @_lifetime(copy self, copy state)
+    |                     |- error: cannot copy the lifetime of an Escapable type
+    |                     `- note: use '@_lifetime(borrow self)' instead
+398 |     borrowing func makeSink(state: consuming SemanticRecordSinkState) -> SuppliedRecordSink {
+399 |         SuppliedRecordSink(state: consume state, codec: self)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:423:33: error: cannot copy the lifetime of an Escapable type
+421 |     let codec: RecordPayloadCodec
+422 | 
+423 |     @_lifetime(copy state, copy codec)
+    |                                 |- error: cannot copy the lifetime of an Escapable type
+    |                                 `- note: use '@_lifetime(borrow codec)' instead
+424 |     init(state: consuming SemanticRecordSinkState, codec: borrowing RecordPayloadCodec) {
+425 |         self.state = consume state
+

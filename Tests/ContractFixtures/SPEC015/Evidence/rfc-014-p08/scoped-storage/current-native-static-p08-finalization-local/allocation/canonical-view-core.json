@@ -1,0 +1,227 @@
+{
+  "group": "all exact nongeneric View callees and reader-defer reached by current Static interaction builder",
+  "captures": [
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewV11isCandidateSbvg",
+      "start": "0x20580",
+      "end": "0x205ac",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x20580",
+        "--stop-address=0x205ac",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 868,
+      "stdout_lines": 18,
+      "stdout_sha256": "5a9dc562f9ba2f1d2f711b56e29021113a710a2309db78f3a7bd6d3a4ced2523",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-0.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewV16completeIdentity3forAA0d8CompleteH0VSgAA0dE9ReferenceV_tF",
+      "start": "0x20848",
+      "end": "0x20a8c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x20848",
+        "--stop-address=0x20a8c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 11111,
+      "stdout_lines": 164,
+      "stdout_sha256": "631bfa8f9f26e8c8ff5a9fa43cdf9b2027fdb40faf19fd39dd63ae8935c4fb82",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-1.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewV4bank6number5ownerAcA0dE11BankBuffersVh_s5UInt8VAA0dE13OwnerIdentityVtcfC",
+      "start": "0x203e8",
+      "end": "0x20420",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x203e8",
+        "--stop-address=0x20420",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 776,
+      "stdout_lines": 20,
+      "stdout_sha256": "e2af82cfbbbd18b677718a6e3471e8f80ddf63b8e8e73fff1092ec2882795f93",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-2.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewV5validSbvg",
+      "start": "0x2054c",
+      "end": "0x20580",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x2054c",
+        "--stop-address=0x20580",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 872,
+      "stdout_lines": 20,
+      "stdout_sha256": "2141f9e3c7fb77fcc7521dee13dc8e33e374cc9f5d9c978f9ddfb87f4b4ef3c9",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-3.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewV6recordyAA0d7RuntimeE0VSgAA0dE9ReferenceVF",
+      "start": "0x206dc",
+      "end": "0x20760",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x206dc",
+        "--stop-address=0x20760",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 2521,
+      "stdout_lines": 42,
+      "stdout_sha256": "d593eba2fc7e41d7a0738546e28bfd905ea39fbba95d531c62397ee44c32b265",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-4.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewV7payload2atAA0dE7PayloadOSgs6UInt16V_tF",
+      "start": "0x20760",
+      "end": "0x207b0",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x20760",
+        "--stop-address=0x207b0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1584,
+      "stdout_lines": 28,
+      "stdout_sha256": "732992dbb68c817d2d8354795781e850a16804e70303f982540ce72b525c6a66",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-5.stdout"
+    },
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewVWOh",
+      "start": "0xaf674",
+      "end": "0xaf6a8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xaf674",
+        "--stop-address=0xaf6a8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1130,
+      "stdout_lines": 21,
+      "stdout_sha256": "d1e2bab2448dec09a9cb83d8b42d6b1fe6f9050e7924fbb0ef5f19238a89cbf4",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-6.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore18SemanticRecordViewVWOh",
+      "start": "0x20420",
+      "end": "0x20424",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x20420",
+        "--stop-address=0x20424",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 240,
+      "stdout_lines": 7,
+      "stdout_sha256": "935757760a1dbdd65f41484ac68b464cedc4721f16be4cd8741c052bfe4fa005",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-7.stdout"
+    },
+    {
+      "object": "P08CounterRuntime.o",
+      "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyxs5UInt8V_xAA0deH0VAA0D14ExpansionErrorOYKXEtAJYKlF6$deferL_yylF",
+      "start": "0x9c45c",
+      "end": "0x9c4b0",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x9c45c",
+        "--stop-address=0x9c4b0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1575,
+      "stdout_lines": 28,
+      "stdout_sha256": "c79e1aa81dc360cadcfca0cff2e4448dab4eb9b9141d92dd9d1649e9c5edbf96",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-8.stdout"
+    },
+    {
+      "object": "GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV8withViewyxs5UInt8V_xAA0deH0VAA0D14ExpansionErrorOYKXEtAJYKlF6$deferL_yylF",
+      "start": "0x20394",
+      "end": "0x203e8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x20394",
+        "--stop-address=0x203e8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "stdout_bytes": 1576,
+      "stdout_lines": 28,
+      "stdout_sha256": "a93b3224d61d84e70269f253cfd53e3c2e09b0440322fa2a1fcc0d19a52e7c26",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw": "canonical-view-core-9.stdout"
+    }
+  ],
+  "bytes": 22253,
+  "lines": 376
+}

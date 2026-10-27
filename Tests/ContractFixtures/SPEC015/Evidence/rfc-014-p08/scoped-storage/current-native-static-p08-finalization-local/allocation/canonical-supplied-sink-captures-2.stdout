@@ -1,0 +1,94 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000003678 <_$s17P08CounterRuntime0B14PendingBackingV8capturess11InlineArrayVy$23_0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGSgGvpfiTm>:
+    3678:      	sub	sp, sp, #0x20
+    367c:      	stp	x29, x30, [sp, #0x10]
+    3680:      	bl	0x3680 <_$s17P08CounterRuntime0B14PendingBackingV8capturess11InlineArrayVy$23_0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGSgGvpfiTm+0x8>
+		0000000000003680:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_40
+    3684:      	str	xzr, [x8]
+    3688:      	strh	wzr, [x8, #0x8]
+    368c:      	mov	w9, #0x1                ; =1
+    3690:      	strb	w9, [x8, #0xa]
+    3694:      	stur	xzr, [x8, #0xc]
+    3698:      	strh	wzr, [x8, #0x14]
+    369c:      	strb	w9, [x8, #0x16]
+    36a0:      	str	xzr, [x8, #0x18]
+    36a4:      	strh	wzr, [x8, #0x20]
+    36a8:      	strb	w9, [x8, #0x22]
+    36ac:      	stur	xzr, [x8, #0x24]
+    36b0:      	strh	wzr, [x8, #0x2c]
+    36b4:      	strb	w9, [x8, #0x2e]
+    36b8:      	str	xzr, [x8, #0x30]
+    36bc:      	strh	wzr, [x8, #0x38]
+    36c0:      	strb	w9, [x8, #0x3a]
+    36c4:      	stur	xzr, [x8, #0x3c]
+    36c8:      	strh	wzr, [x8, #0x44]
+    36cc:      	strb	w9, [x8, #0x46]
+    36d0:      	str	xzr, [x8, #0x48]
+    36d4:      	strh	wzr, [x8, #0x50]
+    36d8:      	strb	w9, [x8, #0x52]
+    36dc:      	stur	xzr, [x8, #0x54]
+    36e0:      	strh	wzr, [x8, #0x5c]
+    36e4:      	strb	w9, [x8, #0x5e]
+    36e8:      	str	xzr, [x8, #0x60]
+    36ec:      	strh	wzr, [x8, #0x68]
+    36f0:      	strb	w9, [x8, #0x6a]
+    36f4:      	stur	xzr, [x8, #0x6c]
+    36f8:      	strh	wzr, [x8, #0x74]
+    36fc:      	strb	w9, [x8, #0x76]
+    3700:      	str	xzr, [x8, #0x78]
+    3704:      	strh	wzr, [x8, #0x80]
+    3708:      	strb	w9, [x8, #0x82]
+    370c:      	stur	xzr, [x8, #0x84]
+    3710:      	strh	wzr, [x8, #0x8c]
+    3714:      	strb	w9, [x8, #0x8e]
+    3718:      	str	xzr, [x8, #0x90]
+    371c:      	strh	wzr, [x8, #0x98]
+    3720:      	strb	w9, [x8, #0x9a]
+    3724:      	stur	xzr, [x8, #0x9c]
+    3728:      	strh	wzr, [x8, #0xa4]
+    372c:      	strb	w9, [x8, #0xa6]
+    3730:      	str	xzr, [x8, #0xa8]
+    3734:      	strh	wzr, [x8, #0xb0]
+    3738:      	strb	w9, [x8, #0xb2]
+    373c:      	stur	xzr, [x8, #0xb4]
+    3740:      	strh	wzr, [x8, #0xbc]
+    3744:      	strb	w9, [x8, #0xbe]
+    3748:      	str	xzr, [x8, #0xc0]
+    374c:      	strh	wzr, [x8, #0xc8]
+    3750:      	strb	w9, [x8, #0xca]
+    3754:      	stur	xzr, [x8, #0xcc]
+    3758:      	strh	wzr, [x8, #0xd4]
+    375c:      	strb	w9, [x8, #0xd6]
+    3760:      	str	xzr, [x8, #0xd8]
+    3764:      	strh	wzr, [x8, #0xe0]
+    3768:      	strb	w9, [x8, #0xe2]
+    376c:      	stur	xzr, [x8, #0xe4]
+    3770:      	strh	wzr, [x8, #0xec]
+    3774:      	strb	w9, [x8, #0xee]
+    3778:      	str	xzr, [x8, #0xf0]
+    377c:      	strh	wzr, [x8, #0xf8]
+    3780:      	strb	w9, [x8, #0xfa]
+    3784:      	stur	xzr, [x8, #0xfc]
+    3788:      	strh	wzr, [x8, #0x104]
+    378c:      	strb	w9, [x8, #0x106]
+    3790:      	str	xzr, [x8, #0x108]
+    3794:      	strh	wzr, [x8, #0x110]
+    3798:      	strb	w9, [x8, #0x112]
+    379c:      	add	x10, x8, #0x114
+    37a0:      	str	xzr, [x10]
+    37a4:      	strh	wzr, [x8, #0x11c]
+    37a8:      	strb	w9, [x8, #0x11e]
+    37ac:      	bl	0x37ac <_$s17P08CounterRuntime0B14PendingBackingV8capturess11InlineArrayVy$23_0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGSgGvpfiTm+0x134>
+		00000000000037ac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_182
+    37b0:      	bl	0x37b0 <_$s17P08CounterRuntime0B14PendingBackingV8capturess11InlineArrayVy$23_0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGSgGvpfiTm+0x138>
+		00000000000037b0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1612
+    37b4:      	b.ne	0x37c0 <_$s17P08CounterRuntime0B14PendingBackingV8capturess11InlineArrayVy$23_0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGSgGvpfiTm+0x148>
+    37b8:      	ldp	x29, x30, [sp, #0x10]
+    37bc:      	b	0x37bc <_$s17P08CounterRuntime0B14PendingBackingV8capturess11InlineArrayVy$23_0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGSgGvpfiTm+0x144>
+		00000000000037bc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_985
+    37c0:      	bl	0x37c0 <_$s17P08CounterRuntime0B14PendingBackingV8capturess11InlineArrayVy$23_0aB5Table0aB18SchemaCanvasValuesOyAA0B6DomainOGSgGvpfiTm+0x148>
+		00000000000037c0:  ARM64_RELOC_BRANCH26	___stack_chk_fail

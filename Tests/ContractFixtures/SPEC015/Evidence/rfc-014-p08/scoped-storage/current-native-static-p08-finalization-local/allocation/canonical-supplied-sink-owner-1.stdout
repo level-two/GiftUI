@@ -1,0 +1,11 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000021a8 <_$s17P08CounterRuntime0B13SemanticCodecV04makeE05state8captures15payloadOrdinals8capacityACSpy13GiftUIDrawing21CanvasPendingMetadataVG_Sry0aB5Table0ab6SchemaN6ValuesOyAA0B6DomainOGSgGSrys6UInt16VGAVtFZ>:
+    21a8:      	stp	x0, x1, [x8]
+    21ac:      	stp	x2, x3, [x8, #0x10]
+    21b0:      	str	x4, [x8, #0x20]
+    21b4:      	strh	w5, [x8, #0x28]
+    21b8:      	ret

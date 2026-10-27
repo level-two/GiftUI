@@ -1,0 +1,18 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000029048 <___swift_instantiateGenericMetadata>:
+   29048:      	sub	sp, sp, #0x30
+   2904c:      	stp	x29, x30, [sp, #0x20]
+   29050:      	add	x29, sp, #0x20
+   29054:      	stp	x1, x2, [sp, #0x8]
+   29058:      	str	x3, [sp, #0x18]
+   2905c:      	add	x1, sp, #0x8
+   29060:      	mov	x2, x4
+   29064:      	bl	0x29064 <___swift_instantiateGenericMetadata+0x1c>
+		0000000000029064:  ARM64_RELOC_BRANCH26	_swift_getGenericMetadata
+   29068:      	ldp	x29, x30, [sp, #0x20]
+   2906c:      	add	sp, sp, #0x30
+   29070:      	ret

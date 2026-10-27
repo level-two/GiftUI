@@ -4,16 +4,16 @@ import GiftUI
 /// Escapable-result callback ends; neither this scope nor a reader may escape.
 @inlinable
 @inline(__always)
-package func withSemanticRecordStore<Payload, Result>(
+package func withSemanticRecordStore<Result>(
     metadata: inout MutableSpan<SemanticRecordBankMetadata>,
     records: inout MutableSpan<SemanticRuntimeRecord>,
     paths: inout MutableSpan<SemanticPathEntry>,
-    payloads: inout MutableSpan<Payload?>,
+    payloads: inout MutableSpan<SemanticRecordPayload?>,
     scalars: inout MutableSpan<UInt32>,
     limits: SemanticRecordLimits,
     capacity: SemanticRecordLimits? = nil,
     owner: SemanticRecordOwnerIdentity,
-    _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result
+    _ body: (borrowing SemanticRecordStore) throws(SemanticExpansionError) -> Result
 ) throws(SemanticExpansionError) -> Result {
     let capacity = capacity ?? limits
     guard capacity.records >= limits.records, capacity.paths >= limits.paths,
@@ -32,7 +32,7 @@ package func withSemanticRecordStore<Payload, Result>(
                     (payloadBuffer) throws(SemanticExpansionError) in
                     try scalars.withUnsafeMutableBufferPointer {
                         (scalarBuffer) throws(SemanticExpansionError) in
-                        func bank(_ number: Int) -> SemanticRecordBankBuffers<Payload> {
+                        func bank(_ number: Int) -> SemanticRecordBankBuffers {
                             SemanticRecordBankBuffers(
                                 metadata: meta.baseAddress! + number,
                                 records: .init(
@@ -68,11 +68,11 @@ package func withSemanticRecordStore<Payload, Result>(
 }
 
 @usableFromInline
-package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
+package struct SemanticRecordStore: ~Copyable, ~Escapable {
     @usableFromInline
-    let a: SemanticRecordBankBuffers<Payload>
+    let a: SemanticRecordBankBuffers
     @usableFromInline
-    let b: SemanticRecordBankBuffers<Payload>
+    let b: SemanticRecordBankBuffers
     @usableFromInline
     package let limits: SemanticRecordLimits
     @usableFromInline
@@ -80,8 +80,8 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     @_lifetime(borrow a, borrow b)
     @usableFromInline
     init(
-        a: borrowing SemanticRecordBankBuffers<Payload>,
-        b: borrowing SemanticRecordBankBuffers<Payload>, limits: SemanticRecordLimits,
+        a: borrowing SemanticRecordBankBuffers,
+        b: borrowing SemanticRecordBankBuffers, limits: SemanticRecordLimits,
         owner: SemanticRecordOwnerIdentity
     ) {
         self.a = copy a
@@ -91,13 +91,13 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     }
     @_lifetime(copy self)
     @inlinable
-    package borrowing func borrowedStore() -> SemanticRecordStore<Payload> {
+    package borrowing func borrowedStore() -> SemanticRecordStore {
         SemanticRecordStore(borrowing: self)
     }
 
     @_lifetime(copy other)
     @inlinable
-    internal init(borrowing other: borrowing SemanticRecordStore<Payload>) {
+    internal init(borrowing other: borrowing SemanticRecordStore) {
         a = other.a
         b = other.b
         limits = other.limits
@@ -105,7 +105,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     }
 
     @inlinable
-    borrowing func bank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload> {
+    borrowing func bank(_ number: UInt8) -> SemanticRecordBankBuffers {
         number == 0 ? a : b
     }
     @inlinable
@@ -161,6 +161,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
             if selected.metadata.pointee.phase == .candidate
                 || selected.metadata.pointee.phase == .expanding
             {
+                guard !hasPendingCanvas(selected) else { throw .invariantViolation }
                 if selected.metadata.pointee.readers == 0 {
                     selected.clear()
                 } else {
@@ -170,6 +171,48 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
             }
         }
         throw .invariantViolation
+    }
+
+    /// Typed pending values belong to this attempt, not a published bank.
+    /// Preserve the candidate/phase checks before releasing that side pool.
+    @inlinable
+    package borrowing func discardCandidate<Codec: SemanticRecordPayloadCodec & ~Escapable>(
+        using codec: borrowing Codec
+    ) throws(SemanticExpansionError) {
+        for number: UInt8 in 0 ..< 2 {
+            let selected = bank(number)
+            if selected.metadata.pointee.phase == .candidate
+                || selected.metadata.pointee.phase == .expanding
+            {
+                guard
+                    codec.ownsPendingCandidate(
+                        owner: owner, bank: number, revision: selected.metadata.pointee.revision,
+                        required: hasPendingCanvas(selected))
+                else { throw .invariantViolation }
+                codec.discardPending()
+                if selected.metadata.pointee.readers == 0 {
+                    selected.clear()
+                } else {
+                    selected.metadata.pointee.phase = .retired
+                }
+                return
+            }
+        }
+        throw .invariantViolation
+    }
+
+    @inlinable
+    package borrowing func validatePendingCandidate<Codec: SemanticRecordPayloadCodec & ~Escapable>(
+        using codec: borrowing Codec
+    ) throws(SemanticExpansionError) {
+        guard let candidate else { throw .invariantViolation }
+        let selected = bank(candidate)
+        guard selected.metadata.pointee.readers == 0 else { throw .reentrancyViolation }
+        guard
+            codec.ownsPendingCandidate(
+                owner: owner, bank: candidate, revision: selected.metadata.pointee.revision,
+                required: hasPendingCanvas(selected))
+        else { throw .invariantViolation }
     }
     /// The caller has prepared all other candidate products. This is the
     /// semantic-bank swap, not accepted-offer action routing.
@@ -189,13 +232,13 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     @inlinable
     @inline(__always)
     package borrowing func withCandidateView<Result>(
-        _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
+        _ body: (borrowing SemanticRecordView) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
         guard let candidate, !hasPendingCanvas(bank(candidate)) else { throw .invariantViolation }
         return try withView(candidate, body)
     }
     @inlinable
-    borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>) -> Bool {
+    borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers) -> Bool {
         for index in 0 ..< Int(bank.metadata.pointee.records) {
             if bank.records[index].kind == .pendingCanvas { return true }
         }
@@ -207,7 +250,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     /// this candidate and any already-transferred entries.
     @inlinable
     package borrowing func takePendingCanvas(
-        _ body: (SemanticRecordReference, inout Payload) throws(SemanticExpansionError) -> Void
+        _ body: (SemanticRecordReference, UInt16) throws(SemanticExpansionError) -> Void
     ) throws(SemanticExpansionError) {
         guard let candidate else { throw .invariantViolation }
         let selected = bank(candidate)
@@ -216,12 +259,12 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
             let record = selected.records[index]
             guard record.kind == .pendingCanvas else { continue }
             guard record.payload < selected.metadata.pointee.payloads,
-                selected.payloads[Int(record.payload)] != nil
+                case .canvas? = selected.payloads[Int(record.payload)]
             else { throw .invariantViolation }
             let reference = SemanticRecordReference(
                 owner: owner, bank: candidate,
                 revision: selected.metadata.pointee.revision, ordinal: UInt16(index))
-            try body(reference, &selected.payloads[Int(record.payload)]!)
+            try body(reference, record.payload)
             selected.records[index].kind = .primitive
         }
     }
@@ -229,7 +272,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     @inlinable
     @inline(__always)
     package borrowing func withPublishedView<Result>(
-        _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
+        _ body: (borrowing SemanticRecordView) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
         guard let published else { throw .invariantViolation }
         return try withView(published, body)
@@ -238,7 +281,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     @inline(__always)
     borrowing func withView<Result>(
         _ number: UInt8,
-        _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
+        _ body: (borrowing SemanticRecordView) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
         let selected = bank(number)
         let readers = selected.metadata.pointee.readers.addingReportingOverflow(1)
@@ -257,7 +300,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
 
     // Restricted to the sole Semantic Core traversal adapter in this module.
     @inlinable
-    borrowing func expansionBank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload>? {
+    borrowing func expansionBank(_ number: UInt8) -> SemanticRecordBankBuffers? {
         guard number < 2 else { return nil }
         let selected = bank(number)
         guard selected.metadata.pointee.phase == .expanding else { return nil }
@@ -265,70 +308,199 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     }
 }
 
+/// Shared expansion bookkeeping owns no capture or codec. Concrete supplied
+/// sinks forward here while retaining their separately checked codec loan.
 @usableFromInline
-package struct SemanticRecordView<Payload>: ~Escapable {
-    private let bank: SemanticRecordBankBuffers<Payload>
-    package let bankNumber: UInt8
-    package let revision: UInt32
+package struct SemanticRecordSinkState: ~Escapable {
+    private let bank: SemanticRecordBankBuffers
     private let owner: SemanticRecordOwnerIdentity
+    private let bankNumber: UInt8
+    private let limits: SemanticRecordLimits
+    private let expansion: SemanticExpansionLimits
+    private var bodyCount: UInt16 = 0
+    private var semanticCount: UInt16 = 0
+    private var modifierCount: UInt16 = 0
+    private var actionCount: UInt16 = 0
     @_lifetime(borrow bank)
     @usableFromInline
     init(
-        bank: borrowing SemanticRecordBankBuffers<Payload>, number: UInt8,
+        bank: borrowing SemanticRecordBankBuffers,
+        owner: SemanticRecordOwnerIdentity, bankNumber: UInt8, limits: SemanticRecordLimits,
+        expansion: SemanticExpansionLimits
+    ) {
+        self.owner = owner
+        self.bankNumber = bankNumber
+        self.bank = copy bank
+        self.limits = limits
+        self.expansion = expansion
+    }
+    @usableFromInline
+    package var stagingFailure: SemanticExpansionError? { bank.metadata.pointee.failure }
+    @usableFromInline
+    package var maximumStructuralOccurrences: UInt16 { limits.records }
+    @usableFromInline
+    package var maximumBodyEvaluations: UInt16 { expansion.maximumBodyEvaluations }
+    @usableFromInline
+    package var maximumSemanticOccurrences: UInt16 { expansion.maximumSemanticNodes }
+    @usableFromInline
+    package var maximumModifierApplications: UInt16 { expansion.maximumModifierApplications }
+    @usableFromInline
+    package var maximumActionOccurrences: UInt16 { expansion.maximumActionOccurrences }
+    @usableFromInline
+    package mutating func beginExpansion() -> Bool { bank.metadata.pointee.phase == .expanding }
+    @usableFromInline
+    package mutating func stageStructuralOccurrence(identity: borrowing SemanticCompleteIdentity)
+        -> Bool
+    {
+        bank.appendRecord(limits: limits) == nil
+    }
+    @usableFromInline
+    package mutating func stageBodyEvaluation(identity: borrowing SemanticCompleteIdentity) -> Bool
+    {
+        bodyCount += 1
+        return true
+    }
+    @_lifetime(borrow self)
+    @usableFromInline
+    package borrowing func payloadWriter() -> SemanticPayloadWriter {
+        SemanticPayloadWriter(bank: bank, limits: limits, owner: owner, bankNumber: bankNumber)
+    }
+    @usableFromInline
+    package mutating func stageSemanticResult(_ error: SemanticExpansionError?) -> Bool {
+        if let error {
+            _ = bank.fail(error)
+            return false
+        }
+        semanticCount += 1
+        return true
+    }
+    @usableFromInline
+    package mutating func stageModifierResult(_ error: SemanticExpansionError?) -> Bool {
+        if let error {
+            _ = bank.fail(error)
+            return false
+        }
+        modifierCount += 1
+        return true
+    }
+    @usableFromInline
+    package mutating func stageActionResult(_ error: SemanticExpansionError?) -> Bool {
+        if let error {
+            _ = bank.fail(error)
+            return false
+        }
+        semanticCount += 1
+        actionCount += 1
+        return true
+    }
+    @usableFromInline
+    package mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
+        guard bank.metadata.pointee.phase == .expanding, bank.metadata.pointee.failure == nil,
+            bank.metadata.pointee.activePath == .max, summary.bodyEvaluationCount == bodyCount,
+            summary.semanticNodeCount == semanticCount,
+            summary.modifierApplicationCount == modifierCount,
+            summary.actionOccurrenceCount == actionCount
+        else { return false }
+        bank.metadata.pointee.summary = summary
+        bank.metadata.pointee.phase = .candidate
+        return true
+    }
+    @usableFromInline
+    package mutating func discardExpansion() {}
+    @usableFromInline
+    package mutating func resetExpansion() {}
+}
+
+@frozen
+@usableFromInline
+package struct SemanticRecordView: BitwiseCopyable, ~Escapable {
+    @usableFromInline
+    internal let metadata: UnsafePointer<SemanticRecordBankMetadata>
+    @usableFromInline
+    internal let records: UnsafeBufferPointer<SemanticRuntimeRecord>
+    @usableFromInline
+    internal let paths: UnsafeBufferPointer<SemanticPathEntry>
+    @usableFromInline
+    internal let payloads: UnsafeBufferPointer<SemanticRecordPayload?>
+    @usableFromInline
+    internal let scalars: UnsafeBufferPointer<UInt32>
+    @usableFromInline
+    package let bankNumber: UInt8
+    @usableFromInline
+    package let revision: UInt32
+    @usableFromInline
+    internal let owner: SemanticRecordOwnerIdentity
+    @_lifetime(borrow bank)
+    @inlinable
+    init(
+        bank: borrowing SemanticRecordBankBuffers, number: UInt8,
         owner: SemanticRecordOwnerIdentity
     ) {
         self.owner = owner
-        self.bank = copy bank
+        metadata = UnsafePointer(bank.metadata)
+        records = UnsafeBufferPointer(bank.records)
+        paths = UnsafeBufferPointer(bank.paths)
+        payloads = UnsafeBufferPointer(bank.payloads)
+        scalars = UnsafeBufferPointer(bank.scalars)
         bankNumber = number
         revision = bank.metadata.pointee.revision
     }
-    private var valid: Bool {
-        bank.metadata.pointee.revision == revision && bank.metadata.pointee.readers > 0
-            && (bank.metadata.pointee.phase == .candidate
-                || bank.metadata.pointee.phase == .published
-                || bank.metadata.pointee.phase == .retired)
+    @inlinable
+    internal var valid: Bool {
+        metadata.pointee.revision == revision && metadata.pointee.readers > 0
+            && (metadata.pointee.phase == .candidate
+                || metadata.pointee.phase == .published
+                || metadata.pointee.phase == .retired)
     }
-    package var isCandidate: Bool { valid && bank.metadata.pointee.phase == .candidate }
+    @inlinable
+    package var isCandidate: Bool { valid && metadata.pointee.phase == .candidate }
     package var rootReference: SemanticRecordReference {
         SemanticRecordReference(owner: owner, bank: bankNumber, revision: revision, ordinal: 0)
     }
-    package var recordCount: UInt16 { valid ? bank.metadata.pointee.records : 0 }
-    package var pathCount: UInt16 { valid ? bank.metadata.pointee.paths : 0 }
-    package var payloadCount: UInt16 { valid ? bank.metadata.pointee.payloads : 0 }
-    package var scalarCount: UInt16 { valid ? bank.metadata.pointee.scalars : 0 }
-    package var payloadBytes: UInt32 { valid ? bank.metadata.pointee.payloadBytes : 0 }
+    @inlinable
+    package var recordCount: UInt16 { valid ? metadata.pointee.records : 0 }
+    @inlinable
+    package var pathCount: UInt16 { valid ? metadata.pointee.paths : 0 }
+    @inlinable
+    package var payloadCount: UInt16 { valid ? metadata.pointee.payloads : 0 }
+    package var scalarCount: UInt16 { valid ? metadata.pointee.scalars : 0 }
+    package var payloadBytes: UInt32 { valid ? metadata.pointee.payloadBytes : 0 }
     package var componentComparisons: UInt32 {
-        valid ? bank.metadata.pointee.componentComparisons : 0
+        valid ? metadata.pointee.componentComparisons : 0
     }
+    @inlinable
     package func reference(at ordinal: UInt16) -> SemanticRecordReference? {
         guard valid, ordinal < recordCount else { return nil }
         return SemanticRecordReference(
             owner: owner, bank: bankNumber, revision: revision, ordinal: ordinal)
     }
+    @inlinable
     package func record(_ reference: SemanticRecordReference) -> SemanticRuntimeRecord? {
         guard valid, reference.owner == owner, reference.bank == bankNumber,
             reference.revision == revision,
             reference.ordinal < recordCount
         else { return nil }
-        return bank.records[Int(reference.ordinal)]
+        return records[Int(reference.ordinal)]
     }
-    package func payload(at index: UInt16) -> Payload? {
+    @inlinable
+    package func payload(at index: UInt16) -> SemanticRecordPayload? {
         guard valid, index < payloadCount else { return nil }
-        return bank.payloads[Int(index)]
+        return payloads[Int(index)]
     }
     package func scalar(at index: UInt16) -> UInt32? {
         guard valid, index < scalarCount else { return nil }
-        return bank.scalars[Int(index)]
+        return scalars[Int(index)]
     }
     package func path(at index: UInt16) -> SemanticPathEntry? {
         guard valid, index < pathCount else { return nil }
-        return bank.paths[Int(index)]
+        return paths[Int(index)]
     }
+    @inlinable
     package func completeIdentity(for reference: SemanticRecordReference)
         -> SemanticCompleteIdentity?
     {
         guard let record = record(reference), record.path < pathCount,
-            bank.paths[Int(record.path)].component.kind == .declarationRole
+            paths[Int(record.path)].component.kind == .declarationRole
         else { return nil }
         var reversed: InlineArray<34, SemanticPathComponent> = .init(repeating: .init(kind: .root))
         var cursor = record.path
@@ -337,7 +509,7 @@ package struct SemanticRecordView<Payload>: ~Escapable {
             guard cursor < pathCount, count < Int(SemanticCompleteIdentity.capacity) else {
                 return nil
             }
-            let entry = bank.paths[Int(cursor)]
+            let entry = paths[Int(cursor)]
             guard entry.parent == .max || entry.parent < cursor else { return nil }
             reversed[count] = entry.component
             count += 1

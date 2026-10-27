@@ -1,0 +1,64 @@
+{
+  "normalization": "ONLY zero-based fields4/8 in exact SO06 role lines; require14whitespace fields, field11=>, numeric addresses. Preserve all other bytes/whitespace/line order. No other normalization.",
+  "comparisons": [
+    {
+      "baseline": "canonical_focused",
+      "kind": "mixed_execution",
+      "before": ".build/contracts/p08-counter-qzv33chp/result.json",
+      "after": ".build/contracts/p08-counter-fl05ri46/result.json",
+      "before_raw_sha256": "1d0e43fafe2e53d4008f631ec1f42402bb2256bdb2bb6310349d7f3552c4d579",
+      "after_raw_sha256": "3b08c8a0bdbbbe23e77bcf01c4e162dc3118dd2ebf66ee243547e40d8f28e742",
+      "before_normalized_sha256": "74a2e6e67479b6835dc5c4571f6909972b0b514e4ce9e38959a10bc63f223199",
+      "after_normalized_sha256": "74a2e6e67479b6835dc5c4571f6909972b0b514e4ce9e38959a10bc63f223199",
+      "role_lines_before": 120,
+      "role_lines_after": 120,
+      "equal": true
+    },
+    {
+      "baseline": "canonical_focused",
+      "kind": "static_resource_log",
+      "before": ".build/contracts/p08-counter-qzv33chp/static-resource-v1-execute.log",
+      "after": ".build/contracts/p08-counter-fl05ri46/static-resource-v1-execute.log",
+      "before_raw_sha256": "93fcf7150c0a38893ee4b9d9dda569caeda02390d53b3e939dc1dd4e859457c7",
+      "after_raw_sha256": "baaba0bad8359ab4303ad82bcbd6d9a06e1460f4b47e75ed70db20fa1e7e88d6",
+      "before_normalized_sha256": "f0ef5dc8fbf40b95b1651a27fc89da99c5ac3a88f1b3c351e3190dd3b969a03e",
+      "after_normalized_sha256": "f0ef5dc8fbf40b95b1651a27fc89da99c5ac3a88f1b3c351e3190dd3b969a03e",
+      "role_lines_before": 60,
+      "role_lines_after": 60,
+      "equal": true
+    },
+    {
+      "baseline": "committed_product_full",
+      "kind": "mixed_execution",
+      "before": ".build/contracts/p08-counter-iher3bin/result.json",
+      "after": ".build/contracts/p08-counter-fl05ri46/result.json",
+      "before_raw_sha256": "9ba831f2da019ca8df7fbf7880764f44dbc7ce4bfc4f1861eedbfca876c7f849",
+      "after_raw_sha256": "3b08c8a0bdbbbe23e77bcf01c4e162dc3118dd2ebf66ee243547e40d8f28e742",
+      "before_normalized_sha256": "2cc97101a4ab66797c1a5bc3486e7b3ad212ced231f5523793b345a7bbb13508",
+      "after_normalized_sha256": "74a2e6e67479b6835dc5c4571f6909972b0b514e4ce9e38959a10bc63f223199",
+      "role_lines_before": 120,
+      "role_lines_after": 120,
+      "equal": false,
+      "first_difference": {
+        "line": 3105,
+        "before": "counter static audit valid(GiftUIRuntimeCore.RuntimeStorageAudit(profile: GiftUIRuntimeCore.RuntimeProfileKind.static, limits: GiftUIRuntimeCore.RuntimeProfileLimits(records: GiftUIRuntimeCore.RuntimeRecordLimits(maximumPathEntries: 192, maximumPathDepth: 24, maximumPathChildFanout: 5, maximumPayloadBytesPerBank: 4096, maximumIdentityComponentsPerKey: 24, maximumInteractionIdentityComponents: 48), models: GiftUIRuntimeCore.RuntimeModelLimits(maximumModelSlots: 2, maximumOwningTickets: 4, maximumFramePins: 2, maximumModelCaptureBanks: 0), semantic: GiftUISemanticCore.SemanticExpansionLimits(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2), maximumSemanticStructuralOccurrences: 64, layout: GiftUILayout.LayoutLimits(maximumScopes: 32, maximumDepth: 12, maximumTextScalars: 64, maximumTextLines: 16, maximumPositionedGlyphs: 64), render: GiftUIRenderLowering.RenderLimits(maximumOperations: 25, maximumPositionedGlyphs: 64, maximumClipDepth: 4), renderWorkspace: GiftUIRenderLowering.RenderWorkspaceCapacity(maximumSemanticScopes: 32, maximumLayoutScopes: 32, maximumTraversalDepth: 12, maximumTextLines: 16), renderSink: GiftUIRenderCore.RenderSinkCapacity(maximumOperations: 25, maximumPositionedGlyphs: 64), maximumOrdinaryRenderOperations: 24, execution: GiftUIExecution.ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2), observableState: GiftUIObservableState.ObservableStateLimits(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1), interaction: GiftUIInteraction.InteractionLimits(maximumActions: 2, maximumHitRegions: 2), drawing: GiftUIDrawing.DrawingLimits(maximumLineWidth: 1, maximumCanvasOccurrences: 1, maximumLivePathPoints: 2, maximumLivePathSubpaths: 1, maximumPlanStrokes: 1, maximumPlanPoints: 2, maximumPlanSubpaths: 1, maximumNormalizedStrokeOperations: 1), staticCanvas: Optional(GiftUIDrawing.StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 12))), semanticCandidatePathBytes: 3840, semanticPublishedPathBytes: 3840, semanticCandidatePayloadBytes: 4864, semanticPublishedPayloadBytes: 4864, identityMatchWorkspaceBytes: 784, interactionCandidateIdentityBytes: 1236, interactionCommittedIdentityBytes: 824, modelMetadataBytes: 193, modelOwnerBytes: 64, framePinBytes: 2, semanticCandidateBytes: 1380, semanticPublishedBytes: 1280, layoutCandidateBytes: 3357, renderWorkspaceBytes: 34, canvasCallableBytes: 32, pathWorkspaceBytes: 20, drawingPlanBytes: 307, observableLiveBytes: 501, observableCandidateBytes: 81, interactionCandidateBytes: 230, interactionCommittedBytes: 120, admissionQueueBytes: 95, sealedBatchBytes: 316, pointerStateBytes: 256, coordinatorStateBytes: 100792, failureStateBytes: 21, totalProfileBytes: 129333))",
+        "after": "counter static audit valid(GiftUIRuntimeCore.RuntimeStorageAudit(profile: GiftUIRuntimeCore.RuntimeProfileKind.static, limits: GiftUIRuntimeCore.RuntimeProfileLimits(records: GiftUIRuntimeCore.RuntimeRecordLimits(maximumPathEntries: 192, maximumPathDepth: 24, maximumPathChildFanout: 5, maximumPayloadBytesPerBank: 4096, maximumIdentityComponentsPerKey: 24, maximumInteractionIdentityComponents: 48), models: GiftUIRuntimeCore.RuntimeModelLimits(maximumModelSlots: 2, maximumOwningTickets: 4, maximumFramePins: 2, maximumModelCaptureBanks: 0), semantic: GiftUISemanticCore.SemanticExpansionLimits(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2), maximumSemanticStructuralOccurrences: 64, layout: GiftUILayout.LayoutLimits(maximumScopes: 32, maximumDepth: 12, maximumTextScalars: 64, maximumTextLines: 16, maximumPositionedGlyphs: 64), render: GiftUIRenderLowering.RenderLimits(maximumOperations: 25, maximumPositionedGlyphs: 64, maximumClipDepth: 4), renderWorkspace: GiftUIRenderLowering.RenderWorkspaceCapacity(maximumSemanticScopes: 32, maximumLayoutScopes: 32, maximumTraversalDepth: 12, maximumTextLines: 16), renderSink: GiftUIRenderCore.RenderSinkCapacity(maximumOperations: 25, maximumPositionedGlyphs: 64), maximumOrdinaryRenderOperations: 24, execution: GiftUIExecution.ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2), observableState: GiftUIObservableState.ObservableStateLimits(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1), interaction: GiftUIInteraction.InteractionLimits(maximumActions: 2, maximumHitRegions: 2), drawing: GiftUIDrawing.DrawingLimits(maximumLineWidth: 1, maximumCanvasOccurrences: 1, maximumLivePathPoints: 2, maximumLivePathSubpaths: 1, maximumPlanStrokes: 1, maximumPlanPoints: 2, maximumPlanSubpaths: 1, maximumNormalizedStrokeOperations: 1), staticCanvas: Optional(GiftUIDrawing.StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 12))), semanticCandidatePathBytes: 3840, semanticPublishedPathBytes: 3840, semanticCandidatePayloadBytes: 4352, semanticPublishedPayloadBytes: 4352, identityMatchWorkspaceBytes: 784, interactionCandidateIdentityBytes: 1236, interactionCommittedIdentityBytes: 824, modelMetadataBytes: 193, modelOwnerBytes: 64, framePinBytes: 2, semanticCandidateBytes: 1380, semanticPublishedBytes: 1280, layoutCandidateBytes: 3357, renderWorkspaceBytes: 34, canvasCallableBytes: 384, pathWorkspaceBytes: 20, drawingPlanBytes: 307, observableLiveBytes: 501, observableCandidateBytes: 81, interactionCandidateBytes: 230, interactionCommittedBytes: 120, admissionQueueBytes: 95, sealedBatchBytes: 316, pointerStateBytes: 256, coordinatorStateBytes: 100840, failureStateBytes: 21, totalProfileBytes: 128709))"
+      }
+    },
+    {
+      "baseline": "committed_product_full",
+      "kind": "static_resource_log",
+      "before": ".build/contracts/p08-counter-iher3bin/static-resource-v1-execute.log",
+      "after": ".build/contracts/p08-counter-fl05ri46/static-resource-v1-execute.log",
+      "before_raw_sha256": "6a88f9dd33a72cfbd0989c821128c77d8ea5a3d1d4db8e78d4bc0f31f6fd996f",
+      "after_raw_sha256": "baaba0bad8359ab4303ad82bcbd6d9a06e1460f4b47e75ed70db20fa1e7e88d6",
+      "before_normalized_sha256": "f0ef5dc8fbf40b95b1651a27fc89da99c5ac3a88f1b3c351e3190dd3b969a03e",
+      "after_normalized_sha256": "f0ef5dc8fbf40b95b1651a27fc89da99c5ac3a88f1b3c351e3190dd3b969a03e",
+      "role_lines_before": 60,
+      "role_lines_after": 60,
+      "equal": true
+    }
+  ],
+  "all_four_equal": false,
+  "execute_log_equals_result_execution": false
+}

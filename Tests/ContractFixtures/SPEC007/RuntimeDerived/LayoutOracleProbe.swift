@@ -30,7 +30,7 @@ private struct Backing: ~Copyable {
     var metadata: InlineArray<2, SemanticRecordBankMetadata> = .init(repeating: .init())
     var records: InlineArray<252, SemanticRuntimeRecord> = .init(repeating: .init())
     var paths: InlineArray<756, SemanticPathEntry> = .init(repeating: .init())
-    var payloads: InlineArray<196, SemanticStandardPayload?> = .init(repeating: nil)
+    var payloads: InlineArray<196, SemanticRecordPayload?> = .init(repeating: nil)
     var scalars: InlineArray<448, UInt32> = .init(repeating: 0)
     mutating func run(owner: SemanticRecordOwnerIdentity) throws(SemanticExpansionError) -> UInt32 {
         var m = metadata.mutableSpan; var r = records.mutableSpan; var p = paths.mutableSpan; var v = payloads.mutableSpan; var s = scalars.mutableSpan
@@ -38,14 +38,14 @@ private struct Backing: ~Copyable {
     }
 }
 private func rectangle(_ x: Int32, _ y: Int32, _ w: Int32, _ h: Int32) -> Rect { Rect(origin: .init(x: x, y: y), size: .init(width: w, height: h)!)! }
-private func seed(_ nodes: [Node], _ store: borrowing SemanticRecordStore<SemanticStandardPayload>, corrupt: Bool = false) throws(SemanticExpansionError) {
+private func seed(_ nodes: [Node], _ store: borrowing SemanticRecordStore, corrupt: Bool = false) throws(SemanticExpansionError) {
     let bank = store.expansionBank(try store.beginCandidate())!
     var scalarCount = 0
     for (index, node) in nodes.enumerated() {
         var record = SemanticRuntimeRecord(); record.parent = node.parent; record.kind = node.kind; record.payload = UInt16(index)
         record.firstTextScalar = UInt16(scalarCount); record.textScalarCount = UInt16(node.text.count)
         for scalar in node.text { bank.scalars[scalarCount] = scalar; scalarCount += 1 }
-        bank.records[index] = record; bank.payloads[index] = node.payload
+        bank.records[index] = record; bank.payloads[index] = .standard(node.payload)
         if node.parent != .max {
             let parent = Int(node.parent)
             let previous = bank.records[parent].lastChild
@@ -58,7 +58,7 @@ private func seed(_ nodes: [Node], _ store: borrowing SemanticRecordStore<Semant
     bank.metadata.pointee.records = UInt16(nodes.count); bank.metadata.pointee.payloads = UInt16(nodes.count)
     bank.metadata.pointee.scalars = UInt16(scalarCount); bank.metadata.pointee.phase = .candidate
 }
-private func exercise(_ store: borrowing SemanticRecordStore<SemanticStandardPayload>) throws(SemanticExpansionError) -> UInt32 {
+private func exercise(_ store: borrowing SemanticRecordStore) throws(SemanticExpansionError) -> UInt32 {
     var checks: UInt32 = 0
     func expect(_ yes: Bool) { checks += 1; precondition(yes) }
     let normal = LayoutLimits(maximumScopes: 98, maximumDepth: 13, maximumTextScalars: 224, maximumTextLines: 98, maximumPositionedGlyphs: 224)!

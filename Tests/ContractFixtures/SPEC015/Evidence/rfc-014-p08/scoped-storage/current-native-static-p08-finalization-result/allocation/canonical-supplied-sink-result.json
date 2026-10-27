@@ -1,0 +1,121 @@
+{
+  "status": "SCOPED_COMPILED_PASS + SIX_CURRENT_GATES_PASS; FULL_TIME_CAP_INCOMPLETE / NO_IMPLEMENTATION_ACCEPTANCE",
+  "claim": "Current representative actual Counter module removes the old standalone generic RecordSink ownership/cleanup dependency using concrete supplied Sink/Codec and opaque nongeneric Core State. Direct new setup/copy/forward/drop and typed pending reserve/transfer/discard/backing-drop closure is fixed. This is not whole traversal safety, zero-heap Static, full P08, or implementation/commit acceptance.",
+  "source_freeze": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-source-freeze.json",
+  "compiled_inputs": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-compiled-inputs.json",
+  "compile": {
+    "attempt": "supplied-sink4",
+    "commands": 12,
+    "actual_counter_sources": 42,
+    "start": "2026-10-27T09:01:32.010452Z",
+    "effective_deadline": "2026-10-27T12:24:23.730904Z",
+    "absolute_phase_cap": "2026-10-27T12:24:28.720613Z",
+    "terminal": "2026-10-27T09:02:19.121366Z",
+    "exit": 0,
+    "runtime_executed": false,
+    "guard_terminal": ".build/contracts/p08-native-static-p08-finalization/supplied-sink4/guard/terminal.json"
+  },
+  "facts": [
+    {
+      "edge": "actual Static builder \u2192 State/Codec/Sink construction",
+      "evidence": "canonical-supplied-sink-builder.json + owners.json",
+      "detail": "6d640\u20136d730 and6d800\u20136d928 use fixed bank/state/descriptor copies. State.publish6da78 precedes exact CounterRecordSink destroy6dac0/6dadc; error cleanup6e154/6e164 uses same concrete destroy. Exact destroy ae814 is ret."
+    },
+    {
+      "edge": "concrete codec factory/witness/state methods",
+      "evidence": "canonical-supplied-sink-owners.json + reached.json + core-support.json + final-support.json",
+      "detail": "Concrete makeCodec21a8/makeSink21bc and their witnesses use fixed descriptor/scalar stores/memcpy. State init20530/writer206ac/result20770/207c4/publish20884 and selected outlines use fixed data and guard/count operations; no generic owner metadata acquisition in those complete bodies."
+    },
+    {
+      "edge": "checked actual Int/Void lender \u2192 callback \u2192 cleanup",
+      "evidence": "canonical-supplied-sink-reached.json",
+      "detail": "Int3454\u20133674 and Void9bc84\u20139bda0 pass fixed descriptors/static CounterCodec metadata to actual callbacks. Normal/error callback returns converge through pending discard238c\u201323dc, which clears fixed12-byte slots/ordinals and resets metadata without calls. Refusal Error witness getter/willThrow remains separately unqualified, not declared heapfree."
+    },
+    {
+      "edge": "actual Canvas occurrence and modifier forwarding \u2192 reservation/commit",
+      "evidence": "canonical-supplied-sink-captures.json + support.json + core-support.json",
+      "detail": "Selected child accfc\u2192CanvasSink2854\u2192primitive24c4: canonical preflight251c precedes pending mutable association/capacity checks; fixed capture+ordinal/count writes precede canonical commit2610. Modifier acdec\u21922998 uses fixed Writer\u2192store\u2192State.result. Core preflight1e1b0/commit1e290 and their complete support use fixed guards/stores."
+    },
+    {
+      "edge": "typed transfer/partial failure",
+      "evidence": "canonical-supplied-sink-reached.json capture6",
+      "detail": "Transfer7ce0\u20138130 validates matching pending before destructive catch, stages concrete capture before clearing source slot, preserves record/ordinal order, final discard on success. Catch discards staged values first, then matching pending/candidate. Independent generic staged/payload operations retain existing applicability limits; no universal no-allocation claim."
+    },
+    {
+      "edge": "full backing initialization/final destruction",
+      "evidence": "canonical-supplied-sink-captures.json + support.json + pending-init-target.json + backing-vwt.json + final-support.json",
+      "detail": "PendingBacking c01e8\u2192outline1959\u2192Dynamic field initializer8291c\u2192merged8293c is explicitly joined; merged constructor initializes24 Optional slots+24 ordinals with fixed stores. SemanticBacking3e3c8 embeds same initialization and fixed other-array setup. All selected outlines are fixed stack/guard/memcpy. Both concrete VWT destroy slots+8 target actual Core ___swift_noop_void_return245d0 ret; take is fixed memcpy352/20064, noncopyable copy slots trap."
+    }
+  ],
+  "changed_existing_operation": {
+    "evidence": "canonical-supplied-sink-baseline-relation.json + baseline-traversal.json; current reached-10.stdout",
+    "detail": "Committed iher3bin Runtime5bee744c\u2026 already requests Traversal<Workspace<Roles,CanvasPayload<Capture>>,RecordSink<CanvasCodec<\u2026>>,sameBinding> at a96ec, its visitor witness at a9708, and feeds both to disabled-child callback a9724. Current ac594/ac5b0/ac5cc performs corresponding operation with Roles-only Workspace and concrete CounterRecordSink. Keys/whole objects differ. This is not evidence that the removed standalone cleanup request relocated there; allocation eligibility of the changed generic carrier remains OPEN, with no byte/cache identity or nonallocating claim."
+  },
+  "complete_semantic_union": {
+    "raw_bytes": 834289,
+    "raw_lines": 8000,
+    "max_bytes": 1048576,
+    "max_lines": 32768,
+    "manifests": [
+      "builder",
+      "owners",
+      "reached",
+      "captures",
+      "support",
+      "core-support",
+      "final-support",
+      "baseline-traversal",
+      "pending-init-target"
+    ],
+    "data_projection": "canonical-supplied-sink-backing-vwt.json",
+    "historical": "All earlier conditional/failed snapshots,17,398-line NONQUALIFIED acquisition and16,455-line NOFIT remain unchanged. Current prospective capture does not retroqualify them."
+  },
+  "cost": "canonical-supplied-sink-cost.json: whole canonical package versus committed product text deltas Core+2876, Drawing+720, CounterRuntime+13192=16788 bytes. Not isolated9-file delta or all-resource certification. New package-SPI State/factories/protocol-associated Sink/getters are visibility/maintenance cost; public query contracts unchanged. Configured Cycle7168/Counter4096 and pending48/24 unchanged.",
+  "failed_attempts": [
+    "supplied-sink1: payloadWriter return lifetime mismatch; reviewed borrow-self correction, initial audit miss preserved.",
+    "supplied-sink2: four borrowed-Self closure captures; reviewed sequential guards/individual descriptor-local correction, all mutation ordering preserved.",
+    "supplied-sink3: implicit Escapable default-extension availability; reviewed both Self:~Escapable headers. Complete raw10816-byte Counter diagnostics preserved, earlier clipped diagnostic unqualified.",
+    "Bounded proof selection lookups failed while locating specialized Text body; complete first five Core raw captures preserved, exact retained branch relocation then selected Runtime definition. No parser/helper/product repair. Prior broad backing symbol display clipped; not used as qualified semantic evidence."
+  ],
+  "validation": {
+    "current_compile": "PASS only",
+    "earlier_functional": "P07/schema4/focused functional passes belong earlier preserved candidates; not transferred to this newly changed source.",
+    "required_current": [
+      "fresh maintained P07",
+      "fresh matching schema4 activation join",
+      "SPEC006 runtime records",
+      "SPEC007 bank layout",
+      "SPEC011 owned keys",
+      "SPEC012 Canvas",
+      "one complete maintained Counter native collection/static-resource-entry-v1",
+      "final full artifact applicability + independent acceptance"
+    ],
+    "runtime_producers_launched": true,
+    "time_forecast": "Prior actual full2h12m55.7s informed authorized uncertain fit. Current full ran8445.995196s to fixed remaining-phase cap and did not complete. Initial unsupported approximately3h forecast/correction preserved; no cap extension.",
+    "current_completed": "Fresh currentP07/schema4/006/007/011/012PASS; exact receipts/input/artifact hashes in canonical-supplied-sink-validation.json.",
+    "full_terminal": "Deadline enforced12:24:21.817770UTC,exit-15;422commands issued, no complete result.json or execute logs; no full/oracle pass or automatic retry.",
+    "terminal_record": "canonical-supplied-sink-terminal.json"
+  },
+  "remaining": [
+    "Changed existing Workspace/Traversal metadata and visitor-witness eligibility unclosed; no joint allocator/safety classification for current carrier.",
+    "Other preexisting declaration/body/opaque type, Error/once/provider/indirect safety frontiers remain explicitly open.",
+    "Actual loaded provider/cache/PAC/environment/stdout/window state unobserved; no cold/live/resource/globalP08 acceptance.",
+    "Unit FAILED; Interaction UNEXECUTED; P09/P10 migration authority unchanged.",
+    "No full/live/source commit or implementation acceptance from compile/scoped removal alone.",
+    "Full aggregate/functional/output-equivalence gate incomplete due timecap; current source/commit acceptance blocked, no source/runtime defect inferred from timeout."
+  ],
+  "accounting": {
+    "last_producer_owned_bytes_before_proof": 564462680,
+    "last_producer_plus_reserve": 598017112,
+    "pre_final_note_retained_local_bytes": 7256820,
+    "pre_final_note_retained_result_bytes": 234673,
+    "pre_final_note_retained_sum": 7491493,
+    "retained_cap": 8388608,
+    "note": "Figures are actual last measurements before this final note/review; later small notes add bytes. No claim of live producer final-size certification, global output completeness or repair of historical clipped displays.",
+    "timing_correction": "The initial README/result approximately3h forecast was corrected during same-package finalization; root identified actual accepted2h12m55.7s record. No producer was launched from the mistaken forecast.",
+    "final_owned_bytes_after_exit_before_terminal_record": 801121244,
+    "final_owned_plus_reserve": 834675676,
+    "final_within_2GiB": true
+  },
+  "source_count": 62
+}

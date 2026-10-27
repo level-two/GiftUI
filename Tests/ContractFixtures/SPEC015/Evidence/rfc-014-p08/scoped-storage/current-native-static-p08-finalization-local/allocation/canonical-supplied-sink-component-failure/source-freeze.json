@@ -1,0 +1,121 @@
+{
+  "strategy": "Root-selected concrete supplied Sink/Codec with shared opaque nongeneric Semantic Core state; no generic owned carrier/fallback",
+  "saved_utc": "2026-10-27T08:15:25.980826+00:00",
+  "sources": {
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": "b41099370167917a51190f473ad0a70626639601de773991450afee6291f3ec7",
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "0d7eee46b5f6a76b7e6efe71de2ee6e4b79512bdf845e5d9fad692a7e8d1f12c",
+    "Sources/GiftUIInteraction/InteractionValues.swift": "7024e145253cea319955948369399b8cb999d59cee59e69d5ed308e3c7fbde82",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift": "cdb4150cf1fd3d8f7ee6c4a320d93ce4d6d9c75e00946ffb4d27e7c1904683fd",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": "30340b08489e83bc909096090e87f7a2b478b7a5b11b1811a458a0a30102d544",
+    "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift": "f0917fd7f0f2f4c4a908ae20c498f42f5ff7d598b339ec68604b3ce67b73619e",
+    "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": "b64482fef6c41c52a07b561f14911068de2eff984870e7e1f93f02bf52def865",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "09420254216e26ba9dd83acee731233a1144459c3cce971cbf0b1897ea268f28",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "ce5cadfaa5c4f3ce58d3cd90ab54b6d08f43356183ebc0aabbf181c7d03f9e7c",
+    "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": "e4fabbc84c3c62ceac89b5942f37e49ce6f0b16594424ab533e55267e29d35d0",
+    "Sources/GiftUISemanticCore/SemanticRecordPayload.swift": "a5000583e2131d12bfdcc99b982462e025bf1eacd6e417449778d2c65630fb6b",
+    "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": "051594389e35ff960160d77051ea49fbe756d0d6d5827bd42339702d0f7c513b",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "28d375b8f83369cc33e0090ab14609f1058f595ff4d4db2aebcdd3207fb1a7fb",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "35a79402b6e69569f54b18933523c2007c4f1f11a54eaa6ed950c4d877340d9a",
+    "Tests/ContractFixtures/SPEC006/RuntimeRecords/EscapeView.swift": "c0886da2b84c19fe115b8a0265e388e76662c57e392c954dbe8e6ba1452fb509",
+    "Tests/ContractFixtures/SPEC006/RuntimeRecords/LayoutProbe.swift": "57167d78047b8286e57800a10aad692c42666d7d8212934ce8f047851ba1c098",
+    "Tests/ContractFixtures/SPEC006/RuntimeRecords/RecordBankProbe.swift": "771e0b746fc435095f38607cd4a77ced7da51127527fe187e72dfbd7c578ccd2",
+    "Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift": "1a3ceab58106df5115f941549e20557843a3eee9038b15f3ea10d8b2e5831958",
+    "Tests/ContractFixtures/SPEC007/RuntimeDerived/EscapeLayout.swift": "782770b1f54b34336d3379b61d47b9cf3df4dbd3d5b3929e31e4cd670abf4e15",
+    "Tests/ContractFixtures/SPEC007/RuntimeDerived/EscapeRender.swift": "4c6f6516d6c5d36446eeae28e67bdeb9e685fffe7644eb29a59c1a90ac34570e",
+    "Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutOracleProbe.swift": "34ea0949c117be3aa0410ea18c49c86a5da7eab7b86d1b13b3f2d0aecc691e17",
+    "Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift": "50c53f36c1e628423148887fa115de36c327b6bc7124348e4adf24bea33d3338",
+    "Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift": "999ce06013ee81af28129adf27b5b24f0b2fe8de7f53fa50d59f1aaa46122ff9",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasLayoutProbe.swift": "dd179aa566b3f550049e2eb54ca24865a48aeaa24e30009576b25117ca986e48",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift": "50a89637bc634751470f5ddc6fd6a23fdbd4802446da012b2478e2e6cb801fc1",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift": "bba3ab7fd8505f625f7dc0a2ca6c9dca195de8205e879a0debaa73261295942a",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleGeometry.swift": "36e6bd5c4895403e7c5f0203337a88cfa61575beb1de04fba876654ec1464a1e",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift": "1e0cc44d44b7f4945625ceaec5160238eff026bca50ea5af8e78cf215663d9ab",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift": "714a758be180f9dc066b874ed94a1f773e12b6d4040bc96746cf64e02ac81588",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift": "14fa807f7bae06161911cd7e14d9eeae4e5dcd5fe617541fa9fc09e26db8d600",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleRenderProbe.swift": "fcac99a52000020b36e011e7c6324e06f106f5c7729ecb0db0dacc732a937edc",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift": "311ce74277c3ba3c6e253755e2223b4874703057792687a282fa8e1e107845f2",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStaticDrawing.swift": "9b5b3191939943958e96eb5d9be15e3ffa29ef74fbc4b204db25a3ee16cc8239",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift": "d06bdfe40d8d081d3767fe7ae116546210ec2cc9860965e98d813117f3ce5335",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinBackingNegative.swift": "f64f97f67ba272e1f4c59aa037821070412007c1594bd83a10ae782d5f3cbb8d",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCallbackNegative.swift": "1a22df14e073390f7eb59895b7089620c591d0589580aadfc7a2c9a2f92a1a58",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinConstantCallbackNegative.swift": "ea195e3466e0201f2b33b1ea21d1ae181963ad3817792051bc431cb76f08e69c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCopyNegative.swift": "201e0810ec3f110c7995080e35dff3b9d8f4d8becea7a0a930fce6edfdafa961",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinOwner.swift": "67608f479c1e2207fa92f833964ee6ab66e93beac1c6ce7cb117b915f1ac87c8",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinProbe.swift": "df3ad13afa02c412085fc0b904da7f49a3aa1c70b1d8a9e168bac9a7e6d834bf",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": "526b5ae57a80b96139b43d001d45cc1599789a11bc817bf8724086900f9a2331",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "681563cb43971e376de8805e33092e5aaff5a67d0fed27097a020b1e5dce0d32",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": "ef593f34bce2f6d36544c559033ba9a7261cb2b513ce8c6feaaaccbea2f5bd60",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": "590e0dcbbaa9fc6d40e133780875ba5f961aeee9f03a8a3370fea9260eab9697",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "ae4b199c59a751a89145151703e32f9f29da521c0291f3406c4273fb0cde1776",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "7f33e051e3b159ba84983b45672e1299a178a81bb5b45f5a182d5e19c9630ccf",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "945dd1bce5fdfc43a923d0174ba38a1ea115b84b3034823926dd16cb83316bb7",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": "9dea8f9e607e3599846f64a0dae1f51fc027162a2fe92d6da5868b8375147ead",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "6e66e7e1324cd1fbb1e413f341521e676fb5103d1e38ed57adc6e37a84ce4113",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": "2aae79f399ada458e0132054d49c20c913c25b3f45f61e234f443576fe4e4d17",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": "5a17a39cad2fcbeb6dae4c3b703ad6c0f1877597c71ef7e71356c43db07fdf49",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": "441edad25b562185db844ec9a2eb76c53335059b6ea04c434d196f65b9c4d243",
+    "docs/implementation-designs/spec-006-runtime-record-banks.md": "437620027b766877a1ceee7ded2e40063b54ec932bde66f0a3f0a4f8c8483e9a",
+    "scripts/contracts/check-spec-006-runtime-records.py": "a05d7dd545d0fca8d3c1152860d27dad749d4d109d44e32427df0bfdb4b2bf2f",
+    "scripts/contracts/check-spec-007-bank-layout.py": "5085364cd4a8bdb3f43bdb29864b37c7e5e3d1b571063fa79722e7dba15e6867",
+    "scripts/contracts/check-spec-011-owned-keys.py": "7b31ce049a74b47e5f3d5e0abfbb789cc66dabfc832b41eb1448cc4d03b8c0b4",
+    "scripts/contracts/check-spec-012-protocol-canvas.py": "876e755034bfc2583b5e7ae2714c072427de1e7d74993ac354761e883d60d335",
+    "scripts/contracts/check-spec-013-runtime-cycle.py": "119fc1ba21ed0764210e3415c8956b6fa210a59136e8b272f020732d94e5edad",
+    "scripts/contracts/check-spec-015-counter.py": "17d0c7804082a7a5736f71820645e94bd2572efaa492da46158183db4d631d3a"
+  },
+  "changed_scope": [
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift",
+    "Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift",
+    "Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift"
+  ],
+  "previous_freeze_preserved": "canonical-source-freeze.json",
+  "producer_started": false,
+  "configured_payload_caps": {
+    "Cycle": 7168,
+    "Counter": 4096
+  },
+  "formatter": "Pinned swift format applied to four maintained library files; scripts/format-swift.sh --lint exit0; fixtures excluded by maintained formatting policy.",
+  "preproducer_alias_correction": {
+    "file": "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift",
+    "before_sha256": "a8422c2bd78b457401c473255ceb937c2b2d99ce0296dea8d76c0c9bf19d40d4",
+    "after_sha256": "50a89637bc634751470f5ddc6fd6a23fdbd4802446da012b2478e2e6cb801fc1",
+    "delta": "Outer ProbeSemanticRoles alias names existing private Roles enum; concrete Codec associatedtype Roles now explicitly names ProbeSemanticRoles. No role table, mappings, checks or producer changed."
+  },
+  "reviewed_lifetime_correction": {
+    "file": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+    "before_sha256": "b6549eac20ebe1905c67003ec95d8b123ba52208a18bc360609edca438551b34",
+    "after_sha256": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745",
+    "delta": "Only payloadWriter accessor lifetime(copy self) becomes lifetime(borrow self). Existing writer initializer, factory unions and descriptor ownership unchanged. Fifteen forwarding sites consume only borrowing Writer use before later state mutation.",
+    "preserved_failed_sources": "canonical-supplied-sink-failure1/",
+    "source_review_miss": "Initial source GO missed returned subobject-loan vs copy-self origin mismatch; preserved first compile diagnostic."
+  },
+  "reviewed_descriptor_capture_correction": {
+    "file": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+    "before_sha256": "8573aed65aea7f10eec97cafc121b51d7c1b09b6e99361af7c116a03124e929f",
+    "after_sha256": "dab8b9484d6f540ae7e5951107a71313e65c839ac8e7a08dbaa594a0df84bac2",
+    "preserved_failed_sources": "canonical-supplied-sink-failure2/",
+    "delta": "Sequential ownership guards preserve count/owner/equality/bank/revision. Primitive captures only individual immutable descriptors/capacity after Canvas+charge; pointee validation/reservation stays after canonical preflight. Transfer projects descriptors after association validation; association/stage/clear/cursor and final cleanup ordering unchanged. No receiver copy, metadata snapshot, bundle or lifetime change.",
+    "source_review_miss": "Prior source GO missed four borrowed-protocol receiver captures; compiler/source failures remain preserved."
+  },
+  "reviewed_extension_applicability_correction": {
+    "changes": {
+      "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": {
+        "before": "dc8f6daf31251a8eaaed301cd12ca64ab406073fb94cab3b276370e79329acab",
+        "after": "ce5cadfaa5c4f3ce58d3cd90ab54b6d08f43356183ebc0aabbf181c7d03f9e7c"
+      },
+      "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": {
+        "before": "dab8b9484d6f540ae7e5951107a71313e65c839ac8e7a08dbaa594a0df84bac2",
+        "after": "b41099370167917a51190f473ad0a70626639601de773991450afee6291f3ec7"
+      }
+    },
+    "delta": "Only both existing protocol extension headers add where Self: ~Escapable; no bodies, factory loans, ownership or limits change. Removes unintended implicit Escapable-only default availability.",
+    "preservation": "canonical-supplied-sink-failure3/ plus immutable supplied-sink3 compile logs; independent source-audit miss preserved.",
+    "root_reassessment": "Root revised its per-compile stop policy for deterministic integration omissions within this same reviewed9file mechanism. No product/evidence/resource rule changed; no mechanism variant or new budget."
+  }
+}

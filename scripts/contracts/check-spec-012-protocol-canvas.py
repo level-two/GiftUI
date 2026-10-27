@@ -69,7 +69,7 @@ def module(name, sources):
 
 module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore' / name for name in (
     'GiftUISemanticCore.swift', 'SemanticRuntimeRecords.swift', 'SemanticRecordStore.swift',
-    'SemanticRecordExpansion.swift', 'SemanticStandardPayload.swift', 'SemanticLayoutView.swift',
+    'SemanticRecordExpansion.swift', 'SemanticStandardPayload.swift', 'SemanticRecordPayload.swift', 'SemanticLayoutView.swift',
     'SemanticRenderView.swift', 'SemanticRecordLayoutView.swift', 'SemanticRecordRenderView.swift')])
 module('GiftUITextResources', sorted((ROOT / 'Sources/GiftUITextResources').glob('*.swift')))
 module('GiftUILayout', sorted((ROOT / 'Sources/GiftUILayout').glob('*.swift')))
@@ -148,13 +148,20 @@ for name, body in re.findall(r'define[^\n]*@giftui_p06_layout_([a-z0-9_]+)\([^\n
         constant = re.search(r'ret i(?:32|64) (\d+)', target.group(1))
     assert constant, (name, body)
     layouts[name] = int(constant.group(1))
-assert len(layouts) == 60, layouts
+assert len(layouts) == 72, layouts
 layouts['counter_two_bank_payload_reserved_bytes'] = 2 * 98 * layouts['semantic_slot_stride']
 layouts['analyzer_two_bank_payload_reserved_bytes'] = 2 * 98 * layouts['analyzer_semantic_slot_stride']
 layouts['baseline_two_bank_payload_reserved_bytes'] = 2 * 98 * layouts['standard_slot_stride']
 layouts['counter_two_bank_payload_delta'] = 2 * 98 * (layouts['semantic_slot_stride'] - layouts['standard_slot_stride'])
 layouts['analyzer_two_bank_payload_delta'] = 2 * 98 * (layouts['analyzer_semantic_slot_stride'] - layouts['standard_slot_stride'])
 layouts['counter_two_bank_total_reserved_bytes'] = 2 * (layouts['semantic_metadata_stride'] + 126 * layouts['semantic_record_stride'] + 378 * layouts['semantic_prefix_stride'] + 98 * layouts['semantic_slot_stride'] + 224 * 4)
+# Pending captures and their canonical ordinals occupy a separate attempt pool,
+# bounded by semantic nodes (48), before the later staged-value capacity is known.
+layouts['counter_pending_reserved_bytes'] = layouts['pending_metadata_stride'] + 48 * (layouts['pending_capture_slot_stride'] + layouts['pending_ordinal_stride'])
+layouts['analyzer_pending_reserved_bytes'] = layouts['pending_metadata_stride'] + 48 * (layouts['analyzer_pending_capture_slot_stride'] + layouts['pending_ordinal_stride'])
+layouts['counter_canonical_and_pending_reserved_bytes'] = layouts['counter_two_bank_total_reserved_bytes'] + layouts['counter_pending_reserved_bytes']
+layouts['analyzer_two_bank_total_reserved_bytes'] = 2 * (layouts['semantic_metadata_stride'] + 126 * layouts['semantic_record_stride'] + 378 * layouts['semantic_prefix_stride'] + 98 * layouts['analyzer_semantic_slot_stride'] + 224 * 4)
+layouts['analyzer_canonical_and_pending_reserved_bytes'] = layouts['analyzer_two_bank_total_reserved_bytes'] + layouts['analyzer_pending_reserved_bytes']
 layouts['staged_three_fixture_reserved_bytes'] = layouts['staged_metadata_stride'] + 3 * layouts['staged_slot_stride']
 layouts['staged_five_analyzer_reserved_bytes'] = layouts['staged_metadata_stride'] + 5 * layouts['analyzer_staged_slot_stride']
 (out / 'layouts.json').write_text(json.dumps(layouts, indent=2, sort_keys=True) + '\n')

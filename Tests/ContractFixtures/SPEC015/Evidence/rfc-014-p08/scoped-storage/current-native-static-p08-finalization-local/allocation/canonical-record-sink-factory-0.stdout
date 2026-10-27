@@ -1,0 +1,21 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000be4d0 <_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageVSgWOhTm>:
+   be4d0:      	stp	x20, x19, [sp, #-0x20]!
+   be4d4:      	stp	x29, x30, [sp, #0x10]
+   be4d8:      	bl	0xbe4d8 <_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageVSgWOhTm+0x8>
+		00000000000be4d8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_769
+   be4dc:      	mov	x0, x1
+   be4e0:      	bl	0xbe4e0 <_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageVSgWOhTm+0x10>
+		00000000000be4e0:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName
+   be4e4:      	bl	0xbe4e4 <_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageVSgWOhTm+0x14>
+		00000000000be4e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_620
+   be4e8:      	mov	x0, x19
+   be4ec:      	blr	x8
+   be4f0:      	mov	x0, x19
+   be4f4:      	ldp	x29, x30, [sp, #0x10]
+   be4f8:      	b	0xbe4f8 <_$s20GiftUIRuntimeDynamic0C21ResolvedLayoutStorageVSgWOhTm+0x28>
+		00000000000be4f8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_902

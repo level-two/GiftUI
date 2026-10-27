@@ -1,0 +1,11 @@
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift:366:9: error: lifetime-dependent value escapes its scope
+363 |     @_lifetime(copy self)
+364 |     @usableFromInline
+365 |     package borrowing func payloadWriter() -> SemanticPayloadWriter {
+    |                            `- note: it depends on the lifetime of argument 'self'
+366 |         SemanticPayloadWriter(bank: bank, limits: limits, owner: owner, bankNumber: bankNumber)
+    |         `- error: lifetime-dependent value escapes its scope
+367 |     }
+    |     `- note: this use causes the lifetime-dependent value to escape
+368 |     @usableFromInline
+369 |     package mutating func stageSemanticResult(_ error: SemanticExpansionError?) -> Bool {

@@ -3,6 +3,7 @@ import SignalAnalyzerDomain
 
 package struct AnalyzerTrace: Canvas {
     package let model: SignalAnalyzerViewModel
+    @usableFromInline
     package let index: Int
     package init(model: SignalAnalyzerViewModel, index: Int) {
         self.model = model

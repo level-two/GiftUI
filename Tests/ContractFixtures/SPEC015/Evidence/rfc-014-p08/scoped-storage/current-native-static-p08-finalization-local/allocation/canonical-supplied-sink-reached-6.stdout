@@ -1,0 +1,325 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000007ce0 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5>:
+    7ce0:      	sub	sp, sp, #0x80
+    7ce4:      	str	x28, [sp, #0x20]
+    7ce8:      	stp	x27, x26, [sp, #0x30]
+    7cec:      	stp	x25, x24, [sp, #0x40]
+    7cf0:      	stp	x23, x22, [sp, #0x50]
+    7cf4:      	stp	x20, x19, [sp, #0x60]
+    7cf8:      	stp	x29, x30, [sp, #0x70]
+    7cfc:      	add	x29, sp, #0x70
+    7d00:      	ldrh	w8, [x2]
+    7d04:      	cbz	w8, 0x7d28 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x48>
+    7d08:      	mov	w27, #0x8               ; =8
+    7d0c:      	strb	w27, [sp, #0x2f]
+    7d10:      	bl	0x7d10 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x30>
+		0000000000007d10:  ARM64_RELOC_BRANCH26	_$s6GiftUI12DrawingErrorOACs0D0AAWl
+    7d14:      	mov	x2, x0
+    7d18:      	adrp	x1, 0x7000 <_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5+0x28c4>
+		0000000000007d18:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s6GiftUI12DrawingErrorON
+    7d1c:      	ldr	x1, [x1]
+		0000000000007d1c:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s6GiftUI12DrawingErrorON
+    7d20:      	add	x0, sp, #0x2f
+    7d24:      	b	0x7e2c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x14c>
+    7d28:      	mov	x23, x5
+    7d2c:      	mov	x25, x4
+    7d30:      	mov	x24, x3
+    7d34:      	mov	x26, x2
+    7d38:      	mov	x22, x1
+    7d3c:      	mov	x20, x0
+    7d40:      	mov	x0, x1
+    7d44:      	bl	0x7d44 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x64>
+		0000000000007d44:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore19SemanticRecordStoreV24validatePendingCandidate5usingyx_tAA0D14ExpansionErrorOYKAA0dE12PayloadCodecRzRi0_zlF17P08CounterRuntime0pdN0V_Tg5
+    7d48:      	cbz	x21, 0x7d6c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x8c>
+    7d4c:      	mov	w27, #0x8               ; =8
+    7d50:      	strb	w27, [sp, #0x2e]
+    7d54:      	bl	0x7d54 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x74>
+		0000000000007d54:  ARM64_RELOC_BRANCH26	_$s6GiftUI12DrawingErrorOACs0D0AAWl
+    7d58:      	mov	x2, x0
+    7d5c:      	adrp	x1, 0x7000 <_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5+0x28c4>
+		0000000000007d5c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s6GiftUI12DrawingErrorON
+    7d60:      	ldr	x1, [x1]
+		0000000000007d60:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s6GiftUI12DrawingErrorON
+    7d64:      	add	x0, sp, #0x2e
+    7d68:      	b	0x7e2c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x14c>
+    7d6c:      	mov	x19, x21
+    7d70:      	bl	0x7d70 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x90>
+		0000000000007d70:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore19SemanticRecordStoreV9candidates5UInt8VSgvg
+    7d74:      	and	w8, w0, #0xff00
+    7d78:      	cmp	w8, #0x100
+    7d7c:      	b.ne	0x7da0 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0xc0>
+    7d80:      	mov	w8, #0x3                ; =3
+    7d84:      	strb	w8, [sp, #0x2d]
+    7d88:      	bl	0x7d88 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0xa8>
+		0000000000007d88:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+    7d8c:      	mov	x2, x0
+    7d90:      	adrp	x1, 0x7000 <_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5+0x28c4>
+		0000000000007d90:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    7d94:      	ldr	x1, [x1]
+		0000000000007d94:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    7d98:      	add	x0, sp, #0x2d
+    7d9c:      	b	0x7dec <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x10c>
+    7da0:      	ands	w8, w0, #0xff
+    7da4:      	mov	w9, #0x48               ; =72
+    7da8:      	csel	x9, xzr, x9, eq
+    7dac:      	mov	w10, #0x50              ; =80
+    7db0:      	mov	w11, #0x8               ; =8
+    7db4:      	csel	x15, x11, x10, eq
+    7db8:      	mov	w10, #0x70              ; =112
+    7dbc:      	mov	w11, #0x28              ; =40
+    7dc0:      	csel	x14, x11, x10, eq
+    7dc4:      	ldr	x9, [x20, x9]
+    7dc8:      	ldrh	w10, [x9, #0x8]
+    7dcc:      	cbz	w10, 0x7e5c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x17c>
+    7dd0:      	mov	w8, #0x2                ; =2
+    7dd4:      	strb	w8, [sp, #0x2b]
+    7dd8:      	bl	0x7dd8 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0xf8>
+		0000000000007dd8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+    7ddc:      	mov	x2, x0
+    7de0:      	adrp	x1, 0x7000 <_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5+0x28c4>
+		0000000000007de0:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    7de4:      	ldr	x1, [x1]
+		0000000000007de4:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    7de8:      	add	x0, sp, #0x2b
+    7dec:      	bl	0x7dec <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x10c>
+		0000000000007dec:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    7df0:      	mov	w27, #0x8               ; =8
+    7df4:      	mov	x0, x26
+    7df8:      	mov	x1, x24
+    7dfc:      	mov	x2, x25
+    7e00:      	mov	x3, x23
+    7e04:      	bl	0x7e04 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x124>
+		0000000000007e04:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing18CanvasStagedValuesV7discardyyF0A14UISemanticCore23SemanticRecordReferenceV_15P08CounterTable0lm6SchemacN0Vy0lM7Runtime0M6DomainOGTg5
+    7e08:      	mov	x0, x22
+    7e0c:      	mov	x21, x19
+    7e10:      	bl	0x7e10 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x130>
+		0000000000007e10:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore19SemanticRecordStoreV16discardCandidate5usingyx_tAA0D14ExpansionErrorOYKAA0dE12PayloadCodecRzRi0_zlF17P08CounterRuntime0odM0V_Tg5
+    7e14:      	strb	w27, [sp, #0x2c]
+    7e18:      	bl	0x7e18 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x138>
+		0000000000007e18:  ARM64_RELOC_BRANCH26	_$s6GiftUI12DrawingErrorOACs0D0AAWl
+    7e1c:      	mov	x2, x0
+    7e20:      	adrp	x1, 0x7000 <_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5+0x28c4>
+		0000000000007e20:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s6GiftUI12DrawingErrorON
+    7e24:      	ldr	x1, [x1]
+		0000000000007e24:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s6GiftUI12DrawingErrorON
+    7e28:      	add	x0, sp, #0x2c
+    7e2c:      	bl	0x7e2c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x14c>
+		0000000000007e2c:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    7e30:      	mov	w19, #0x1               ; =1
+    7e34:      	mov	x0, x27
+    7e38:      	mov	x21, x19
+    7e3c:      	ldp	x29, x30, [sp, #0x70]
+    7e40:      	ldp	x20, x19, [sp, #0x60]
+    7e44:      	ldp	x23, x22, [sp, #0x50]
+    7e48:      	ldp	x25, x24, [sp, #0x40]
+    7e4c:      	ldp	x27, x26, [sp, #0x30]
+    7e50:      	ldr	x28, [sp, #0x20]
+    7e54:      	add	sp, sp, #0x80
+    7e58:      	ret
+    7e5c:      	ldr	x10, [x22]
+    7e60:      	ldrh	w11, [x9, #0xa]
+    7e64:      	cbz	x11, 0x8054 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x374>
+    7e68:      	mov	x13, #0x0               ; =0
+    7e6c:      	mov	w12, #0x0               ; =0
+    7e70:      	ldr	x14, [x20, x14]
+    7e74:      	ldr	x15, [x20, x15]
+    7e78:      	ldr	x16, [x22, #0x8]
+    7e7c:      	ubfiz	x17, x0, #32, #8
+    7e80:      	mov	w21, #0x14              ; =20
+    7e84:      	mov	x2, #0xfe0000000000     ; =279275953455104
+    7e88:      	movk	x2, #0xfcfe, lsl #48
+    7e8c:      	mov	x7, #-0x200000000       ; =-8589934592
+    7e90:      	ldr	x0, [x22, #0x18]
+    7e94:      	str	x0, [sp, #0x10]
+    7e98:      	madd	x27, x13, x21, x15
+    7e9c:      	ldrb	w0, [x27, #0xa]
+    7ea0:      	cmp	w0, #0x4
+    7ea4:      	b.ne	0x8030 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x350>
+    7ea8:      	ldrh	w0, [x27, #0xc]
+    7eac:      	ldrh	w1, [x9, #0xe]
+    7eb0:      	cmp	w0, w1
+    7eb4:      	b.hs	0x80e4 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x404>
+    7eb8:      	add	x1, x14, x0, lsl #5
+    7ebc:      	ldp	x3, x1, [x1, #0x10]
+    7ec0:      	and	x4, x3, #0xfffffffe00000000
+    7ec4:      	and	x1, x1, x2
+    7ec8:      	cmp	x3, x7
+    7ecc:      	mov	x3, #-0x400000000       ; =-17179869184
+    7ed0:      	ccmp	x4, x3, #0x4, hs
+    7ed4:      	mov	x3, #0x20000000000      ; =2199023255552
+    7ed8:      	ccmp	x1, x3, #0x0, ne
+    7edc:      	b.ne	0x80e4 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x404>
+    7ee0:      	ldrh	w1, [x10]
+    7ee4:      	cmp	w1, w12, uxth
+    7ee8:      	b.ls	0x807c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x39c>
+    7eec:      	ldrb	w1, [x10, #0x8]
+    7ef0:      	cmp	w1, #0x1
+    7ef4:      	b.eq	0x807c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x39c>
+    7ef8:      	ldr	w28, [x10, #0x4]
+    7efc:      	ldr	w1, [x20, #0xa0]
+    7f00:      	cmp	w28, w1
+    7f04:      	b.ne	0x807c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x39c>
+    7f08:      	ldrb	w1, [x10, #0x9]
+    7f0c:      	cmp	w1, w8
+    7f10:      	b.ne	0x807c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x39c>
+    7f14:      	ldr	w6, [x9, #0x4]
+    7f18:      	ldr	w1, [x10, #0xc]
+    7f1c:      	cmp	w1, w6
+    7f20:      	b.ne	0x807c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x39c>
+    7f24:      	and	x1, x12, #0xffff
+    7f28:      	ldr	x3, [sp, #0x10]
+    7f2c:      	ldrh	w3, [x3, x1, lsl #1]
+    7f30:      	cmp	w3, w0
+    7f34:      	b.ne	0x807c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x39c>
+    7f38:      	mov	w0, #0xc                ; =12
+    7f3c:      	umaddl	x30, w1, w0, x16
+    7f40:      	ldrb	w5, [x30, #0xa]
+    7f44:      	cmp	w5, #0x1
+    7f48:      	b.eq	0x807c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x39c>
+    7f4c:      	ldrh	w4, [x26]
+    7f50:      	cmp	w4, w23, uxth
+    7f54:      	b.hs	0x8104 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x424>
+    7f58:      	ldr	x0, [x30]
+    7f5c:      	ldrh	w3, [x30, #0x8]
+    7f60:      	cbz	w4, 0x7fdc <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x2fc>
+    7f64:      	mov	x2, x17
+    7f68:      	mov	x21, x16
+    7f6c:      	str	x25, [sp, #0x8]
+    7f70:      	mov	x1, x4
+    7f74:      	mov	x25, x24
+    7f78:      	ldrb	w7, [x25, #0x1b]
+    7f7c:      	cmp	w7, #0x2
+    7f80:      	b.eq	0x7fb0 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x2d0>
+    7f84:      	ldr	w7, [x25, #0x8]
+    7f88:      	ldrb	w17, [x25, #0x4]
+    7f8c:      	ldr	w16, [x25]
+    7f90:      	cmp	w28, w16
+    7f94:      	ccmp	w17, w8, #0x0, eq
+    7f98:      	ccmp	w6, w7, #0x0, eq
+    7f9c:      	b.ne	0x7fb0 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x2d0>
+    7fa0:      	ldr	w16, [x25, #0xc]
+    7fa4:      	and	w16, w16, #0xffff
+    7fa8:      	cmp	w16, w13, uxth
+    7fac:      	b.eq	0x809c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x3bc>
+    7fb0:      	add	x25, x25, #0x1c
+    7fb4:      	subs	x1, x1, #0x1
+    7fb8:      	b.ne	0x7f78 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x298>
+    7fbc:      	ldr	x25, [sp, #0x8]
+    7fc0:      	mov	x16, x21
+    7fc4:      	mov	x17, x2
+    7fc8:      	mov	w21, #0x14              ; =20
+    7fcc:      	mov	x2, #0xfe0000000000     ; =279275953455104
+    7fd0:      	movk	x2, #0xfcfe, lsl #48
+    7fd4:      	mov	x7, #-0x200000000       ; =-8589934592
+    7fd8:      	b	0x7fe0 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x300>
+    7fdc:      	mov	x4, #0x0                ; =0
+    7fe0:      	orr	x1, x17, x28
+    7fe4:      	orr	x6, x6, x13, lsl #32
+    7fe8:      	orr	x6, x6, #0x1000000000000
+    7fec:      	orr	w3, w3, w5, lsl #16
+    7ff0:      	mov	w5, #0x1c               ; =28
+    7ff4:      	umaddl	x4, w4, w5, x24
+    7ff8:      	stp	x1, x6, [x4]
+    7ffc:      	str	x0, [x4, #0x10]
+    8000:      	str	w3, [x4, #0x18]
+    8004:      	ldrh	w0, [x26]
+    8008:      	add	w0, w0, #0x1
+    800c:      	lsr	w1, w0, #16
+    8010:      	tbnz	w1, #0x0, 0x812c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x44c>
+    8014:      	strh	w0, [x26]
+    8018:      	str	xzr, [x30]
+    801c:      	strh	wzr, [x30, #0x8]
+    8020:      	mov	w0, #0x1                ; =1
+    8024:      	strb	w0, [x30, #0xa]
+    8028:      	add	w12, w12, #0x1
+    802c:      	strb	w0, [x27, #0xa]
+    8030:      	add	x13, x13, #0x1
+    8034:      	cmp	x13, x11
+    8038:      	b.ne	0x7e98 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x1b8>
+    803c:      	ldrh	w8, [x10]
+    8040:      	cmp	w8, w12, uxth
+    8044:      	b.ne	0x805c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x37c>
+    8048:      	mov	x20, x22
+    804c:      	bl	0x804c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x36c>
+		000000000000804c:  ARM64_RELOC_BRANCH26	_$s13GiftUIDrawing26CanvasSemanticPayloadCodecPAARi0_zrlE14discardPendingyyF17P08CounterRuntime0jdF0V_Tgq5
+    8050:      	b	0x7e34 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x154>
+    8054:      	ldrh	w8, [x10]
+    8058:      	cbz	w8, 0x8048 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x368>
+    805c:      	mov	w8, #0x3                ; =3
+    8060:      	strb	w8, [sp, #0x2a]
+    8064:      	bl	0x8064 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x384>
+		0000000000008064:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+    8068:      	mov	x2, x0
+    806c:      	adrp	x1, 0x8000 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x320>
+		000000000000806c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    8070:      	ldr	x1, [x1]
+		0000000000008070:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    8074:      	add	x0, sp, #0x2a
+    8078:      	b	0x7dec <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x10c>
+    807c:      	mov	w8, #0x3                ; =3
+    8080:      	strb	w8, [sp, #0x28]
+    8084:      	bl	0x8084 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x3a4>
+		0000000000008084:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+    8088:      	mov	x2, x0
+    808c:      	adrp	x1, 0x8000 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x320>
+		000000000000808c:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    8090:      	ldr	x1, [x1]
+		0000000000008090:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    8094:      	add	x0, sp, #0x28
+    8098:      	b	0x7dec <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x10c>
+    809c:      	mov	w27, #0x8               ; =8
+    80a0:      	strb	w27, [sp, #0x1d]
+    80a4:      	bl	0x80a4 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x3c4>
+		00000000000080a4:  ARM64_RELOC_BRANCH26	_$s6GiftUI12DrawingErrorOACs0D0AAWl
+    80a8:      	mov	x2, x0
+    80ac:      	adrp	x1, 0x8000 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x320>
+		00000000000080ac:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s6GiftUI12DrawingErrorON
+    80b0:      	ldr	x1, [x1]
+		00000000000080b0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s6GiftUI12DrawingErrorON
+    80b4:      	add	x0, sp, #0x1d
+    80b8:      	bl	0x80b8 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x3d8>
+		00000000000080b8:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    80bc:      	mov	w8, #0x3                ; =3
+    80c0:      	ldr	x25, [sp, #0x8]
+    80c4:      	strb	w8, [sp, #0x1e]
+    80c8:      	bl	0x80c8 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x3e8>
+		00000000000080c8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+    80cc:      	mov	x2, x0
+    80d0:      	adrp	x1, 0x8000 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x320>
+		00000000000080d0:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    80d4:      	ldr	x1, [x1]
+		00000000000080d4:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    80d8:      	add	x0, sp, #0x1e
+    80dc:      	bl	0x80dc <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x3fc>
+		00000000000080dc:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    80e0:      	b	0x7df4 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x114>
+    80e4:      	mov	w8, #0x3                ; =3
+    80e8:      	strb	w8, [sp, #0x29]
+    80ec:      	bl	0x80ec <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x40c>
+		00000000000080ec:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore22SemanticExpansionErrorOACs0F0AAWl
+    80f0:      	mov	x2, x0
+    80f4:      	adrp	x1, 0x8000 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x320>
+		00000000000080f4:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    80f8:      	ldr	x1, [x1]
+		00000000000080f8:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore22SemanticExpansionErrorON
+    80fc:      	add	x0, sp, #0x29
+    8100:      	b	0x7dec <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x10c>
+    8104:      	mov	w27, #0x4               ; =4
+    8108:      	strb	w27, [sp, #0x1f]
+    810c:      	bl	0x810c <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x42c>
+		000000000000810c:  ARM64_RELOC_BRANCH26	_$s6GiftUI12DrawingErrorOACs0D0AAWl
+    8110:      	mov	x2, x0
+    8114:      	adrp	x1, 0x8000 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x320>
+		0000000000008114:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s6GiftUI12DrawingErrorON
+    8118:      	ldr	x1, [x1]
+		0000000000008118:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s6GiftUI12DrawingErrorON
+    811c:      	add	x0, sp, #0x1f
+    8120:      	bl	0x8120 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x440>
+		0000000000008120:  ARM64_RELOC_BRANCH26	_swift_willThrowTypedImpl
+    8124:      	mov	w8, #0x0                ; =0
+    8128:      	b	0x80c4 <_$s13GiftUIDrawing22CanvasSemanticTransferO5stage4from7pending4into5tabley0A14UISemanticCore0D11RecordStoreV_xAA0C12StagedValuesVyAI0dM9ReferenceV5TableQzGAQt0A2UI12DrawingErrorOYKAA0cD12PayloadCodecRzRi0_zlFZ17P08CounterRuntime0ydW0V_Tt3g5+0x3e4>
+    812c:      	brk	#0x1

@@ -1,0 +1,25 @@
+{
+  "range": [
+    "0x193cc7af8",
+    "0x193cc7c14"
+  ],
+  "extent": {
+    "path": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+    "offset": 331610872,
+    "bytes": 284,
+    "vmaddr": "0x193cc7af8",
+    "role": "necessary generic-metadata dispatch",
+    "sha256": "745beb6b94a73606d9cd428cc86b1c49d5e2c1850feb9c8187a9c3f64b001a09"
+  },
+  "projection_sha256": "54270ffc05951360b793aa7652e61825b6cb9ddc74bc88ffdcc818148a448c29",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/swift-0x193cc7af8.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 2933,
+  "stdout_sha256": "4e3987603415c94a173469f7f9795045509ffc6e6fb5d6bd35c95bac4e6cfece",
+  "stderr": ""
+}

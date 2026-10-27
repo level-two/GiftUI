@@ -1,0 +1,21 @@
+{
+  "acquired_utc": "2026-10-27T07:37:03.227768+00:00",
+  "lo": "0x193d09160",
+  "hi": "0x193d092e0",
+  "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+  "offset": 331878752,
+  "bytes": 384,
+  "sha256": "9dd2a03f00b3619ee0fb284ce897471f696cc993d21b6d15c008c87051a08734",
+  "projection_sha256": "f04d09a750957ba1fbe7ca7d68bec613c750157dfec9912e59b8e8bebc458c97",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-struct-superclass.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 3859,
+  "stdout_lines": 102,
+  "stdout_sha256": "0d79f5490662fa33a4ccdb171a36f2ed91a90b72ff58b167791518d1d931ab87",
+  "stderr_bytes": 0
+}

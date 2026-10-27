@@ -1,0 +1,22 @@
+[
+  {
+    "object": ".build/contracts/p08-counter-qzv33chp/P08CounterTable.o",
+    "object_sha256": "ca02b424e887dfe6427d3252bad6832d779606212ef0dec7f48093157fbdd2d4",
+    "symbol": "_$s15P08CounterTable0ab12SchemaCanvasC0VMn",
+    "lo": "0x74c",
+    "hi": "0x788",
+    "hex": "d1000000fcfffffff8fffffff4fffffff0ffffff0000000004000000e4ffffffe0ffffff01000100020000008000000080000000ccffffffc9ffffff",
+    "flags": "0xd1",
+    "sha256": "2718c1c71a565397b76b935a8456e2a0e4bb8c729771dc67c0406d909a98475d"
+  },
+  {
+    "object": ".build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o",
+    "object_sha256": "17245735a5b74b2a4eacc44ecaef0e61bd43132d10febedbf4a5f3a8bac7d289",
+    "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+    "lo": "0xdbd8c",
+    "hi": "0xdbda8",
+    "hex": "52000000fcfffffff8fffffff4fffffff0ffffff0000000000000000",
+    "flags": "0x52",
+    "sha256": "533a8a30cc7deec8fdd61772b20eb7e69f770be35cf92b015181bb9e10be7bf1"
+  }
+]

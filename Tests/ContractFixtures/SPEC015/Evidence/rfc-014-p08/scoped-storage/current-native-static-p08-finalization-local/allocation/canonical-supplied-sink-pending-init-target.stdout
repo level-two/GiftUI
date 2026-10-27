@@ -1,0 +1,17 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/supplied-sink4/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000008291c <_$s17P08CounterRuntime07DynamicB14ProfileStorageV7pendingAA0B14PendingBackingVvpfi>:
+   8291c:      	sub	sp, sp, #0x20
+   82920:      	stp	x29, x30, [sp, #0x10]
+   82924:      	bl	0x82924 <_$s17P08CounterRuntime07DynamicB14ProfileStorageV7pendingAA0B14PendingBackingVvpfi+0x8>
+		0000000000082924:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_4
+   82928:      	b.ne	0x82938 <_$s17P08CounterRuntime07DynamicB14ProfileStorageV7pendingAA0B14PendingBackingVvpfi+0x1c>
+   8292c:      	ldp	x29, x30, [sp, #0x10]
+   82930:      	add	sp, sp, #0x20
+   82934:      	b	0x82934 <_$s17P08CounterRuntime07DynamicB14ProfileStorageV7pendingAA0B14PendingBackingVvpfi+0x18>
+		0000000000082934:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B14PendingBackingVACycfCTm
+   82938:      	bl	0x82938 <_$s17P08CounterRuntime07DynamicB14ProfileStorageV7pendingAA0B14PendingBackingVvpfi+0x1c>
+		0000000000082938:  ARM64_RELOC_BRANCH26	___stack_chk_fail

@@ -1,0 +1,55 @@
+{
+  "authority": "27Oct human-approved exact Sink follow-up;32768lines/1MiB complete group,8MiB retained;07:17:03\u201309:17:03UTC",
+  "acquired_utc": "2026-10-27T07:17:55.406483+00:00",
+  "provider_uuid": "83794fb3de9b3d23ab5e2c1d5d30f134",
+  "functions": [
+    {
+      "lo": "0x193d041b0",
+      "hi": "0x193d046c8",
+      "bytes": 1304,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331858352,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-0.bin",
+      "sha256": "b9b83d57562defbbd7d5c3e8c4d017871621fda54c4a14cba9b830c85f69baf4",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-0.o",
+      "projection_sha256": "6b2805fd3d28e45cb733bb88ec29b96b83c646869eb262a8663e397f84340ea3"
+    },
+    {
+      "lo": "0x193d0a424",
+      "hi": "0x193d0a570",
+      "bytes": 332,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331883556,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-1.bin",
+      "sha256": "9b283ef2da40d9636a0982bdd9ae0b471e673fc1d0be4c84d9bf612935c7c0f5",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-1.o",
+      "projection_sha256": "e6bc1a64d0b6540206577b2316ffa7e2810bc5a3aefb421559b90d7aeccb480a"
+    },
+    {
+      "lo": "0x193c585e0",
+      "hi": "0x193c58868",
+      "bytes": 648,
+      "source": "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01",
+      "offset": 331154912,
+      "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-2.bin",
+      "sha256": "01de7776938e8a5a241fa59b84e9e0afa2d75bbb6b4d3dc73e48ac02abe6c8ec",
+      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-2.o",
+      "projection_sha256": "6c0cc90e85f893a6a0eed8fe668947d0860ecc3c03f59e37f0a20e98c638abb5"
+    }
+  ],
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--no-show-raw-insn",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-0.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-1.o",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-return-2.o"
+  ],
+  "exit": 0,
+  "stdout_bytes": 22300,
+  "stdout_lines": 589,
+  "stdout_sha256": "2c9a521fed952513784ad1d7890ac3608ea829e83ce88372b00619e131766e20",
+  "stderr_bytes": 0,
+  "current_required_union_lines": 16452,
+  "historical17398_acquisition_qualification": false
+}

@@ -1,0 +1,115 @@
+{
+  "object": ".build/contracts/p08-counter-qzv33chp/GiftUIDrawing.o",
+  "object_sha256": "cc89dca67b9c2b4c31c86fdf376024abf68e0828c82f322ac4975e2e4abf62b5",
+  "descriptors": [
+    {
+      "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn",
+      "address": "0x99e0",
+      "hi": "0x9a2c",
+      "bytes": 76,
+      "hex": "f1000000fcfffffff8fffffff4fffffff0ffffff0400000006000000e4ffffffe0ffffff02000200040000008080000080000000ccffffffc9ffffff80000000c0ffffffbcffffff02000000",
+      "relocations": [
+        {
+          "offset": 68,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 68,
+          "raw": "0xc00023e",
+          "symbol": "_$s13GiftUIDrawing16CanvasValueTableMp"
+        },
+        {
+          "offset": 64,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 64,
+          "raw": "0xc00034c",
+          "symbol": "_symbolic q_"
+        },
+        {
+          "offset": 56,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 56,
+          "raw": "0xc00017d",
+          "symbol": "l_got.$s18GiftUISemanticCore24SemanticDeclarationRolesMp"
+        },
+        {
+          "offset": 52,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 52,
+          "raw": "0xc00034e",
+          "symbol": "_symbolic x"
+        },
+        {
+          "offset": 32,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 32,
+          "raw": "0xc00017c",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMP"
+        },
+        {
+          "offset": 28,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 28,
+          "raw": "0xc00017a",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMI"
+        },
+        {
+          "offset": 16,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 16,
+          "raw": "0xc00017b",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMF"
+        },
+        {
+          "offset": 12,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 12,
+          "raw": "0xc0002eb",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMa"
+        },
+        {
+          "offset": 8,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 8,
+          "raw": "0xc000179",
+          "symbol": "l_.str.26.CanvasSemanticPayloadCodec"
+        },
+        {
+          "offset": 4,
+          "raw": "0x1c0002ec",
+          "symbol": "_$s13GiftUIDrawing26CanvasSemanticPayloadCodecVMn"
+        },
+        {
+          "offset": 4,
+          "raw": "0xc0002ff",
+          "symbol": "_$s13GiftUIDrawingMXM"
+        }
+      ]
+    }
+  ]
+}
