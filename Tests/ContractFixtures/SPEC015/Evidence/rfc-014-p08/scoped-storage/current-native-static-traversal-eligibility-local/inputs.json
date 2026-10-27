@@ -1,0 +1,17 @@
+{
+  "head": "17e9da5f9c7b1532a385dc4cab0109ba251414b7",
+  "window_start": "2026-10-27T16:44:47Z",
+  "deadline": "2026-10-27T18:44:47Z",
+  "inputs": {
+    ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached.json": "84589832b0db244ececc36cfd4e18ec8fc2b9b057fe519c38332b95a3e550666",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-10.stdout": "7b723fb915c090e6cbf7e34a31c46210bbc5eee0412b0d2c1aef36395c40033f",
+    ".build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o": "4c40938628d8982edc2d53a9cfbb2b4e12e9c17722bf9d828f24aaffcb156582",
+    ".build/contracts/p08-counter-fl05ri46/result.json": "0ebd39f64900ccb1d1fc7e533a24fbcd63bb2cf469588a7df5612d4da678be8d",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-transfer.json": "2259561a3722d99fc42b8f1fd40794a0677e35edd0889746034c9772366c3ef0",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-result.json": "20d2bb9f795168dd2b771c86fcd0561c13ce45126eb0a645a0ef71b951f31e14",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": "526b5ae57a80b96139b43d001d45cc1599789a11bc817bf8724086900f9a2331",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "945dd1bce5fdfc43a923d0174ba38a1ea115b84b3034823926dd16cb83316bb7"
+  },
+  "provider_reuse": "Exact accepted27Oct semantic claims and frozen installed provider UUID83794fb3de9b3d23ab5e2c1d5d30f134; no new provider acquisition."
+}

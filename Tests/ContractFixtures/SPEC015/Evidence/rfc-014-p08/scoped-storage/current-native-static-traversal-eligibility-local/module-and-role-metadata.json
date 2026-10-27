@@ -1,0 +1,179 @@
+{
+  "data": [
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o",
+      "sha256": "4c40938628d8982edc2d53a9cfbb2b4e12e9c17722bf9d828f24aaffcb156582",
+      "symbol": "_$s18GiftUISemanticCoreMXM",
+      "lo": "0x2efb0",
+      "hi": "0x2efbc",
+      "bytes": 12,
+      "section": "__constg_swiftt",
+      "relocations": [
+        {
+          "offset": 8,
+          "kind": 1,
+          "target": {
+            "symbol": "_$s18GiftUISemanticCoreMXM",
+            "address": 192432,
+            "section": 11,
+            "type": 31
+          }
+        },
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": {
+            "symbol": "l_.str.18.GiftUISemanticCore",
+            "address": 180880,
+            "section": 2,
+            "type": 14
+          }
+        }
+      ],
+      "hex": "0000000000000000f8ffffff"
+    },
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+      "sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+      "symbol": "_$s17P08CounterRuntimeMXM",
+      "lo": "0xdb51c",
+      "hi": "0xdb528",
+      "bytes": 12,
+      "section": "__constg_swiftt",
+      "relocations": [
+        {
+          "offset": 8,
+          "kind": 1,
+          "target": {
+            "symbol": "_$s17P08CounterRuntimeMXM",
+            "address": 898332,
+            "section": 14,
+            "type": 31
+          }
+        },
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": {
+            "symbol": "l_.str.17.P08CounterRuntime",
+            "address": 836688,
+            "section": 2,
+            "type": 14
+          }
+        }
+      ],
+      "hex": "0000000000000000f8ffffff"
+    },
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+      "sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+      "symbol": "_$s17P08CounterRuntime0B5RolesOMf",
+      "lo": "0xd5878",
+      "hi": "0xd5888",
+      "bytes": 16,
+      "section": "__const",
+      "relocations": [
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": {
+            "symbol": "_$sytWV",
+            "address": 0,
+            "section": 0,
+            "type": 1
+          }
+        }
+      ],
+      "hex": "00000000000000000000000000000000"
+    },
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+      "sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+      "symbol": "_$s17P08CounterRuntime0B5RolesON",
+      "lo": "0xd5888",
+      "hi": "0xd5898",
+      "bytes": 16,
+      "section": "__const",
+      "relocations": [
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+            "address": 898460,
+            "section": 14,
+            "type": 15
+          }
+        }
+      ],
+      "hex": "01020000000000000000000000000000"
+    }
+  ],
+  "captures": [
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+      "sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+      "symbol": "_$s17P08CounterRuntime0B5RolesOMa",
+      "lo": "0xaf640",
+      "hi": "0xaf64c",
+      "bytes": 12,
+      "section": "__text",
+      "relocations": [
+        {
+          "offset": 8,
+          "kind": 2,
+          "target": {
+            "symbol": "_OUTLINED_FUNCTION_591",
+            "address": 803628,
+            "section": 1,
+            "type": 14
+          }
+        },
+        {
+          "offset": 4,
+          "kind": 10,
+          "target": 16
+        },
+        {
+          "offset": 4,
+          "kind": 4,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMf",
+            "address": 874616,
+            "section": 11,
+            "type": 14
+          }
+        },
+        {
+          "offset": 0,
+          "kind": 10,
+          "target": 16
+        },
+        {
+          "offset": 0,
+          "kind": 3,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMf",
+            "address": 874616,
+            "section": 11,
+            "type": 14
+          }
+        }
+      ],
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0xaf640",
+        "--stop-address=0xaf64c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "roles-accessor.stdout",
+      "stdout_bytes": 736,
+      "stdout_lines": 14,
+      "stdout_sha256": "81ebdf3806fe4bfdbfaf3044adcd65f6733176976973c6622b65efe7fc51e269"
+    }
+  ]
+}

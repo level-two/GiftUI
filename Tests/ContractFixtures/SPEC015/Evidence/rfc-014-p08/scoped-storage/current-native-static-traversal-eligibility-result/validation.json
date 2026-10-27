@@ -1,0 +1,35 @@
+{
+  "status": "EVIDENCE_AUTHENTICATION_AND_INDEPENDENT_REVIEW_PASS_FOR_SCOPED_COUNTEREXAMPLE",
+  "completed_utc": "2026-10-27T17:15:43.064851+00:00",
+  "source_baseline": "17e9da5f9c7b1532a385dc4cab0109ba251414b7",
+  "input_hash_checks": 9,
+  "semantic_evidence_hash_and_size_checks": 43,
+  "mismatches": [],
+  "independent_executable_checks": 2,
+  "semantic_union_bytes": 988995,
+  "semantic_union_lines": 23954,
+  "semantic_union_limits": {
+    "bytes": 1048576,
+    "lines": 32768
+  },
+  "new_source_compiler_test_runtime_live_provider_actions": false,
+  "prior_functional_validation": "Accepted full2 remains PASS; no rerun. Full1 STOP and historical proof failures immutable.",
+  "qualification": "Supported existential normal/default/first-required-use allocator-entry class, not observed cache/allocation or every state, allocator success/bytes, global P08/resource/safety closure.",
+  "open": [
+    "Traversal and visitor witness allocation eligibility beyond the earlier decisive Workspace dependency",
+    "Other layout/callee/provider/profile/resource/live obligations",
+    "Unit FAILED; Interaction unit suite UNEXECUTED"
+  ],
+  "result": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-result/findings.json",
+    "sha256": "8048c70466a5948f4313695922a9b3a9d6b2780f16716408dedf36fddd8196b4"
+  },
+  "review": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-result/final-review.md",
+    "sha256": "d5e00ad5fabf0072dbf64c6a961ee7a7782270fb739d69baed287ad7fc6dc72d",
+    "verdict": "SUPPORTED for allowed normal/default/first-required-use class; no observed/every-state allocator or whole P08 claim.",
+    "verified_inputs": 9,
+    "verified_semantic_rows": 43,
+    "verified_executables": 2
+  }
+}

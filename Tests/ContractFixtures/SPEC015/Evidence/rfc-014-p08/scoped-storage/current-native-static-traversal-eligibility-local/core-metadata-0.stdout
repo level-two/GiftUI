@@ -1,0 +1,12 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000022118 <_$s18GiftUISemanticCore15RecordWorkspaceVMa>:
+   22118:      	adrp	x4, 0x22000 <_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF+0xaac>
+		0000000000022118:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore15RecordWorkspaceVMn
+   2211c:      	add	x4, x4, #0x0
+		000000000002211c:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore15RecordWorkspaceVMn
+   22120:      	b	0x22120 <_$s18GiftUISemanticCore15RecordWorkspaceVMa+0x8>
+		0000000000022120:  ARM64_RELOC_BRANCH26	___swift_instantiateGenericMetadata

@@ -1,0 +1,189 @@
+{
+  "baseline_commit": "17e9da5f9c7b1532a385dc4cab0109ba251414b7",
+  "scope": "Only the new current Static traversal eligibility proof/result; no source, index, producer or historical evidence edits.",
+  "files": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/concrete-key-helper.json",
+      "bytes": 771,
+      "sha256": "7289a280b06fa092a501d4dfd98d88a4b4a5efc0deee06b21d2985cedf65f1ff"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/concrete-key-helper.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/concrete-key-helper.stdout",
+      "bytes": 1035,
+      "sha256": "ed999e973525e1791e32444f1551bf37a9bec13de642c0881bfeb022fa3fcc8a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-0.stdout",
+      "bytes": 920,
+      "sha256": "f36ae97ff0ab8cadfcd91c8ee4bfc518b02dcc652b70feeed80c284af1a49268"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-1.stdout",
+      "bytes": 420,
+      "sha256": "577f37c9697d92bda53e8d3b6b6e3a424a8254a50aa30547f838f3c2a614b269"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-2.stdout",
+      "bytes": 793,
+      "sha256": "97e7ca8fa878e08f77c47fb15626734db483cab9585b0dbdc9d846c28e13ed81"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-3.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-3.stdout",
+      "bytes": 442,
+      "sha256": "714da7af337015dc8d447ec5e5feb35c2886c36b251c9c938e3f0394f07c61d4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-4.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata-4.stdout",
+      "bytes": 6940,
+      "sha256": "e60db7701b4f0c7b4781816b67d32a1b331a78ccf8d080c549e0e2b27602b75b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/core-metadata.json",
+      "bytes": 24439,
+      "sha256": "770f62f0f69c09f5742ef585fe75942928e248102a43611aa646f8a75dd8719e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/current-linked-conformance.json",
+      "bytes": 2174,
+      "sha256": "22d11966d2926ddf5ea2cbcc0d7895bbd4ce903615015c76127d4de8f01d5670"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/inputs.json",
+      "bytes": 1942,
+      "sha256": "08fc130d6039f97dd604d03ae5aca1beeb5105e4b070557b504c8c1ddb9c8ad5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/module-and-role-metadata.json",
+      "bytes": 4797,
+      "sha256": "cfd5243f7321d5db0fc10132bebec9644b495f6c423eea7ab633d23bda9f79e6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/roles-accessor-return.json",
+      "bytes": 754,
+      "sha256": "2fd81464062b7662e8196ea1d21f2f66c0275d561efa701f0a57d8c271f0a074"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/roles-accessor-return.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/roles-accessor-return.stdout",
+      "bytes": 263,
+      "sha256": "926fb176a0967ed909b10e7afcc616a9165981d3f158984206e88f16f3a25074"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/roles-accessor.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/roles-accessor.stdout",
+      "bytes": 736,
+      "sha256": "81ebdf3806fe4bfdbfaf3044adcd65f6733176976973c6622b65efe7fc51e269"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/roles-conformance.json",
+      "bytes": 3542,
+      "sha256": "c89956682015cf1c2303d01ba63477ef7e07834bdcae39a9de342a5ebd718a55"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/root-and-key-initial-unrelocated.json",
+      "bytes": 10193,
+      "sha256": "ef5218cb8ec2969511db1bd4d031059e2ffba5d1885ac168fa23fa4d012578ac"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/root-and-key.json",
+      "bytes": 10511,
+      "sha256": "fd49e37164ca4ed0e8deea5365b4bf8576147e6078904775665f87daa9895188"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/semantic-evidence.json",
+      "bytes": 12979,
+      "sha256": "0802a15591b897113a1377bc242a5d4321e5d3cb465082297b895fb49f9fe489"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/workspace-helper-0.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/workspace-helper-0.stdout",
+      "bytes": 688,
+      "sha256": "cd918eb68b320c929de9ace53b167621b1894f41890bfcb81eb5666e0ff1e9c9"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-local/workspace-helper-and-role.json",
+      "bytes": 3311,
+      "sha256": "75bc8a15f426c7c548a7aec38f9c66383e98f2b4b55a21bbb828237b546e610a"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-result/README.md",
+      "bytes": 3296,
+      "sha256": "f0798e337600e0a351d9a1ef95b183181588f2b55998e8afa65c83dfa729c18e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-result/final-review.md",
+      "bytes": 7371,
+      "sha256": "d5e00ad5fabf0072dbf64c6a961ee7a7782270fb739d69baed287ad7fc6dc72d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-result/findings.json",
+      "bytes": 10948,
+      "sha256": "8048c70466a5948f4313695922a9b3a9d6b2780f16716408dedf36fddd8196b4"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-result/validation.json",
+      "bytes": 1863,
+      "sha256": "215d2f057efff40a00f701fdc6ed7296460230497ca654e03be61a263c1d9a4d"
+    }
+  ],
+  "self": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-result/scope.json",
+    "included_in_scope": true,
+    "sha256": null,
+    "handling": "No self-hash cycle. Final handoff records this manifest SHA and inclusive retained total; every other selected file has exact size/hash here."
+  },
+  "existing_dependencies": "Frozen9inputs/43semantic rows in local/inputs.json and semantic-evidence.json bind accepted committed prior proof/body/transfer records and local .build receipt/objects/executables. Those existing files are dependencies, not copied into this new evidence package.",
+  "historical_retained_immutable_bytes": 8339409,
+  "new_retained_allowance_bytes": 8388608,
+  "new_selected_other_files_bytes": 111128,
+  "semantic_union": {
+    "bytes": 988995,
+    "lines": 23954,
+    "byte_limit": 1048576,
+    "line_limit": 32768
+  },
+  "review": "final-review.md",
+  "status": "SUPPORTED scoped conditional first-required-use Workspace allocator-entry counterexample; Traversal/visitor/globalP08 remain open."
+}

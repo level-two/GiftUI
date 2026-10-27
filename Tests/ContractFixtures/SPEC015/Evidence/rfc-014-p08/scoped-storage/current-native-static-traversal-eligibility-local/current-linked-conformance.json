@@ -1,0 +1,78 @@
+[
+  {
+    "binary": ".build/contracts/p08-counter-fl05ri46/counter",
+    "sha256": "3edf80bfe7e22ee8a8529514fe3974c0c474fc33d7f8fb0bb39bcc5a929b44d9",
+    "receipt_identity": {
+      "sha256": "3edf80bfe7e22ee8a8529514fe3974c0c474fc33d7f8fb0bb39bcc5a929b44d9",
+      "bytes": 6678536
+    },
+    "selected_symbols": [
+      {
+        "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAMc",
+        "address": 4297046800,
+        "section": 3,
+        "type": 15
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+        "address": 4297653824,
+        "section": 24,
+        "type": 15
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+        "address": 4297133480,
+        "section": 7,
+        "type": 15
+      }
+    ],
+    "hooks_sections": [],
+    "registration": [
+      {
+        "section": "__swift5_proto",
+        "address": "0x10025a1b8",
+        "file": 2466232,
+        "hex": "5819faff",
+        "target": "0x1001fbb10"
+      }
+    ]
+  },
+  {
+    "binary": ".build/contracts/p08-counter-fl05ri46/counter-static-resource-v1",
+    "sha256": "81e9ae1f795d3791daf9c43ec2f58aa33ccaad1733388c80c12934c15c609dcb",
+    "receipt_identity": {
+      "sha256": "81e9ae1f795d3791daf9c43ec2f58aa33ccaad1733388c80c12934c15c609dcb",
+      "bytes": 6678008
+    },
+    "selected_symbols": [
+      {
+        "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAMc",
+        "address": 4297046464,
+        "section": 4,
+        "type": 15
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime0B5RolesO18GiftUISemanticCore019SemanticDeclarationD0AAWP",
+        "address": 4297653792,
+        "section": 24,
+        "type": 15
+      },
+      {
+        "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+        "address": 4297099032,
+        "section": 5,
+        "type": 15
+      }
+    ],
+    "hooks_sections": [],
+    "registration": [
+      {
+        "section": "__swift5_proto",
+        "address": "0x10025a058",
+        "file": 2465880,
+        "hex": "6819faff",
+        "target": "0x1001fb9c0"
+      }
+    ]
+  }
+]

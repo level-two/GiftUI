@@ -1,0 +1,21 @@
+{
+  "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+  "sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+  "symbol": "___swift_instantiateConcreteTypeFromMangledName",
+  "lo": "0xbe4",
+  "hi": "0xc24",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0xbe4",
+    "--stop-address=0xc24",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "raw": "concrete-key-helper.stdout",
+  "stdout_bytes": 1035,
+  "stdout_lines": 23,
+  "stdout_sha256": "ed999e973525e1791e32444f1551bf37a9bec13de642c0881bfeb022fa3fcc8a"
+}

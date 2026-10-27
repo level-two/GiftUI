@@ -1,0 +1,118 @@
+{
+  "captures": [
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o",
+      "object_sha256": "4c40938628d8982edc2d53a9cfbb2b4e12e9c17722bf9d828f24aaffcb156582",
+      "symbol": "___swift_instantiateGenericMetadata",
+      "start": "0x285ec",
+      "end": "0x28618",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x285ec",
+        "--stop-address=0x28618",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "workspace-helper-0.stdout",
+      "bytes": 688,
+      "lines": 18,
+      "sha256": "cd918eb68b320c929de9ace53b167621b1894f41890bfcb81eb5666e0ff1e9c9"
+    }
+  ],
+  "data": [
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+      "object_sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+      "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+      "address": "0xdb59c",
+      "size": 28,
+      "section": "__constg_swiftt",
+      "hex": "52000000fcfffffff8fffffff4fffffff0ffffff0000000000000000",
+      "relocations": [
+        {
+          "offset": 16,
+          "raw_info": "0x1c00239f",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+            "address": 898460,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 16,
+          "raw_info": "0xc001363",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMF",
+            "address": 904276,
+            "section": 15,
+            "type": 14
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0x1c00239f",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+            "address": 898460,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0xc00239e",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMa",
+            "address": 718400,
+            "section": 1,
+            "type": 15
+          }
+        },
+        {
+          "offset": 8,
+          "raw_info": "0x1c00239f",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+            "address": 898460,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 8,
+          "raw_info": "0xc001362",
+          "target": {
+            "symbol": "l_.str.12.CounterRoles",
+            "address": 838216,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 4,
+          "raw_info": "0x1c00239f",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+            "address": 898460,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 4,
+          "raw_info": "0xc002782",
+          "target": {
+            "symbol": "_$s17P08CounterRuntimeMXM",
+            "address": 898332,
+            "section": 14,
+            "type": 31
+          }
+        }
+      ]
+    }
+  ]
+}

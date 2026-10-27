@@ -1,0 +1,9 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000027f3c <_$s18GiftUISemanticCore15RecordWorkspaceVMi>:
+   27f3c:      	mov	w3, #0x20               ; =32
+   27f40:      	b	0x27f40 <_$s18GiftUISemanticCore15RecordWorkspaceVMi+0x4>
+		0000000000027f40:  ARM64_RELOC_BRANCH26	_swift_allocateGenericValueMetadata

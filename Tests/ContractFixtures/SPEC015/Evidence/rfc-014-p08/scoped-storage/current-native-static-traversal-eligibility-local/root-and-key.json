@@ -1,0 +1,251 @@
+{
+  "window_start": "2026-10-27T16:44:47Z",
+  "deadline": "2026-10-27T18:44:47Z",
+  "handoff_target": "2026-10-27T18:20:00Z",
+  "head": "17e9da5f9c7b1532a385dc4cab0109ba251414b7",
+  "inputs": {
+    ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached.json": "84589832b0db244ececc36cfd4e18ec8fc2b9b057fe519c38332b95a3e550666",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-10.stdout": "7b723fb915c090e6cbf7e34a31c46210bbc5eee0412b0d2c1aef36395c40033f"
+  },
+  "root": {
+    "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesOG_AO0rO4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAO0rN0OGAhIPAHE8disabledyQrSbFQOyAH6ButtonVy0qR12Presentation0R6ActionOAH4TextVyA1_GG_Qo_Tg5",
+    "start": "0xac14c",
+    "end": "0xac6a0",
+    "prior_complete_raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-10.stdout",
+    "raw_bytes": 57712,
+    "raw_lines": 404
+  },
+  "current_data": [
+    {
+      "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVy17P08CounterRuntime0G5RolesOGMD",
+      "address": "0xcfd68",
+      "cell_hex": "00000000f4ffffff",
+      "cell_relocations": [
+        {
+          "offset": 0,
+          "raw_info": "0x1c002785",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVy17P08CounterRuntime0G5RolesOGMD",
+            "address": 851304,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0xc002a58",
+          "target": {
+            "symbol": "_symbolic _____y_____G 18GiftUISemanticCore15RecordWorkspaceV 17P08CounterRuntime0G5RolesO",
+            "address": 855430,
+            "section": 7,
+            "type": 31
+          }
+        }
+      ],
+      "payload_symbol": "_symbolic _____y_____G 18GiftUISemanticCore15RecordWorkspaceV 17P08CounterRuntime0G5RolesO",
+      "payload_address": "0xd0d86",
+      "payload_length": 12,
+      "payload_hex": "0251fdffbf7901f9ffffff47",
+      "payload_relocations": [
+        {
+          "offset": 7,
+          "raw_info": "0x1c002a58",
+          "target": {
+            "symbol": "_symbolic _____y_____G 18GiftUISemanticCore15RecordWorkspaceV 17P08CounterRuntime0G5RolesO",
+            "address": 855430,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 7,
+          "raw_info": "0xc00239f",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+            "address": 898460,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 1,
+          "raw_info": "0x7d002b98",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 0,
+            "section": 0,
+            "type": 1
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesOGAF0jG4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAF0J6DomainOGGMD",
+      "address": "0xd0920",
+      "cell_hex": "00000000d2ffffff",
+      "cell_relocations": [
+        {
+          "offset": 0,
+          "raw_info": "0x1c00279d",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesOGAF0jG4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAF0J6DomainOGGMD",
+            "address": 854304,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0xc002a86",
+          "target": {
+            "symbol": "_symbolic _____y_____y_____G__________y_______________GG 18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE AA15RecordWorkspaceV 17P08CounterRuntime0J5RolesO AF0jG4SinkV 0A17UIObservableState010ObservableD11BodyBindingVAKRi_zrlE AF0J10OwnedModelV AA0D16CompleteIdentityV AF0J6DomainO",
+            "address": 860450,
+            "section": 7,
+            "type": 31
+          }
+        }
+      ],
+      "payload_symbol": "_symbolic _____y_____y_____G__________y_______________GG 18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE AA15RecordWorkspaceV 17P08CounterRuntime0J5RolesO AF0jG4SinkV 0A17UIObservableState010ObservableD11BodyBindingVAKRi_zrlE AF0J10OwnedModelV AA0D16CompleteIdentityV AF0J6DomainO",
+      "payload_address": "0xd2122",
+      "payload_length": 46,
+      "payload_hex": "02b5e9ffbf7902afe9ffbf7901f3ffffff4701edffffff029ee9ffbf7901e2ffffff0293e9ffbf01d8ffffff4747",
+      "payload_relocations": [
+        {
+          "offset": 40,
+          "raw_info": "0x1c002a86",
+          "target": {
+            "symbol": "_symbolic _____y_____y_____G__________y_______________GG 18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE AA15RecordWorkspaceV 17P08CounterRuntime0J5RolesO AF0jG4SinkV 0A17UIObservableState010ObservableD11BodyBindingVAKRi_zrlE AF0J10OwnedModelV AA0D16CompleteIdentityV AF0J6DomainO",
+            "address": 860450,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 40,
+          "raw_info": "0xc0023aa",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B6DomainOMn",
+            "address": 898404,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 35,
+          "raw_info": "0x7d002bc3",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVMn",
+            "address": 0,
+            "section": 0,
+            "type": 1
+          }
+        },
+        {
+          "offset": 30,
+          "raw_info": "0x1c002a86",
+          "target": {
+            "symbol": "_symbolic _____y_____y_____G__________y_______________GG 18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE AA15RecordWorkspaceV 17P08CounterRuntime0J5RolesO AF0jG4SinkV 0A17UIObservableState010ObservableD11BodyBindingVAKRi_zrlE AF0J10OwnedModelV AA0D16CompleteIdentityV AF0J6DomainO",
+            "address": 860450,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 30,
+          "raw_info": "0xc001bba",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B10OwnedModelVMn",
+            "address": 898344,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 24,
+          "raw_info": "0x7d002c96",
+          "target": {
+            "symbol": "_$s21GiftUIObservableState29ObservableSemanticBodyBindingVMn",
+            "address": 0,
+            "section": 0,
+            "type": 1
+          }
+        },
+        {
+          "offset": 19,
+          "raw_info": "0x1c002a86",
+          "target": {
+            "symbol": "_symbolic _____y_____y_____G__________y_______________GG 18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE AA15RecordWorkspaceV 17P08CounterRuntime0J5RolesO AF0jG4SinkV 0A17UIObservableState010ObservableD11BodyBindingVAKRi_zrlE AF0J10OwnedModelV AA0D16CompleteIdentityV AF0J6DomainO",
+            "address": 860450,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 19,
+          "raw_info": "0xc001be9",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B10RecordSinkVMn",
+            "address": 898520,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 13,
+          "raw_info": "0x1c002a86",
+          "target": {
+            "symbol": "_symbolic _____y_____y_____G__________y_______________GG 18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE AA15RecordWorkspaceV 17P08CounterRuntime0J5RolesO AF0jG4SinkV 0A17UIObservableState010ObservableD11BodyBindingVAKRi_zrlE AF0J10OwnedModelV AA0D16CompleteIdentityV AF0J6DomainO",
+            "address": 860450,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 13,
+          "raw_info": "0xc00239f",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B5RolesOMn",
+            "address": 898460,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 7,
+          "raw_info": "0x7d002b98",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 0,
+            "section": 0,
+            "type": 1
+          }
+        },
+        {
+          "offset": 1,
+          "raw_info": "0x7d002bd8",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 0,
+            "section": 0,
+            "type": 1
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesOGAF0jG4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAF0J6DomainOGGACyxq_q0_G0A2UI01_abF7VisitorAARi0__Ri_0_Ri0_0_rlWL",
+      "address": "0xd0928",
+      "cell_hex": "0000000000000000",
+      "cell_relocations": []
+    }
+  ],
+  "historical_retained_immutable_bytes": 8339409,
+  "limits": {
+    "new_retained": 8388608,
+    "complete_union_bytes": 1048576,
+    "complete_union_lines": 32768
+  },
+  "qualification": "Actual full2 symbol/data selected and file-hashed; accepted12-module full2 transfer binds prior complete raw. No old ordinal inference or live cache observation.",
+  "projection_correction": "Initial unrelocated rawrelative0 projection is preserved separately and NOT evidence of payload bytes. Current object subtractor/unsigned relocation pair resolves the exact symbolic payload target; no source/helper/parser changes."
+}

@@ -1,0 +1,220 @@
+{
+  "window_start": "2026-10-27T16:44:47Z",
+  "deadline": "2026-10-27T18:44:47Z",
+  "handoff_target": "2026-10-27T18:20:00Z",
+  "head": "17e9da5f9c7b1532a385dc4cab0109ba251414b7",
+  "inputs": {
+    ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached.json": "84589832b0db244ececc36cfd4e18ec8fc2b9b057fe519c38332b95a3e550666",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-10.stdout": "7b723fb915c090e6cbf7e34a31c46210bbc5eee0412b0d2c1aef36395c40033f"
+  },
+  "root": {
+    "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE16expandFixedChild_5indexyqd___s5UInt8Vt0A2UI4ViewRd__6DomainQyd__AJRt0_lFAA15RecordWorkspaceVy17P08CounterRuntime0R5RolesOG_AO0rO4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAO0R10OwnedModelVAA0D16CompleteIdentityVAO0rN0OGAhIPAHE8disabledyQrSbFQOyAH6ButtonVy0qR12Presentation0R6ActionOAH4TextVyA1_GG_Qo_Tg5",
+    "start": "0xac14c",
+    "end": "0xac6a0",
+    "prior_complete_raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-reached-10.stdout",
+    "raw_bytes": 57712,
+    "raw_lines": 404
+  },
+  "current_data": [
+    {
+      "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVy17P08CounterRuntime0G5RolesOGMD",
+      "address": "0xcfd68",
+      "cell_hex": "00000000f4ffffff",
+      "relative": 0,
+      "signed_length": -12,
+      "payload_address": "0xcfd68",
+      "payload_hex": "00000000f4ffffff00000000",
+      "relocations": [
+        {
+          "offset": 0,
+          "raw_info": "0x1c002785",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVy17P08CounterRuntime0G5RolesOGMD",
+            "address": 851304,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0xc002a58",
+          "target": {
+            "symbol": "_symbolic _____y_____G 18GiftUISemanticCore15RecordWorkspaceV 17P08CounterRuntime0G5RolesO",
+            "address": 855430,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0x1c002785",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVy17P08CounterRuntime0G5RolesOGMD",
+            "address": 851304,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0xc002a58",
+          "target": {
+            "symbol": "_symbolic _____y_____G 18GiftUISemanticCore15RecordWorkspaceV 17P08CounterRuntime0G5RolesO",
+            "address": 855430,
+            "section": 7,
+            "type": 31
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesOGAF0jG4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAF0J6DomainOGGMD",
+      "address": "0xd0920",
+      "cell_hex": "00000000d2ffffff",
+      "relative": 0,
+      "signed_length": -46,
+      "payload_address": "0xd0920",
+      "payload_hex": "00000000d2ffffff000000000000000000000000d7ffffff00000000b8ffffff00000000d7ffffff00000000f4ff",
+      "relocations": [
+        {
+          "offset": 0,
+          "raw_info": "0x1c00279d",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesOGAF0jG4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAF0J6DomainOGGMD",
+            "address": 854304,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0xc002a86",
+          "target": {
+            "symbol": "_symbolic _____y_____y_____G__________y_______________GG 18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE AA15RecordWorkspaceV 17P08CounterRuntime0J5RolesO AF0jG4SinkV 0A17UIObservableState010ObservableD11BodyBindingVAKRi_zrlE AF0J10OwnedModelV AA0D16CompleteIdentityV AF0J6DomainO",
+            "address": 860450,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 40,
+          "raw_info": "0x1c001f03",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B16ConfiguredRender33_480B1BD841D053AE4FCDC18507668536LLVy20GiftUIRuntimeDynamic0mE9WorkspaceVGMD",
+            "address": 854344,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 40,
+          "raw_info": "0xc002a54",
+          "target": {
+            "symbol": "_symbolic _____y_____G 17P08CounterRuntime0B16ConfiguredRender33_480B1BD841D053AE4FCDC18507668536LLV 20GiftUIRuntimeDynamic0mE9WorkspaceV",
+            "address": 860656,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 32,
+          "raw_info": "0x1c00236a",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B26DynamicHostSuppliedStorageVyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateI0AELLVAA0a9CommittedI0AELLVAA0a3HitI0AELLVG_s4SpanVys5UInt8VGtMD",
+            "address": 854336,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 32,
+          "raw_info": "0xc002a72",
+          "target": {
+            "symbol": "_symbolic _____y____________________G______y_____Gt 17P08CounterRuntime0B26DynamicHostSuppliedStorageVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE AA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV AA0a9CandidateI0AELLV AA0a9CommittedI0AELLV AA0a3HitI0AELLV s4SpanVsRi_zrlE s5UInt8V",
+            "address": 860614,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 24,
+          "raw_info": "0x1c0027f6",
+          "target": {
+            "symbol": "_$s20GiftUIRuntimeDynamic0C27RuntimeExecutionCoordinatorVy010P08CounterD00hE7BindingVAD0H9AdmissionVAD0H13PipelineOwnerVyAD0G14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAD0g9CandidateN0ALLLVAD0g9CommittedN0ALLLVAD0g3HitN0ALLLVGG_0A17UIObservableState21ObservableModelTicketVy0gH6Schema0hZ6SchemaOGSgs4SpanVys5UInt8VGtMD",
+            "address": 854328,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 24,
+          "raw_info": "0xc002a76",
+          "target": {
+            "symbol": "_symbolic _____y_______________y____________________GG______y_____GSg_____y_____Gt 20GiftUIRuntimeDynamic0C27RuntimeExecutionCoordinatorVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_rlE 010P08CounterD00hE7BindingV AD0H9AdmissionV AD0H13PipelineOwnerVADRi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE AD0G14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV AD0g9CandidateN0ALLLV AD0g9CommittedN0ALLLV AD0g3HitN0ALLLV 0A17UIObservableState21ObservableModelTicketV 0gH6Schema0hZ6SchemaO s4SpanVsRi_zrlE s5UInt8V",
+            "address": 860540,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 16,
+          "raw_info": "0x1c001e69",
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B14RetiredStorageVyAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLVAA0a9CandidateG0AELLVAA0a9CommittedG0AELLVAA0a3HitG0AELLVG_s4SpanVys5UInt8VGtMD",
+            "address": 854320,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 16,
+          "raw_info": "0xc002a70",
+          "target": {
+            "symbol": "_symbolic _____y____________________G______y_____Gt 17P08CounterRuntime0B14RetiredStorageVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE AA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV AA0a9CandidateG0AELLV AA0a9CommittedG0AELLV AA0a3HitG0AELLV s4SpanVsRi_zrlE s5UInt8V",
+            "address": 860498,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0x1c00279d",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesOGAF0jG4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAF0J6DomainOGGMD",
+            "address": 854304,
+            "section": 6,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0xc002a86",
+          "target": {
+            "symbol": "_symbolic _____y_____y_____G__________y_______________GG 18GiftUISemanticCore26SemanticExpansionTraversalVAARi0__Ri_0_Ri0_0_rlE AA15RecordWorkspaceV 17P08CounterRuntime0J5RolesO AF0jG4SinkV 0A17UIObservableState010ObservableD11BodyBindingVAKRi_zrlE AF0J10OwnedModelV AA0D16CompleteIdentityV AF0J6DomainO",
+            "address": 860450,
+            "section": 7,
+            "type": 31
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVyAA15RecordWorkspaceVy17P08CounterRuntime0J5RolesOGAF0jG4SinkV0A17UIObservableState010ObservableD11BodyBindingVyAF0J10OwnedModelVAA0D16CompleteIdentityVAF0J6DomainOGGACyxq_q0_G0A2UI01_abF7VisitorAARi0__Ri_0_Ri0_0_rlWL",
+      "address": "0xd0928",
+      "cell_hex": "0000000000000000",
+      "relative": 0,
+      "signed_length": 0,
+      "payload_address": "0xd0928",
+      "payload_hex": "",
+      "relocations": []
+    }
+  ],
+  "historical_retained_immutable_bytes": 8339409,
+  "limits": {
+    "new_retained": 8388608,
+    "complete_union_bytes": 1048576,
+    "complete_union_lines": 32768
+  },
+  "qualification": "Actual full2 symbol/data selected and file-hashed; accepted12-module full2 transfer binds prior complete raw. No old ordinal inference or live cache observation."
+}

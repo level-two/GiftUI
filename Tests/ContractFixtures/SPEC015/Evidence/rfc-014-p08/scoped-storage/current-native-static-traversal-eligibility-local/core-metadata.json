@@ -1,0 +1,856 @@
+{
+  "object": ".build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o",
+  "sha256": "4c40938628d8982edc2d53a9cfbb2b4e12e9c17722bf9d828f24aaffcb156582",
+  "projections": [
+    {
+      "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+      "address": "0x2f734",
+      "end": "0x2f770",
+      "section": {
+        "name": "__constg_swiftt",
+        "addr": 192432,
+        "bytes": 2494,
+        "file": 194560,
+        "reloff": 306224,
+        "nreloc": 474
+      },
+      "size": 60,
+      "storage": "file-backed exact object bytes",
+      "hex": "d1000000fcfffffff8fffffff4fffffff0ffffff0400000004000000e4ffffffe0ffffff01000100020000008000000080000000ccffffffc8ffffff",
+      "relocations": [
+        {
+          "offset": 56,
+          "raw_info": "0x1c0006a7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 194356,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 56,
+          "raw_info": "0xc00089e",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore24SemanticDeclarationRolesMp",
+            "address": 193688,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 52,
+          "raw_info": "0x1c0006a7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 194356,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 52,
+          "raw_info": "0xc000af9",
+          "target": {
+            "symbol": "_symbolic x",
+            "address": 183942,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 32,
+          "raw_info": "0x1c0006a7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 194356,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 32,
+          "raw_info": "0xc0005ef",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMP",
+            "address": 182296,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 28,
+          "raw_info": "0x1c0006a7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 194356,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 28,
+          "raw_info": "0xc0005ed",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMI",
+            "address": 237408,
+            "section": 6,
+            "type": 14
+          }
+        },
+        {
+          "offset": 16,
+          "raw_info": "0x1c0006a7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 194356,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 16,
+          "raw_info": "0xc0005ee",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMF",
+            "address": 197520,
+            "section": 12,
+            "type": 14
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0x1c0006a7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 194356,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0xc0006a6",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMa",
+            "address": 139544,
+            "section": 1,
+            "type": 15
+          }
+        },
+        {
+          "offset": 8,
+          "raw_info": "0x1c0006a7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 194356,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 8,
+          "raw_info": "0xc0005ec",
+          "target": {
+            "symbol": "l_.str.15.RecordWorkspace",
+            "address": 182280,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 4,
+          "raw_info": "0x1c0006a7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMn",
+            "address": 194356,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 4,
+          "raw_info": "0xc000a59",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCoreMXM",
+            "address": 192432,
+            "section": 11,
+            "type": 31
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMP",
+      "address": "0x2c818",
+      "end": "0x2c830",
+      "section": {
+        "name": "__const",
+        "addr": 178768,
+        "bytes": 3868,
+        "file": 180896,
+        "reloff": 295912,
+        "nreloc": 534
+      },
+      "size": 24,
+      "storage": "file-backed exact object bytes",
+      "hex": "000000000000000001000040f4fffffff0ffffff02000200",
+      "relocations": [
+        {
+          "offset": 16,
+          "raw_info": "0x1c0005ef",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMP",
+            "address": 182296,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 16,
+          "raw_info": "0xc0005eb",
+          "target": {
+            "symbol": "___unnamed_122",
+            "address": 182264,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0x1c0005ef",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMP",
+            "address": 182296,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0xc0005ea",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVWV",
+            "address": 191192,
+            "section": 10,
+            "type": 14
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0x1c0005ef",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMP",
+            "address": 182296,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0xc000470",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMi",
+            "address": 163644,
+            "section": 1,
+            "type": 14
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMI",
+      "address": "0x39f60",
+      "end": "0x39fe0",
+      "section": {
+        "name": "__bss",
+        "addr": 231904,
+        "bytes": 5632,
+        "file": 0,
+        "reloff": 0,
+        "nreloc": 0
+      },
+      "size": 128,
+      "storage": "zero-fill logical initial state, not loaded bytes",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "relocations": []
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+      "address": "0x2f410",
+      "end": "0x2f498",
+      "section": {
+        "name": "__constg_swiftt",
+        "addr": 192432,
+        "bytes": 2494,
+        "file": 194560,
+        "reloff": 306224,
+        "nreloc": 474
+      },
+      "size": 136,
+      "storage": "file-backed exact object bytes",
+      "hex": "f1000000fcfffffff8fffffff4fffffff0ffffff0a00000008000000e4ffffffe0ffffff03000700060000008080800080000000ccffffffc8ffffff80000000c0ffffffbcffffff80000000b4ffffffb0ffffff01000000a8ffffffa4ffffff010000009cffffff98ffffff0500000090ffffff010002000500000084ffffff0200030003000000",
+      "relocations": [
+        {
+          "offset": 124,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 124,
+          "raw_info": "0xc000af7",
+          "target": {
+            "symbol": "_symbolic q0_",
+            "address": 183678,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 112,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 112,
+          "raw_info": "0xc000af8",
+          "target": {
+            "symbol": "_symbolic q_",
+            "address": 183674,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 104,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 104,
+          "raw_info": "0xc000aa2",
+          "target": {
+            "symbol": "_symbolic 8Identity_____Qy0_ 18GiftUISemanticCore23SemanticStatefulBindingP",
+            "address": 184346,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 100,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 100,
+          "raw_info": "0xc000aa3",
+          "target": {
+            "symbol": "_symbolic 8Identity_____Qy_ 18GiftUISemanticCore21SemanticExpansionSinkP",
+            "address": 184328,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 92,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 92,
+          "raw_info": "0xc000aa3",
+          "target": {
+            "symbol": "_symbolic 8Identity_____Qy_ 18GiftUISemanticCore21SemanticExpansionSinkP",
+            "address": 184328,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 88,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 88,
+          "raw_info": "0xc000aa9",
+          "target": {
+            "symbol": "_symbolic 8Identity_____Qz 18GiftUISemanticCore26SemanticExpansionWorkspaceP",
+            "address": 184056,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 80,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 80,
+          "raw_info": "0xc00087f",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore23SemanticStatefulBindingMp",
+            "address": 192604,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 76,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 76,
+          "raw_info": "0xc000af7",
+          "target": {
+            "symbol": "_symbolic q0_",
+            "address": 183678,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 68,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 68,
+          "raw_info": "0xc000741",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore21SemanticExpansionSinkMp",
+            "address": 192964,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 64,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 64,
+          "raw_info": "0xc000af8",
+          "target": {
+            "symbol": "_symbolic q_",
+            "address": 183674,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 56,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 56,
+          "raw_info": "0xc0009c7",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionWorkspaceMp",
+            "address": 192800,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 52,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 52,
+          "raw_info": "0xc000af9",
+          "target": {
+            "symbol": "_symbolic x",
+            "address": 183942,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 32,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 32,
+          "raw_info": "0xc000575",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMP",
+            "address": 181720,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 28,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 28,
+          "raw_info": "0xc000573",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMI",
+            "address": 237280,
+            "section": 6,
+            "type": 14
+          }
+        },
+        {
+          "offset": 16,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 16,
+          "raw_info": "0xc000574",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMF",
+            "address": 195916,
+            "section": 12,
+            "type": 14
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0xc0009b4",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMa",
+            "address": 12348,
+            "section": 1,
+            "type": 15
+          }
+        },
+        {
+          "offset": 8,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 8,
+          "raw_info": "0xc000572",
+          "target": {
+            "symbol": "l_.str.26.SemanticExpansionTraversal",
+            "address": 181616,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 4,
+          "raw_info": "0x1c0009b5",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMn",
+            "address": 193552,
+            "section": 11,
+            "type": 15
+          }
+        },
+        {
+          "offset": 4,
+          "raw_info": "0xc000a59",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCoreMXM",
+            "address": 192432,
+            "section": 11,
+            "type": 31
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMP",
+      "address": "0x2c5d8",
+      "end": "0x2c5f0",
+      "section": {
+        "name": "__const",
+        "addr": 178768,
+        "bytes": 3868,
+        "file": 180896,
+        "reloff": 295912,
+        "nreloc": 534
+      },
+      "size": 24,
+      "storage": "file-backed exact object bytes",
+      "hex": "00000000fcffffff00000040f4ffffff0000000000000000",
+      "relocations": [
+        {
+          "offset": 12,
+          "raw_info": "0x1c000575",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMP",
+            "address": 181720,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 12,
+          "raw_info": "0xc000571",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVWV",
+            "address": 188728,
+            "section": 10,
+            "type": 14
+          }
+        },
+        {
+          "offset": 4,
+          "raw_info": "0x1c000575",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMP",
+            "address": 181720,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 4,
+          "raw_info": "0xc000425",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr",
+            "address": 158092,
+            "section": 1,
+            "type": 14
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0x1c000575",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMP",
+            "address": 181720,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 0,
+          "raw_info": "0xc000424",
+          "target": {
+            "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMi",
+            "address": 158084,
+            "section": 1,
+            "type": 14
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMI",
+      "address": "0x39ee0",
+      "end": "0x39f60",
+      "section": {
+        "name": "__bss",
+        "addr": 231904,
+        "bytes": 5632,
+        "file": 0,
+        "reloff": 0,
+        "nreloc": 0
+      },
+      "size": 128,
+      "storage": "zero-fill logical initial state, not loaded bytes",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "relocations": []
+    }
+  ],
+  "captures": [
+    {
+      "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMa",
+      "start": "0x22118",
+      "end": "0x22124",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x22118",
+        "--stop-address=0x22124",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-metadata-0.stdout",
+      "bytes": 920,
+      "lines": 12,
+      "sha256": "f36ae97ff0ab8cadfcd91c8ee4bfc518b02dcc652b70feeed80c284af1a49268",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore15RecordWorkspaceVMi",
+      "start": "0x27f3c",
+      "end": "0x27f44",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x27f3c",
+        "--stop-address=0x27f44",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-metadata-1.stdout",
+      "bytes": 420,
+      "lines": 9,
+      "sha256": "577f37c9697d92bda53e8d3b6b6e3a424a8254a50aa30547f838f3c2a614b269",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMa",
+      "start": "0x303c",
+      "end": "0x3048",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x303c",
+        "--stop-address=0x3048",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-metadata-2.stdout",
+      "bytes": 793,
+      "lines": 12,
+      "sha256": "97e7ca8fa878e08f77c47fb15626734db483cab9585b0dbdc9d846c28e13ed81",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMi",
+      "start": "0x26984",
+      "end": "0x2698c",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x26984",
+        "--stop-address=0x2698c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-metadata-3.stdout",
+      "bytes": 442,
+      "lines": 9,
+      "sha256": "714da7af337015dc8d447ec5e5feb35c2886c36b251c9c938e3f0394f07c61d4",
+      "stderr_bytes": 0
+    },
+    {
+      "symbol": "_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr",
+      "start": "0x2698c",
+      "end": "0x26ae8",
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x2698c",
+        "--stop-address=0x26ae8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-metadata-4.stdout",
+      "bytes": 6940,
+      "lines": 121,
+      "sha256": "e60db7701b4f0c7b4781816b67d32a1b331a78ccf8d080c549e0e2b27602b75b",
+      "stderr_bytes": 0
+    }
+  ],
+  "raw_context_bytes": 9515,
+  "raw_context_lines": 163
+}

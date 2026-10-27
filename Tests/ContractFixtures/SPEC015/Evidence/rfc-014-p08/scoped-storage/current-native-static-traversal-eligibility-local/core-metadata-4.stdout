@@ -1,0 +1,121 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000002698c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr>:
+   2698c:      	sub	sp, sp, #0x70
+   26990:      	stp	x20, x19, [sp, #0x50]
+   26994:      	stp	x29, x30, [sp, #0x60]
+   26998:      	add	x29, sp, #0x60
+   2699c:      	mov	x19, x0
+   269a0:      	adrp	x8, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		00000000000269a0:  ARM64_RELOC_PAGE21	l_type_layout_43_2_fe_pod
+   269a4:      	add	x8, x8, #0x0
+		00000000000269a4:  ARM64_RELOC_PAGEOFF12	l_type_layout_43_2_fe_pod
+   269a8:      	str	x8, [sp]
+   269ac:      	bl	0x269ac <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x20>
+		00000000000269ac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_249
+   269b0:      	mov	x20, x0
+   269b4:      	cmp	x1, #0x3f
+   269b8:      	b.hi	0x26ab8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x12c>
+   269bc:      	ldur	x8, [x20, #-0x8]
+   269c0:      	add	x8, x8, #0x40
+   269c4:      	str	x8, [sp, #0x8]
+   269c8:      	ldr	x1, [x19, #0x18]
+   269cc:      	bl	0x269cc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x40>
+		00000000000269cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_439
+   269d0:      	cmp	x1, #0x3f
+   269d4:      	b.hi	0x26ac0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x134>
+   269d8:      	bl	0x269d8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x4c>
+		00000000000269d8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_645
+   269dc:      	str	x8, [sp, #0x10]
+   269e0:      	ldr	x1, [x19, #0x20]
+   269e4:      	bl	0x269e4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x58>
+		00000000000269e4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_439
+   269e8:      	mov	x2, x0
+   269ec:      	cmp	x1, #0x3f
+   269f0:      	b.hi	0x26acc <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x140>
+   269f4:      	ldur	x8, [x2, #-0x8]
+   269f8:      	add	x8, x8, #0x40
+   269fc:      	adrp	x9, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		00000000000269fc:  ARM64_RELOC_PAGE21	l_type_layout_1_1_fb_pod
+   26a00:      	add	x9, x9, #0x0
+		0000000000026a00:  ARM64_RELOC_PAGEOFF12	l_type_layout_1_1_fb_pod
+   26a04:      	stp	x8, x9, [sp, #0x18]
+   26a08:      	ldr	x1, [x19, #0x38]
+   26a0c:      	adrp	x3, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		0000000000026a0c:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore23SemanticStatefulBindingTL
+   26a10:      	add	x3, x3, #0x0
+		0000000000026a10:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore23SemanticStatefulBindingTL
+   26a14:      	adrp	x4, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		0000000000026a14:  ARM64_RELOC_PAGE21	_$s7Failure18GiftUISemanticCore23SemanticStatefulBindingPTl
+   26a18:      	add	x4, x4, #0x0
+		0000000000026a18:  ARM64_RELOC_PAGEOFF12	_$s7Failure18GiftUISemanticCore23SemanticStatefulBindingPTl
+   26a1c:      	mov	w0, #0xff               ; =255
+   26a20:      	bl	0x26a20 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x94>
+		0000000000026a20:  ARM64_RELOC_BRANCH26	_swift_getAssociatedTypeWitness
+   26a24:      	bl	0x26a24 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x98>
+		0000000000026a24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_825
+   26a28:      	cmp	x1, #0x3f
+   26a2c:      	b.hi	0x26ac0 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x134>
+   26a30:      	bl	0x26a30 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0xa4>
+		0000000000026a30:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_645
+   26a34:      	adrp	x9, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		0000000000026a34:  ARM64_RELOC_PAGE21	l_type_layout_1_1_fa_pod
+   26a38:      	add	x9, x9, #0x0
+		0000000000026a38:  ARM64_RELOC_PAGEOFF12	l_type_layout_1_1_fa_pod
+   26a3c:      	stp	x8, x9, [sp, #0x28]
+   26a40:      	ldr	x1, [x19, #0x28]
+   26a44:      	adrp	x3, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		0000000000026a44:  ARM64_RELOC_PAGE21	_$s18GiftUISemanticCore26SemanticExpansionWorkspaceTL
+   26a48:      	add	x3, x3, #0x0
+		0000000000026a48:  ARM64_RELOC_PAGEOFF12	_$s18GiftUISemanticCore26SemanticExpansionWorkspaceTL
+   26a4c:      	adrp	x4, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		0000000000026a4c:  ARM64_RELOC_PAGE21	_$s8Identity18GiftUISemanticCore26SemanticExpansionWorkspacePTl
+   26a50:      	add	x4, x4, #0x0
+		0000000000026a50:  ARM64_RELOC_PAGEOFF12	_$s8Identity18GiftUISemanticCore26SemanticExpansionWorkspacePTl
+   26a54:      	mov	w0, #0xff               ; =255
+   26a58:      	mov	x2, x20
+   26a5c:      	bl	0x26a5c <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0xd0>
+		0000000000026a5c:  ARM64_RELOC_BRANCH26	_swift_getAssociatedTypeWitness
+   26a60:      	bl	0x26a60 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0xd4>
+		0000000000026a60:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_825
+   26a64:      	mov	x20, x0
+   26a68:      	cmp	x1, #0x3f
+   26a6c:      	b.hi	0x26ab8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x12c>
+   26a70:      	ldur	x8, [x20, #-0x8]
+   26a74:      	add	x8, x8, #0x40
+   26a78:      	adrp	x9, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		0000000000026a78:  ARM64_RELOC_PAGE21	l_type_layout_1_1_fe_pod
+   26a7c:      	add	x9, x9, #0x0
+		0000000000026a7c:  ARM64_RELOC_PAGEOFF12	l_type_layout_1_1_fe_pod
+   26a80:      	stp	x8, x9, [sp, #0x38]
+   26a84:      	adrp	x8, 0x26000 <_$s18GiftUISemanticCore22SemanticRecordingEventOwtk+0x9c>
+		0000000000026a84:  ARM64_RELOC_GOT_LOAD_PAGE21	_$sBi16_WV
+   26a88:      	ldr	x8, [x8]
+		0000000000026a88:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$sBi16_WV
+   26a8c:      	add	x8, x8, #0x40
+   26a90:      	str	x8, [sp, #0x48]
+   26a94:      	mov	x3, sp
+   26a98:      	add	x4, x19, #0x40
+   26a9c:      	mov	x0, x19
+   26aa0:      	mov	x1, #0x0                ; =0
+   26aa4:      	mov	w2, #0xa                ; =10
+   26aa8:      	bl	0x26aa8 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x11c>
+		0000000000026aa8:  ARM64_RELOC_BRANCH26	_swift_initStructMetadata
+   26aac:      	mov	x20, #0x0               ; =0
+   26ab0:      	mov	x1, #0x0                ; =0
+   26ab4:      	b	0x26ad4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x148>
+   26ab8:      	mov	w1, #0x3f               ; =63
+   26abc:      	b	0x26ad4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x148>
+   26ac0:      	mov	w1, #0x3f               ; =63
+   26ac4:      	mov	x20, x0
+   26ac8:      	b	0x26ad4 <_$s18GiftUISemanticCore26SemanticExpansionTraversalVMr+0x148>
+   26acc:      	mov	w1, #0x3f               ; =63
+   26ad0:      	mov	x20, x2
+   26ad4:      	mov	x0, x20
+   26ad8:      	ldp	x29, x30, [sp, #0x60]
+   26adc:      	ldp	x20, x19, [sp, #0x50]
+   26ae0:      	add	sp, sp, #0x70
+   26ae4:      	ret

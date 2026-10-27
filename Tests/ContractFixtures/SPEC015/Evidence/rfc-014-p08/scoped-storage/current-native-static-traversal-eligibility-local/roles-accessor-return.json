@@ -1,0 +1,21 @@
+{
+  "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+  "sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+  "symbol": "_OUTLINED_FUNCTION_591",
+  "lo": "0xc432c",
+  "hi": "0xc4334",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0xc432c",
+    "--stop-address=0xc4334",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "raw": "roles-accessor-return.stdout",
+  "stdout_bytes": 263,
+  "stdout_lines": 8,
+  "stdout_sha256": "926fb176a0967ed909b10e7afcc616a9165981d3f158984206e88f16f3a25074"
+}

@@ -1,0 +1,85 @@
+{
+  "status": "SUPPORTED_CONDITIONAL_CURRENT_WORKSPACE_ALLOCATOR_ENTRY_COUNTEREXAMPLE",
+  "claim_under_review": "Current Roles-only Workspace has a jointly feasible normal/default/first-required-use private-cache allocator path. Later Workspace/Traversal lookup need not be cold. This is a current dependency result, not observed allocation or whole P08 closure.",
+  "facts": [
+    "Exact full2 child ac14c\u2013ac6a0 requests Workspace cell cfd68 at ac200 before successful append and Traversal cell d0920 at ac594; visitor cache d0928 is then requested at ac5b0 and passed with Traversal metadata to disabled-child callback ac5cc.",
+    "Workspace negative-length cell resolves exact12-byte symbolic type RecordWorkspace<CounterRoles>. Its imported descriptor is current Core2f734: flagsd1, one parameter, one protocol requirement SemanticDeclarationRoles onx, two key arguments, private zero-fill128-byte MI39f60, pattern2c818.",
+    "Workspace accessor22118\u201322124 supplies its descriptor and tails shared helper285ec\u201328618; helper forms the actual argument vector and calls regular swift_getGenericMetadata. Workspace instantiator27f3c\u201327f44 sets extra32 and tails swift_allocateGenericValueMetadata. Pattern fixed-layout bit1 does not bypass the accepted regular-entry own-cache dispatch before pattern instantiation.",
+    "Current CounterRoles descriptor flags52 is nongeneric enum. Its actual16-byte Mc flags0 binds that descriptor, SemanticDeclarationRoles protocol, direct24-byte WP. Both current full2 executables have an exact __swift5_proto row to this Mc and no hook section. No conditional witness factory is encoded in this Mc.",
+    "Actual Static profile storage.run passes dynamic:false through exerciseCounterCoordinator into StaticRuntimeExecutionCoordinator; the coordinator fixture runs Static storage before its Dynamic control. Current source/receipt identities are frozen in inputs.json.",
+    "Current CoreMXM and RuntimeMXM are exact12-byte nongeneric module descriptors (flags0,parent0). Current Roles accessor af640\u2013af64c selects static OMf+16 and its complete return outline c432c\u2013c4334 sets response-state0; actual ON kind0x201 points to RolesOMn. No Roles generic metadata initialization is required.",
+    "For this current enum kind0x201, the retained complete superclass helper takes d09170\u2013d09180\u2192c58310; c58324\u2013c5833c reaches c583c0, kind is not0x203, so c583d0 returns0. This extends the accepted normal direct-WP lookup to the exact actual enum input without assuming a struct-only result.",
+    "Complete current concrete-key helper be4\u2013c24: nonnegative cell returns cached pointer; negative cell calculates string/length, calls swift_getTypeByMangledNameInContext2 with null context/arguments, and stores returned metadata in that SAME compiler cell. It therefore explains warm later requests without erasing the first required private-MI acquisition."
+  ],
+  "bounds_selection": {
+    "group_bytes_limit": 1048576,
+    "group_lines_limit": 32768,
+    "new_retained_limit": 8388608,
+    "historical_retained_immutable": 8339409,
+    "conservative_provider_reuse_context_bytes": 793942,
+    "conservative_provider_reuse_context_lines": 20583,
+    "current_child_complete_bytes": 57712,
+    "current_child_complete_lines": 404,
+    "all_current_core_complete_bytes": 9515,
+    "all_current_core_complete_lines": 163,
+    "shared_helper_complete_bytes": 688,
+    "shared_helper_complete_lines": 18,
+    "source_complete_bytes": 49691,
+    "source_complete_lines": 629,
+    "note": "Conservative provider allowance retains the ENTIRE accepted provider context, not only relevant subpaths; current data/record reserve65536 covers all current scalar projections. Complete historical builder419751B/3961lines is not relied upon for this first-required-use formulation; adding it to that conservative union would exceed1MiB and requires a scope decision, not slicing.",
+    "current_role_extra_complete_bytes": 1045,
+    "current_role_extra_complete_lines": 22,
+    "qualification": "Independently measured complete conservative union: entire accepted provider allowance793942B/20583lines + all new local records/raws87650B/2338lines + complete child57712B/404lines + two complete source files49691B/629lines. Excludes neither an initial wrong projection nor record overhead. Historical builder is not needed for this first-required-use theorem; no builder prefix/order claim is asserted.",
+    "current_concrete_helper_bytes": 1035,
+    "current_concrete_helper_lines": 23,
+    "conservative_complete_union_bytes": 988995,
+    "conservative_complete_union_lines": 23954,
+    "all_local_records_and_raw_bytes": 87650,
+    "all_local_records_and_raw_lines": 2338
+  },
+  "preservation": [
+    "Initial unrelocated symbolic-cell projection is explicitly nonsemantic and retained. Corrected actual relocation pair resolves each key.",
+    "A transient clipped tool display and a filename listing truncated by full-path regex are retained conversation diagnostics, not semantic evidence. Saved complete raw captures remain authenticated and small; no function-body truncation used.",
+    "No source edits, compiler/test/full/runtime/live/provider acquisition or historical evidence mutation. Full1 STOP/full2 PASS/commit17e9da5f unchanged.",
+    "Traversal seven requirements and visitor cache allocator behavior are not independently qualified if the earlier Workspace dependency is decisive. UnitFAILED/InteractionUNEXECUTED/global P08 and other live/resource/safety gaps remain open."
+  ],
+  "evidence": [
+    "../current-native-static-traversal-eligibility-local/inputs.json",
+    "../current-native-static-traversal-eligibility-local/root-and-key.json",
+    "../current-native-static-traversal-eligibility-local/core-metadata.json",
+    "../current-native-static-traversal-eligibility-local/workspace-helper-and-role.json",
+    "../current-native-static-traversal-eligibility-local/roles-conformance.json",
+    "../current-native-static-traversal-eligibility-local/current-linked-conformance.json",
+    "../current-native-static-traversal-eligibility-local/module-and-role-metadata.json",
+    "../current-native-static-traversal-eligibility-local/roles-accessor-return.json",
+    "../current-native-static-traversal-eligibility-local/semantic-evidence.json",
+    "../current-native-static-traversal-eligibility-local/concrete-key-helper.json",
+    "final-review.md"
+  ],
+  "requirement_argument_reasoning": [
+    "The actual generic key shape is one top-level nominal application to a nongeneric enum. Imported tag2 nominal and direct tag1 Roles references are fixed by current object relocations, not symbol-name inference. Descriptor bit4 and generic-bit selection agree with the already accepted f5/bound-nominal branch; current Core parent is nongeneric module, so no parent generic metadata is required.",
+    "Workspace header1parameter/1requirement/2keyargs and kind0 flags0x80 select precisely Roles:SemanticDeclarationRoles. Current Roles flags52 contain no0x30000 projection mode. The accepted complete projection/equality/direct-Mc branches apply with the now-frozen exact descriptor/protocol and Mc flags0/directWP. Current nongeneric enum supplies no additional generic argument/conditional witness factory requirement.",
+    "Reader preparation for one top-level Workspace argument is the accepted normal argument-reader route with one record within fixedcapacity8; no parent module field requires metadata. Current Roles staticmetadata resolves directly, with completed response0; protocol WP resolution cannot require or alias Workspace MI.",
+    "Normal registered-image matching/cache return or finite miss/direct-WP insertion may complete for these inputs. If parser/conformance-cache growth reaches an allocator before own-cache lookup, that is already an earlier charged allocator entry. Otherwise normal argument return reaches the regular Workspace own-cache lookup. The operating class permits normal allocation success but claims neither measured success nor bytes."
+  ],
+  "independent_review": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-eligibility-result/final-review.md",
+    "sha256": "d5e00ad5fabf0072dbf64c6a961ee7a7782270fb739d69baed287ad7fc6dc72d",
+    "verdict": "SUPPORTED for allowed normal/default/first-required-use class; no observed/every-state allocator or whole P08 claim.",
+    "verified_inputs": 9,
+    "verified_semantic_rows": 43,
+    "verified_executables": 2
+  },
+  "decision": "Stop with the current Roles-only Workspace dependency as a jointly feasible allocator-entry blocker. Earlier required warming changes the charged location, not the first-required-use result. Traversal/visitor eligibility remains open; no further acquisition, source remedy, producer or global qualification follows.",
+  "joint_allowed_class": [
+    "Correct current executable registration; authenticated installed default providers, valid PAC, normal completed initialization/locks/hash; no hooks or interposition. Static linked rows and hook absence are evidence for this allowed class, not live registry/binding observations.",
+    "The simple current nominal key and its one Roles protocol requirement complete normally. Roles metadata is nongeneric; direct registered WP plus accepted ordinary projection/match/direct-WP return lemma can supply its second metadata key argument. Such conformance lookup does not alias or warm Workspace MI.",
+    "Choose the first REQUIRED acquisition of this exact Workspace private MI inside the fully charged construction/expansion lifecycle. Do not choose ac200 or ac594 as cold after an earlier same-key use. If an earlier required acquisition warmed it, that earlier first acquisition remains charged. A mandatory or outside-window same-key pre-acquisition would have to be established, not inferred from later warmth.",
+    "With that first required Workspace MI cold and its arguments normally returned, accepted regular-accessor/private-cache factory lemma reaches malloc-family entry before successful metadata creation. Any earlier allocator entry selected during normal key/conformance resolution is already a charged counterexample. No observed/every-state allocation, success/bytes or global resource conclusion follows."
+  ],
+  "resolved_review_questions": [
+    "Independent review accepted exact enum/direct-WP/default/parser substitution for the current one-parameter Workspace key. This reuses provider semantics, not old/new key/cache identity.",
+    "Independent review accepted first REQUIRED charged acquisition without full builder ordering. No first-in-builder/prefix-safety/observed harness-order or cold child-site assertion is made.",
+    "No incompatible required predicate remains for this allowed normal/default class; specific live state and universal other states remain unobserved/unproved."
+  ]
+}
