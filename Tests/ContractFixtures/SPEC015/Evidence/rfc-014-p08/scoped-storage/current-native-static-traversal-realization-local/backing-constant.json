@@ -1,0 +1,10 @@
+{
+  "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+  "sha256": "5cb5f7e68acbd1da040ddb971cb4d607c5216130ce676eb9a7ea4810c9bad040",
+  "symbol": "lCPI1309_0",
+  "address": "0xcf860",
+  "bytes": 16,
+  "hex": "00000000fcffffff0000000000020000",
+  "relocations": [],
+  "used_at": "44148/4414c then44158 fixed scalar vector initialization; no pointer rebasing/metadata reference in this constant."
+}

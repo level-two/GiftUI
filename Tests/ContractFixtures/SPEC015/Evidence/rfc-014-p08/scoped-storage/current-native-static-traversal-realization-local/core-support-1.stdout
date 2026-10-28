@@ -1,0 +1,20 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000001500 <_$s18GiftUISemanticCore24SemanticExpansionAttemptV6limitsAcA0dE6LimitsV_tcfC>:
+    1500:      	strh	w0, [x8]
+    1504:      	lsr	x9, x0, #16
+    1508:      	strh	w9, [x8, #0x2]
+    150c:      	lsr	x9, x0, #32
+    1510:      	lsr	x10, x0, #48
+    1514:      	strh	w9, [x8, #0x4]
+    1518:      	strh	w10, [x8, #0x6]
+    151c:      	strh	w1, [x8, #0x8]
+    1520:      	movi.2d	v0, #0000000000000000
+    1524:      	stur	q0, [x8, #0xa]
+    1528:      	stur	q0, [x8, #0x1a]
+    152c:      	mov	w9, #0x4                ; =4
+    1530:      	strb	w9, [x8, #0x2a]
+    1534:      	ret

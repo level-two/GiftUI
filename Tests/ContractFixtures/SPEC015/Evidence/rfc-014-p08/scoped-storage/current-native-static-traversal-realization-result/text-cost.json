@@ -1,0 +1,102 @@
+{
+  "scope": "Code-size accounting only, no stack/heap/global-resource qualification; current artifact identities from preliminary transfer require after-exit confirmation. Configured capacities/limits unchanged.",
+  "rows": [
+    {
+      "module": "GiftUISemanticCore.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o",
+      "baseline_sha256": "4c40938628d8982edc2d53a9cfbb2b4e12e9c17722bf9d828f24aaffcb156582",
+      "baseline_text_bytes": 178760,
+      "current_text_bytes": 146580,
+      "delta_bytes": -32180
+    },
+    {
+      "module": "GiftUILayout.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUILayout.o",
+      "baseline_sha256": "e57b8de5160cede4fbf245e1ca964b0018ed08f122f63f8277e4dd97e0e795d0",
+      "baseline_text_bytes": 51404,
+      "current_text_bytes": 51404,
+      "delta_bytes": 0
+    },
+    {
+      "module": "GiftUIInteraction.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUIInteraction.o",
+      "baseline_sha256": "f56a2b9ee03ef3502e5a663c933e51835ebaeaffeae6dce51b2aaf632c71cf91",
+      "baseline_text_bytes": 44356,
+      "current_text_bytes": 44356,
+      "delta_bytes": 0
+    },
+    {
+      "module": "GiftUIObservableState.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUIObservableState.o",
+      "baseline_sha256": "726c8d2600a2823418c106a33a2c3e617753a740f8abda57601a9b37f3773168",
+      "baseline_text_bytes": 59372,
+      "current_text_bytes": 59372,
+      "delta_bytes": 0
+    },
+    {
+      "module": "GiftUIRenderLowering.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUIRenderLowering.o",
+      "baseline_sha256": "b47c17148673e2bee30f1419cde1a6682316cfef07bec87c6ad5cf8d5666a7d6",
+      "baseline_text_bytes": 20592,
+      "current_text_bytes": 20592,
+      "delta_bytes": 0
+    },
+    {
+      "module": "GiftUIDrawing.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUIDrawing.o",
+      "baseline_sha256": "b0297d23a2d6b0950358258c810cca8c3b13c108c57483dcf99dd3a3a597d867",
+      "baseline_text_bytes": 34200,
+      "current_text_bytes": 34200,
+      "delta_bytes": 0
+    },
+    {
+      "module": "GiftUIRuntimeCore.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUIRuntimeCore.o",
+      "baseline_sha256": "2f1812e91461ac78c2d94652ed4220856afa11502e0dc905e28abde709d045a0",
+      "baseline_text_bytes": 61612,
+      "current_text_bytes": 61612,
+      "delta_bytes": 0
+    },
+    {
+      "module": "GiftUIRuntimeStatic.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUIRuntimeStatic.o",
+      "baseline_sha256": "25c2e2caf90780ab40e825904c9dac2ad9a70a86d7f8789e22d7da279d336a55",
+      "baseline_text_bytes": 101584,
+      "current_text_bytes": 101584,
+      "delta_bytes": 0
+    },
+    {
+      "module": "GiftUIRuntimeDynamic.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUIRuntimeDynamic.o",
+      "baseline_sha256": "3fa1a8d9616dd42325baf9819e81801b0b4b633b817fa2daf9ae11fdbed7a221",
+      "baseline_text_bytes": 48252,
+      "current_text_bytes": 48252,
+      "delta_bytes": 0
+    },
+    {
+      "module": "GiftUIHostConfiguration.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/GiftUIHostConfiguration.o",
+      "baseline_sha256": "a18e808adb24dd056b97b54f66b635207810d943a0aff1b5081eb5f886fec5c4",
+      "baseline_text_bytes": 177064,
+      "current_text_bytes": 177064,
+      "delta_bytes": 0
+    },
+    {
+      "module": "P08CounterTable.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/P08CounterTable.o",
+      "baseline_sha256": "8b91f4850a9a774efd5bb08081752ccf5529bbd2e4c86ba27471a46043b499ff",
+      "baseline_text_bytes": 1224,
+      "current_text_bytes": 1224,
+      "delta_bytes": 0
+    },
+    {
+      "module": "P08CounterRuntime.o",
+      "committed_product_full2": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+      "baseline_sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+      "baseline_text_bytes": 833488,
+      "current_text_bytes": 838932,
+      "delta_bytes": 5444
+    }
+  ],
+  "text_delta_bytes": -26736
+}

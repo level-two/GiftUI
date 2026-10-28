@@ -1,0 +1,332 @@
+{
+  "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+  "sha256": "5cb5f7e68acbd1da040ddb971cb4d607c5216130ce676eb9a7ea4810c9bad040",
+  "data": [
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMn",
+      "lo": "0xdd274",
+      "hi": "0xdd294",
+      "bytes": 32,
+      "hex": "71000000fcfffffff8fffffff4fffffff0ffffff0a0000000200000003000000",
+      "relocations": [
+        {
+          "offset": 16,
+          "kind": 1,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMn",
+            "address": 905844,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 16,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMF",
+            "address": 911768,
+            "section": 15,
+            "type": 14
+          }
+        },
+        {
+          "offset": 12,
+          "kind": 1,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMn",
+            "address": 905844,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 12,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMa",
+            "address": 724016,
+            "section": 1,
+            "type": 15
+          }
+        },
+        {
+          "offset": 8,
+          "kind": 1,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMn",
+            "address": 905844,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": {
+            "symbol": "l_.str.24.CounterSemanticTraversal",
+            "address": 843920,
+            "section": 2,
+            "type": 14
+          }
+        },
+        {
+          "offset": 4,
+          "kind": 1,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMn",
+            "address": 905844,
+            "section": 14,
+            "type": 15
+          }
+        },
+        {
+          "offset": 4,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntimeMXM",
+            "address": 905564,
+            "section": 14,
+            "type": 31
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMf",
+      "lo": "0xd74d0",
+      "hi": "0xd74e0",
+      "bytes": 16,
+      "hex": "00000000000000000000000000000000",
+      "relocations": [
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVWV",
+            "address": 881784,
+            "section": 11,
+            "type": 14
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVN",
+      "lo": "0xd74e0",
+      "hi": "0xd7518",
+      "bytes": 56,
+      "hex": "0002000000000000000000000000000000000000300000005801000000020000600200006102000062020000640200003203000034030000",
+      "relocations": [
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalVMn",
+            "address": 905844,
+            "section": 14,
+            "type": 15
+          }
+        }
+      ]
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAAWP",
+      "lo": "0xd17b8",
+      "hi": "0xd1850",
+      "bytes": 152,
+      "hex": "0000000000000000010000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "relocations": [
+        {
+          "offset": 144,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW",
+            "address": 40712,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 136,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP20visitActionPrimitive7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW",
+            "address": 39688,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 128,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP20visitActionPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW",
+            "address": 39300,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 120,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitive7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW",
+            "address": 38444,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 112,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW",
+            "address": 38208,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 104,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP20visitOptionalPresentyyqd__AD4ViewRd__6DomainQyd__AIRtzlFTW",
+            "address": 37264,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 96,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP19visitOptionalAbsentyyqd__mAD4ViewRd__6DomainQyd__AIRtzlFTW",
+            "address": 37152,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 88,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP22visitConditionalSecond5first_yqd__m_qd_0_tAD4ViewRd__AdIRd_0_6DomainQyd__AJRtzAJQyd_0_AKRSr0_lFTW",
+            "address": 36124,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 80,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP21visitConditionalFirst_6secondyqd___qd_0_mtAD4ViewRd__AdIRd_0_6DomainQyd__AJRtzAJQyd_0_AKRSr0_lFTW",
+            "address": 35096,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 72,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP10visitFixedyyqd___qd_0_qd_1_qd_2_qd_3_tAD4ViewRd__AdHRd_0_AdHRd_1_AdHRd_2_AdHRd_3_6DomainQyd__AIRtzAIQyd_0_AJRSAIQyd_1_ALRSAIQyd_2_AMRSAIQyd_3_ANRSr3_lFTW",
+            "address": 31508,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 64,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP10visitFixedyyqd___qd_0_qd_1_qd_2_tAD4ViewRd__AdHRd_0_AdHRd_1_AdHRd_2_6DomainQyd__AIRtzAIQyd_0_AJRSAIQyd_1_ALRSAIQyd_2_AMRSr2_lFTW",
+            "address": 28632,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 56,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP10visitFixedyyqd___qd_0_qd_1_tAD4ViewRd__AdHRd_0_AdHRd_1_6DomainQyd__AIRtzAIQyd_0_AJRSAIQyd_1_ALRSr1_lFTW",
+            "address": 26452,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 48,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP10visitFixedyyqd___qd_0_tAD4ViewRd__AdHRd_0_6DomainQyd__AIRtzAIQyd_0_AJRSr0_lFTW",
+            "address": 26340,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 40,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP10visitEmptyyyFTW",
+            "address": 26280,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 32,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP23visitStatefulCustomView_4bodyyqd___4BodyAD0M0PQyd__qd___AD01_F11UIFrameReadVy6DomainQzGtAD01_F15UIAccessFailureOYKXEtAdJRd__AD01_F21UIObservableStateHostRd__AoKQyd__APRSAiK_AOQYd__AURSlFTW",
+            "address": 25216,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 24,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP15visitCustomView_4bodyyqd___4BodyQyd__AD01_F11UIFrameReadVy6DomainQzGAD01_F15UIAccessFailureOYKXEtAD0L0Rd__AMQyd__ANRSAI_AMQYd__ASRSlFTW",
+            "address": 24192,
+            "section": 1,
+            "type": 31
+          }
+        },
+        {
+          "offset": 16,
+          "kind": 0,
+          "target": {
+            "symbol": "_symbolic _____ 17P08CounterRuntime0B6DomainO",
+            "address": 862180,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": {
+            "symbol": "_associated conformance 17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAA6DomainAdEP_AD01_f6UIReadJ0",
+            "address": 862690,
+            "section": 7,
+            "type": 31
+          }
+        },
+        {
+          "offset": 0,
+          "kind": 0,
+          "target": {
+            "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAAMc",
+            "address": 840336,
+            "section": 2,
+            "type": 15
+          }
+        }
+      ]
+    }
+  ]
+}

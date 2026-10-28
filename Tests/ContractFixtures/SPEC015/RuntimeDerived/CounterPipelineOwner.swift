@@ -559,7 +559,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             }
             observableCandidate = true
         } catch { return .failure(.focusedOwner(.observableState(error))) }
-        let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: semanticCodec, limits: limits.semantic, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+        let result = semantic.expand(CounterScreen<CounterDomain>(), codec: semanticCodec, limits: limits.semantic, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self), traversal: CounterSemanticTraversal.self)
         switch result {
         case .success: semanticCandidate = true
         case .semanticFailure(let error): discardLocalCandidates(); return .failure(.focusedOwner(.semantic(error)))

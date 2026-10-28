@@ -1,0 +1,27 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000018ffc <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV18leavePathComponentyyF>:
+   18ffc:      	ldr	x8, [x20]
+   19000:      	ldrh	w9, [x8, #0x18]
+   19004:      	ldrh	w10, [x8, #0xc]
+   19008:      	cmp	w9, w10
+   1900c:      	b.hs	0x19028 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV18leavePathComponentyyF+0x2c>
+   19010:      	ldr	x10, [x20, #0x18]
+   19014:      	mov	w11, #0x16              ; =22
+   19018:      	umaddl	x9, w9, w11, x10
+   1901c:      	ldrh	w9, [x9, #0x6]
+   19020:      	strh	w9, [x8, #0x18]
+   19024:      	b	0x1903c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV18leavePathComponentyyF+0x40>
+   19028:      	ldrb	w9, [x8, #0x2f]
+   1902c:      	cmp	w9, #0x4
+   19030:      	b.ne	0x1903c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV18leavePathComponentyyF+0x40>
+   19034:      	mov	w9, #0x1                ; =1
+   19038:      	strb	w9, [x8, #0x2f]
+   1903c:      	ldrh	w8, [x20, #0x124]
+   19040:      	cbz	w8, 0x19048 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV18leavePathComponentyyF+0x4c>
+   19044:      	b	0x19044 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV18leavePathComponentyyF+0x48>
+		0000000000019044:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_662
+   19048:      	brk	#0x1

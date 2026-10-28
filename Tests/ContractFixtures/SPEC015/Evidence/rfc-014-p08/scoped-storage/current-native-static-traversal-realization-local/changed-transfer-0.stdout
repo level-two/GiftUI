@@ -1,0 +1,31 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000021b0 <_$s17P08CounterRuntime0B13SemanticCodecV8makeSink5stateAA0b6RecordG0V18GiftUISemanticCore0diG5StateVn_tF>:
+    21b0:      	sub	sp, sp, #0xe0
+    21b4:      	stp	x22, x21, [sp, #0xb0]
+    21b8:      	stp	x20, x19, [sp, #0xc0]
+    21bc:      	stp	x29, x30, [sp, #0xd0]
+    21c0:      	add	x29, sp, #0xd0
+    21c4:      	mov	x1, x0
+    21c8:      	mov	x19, x8
+    21cc:      	bl	0x21cc <_$s17P08CounterRuntime0B13SemanticCodecV8makeSink5stateAA0b6RecordG0V18GiftUISemanticCore0diG5StateVn_tF+0x1c>
+		00000000000021cc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1493
+    21d0:      	bl	0x21d0 <_$s17P08CounterRuntime0B13SemanticCodecV8makeSink5stateAA0b6RecordG0V18GiftUISemanticCore0diG5StateVn_tF+0x20>
+		00000000000021d0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1985
+    21d4:      	ldp	q0, q1, [x20]
+    21d8:      	stur	q0, [sp, #0x80]
+    21dc:      	stur	q1, [x21, #0x88]
+    21e0:      	ldur	q0, [x20, #0x1a]
+    21e4:      	stur	q0, [x21, #0x92]
+    21e8:      	bl	0x21e8 <_$s17P08CounterRuntime0B13SemanticCodecV8makeSink5stateAA0b6RecordG0V18GiftUISemanticCore0diG5StateVn_tF+0x38>
+		00000000000021e8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_835
+    21ec:      	bl	0x21ec <_$s17P08CounterRuntime0B13SemanticCodecV8makeSink5stateAA0b6RecordG0V18GiftUISemanticCore0diG5StateVn_tF+0x3c>
+		00000000000021ec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1638
+    21f0:      	ldp	x29, x30, [sp, #0xd0]
+    21f4:      	ldp	x20, x19, [sp, #0xc0]
+    21f8:      	ldp	x22, x21, [sp, #0xb0]
+    21fc:      	b	0x21fc <_$s17P08CounterRuntime0B13SemanticCodecV8makeSink5stateAA0b6RecordG0V18GiftUISemanticCore0diG5StateVn_tF+0x4c>
+		00000000000021fc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1448

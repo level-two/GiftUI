@@ -1,0 +1,44 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000004bfc <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF>:
+    4bfc:      	sub	sp, sp, #0x70
+    4c00:      	stp	x20, x19, [sp, #0x50]
+    4c04:      	stp	x29, x30, [sp, #0x60]
+    4c08:      	add	x29, sp, #0x60
+    4c0c:      	bl	0x4c0c <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x10>
+		0000000000004c0c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1112
+    4c10:      	b.ne	0x4c74 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x78>
+    4c14:      	bl	0x4c14 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x18>
+		0000000000004c14:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_2243
+    4c18:      	ldrh	w8, [x20, #0x18]
+    4c1c:      	add	w8, w8, #0x1
+    4c20:      	tbnz	w8, #0x10, 0x4c70 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x74>
+    4c24:      	ldrh	w9, [x19, #0x1e]
+    4c28:      	cmp	w9, w8, uxth
+    4c2c:      	b.lo	0x4c70 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x74>
+    4c30:      	strh	w8, [x19, #0x18]
+    4c34:      	add	x0, sp, #0x8
+    4c38:      	add	x1, x19, #0x158
+    4c3c:      	bl	0x4c3c <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x40>
+		0000000000004c3c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_726
+    4c40:      	ldp	x0, x1, [x19, #0x1a8]
+    4c44:      	add	x20, sp, #0x8
+    4c48:      	bl	0x4c48 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x4c>
+		0000000000004c48:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV06appendE06limitsAA0D14ExpansionErrorOSgAA0dE6LimitsV_tF
+    4c4c:      	bl	0x4c4c <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x50>
+		0000000000004c4c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_642
+    4c50:      	b.ne	0x4c5c <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x60>
+    4c54:      	mov	w0, #0x4                ; =4
+    4c58:      	b	0x4c74 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x78>
+    4c5c:      	ldr	x8, [sp, #0x8]
+    4c60:      	ldrb	w8, [x8, #0x2f]
+    4c64:      	mov	w9, #0x3                ; =3
+    4c68:      	cmp	w8, #0x4
+    4c6c:      	csel	w0, w9, w8, eq
+    4c70:      	strb	w0, [x19, #0x2a]
+    4c74:      	ldp	x29, x30, [sp, #0x60]
+    4c78:      	b	0x4c78 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF+0x7c>
+		0000000000004c78:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1978

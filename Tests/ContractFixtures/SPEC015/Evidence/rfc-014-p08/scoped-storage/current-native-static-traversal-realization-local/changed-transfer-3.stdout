@@ -1,0 +1,159 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000043f64 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC>:
+   43f64:      	stp	x20, x19, [sp, #-0x20]!
+   43f68:      	stp	x29, x30, [sp, #0x10]
+   43f6c:      	add	x29, sp, #0x10
+   43f70:      	sub	sp, sp, #0x4, lsl #12   ; =0x4000
+   43f74:      	sub	sp, sp, #0xe70
+   43f78:      	mov	x19, x8
+   43f7c:      	mov	x8, #0x0                ; =0
+   43f80:      	bl	0x43f80 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x1c>
+		0000000000043f80:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_164
+   43f84:      	stur	x9, [x29, #-0x18]
+   43f88:      	strh	wzr, [sp, #0x8]
+   43f8c:      	add	x9, sp, #0x8
+   43f90:      	add	x10, x9, #0x10c
+   43f94:      	str	wzr, [sp, #0xc]
+   43f98:      	str	xzr, [x10]
+   43f9c:      	str	xzr, [x10, #0x18]
+   43fa0:      	mov	w10, #0x1               ; =1
+   43fa4:      	strh	w10, [sp, #0x10]
+   43fa8:      	str	wzr, [sp, #0x14]
+   43fac:      	str	xzr, [sp, #0x18]
+   43fb0:      	strh	wzr, [sp, #0x20]
+   43fb4:      	strb	w10, [sp, #0x22]
+   43fb8:      	stur	xzr, [sp, #0x24]
+   43fbc:      	strh	wzr, [sp, #0x2c]
+   43fc0:      	strb	w10, [sp, #0x2e]
+   43fc4:      	str	xzr, [sp, #0x30]
+   43fc8:      	strh	wzr, [sp, #0x38]
+   43fcc:      	strb	w10, [sp, #0x3a]
+   43fd0:      	stur	xzr, [sp, #0x3c]
+   43fd4:      	strh	wzr, [sp, #0x44]
+   43fd8:      	strb	w10, [sp, #0x46]
+   43fdc:      	str	xzr, [sp, #0x48]
+   43fe0:      	strh	wzr, [sp, #0x50]
+   43fe4:      	strb	w10, [sp, #0x52]
+   43fe8:      	stur	xzr, [sp, #0x54]
+   43fec:      	strh	wzr, [sp, #0x5c]
+   43ff0:      	strb	w10, [sp, #0x5e]
+   43ff4:      	str	xzr, [sp, #0x60]
+   43ff8:      	strh	wzr, [sp, #0x68]
+   43ffc:      	strb	w10, [sp, #0x6a]
+   44000:      	stur	xzr, [sp, #0x6c]
+   44004:      	strh	wzr, [sp, #0x74]
+   44008:      	strb	w10, [sp, #0x76]
+   4400c:      	str	xzr, [sp, #0x78]
+   44010:      	strh	wzr, [sp, #0x80]
+   44014:      	strb	w10, [sp, #0x82]
+   44018:      	stur	xzr, [sp, #0x84]
+   4401c:      	strh	wzr, [sp, #0x8c]
+   44020:      	strb	w10, [sp, #0x8e]
+   44024:      	str	xzr, [sp, #0x90]
+   44028:      	strh	wzr, [sp, #0x98]
+   4402c:      	strb	w10, [sp, #0x9a]
+   44030:      	stur	xzr, [x9, #0x94]
+   44034:      	strh	wzr, [sp, #0xa4]
+   44038:      	strb	w10, [sp, #0xa6]
+   4403c:      	str	xzr, [sp, #0xa8]
+   44040:      	strh	wzr, [sp, #0xb0]
+   44044:      	strb	w10, [sp, #0xb2]
+   44048:      	stur	xzr, [x9, #0xac]
+   4404c:      	strh	wzr, [sp, #0xbc]
+   44050:      	strb	w10, [sp, #0xbe]
+   44054:      	str	xzr, [sp, #0xc0]
+   44058:      	strh	wzr, [sp, #0xc8]
+   4405c:      	strb	w10, [sp, #0xca]
+   44060:      	stur	xzr, [x9, #0xc4]
+   44064:      	strh	wzr, [sp, #0xd4]
+   44068:      	strb	w10, [sp, #0xd6]
+   4406c:      	str	xzr, [sp, #0xd8]
+   44070:      	strh	wzr, [sp, #0xe0]
+   44074:      	strb	w10, [sp, #0xe2]
+   44078:      	stur	xzr, [x9, #0xdc]
+   4407c:      	strh	wzr, [sp, #0xec]
+   44080:      	strb	w10, [sp, #0xee]
+   44084:      	str	xzr, [sp, #0xf0]
+   44088:      	strh	wzr, [sp, #0xf8]
+   4408c:      	strb	w10, [sp, #0xfa]
+   44090:      	stur	xzr, [x9, #0xf4]
+   44094:      	strh	wzr, [sp, #0x104]
+   44098:      	strb	w10, [sp, #0x106]
+   4409c:      	str	xzr, [sp, #0x108]
+   440a0:      	strh	wzr, [sp, #0x110]
+   440a4:      	strb	w10, [sp, #0x112]
+   440a8:      	strh	wzr, [sp, #0x11c]
+   440ac:      	strb	w10, [sp, #0x11e]
+   440b0:      	str	xzr, [sp, #0x120]
+   440b4:      	strh	wzr, [sp, #0x128]
+   440b8:      	strb	w10, [sp, #0x12a]
+   440bc:      	strb	w10, [sp, #0x136]
+   440c0:      	movi.2d	v0, #0xffffffffffffffff
+   440c4:      	add	x10, sp, #0x59
+   440c8:      	stur	q0, [x10, #0xff]
+   440cc:      	add	x10, sp, #0x49
+   440d0:      	stur	q0, [x10, #0xff]
+   440d4:      	add	x10, sp, #0x39
+   440d8:      	stur	q0, [x10, #0xff]
+   440dc:      	mov	x10, #-0x1              ; =-1
+   440e0:      	movi	d0, #0x0000000000ffff
+   440e4:      	strh	wzr, [sp, #0x134]
+   440e8:      	add	x11, x9, x8
+   440ec:      	strh	w10, [x11, #0x168]
+   440f0:      	str	x10, [x11, #0x160]
+   440f4:      	strb	wzr, [x11, #0x16a]
+   440f8:      	add	x11, x11, #0x16c
+   440fc:      	str	d0, [x11]
+   44100:      	add	x8, x8, #0x14
+   44104:      	cmp	x8, #0xa00
+   44108:      	b.ne	0x440e8 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x184>
+   4410c:      	mov	x8, #-0x2100            ; =-8448
+   44110:      	add	x9, sp, #0x8
+   44114:      	mov	w10, #0x2c60            ; =11360
+   44118:      	mov	w11, #0x2c66            ; =11366
+   4411c:      	mov	x12, #-0x1              ; =-1
+   44120:      	movi	d0, #0xffffffff00000000
+   44124:      	mov	w13, #0x2c6e            ; =11374
+   44128:      	add	x14, x9, x8
+   4412c:      	add	x15, x14, x10
+   44130:      	str	wzr, [x14, #0x2c60]
+   44134:      	bl	0x44134 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x1d0>
+		0000000000044134:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1236
+   44138:      	b.ne	0x44128 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x1c4>
+   4413c:      	mov	x8, #-0x2000            ; =-8192
+   44140:      	add	x9, sp, #0x8
+   44144:      	movi.2d	v0, #0000000000000000
+   44148:      	adrp	x10, 0x44000 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x9c>
+		0000000000044148:  ARM64_RELOC_PAGE21	lCPI1309_0
+   4414c:      	ldr	q1, [x10]
+		000000000004414c:  ARM64_RELOC_PAGEOFF12	lCPI1309_0
+   44150:      	add	x10, x9, x8
+   44154:      	str	q0, [x10, #0x4c60]
+   44158:      	str	q1, [x10, #0x4c70]
+   4415c:      	adds	x8, x8, #0x20
+   44160:      	b.ne	0x44150 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x1ec>
+   44164:      	mov	w8, #0x4c60             ; =19552
+   44168:      	add	x9, sp, #0x8
+   4416c:      	add	x0, x9, x8
+   44170:      	mov	w1, #0x200              ; =512
+   44174:      	bl	0x44174 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x210>
+		0000000000044174:  ARM64_RELOC_BRANCH26	_bzero
+   44178:      	bl	0x44178 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x214>
+		0000000000044178:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_835
+   4417c:      	bl	0x4417c <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x218>
+		000000000004417c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1215
+   44180:      	ldur	x8, [x29, #-0x18]
+   44184:      	bl	0x44184 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x220>
+		0000000000044184:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_61
+   44188:      	b.ne	0x4419c <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x238>
+   4418c:      	add	sp, sp, #0x4, lsl #12   ; =0x4000
+   44190:      	add	sp, sp, #0xe70
+   44194:      	ldp	x29, x30, [sp, #0x10]
+   44198:      	b	0x44198 <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x234>
+		0000000000044198:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_600
+   4419c:      	bl	0x4419c <_$s17P08CounterRuntime0B15SemanticBackingVACycfC+0x238>
+		000000000004419c:  ARM64_RELOC_BRANCH26	___stack_chk_fail

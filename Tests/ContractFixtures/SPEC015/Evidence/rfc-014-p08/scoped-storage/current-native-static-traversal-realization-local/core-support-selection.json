@@ -1,0 +1,191 @@
+[
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm",
+    "start": "0x18dd0",
+    "end": "0x18e44",
+    "machine_bytes": 116
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateVwetTm",
+    "start": "0x20a3c",
+    "end": "0x20a84",
+    "machine_bytes": 72
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateVwstTm",
+    "start": "0x20a88",
+    "end": "0x20ae4",
+    "machine_bytes": 92
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateVwst",
+    "start": "0x210bc",
+    "end": "0x210c0",
+    "machine_bytes": 4
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateVwCP",
+    "start": "0x210f0",
+    "end": "0x210f4",
+    "machine_bytes": 4
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateVwet",
+    "start": "0x21160",
+    "end": "0x21164",
+    "machine_bytes": 4
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore24SemanticExpansionAttemptV6limitsAcA0dE6LimitsV_tcfC",
+    "start": "0x1500",
+    "end": "0x1538",
+    "machine_bytes": 56
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV11isExpandingSbvg",
+    "start": "0x18ca0",
+    "end": "0x18ca8",
+    "machine_bytes": 8
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV11isExpandingSbvpfi",
+    "start": "0x18c9c",
+    "end": "0x18ca0",
+    "machine_bytes": 4
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV14beginExpansionSbyF",
+    "start": "0x18d04",
+    "end": "0x18d24",
+    "machine_bytes": 32
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV14resetExpansionyyF",
+    "start": "0x19054",
+    "end": "0x19058",
+    "machine_bytes": 4
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterCustomBody_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlF",
+    "start": "0x18dc8",
+    "end": "0x18dd0",
+    "machine_bytes": 8
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF",
+    "start": "0x18e44",
+    "end": "0x18ea0",
+    "machine_bytes": 92
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15invalidIdentityAA0D14ExpansionErrorOyF",
+    "start": "0x18da0",
+    "end": "0x18dc0",
+    "machine_bytes": 32
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV16discardExpansionyyF",
+    "start": "0x19050",
+    "end": "0x19054",
+    "machine_bytes": 4
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV17completeExpansionyyF",
+    "start": "0x1904c",
+    "end": "0x19050",
+    "machine_bytes": 4
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV17maximumIdentitiess6UInt16Vvg",
+    "start": "0x18cfc",
+    "end": "0x18d04",
+    "machine_bytes": 8
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV18leavePathComponentyyF",
+    "start": "0x18ffc",
+    "end": "0x1904c",
+    "machine_bytes": 80
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV20enterDeclarationRole_5roles8identityAA0D14ExpansionErrorOSgxm_q_mAA0D16CompleteIdentityVSgztAA0dI5RolesR_r0_lF",
+    "start": "0x18f68",
+    "end": "0x18ffc",
+    "machine_bytes": 148
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV21enterOptionalPresence8identityAA0D14ExpansionErrorOSgAA0D16CompleteIdentityVSgz_tF",
+    "start": "0x18efc",
+    "end": "0x18f68",
+    "machine_bytes": 108
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV21maximumPathComponentss6UInt16Vvg",
+    "start": "0x18cf4",
+    "end": "0x18cfc",
+    "machine_bytes": 8
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV22enterConditionalBranch_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF",
+    "start": "0x18ea0",
+    "end": "0x18efc",
+    "machine_bytes": 92
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV4bank6limitsAcA0dE11BankBuffersV_AA0dE6LimitsVtcfC",
+    "start": "0x18ca8",
+    "end": "0x18cf4",
+    "machine_bytes": 76
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV5enter_8identityAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0D16CompleteIdentityVSgztF",
+    "start": "0x18d24",
+    "end": "0x18da0",
+    "machine_bytes": 124
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV8identity33_F84BCFF9BB149AE60E8EA7CB736D160ALLAA0D16CompleteIdentityVvpfi",
+    "start": "0x18c90",
+    "end": "0x18c9c",
+    "machine_bytes": 12
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+    "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlF",
+    "start": "0x18dc0",
+    "end": "0x18dc8",
+    "machine_bytes": 8
+  },
+  {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+    "symbol": "_$s17P08CounterRuntime0B10RecordSinkVWOh",
+    "start": "0x9d874",
+    "end": "0x9d878",
+    "machine_bytes": 4
+  }
+]

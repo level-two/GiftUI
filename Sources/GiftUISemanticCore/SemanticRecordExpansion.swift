@@ -100,69 +100,70 @@ package struct SemanticPayloadWriter: ~Copyable, ~Escapable {
 }
 
 @usableFromInline
-struct RecordWorkspace<Roles: SemanticDeclarationRoles>: SemanticExpansionWorkspace {
+package struct SemanticRecordWorkspaceState {
     @usableFromInline
-    typealias Identity = SemanticCompleteIdentity
+    package typealias Identity = SemanticCompleteIdentity
+    private let bank: SemanticRecordBankBuffers
+    private let limits: SemanticRecordLimits
+    private var identity = SemanticCompleteIdentity()
+    package private(set) var isExpanding = false
     @usableFromInline
-    let bank: SemanticRecordBankBuffers
-    @usableFromInline
-    let limits: SemanticRecordLimits
-    @usableFromInline
-    var identity = SemanticCompleteIdentity()
-    @usableFromInline
-    var isExpanding = false
-    @inlinable
-    @inline(__always)
     init(bank: SemanticRecordBankBuffers, limits: SemanticRecordLimits) {
         self.bank = bank
         self.limits = limits
     }
     @usableFromInline
-    var maximumPathComponents: UInt16 { limits.depth }
+    package var maximumPathComponents: UInt16 { limits.depth }
     @usableFromInline
-    var maximumIdentities: UInt16 { limits.paths }
+    package var maximumIdentities: UInt16 { limits.paths }
     @usableFromInline
-    mutating func beginExpansion() -> Bool {
+    package mutating func beginExpansion() -> Bool {
         guard !isExpanding, bank.metadata.pointee.phase == .expanding else { return false }
         isExpanding = true
         return true
     }
     @usableFromInline
-    mutating func enter(_ component: SemanticPathComponent, identity output: inout Identity?)
+    package mutating func enter(
+        _ component: SemanticPathComponent, identity output: inout Identity?
+    )
         -> SemanticExpansionError?
     {
         if let error = bank.enter(component, limits: limits) { return error }
-        guard identity.append(component) else { return bank.fail(.invalidIdentity) }
+        guard identity.append(component) else { return invalidIdentity() }
         output = identity
         return nil
     }
     @usableFromInline
-    mutating func enterRoot<D: View>(_ declaration: D.Type, identity: inout Identity?)
+    package mutating func enterRoot<D: View>(_ declaration: D.Type, identity: inout Identity?)
         -> SemanticExpansionError?
     { enter(.init(kind: .root), identity: &identity) }
     @usableFromInline
-    mutating func enterCustomBody<D: View>(_ declaration: D.Type, identity: inout Identity?)
+    package mutating func enterCustomBody<D: View>(_ declaration: D.Type, identity: inout Identity?)
         -> SemanticExpansionError?
     { enter(.init(kind: .customBody), identity: &identity) }
     @usableFromInline
-    mutating func enterFixedChild(_ index: UInt8, identity: inout Identity?)
+    package mutating func enterFixedChild(_ index: UInt8, identity: inout Identity?)
         -> SemanticExpansionError?
     { enter(.init(kind: .fixedChild, ordinal: index), identity: &identity) }
     @usableFromInline
-    mutating func enterConditionalBranch(_ index: UInt8, identity: inout Identity?)
+    package mutating func enterConditionalBranch(_ index: UInt8, identity: inout Identity?)
         -> SemanticExpansionError?
     { enter(.init(kind: .conditionalBranch, ordinal: index), identity: &identity) }
     @usableFromInline
-    mutating func enterOptionalPresence(identity: inout Identity?) -> SemanticExpansionError? {
+    package mutating func enterOptionalPresence(identity: inout Identity?)
+        -> SemanticExpansionError?
+    {
         enter(.init(kind: .optionalPresence), identity: &identity)
     }
     @inlinable
     @inline(__always)
-    mutating func enterDeclarationRole<D>(_ declaration: D.Type, identity: inout Identity?)
+    package mutating func enterDeclarationRole<D, Roles: SemanticDeclarationRoles>(
+        _ declaration: D.Type, roles: Roles.Type, identity: inout Identity?
+    )
         -> SemanticExpansionError?
     {
         guard let role = Roles.role(of: declaration), role.rawValue != 0 else {
-            return bank.fail(.invalidIdentity)
+            return invalidIdentity()
         }
         return enter(
             .init(
@@ -170,22 +171,149 @@ struct RecordWorkspace<Roles: SemanticDeclarationRoles>: SemanticExpansionWorksp
                 modifier: Roles.modifierDiscriminator(of: declaration)), identity: &identity)
     }
     @usableFromInline
-    mutating func leavePathComponent() {
+    package mutating func invalidIdentity() -> SemanticExpansionError {
+        bank.fail(.invalidIdentity)
+    }
+    @usableFromInline
+    package mutating func leavePathComponent() {
         bank.leave()
         identity.removeLast()
     }
     @usableFromInline
-    mutating func completeExpansion() {}
+    package mutating func completeExpansion() {}
     @usableFromInline
-    mutating func discardExpansion() {}
+    package mutating func discardExpansion() {}
     @usableFromInline
-    mutating func resetExpansion() {
+    package mutating func resetExpansion() {
         isExpanding = false
         identity = SemanticCompleteIdentity()
     }
 }
 
+@usableFromInline
+struct RecordWorkspace<Roles: SemanticDeclarationRoles>: SemanticExpansionWorkspace {
+    @usableFromInline typealias Identity = SemanticCompleteIdentity
+    @usableFromInline var state: SemanticRecordWorkspaceState
+    @inlinable
+    @inline(__always)
+    init(bank: SemanticRecordBankBuffers, limits: SemanticRecordLimits) {
+        state = SemanticRecordWorkspaceState(bank: bank, limits: limits)
+    }
+    @usableFromInline var maximumPathComponents: UInt16 { state.maximumPathComponents }
+    @usableFromInline var maximumIdentities: UInt16 { state.maximumIdentities }
+    @usableFromInline var isExpanding: Bool { state.isExpanding }
+    @usableFromInline mutating func beginExpansion() -> Bool { state.beginExpansion() }
+    @usableFromInline mutating func enterRoot<D: View>(
+        _ declaration: D.Type, identity: inout Identity?
+    ) -> SemanticExpansionError? {
+        state.enterRoot(declaration, identity: &identity)
+    }
+    @usableFromInline mutating func enterCustomBody<D: View>(
+        _ declaration: D.Type, identity: inout Identity?
+    ) -> SemanticExpansionError? {
+        state.enterCustomBody(declaration, identity: &identity)
+    }
+    @usableFromInline mutating func enterFixedChild(_ index: UInt8, identity: inout Identity?)
+        -> SemanticExpansionError?
+    {
+        state.enterFixedChild(index, identity: &identity)
+    }
+    @usableFromInline mutating func enterConditionalBranch(
+        _ index: UInt8, identity: inout Identity?
+    ) -> SemanticExpansionError? {
+        state.enterConditionalBranch(index, identity: &identity)
+    }
+    @usableFromInline mutating func enterOptionalPresence(identity: inout Identity?)
+        -> SemanticExpansionError?
+    {
+        state.enterOptionalPresence(identity: &identity)
+    }
+    @inlinable
+    @inline(__always)
+    mutating func enterDeclarationRole<D>(_ declaration: D.Type, identity: inout Identity?)
+        -> SemanticExpansionError?
+    {
+        state.enterDeclarationRole(declaration, roles: Roles.self, identity: &identity)
+    }
+    @usableFromInline mutating func leavePathComponent() { state.leavePathComponent() }
+    @usableFromInline mutating func completeExpansion() { state.completeExpansion() }
+    @usableFromInline mutating func discardExpansion() { state.discardExpansion() }
+    @usableFromInline mutating func resetExpansion() { state.resetExpansion() }
+}
+
+/// A finite profile supplies physical traversal storage, while Core retains
+/// candidate preparation, bank lifetime and the single traversal algorithm.
+@usableFromInline
+package protocol SemanticRecordTraversalRealization: SemanticExpansionTraversalOperations,
+    ~Copyable, ~Escapable
+where TraversalIdentity == SemanticCompleteIdentity {
+    associatedtype Codec: SemanticRecordPayloadCodec & ~Escapable
+    associatedtype StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable
+    where
+        StateBinding.Domain == Domain, StateBinding.Identity == TraversalIdentity,
+        StateBinding.Failure == TraversalBindingFailure
+
+    @_lifetime(copy sink, copy codec, copy stateBinding)
+    static func make(
+        attempt: SemanticExpansionAttempt, workspace: SemanticRecordWorkspaceState,
+        sink: consuming SemanticRecordSinkState, codec: borrowing Codec,
+        stateBinding: consuming StateBinding
+    ) -> Self
+}
+
+@inlinable
+@inline(__always)
+func expandSemanticTreeWithSuppliedTraversal<Root: View, Traversal>(
+    _ root: borrowing Root, traversal: consuming Traversal
+) -> BoundSemanticExpansionResult<Traversal.TraversalBindingFailure>
+where
+    Traversal: SemanticRecordTraversalRealization & ~Copyable & ~Escapable,
+    Root.Domain == Traversal.Domain
+{
+    var traversal = consume traversal
+    if let error = traversal.beginExpansion() { return .semanticFailure(error) }
+    traversal.expandRoot(root)
+    return traversal.finalizeExpansion()
+}
+
 extension SemanticRecordStore {
+    @inlinable
+    @inline(__always)
+    package borrowing func expand<Root: View, Traversal>(
+        _ root: borrowing Root, codec: borrowing Traversal.Codec,
+        limits: SemanticExpansionLimits, binding: consuming Traversal.StateBinding,
+        traversal: Traversal.Type
+    ) -> BoundSemanticExpansionResult<Traversal.TraversalBindingFailure>
+    where
+        Traversal: SemanticRecordTraversalRealization & ~Copyable & ~Escapable,
+        Root.Domain == Traversal.Domain
+    {
+        let number: UInt8
+        do throws(SemanticExpansionError) { number = try beginCandidate() } catch {
+            return .semanticFailure(error)
+        }
+        guard let bank = expansionBank(number) else { return .semanticFailure(.invariantViolation) }
+        if let error = codec.prepare(maximumSemanticNodes: limits.maximumSemanticNodes) {
+            bank.clear()
+            return .semanticFailure(error)
+        }
+        let workspace = SemanticRecordWorkspaceState(bank: bank, limits: self.limits)
+        let sink = SemanticRecordSinkState(
+            bank: bank, owner: owner, bankNumber: number,
+            limits: self.limits, expansion: limits)
+        let supplied = Traversal.make(
+            attempt: SemanticExpansionAttempt(limits: limits), workspace: workspace,
+            sink: consume sink, codec: codec, stateBinding: consume binding)
+        let result = expandSemanticTreeWithSuppliedTraversal(root, traversal: consume supplied)
+        switch result {
+        case .success: break
+        default:
+            codec.discardPending()
+            bank.clear()
+        }
+        return result
+    }
+
     @inlinable
     @inline(__always)
     package borrowing func expand<

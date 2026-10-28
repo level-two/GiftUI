@@ -1,0 +1,12 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c3040 <_OUTLINED_FUNCTION_164>:
+   c3040:      	adrp	x9, 0xc3000 <_OUTLINED_FUNCTION_160+0xc>
+		00000000000c3040:  ARM64_RELOC_GOT_LOAD_PAGE21	___stack_chk_guard
+   c3044:      	ldr	x9, [x9]
+		00000000000c3044:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	___stack_chk_guard
+   c3048:      	ldr	x9, [x9]
+   c304c:      	ret

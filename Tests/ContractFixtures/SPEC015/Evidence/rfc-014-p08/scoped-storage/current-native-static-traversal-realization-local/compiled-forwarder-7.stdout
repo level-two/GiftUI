@@ -1,0 +1,105 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000003f80 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm>:
+    3f80:      	mov	x3, x30
+    3f84:      	bl	0x3f84 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x4>
+		0000000000003f84:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1744
+    3f88:      	mov	x30, x3
+    3f8c:      	stp	x29, x30, [sp, #0x40]
+    3f90:      	add	x29, sp, #0x40
+    3f94:      	sub	sp, sp, #0x410
+    3f98:      	mov	x23, x0
+    3f9c:      	bl	0x3f9c <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x1c>
+		0000000000003f9c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1112
+    3fa0:      	b.ne	0x3fcc <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x4c>
+    3fa4:      	bl	0x3fa4 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x24>
+		0000000000003fa4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1635
+    3fa8:      	add	w25, w8, #0x1
+    3fac:      	tbnz	w25, #0x10, 0x3fc8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x48>
+    3fb0:      	ldrh	w8, [x19]
+    3fb4:      	cmp	w8, w25, uxth
+    3fb8:      	b.lo	0x3fc8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x48>
+    3fbc:      	ldrh	w8, [x19, #0x1a]
+    3fc0:      	cmp	w8, w25, uxth
+    3fc4:      	b.hs	0x3fd8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x58>
+    3fc8:      	bl	0x3fc8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x48>
+		0000000000003fc8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1692
+    3fcc:      	add	sp, sp, #0x410
+    3fd0:      	ldp	x29, x30, [sp, #0x40]
+    3fd4:      	b	0x3fd4 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x54>
+		0000000000003fd4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_303
+    3fd8:      	bl	0x3fd8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x58>
+		0000000000003fd8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1489
+    3fdc:      	add	x0, sp, #0x1a6
+    3fe0:      	bl	0x3fe0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x60>
+		0000000000003fe0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+    3fe4:      	bl	0x3fe4 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x64>
+		0000000000003fe4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_344
+    3fe8:      	adrp	x20, 0x3000 <_$ss11InlineArrayV9repeatingAByxq_Gq__tcfC+0xc>
+		0000000000003fe8:  ARM64_RELOC_PAGE21	_$s22P08CounterPresentation0B6ScreenVy0aB7Runtime0B6DomainOGMD
+    3fec:      	add	x20, x20, #0x0
+		0000000000003fec:  ARM64_RELOC_PAGEOFF12	_$s22P08CounterPresentation0B6ScreenVy0aB7Runtime0B6DomainOGMD
+    3ff0:      	bl	0x3ff0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x70>
+		0000000000003ff0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_827
+    3ff4:      	mov	x24, x0
+    3ff8:      	adrp	x0, 0x3000 <_$ss11InlineArrayV9repeatingAByxq_Gq__tcfC+0xc>
+		0000000000003ff8:  ARM64_RELOC_PAGE21	_$s22P08CounterPresentation0B6ScreenVy0aB7Runtime0B6DomainOGACyxG6GiftUI4ViewAAWL
+    3ffc:      	add	x0, x0, #0x0
+		0000000000003ffc:  ARM64_RELOC_PAGEOFF12	_$s22P08CounterPresentation0B6ScreenVy0aB7Runtime0B6DomainOGACyxG6GiftUI4ViewAAWL
+    4000:      	adrp	x2, 0x4000 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x80>
+		0000000000004000:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s22P08CounterPresentation0B6ScreenVyxG6GiftUI4ViewAAMc
+    4004:      	ldr	x2, [x2]
+		0000000000004004:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s22P08CounterPresentation0B6ScreenVyxG6GiftUI4ViewAAMc
+    4008:      	mov	x1, x20
+    400c:      	bl	0x400c <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x8c>
+		000000000000400c:  ARM64_RELOC_BRANCH26	_$s6GiftUI4TextVy17P08CounterRuntime0E6DomainOGACyxGAA4ViewAAWlTm
+    4010:      	mov	x3, x0
+    4014:      	add	x20, x19, #0x30
+    4018:      	mov	x0, x23
+    401c:      	mov	x1, x21
+    4020:      	mov	x2, x24
+    4024:      	blr	x22
+    4028:      	bl	0x4028 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xa8>
+		0000000000004028:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_642
+    402c:      	b.ne	0x4070 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xf0>
+    4030:      	bl	0x4030 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xb0>
+		0000000000004030:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_302
+    4034:      	bl	0x4034 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xb4>
+		0000000000004034:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_422
+    4038:      	add	x0, sp, #0xa
+    403c:      	bl	0x403c <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xbc>
+		000000000000403c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_129
+    4040:      	b.ne	0x4050 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xd0>
+    4044:      	cmp	w0, #0x1
+    4048:      	b.eq	0x406c <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xec>
+    404c:      	b	0x4078 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xf8>
+    4050:      	cmp	w0, #0x1
+    4054:      	b.eq	0x4078 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xf8>
+    4058:      	bl	0x4058 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xd8>
+		0000000000004058:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_342
+    405c:      	add	x0, sp, #0x342
+    4060:      	bl	0x4060 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xe0>
+		0000000000004060:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_284
+    4064:      	bl	0x4064 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xe4>
+		0000000000004064:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_879
+    4068:      	tbz	w0, #0x0, 0x4078 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xf8>
+    406c:      	mov	w0, #0x1                ; =1
+    4070:      	strb	w0, [x19, #0x2a]
+    4074:      	b	0x3fcc <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x4c>
+    4078:      	bl	0x4078 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0xf8>
+		0000000000004078:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1611
+    407c:      	tbnz	w8, #0x10, 0x3fc8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x48>
+    4080:      	bl	0x4080 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x100>
+		0000000000004080:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1610
+    4084:      	b.lo	0x3fc8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x48>
+    4088:      	strh	w8, [x19, #0x16]
+    408c:      	strh	w25, [x19, #0x14]
+    4090:      	ldrh	w8, [x19, #0x12]
+    4094:      	cmp	w8, w25, uxth
+    4098:      	b.hs	0x40a0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x120>
+    409c:      	strh	w25, [x19, #0x12]
+    40a0:      	mov	w0, #0x4                ; =4
+    40a4:      	b	0x3fcc <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x4c>

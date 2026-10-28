@@ -1,0 +1,351 @@
+{
+  "remaining_reached_outlines": [
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_101",
+      "start": "0x2198c",
+      "end": "0x2199c",
+      "machine_bytes": 16
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_102",
+      "start": "0x2199c",
+      "end": "0x219ac",
+      "machine_bytes": 16
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_103",
+      "start": "0x219ac",
+      "end": "0x219cc",
+      "machine_bytes": 32
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_196",
+      "start": "0x21ff8",
+      "end": "0x22004",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_201",
+      "start": "0x22044",
+      "end": "0x22054",
+      "machine_bytes": 16
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_245",
+      "start": "0x22314",
+      "end": "0x2231c",
+      "machine_bytes": 8
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_247",
+      "start": "0x22328",
+      "end": "0x22334",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_262",
+      "start": "0x223d0",
+      "end": "0x223dc",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_277",
+      "start": "0x224b0",
+      "end": "0x224b8",
+      "machine_bytes": 8
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_292",
+      "start": "0x22540",
+      "end": "0x22550",
+      "machine_bytes": 16
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_446",
+      "start": "0x22db4",
+      "end": "0x22ddc",
+      "machine_bytes": 40
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_508",
+      "start": "0x231a0",
+      "end": "0x231b4",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_521",
+      "start": "0x2325c",
+      "end": "0x23268",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_522",
+      "start": "0x23268",
+      "end": "0x23278",
+      "machine_bytes": 16
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_613",
+      "start": "0x237bc",
+      "end": "0x237d0",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_652",
+      "start": "0x23924",
+      "end": "0x23930",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_662",
+      "start": "0x2398c",
+      "end": "0x23998",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_714",
+      "start": "0x23c74",
+      "end": "0x23c88",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_OUTLINED_FUNCTION_89",
+      "start": "0x2188c",
+      "end": "0x218a0",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1112",
+      "start": "0xc8468",
+      "end": "0xc8474",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1142",
+      "start": "0xc8640",
+      "end": "0xc8648",
+      "machine_bytes": 8
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_129",
+      "start": "0xc2c60",
+      "end": "0xc2c80",
+      "machine_bytes": 32
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1351",
+      "start": "0xc94f4",
+      "end": "0xc94fc",
+      "machine_bytes": 8
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1448",
+      "start": "0xc9bac",
+      "end": "0xc9bb4",
+      "machine_bytes": 8
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1489",
+      "start": "0xc9ebc",
+      "end": "0xc9ec8",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1610",
+      "start": "0xca618",
+      "end": "0xca624",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1611",
+      "start": "0xca624",
+      "end": "0xca630",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1635",
+      "start": "0xca760",
+      "end": "0xca76c",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1692",
+      "start": "0xcaa7c",
+      "end": "0xcaa88",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1744",
+      "start": "0xcadd0",
+      "end": "0xcade4",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1841",
+      "start": "0xcb51c",
+      "end": "0xcb530",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_1978",
+      "start": "0xcba98",
+      "end": "0xcbaa4",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_2210",
+      "start": "0xcc6dc",
+      "end": "0xcc6f0",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_2243",
+      "start": "0xcc8d0",
+      "end": "0xcc8dc",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_265",
+      "start": "0xc3d18",
+      "end": "0xc3d24",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_284",
+      "start": "0xc3ee8",
+      "end": "0xc3ef4",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_302",
+      "start": "0xc40ac",
+      "end": "0xc40c0",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_303",
+      "start": "0xc40c0",
+      "end": "0xc40d4",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_342",
+      "start": "0xc4414",
+      "end": "0xc4424",
+      "machine_bytes": 16
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_344",
+      "start": "0xc4434",
+      "end": "0xc4444",
+      "machine_bytes": 16
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_422",
+      "start": "0xc4b18",
+      "end": "0xc4b28",
+      "machine_bytes": 16
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_425",
+      "start": "0xc4b50",
+      "end": "0xc4b64",
+      "machine_bytes": 20
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_458",
+      "start": "0xc4d98",
+      "end": "0xc4da4",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_642",
+      "start": "0xc5d30",
+      "end": "0xc5d3c",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_676",
+      "start": "0xc5f20",
+      "end": "0xc5f2c",
+      "machine_bytes": 12
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_726",
+      "start": "0xc6464",
+      "end": "0xc646c",
+      "machine_bytes": 8
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_827",
+      "start": "0xc6e80",
+      "end": "0xc6e88",
+      "machine_bytes": 8
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_OUTLINED_FUNCTION_879",
+      "start": "0xc72d0",
+      "end": "0xc72dc",
+      "machine_bytes": 12
+    }
+  ],
+  "second_factory": {
+    "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+    "symbol": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5codec6limits7binding9traversalAA05BoundD15ExpansionResultOy23TraversalBindingFailureQy_Gx_5CodecQy_AA0dM6LimitsV05StateP0Qy_nq_mt0A2UI4ViewRzAA0deO11RealizationR_6DomainQy_AWRtzRi__Ri0__r0_lF22P08CounterPresentation0Z6ScreenVy0yZ7Runtime0zX0OG_A1_0zdO0VTt4g5",
+    "start": "0xb0e8",
+    "end": "0xd884",
+    "machine_bytes": 10140,
+    "reason": "Actual separate typed Store.expand specialization reached by CounterSemanticProbe; second assigned construction call site."
+  },
+  "current_context_bytes": 1038076,
+  "remaining_bytes": 10500,
+  "capture_launched": false
+}

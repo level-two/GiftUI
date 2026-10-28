@@ -1,0 +1,8 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000018ca0 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV11isExpandingSbvg>:
+   18ca0:      	ldrb	w0, [x20, #0x126]
+   18ca4:      	ret

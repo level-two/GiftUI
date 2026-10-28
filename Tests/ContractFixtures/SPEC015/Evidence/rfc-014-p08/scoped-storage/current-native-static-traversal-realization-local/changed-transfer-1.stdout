@@ -1,0 +1,31 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000018224 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV13payloadWriterAA0d7PayloadI0VyF>:
+   18224:      	sub	sp, sp, #0x90
+   18228:      	stp	x22, x21, [sp, #0x60]
+   1822c:      	stp	x20, x19, [sp, #0x70]
+   18230:      	stp	x29, x30, [sp, #0x80]
+   18234:      	add	x29, sp, #0x80
+   18238:      	mov	x19, x8
+   1823c:      	add	x0, sp, #0x8
+   18240:      	bl	0x18240 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV13payloadWriterAA0d7PayloadI0VyF+0x1c>
+		0000000000018240:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_196
+   18244:      	ldr	q0, [x20, #0x50]
+   18248:      	stur	q0, [sp, #0x50]
+   1824c:      	ldr	w21, [x20, #0x48]
+   18250:      	ldrb	w20, [x20, #0x4c]
+   18254:      	add	x1, sp, #0x8
+   18258:      	mov	x0, x19
+   1825c:      	mov	w2, #0x58               ; =88
+   18260:      	bl	0x18260 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV13payloadWriterAA0d7PayloadI0VyF+0x3c>
+		0000000000018260:  ARM64_RELOC_BRANCH26	_memcpy
+   18264:      	str	w21, [x19, #0x58]
+   18268:      	strb	w20, [x19, #0x5c]
+   1826c:      	ldp	x29, x30, [sp, #0x80]
+   18270:      	ldp	x20, x19, [sp, #0x70]
+   18274:      	ldp	x22, x21, [sp, #0x60]
+   18278:      	b	0x18278 <_$s18GiftUISemanticCore23SemanticRecordSinkStateV13payloadWriterAA0d7PayloadI0VyF+0x54>
+		0000000000018278:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_653

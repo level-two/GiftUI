@@ -1,0 +1,9 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c9ebc <_OUTLINED_FUNCTION_1489>:
+   c9ebc:      	mov	x22, x2
+   c9ec0:      	mov	x21, x1
+   c9ec4:      	ret

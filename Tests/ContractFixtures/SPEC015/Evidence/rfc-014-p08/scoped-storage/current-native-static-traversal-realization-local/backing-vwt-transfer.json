@@ -1,0 +1,25 @@
+{
+  "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+  "sha256": "5cb5f7e68acbd1da040ddb971cb4d607c5216130ce676eb9a7ea4810c9bad040",
+  "accepted_prior_projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-backing-vwt.json",
+  "prior_sha256": "0a2bd497c0cd6d4b9fd7372102dc162438d5f85db9cc0521c3e63a15d5bb440c",
+  "tables": [
+    {
+      "symbol": "_$s17P08CounterRuntime0B14PendingBackingVWV",
+      "address": "0xd7370",
+      "bytes": 88,
+      "raw_and_all_symbolic_targets_equal": true,
+      "destroy_slot": "___swift_noop_void_return",
+      "size": 352
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B15SemanticBackingVWV",
+      "address": "0xd8f30",
+      "bytes": 88,
+      "raw_and_all_symbolic_targets_equal": true,
+      "destroy_slot": "___swift_noop_void_return",
+      "size": 20064
+    }
+  ],
+  "consequence": "Both actual current destroy slots remain exact ___swift_noop_void_return; complete code graph for that named Core target is one of28equal transfers. Copy traps/take targets,size,stride/flags all unchanged."
+}

@@ -1,0 +1,76 @@
+{
+  "status": "SCOPED_VALIDATION_PASS_INDEPENDENTLY_ACCEPTED",
+  "claim": "Current supplied nongeneric Workspace/Traversal ownership removal and no relocation at the reviewed charged operations, with preserved maintained behavior. No global allocation/P08/resource conclusion.",
+  "compiled_review": "compiled-review.md",
+  "compiled_review_sha256": "9f1ab33bdeff0f86368213442fb5ae9c8ca93e3bbd6994c0e7dceffd150c05ea",
+  "source_freeze": "../current-native-static-traversal-realization-local/source-freeze.json",
+  "source_freeze_sha256": "9760fe9d56e7cdad11b4b8bcf3471b102897254697ed1c4fa6bd9f23222090c1",
+  "current_five_source_hashes_match": true,
+  "functional_receipts": "functional-receipts.json",
+  "full_receipt": ".build/contracts/p08-counter-8erdhh4s/result.json",
+  "full_receipt_sha256": "598428b203c7b31e06b3036108d4e0fbc822d1327e0262b844959306fbae5d25",
+  "checks": 466,
+  "all_checks_passed": true,
+  "planned_native_labels": 408,
+  "all_planned_labels_present": true,
+  "collection_complete": true,
+  "fresh_focused": false,
+  "selected_families": [],
+  "prior_collection": null,
+  "legacy_import": null,
+  "mixed_execution_summary": "P08 counter components assertions=1736320 failures=0",
+  "static_entry": {
+    "version": 1,
+    "entry": "p08CounterStaticResourceEntryV1",
+    "executable": "counter-static-resource-v1",
+    "source": "StaticResourceMainV1.swift",
+    "validation_kind": "separate-process-functional-only",
+    "original_roots": [
+      "p08CounterRoute",
+      "p08CounterScopedStorage",
+      "p08CounterHost"
+    ],
+    "workload": [
+      "p08CounterGraph",
+      "counterExerciseStaticScopedStorage",
+      "p08CounterHost"
+    ],
+    "dynamic_controls": "preserved unchanged in mixed functional execute",
+    "cold_or_resource_measurement": false,
+    "passed": true
+  },
+  "current_inputs_verified": 202,
+  "current_artifacts_verified": 956,
+  "artifact_transfer": "full-transfer.json",
+  "oracles": "oracles.json",
+  "all_four_oracles_equal": true,
+  "text_cost": "text-cost.json",
+  "guard_source": {
+    "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-typedBacking61-local/launch-full4h2.py",
+    "sha256": "2e2cf6378f9d870c5b6c9c2156ea111d7f357b5af200fbf8a0c17a59657ce2d0",
+    "unchanged": true
+  },
+  "phase_start": "2026-10-28T10:06:53.086499+00:00",
+  "phase_deadline": "2026-10-28T14:06:53.086499+00:00",
+  "full_start": "2026-10-28T10:12:01.076219+00:00",
+  "full_effective_deadline": "2026-10-28T14:06:51.087209+00:00",
+  "finished": "2026-10-28T12:33:28.389473+00:00",
+  "full_elapsed_seconds": 8487.313254,
+  "strict_guard_final": ".build/contracts/p08-native-static-p08-finalization/traversal-validation2/full-final.json",
+  "actual_owned_bytes_at_terminal": 1323388835,
+  "output_limit": 2147483648,
+  "protected_reserve": 33554432,
+  "historical_preservation": [
+    "Prior source/proof failures and the1MiB forecast STOP remain unchanged. Same group amended by explicit human authority to2MiB; accepted compiled context remains frozen.",
+    "Validation1 actual P07 PASS at2026-10-27T20:52:51.573219Z/tmp5o4k8j15 is preserved. Fresh new-window P07 was redundant after recovery and is retained, no other gate rerun.",
+    "Schema4 test/guard PASSED; orchestration expected a /result.json suffix and raised AssertionError after PASS. Actual P08_SCHEMA4_EVIDENCE directory was read and components continued without rerunning schema4. No source/guard/tooling correction."
+  ],
+  "remaining_open": [
+    "Earliest preexisting body-result key allocation eligibility and independent declaration/error/Model/provider/layout/cold/live/resource/P08 obligations.",
+    "Unit FAILED; Interaction unit suite UNEXECUTED; no P09/P10 migration or unsupported profile acceptance."
+  ],
+  "local_dependencies": "Exact .build receipts/raw controls/functional outputs/objects and .toolchains compiler are local reproducibility inputs, not copied binary corpora.",
+  "final_review": "final-review.md",
+  "final_review_sha256": "01ab7b25f12d8751e117e11056012f133535bc738fdfa1672613e2546f910e18",
+  "static_execution_summary": "P08 counter components assertions=1734308 failures=0"
+}

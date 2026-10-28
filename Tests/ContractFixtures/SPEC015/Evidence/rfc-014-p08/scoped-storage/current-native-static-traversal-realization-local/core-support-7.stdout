@@ -1,0 +1,15 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000018da0 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15invalidIdentityAA0D14ExpansionErrorOyF>:
+   18da0:      	ldr	x8, [x20]
+   18da4:      	ldrb	w0, [x8, #0x2f]
+   18da8:      	cmp	w0, #0x4
+   18dac:      	b.ne	0x18dbc <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15invalidIdentityAA0D14ExpansionErrorOyF+0x1c>
+   18db0:      	mov	x1, x30
+   18db4:      	bl	0x18db4 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15invalidIdentityAA0D14ExpansionErrorOyF+0x14>
+		0000000000018db4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_521
+   18db8:      	mov	x30, x1
+   18dbc:      	ret

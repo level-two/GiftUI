@@ -1,0 +1,46 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000018dd0 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm>:
+   18dd0:      	mov	x0, x30
+   18dd4:      	bl	0x18dd4 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x4>
+		0000000000018dd4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_714
+   18dd8:      	mov	x30, x0
+   18ddc:      	stp	x29, x30, [sp, #0x150]
+   18de0:      	add	x29, sp, #0x150
+   18de4:      	mov	x22, x4
+   18de8:      	mov	x21, x20
+   18dec:      	mov	x19, x1
+   18df0:      	sub	x0, x29, #0x78
+   18df4:      	bl	0x18df4 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x24>
+		0000000000018df4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_196
+   18df8:      	ldr	x1, [x20, #0x48]
+   18dfc:      	sub	x20, x29, #0x78
+   18e00:      	mov	x0, x22
+   18e04:      	bl	0x18e04 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x34>
+		0000000000018e04:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF
+   18e08:      	bl	0x18e08 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x38>
+		0000000000018e08:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_247
+   18e0c:      	b.ne	0x18e3c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x6c>
+   18e10:      	bl	0x18e10 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x40>
+		0000000000018e10:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_262
+   18e14:      	tbz	w0, #0x0, 0x18e30 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x60>
+   18e18:      	bl	0x18e18 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x48>
+		0000000000018e18:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_102
+   18e1c:      	add	x0, sp, #0xa
+   18e20:      	bl	0x18e20 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x50>
+		0000000000018e20:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   18e24:      	bl	0x18e24 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x54>
+		0000000000018e24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_101
+   18e28:      	mov	w0, #0x4                ; =4
+   18e2c:      	b	0x18e3c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x6c>
+   18e30:      	bl	0x18e30 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x60>
+		0000000000018e30:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_292
+   18e34:      	b.ne	0x18e3c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x6c>
+   18e38:      	bl	0x18e38 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x68>
+		0000000000018e38:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_521
+   18e3c:      	ldp	x29, x30, [sp, #0x150]
+   18e40:      	b	0x18e40 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm+0x70>
+		0000000000018e40:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_89

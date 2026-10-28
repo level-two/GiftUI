@@ -1,0 +1,58 @@
+{
+  "normalization": "ONLY zero-based SO06 role token fields4/8, exactly14 tokens and token11=>, numeric address fields; replace each with <SO06-address>. Preserve every other byte, whitespace and line order. No other normalization.",
+  "comparisons": [
+    {
+      "baseline": "committed_product_full2",
+      "kind": "mixed_execution",
+      "before": ".build/contracts/p08-counter-fl05ri46/result.json",
+      "after": ".build/contracts/p08-counter-8erdhh4s/result.json",
+      "before_raw_sha256": "3b08c8a0bdbbbe23e77bcf01c4e162dc3118dd2ebf66ee243547e40d8f28e742",
+      "after_raw_sha256": "3adb9a6da012af784c441deefca847e6eb8835883cb86e8769498e9276b5c287",
+      "before_normalized_sha256": "aab9906cfa08e5739d9f67ce7ebfd73db14ee13857f450838725013e26c13047",
+      "after_normalized_sha256": "aab9906cfa08e5739d9f67ce7ebfd73db14ee13857f450838725013e26c13047",
+      "role_lines_before": 120,
+      "role_lines_after": 120,
+      "equal": true
+    },
+    {
+      "baseline": "committed_product_full2",
+      "kind": "static_resource_log",
+      "before": ".build/contracts/p08-counter-fl05ri46/static-resource-v1-execute.log",
+      "after": ".build/contracts/p08-counter-8erdhh4s/static-resource-v1-execute.log",
+      "before_raw_sha256": "baaba0bad8359ab4303ad82bcbd6d9a06e1460f4b47e75ed70db20fa1e7e88d6",
+      "after_raw_sha256": "a06e33c0d20aa172aff14e0dfcce455110ccb4f89c62b6f2c85460873f3b68ac",
+      "before_normalized_sha256": "ad80cc534b07d056b22a87219e4af0ea5c65caaee899f0adf54414d1e0d39d72",
+      "after_normalized_sha256": "ad80cc534b07d056b22a87219e4af0ea5c65caaee899f0adf54414d1e0d39d72",
+      "role_lines_before": 60,
+      "role_lines_after": 60,
+      "equal": true
+    },
+    {
+      "baseline": "canonical_focused",
+      "kind": "mixed_execution",
+      "before": ".build/contracts/p08-counter-qzv33chp/result.json",
+      "after": ".build/contracts/p08-counter-8erdhh4s/result.json",
+      "before_raw_sha256": "1d0e43fafe2e53d4008f631ec1f42402bb2256bdb2bb6310349d7f3552c4d579",
+      "after_raw_sha256": "3adb9a6da012af784c441deefca847e6eb8835883cb86e8769498e9276b5c287",
+      "before_normalized_sha256": "aab9906cfa08e5739d9f67ce7ebfd73db14ee13857f450838725013e26c13047",
+      "after_normalized_sha256": "aab9906cfa08e5739d9f67ce7ebfd73db14ee13857f450838725013e26c13047",
+      "role_lines_before": 120,
+      "role_lines_after": 120,
+      "equal": true
+    },
+    {
+      "baseline": "canonical_focused",
+      "kind": "static_resource_log",
+      "before": ".build/contracts/p08-counter-qzv33chp/static-resource-v1-execute.log",
+      "after": ".build/contracts/p08-counter-8erdhh4s/static-resource-v1-execute.log",
+      "before_raw_sha256": "93fcf7150c0a38893ee4b9d9dda569caeda02390d53b3e939dc1dd4e859457c7",
+      "after_raw_sha256": "a06e33c0d20aa172aff14e0dfcce455110ccb4f89c62b6f2c85460873f3b68ac",
+      "before_normalized_sha256": "ad80cc534b07d056b22a87219e4af0ea5c65caaee899f0adf54414d1e0d39d72",
+      "after_normalized_sha256": "ad80cc534b07d056b22a87219e4af0ea5c65caaee899f0adf54414d1e0d39d72",
+      "role_lines_before": 60,
+      "role_lines_after": 60,
+      "equal": true
+    }
+  ],
+  "all_equal": true
+}

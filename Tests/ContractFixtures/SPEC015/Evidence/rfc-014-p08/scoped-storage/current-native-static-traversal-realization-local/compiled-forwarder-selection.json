@@ -1,0 +1,137 @@
+{
+  "source": "Actual complete builder branch relocations plus selected disabled/Button/Text visitor WP slots144/136/112. Other visitor categories not selected merely from table membership.",
+  "functions": [
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV04failE0y18GiftUISemanticCore0D14ExpansionErrorOAGF",
+      "start": "0x3e28",
+      "end": "0x3e7c",
+      "machine_bytes": 84
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05enterE10FixedChild_8identity18GiftUISemanticCore0D14ExpansionErrorOSgs5UInt8V_AF0D16CompleteIdentityVSgztF",
+      "start": "0x41bc",
+      "end": "0x41c8",
+      "machine_bytes": 12
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5",
+      "start": "0x43d8",
+      "end": "0x4548",
+      "machine_bytes": 368
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI4TextVyAA0B6DomainOG_Tg5",
+      "start": "0x4634",
+      "end": "0x47c0",
+      "machine_bytes": 396
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAM4TextVyAA0B6DomainOGG_Qo__Tg5Tm",
+      "start": "0x4548",
+      "end": "0x4634",
+      "machine_bytes": 236
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6CanvasVyAA0B6DomainOG_Tg5",
+      "start": "0x47c0",
+      "end": "0x494c",
+      "machine_bytes": 396
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5",
+      "start": "0x494c",
+      "end": "0x4abc",
+      "machine_bytes": 368
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm",
+      "start": "0x3f80",
+      "end": "0x40a8",
+      "machine_bytes": 296
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05leaveE13PathComponent18GiftUISemanticCore0D14ExpansionErrorOSgyF",
+      "start": "0x4bb0",
+      "end": "0x4bfc",
+      "machine_bytes": 76
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05stageE19ModifierApplication8identity7payload10chainIndex18GiftUISemanticCore0D14ExpansionErrorOSgAH0D16CompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlFAP01_m12UIBackgroundV0V_Tg5",
+      "start": "0x4ef4",
+      "end": "0x4f88",
+      "machine_bytes": 148
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05stageE19ModifierApplication8identity7payload10chainIndex18GiftUISemanticCore0D14ExpansionErrorOSgAH0D16CompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlFAP01_m12UIFixedFrameV0V_Tg5",
+      "start": "0x4f88",
+      "end": "0x5020",
+      "machine_bytes": 152
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF",
+      "start": "0x4bfc",
+      "end": "0x4c7c",
+      "machine_bytes": 128
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlF0aB12Presentation0B6CanvasVyAA0B6DomainOG_Tg5",
+      "start": "0x4df4",
+      "end": "0x4e84",
+      "machine_bytes": 144
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j6UITextS0V_Tg5",
+      "start": "0x4d10",
+      "end": "0x4df4",
+      "machine_bytes": 228
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5",
+      "start": "0x4c7c",
+      "end": "0x4d10",
+      "machine_bytes": 148
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV07discardE15ForOwnerFailureyyF",
+      "start": "0x3df4",
+      "end": "0x3e28",
+      "machine_bytes": 52
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF",
+      "start": "0x3e7c",
+      "end": "0x3f74",
+      "machine_bytes": 248
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+      "start": "0x533c",
+      "end": "0x5988",
+      "machine_bytes": 1612
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV14beginExpansion18GiftUISemanticCore0dG5ErrorOSgyF",
+      "start": "0x3d18",
+      "end": "0x3df4",
+      "machine_bytes": 220
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW",
+      "start": "0x9f08",
+      "end": "0xa1b4",
+      "machine_bytes": 684
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW",
+      "start": "0x9540",
+      "end": "0x962c",
+      "machine_bytes": 236
+    },
+    {
+      "symbol": "_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP20visitActionPrimitive7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW",
+      "start": "0x9b08",
+      "end": "0x9f08",
+      "machine_bytes": 1024
+    }
+  ]
+}

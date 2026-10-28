@@ -1,0 +1,9 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000c6e80 <_OUTLINED_FUNCTION_827>:
+   c6e80:      	mov	x0, x20
+   c6e84:      	b	0xc6e84 <_OUTLINED_FUNCTION_827+0x4>
+		00000000000c6e84:  ARM64_RELOC_BRANCH26	___swift_instantiateConcreteTypeFromMangledName

@@ -76,7 +76,7 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore, semantic
             try models.withDiscovery { () throws(ObservableStateError) in
                 guard case .success = root.beginCandidate() else { preconditionFailure("counter begin") }
             }
-            let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: semanticCodec, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+            let result = semantic.expand(CounterScreen<CounterDomain>(), codec: semanticCodec, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self), traversal: CounterSemanticTraversal.self)
             guard case .success = result else {
             #if !hasFeature(Embedded)
             print("counter expansion failed", result)

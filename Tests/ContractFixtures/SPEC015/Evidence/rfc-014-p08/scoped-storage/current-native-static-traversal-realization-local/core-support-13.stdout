@@ -1,0 +1,29 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000018ca8 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV4bank6limitsAcA0dE11BankBuffersV_AA0dE6LimitsVtcfC>:
+   18ca8:      	mov	x3, x30
+   18cac:      	bl	0x18cac <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV4bank6limitsAcA0dE11BankBuffersV_AA0dE6LimitsVtcfC+0x4>
+		0000000000018cac:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_613
+   18cb0:      	mov	x30, x3
+   18cb4:      	stp	x29, x30, [sp, #0x40]
+   18cb8:      	add	x29, sp, #0x40
+   18cbc:      	mov	x19, x2
+   18cc0:      	mov	x20, x1
+   18cc4:      	mov	x1, x0
+   18cc8:      	mov	x21, x8
+   18ccc:      	lsr	x22, x20, #16
+   18cd0:      	lsr	x23, x20, #32
+   18cd4:      	lsr	x24, x20, #48
+   18cd8:      	lsr	x25, x2, #16
+   18cdc:      	lsr	x26, x2, #32
+   18ce0:      	mov	x0, x8
+   18ce4:      	bl	0x18ce4 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV4bank6limitsAcA0dE11BankBuffersV_AA0dE6LimitsVtcfC+0x3c>
+		0000000000018ce4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_277
+   18ce8:      	bl	0x18ce8 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV4bank6limitsAcA0dE11BankBuffersV_AA0dE6LimitsVtcfC+0x40>
+		0000000000018ce8:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_446
+   18cec:      	ldp	x29, x30, [sp, #0x40]
+   18cf0:      	b	0x18cf0 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV4bank6limitsAcA0dE11BankBuffersV_AA0dE6LimitsVtcfC+0x48>
+		0000000000018cf0:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_508

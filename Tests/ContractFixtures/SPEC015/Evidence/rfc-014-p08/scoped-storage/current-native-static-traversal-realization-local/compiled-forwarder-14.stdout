@@ -1,0 +1,44 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000004c7c <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5>:
+    4c7c:      	stp	x20, x19, [sp, #-0x20]!
+    4c80:      	stp	x29, x30, [sp, #0x10]
+    4c84:      	add	x29, sp, #0x10
+    4c88:      	mov	x8, x0
+    4c8c:      	ldrb	w0, [x20, #0x2a]
+    4c90:      	cmp	w0, #0x4
+    4c94:      	b.ne	0x4d04 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5+0x88>
+    4c98:      	mov	x19, x20
+    4c9c:      	mov	w0, #0x0                ; =0
+    4ca0:      	ldrh	w9, [x20, #0xa]
+    4ca4:      	add	w9, w9, #0x1
+    4ca8:      	tbnz	w9, #0x10, 0x4d00 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5+0x84>
+    4cac:      	ldrh	w10, [x19, #0x2]
+    4cb0:      	cmp	w10, w9, uxth
+    4cb4:      	b.lo	0x4d00 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5+0x84>
+    4cb8:      	strh	w9, [x19, #0xa]
+    4cbc:      	ldrh	w10, [x19, #0x22]
+    4cc0:      	cmp	w10, w9, uxth
+    4cc4:      	b.hs	0x4cd0 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5+0x54>
+    4cc8:      	mov	w0, #0x0                ; =0
+    4ccc:      	b	0x4d00 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5+0x84>
+    4cd0:      	and	x1, x1, #0xffffffff000000ff
+    4cd4:      	add	x20, x19, #0x158
+    4cd8:      	mov	x0, x8
+    4cdc:      	bl	0x4cdc <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5+0x60>
+		0000000000004cdc:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B10RecordSinkV23stageSemanticOccurrence8identity7payloadSb18GiftUISemanticCore0G16CompleteIdentityV_xt0K2UI01_kL16PrimitivePayloadRzlFAJ01_k8UIVStackR0V_Tg5
+    4ce0:      	tbz	w0, #0x0, 0x4cec <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5+0x70>
+    4ce4:      	mov	w0, #0x4                ; =4
+    4ce8:      	b	0x4d04 <_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlFAM01_j8UIVStackS0V_Tg5+0x88>
+    4cec:      	ldr	x8, [x19, #0x158]
+    4cf0:      	ldrb	w8, [x8, #0x2f]
+    4cf4:      	mov	w9, #0x3                ; =3
+    4cf8:      	cmp	w8, #0x4
+    4cfc:      	csel	w0, w9, w8, eq
+    4d00:      	strb	w0, [x19, #0x2a]
+    4d04:      	ldp	x29, x30, [sp, #0x10]
+    4d08:      	ldp	x20, x19, [sp], #0x20
+    4d0c:      	ret

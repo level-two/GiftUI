@@ -1,0 +1,58 @@
+{
+  "status": "REPRESENTATIVE_COMPILER_PASS_MECHANISM_UNQUALIFIED_CONTEXT_NO_FIT",
+  "compiler_terminal": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/final.json",
+  "compiler_phase_pass": true,
+  "finished_utc": "2026-10-27T18:28:25.847543+00:00",
+  "deadline_utc": "2026-10-27T22:27:38.927259+00:00",
+  "source_freeze": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/source-freeze.json",
+  "source_freeze_sha256": "9760fe9d56e7cdad11b4b8bcf3471b102897254697ed1c4fa6bd9f23222090c1",
+  "compiled_inputs": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/compiled-inputs.json",
+  "positives": [
+    "Actual current Static builder constructs concrete state/workspace/sink/traversal through fixed copies/stores.",
+    "Current72a98/72a9c supplies CounterSemanticTraversalMf+16 and72aa0/72aa4 supplies its direct visitor WP to72abc disabled-child callback; no old generic Workspace/Traversal metadata/witness acquisition at that operation.",
+    "Normal/error finalization reaches CounterRecordSink drop before pending/bank cleanup; exact drop target closure remains pending."
+  ],
+  "resolved_result_dependency": {
+    "record": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/body-result-baseline-relation.json",
+    "baseline_required_call": "6d270/274\u21926d278 near entry",
+    "current_required_call": "70ddc/de0\u219270de4 near entry, same current cell d1358 later used by evaluate helper5390/5504/55bc/57b4/591c",
+    "relocated_literals_and_symbolic_rows_equal": true,
+    "concrete_helper_machine_and_symbolic_equal": true,
+    "enum_source_declaration_unchanged": true,
+    "classification": "Preexisting required result key, not new owned-result cache family. Later helper calls are same-current-cell warm lookups on normal reached builder path. The preexisting earliest lookup is not qualified allocation-free."
+  },
+  "remaining": [
+    "Independent whole-mechanism review and required complete second-factory/reached outline/lifecycle context cannot fit current1MiB union; acquisition stopped before capture.",
+    "Actual unchanged codec/lender/capture/transfer applicability must remain explicit; no wholelife PASS is inferred from source or concrete names."
+  ],
+  "bounds": {
+    "complete_raw_context_bytes": 990843,
+    "complete_raw_context_lines": 9413,
+    "complete_data_record_bytes": 47233,
+    "limit_bytes": 1048576,
+    "limit_lines": 32768,
+    "note": "Includes current full builder/22selectedcompletecallees and entire prior full builder/helper; no sliced caller. No new broader acquisition while root/reviewer boundary held.",
+    "raw_plus_complete_data_records_bytes": 1038076,
+    "remaining_bytes": 10500
+  },
+  "scope_limits": "No source changes after source GO; no new compiler/runtime/full producer; no overall allocation/P08/resource/safety acceptance.",
+  "core_support": {
+    "record": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/core-support.json",
+    "complete_bodies": 18,
+    "bytes": 23301,
+    "lines": 322,
+    "sink_drop": "Actual reached CounterRecordSinkVWOh9d874\u20139d878 is ret; no metadata or callback in this body."
+  },
+  "context_blocker": {
+    "record": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/remaining-context-forecast.json",
+    "second_actual_factory": "b0e8\u2013d884",
+    "machine_bytes": 10140,
+    "instructions": 2535,
+    "minimum_complete_disassembly_forecast_bytes": 17745,
+    "minimum_excess_before_outlines": 7245,
+    "remaining_reached_outlines": 48,
+    "remaining_outline_machine_bytes": 728,
+    "capture_started": false,
+    "qualification": "No slicing, deletion, subdivision or retrospective cap relaxation. Complete selected union cannot include this indispensable second assigned Counter construction entry under current1MiB allowance. This is an evidence-method residual, not a demonstrated source/lifecycle/allocation failure."
+  }
+}

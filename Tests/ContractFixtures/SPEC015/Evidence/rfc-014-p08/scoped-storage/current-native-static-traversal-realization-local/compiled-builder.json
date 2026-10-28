@@ -1,0 +1,21 @@
+{
+  "object": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+  "object_sha256": "5cb5f7e68acbd1da040ddb971cb4d607c5216130ce676eb9a7ea4810c9bad040",
+  "symbol": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+  "start": "0x70db0",
+  "end": "0x73644",
+  "argv": [
+    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+    "--disassemble",
+    "--reloc",
+    "--no-show-raw-insn",
+    "--start-address=0x70db0",
+    "--stop-address=0x73644",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "raw": "compiled-builder.stdout",
+  "stdout_bytes": 329640,
+  "stdout_lines": 2911,
+  "stdout_sha256": "f782874d9daea521ad96a44b46e74452037c457be4813ebf079caa144e9aafa5"
+}

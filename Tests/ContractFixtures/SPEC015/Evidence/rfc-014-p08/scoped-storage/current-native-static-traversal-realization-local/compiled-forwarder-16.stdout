@@ -1,0 +1,75 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000003e7c <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF>:
+    3e7c:      	sub	sp, sp, #0x110
+    3e80:      	stp	x28, x27, [sp, #0xd0]
+    3e84:      	stp	x22, x21, [sp, #0xe0]
+    3e88:      	stp	x20, x19, [sp, #0xf0]
+    3e8c:      	stp	x29, x30, [sp, #0x100]
+    3e90:      	add	x29, sp, #0x100
+    3e94:      	mov	x19, x20
+    3e98:      	ldrb	w21, [x20, #0x2a]
+    3e9c:      	ldrb	w8, [x20, #0x28]
+    3ea0:      	cmp	x21, #0x4
+    3ea4:      	b.ne	0x3edc <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x60>
+    3ea8:      	tbz	w8, #0x0, 0x3efc <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x80>
+    3eac:      	ldrb	w8, [x19, #0x29]
+    3eb0:      	cmp	w8, #0x1
+    3eb4:      	b.ne	0x3ec0 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x44>
+    3eb8:      	ldrh	w8, [x19, #0x14]
+    3ebc:      	cbz	w8, 0x3f30 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0xb4>
+    3ec0:      	mov	w8, #0x3                ; =3
+    3ec4:      	strb	w8, [x19, #0x2a]
+    3ec8:      	strb	wzr, [x19, #0x156]
+    3ecc:      	bl	0x3ecc <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x50>
+		0000000000003ecc:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1142
+    3ed0:      	add	x0, x19, #0x88
+    3ed4:      	bl	0x3ed4 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x58>
+		0000000000003ed4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_458
+    3ed8:      	b	0x3f04 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x88>
+    3edc:      	tbz	w8, #0x0, 0x3ef0 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x74>
+    3ee0:      	strb	wzr, [x19, #0x156]
+    3ee4:      	bl	0x3ee4 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x68>
+		0000000000003ee4:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1142
+    3ee8:      	add	x0, x19, #0x88
+    3eec:      	bl	0x3eec <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x70>
+		0000000000003eec:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_458
+    3ef0:      	strh	wzr, [x19, #0x28]
+    3ef4:      	mov	w22, #0x10000           ; =65536
+    3ef8:      	b	0x3f10 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x94>
+    3efc:      	mov	w8, #0x3                ; =3
+    3f00:      	strb	w8, [x19, #0x2a]
+    3f04:      	strh	wzr, [x19, #0x28]
+    3f08:      	mov	w22, #0x10000           ; =65536
+    3f0c:      	mov	w21, #0x3               ; =3
+    3f10:      	mov	x0, x21
+    3f14:      	mov	x1, x22
+    3f18:      	ldp	x29, x30, [sp, #0x100]
+    3f1c:      	ldp	x20, x19, [sp, #0xf0]
+    3f20:      	ldp	x22, x21, [sp, #0xe0]
+    3f24:      	ldp	x28, x27, [sp, #0xd0]
+    3f28:      	add	sp, sp, #0x110
+    3f2c:      	ret
+    3f30:      	ldrh	w22, [x19, #0x12]
+    3f34:      	cbz	w22, 0x3ec0 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x44>
+    3f38:      	ldur	x21, [x19, #0xa]
+    3f3c:      	add	x20, x19, #0x158
+    3f40:      	mov	x0, x21
+    3f44:      	mov	x1, x22
+    3f48:      	bl	0x3f48 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0xcc>
+		0000000000003f48:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore23SemanticRecordSinkStateV16publishExpansionySbAA0dI7SummaryVF
+    3f4c:      	tbz	w0, #0x0, 0x3f68 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0xec>
+    3f50:      	strb	wzr, [x19, #0x156]
+    3f54:      	bl	0x3f54 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0xd8>
+		0000000000003f54:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1142
+    3f58:      	add	x0, x19, #0x88
+    3f5c:      	bl	0x3f5c <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0xe0>
+		0000000000003f5c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_458
+    3f60:      	strh	wzr, [x19, #0x28]
+    3f64:      	b	0x3f10 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x94>
+    3f68:      	mov	w21, #0x3               ; =3
+    3f6c:      	strb	w21, [x19, #0x2a]
+    3f70:      	b	0x3ee0 <_$s17P08CounterRuntime0B17SemanticTraversalV07succeedE018GiftUISemanticCore0D15ExpansionResultOyF+0x64>

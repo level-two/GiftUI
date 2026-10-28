@@ -1,0 +1,11 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000022044 <_OUTLINED_FUNCTION_201>:
+   22044:      	bfi	x22, x20, #8, #8
+   22048:      	sub	x20, x29, #0x78
+   2204c:      	mov	x0, x22
+   22050:      	b	0x22050 <_OUTLINED_FUNCTION_201+0xc>
+		0000000000022050:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore25SemanticRecordBankBuffersV5enter_6limitsAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0dE6LimitsVtF

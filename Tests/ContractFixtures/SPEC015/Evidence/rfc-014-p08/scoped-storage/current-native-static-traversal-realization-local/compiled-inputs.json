@@ -1,0 +1,1096 @@
+{
+  "plan_sha256": "f2d6beed95fd155db40e0d4a7b490a4d1c6234af595aa49efa437e21eeec92a0",
+  "source_freeze_sha256": "9760fe9d56e7cdad11b4b8bcf3471b102897254697ed1c4fa6bd9f23222090c1",
+  "terminal": {
+    "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/final.json",
+    "sha256": "bbd259050d6ddb7b17ef5dd107f5ca13de027a7eefd94827fb8106889074fb55",
+    "finished_utc": "2026-10-27T18:28:25.847543+00:00",
+    "phase_pass": true
+  },
+  "source_hashes": {
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift": {
+      "expected_from_full2": "09420254216e26ba9dd83acee731233a1144459c3cce971cbf0b1897ea268f28",
+      "actual": "f9f009e5cda10b527c595b46a216aabbca145ba67968c9f838e1d70cec840906",
+      "expected_for_candidate": "f9f009e5cda10b527c595b46a216aabbca145ba67968c9f838e1d70cec840906",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": {
+      "expected_from_full2": "28d375b8f83369cc33e0090ab14609f1058f595ff4d4db2aebcdd3207fb1a7fb",
+      "actual": "28d375b8f83369cc33e0090ab14609f1058f595ff4d4db2aebcdd3207fb1a7fb",
+      "expected_for_candidate": "28d375b8f83369cc33e0090ab14609f1058f595ff4d4db2aebcdd3207fb1a7fb",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift": {
+      "expected_from_full2": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745",
+      "actual": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745",
+      "expected_for_candidate": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": {
+      "expected_from_full2": "ce5cadfaa5c4f3ce58d3cd90ab54b6d08f43356183ebc0aabbf181c7d03f9e7c",
+      "actual": "0af39b1cb780c37a63106d84f78e708f0405869c7d5085a382dfe57feff91474",
+      "expected_for_candidate": "0af39b1cb780c37a63106d84f78e708f0405869c7d5085a382dfe57feff91474",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordPayload.swift": {
+      "expected_from_full2": "a5000583e2131d12bfdcc99b982462e025bf1eacd6e417449778d2c65630fb6b",
+      "actual": "a5000583e2131d12bfdcc99b982462e025bf1eacd6e417449778d2c65630fb6b",
+      "expected_for_candidate": "a5000583e2131d12bfdcc99b982462e025bf1eacd6e417449778d2c65630fb6b",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift": {
+      "expected_from_full2": "35a79402b6e69569f54b18933523c2007c4f1f11a54eaa6ed950c4d877340d9a",
+      "actual": "35a79402b6e69569f54b18933523c2007c4f1f11a54eaa6ed950c4d877340d9a",
+      "expected_for_candidate": "35a79402b6e69569f54b18933523c2007c4f1f11a54eaa6ed950c4d877340d9a",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift": {
+      "expected_from_full2": "6fd6c725f82d0526064201f5121a14a91197d141fa338d7c9d0711d7872a0f48",
+      "actual": "6fd6c725f82d0526064201f5121a14a91197d141fa338d7c9d0711d7872a0f48",
+      "expected_for_candidate": "6fd6c725f82d0526064201f5121a14a91197d141fa338d7c9d0711d7872a0f48",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift": {
+      "expected_from_full2": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+      "actual": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+      "expected_for_candidate": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": {
+      "expected_from_full2": "e4fabbc84c3c62ceac89b5942f37e49ce6f0b16594424ab533e55267e29d35d0",
+      "actual": "e4fabbc84c3c62ceac89b5942f37e49ce6f0b16594424ab533e55267e29d35d0",
+      "expected_for_candidate": "e4fabbc84c3c62ceac89b5942f37e49ce6f0b16594424ab533e55267e29d35d0",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": {
+      "expected_from_full2": "051594389e35ff960160d77051ea49fbe756d0d6d5827bd42339702d0f7c513b",
+      "actual": "051594389e35ff960160d77051ea49fbe756d0d6d5827bd42339702d0f7c513b",
+      "expected_for_candidate": "051594389e35ff960160d77051ea49fbe756d0d6d5827bd42339702d0f7c513b",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift": {
+      "expected_from_full2": "58a8adc56b26a09abdf9106e58dcf92dd5799971e94ccd5513469d12c1d24d5e",
+      "actual": "58a8adc56b26a09abdf9106e58dcf92dd5799971e94ccd5513469d12c1d24d5e",
+      "expected_for_candidate": "58a8adc56b26a09abdf9106e58dcf92dd5799971e94ccd5513469d12c1d24d5e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift": {
+      "expected_from_full2": "a5ebfd695e74c17574bba7f8de075c3f365d6ae9ca3dfd6266ec114df9157894",
+      "actual": "a5ebfd695e74c17574bba7f8de075c3f365d6ae9ca3dfd6266ec114df9157894",
+      "expected_for_candidate": "a5ebfd695e74c17574bba7f8de075c3f365d6ae9ca3dfd6266ec114df9157894",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift": {
+      "expected_from_full2": "dd70e9816f6a4904dbec00a14b97bc0ba4466ead725f6e27953370bd1756b21a",
+      "actual": "dd70e9816f6a4904dbec00a14b97bc0ba4466ead725f6e27953370bd1756b21a",
+      "expected_for_candidate": "dd70e9816f6a4904dbec00a14b97bc0ba4466ead725f6e27953370bd1756b21a",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift": {
+      "expected_from_full2": "a03c17620f835d6a2afd57c2aadf0b9e2ded17c1b25e0c5d94aa2be29d3a310a",
+      "actual": "a03c17620f835d6a2afd57c2aadf0b9e2ded17c1b25e0c5d94aa2be29d3a310a",
+      "expected_for_candidate": "a03c17620f835d6a2afd57c2aadf0b9e2ded17c1b25e0c5d94aa2be29d3a310a",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift": {
+      "expected_from_full2": "5349d9cf4af66e459bedca4f4004b571f2ad54b0727164b0685f1db55d0388ab",
+      "actual": "5349d9cf4af66e459bedca4f4004b571f2ad54b0727164b0685f1db55d0388ab",
+      "expected_for_candidate": "5349d9cf4af66e459bedca4f4004b571f2ad54b0727164b0685f1db55d0388ab",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift": {
+      "expected_from_full2": "45f23eaf015a2501a061ab7d4d09a0a1a59c16d5a624225a658193f5486a58fb",
+      "actual": "45f23eaf015a2501a061ab7d4d09a0a1a59c16d5a624225a658193f5486a58fb",
+      "expected_for_candidate": "45f23eaf015a2501a061ab7d4d09a0a1a59c16d5a624225a658193f5486a58fb",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift": {
+      "expected_from_full2": "cbff5b124b0be92575091994c2ceb452cf504745021027bfff5c25be82adac13",
+      "actual": "cbff5b124b0be92575091994c2ceb452cf504745021027bfff5c25be82adac13",
+      "expected_for_candidate": "cbff5b124b0be92575091994c2ceb452cf504745021027bfff5c25be82adac13",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift": {
+      "expected_from_full2": "02972a30aae2b9be0f97e3b0eb0782aba063b17eb3b643cfdc16af96574601ae",
+      "actual": "02972a30aae2b9be0f97e3b0eb0782aba063b17eb3b643cfdc16af96574601ae",
+      "expected_for_candidate": "02972a30aae2b9be0f97e3b0eb0782aba063b17eb3b643cfdc16af96574601ae",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift": {
+      "expected_from_full2": "29d40d755afff76ff779ca6b06a53c754fd0cd147ab6f551d62f6b2b6047c1c5",
+      "actual": "29d40d755afff76ff779ca6b06a53c754fd0cd147ab6f551d62f6b2b6047c1c5",
+      "expected_for_candidate": "29d40d755afff76ff779ca6b06a53c754fd0cd147ab6f551d62f6b2b6047c1c5",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift": {
+      "expected_from_full2": "ebf9307a6123fd7e52e96c9a8caf0f5dcca20db12649d1243155c6124acd4e05",
+      "actual": "ebf9307a6123fd7e52e96c9a8caf0f5dcca20db12649d1243155c6124acd4e05",
+      "expected_for_candidate": "ebf9307a6123fd7e52e96c9a8caf0f5dcca20db12649d1243155c6124acd4e05",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift": {
+      "expected_from_full2": "0b5bd48b5a34b20d2afc43a1f4e26e23242d72645e41cdc88543d6f7d532c29f",
+      "actual": "0b5bd48b5a34b20d2afc43a1f4e26e23242d72645e41cdc88543d6f7d532c29f",
+      "expected_for_candidate": "0b5bd48b5a34b20d2afc43a1f4e26e23242d72645e41cdc88543d6f7d532c29f",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/EffectiveActionEnabledState.swift": {
+      "expected_from_full2": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+      "actual": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+      "expected_for_candidate": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": {
+      "expected_from_full2": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+      "actual": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+      "expected_for_candidate": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionFailurePrecedence.swift": {
+      "expected_from_full2": "78b73565a87d7800ff03f573b42a3ca117310167319f4ca77d19f2d94ed0a08c",
+      "actual": "78b73565a87d7800ff03f573b42a3ca117310167319f4ca77d19f2d94ed0a08c",
+      "expected_for_candidate": "78b73565a87d7800ff03f573b42a3ca117310167319f4ca77d19f2d94ed0a08c",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": {
+      "expected_from_full2": "0d7eee46b5f6a76b7e6efe71de2ee6e4b79512bdf845e5d9fad692a7e8d1f12c",
+      "actual": "0d7eee46b5f6a76b7e6efe71de2ee6e4b79512bdf845e5d9fad692a7e8d1f12c",
+      "expected_for_candidate": "0d7eee46b5f6a76b7e6efe71de2ee6e4b79512bdf845e5d9fad692a7e8d1f12c",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift": {
+      "expected_from_full2": "f2b94df5a83faaf09a3b9ef416111ace6783f88e9798942c418ac459ef5882ca",
+      "actual": "f2b94df5a83faaf09a3b9ef416111ace6783f88e9798942c418ac459ef5882ca",
+      "expected_for_candidate": "f2b94df5a83faaf09a3b9ef416111ace6783f88e9798942c418ac459ef5882ca",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionStorage.swift": {
+      "expected_from_full2": "1cb6c6bb221582a09ac5c215418732b5f6fd38e278819aeb9e3b3783a31ba1db",
+      "actual": "1cb6c6bb221582a09ac5c215418732b5f6fd38e278819aeb9e3b3783a31ba1db",
+      "expected_for_candidate": "1cb6c6bb221582a09ac5c215418732b5f6fd38e278819aeb9e3b3783a31ba1db",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionValues.swift": {
+      "expected_from_full2": "7024e145253cea319955948369399b8cb999d59cee59e69d5ed308e3c7fbde82",
+      "actual": "7024e145253cea319955948369399b8cb999d59cee59e69d5ed308e3c7fbde82",
+      "expected_for_candidate": "7024e145253cea319955948369399b8cb999d59cee59e69d5ed308e3c7fbde82",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateProtocols.swift": {
+      "expected_from_full2": "a192efc2b7be42a9c1950f11ec14a9bdf17dfe903c488c253dab9064e7b42629",
+      "actual": "a192efc2b7be42a9c1950f11ec14a9bdf17dfe903c488c253dab9064e7b42629",
+      "expected_for_candidate": "a192efc2b7be42a9c1950f11ec14a9bdf17dfe903c488c253dab9064e7b42629",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift": {
+      "expected_from_full2": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae",
+      "actual": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae",
+      "expected_for_candidate": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift": {
+      "expected_from_full2": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+      "actual": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+      "expected_for_candidate": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+      "expected_from_full2": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832",
+      "actual": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832",
+      "expected_for_candidate": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift": {
+      "expected_from_full2": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd",
+      "actual": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd",
+      "expected_for_candidate": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift": {
+      "expected_from_full2": "61f3dec08d89c44f71866befdd763dfa8206b27b73f3aecf4ee9106e093733e6",
+      "actual": "61f3dec08d89c44f71866befdd763dfa8206b27b73f3aecf4ee9106e093733e6",
+      "expected_for_candidate": "61f3dec08d89c44f71866befdd763dfa8206b27b73f3aecf4ee9106e093733e6",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift": {
+      "expected_from_full2": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+      "actual": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+      "expected_for_candidate": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift": {
+      "expected_from_full2": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+      "actual": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+      "expected_for_candidate": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": {
+      "expected_from_full2": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252",
+      "actual": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252",
+      "expected_for_candidate": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+      "expected_from_full2": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205",
+      "actual": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205",
+      "expected_for_candidate": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": {
+      "expected_from_full2": "55067eca3c7cf1c64a5f50d715808e859565ee9c36d426fb6ca871356f6a662b",
+      "actual": "55067eca3c7cf1c64a5f50d715808e859565ee9c36d426fb6ca871356f6a662b",
+      "expected_for_candidate": "55067eca3c7cf1c64a5f50d715808e859565ee9c36d426fb6ca871356f6a662b",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift": {
+      "expected_from_full2": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+      "actual": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+      "expected_for_candidate": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": {
+      "expected_from_full2": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+      "actual": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+      "expected_for_candidate": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderExtensions.swift": {
+      "expected_from_full2": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+      "actual": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+      "expected_for_candidate": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderPreflight.swift": {
+      "expected_from_full2": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+      "actual": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+      "expected_for_candidate": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProducer.swift": {
+      "expected_from_full2": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+      "actual": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+      "expected_for_candidate": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProductionValues.swift": {
+      "expected_from_full2": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+      "actual": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+      "expected_for_candidate": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderStreaming.swift": {
+      "expected_from_full2": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+      "actual": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+      "expected_for_candidate": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasRenderProducer.swift": {
+      "expected_from_full2": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+      "actual": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+      "expected_for_candidate": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift": {
+      "expected_from_full2": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+      "actual": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+      "expected_for_candidate": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift": {
+      "expected_from_full2": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436",
+      "actual": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436",
+      "expected_for_candidate": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift": {
+      "expected_from_full2": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+      "actual": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+      "expected_for_candidate": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift": {
+      "expected_from_full2": "b41099370167917a51190f473ad0a70626639601de773991450afee6291f3ec7",
+      "actual": "b41099370167917a51190f473ad0a70626639601de773991450afee6291f3ec7",
+      "expected_for_candidate": "b41099370167917a51190f473ad0a70626639601de773991450afee6291f3ec7",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift": {
+      "expected_from_full2": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1",
+      "actual": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1",
+      "expected_for_candidate": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift": {
+      "expected_from_full2": "d6ea74257a8d24652392eb05fb0361907a3aa5b60a4f727d9ab11a7bcb9357ad",
+      "actual": "d6ea74257a8d24652392eb05fb0361907a3aa5b60a4f727d9ab11a7bcb9357ad",
+      "expected_for_candidate": "d6ea74257a8d24652392eb05fb0361907a3aa5b60a4f727d9ab11a7bcb9357ad",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift": {
+      "expected_from_full2": "b7f6e25dd6cc4830377134a4c76c24097c46c326136710a2e6cfe9b74d5ac842",
+      "actual": "b7f6e25dd6cc4830377134a4c76c24097c46c326136710a2e6cfe9b74d5ac842",
+      "expected_for_candidate": "b7f6e25dd6cc4830377134a4c76c24097c46c326136710a2e6cfe9b74d5ac842",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift": {
+      "expected_from_full2": "cf495d6f53b2d92ca7543dd3cb78eaeb4774bad57a81974c3fbece650f59111f",
+      "actual": "cf495d6f53b2d92ca7543dd3cb78eaeb4774bad57a81974c3fbece650f59111f",
+      "expected_for_candidate": "cf495d6f53b2d92ca7543dd3cb78eaeb4774bad57a81974c3fbece650f59111f",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift": {
+      "expected_from_full2": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+      "actual": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+      "expected_for_candidate": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift": {
+      "expected_from_full2": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+      "actual": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+      "expected_for_candidate": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": {
+      "expected_from_full2": "30340b08489e83bc909096090e87f7a2b478b7a5b11b1811a458a0a30102d544",
+      "actual": "30340b08489e83bc909096090e87f7a2b478b7a5b11b1811a458a0a30102d544",
+      "expected_for_candidate": "30340b08489e83bc909096090e87f7a2b478b7a5b11b1811a458a0a30102d544",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift": {
+      "expected_from_full2": "cdb4150cf1fd3d8f7ee6c4a320d93ce4d6d9c75e00946ffb4d27e7c1904683fd",
+      "actual": "cdb4150cf1fd3d8f7ee6c4a320d93ce4d6d9c75e00946ffb4d27e7c1904683fd",
+      "expected_for_candidate": "cdb4150cf1fd3d8f7ee6c4a320d93ce4d6d9c75e00946ffb4d27e7c1904683fd",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift": {
+      "expected_from_full2": "0f7fa6459c15109beb85c66e931cc77b5c7528e42ba774945c46ba32ecda5a66",
+      "actual": "0f7fa6459c15109beb85c66e931cc77b5c7528e42ba774945c46ba32ecda5a66",
+      "expected_for_candidate": "0f7fa6459c15109beb85c66e931cc77b5c7528e42ba774945c46ba32ecda5a66",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": {
+      "expected_from_full2": "0ed77324a09b25fcc683a61ef659abbc1c32709ae36f1e43ffaa54433fd89675",
+      "actual": "0ed77324a09b25fcc683a61ef659abbc1c32709ae36f1e43ffaa54433fd89675",
+      "expected_for_candidate": "0ed77324a09b25fcc683a61ef659abbc1c32709ae36f1e43ffaa54433fd89675",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": {
+      "expected_from_full2": "570e74dc2c57f3e05ae9bdb7a845e2cbf6066be3ea9a3cb5eaa0c0f6fc9b5d36",
+      "actual": "570e74dc2c57f3e05ae9bdb7a845e2cbf6066be3ea9a3cb5eaa0c0f6fc9b5d36",
+      "expected_for_candidate": "570e74dc2c57f3e05ae9bdb7a845e2cbf6066be3ea9a3cb5eaa0c0f6fc9b5d36",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift": {
+      "expected_from_full2": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+      "actual": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+      "expected_for_candidate": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift": {
+      "expected_from_full2": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+      "actual": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+      "expected_for_candidate": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": {
+      "expected_from_full2": "bedb5fbc642516740f4804822c6b67da1ae0d2fe3d50def3068a61d5a0367d92",
+      "actual": "bedb5fbc642516740f4804822c6b67da1ae0d2fe3d50def3068a61d5a0367d92",
+      "expected_for_candidate": "bedb5fbc642516740f4804822c6b67da1ae0d2fe3d50def3068a61d5a0367d92",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": {
+      "expected_from_full2": "bf5551a5b012d8c1f8d9b3f3e79dc0f223005925998eedd26be14ef7c7920d73",
+      "actual": "bf5551a5b012d8c1f8d9b3f3e79dc0f223005925998eedd26be14ef7c7920d73",
+      "expected_for_candidate": "bf5551a5b012d8c1f8d9b3f3e79dc0f223005925998eedd26be14ef7c7920d73",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": {
+      "expected_from_full2": "f2ff73faa06c4a41ace3510da6ef7039f6b6de19024c4282a7e5f1ad67b5b828",
+      "actual": "f2ff73faa06c4a41ace3510da6ef7039f6b6de19024c4282a7e5f1ad67b5b828",
+      "expected_for_candidate": "f2ff73faa06c4a41ace3510da6ef7039f6b6de19024c4282a7e5f1ad67b5b828",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift": {
+      "expected_from_full2": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+      "actual": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+      "expected_for_candidate": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift": {
+      "expected_from_full2": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+      "actual": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+      "expected_for_candidate": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift": {
+      "expected_from_full2": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+      "actual": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+      "expected_for_candidate": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": {
+      "expected_from_full2": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+      "actual": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+      "expected_for_candidate": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": {
+      "expected_from_full2": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+      "actual": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+      "expected_for_candidate": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift": {
+      "expected_from_full2": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+      "actual": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+      "expected_for_candidate": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift": {
+      "expected_from_full2": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+      "actual": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+      "expected_for_candidate": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": {
+      "expected_from_full2": "b64482fef6c41c52a07b561f14911068de2eff984870e7e1f93f02bf52def865",
+      "actual": "b64482fef6c41c52a07b561f14911068de2eff984870e7e1f93f02bf52def865",
+      "expected_for_candidate": "b64482fef6c41c52a07b561f14911068de2eff984870e7e1f93f02bf52def865",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift": {
+      "expected_from_full2": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+      "actual": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+      "expected_for_candidate": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift": {
+      "expected_from_full2": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+      "actual": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+      "expected_for_candidate": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift": {
+      "expected_from_full2": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+      "actual": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+      "expected_for_candidate": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift": {
+      "expected_from_full2": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+      "actual": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+      "expected_for_candidate": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift": {
+      "expected_from_full2": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+      "actual": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+      "expected_for_candidate": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift": {
+      "expected_from_full2": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+      "actual": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+      "expected_for_candidate": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift": {
+      "expected_from_full2": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+      "actual": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+      "expected_for_candidate": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift": {
+      "expected_from_full2": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+      "actual": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+      "expected_for_candidate": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift": {
+      "expected_from_full2": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+      "actual": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+      "expected_for_candidate": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift": {
+      "expected_from_full2": "f0917fd7f0f2f4c4a908ae20c498f42f5ff7d598b339ec68604b3ce67b73619e",
+      "actual": "f0917fd7f0f2f4c4a908ae20c498f42f5ff7d598b339ec68604b3ce67b73619e",
+      "expected_for_candidate": "f0917fd7f0f2f4c4a908ae20c498f42f5ff7d598b339ec68604b3ce67b73619e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift": {
+      "expected_from_full2": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+      "actual": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+      "expected_for_candidate": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift": {
+      "expected_from_full2": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+      "actual": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+      "expected_for_candidate": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift": {
+      "expected_from_full2": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+      "actual": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+      "expected_for_candidate": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift": {
+      "expected_from_full2": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+      "actual": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+      "expected_for_candidate": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift": {
+      "expected_from_full2": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517",
+      "actual": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517",
+      "expected_for_candidate": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift": {
+      "expected_from_full2": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+      "actual": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+      "expected_for_candidate": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift": {
+      "expected_from_full2": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae",
+      "actual": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae",
+      "expected_for_candidate": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift": {
+      "expected_from_full2": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+      "actual": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+      "expected_for_candidate": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": {
+      "expected_from_full2": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+      "actual": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+      "expected_for_candidate": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": {
+      "expected_from_full2": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+      "actual": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+      "expected_for_candidate": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": {
+      "expected_from_full2": "fb89a072235041053cd739b4a65da6c5c67cfe38c47f4d49db3aad86e0f9bdab",
+      "actual": "fb89a072235041053cd739b4a65da6c5c67cfe38c47f4d49db3aad86e0f9bdab",
+      "expected_for_candidate": "fb89a072235041053cd739b4a65da6c5c67cfe38c47f4d49db3aad86e0f9bdab",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": {
+      "expected_from_full2": "1c529f7ccbd4c59aafa9589b177f0a602079d8588ba0cc1643c60cde41ebe2fe",
+      "actual": "1c529f7ccbd4c59aafa9589b177f0a602079d8588ba0cc1643c60cde41ebe2fe",
+      "expected_for_candidate": "1c529f7ccbd4c59aafa9589b177f0a602079d8588ba0cc1643c60cde41ebe2fe",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift": {
+      "expected_from_full2": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+      "actual": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+      "expected_for_candidate": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": {
+      "expected_from_full2": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+      "actual": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+      "expected_for_candidate": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostFailureAdapter.swift": {
+      "expected_from_full2": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+      "actual": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+      "expected_for_candidate": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": {
+      "expected_from_full2": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+      "actual": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+      "expected_for_candidate": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift": {
+      "expected_from_full2": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+      "actual": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+      "expected_for_candidate": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": {
+      "expected_from_full2": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+      "actual": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+      "expected_for_candidate": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift": {
+      "expected_from_full2": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+      "actual": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+      "expected_for_candidate": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift": {
+      "expected_from_full2": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+      "actual": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+      "expected_for_candidate": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": {
+      "expected_from_full2": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+      "actual": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+      "expected_for_candidate": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": {
+      "expected_from_full2": "3f21154d0b6d6b416ebcacef4932902a72649968969246c601791272f66316f6",
+      "actual": "3f21154d0b6d6b416ebcacef4932902a72649968969246c601791272f66316f6",
+      "expected_for_candidate": "3f21154d0b6d6b416ebcacef4932902a72649968969246c601791272f66316f6",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift": {
+      "expected_from_full2": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+      "actual": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+      "expected_for_candidate": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostWakePacingController.swift": {
+      "expected_from_full2": "ea04fa3fb0c52da2aa8c1719cb68abb229c3d24f6ad3de597527b2f026dede11",
+      "actual": "ea04fa3fb0c52da2aa8c1719cb68abb229c3d24f6ad3de597527b2f026dede11",
+      "expected_for_candidate": "ea04fa3fb0c52da2aa8c1719cb68abb229c3d24f6ad3de597527b2f026dede11",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": {
+      "expected_from_full2": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+      "actual": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+      "expected_for_candidate": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": {
+      "expected_from_full2": "55466bd192b6e5e1296de66a20ed2bdee97caa69432608b9c0e9436548786650",
+      "actual": "55466bd192b6e5e1296de66a20ed2bdee97caa69432608b9c0e9436548786650",
+      "expected_for_candidate": "55466bd192b6e5e1296de66a20ed2bdee97caa69432608b9c0e9436548786650",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": {
+      "expected_from_full2": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04",
+      "actual": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04",
+      "expected_for_candidate": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": {
+      "expected_from_full2": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+      "actual": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+      "expected_for_candidate": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-fl05ri46/CounterTable.swift": {
+      "expected_from_full2": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5",
+      "actual": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5",
+      "generated_source_artifact": true,
+      "expected_for_candidate": "a3c737d3555f2ee5c48fe0fddf3c224fb9cb6a9397948b4073cc8009dce73ab5",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": {
+      "expected_from_full2": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+      "actual": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+      "expected_for_candidate": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": {
+      "expected_from_full2": "2fec41d84cfb72b2035e84a62825326a12e05649d37bcfb1cc5e39170d869bde",
+      "actual": "2fec41d84cfb72b2035e84a62825326a12e05649d37bcfb1cc5e39170d869bde",
+      "expected_for_candidate": "2fec41d84cfb72b2035e84a62825326a12e05649d37bcfb1cc5e39170d869bde",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": {
+      "expected_from_full2": "2aae79f399ada458e0132054d49c20c913c25b3f45f61e234f443576fe4e4d17",
+      "actual": "db76bf5f5618a3230d7ba436765fe9129b808f4bbee5bfee18659cbf0bb8dac3",
+      "expected_for_candidate": "db76bf5f5618a3230d7ba436765fe9129b808f4bbee5bfee18659cbf0bb8dac3",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": {
+      "expected_from_full2": "5a17a39cad2fcbeb6dae4c3b703ad6c0f1877597c71ef7e71356c43db07fdf49",
+      "actual": "0f345c9e20c9b81e9ca9b1e523d04ed61d625fd89b1ca8dcd62da9c453761896",
+      "expected_for_candidate": "0f345c9e20c9b81e9ca9b1e523d04ed61d625fd89b1ca8dcd62da9c453761896",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": {
+      "expected_from_full2": "ef593f34bce2f6d36544c559033ba9a7261cb2b513ce8c6feaaaccbea2f5bd60",
+      "actual": "ef593f34bce2f6d36544c559033ba9a7261cb2b513ce8c6feaaaccbea2f5bd60",
+      "expected_for_candidate": "ef593f34bce2f6d36544c559033ba9a7261cb2b513ce8c6feaaaccbea2f5bd60",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": {
+      "expected_from_full2": "441edad25b562185db844ec9a2eb76c53335059b6ea04c434d196f65b9c4d243",
+      "actual": "441edad25b562185db844ec9a2eb76c53335059b6ea04c434d196f65b9c4d243",
+      "expected_for_candidate": "441edad25b562185db844ec9a2eb76c53335059b6ea04c434d196f65b9c4d243",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": {
+      "expected_from_full2": "9dea8f9e607e3599846f64a0dae1f51fc027162a2fe92d6da5868b8375147ead",
+      "actual": "9dea8f9e607e3599846f64a0dae1f51fc027162a2fe92d6da5868b8375147ead",
+      "expected_for_candidate": "9dea8f9e607e3599846f64a0dae1f51fc027162a2fe92d6da5868b8375147ead",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": {
+      "expected_from_full2": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+      "actual": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+      "expected_for_candidate": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": {
+      "expected_from_full2": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+      "actual": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+      "expected_for_candidate": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": {
+      "expected_from_full2": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+      "actual": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+      "expected_for_candidate": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": {
+      "expected_from_full2": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+      "actual": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+      "expected_for_candidate": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+      "expected_from_full2": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+      "actual": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+      "expected_for_candidate": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift": {
+      "expected_from_full2": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+      "actual": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+      "expected_for_candidate": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": {
+      "expected_from_full2": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+      "actual": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+      "expected_for_candidate": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": {
+      "expected_from_full2": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+      "actual": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+      "expected_for_candidate": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": {
+      "expected_from_full2": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+      "actual": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+      "expected_for_candidate": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": {
+      "expected_from_full2": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+      "actual": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+      "expected_for_candidate": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": {
+      "expected_from_full2": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+      "actual": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+      "expected_for_candidate": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": {
+      "expected_from_full2": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+      "actual": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+      "expected_for_candidate": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": {
+      "expected_from_full2": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+      "actual": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+      "expected_for_candidate": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "expected_from_full2": "6e66e7e1324cd1fbb1e413f341521e676fb5103d1e38ed57adc6e37a84ce4113",
+      "actual": "6e66e7e1324cd1fbb1e413f341521e676fb5103d1e38ed57adc6e37a84ce4113",
+      "expected_for_candidate": "6e66e7e1324cd1fbb1e413f341521e676fb5103d1e38ed57adc6e37a84ce4113",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift": {
+      "expected_from_full2": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+      "actual": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+      "expected_for_candidate": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+      "expected_from_full2": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+      "actual": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+      "expected_for_candidate": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "expected_from_full2": "7f33e051e3b159ba84983b45672e1299a178a81bb5b45f5a182d5e19c9630ccf",
+      "actual": "292323a7960b1cd405b914325aeed737b683d9e402679e32101b5c5879f2cf73",
+      "expected_for_candidate": "292323a7960b1cd405b914325aeed737b683d9e402679e32101b5c5879f2cf73",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+      "expected_from_full2": "945dd1bce5fdfc43a923d0174ba38a1ea115b84b3034823926dd16cb83316bb7",
+      "actual": "945dd1bce5fdfc43a923d0174ba38a1ea115b84b3034823926dd16cb83316bb7",
+      "expected_for_candidate": "945dd1bce5fdfc43a923d0174ba38a1ea115b84b3034823926dd16cb83316bb7",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": {
+      "expected_from_full2": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+      "actual": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+      "expected_for_candidate": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": {
+      "expected_from_full2": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+      "actual": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+      "expected_for_candidate": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+      "expected_from_full2": "526b5ae57a80b96139b43d001d45cc1599789a11bc817bf8724086900f9a2331",
+      "actual": "526b5ae57a80b96139b43d001d45cc1599789a11bc817bf8724086900f9a2331",
+      "expected_for_candidate": "526b5ae57a80b96139b43d001d45cc1599789a11bc817bf8724086900f9a2331",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": {
+      "expected_from_full2": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+      "actual": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+      "expected_for_candidate": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": {
+      "expected_from_full2": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+      "actual": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+      "expected_for_candidate": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": {
+      "expected_from_full2": "ae4b199c59a751a89145151703e32f9f29da521c0291f3406c4273fb0cde1776",
+      "actual": "ae4b199c59a751a89145151703e32f9f29da521c0291f3406c4273fb0cde1776",
+      "expected_for_candidate": "ae4b199c59a751a89145151703e32f9f29da521c0291f3406c4273fb0cde1776",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+      "expected_from_full2": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+      "actual": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+      "expected_for_candidate": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": {
+      "expected_from_full2": "681563cb43971e376de8805e33092e5aaff5a67d0fed27097a020b1e5dce0d32",
+      "actual": "681563cb43971e376de8805e33092e5aaff5a67d0fed27097a020b1e5dce0d32",
+      "expected_for_candidate": "681563cb43971e376de8805e33092e5aaff5a67d0fed27097a020b1e5dce0d32",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": {
+      "expected_from_full2": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+      "actual": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+      "expected_for_candidate": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": {
+      "expected_from_full2": "590e0dcbbaa9fc6d40e133780875ba5f961aeee9f03a8a3370fea9260eab9697",
+      "actual": "590e0dcbbaa9fc6d40e133780875ba5f961aeee9f03a8a3370fea9260eab9697",
+      "expected_for_candidate": "590e0dcbbaa9fc6d40e133780875ba5f961aeee9f03a8a3370fea9260eab9697",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+      "expected_from_full2": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+      "actual": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+      "expected_for_candidate": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+      "expected_from_full2": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+      "actual": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+      "expected_for_candidate": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift": {
+      "expected_from_full2": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+      "actual": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+      "expected_for_candidate": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+      "expected_from_full2": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+      "actual": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+      "expected_for_candidate": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": {
+      "expected_from_full2": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+      "actual": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+      "expected_for_candidate": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": {
+      "expected_from_full2": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+      "actual": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+      "expected_for_candidate": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+      "matches": true
+    },
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+      "expected_from_full2": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+      "actual": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+      "expected_for_candidate": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+      "matches": true
+    }
+  },
+  "artifacts": [
+    {
+      "module": "GiftUISemanticCore",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "bytes": 505840,
+      "sha256": "7b1d0ab4f2a50113021d7ddd1285171da0b8b0b2ba551ec0c7d7746a347a9fbd"
+    },
+    {
+      "module": "GiftUISemanticCore",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.swiftmodule",
+      "bytes": 901476,
+      "sha256": "d6d5dea23f9638c2becd33edb1007a036a577b668dea3e264320749edf58783a"
+    },
+    {
+      "module": "GiftUILayout",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUILayout.o",
+      "bytes": 170544,
+      "sha256": "44e3c33fd30615168363821ac1727ab68c9281b716764032db0adc6d470e5764"
+    },
+    {
+      "module": "GiftUILayout",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUILayout.swiftmodule",
+      "bytes": 325168,
+      "sha256": "0e46ae9a6a1946032bc0aa7ad32f23bed247c4ebba3f0666c155c2d9de8bba0a"
+    },
+    {
+      "module": "GiftUIInteraction",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIInteraction.o",
+      "bytes": 190120,
+      "sha256": "b41b3a7233c08bc8b814f00a661bb8a439bfdd49f6cd1d3ea3ede5d9f564f146"
+    },
+    {
+      "module": "GiftUIInteraction",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIInteraction.swiftmodule",
+      "bytes": 236216,
+      "sha256": "bf503b936d91cb7bcce3238da15fe19cd3b6bdb0f8098cfc69f84a8d69854247"
+    },
+    {
+      "module": "GiftUIObservableState",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIObservableState.o",
+      "bytes": 254456,
+      "sha256": "0c7df8bf057713ffcb42ade3a15d248e0226eacb7844bfd01415bf2b0f52114c"
+    },
+    {
+      "module": "GiftUIObservableState",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIObservableState.swiftmodule",
+      "bytes": 374200,
+      "sha256": "2b47ecbf2220ca5fd732a02e9601cc27e35817c7462c7db97d1b95fc1c8db8cb"
+    },
+    {
+      "module": "GiftUIRenderLowering",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIRenderLowering.o",
+      "bytes": 78864,
+      "sha256": "39b367802e01b851947556586b99453a508def8cd102cd6496c76c5aad79f174"
+    },
+    {
+      "module": "GiftUIRenderLowering",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIRenderLowering.swiftmodule",
+      "bytes": 78284,
+      "sha256": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53"
+    },
+    {
+      "module": "GiftUIDrawing",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIDrawing.o",
+      "bytes": 135880,
+      "sha256": "dc2b25fbd6e96c939d5c59edfddb1efd9f42a248151c78f8a3290fe46aab5fc9"
+    },
+    {
+      "module": "GiftUIDrawing",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIDrawing.swiftmodule",
+      "bytes": 188412,
+      "sha256": "c4b45974111fc0c7cbc3f81674b973ede069d248511f3ef6f0551e5827121ff6"
+    },
+    {
+      "module": "GiftUIRuntimeCore",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIRuntimeCore.o",
+      "bytes": 322664,
+      "sha256": "a1bef2f32bf6e0f6c90f7d18c36854d06a4c8d806b44783e985177a1ccd76b4b"
+    },
+    {
+      "module": "GiftUIRuntimeCore",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIRuntimeCore.swiftmodule",
+      "bytes": 373204,
+      "sha256": "0d3395643360c48d9a90cb8e0d160a2da43ee0fb97b3f0f3ccc8a0087d9d6a66"
+    },
+    {
+      "module": "GiftUIRuntimeStatic",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIRuntimeStatic.o",
+      "bytes": 281360,
+      "sha256": "1e641d901072cacb4072f37b65db93f52233e4dcc431c6dd9b30af0d8476b608"
+    },
+    {
+      "module": "GiftUIRuntimeStatic",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIRuntimeStatic.swiftmodule",
+      "bytes": 134032,
+      "sha256": "f42f044c0dcc74c662e006bf6b4a0bb12f722f6c29e139d0b2a3b60c1aa45418"
+    },
+    {
+      "module": "GiftUIRuntimeDynamic",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIRuntimeDynamic.o",
+      "bytes": 249384,
+      "sha256": "41cf7b1a2dd49e5a5a725648f9f43f0656b1421110c00c6d4e0b97a7f3c554d1"
+    },
+    {
+      "module": "GiftUIRuntimeDynamic",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIRuntimeDynamic.swiftmodule",
+      "bytes": 232608,
+      "sha256": "e82227dfc8b92c8be573a34becd3079fff233147f5f823c30c3fd0117c26cbed"
+    },
+    {
+      "module": "GiftUIHostConfiguration",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIHostConfiguration.o",
+      "bytes": 731488,
+      "sha256": "f4d9521bb24e14f27eb6136615866ad005eb419afd0806c1d9d989a826d1ae22"
+    },
+    {
+      "module": "GiftUIHostConfiguration",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUIHostConfiguration.swiftmodule",
+      "bytes": 553092,
+      "sha256": "d672c74375745254d91c70a05e005ffaf35df05c51c72170d6aff925c301d282"
+    },
+    {
+      "module": "P08CounterTable",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterTable.o",
+      "bytes": 12656,
+      "sha256": "54225e9d14da37566077d5a1e0409b9f8699ac01d1008edad18d04935cd01c89"
+    },
+    {
+      "module": "P08CounterTable",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterTable.swiftmodule",
+      "bytes": 34628,
+      "sha256": "5a447e5a8b47cc267f20cf553b3e843e7c9bb26974b3a4624f8a972628c48e15"
+    },
+    {
+      "module": "P08CounterRuntime",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "bytes": 2706384,
+      "sha256": "5cb5f7e68acbd1da040ddb971cb4d607c5216130ce676eb9a7ea4810c9bad040"
+    },
+    {
+      "module": "P08CounterRuntime",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.swiftmodule",
+      "bytes": 1775844,
+      "sha256": "ea9a0331e0441427315267bc53f99b8e88205361b77cb9dc88a2f22a57fb37f6"
+    }
+  ],
+  "claims": "Representative compile only; no runtime/test/full qualification."
+}

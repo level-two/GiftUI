@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-10-11
-updated: 2026-10-27
+updated: 2026-10-28
 implementation_plan: ../implementation-plans/spec-006-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -178,6 +178,39 @@ overall P08 conformance follows from this scoped result. The complete current fu
 validation and final artifact applicability have passed independent review for
 this scoped package; see the [scoped result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-validation.json)
 and [independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-full2-review.md).
+
+## Supplied Counter Workspace and Traversal amendment — 2026-10-28
+
+The current Counter realization removes the generic Workspace and Traversal
+owners together. `SemanticRecordWorkspaceState` retains Core-owned bank,
+limits, identity and expansion bookkeeping in a nongeneric value. The general
+Workspace forwards to it; `CounterRecordWorkspace` forwards to the same
+operations with concrete `CounterRoles`.
+
+`SemanticExpansionTraversalOperations` contains the one shared traversal
+algorithm. The general traversal and concrete `CounterSemanticTraversal`
+provide storage and explicit mutating operation forwarding over disjoint fields.
+The concrete visitor stores its concrete Workspace, Sink, attempt bookkeeping
+and the existing concrete observable binding. It adds no second traversal engine,
+box, existential or generic owned state envelope.
+
+Both Counter construction sites select the new internal
+`SemanticRecordTraversalRealization` seam. Core still performs candidate and
+bank checks and codec preparation, retains the local bank descriptor, and invokes
+the concrete static constructor. The visitor retains the union of state, codec
+and binding lifetime dependencies; the binding is consumed once. Core destroys
+the visitor before outer pending/bank failure cleanup. Existing general entry
+signatures and Workspace/Sink/Codec requirements, limits, failure precedence,
+path/child/modifier order, publication and retirement remain unchanged.
+
+This increases internal forwarding/SPI maintenance. The scoped compiled review
+supports removal without relocation of the changed owners at both actual sites.
+The preexisting earliest `SemanticBodyEvaluation` metadata lookup and broader
+provider, live-state, stack and resource eligibility remain open. The compiled
+review is not functional acceptance; current validation and final artifact
+applicability are required before accepting this implementation package. See the
+[compiled review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-result/compiled-review.md)
+and [mechanism evidence](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/mechanism-result.json).
 
 ## Bounded matching and failure
 

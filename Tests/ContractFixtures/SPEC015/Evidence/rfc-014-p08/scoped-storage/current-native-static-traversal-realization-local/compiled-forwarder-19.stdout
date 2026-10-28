@@ -1,0 +1,199 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000009f08 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW>:
+    9f08:      	stp	x28, x27, [sp, #-0x60]!
+    9f0c:      	stp	x26, x25, [sp, #0x10]
+    9f10:      	stp	x24, x23, [sp, #0x20]
+    9f14:      	stp	x22, x21, [sp, #0x30]
+    9f18:      	stp	x20, x19, [sp, #0x40]
+    9f1c:      	stp	x29, x30, [sp, #0x50]
+    9f20:      	add	x29, sp, #0x50
+    9f24:      	sub	sp, sp, #0x1, lsl #12   ; =0x1000
+    9f28:      	sub	sp, sp, #0x2a0
+    9f2c:      	mov	x24, x7
+    9f30:      	mov	x26, x6
+    9f34:      	mov	x19, x20
+    9f38:      	stp	x3, x5, [sp]
+    9f3c:      	mov	x25, x4
+    9f40:      	mov	x27, x2
+    9f44:      	mov	x23, x1
+    9f48:      	mov	x28, x0
+    9f4c:      	add	x22, sp, #0xf60
+    9f50:      	add	x0, sp, #0xf60
+    9f54:      	mov	x1, x20
+    9f58:      	mov	w2, #0x336              ; =822
+    9f5c:      	bl	0x9f5c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x54>
+		0000000000009f5c:  ARM64_RELOC_BRANCH26	_memcpy
+    9f60:      	ldrb	w21, [x22, #0x260]
+    9f64:      	add	x20, sp, #0xf60
+    9f68:      	bl	0x9f68 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x60>
+		0000000000009f68:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore36SemanticExpansionTraversalOperationsPAARi_zRi0_zrlE7stoppedSbvg17P08CounterRuntime0jdF0V_Tgq5
+    9f6c:      	tbz	w0, #0x0, 0x9f80 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x78>
+    9f70:      	cmp	w21, #0x4
+    9f74:      	b.ne	0x9f98 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x90>
+    9f78:      	mov	w8, #0x1                ; =1
+    9f7c:      	b	0x9f94 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x8c>
+    9f80:      	ldrb	w8, [x22, #0x332]
+    9f84:      	tbz	w8, #0x0, 0x9fbc <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0xb4>
+    9f88:      	cmp	w21, #0x4
+    9f8c:      	b.ne	0x9f98 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x90>
+    9f90:      	mov	w8, #0x3                ; =3
+    9f94:      	strb	w8, [x19, #0x260]
+    9f98:      	add	sp, sp, #0x1, lsl #12   ; =0x1000
+    9f9c:      	add	sp, sp, #0x2a0
+    9fa0:      	ldp	x29, x30, [sp, #0x50]
+    9fa4:      	ldp	x20, x19, [sp, #0x40]
+    9fa8:      	ldp	x22, x21, [sp, #0x30]
+    9fac:      	ldp	x24, x23, [sp, #0x20]
+    9fb0:      	ldp	x26, x25, [sp, #0x10]
+    9fb4:      	ldp	x28, x27, [sp], #0x60
+    9fb8:      	ret
+    9fbc:      	mov	w8, #0x1                ; =1
+    9fc0:      	strb	w8, [x19, #0x332]
+    9fc4:      	add	x0, sp, #0x1b2
+    9fc8:      	add	x1, x19, #0x264
+    9fcc:      	mov	w2, #0xce               ; =206
+    9fd0:      	bl	0x9fd0 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0xc8>
+		0000000000009fd0:  ARM64_RELOC_BRANCH26	_memcpy
+    9fd4:      	add	x0, sp, #0x1b2
+    9fd8:      	bl	0x9fd8 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0xd0>
+		0000000000009fd8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+    9fdc:      	cmp	w0, #0x1
+    9fe0:      	b.eq	0x9f70 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x68>
+    9fe4:      	add	x0, sp, #0xc28
+    9fe8:      	mov	x1, x19
+    9fec:      	mov	w2, #0x336              ; =822
+    9ff0:      	bl	0x9ff0 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0xe8>
+		0000000000009ff0:  ARM64_RELOC_BRANCH26	_memcpy
+    9ff4:      	add	x20, sp, #0xc28
+    9ff8:      	bl	0x9ff8 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0xf0>
+		0000000000009ff8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore36SemanticExpansionTraversalOperationsPAARi_zRi0_zrlE7stoppedSbvg17P08CounterRuntime0jdF0V_Tgq5
+    9ffc:      	tbnz	w0, #0x0, 0xa148 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x240>
+    a000:      	add	x0, sp, #0xe4
+    a004:      	add	x1, x19, #0x264
+    a008:      	mov	w2, #0xce               ; =206
+    a00c:      	bl	0xa00c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x104>
+		000000000000a00c:  ARM64_RELOC_BRANCH26	_memcpy
+    a010:      	strb	wzr, [x19, #0x332]
+    a014:      	add	x0, sp, #0x280
+    a018:      	bl	0xa018 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x110>
+		000000000000a018:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+    a01c:      	add	x0, sp, #0x16
+    a020:      	add	x1, sp, #0x280
+    a024:      	mov	w2, #0xce               ; =206
+    a028:      	bl	0xa028 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x120>
+		000000000000a028:  ARM64_RELOC_BRANCH26	_memcpy
+    a02c:      	add	x1, sp, #0x16
+    a030:      	mov	x2, x27
+    a034:      	mov	x20, x19
+    a038:      	bl	0xa038 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x130>
+		000000000000a038:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF
+    a03c:      	and	w8, w0, #0xff
+    a040:      	cmp	w8, #0x4
+    a044:      	b.ne	0xa138 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x230>
+    a048:      	add	x0, sp, #0x16
+    a04c:      	bl	0xa04c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x144>
+		000000000000a04c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+    a050:      	cmp	w0, #0x1
+    a054:      	b.ne	0xa070 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x168>
+    a058:      	ldrb	w8, [x19, #0x260]
+    a05c:      	cmp	w8, #0x4
+    a060:      	b.ne	0xa148 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x240>
+    a064:      	mov	w8, #0x1                ; =1
+    a068:      	strb	w8, [x19, #0x260]
+    a06c:      	b	0xa148 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x240>
+    a070:      	add	x0, x19, #0x264
+    a074:      	add	x1, sp, #0x16
+    a078:      	mov	w2, #0xce               ; =206
+    a07c:      	bl	0xa07c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x174>
+		000000000000a07c:  ARM64_RELOC_BRANCH26	_memcpy
+    a080:      	mov	x20, x19
+    a084:      	bl	0xa084 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x17c>
+		000000000000a084:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B17SemanticTraversalV05stageE20StructuralOccurrence8identity18GiftUISemanticCore0D14ExpansionErrorOSgAF0D16CompleteIdentityV_tF
+    a088:      	and	w8, w0, #0xff
+    a08c:      	cmp	w8, #0x4
+    a090:      	b.ne	0xa138 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x230>
+    a094:      	ldr	x8, [x25, #0x30]
+    a098:      	mov	x0, x19
+    a09c:      	mov	x1, x26
+    a0a0:      	mov	x2, x24
+    a0a4:      	mov	x20, x28
+    a0a8:      	mov	x3, x27
+    a0ac:      	mov	x4, x25
+    a0b0:      	blr	x8
+    a0b4:      	add	x0, sp, #0x8f0
+    a0b8:      	mov	x1, x19
+    a0bc:      	mov	w2, #0x336              ; =822
+    a0c0:      	bl	0xa0c0 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x1b8>
+		000000000000a0c0:  ARM64_RELOC_BRANCH26	_memcpy
+    a0c4:      	add	x20, sp, #0x8f0
+    a0c8:      	bl	0xa0c8 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x1c0>
+		000000000000a0c8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore36SemanticExpansionTraversalOperationsPAARi_zRi0_zrlE7stoppedSbvg17P08CounterRuntime0jdF0V_Tgq5
+    a0cc:      	tbnz	w0, #0x0, 0xa0ec <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x1e4>
+    a0d0:      	ldrb	w8, [sp, #0xc22]
+    a0d4:      	tbnz	w8, #0x0, 0xa0ec <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x1e4>
+    a0d8:      	ldrb	w8, [sp, #0xb50]
+    a0dc:      	cmp	w8, #0x4
+    a0e0:      	b.ne	0xa0ec <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x1e4>
+    a0e4:      	mov	w8, #0x3                ; =3
+    a0e8:      	strb	w8, [x19, #0x260]
+    a0ec:      	add	x0, sp, #0x5b8
+    a0f0:      	mov	x1, x19
+    a0f4:      	mov	w2, #0x336              ; =822
+    a0f8:      	bl	0xa0f8 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x1f0>
+		000000000000a0f8:  ARM64_RELOC_BRANCH26	_memcpy
+    a0fc:      	add	x20, sp, #0x5b8
+    a100:      	bl	0xa100 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x1f8>
+		000000000000a100:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore36SemanticExpansionTraversalOperationsPAARi_zRi0_zrlE7stoppedSbvg17P08CounterRuntime0jdF0V_Tgq5
+    a104:      	tbnz	w0, #0x0, 0xa148 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x240>
+    a108:      	mov	x20, x19
+    a10c:      	bl	0xa10c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x204>
+		000000000000a10c:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B17SemanticTraversalV05leaveE13PathComponent18GiftUISemanticCore0D14ExpansionErrorOSgyF
+    a110:      	and	w8, w0, #0xff
+    a114:      	cmp	w8, #0x4
+    a118:      	b.ne	0xa138 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x230>
+    a11c:      	add	x0, x19, #0x264
+    a120:      	add	x1, sp, #0xe4
+    a124:      	mov	w2, #0xce               ; =206
+    a128:      	bl	0xa128 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x220>
+		000000000000a128:  ARM64_RELOC_BRANCH26	_memcpy
+    a12c:      	mov	w8, #0x1                ; =1
+    a130:      	strb	w8, [x19, #0x332]
+    a134:      	b	0xa148 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x240>
+    a138:      	ldrb	w8, [x19, #0x260]
+    a13c:      	cmp	w8, #0x4
+    a140:      	b.ne	0xa148 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x240>
+    a144:      	strb	w0, [x19, #0x260]
+    a148:      	add	x0, sp, #0x280
+    a14c:      	mov	x1, x19
+    a150:      	mov	w2, #0x336              ; =822
+    a154:      	bl	0xa154 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x24c>
+		000000000000a154:  ARM64_RELOC_BRANCH26	_memcpy
+    a158:      	add	x20, sp, #0x280
+    a15c:      	bl	0xa15c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x254>
+		000000000000a15c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore36SemanticExpansionTraversalOperationsPAARi_zRi0_zrlE7stoppedSbvg17P08CounterRuntime0jdF0V_Tgq5
+    a160:      	tbnz	w0, #0x0, 0x9f98 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x90>
+    a164:      	ldrh	w2, [sp, #0x5b4]
+    a168:      	mov	x1, x23
+    a16c:      	ldp	x3, x4, [sp]
+    a170:      	mov	x20, x19
+    a174:      	bl	0xa174 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x26c>
+		000000000000a174:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B17SemanticTraversalV05stageE19ModifierApplication8identity7payload10chainIndex18GiftUISemanticCore0D14ExpansionErrorOSgAH0D16CompleteIdentityV_xs6UInt16Vt0M2UI01_mnG7PayloadRzlF
+    a178:      	and	w8, w0, #0xff
+    a17c:      	cmp	w8, #0x4
+    a180:      	b.ne	0xa19c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x294>
+    a184:      	ldrh	w8, [x19, #0x334]
+    a188:      	add	w8, w8, #0x1
+    a18c:      	lsr	w9, w8, #16
+    a190:      	tbnz	w9, #0x0, 0xa1b0 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x2a8>
+    a194:      	strh	w8, [x19, #0x334]
+    a198:      	b	0x9f98 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x90>
+    a19c:      	ldrb	w8, [x19, #0x260]
+    a1a0:      	cmp	w8, #0x4
+    a1a4:      	b.ne	0x9f98 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x90>
+    a1a8:      	strb	w0, [x19, #0x260]
+    a1ac:      	b	0x9f98 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP13visitModifier7content7payloadyqd___qd_0_tAD4ViewRd__AD01_fhK7PayloadRd_0_6DomainQyd__ALRtzr0_lFTW+0x90>
+    a1b0:      	brk	#0x1

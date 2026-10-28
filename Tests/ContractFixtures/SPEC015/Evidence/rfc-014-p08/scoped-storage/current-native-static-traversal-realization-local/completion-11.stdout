@@ -1,0 +1,16 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000022db4 <_OUTLINED_FUNCTION_446>:
+   22db4:      	strh	w20, [x21, #0x48]
+   22db8:      	strh	w22, [x21, #0x4a]
+   22dbc:      	strh	w23, [x21, #0x4c]
+   22dc0:      	strh	w24, [x21, #0x4e]
+   22dc4:      	strh	w19, [x21, #0x50]
+   22dc8:      	strh	w25, [x21, #0x52]
+   22dcc:      	add	x0, x21, #0x58
+   22dd0:      	str	w26, [x21, #0x54]
+   22dd4:      	mov	w1, #0xcf               ; =207
+   22dd8:      	ret

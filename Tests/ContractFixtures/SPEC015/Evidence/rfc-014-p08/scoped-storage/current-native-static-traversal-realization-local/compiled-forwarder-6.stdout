@@ -1,0 +1,108 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+000000000000494c <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5>:
+    494c:      	stp	x24, x23, [sp, #-0x40]!
+    4950:      	stp	x22, x21, [sp, #0x10]
+    4954:      	stp	x20, x19, [sp, #0x20]
+    4958:      	stp	x29, x30, [sp, #0x30]
+    495c:      	add	x29, sp, #0x30
+    4960:      	sub	sp, sp, #0x410
+    4964:      	ldrb	w0, [x20, #0x2a]
+    4968:      	cmp	w0, #0x4
+    496c:      	b.ne	0x49a0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x54>
+    4970:      	mov	x19, x20
+    4974:      	ldrh	w8, [x20, #0x14]
+    4978:      	add	w22, w8, #0x1
+    497c:      	tbnz	w22, #0x10, 0x4998 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x4c>
+    4980:      	ldrh	w8, [x19]
+    4984:      	cmp	w8, w22, uxth
+    4988:      	b.lo	0x4998 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x4c>
+    498c:      	ldrh	w8, [x19, #0x1a]
+    4990:      	cmp	w8, w22, uxth
+    4994:      	b.hs	0x49b8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x6c>
+    4998:      	mov	w0, #0x0                ; =0
+    499c:      	strb	wzr, [x19, #0x2a]
+    49a0:      	add	sp, sp, #0x410
+    49a4:      	ldp	x29, x30, [sp, #0x30]
+    49a8:      	ldp	x20, x19, [sp, #0x20]
+    49ac:      	ldp	x22, x21, [sp, #0x10]
+    49b0:      	ldp	x24, x23, [sp], #0x40
+    49b4:      	ret
+    49b8:      	mov	x21, x1
+    49bc:      	add	x0, sp, #0x1a6
+    49c0:      	bl	0x49c0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x74>
+		00000000000049c0:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+    49c4:      	add	x1, sp, #0x1a6
+    49c8:      	mov	x0, x21
+    49cc:      	mov	w2, #0xce               ; =206
+    49d0:      	bl	0x49d0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x84>
+		00000000000049d0:  ARM64_RELOC_BRANCH26	_memcpy
+    49d4:      	add	x20, x19, #0x30
+    49d8:      	mov	w0, #0x5                ; =5
+    49dc:      	movk	w0, #0x1, lsl #16
+    49e0:      	mov	x1, x21
+    49e4:      	bl	0x49e4 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x98>
+		00000000000049e4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV5enter_8identityAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0D16CompleteIdentityVSgztF
+    49e8:      	and	w8, w0, #0xff
+    49ec:      	cmp	w8, #0x4
+    49f0:      	b.ne	0x4a7c <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x130>
+    49f4:      	add	x23, sp, #0xa
+    49f8:      	add	x0, sp, #0xa
+    49fc:      	mov	x1, x21
+    4a00:      	mov	w2, #0xce               ; =206
+    4a04:      	bl	0x4a04 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0xb8>
+		0000000000004a04:  ARM64_RELOC_BRANCH26	_memcpy
+    4a08:      	add	x0, x23, #0xce
+    4a0c:      	add	x1, sp, #0x1a6
+    4a10:      	mov	w2, #0xce               ; =206
+    4a14:      	bl	0x4a14 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0xc8>
+		0000000000004a14:  ARM64_RELOC_BRANCH26	_memcpy
+    4a18:      	add	x0, sp, #0xa
+    4a1c:      	bl	0x4a1c <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0xd0>
+		0000000000004a1c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+    4a20:      	mov	x20, x0
+    4a24:      	add	x0, x23, #0xce
+    4a28:      	bl	0x4a28 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0xdc>
+		0000000000004a28:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+    4a2c:      	cmp	w20, #0x1
+    4a30:      	b.ne	0x4a40 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0xf4>
+    4a34:      	cmp	w0, #0x1
+    4a38:      	b.eq	0x4a78 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x12c>
+    4a3c:      	b	0x4a84 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x138>
+    4a40:      	cmp	w0, #0x1
+    4a44:      	b.eq	0x4a84 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x138>
+    4a48:      	add	x0, sp, #0x274
+    4a4c:      	add	x1, sp, #0xa
+    4a50:      	mov	w2, #0xce               ; =206
+    4a54:      	bl	0x4a54 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x108>
+		0000000000004a54:  ARM64_RELOC_BRANCH26	_memcpy
+    4a58:      	sub	x0, x29, #0xfe
+    4a5c:      	add	x1, x23, #0xce
+    4a60:      	mov	w2, #0xce               ; =206
+    4a64:      	bl	0x4a64 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x118>
+		0000000000004a64:  ARM64_RELOC_BRANCH26	_memcpy
+    4a68:      	add	x0, sp, #0x274
+    4a6c:      	sub	x1, x29, #0xfe
+    4a70:      	bl	0x4a70 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x124>
+		0000000000004a70:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+    4a74:      	tbz	w0, #0x0, 0x4a84 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x138>
+    4a78:      	mov	w0, #0x1                ; =1
+    4a7c:      	strb	w0, [x19, #0x2a]
+    4a80:      	b	0x49a0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x54>
+    4a84:      	ldrh	w8, [x19, #0x16]
+    4a88:      	add	w8, w8, #0x1
+    4a8c:      	tbnz	w8, #0x10, 0x4998 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x4c>
+    4a90:      	ldrh	w9, [x19, #0x1c]
+    4a94:      	cmp	w9, w8, uxth
+    4a98:      	b.lo	0x4998 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x4c>
+    4a9c:      	strh	w8, [x19, #0x16]
+    4aa0:      	strh	w22, [x19, #0x14]
+    4aa4:      	ldrh	w8, [x19, #0x12]
+    4aa8:      	cmp	w8, w22, uxth
+    4aac:      	b.hs	0x4ab4 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x168>
+    4ab0:      	strh	w22, [x19, #0x12]
+    4ab4:      	mov	w0, #0x4                ; =4
+    4ab8:      	b	0x49a0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5+0x54>

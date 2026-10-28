@@ -1,0 +1,12 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000041bc <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE10FixedChild_8identity18GiftUISemanticCore0D14ExpansionErrorOSgs5UInt8V_AF0D16CompleteIdentityVSgztF>:
+    41bc:      	adrp	x2, 0x4000 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE4Root_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgzt0I2UI4ViewRzlF0aB12Presentation0B6ScreenVyAA0B6DomainOG_Tg5Tm+0x80>
+		00000000000041bc:  ARM64_RELOC_GOT_LOAD_PAGE21	_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF
+    41c0:      	ldr	x2, [x2]
+		00000000000041c0:  ARM64_RELOC_GOT_LOAD_PAGEOFF12	_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF
+    41c4:      	b	0x41c4 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE10FixedChild_8identity18GiftUISemanticCore0D14ExpansionErrorOSgs5UInt8V_AF0D16CompleteIdentityVSgztF+0x8>
+		00000000000041c4:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B17SemanticTraversalV05enterE10FixedChild_8identity18GiftUISemanticCore0D14ExpansionErrorOSgs5UInt8V_AF0D16CompleteIdentityVSgztFTm

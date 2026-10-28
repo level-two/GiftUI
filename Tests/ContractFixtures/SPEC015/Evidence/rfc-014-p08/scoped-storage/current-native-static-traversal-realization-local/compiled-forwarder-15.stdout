@@ -1,0 +1,22 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000003df4 <_$s17P08CounterRuntime0B17SemanticTraversalV07discardE15ForOwnerFailureyyF>:
+    3df4:      	sub	sp, sp, #0xe0
+    3df8:      	stp	x29, x30, [sp, #0xd0]
+    3dfc:      	add	x29, sp, #0xd0
+    3e00:      	ldrb	w8, [x20, #0x28]
+    3e04:      	cmp	w8, #0x1
+    3e08:      	b.ne	0x3e1c <_$s17P08CounterRuntime0B17SemanticTraversalV07discardE15ForOwnerFailureyyF+0x28>
+    3e0c:      	strb	wzr, [x20, #0x156]
+    3e10:      	bl	0x3e10 <_$s17P08CounterRuntime0B17SemanticTraversalV07discardE15ForOwnerFailureyyF+0x1c>
+		0000000000003e10:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1142
+    3e14:      	add	x0, x20, #0x88
+    3e18:      	bl	0x3e18 <_$s17P08CounterRuntime0B17SemanticTraversalV07discardE15ForOwnerFailureyyF+0x24>
+		0000000000003e18:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_458
+    3e1c:      	strh	wzr, [x20, #0x28]
+    3e20:      	ldp	x29, x30, [sp, #0xd0]
+    3e24:      	b	0x3e24 <_$s17P08CounterRuntime0B17SemanticTraversalV07discardE15ForOwnerFailureyyF+0x30>
+		0000000000003e24:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_1448

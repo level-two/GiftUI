@@ -1,0 +1,681 @@
+{
+  "cell_symbol": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOy0A2UI0A17UIModifiedContentVyAD6VStackVyAD10TupleView5VyAD4TextVy17P08CounterRuntime0O6DomainOGApD4ViewPADE8disabledyQrSbFQOyAD6ButtonVy0nO12Presentation0O6ActionOAPG_Qo_AzD0a16UILayoutModifiedI0VyAV0O6CanvasVyAOGAD01_A19UIFixedFramePayloadVGGGAD01_A19UIBackgroundPayloadVG0A17UIObservableState20ObservableStateErrorOGMD",
+  "objects": [
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+      "sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+      "cell": "0xcfd60",
+      "cell_hex": "000000009dffffff",
+      "payload_address": "0xd0d22",
+      "payload_hex": "02b5fdffbf7902affdffbf7902a9fdffbf7902a3fdffbf79029dfdffbf7901e1ffffff474147028ffdffbf790289fdffbf790283fdffbf4147475f516f5f414b0275fdffbf79026ffdffbf794146470266fdffbf474747025efdffbf470258fdffbf47",
+      "payload_bytes": 99,
+      "symbolic_relocations": [
+        {
+          "offset": 94,
+          "kind": 7,
+          "target": "_$s21GiftUIObservableState010ObservableC5ErrorOMn"
+        },
+        {
+          "offset": 88,
+          "kind": 7,
+          "target": "_$s6GiftUI01_A19UIBackgroundPayloadVMn"
+        },
+        {
+          "offset": 80,
+          "kind": 7,
+          "target": "_$s6GiftUI01_A19UIFixedFramePayloadVMn"
+        },
+        {
+          "offset": 71,
+          "kind": 7,
+          "target": "_$s22P08CounterPresentation0B6CanvasVMn"
+        },
+        {
+          "offset": 65,
+          "kind": 7,
+          "target": "_$s6GiftUI0A23UILayoutModifiedContentVMn"
+        },
+        {
+          "offset": 51,
+          "kind": 7,
+          "target": "_$s22P08CounterPresentation0B6ActionOMn"
+        },
+        {
+          "offset": 45,
+          "kind": 7,
+          "target": "_$s6GiftUI6ButtonVMn"
+        },
+        {
+          "offset": 39,
+          "kind": 7,
+          "target": "_$s6GiftUI4ViewPAAE8disabledyQrSbFQOMQ"
+        },
+        {
+          "offset": 31,
+          "kind": 1,
+          "target": "_symbolic _____y_____y_____y_____y_____y_____GAG_____y_____y_____AGG_Qo_AK_____y_____yAFG_____GGG_____G_____G 18GiftUISemanticCore22SemanticBodyEvaluationO 0A2UI0A17UIModifiedContentV AD6VStackV AD10TupleView5V AD4TextV 17P08CounterRuntime0O6DomainO AD4ViewPADE8disabledyQrSbFQO AD6ButtonV 0nO12Presentation0O6ActionO AD0a16UILayoutModifiedI0V AU0O6CanvasV AD01_A19UIFixedFramePayloadV AD01_A19UIBackgroundPayloadV 0A17UIObservableState20ObservableStateErrorO"
+        },
+        {
+          "offset": 31,
+          "kind": 0,
+          "target": "_$s17P08CounterRuntime0B6DomainOMn"
+        },
+        {
+          "offset": 25,
+          "kind": 7,
+          "target": "_$s6GiftUI4TextVMn"
+        },
+        {
+          "offset": 19,
+          "kind": 7,
+          "target": "_$s6GiftUI10TupleView5VMn"
+        },
+        {
+          "offset": 13,
+          "kind": 7,
+          "target": "_$s6GiftUI6VStackVMn"
+        },
+        {
+          "offset": 7,
+          "kind": 7,
+          "target": "_$s6GiftUI0A17UIModifiedContentVMn"
+        },
+        {
+          "offset": 1,
+          "kind": 7,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        }
+      ],
+      "xrefs": [
+        {
+          "address": "0x71914",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+          "owner_start": "0x70964"
+        },
+        {
+          "address": "0x71910",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+          "owner_start": "0x70964"
+        },
+        {
+          "address": "0x70a18",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+          "owner_start": "0x70964"
+        },
+        {
+          "address": "0x70a14",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+          "owner_start": "0x70964"
+        },
+        {
+          "address": "0x6e540",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+          "owner_start": "0x6d15c"
+        },
+        {
+          "address": "0x6e53c",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+          "owner_start": "0x6d15c"
+        },
+        {
+          "address": "0x6d274",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+          "owner_start": "0x6d15c"
+        },
+        {
+          "address": "0x6d270",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+          "owner_start": "0x6d15c"
+        },
+        {
+          "address": "0x6ad38",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+          "owner_start": "0x6995c"
+        },
+        {
+          "address": "0x6ad34",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+          "owner_start": "0x6995c"
+        },
+        {
+          "address": "0x69a74",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+          "owner_start": "0x6995c"
+        },
+        {
+          "address": "0x69a70",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+          "owner_start": "0x6995c"
+        },
+        {
+          "address": "0x67538",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "owner_start": "0x6615c"
+        },
+        {
+          "address": "0x67534",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "owner_start": "0x6615c"
+        },
+        {
+          "address": "0x66274",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "owner_start": "0x6615c"
+        },
+        {
+          "address": "0x66270",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "owner_start": "0x6615c"
+        },
+        {
+          "address": "0x58f8",
+          "kind": 4,
+          "owner": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+          "owner_start": "0x473c"
+        },
+        {
+          "address": "0x58f4",
+          "kind": 3,
+          "owner": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+          "owner_start": "0x473c"
+        },
+        {
+          "address": "0x4864",
+          "kind": 4,
+          "owner": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+          "owner_start": "0x473c"
+        },
+        {
+          "address": "0x4860",
+          "kind": 3,
+          "owner": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5roles5codec6limits7bindingAA05BoundD15ExpansionResultOy7FailureQy1_Gx_q_mq0_AA0dM6LimitsVq1_nt0A2UI4ViewRzAA0D16DeclarationRolesR_AA0dE12PayloadCodecR0_AA0D15StatefulBindingR1_6DomainQy1_AURtzAA0D16CompleteIdentityV8IdentityRt1_Ri0_0_Ri_1_Ri0_1_r2_lF22P08CounterPresentation13CounterScreenVy17P08CounterRuntime07CounterY0OG_A3_07CounterT0OA3_07CounterdV0V0A17UIObservableState010Observabled4BodyX0VyA3_17CounterOwnedModelVAYA5_GTt1g5",
+          "owner_start": "0x473c"
+        }
+      ],
+      "literal_bytes_with_relocations_masked": "020000000079020000000079020000000079020000000079020000000079010000000047414702000000007902000000007902000000004147475f516f5f414b0200000000790200000000794146470200000000474747020000000047020000000047"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "sha256": "5cb5f7e68acbd1da040ddb971cb4d607c5216130ce676eb9a7ea4810c9bad040",
+      "cell": "0xd1358",
+      "cell_hex": "000000009dffffff",
+      "payload_address": "0xd25dc",
+      "payload_hex": "02a3fdffbf79029dfdffbf790297fdffbf790291fdffbf79028bfdffbf7901e1ffffff474147027dfdffbf790277fdffbf790271fdffbf4147475f516f5f414b0263fdffbf79025dfdffbf794146470254fdffbf474747024cfdffbf470246fdffbf47",
+      "payload_bytes": 99,
+      "symbolic_relocations": [
+        {
+          "offset": 94,
+          "kind": 7,
+          "target": "_$s21GiftUIObservableState010ObservableC5ErrorOMn"
+        },
+        {
+          "offset": 88,
+          "kind": 7,
+          "target": "_$s6GiftUI01_A19UIBackgroundPayloadVMn"
+        },
+        {
+          "offset": 80,
+          "kind": 7,
+          "target": "_$s6GiftUI01_A19UIFixedFramePayloadVMn"
+        },
+        {
+          "offset": 71,
+          "kind": 7,
+          "target": "_$s22P08CounterPresentation0B6CanvasVMn"
+        },
+        {
+          "offset": 65,
+          "kind": 7,
+          "target": "_$s6GiftUI0A23UILayoutModifiedContentVMn"
+        },
+        {
+          "offset": 51,
+          "kind": 7,
+          "target": "_$s22P08CounterPresentation0B6ActionOMn"
+        },
+        {
+          "offset": 45,
+          "kind": 7,
+          "target": "_$s6GiftUI6ButtonVMn"
+        },
+        {
+          "offset": 39,
+          "kind": 7,
+          "target": "_$s6GiftUI4ViewPAAE8disabledyQrSbFQOMQ"
+        },
+        {
+          "offset": 31,
+          "kind": 1,
+          "target": "_symbolic _____y_____y_____y_____y_____y_____GAG_____y_____y_____AGG_Qo_AK_____y_____yAFG_____GGG_____G_____G 18GiftUISemanticCore22SemanticBodyEvaluationO 0A2UI0A17UIModifiedContentV AD6VStackV AD10TupleView5V AD4TextV 17P08CounterRuntime0O6DomainO AD4ViewPADE8disabledyQrSbFQO AD6ButtonV 0nO12Presentation0O6ActionO AD0a16UILayoutModifiedI0V AU0O6CanvasV AD01_A19UIFixedFramePayloadV AD01_A19UIBackgroundPayloadV 0A17UIObservableState20ObservableStateErrorO"
+        },
+        {
+          "offset": 31,
+          "kind": 0,
+          "target": "_$s17P08CounterRuntime0B6DomainOMn"
+        },
+        {
+          "offset": 25,
+          "kind": 7,
+          "target": "_$s6GiftUI4TextVMn"
+        },
+        {
+          "offset": 19,
+          "kind": 7,
+          "target": "_$s6GiftUI10TupleView5VMn"
+        },
+        {
+          "offset": 13,
+          "kind": 7,
+          "target": "_$s6GiftUI6VStackVMn"
+        },
+        {
+          "offset": 7,
+          "kind": 7,
+          "target": "_$s6GiftUI0A17UIModifiedContentVMn"
+        },
+        {
+          "offset": 1,
+          "kind": 7,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        }
+      ],
+      "xrefs": [
+        {
+          "address": "0x74140",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+          "owner_start": "0x73644"
+        },
+        {
+          "address": "0x7413c",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+          "owner_start": "0x73644"
+        },
+        {
+          "address": "0x7366c",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+          "owner_start": "0x73644"
+        },
+        {
+          "address": "0x73668",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyF",
+          "owner_start": "0x73644"
+        },
+        {
+          "address": "0x71c48",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+          "owner_start": "0x70db0"
+        },
+        {
+          "address": "0x71c44",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+          "owner_start": "0x70db0"
+        },
+        {
+          "address": "0x70de0",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+          "owner_start": "0x70db0"
+        },
+        {
+          "address": "0x70ddc",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA06StaticB8GeometryV_AA0r14TwoInteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAA0rtu9CommittedV0VyAQGAA0rtu3HitV0VyAQGTg5",
+          "owner_start": "0x70db0"
+        },
+        {
+          "address": "0x6f3b4",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+          "owner_start": "0x6e530"
+        },
+        {
+          "address": "0x6f3b0",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+          "owner_start": "0x6e530"
+        },
+        {
+          "address": "0x6e560",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+          "owner_start": "0x6e530"
+        },
+        {
+          "address": "0x6e55c",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA07DynamicB8GeometryV_0lmR00r11InteractionH7StorageVy0l10UISemanticN024SemanticCompleteIdentityVGAM0rt9CommittedU0VyARGAM0rt3HitU0VyARGTg5",
+          "owner_start": "0x6e530"
+        },
+        {
+          "address": "0x6cb34",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "owner_start": "0x6bcb0"
+        },
+        {
+          "address": "0x6cb30",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "owner_start": "0x6bcb0"
+        },
+        {
+          "address": "0x6bce0",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "owner_start": "0x6bcb0"
+        },
+        {
+          "address": "0x6bcdc",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B13PipelineOwnerVAARi_zRi0_zRi__Ri0__Ri_0_Ri0_0_Ri_1_Ri0_1_rlE42beginObservableCandidateAndExpandSemantics17GiftUIRuntimeCore0cD10StepResultOyAE0cE7FailureOGyFAA0A14GeometryAccess33_480B1BD841D053AE4FCDC18507668536LLV_AA0ahS0ALLLVAA0a9CommittedS0ALLLVAA0a3HitS0ALLLVTg5",
+          "owner_start": "0x6bcb0"
+        },
+        {
+          "address": "0xbc14",
+          "kind": 4,
+          "owner": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5codec6limits7binding9traversalAA05BoundD15ExpansionResultOy23TraversalBindingFailureQy_Gx_5CodecQy_AA0dM6LimitsV05StateP0Qy_nq_mt0A2UI4ViewRzAA0deO11RealizationR_6DomainQy_AWRtzRi__Ri0__r0_lF22P08CounterPresentation0Z6ScreenVy0yZ7Runtime0zX0OG_A1_0zdO0VTt4g5",
+          "owner_start": "0xb0e8"
+        },
+        {
+          "address": "0xbc10",
+          "kind": 3,
+          "owner": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5codec6limits7binding9traversalAA05BoundD15ExpansionResultOy23TraversalBindingFailureQy_Gx_5CodecQy_AA0dM6LimitsV05StateP0Qy_nq_mt0A2UI4ViewRzAA0deO11RealizationR_6DomainQy_AWRtzRi__Ri0__r0_lF22P08CounterPresentation0Z6ScreenVy0yZ7Runtime0zX0OG_A1_0zdO0VTt4g5",
+          "owner_start": "0xb0e8"
+        },
+        {
+          "address": "0xb138",
+          "kind": 4,
+          "owner": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5codec6limits7binding9traversalAA05BoundD15ExpansionResultOy23TraversalBindingFailureQy_Gx_5CodecQy_AA0dM6LimitsV05StateP0Qy_nq_mt0A2UI4ViewRzAA0deO11RealizationR_6DomainQy_AWRtzRi__Ri0__r0_lF22P08CounterPresentation0Z6ScreenVy0yZ7Runtime0zX0OG_A1_0zdO0VTt4g5",
+          "owner_start": "0xb0e8"
+        },
+        {
+          "address": "0xb134",
+          "kind": 3,
+          "owner": "_$s18GiftUISemanticCore19SemanticRecordStoreV6expand_5codec6limits7binding9traversalAA05BoundD15ExpansionResultOy23TraversalBindingFailureQy_Gx_5CodecQy_AA0dM6LimitsV05StateP0Qy_nq_mt0A2UI4ViewRzAA0deO11RealizationR_6DomainQy_AWRtzRi__Ri0__r0_lF22P08CounterPresentation0Z6ScreenVy0yZ7Runtime0zX0OG_A1_0zdO0VTt4g5",
+          "owner_start": "0xb0e8"
+        },
+        {
+          "address": "0x5918",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x5914",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x57b0",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x57ac",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x55b8",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x55b4",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x5500",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x54fc",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x538c",
+          "kind": 4,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        },
+        {
+          "address": "0x5388",
+          "kind": 3,
+          "owner": "_$s17P08CounterRuntime0B17SemanticTraversalV08evaluateE12StatefulBody_8identity4body18GiftUISemanticCore0dH10EvaluationOy0H00K2UI4ViewPQz0K17UIObservableState010ObservableR5ErrorOGx_AG0D16CompleteIdentityVANx_AK01_K11UIFrameReadVyAA0B6DomainOGtAK01_K15UIAccessFailureOYKXEtAkLRzAK01_kqR4HostRzAX0Y0AMRtzAxjM_A1_RTzlF0aB12Presentation0B6ScreenVyAXG_Tg5",
+          "owner_start": "0x533c"
+        }
+      ],
+      "literal_bytes_with_relocations_masked": "020000000079020000000079020000000079020000000079020000000079010000000047414702000000007902000000007902000000004147475f516f5f414b0200000000790200000000794146470200000000474747020000000047020000000047"
+    }
+  ],
+  "relied_bodies": [
+    "compiled-builder.stdout",
+    "compiled-forwarder-17.stdout"
+  ],
+  "baseline_builder_preserved": "current-native-static-p08-finalization-local/allocation/canonical-supplied-sink-builder.stdout",
+  "raw_payload_equal": false,
+  "symbolic_relocation_rows_equal": true,
+  "relocated_literal_equal": true,
+  "concrete_helper_exact_machine_and_symbolic_equal": true,
+  "helper_transfer": [
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/P08CounterRuntime.o",
+      "object_sha256": "29cbdc6a90a20a3434b87c75a4f34bbc94518f015d0233b4f98f1978a800f1ad",
+      "symbol": "___swift_instantiateConcreteTypeFromMangledName",
+      "lo": "0xbe4",
+      "hi": "0xc24",
+      "bytes": 64,
+      "raw_hex": "f44fbea9fd7b01a9fd430091f30300aa000040f98000f8b7fd7b41a9f44fc2a8c0035fd6e18380cb60c2208b020080d2030080d200000094600200f9f7ffff17",
+      "relocations": [
+        {
+          "offset": 52,
+          "kind": 2,
+          "target": "_swift_getTypeByMangledNameInContext2"
+        }
+      ]
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "object_sha256": "5cb5f7e68acbd1da040ddb971cb4d607c5216130ce676eb9a7ea4810c9bad040",
+      "symbol": "___swift_instantiateConcreteTypeFromMangledName",
+      "lo": "0xbe8",
+      "hi": "0xc28",
+      "bytes": 64,
+      "raw_hex": "f44fbea9fd7b01a9fd430091f30300aa000040f98000f8b7fd7b41a9f44fc2a8c0035fd6e18380cb60c2208b020080d2030080d200000094600200f9f7ffff17",
+      "relocations": [
+        {
+          "offset": 52,
+          "kind": 2,
+          "target": "_swift_getTypeByMangledNameInContext2"
+        }
+      ]
+    }
+  ],
+  "enum_descriptors": [
+    {
+      "object": ".build/contracts/p08-counter-fl05ri46/GiftUISemanticCore.o",
+      "object_sha256": "4c40938628d8982edc2d53a9cfbb2b4e12e9c17722bf9d828f24aaffcb156582",
+      "symbol": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn",
+      "lo": "0x2f02c",
+      "hi": "0x2f05c",
+      "bytes": 48,
+      "raw_hex": "d2000000fcfffffff8fffffff4fffffff0ffffff0400000400000000e4ffffffe0ffffff020000000200000080800000",
+      "relocations": [
+        {
+          "offset": 32,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 32,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMP"
+        },
+        {
+          "offset": 28,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 28,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMI"
+        },
+        {
+          "offset": 16,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 16,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMF"
+        },
+        {
+          "offset": 12,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 12,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMa"
+        },
+        {
+          "offset": 8,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": "l_.str.22.SemanticBodyEvaluation"
+        },
+        {
+          "offset": 4,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 4,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCoreMXM"
+        }
+      ]
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "object_sha256": "7b1d0ab4f2a50113021d7ddd1285171da0b8b0b2ba551ec0c7d7746a347a9fbd",
+      "symbol": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn",
+      "lo": "0x2773c",
+      "hi": "0x2776c",
+      "bytes": 48,
+      "raw_hex": "d2000000fcfffffff8fffffff4fffffff0ffffff0400000400000000e4ffffffe0ffffff020000000200000080800000",
+      "relocations": [
+        {
+          "offset": 32,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 32,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMP"
+        },
+        {
+          "offset": 28,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 28,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMI"
+        },
+        {
+          "offset": 16,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 16,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMF"
+        },
+        {
+          "offset": 12,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 12,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMa"
+        },
+        {
+          "offset": 8,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 8,
+          "kind": 0,
+          "target": "l_.str.22.SemanticBodyEvaluation"
+        },
+        {
+          "offset": 4,
+          "kind": 1,
+          "target": "_$s18GiftUISemanticCore22SemanticBodyEvaluationOMn"
+        },
+        {
+          "offset": 4,
+          "kind": 0,
+          "target": "_$s18GiftUISemanticCoreMXM"
+        }
+      ]
+    }
+  ],
+  "enum_source_declaration_unchanged": true,
+  "enum_declaration_sha256": "93f08f3a3621534a75b4492da4b442c882eea84a4f2ba1a33e1603180f3d524a",
+  "actual_call_relation": {
+    "baseline_static_builder_required_entry_call": "6d270/6d274\u21926d278 before boundary/model/candidate work; prior full2 complete builder retained and actual full2 text/reloc transfer accepted.",
+    "current_static_builder_required_entry_call": "70ddc/70de0\u219270de4 to d1358 before boundary/model/candidate/visitor; returned pointer used for body-result stack sizing.",
+    "current_operation_calls": "533c specialized evaluate helper queries same d1358 at5390/5504/55bc/57b4/591c, after current entry initialized that compiler cell.",
+    "claim": "No new generic result type/cache family. Additional current helper lookups are same compiler-cell cache hits on the normal reached builder path; no assertion that the existing earliest result lookup is nonallocating.",
+    "baseline_difference": "Whole objects and raw symbolic payload bytes differ. Canonical nonrelocation literals and all symbolic relocation rows match, actual enum source declaration unchanged; no whole-object/cache-address identity claim."
+  },
+  "semantic_context_bytes_with_current_builder_forwarders_and_prior_complete_builder": 967542,
+  "semantic_context_lines_with_current_builder_forwarders_and_prior_complete_builder": 9091
+}

@@ -1,0 +1,58 @@
+{
+  "baseline": "bd74686ee9b9110c4a6cb6086225d8eeb8b20ff3",
+  "files": [
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "bytes": 14809,
+      "sha256": "0af39b1cb780c37a63106d84f78e708f0405869c7d5085a382dfe57feff91474",
+      "before_sha256": "ce5cadfaa5c4f3ce58d3cd90ab54b6d08f43356183ebc0aabbf181c7d03f9e7c",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "bytes": 58715,
+      "sha256": "f9f009e5cda10b527c595b46a216aabbca145ba67968c9f838e1d70cec840906",
+      "before_sha256": "09420254216e26ba9dd83acee731233a1144459c3cce971cbf0b1897ea268f28",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 14924,
+      "sha256": "db76bf5f5618a3230d7ba436765fe9129b808f4bbee5bfee18659cbf0bb8dac3",
+      "before_sha256": "2aae79f399ada458e0132054d49c20c913c25b3f45f61e234f443576fe4e4d17",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 119320,
+      "sha256": "292323a7960b1cd405b914325aeed737b683d9e402679e32101b5c5879f2cf73",
+      "before_sha256": "7f33e051e3b159ba84983b45672e1299a178a81bb5b45f5a182d5e19c9630ccf",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 13210,
+      "sha256": "0f345c9e20c9b81e9ca9b1e523d04ed61d625fd89b1ca8dcd62da9c453761896",
+      "before_sha256": "5a17a39cad2fcbeb6dae4c3b703ad6c0f1877597c71ef7e71356c43db07fdf49",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift"
+    }
+  ],
+  "scope_files": 5,
+  "no_producer_started": true,
+  "formatter": {
+    "command": "PATH=local Swift6.4 scripts/format-swift.sh",
+    "exit": 0
+  },
+  "lint": {
+    "command": "PATH=local Swift6.4 scripts/format-swift.sh --lint",
+    "exit": 0
+  },
+  "mechanism": "Opaque nongeneric Workspace state; supplied concrete Counter workspace/traversal; one Core visitor algorithm/default set; static realization factory entirely within checked bank scope; no change to existing Workspace/Sink/Codec requirements.",
+  "review": {
+    "reviewer": "/root/p08_strategy_astra_high",
+    "decision": "Whole-source GO subject only to stopped sequential checks; exact correction applied and verified. No other definite source issue in five-file unified review.",
+    "review_correction": "Only failure\u2192bindingFailure\u2192accessFailure sequential getter checks. Replacing the getter alone with the prior expression reproduces exact preserved reviewed Core bytes.",
+    "applied_delta_verified": true,
+    "compiler_or_mechanism_acceptance": false
+  }
+}

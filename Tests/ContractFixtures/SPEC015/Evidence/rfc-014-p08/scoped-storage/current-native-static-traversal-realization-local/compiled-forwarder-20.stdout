@@ -1,0 +1,70 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000009540 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW>:
+    9540:      	stp	x28, x27, [sp, #-0x50]!
+    9544:      	stp	x24, x23, [sp, #0x10]
+    9548:      	stp	x22, x21, [sp, #0x20]
+    954c:      	stp	x20, x19, [sp, #0x30]
+    9550:      	stp	x29, x30, [sp, #0x40]
+    9554:      	add	x29, sp, #0x40
+    9558:      	sub	sp, sp, #0x410
+    955c:      	mov	x19, x20
+    9560:      	mov	x21, x2
+    9564:      	mov	x22, x1
+    9568:      	mov	x23, x0
+    956c:      	add	x0, sp, #0xd8
+    9570:      	mov	x1, x20
+    9574:      	mov	w2, #0x336              ; =822
+    9578:      	bl	0x9578 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x38>
+		0000000000009578:  ARM64_RELOC_BRANCH26	_memcpy
+    957c:      	ldrb	w24, [sp, #0x338]
+    9580:      	add	x20, sp, #0xd8
+    9584:      	bl	0x9584 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x44>
+		0000000000009584:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore36SemanticExpansionTraversalOperationsPAARi_zRi0_zrlE7stoppedSbvg17P08CounterRuntime0jdF0V_Tgq5
+    9588:      	tbz	w0, #0x0, 0x959c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x5c>
+    958c:      	cmp	w24, #0x4
+    9590:      	b.ne	0x95b4 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x74>
+    9594:      	mov	w8, #0x1                ; =1
+    9598:      	b	0x95b0 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x70>
+    959c:      	ldrb	w8, [sp, #0x40a]
+    95a0:      	tbz	w8, #0x0, 0x95d0 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x90>
+    95a4:      	cmp	w24, #0x4
+    95a8:      	b.ne	0x95b4 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x74>
+    95ac:      	mov	w8, #0x3                ; =3
+    95b0:      	strb	w8, [x19, #0x260]
+    95b4:      	add	sp, sp, #0x410
+    95b8:      	ldp	x29, x30, [sp, #0x40]
+    95bc:      	ldp	x20, x19, [sp, #0x30]
+    95c0:      	ldp	x22, x21, [sp, #0x20]
+    95c4:      	ldp	x24, x23, [sp, #0x10]
+    95c8:      	ldp	x28, x27, [sp], #0x50
+    95cc:      	ret
+    95d0:      	mov	w8, #0x1                ; =1
+    95d4:      	strb	w8, [x19, #0x332]
+    95d8:      	add	x0, sp, #0xa
+    95dc:      	add	x1, x19, #0x264
+    95e0:      	mov	w2, #0xce               ; =206
+    95e4:      	bl	0x95e4 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0xa4>
+		00000000000095e4:  ARM64_RELOC_BRANCH26	_memcpy
+    95e8:      	add	x0, sp, #0xa
+    95ec:      	bl	0x95ec <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0xac>
+		00000000000095ec:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+    95f0:      	cmp	w0, #0x1
+    95f4:      	b.eq	0x958c <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x4c>
+    95f8:      	mov	x1, x23
+    95fc:      	mov	x2, x22
+    9600:      	mov	x3, x21
+    9604:      	mov	x20, x19
+    9608:      	bl	0x9608 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0xc8>
+		0000000000009608:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B17SemanticTraversalV05stageeD10Occurrence8identity7payload18GiftUISemanticCore0D14ExpansionErrorOSgAG0D16CompleteIdentityV_xt0J2UI01_jK16PrimitivePayloadRzlF
+    960c:      	and	w8, w0, #0xff
+    9610:      	cmp	w8, #0x4
+    9614:      	b.eq	0x95b4 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x74>
+    9618:      	ldrb	w8, [x19, #0x260]
+    961c:      	cmp	w8, #0x4
+    9620:      	b.ne	0x95b4 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x74>
+    9624:      	strb	w0, [x19, #0x260]
+    9628:      	b	0x95b4 <_$s17P08CounterRuntime0B17SemanticTraversalV6GiftUI01_f10UISemanticE7VisitorAadEP14visitPrimitiveyyqd__AD01_fhK7PayloadRd__lFTW+0x74>

@@ -1,0 +1,54 @@
+{
+  "status": "SCOPED_COMPILED_PASS_PENDING_INDEPENDENT_REVIEW_AND_VALIDATION",
+  "claim": "Concrete supplied Workspace/Traversal ownership and selected charged construction, traversal, child visitor witness, error/finalization and drop removal/non-relocation. Not whole Static allocation eligibility.",
+  "freeze": "source-freeze.json",
+  "freeze_sha256": "9760fe9d56e7cdad11b4b8bcf3471b102897254697ed1c4fa6bd9f23222090c1",
+  "inputs": "compiled-inputs.json",
+  "compiler": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/final.json",
+  "evidence": [
+    "compiled-builder.json",
+    "compiled-forwarder-selection.json",
+    "compiled-forwarders.json",
+    "compiled-visitor-data.json",
+    "body-result-baseline-relation.json",
+    "core-support.json",
+    "completion.json",
+    "unchanged-transfer-check.json",
+    "changed-transfers.json",
+    "last-joins.json",
+    "backing-vwt-transfer.json",
+    "backing-constant.json",
+    "transfer-provenance.md"
+  ],
+  "joins": [
+    "Both actual Counter construction entries are complete: main70db0\u201373644 and Store.expand b0e8\u2013d884. Static Traversal metadata/direct visitor WP feed disabled-child callbacks72abc/72e00 and ced0/cfb4. No prior generic Workspace/Traversal metadata/witness acquisition remains at these operations.",
+    "Concrete Core state/attempt construction and shared forwarding use fixed descriptors/scalars; all48 reached outlines and final10 small outlines are complete. Sink drop9d874\u20139d878 is ret. Normal/error finalization retains failure ordering and drops visitor/Sink before outer pending/bank cleanup.",
+    "28 of32 named previous complete lifecycle bodies match whole code and symbolic-relocation/recursive-outline graphs. Four differences are explicitly read current complete constructors/Writer: fixed copies/initialization/memcpy/bzero and stackguard failure only. Their ten current outlines and fixed lCPI1309_0 are included. Current pending/semantic backing VWT bytes/targets match, destroy slots remain checked no-op.",
+    "Accepted unchanged lender/codec/capture setup, loan, append, transfer, stage-before-clear, staged-first error discard, retired-last-reader clear and backing destruction effects apply only through those exact current transfer rows and unchanged actual arguments/capacities. No source-name-only transfer."
+  ],
+  "result_key": {
+    "relation": "Literal bytes masked only at actual relocation fields and all symbolic target rows match; current concrete key/helper is identical in meaning, whole objects differ.",
+    "main": "Old6d278 and current70de4 require same result key before candidate/visitor; later current5390/5504/55bc/57b4/591c query SAME d1358.",
+    "second": "Complete old second entry473c\u20137ce0 (last-join-10.stdout) requires key at4868 before candidate/visitor. Current b13c likewise precedes construction; it is not claimed warm from unrelated main entry.",
+    "limit": "Earliest preexisting SemanticBodyEvaluation lookup allocation eligibility remains OPEN. Later same-cell use is warm within each reached entry; no claim of cache/address identity across binaries or observed first-use state."
+  },
+  "limits": {
+    "group_bytes": 2097152,
+    "group_lines": 32768,
+    "retained_bytes": 8388608,
+    "deadline_utc": "2026-10-27T22:27:38.927259+00:00",
+    "historical": "compiled-progress.json preserves forecast STOP under1MiB before indispensable capture. Human explicitly amended SAME group to2MiB. No incurred-overflow or retrospective old qualification claim."
+  },
+  "open": [
+    "Current functional/component/full validation and final artifact applicability.",
+    "Independent declaration/result/error/Model/provider/cold/live/global safety/resource/P08 obligations; no whole-path zeroheap claim.",
+    "Unit gate FAILED; Interaction unit suite UNEXECUTED."
+  ],
+  "cost": "Five-file internal package SPI/shared realization visibility and concrete fixture forwarding; same configured capacities/ownership/guards. No blanket text/stack/resource saving is claimed. Full proof of stack/global resource eligibility remains open.",
+  "producer_policy": "No source changes or new producer during proof. Required bounded validation only after independent GO. Prior full duration2h24 does not fit remaining phase; no automatic long run/reset.",
+  "bounds": {
+    "semantic_union_bytes": 2096317,
+    "semantic_union_lines": 20458,
+    "method": "Includes complete selected current/prior bodies and data, comparison record, provenance and this rationale once. No acquisition after final ten outlines/prior second entry."
+  }
+}

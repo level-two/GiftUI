@@ -1,0 +1,38 @@
+{
+  "baseline": "bd74686ee9b9110c4a6cb6086225d8eeb8b20ff3",
+  "files": [
+    {
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "bytes": 9082,
+      "sha256": "ce5cadfaa5c4f3ce58d3cd90ab54b6d08f43356183ebc0aabbf181c7d03f9e7c",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift"
+    },
+    {
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "bytes": 50960,
+      "sha256": "09420254216e26ba9dd83acee731233a1144459c3cce971cbf0b1897ea268f28",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 7258,
+      "sha256": "2aae79f399ada458e0132054d49c20c913c25b3f45f61e234f443576fe4e4d17",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 119304,
+      "sha256": "7f33e051e3b159ba84983b45672e1299a178a81bb5b45f5a182d5e19c9630ccf",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 13194,
+      "sha256": "5a17a39cad2fcbeb6dae4c3b703ad6c0f1877597c71ef7e71356c43db07fdf49",
+      "before": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-local/before/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift"
+    }
+  ],
+  "source_owner": "Strong",
+  "root_owns_index": true,
+  "no_producer_started": true
+}

@@ -1,0 +1,385 @@
+{
+  "captures": [
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlFTm",
+      "start": "0x18dd0",
+      "end": "0x18e44",
+      "machine_bytes": 116,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18dd0",
+        "--stop-address=0x18e44",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-0.stdout",
+      "stdout_bytes": 4376,
+      "stdout_lines": 46,
+      "stdout_sha256": "ca0af995d09b8f5beff234223e73c8ed8f3597dd1bdff72db108df8e8efeb9d5"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore24SemanticExpansionAttemptV6limitsAcA0dE6LimitsV_tcfC",
+      "start": "0x1500",
+      "end": "0x1538",
+      "machine_bytes": 56,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x1500",
+        "--stop-address=0x1538",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-1.stdout",
+      "stdout_bytes": 793,
+      "stdout_lines": 20,
+      "stdout_sha256": "39bde8822b2aee300b374f285f0e62d7ee45e6e9d801a08859e9c035274896fc"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV11isExpandingSbvg",
+      "start": "0x18ca0",
+      "end": "0x18ca8",
+      "machine_bytes": 8,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18ca0",
+        "--stop-address=0x18ca8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-2.stdout",
+      "stdout_bytes": 350,
+      "stdout_lines": 8,
+      "stdout_sha256": "c2349ef836c69a252e56837aabf2eddaaf286d8a41bdf965af3b5f4c030a8cb9"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV14beginExpansionSbyF",
+      "start": "0x18d04",
+      "end": "0x18d24",
+      "machine_bytes": 32,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18d04",
+        "--stop-address=0x18d24",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-3.stdout",
+      "stdout_bytes": 1000,
+      "stdout_lines": 16,
+      "stdout_sha256": "61127f0f85a1c4502324dca146d00686d63c3bf6798583fb0e8a5c996d8b3cd3"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV14resetExpansionyyF",
+      "start": "0x19054",
+      "end": "0x19058",
+      "machine_bytes": 4,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x19054",
+        "--stop-address=0x19058",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-4.stdout",
+      "stdout_bytes": 460,
+      "stdout_lines": 8,
+      "stdout_sha256": "d144bf463fed7c6341afaedf8ba5654d9f94a4b393b79735c0e60ed326931492"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterCustomBody_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlF",
+      "start": "0x18dc8",
+      "end": "0x18dd0",
+      "machine_bytes": 8,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18dc8",
+        "--stop-address=0x18dd0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-5.stdout",
+      "stdout_bytes": 784,
+      "stdout_lines": 9,
+      "stdout_sha256": "9151597d9efb57b71bcffee67fa97ef9b79c22172d8e7d471b0ab327485c78f3"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF",
+      "start": "0x18e44",
+      "end": "0x18ea0",
+      "machine_bytes": 92,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18e44",
+        "--stop-address=0x18ea0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-6.stdout",
+      "stdout_bytes": 4071,
+      "stdout_lines": 40,
+      "stdout_sha256": "da885fa457ac5a1ae9d0e04097a8396bf24cd0fa9ad34d6a664ae09a81621908"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15invalidIdentityAA0D14ExpansionErrorOyF",
+      "start": "0x18da0",
+      "end": "0x18dc0",
+      "machine_bytes": 32,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18da0",
+        "--stop-address=0x18dc0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-7.stdout",
+      "stdout_bytes": 811,
+      "stdout_lines": 15,
+      "stdout_sha256": "d64607af1e6753e07bbc9c74442833d2d3b020f9fa97146da53aa639842eb7fa"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV16discardExpansionyyF",
+      "start": "0x19050",
+      "end": "0x19054",
+      "machine_bytes": 4,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x19050",
+        "--stop-address=0x19054",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-8.stdout",
+      "stdout_bytes": 315,
+      "stdout_lines": 7,
+      "stdout_sha256": "a37ad442b9ad5e34ad440e0653d1039a05a192f2b921d11ed1750a780fc023f6"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV17completeExpansionyyF",
+      "start": "0x1904c",
+      "end": "0x19050",
+      "machine_bytes": 4,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x1904c",
+        "--stop-address=0x19050",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-9.stdout",
+      "stdout_bytes": 316,
+      "stdout_lines": 7,
+      "stdout_sha256": "18743df0aadf6e37120653453ba119f8c72c71958f723d1d4fb97757d05464c0"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV17maximumIdentitiess6UInt16Vvg",
+      "start": "0x18cfc",
+      "end": "0x18d04",
+      "machine_bytes": 8,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18cfc",
+        "--stop-address=0x18d04",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-10.stdout",
+      "stdout_bytes": 362,
+      "stdout_lines": 8,
+      "stdout_sha256": "58eb4ab5ed02c6b3e53e62f7bab59e052e3b3659bd4a91d637ef491a4a0e553e"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV18leavePathComponentyyF",
+      "start": "0x18ffc",
+      "end": "0x1904c",
+      "machine_bytes": 80,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18ffc",
+        "--stop-address=0x1904c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-11.stdout",
+      "stdout_bytes": 1478,
+      "stdout_lines": 27,
+      "stdout_sha256": "b913b5d01f7cc461b5c6002c672d4ee826b028295ba862bd55c5641bdbddf454"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV21maximumPathComponentss6UInt16Vvg",
+      "start": "0x18cf4",
+      "end": "0x18cfc",
+      "machine_bytes": 8,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18cf4",
+        "--stop-address=0x18cfc",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-12.stdout",
+      "stdout_bytes": 366,
+      "stdout_lines": 8,
+      "stdout_sha256": "5770e9c48f860e23f43884cda70a933dafd756f531695a99dd3b090871235e2b"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV4bank6limitsAcA0dE11BankBuffersV_AA0dE6LimitsVtcfC",
+      "start": "0x18ca8",
+      "end": "0x18cf4",
+      "machine_bytes": 76,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18ca8",
+        "--stop-address=0x18cf4",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-13.stdout",
+      "stdout_bytes": 1619,
+      "stdout_lines": 29,
+      "stdout_sha256": "0d969ee6da7675f82a3c68c2d9d14521177782d1db70bf1738c2291e671dec54"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV5enter_8identityAA0D14ExpansionErrorOSgAA0D13PathComponentV_AA0D16CompleteIdentityVSgztF",
+      "start": "0x18d24",
+      "end": "0x18da0",
+      "machine_bytes": 124,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18d24",
+        "--stop-address=0x18da0",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-14.stdout",
+      "stdout_bytes": 4517,
+      "stdout_lines": 48,
+      "stdout_sha256": "174e02ac6e1886ab24937ce974491dd003e8a8189a7e6ace3aca5d0a94ef5b93"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV8identity33_F84BCFF9BB149AE60E8EA7CB736D160ALLAA0D16CompleteIdentityVvpfi",
+      "start": "0x18c90",
+      "end": "0x18c9c",
+      "machine_bytes": 12,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18c90",
+        "--stop-address=0x18c9c",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-15.stdout",
+      "stdout_bytes": 634,
+      "stdout_lines": 10,
+      "stdout_sha256": "c1a5acbd3f0bd617b518e31ce5850f1fd0c8d42d981dc28004a923e9828cf49b"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o",
+      "symbol": "_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV9enterRoot_8identityAA0D14ExpansionErrorOSgxm_AA0D16CompleteIdentityVSgzt0A2UI4ViewRzlF",
+      "start": "0x18dc0",
+      "end": "0x18dc8",
+      "machine_bytes": 8,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x18dc0",
+        "--stop-address=0x18dc8",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-16.stdout",
+      "stdout_bytes": 770,
+      "stdout_lines": 9,
+      "stdout_sha256": "1f6d60f383a3d024848aa94b8db3bd93c54060510fe580e5d56a2b246cfecab3"
+    },
+    {
+      "object": ".build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o",
+      "symbol": "_$s17P08CounterRuntime0B10RecordSinkVWOh",
+      "start": "0x9d874",
+      "end": "0x9d878",
+      "machine_bytes": 4,
+      "argv": [
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
+        "--disassemble",
+        "--reloc",
+        "--no-show-raw-insn",
+        "--start-address=0x9d874",
+        "--stop-address=0x9d878",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o"
+      ],
+      "exit": 0,
+      "raw": "core-support-17.stdout",
+      "stdout_bytes": 279,
+      "stdout_lines": 7,
+      "stdout_sha256": "11b7db67c35158040e3520350f82f2e778d0f41d8411a8986d022e9c7f9bb3c6"
+    }
+  ],
+  "raw_bytes": 23301,
+  "raw_lines": 322,
+  "qualification": "Only actual new Core state/attempt constructor/getters/path/reset operations and reached Sink destroy. Generic general-only optional/conditional/role and unused enum VWT bodies are not relied on."
+}

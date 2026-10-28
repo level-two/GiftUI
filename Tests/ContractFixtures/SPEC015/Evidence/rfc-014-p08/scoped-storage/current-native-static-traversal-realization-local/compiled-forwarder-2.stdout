@@ -1,0 +1,108 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/P08CounterRuntime.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+00000000000043d8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5>:
+    43d8:      	stp	x24, x23, [sp, #-0x40]!
+    43dc:      	stp	x22, x21, [sp, #0x10]
+    43e0:      	stp	x20, x19, [sp, #0x20]
+    43e4:      	stp	x29, x30, [sp, #0x30]
+    43e8:      	add	x29, sp, #0x30
+    43ec:      	sub	sp, sp, #0x410
+    43f0:      	mov	x22, x0
+    43f4:      	ldrb	w0, [x20, #0x2a]
+    43f8:      	cmp	w0, #0x4
+    43fc:      	b.ne	0x4430 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x58>
+    4400:      	mov	x19, x20
+    4404:      	ldrh	w8, [x20, #0x14]
+    4408:      	add	w23, w8, #0x1
+    440c:      	tbnz	w23, #0x10, 0x4428 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x50>
+    4410:      	ldrh	w8, [x19]
+    4414:      	cmp	w8, w23, uxth
+    4418:      	b.lo	0x4428 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x50>
+    441c:      	ldrh	w8, [x19, #0x1a]
+    4420:      	cmp	w8, w23, uxth
+    4424:      	b.hs	0x4448 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x70>
+    4428:      	mov	w0, #0x0                ; =0
+    442c:      	strb	wzr, [x19, #0x2a]
+    4430:      	add	sp, sp, #0x410
+    4434:      	ldp	x29, x30, [sp, #0x30]
+    4438:      	ldp	x20, x19, [sp, #0x20]
+    443c:      	ldp	x22, x21, [sp, #0x10]
+    4440:      	ldp	x24, x23, [sp], #0x40
+    4444:      	ret
+    4448:      	mov	x21, x1
+    444c:      	add	x0, sp, #0x1a6
+    4450:      	bl	0x4450 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x78>
+		0000000000004450:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi0_
+    4454:      	add	x1, sp, #0x1a6
+    4458:      	mov	x0, x21
+    445c:      	mov	w2, #0xce               ; =206
+    4460:      	bl	0x4460 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x88>
+		0000000000004460:  ARM64_RELOC_BRANCH26	_memcpy
+    4464:      	add	x20, x19, #0x30
+    4468:      	mov	x0, x22
+    446c:      	mov	x1, x21
+    4470:      	bl	0x4470 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x98>
+		0000000000004470:  ARM64_RELOC_BRANCH26	_$s17P08CounterRuntime0B15RecordWorkspaceV20enterDeclarationRole_8identity18GiftUISemanticCore22SemanticExpansionErrorOSgxm_AF0M16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedT0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5
+    4474:      	and	w8, w0, #0xff
+    4478:      	cmp	w8, #0x4
+    447c:      	b.ne	0x4508 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x130>
+    4480:      	add	x22, sp, #0xa
+    4484:      	add	x0, sp, #0xa
+    4488:      	mov	x1, x21
+    448c:      	mov	w2, #0xce               ; =206
+    4490:      	bl	0x4490 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0xb8>
+		0000000000004490:  ARM64_RELOC_BRANCH26	_memcpy
+    4494:      	add	x0, x22, #0xce
+    4498:      	add	x1, sp, #0x1a6
+    449c:      	mov	w2, #0xce               ; =206
+    44a0:      	bl	0x44a0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0xc8>
+		00000000000044a0:  ARM64_RELOC_BRANCH26	_memcpy
+    44a4:      	add	x0, sp, #0xa
+    44a8:      	bl	0x44a8 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0xd0>
+		00000000000044a8:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+    44ac:      	mov	x20, x0
+    44b0:      	add	x0, x22, #0xce
+    44b4:      	bl	0x44b4 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0xdc>
+		00000000000044b4:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOg
+    44b8:      	cmp	w20, #0x1
+    44bc:      	b.ne	0x44cc <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0xf4>
+    44c0:      	cmp	w0, #0x1
+    44c4:      	b.eq	0x4504 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x12c>
+    44c8:      	b	0x4510 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x138>
+    44cc:      	cmp	w0, #0x1
+    44d0:      	b.eq	0x4510 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x138>
+    44d4:      	add	x0, sp, #0x274
+    44d8:      	add	x1, sp, #0xa
+    44dc:      	mov	w2, #0xce               ; =206
+    44e0:      	bl	0x44e0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x108>
+		00000000000044e0:  ARM64_RELOC_BRANCH26	_memcpy
+    44e4:      	sub	x0, x29, #0xfe
+    44e8:      	add	x1, x22, #0xce
+    44ec:      	mov	w2, #0xce               ; =206
+    44f0:      	bl	0x44f0 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x118>
+		00000000000044f0:  ARM64_RELOC_BRANCH26	_memcpy
+    44f4:      	add	x0, sp, #0x274
+    44f8:      	sub	x1, x29, #0xfe
+    44fc:      	bl	0x44fc <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x124>
+		00000000000044fc:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityV2eeoiySbAC_ACtFZ
+    4500:      	tbz	w0, #0x0, 0x4510 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x138>
+    4504:      	mov	w0, #0x1                ; =1
+    4508:      	strb	w0, [x19, #0x2a]
+    450c:      	b	0x4430 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x58>
+    4510:      	ldrh	w8, [x19, #0x16]
+    4514:      	add	w8, w8, #0x1
+    4518:      	tbnz	w8, #0x10, 0x4428 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x50>
+    451c:      	ldrh	w9, [x19, #0x1c]
+    4520:      	cmp	w9, w8, uxth
+    4524:      	b.lo	0x4428 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x50>
+    4528:      	strh	w8, [x19, #0x16]
+    452c:      	strh	w23, [x19, #0x14]
+    4530:      	ldrh	w8, [x19, #0x12]
+    4534:      	cmp	w8, w23, uxth
+    4538:      	b.hs	0x4540 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x168>
+    453c:      	strh	w23, [x19, #0x12]
+    4540:      	mov	w0, #0x4                ; =4
+    4544:      	b	0x4430 <_$s17P08CounterRuntime0B17SemanticTraversalV05enterE15DeclarationRole_8identity18GiftUISemanticCore0D14ExpansionErrorOSgxm_AF0D16CompleteIdentityVSgztlF0J2UI0J17UIModifiedContentVyAM6VStackVyAM10TupleView5VyAM4TextVyAA0B6DomainOGAxM4ViewPAME8disabledyQrSbFQOyAM6ButtonVy0aB12Presentation0B6ActionOAXG_Qo_A6_AM0j16UILayoutModifiedS0VyA2_0B6CanvasVyAWGAM01_J19UIFixedFramePayloadVGGGAM01_J19UIBackgroundPayloadVG_Tg5+0x58>

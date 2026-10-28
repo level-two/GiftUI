@@ -1,0 +1,40 @@
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-p08-finalization/traversal-realization1/artifacts/GiftUISemanticCore.o:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000000018e44 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF>:
+   18e44:      	mov	x2, x30
+   18e48:      	bl	0x18e48 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x4>
+		0000000000018e48:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_714
+   18e4c:      	mov	x30, x2
+   18e50:      	stp	x29, x30, [sp, #0x150]
+   18e54:      	bl	0x18e54 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x10>
+		0000000000018e54:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_103
+   18e58:      	ldr	x1, [x21, #0x48]
+   18e5c:      	mov	w22, #0x2               ; =2
+   18e60:      	bl	0x18e60 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x1c>
+		0000000000018e60:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_201
+   18e64:      	bl	0x18e64 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x20>
+		0000000000018e64:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_247
+   18e68:      	b.ne	0x18e98 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x54>
+   18e6c:      	bl	0x18e6c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x28>
+		0000000000018e6c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_262
+   18e70:      	tbz	w0, #0x0, 0x18e8c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x48>
+   18e74:      	bl	0x18e74 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x30>
+		0000000000018e74:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_102
+   18e78:      	add	x0, sp, #0xa
+   18e7c:      	bl	0x18e7c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x38>
+		0000000000018e7c:  ARM64_RELOC_BRANCH26	_$s18GiftUISemanticCore24SemanticCompleteIdentityVSgWOi_
+   18e80:      	bl	0x18e80 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x3c>
+		0000000000018e80:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_101
+   18e84:      	mov	w0, #0x4                ; =4
+   18e88:      	b	0x18e98 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x54>
+   18e8c:      	bl	0x18e8c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x48>
+		0000000000018e8c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_292
+   18e90:      	b.ne	0x18e98 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x54>
+   18e94:      	bl	0x18e94 <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x50>
+		0000000000018e94:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_521
+   18e98:      	ldp	x29, x30, [sp, #0x150]
+   18e9c:      	b	0x18e9c <_$s18GiftUISemanticCore28SemanticRecordWorkspaceStateV15enterFixedChild_8identityAA0D14ExpansionErrorOSgs5UInt8V_AA0D16CompleteIdentityVSgztF+0x58>
+		0000000000018e9c:  ARM64_RELOC_BRANCH26	_OUTLINED_FUNCTION_89
