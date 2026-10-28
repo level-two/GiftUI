@@ -1,0 +1,36 @@
+{
+  "status": "ENFORCEMENT_IMPLEMENTED_CURRENT_PRODUCT_GATE_FAIL",
+  "gate_command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter-allocation.py",
+    "--counter-build",
+    ".build/contracts/p08-counter-8erdhh4s"
+  ],
+  "actual_entry": "p08CounterStaticResourceEntryV1: graph + Static scoped workload + host, including setup/refusal/teardown.",
+  "controls": {
+    "positive_exit": 0,
+    "allocation_negative_exit": 1,
+    "mode_verified": true,
+    "stale_imported_source_refusal_before_compiler": true
+  },
+  "actual_entry_exit": 1,
+  "diagnostic": "generic function calls can cause metadata allocation or locks",
+  "causal_chain": [
+    "CounterRouteEntry.swift55 p08CounterStaticResourceEntryV1",
+    "p08CounterGraph -> p08CheckGraphDefinition",
+    "CounterScopedStorage.swift3070 HostComponentGraphValidation.validate(CounterHostGraph())"
+  ],
+  "classification": "Compiler rejects current no-allocation promise at this call. This is potential metadata/allocation-or-lock effect, not observed allocation/lock execution; remaining later paths are not all qualified.",
+  "source_delta_policy": "Only42 fresh Counter compilation inputs may differ from trusted recipe; current hashes/deltas explicit and no old functional PASS transfer. Every other input and imported module/source artifact remains authenticated.",
+  "historical_preservation": "Initial isolated assessment preserved. First maintained invocation failed before compilation on generated-source provenance; one grouped exact owning-artifact lookup correction preserved. Current maintained checker reaches actual compiler rejection and returns nonzero.",
+  "limits": "Both compiler phases guarded separately under explicit <=600s authority, unchanged guard/cumulative2GiB/protected32MiB. No runtime/fullsuite/download or HostComponentGraphValidation source fix.",
+  "remaining": "No noLocks/provider/stack/time/globalP08 safety acceptance. P09 still depends on P08 exit.",
+  "local_dependencies": [
+    "Accepted complete Counter receipt .build/contracts/p08-counter-8erdhh4s/result.json and its exact reused runtime/host/lower module receipts",
+    "Installed pinned Swift6.4 compiler/SDK/macro artifacts named in maintained-result.json"
+  ],
+  "dependency_set_limit": "No replacement-prerequisite arguments. Fresh Counter inputs may change; arbitrary imported library changes remain refused until matching provenance is supplied. No claim to support all migration edits before full suite.",
+  "independent_review": "final-review.md",
+  "independent_review_sha256": "b9018217c38c880ddaa1caff8576002eb494bd4a2ba5bbaf9e5dead5aa162506",
+  "review_disposition": "ACCEPT_ENFORCEMENT_CURRENT_PRODUCT_GATE_FAIL"
+}

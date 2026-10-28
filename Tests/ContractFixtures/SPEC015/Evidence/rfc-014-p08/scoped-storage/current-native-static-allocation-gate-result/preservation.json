@@ -1,0 +1,101 @@
+{
+  "copies": [
+    {
+      "retained": "assessment-plan.json",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/plan.json",
+      "sha256": "d70ada4fd7eb2d634fb919abd82ef2c0be4ab35a3eab386dbab344290cd89427",
+      "bytes": 19874
+    },
+    {
+      "retained": "assessment-results.json",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/results.json",
+      "sha256": "3e95f2d3512ed26f4f7501ac2394cf896da6df23a204f4f4328f820a8f11b5d6",
+      "bytes": 834
+    },
+    {
+      "retained": "assessment-negative.stderr",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/allocation-negative/stderr",
+      "sha256": "1c43badff83a37ffa0e72af6946c5db04793f6c072108a4e8dcfd0ef33b96d8d",
+      "bytes": 476
+    },
+    {
+      "retained": "assessment-entry.stderr",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/actual-static-entry/stderr",
+      "sha256": "023e1b2240d247f4002e5e49d196cc19c2bea970e26049ab47444c26def14628",
+      "bytes": 1345
+    },
+    {
+      "retained": "maintained-first-result.json",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/maintained-gate/result.json",
+      "sha256": "d11ee0899cd5c1bbee0ddc5384fc44098bc95af7f9696402c72923f52a463242",
+      "bytes": 51177
+    },
+    {
+      "retained": "maintained-before-generated-artifact-fix.py",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/maintained-before-generated-artifact-fix.py",
+      "sha256": "bc63469beef28906979671689bc179f51ac702527c43f3a6a266d7fa1773ea21",
+      "bytes": 9988
+    },
+    {
+      "retained": "maintained-result.json",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/maintained-gate2/result.json",
+      "sha256": "221786776df2c03eef4b81d9ef18ed89dfe311c56c7a044ac35437fe89c88155",
+      "bytes": 67332
+    },
+    {
+      "retained": "positive.stderr",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/maintained-gate2/positive.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "retained": "allocation-negative.stderr",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/maintained-gate2/allocation-negative.stderr",
+      "sha256": "6d2edcdccb7586cfd0a4a11dfa9165c9b880624b7013384b3a19636701781b7f",
+      "bytes": 393
+    },
+    {
+      "retained": "actual-static-entry.stderr",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/maintained-gate2/actual-static-entry.stderr",
+      "sha256": "2789490a32c79f25252f95d94143de5725d886d62c5fa95ed167b9c26ceb662b",
+      "bytes": 1315
+    },
+    {
+      "retained": "stale-input-result.json",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/stale-result2/result.json",
+      "sha256": "c2210b0aace2b631c6972c72a788c243451402a67a369153901c63f365c44702",
+      "bytes": 767
+    },
+    {
+      "retained": "format.json",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/maintained-format.json",
+      "sha256": "127df9b6cd3cf1694e030a025c79d7c5daf3df22eada119c4e32a9bbeb14215d",
+      "bytes": 167
+    },
+    {
+      "retained": "maintained-verification.json",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/maintained-verification2.json",
+      "sha256": "4920cb3ac4714e401f953fab57d587acbc5d9192423e121b368f9329c9ba0b3d",
+      "bytes": 4355
+    },
+    {
+      "retained": "assessment-sources/AllocationPositive.swift",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/sources/AllocationPositive.swift",
+      "sha256": "9f84afe42c236057c0adf46b02758544c79ce8d69e7a5e69bc2decc3a6692280",
+      "bytes": 97
+    },
+    {
+      "retained": "assessment-sources/AllocationNegative.swift",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/sources/AllocationNegative.swift",
+      "sha256": "8da85bc6f8d52bd359e4edec3802e7b6cc42a866e19cdb387d8f810edf3a5609",
+      "bytes": 212
+    },
+    {
+      "retained": "assessment-sources/CounterRouteEntry.swift",
+      "original": ".build/contracts/p08-native-static-performance-annotations1/sources/CounterRouteEntry.swift",
+      "sha256": "c45a877bd32638d9641d0187d2f4a67fbee4c780cabcdf67b9c1384aab8a0cc5",
+      "bytes": 2085
+    }
+  ],
+  "meaning": "Exact compact diagnostics/commands/source control snapshots; no build corpora copied."
+}

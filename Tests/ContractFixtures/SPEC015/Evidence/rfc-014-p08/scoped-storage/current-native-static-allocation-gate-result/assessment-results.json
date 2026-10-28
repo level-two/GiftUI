@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "name": "positive",
+      "exit": 0,
+      "guard_clean": true,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "allocation-negative",
+      "exit": 1,
+      "guard_clean": true,
+      "stdout_bytes": 0,
+      "stderr_bytes": 476,
+      "stderr_sha256": "1c43badff83a37ffa0e72af6946c5db04793f6c072108a4e8dcfd0ef33b96d8d"
+    },
+    {
+      "name": "actual-static-entry",
+      "exit": 1,
+      "guard_clean": true,
+      "stdout_bytes": 0,
+      "stderr_bytes": 1345,
+      "stderr_sha256": "023e1b2240d247f4002e5e49d196cc19c2bea970e26049ab47444c26def14628"
+    }
+  ],
+  "actual_owned_bytes": 1340871538,
+  "deadline_utc": "2026-10-28T17:05:36.719409+00:00",
+  "runtime_executed": false
+}

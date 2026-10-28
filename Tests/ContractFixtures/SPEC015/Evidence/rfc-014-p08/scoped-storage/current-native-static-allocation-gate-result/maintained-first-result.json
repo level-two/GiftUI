@@ -1,0 +1,510 @@
+{
+  "scope": "Compile-only P08 allocation contract; reuse a complete matching Native receipt.",
+  "passed": false,
+  "controls_passed": false,
+  "actual_entry_passed": false,
+  "runtime_executed": false,
+  "commands": [],
+  "checks": [],
+  "reused_receipts": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/result.json",
+      "sha256": "598428b203c7b31e06b3036108d4e0fbc822d1327e0262b844959306fbae5d25"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/result.json",
+      "sha256": "6413f09943a8fa958da68f2096d15213ddc4aa70935992f820c22d9a50087592"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/result.json",
+      "sha256": "6e33bab9b6efc55c727c0f40bc63fb8e868ce88de12899463f5846f0c38ecf71"
+    }
+  ],
+  "reused_modules": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterRuntime.swiftmodule",
+      "sha256": "ea9a0331e0441427315267bc53f99b8e88205361b77cb9dc88a2f22a57fb37f6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUISemanticCore.swiftmodule",
+      "sha256": "d6d5dea23f9638c2becd33edb1007a036a577b668dea3e264320749edf58783a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIDrawing.swiftmodule",
+      "sha256": "c4b45974111fc0c7cbc3f81674b973ede069d248511f3ef6f0551e5827121ff6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeStatic.swiftmodule",
+      "sha256": "f42f044c0dcc74c662e006bf6b4a0bb12f722f6c29e139d0b2a3b60c1aa45418"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUILayout.swiftmodule",
+      "sha256": "0e46ae9a6a1946032bc0aa7ad32f23bed247c4ebba3f0666c155c2d9de8bba0a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeDynamic.swiftmodule",
+      "sha256": "e82227dfc8b92c8be573a34becd3079fff233147f5f823c30c3fd0117c26cbed"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIInteraction.swiftmodule",
+      "sha256": "bf503b936d91cb7bcce3238da15fe19cd3b6bdb0f8098cfc69f84a8d69854247"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterSchema.swiftmodule",
+      "sha256": "0ca47e048d96177f97538d326fb8744ae3084095ac8503898b930dbae0bc4ba0"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIObservableState.swiftmodule",
+      "sha256": "2b47ecbf2220ca5fd732a02e9601cc27e35817c7462c7db97d1b95fc1c8db8cb"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderLowering.swiftmodule",
+      "sha256": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIHostConfiguration.swiftmodule",
+      "sha256": "d672c74375745254d91c70a05e005ffaf35df05c51c72170d6aff925c301d282"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIReferenceTextResources.swiftmodule",
+      "sha256": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUITextResources.swiftmodule",
+      "sha256": "3a002fbde7c5f5e80e8ed7a54f9667fdf8d7a539d680bf22a4d0dddba6e63e5c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeCore.swiftmodule",
+      "sha256": "0d3395643360c48d9a90cb8e0d160a2da43ee0fb97b3f0f3ccc8a0087d9d6a66"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIExecution.swiftmodule",
+      "sha256": "be305f612e79902dfc6e1c15e8556b2277cc8ec7e12a95f26f40c243a7ddb7ec"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterTable.swiftmodule",
+      "sha256": "5a447e5a8b47cc267f20cf553b3e843e7c9bb26974b3a4624f8a972628c48e15"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderCore.swiftmodule",
+      "sha256": "b9e814e54286c6bd238cd62200fb1ba9d4ff8e75084689628a754d039fc71460"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterPresentation.swiftmodule",
+      "sha256": "a8ac243abf300445ad59ff7257018f9b0c73a461a7a95c6b54e3058ec9a354c6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterNativeExclusivity.swiftmodule",
+      "sha256": "eb80b63267f306d4e007a13d86172122a0f436933554ca0c5f1bf9e6f32f779d"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/CyclePresentation.swiftmodule",
+      "sha256": "a53bf776343280f162b813b8b33759def4eadd06a86c0a7d7cfc387809d4bd88"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/CycleSchema.swiftmodule",
+      "sha256": "cfdc62729d488c3d9df0f8c0b029c32b8650a9e7ecbc2b0d0df8f364884eb8b0"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/CycleTable.swiftmodule",
+      "sha256": "ec9a0f40ac6c4f8ae24d421ae93ba4f09d78e975aeae2aa32ea30f570c112bfc"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIDrawing.swiftmodule",
+      "sha256": "c4b45974111fc0c7cbc3f81674b973ede069d248511f3ef6f0551e5827121ff6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIExecution.swiftmodule",
+      "sha256": "be305f612e79902dfc6e1c15e8556b2277cc8ec7e12a95f26f40c243a7ddb7ec"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIInteraction.swiftmodule",
+      "sha256": "bf503b936d91cb7bcce3238da15fe19cd3b6bdb0f8098cfc69f84a8d69854247"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUILayout.swiftmodule",
+      "sha256": "0e46ae9a6a1946032bc0aa7ad32f23bed247c4ebba3f0666c155c2d9de8bba0a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIObservableState.swiftmodule",
+      "sha256": "2b47ecbf2220ca5fd732a02e9601cc27e35817c7462c7db97d1b95fc1c8db8cb"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIReferenceTextResources.swiftmodule",
+      "sha256": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRenderCore.swiftmodule",
+      "sha256": "b9e814e54286c6bd238cd62200fb1ba9d4ff8e75084689628a754d039fc71460"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRenderLowering.swiftmodule",
+      "sha256": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRuntimeCore.swiftmodule",
+      "sha256": "0d3395643360c48d9a90cb8e0d160a2da43ee0fb97b3f0f3ccc8a0087d9d6a66"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRuntimeDynamic.swiftmodule",
+      "sha256": "e82227dfc8b92c8be573a34becd3079fff233147f5f823c30c3fd0117c26cbed"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRuntimeStatic.swiftmodule",
+      "sha256": "f42f044c0dcc74c662e006bf6b4a0bb12f722f6c29e139d0b2a3b60c1aa45418"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUISemanticCore.swiftmodule",
+      "sha256": "d6d5dea23f9638c2becd33edb1007a036a577b668dea3e264320749edf58783a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUITextResources.swiftmodule",
+      "sha256": "3a002fbde7c5f5e80e8ed7a54f9667fdf8d7a539d680bf22a4d0dddba6e63e5c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/P07TargetWorkspace.swiftmodule",
+      "sha256": "9194d640f951f87545d9d3ca759f6b559fb1b78cfbebdeb1555d8f946006333b"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/RuntimeCycleProbe.swiftmodule",
+      "sha256": "1629bb1e269c7dba2fcdc40e6419d8373777d08311858d67c0d140b38d69d5e3"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIHostConfiguration.swiftmodule",
+      "sha256": "d672c74375745254d91c70a05e005ffaf35df05c51c72170d6aff925c301d282"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIDisplayCore.swiftmodule",
+      "sha256": "48a141edee55477ebf6fa2617e1aac66cf054a595c9384c0b5f9ca5d81edd014"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUISurfaceCore.swiftmodule",
+      "sha256": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/RuntimeCycleProbe.swiftmodule",
+      "sha256": "90af010a615d598a773e89fd028eb4df078f651bba074d1a06939ef15f7cb794"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUICapabilities.swiftmodule",
+      "sha256": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/P08ScopedHostProbe.swiftmodule",
+      "sha256": "9170fe636cb37fdfa326777687ba905b0f2673e10549fdfb1ad8d1720366bc07"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIBackendIntegration.swiftmodule",
+      "sha256": "ced85e7082ae50be7163664c39d904e552e4718b934c8d7f23595a78b669ec83"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIFailureCore.swiftmodule",
+      "sha256": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIRasterCore.swiftmodule",
+      "sha256": "c907425f15ddf034389d40c6f1b7672c0e851820894c5c4889c7fbcc22f9e4af"
+    }
+  ],
+  "inputs": {
+    "scripts/contracts/check-spec-015-counter.py": "17d0c7804082a7a5736f71820645e94bd2572efaa492da46158183db4d631d3a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json": "bd11bb9e2b0ea2dab30fe9f1722f92eca410989a0dca381d27b962f792d8d4fc",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-constructor-caller-cycle2-applicability.json": "8396480766091f48efc5697f5bd967517df393f29cb7f7cfcf6046e7868d0ed5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": "2fec41d84cfb72b2035e84a62825326a12e05649d37bcfb1cc5e39170d869bde",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": "db76bf5f5618a3230d7ba436765fe9129b808f4bbee5bfee18659cbf0bb8dac3",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": "0f345c9e20c9b81e9ca9b1e523d04ed61d625fd89b1ca8dcd62da9c453761896",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": "ef593f34bce2f6d36544c559033ba9a7261cb2b513ce8c6feaaaccbea2f5bd60",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": "441edad25b562185db844ec9a2eb76c53335059b6ea04c434d196f65b9c4d243",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": "9dea8f9e607e3599846f64a0dae1f51fc027162a2fe92d6da5868b8375147ead",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "6e66e7e1324cd1fbb1e413f341521e676fb5103d1e38ed57adc6e37a84ce4113",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "292323a7960b1cd405b914325aeed737b683d9e402679e32101b5c5879f2cf73",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "945dd1bce5fdfc43a923d0174ba38a1ea115b84b3034823926dd16cb83316bb7",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": "526b5ae57a80b96139b43d001d45cc1599789a11bc817bf8724086900f9a2331",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "ae4b199c59a751a89145151703e32f9f29da521c0291f3406c4273fb0cde1776",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "681563cb43971e376de8805e33092e5aaff5a67d0fed27097a020b1e5dce0d32",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": "590e0dcbbaa9fc6d40e133780875ba5f961aeee9f03a8a3370fea9260eab9697",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "bb744479e131424967c344791ec76d597416f3b604cc203fa9c25d49551c6ce2",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+    "scripts/contracts/p08_check_collection.py": "4f602899833a848fe74dc60f722660f949a26a543fa4d28132f567eaca17aea1",
+    "scripts/contracts/p08_layout_facts.py": "e71ae7a24764f702fd55e52f5523b3876abfc9357fe22b962c3176a89ae3e905",
+    "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+    "Sources/GiftUIHostConfiguration/HostActivationController.swift": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae",
+    "Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+    "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+    "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "fb89a072235041053cd739b4a65da6c5c67cfe38c47f4d49db3aad86e0f9bdab",
+    "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": "1c529f7ccbd4c59aafa9589b177f0a602079d8588ba0cc1643c60cde41ebe2fe",
+    "Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+    "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+    "Sources/GiftUIHostConfiguration/HostFailureAdapter.swift": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+    "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+    "Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+    "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+    "Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": "3f21154d0b6d6b416ebcacef4932902a72649968969246c601791272f66316f6",
+    "Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+    "Sources/GiftUIHostConfiguration/HostWakePacingController.swift": "ea04fa3fb0c52da2aa8c1719cb68abb229c3d24f6ad3de597527b2f026dede11",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "55466bd192b6e5e1296de66a20ed2bdee97caa69432608b9c0e9436548786650",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04",
+    "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "f9f009e5cda10b527c595b46a216aabbca145ba67968c9f838e1d70cec840906",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "28d375b8f83369cc33e0090ab14609f1058f595ff4d4db2aebcdd3207fb1a7fb",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "0af39b1cb780c37a63106d84f78e708f0405869c7d5085a382dfe57feff91474",
+    "Sources/GiftUISemanticCore/SemanticRecordPayload.swift": "a5000583e2131d12bfdcc99b982462e025bf1eacd6e417449778d2c65630fb6b",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "35a79402b6e69569f54b18933523c2007c4f1f11a54eaa6ed950c4d877340d9a",
+    "Sources/GiftUISemanticCore/SemanticLayoutView.swift": "6fd6c725f82d0526064201f5121a14a91197d141fa338d7c9d0711d7872a0f48",
+    "Sources/GiftUISemanticCore/SemanticRenderView.swift": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+    "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": "e4fabbc84c3c62ceac89b5942f37e49ce6f0b16594424ab533e55267e29d35d0",
+    "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": "051594389e35ff960160d77051ea49fbe756d0d6d5827bd42339702d0f7c513b",
+    "Sources/GiftUITextResources/GiftUITextResources.swift": "b7eb4b8689ddda6077cfc3d0416a422c2207642ab1ab440d72b2c375a9aef3b4",
+    "Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift": "fadbaa0ad0a880800339390d1b3f9f3f151d93fba0e9107d9af24087f025cdce",
+    "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift": "c15131c18872115b83fe63d71247494092d29dfb31bbc05d208d5306572b89f4",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift": "c5cdf30474780eae3f27cec5c8d179bad0eaa5b5fa0a47c71de129e017322f14",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b",
+    "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift": "77313fd03bd41cc977b4f63397d5ec119772c25eb18db48cf3fef81cc95577b8",
+    "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3",
+    "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89",
+    "Sources/GiftUILayout/Layout.swift": "58a8adc56b26a09abdf9106e58dcf92dd5799971e94ccd5513469d12c1d24d5e",
+    "Sources/GiftUILayout/LayoutCounters.swift": "a5ebfd695e74c17574bba7f8de075c3f365d6ae9ca3dfd6266ec114df9157894",
+    "Sources/GiftUILayout/LayoutEngine.swift": "dd70e9816f6a4904dbec00a14b97bc0ba4466ead725f6e27953370bd1756b21a",
+    "Sources/GiftUILayout/LayoutError.swift": "a03c17620f835d6a2afd57c2aadf0b9e2ded17c1b25e0c5d94aa2be29d3a310a",
+    "Sources/GiftUILayout/LayoutGeometry.swift": "5349d9cf4af66e459bedca4f4004b571f2ad54b0727164b0685f1db55d0388ab",
+    "Sources/GiftUILayout/LayoutPublication.swift": "45f23eaf015a2501a061ab7d4d09a0a1a59c16d5a624225a658193f5486a58fb",
+    "Sources/GiftUILayout/LayoutResultSink.swift": "cbff5b124b0be92575091994c2ceb452cf504745021027bfff5c25be82adac13",
+    "Sources/GiftUILayout/LayoutSemanticValidation.swift": "02972a30aae2b9be0f97e3b0eb0782aba063b17eb3b643cfdc16af96574601ae",
+    "Sources/GiftUILayout/LayoutValues.swift": "29d40d755afff76ff779ca6b06a53c754fd0cd147ab6f551d62f6b2b6047c1c5",
+    "Sources/GiftUILayout/LayoutWorkspace.swift": "ebf9307a6123fd7e52e96c9a8caf0f5dcca20db12649d1243155c6124acd4e05",
+    "Sources/GiftUILayout/ResolvedRenderLayoutView.swift": "0b5bd48b5a34b20d2afc43a1f4e26e23242d72645e41cdc88543d6f7d532c29f",
+    "Sources/GiftUIRenderCore/DrawingOperationSink.swift": "4e333bec72c92fb2ab02a82c8f1381741f11cb2cc55a450434d97c968a8e2bc2",
+    "Sources/GiftUIRenderCore/RenderOperationSink.swift": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+    "Sources/GiftUIRenderCore/RenderRecordingSink.swift": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2",
+    "Sources/GiftUIRenderCore/RenderValues.swift": "760cb1dc1ed7144da8a181261d1e245c8f2dc07c3af7a8dd1e5721b4943a3a4c",
+    "Sources/GiftUIExecution/AdmissionValues.swift": "bb6920c6834232baf3047a47ebc5b353476cff818499246f76c37cf7fa82a696",
+    "Sources/GiftUIExecution/ExecutionAdmissionController.swift": "0aea5ab996e95104ce476aeb7188cc6bfde37d31f6db51b5ee10ae241524d4e2",
+    "Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift": "7a88abcca9f437db94ea1f647ae8fd5ec3dbed82bd629b739ba3446ef8cf67d0",
+    "Sources/GiftUIExecution/ExecutionAdmissionSealer.swift": "54f3a7809c277a37cf8acfa931d62086ebc0ae1d3e77839ab6dcc28085885345",
+    "Sources/GiftUIExecution/ExecutionMutationBatch.swift": "a0464225588b3101249112a88f404a3258ccb87e8d9eea5e56671a4975501567",
+    "Sources/GiftUIExecution/ExecutionOpportunityRunner.swift": "d28b28c94e179c58805de37cc1a42736541cc26a7ba5bcb187571b8ad8e15a9e",
+    "Sources/GiftUIExecution/ExecutionPhaseMachine.swift": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34",
+    "Sources/GiftUIExecution/ExecutionValues.swift": "7e67ecb69e8f1fdf82a0aca819f4c77253cfb9560b0047de83f81b97194f3252",
+    "Sources/GiftUIExecution/ExecutionWakeAccumulator.swift": "856db20ee149c555a4d0c33731be4d69980486033592181187d8465b60ecf2d2",
+    "Sources/GiftUIExecution/FrameHandoffValues.swift": "6936c7ee158fadd3241a6b2cac73e668b4b1a5bd5f9ec593932b9e4f967e0ac7",
+    "Sources/GiftUIExecution/FrameOfferNormalization.swift": "761740fdf6fb11cb54a52c2817d006ec75a9322e2c9a4351952f893711698a33",
+    "Sources/GiftUIExecution/IdentityAllocators.swift": "8f9bab781054456d49e210b3700200f10abc7a47c1a2f85e3de6013d9f6a3e35",
+    "Sources/GiftUIExecution/InputSourceSequenceState.swift": "b69a01de3871a80fa7b9f556bc7d93f12945c9edcc6569d00faa3569d963c5b3",
+    "Sources/GiftUIExecution/ObservableTargetGeneration.swift": "e37666935262923eb79378f29436756f79844a10d369c3ad8661ff38c17d6483",
+    "Sources/GiftUIExecution/PointerActionCapture.swift": "a88eec3e2176873a65c577ef6e47cf41873a8b9d8124250c5e45d8a83c53c605",
+    "Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift": "66b7d07d657785ba0ebf9fbc46c3b1d983b715cf45d4a7dd27d46b856fecff23",
+    "Sources/GiftUIExecution/RecordingCycleCoordinator.swift": "ccfffb285dde8e73132ddba6a32fab791eb488b673b316c09b397d10d292a620",
+    "Sources/GiftUIExecution/RecordingCycleFinalizer.swift": "bc9318cd92c095b9473878c575996b8b0b1e500faa3cbf121df1ba774673ffc3",
+    "Sources/GiftUIExecution/RecordingDerivationRecovery.swift": "e71108078104eb3f294bad9231ee819c3ec77cf11b0c059d3d670a9c95fbef35",
+    "Sources/GiftUIExecution/RecordingDerivationTransaction.swift": "380f3d5ec84f4ab6e45aa1e6054677b3080105fb7c445f79cc3ee6b9558e5bca",
+    "Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift": "c2f005577a0a33d1d46c74d77836ec5ef03857d5716523d8cf6f4ef07a32fb8f",
+    "Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift": "2cf669bd232c7310fc9650d33ccc242fc717b1071877d8a1b2dcbce32ee7e7c8",
+    "Sources/GiftUIExecution/RecordingFrameEndpoint.swift": "43b75fbc4d7ff5a09db83693f6e557f7256bf62960ed3ab2f4c37f4caca5f849",
+    "Sources/GiftUIExecution/RecordingMutationBatch.swift": "229c26f04e85f737a0c6f41d7bbd76eb9c33ff0955bfa878d70bcf8f2984ff39",
+    "Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift": "45ce481da6c05b8509f596d6e2a9eac9961c261afe6cc6401b6035772c9370ed",
+    "Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift": "c163ff5b21c6a9f920b4b70c0d150403ccd2900c20c212be04d2985be90c53d0",
+    "Sources/GiftUIExecution/RunCycleValues.swift": "5d677ef57ea144dba744b844123eda718bed46353128520650606c30f0fc478a",
+    "Sources/GiftUIExecution/WakeValues.swift": "8457b076dafb1cc26bddf6683a55ed1e906242c5c23883a6e8b20bcd50bf501d",
+    "Sources/GiftUIInteraction/EffectiveActionEnabledState.swift": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+    "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": "ee7d2b1db3604b904be3e3733c5eab4edf079fc7401d93a79035bb782fb82b8f",
+    "Sources/GiftUIInteraction/InteractionFailurePrecedence.swift": "78b73565a87d7800ff03f573b42a3ca117310167319f4ca77d19f2d94ed0a08c",
+    "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": "0d7eee46b5f6a76b7e6efe71de2ee6e4b79512bdf845e5d9fad692a7e8d1f12c",
+    "Sources/GiftUIInteraction/InteractionState.swift": "f2b94df5a83faaf09a3b9ef416111ace6783f88e9798942c418ac459ef5882ca",
+    "Sources/GiftUIInteraction/InteractionStorage.swift": "1cb6c6bb221582a09ac5c215418732b5f6fd38e278819aeb9e3b3783a31ba1db",
+    "Sources/GiftUIInteraction/InteractionValues.swift": "7024e145253cea319955948369399b8cb999d59cee59e69d5ed308e3c7fbde82",
+    "Sources/GiftUIObservableState/ObservableStateProtocols.swift": "a192efc2b7be42a9c1950f11ec14a9bdf17dfe903c488c253dab9064e7b42629",
+    "Sources/GiftUIObservableState/ObservableStateValues.swift": "5641029d4a41ba7781e3b657859113cf9bcc75a233cdbfb246ae5209ecddc0ae",
+    "Sources/GiftUIObservableState/ObservableModelIdentity.swift": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832",
+    "Sources/GiftUIObservableState/ObservableModelTicket.swift": "2b14c9896843adb2d48475a583e3442767d8b173ef2609533aeb7d582e55acbd",
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": "61f3dec08d89c44f71866befdd763dfa8206b27b73f3aecf4ee9106e093733e6",
+    "Sources/GiftUIObservableState/ObservableModelMutation.swift": "d4edf05c126fa2ab43cb5cc073698fdaccb35c16dbd24f9282bef9ba3d9bb482",
+    "Sources/GiftUIObservableState/ObservableStateModel.swift": "f6add18fb5d078aa3fd749859a3421d86fe31e8fef0047aed34e90f39b46407e",
+    "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": "929627a8cc91962370a64e5558326582e83b0a4ef23e579b990fa93879e14252",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205",
+    "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": "55067eca3c7cf1c64a5f50d715808e859565ee9c36d426fb6ca871356f6a662b",
+    "Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+    "Sources/GiftUIRenderLowering/RenderExtensions.swift": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+    "Sources/GiftUIRenderLowering/RenderPreflight.swift": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+    "Sources/GiftUIRenderLowering/RenderProducer.swift": "0e25b626df694b56c95d6c444db1fbf40e45afd7c65c4b5b9253fe5a15226281",
+    "Sources/GiftUIRenderLowering/RenderProductionValues.swift": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+    "Sources/GiftUIRenderLowering/RenderStreaming.swift": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+    "Sources/GiftUIDrawing/CanvasRenderProducer.swift": "c98ac6df32afa04088b6958ed8f664db91dd111cd9d798b626c60adbed7ddf69",
+    "Sources/GiftUIDrawing/CanvasInvocationSource.swift": "d4bf788e28878af88e9b8247f5b92a5d69c714b02b232e39ed3e80a0ad09b539",
+    "Sources/GiftUIDrawing/CanvasPlanProducer.swift": "1e1f16e886d672fe7bce48d469aa9faaf67ab3b2612c06a86c25feac11d9f436",
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": "ce95e9f298dbd3fbfd42bfdf7d689b5e81db40390d60e6ca9eff3a48e18b0dfc",
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": "b41099370167917a51190f473ad0a70626639601de773991450afee6291f3ec7",
+    "Sources/GiftUIDrawing/DrawingLimits.swift": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1",
+    "Sources/GiftUIDrawing/DrawingPlan.swift": "d6ea74257a8d24652392eb05fb0361907a3aa5b60a4f727d9ab11a7bcb9357ad",
+    "Sources/GiftUIDrawing/DrawingValues.swift": "b7f6e25dd6cc4830377134a4c76c24097c46c326136710a2e6cfe9b74d5ac842",
+    "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift": "cf495d6f53b2d92ca7543dd3cb78eaeb4774bad57a81974c3fbece650f59111f",
+    "Sources/GiftUIDrawing/PathConstruction.swift": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+    "Sources/GiftUIDrawing/StrokeSnapshot.swift": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": "30340b08489e83bc909096090e87f7a2b478b7a5b11b1811a458a0a30102d544",
+    "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift": "cdb4150cf1fd3d8f7ee6c4a320d93ce4d6d9c75e00946ffb4d27e7c1904683fd",
+    "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift": "0f7fa6459c15109beb85c66e931cc77b5c7528e42ba774945c46ba32ecda5a66",
+    "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": "0ed77324a09b25fcc683a61ef659abbc1c32709ae36f1e43ffaa54433fd89675",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": "570e74dc2c57f3e05ae9bdb7a845e2cbf6066be3ea9a3cb5eaa0c0f6fc9b5d36",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+    "Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+    "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": "bedb5fbc642516740f4804822c6b67da1ae0d2fe3d50def3068a61d5a0367d92",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": "bf5551a5b012d8c1f8d9b3f3e79dc0f223005925998eedd26be14ef7c7920d73",
+    "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": "f2ff73faa06c4a41ace3510da6ef7039f6b6de19024c4282a7e5f1ad67b5b828",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+    "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+    "Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+    "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+    "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": "b64482fef6c41c52a07b561f14911068de2eff984870e7e1f93f02bf52def865",
+    "Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+    "Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+    "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+    "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+    "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift": "f0917fd7f0f2f4c4a908ae20c498f42f5ff7d598b339ec68604b3ce67b73619e",
+    "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+    "Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+    "Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+    "Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+    "Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517",
+    ".build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/Cycle.swift": "2459201faffadccb0926738bb6d0ffc90a64a47b95bee7dd3111861a0f070f62",
+    ".build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/CycleSchema.swift": "a321422f043de457b284604418dd4cb02e24b320e127fecace79040e82530a3f",
+    ".build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/CycleTable.swift": "b47fd1fe961a36a07937c8c8b20d2bedcf57eb00b2421c6a7b7b6dccd003179a",
+    ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814",
+    "Package.swift": "56ec87fe0f47ed4cd93900f4a9d6ee46db079e7ecb55979e07658c29812797bd",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift": "d64b167157bcae57d20e1bae17c17e5c9d0e2fb554e63f150483366717ca93b2",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift": "2252d5740bed6d709574031d6862739050b340424192d0a9b8d17a2d6d2d7d53",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift": "a6df86e5431246dc0c967375043db24e43b23355c024ac0de73caa8a32c497b9",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutScopeCodec.swift": "e7bd705848cda2f0b14ae61599ae86202acaa9fb6d68cfc43a81893d0d212592",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutTextCodec.swift": "d95f7fb97b8db46781d3b798b82caa33c6faa6bd3e4e97594f9c10806d6f4bfe",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutWorkspace.swift": "2b3fed33ccfeedcb2d25780761089de408080fc328ee9909eb5f2940aa589918",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift": "2e299cbed14b152ba41e46e0ac299d1d8bf5646205e452af0bc278712e62002a",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFRenderWorkspace.swift": "db981d8dbba39b10ff988eecc4dee43d90c0f92fd14db7939ffffe071daedaab",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFResolvedLayout.swift": "c693cff0f81714b57917da5bcf51ae9fe4ec1b81a2d0faef6f7c0782fb6bbf68",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift": "35d04114cbb9dc4a8c47c81eb9f1ad117ec0f876ba7d8ae7453990d0040470fb",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/Cycle.schema.json": "d9740f362b4330822777f498fad97a604e191ac985253cbf6123b8b4132f74bb",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/Cycle.swift": "1d55edcc8b865f76651557d90ebfa5e24561b55bc62f4c9807099e8d1bddaaa3",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift": "2524e1888c75e71e4ecd931a5fccd9468da764e5b17fd48db3d7171df93aeb0a",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift": "bba3ab7fd8505f625f7dc0a2ca6c9dca195de8205e879a0debaa73261295942a",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleGeometry.swift": "36e6bd5c4895403e7c5f0203337a88cfa61575beb1de04fba876654ec1464a1e",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleModel.swift": "74df0a4fb5fe981b0850414fe3ed9e82f6b43173e89efa4967622d231910c1c9",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift": "1e0cc44d44b7f4945625ceaec5160238eff026bca50ea5af8e78cf215663d9ab",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift": "714a758be180f9dc066b874ed94a1f773e12b6d4040bc96746cf64e02ac81588",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift": "14fa807f7bae06161911cd7e14d9eeae4e5dcd5fe617541fa9fc09e26db8d600",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleRenderProbe.swift": "fcac99a52000020b36e011e7c6324e06f106f5c7729ecb0db0dacc732a937edc",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift": "311ce74277c3ba3c6e253755e2223b4874703057792687a282fa8e1e107845f2",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStaticDrawing.swift": "9b5b3191939943958e96eb5d9be15e3ffa29ef74fbc4b204db25a3ee16cc8239",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift": "91b46620a34dd5b329dec0ffec3535da9e933a3105e552e94c3e895f75b1af70",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift": "5eae8a4064c30601de2bdc747113146eeb2cf2a71fb9f38dc114e1cd91f3db55",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift": "0cb97992159332108a1aab473309787d64560cadceb72e700f6e8d04e2c73ff7",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift": "0176021907686264e62b4e97e86507ec280d574406045ce6c63ee6e7c8dd8817",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift": "970f891c02e96987ab0718dc9203086e58640963aa06470a6f66d477994c1c16",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift": "f879327eaebbfee08829868fbbd72b5a8f8f1275add9a3494ccd8a8b47044da0",
+    "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift": "d06bdfe40d8d081d3767fe7ae116546210ec2cc9860965e98d813117f3ce5335",
+    "scripts/contracts/check-spec-013-runtime-cycle.py": "119fc1ba21ed0764210e3415c8956b6fa210a59136e8b272f020732d94e5edad",
+    "scripts/contracts/driver-registry.tsv": "c66a36bd9378d0415bf2a3effb43bc2e03070d9b8b494d11d5ab798a0af1fb71",
+    "scripts/contracts/run-spec-013.sh": "671ea0535cbad14024e34778a81c4ba9b41791ad05096f46579495d464ad752b",
+    "scripts/contracts/check-spec-015-schema4.py": "c248f4131bcc84196833ea0eaaabf5f40e3742cb9e7c7dd10dcdf4a7ddf67e6b",
+    "scripts/contracts/generate-spec-015-workload.rb": "b33b2a7dc8cecac90b4cbc8773769336a252b76b60520a2bbffadc8182adad2f",
+    "Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv": "236501e51d2cd63762df8f7ecf23c53aed62da3294137343077b2e2ac4a2bd7c",
+    "Tests/ContractFixtures/SPEC015/Generated/macos_dynamic.workload.generated.tsv": "648173dc4d39803c51429e2818297ca33c948b91eb69223982321ffec80117a9",
+    "Tests/ContractFixtures/SPEC015/Generated/macos_static.workload.generated.tsv": "b014f3ce29669852dadd7fb81c7d1ce1ccb856371994ad6b91108ddd591c725a",
+    "Tests/ContractFixtures/SPEC015/Generated/nrf52840_static.workload.generated.tsv": "324afd3bbe523c2e282b6bac9b9740b8ea4913a2a58233b27317ac0054908109",
+    "Tests/ContractFixtures/SPEC015/Generated/raspberry_pi_dynamic.workload.generated.tsv": "9e9178898f15e644549fecef685e9fbfa33e3823c61139520908a30771627407",
+    "Tests/ContractFixtures/SPEC015/Generated/runtime-limit-leaves.generated.tsv": "e4a5ff48727bf0fcf9a2b2ccd0563b26be357d4e06ca2ca922ac4363d155f2a3",
+    "Sources/GiftUICapabilities/GiftUICapabilities.swift": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884",
+    "Sources/GiftUIFailureCore/GiftUIFailureCore.swift": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7",
+    "Sources/GiftUISurfaceCore/RasterSurface.swift": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+    "Sources/GiftUISurfaceCore/SurfaceValues.swift": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c",
+    "Sources/GiftUIDisplayCore/DisplayContracts.swift": "1fa223e3bc58565b6e1ad25db6bd4fcdfae21f7d6934b5b5d25d757fe165e3a8",
+    "Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift": "6a53a85962e5a821e5d81c32a580f453f6332feceaf31997f8fc04f2d9d548cf",
+    "Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift": "449a1be1050367462f67ab32a98553f6c573a79f1a79a6a26be98e6df06ac5e1",
+    "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift": "db5f975e9c5984592606342eb212b206cc3950a466e50e4b018ab6741f720cdb",
+    "Sources/GiftUIRasterCore/RGB565TileWorkspace.swift": "e7f8fdfe6b23a33aeaad656ffc0ad745d14026dd3e55c8a1d069c1cb60915ce4",
+    "Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift": "07daa8c1ac38863bdbe0340061b8c7de703e912a8990155d91560d07fa88dbb6",
+    "Sources/GiftUIRasterCore/RasterFillCoverage.swift": "e091a6fde4fdd9e0aaa01d15a0dccc7650039d654b4fffe36caa5e686460ace8",
+    "Sources/GiftUIRasterCore/RasterFrameSink.swift": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a",
+    "Sources/GiftUIRasterCore/RasterFrameWork.swift": "f2433ae30e9ed44bc16e2f1faca715f4c6e1608c7a13545e426e76b72bde5090",
+    "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift": "29cedc4f49e27d990cd076d51f65ff2dae5b7ff6932aef5a9dbba0c014a1bbfc",
+    "Sources/GiftUIRasterCore/RasterPayloadLimits.swift": "b7d21c2ab3aacbb953f6e9b43f5d8850af6638087aaf8c68e0b991779b9c322b",
+    "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+    "Sources/GiftUIRasterCore/RasterWorkTracker.swift": "16f7c34ef32538f22b340163c402f551e3fd875b66f2e074d8049d6f51d6468f",
+    "Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift": "25ceb74e6fdea87403ae112685960394adcd56012ad7366ec870b0b6217436af",
+    "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+    "Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5",
+    "Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765",
+    "Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+    "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754",
+    "Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift": "71185f98e32afd8353c6787c209ff671ef277e013df2ad11465ddf991b59d1e4",
+    "Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift": "37bcf7159a5263b154e76ee84bd6d5592ca5903917b27614f30eeedc99c667e2",
+    "Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift": "0dd3524e69afc0f87cc9b563f395d8fc46dd09d5a40a41072670bec032fb029e",
+    "Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift": "8b5b0a273bca73176816366ffdc6d917ef71fe3bebc797113722988b4604579b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinOwner.swift": "67608f479c1e2207fa92f833964ee6ab66e93beac1c6ce7cb117b915f1ac87c8",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinReport.swift": "6ebcdc1baa67315f2ba7388f1f5931be892449f7922bbd8fc23bd37fe6930a60",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinProbe.swift": "df3ad13afa02c412085fc0b904da7f49a3aa1c70b1d8a9e168bac9a7e6d834bf",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCopyNegative.swift": "201e0810ec3f110c7995080e35dff3b9d8f4d8becea7a0a930fce6edfdafa961",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCallbackNegative.swift": "1a22df14e073390f7eb59895b7089620c591d0589580aadfc7a2c9a2f92a1a58",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinConstantCallbackNegative.swift": "ea195e3466e0201f2b33b1ea21d1ae181963ad3817792051bc431cb76f08e69c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinBackingNegative.swift": "f64f97f67ba272e1f4c59aa037821070412007c1594bd83a10ae782d5f3cbb8d",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift": "58000584e17f70ed99aa60d846ea0a2c9a64745df401bf236dda0ad23810a0a5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Schema4Probe.swift": "a916ea010fa343920ba7146e3de247bba9eee5f56f5b66b6181c18a820db4fde",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkloadProbe.swift": "f93648eb2583b8c30ef1c027982e3547586cf46bf8719447c37f7f46f3adb71e"
+  },
+  "candidate_source_deltas": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "baseline_sha256": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+      "current_sha256": "bb744479e131424967c344791ec76d597416f3b604cc203fa9c25d49551c6ce2",
+      "freshly_compiled": true,
+      "old_functional_pass_transferred": false
+    }
+  ],
+  "baseline_role": "Trusted recipe and reused dependencies; no old functional PASS transfers to candidate edits.",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "annotation": "@_noAllocation",
+  "checker_flag": "-experimental-performance-annotations",
+  "error": "'.build/contracts/p08-counter-8erdhh4s/Counter.swift'"
+}

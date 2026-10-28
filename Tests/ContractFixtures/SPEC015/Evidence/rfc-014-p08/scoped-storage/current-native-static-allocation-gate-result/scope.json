@@ -1,0 +1,146 @@
+{
+  "status": "FINAL_FINITE_ENFORCEMENT_ACCEPTED_PRODUCT_GATE_FAIL",
+  "rows": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/AllocationGate/AllocationNegative.swift",
+      "bytes": 237,
+      "sha256": "ffd2a640fe6f2816997983d42a648f1144d18434b8db47ad165ca9d24b7fffe6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/AllocationGate/NoAllocationPositive.swift",
+      "bytes": 103,
+      "sha256": "b0e81724895a91a59d94f72db18a0b5aac75c4299ca7f9c17d56b6695667c22d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/README.md",
+      "bytes": 3090,
+      "sha256": "f0f932b4373cde3bea62b5936e3b96808ba7be956b2239cc81257ed320998024"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/actual-static-entry.stderr",
+      "bytes": 1315,
+      "sha256": "2789490a32c79f25252f95d94143de5725d886d62c5fa95ed167b9c26ceb662b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/allocation-negative.stderr",
+      "bytes": 393,
+      "sha256": "6d2edcdccb7586cfd0a4a11dfa9165c9b880624b7013384b3a19636701781b7f"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/assessment-entry.stderr",
+      "bytes": 1345,
+      "sha256": "023e1b2240d247f4002e5e49d196cc19c2bea970e26049ab47444c26def14628"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/assessment-negative.stderr",
+      "bytes": 476,
+      "sha256": "1c43badff83a37ffa0e72af6946c5db04793f6c072108a4e8dcfd0ef33b96d8d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/assessment-plan.json",
+      "bytes": 19874,
+      "sha256": "d70ada4fd7eb2d634fb919abd82ef2c0be4ab35a3eab386dbab344290cd89427"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/assessment-results.json",
+      "bytes": 834,
+      "sha256": "3e95f2d3512ed26f4f7501ac2394cf896da6df23a204f4f4328f820a8f11b5d6"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/assessment-sources/AllocationNegative.swift",
+      "bytes": 212,
+      "sha256": "8da85bc6f8d52bd359e4edec3802e7b6cc42a866e19cdb387d8f810edf3a5609"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/assessment-sources/AllocationPositive.swift",
+      "bytes": 97,
+      "sha256": "9f84afe42c236057c0adf46b02758544c79ce8d69e7a5e69bc2decc3a6692280"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/assessment-sources/CounterRouteEntry.swift",
+      "bytes": 2085,
+      "sha256": "c45a877bd32638d9641d0187d2f4a67fbee4c780cabcdf67b9c1384aab8a0cc5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/final-review.md",
+      "bytes": 3114,
+      "sha256": "b9018217c38c880ddaa1caff8576002eb494bd4a2ba5bbaf9e5dead5aa162506"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/format.json",
+      "bytes": 167,
+      "sha256": "127df9b6cd3cf1694e030a025c79d7c5daf3df22eada119c4e32a9bbeb14215d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/maintained-before-generated-artifact-fix.py",
+      "bytes": 9988,
+      "sha256": "bc63469beef28906979671689bc179f51ac702527c43f3a6a266d7fa1773ea21"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/maintained-first-result.json",
+      "bytes": 51177,
+      "sha256": "d11ee0899cd5c1bbee0ddc5384fc44098bc95af7f9696402c72923f52a463242"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/maintained-result.json",
+      "bytes": 67332,
+      "sha256": "221786776df2c03eef4b81d9ef18ed89dfe311c56c7a044ac35437fe89c88155"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/maintained-verification.json",
+      "bytes": 4355,
+      "sha256": "4920cb3ac4714e401f953fab57d587acbc5d9192423e121b368f9329c9ba0b3d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/positive.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/preservation.json",
+      "bytes": 4553,
+      "sha256": "94b6a4489594a1e9f89d5a5a3cf10eec08b59987ac86d1cb80948afeea5758a7"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/result.json",
+      "bytes": 2693,
+      "sha256": "d8ab86912985bbf5debeb3434d02ed20296579c98284375b588fecc85847eb68"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/source-freeze.json",
+      "bytes": 1466,
+      "sha256": "2f27b8f1f427672c4bd911177093f1c72b2f2b9c29af444af7a23dd3bea047db"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/stale-input-result.json",
+      "bytes": 767,
+      "sha256": "c2210b0aace2b631c6972c72a788c243451402a67a369153901c63f365c44702"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "bytes": 2127,
+      "sha256": "bb744479e131424967c344791ec76d597416f3b604cc203fa9c25d49551c6ce2"
+    },
+    {
+      "path": "docs/implementation-designs/spec-013-storage-audit-and-overlay-ownership.md",
+      "bytes": 14502,
+      "sha256": "1c14fd5a75a0bc89e1f4aa677af1bc7283c5c504c78c6244c459ec50d2198829"
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-counter-allocation.py",
+      "bytes": 10534,
+      "sha256": "a622e5dd70b0dd75cbdf5201908572c454bf790534af295cce17a0ff2dce5e5d"
+    }
+  ],
+  "self_handling": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/scope.json",
+    "included_in_stage_list": true,
+    "hash_omitted": "No self-referential SHA; every other selected file is hashed."
+  },
+  "scope": "Four implementation files, root-owned existing design note and exact small diagnostic/control/source-preservation packet. No binary/cache/build corpus/notebook/imported-library fix.",
+  "source_freeze_sha256": "2f27b8f1f427672c4bd911177093f1c72b2f2b9c29af444af7a23dd3bea047db",
+  "final_review_sha256": "b9018217c38c880ddaa1caff8576002eb494bd4a2ba5bbaf9e5dead5aa162506",
+  "local_dependencies": "Accepted full Counter and matching prerequisites, generated modules, pinned Swift6.4/SDK/macro files named by maintained-result.json remain local reproducibility inputs.",
+  "result": "Controls and stale-input refusal verify enforcement; actual source-root compile is nonzero. No resource/noLocks/stack/provider/timing/globalP08 safety PASS.",
+  "selected_rows_bytes": 202836
+}

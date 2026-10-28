@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-12
-updated: 2026-10-11
+updated: 2026-10-28
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -66,6 +66,74 @@ fault outcomes. Focused index evidence includes foreign owner/bank/revision,
 out-of-range ordinal, duplicate and first-excess rejection, reset/reuse and
 constant indexed lookup work. Existing controls remain historical evidence; no approval or
 conformance transition is implied by this note.
+
+## Compiler-enforced resource discipline — 2026-10-28
+
+The maintainer requested compiler-enforced resource rules before further
+allocation repairs and migration. This is an implementation and validation
+direction under SPEC-013's existing zero-allocation contract, not a new
+resource allowance or a substitute for P08 exit. P09 Analyzer migration still
+follows that exit. Apply the following discipline to the migrated realizations:
+
+- Give each storage owner explicit capacity, backing, initialization and release
+  responsibilities. Use `~Copyable` where duplication is invalid, and preserve
+  `borrowing`/`consuming` contracts. Noncopyability does not promise an unmoved
+  address or prohibit compiler-generated memory moves.
+- Express borrowed access with the existing nonescapable types and lifetime
+  dependencies. Prefer bounded spans/references when they express the actual
+  lifetime, without changing accepted APIs merely to adopt newer syntax.
+  Pointer-backed implementations still need their pointee/backing relationship
+  established; a wrapper alone does not establish it.
+- Fixed inline elements are part of their owner. Neither a struct nor an
+  `InlineArray` promises stack placement, and inline elements may themselves
+  own allocating values. Scoped temporary allocation is not a stack guarantee.
+- Put allocation diagnostics at the actual Static boundary, including charged
+  backing setup, refusal/error paths and destruction. Compile with the pinned
+  Swift 6.4 performance-annotation flag and retain positive and allocating
+  negative controls. A compiler rejection is a failed gate, not a successful
+  allocation proof. Do not warm caches first, omit setup, suppress diagnostics,
+  or add unchecked effect claims to obtain a pass.
+- Preserve explicit finalization and `defer` cleanup where release ordering is
+  required. Incidental ARC last-reference timing is not the cleanup contract.
+
+The compiler's [`@_noAllocation` and `@_noLocks` reference](https://github.com/swiftlang/swift/blob/main/docs/ReferenceGuides/UnderscoredAttributes.md#_noallocation-_nolocks)
+describes diagnostic checks for allocation/locking runtime effects. These are
+unstable attributes, so the compiler identity, optimization mode and diagnostic
+controls are part of the gate. `@_noLocks` implies allocation checking but is a
+stronger restriction; it is not imposed on every boundary by this direction.
+Embedded `-no-allocations` is a separate target check, not an inference from
+ordinary Embedded mode or a native annotated build.
+
+The compile-only [allocation gate](../../scripts/contracts/check-spec-015-counter-allocation.py)
+selects the conditional annotation on the real Counter entry and checks the
+positive/negative controls before compiling that entry. Invoke it with
+`--counter-build <complete-native-static-counter-build>`; use the existing
+bounded validation guard. The passed build supplies the recipe and authenticated
+dependencies, not a functional pass for a changed candidate. Freshly compiled
+Counter source changes are recorded separately. This first gate consumes the
+dependency set recorded by that complete build; it does not yet accept separate
+replacement-prerequisite arguments. Changed reused dependencies are refused,
+so the check cannot yet validate arbitrary library edits before a new matching
+provenance set is available. It does not itself run the full suite.
+
+The [current gate result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-allocation-gate-result/result.json)
+preserves the controls, exact commands and full diagnostic. The first isolated
+compile of the current complete
+`p08CounterStaticResourceEntryV1` rejects the graph validation call through
+`p08CounterGraph` and `p08CheckGraphDefinition` to
+`HostComponentGraphValidation.validate(CounterHostGraph())`: generic calls can
+cause metadata allocation or locks. The harmless control passes and the
+allocating control rejects. This establishes useful diagnostic coverage of the
+real root; it establishes neither an observed allocation nor inspection of
+every later call after the reported blocker. The maintained gate must keep
+that unresolved result visible until a contract-preserving correction passes.
+
+Keep the remaining checks focused on properties this gate does not establish:
+actual linked foreign/provider and indirect-call effects, first-use state,
+complete stack including interrupts, RAM/flash and linker placement, target ABI,
+and execution time. A native compiler pass alone does not discharge these or
+replace ownership, refusal, lifetime, behavior and Dynamic controls. Existing
+evidence remains reusable only while its inputs and applicability remain valid.
 
 ## Purpose and Boundary
 

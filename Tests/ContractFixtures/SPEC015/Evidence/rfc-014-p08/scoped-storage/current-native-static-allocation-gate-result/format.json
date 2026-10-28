@@ -1,0 +1,13 @@
+{
+  "checks": [
+    {
+      "name": "format",
+      "exit": 0
+    },
+    {
+      "name": "lint",
+      "exit": 0
+    }
+  ],
+  "unrelated_swift_diff_unchanged": true
+}

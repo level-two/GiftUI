@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-performance-annotations1/sources/AllocationNegative.swift:4:65: error: Using type 'AllocationBox' can cause metadata allocation or locks
+2 | @_noAllocation
+3 | @inline(never)
+4 | public func allocationNegative(_ input: Int) -> AllocationBox { AllocationBox(input) }
+  |                                                                 `- error: Using type 'AllocationBox' can cause metadata allocation or locks
+5 | 

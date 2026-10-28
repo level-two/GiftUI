@@ -48,6 +48,9 @@ package func p08CounterRoute(write: CounterTiledPixelWrite? = nil, backing: Unsa
 #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
 // Resource recipe v1 maps the original route, scoped-storage and host roots to
 // this complete Static workload. The existing mixed functional route is intact.
+#if GIFTUI_COUNTER_ALLOCATION_GATE
+@_noAllocation
+#endif
 package func p08CounterStaticResourceEntryV1() -> Int {
     p08CounterGraph() + counterExerciseStaticScopedStorage() + p08CounterHost()
 }

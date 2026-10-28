@@ -1,0 +1,33 @@
+{
+  "files": [
+    {
+      "path": "scripts/contracts/check-spec-015-counter-allocation.py",
+      "sha256": "a622e5dd70b0dd75cbdf5201908572c454bf790534af295cce17a0ff2dce5e5d",
+      "bytes": 10534
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "sha256": "bb744479e131424967c344791ec76d597416f3b604cc203fa9c25d49551c6ce2",
+      "bytes": 2127
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/AllocationGate/NoAllocationPositive.swift",
+      "sha256": "b0e81724895a91a59d94f72db18a0b5aac75c4299ca7f9c17d56b6695667c22d",
+      "bytes": 103
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/AllocationGate/AllocationNegative.swift",
+      "sha256": "ffd2a640fe6f2816997983d42a648f1144d18434b8db47ad165ca9d24b7fffe6",
+      "bytes": 237
+    },
+    {
+      "path": "docs/implementation-designs/spec-013-storage-audit-and-overlay-ownership.md",
+      "sha256": "1c14fd5a75a0bc89e1f4aa677af1bc7283c5c504c78c6244c459ec50d2198829",
+      "bytes": 14502
+    }
+  ],
+  "baseline_off_route_sha256": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+  "baseline_receipt_route_sha256": "cb805815fc84393d2ee17af68b28006334d24f286f6f384e6410decd57d7641d",
+  "baseline_off_exact_equal": true,
+  "no_functional_rerun": "Conditional annotation absent in ordinary recipe; exact original source bytes reproduced after removing only three annotation lines. No new functional PASS claimed."
+}

@@ -1,0 +1,22 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:3070:5: error: generic function calls can cause metadata allocation or locks
+3046 | #if !hasFeature(Embedded)
+3047 | package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
+3048 |     p08CheckGraphDefinition()
+     |     `- note: called from here
+3049 |     var modelOwners = ObservableModelOwnerNamespace()
+3050 |     var semanticOwners = SemanticRecordOwnerNamespace()
+     :
+3068 |         precondition(record.dependencies.rawValue == expectedMasks[Int(index)])
+3069 |     }
+3070 |     precondition(HostComponentGraphValidation.validate(CounterHostGraph()) == nil)
+     |     `- error: generic function calls can cause metadata allocation or locks
+3071 |     precondition(CounterHostGraph().record(at: 18) == nil)
+3072 |     for mode: UInt8 in 0...7 { precondition(HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode)) != nil) }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-performance-annotations1/sources/CounterRouteEntry.swift:53:5: note: called from here
+51 | @_noAllocation
+52 | package func p08CounterStaticResourceEntryV1() -> Int {
+53 |     p08CounterGraph() + counterExerciseStaticScopedStorage() + p08CounterHost()
+   |     `- note: called from here
+54 | }
+55 | #endif

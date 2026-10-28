@@ -1,0 +1,20 @@
+{
+  "scope": "Compile-only P08 allocation contract; reuse a complete matching Native receipt.",
+  "passed": false,
+  "controls_passed": false,
+  "actual_entry_passed": false,
+  "runtime_executed": false,
+  "commands": [],
+  "checks": [],
+  "reused_receipts": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-performance-annotations1/stale-input/result.json",
+      "sha256": "af69636be75c57706ab3b195e397e1fc83df96e47c489f7d78f00d8bc70300df"
+    }
+  ],
+  "reused_modules": [],
+  "inputs": {},
+  "candidate_source_deltas": [],
+  "baseline_role": "Trusted recipe and reused dependencies; no old functional PASS transfers to candidate edits.",
+  "error": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift: input identity changed"
+}
