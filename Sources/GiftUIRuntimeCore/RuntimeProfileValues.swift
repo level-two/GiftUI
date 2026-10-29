@@ -7,6 +7,7 @@ import GiftUIRenderCore
 import GiftUIRenderLowering
 import GiftUISemanticCore
 
+@usableFromInline
 package enum RuntimeProfileKind: UInt8, Equatable, Sendable {
     case dynamic = 0
     case `static` = 1
@@ -20,6 +21,9 @@ package struct RuntimeRecordLimits: Equatable, Sendable {
     package let maximumIdentityComponentsPerKey: UInt16
     package let maximumInteractionIdentityComponents: UInt32
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         maximumPathEntries: UInt16,
         maximumPathDepth: UInt16,
@@ -43,6 +47,9 @@ package struct RuntimeModelLimits: Equatable, Sendable {
     package let maximumFramePins: UInt16
     package let maximumModelCaptureBanks: UInt16
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         maximumModelSlots: UInt16,
         maximumOwningTickets: UInt16,
@@ -56,6 +63,7 @@ package struct RuntimeModelLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct RuntimeProfileLimits: Equatable, Sendable {
     package let records: RuntimeRecordLimits
     package let models: RuntimeModelLimits
@@ -70,8 +78,12 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
     package let observableState: ObservableStateLimits
     package let interaction: InteractionLimits
     package let drawing: DrawingLimits
+    @usableFromInline
     package let staticCanvas: StaticCanvasLimits?
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         records: RuntimeRecordLimits,
         models: RuntimeModelLimits,
@@ -91,10 +103,11 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
     ) {
         guard records.maximumPathEntries > 0,
             records.maximumPathDepth > 0,
-            records.maximumPathDepth <= SemanticCompleteIdentity.capacity,
+            records.maximumPathDepth <= SemanticCompleteIdentity.capacityForAccounting(),
             records.maximumPathChildFanout > 0,
             records.maximumIdentityComponentsPerKey >= records.maximumPathDepth,
-            records.maximumIdentityComponentsPerKey <= SemanticCompleteIdentity.capacity,
+            records.maximumIdentityComponentsPerKey
+                <= SemanticCompleteIdentity.capacityForAccounting(),
             records.maximumInteractionIdentityComponents > 0,
             models.maximumModelSlots > 0,
             models.maximumOwningTickets > 0,
@@ -153,6 +166,7 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct RuntimeStorageAudit: Equatable, Sendable {
     package let profile: RuntimeProfileKind
     package let limits: RuntimeProfileLimits
@@ -184,6 +198,9 @@ package struct RuntimeStorageAudit: Equatable, Sendable {
     package let failureStateBytes: UInt32
     package let totalProfileBytes: UInt32
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     private init(
         profile: RuntimeProfileKind,
         limits: RuntimeProfileLimits,
@@ -221,6 +238,9 @@ package struct RuntimeStorageAudit: Equatable, Sendable {
         self.totalProfileBytes = totalProfileBytes
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     static func checked(
         profile: RuntimeProfileKind,
         limits: RuntimeProfileLimits,
@@ -266,6 +286,9 @@ package struct RuntimeStorageAudit: Equatable, Sendable {
         )
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     private static func accumulate(_ value: UInt32, into total: inout UInt32) -> Bool {
         let (next, overflow) = total.addingReportingOverflow(value)
         guard !overflow else { return false }
@@ -302,6 +325,9 @@ package struct RuntimeStorageByteCounts: Equatable, Sendable {
     package let coordinatorStateBytes: UInt32
     package let failureStateBytes: UInt32
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         semanticCandidatePathBytes: UInt32,
         semanticPublishedPathBytes: UInt32,
@@ -370,6 +396,7 @@ package enum RuntimeProfileValidationError: UInt8, Equatable, Sendable {
     case invariantViolation = 6
 }
 
+@usableFromInline
 package enum RuntimeProfileValidationResult: Equatable, Sendable {
     case valid(RuntimeStorageAudit)
     case invalid(RuntimeProfileValidationError)

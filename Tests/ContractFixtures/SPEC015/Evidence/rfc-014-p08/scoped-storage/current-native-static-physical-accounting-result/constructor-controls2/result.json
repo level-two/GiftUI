@@ -1,0 +1,318 @@
+{
+  "prior_invocation_failure": "constructor-controls/result.json; no effect checking occurred; preserved unchanged",
+  "purpose": "Exact scalar struct initializer cross-module compiler-enforced effect controls; no runtime execution.",
+  "limits": {
+    "retained_total_bytes": 131072,
+    "raw_per_step_bytes": 16384,
+    "session_deadline_utc": "2026-10-29T10:42:26.899122+00:00"
+  },
+  "compiler_pin_reference": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/freeze.json",
+  "steps": [
+    {
+      "name": "positive-producer",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-frontend",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-experimental-performance-annotations",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-parse-as-library",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache",
+        "-module-name",
+        "AccountingConstructorProducer",
+        "-emit-module-doc-path",
+        "/dev/null",
+        "-emit-module-source-info-path",
+        "/dev/null",
+        "-emit-abi-descriptor-path",
+        "/dev/null",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/positive-producer/Input.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/positive-producer/AccountingConstructorProducer.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/positive-producer/AccountingConstructorProducer.o"
+      ],
+      "expected_exit": 0,
+      "start_utc": "2026-10-29T09:15:51.585804+00:00",
+      "deadline_utc": "2026-10-29T09:16:51.585804+00:00",
+      "required_file_count_bound": 2,
+      "per_file_hard_limit_bytes": 45873,
+      "source_sha256": "2ea5b76cf4262b2539290ab07287ec1e37ef6012cd93757fec73353f7732a7b8",
+      "exit": 0,
+      "guard": null,
+      "raw_bytes_read": {
+        "stdout": 0,
+        "stderr": 0
+      },
+      "pipe_tail_bytes_read": 0,
+      "elapsed_seconds": 0.055330042,
+      "emitted_equals_read_proved": true,
+      "artifacts": {
+        "stdout": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AccountingConstructorProducer.swiftmodule": {
+          "bytes": 19656,
+          "sha256": "6d22ad30f7f0b4fe7da6616c33b03fde4290a193fd819251c389d7cb44d333c7"
+        },
+        "AccountingConstructorProducer.o": {
+          "bytes": 2864,
+          "sha256": "2715482ba47ccff110281cb0535552752af48f6fc7e54b3d3c688209dd377fb2"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "positive-consumer",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-frontend",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-experimental-performance-annotations",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-parse-as-library",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache",
+        "-module-name",
+        "AccountingConstructorClient",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/positive-producer",
+        "-emit-sil",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/positive-consumer/Input.swift",
+        "-o",
+        "-"
+      ],
+      "expected_exit": 0,
+      "start_utc": "2026-10-29T09:15:51.644102+00:00",
+      "deadline_utc": "2026-10-29T09:16:51.644102+00:00",
+      "required_file_count_bound": 0,
+      "per_file_hard_limit_bytes": 65997,
+      "source_sha256": "458df13fa07f098fc60b3137fbbbca30f57e28797567a62e814ae21d61732162",
+      "exit": 0,
+      "guard": null,
+      "raw_bytes_read": {
+        "stdout": 1690,
+        "stderr": 0
+      },
+      "pipe_tail_bytes_read": 0,
+      "elapsed_seconds": 0.04433150000000001,
+      "emitted_equals_read_proved": true,
+      "artifacts": {
+        "stdout": {
+          "bytes": 1690,
+          "sha256": "fb07ccdd713108d5ca68cdbdcb77cab30a5fc0bd16ebc69e58ba3a320957e01f"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-producer",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-frontend",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-experimental-performance-annotations",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-parse-as-library",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache",
+        "-module-name",
+        "AccountingConstructorProducer",
+        "-emit-module-doc-path",
+        "/dev/null",
+        "-emit-module-source-info-path",
+        "/dev/null",
+        "-emit-abi-descriptor-path",
+        "/dev/null",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/negative-producer/Input.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/negative-producer/AccountingConstructorProducer.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/negative-producer/AccountingConstructorProducer.o"
+      ],
+      "expected_exit": 1,
+      "start_utc": "2026-10-29T09:15:51.691188+00:00",
+      "deadline_utc": "2026-10-29T09:16:51.691188+00:00",
+      "required_file_count_bound": 2,
+      "per_file_hard_limit_bytes": 31176,
+      "source_sha256": "afd2092f466ee5a96ce5a880b14ca033b6f1e2f6270cf2f4f050238090d1250e",
+      "exit": 1,
+      "guard": null,
+      "raw_bytes_read": {
+        "stdout": 0,
+        "stderr": 459
+      },
+      "pipe_tail_bytes_read": 0,
+      "elapsed_seconds": 0.046849584,
+      "emitted_equals_read_proved": true,
+      "artifacts": {
+        "stdout": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 459,
+          "sha256": "a5a8ea0b659b5c3a305beb00dfa0719dd2fcbf5c991ad6c7770b22c334b28e2c"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "plain-producer",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-frontend",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-experimental-performance-annotations",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-parse-as-library",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache",
+        "-module-name",
+        "AccountingConstructorProducer",
+        "-emit-module-doc-path",
+        "/dev/null",
+        "-emit-module-source-info-path",
+        "/dev/null",
+        "-emit-abi-descriptor-path",
+        "/dev/null",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/plain-producer/Input.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/plain-producer/AccountingConstructorProducer.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/plain-producer/AccountingConstructorProducer.o"
+      ],
+      "expected_exit": 0,
+      "start_utc": "2026-10-29T09:15:51.740837+00:00",
+      "deadline_utc": "2026-10-29T09:16:51.740837+00:00",
+      "required_file_count_bound": 2,
+      "per_file_hard_limit_bytes": 29780,
+      "source_sha256": "66a276540791b88a28f3976ec69262f3b1464601aa1ce9189bca79bfa2c3796b",
+      "exit": 0,
+      "guard": null,
+      "raw_bytes_read": {
+        "stdout": 0,
+        "stderr": 0
+      },
+      "pipe_tail_bytes_read": 0,
+      "elapsed_seconds": 0.05296404200000002,
+      "emitted_equals_read_proved": true,
+      "artifacts": {
+        "stdout": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "AccountingConstructorProducer.swiftmodule": {
+          "bytes": 21876,
+          "sha256": "4d2f5f5ebad779006099dfec4295993c8392d4e20bf85b570d72c96452651b90"
+        },
+        "AccountingConstructorProducer.o": {
+          "bytes": 6568,
+          "sha256": "8e0ed798d2de5c327edde80fa2cff5342088a28667bcbcd54652835ac4c42a60"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-consumer",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-frontend",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-experimental-performance-annotations",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-parse-as-library",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache",
+        "-module-name",
+        "AccountingConstructorClient",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/plain-producer",
+        "-emit-sil",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/negative-consumer/Input.swift",
+        "-o",
+        "-"
+      ],
+      "expected_exit": 1,
+      "start_utc": "2026-10-29T09:15:51.797113+00:00",
+      "deadline_utc": "2026-10-29T09:16:51.797113+00:00",
+      "required_file_count_bound": 0,
+      "per_file_hard_limit_bytes": 28444,
+      "source_sha256": "458df13fa07f098fc60b3137fbbbca30f57e28797567a62e814ae21d61732162",
+      "exit": 1,
+      "guard": null,
+      "raw_bytes_read": {
+        "stdout": 0,
+        "stderr": 474
+      },
+      "pipe_tail_bytes_read": 0,
+      "elapsed_seconds": 0.04326825000000001,
+      "emitted_equals_read_proved": true,
+      "artifacts": {
+        "stdout": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 474,
+          "sha256": "817041e335e76a34d2aaeacb7eb09ecdc42f2bb6054e67ca3454ec02d7894854"
+        }
+      },
+      "passed": true
+    }
+  ],
+  "passed": false,
+  "proof": {
+    "positive_caller_complete_body": false,
+    "opaque_noinline_import_declaration": false,
+    "producer_checker_rejected_allocating_init": true,
+    "unqualified_import_rejected": true
+  }
+}

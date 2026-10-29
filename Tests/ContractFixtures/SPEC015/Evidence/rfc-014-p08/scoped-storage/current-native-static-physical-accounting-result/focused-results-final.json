@@ -1,0 +1,37 @@
+{
+  "phases": [
+    {
+      "name": "focused-compile-final",
+      "exit": 0,
+      "guard": null,
+      "raw_bytes_read": {
+        "stdout": 0,
+        "stderr": 0
+      },
+      "tail_bytes_read": 0,
+      "emitted_equals_read_proved": true,
+      "elapsed_seconds": 0.77582575,
+      "passed": true,
+      "retained_bytes_now": 6622051,
+      "binary_bytes": 2456440
+    },
+    {
+      "name": "focused-execute-final",
+      "exit": 0,
+      "guard": null,
+      "raw_bytes_read": {
+        "stdout": 117,
+        "stderr": 0
+      },
+      "tail_bytes_read": 0,
+      "emitted_equals_read_proved": true,
+      "elapsed_seconds": 0.5716352079999999,
+      "passed": true,
+      "retained_bytes_now": 6623391,
+      "binary_bytes": 2456440
+    }
+  ],
+  "exact_same_fixture_source": true,
+  "normal_functional_only": true,
+  "no_runtime_resource_claim": true
+}

@@ -44,6 +44,15 @@ package struct SemanticPathComponent: Equatable, Sendable {
 package struct SemanticCompleteIdentity: Equatable, Sendable {
     @usableFromInline
     package static let capacity: UInt16 = 34
+
+    // Accounting checks this exact stored read in its defining module. Keep the
+    // stored capacity and its initialization unchanged; do not prewarm it.
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
+    package static func capacityForAccounting() -> UInt16 {
+        capacity
+    }
     private var components: InlineArray<34, SemanticPathComponent> = .init(
         repeating: .init(kind: .root))
     @usableFromInline

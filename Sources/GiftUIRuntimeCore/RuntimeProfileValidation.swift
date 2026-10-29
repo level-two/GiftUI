@@ -7,6 +7,7 @@ import GiftUIRenderCore
 import GiftUIRenderLowering
 import GiftUISemanticCore
 
+@usableFromInline
 package struct RuntimeProfileLimitInputs: Sendable {
     package let records: RuntimeRecordLimits?
     package let models: RuntimeModelLimits?
@@ -22,8 +23,12 @@ package struct RuntimeProfileLimitInputs: Sendable {
     package let interaction: InteractionLimits?
     package let drawing: DrawingLimits?
     package let staticCanvas: StaticCanvasLimits?
+    @usableFromInline
     package let profile: RuntimeProfileKind
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         records: RuntimeRecordLimits?,
         models: RuntimeModelLimits?,
@@ -59,6 +64,7 @@ package struct RuntimeProfileLimitInputs: Sendable {
     }
 }
 
+@usableFromInline
 package struct RuntimeStorageCapacities: Sendable {
     package let candidateRecords: RuntimeRecordLimits?
     package let publishedRecords: RuntimeRecordLimits?
@@ -92,6 +98,9 @@ package struct RuntimeStorageCapacities: Sendable {
     package let failureStatePresent: Bool
     package let byteCounts: RuntimeStorageByteCounts?
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         candidateRecords: RuntimeRecordLimits?,
         publishedRecords: RuntimeRecordLimits?,
@@ -159,6 +168,7 @@ package struct RuntimeStorageCapacities: Sendable {
     }
 }
 
+@usableFromInline
 package protocol RuntimeStaticCanvasAuditMetadata {
     var callableCaseCount: UInt16 { get }
     var declaredEntryCount: UInt16 { get }
@@ -167,12 +177,17 @@ package protocol RuntimeStaticCanvasAuditMetadata {
     func captureByteCount(for id: UInt16) -> UInt16?
 }
 
+@usableFromInline
 package enum RuntimeProfileValidator {
-    private enum CommonValidation {
+    @usableFromInline
+    enum CommonValidation {
         case valid(RuntimeProfileLimits, RuntimeStorageAudit)
         case invalid(RuntimeProfileValidationError)
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package static func validateDynamic(
         inputs: RuntimeProfileLimitInputs,
         capacities: RuntimeStorageCapacities
@@ -186,6 +201,7 @@ package enum RuntimeProfileValidator {
         }
     }
 
+    @inlinable
     package static func validateStatic<Metadata: RuntimeStaticCanvasAuditMetadata>(
         inputs: RuntimeProfileLimitInputs,
         capacities: RuntimeStorageCapacities,
@@ -216,7 +232,11 @@ package enum RuntimeProfileValidator {
         }
     }
 
-    private static func validateCommon(
+    @usableFromInline
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
+    static func validateCommon(
         inputs: RuntimeProfileLimitInputs,
         capacities: RuntimeStorageCapacities
     ) -> CommonValidation {
@@ -353,6 +373,9 @@ package enum RuntimeProfileValidator {
         }
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     private static func covers(_ capacity: RuntimeRecordLimits, _ limits: RuntimeRecordLimits)
         -> Bool
     {
@@ -365,6 +388,9 @@ package enum RuntimeProfileValidator {
                 >= limits.maximumInteractionIdentityComponents
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     private static func covers(_ capacity: RuntimeModelLimits, _ limits: RuntimeModelLimits) -> Bool
     {
         capacity.maximumModelSlots >= limits.maximumModelSlots
@@ -373,6 +399,9 @@ package enum RuntimeProfileValidator {
             && capacity.maximumModelCaptureBanks >= limits.maximumModelCaptureBanks
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     private static func covers(
         _ capacity: SemanticExpansionLimits,
         _ limits: SemanticExpansionLimits
@@ -384,6 +413,9 @@ package enum RuntimeProfileValidator {
             && capacity.maximumActionOccurrences >= limits.maximumActionOccurrences
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     private static func covers(_ capacity: LayoutLimits, _ limits: LayoutLimits) -> Bool {
         capacity.maximumScopes >= limits.maximumScopes
             && capacity.maximumDepth >= limits.maximumDepth
@@ -392,12 +424,18 @@ package enum RuntimeProfileValidator {
             && capacity.maximumPositionedGlyphs >= limits.maximumPositionedGlyphs
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     private static func covers(_ capacity: RenderLimits, _ limits: RenderLimits) -> Bool {
         capacity.maximumOperations >= limits.maximumOperations
             && capacity.maximumPositionedGlyphs >= limits.maximumPositionedGlyphs
             && capacity.maximumClipDepth >= limits.maximumClipDepth
     }
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     private static func covers(_ capacity: ExecutionLimits, _ limits: ExecutionLimits) -> Bool {
         capacity.maximumInputEvents >= limits.maximumInputEvents
             && capacity.maximumStateChangeFacts >= limits.maximumStateChangeFacts

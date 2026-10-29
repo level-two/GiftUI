@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-experimental-performance-annotations",
+    "-target",
+    "arm64-apple-macosx26.0",
+    "-sdk",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-parse-as-library",
+    "-module-cache-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache",
+    "-module-name",
+    "NoAllocationPositive",
+    "-emit-object",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/AllocationGate/NoAllocationPositive.swift",
+    "-o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/legacy-positive/control.o"
+  ],
+  "source_sha256": "b0e81724895a91a59d94f72db18a0b5aac75c4299ca7f9c17d56b6695667c22d",
+  "unchanged_since_git": "5badd1fe",
+  "start_utc": "2026-10-29T10:35:21.286953+00:00",
+  "deadline_utc": "2026-10-29T10:35:51.286953+00:00",
+  "expected_exit": 0,
+  "object_hard_cap_bytes": 16384,
+  "raw_cap_bytes": 8192
+}

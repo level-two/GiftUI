@@ -1,0 +1,36 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+import AccountingConstructorProducer
+
+@_noAllocation @inline(never) public func importedConstructor(_ value: Int) -> ScalarConstructor
+
+// importedConstructor(_:)
+// Isolation: unspecified
+sil [noinline] [no_allocation] [perf_constraint] @$s27AccountingConstructorClient08importedB0y0aB8Producer06ScalarB0VSiF : $@convention(thin) (Int) -> ScalarConstructor {
+[global: ]
+// %0 "value"                                     // users: %4, %1
+bb0(%0 : $Int):
+  debug_value %0, let, name "value", argno 1      // id: %1
+  %2 = metatype $@thin ScalarConstructor.Type     // user: %4
+  // function_ref ScalarConstructor.init(_:)
+  %3 = function_ref @$s29AccountingConstructorProducer06ScalarB0VyACSicfC : $@convention(method) (Int, @thin ScalarConstructor.Type) -> ScalarConstructor // user: %4
+  %4 = apply %3(%0, %2) : $@convention(method) (Int, @thin ScalarConstructor.Type) -> ScalarConstructor // user: %5
+  return %4                                       // id: %5
+} // end sil function '$s27AccountingConstructorClient08importedB0y0aB8Producer06ScalarB0VSiF'
+
+// ScalarConstructor.init(_:)
+// Isolation: unspecified
+sil [noinline] [no_allocation] [perf_constraint] @$s29AccountingConstructorProducer06ScalarB0VyACSicfC : $@convention(method) (Int, @thin ScalarConstructor.Type) -> ScalarConstructor {
+[global: ]
+} // end sil function '$s29AccountingConstructorProducer06ScalarB0VyACSicfC'
+
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'AccountingConstructorClient/Input.swift' => '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/positive-consumer/Input.swift'
+
+

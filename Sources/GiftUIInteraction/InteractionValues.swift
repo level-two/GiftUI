@@ -181,6 +181,9 @@ package struct InteractionOwnedBankMeasurement {
     package let inlineStride: Int
     package let inlineAlignment: Int
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         count: UInt16, capacity: UInt16, retainedIdentitySlots: Int,
         retainedPayloadBytes: Int, inlineSize: Int, inlineStride: Int, inlineAlignment: Int

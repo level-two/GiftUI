@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/accounting-focused-final"
+  ],
+  "start_utc": "2026-10-29T10:34:30.555258+00:00",
+  "deadline_utc": "2026-10-29T10:35:30.555258+00:00",
+  "artifact_hard_cap_bytes": 0,
+  "raw_hard_cap_bytes": 32768,
+  "aggregate_limit_bytes": 8388608,
+  "counted_transcript_reserved_bytes": 750000,
+  "closing_raw_records_reserve_bytes": 200000
+}

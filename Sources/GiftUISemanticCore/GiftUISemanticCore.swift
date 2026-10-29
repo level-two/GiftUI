@@ -13,6 +13,9 @@ package struct SemanticExpansionLimits: Equatable, Sendable {
     @usableFromInline
     package let maximumActionOccurrences: UInt16
 
+    #if GIFTUI_ACCOUNTING_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumDepth: UInt16,
         maximumSemanticNodes: UInt16,

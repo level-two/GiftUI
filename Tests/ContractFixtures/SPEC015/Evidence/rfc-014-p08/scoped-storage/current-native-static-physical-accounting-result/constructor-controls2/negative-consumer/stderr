@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/negative-consumer/Input.swift:5:5: error: called function is not available in this module and can have unpredictable performance
+3 | @inline(never)
+4 | public func importedConstructor(_ value: Int) -> ScalarConstructor {
+5 |     ScalarConstructor(value)
+  |     `- error: called function is not available in this module and can have unpredictable performance
+6 | }
+7 | 

@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls2/negative-producer/Input.swift:9:39: error: Using type 'AllocationBox' can cause metadata allocation or locks
+ 7 |     @_noAllocation
+ 8 |     @inline(never)
+ 9 |     public init(_ value: Int) { box = AllocationBox(value) }
+   |                                       `- error: Using type 'AllocationBox' can cause metadata allocation or locks
+10 | }
+11 | 

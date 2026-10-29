@@ -1,0 +1,17 @@
+{
+  "name": "GiftUIRuntimeCore",
+  "exit": 1,
+  "guard": null,
+  "raw_bytes_read": {
+    "stdout": 0,
+    "stderr": 2768
+  },
+  "raw_lines_read": 37,
+  "tail_bytes_read": 0,
+  "emitted_equals_read_proved": true,
+  "elapsed_seconds": 0.2539610000000003,
+  "finished_utc": "2026-10-29T09:30:10.916017+00:00",
+  "retained_new_batch_bytes": 1936515,
+  "passed": false,
+  "module_pair": {}
+}

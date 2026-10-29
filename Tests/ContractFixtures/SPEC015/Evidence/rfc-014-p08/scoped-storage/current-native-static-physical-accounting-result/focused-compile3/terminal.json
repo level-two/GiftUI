@@ -1,0 +1,14 @@
+{
+  "name": "focused-compile3",
+  "exit": 1,
+  "guard": null,
+  "raw_bytes_read": {
+    "stdout": 0,
+    "stderr": 217
+  },
+  "tail_bytes_read": 0,
+  "emitted_equals_read_proved": true,
+  "elapsed_seconds": 0.7766077499999999,
+  "passed": false,
+  "retained_bytes_now": 4156462
+}

@@ -1,0 +1,30 @@
+{
+  "name": "GiftUISemanticCore2",
+  "exit": 0,
+  "guard": null,
+  "raw_bytes_read": {
+    "stdout": 0,
+    "stderr": 0
+  },
+  "raw_lines": 0,
+  "tail_bytes_read": 0,
+  "emitted_equals_read_proved": true,
+  "elapsed_seconds": 2.2678821250000003,
+  "passed": true,
+  "qualified_flags": [
+    "GIFTUI_ACCOUNTING_QUALIFICATION",
+    "-experimental-performance-annotations"
+  ],
+  "module_pair": {
+    "swiftmodule": {
+      "bytes": 872588,
+      "sha256": "f9fe0254307be4dcf599ba0f4aaf5979fba992892489d2ef4a10d32ecf0718bd",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUISemanticCore.swiftmodule"
+    },
+    "o": {
+      "bytes": 505944,
+      "sha256": "5f472d9ed4a8fe6835d67f3dcdd1ed1448f6149265c45c3c6ae233b7310e99fd",
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUISemanticCore.o"
+    }
+  }
+}

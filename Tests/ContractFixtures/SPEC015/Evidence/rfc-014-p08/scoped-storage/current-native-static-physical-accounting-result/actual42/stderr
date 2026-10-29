@@ -1,0 +1,1003 @@
+Module import search paths:
+  [0] (non-system) /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host
+  [1] (non-system) /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2
+  [2] (non-system) /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules
+  [3] (non-system) /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host
+  [4] (non-system) /Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s
+  [5] (non-system) /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq
+  [6] (non-system) /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static
+  [7] (non-system) /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static
+  [8] (non-system) /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static
+Framework search paths:
+Implicit framework search paths:
+  [0] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks
+  [1] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/SubFrameworks
+  [2] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/Library/Frameworks
+Runtime library import search paths:
+  [0] /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx
+  [1] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/swift
+(End of search path lists.)
+<unknown>:0: remark: 'Swift' has a required transitive dependency on 'SwiftShims'
+<unknown>:0: remark: loaded module 'SwiftShims'; source: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/shims/module.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/SwiftShims-1GWGQKUA6LRMC.pcm'
+<unknown>:0: remark: loaded module 'Swift'; source: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.private.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.swiftmodule'
+<unknown>:0: remark: '_StringProcessing' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: '_StringProcessing' has an ignored transitive dependency on '_RegexParser'
+<unknown>:0: remark: loaded module '_StringProcessing'; source: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_StringProcessing.swiftmodule/arm64-apple-macos.private.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_StringProcessing.swiftmodule/arm64-apple-macos.swiftmodule'
+<unknown>:0: remark: loaded module '_SwiftConcurrencyShims'; source: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/shims/module.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_SwiftConcurrencyShims-1GWGQKUA6LRMC.pcm'
+<unknown>:0: remark: '_Concurrency' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: '_Concurrency' has an ignored transitive dependency on 'SwiftConcurrencyInternalShims'
+<unknown>:0: remark: '_Concurrency' has a required transitive dependency on 'SwiftShims'
+<unknown>:0: remark: loaded module '_Concurrency'; source: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_Concurrency.swiftmodule/arm64-apple-macos.private.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_Concurrency.swiftmodule/arm64-apple-macos.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:1:8: remark: 'GiftUI' has a required transitive dependency on 'Swift'
+ 1 | import GiftUI
+   |        `- remark: 'GiftUI' has a required transitive dependency on 'Swift'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:1:8: remark: 'GiftUI' has a required transitive dependency on '_Concurrency'
+ 1 | import GiftUI
+   |        `- remark: 'GiftUI' has a required transitive dependency on '_Concurrency'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:1:8: remark: 'GiftUI' has a required transitive dependency on '_StringProcessing'
+ 1 | import GiftUI
+   |        `- remark: 'GiftUI' has a required transitive dependency on '_StringProcessing'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:1:8: remark: 'GiftUI' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 1 | import GiftUI
+   |        `- remark: 'GiftUI' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:1:8: remark: loaded module 'GiftUI'; source: '/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.swiftmodule'
+ 1 | import GiftUI
+   |        `- remark: loaded module 'GiftUI'; source: '/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.swiftmodule'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:2:8: remark: 'GiftUIObservableState' has a required transitive dependency on 'GiftUI'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+   |        `- remark: 'GiftUIObservableState' has a required transitive dependency on 'GiftUI'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:2:8: remark: 'GiftUIObservableState' has a required transitive dependency on 'GiftUIExecution'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+   |        `- remark: 'GiftUIObservableState' has a required transitive dependency on 'GiftUIExecution'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+
+<unknown>:0: remark: 'GiftUIExecution' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIExecution' has a required transitive dependency on 'GiftUIRenderCore'
+<unknown>:0: remark: 'GiftUIRenderCore' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIRenderCore' has a required transitive dependency on 'GiftUITextResources'
+<unknown>:0: remark: 'GiftUITextResources' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUITextResources' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUITextResources' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUITextResources' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUITextResources' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUITextResources'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUITextResources.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUITextResources.swiftmodule'
+<unknown>:0: remark: 'GiftUIRenderCore' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIRenderCore' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIRenderCore' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIRenderCore' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIRenderCore'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderCore.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderCore.swiftmodule'
+<unknown>:0: remark: 'GiftUIExecution' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIExecution' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIExecution' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIExecution' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIExecution'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIExecution.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIExecution.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:2:8: remark: 'GiftUIObservableState' has a required transitive dependency on 'GiftUISemanticCore'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+   |        `- remark: 'GiftUIObservableState' has a required transitive dependency on 'GiftUISemanticCore'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+
+<unknown>:0: remark: 'GiftUISemanticCore' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUISemanticCore' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUISemanticCore' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUISemanticCore' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUISemanticCore' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUISemanticCore'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUISemanticCore.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUISemanticCore.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:2:8: remark: 'GiftUIObservableState' has a required transitive dependency on 'Swift'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+   |        `- remark: 'GiftUIObservableState' has a required transitive dependency on 'Swift'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:2:8: remark: 'GiftUIObservableState' has a required transitive dependency on '_Concurrency'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+   |        `- remark: 'GiftUIObservableState' has a required transitive dependency on '_Concurrency'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:2:8: remark: 'GiftUIObservableState' has a required transitive dependency on '_StringProcessing'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+   |        `- remark: 'GiftUIObservableState' has a required transitive dependency on '_StringProcessing'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:2:8: remark: 'GiftUIObservableState' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+   |        `- remark: 'GiftUIObservableState' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:2:8: remark: loaded module 'GiftUIObservableState'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIObservableState.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIObservableState.swiftmodule'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+   |        `- remark: loaded module 'GiftUIObservableState'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIObservableState.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIObservableState.swiftmodule'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:3:8: remark: 'P08CounterSchema' has a required transitive dependency on 'GiftUI'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+   |        `- remark: 'P08CounterSchema' has a required transitive dependency on 'GiftUI'
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:3:8: remark: 'P08CounterSchema' has a required transitive dependency on 'Swift'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+   |        `- remark: 'P08CounterSchema' has a required transitive dependency on 'Swift'
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:3:8: remark: 'P08CounterSchema' has a required transitive dependency on '_Concurrency'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+   |        `- remark: 'P08CounterSchema' has a required transitive dependency on '_Concurrency'
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:3:8: remark: 'P08CounterSchema' has a required transitive dependency on '_StringProcessing'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+   |        `- remark: 'P08CounterSchema' has a required transitive dependency on '_StringProcessing'
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:3:8: remark: 'P08CounterSchema' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+   |        `- remark: 'P08CounterSchema' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:3:8: remark: loaded module 'P08CounterSchema'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterSchema.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterSchema.swiftmodule'
+ 1 | import GiftUI
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+   |        `- remark: loaded module 'P08CounterSchema'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterSchema.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterSchema.swiftmodule'
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:4:8: remark: 'P08CounterPresentation' has a required transitive dependency on 'GiftUI'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+   |        `- remark: 'P08CounterPresentation' has a required transitive dependency on 'GiftUI'
+ 5 | import P08CounterTable
+ 6 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:4:8: remark: 'P08CounterPresentation' has a required transitive dependency on 'P08CounterSchema'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+   |        `- remark: 'P08CounterPresentation' has a required transitive dependency on 'P08CounterSchema'
+ 5 | import P08CounterTable
+ 6 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:4:8: remark: 'P08CounterPresentation' has a required transitive dependency on 'Swift'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+   |        `- remark: 'P08CounterPresentation' has a required transitive dependency on 'Swift'
+ 5 | import P08CounterTable
+ 6 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:4:8: remark: 'P08CounterPresentation' has a required transitive dependency on '_Concurrency'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+   |        `- remark: 'P08CounterPresentation' has a required transitive dependency on '_Concurrency'
+ 5 | import P08CounterTable
+ 6 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:4:8: remark: 'P08CounterPresentation' has a required transitive dependency on '_StringProcessing'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+   |        `- remark: 'P08CounterPresentation' has a required transitive dependency on '_StringProcessing'
+ 5 | import P08CounterTable
+ 6 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:4:8: remark: 'P08CounterPresentation' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+   |        `- remark: 'P08CounterPresentation' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 5 | import P08CounterTable
+ 6 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:4:8: remark: loaded module 'P08CounterPresentation'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterPresentation.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterPresentation.swiftmodule'
+ 2 | import GiftUIObservableState
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+   |        `- remark: loaded module 'P08CounterPresentation'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterPresentation.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterPresentation.swiftmodule'
+ 5 | import P08CounterTable
+ 6 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: 'P08CounterTable' has a required transitive dependency on 'GiftUI'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: 'P08CounterTable' has a required transitive dependency on 'GiftUI'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: 'P08CounterTable' has a required transitive dependency on 'GiftUIDrawing'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: 'P08CounterTable' has a required transitive dependency on 'GiftUIDrawing'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on 'GiftUIExecution'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on 'GiftUILayout'
+<unknown>:0: remark: 'GiftUILayout' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUILayout' has a required transitive dependency on 'GiftUISemanticCore'
+<unknown>:0: remark: 'GiftUILayout' has a required transitive dependency on 'GiftUITextResources'
+<unknown>:0: remark: 'GiftUILayout' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUILayout' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUILayout' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUILayout' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUILayout'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUILayout.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUILayout.swiftmodule'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on 'GiftUIRenderCore'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on 'GiftUIRenderLowering'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on 'GiftUILayout'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on 'GiftUIRenderCore'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on 'GiftUISemanticCore'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on 'GiftUITextResources'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIRenderLowering' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIRenderLowering'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderLowering.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderLowering.swiftmodule'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on 'GiftUISemanticCore'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on 'GiftUITextResources'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIDrawing' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIDrawing'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIDrawing.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIDrawing.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: 'P08CounterTable' has a required transitive dependency on 'P08CounterPresentation'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: 'P08CounterTable' has a required transitive dependency on 'P08CounterPresentation'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: 'P08CounterTable' has a required transitive dependency on 'P08CounterSchema'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: 'P08CounterTable' has a required transitive dependency on 'P08CounterSchema'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: 'P08CounterTable' has a required transitive dependency on 'Swift'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: 'P08CounterTable' has a required transitive dependency on 'Swift'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: 'P08CounterTable' has a required transitive dependency on '_Concurrency'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: 'P08CounterTable' has a required transitive dependency on '_Concurrency'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: 'P08CounterTable' has a required transitive dependency on '_StringProcessing'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: 'P08CounterTable' has a required transitive dependency on '_StringProcessing'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: 'P08CounterTable' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: 'P08CounterTable' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift:5:8: remark: loaded module 'P08CounterTable'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterTable.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterTable.swiftmodule'
+ 3 | import P08CounterSchema
+ 4 | import P08CounterPresentation
+ 5 | import P08CounterTable
+   |        `- remark: loaded module 'P08CounterTable'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterTable.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterTable.swiftmodule'
+ 6 | 
+ 7 | package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableModelMutation {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUI'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUI'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIDrawing'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIDrawing'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIExecution'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIExecution'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIInteraction'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIInteraction'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+<unknown>:0: remark: 'GiftUIInteraction' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIInteraction' has a required transitive dependency on 'GiftUIExecution'
+<unknown>:0: remark: 'GiftUIInteraction' has a required transitive dependency on 'GiftUILayout'
+<unknown>:0: remark: 'GiftUIInteraction' has a required transitive dependency on 'GiftUISemanticCore'
+<unknown>:0: remark: 'GiftUIInteraction' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIInteraction' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIInteraction' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIInteraction' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIInteraction'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules/GiftUIInteraction.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules/GiftUIInteraction.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIObservableState'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIObservableState'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIRenderCore'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIRenderCore'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIRuntimeCore'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUIRuntimeCore'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUIDrawing'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUIExecution'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUIInteraction'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUILayout'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUIObservableState'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUIRenderCore'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUIRenderLowering'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'GiftUISemanticCore'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIRuntimeCore' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIRuntimeCore'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUIRuntimeCore.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUIRuntimeCore.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUISemanticCore'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'GiftUISemanticCore'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'Swift'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on 'Swift'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on '_Concurrency'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on '_Concurrency'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on '_StringProcessing'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on '_StringProcessing'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: 'GiftUIRuntimeStatic' has a required transitive dependency on '_SwiftConcurrencyShims'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: 'GiftUIRuntimeStatic' has a required transitive dependency on '_SwiftConcurrencyShims'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:3:8: remark: loaded module 'GiftUIRuntimeStatic'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeStatic.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeStatic.swiftmodule'
+  1 | import GiftUI
+  2 | import GiftUIObservableState
+  3 | import GiftUIRuntimeStatic
+    |        `- remark: loaded module 'GiftUIRuntimeStatic'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeStatic.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeStatic.swiftmodule'
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUI'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUI'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIDrawing'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIDrawing'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIExecution'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIExecution'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIInteraction'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIInteraction'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUILayout'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUILayout'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIObservableState'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIObservableState'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIRenderCore'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIRenderCore'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIRenderLowering'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIRenderLowering'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIRuntimeCore'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUIRuntimeCore'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUISemanticCore'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUISemanticCore'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUITextResources'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'GiftUITextResources'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'Swift'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on 'Swift'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on '_Concurrency'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on '_Concurrency'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on '_StringProcessing'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on '_StringProcessing'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on '_SwiftConcurrencyShims'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: 'GiftUIRuntimeDynamic' has a required transitive dependency on '_SwiftConcurrencyShims'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift:5:8: remark: loaded module 'GiftUIRuntimeDynamic'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeDynamic.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeDynamic.swiftmodule'
+  3 | import GiftUIRuntimeStatic
+  4 | #if !hasFeature(Embedded)
+  5 | import GiftUIRuntimeDynamic
+    |        `- remark: loaded module 'GiftUIRuntimeDynamic'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeDynamic.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeDynamic.swiftmodule'
+  6 | #endif
+  7 | import P08CounterSchema
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift:9:8: remark: 'GiftUIReferenceTextResources' has a required transitive dependency on 'GiftUI'
+  7 | import GiftUIRenderCore
+  8 | import GiftUIRenderLowering
+  9 | import GiftUIReferenceTextResources
+    |        `- remark: 'GiftUIReferenceTextResources' has a required transitive dependency on 'GiftUI'
+ 10 | import GiftUISemanticCore
+ 11 | import GiftUIRuntimeCore
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift:9:8: remark: 'GiftUIReferenceTextResources' has a required transitive dependency on 'GiftUITextResources'
+  7 | import GiftUIRenderCore
+  8 | import GiftUIRenderLowering
+  9 | import GiftUIReferenceTextResources
+    |        `- remark: 'GiftUIReferenceTextResources' has a required transitive dependency on 'GiftUITextResources'
+ 10 | import GiftUISemanticCore
+ 11 | import GiftUIRuntimeCore
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift:9:8: remark: 'GiftUIReferenceTextResources' has a required transitive dependency on 'Swift'
+  7 | import GiftUIRenderCore
+  8 | import GiftUIRenderLowering
+  9 | import GiftUIReferenceTextResources
+    |        `- remark: 'GiftUIReferenceTextResources' has a required transitive dependency on 'Swift'
+ 10 | import GiftUISemanticCore
+ 11 | import GiftUIRuntimeCore
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift:9:8: remark: 'GiftUIReferenceTextResources' has a required transitive dependency on '_Concurrency'
+  7 | import GiftUIRenderCore
+  8 | import GiftUIRenderLowering
+  9 | import GiftUIReferenceTextResources
+    |        `- remark: 'GiftUIReferenceTextResources' has a required transitive dependency on '_Concurrency'
+ 10 | import GiftUISemanticCore
+ 11 | import GiftUIRuntimeCore
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift:9:8: remark: 'GiftUIReferenceTextResources' has a required transitive dependency on '_StringProcessing'
+  7 | import GiftUIRenderCore
+  8 | import GiftUIRenderLowering
+  9 | import GiftUIReferenceTextResources
+    |        `- remark: 'GiftUIReferenceTextResources' has a required transitive dependency on '_StringProcessing'
+ 10 | import GiftUISemanticCore
+ 11 | import GiftUIRuntimeCore
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift:9:8: remark: 'GiftUIReferenceTextResources' has a required transitive dependency on '_SwiftConcurrencyShims'
+  7 | import GiftUIRenderCore
+  8 | import GiftUIRenderLowering
+  9 | import GiftUIReferenceTextResources
+    |        `- remark: 'GiftUIReferenceTextResources' has a required transitive dependency on '_SwiftConcurrencyShims'
+ 10 | import GiftUISemanticCore
+ 11 | import GiftUIRuntimeCore
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift:9:8: remark: loaded module 'GiftUIReferenceTextResources'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIReferenceTextResources.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIReferenceTextResources.swiftmodule'
+  7 | import GiftUIRenderCore
+  8 | import GiftUIRenderLowering
+  9 | import GiftUIReferenceTextResources
+    |        `- remark: loaded module 'GiftUIReferenceTextResources'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIReferenceTextResources.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIReferenceTextResources.swiftmodule'
+ 10 | import GiftUISemanticCore
+ 11 | import GiftUIRuntimeCore
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUI'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUI'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIBackendIntegration'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIBackendIntegration'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUICapabilities'
+<unknown>:0: remark: 'GiftUICapabilities' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUICapabilities' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUICapabilities' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUICapabilities' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUICapabilities'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUICapabilities.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUICapabilities.swiftmodule'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUIDisplayCore'
+<unknown>:0: remark: 'GiftUIDisplayCore' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIDisplayCore' has a required transitive dependency on 'GiftUICapabilities'
+<unknown>:0: remark: 'GiftUIDisplayCore' has a required transitive dependency on 'GiftUIFailureCore'
+<unknown>:0: remark: 'GiftUIFailureCore' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIFailureCore' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIFailureCore' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIFailureCore' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIFailureCore'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIFailureCore.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIFailureCore.swiftmodule'
+<unknown>:0: remark: 'GiftUIDisplayCore' has a required transitive dependency on 'GiftUISurfaceCore'
+<unknown>:0: remark: 'GiftUISurfaceCore' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUISurfaceCore' has a required transitive dependency on 'GiftUICapabilities'
+<unknown>:0: remark: 'GiftUISurfaceCore' has a required transitive dependency on 'GiftUIRenderCore'
+<unknown>:0: remark: 'GiftUISurfaceCore' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUISurfaceCore' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUISurfaceCore' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUISurfaceCore' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUISurfaceCore'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUISurfaceCore.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUISurfaceCore.swiftmodule'
+<unknown>:0: remark: 'GiftUIDisplayCore' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIDisplayCore' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIDisplayCore' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIDisplayCore' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIDisplayCore'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIDisplayCore.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIDisplayCore.swiftmodule'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUIExecution'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUIFailureCore'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUIRasterCore'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on 'GiftUI'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on 'GiftUICapabilities'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on 'GiftUIRenderCore'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on 'GiftUISurfaceCore'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on 'GiftUITextResources'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIRasterCore' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIRasterCore'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIRasterCore.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIRasterCore.swiftmodule'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUIRenderCore'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUISurfaceCore'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'GiftUITextResources'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on '_Concurrency'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on '_StringProcessing'
+<unknown>:0: remark: 'GiftUIBackendIntegration' has a required transitive dependency on '_SwiftConcurrencyShims'
+<unknown>:0: remark: loaded module 'GiftUIBackendIntegration'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIBackendIntegration.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIBackendIntegration.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUICapabilities'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUICapabilities'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIDisplayCore'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIDisplayCore'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIDrawing'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIDrawing'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIExecution'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIExecution'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIFailureCore'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIFailureCore'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIInteraction'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIInteraction'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUILayout'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUILayout'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIObservableState'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIObservableState'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIRasterCore'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIRasterCore'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIRenderCore'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIRenderCore'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIRenderLowering'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIRenderLowering'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIRuntimeCore'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUIRuntimeCore'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUISemanticCore'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUISemanticCore'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUISurfaceCore'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUISurfaceCore'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUITextResources'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'GiftUITextResources'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'Swift'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on 'Swift'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on '_Concurrency'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on '_Concurrency'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on '_StringProcessing'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on '_StringProcessing'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: 'GiftUIHostConfiguration' has a required transitive dependency on '_SwiftConcurrencyShims'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: 'GiftUIHostConfiguration' has a required transitive dependency on '_SwiftConcurrencyShims'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:19:18: remark: loaded module 'GiftUIHostConfiguration'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.swiftmodule'
+  17 | 
+  18 | import GiftUIInteraction
+  19 | @testable import GiftUIHostConfiguration
+     |                  `- remark: loaded module 'GiftUIHostConfiguration'; source: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.swiftmodule', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.swiftmodule'
+  20 | 
+  21 | // All creation and projection of selected capabilities is confined to this file.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: 'Darwin' has a required transitive dependency on 'Darwin'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: 'Darwin' has a required transitive dependency on 'Darwin'
+  24 | #endif
+  25 | 
+
+<unknown>:0: remark: '_DarwinFoundation1' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: '_DarwinFoundation1' has a required transitive dependency on '_DarwinFoundation1'
+<unknown>:0: remark: '_DarwinFoundation1' has a required transitive dependency on '_DarwinFoundation1._errno'
+<unknown>:0: remark: loaded module '_errno'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation1.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_DarwinFoundation1-2YSBQADOLX02V.pcm'
+<unknown>:0: remark: '_DarwinFoundation1' has a required transitive dependency on '_DarwinFoundation1._math'
+<unknown>:0: remark: loaded module '_math'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation1.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_DarwinFoundation1-2YSBQADOLX02V.pcm'
+<unknown>:0: remark: loaded module '_DarwinFoundation1' (overlay for a clang dependency); source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/swift/_DarwinFoundation1.swiftmodule/arm64e-apple-macos.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/_DarwinFoundation1-3TTD2240L3CLV.swiftmodule'
+<unknown>:0: remark: '_DarwinFoundation2' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: '_DarwinFoundation2' has a required transitive dependency on '_DarwinFoundation2'
+<unknown>:0: remark: '_DarwinFoundation2' has a required transitive dependency on '_DarwinFoundation2._stdio'
+<unknown>:0: remark: loaded module '_stdio'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation2.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_DarwinFoundation2-3J4ZFA06I5V1P.pcm'
+<unknown>:0: remark: '_DarwinFoundation2' has a required transitive dependency on '_DarwinFoundation2._time'
+<unknown>:0: remark: loaded module '_time'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation2.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_DarwinFoundation2-3J4ZFA06I5V1P.pcm'
+<unknown>:0: remark: '_DarwinFoundation2' has a required transitive dependency on '_DarwinFoundation2.sys_time.timeval'
+<unknown>:0: remark: loaded module 'timeval'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation2.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_DarwinFoundation2-3J4ZFA06I5V1P.pcm'
+<unknown>:0: remark: loaded module '_DarwinFoundation2' (overlay for a clang dependency); source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/swift/_DarwinFoundation2.swiftmodule/arm64e-apple-macos.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/_DarwinFoundation2-1V31GETOTALK3.swiftmodule'
+<unknown>:0: remark: '_DarwinFoundation3' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: '_DarwinFoundation3' has a required transitive dependency on '_DarwinFoundation3'
+<unknown>:0: remark: '_DarwinFoundation3' has a required transitive dependency on '_DarwinFoundation3._signal'
+<unknown>:0: remark: loaded module '_signal'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation3.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_DarwinFoundation3-2NSGASPTSNBVQ.pcm'
+<unknown>:0: remark: '_DarwinFoundation3' has a required transitive dependency on '_DarwinFoundation3.pthread'
+<unknown>:0: remark: loaded module 'pthread'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation3.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_DarwinFoundation3-2NSGASPTSNBVQ.pcm'
+<unknown>:0: remark: '_DarwinFoundation3' has a required transitive dependency on '_DarwinFoundation3.unistd'
+<unknown>:0: remark: loaded module 'unistd'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation3.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/_DarwinFoundation3-2NSGASPTSNBVQ.pcm'
+<unknown>:0: remark: loaded module '_DarwinFoundation3' (overlay for a clang dependency); source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/swift/_DarwinFoundation3.swiftmodule/arm64e-apple-macos.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/_DarwinFoundation3-2HGNC9KSFJF81.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: 'Darwin' has a required transitive dependency on 'Swift'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: 'Darwin' has a required transitive dependency on 'Swift'
+  24 | #endif
+  25 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: 'Darwin' has a required transitive dependency on '_Builtin_float'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: 'Darwin' has a required transitive dependency on '_Builtin_float'
+  24 | #endif
+  25 | 
+
+<unknown>:0: remark: '_Builtin_float' has a required transitive dependency on 'Swift'
+<unknown>:0: remark: '_Builtin_float' has a required transitive dependency on '_Builtin_float'
+<unknown>:0: remark: loaded module '_Builtin_float'; source: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_Builtin_float.swiftmodule/arm64-apple-macos.private.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/_Builtin_float.swiftmodule/arm64-apple-macos.swiftmodule'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: 'Darwin' has a required transitive dependency on '_DarwinFoundation1'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: 'Darwin' has a required transitive dependency on '_DarwinFoundation1'
+  24 | #endif
+  25 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: 'Darwin' has a required transitive dependency on '_DarwinFoundation2'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: 'Darwin' has a required transitive dependency on '_DarwinFoundation2'
+  24 | #endif
+  25 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: 'Darwin' has a required transitive dependency on '_DarwinFoundation3'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: 'Darwin' has a required transitive dependency on '_DarwinFoundation3'
+  24 | #endif
+  25 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: 'Darwin' has a required transitive dependency on 'Darwin.Mach.message'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: 'Darwin' has a required transitive dependency on 'Darwin.Mach.message'
+  24 | #endif
+  25 | 
+
+<unknown>:0: remark: loaded module 'message'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/Darwin_Mach.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/Darwin-1FXX23EKWOBA9.pcm'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: 'Darwin' has a required transitive dependency on 'sys_types'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: 'Darwin' has a required transitive dependency on 'sys_types'
+  24 | #endif
+  25 | 
+
+<unknown>:0: remark: loaded module 'sys_types'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/include/DarwinFoundation2.modulemap', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/71QIQMNC0J8X/sys_types-3J4ZFA06I5V1P.pcm'
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:23:12: remark: loaded module 'Darwin'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/swift/Darwin.swiftmodule/arm64e-apple-macos.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/Darwin-2S7HFZUKP1ZBR.swiftmodule'
+  21 | import P08CounterPresentation
+  22 | #if os(macOS) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature(Embedded)
+  23 |     import Darwin
+     |            `- remark: loaded module 'Darwin'; source: '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/swift/Darwin.swiftmodule/arm64e-apple-macos.swiftinterface', loaded: '/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache/Darwin-2S7HFZUKP1ZBR.swiftmodule'
+  24 | #endif
+  25 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:3456:26: error: called function is not available in this module and can have unpredictable performance
+3454 |     p08CheckGraphDefinition()
+3455 |     var modelOwners = ObservableModelOwnerNamespace()
+3456 |     var semanticOwners = SemanticRecordOwnerNamespace()
+     |                          `- error: called function is not available in this module and can have unpredictable performance
+3457 |     do {
+3458 |         return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift:67:5: note: called from here
+65 | #endif
+66 | package func p08CounterStaticResourceEntryV1() -> Int {
+67 |     p08CounterGraph() + counterExerciseStaticScopedStorage() + p08CounterHost()
+   |     `- note: called from here
+68 | }
+69 | #endif

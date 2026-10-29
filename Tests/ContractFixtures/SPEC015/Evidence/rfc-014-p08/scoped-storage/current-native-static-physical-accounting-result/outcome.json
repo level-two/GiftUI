@@ -1,0 +1,51 @@
+{
+  "status": "ACCOUNTING_PRODUCERS_AND_FOCUSED_BEHAVIOR_PASS_FULL_ENTRY_REMAINS_OPEN",
+  "closed_utc": "2026-10-29T10:41:52.427639+00:00",
+  "fixed_session_start_utc": "2026-10-29T08:42:26.899122+00:00",
+  "fixed_session_deadline_utc": "2026-10-29T10:42:26.899122+00:00",
+  "source_baseline_git": "5badd1fee0123fb9ffee54589a7e1d7892fa8554",
+  "owned_source_hashes": {
+    "Sources/GiftUIInteraction/InteractionValues.swift": "6d2f671a8f0b399261e0f07ecb581834d7d05c86c687f1c8d42d1e79810a0e7a",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "0526c6259995fd41b08d8bc3799915838eb6c2312454e25c541ed2cba6f8b299",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "99270ef973baedf2edf6306be46989d3ba2738f2199341b101c5696597abd7e1",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": "d0dc8099c19d23b9f7ed9cf9d530d068f8b4344194c1b2a0c9123377cf67b574",
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift": "e33f03ed953697782aef2155d8fd4567ca1c1ec48c2b69ff8c38413948ff588d"
+  },
+  "focused_fixture": {
+    "path": "Tests/ContractFixtures/SPEC015/AllocationGate/AccountingQualification.swift",
+    "sha256": "8fa204757ebd95b7a56ffc9fd845d620f29448b4b1226209f3dd9372f739c961",
+    "bytes": 24619
+  },
+  "result_bindings": {
+    "checked_module_pairs": "round2-results.json plus GiftUIInteraction/terminal.json",
+    "constructor_controls": "constructor-controls2/proof-review.json; initial invocation/proof-parser failures retained",
+    "legacy_controls": "legacy-control-results.json",
+    "focused": "focused-results-final.json; focused-plan-final.json; binary2456440B; output159/4/4 plus2static-specialization cases",
+    "actual42": "actual42/terminal.json and complete stderr; FAIL SemanticRecordOwnerNamespace initializer at CounterScopedStorage3456",
+    "host": "No source adoption. Retained client candidate reuse binding in host-reuse-binding.json; full product gate not accepted."
+  },
+  "mechanism": "20 concrete defining-module constraints in qualification builds; generic metadata protocol unaltered; only generic validateStatic serialization; capacityForAccounting adds one ABI symbol and reads unchanged stored capacity. Ordinary and qualified Core both use it. No first-use warming or runtime allocation/timing claim.",
+  "retention": {
+    "package_before_this_result_bytes": 6628918,
+    "new_fixture_outside_package_bytes": 24619,
+    "raw_stdout_stderr_retained_bytes": 87620,
+    "counted_transcript_review_charge_bytes": 750000,
+    "closing_raw_record_reserve_bytes": 200000,
+    "shared_limit_bytes": 8388608,
+    "all_failed_outputs_preserved": true,
+    "optional_sidecars": "Direct frontend emit doc/source-info/ABI paths /dev/null from outset; no pruning or compression.",
+    "artifact_bounds": "OS RLIMIT_FSIZE each paired producer file; final executable3000000B. All raw chunks checked before retain; tails drained/count recorded. Failed2MB/3MB inherited links preserved; approved exact12-target closure link succeeded.",
+    "package_after_this_result_bytes": 6633097,
+    "owned_new_retention_including_fixture_bytes": 6657716,
+    "total_with_transcript_and_closing_reserves_bytes": 7607716
+  },
+  "processing": {
+    "definition": "Source/evidence contents inspected, hashed, or parsed and entire observed compiler/help stream bytes including discarded bytes; compiler-internal memory/IO not metered as analysis reads.",
+    "charge_bytes": 268435456,
+    "limit_bytes": 536870912,
+    "kind": "Conservative256MiB cumulative accounting charge, NOT an exact per-read measurement.",
+    "precision_limit": "A per-read byte meter was not maintained for every repeated source/receipt/tool read; no exact total is asserted. Initial4MiB charge, per-step raw counts, artifact hashes and finite source sets are retained; compiler386MB pin was reused without rehash."
+  },
+  "historical_output": "Old2GiB historical ceiling plus protected32MiB reserve remains additional; immutable prior named-root sample1449410518B plus this full8MiB envelope and reserve is1491353558B, below2147483648B. No old failures requalified.",
+  "stop": "No additional producers, object/source changes, index or commit by source owner."
+}

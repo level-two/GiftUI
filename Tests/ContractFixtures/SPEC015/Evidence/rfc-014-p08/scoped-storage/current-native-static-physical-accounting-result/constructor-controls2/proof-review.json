@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "proof": {
+    "expected_exits": true,
+    "all_bounded_no_guard": true,
+    "caller_annotation_noinline_and_direct_apply": true,
+    "imported_initializer_empty_CFG_stub": true,
+    "producer_rejected_allocating_initializer": true,
+    "unqualified_import_rejected": true
+  },
+  "raw_result": "result.json",
+  "initial_analysis_defect": "The initial regex required annotation to be first and imported definition to end on its header. Swift6.4 prints reordered attributes and an empty-CFG imported stub. Expected raw exits and noinline call were already correct; no compiler/source retry performed. Original result preserved.",
+  "positive_complete_sil_sha256": "fb07ccdd713108d5ca68cdbdcb77cab30a5fc0bd16ebc69e58ba3a320957e01f",
+  "imported_stub_sha256": "1c1f94adc4e2c0ae72056d6925ef0ca12dfb92ef208822fd1240f17905f92802",
+  "checked_producer_module_sha256": "6d22ad30f7f0b4fe7da6616c33b03fde4290a193fd819251c389d7cb44d333c7",
+  "checked_producer_object_sha256": "2715482ba47ccff110281cb0535552752af48f6fc7e54b3d3c688209dd377fb2"
+}

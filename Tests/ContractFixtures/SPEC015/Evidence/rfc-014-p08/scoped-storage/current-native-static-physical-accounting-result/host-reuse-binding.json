@@ -1,0 +1,126 @@
+{
+  "host_module": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.swiftmodule",
+  "host_module_sha256": "009fc29e4e35e3617ef06293d8e09c0c774627add10731dc3e788ec5b3972697",
+  "host_object": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.o",
+  "host_object_sha256": "c971acdfe7bd69bad7012e8f7cac8d52249901421d80121b9d74488af7030f67",
+  "own23_sources": {
+    "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift": {
+      "sha256": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostActivationController.swift": {
+      "sha256": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift": {
+      "sha256": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": {
+      "sha256": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": {
+      "sha256": "f2d6f177fac842326f47af57dbe4317a813563987762dc15802f249098c24b4a",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/candidate/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": {
+      "sha256": "fb89a072235041053cd739b4a65da6c5c67cfe38c47f4d49db3aad86e0f9bdab",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": {
+      "sha256": "7dd3c8dac9fb309034c677d3383dad00350d1cca78bf6d982ee0b4448f88d00d",
+      "source": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/candidate/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift": {
+      "sha256": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": {
+      "sha256": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostFailureAdapter.swift": {
+      "sha256": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostFailureAdapter.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": {
+      "sha256": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift": {
+      "sha256": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": {
+      "sha256": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift": {
+      "sha256": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift": {
+      "sha256": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": {
+      "sha256": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": {
+      "sha256": "3f21154d0b6d6b416ebcacef4932902a72649968969246c601791272f66316f6",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift": {
+      "sha256": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift"
+    },
+    "Sources/GiftUIHostConfiguration/HostWakePacingController.swift": {
+      "sha256": "ea04fa3fb0c52da2aa8c1719cb68abb229c3d24f6ad3de597527b2f026dede11",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostWakePacingController.swift"
+    },
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": {
+      "sha256": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift"
+    },
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": {
+      "sha256": "55466bd192b6e5e1296de66a20ed2bdee97caa69432608b9c0e9436548786650",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift"
+    },
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": {
+      "sha256": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift"
+    },
+    "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": {
+      "sha256": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+      "source": "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift"
+    }
+  },
+  "source_adoption_pending_actual42_pass": true,
+  "source_recipe_reference": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/plan.json",
+  "lower_current_pairs": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUIRuntimeCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUISemanticCore.o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules/GiftUIInteraction.o"
+  ],
+  "required_host_lower_symbol_count": 12,
+  "required_host_lower_symbols_all_defined": true,
+  "required_host_lower_symbols": [
+    "_$s17GiftUIRuntimeCore18RuntimeProfileKindOMn",
+    "_$s17GiftUIRuntimeCore19RuntimeOwnerFailureO21__derived_enum_equalsySbAC_ACtFZ",
+    "_$s17GiftUIRuntimeCore19RuntimeOwnerFailureOMn",
+    "_$s17GiftUIRuntimeCore19RuntimeOwnerFailureON",
+    "_$s17GiftUIRuntimeCore19RuntimeOwnerFailureOSQAAMc",
+    "_$s17GiftUIRuntimeCore19RuntimeStorageAuditV23__derived_struct_equalsySbAC_ACtFZ",
+    "_$s17GiftUIRuntimeCore19RuntimeStorageAuditVMn",
+    "_$s17GiftUIRuntimeCore20RuntimeProfileLimitsV23__derived_struct_equalsySbAC_ACtFZ",
+    "_$s17GiftUIRuntimeCore20RuntimeProfileLimitsV7records6models8semantic36maximumSemanticStructuralOccurrences6layout6render0O9Workspace0O4Sink0J24OrdinaryRenderOperations9execution15observableState11interaction7drawing12staticCanvas7profileACSgAA0d6RecordF0V_AA0d5ModelF0V0a10UISemanticC00k9ExpansionF0Vs6UInt16V0A8UILayout06LayoutF0V0A16UIRenderLowering0sF0VA4_0sP8CapacityV0a8UIRenderC00sQ8CapacityVA0_0A11UIExecution09ExecutionF0V0a12UIObservableW0010ObservablewF0V0A13UIInteraction011InteractionF0V0A9UIDrawing07DrawingF0VA21_012StaticCanvasF0VSgAA0dE4KindOtcfC",
+    "_$s17GiftUIRuntimeCore20RuntimeProfileLimitsVMn",
+    "_$s17GiftUIRuntimeCore29RuntimeProfileValidationErrorOMn",
+    "_$s17GiftUIRuntimeCore30RuntimeProfileValidationResultOMn"
+  ],
+  "nm_raw_bytes_processed_not_retained": 291774,
+  "compatibility": "No lower stored fields,field order,generic requirements,conformances or existing signatures removed. Concrete code bodies unchanged except unconditional capacity-operation forwarding of the same stored read; semantic new symbol is additive ABI. Common formerly private symbols are not Host references. Generic metadata protocol requirements unchanged. Host own23body hashes exactly match retained build,including serialized client bodies.",
+  "qualification_limit": "Retained Host is a requalified importer/candidate, not newly produced and not a currentproduct adoption until complete42gate succeeds; its ownsource/dependency exceptions are explicit. No prior Counter functionalPASS transfers."
+}

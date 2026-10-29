@@ -1,0 +1,28 @@
+{
+  "name": "GiftUIInteraction",
+  "exit": 0,
+  "guard": null,
+  "raw_bytes_read": {
+    "stdout": 0,
+    "stderr": 1105
+  },
+  "raw_lines_read": 14,
+  "tail_bytes_read": 0,
+  "emitted_equals_read_proved": true,
+  "elapsed_seconds": 0.6486614580000003,
+  "finished_utc": "2026-10-29T09:30:08.406559+00:00",
+  "retained_new_batch_bytes": 544768,
+  "passed": true,
+  "module_pair": {
+    "swiftmodule": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules/GiftUIInteraction.swiftmodule",
+      "bytes": 227112,
+      "sha256": "eb386e792a7ada89461b062dfb5e001f2e786dc008e0bbea00ad5f2a5126fd83"
+    },
+    "o": {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules/GiftUIInteraction.o",
+      "bytes": 190120,
+      "sha256": "656609625fe0309fcf33a9b935e102a9a05f843715a634e1118c6d29a46c4863"
+    }
+  }
+}

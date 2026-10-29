@@ -1,0 +1,77 @@
+{
+  "purpose": "Exact scalar struct initializer cross-module compiler-enforced effect controls; no runtime execution.",
+  "limits": {
+    "retained_total_bytes": 131072,
+    "raw_per_step_bytes": 16384,
+    "session_deadline_utc": "2026-10-29T10:42:26.899122+00:00"
+  },
+  "compiler_pin_reference": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/freeze.json",
+  "steps": [
+    {
+      "name": "positive-producer",
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-swift-version",
+        "6",
+        "-Osize",
+        "-whole-module-optimization",
+        "-experimental-performance-annotations",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-parse-as-library",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache",
+        "-module-name",
+        "AccountingConstructorProducer",
+        "-Xfrontend",
+        "-emit-module-doc-path",
+        "-Xfrontend",
+        "/dev/null",
+        "-Xfrontend",
+        "-emit-module-source-info-path",
+        "-Xfrontend",
+        "/dev/null",
+        "-Xfrontend",
+        "-emit-abi-descriptor-path",
+        "-Xfrontend",
+        "/dev/null",
+        "-emit-module",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls/positive-producer/Input.swift",
+        "-emit-module-path",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls/positive-producer/AccountingConstructorProducer.swiftmodule",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/constructor-controls/positive-producer/AccountingConstructorProducer.o"
+      ],
+      "expected_exit": 0,
+      "start_utc": "2026-10-29T09:13:07.027626+00:00",
+      "deadline_utc": "2026-10-29T09:14:07.027626+00:00",
+      "required_file_count_bound": 2,
+      "per_file_hard_limit_bytes": 54777,
+      "source_sha256": "2ea5b76cf4262b2539290ab07287ec1e37ef6012cd93757fec73353f7732a7b8",
+      "exit": 1,
+      "guard": null,
+      "raw_bytes_read": {
+        "stdout": 0,
+        "stderr": 282
+      },
+      "pipe_tail_bytes_read": 0,
+      "elapsed_seconds": 0.129854667,
+      "emitted_equals_read_proved": true,
+      "artifacts": {
+        "stdout": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "bytes": 282,
+          "sha256": "fe68236d647bf836869e99d53998ef918560feefb584c40a9822f7c65a269b2f"
+        }
+      },
+      "passed": false
+    }
+  ],
+  "passed": false
+}

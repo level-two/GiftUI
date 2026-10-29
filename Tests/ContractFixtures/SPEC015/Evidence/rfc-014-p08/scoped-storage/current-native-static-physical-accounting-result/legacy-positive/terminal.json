@@ -1,0 +1,14 @@
+{
+  "name": "legacy-positive",
+  "exit": 0,
+  "expected_exit": 0,
+  "guard": null,
+  "raw_bytes_read": {
+    "stdout": 0,
+    "stderr": 0
+  },
+  "tail_bytes_read": 0,
+  "emitted_equals_read_proved": true,
+  "passed": true,
+  "elapsed_seconds": 0.0785455
+}
