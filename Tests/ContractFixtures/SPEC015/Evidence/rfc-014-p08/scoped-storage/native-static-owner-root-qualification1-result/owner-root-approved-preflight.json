@@ -1,0 +1,24 @@
+{
+  "exact_five_frozen_hashes_match": true,
+  "existing_provider_order": {
+    "GiftUI": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUI.swiftmodule",
+    "GiftUIDrawing": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUIDrawing.swiftmodule",
+    "GiftUILayout": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUILayout.swiftmodule",
+    "GiftUIRenderLowering": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUIRenderLowering.swiftmodule",
+    "GiftUISemanticCore": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/production/GiftUISemanticCore.swiftmodule",
+    "GiftUIRuntimeCore": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUIRuntimeCore.swiftmodule",
+    "GiftUIInteraction": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules/GiftUIInteraction.swiftmodule",
+    "GiftUIHostConfiguration": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.swiftmodule"
+  },
+  "new_Observable_provider_first": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/owner-root-qualified",
+  "new_provider_to_authenticate_after_build": true,
+  "three_lower_objects_present": true,
+  "approval": {
+    "explicit_user_answer": "Approve durable 16 MiB for P08 analysis",
+    "scope": "Current and subsequent authorized P08 analysis sessions shared retention/transcript8\u219216MiB; all other limits unchanged. No new session or deadline reset.",
+    "forwarded_by_root_utc": "2026-10-29T20:24:19+00:00",
+    "same_deadline_utc": "2026-10-29T21:34:38.834107+00:00"
+  },
+  "source_count": 13,
+  "Package26_conformance": false
+}

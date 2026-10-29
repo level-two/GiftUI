@@ -1,0 +1,14 @@
+{
+  "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+    "bytes": 17684,
+    "sha256": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832"
+  },
+  "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+    "bytes": 34373,
+    "sha256": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205"
+  },
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+    "bytes": 43504,
+    "sha256": "b0c7bafd6306ae9b890c064c85c598cb68c60cfe1522fd244fb8a8b1d0f44513"
+  }
+}

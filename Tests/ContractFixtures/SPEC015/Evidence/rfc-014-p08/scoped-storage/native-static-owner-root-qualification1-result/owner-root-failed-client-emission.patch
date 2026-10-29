@@ -1,0 +1,137 @@
+diff --git a/Sources/GiftUIObservableState/ObservableModelOwnership.swift b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+index 260eac61..3307c8d1 100644
+--- a/Sources/GiftUIObservableState/ObservableModelOwnership.swift
++++ b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+@@ -75,6 +75,9 @@ package struct ObservableModelOwnership: ~Copyable {
+     private var activeRead = false
+     private var replacement: Replacement?
+ 
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        @_noAllocation
++    #endif
+     package init?(
+         identity: ObservableModelOwnerIdentity,
+         modelLimit: UInt16 = 2,
+@@ -93,13 +96,48 @@ package struct ObservableModelOwnership: ~Copyable {
+         self.captureLimit = captureLimit
+     }
+ 
+-    package var storageCapacities: (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
+-    {
+-        (modelLimit, claimLimit, pinLimit, captureLimit)
+-    }
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package var storageCapacities:
++            (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
++        {
++            @_noAllocation
++            get { (modelLimit, claimLimit, pinLimit, captureLimit) }
++        }
++    #else
++        package var storageCapacities:
++            (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
++        {
++            (modelLimit, claimLimit, pinLimit, captureLimit)
++        }
++    #endif
+     // The two actual pinned fields are partitioned out of the ledger exactly once.
+-    package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
+-    package static var metadataStorageBytes: Int { MemoryLayout<Self>.size - framePinStorageBytes }
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package static var framePinStorageBytes: Int {
++            @_noAllocation
++            get { 2 * MemoryLayout<Bool>.size }
++        }
++    #else
++        package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
++    #endif
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package static var metadataStorageBytes: Int {
++            @_noAllocation
++            get { MemoryLayout<Self>.size - framePinStorageBytes }
++        }
++    #else
++        package static var metadataStorageBytes: Int {
++            MemoryLayout<Self>.size - framePinStorageBytes
++        }
++    #endif
++
++    // Read the existing owner value without changing its stored representation
++    // or the original getter; both ordinary and checked accounting use this path.
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        @_noAllocation
++    #endif
++    package borrowing func identityForAccounting() -> ObservableModelOwnerIdentity {
++        identity
++    }
+ 
+     package var occupiedCount: Int {
+         var count = 0
+diff --git a/Sources/GiftUIObservableState/ObservableStateRootScope.swift b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+index 2f5394c8..9db582c1 100644
+--- a/Sources/GiftUIObservableState/ObservableStateRootScope.swift
++++ b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+@@ -9,9 +9,20 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
+     fileprivate var identities: InlineArray<2, Identity?> = .init(repeating: nil)
+     fileprivate var control = ObservableStateRootControl()
+ 
+-    package static var storageCapacities:
+-        (locations: UInt16, registrations: UInt16, associations: UInt16)
+-    { (2, 2, 2) }
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package static var storageCapacities:
++            (locations: UInt16, registrations: UInt16, associations: UInt16)
++        {
++            @_noAllocation
++            @_alwaysEmitIntoClient
++            @inline(__always)
++            get { (2, 2, 2) }
++        }
++    #else
++        package static var storageCapacities:
++            (locations: UInt16, registrations: UInt16, associations: UInt16)
++        { (2, 2, 2) }
++    #endif
+     package static var candidateStorageBytes: Int {
+         ObservableStateRootControl.candidateStorageBytes
+     }
+@@ -72,9 +83,23 @@ package struct ObservableStateRootControl {
+     @usableFromInline var limits = ObservableStateLimits(
+         maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!
+ 
+-    package static var candidateStorageBytes: Int {
+-        MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size + MemoryLayout<Bool>.size
+-    }
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package static var candidateStorageBytes: Int {
++            @_noAllocation
++            get {
++                MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size
++                    + MemoryLayout<Bool>.size
++            }
++        }
++    #else
++        package static var candidateStorageBytes: Int {
++            MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size
++                + MemoryLayout<Bool>.size
++        }
++    #endif
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        @_noAllocation
++    #endif
+     package init() {}
+     init(nextGeneration: UInt32?) { self.nextGeneration = nextGeneration }
+ 
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+index 90656e9a..99b8e089 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+@@ -51,7 +51,7 @@ struct CounterStaticRootStorage: ~Copyable {
+         let metadataBytes = ObservableModelOwnership.metadataStorageBytes
+             + MemoryLayout<UInt16>.size + MemoryLayout<Bool>.size + MemoryLayout<Self>.size - fields
+         let candidateBytes = ObservableStateRootControl.candidateStorageBytes
+-        return (ownership.identity, 2, 4, 2, capacities.captures, metadataBytes, modelBytes,
++        return (ownership.identityForAccounting(), 2, 4, 2, capacities.captures, metadataBytes, modelBytes,
+             ObservableModelOwnership.framePinStorageBytes, registrationBytes - candidateBytes,
+             candidateBytes)
+     }

@@ -1,0 +1,170 @@
+{
+  "baseline": "f65e2081",
+  "source_paths": [
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+    "Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootQualification.swift",
+    "Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootImportedProbe.swift"
+  ],
+  "source_hashes": {
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+      "bytes": 18874,
+      "sha256": "62a7460a1e2c804283b66b4f9a23e756fdf9b38e4508ced4cff9266f5301e671"
+    },
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+      "bytes": 35196,
+      "sha256": "dc98d93aa88e50168fcc6cfadea98c7c020ea04df36c881687a07a689e91dfc0"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+      "bytes": 43495,
+      "sha256": "a0212906bb2715f934168dd91a7244ff6fc607377cc19cb2b8e3f3ddbcb2cc24"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootQualification.swift": {
+      "bytes": 8025,
+      "sha256": "3dcb7006a9bd14e75609611b18ab31cdf397a96ef3d06473ff9f22c937a4468b"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootImportedProbe.swift": {
+      "bytes": 938,
+      "sha256": "3a41295e8daf67c96d3dd13ee59d3b1642868206f4ad6dcf9623435537dd5c29"
+    }
+  },
+  "archive_files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/README.md": {
+      "bytes": 2857,
+      "sha256": "0e6db1edb4bc80256077348d1ca13d117b9d88e9652c4d96e6a8ac777370cc44"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/independent-review.md": {
+      "bytes": 925,
+      "sha256": "b684e7c13131fcd9b0edc3409a76d9f758937f31ae72ad53823f7a414c9d9100"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-actual42.raw": {
+      "bytes": 80905,
+      "sha256": "9a291af50a7ecdbefc8ae2ede353c5c7c8fcd80a975af6943605d9013fb4d83a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-analysis-check-errata.json": {
+      "bytes": 495,
+      "sha256": "753fe1d53936e893385f70bd2fd421f7ef245e6dcf93a29536e0148df75f0e70"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-approved-preflight.json": {
+      "bytes": 1949,
+      "sha256": "84893ad5d11a4171473896448f07de6dbcd29da8fc1e3ca9e9faf82e28ba356a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-complete-job-preflight.json": {
+      "bytes": 1123,
+      "sha256": "2d91aa1e70ee49994a3fe693108505ccff08a010f734a7daa2dc45dcd44dd23e"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-failed-client-emission.patch": {
+      "bytes": 6124,
+      "sha256": "2b274f3c125d7435a3153721e296df797775b9cf360cf15a162a6c990edddca9"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-final-source-freeze.json": {
+      "bytes": 911,
+      "sha256": "975c5f7ef553550aab316a6a2ca1e6d95315480b366ab10a754e4ad62acb81af"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-final.patch": {
+      "bytes": 8807,
+      "sha256": "5a9b1601d25eaab857d6c2a817280161465379eacea224166f7ff45220d1b11f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-full-link-closure.json": {
+      "bytes": 1972,
+      "sha256": "fdf71139554c4cd40d72009ab7bac14fa7d6608fb57e9bac8418d7372e9902ff"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-imported.raw": {
+      "bytes": 825,
+      "sha256": "7c986e327b59dd009287e2ffad28c8e592dcd76e505321f533e0f45e6a962bb4"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-imported2.raw": {
+      "bytes": 825,
+      "sha256": "7c986e327b59dd009287e2ffad28c8e592dcd76e505321f533e0f45e6a962bb4"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-module.raw": {
+      "bytes": 49,
+      "sha256": "f82c851d98df50d140c6d715ba53e81d5dea44c52f5c8289f449c17caf023c37"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-nongeneric-abi.json": {
+      "bytes": 1124,
+      "sha256": "256332c7cbea9283fe7f7eef49d0a0a990d53f382c67504cd17a7b0f0bbd5d6c"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-nongeneric-actual42.raw": {
+      "bytes": 80910,
+      "sha256": "a7b8a306099bc7c20235815ed67dcc98056d002231d623f9470926a0770d6b92"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-nongeneric-final-plan.json": {
+      "bytes": 28962,
+      "sha256": "abdbdfd43823b6ab48cb2ef32fdaa3c9fd3cfb4eb07ece2efc1a57762f290b24"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-nongeneric-functional-build.raw": {
+      "bytes": 832,
+      "sha256": "9e0c5f6bcc5efbc8ba67be4a5497d71560c2b8359cf7576f7d96a5b487b3685b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-nongeneric-functional-execute.raw": {
+      "bytes": 141,
+      "sha256": "2a0418df8ee4f4fd71ea9024d985cd2ec5762b44300ffa46262fe78e30cccf7d"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-nongeneric-imported.sil": {
+      "bytes": 13910,
+      "sha256": "6ef3ed3f3c541368ea93b48dd248a042245dfe9018a4b78aeabdeac0104282cd"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-nongeneric-provider-loading.json": {
+      "bytes": 2709,
+      "sha256": "22f8489ef8dcd49b7aa2677a5204295a7ca3f6a383a21c9705900c47458932ca"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-nongeneric-source-freeze.json": {
+      "bytes": 911,
+      "sha256": "6ac0969761c5df84c9ad2166d8285b4a3d12eee2c611e88810121e0f1d6435d2"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-ordinary-source-equivalence.json": {
+      "bytes": 1513,
+      "sha256": "f1ad4b930e0923c3e9fb4a2bec021886b412e94dbb0810a9bd3cece3327c9cae"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-outcome.json": {
+      "bytes": 5763,
+      "sha256": "ed128728589b3cb52f1ae595a6670cc2e356d80c01205a065c13bfbd8d084617"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-pre-edit-guard-failures.json": {
+      "bytes": 407,
+      "sha256": "7d736f3748bc6ecef1c0404f5d0dfbf3954fb37e6f61b87d88cdb7835ea4c420"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-provider-loading.json": {
+      "bytes": 2780,
+      "sha256": "591bfadf641fa035967881b48bce4056557959a6d4d2538cad67123a4eba1f63"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-source-before.json": {
+      "bytes": 538,
+      "sha256": "7ed1f558029a2fe7c470e35db582015851b20fa074ffe370fa79a80881f7d58e"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-stopped-OwnerRootImportedProbe.swift": {
+      "bytes": 962,
+      "sha256": "d603ea4531ee7aaeba3168d9b48076bc5bc445fc73a0a04edb1ccae0f8d5ee67"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-stopped-OwnerRootQualification.swift": {
+      "bytes": 7660,
+      "sha256": "1db1daa88781b8b77e59c75d64a785858b1480667ffe0aeb6b06bbf4cc581031"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-stopped-outcome.json": {
+      "bytes": 1639,
+      "sha256": "37cea8299ec05a0cb1df698936dc075058a3f90b682ba56fe31224ae2a655e44"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-terminal-abi-and-failure.json": {
+      "bytes": 1671,
+      "sha256": "32d42e65446160950706bdfea3f10638797d8387920d558566069f64c8b0b68b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-validation-source-freeze.json": {
+      "bytes": 911,
+      "sha256": "74fcc59920bcfbcfb00361b308cca07f6c4d7f36a5ef438552c79f98c93362f6"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/owner-root-validation-summary.json": {
+      "bytes": 56686,
+      "sha256": "a328b3a94a0f2f7ed01b068862ffbd69f892c9e2e07889bdde6eb22c82b34452"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/final-budget.json": {
+      "bytes": 640,
+      "sha256": "84f6807e746b9cd0832674cd0f77b097117ad6149c2c1aa4440d1f1f9bd573e1"
+    }
+  },
+  "producer_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1",
+  "same_session_deadline_utc": "2026-10-29T21:34:38.834107+00:00",
+  "no_index_commit_by_owner": true,
+  "manifest_self_excluded_only": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/scope-manifest.json"
+}

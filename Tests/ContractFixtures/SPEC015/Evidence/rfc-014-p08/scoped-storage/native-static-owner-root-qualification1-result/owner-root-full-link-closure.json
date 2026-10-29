@@ -1,0 +1,55 @@
+{
+  "closure": {
+    "Observable": [
+      "GiftUI",
+      "Execution",
+      "SemanticCore"
+    ],
+    "Execution": [
+      "GiftUI",
+      "RenderCore"
+    ],
+    "RenderCore": [
+      "GiftUI",
+      "TextResources"
+    ],
+    "TextResources": [
+      "GiftUI"
+    ],
+    "SemanticCore": [
+      "GiftUI"
+    ],
+    "GiftUI": []
+  },
+  "all5lowerobjects": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUI.o": {
+      "bytes": 354240,
+      "sha256": "13718b19c6310da6e28c2eb4760f7cdfc7ef609032f998007830f0ec229c6a94"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIExecution.o": {
+      "bytes": 574800,
+      "sha256": "240b6509cd8357966d98e86b08827e52e139e62d0b05871ed6ec8badf1e15dbb"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/production/GiftUISemanticCore.o": {
+      "bytes": 505944,
+      "sha256": "6e495d4a3958540d49224084cf7ddae1794fa67663e3ea433b0a0fa75d4e0907"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderCore.o": {
+      "bytes": 62200,
+      "sha256": "c9af28358386ec70afa85fed17c84e99e65494f8b804c44f82dfd231bd41b52a"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUITextResources.o": {
+      "bytes": 102840,
+      "sha256": "46d11fcc93d3a13f7307a28d5a5606d0749167c2d7aa9e865959ff3b5d05a33b"
+    }
+  },
+  "object_bytes_sum": 1600024,
+  "same_complete13source_oracle": true,
+  "preserved_failure": "owner-root-nongeneric-functional-build.raw/json832B; missing transitive RenderCore descriptors",
+  "local_executable_provision_rebalanced_bytes": 2500000,
+  "forecast_with_remaining500KBrecords_bytes": 12239591,
+  "durable_limit_bytes": 16777216,
+  "same_deadline_utc": "2026-10-29T21:34:38.834107+00:00",
+  "now_utc": "2026-10-29T20:43:50.964602+00:00",
+  "further_unexpected_link_or_runtime_failure": "STOP; no serial repair"
+}

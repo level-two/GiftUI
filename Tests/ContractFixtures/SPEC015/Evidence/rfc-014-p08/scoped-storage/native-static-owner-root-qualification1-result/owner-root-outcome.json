@@ -1,0 +1,65 @@
+{
+  "status": "SCOPED_OWNER_ROOT_ACCEPTED__2502_BOUNDARIES_PASS__IMPORTED_EFFECT_PASS__688_OLD_EXPORTS_PLUS2__ACTUAL42_CAPTURE_FAIL",
+  "baseline": "f65e2081",
+  "updated_utc": "2026-10-29T20:55:00.546426+00:00",
+  "same_deadline_utc": "2026-10-29T21:34:38.834107+00:00",
+  "source_scope": {
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+      "bytes": 18874,
+      "sha256": "62a7460a1e2c804283b66b4f9a23e756fdf9b38e4508ced4cff9266f5301e671"
+    },
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+      "bytes": 35196,
+      "sha256": "dc98d93aa88e50168fcc6cfadea98c7c020ea04df36c881687a07a689e91dfc0"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+      "bytes": 43495,
+      "sha256": "a0212906bb2715f934168dd91a7244ff6fc607377cc19cb2b8e3f3ddbcb2cc24"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootQualification.swift": {
+      "bytes": 8025,
+      "sha256": "3dcb7006a9bd14e75609611b18ab31cdf397a96ef3d06473ff9f22c937a4468b"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootImportedProbe.swift": {
+      "bytes": 938,
+      "sha256": "3a41295e8daf67c96d3dd13ee59d3b1642868206f4ad6dcf9623435537dd5c29"
+    }
+  },
+  "canonical_source_binding": "owner-root-nongeneric-source-freeze.json",
+  "canonical_provider_binding": "owner-root-nongeneric-provider-loading.json",
+  "canonical_semantic_proof": "owner-root-ordinary-source-equivalence.json",
+  "canonical_imported_proof": "owner-root-nongeneric-imported.sil13910B + receipt",
+  "canonical_ABI": "owner-root-nongeneric-abi.json:688oldexports retained including genericgetter+descriptor; additions identityForAccounting and nongenericRootControl.storageCapacities",
+  "canonical_oracle": "owner-root-nongeneric-functional-build2/execute receipts, binary1502632B;2502checks32valid2369refused, allconstructor/default/identity/capture/partition/offset controls+3ordinarygenericidentities",
+  "canonical_actual_gate": "owner-root-nongeneric-actual42.raw/json:42sources/nooracle, all9intendedproviders, FAIL at CounterProfileStorage268 capturedInlineArray<26,UInt64> metadata; compilerpotential not observedallocation",
+  "mechanism": "One authority: nongeneric RootControl.storageCapacities() returns original2/2/2. Original genericgetter forwards same facts with oldAPI/export. Actual ordinary+qualified Counter accounting uses nongeneric facts. Stored owneridentity/getter/layout remain; additive borrowing identityForAccounting forwards same stored value. Checked constructors transitively include all unchanged default cursors/arrays/records/reports/routes/lifecycle/limits.",
+  "no_generic_heapfree_claim": true,
+  "artifact_scope": "Complete13-source currentCounter/namespace producer recipe, not all26Package directorysources. Retained client-emission Hostcandidate unadopted; no source-consistent wholeproduct orP08closure claim.",
+  "declared_transitive_oracle_closure": "13defining sources +5lowerobjects GiftUI/Execution/Semantic/RenderCore/TextResources; original3object linkFAIL832B retained. Final2.5MBlocalcap reforecast within16MiB, measured1502632B.",
+  "unchanged_behavior_transfer": "Ordinarysource exacttokens restored after explicitly undoing2approvedmethods/forwarders and2Countercallers. Existing492physical controls remain prior-artifact evidence only for unchangedportions; no fresh492/cold/resource transfer.",
+  "controls": "Same compiler/SDK/experimental flags and unchanged soundnesscontrol sources/receipts positive0/allocatingnegative1 reused from geometry; freshmodule constraints and importedcall checked; finalrepositorylint0.",
+  "failures_preserved": [
+    "49Bproducer mode-placement failure before compilation",
+    "Initial concrete genericcapacitymetadataFAIL825B",
+    "ConditionalalwaysEmit+forceinline trial stillsame825BFAIL and removedoldgetter export",
+    "One explicitAstra/rootreassessment selected sharednongeneric facts; no inlinable alternative tested",
+    "832Bfirstoraclelink failure omittedtransitiveRenderCore/TextResources",
+    "Prewrite editguards andanalysisassertion misses documented; no source failure hidden"
+  ],
+  "historical_not_canonical": [
+    "owner-root-final-source-freeze.json and owner-root-provider-loading.json are earliertrial bindings; not currentnongeneric evidence",
+    "owner-root-stopped-outcome.json is failedvisibility disposition superseded only by explicitrootadoption and completedvalidation"
+  ],
+  "independent_review": "CoordinatorfinalscopedACCEPT: freshmodule841b6b29\u202619d25c5,binary28146b9a\u20260f2841d; all5canonicalhashes, exactmoduleloads/importedcleanup/688+2exports/2502oracle verified. Review transcribed, not a cryptographic signature.",
+  "remaining": "ActualInlineArrayaccumulatorcapture allocation gate; currentcallee/U03/lifetime/unsafe-bridge/cold/physical/target/resource/globalP08 remainOPEN.",
+  "approval": {
+    "explicit_user_answer": "Approve durable 16 MiB for P08 analysis",
+    "scope": "Current and subsequent authorized P08 analysis sessions shared retention/transcript8\u219216MiB; all other limits unchanged. No new session or deadline reset.",
+    "forwarded_by_root_utc": "2026-10-29T20:24:19+00:00",
+    "same_deadline_utc": "2026-10-29T21:34:38.834107+00:00"
+  },
+  "resource_uncertainty": "Initialorientation1MiBconservativecharge; append-only per-readprecharges reconciled, compiler/internalGitIOexcluded, root4MiB/reviewer8MiBprocessingprovisions. Transcript own512KiB/root512KiB/reviewer128KiB plusclosing128KiB conservativelyreserved; no exactunmeteredtranscriptcertificate. Priorfailures/old16MiBexceptionuncertainty preserved.",
+  "reviewer_processing_charged_bytes": 8366260,
+  "no_index_commit_by_owner": true,
+  "no_more_owner_producers": true
+}

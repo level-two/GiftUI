@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "path": ".build/contracts/p08-native-static-namespace-qualification1/production/GiftUIObservableState.o",
+    "count": 688,
+    "inventory_sha256": "d63ed261f2d6a5d495147a5238c25943c0c1a9f0d1e616450277620ef8086821"
+  },
+  "nongeneric": {
+    "path": ".build/contracts/p08-native-static-geometry-qualification1/owner-root-nongeneric/GiftUIObservableState.o",
+    "count": 690,
+    "inventory_sha256": "bb156311e622ed2d396418179a6720a8c75e102721da985827b7457db0207f76"
+  },
+  "removed": [],
+  "added": [
+    "_$s21GiftUIObservableState010ObservableC11RootControlV17storageCapacitiess6UInt16V9locations_AF13registrationsAF12associationstyFZ",
+    "_$s21GiftUIObservableState24ObservableModelOwnershipV21identityForAccountingAA0dE13OwnerIdentityVyF"
+  ],
+  "original_generic_getter": [
+    "_$s21GiftUIObservableState010ObservableC11RootStorageV17storageCapacitiess6UInt16V9locations_AF13registrationsAF12associationstvgZ",
+    "_$s21GiftUIObservableState010ObservableC11RootStorageV17storageCapacitiess6UInt16V9locations_AF13registrationsAF12associationstvpZMV"
+  ],
+  "all_old_exports_preserved": true
+}

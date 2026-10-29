@@ -1,0 +1,140 @@
+diff --git a/Sources/GiftUIObservableState/ObservableModelOwnership.swift b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+index 260eac61..3307c8d1 100644
+--- a/Sources/GiftUIObservableState/ObservableModelOwnership.swift
++++ b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+@@ -75,6 +75,9 @@ package struct ObservableModelOwnership: ~Copyable {
+     private var activeRead = false
+     private var replacement: Replacement?
+ 
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        @_noAllocation
++    #endif
+     package init?(
+         identity: ObservableModelOwnerIdentity,
+         modelLimit: UInt16 = 2,
+@@ -93,13 +96,48 @@ package struct ObservableModelOwnership: ~Copyable {
+         self.captureLimit = captureLimit
+     }
+ 
+-    package var storageCapacities: (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
+-    {
+-        (modelLimit, claimLimit, pinLimit, captureLimit)
+-    }
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package var storageCapacities:
++            (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
++        {
++            @_noAllocation
++            get { (modelLimit, claimLimit, pinLimit, captureLimit) }
++        }
++    #else
++        package var storageCapacities:
++            (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
++        {
++            (modelLimit, claimLimit, pinLimit, captureLimit)
++        }
++    #endif
+     // The two actual pinned fields are partitioned out of the ledger exactly once.
+-    package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
+-    package static var metadataStorageBytes: Int { MemoryLayout<Self>.size - framePinStorageBytes }
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package static var framePinStorageBytes: Int {
++            @_noAllocation
++            get { 2 * MemoryLayout<Bool>.size }
++        }
++    #else
++        package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
++    #endif
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package static var metadataStorageBytes: Int {
++            @_noAllocation
++            get { MemoryLayout<Self>.size - framePinStorageBytes }
++        }
++    #else
++        package static var metadataStorageBytes: Int {
++            MemoryLayout<Self>.size - framePinStorageBytes
++        }
++    #endif
++
++    // Read the existing owner value without changing its stored representation
++    // or the original getter; both ordinary and checked accounting use this path.
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        @_noAllocation
++    #endif
++    package borrowing func identityForAccounting() -> ObservableModelOwnerIdentity {
++        identity
++    }
+ 
+     package var occupiedCount: Int {
+         var count = 0
+diff --git a/Sources/GiftUIObservableState/ObservableStateRootScope.swift b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+index 2f5394c8..2d913cc0 100644
+--- a/Sources/GiftUIObservableState/ObservableStateRootScope.swift
++++ b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+@@ -11,7 +11,7 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
+ 
+     package static var storageCapacities:
+         (locations: UInt16, registrations: UInt16, associations: UInt16)
+-    { (2, 2, 2) }
++    { ObservableStateRootControl.storageCapacities() }
+     package static var candidateStorageBytes: Int {
+         ObservableStateRootControl.candidateStorageBytes
+     }
+@@ -72,9 +72,32 @@ package struct ObservableStateRootControl {
+     @usableFromInline var limits = ObservableStateLimits(
+         maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!
+ 
+-    package static var candidateStorageBytes: Int {
+-        MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size + MemoryLayout<Bool>.size
+-    }
++    // Identity-independent facts have one source. The generic compatibility
++    // getter forwards here; accounting does not construct generic metadata.
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        @_noAllocation
++    #endif
++    package static func storageCapacities() -> (
++        locations: UInt16, registrations: UInt16, associations: UInt16
++    ) { (2, 2, 2) }
++
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        package static var candidateStorageBytes: Int {
++            @_noAllocation
++            get {
++                MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size
++                    + MemoryLayout<Bool>.size
++            }
++        }
++    #else
++        package static var candidateStorageBytes: Int {
++            MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size
++                + MemoryLayout<Bool>.size
++        }
++    #endif
++    #if GIFTUI_OWNER_ROOT_QUALIFICATION
++        @_noAllocation
++    #endif
+     package init() {}
+     init(nextGeneration: UInt32?) { self.nextGeneration = nextGeneration }
+ 
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+index 90656e9a..995f5d6a 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+@@ -51,7 +51,7 @@ struct CounterStaticRootStorage: ~Copyable {
+         let metadataBytes = ObservableModelOwnership.metadataStorageBytes
+             + MemoryLayout<UInt16>.size + MemoryLayout<Bool>.size + MemoryLayout<Self>.size - fields
+         let candidateBytes = ObservableStateRootControl.candidateStorageBytes
+-        return (ownership.identity, 2, 4, 2, capacities.captures, metadataBytes, modelBytes,
++        return (ownership.identityForAccounting(), 2, 4, 2, capacities.captures, metadataBytes, modelBytes,
+             ObservableModelOwnership.framePinStorageBytes, registrationBytes - candidateBytes,
+             candidateBytes)
+     }
+@@ -359,7 +359,7 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking &
+     let bytes = RuntimeStorageByteCounts(semanticCandidatePathBytes: UInt32(values[0]), semanticPublishedPathBytes: UInt32(values[1]), semanticCandidatePayloadBytes: UInt32(values[2]), semanticPublishedPayloadBytes: UInt32(values[3]), identityMatchWorkspaceBytes: UInt32(values[4]), interactionCandidateIdentityBytes: UInt32(values[5]), interactionCommittedIdentityBytes: UInt32(values[6]), modelMetadataBytes: UInt32(values[7]), modelOwnerBytes: UInt32(values[8]), framePinBytes: UInt32(values[9]), semanticCandidateBytes: UInt32(values[10]), semanticPublishedBytes: UInt32(values[11]), layoutCandidateBytes: UInt32(values[12]), renderWorkspaceBytes: UInt32(values[13]), canvasCallableBytes: UInt32(values[14]), pathWorkspaceBytes: UInt32(values[15]), drawingPlanBytes: UInt32(values[16]), observableLiveBytes: UInt32(values[17]), observableCandidateBytes: UInt32(values[18]), interactionCandidateBytes: UInt32(values[19]), interactionCommittedBytes: UInt32(values[20]), admissionQueueBytes: UInt32(values[21]), sealedBatchBytes: UInt32(values[22]), pointerStateBytes: UInt32(values[23]), coordinatorStateBytes: UInt32(values[24]), failureStateBytes: UInt32(values[25]))
+     let records = RuntimeRecordLimits(maximumPathEntries: semanticLimits.paths, maximumPathDepth: semanticLimits.depth, maximumPathChildFanout: semanticLimits.fanout, maximumPayloadBytesPerBank: semanticLimits.payloadBytes, maximumIdentityComponentsPerKey: keyLimits.perKey, maximumInteractionIdentityComponents: keyLimits.perBank)
+     let inputs = RuntimeProfileLimitInputs(records: limits.records, models: limits.models, semantic: limits.semantic, maximumSemanticStructuralOccurrences: limits.maximumSemanticStructuralOccurrences, layout: limits.layout, render: limits.render, renderWorkspace: limits.renderWorkspace, renderSink: limits.renderSink, maximumOrdinaryRenderOperations: limits.maximumOrdinaryRenderOperations, execution: limits.execution, observableState: limits.observableState, interaction: limits.interaction, drawing: limits.drawing, staticCanvas: limits.staticCanvas, profile: profile)
+-    let rootCapacity = ObservableStateRootStorage<SemanticCompleteIdentity>.storageCapacities
++    let rootCapacity = ObservableStateRootControl.storageCapacities()
+     let capacities = RuntimeStorageCapacities(candidateRecords: records, publishedRecords: records,
+         models: .init(maximumModelSlots: root.models, maximumOwningTickets: root.claims, maximumFramePins: root.pins, maximumModelCaptureBanks: root.captures),
+         semanticCandidate: .init(maximumDepth: semanticLimits.depth, maximumSemanticNodes: semanticLimits.records, maximumBodyEvaluations: semanticLimits.records, maximumModifierApplications: semanticLimits.records, maximumActionOccurrences: semanticLimits.records),

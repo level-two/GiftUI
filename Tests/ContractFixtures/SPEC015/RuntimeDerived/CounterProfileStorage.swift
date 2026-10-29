@@ -51,7 +51,7 @@ struct CounterStaticRootStorage: ~Copyable {
         let metadataBytes = ObservableModelOwnership.metadataStorageBytes
             + MemoryLayout<UInt16>.size + MemoryLayout<Bool>.size + MemoryLayout<Self>.size - fields
         let candidateBytes = ObservableStateRootControl.candidateStorageBytes
-        return (ownership.identity, 2, 4, 2, capacities.captures, metadataBytes, modelBytes,
+        return (ownership.identityForAccounting(), 2, 4, 2, capacities.captures, metadataBytes, modelBytes,
             ObservableModelOwnership.framePinStorageBytes, registrationBytes - candidateBytes,
             candidateBytes)
     }
@@ -359,7 +359,7 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
     let bytes = RuntimeStorageByteCounts(semanticCandidatePathBytes: UInt32(values[0]), semanticPublishedPathBytes: UInt32(values[1]), semanticCandidatePayloadBytes: UInt32(values[2]), semanticPublishedPayloadBytes: UInt32(values[3]), identityMatchWorkspaceBytes: UInt32(values[4]), interactionCandidateIdentityBytes: UInt32(values[5]), interactionCommittedIdentityBytes: UInt32(values[6]), modelMetadataBytes: UInt32(values[7]), modelOwnerBytes: UInt32(values[8]), framePinBytes: UInt32(values[9]), semanticCandidateBytes: UInt32(values[10]), semanticPublishedBytes: UInt32(values[11]), layoutCandidateBytes: UInt32(values[12]), renderWorkspaceBytes: UInt32(values[13]), canvasCallableBytes: UInt32(values[14]), pathWorkspaceBytes: UInt32(values[15]), drawingPlanBytes: UInt32(values[16]), observableLiveBytes: UInt32(values[17]), observableCandidateBytes: UInt32(values[18]), interactionCandidateBytes: UInt32(values[19]), interactionCommittedBytes: UInt32(values[20]), admissionQueueBytes: UInt32(values[21]), sealedBatchBytes: UInt32(values[22]), pointerStateBytes: UInt32(values[23]), coordinatorStateBytes: UInt32(values[24]), failureStateBytes: UInt32(values[25]))
     let records = RuntimeRecordLimits(maximumPathEntries: semanticLimits.paths, maximumPathDepth: semanticLimits.depth, maximumPathChildFanout: semanticLimits.fanout, maximumPayloadBytesPerBank: semanticLimits.payloadBytes, maximumIdentityComponentsPerKey: keyLimits.perKey, maximumInteractionIdentityComponents: keyLimits.perBank)
     let inputs = RuntimeProfileLimitInputs(records: limits.records, models: limits.models, semantic: limits.semantic, maximumSemanticStructuralOccurrences: limits.maximumSemanticStructuralOccurrences, layout: limits.layout, render: limits.render, renderWorkspace: limits.renderWorkspace, renderSink: limits.renderSink, maximumOrdinaryRenderOperations: limits.maximumOrdinaryRenderOperations, execution: limits.execution, observableState: limits.observableState, interaction: limits.interaction, drawing: limits.drawing, staticCanvas: limits.staticCanvas, profile: profile)
-    let rootCapacity = ObservableStateRootStorage<SemanticCompleteIdentity>.storageCapacities
+    let rootCapacity = ObservableStateRootControl.storageCapacities()
     let capacities = RuntimeStorageCapacities(candidateRecords: records, publishedRecords: records,
         models: .init(maximumModelSlots: root.models, maximumOwningTickets: root.claims, maximumFramePins: root.pins, maximumModelCaptureBanks: root.captures),
         semanticCandidate: .init(maximumDepth: semanticLimits.depth, maximumSemanticNodes: semanticLimits.records, maximumBodyEvaluations: semanticLimits.records, maximumModifierApplications: semanticLimits.records, maximumActionOccurrences: semanticLimits.records),

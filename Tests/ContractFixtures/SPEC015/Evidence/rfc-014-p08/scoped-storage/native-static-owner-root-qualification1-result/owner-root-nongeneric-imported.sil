@@ -1,0 +1,162 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+import GiftUIObservableState
+
+import GiftUISemanticCore
+
+@_noAllocation @inline(never) package func ownerRootImportedProbe(_ identity: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16) -> (UInt32, UInt16, UInt16, UInt16, UInt16, Int, Int, Int)?
+
+// ownerRootImportedProbe(_:models:claims:pins:captures:)
+// Isolation: unspecified
+sil [noinline] [no_allocation] [perf_constraint] @$s22OwnerRootImportedProbe05ownerbcD0_6models6claims4pins8capturess6UInt32V_s6UInt16VA3JS3itSg21GiftUIObservableState015ObservableModelA8IdentityV_A4JtF : $@convention(thin) (ObservableModelOwnerIdentity, UInt16, UInt16, UInt16, UInt16) -> Optional<(UInt32, UInt16, UInt16, UInt16, UInt16, Int, Int, Int)> {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "identity"                                  // users: %12, %5
+// %1 "models"                                    // users: %12, %6
+// %2 "claims"                                    // users: %12, %7
+// %3 "pins"                                      // users: %12, %8
+// %4 "captures"                                  // users: %12, %9
+bb0(%0 : $ObservableModelOwnerIdentity, %1 : $UInt16, %2 : $UInt16, %3 : $UInt16, %4 : $UInt16):
+  debug_value %0, let, name "identity", argno 1   // id: %5
+  debug_value %1, let, name "models", argno 2     // id: %6
+  debug_value %2, let, name "claims", argno 3     // id: %7
+  debug_value %3, let, name "pins", argno 4       // id: %8
+  debug_value %4, let, name "captures", argno 5   // id: %9
+  %10 = metatype $@thin ObservableModelOwnership.Type // users: %43, %41, %12
+  // function_ref ObservableModelOwnership.init(identity:modelLimit:claimLimit:pinLimit:captureLimit:)
+  %11 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV8identity10modelLimit05claimI003pinI007captureI0ACSgAA0dE13OwnerIdentityV_s6UInt16VA3MtcfC : $@convention(method) (ObservableModelOwnerIdentity, UInt16, UInt16, UInt16, UInt16, @thin ObservableModelOwnership.Type) -> @owned Optional<ObservableModelOwnership> // user: %12
+  %12 = apply %11(%0, %1, %2, %3, %4, %10) : $@convention(method) (ObservableModelOwnerIdentity, UInt16, UInt16, UInt16, UInt16, @thin ObservableModelOwnership.Type) -> @owned Optional<ObservableModelOwnership> // user: %13
+  switch_enum %12, case #Optional.some!enumelt: bb1, case #Optional.none!enumelt: bb2 // id: %13
+
+// %14                                            // users: %15, %38, %17
+bb1(%14 : $ObservableModelOwnership):             // Preds: bb0
+  debug_value %14, let, name "owner"              // id: %15
+  // function_ref ObservableModelOwnership.storageCapacities.getter
+  %16 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV17storageCapacitiess6UInt16V6models_AF6claimsAF4pinsAF8capturestvg : $@convention(method) (@guaranteed ObservableModelOwnership) -> (UInt16, UInt16, UInt16, UInt16) // user: %17
+  %17 = apply %16(%14) : $@convention(method) (@guaranteed ObservableModelOwnership) -> (UInt16, UInt16, UInt16, UInt16) // users: %21, %20, %19, %18
+  %18 = tuple_extract %17, 0                      // users: %65, %22
+  %19 = tuple_extract %17, 1                      // users: %65, %23
+  %20 = tuple_extract %17, 2                      // users: %65, %24
+  %21 = tuple_extract %17, 3                      // users: %65, %25
+  debug_value %18, let, name "capacities", type $(models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16), expr op_tuple_fragment:$(models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16):0 // id: %22
+  debug_value %19, let, name "capacities", type $(models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16), expr op_tuple_fragment:$(models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16):1 // id: %23
+  debug_value %20, let, name "capacities", type $(models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16), expr op_tuple_fragment:$(models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16):2 // id: %24
+  debug_value %21, let, name "capacities", type $(models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16), expr op_tuple_fragment:$(models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16):3 // id: %25
+  %26 = metatype $@thin ObservableStateRootControl.Type // users: %45, %30, %28
+  // function_ref ObservableStateRootControl.init()
+  %27 = function_ref @$s21GiftUIObservableState010ObservableC11RootControlVACycfC : $@convention(method) (@thin ObservableStateRootControl.Type) -> ObservableStateRootControl // user: %28
+  %28 = apply %27(%26) : $@convention(method) (@thin ObservableStateRootControl.Type) -> ObservableStateRootControl
+  // function_ref static ObservableStateRootControl.storageCapacities()
+  %29 = function_ref @$s21GiftUIObservableState010ObservableC11RootControlV17storageCapacitiess6UInt16V9locations_AF13registrationsAF12associationstyFZ : $@convention(method) (@thin ObservableStateRootControl.Type) -> (UInt16, UInt16, UInt16) // user: %30
+  %30 = apply %29(%26) : $@convention(method) (@thin ObservableStateRootControl.Type) -> (UInt16, UInt16, UInt16) // users: %33, %32, %31
+  %31 = tuple_extract %30, 0                      // users: %46, %34
+  %32 = tuple_extract %30, 1                      // users: %47, %35
+  %33 = tuple_extract %30, 2                      // users: %53, %36
+  debug_value %31, let, name "root", type $(locations: UInt16, registrations: UInt16, associations: UInt16), expr op_tuple_fragment:$(locations: UInt16, registrations: UInt16, associations: UInt16):0 // id: %34
+  debug_value %32, let, name "root", type $(locations: UInt16, registrations: UInt16, associations: UInt16), expr op_tuple_fragment:$(locations: UInt16, registrations: UInt16, associations: UInt16):1 // id: %35
+  debug_value %33, let, name "root", type $(locations: UInt16, registrations: UInt16, associations: UInt16), expr op_tuple_fragment:$(locations: UInt16, registrations: UInt16, associations: UInt16):2 // id: %36
+  // function_ref ObservableModelOwnership.identityForAccounting()
+  %37 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV21identityForAccountingAA0dE13OwnerIdentityVyF : $@convention(method) (@guaranteed ObservableModelOwnership) -> ObservableModelOwnerIdentity // user: %38
+  %38 = apply %37(%14) : $@convention(method) (@guaranteed ObservableModelOwnership) -> ObservableModelOwnerIdentity // user: %39
+  %39 = struct_extract %38, #ObservableModelOwnerIdentity.rawValue // user: %65
+  // function_ref static ObservableModelOwnership.metadataStorageBytes.getter
+  %40 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV20metadataStorageBytesSivgZ : $@convention(method) (@thin ObservableModelOwnership.Type) -> Int // user: %41
+  %41 = apply %40(%10) : $@convention(method) (@thin ObservableModelOwnership.Type) -> Int // user: %65
+  // function_ref static ObservableModelOwnership.framePinStorageBytes.getter
+  %42 = function_ref @$s21GiftUIObservableState24ObservableModelOwnershipV20framePinStorageBytesSivgZ : $@convention(method) (@thin ObservableModelOwnership.Type) -> Int // user: %43
+  %43 = apply %42(%10) : $@convention(method) (@thin ObservableModelOwnership.Type) -> Int // user: %65
+  // function_ref static ObservableStateRootControl.candidateStorageBytes.getter
+  %44 = function_ref @$s21GiftUIObservableState010ObservableC11RootControlV21candidateStorageBytesSivgZ : $@convention(method) (@thin ObservableStateRootControl.Type) -> Int // user: %45
+  %45 = apply %44(%26) : $@convention(method) (@thin ObservableStateRootControl.Type) -> Int // user: %59
+  %46 = struct_extract %31, #UInt16._value        // user: %49
+  %47 = struct_extract %32, #UInt16._value        // user: %49
+  %48 = integer_literal $Builtin.Int1, -1         // users: %60, %54, %49
+  %49 = builtin "uadd_with_overflow_Int16"(%46, %47, %48) : $(Builtin.Int16, Builtin.Int1) // users: %51, %50
+  %50 = tuple_extract %49, 0                      // user: %54
+  %51 = tuple_extract %49, 1                      // user: %52
+  cond_fail %51, "arithmetic overflow"            // id: %52
+  %53 = struct_extract %33, #UInt16._value        // user: %54
+  %54 = builtin "uadd_with_overflow_Int16"(%50, %53, %48) : $(Builtin.Int16, Builtin.Int1) // users: %56, %55
+  %55 = tuple_extract %54, 0                      // user: %58
+  %56 = tuple_extract %54, 1                      // user: %57
+  cond_fail %56, "arithmetic overflow"            // id: %57
+  %58 = builtin "zextOrBitCast_Int16_Int64"(%55) : $Builtin.Int64 // user: %60
+  %59 = struct_extract %45, #Int._value           // user: %60
+  %60 = builtin "sadd_with_overflow_Int64"(%59, %58, %48) : $(Builtin.Int64, Builtin.Int1) // users: %62, %61
+  %61 = tuple_extract %60, 0                      // user: %64
+  %62 = tuple_extract %60, 1                      // user: %63
+  cond_fail %62, "arithmetic overflow"            // id: %63
+  %64 = struct $Int (%61)                         // user: %65
+  %65 = tuple (%39, %18, %19, %20, %21, %41, %43, %64) // user: %66
+  %66 = enum $Optional<(UInt32, UInt16, UInt16, UInt16, UInt16, Int, Int, Int)>, #Optional.some!enumelt, %65 // user: %68
+  debug_value undef : $*ObservableModelOwnership, let, name "owner", expr op_deref // id: %67
+  br bb3(%66)                                     // id: %68
+
+bb2:                                              // Preds: bb0
+  %69 = enum $Optional<(UInt32, UInt16, UInt16, UInt16, UInt16, Int, Int, Int)>, #Optional.none!enumelt // user: %70
+  br bb3(%69)                                     // id: %70
+
+// %71                                            // user: %72
+bb3(%71 : $Optional<(UInt32, UInt16, UInt16, UInt16, UInt16, Int, Int, Int)>): // Preds: bb1 bb2
+  return %71                                      // id: %72
+} // end sil function '$s22OwnerRootImportedProbe05ownerbcD0_6models6claims4pins8capturess6UInt32V_s6UInt16VA3JS3itSg21GiftUIObservableState015ObservableModelA8IdentityV_A4JtF'
+
+// ObservableModelOwnership.init(identity:modelLimit:claimLimit:pinLimit:captureLimit:)
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState24ObservableModelOwnershipV8identity10modelLimit05claimI003pinI007captureI0ACSgAA0dE13OwnerIdentityV_s6UInt16VA3MtcfC : $@convention(method) (ObservableModelOwnerIdentity, UInt16, UInt16, UInt16, UInt16, @thin ObservableModelOwnership.Type) -> @owned Optional<ObservableModelOwnership> {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+} // end sil function '$s21GiftUIObservableState24ObservableModelOwnershipV8identity10modelLimit05claimI003pinI007captureI0ACSgAA0dE13OwnerIdentityV_s6UInt16VA3MtcfC'
+
+// ObservableModelOwnership.storageCapacities.getter
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState24ObservableModelOwnershipV17storageCapacitiess6UInt16V6models_AF6claimsAF4pinsAF8capturestvg : $@convention(method) (@guaranteed ObservableModelOwnership) -> (UInt16, UInt16, UInt16, UInt16) {
+[%0: noescape **]
+[global: ]
+} // end sil function '$s21GiftUIObservableState24ObservableModelOwnershipV17storageCapacitiess6UInt16V6models_AF6claimsAF4pinsAF8capturestvg'
+
+// ObservableStateRootControl.init()
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState010ObservableC11RootControlVACycfC : $@convention(method) (@thin ObservableStateRootControl.Type) -> ObservableStateRootControl {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+} // end sil function '$s21GiftUIObservableState010ObservableC11RootControlVACycfC'
+
+// static ObservableStateRootControl.storageCapacities()
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState010ObservableC11RootControlV17storageCapacitiess6UInt16V9locations_AF13registrationsAF12associationstyFZ : $@convention(method) (@thin ObservableStateRootControl.Type) -> (UInt16, UInt16, UInt16) {
+[global: ]
+} // end sil function '$s21GiftUIObservableState010ObservableC11RootControlV17storageCapacitiess6UInt16V9locations_AF13registrationsAF12associationstyFZ'
+
+// ObservableModelOwnership.identityForAccounting()
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState24ObservableModelOwnershipV21identityForAccountingAA0dE13OwnerIdentityVyF : $@convention(method) (@guaranteed ObservableModelOwnership) -> ObservableModelOwnerIdentity {
+[%0: noescape **]
+[global: ]
+} // end sil function '$s21GiftUIObservableState24ObservableModelOwnershipV21identityForAccountingAA0dE13OwnerIdentityVyF'
+
+// static ObservableModelOwnership.metadataStorageBytes.getter
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState24ObservableModelOwnershipV20metadataStorageBytesSivgZ : $@convention(method) (@thin ObservableModelOwnership.Type) -> Int {
+[global: ]
+} // end sil function '$s21GiftUIObservableState24ObservableModelOwnershipV20metadataStorageBytesSivgZ'
+
+// static ObservableModelOwnership.framePinStorageBytes.getter
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState24ObservableModelOwnershipV20framePinStorageBytesSivgZ : $@convention(method) (@thin ObservableModelOwnership.Type) -> Int {
+[global: ]
+} // end sil function '$s21GiftUIObservableState24ObservableModelOwnershipV20framePinStorageBytesSivgZ'
+
+// static ObservableStateRootControl.candidateStorageBytes.getter
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState010ObservableC11RootControlV21candidateStorageBytesSivgZ : $@convention(method) (@thin ObservableStateRootControl.Type) -> Int {
+[global: ]
+} // end sil function '$s21GiftUIObservableState010ObservableC11RootControlV21candidateStorageBytesSivgZ'
+
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'OwnerRootImportedProbe/OwnerRootImportedProbe.swift' => 'Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootImportedProbe.swift'
+
+

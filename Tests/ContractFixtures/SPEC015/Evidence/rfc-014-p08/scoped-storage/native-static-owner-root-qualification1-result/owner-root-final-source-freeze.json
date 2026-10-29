@@ -1,0 +1,22 @@
+{
+  "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+    "bytes": 18874,
+    "sha256": "62a7460a1e2c804283b66b4f9a23e756fdf9b38e4508ced4cff9266f5301e671"
+  },
+  "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+    "bytes": 35128,
+    "sha256": "97de6a53803f2c90efcb4190c096a065620232c35e6448c01539c3816c855dcf"
+  },
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+    "bytes": 43519,
+    "sha256": "31d065ec9d5b0570c129ebd467c989fea3ab8eb1c94e61af5f3607e2fa15e3c8"
+  },
+  "Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootQualification.swift": {
+    "bytes": 7660,
+    "sha256": "1db1daa88781b8b77e59c75d64a785858b1480667ffe0aeb6b06bbf4cc581031"
+  },
+  "Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootImportedProbe.swift": {
+    "bytes": 962,
+    "sha256": "d603ea4531ee7aaeba3168d9b48076bc5bc445fc73a0a04edb1ccae0f8d5ee67"
+  }
+}

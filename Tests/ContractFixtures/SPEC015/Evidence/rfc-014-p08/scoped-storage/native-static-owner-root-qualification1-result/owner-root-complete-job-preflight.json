@@ -1,0 +1,26 @@
+{
+  "all5_modes_and_output_kinds_verified": [
+    "owner-root-module2",
+    "owner-root-imported",
+    "owner-root-actual42",
+    "owner-root-functional-build",
+    "owner-root-functional-execute"
+  ],
+  "fresh_Observable_imported_first": true,
+  "all_three_lower_objects": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUI.o": {
+      "bytes": 354240,
+      "sha256": "13718b19c6310da6e28c2eb4760f7cdfc7ef609032f998007830f0ec229c6a94"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIExecution.o": {
+      "bytes": 574800,
+      "sha256": "240b6509cd8357966d98e86b08827e52e139e62d0b05871ed6ec8badf1e15dbb"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/production/GiftUISemanticCore.o": {
+      "bytes": 505944,
+      "sha256": "6e495d4a3958540d49224084cf7ddae1794fa67663e3ea433b0a0fa75d4e0907"
+    }
+  },
+  "known_remaining_old_providers": "owner-root-approved-preflight.json and exact unchanged actual-entry2 chain",
+  "source_scope": "complete13-source Counter recipe only"
+}

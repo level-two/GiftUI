@@ -11,7 +11,7 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
 
     package static var storageCapacities:
         (locations: UInt16, registrations: UInt16, associations: UInt16)
-    { (2, 2, 2) }
+    { ObservableStateRootControl.storageCapacities() }
     package static var candidateStorageBytes: Int {
         ObservableStateRootControl.candidateStorageBytes
     }
@@ -72,9 +72,32 @@ package struct ObservableStateRootControl {
     @usableFromInline var limits = ObservableStateLimits(
         maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!
 
-    package static var candidateStorageBytes: Int {
-        MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size + MemoryLayout<Bool>.size
-    }
+    // Identity-independent facts have one source. The generic compatibility
+    // getter forwards here; accounting does not construct generic metadata.
+    #if GIFTUI_OWNER_ROOT_QUALIFICATION
+        @_noAllocation
+    #endif
+    package static func storageCapacities() -> (
+        locations: UInt16, registrations: UInt16, associations: UInt16
+    ) { (2, 2, 2) }
+
+    #if GIFTUI_OWNER_ROOT_QUALIFICATION
+        package static var candidateStorageBytes: Int {
+            @_noAllocation
+            get {
+                MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size
+                    + MemoryLayout<Bool>.size
+            }
+        }
+    #else
+        package static var candidateStorageBytes: Int {
+            MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size
+                + MemoryLayout<Bool>.size
+        }
+    #endif
+    #if GIFTUI_OWNER_ROOT_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {}
     init(nextGeneration: UInt32?) { self.nextGeneration = nextGeneration }
 

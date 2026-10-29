@@ -1,0 +1,27 @@
+{
+  "status": "WHOLE_FAMILY_NOT_ACCEPTED__CONCRETE_GENERIC_METADATA_FAIL__CLIENT_EMISSION_CORRECTION_STOP",
+  "source_baseline": "f65e2081",
+  "initial_qualified_sources": "owner-root-validation-source-freeze.json",
+  "failed_visibility_sources": "owner-root-final-source-freeze.json",
+  "failed_patch": "owner-root-failed-client-emission.patch",
+  "initial_checked_pair": "owner-root-module2.json",
+  "corrected_checked_pair": "owner-root-module3.json",
+  "harness_failure": "owner-root-module.raw/json49B; frontend selector displaced, no artifact/source compilation",
+  "imported_failures": [
+    "owner-root-imported.raw/json",
+    "owner-root-imported2.raw/json"
+  ],
+  "imported_failure_raws_byte_identical": true,
+  "ABI": "owner-root-terminal-abi-and-failure.json: initial preserves688oldexports+identity facade; alwaysEmit removes originalgenericcapacitygetter export",
+  "actual42": "owner-root-actual42.raw/json FAIL accumulatorcapture268 using INITIAL qualifiedpair. Correction full42retry UNEXECUTED after importedFAIL. Acceptedf65baseline gate remains earlierstorageCapacitiesFAIL.",
+  "unexecuted": [
+    "whole-source functional oracle build/run",
+    "inlinable alternative",
+    "nongeneric facade/descriptor alternative",
+    "second actual42 gate"
+  ],
+  "scope_claim": "13-source Counter defining-module artifact only, no wholePackage26/source-consistent product or Hostadoption claim.",
+  "source_state": "Tested failed source remains unchanged, pending root-approved coherent reassessment; no automatic next variant.",
+  "deadline_unchanged": "2026-10-29T21:34:38.834107+00:00",
+  "retention_limit_bytes": 16777216
+}

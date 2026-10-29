@@ -1,0 +1,3 @@
+{
+  "two_no_write_guard_failures": "First edit guard assumed formatter line wrapping; second overbroad guard rejected existing unrelated inline(__always) annotations elsewhere in RootScope. Both failed before source write, no producer; unchanged prior candidate received one formatting call before absent-plan stop. Fixed guard checks only intended existing getter. No implementation variant introduced."
+}

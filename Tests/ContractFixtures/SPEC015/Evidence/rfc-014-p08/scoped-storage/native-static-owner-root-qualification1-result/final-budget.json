@@ -1,0 +1,16 @@
+{
+  "updated_utc": "2026-10-29T20:55:00.546426+00:00",
+  "own_processing_charged_bytes": 75428596,
+  "processing_with_root4MiB_reviewer8MiB_provisions": 88011508,
+  "processing_limit": 536870912,
+  "local_retained": 9451298,
+  "geometry_archive": 357223,
+  "owner_archive": 328017,
+  "source_reserve": 50000,
+  "shared_transcript_closing_reserves": 1310720,
+  "retention_limit": 16777216,
+  "same_deadline": "2026-10-29T21:34:38.834107+00:00",
+  "uncertainty": "Conservative precharges/provisions, not exact actual-byte transcript certificate; raw copies counted again in retention.",
+  "retained_upper": 11497258,
+  "remaining": 5279958
+}

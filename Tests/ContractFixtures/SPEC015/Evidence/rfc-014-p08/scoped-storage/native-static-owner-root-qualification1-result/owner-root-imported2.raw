@@ -1,0 +1,7 @@
+Tests/ContractFixtures/SPEC015/AllocationGate/OwnerRootImportedProbe.swift:9:69: error: generic function calls can cause metadata allocation or locks
+ 7 |     let capacities = owner.storageCapacities
+ 8 |     _ = ObservableStateRootControl()
+ 9 |     let root = ObservableStateRootStorage<SemanticCompleteIdentity>.storageCapacities
+   |                                                                     `- error: generic function calls can cause metadata allocation or locks
+10 |     return (owner.identityForAccounting().rawValue, capacities.models, capacities.claims, capacities.pins, capacities.captures, ObservableModelOwnership.metadataStorageBytes, ObservableModelOwnership.framePinStorageBytes, ObservableStateRootControl.candidateStorageBytes + Int(root.locations + root.registrations + root.associations))
+11 | }

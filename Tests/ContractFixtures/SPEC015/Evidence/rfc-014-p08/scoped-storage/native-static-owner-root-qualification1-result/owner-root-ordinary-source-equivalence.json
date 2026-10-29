@@ -1,0 +1,20 @@
+{
+  "Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+    "ordinary_original_tokens_preserved_except_explicit_forwarders": true,
+    "baseline_sha256": "52df8ebf8755975ad103b19076eae384d2c34a4c266dbb17cfe1774947014832",
+    "current_sha256": "62a7460a1e2c804283b66b4f9a23e756fdf9b38e4508ced4cff9266f5301e671",
+    "normalization": "Select ordinary branches; remove2exactadditive methods/comments; undo2Counterforwarding callers+genericcapacityforward; whitespace only otherwise."
+  },
+  "Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+    "ordinary_original_tokens_preserved_except_explicit_forwarders": true,
+    "baseline_sha256": "07d03cdde418965f0cd4dd7950cf9a9706c9600890a80354e2e3c94b51694205",
+    "current_sha256": "dc98d93aa88e50168fcc6cfadea98c7c020ea04df36c881687a07a689e91dfc0",
+    "normalization": "Select ordinary branches; remove2exactadditive methods/comments; undo2Counterforwarding callers+genericcapacityforward; whitespace only otherwise."
+  },
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+    "ordinary_original_tokens_preserved_except_explicit_forwarders": true,
+    "baseline_sha256": "b0c7bafd6306ae9b890c064c85c598cb68c60cfe1522fd244fb8a8b1d0f44513",
+    "current_sha256": "a0212906bb2715f934168dd91a7244ff6fc607377cc19cb2b8e3f3ddbcb2cc24",
+    "normalization": "Select ordinary branches; remove2exactadditive methods/comments; undo2Counterforwarding callers+genericcapacityforward; whitespace only otherwise."
+  }
+}

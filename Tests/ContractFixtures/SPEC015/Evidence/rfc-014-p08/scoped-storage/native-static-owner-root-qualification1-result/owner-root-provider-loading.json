@@ -1,0 +1,56 @@
+{
+  "GiftUI": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUI.swiftmodule",
+    "bytes": 388592,
+    "sha256": "48c20ad33de8c7b0250c0de9594ba4a2a0e6797f88db47e6edddfe74207530c4",
+    "exact_loaded_matches": true
+  },
+  "GiftUIDrawing": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUIDrawing.swiftmodule",
+    "bytes": 188624,
+    "sha256": "18c60337ff1fa10ff85b2f1357e72d68ebc02bf6c44d4664187077ed809181bf",
+    "exact_loaded_matches": true
+  },
+  "GiftUILayout": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUILayout.swiftmodule",
+    "bytes": 325168,
+    "sha256": "1b3f44839ee1ffe304521954980ee8e738e58b286aa1046b1bed8e39bf36f97c",
+    "exact_loaded_matches": true
+  },
+  "GiftUIRenderLowering": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUIRenderLowering.swiftmodule",
+    "bytes": 78284,
+    "sha256": "5e2acc2c8975003d14a9f8466d404f154bc67d074867080bac929233b8a42154",
+    "exact_loaded_matches": true
+  },
+  "GiftUIObservableState": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/owner-root-qualified/GiftUIObservableState.swiftmodule",
+    "bytes": 359664,
+    "sha256": "adff21573b9e3b9ddab094f823106a7bcd50b7fc7944ef542452f28ef03f9ab9",
+    "exact_loaded_matches": true
+  },
+  "GiftUISemanticCore": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/production/GiftUISemanticCore.swiftmodule",
+    "bytes": 872544,
+    "sha256": "2dcb6465f1a081644c64cb572629f3fc2fdd1d73a0af24d0e9d202de6840df57",
+    "exact_loaded_matches": true
+  },
+  "GiftUIRuntimeCore": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUIRuntimeCore.swiftmodule",
+    "bytes": 359156,
+    "sha256": "b414a8328eb83b2e0cc952299f8aa453790b5a88496a2653741093bf2d8b3035",
+    "exact_loaded_matches": true
+  },
+  "GiftUIInteraction": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules/GiftUIInteraction.swiftmodule",
+    "bytes": 227112,
+    "sha256": "eb386e792a7ada89461b062dfb5e001f2e786dc008e0bbea00ad5f2a5126fd83",
+    "exact_loaded_matches": true
+  },
+  "GiftUIHostConfiguration": {
+    "provider": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.swiftmodule",
+    "bytes": 564860,
+    "sha256": "009fc29e4e35e3617ef06293d8e09c0c774627add10731dc3e788ec5b3972697",
+    "exact_loaded_matches": true
+  }
+}

@@ -75,6 +75,9 @@ package struct ObservableModelOwnership: ~Copyable {
     private var activeRead = false
     private var replacement: Replacement?
 
+    #if GIFTUI_OWNER_ROOT_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         identity: ObservableModelOwnerIdentity,
         modelLimit: UInt16 = 2,
@@ -93,13 +96,48 @@ package struct ObservableModelOwnership: ~Copyable {
         self.captureLimit = captureLimit
     }
 
-    package var storageCapacities: (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
-    {
-        (modelLimit, claimLimit, pinLimit, captureLimit)
-    }
+    #if GIFTUI_OWNER_ROOT_QUALIFICATION
+        package var storageCapacities:
+            (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
+        {
+            @_noAllocation
+            get { (modelLimit, claimLimit, pinLimit, captureLimit) }
+        }
+    #else
+        package var storageCapacities:
+            (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
+        {
+            (modelLimit, claimLimit, pinLimit, captureLimit)
+        }
+    #endif
     // The two actual pinned fields are partitioned out of the ledger exactly once.
-    package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
-    package static var metadataStorageBytes: Int { MemoryLayout<Self>.size - framePinStorageBytes }
+    #if GIFTUI_OWNER_ROOT_QUALIFICATION
+        package static var framePinStorageBytes: Int {
+            @_noAllocation
+            get { 2 * MemoryLayout<Bool>.size }
+        }
+    #else
+        package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
+    #endif
+    #if GIFTUI_OWNER_ROOT_QUALIFICATION
+        package static var metadataStorageBytes: Int {
+            @_noAllocation
+            get { MemoryLayout<Self>.size - framePinStorageBytes }
+        }
+    #else
+        package static var metadataStorageBytes: Int {
+            MemoryLayout<Self>.size - framePinStorageBytes
+        }
+    #endif
+
+    // Read the existing owner value without changing its stored representation
+    // or the original getter; both ordinary and checked accounting use this path.
+    #if GIFTUI_OWNER_ROOT_QUALIFICATION
+        @_noAllocation
+    #endif
+    package borrowing func identityForAccounting() -> ObservableModelOwnerIdentity {
+        identity
+    }
 
     package var occupiedCount: Int {
         var count = 0
