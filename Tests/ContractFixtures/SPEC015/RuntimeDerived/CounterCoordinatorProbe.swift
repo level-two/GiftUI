@@ -43,26 +43,81 @@ func runCounterCoordinator<C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Esc
     var checks = 0
     func expect(_ condition: Bool) { checks += 1; precondition(condition) }
     guard case .success(let initial) = coordinator.runOpportunity() else { preconditionFailure("counter initial opportunity") }
-    expect(initial.logicalFrameDisposition == .committed && initial.semanticDisposition == .published)
+    let p08ExactCase46: Bool;
+    if case .committed = initial.logicalFrameDisposition {
+        if case .published = initial.semanticDisposition {
+            p08ExactCase46 = true
+        } else {
+            p08ExactCase46 = false
+        }
+    } else {
+        p08ExactCase46 = false
+    }; expect(p08ExactCase46)
     expect(control.pointee.finalized == 1 && control.pointee.commits == 1 && control.pointee.committedRecords == 2)
     for value: UInt8 in 0...9 {
-        expect(coordinator.submit(stateChange: value).result == .queued)
-        expect(coordinator.submit(completion: 0).result == .queued)
-        expect(coordinator.submit(completion: 0).result == .capacityRefused)
+        let p08ExactCase47: Bool;
+        if case .queued = coordinator.submit(stateChange: value).result {
+            p08ExactCase47 = true
+        } else {
+            p08ExactCase47 = false
+        }; expect(p08ExactCase47)
+        let p08ExactCase48: Bool;
+        if case .queued = coordinator.submit(completion: 0).result {
+            p08ExactCase48 = true
+        } else {
+            p08ExactCase48 = false
+        }; expect(p08ExactCase48)
+        let p08ExactCase49: Bool;
+        if case .capacityRefused = coordinator.submit(completion: 0).result {
+            p08ExactCase49 = true
+        } else {
+            p08ExactCase49 = false
+        }; expect(p08ExactCase49)
         guard case .success(let summary) = coordinator.runOpportunity() else { preconditionFailure("counter fact opportunity") }
         expect(summary.admission.stateChangeFactCount == 1 && summary.admission.completionFactCount == 1)
-        expect(summary.logicalFrameDisposition == .committed && summary.presentationIntentState == .satisfied)
+        let p08ExactCase50: Bool;
+        if case .committed = summary.logicalFrameDisposition {
+            if case .satisfied = summary.presentationIntentState {
+                p08ExactCase50 = true
+            } else {
+                p08ExactCase50 = false
+            }
+        } else {
+            p08ExactCase50 = false
+        }; expect(p08ExactCase50)
         expect(control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive && !control.pointee.frameActive)
     }
-    expect(coordinator.submit(stateChange: 10).result == .invalidValue)
-    for index in 0..<34 { expect(coordinator.submit(stateChange: UInt8(index % 10)).result == .queued) }
-    expect(coordinator.submit(stateChange: 0).result == .capacityRefused)
+    let p08ExactCase51: Bool;
+    if case .invalidValue = coordinator.submit(stateChange: 10).result {
+        p08ExactCase51 = true
+    } else {
+        p08ExactCase51 = false
+    }; expect(p08ExactCase51)
+    for index in 0 ..< 34 {
+        let p08ExactCase52: Bool;
+        if case .queued = coordinator.submit(stateChange: UInt8(index % 10)).result {
+            p08ExactCase52 = true
+        } else {
+            p08ExactCase52 = false
+        }; expect(p08ExactCase52)
+    }
+    let p08ExactCase53: Bool;
+    if case .capacityRefused = coordinator.submit(stateChange: 0).result {
+        p08ExactCase53 = true
+    } else {
+        p08ExactCase53 = false
+    }; expect(p08ExactCase53)
     guard case .success(let full) = coordinator.runOpportunity() else { preconditionFailure("counter full bounded queue") }
     expect(full.admission.stateChangeFactCount == 34)
     coordinator.quiesce(); coordinator.quiesce()
     expect(coordinator.isQuiescent && control.pointee.teardowns == 1 && control.pointee.committedRecords == 0)
     expect(!control.pointee.hasRoot && control.pointee.admission.pendingStateCount == 0)
-    expect(coordinator.submit(stateChange: 0).result == .unavailable)
+    let p08ExactCase54: Bool;
+    if case .unavailable = coordinator.submit(stateChange: 0).result {
+        p08ExactCase54 = true
+    } else {
+        p08ExactCase54 = false
+    }; expect(p08ExactCase54)
     return checks
 }
 

@@ -25,9 +25,21 @@ var counterDynamicHostKind: MVPHostKind {
 #if hasFeature(Embedded)
 @_cdecl("giftui_rfc014_counter_entry")
 func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?, _ backing: UnsafeMutableRawPointer?, _ byteCount: Int) -> UInt32 {
-    precondition(backing != nil && byteCount == counterEmbeddedSlotCount * counterEmbeddedSlotBytes)
-    return UInt32(p08CounterRoute(write: write, backing: UnsafeMutableRawBufferPointer(start: backing, count: byteCount)))
-}
+        let p08Presence85: Bool;
+        if case .some = backing {
+            if byteCount == counterEmbeddedSlotCount * counterEmbeddedSlotBytes {
+                p08Presence85 = true
+            } else {
+                p08Presence85 = false
+            }
+        } else {
+            p08Presence85 = false
+        }; precondition(p08Presence85)
+        return UInt32(
+            p08CounterRoute(
+                write: write,
+                backing: UnsafeMutableRawBufferPointer(start: backing, count: byteCount)))
+    }
 #else
 @_cdecl("giftui_rfc014_counter_entry")
 func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?) -> UInt32 {

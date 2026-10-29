@@ -55,7 +55,7 @@ package struct StaticCounterDrawingWorkspace:
         inheritedClip: Rect,
         _ body: (inout GraphicsContext) throws(DrawingError) -> Result
     ) throws(DrawingError) -> Result {
-        guard plan.isActive, currentIdentity == nil, livePath == nil,
+        guard plan.isActive, case .none = currentIdentity, case .none = livePath,
             plan.beginCanvas(identity: identity, origin: surfaceOrigin)
         else { throw .invariantViolation }
         let next = contextGeneration.addingReportingOverflow(1)
@@ -95,7 +95,7 @@ package struct StaticCounterDrawingWorkspace:
     }
 
     package mutating func seal(canvasOccurrenceCount: UInt16) -> DrawingPlanResult {
-        guard currentIdentity == nil, livePath == nil else {
+        guard case .none = currentIdentity, case .none = livePath else {
             return .failure(.invariantViolation)
         }
         return plan.seal(canvasOccurrenceCount: canvasOccurrenceCount)
@@ -148,8 +148,8 @@ package struct StaticCounterDrawingWorkspace:
         contextGeneration: UInt32,
         pathGeneration: inout UInt32
     ) -> UInt8 {
-        guard contextGeneration == self.contextGeneration,
-            currentIdentity != nil, livePath == nil,
+        guard contextGeneration == self.contextGeneration, case .some = currentIdentity,
+            case .none = livePath,
             let storage = StaticCounterLivePathStorage(
                 region: pathRegion, maximumPointCount: limits.maximumLivePathPoints,
                 maximumSubpathCount: limits.maximumLivePathSubpaths)

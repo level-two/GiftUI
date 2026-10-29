@@ -49,8 +49,7 @@ package struct StaticCounterLayoutWorkspace: LayoutWorkspace {
         identity: borrowing UInt16,
         measurement: LayoutMeasurement
     ) -> Bool {
-        guard isLayoutActive, scopeCount < maximumScopes,
-            scopeIndex(for: identity) == nil,
+        guard isLayoutActive, scopeCount < maximumScopes, case .none = scopeIndex(for: identity),
             StaticCounterLayoutScopeCodec.stage(
                 identity: identity, measurement: measurement,
                 at: scopeCount, in: scopes
@@ -97,8 +96,7 @@ package struct StaticCounterLayoutWorkspace: LayoutWorkspace {
 
     package mutating func appendTextLine(_ line: LayoutTextLine<UInt16>) -> Bool {
         guard isLayoutActive, textLineCount < maximumTextLines,
-            scopeIndex(for: line.identity) != nil,
-            line.clip == zeroRect,
+            case .some = scopeIndex(for: line.identity), line.clip == zeroRect,
             StaticCounterLayoutTextCodec.stageLine(
                 identity: line.identity, lineIndex: line.lineIndex,
                 bounds: line.bounds, baseline: line.baseline,
@@ -143,8 +141,8 @@ package struct StaticCounterLayoutWorkspace: LayoutWorkspace {
         _ glyph: LayoutPositionedGlyph<UInt16>
     ) -> Bool {
         guard isLayoutActive, positionedGlyphCount < maximumPositionedGlyphs,
-            scopeIndex(for: glyph.identity) != nil,
-            glyph.instance == referenceInstance, glyph.clip == zeroRect,
+            case .some = scopeIndex(for: glyph.identity), glyph.instance == referenceInstance,
+            glyph.clip == zeroRect,
             glyph.glyphIndex
                 == nextGlyphIndex(
                     identity: glyph.identity
@@ -195,9 +193,9 @@ package struct StaticCounterLayoutWorkspace: LayoutWorkspace {
 
     package mutating func pushScope(_ identity: borrowing UInt16) -> Bool {
         let identity = copy identity
-        guard isLayoutActive, depth < maximumDepth,
-            scopeIndex(for: identity) != nil
-        else { return false }
+        guard isLayoutActive, depth < maximumDepth, case .some = scopeIndex(for: identity) else {
+            return false
+        }
         let offset = StaticCounterLayoutTextCodec.scratchOffset + Int(depth) * 2
         text[offset] = UInt8(truncatingIfNeeded: identity)
         text[offset + 1] = UInt8(truncatingIfNeeded: identity >> 8)

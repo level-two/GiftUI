@@ -1,0 +1,54 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift:57:10: error: called function is not available in this module and can have unpredictable performance
+ 55 | extension StaticTwoInteractionCandidateStorage: CounterCandidateBacking, InteractionOwnedBankMeasurementSource {
+ 56 |     package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+ 57 |         .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+    |          `- error: called function is not available in this module and can have unpredictable performance
+ 58 |             retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+ 59 |             inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    :
+149 |     let retainedBytes: Int
+150 |     static func owned<T: InteractionOwnedBankMeasurementSource, Record>(_ bank: borrowing T, record: Record.Type, optionalRecords: Bool, retainedBytes: Int? = nil) -> Self {
+151 |         let facts = bank.ownedInteractionBankMeasurement
+    |                          `- note: called from here
+152 |         let total = facts.inlineSize.addingReportingOverflow(facts.retainedPayloadBytes)
+153 |         precondition(!total.overflow)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:1742:71: note: called from here
+1740 |             object(entry(.g4), family: 13, into: &rows); object(entry(.b2), family: 15, into: &rows); object(entry(.b3), family: 16, into: &rows); object(entry(.g3), family: 16, into: &rows)
+1741 |             banks = .init(
+1742 |                 candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.c0).retainedBytes) },
+     |                                 |                                     `- note: called from here
+     |                                 `- note: called from here
+1743 |                 candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.h0).retainedBytes) },
+1744 |                 prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.r0).retainedBytes) },
+     :
+2658 |     }
+2659 |     borrowing func audit(owner: borrowing P08TypedBackingOwner, report: (CounterStorageRegion) -> Void = { _ in }) -> RuntimeProfileValidationResult {
+2660 |         let facts = owner.physicalFacts()
+     |                           `- note: called from here
+2661 |         return counterValidatePhysicalBacking(profile: .static, limits: limits, root: root.pointee.storageLayout,
+2662 |             rootMetadataRegion: .inline(CounterStaticRootStorage.self, family: 7, chargedBytes: root.pointee.storageLayout.metadataBytes, kind: .metadataPadding),
+     :
+3456 |     var semanticOwners = SemanticRecordOwnerNamespace()
+3457 |     do {
+3458 |         return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+     |                `- note: called from here
+3459 |         return p08CheckGraphSelection(owner: owner, outer: outer)
+     |                `- note: called from here
+3460 | 
+3461 |         }
+     :
+3497 | fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, outer: borrowing P08StaticOuterView) -> Int {
+3498 |     var count = 46
+3499 |     guard case .valid(let audit) = outer.audit(owner: owner, report: { _ in }) else {
+     |                                          `- note: called from here
+3500 |         preconditionFailure("counter graph audit")
+3501 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift:67:5: note: called from here
+65 | #endif
+66 | package func p08CounterStaticResourceEntryV1() -> Int {
+67 |     p08CounterGraph() + counterExerciseStaticScopedStorage() + p08CounterHost()
+   |     `- note: called from here
+68 | }
+69 | #endif

@@ -14,26 +14,81 @@ private func counterScopedModel(_ models: borrowing ObservableModelScope<Counter
     let key = ticket.key
     var reports = 0
     func report() -> _GiftUIObservableChangeReportOutcome { reports += 1; return .dirtied }
-    expect(models.mutate(key, mutation: .reset, report: report) == .success(.unchanged))
+    let p08ExactCase1: Bool;
+    if case .success(.unchanged) = models.mutate(key, mutation: .reset, report: report) {
+        p08ExactCase1 = true
+    } else {
+        p08ExactCase1 = false
+    }; expect(p08ExactCase1)
     expect(reports == 0)
-    for _ in 0..<9 { expect(models.mutate(key, mutation: .increment, report: report) == .success(.dirtied)) }
+    for _ in 0 ..< 9 {
+        let p08ExactCase2: Bool;
+        if case .success(.dirtied) = models.mutate(key, mutation: .increment, report: report) {
+            p08ExactCase2 = true
+        } else {
+            p08ExactCase2 = false
+        }; expect(p08ExactCase2)
+    }
     expect(reports == 9)
-    expect(models.mutate(key, mutation: .increment, report: report) == .success(.unchanged))
+    let p08ExactCase3: Bool;
+    if case .success(.unchanged) = models.mutate(key, mutation: .increment, report: report) {
+        p08ExactCase3 = true
+    } else {
+        p08ExactCase3 = false
+    }; expect(p08ExactCase3)
     expect(reports == 9)
-    expect(models.mutate(key, mutation: .fact(10), report: report) == .failure(.invariantViolation))
+    let p08ExactCase4: Bool;
+    if case .failure(.invariantViolation) = models.mutate(key, mutation: .fact(10), report: report)
+    {
+        p08ExactCase4 = true
+    } else {
+        p08ExactCase4 = false
+    }; expect(p08ExactCase4)
     expect(reports == 9)
-    expect(models.mutate(key, mutation: .fact(9), report: report) == .success(.unchanged))
-    expect(models.mutate(key, mutation: .reset, report: report) == .success(.dirtied))
+    let p08ExactCase5: Bool;
+    if case .success(.unchanged) = models.mutate(key, mutation: .fact(9), report: report) {
+        p08ExactCase5 = true
+    } else {
+        p08ExactCase5 = false
+    }; expect(p08ExactCase5)
+    let p08ExactCase6: Bool;
+    if case .success(.dirtied) = models.mutate(key, mutation: .reset, report: report) {
+        p08ExactCase6 = true
+    } else {
+        p08ExactCase6 = false
+    }; expect(p08ExactCase6)
     expect(reports == 10)
-    expect(models.mutate(key, mutation: .reset, report: report) == .success(.unchanged))
-    expect(models.mutate(key, mutation: .fact(7), report: report) == .success(.dirtied))
+    let p08ExactCase7: Bool;
+    if case .success(.unchanged) = models.mutate(key, mutation: .reset, report: report) {
+        p08ExactCase7 = true
+    } else {
+        p08ExactCase7 = false
+    }; expect(p08ExactCase7)
+    let p08ExactCase8: Bool;
+    if case .success(.dirtied) = models.mutate(key, mutation: .fact(7), report: report) {
+        p08ExactCase8 = true
+    } else {
+        p08ExactCase8 = false
+    }; expect(p08ExactCase8)
     expect(reports == 11)
     try models.beginFrame()
-    expect(models.mutate(key, mutation: .increment, report: report) == .failure(.invalidPhaseContained))
+    let p08ExactCase9: Bool;
+    if case .failure(.invalidPhaseContained) = models.mutate(
+        key, mutation: .increment, report: report)
+    {
+        p08ExactCase9 = true
+    } else {
+        p08ExactCase9 = false
+    }; expect(p08ExactCase9)
     expect(reports == 11)
     try models.endFrame()
     try models.release(&ticket)
-    expect(models.mutate(key, mutation: .reset, report: report) == .failure(.staleModel))
+    let p08ExactCase10: Bool;
+    if case .failure(.staleModel) = models.mutate(key, mutation: .reset, report: report) {
+        p08ExactCase10 = true
+    } else {
+        p08ExactCase10 = false
+    }; expect(p08ExactCase10)
     expect(reports == 11)
     return checks
 }

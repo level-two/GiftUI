@@ -142,7 +142,9 @@ struct CounterCanvasAudit: RuntimeStaticCanvasAuditMetadata {
     var callableCaseCount: UInt16 { table.callableCaseCount }
     var declaredEntryCount: UInt16 { table.callableCaseCount }
     var maximumDeclaredID: UInt16 { table.callableCaseCount }
-    func coverageMultiplicity(for id: UInt16) -> UInt8 { table.captureByteCount(for: id) == nil ? 0 : 1 }
+    func coverageMultiplicity(for id: UInt16) -> UInt8 {
+        if case .none = table.captureByteCount(for: id) { return 0 }; return 1
+    }
     func captureByteCount(for id: UInt16) -> UInt16? { table.captureByteCount(for: id) }
 }
 
@@ -222,8 +224,8 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
     typealias Coordinator = StaticRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>
     var concreteCoordinatorBytes = MemoryLayout<Coordinator>.size
     #if !hasFeature(Embedded)
-    if profile == .dynamic {
-        concreteCoordinatorBytes = MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>>.size
+        if case .dynamic = profile {
+            concreteCoordinatorBytes = MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>>.size
     }
     #endif
     // Endpoint/sink data now resides in Control but still belongs to the backend
@@ -260,7 +262,9 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
         geometry.layoutBytes, geometry.renderBytes, canvasBytes + UInt64(canvasControlBytes), geometry.pathBytes, geometry.planBytes,
         UInt64(root.liveBytes), UInt64(root.candidateBytes), keys.candidateBytes + UInt64(interactionMetadata), keys.committedBytes,
         UInt64(pending), UInt64(sealed), UInt64(Admission.pointerStateStorageBytes + MemoryLayout<CounterPointerState>.size), UInt64(coordinator), UInt64(result)]
-    for index in 0..<values.count where UInt32(exactly: values[index]) == nil { return .invalid(.arithmeticOverflow) }
+    for index in 0 ..< values.count {
+        if case .none = UInt32(exactly: values[index]) { return .invalid(.arithmeticOverflow) }
+    }
     var reported: InlineArray<26, UInt64> = .init(repeating: 0)
     var reportOverflow = false
     func record(_ region: CounterStorageRegion) {
@@ -283,13 +287,13 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
     record(.elements(CounterOwnedModel?.self, count: Int(root.models), family: 8))
     record(.elements(Bool.self, count: Int(root.pins), family: 9))
     record(.elements(SemanticRuntimeRecord.self, count: Int(semanticLimits.records), family: 10))
-    if profile == .static {
+    if case .static = profile {
         record(.inline(CounterSemanticBacking.self, family: 10, chargedBytes: CounterSemanticBacking.paddingBytes, kind: .metadataPadding))
         record(.inline(StaticSemanticRecordStorage.self, family: 10, chargedBytes: MemoryLayout<StaticSemanticRecordStorage>.size - matchControl, kind: .partition))
     }
     #if !hasFeature(Embedded)
-    if profile == .dynamic {
-        record(.inline(UInt16.self, family: 7))
+        if case .dynamic = profile {
+            record(.inline(UInt16.self, family: 7))
         record(.elements(Bool.self, count: 2, family: 7))
         record(.inline(DynamicObservableModelStorage<CounterOwnedModel, CounterModelSchema>.self, family: 7))
         record(.inline(InlineArray<2, SemanticRecordBankMetadata>.self, family: 10, chargedBytes: MemoryLayout<InlineArray<2, SemanticRecordBankMetadata>>.size - matchControl, kind: .partition))
@@ -309,9 +313,14 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
     record(.elements(UInt16.self, count: Int(CounterPendingBacking.capacity), family: 14))
     record(.inline(CanvasPendingMetadata.self, family: 14))
     record(.inline(CounterPendingBacking.self, family: 14, chargedBytes: CounterPendingBacking.paddingBytes, kind: .metadataPadding))
-    if profile == .static { record(.inline(StaticCanvasValueStorage.self, family: 14)) }
+    if case .static = profile { record(.inline(StaticCanvasValueStorage.self, family: 14)) }
     #if !hasFeature(Embedded)
-    if profile == .dynamic { record(.inline(DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>.self, family: 14)) }
+        if case .dynamic = profile {
+            record(
+                .inline(
+                    DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>.self,
+                    family: 14))
+        }
     #endif
     record(.inline(ObservableStateRootStorage<SemanticCompleteIdentity>.self, family: 17, chargedBytes: root.liveBytes, kind: .partition))
     record(.inline(ObservableStateRootStorage<SemanticCompleteIdentity>.self, family: 18, chargedBytes: root.candidateBytes, kind: .partition))
@@ -324,9 +333,20 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
     record(.inline(Admission.Controller?.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
     record(.inline(CounterPointerState.self, family: 23))
     let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size
-    if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
+    if case .static = profile {
+        record(
+            .inline(
+                Coordinator.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes,
+                kind: .metadataPadding))
+    }
     #if !hasFeature(Embedded)
-    if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields + descriptorBytes, kind: .metadataPadding)) }
+        if case .dynamic = profile {
+            record(
+                .inline(
+                    DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>
+                        .self, family: 24, chargedBytes: coordinatorFields + descriptorBytes,
+                    kind: .metadataPadding))
+        }
     #endif
     // All outer controls, observations, optional controller metadata and padding
     // remain physically live and are charged here exactly once.
@@ -353,7 +373,10 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
         interactionCandidateActions: keys.candidateRecords, interactionCandidateHitRegions: keys.candidateHits, interactionCommittedActions: keys.committedRecords, interactionCommittedHitRegions: keys.committedHits,
         admissionQueue: counterExecutionLimits, sealedBatch: counterExecutionLimits, pointerStates: 1,
         coordinatorStatePresent: concreteCoordinatorBytes > 0, failureStatePresent: result > 0, byteCounts: bytes)
-    if profile == .static { return RuntimeProfileValidator.validateStatic(inputs: inputs, capacities: capacities, metadata: CounterCanvasAudit()) }
+    if case .static = profile {
+        return RuntimeProfileValidator.validateStatic(
+            inputs: inputs, capacities: capacities, metadata: CounterCanvasAudit())
+    }
     return RuntimeProfileValidator.validateDynamic(inputs: inputs, capacities: capacities)
 }
 
@@ -393,9 +416,14 @@ struct DynamicCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
             geometryRegions: geometry, report: report)
     }
     mutating func resetAttemptStorage() {
-        precondition(geometry != nil && interaction != nil)
-        geometry!.reset()
-        interaction!.resolveCandidate(.discard)
+            let p08Presence65: Bool;
+            if case .some = geometry {
+                if case .some = interaction { p08Presence65 = true } else { p08Presence65 = false }
+            } else {
+                p08Presence65 = false
+            }; precondition(p08Presence65)
+            geometry!.reset()
+            interaction!.resolveCandidate(.discard)
         control.admission.finishAttempt()
     }
     mutating func resetAllStorage() {
@@ -471,7 +499,9 @@ struct StaticCounterProfileStorage: ~Copyable, RuntimeProfileStorage {
             geometryRegions: workspace, report: report)
     }
     mutating func resetAttemptStorage() {
-        precondition(interaction != nil)
+        let p08Presence66: Bool;
+        if case .some = interaction { p08Presence66 = true } else { p08Presence66 = false };
+        precondition(p08Presence66)
         _ = workspace.withGeometry { geometry in
             var geometry = consume geometry
             geometry.reset()

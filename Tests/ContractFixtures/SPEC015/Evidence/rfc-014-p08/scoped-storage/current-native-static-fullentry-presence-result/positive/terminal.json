@@ -1,0 +1,16 @@
+{
+  "exit": 0,
+  "guard": null,
+  "raw_bytes_read": {
+    "stdout": 0,
+    "stderr": 0
+  },
+  "raw_lines_read": 0,
+  "pipe_tail_bytes_read": 0,
+  "emitted_equals_read_proved": true,
+  "elapsed_seconds": 0.235038875,
+  "finished_utc": "2026-10-29T08:09:37.988327+00:00",
+  "expected_exit": 0,
+  "pass": true,
+  "final_cumulative_bytes": 1441695268
+}

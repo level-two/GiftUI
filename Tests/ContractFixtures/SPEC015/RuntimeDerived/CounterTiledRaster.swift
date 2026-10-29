@@ -88,11 +88,12 @@ struct CounterTileWriter: DisplayPayloadWriter {
     var remaining: UInt32 = 0
     var completed = false
     mutating func beginRegion(origin: Point, pixelCount: UInt16, encoding: CanonicalPixelEncoding) -> Bool {
-        guard !completed, self.origin == nil, remaining == 0, writtenRegionCount == 0,
-            encoding == .rgb565BigEndian, pixelCount > 0, origin.x >= 0, origin.y >= 0,
-            origin.x < 100, origin.y < 120, Int32(pixelCount) <= 100 - origin.x else { return false }
-        self.origin = origin; pixels = pixelCount; remaining = UInt32(pixelCount) * 2
-        return remaining <= capacityBytes
+            guard !completed, case .none = self.origin, remaining == 0, writtenRegionCount == 0,
+                encoding == .rgb565BigEndian, pixelCount > 0, origin.x >= 0, origin.y >= 0,
+                origin.x < 100, origin.y < 120, Int32(pixelCount) <= 100 - origin.x
+            else { return false }
+            self.origin = origin; pixels = pixelCount; remaining = UInt32(pixelCount) * 2
+            return remaining <= capacityBytes
     }
     mutating func write(byte: UInt8) -> Bool {
         guard !completed, remaining > 0, writtenBytes < capacityBytes else { return false }
@@ -100,9 +101,11 @@ struct CounterTileWriter: DisplayPayloadWriter {
         writtenBytes += 1; remaining -= 1; return true
     }
     mutating func endRegion() -> Bool {
-        guard !completed, origin != nil, remaining == 0, writtenBytes == UInt32(pixels) * 2 else { return false }
-        writtenRegionCount = 1; return true
-    }
+            guard !completed, case .some = origin, remaining == 0,
+                writtenBytes == UInt32(pixels) * 2
+            else { return false }
+            writtenRegionCount = 1; return true
+        }
     mutating func finish() -> Bool {
         guard !completed, writtenRegionCount == 1, remaining == 0 else { return false }
         completed = true; return true
@@ -211,17 +214,32 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         let target = CounterTiledDisplayTarget(control: control, configuration: configuration, writer: CounterTileWriter(control: control))
         let session = CounterTiledSession(capacity: CounterRenderSink().capacity, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, metrics: construction.text.metrics(), raster: construction.text.raster(), realization: construction.text.realization, storage: CounterTileStorage(control: control), target: target)!
         let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: session.descriptor, payloadLimits: session.payloadLimits, surfaceWritableCapacityBytes: 800, displaySubmissionLifetime: target.submissionLifetime, displayHandoff: target.handoff, displayMaximumInFlightPayloads: target.maximumInFlightPayloads, displayMaximumInFlightBytes: target.maximumInFlightBytes, textRasterRealization: construction.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: target.control == control)
-        precondition(HostEndpointStartupValidation.validateConstructedProjection(constructed, equals: configuration) == nil)
-        let capacities: InlineArray<3, UInt32> = [799,800,801]
-        for index in 0..<capacities.count {
+            let p08Presence71: Bool;
+            if case .none = HostEndpointStartupValidation.validateConstructedProjection(
+                constructed, equals: configuration)
+            {
+                p08Presence71 = true
+            } else {
+                p08Presence71 = false
+            }; precondition(p08Presence71)
+            let capacities: InlineArray<3, UInt32> = [799, 800, 801]
+            for index in 0..<capacities.count {
             let capacity = capacities[index]
             let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: capacity, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
             precondition(HostEndpointStartupValidation.validateConstructedProjection(candidate, equals: configuration) == (capacity == 800 ? nil : .invalidEndpointDescriptor)); control.pointee.backend.projectionControls += 1
         }
         for shared in [true,false] {
             let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: 800, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: shared ? 2 : 1, endpointAndDisplayShareHealthOwner: shared)
-            precondition(HostEndpointStartupValidation.validateConstructedProjection(candidate, equals: configuration) == .invalidEndpointDescriptor); control.pointee.backend.projectionControls += 1
-        }
+                let p08ExactCase85: Bool;
+                if case .some(.invalidEndpointDescriptor) =
+                    HostEndpointStartupValidation.validateConstructedProjection(
+                        candidate, equals: configuration)
+                {
+                    p08ExactCase85 = true
+                } else {
+                    p08ExactCase85 = false
+                }; precondition(p08ExactCase85); control.pointee.backend.projectionControls += 1
+            }
         control.pointee.backend.constructedProjection = constructed; control.pointee.backend.constructedEndpoints += 1
         actual = CounterTiledEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterTiledEnvelope(expected: nil), sink: CounterTiledRasterAdapter(session: session), startupFailure: nil)!
     }
@@ -304,11 +322,21 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
                 origin: actual.sink.session.target.writer.origin, pixels: actual.sink.session.target.writer.pixels,
                 remaining: actual.sink.session.target.writer.remaining, completed: actual.sink.session.target.writer.completed)
         guard samewriter else { return false }
-        let samenativeReservation = baseline.nativeReservation == nil
-        guard samenativeReservation else { return false }
-        let samenativeGlyphHeader = baseline.nativeGlyphHeader == nil
-        guard samenativeGlyphHeader else { return false }
-        return true
+            let samenativeReservation: Bool;
+            if case .none = baseline.nativeReservation {
+                samenativeReservation = true
+            } else {
+                samenativeReservation = false
+            }
+            guard samenativeReservation else { return false }
+            let samenativeGlyphHeader: Bool;
+            if case .none = baseline.nativeGlyphHeader {
+                samenativeGlyphHeader = true
+            } else {
+                samenativeGlyphHeader = false
+            }
+            guard samenativeGlyphHeader else { return false }
+            return true
     }
     var ownedObservation: CounterEndpointObservation {
         .init(effectivePresentation: actual.effectivePresentation, descriptor: actual.descriptor,

@@ -63,7 +63,7 @@ package struct StaticCounterResolvedLayoutView: ResolvedRenderLayoutView {
     }
 
     package func textLineCount(of identity: UInt16) -> UInt16? {
-        guard layoutOrdinal(of: identity) != nil else { return nil }
+        guard case .some = layoutOrdinal(of: identity) else { return nil }
         var ordinal: UInt16 = 0
         var count: UInt16 = 0
         while ordinal < lineCount {
@@ -106,7 +106,7 @@ package struct StaticCounterResolvedLayoutView: ResolvedRenderLayoutView {
     }
 
     package func glyph(of identity: UInt16, at index: UInt16) -> ResolvedRenderGlyph? {
-        guard clip(of: identity) != nil else { return nil }
+        guard case .some = clip(of: identity) else { return nil }
         var ordinal: UInt16 = 0
         var localIndex: UInt16 = 0
         while ordinal < glyphCount {

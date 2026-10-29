@@ -1,0 +1,31 @@
+{
+  "module": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/host/GiftUIHostConfiguration.swiftmodule",
+  "module_sha256": "009fc29e4e35e3617ef06293d8e09c0c774627add10731dc3e788ec5b3972697",
+  "sources": {
+    "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+    "Sources/GiftUIHostConfiguration/HostActivationController.swift": "c4f1b48f28a384324a342aa8ee73c979c29f73207fd1b41aceda2248ccebfdae",
+    "Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+    "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+    "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": "f2d6f177fac842326f47af57dbe4317a813563987762dc15802f249098c24b4a",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "fb89a072235041053cd739b4a65da6c5c67cfe38c47f4d49db3aad86e0f9bdab",
+    "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": "7dd3c8dac9fb309034c677d3383dad00350d1cca78bf6d982ee0b4448f88d00d",
+    "Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+    "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+    "Sources/GiftUIHostConfiguration/HostFailureAdapter.swift": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+    "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+    "Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+    "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+    "Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": "3f21154d0b6d6b416ebcacef4932902a72649968969246c601791272f66316f6",
+    "Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+    "Sources/GiftUIHostConfiguration/HostWakePacingController.swift": "ea04fa3fb0c52da2aa8c1719cb68abb229c3d24f6ad3de597527b2f026dede11",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "55466bd192b6e5e1296de66a20ed2bdee97caa69432608b9c0e9436548786650",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04",
+    "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402"
+  },
+  "candidate_files": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-client-emission1/candidate",
+  "reason": "Smallest already retained serialized graph realization; explicit raw role mapping not yet selected."
+}

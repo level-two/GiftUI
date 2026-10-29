@@ -46,7 +46,16 @@ struct CounterRenderSink: DrawingOperationSink {
         let subpath = stroke.subpath(at: 0)
         counterRenderExpect(header.pointCount == 2 && header.subpathCount == 1)
         counterRenderExpect(header.color == .white && header.lineWidth == 1)
-        counterRenderExpect(header.lineCap == .round && header.lineJoin == .round)
+        let p08ExactCase18: Bool;
+        if case .round = header.lineCap {
+            if case .round = header.lineJoin {
+                p08ExactCase18 = true
+            } else {
+                p08ExactCase18 = false
+            }
+        } else {
+            p08ExactCase18 = false
+        }; counterRenderExpect(p08ExactCase18)
         counterRenderExpect(subpath == SubpathRange(firstPoint: 0, pointCount: 2))
         operations += 1; strokes += 1
         return true
@@ -140,7 +149,24 @@ func counterVerifyPlan<P: DrawingPlanView>(_ plan: borrowing P, canvas: Semantic
     let subpath = plan.subpath(of: canvas, stroke: 0, at: 0)
     counterRenderExpect(strokeCount == 1)
     let header = plan.strokeHeader(of: canvas, at: 0)!
-    counterRenderExpect(header.color == .white && header.lineWidth == 1 && header.lineCap == .round && header.lineJoin == .round)
+    let p08ExactCase19: Bool;
+    if header.color == .white {
+        if header.lineWidth == 1 {
+            if case .round = header.lineCap {
+                if case .round = header.lineJoin {
+                    p08ExactCase19 = true
+                } else {
+                    p08ExactCase19 = false
+                }
+            } else {
+                p08ExactCase19 = false
+            }
+        } else {
+            p08ExactCase19 = false
+        }
+    } else {
+        p08ExactCase19 = false
+    }; counterRenderExpect(p08ExactCase19)
     counterRenderExpect(header.pointCount == 2 && header.subpathCount == 1)
     counterRenderExpect(first == Point(x: bounds.origin.x + 4, y: bounds.origin.y + 8))
     counterRenderExpect(second == Point(x: bounds.origin.x + 4 + 4 * GeometryScalar(value), y: bounds.origin.y + 8))

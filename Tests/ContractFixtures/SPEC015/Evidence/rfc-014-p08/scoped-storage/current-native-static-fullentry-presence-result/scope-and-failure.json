@@ -1,0 +1,272 @@
+{
+  "status": "TECHNICAL_SOURCE_FUNCTIONAL_PASS__ACTUAL_ALLOCATION_FAIL__RETENTION_FAIL",
+  "baseline_commit": "064beb49",
+  "root_is_sole_index_owner": true,
+  "changed_sources": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "bytes": 5230,
+      "sha256": "613fd931a4ec6b5feaeaa247d8591ae3ad4062dfa5deca3b38d93d0ba2279183"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 14654,
+      "sha256": "5f6e5de52191be172368e3b7fc791eae152fb4bf8f37f801f16f12e0c7fdae2b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+      "bytes": 10211,
+      "sha256": "94c2f2b7fe92fd06700de81e89df1689f474185ded5ef05d865e99baecaa3a73"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "bytes": 1812,
+      "sha256": "9afe65f58af2385d287e3c74ac70d1a28df53ea6dccbfe48e2721108f5597fbf"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+      "bytes": 12159,
+      "sha256": "af3f1c7fb0a971d462a73606d5822fb4f4abc6baca01079f003da62c6fad0c98"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+      "bytes": 10908,
+      "sha256": "2e5e3d8b015f12b4fc6db226218d1a6e7034ae3fd3cdafa2cf42f511a68312db"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+      "bytes": 10957,
+      "sha256": "d45718cf1db209a0befbec488bc1d3d115a41db5534a34d2399c883e6dd8124b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+      "bytes": 11509,
+      "sha256": "143a1ba7b13cf7007c96799c5a8c5cf13a30ab27a655aa8b1c4cbb5fc90ae39c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 280768,
+      "sha256": "6047aba6f2fa0b8e9ddb83b66c4ebe9412598a7d86a2f964cf853765e884f025"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "bytes": 16496,
+      "sha256": "797e381ee5c5b089aa55a3c2bcdba7ccf824bde4b41b7eb3d3071051886ed90d"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 125816,
+      "sha256": "90e20b86daf037db3471465bd4586fbaa89fdd57eae882e9ed852ce8b1bfb7ee"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "bytes": 43504,
+      "sha256": "b0c7bafd6306ae9b890c064c85c598cb68c60cfe1522fd244fb8a8b1d0f44513"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "bytes": 8416,
+      "sha256": "374c80a3c1381c6ece71fd065ea7ab09fc12daf4a01e50afc955f044bcb6ab6c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "bytes": 19213,
+      "sha256": "31154f575c1b8cd0f2ee0292e521b59f44834018ba2a48305842045fbb94de51"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "bytes": 28569,
+      "sha256": "0190a2f118c3e9d6e6084470b56ccc9fbc8181127a1d99fd4c9a9216cc5b061b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "bytes": 19586,
+      "sha256": "c8bea16e88c9fa2eaa2dff69e18c627c99ce433648849ab24118f93b07fbd2f1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "bytes": 26279,
+      "sha256": "43bf7ab4bc9096e6da82dee0cc481dd89cf1aabbf5eb73c21c6100d626550a4e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "bytes": 12501,
+      "sha256": "df31dea191115c5df509bb6935f2039bdfe67fc54b9ee78a766ec853b8339231"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "bytes": 8886,
+      "sha256": "e709fe9fe4b445d537a09cf0fc3ad2f28e47f3269e21af8c7c2dcfc347e17bd1"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "bytes": 26506,
+      "sha256": "13831c83a3f3783ad53a48fbfa193170dc53b6e7b5e16f708f4ec459fe336550"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "bytes": 26132,
+      "sha256": "0e87880e16166fc0d16060e88b5a423b631ba5b42af2b344d26b7ed9fe6f5fa5"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "bytes": 8889,
+      "sha256": "ebb58cb26184b80485d69adeb55167cfbf6e0a4d0482abdabf3b1fd343aa290c"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "bytes": 27238,
+      "sha256": "9102709e08dc9e1bd881bd53c22ec44021cecb8899e54cdb0035bb4a8dae8ccd"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "bytes": 2429,
+      "sha256": "a2ff3438e81d43a3542939dab2f852a0b2d9a2c0b0f24ecf62edf4cf80ec984b"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/AllocationGate/GraphValidationProbe.swift",
+      "bytes": 901,
+      "sha256": "7dc7d2bf1b984ad2c4aa3e2de2d3f146b83c57cad33512a710644a440904805c"
+    }
+  ],
+  "closing_artifacts": [
+    {
+      "path": "candidate-freeze-report.json",
+      "bytes": 15428,
+      "sha256": "e66c38f184e5210f2b65ab43a57144c9eac6248ea9d48414d6b049e062455a06",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/candidate-freeze-report.json"
+    },
+    {
+      "path": "functional-source-binding.json",
+      "bytes": 9320,
+      "sha256": "79857cb7882e77c6b44f39293b2c3f34d14c9bf1ea7afc6be8d55216fe8dc286",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/functional-source-binding.json"
+    },
+    {
+      "path": "selected-client-provenance.json",
+      "bytes": 3762,
+      "sha256": "f5c1f1da93c400ae16c11a861e82a721601453f024fb18e0881da64a26b85cd4",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/selected-client-provenance.json"
+    },
+    {
+      "path": "FunctionalMain.swift",
+      "bytes": 3923,
+      "sha256": "63d48449a2abd57a0340d90fe6796bfa1dca4f6de8ffe756adf910922be1d3d1",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/FunctionalMain.swift"
+    },
+    {
+      "path": "actual-client/launch.json",
+      "bytes": 10817,
+      "sha256": "7e59c67341fffabddb2fb7b222ef64e991588bd1a00b9b20266c979f2b9bc185",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/actual-client/launch.json"
+    },
+    {
+      "path": "actual-client/terminal.json",
+      "bytes": 361,
+      "sha256": "8b99876c3296cab68c60234ef95515fcac3ed0c951097c13a500ac1d3010128a",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/actual-client/terminal.json"
+    },
+    {
+      "path": "actual-client/stderr",
+      "bytes": 1594,
+      "sha256": "4bacb7470ce24f83363b9f8759236cdd992fe2831e66aae6c433f8c58606b842",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/actual-client/stderr"
+    },
+    {
+      "path": "actual-client-report/launch.json",
+      "bytes": 10763,
+      "sha256": "bce389a90af1a4ee5fe1acc523fa167b2504ab5e293b5003551537feb3b77771",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/actual-client-report/launch.json"
+    },
+    {
+      "path": "actual-client-report/terminal.json",
+      "bytes": 355,
+      "sha256": "d04375126f7fa55053281f81957018ddb94317e5af05f9068baf56518760c36f",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/actual-client-report/terminal.json"
+    },
+    {
+      "path": "actual-client-report/stderr",
+      "bytes": 4287,
+      "sha256": "c6feaea0693f16f8e0dfc3c4b9db8a2245d369a31ebb5c4f8013f1a8516d118b",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/actual-client-report/stderr"
+    },
+    {
+      "path": "positive/launch.json",
+      "bytes": 5368,
+      "sha256": "757a3fadf146390de54cc90ef0ace6c1c9727f01c06f54bfb6484917168c8e3f",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/positive/launch.json"
+    },
+    {
+      "path": "positive/terminal.json",
+      "bytes": 349,
+      "sha256": "991cf9e535d3fd77b575f5eb851ebe4b633498001e05be585eafbd8e48438ace",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/positive/terminal.json"
+    },
+    {
+      "path": "positive/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/positive/stderr"
+    },
+    {
+      "path": "allocation-negative/launch.json",
+      "bytes": 5375,
+      "sha256": "278cca48019de717e3f92984aa45dea53d5693e21361b3f4ae3fc5a1714b0bff",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/allocation-negative/launch.json"
+    },
+    {
+      "path": "allocation-negative/terminal.json",
+      "bytes": 359,
+      "sha256": "f05b2671dfc67a3c360bf89832d21451827f1e5a6e712de4d78ff029cae48f8a",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/allocation-negative/terminal.json"
+    },
+    {
+      "path": "allocation-negative/stderr",
+      "bytes": 393,
+      "sha256": "6d2edcdccb7586cfd0a4a11dfa9165c9b880624b7013384b3a19636701781b7f",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/allocation-negative/stderr"
+    },
+    {
+      "path": "functional-compile/launch.json",
+      "bytes": 13344,
+      "sha256": "c9001dbd4c0e50d74f8f521add0ce1c843365db5aa69170ca5fe9f8a11e2ca12",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/functional-compile/launch.json"
+    },
+    {
+      "path": "functional-compile/terminal.json",
+      "bytes": 349,
+      "sha256": "03d9c1818d5fdd8f1c7e64de017fcd853f2f9b5960ef13c39ffc47bc42582582",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/functional-compile/terminal.json"
+    },
+    {
+      "path": "functional-compile/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/functional-compile/stderr"
+    },
+    {
+      "path": "functional-execute/launch.json",
+      "bytes": 4811,
+      "sha256": "522f317d7c39016c012a8e18cc58cd35219b465017592abf616bb622bc983577",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/functional-execute/launch.json"
+    },
+    {
+      "path": "functional-execute/terminal.json",
+      "bytes": 365,
+      "sha256": "22db5cd5ef82dbb2141f2d4b8328370c0f2ccd3b1be3d404336daeb6b1e742cb",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/functional-execute/terminal.json"
+    },
+    {
+      "path": "functional-execute/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": ".build/contracts/p08-native-static-fullentry-presence1/functional-execute/stderr"
+    }
+  ],
+  "functional_stdout_preserved_at": ".build/contracts/p08-native-static-fullentry-presence1/functional-execute/stdout",
+  "functional_stdout_sha256": "684b3147065db75ba921d9590c118fe0ef3cc27f3a8bd1cd9e529bfe19b9b0c4",
+  "retention_before_transcript_and_closing_bytes": 8771293,
+  "retention_cap_bytes": 8388608,
+  "minimum_overrun_bytes": 382685,
+  "qualified_bounded_acceptance": false
+}

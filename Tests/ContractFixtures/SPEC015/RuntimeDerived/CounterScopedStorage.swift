@@ -57,32 +57,63 @@ fileprivate enum P08TypedSlot<T> {
     }
     var reservationRange: (UInt, Int, Int, Int) {
         switch self {
-        case .padded(let p): precondition(p.pointee.slot == nil); return (UInt(bitPattern: p), MemoryLayout<P08PaddedReservation<T>>.stride, MemoryLayout<P08PaddedReservation<T>>.alignment, MemoryLayout<P08PaddedReservation<T>>.stride)
-        case .native(let p): precondition(p.pointee == nil); return (UInt(bitPattern: p), MemoryLayout<T?>.stride, MemoryLayout<T?>.alignment, MemoryLayout<T?>.stride)
+        case .padded(let p):
+            let p08Presence3: Bool;
+            if case .none = p.pointee.slot { p08Presence3 = true } else { p08Presence3 = false };
+            precondition(p08Presence3);
+            return (
+                UInt(bitPattern: p), MemoryLayout<P08PaddedReservation<T>>.stride,
+                MemoryLayout<P08PaddedReservation<T>>.alignment,
+                MemoryLayout<P08PaddedReservation<T>>.stride
+            )
+        case .native(let p):
+            let p08Presence4: Bool;
+            if case .none = p.pointee { p08Presence4 = true } else { p08Presence4 = false };
+            precondition(p08Presence4);
+            return (
+                UInt(bitPattern: p), MemoryLayout<T?>.stride, MemoryLayout<T?>.alignment,
+                MemoryLayout<T?>.stride
+            )
         case .embedded(let p, let extent): return (UInt(bitPattern: p), extent, MemoryLayout<T>.alignment, MemoryLayout<T>.stride)
         }
     }
     func install(_ value: consuming T) {
         switch self {
-        case .native(let slot): precondition(slot.pointee == nil); slot.pointee = consume value
-        case .padded(let slot): precondition(slot.pointee.slot == nil); slot.pointee.slot = consume value
+        case .native(let slot):
+            let p08Presence5: Bool;
+            if case .none = slot.pointee { p08Presence5 = true } else { p08Presence5 = false };
+            precondition(p08Presence5); slot.pointee = consume value
+        case .padded(let slot):
+            let p08Presence6: Bool;
+            if case .none = slot.pointee.slot { p08Presence6 = true } else { p08Presence6 = false };
+            precondition(p08Presence6); slot.pointee.slot = consume value
         case .embedded(let slot, _): slot.initialize(to: consume value)
         }
     }
     func destroy() {
         switch self {
-        case .native(let slot): precondition(slot.pointee != nil); slot.pointee = nil
-        case .padded(let slot): precondition(slot.pointee.slot != nil); slot.pointee.slot = nil
+        case .native(let slot):
+            let p08Presence7: Bool;
+            if case .some = slot.pointee { p08Presence7 = true } else { p08Presence7 = false };
+            precondition(p08Presence7); slot.pointee = nil
+        case .padded(let slot):
+            let p08Presence8: Bool;
+            if case .some = slot.pointee.slot { p08Presence8 = true } else { p08Presence8 = false };
+            precondition(p08Presence8); slot.pointee.slot = nil
         case .embedded(let slot, _): slot.deinitialize(count: 1)
         }
     }
     func withBorrow<Result>(_ body: (UnsafeMutablePointer<T>) -> Result) -> Result {
         switch self {
         case .padded(let slot):
-            precondition(slot.pointee.slot != nil)
+            let p08Presence9: Bool;
+            if case .some = slot.pointee.slot { p08Presence9 = true } else { p08Presence9 = false };
+            precondition(p08Presence9)
             return withUnsafeMutablePointer(to: &slot.pointee.slot!) { body($0) }
         case .native(let slot):
-            precondition(slot.pointee != nil)
+            let p08Presence10: Bool;
+            if case .some = slot.pointee { p08Presence10 = true } else { p08Presence10 = false };
+            precondition(p08Presence10)
             return withUnsafeMutablePointer(to: &slot.pointee!) { body($0) }
         case .embedded(let slot, _):
             return withUnsafeMutablePointer(to: &slot.pointee) { body($0) }
@@ -119,20 +150,75 @@ fileprivate enum P08ByteSlot {
     }
     var reservationRange: (UInt, Int, Int, Int) {
         switch self {
-        case .scopes(let p): precondition(p.pointee == nil); return (UInt(bitPattern: p), reservedBytes, MemoryLayout<InlineArray<1024, UInt8>?>.alignment, MemoryLayout<InlineArray<1024, UInt8>?>.stride)
-        case .text(let p): precondition(p.pointee == nil); return (UInt(bitPattern: p), reservedBytes, MemoryLayout<InlineArray<1056, UInt8>?>.alignment, MemoryLayout<InlineArray<1056, UInt8>?>.stride)
-        case .path(let p): precondition(p.pointee == nil); return (UInt(bitPattern: p), reservedBytes, MemoryLayout<InlineArray<20, UInt8>?>.alignment, MemoryLayout<InlineArray<20, UInt8>?>.stride)
-        case .plan(let p): precondition(p.pointee == nil); return (UInt(bitPattern: p), reservedBytes, MemoryLayout<InlineArray<112, UInt8>?>.alignment, MemoryLayout<InlineArray<112, UInt8>?>.stride)
+        case .scopes(let p):
+            let p08Presence11: Bool;
+            if case .none = p.pointee { p08Presence11 = true } else { p08Presence11 = false };
+            precondition(p08Presence11);
+            return (
+                UInt(bitPattern: p), reservedBytes,
+                MemoryLayout<InlineArray<1024, UInt8>?>.alignment,
+                MemoryLayout<InlineArray<1024, UInt8>?>.stride
+            )
+        case .text(let p):
+            let p08Presence12: Bool;
+            if case .none = p.pointee { p08Presence12 = true } else { p08Presence12 = false };
+            precondition(p08Presence12);
+            return (
+                UInt(bitPattern: p), reservedBytes,
+                MemoryLayout<InlineArray<1056, UInt8>?>.alignment,
+                MemoryLayout<InlineArray<1056, UInt8>?>.stride
+            )
+        case .path(let p):
+            let p08Presence13: Bool;
+            if case .none = p.pointee { p08Presence13 = true } else { p08Presence13 = false };
+            precondition(p08Presence13);
+            return (
+                UInt(bitPattern: p), reservedBytes, MemoryLayout<InlineArray<20, UInt8>?>.alignment,
+                MemoryLayout<InlineArray<20, UInt8>?>.stride
+            )
+        case .plan(let p):
+            let p08Presence14: Bool;
+            if case .none = p.pointee { p08Presence14 = true } else { p08Presence14 = false };
+            precondition(p08Presence14);
+            return (
+                UInt(bitPattern: p), reservedBytes,
+                MemoryLayout<InlineArray<112, UInt8>?>.alignment,
+                MemoryLayout<InlineArray<112, UInt8>?>.stride
+            )
         case .embedded(let p, _): return (UInt(bitPattern: p.baseAddress!), reservedBytes, 1, p.count)
         }
     }
     // Counts are acquired cell by cell only for Embedded raw UInt8 regions.
     func initialize(upTo count: Int) {
         switch self {
-        case .scopes(let p): precondition(count == 1024 && p.pointee == nil); p.pointee = .init(repeating: 0)
-        case .text(let p): precondition(count == 1056 && p.pointee == nil); p.pointee = .init(repeating: 0)
-        case .path(let p): precondition(count == 20 && p.pointee == nil); p.pointee = .init(repeating: 0)
-        case .plan(let p): precondition(count == 112 && p.pointee == nil); p.pointee = .init(repeating: 0)
+        case .scopes(let p):
+            let p08Presence15: Bool;
+            if count == 1024 {
+                if case .none = p.pointee { p08Presence15 = true } else { p08Presence15 = false }
+            } else {
+                p08Presence15 = false
+            }; precondition(p08Presence15); p.pointee = .init(repeating: 0)
+        case .text(let p):
+            let p08Presence16: Bool;
+            if count == 1056 {
+                if case .none = p.pointee { p08Presence16 = true } else { p08Presence16 = false }
+            } else {
+                p08Presence16 = false
+            }; precondition(p08Presence16); p.pointee = .init(repeating: 0)
+        case .path(let p):
+            let p08Presence17: Bool;
+            if count == 20 {
+                if case .none = p.pointee { p08Presence17 = true } else { p08Presence17 = false }
+            } else {
+                p08Presence17 = false
+            }; precondition(p08Presence17); p.pointee = .init(repeating: 0)
+        case .plan(let p):
+            let p08Presence18: Bool;
+            if count == 112 {
+                if case .none = p.pointee { p08Presence18 = true } else { p08Presence18 = false }
+            } else {
+                p08Presence18 = false
+            }; precondition(p08Presence18); p.pointee = .init(repeating: 0)
         case .embedded(let p, _): for index in 0..<count { p.baseAddress!.advanced(by: index).initialize(to: 0) }
         }
     }
@@ -285,7 +371,12 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             capacities[2] == capacities[3] && capacities[1] == capacities[4]
     }
     fileprivate mutating func initialize(fault: P08AcquisitionFault? = nil) -> P08BackingInitializationFailure? {
-        precondition(lifecycle == .reserved && acquired == 0)
+        let p08ExactCase20: Bool;
+        if case .reserved = lifecycle {
+            if acquired == 0 { p08ExactCase20 = true } else { p08ExactCase20 = false }
+        } else {
+            p08ExactCase20 = false
+        }; precondition(p08ExactCase20)
         destroyed = 0; destruction = .init(repeating: nil)
         guard identity != 0, validateCapacities() else { return .invalidCapacity }
         guard validateReservations() else { return .invalidReservation }
@@ -294,7 +385,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
         var failure: P08BackingInitializationFailure?
         switch slots {
         case .static(let s):
-            if failure == nil {
+            if case .none = failure {
                 if before(.b0) { failure = .injected(.b0, 0) } else {
                     let count = fault?.id == .b0 && fault?.afterInstall == false ? fault!.completed : s.b0.count
                     if case .embedded = s.b0 {
@@ -309,7 +400,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
                     if after(.b0) { failure = .injected(.b0, count) }
                 }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.b1) { failure = .injected(.b1, 0) } else {
                     let count = fault?.id == .b1 && fault?.afterInstall == false ? fault!.completed : s.b1.count
                     if case .embedded = s.b1 {
@@ -324,7 +415,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
                     if after(.b1) { failure = .injected(.b1, count) }
                 }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.b2) { failure = .injected(.b2, 0) } else {
                     let count = fault?.id == .b2 && fault?.afterInstall == false ? fault!.completed : s.b2.count
                     if case .embedded = s.b2 {
@@ -339,7 +430,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
                     if after(.b2) { failure = .injected(.b2, count) }
                 }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.b3) { failure = .injected(.b3, 0) } else {
                     let count = fault?.id == .b3 && fault?.afterInstall == false ? fault!.completed : s.b3.count
                     if case .embedded = s.b3 {
@@ -354,70 +445,70 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
                     if after(.b3) { failure = .injected(.b3, count) }
                 }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.g0) { failure = .injected(.g0, 0) }
                 else if let object = s.b0.withBorrow({ scopes in s.b1.withBorrow { text in StaticCounterLayoutWorkspace(scopes: scopes, text: text) } }) {
                     s.g0.install(consume object); record(s.g0.facts(id: .g0))
                     if after(.g0) { failure = .injected(.g0, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.g1) { failure = .injected(.g1, 0) }
                 else if let object = s.b0.withBorrow({ scopes in s.b1.withBorrow { text in StaticCounterResolvedLayoutStorage(scopes: scopes, text: text) } }) {
                     s.g1.install(consume object); record(s.g1.facts(id: .g1))
                     if after(.g1) { failure = .injected(.g1, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.g2) { failure = .injected(.g2, 0) }
                 else if let object = .some(InlineArray<64, SemanticRecordReference?>(repeating: nil)) {
                     s.g2.install(consume object); record(s.g2.facts(id: .g2))
                     if after(.g2) { failure = .injected(.g2, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.g3) { failure = .injected(.g3, 0) }
                 else if let object = s.b2.withBorrow({ path in s.b3.withBorrow { plan in StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits).map { StaticRecordDrawingWorkspace(base: $0) } } }) {
                     s.g3.install(consume object); record(s.g3.facts(id: .g3))
                     if after(.g3) { failure = .injected(.g3, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.g4) { failure = .injected(.g4, 0) }
                 else if let object = s.b1.withBorrow({ text in StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity).map { QualifiedRender(base: $0) } }) {
                     s.g4.install(consume object); record(s.g4.facts(id: .g4))
                     if after(.g4) { failure = .injected(.g4, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.c0) { failure = .injected(.c0, 0) }
                 else if let object = CounterStaticCandidate(capacity: capacities[0]) {
                     s.c0.install(consume object); record(s.c0.facts(id: .c0))
                     if after(.c0) { failure = .injected(.c0, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.h0) { failure = .injected(.h0, 0) }
                 else if let object = CounterStaticHits(capacity: capacities[1]) {
                     s.h0.install(consume object); record(s.h0.facts(id: .h0))
                     if after(.h0) { failure = .injected(.h0, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.r0) { failure = .injected(.r0, 0) }
                 else if let object = CounterStaticCommitted(capacity: capacities[2]) {
                     s.r0.install(consume object); record(s.r0.facts(id: .r0))
                     if after(.r0) { failure = .injected(.r0, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.r1) { failure = .injected(.r1, 0) }
                 else if let object = CounterStaticCommitted(capacity: capacities[3]) {
                     s.r1.install(consume object); record(s.r1.facts(id: .r1))
                     if after(.r1) { failure = .injected(.r1, 1) }
                 } else { failure = .constructor }
             }
-            if failure == nil {
+            if case .none = failure {
                 if before(.h1) { failure = .injected(.h1, 0) }
                 else if let object = CounterStaticHits(capacity: capacities[4]) {
                     s.h1.install(consume object); record(s.h1.facts(id: .h1))
@@ -426,73 +517,91 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             }
         #if !hasFeature(Embedded)
         case .dynamic(let s):
-            if failure == nil {
-                if before(.g0) { failure = .injected(.g0, 0) } else {
-                    let object = DynamicLayoutWorkspace(limits: counterLayoutLimits, maximumSemanticRecords: 126)
+                if case .none = failure {
+                    if before(.g0) {
+                        failure = .injected(.g0, 0)
+                    } else {
+                        let object = DynamicLayoutWorkspace(limits: counterLayoutLimits, maximumSemanticRecords: 126)
                     let retainedPayloadBytes = Int(object.reservedPayloadBytes)
                     s.g0.install(consume object); record(s.g0.facts(id: .g0, payloadBytes: retainedPayloadBytes))
                     if after(.g0) { failure = .injected(.g0, 1) }
                 }
             }
-            if failure == nil {
-                if before(.g1) { failure = .injected(.g1, 0) } else {
-                    let object = DynamicResolvedLayoutStorage(limits: counterLayoutLimits)
+                if case .none = failure {
+                    if before(.g1) {
+                        failure = .injected(.g1, 0)
+                    } else {
+                        let object = DynamicResolvedLayoutStorage(limits: counterLayoutLimits)
                     let retainedPayloadBytes = Int(object.reservedPayloadBytes)
                     s.g1.install(consume object); record(s.g1.facts(id: .g1, payloadBytes: retainedPayloadBytes))
                     if after(.g1) { failure = .injected(.g1, 1) }
                 }
             }
-            if failure == nil {
-                if before(.g3) { failure = .injected(.g3, 0) } else {
-                    let object = DynamicDrawingPlanWorkspace(capacity: counterDrawingLimits)
+                if case .none = failure {
+                    if before(.g3) {
+                        failure = .injected(.g3, 0)
+                    } else {
+                        let object = DynamicDrawingPlanWorkspace(capacity: counterDrawingLimits)
                     let retainedPayloadBytes = Int(object.livePathReservedPayloadBytes + object.planReservedPayloadBytes)
                     s.g3.install(consume object); record(s.g3.facts(id: .g3, payloadBytes: retainedPayloadBytes))
                     if after(.g3) { failure = .injected(.g3, 1) }
                 }
             }
-            if failure == nil {
-                if before(.g4) { failure = .injected(.g4, 0) } else {
-                    let object = DynamicRenderWorkspace(capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity)
+                if case .none = failure {
+                    if before(.g4) {
+                        failure = .injected(.g4, 0)
+                    } else {
+                        let object = DynamicRenderWorkspace(capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity)
                     let retainedPayloadBytes = Int(object.reservedPayloadBytes)
                     s.g4.install(consume object); record(s.g4.facts(id: .g4, payloadBytes: retainedPayloadBytes))
                     if after(.g4) { failure = .injected(.g4, 1) }
                 }
             }
-            if failure == nil {
-                if before(.c0) { failure = .injected(.c0, 0) } else {
-                    let object = CounterDynamicCandidate(capacity: capacities[0])
+                if case .none = failure {
+                    if before(.c0) {
+                        failure = .injected(.c0, 0)
+                    } else {
+                        let object = CounterDynamicCandidate(capacity: capacities[0])
                     let retainedPayloadBytes = Int(object.reservedPayloadBytes)
                     s.c0.install(consume object); record(s.c0.facts(id: .c0, payloadBytes: retainedPayloadBytes))
                     if after(.c0) { failure = .injected(.c0, 1) }
                 }
             }
-            if failure == nil {
-                if before(.h0) { failure = .injected(.h0, 0) } else {
-                    let object = CounterDynamicHits(capacity: capacities[1])
+                if case .none = failure {
+                    if before(.h0) {
+                        failure = .injected(.h0, 0)
+                    } else {
+                        let object = CounterDynamicHits(capacity: capacities[1])
                     let retainedPayloadBytes = Int(object.reservedPayloadBytes)
                     s.h0.install(consume object); record(s.h0.facts(id: .h0, payloadBytes: retainedPayloadBytes))
                     if after(.h0) { failure = .injected(.h0, 1) }
                 }
             }
-            if failure == nil {
-                if before(.r0) { failure = .injected(.r0, 0) } else {
-                    let object = CounterDynamicCommitted(capacity: capacities[2])
+                if case .none = failure {
+                    if before(.r0) {
+                        failure = .injected(.r0, 0)
+                    } else {
+                        let object = CounterDynamicCommitted(capacity: capacities[2])
                     let retainedPayloadBytes = Int(object.reservedPayloadBytes)
                     s.r0.install(consume object); record(s.r0.facts(id: .r0, payloadBytes: retainedPayloadBytes))
                     if after(.r0) { failure = .injected(.r0, 1) }
                 }
             }
-            if failure == nil {
-                if before(.r1) { failure = .injected(.r1, 0) } else {
-                    let object = CounterDynamicCommitted(capacity: capacities[3])
+                if case .none = failure {
+                    if before(.r1) {
+                        failure = .injected(.r1, 0)
+                    } else {
+                        let object = CounterDynamicCommitted(capacity: capacities[3])
                     let retainedPayloadBytes = Int(object.reservedPayloadBytes)
                     s.r1.install(consume object); record(s.r1.facts(id: .r1, payloadBytes: retainedPayloadBytes))
                     if after(.r1) { failure = .injected(.r1, 1) }
                 }
             }
-            if failure == nil {
-                if before(.h1) { failure = .injected(.h1, 0) } else {
-                    let object = CounterDynamicHits(capacity: capacities[4])
+                if case .none = failure {
+                    if before(.h1) {
+                        failure = .injected(.h1, 0)
+                    } else {
+                        let object = CounterDynamicHits(capacity: capacities[4])
                     let retainedPayloadBytes = Int(object.reservedPayloadBytes)
                     s.h1.install(consume object); record(s.h1.facts(id: .h1, payloadBytes: retainedPayloadBytes))
                     if after(.h1) { failure = .injected(.h1, 1) }
@@ -551,16 +660,27 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
         }
     }
     fileprivate mutating func finishReservation() {
-        if lifecycle == .idle { release() } else { precondition(lifecycle == .released && acquired == 0) }
+        if case .idle = lifecycle {
+            release()
+        } else {
+            let p08ExactCase21: Bool;
+            if case .released = lifecycle {
+                if acquired == 0 { p08ExactCase21 = true } else { p08ExactCase21 = false }
+            } else {
+                p08ExactCase21 = false
+            }; precondition(p08ExactCase21)
+        }
     }
     fileprivate mutating func release() {
-        precondition(lifecycle == .idle)
+        let p08ExactCase22: Bool;
+        if case .idle = lifecycle { p08ExactCase22 = true } else { p08ExactCase22 = false };
+        precondition(p08ExactCase22)
         requireEmpty()
         destroyPrefix(); lifecycle = .released
     }
     deinit {
         precondition(lifecycle != .active)
-        if lifecycle == .idle {
+        if case .idle = lifecycle {
             requireEmpty()
             var remaining = acquired
             while remaining > 0 { remaining -= 1; destroyOriginal(inventory[remaining]!) }
@@ -570,7 +690,16 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
         switch slots {
         case .static(let s):
             s.g0.withBorrow { precondition($0.pointee.scopeCount == 0 && $0.pointee.textLineCount == 0 && $0.pointee.positionedGlyphCount == 0) }
-            s.g2.withBorrow { p in for index in 0..<64 { precondition(p.pointee[index] == nil) } }
+            s.g2.withBorrow { p in
+                for index in 0 ..< 64 {
+                    let p08Presence19: Bool;
+                    if case .none = p.pointee[index] {
+                        p08Presence19 = true
+                    } else {
+                        p08Presence19 = false
+                    }; precondition(p08Presence19)
+                }
+            }
             s.g3.withBorrow { pointer in
                 precondition(!pointer.pointee.isActive)
                 pointer.pointee.withBase { base in
@@ -1236,7 +1365,12 @@ extension P08TypedBackingOwner {
 
 extension P08TypedBackingOwner {
     fileprivate mutating func withStorage<Result>(transcript: UnsafeMutablePointer<P08RoleTranscript>? = nil, _ body: (consuming P08StorageSession) -> Result) -> Result {
-        precondition(lifecycle == .idle && validateCapacities())
+        let p08ExactCase23: Bool;
+        if case .idle = lifecycle {
+            if validateCapacities() { p08ExactCase23 = true } else { p08ExactCase23 = false }
+        } else {
+            p08ExactCase23 = false
+        }; precondition(p08ExactCase23)
         requireEmpty()
         let next = serial.addingReportingOverflow(1); precondition(!next.overflow)
         serial = next.partialValue; lifecycle = .active
@@ -1478,7 +1612,8 @@ fileprivate func withP08DynamicReservation<Result>(surplus: Bool = false, capaci
 
 @inline(never)
 fileprivate func p08ClearHostPlan(_ facts: inout P08HostRunFacts?) {
-    let installed = facts != nil; precondition(installed)
+    let installed: Bool; if case .some = facts { installed = true } else { installed = false };
+    precondition(installed)
     facts = nil
 }
 
@@ -1541,9 +1676,11 @@ fileprivate struct P08EmbeddedOuter: ~Copyable {
         used.initialize(to: false); acquired = 11
     }
     deinit {
-        let planningEnded = hostPlan == nil; precondition(planningEnded)
-        if acquired >= 11 { used.deinitialize(count: 1) }
-        if acquired >= 10 { CounterControl.requireVacantRuntimeSlot(at: control); control.deinitialize(count: 1) }
+            let planningEnded: Bool;
+            if case .none = hostPlan { planningEnded = true } else { planningEnded = false };
+            precondition(planningEnded)
+            if acquired >= 11 { used.deinitialize(count: 1) }
+            if acquired >= 10 { CounterControl.requireVacantRuntimeSlot(at: control); control.deinitialize(count: 1) }
         if acquired >= 9 { entries.deinitialize(count: 1) }
         if acquired >= 8 { canvas.deinitialize(count: 1) }
         if acquired >= 7 { scalars.deinitialize(count: 128) }
@@ -1580,7 +1717,9 @@ fileprivate struct P08OwnedPhysicalFacts {
 }
 extension P08TypedBackingOwner {
     fileprivate borrowing func physicalFacts() -> P08OwnedPhysicalFacts {
-        precondition(lifecycle == .idle)
+        let p08ExactCase24: Bool;
+        if case .idle = lifecycle { p08ExactCase24 = true } else { p08ExactCase24 = false };
+        precondition(p08ExactCase24)
         func entry(_ id: P08PhysicalID) -> P08InitializedEntry {
             for index in 0..<acquired { if inventory[index]!.id == id { return inventory[index]! } }
             preconditionFailure("missing original physical facts")
@@ -1692,8 +1831,38 @@ fileprivate func p08ReuseLabel(_ route: StaticString, _ suffix: StaticString) {
 }
 fileprivate func p08RequireFreshControl(_ control: UnsafeMutablePointer<CounterControl>) {
     CounterControl.requireVacantRuntimeSlot(at: control)
-    precondition(control.pointee.admissionController == nil && control.pointee.wake == nil && control.pointee.scheduler == nil)
-    precondition(control.pointee.lastSealedAction == nil && control.pointee.lastDispatchedAction == nil && control.pointee.lastDispatchContext == nil && control.pointee.actionDispatches == 0)
+    let p08Presence20: Bool;
+    if case .none = control.pointee.admissionController {
+        if case .none = control.pointee.wake {
+            if case .none = control.pointee.scheduler {
+                p08Presence20 = true
+            } else {
+                p08Presence20 = false
+            }
+        } else {
+            p08Presence20 = false
+        }
+    } else {
+        p08Presence20 = false
+    }; precondition(p08Presence20)
+    let p08Presence21: Bool;
+    if case .none = control.pointee.lastSealedAction {
+        if case .none = control.pointee.lastDispatchedAction {
+            if case .none = control.pointee.lastDispatchContext {
+                if control.pointee.actionDispatches == 0 {
+                    p08Presence21 = true
+                } else {
+                    p08Presence21 = false
+                }
+            } else {
+                p08Presence21 = false
+            }
+        } else {
+            p08Presence21 = false
+        }
+    } else {
+        p08Presence21 = false
+    }; precondition(p08Presence21)
     precondition(!control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled && control.pointee.finalized == 0)
 }
 fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<CounterControl>) {
@@ -1701,9 +1870,26 @@ fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<Counte
     precondition(control.pointee.runtime.unavailable && !control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled)
     precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
     if var scheduler = control.pointee.scheduler {
-        precondition(scheduler.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: scheduler.assemblyReport) == .rejected(.pacingRejected, pacing: .unavailable))
+        let p08ExactCase25: Bool;
+        if case .rejected(.pacingRejected, pacing: .some(.unavailable)) = scheduler.begin(
+            at: control.pointee.wakeClockMicroseconds, lifecycleState: .active,
+            assemblyReport: scheduler.assemblyReport)
+        {
+            p08ExactCase25 = true
+        } else {
+            p08ExactCase25 = false
+        }; precondition(p08ExactCase25)
     }
-    precondition(CounterControl.snapshotProducerOrigin(at: control) == nil && !control.pointee.frameActive && !control.pointee.hasRoot)
+    let p08Presence22: Bool;
+    if case .none = CounterControl.snapshotProducerOrigin(at: control) {
+        if !control.pointee.frameActive {
+            if !control.pointee.hasRoot { p08Presence22 = true } else { p08Presence22 = false }
+        } else {
+            p08Presence22 = false
+        }
+    } else {
+        p08Presence22 = false
+    }; precondition(p08Presence22)
     precondition(control.pointee.runtime.admission.pointerCount == 0 && control.pointee.runtime.admission.pendingStateCount == 0 && !control.pointee.runtime.admission.sealActive)
 }
 fileprivate func p08RequireSameInventory(_ current: borrowing InlineArray<14, P08InitializedEntry?>, _ original: borrowing InlineArray<14, P08InitializedEntry?>) {
@@ -1810,7 +1996,7 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
     }
     @inline(never)
     private mutating func matchesJoins(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
-        let present = joins != nil
+        let present: Bool; if case .some = joins { present = true } else { present = false }
         guard present else { return false }
         let samerequests = joins!.requests == control.pointee.wake?.requester.requestCount
         guard samerequests else { return false }
@@ -1849,7 +2035,7 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
     }
     @inline(never)
     private mutating func matchesSemantic(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
-        let present = semantic != nil
+        let present: Bool; if case .some = semantic { present = true } else { present = false }
         guard present else { return false }
         let samescalarCount = semantic!.scalarCount == control.pointee.semanticSnapshot.scalarCount
         guard samescalarCount else { return false }
@@ -1873,7 +2059,7 @@ fileprivate struct P08ReuseFingerprint: ~Copyable {
     }
     @inline(never)
     private mutating func matchesAdmission(_ control: UnsafeMutablePointer<CounterControl>) -> Bool {
-        let present = admission != nil
+        let present: Bool; if case .some = admission { present = true } else { present = false }
         guard present else { return false }
         let samependingStateCount = admission!.pendingStateCount == control.pointee.runtime.admission.pendingStateCount
         guard samependingStateCount else { return false }
@@ -2117,7 +2303,20 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 fileprivate func p08ReuseActivate<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     guard case .active = host.activate() else { preconditionFailure("reuse actual activation") }
-    precondition(control.pointee.inputGate.inputIsEligible && control.pointee.wake != nil && control.pointee.scheduler != nil)
+    let p08Presence23: Bool;
+    if control.pointee.inputGate.inputIsEligible {
+        if case .some = control.pointee.wake {
+            if case .some = control.pointee.scheduler {
+                p08Presence23 = true
+            } else {
+                p08Presence23 = false
+            }
+        } else {
+            p08Presence23 = false
+        }
+    } else {
+        p08Presence23 = false
+    }; precondition(p08Presence23)
     guard case .cycle(.success) = host.runOpportunity() else { preconditionFailure("reuse source initial fact") }
     return counterCheckHostFrame(control.pointee, value: 0)
 }
@@ -2154,7 +2353,12 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 @inline(never)
 fileprivate func p08ReuseRejectInput<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: inout P08ReuseFingerprint, modelBefore: UInt8, oldEvent: NormalizedPointerEvent) -> Void
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
-    precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
+    let p08ExactCase26: Bool;
+    if case .unavailable = transcript.pointee.admission!.submit(pointer: oldEvent).result {
+        p08ExactCase26 = true
+    } else {
+        p08ExactCase26 = false
+    }; precondition(p08ExactCase26)
     let fingerprintUnchangedAfterInput = p08MatchesReuseFingerprint(&before, control: control)
     let modelUnchangedAfterInput: Bool
     if fingerprintUnchangedAfterInput {
@@ -2170,9 +2374,24 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 @inline(never)
 fileprivate func p08ReuseRejectAdmission<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>, route: StaticString, before: inout P08ReuseFingerprint, modelBefore: UInt8, oldEvent: NormalizedPointerEvent) -> Void
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
-    precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
-    precondition(transcript.pointee.admission!.submit(stateChange: 8).result == .unavailable)
-    precondition(transcript.pointee.admission!.submit(completion: 0).result == .unavailable)
+    let p08ExactCase27: Bool;
+    if case .unavailable = transcript.pointee.admission!.submit(pointer: oldEvent).result {
+        p08ExactCase27 = true
+    } else {
+        p08ExactCase27 = false
+    }; precondition(p08ExactCase27)
+    let p08ExactCase28: Bool;
+    if case .unavailable = transcript.pointee.admission!.submit(stateChange: 8).result {
+        p08ExactCase28 = true
+    } else {
+        p08ExactCase28 = false
+    }; precondition(p08ExactCase28)
+    let p08ExactCase29: Bool;
+    if case .unavailable = transcript.pointee.admission!.submit(completion: 0).result {
+        p08ExactCase29 = true
+    } else {
+        p08ExactCase29 = false
+    }; precondition(p08ExactCase29)
     let fingerprintUnchangedAfterAdmission = p08MatchesReuseFingerprint(&before, control: control)
     let modelUnchangedAfterAdmission: Bool
     if fingerprintUnchangedAfterAdmission {
@@ -2264,9 +2483,23 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     guard case .cycle(.success(let upSummary)) = host.runOpportunity() else { preconditionFailure("reuse current action up cycle") }
     precondition(upSummary.admission.inputEventCount == 1 && upSummary.admission.semanticActionCount == 1)
     precondition(control.pointee.lastSealedAction == currentAction.captured && control.pointee.lastDispatchedAction == currentAction.captured)
-    precondition(control.pointee.lastDispatchContext?.phase == .mutating && control.pointee.lastDispatchContext?.cycle == upSummary.cycle)
+    let p08ExactCase30: Bool;
+    if case .some(.mutating) = control.pointee.lastDispatchContext?.phase {
+        if control.pointee.lastDispatchContext?.cycle == upSummary.cycle {
+            p08ExactCase30 = true
+        } else {
+            p08ExactCase30 = false
+        }
+    } else {
+        p08ExactCase30 = false
+    }; precondition(p08ExactCase30)
     precondition(control.pointee.applied == applied + 1 && control.pointee.actionDispatches == dispatched + 1)
-    let captureMatches = control.pointee.runtime.pointer.capture.current == nil
+    let captureMatches: Bool;
+    if case .none = control.pointee.runtime.pointer.capture.current {
+        captureMatches = true
+    } else {
+        captureMatches = false
+    }
     let captureAndModelMatch: Bool
     if captureMatches { captureAndModelMatch = p08ReuseModelValue(host: &host) == 2 }
     else { captureAndModelMatch = false }
@@ -2288,8 +2521,18 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
 fileprivate func p08ReuseCurrentAdmission<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, route: StaticString, admission: inout CounterAdmission) -> Int
 where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
     let wake = control.pointee.acceptedFactWakeRecords
-    precondition(admission.submit(stateChange: 3).result == .queued)
-    precondition(admission.submit(completion: 0).result == .queued)
+    let p08ExactCase31: Bool;
+    if case .queued = admission.submit(stateChange: 3).result {
+        p08ExactCase31 = true
+    } else {
+        p08ExactCase31 = false
+    }; precondition(p08ExactCase31)
+    let p08ExactCase32: Bool;
+    if case .queued = admission.submit(completion: 0).result {
+        p08ExactCase32 = true
+    } else {
+        p08ExactCase32 = false
+    }; precondition(p08ExactCase32)
     let currentRevision = control.pointee.runtime.committedPresentation!
     let pointer = control.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: currentRevision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
     guard case .queued = pointer else { preconditionFailure("reuse current admission pointer") }
@@ -2320,7 +2563,12 @@ where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~
     else { terminalState = false }
     precondition(terminalState)
     guard case .failure = host.activate() else { preconditionFailure("terminal host reactivation") }
-    precondition(host.runOpportunity() == .invalidLifecycle)
+    let p08ExactCase33: Bool;
+    if case .invalidLifecycle = host.runOpportunity() {
+        p08ExactCase33 = true
+    } else {
+        p08ExactCase33 = false
+    }; precondition(p08ExactCase33)
     if transcript.pointee.hosts == 0 { p08ReuseLabel(route, "terminal-old-host") }
     transcript.pointee.hosts += 1
     return 10
@@ -2478,9 +2726,15 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
         withP08ScalarsFieldBuffer(&outer.semanticBacking.scalars) { scalars in
         withP08EntriesFieldBuffer(&outer.canvasBacking) { entries in
             withP08StaticReservation { owner in
-                precondition(initializeP08Backing(&owner) == nil)
-                defer { owner.finishReservation() }
-                let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<CounterStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
+                                                        let p08Presence24: Bool;
+                                                        if case .none = initializeP08Backing(&owner)
+                                                        {
+                                                            p08Presence24 = true
+                                                        } else {
+                                                            p08Presence24 = false
+                                                        }; precondition(p08Presence24)
+                                                        defer { owner.finishReservation() }
+                                                        let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<CounterStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
                 let view = P08StaticOuterView(limits: limits, root: root, semantic: semantic, records: records, paths: paths, payloads: payloads, scalars: scalars, canvas: canvas, entries: entries, control: control, outerMetadataBytes: metadata)
                 defer { CounterControl.requireVacantRuntimeSlot(at: control) }
                 return body(&owner, view, semanticCodec)
@@ -2529,13 +2783,35 @@ fileprivate func p08CompleteBody(_ result: P08BodyResult, control: UnsafeMutable
         precondition(!control.pointee.inputGate.inputIsEligible)
         if result.activationAttempted { precondition(control.pointee.runtime.unavailable) }
         else {
-            precondition(!control.pointee.runtime.unavailable && control.pointee.wake == nil && control.pointee.scheduler == nil)
+            let p08Presence25: Bool;
+            if !control.pointee.runtime.unavailable {
+                if case .none = control.pointee.wake {
+                    if case .none = control.pointee.scheduler {
+                        p08Presence25 = true
+                    } else {
+                        p08Presence25 = false
+                    }
+                } else {
+                    p08Presence25 = false
+                }
+            } else {
+                p08Presence25 = false
+            }; precondition(p08Presence25)
             precondition(control.pointee.teardowns == 0 && control.pointee.applicationConstructions == 0)
         }
         precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
         precondition(!control.pointee.frameActive && !control.pointee.runtime.admission.sealActive)
         precondition(control.pointee.runtime.admission.pendingStateCount == 0 && control.pointee.runtime.admission.pointerCount == 0)
-        precondition(control.pointee.runtime.pointer.capture.current == nil && control.pointee.runtime.pointer.source == nil)
+        let p08Presence26: Bool;
+        if case .none = control.pointee.runtime.pointer.capture.current {
+            if case .none = control.pointee.runtime.pointer.source {
+                p08Presence26 = true
+            } else {
+                p08Presence26 = false
+            }
+        } else {
+            p08Presence26 = false
+        }; precondition(p08Presence26)
         precondition(!control.pointee.hasRoot && control.pointee.committedRecords == 0)
     }
     CounterControl.requireVacantRuntimeSlot(at: control)
@@ -2552,16 +2828,42 @@ fileprivate func p08RunStaticHostPhase(host: inout P08StaticHost, control: Unsaf
     let checks: Int
     if let reuse {
         checks = p08RunReuseHost(host: &host, control: control, transcript: reuse, baseline: baseline)
-    } else if early == 5 || candidateFailure != nil {
-        precondition(host.activate() == .active)
-        if let candidateFailure {
+    } else {
+        let needsActivation: Bool;
+        if early == 5 {
+            needsActivation = true
+        } else {
+            if case .some = candidateFailure {
+                needsActivation = true
+            } else {
+                needsActivation = false
+            }
+        };
+        if needsActivation {
+            let p08ExactCase34: Bool;
+            if case .active = host.activate() {
+                p08ExactCase34 = true
+            } else {
+                p08ExactCase34 = false
+            }; precondition(p08ExactCase34)
+            if let candidateFailure {
             control.pointee.fault = candidateFailure
             var admission = CounterAdmission(borrowing: control)
-            precondition(admission.submit(stateChange: 7).result == .queued)
-            guard case .cycle(.failure) = host.runOpportunity() else { preconditionFailure("candidate failure control") }
+                let p08ExactCase35: Bool;
+                if case .queued = admission.submit(stateChange: 7).result {
+                    p08ExactCase35 = true
+                } else {
+                    p08ExactCase35 = false
+                }; precondition(p08ExactCase35)
+                guard case .cycle(.failure) = host.runOpportunity() else { preconditionFailure("candidate failure control") }
         }
         checks = 1
-    } else { checks = counterRunHostLifecycle(host: &host, control: control, report: report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks) }
+        } else {
+            checks = counterRunHostLifecycle(
+                host: &host, control: control, report: report, failAfterRuntime: failAfterRuntime,
+                joinChecks: joinChecks)
+        }
+    }
     return P08BodyResult(checks: checks, constructed: true, activationAttempted: true)
 }
 
@@ -2626,7 +2928,12 @@ fileprivate func p08RunStaticSessionPhase(session: consuming P08StorageSession, 
     p08ConstructStaticHost(session: session, semantic: semantic, semanticCodec: copy semanticCodec, values: values, activationSpan: activationSpan, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, facts: &facts, failAfterRuntime: failAfterRuntime, early: early, destination: &host, completion: &completion)
     defer { host?.p08FinishOriginalStaticHost() }
     if let result = host?.p08UseOriginalStaticHost(control: control, report: facts.assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: completion.joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline) {
-        let noEarlyCompletion = completion.completed == nil; precondition(noEarlyCompletion)
+        let noEarlyCompletion: Bool;
+        if case .none = completion.completed {
+            noEarlyCompletion = true
+        } else {
+            noEarlyCompletion = false
+        }; precondition(noEarlyCompletion)
         return result
     }
     guard let result = completion.completed else { preconditionFailure("original host factory invariant") }
@@ -2645,18 +2952,44 @@ fileprivate func p08RunDynamicHostPhase(host: inout P08DynamicHost, control: Uns
     let checks: Int
     if let reuse {
         checks = p08RunReuseHost(host: &host, control: control, transcript: reuse, baseline: baseline)
-    } else if early == 5 || candidateFailure != nil {
-        precondition(host.activate() == .active)
-        if let candidateFailure {
+        } else {
+            let needsActivation: Bool;
+            if early == 5 {
+                needsActivation = true
+            } else {
+                if case .some = candidateFailure {
+                    needsActivation = true
+                } else {
+                    needsActivation = false
+                }
+            };
+            if needsActivation {
+                let p08ExactCase36: Bool;
+                if case .active = host.activate() {
+                    p08ExactCase36 = true
+                } else {
+                    p08ExactCase36 = false
+                }; precondition(p08ExactCase36)
+                if let candidateFailure {
             control.pointee.fault = candidateFailure
             var admission = CounterAdmission(borrowing: control)
-            precondition(admission.submit(stateChange: 7).result == .queued)
-            guard case .cycle(.failure) = host.runOpportunity() else { preconditionFailure("candidate failure control") }
+                    let p08ExactCase37: Bool;
+                    if case .queued = admission.submit(stateChange: 7).result {
+                        p08ExactCase37 = true
+                    } else {
+                        p08ExactCase37 = false
+                    }; precondition(p08ExactCase37)
+                    guard case .cycle(.failure) = host.runOpportunity() else { preconditionFailure("candidate failure control") }
         }
         checks = 1
-    } else { checks = counterRunDynamicHostLifecycle(host: &host, control: control, report: report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks) }
-    return P08BodyResult(checks: checks, constructed: true, activationAttempted: true)
-}
+            } else {
+                checks = counterRunDynamicHostLifecycle(
+                    host: &host, control: control, report: report,
+                    failAfterRuntime: failAfterRuntime, joinChecks: joinChecks)
+            }
+        }
+        return P08BodyResult(checks: checks, constructed: true, activationAttempted: true)
+    }
 
 extension SignalAnalyzerPresetHostInstance where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable, Owner == P08DynamicHostOwner {
     @_lifetime(self: copy self)
@@ -2713,9 +3046,14 @@ fileprivate func p08RunDynamicSessionPhase(session: consuming P08StorageSession,
     p08ConstructDynamicHost(session: session, semantic: semantic, semanticCodec: copy semanticCodec, values: values, activationSpan: activationSpan, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, facts: &facts, failAfterRuntime: failAfterRuntime, early: early, destination: &host, completion: &completion)
     defer { host?.p08FinishOriginalDynamicHost() }
     if let result = host?.p08UseOriginalDynamicHost(control: control, report: facts.assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: completion.joinChecks, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline) {
-        let noEarlyCompletion = completion.completed == nil; precondition(noEarlyCompletion)
-        return result
-    }
+            let noEarlyCompletion: Bool;
+            if case .none = completion.completed {
+                noEarlyCompletion = true
+            } else {
+                noEarlyCompletion = false
+            }; precondition(noEarlyCompletion)
+            return result
+        }
     guard let result = completion.completed else { preconditionFailure("original host factory invariant") }
     return result
 }
@@ -2744,25 +3082,56 @@ fileprivate func runP08ScopedBody(session: consuming P08StorageSession,
 @inline(never)
 fileprivate func p08PrepareStaticHost(outer: borrowing P08StaticOuterView, owner: inout P08TypedBackingOwner)
     -> (audit: RuntimeStorageAudit, assembly: CounterHostAssembly) {
-    guard case .valid(let audit) = outer.audit(owner: owner), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+    guard case .valid(let audit) = outer.audit(owner: owner, report: { _ in }),
+        let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind)
+    else { preconditionFailure("counter valid-only host") }
     return (audit, assembly)
 }
 @inline(never)
 fileprivate func p08CheckStaticHostConfiguration(_ facts: inout P08HostRunFacts) -> Int {
     let ownedChecks = counterOwnedSchedulerCompatibility(facts.assembly.report)
-    let rejected0 = CounterHostAssembly.validate(facts.audit, kind: counterStaticHostKind, sourceCallbacks: 21) == nil
+    let rejected0: Bool;
+    if case .none = CounterHostAssembly.validate(
+        facts.audit, kind: counterStaticHostKind, sourceCallbacks: 21)
+    {
+        rejected0 = true
+    } else {
+        rejected0 = false
+    }
     precondition(rejected0)
-    let rejected1 = CounterHostAssembly.validate(facts.audit, kind: counterStaticHostKind, repositoryCallbacks: 2) == nil
+    let rejected1: Bool;
+    if case .none = CounterHostAssembly.validate(
+        facts.audit, kind: counterStaticHostKind, repositoryCallbacks: 2)
+    {
+        rejected1 = true
+    } else {
+        rejected1 = false
+    }
     precondition(rejected1)
-    let rejected2 = CounterHostAssembly.validate(facts.audit, kind: counterStaticHostKind, useCaseCallbacks: 2) == nil
+    let rejected2: Bool;
+    if case .none = CounterHostAssembly.validate(
+        facts.audit, kind: counterStaticHostKind, useCaseCallbacks: 2)
+    {
+        rejected2 = true
+    } else {
+        rejected2 = false
+    }
     precondition(rejected2)
-    let rejected3 = CounterHostAssembly.validate(facts.audit, kind: counterStaticHostKind, nonTransitionPublications: 2) == nil
+    let rejected3: Bool;
+    if case .none = CounterHostAssembly.validate(
+        facts.audit, kind: counterStaticHostKind, nonTransitionPublications: 2)
+    {
+        rejected3 = true
+    } else {
+        rejected3 = false
+    }
     precondition(rejected3)
     return ownedChecks
 }
 @inline(never)
 fileprivate func p08InstallStaticHostPlan(owner: inout P08TypedBackingOwner, outer: borrowing P08StaticOuterView, write: CounterTiledPixelWrite?, into facts: inout P08HostRunFacts?) {
-    let vacant = facts == nil; precondition(vacant)
+    let vacant: Bool; if case .none = facts { vacant = true } else { vacant = false };
+    precondition(vacant)
     #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
     if let write { outer.control.pointee.backend.write = write }
     #endif
@@ -2931,9 +3300,17 @@ fileprivate func withP08SelectedDynamic<Result>(modelOwner: ObservableModelOwner
         withUnsafeMutablePointer(to: &outer.canvas) { canvas in
         withUnsafeMutablePointer(to: &outer.control) { control in
             withP08DynamicReservation { owner in
-                precondition(initializeP08Backing(&owner) == nil); defer { owner.finishReservation() }
-                let view = P08DynamicOuterView(limits: limits, root: root, semantic: semantic, canvas: canvas, control: control)
-                defer { CounterControl.requireVacantRuntimeSlot(at: control) }
+                                    let p08Presence27: Bool;
+                                    if case .none = initializeP08Backing(&owner) {
+                                        p08Presence27 = true
+                                    } else {
+                                        p08Presence27 = false
+                                    }; precondition(p08Presence27);
+                                    defer { owner.finishReservation() }
+                                    let view = P08DynamicOuterView(
+                                        limits: limits, root: root, semantic: semantic,
+                                        canvas: canvas, control: control)
+                                    defer { CounterControl.requireVacantRuntimeSlot(at: control) }
                 return body(&owner, view, semanticCodec)
             }
         } } } }
@@ -2949,20 +3326,49 @@ fileprivate func p08PrepareDynamicHost(outer: borrowing P08DynamicOuterView, own
 }
 @inline(never)
 fileprivate func p08CheckDynamicHostConfiguration(_ facts: inout P08HostRunFacts) {
-    let rejected0 = CounterHostAssembly.validate(facts.audit, kind: counterDynamicHostKind, sourceCallbacks: 21) == nil
-    precondition(rejected0)
-    let rejected1 = CounterHostAssembly.validate(facts.audit, kind: counterDynamicHostKind, repositoryCallbacks: 2) == nil
-    precondition(rejected1)
-    let rejected2 = CounterHostAssembly.validate(facts.audit, kind: counterDynamicHostKind, useCaseCallbacks: 2) == nil
-    precondition(rejected2)
-    let rejected3 = CounterHostAssembly.validate(facts.audit, kind: counterDynamicHostKind, nonTransitionPublications: 2) == nil
-    precondition(rejected3)
-}
+        let rejected0: Bool;
+        if case .none = CounterHostAssembly.validate(
+            facts.audit, kind: counterDynamicHostKind, sourceCallbacks: 21)
+        {
+            rejected0 = true
+        } else {
+            rejected0 = false
+        }
+        precondition(rejected0)
+        let rejected1: Bool;
+        if case .none = CounterHostAssembly.validate(
+            facts.audit, kind: counterDynamicHostKind, repositoryCallbacks: 2)
+        {
+            rejected1 = true
+        } else {
+            rejected1 = false
+        }
+        precondition(rejected1)
+        let rejected2: Bool;
+        if case .none = CounterHostAssembly.validate(
+            facts.audit, kind: counterDynamicHostKind, useCaseCallbacks: 2)
+        {
+            rejected2 = true
+        } else {
+            rejected2 = false
+        }
+        precondition(rejected2)
+        let rejected3: Bool;
+        if case .none = CounterHostAssembly.validate(
+            facts.audit, kind: counterDynamicHostKind, nonTransitionPublications: 2)
+        {
+            rejected3 = true
+        } else {
+            rejected3 = false
+        }
+        precondition(rejected3)
+    }
 @inline(never)
 fileprivate func p08InstallDynamicHostPlan(owner: inout P08TypedBackingOwner, outer: borrowing P08DynamicOuterView, into facts: inout P08HostRunFacts?) {
-    let vacant = facts == nil; precondition(vacant)
-    let (audit, assembly) = p08PrepareDynamicHost(outer: outer, owner: &owner)
-    facts = .init(limits: outer.limits, audit: audit, assembly: assembly)
+        let vacant: Bool; if case .none = facts { vacant = true } else { vacant = false };
+        precondition(vacant)
+        let (audit, assembly) = p08PrepareDynamicHost(outer: outer, owner: &owner)
+        facts = .init(limits: outer.limits, audit: audit, assembly: assembly)
 }
 
 @inline(never)
@@ -3067,24 +3473,73 @@ fileprivate func p08CheckGraphDefinition() {
         precondition(record.role.rawValue == index)
         precondition(record.dependencies.rawValue == expectedMasks[Int(index)])
     }
-    precondition(HostComponentGraphValidation.validate(CounterHostGraph()) == nil)
-    precondition(CounterHostGraph().record(at: 18) == nil)
-    for mode: UInt8 in 0...7 { precondition(HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode)) != nil) }
+    let p08Presence28: Bool;
+    if case .none = HostComponentGraphValidation.validate(CounterHostGraph()) {
+        p08Presence28 = true
+    } else {
+        p08Presence28 = false
+    }; precondition(p08Presence28)
+    let p08Presence29: Bool;
+    if case .none = CounterHostGraph().record(at: 18) {
+        p08Presence29 = true
+    } else {
+        p08Presence29 = false
+    }; precondition(p08Presence29)
+    for mode: UInt8 in 0 ... 7 {
+        let p08Presence30: Bool;
+        if case .some = HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode)) {
+            p08Presence30 = true
+        } else {
+            p08Presence30 = false
+        }; precondition(p08Presence30)
+    }
 }
 fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, outer: borrowing P08StaticOuterView) -> Int {
     var count = 46
-        guard case .valid(let audit) = outer.audit(owner: owner) else { preconditionFailure("counter graph audit") }
-        let control = outer.control
+    guard case .valid(let audit) = outer.audit(owner: owner, report: { _ in }) else {
+        preconditionFailure("counter graph audit")
+    }
+    let control = outer.control
         func reject(_ negative: CounterConstructionNegative) {
             let graph = CounterHostGraph(negative: negative)
-            precondition(HostComponentGraphValidation.validate(graph) == nil)
-            var observation = CounterConstructionObservation()
-            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, negative: negative, observation: &observation) == nil)
-            precondition(observation.result == .invalid(stage: .graph, error: .invalidGraph))
-            precondition(observation.hasNoLaterReads)
-            precondition(control.pointee.applicationConstructions == 0 && control.pointee.finalized == 0 && control.pointee.wake == nil)
-            count += 5
-        }
+        let p08Presence31: Bool;
+        if case .none = HostComponentGraphValidation.validate(graph) {
+            p08Presence31 = true
+        } else {
+            p08Presence31 = false
+        }; precondition(p08Presence31)
+        var observation = CounterConstructionObservation()
+        let p08Presence32: Bool;
+        if case .none = CounterHostAssembly.validate(
+            audit, kind: counterStaticHostKind, negative: negative, observation: &observation)
+        {
+            p08Presence32 = true
+        } else {
+            p08Presence32 = false
+        }; precondition(p08Presence32)
+        let p08ExactCase38: Bool;
+        if case .some(.invalid(stage: .graph, error: .invalidGraph)) = observation.result {
+            p08ExactCase38 = true
+        } else {
+            p08ExactCase38 = false
+        }; precondition(p08ExactCase38)
+        precondition(observation.hasNoLaterReads)
+        let p08Presence33: Bool;
+        if control.pointee.applicationConstructions == 0 {
+            if control.pointee.finalized == 0 {
+                if case .none = control.pointee.wake {
+                    p08Presence33 = true
+                } else {
+                    p08Presence33 = false
+                }
+            } else {
+                p08Presence33 = false
+            }
+        } else {
+            p08Presence33 = false
+        }; precondition(p08Presence33)
+        count += 5
+    }
         for origin: UInt8 in 0...5 { reject(.omitted(.rasterEndpoint, origin)) }
         reject(.omitted(.factAdmission, 0))
         reject(.omitted(.rootModelTarget, 0))
@@ -3093,12 +3548,32 @@ fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, o
         reject(.hiddenRetainedReport)
         reject(.undeclaredBoundText)
         var positive = CounterConstructionObservation()
-        precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, negative: nil, observation: &positive) != nil)
-        guard case .valid? = positive.result else { preconditionFailure("counter graph positive") }
-        precondition(positive.runtimeReads == 1 && positive.textReads == 1 && positive.workloadReads == 1 && positive.capabilityReads == 1 && positive.endpointReads == 1 && positive.applicationReads == 1 && positive.inputReads == 1 && positive.policyReads == 1)
-        precondition(control.pointee.applicationConstructions == 0 && control.pointee.finalized == 0 && control.pointee.wake == nil)
-        count += 4
-        return count
+    let p08Presence34: Bool;
+    if case .some = CounterHostAssembly.validate(
+        audit, kind: counterStaticHostKind, negative: nil, observation: &positive)
+    {
+        p08Presence34 = true
+    } else {
+        p08Presence34 = false
+    }; precondition(p08Presence34)
+    guard case .valid? = positive.result else { preconditionFailure("counter graph positive") }
+    precondition(positive.runtimeReads == 1 && positive.textReads == 1 && positive.workloadReads == 1 && positive.capabilityReads == 1 && positive.endpointReads == 1 && positive.applicationReads == 1 && positive.inputReads == 1 && positive.policyReads == 1)
+    let p08Presence35: Bool;
+    if control.pointee.applicationConstructions == 0 {
+        if control.pointee.finalized == 0 {
+            if case .none = control.pointee.wake {
+                p08Presence35 = true
+            } else {
+                p08Presence35 = false
+            }
+        } else {
+            p08Presence35 = false
+        }
+    } else {
+        p08Presence35 = false
+    }; precondition(p08Presence35)
+    count += 4
+    return count
 }
 
 
@@ -3134,21 +3609,53 @@ extension P08StorageSession {
         var checks = 0
         for iteration: UInt32 in 0..<6 {
             let count: UInt16 = iteration % 2 == 0 ? 1 : 2
-            precondition(interaction.beginCandidate(limits: limits) == nil)
+            let p08Presence36: Bool;
+            if case .none = interaction.beginCandidate(limits: limits) {
+                p08Presence36 = true
+            } else {
+                p08Presence36 = false
+            }; precondition(p08Presence36)
             for index: UInt16 in 0..<count {
                 let identity = key(UInt8(index))
                 let result = interaction.append(identity: identity, isEnabled: true, bounds: bounds, clip: bounds, paintOrder: index, action: .init(code: index + 1), targetGeneration: .init(rawValue: 1))
-                if result == .requiresGeneration { precondition(interaction.assignGeneration(.init(rawValue: iteration + 1), to: identity) == nil) }
-                else { guard case .preserved = result else { preconditionFailure("scoped candidate append") } }
+                if case .requiresGeneration = result {
+                    let p08Presence37: Bool;
+                    if case .none = interaction.assignGeneration(
+                        .init(rawValue: iteration + 1), to: identity)
+                    {
+                        p08Presence37 = true
+                    } else {
+                        p08Presence37 = false
+                    }; precondition(p08Presence37)
+                } else {
+                    guard case .preserved = result else {
+                        preconditionFailure("scoped candidate append")
+                    }
+                }
             }
-            precondition(interaction.finishCandidate() == nil)
+            let p08Presence38: Bool;
+            if case .none = interaction.finishCandidate() {
+                p08Presence38 = true
+            } else {
+                p08Presence38 = false
+            }; precondition(p08Presence38)
             let revision = PresentationRevision(rawValue: iteration + 1)
             interaction.resolveCandidate(.commit(revision))
             precondition(interaction.committedRecordCount == count && interaction.committedRevision == revision)
             let before = interaction.committedRecord(for: key(0))!
             let captured = CapturedAction(identity: before.identity, generation: before.generation)
-            precondition(interaction.beginCandidate(limits: limits) == nil)
-            precondition(interaction.finishCandidate() == nil)
+            let p08Presence39: Bool;
+            if case .none = interaction.beginCandidate(limits: limits) {
+                p08Presence39 = true
+            } else {
+                p08Presence39 = false
+            }; precondition(p08Presence39)
+            let p08Presence40: Bool;
+            if case .none = interaction.finishCandidate() {
+                p08Presence40 = true
+            } else {
+                p08Presence40 = false
+            }; precondition(p08Presence40)
             interaction.resolveCandidate(.discard)
             // Keep the complete record oracle concrete: generic Optional/record
             // equality otherwise requests a runtime Equatable witness here.
@@ -3174,13 +3681,40 @@ extension P08StorageSession {
             checks += 5
         }
         // First-excess poisons the candidate; asking to commit cannot replace it.
-        precondition(interaction.beginCandidate(limits: limits) == nil)
+        let p08Presence41: Bool;
+        if case .none = interaction.beginCandidate(limits: limits) {
+            p08Presence41 = true
+        } else {
+            p08Presence41 = false
+        }; precondition(p08Presence41)
         for index: UInt16 in 0..<2 {
             let result = interaction.append(identity: key(UInt8(index)), isEnabled: true, bounds: bounds, clip: bounds, paintOrder: index, action: .init(code: index + 1), targetGeneration: .init(rawValue: 1))
-            if result == .requiresGeneration { precondition(interaction.assignGeneration(.init(rawValue: 20 + UInt32(index)), to: key(UInt8(index))) == nil) }
+            if case .requiresGeneration = result {
+                let p08Presence42: Bool;
+                if case .none = interaction.assignGeneration(
+                    .init(rawValue: 20 + UInt32(index)), to: key(UInt8(index)))
+                {
+                    p08Presence42 = true
+                } else {
+                    p08Presence42 = false
+                }; precondition(p08Presence42)
+            }
         }
-        precondition(interaction.append(identity: key(2), isEnabled: true, bounds: bounds, clip: bounds, paintOrder: 2, action: .init(code: 3), targetGeneration: .init(rawValue: 1)) == .failure(.capacityExhausted))
-        precondition(interaction.finishCandidate() == .capacityExhausted)
+        let p08ExactCase39: Bool;
+        if case .failure(.capacityExhausted) = interaction.append(
+            identity: key(2), isEnabled: true, bounds: bounds, clip: bounds, paintOrder: 2,
+            action: .init(code: 3), targetGeneration: .init(rawValue: 1))
+        {
+            p08ExactCase39 = true
+        } else {
+            p08ExactCase39 = false
+        }; precondition(p08ExactCase39)
+        let p08ExactCase40: Bool;
+        if case .some(.capacityExhausted) = interaction.finishCandidate() {
+            p08ExactCase40 = true
+        } else {
+            p08ExactCase40 = false
+        }; precondition(p08ExactCase40)
         interaction.resolveCandidate(.discard)
         precondition(interaction.committedRecordCount == 2)
         return checks + 3
@@ -3219,7 +3753,11 @@ fileprivate func p08VerifyDestruction(_ trace: InlineArray<14, P08InitializedEnt
         precondition(destroyed.id == acquired.id && destroyed.address == acquired.address && destroyed.count == acquired.count)
         precondition(destroyed.stride == acquired.stride && destroyed.alignment == acquired.alignment && destroyed.retainedBytes == acquired.retainedBytes)
     }
-    for index in expectedCount..<14 { precondition(trace[index] == nil) }
+    for index in expectedCount ..< 14 {
+        let p08Presence43: Bool;
+        if case .none = trace[index] { p08Presence43 = true } else { p08Presence43 = false };
+        precondition(p08Presence43)
+    }
     return expectedCount * 2 + 1
 }
 fileprivate func p08VerifyFault(_ owner: borrowing P08TypedBackingOwner, fault: P08AcquisitionFault, ids: InlineArray<14, P08PhysicalID?>, objects: Int) -> Int {
@@ -3233,9 +3771,17 @@ fileprivate func p08VerifyFault(_ owner: borrowing P08TypedBackingOwner, fault: 
         precondition(entry.id == ids[count - 1 - index] && entry.address != 0 && entry.count >= 0 && entry.retainedBytes >= entry.count * entry.stride)
         if entry.id == fault.id && fault.completed > 0 { precondition(entry.count == fault.completed) }
     }
-    for index in count..<14 { precondition(trace[index] == nil) }
+    for index in count ..< 14 {
+        let p08Presence44: Bool;
+        if case .none = trace[index] { p08Presence44 = true } else { p08Presence44 = false };
+        precondition(p08Presence44)
+    }
     let empty = owner.originalInventory()
-    for index in 0..<14 { precondition(empty[index] == nil) }
+    for index in 0 ..< 14 {
+        let p08Presence45: Bool;
+        if case .none = empty[index] { p08Presence45 = true } else { p08Presence45 = false };
+        precondition(p08Presence45)
+    }
     return count + 1
 }
 #if !hasFeature(Embedded)
@@ -3262,9 +3808,14 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
     for index in 0..<14 { for after in [false, true] {
         let fault = P08AcquisitionFault(id: staticIDs[index]!, completed: 0, afterInstall: after)
         checks += withP08StaticReservation { owner in
-            precondition(owner.initialize(fault: fault) != nil)
-            return p08VerifyFault(owner, fault: fault, ids: staticIDs, objects: 14)
-        }
+                        let p08Presence46: Bool;
+                        if case .some = owner.initialize(fault: fault) {
+                            p08Presence46 = true
+                        } else {
+                            p08Presence46 = false
+                        }; precondition(p08Presence46)
+                        return p08VerifyFault(owner, fault: fault, ids: staticIDs, objects: 14)
+                    }
     } }
     let invalidCapacityCases: InlineArray<5, InlineArray<5, UInt16>> = [
         [1, 2, 2, 2, 2],
@@ -3276,15 +3827,33 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
     for capacityIndex in 0..<5 {
         let capacities = invalidCapacityCases[capacityIndex]
         checks += withP08StaticReservation(capacities: capacities) { owner in
-            precondition(owner.initialize() == .invalidCapacity)
-            let inventory = owner.originalInventory(); for index in 0..<14 { precondition(inventory[index] == nil) }
-            return 1
-        }
+                    let p08ExactCase41: Bool;
+                    if case .some(.invalidCapacity) = owner.initialize() {
+                        p08ExactCase41 = true
+                    } else {
+                        p08ExactCase41 = false
+                    }; precondition(p08ExactCase41)
+                    let inventory = owner.originalInventory();
+                    for index in 0 ..< 14 {
+                        let p08Presence47: Bool;
+                        if case .none = inventory[index] {
+                            p08Presence47 = true
+                        } else {
+                            p08Presence47 = false
+                        }; precondition(p08Presence47)
+                    }
+                    return 1
+                }
     }
     checks += withP08StaticReservation { owner in
-        precondition(owner.initialize() == nil)
-        let original = owner.originalInventory()
-        var count = 0
+                let p08Presence48: Bool;
+                if case .none = owner.initialize() {
+                    p08Presence48 = true
+                } else {
+                    p08Presence48 = false
+                }; precondition(p08Presence48)
+                let original = owner.originalInventory()
+                var count = 0
         for _ in 0..<3 {
             var transcript = P08RoleTranscript()
             count += withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in
@@ -3300,9 +3869,14 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
     }
     for surplus in [false, true] {
         checks += withP08StaticReservation(surplus: surplus) { owner in
-            precondition(owner.initialize() == nil)
-            let original = owner.originalInventory()
-            let left = original[11]!, right = original[12]!
+                    let p08Presence49: Bool;
+                    if case .none = owner.initialize() {
+                        p08Presence49 = true
+                    } else {
+                        p08Presence49 = false
+                    }; precondition(p08Presence49)
+                    let original = owner.originalInventory()
+                    let left = original[11]!, right = original[12]!
             precondition(left.retainedBytes <= right.retainedBytes)
             if surplus { precondition(left.retainedBytes < right.retainedBytes) }
             var transcript = P08RoleTranscript()
@@ -3312,9 +3886,14 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
         }
         if includeDynamicValidation {
             checks += withP08DynamicReservation(surplus: surplus) { owner in
-                precondition(owner.initialize() == nil)
-                let original = owner.originalInventory()
-                if surplus { precondition(original[6]!.retainedBytes < original[7]!.retainedBytes) }
+                        let p08Presence50: Bool;
+                        if case .none = owner.initialize() {
+                            p08Presence50 = true
+                        } else {
+                            p08Presence50 = false
+                        }; precondition(p08Presence50)
+                        let original = owner.originalInventory()
+                        if surplus { precondition(original[6]!.retainedBytes < original[7]!.retainedBytes) }
                 var transcript = P08RoleTranscript()
                 let count = withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
                 owner.release()
@@ -3337,16 +3916,38 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
             let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]
             for index in 0..<9 { for after in [false, true] {
                 let fault = P08AcquisitionFault(id: dynamicIDs[index]!, completed: 0, afterInstall: after)
-                checks += withP08DynamicReservation { owner in precondition(owner.initialize(fault: fault) != nil); return p08VerifyFault(owner, fault: fault, ids: dynamicIDs, objects: 9) }
-            } }
-            for capacityIndex in 0..<5 {
+                            checks += withP08DynamicReservation { owner in
+                                let p08Presence51: Bool;
+                                if case .some = owner.initialize(fault: fault) {
+                                    p08Presence51 = true
+                                } else {
+                                    p08Presence51 = false
+                                }; precondition(p08Presence51);
+                                return p08VerifyFault(
+                                    owner, fault: fault, ids: dynamicIDs, objects: 9)
+                            }
+                        }
+                    }
+                    for capacityIndex in 0..<5 {
                 let capacities = invalidCapacityCases[capacityIndex]
-                checks += withP08DynamicReservation(capacities: capacities) { owner in precondition(owner.initialize() == .invalidCapacity); return 1 }
-            }
+                        checks += withP08DynamicReservation(capacities: capacities) { owner in
+                            let p08ExactCase42: Bool;
+                            if case .some(.invalidCapacity) = owner.initialize() {
+                                p08ExactCase42 = true
+                            } else {
+                                p08ExactCase42 = false
+                            }; precondition(p08ExactCase42); return 1
+                        }
+                    }
             checks += withP08DynamicReservation { owner in
-                precondition(owner.initialize() == nil); let original = owner.originalInventory()
-                var count = 0
-                for _ in 0..<3 {
+                        let p08Presence52: Bool;
+                        if case .none = owner.initialize() {
+                            p08Presence52 = true
+                        } else {
+                            p08Presence52 = false
+                        }; precondition(p08Presence52); let original = owner.originalInventory()
+                        var count = 0
+                        for _ in 0..<3 {
                     var transcript = P08RoleTranscript()
                     count += withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
                     count += p08VerifyRoleTranscript(transcript)
@@ -3380,22 +3981,39 @@ fileprivate struct P08SessionOnlyCleanup: ~Copyable, ~Escapable {
 // The global remains nil outside this closed, synchronous reservation scope.
 @MainActor fileprivate var p08NativeExclusivityOwner: P08TypedBackingOwner? = nil
 @inline(never)
-@MainActor fileprivate func p08ReadNativeExclusiveOwner() -> Bool { p08NativeExclusivityOwner != nil }
-@MainActor package func counterScopedNativeExclusivity(negative: Bool) -> Int {
-    precondition(p08NativeExclusivityOwner == nil)
-    func exercise(_ owner: inout P08TypedBackingOwner) -> Int {
-        precondition(owner.initialize() == nil)
-        p08NativeExclusivityOwner = consume owner
-        if !negative { precondition(p08ReadNativeExclusiveOwner()) }
+    @MainActor fileprivate func p08ReadNativeExclusiveOwner() -> Bool {
+        if case .some = p08NativeExclusivityOwner { return true }; return false
+    }
+    @MainActor package func counterScopedNativeExclusivity(negative: Bool) -> Int {
+        let p08Presence53: Bool;
+        if case .none = p08NativeExclusivityOwner {
+            p08Presence53 = true
+        } else {
+            p08Presence53 = false
+        }; precondition(p08Presence53)
+        func exercise(_ owner: inout P08TypedBackingOwner) -> Int {
+            let p08Presence54: Bool;
+            if case .none = owner.initialize() {
+                p08Presence54 = true
+            } else {
+                p08Presence54 = false
+            }; precondition(p08Presence54)
+            p08NativeExclusivityOwner = consume owner
+            if !negative { precondition(p08ReadNativeExclusiveOwner()) }
         let checks = withP08Storage(backing: &p08NativeExclusivityOwner!) { session in
             var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }
             if negative { precondition(p08ReadNativeExclusiveOwner()) }
             return 1
         }
         owner = p08NativeExclusivityOwner.take()!
-        precondition(p08NativeExclusivityOwner == nil)
-        owner.release()
-        return checks
+            let p08Presence55: Bool;
+            if case .none = p08NativeExclusivityOwner {
+                p08Presence55 = true
+            } else {
+                p08Presence55 = false
+            }; precondition(p08Presence55)
+            owner.release()
+            return checks
     }
     #if GIFTUI_COUNTER_ROUTE_DYNAMIC
     return withP08DynamicReservation { owner in exercise(&owner) }
@@ -3414,7 +4032,16 @@ fileprivate func p08RuntimeSlotGuardControls(_ control: UnsafeMutablePointer<Cou
     let duplicate = control.pointee.tryClaimRuntimeSlot()
     let wrongClear = control.pointee.tryClearRuntimeSlot(wrong.partialValue)
     let same = CounterRuntimeSlotObservation(control) == before
-    precondition(duplicate == nil && !wrongClear && same)
+    let p08Presence56: Bool;
+    if case .none = duplicate {
+        if !wrongClear {
+            if same { p08Presence56 = true } else { p08Presence56 = false }
+        } else {
+            p08Presence56 = false
+        }
+    } else {
+        p08Presence56 = false
+    }; precondition(p08Presence56)
     return 3
 }
 #if hasFeature(Embedded)
@@ -3642,9 +4269,18 @@ fileprivate struct P08CallerCustody: ~Copyable {
     private var metadataPrefix: UInt8 = 0
     init(_ bytes: UnsafeMutableRawBufferPointer) {
         precondition(bytes.count == counterEmbeddedSlotCount * counterEmbeddedSlotBytes)
-        precondition(bytes.baseAddress != nil && UInt(bitPattern: bytes.baseAddress!) % 8 == 0)
-        self.bytes = bytes
-    }
+            let p08Presence57: Bool;
+            if case .some = bytes.baseAddress {
+                if UInt(bitPattern: bytes.baseAddress!) % 8 == 0 {
+                    p08Presence57 = true
+                } else {
+                    p08Presence57 = false
+                }
+            } else {
+                p08Presence57 = false
+            }; precondition(p08Presence57)
+            self.bytes = bytes
+        }
     mutating func run(_ plan: P08EmbeddedCasePlan, model: ObservableModelOwnerIdentity,
         semantic: SemanticRecordOwnerIdentity, secondModel: ObservableModelOwnerIdentity? = nil,
         secondSemantic: SemanticRecordOwnerIdentity? = nil, write: CounterTiledPixelWrite? = nil) -> Int {
@@ -3728,23 +4364,33 @@ fileprivate func p08RunMetadataInvalid(owner: inout P08TypedBackingOwner,
     let invalid = owner.initialize() == .invalidReservation
     precondition(invalid)
     original = owner.originalInventory()
-    for index in 0..<14 { let empty = original[index] == nil; precondition(empty) }
-    return 1
-}
+        for index in 0 ..< 14 {
+            let empty: Bool;
+            if case .none = original[index] { empty = true } else { empty = false };
+            precondition(empty)
+        }
+        return 1
+    }
 @inline(never)
 fileprivate func p08RunMetadataFault(owner: inout P08TypedBackingOwner,
     id: P08PhysicalID, completed: Int, after: Bool) -> Int {
     let ids: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
     let fault = P08AcquisitionFault(id: id, completed: completed, afterInstall: after)
-    let failed = owner.initialize(fault: fault) != nil
-    precondition(failed)
-    return p08VerifyFault(owner, fault: fault, ids: ids, objects: 14)
+        let failed: Bool;
+        if case .some = owner.initialize(fault: fault) { failed = true } else { failed = false }
+        precondition(failed)
+        return p08VerifyFault(owner, fault: fault, ids: ids, objects: 14)
 }
 @inline(never)
 fileprivate func p08RunMetadataGraph(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter) -> Int {
-    let initialized = initializeP08Backing(&owner) == nil
-    precondition(initialized)
-    let view = p08MetadataOuterView(outer)
+        let initialized: Bool;
+        if case .none = initializeP08Backing(&owner) {
+            initialized = true
+        } else {
+            initialized = false
+        }
+        precondition(initialized)
+        let view = p08MetadataOuterView(outer)
     return p08CheckGraphSelection(owner: owner, outer: view)
 }
 @inline(never)
@@ -3752,17 +4398,27 @@ fileprivate func p08RunMetadataHost(_ plan: P08EmbeddedCasePlan,
     owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
     foreignRoot: UnsafeMutablePointer<CounterStaticRootStorage>,
     foreignControl: UnsafeMutablePointer<CounterControl>, write: CounterTiledPixelWrite?) -> Int {
-    let initialized = initializeP08Backing(&owner) == nil
-    precondition(initialized)
-    return p08RunOneMetadataHost(owner: &owner, outer: &outer, before: nil, transcript: nil,
+        let initialized: Bool;
+        if case .none = initializeP08Backing(&owner) {
+            initialized = true
+        } else {
+            initialized = false
+        }
+        precondition(initialized)
+        return p08RunOneMetadataHost(owner: &owner, outer: &outer, before: nil, transcript: nil,
         foreignRoot: foreignRoot, foreignControl: foreignControl, write: write, plan: plan)
 }
 // Cold inventory and empty/retirement checks finish before live host invocation.
 @inline(never)
 fileprivate func p08InitializeMetadataHostBacking(_ owner: inout P08TypedBackingOwner) {
-    let initialized = initializeP08Backing(&owner) == nil
-    precondition(initialized)
-}
+        let initialized: Bool;
+        if case .none = initializeP08Backing(&owner) {
+            initialized = true
+        } else {
+            initialized = false
+        }
+        precondition(initialized)
+    }
 @inline(never)
 fileprivate func p08CaptureMetadataHostInventory(_ owner: inout P08TypedBackingOwner,
     into original: inout InlineArray<14, P08InitializedEntry?>) {
@@ -3779,9 +4435,10 @@ fileprivate func p08RequireMetadataHostRetired(_ control: UnsafeMutablePointer<C
 @inline(never)
 fileprivate func p08InstallEmbeddedHostPlan(owner: inout P08TypedBackingOwner,
     outer: inout P08EmbeddedOuter, write: CounterTiledPixelWrite?, plan: P08EmbeddedCasePlan?) {
-    let vacant = outer.hostPlan == nil; precondition(vacant)
-    let view = p08MetadataOuterView(outer)
-    if let plan {
+        let vacant: Bool; if case .none = outer.hostPlan { vacant = true } else { vacant = false };
+        precondition(vacant)
+        let view = p08MetadataOuterView(outer)
+        if let plan {
         switch plan {
         case .host(let scenario):
             view.control.pointee.terminalRetry = scenario == 2
@@ -3881,9 +4538,14 @@ fileprivate func p08FinishMetadataTwoHosts(owner: inout P08TypedBackingOwner,
 @inline(never)
 fileprivate func p08RunMetadataExchange(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
     original: inout InlineArray<14, P08InitializedEntry?>, surplus: Int) -> Int {
-    let initialized = initializeP08Backing(&owner) == nil
-    precondition(initialized)
-    _ = p08MetadataOuterView(outer) // Preserve original checked outer-view queries even on exchange.
+        let initialized: Bool;
+        if case .none = initializeP08Backing(&owner) {
+            initialized = true
+        } else {
+            initialized = false
+        }
+        precondition(initialized)
+        _ = p08MetadataOuterView(outer) // Preserve original checked outer-view queries even on exchange.
     original = owner.originalInventory()
     let enough = original[11]!.retainedBytes <= original[12]!.retainedBytes
     precondition(enough)

@@ -157,15 +157,24 @@ struct CounterNativeRasterAdapter: RasterOfferSessionSink {
     var presentationResponsibilityAccepted = false
     var reservation: DisplayReservationID?
     var glyphHeader: PositionedGlyphOperationHeader?
-    var isIdleForOffer: Bool { reservation == nil && recording.header == nil }
-    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
-        descriptor = configuration.descriptor; payloadLimits = configuration.payloadLimits
+        var isIdleForOffer: Bool {
+            if case .none = reservation, case .none = recording.header { return true }; return false
+        }
+        init(
+            configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>
+        ) {
+            descriptor = configuration.descriptor; payloadLimits = configuration.payloadLimits
         target = CounterNativeDisplayTarget(control: control, configuration: configuration)
         surface = FullSurfaceRGBA8888Buffer(descriptor: descriptor, storage: CounterRGBAStorage(control: control))!
     }
-    mutating func retainProducerError(_ error: RenderProductionError) { if retainedProducerError == nil { retainedProducerError = error } }
-    mutating func reserveFrame(descriptor: RasterSurfaceDescriptor, payloadCapacityBytes: UInt32, regionCapacity: UInt16) -> DisplayReservationResult {
-        guard isIdleForOffer else { return .failure(.reentrancyViolation) }
+        mutating func retainProducerError(_ error: RenderProductionError) {
+            if case .none = retainedProducerError { retainedProducerError = error }
+        }
+        mutating func reserveFrame(
+            descriptor: RasterSurfaceDescriptor, payloadCapacityBytes: UInt32,
+            regionCapacity: UInt16
+        ) -> DisplayReservationResult {
+            guard isIdleForOffer else { return .failure(.reentrancyViolation) }
         streamCompleted = false; presentationResponsibilityAccepted = false; failure = nil; retainedProducerError = nil
         recording = CounterRenderSink()
         let result = target.reserveFrame(descriptor: descriptor, payloadCapacityBytes: payloadCapacityBytes, regionCapacity: regionCapacity)
@@ -176,39 +185,58 @@ struct CounterNativeRasterAdapter: RasterOfferSessionSink {
     mutating func finishTransferredFrameIfNeeded() { if let reservation { _ = target.finishFrame(reservation) }; self.reservation = nil; recording.header = nil; _ = surface.finishFrame(); streamCompleted = true }
     borrowing func health() -> GiftUIOperationalHealth { target.health() }
     mutating func begin(_ header: RenderPlanHeader) -> Bool {
-        guard reservation != nil, recording.header == nil, header.surfaceBounds == descriptor.bounds,
-            header.operationCount <= capacity.maximumOperations, header.positionedGlyphCount <= capacity.maximumPositionedGlyphs,
-            surface.beginFrame(header) else { return reject(.malformedStream) }
-        return recording.begin(header)
-    }
+            guard case .some = reservation, case .none = recording.header,
+                header.surfaceBounds == descriptor.bounds,
+                header.operationCount <= capacity.maximumOperations,
+                header.positionedGlyphCount <= capacity.maximumPositionedGlyphs,
+                surface.beginFrame(header)
+            else { return reject(.malformedStream) }
+            return recording.begin(header)
+        }
     mutating func fillRect(_ operation: FillRectOperation) -> Bool {
-        guard let header = recording.header, glyphHeader == nil else { return reject(.malformedStream) }
-        let result = RasterFillCoverage.rasterize(operation, descriptor: descriptor, damageBounds: header.damageBounds) { point, pixel in surface.replacePixel(at: point, with: pixel) }
-        guard case .completed = result else { return reject(.rasterizationFailure) }
+            guard let header = recording.header, case .none = glyphHeader else {
+                return reject(.malformedStream)
+            }
+            let result = RasterFillCoverage.rasterize(
+                operation, descriptor: descriptor, damageBounds: header.damageBounds
+            ) { point, pixel in surface.replacePixel(at: point, with: pixel) }
+            guard case .completed = result else { return reject(.rasterizationFailure) }
         return recording.fillRect(operation)
     }
     mutating func beginPositionedGlyphs(_ operation: PositionedGlyphOperationHeader) -> Bool {
-        guard recording.header != nil, glyphHeader == nil else { return reject(.malformedStream) }
-        glyphHeader = operation; return recording.beginPositionedGlyphs(operation)
-    }
+            guard case .some = recording.header, case .none = glyphHeader else {
+                return reject(.malformedStream)
+            }
+            glyphHeader = operation; return recording.beginPositionedGlyphs(operation)
+        }
     mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool {
         guard let header = recording.header, let glyphHeader else { return reject(.malformedStream) }
         let result = RasterGlyphCoverage.rasterize(glyph, operation: glyphHeader, metrics: GiftUIReferenceTextMetricsView(), raster: GiftUIReferenceTextRasterView(), realization: GiftUIReferenceTextRasterView().realization(at: 0)!, descriptor: descriptor, damageBounds: header.damageBounds) { point, pixel in surface.replacePixel(at: point, with: pixel) }
         guard case .completed = result else { return reject(.rasterizationFailure) }
         return recording.positionedGlyph(glyph)
     }
-    mutating func endPositionedGlyphs() -> Bool { guard glyphHeader != nil else { return reject(.malformedStream) }; glyphHeader = nil; return recording.endPositionedGlyphs() }
-    mutating func straightLineStroke<S: StraightLineStrokeView>(_ stroke: borrowing S) -> Bool {
-        guard let header = recording.header, glyphHeader == nil else { return reject(.malformedStream) }
-        let result = RasterStrokeCoverage.rasterize(stroke, descriptor: descriptor, damageBounds: header.damageBounds) { point, pixel in surface.replacePixel(at: point, with: pixel) }
-        guard case .completed = result else { return reject(.rasterizationFailure) }
+        mutating func endPositionedGlyphs() -> Bool {
+            guard case .some = glyphHeader else { return reject(.malformedStream) };
+            glyphHeader = nil; return recording.endPositionedGlyphs()
+        }
+        mutating func straightLineStroke<S: StraightLineStrokeView>(_ stroke: borrowing S) -> Bool {
+            guard let header = recording.header, case .none = glyphHeader else {
+                return reject(.malformedStream)
+            }
+            let result = RasterStrokeCoverage.rasterize(
+                stroke, descriptor: descriptor, damageBounds: header.damageBounds
+            ) { point, pixel in surface.replacePixel(at: point, with: pixel) }
+            guard case .completed = result else { return reject(.rasterizationFailure) }
         return recording.straightLineStroke(stroke)
     }
     mutating func finish() -> Bool {
-        guard let header = recording.header, let reservation, glyphHeader == nil,
-            recording.operations == header.operationCount, recording.glyphs == header.positionedGlyphCount else { return reject(.malformedStream) }
-        let result = FullSurfacePayloadEmitter.finish(surface: &surface, header: header, reservation: reservation, target: &target)
-        guard case .completed(let transferred) = result else { return reject(.rasterizationFailure) }
+            guard let header = recording.header, let reservation, case .none = glyphHeader,
+                recording.operations == header.operationCount,
+                recording.glyphs == header.positionedGlyphCount
+            else { return reject(.malformedStream) }
+            let result = FullSurfacePayloadEmitter.finish(
+                surface: &surface, header: header, reservation: reservation, target: &target)
+            guard case .completed(let transferred) = result else { return reject(.rasterizationFailure) }
         presentationResponsibilityAccepted = transferred; streamCompleted = true; self.reservation = nil
         _ = recording.finish(); recording.header = nil
         return true
@@ -230,9 +258,16 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         let control = construction.endpointBacking.control(control)
         let adapter = CounterNativeRasterAdapter(configuration: configuration, control: control)
         let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: adapter.descriptor, payloadLimits: adapter.payloadLimits, surfaceWritableCapacityBytes: adapter.surface.writableCapacityBytes, displaySubmissionLifetime: adapter.target.submissionLifetime, displayHandoff: adapter.target.handoff, displayMaximumInFlightPayloads: adapter.target.maximumInFlightPayloads, displayMaximumInFlightBytes: adapter.target.maximumInFlightBytes, textRasterRealization: construction.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: adapter.target.control == control)
-        precondition(HostEndpointStartupValidation.validateConstructedProjection(constructed, equals: configuration) == nil)
-        // Equality and both adjacent physical byte capacities reject precisely;
-        // the exact actual projection remains the sole activation configuration.
+            let p08Presence70: Bool;
+            if case .none = HostEndpointStartupValidation.validateConstructedProjection(
+                constructed, equals: configuration)
+            {
+                p08Presence70 = true
+            } else {
+                p08Presence70 = false
+            }; precondition(p08Presence70)
+            // Equality and both adjacent physical byte capacities reject precisely;
+            // the exact actual projection remains the sole activation configuration.
         let capacities: InlineArray<3, UInt32> = [47999, 48000, 48001]
         for index in 0..<capacities.count {
             let capacity = capacities[index]
@@ -242,8 +277,16 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         }
         for shared in [true, false] {
             let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: constructed.surfaceWritableCapacityBytes, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: shared ? 2 : 1, endpointAndDisplayShareHealthOwner: shared)
-            precondition(HostEndpointStartupValidation.validateConstructedProjection(candidate, equals: configuration) == .invalidEndpointDescriptor)
-            control.pointee.backend.projectionControls += 1
+                let p08ExactCase84: Bool;
+                if case .some(.invalidEndpointDescriptor) =
+                    HostEndpointStartupValidation.validateConstructedProjection(
+                        candidate, equals: configuration)
+                {
+                    p08ExactCase84 = true
+                } else {
+                    p08ExactCase84 = false
+                }; precondition(p08ExactCase84)
+                control.pointee.backend.projectionControls += 1
         }
         control.pointee.backend.constructedProjection = constructed
         control.pointee.backend.constructedEndpoints += 1
@@ -320,9 +363,10 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         guard samerecording else { return false }
         let sametargetConfiguration = baseline.targetConfiguration == actual.sink.target.configuration
         guard sametargetConfiguration else { return false }
-        let samewriter = baseline.writer == nil
-        guard samewriter else { return false }
-        let samenativeReservation = baseline.nativeReservation == actual.sink.reservation
+            let samewriter: Bool;
+            if case .none = baseline.writer { samewriter = true } else { samewriter = false }
+            guard samewriter else { return false }
+            let samenativeReservation = baseline.nativeReservation == actual.sink.reservation
         guard samenativeReservation else { return false }
         let samenativeGlyphHeader = baseline.nativeGlyphHeader == actual.sink.glyphHeader
         guard samenativeGlyphHeader else { return false }

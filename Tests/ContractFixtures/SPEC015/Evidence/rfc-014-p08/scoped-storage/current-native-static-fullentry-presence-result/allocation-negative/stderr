@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/AllocationGate/AllocationNegative.swift:12:5: error: Using type 'AllocationBox' can cause metadata allocation or locks
+10 | @inline(never)
+11 | public func allocationNegative(_ input: Int) -> AllocationBox {
+12 |     AllocationBox(input)
+   |     `- error: Using type 'AllocationBox' can cause metadata allocation or locks
+13 | }
+14 | 

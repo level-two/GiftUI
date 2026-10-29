@@ -23,7 +23,14 @@ package func p08CounterFixedStorage() -> Int {
     checks += withUnsafeMutableBytes(of: &planBytes) { bytes in
         precondition(!StaticCounterDrawingPlanRecords.stagePoint(Point(x: 1, y: 1), at: 2, in: bytes))
         precondition(!StaticCounterDrawingPlanRecords.stageSubpath(SubpathRange(firstPoint: 0, pointCount: 2)!, at: 1, in: bytes))
-        precondition(StaticCounterDrawingPlanStorage(region: bytes, capacity: counterDrawingLimits) != nil)
+        let p08Presence1: Bool;
+        if case .some = StaticCounterDrawingPlanStorage(
+            region: bytes, capacity: counterDrawingLimits)
+        {
+            p08Presence1 = true
+        } else {
+            p08Presence1 = false
+        }; precondition(p08Presence1)
         precondition(bytes.allSatisfy { $0 == 0 })
         return 4
     }

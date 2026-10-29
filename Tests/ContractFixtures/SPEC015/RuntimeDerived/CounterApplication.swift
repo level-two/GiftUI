@@ -26,7 +26,9 @@ struct CounterFactRepository {
     private(set) var observation: UInt32?
     private(set) var publicationCount = 0
     mutating func observe() -> (token: UInt32, current: UInt8) {
-        precondition(observation == nil)
+        let p08Presence72: Bool;
+        if case .none = observation { p08Presence72 = true } else { p08Presence72 = false };
+        precondition(p08Presence72)
         observation = 1
         return (1, value)
     }
@@ -37,7 +39,7 @@ struct CounterFactRepository {
     mutating func receive(_ value: UInt8, notify: (UInt8) -> Bool) -> Bool {
         guard value <= 9 else { return false }
         self.value = value
-        guard observation != nil else { return false }
+        guard case .some = observation else { return false }
         publicationCount += 1
         return notify(value)
     }
@@ -65,10 +67,56 @@ struct CounterApplicationOwners {
         control.pointee.applicationConstructions += 1
     }
     var constructedProjectionIsValid: Bool {
-        CounterControl.acceptsProducer(at: control, producerOrigin) && source.running && source.emissionCount == 1 && repository.publicationCount == 1
-            && repository.observation == observation && observation != nil
-            && useCases.startCalls == 1 && gate.isAvailable && !gate.isExecuting
-            && deliveryEnabled && inputEnabled && control.pointee.applicationConstructions == 1
+        if CounterControl.acceptsProducer(at: control, producerOrigin) {
+            if source.running {
+                if source.emissionCount == 1 {
+                    if repository.publicationCount == 1 {
+                        if repository.observation == observation {
+                            if case .some = observation {
+                                if useCases.startCalls == 1 {
+                                    if gate.isAvailable {
+                                        if !gate.isExecuting {
+                                            if deliveryEnabled {
+                                                if inputEnabled {
+                                                    if control.pointee.applicationConstructions == 1
+                                                    {
+                                                        return true
+                                                    } else {
+                                                        return false
+                                                    }
+                                                } else {
+                                                    return false
+                                                }
+                                            } else {
+                                                return false
+                                            }
+                                        } else {
+                                            return false
+                                        }
+                                    } else {
+                                        return false
+                                    }
+                                } else {
+                                    return false
+                                }
+                            } else {
+                                return false
+                            }
+                        } else {
+                            return false
+                        }
+                    } else {
+                        return false
+                    }
+                } else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
     mutating func installObservation() -> UInt8 {
         guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return repository.value }
@@ -80,7 +128,11 @@ struct CounterApplicationOwners {
     mutating func startSource() -> Bool {
         guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return false }
         guard gate.begin() == .admitted else { return false }
-        defer { precondition(gate.complete() == nil) }
+        defer {
+            let p08Presence73: Bool;
+            if case .none = gate.complete() { p08Presence73 = true } else { p08Presence73 = false };
+            precondition(p08Presence73)
+        }
         return withUnsafeMutablePointer(to: &self) { application in
             application.pointee.useCases.start(source: &application.pointee.source, repository: &application.pointee.repository) { value in
                 return application.pointee.deliver(value)
@@ -89,9 +141,23 @@ struct CounterApplicationOwners {
     }
     private mutating func deliver(_ value: UInt8) -> Bool {
         guard CounterControl.acceptsProducer(at: control, producerOrigin), deliveryEnabled else { return false }
-        precondition(gate.begin() == .rejected(.reentrant))
+        let p08ExactCase86: Bool;
+        if case .rejected(.reentrant) = gate.begin() {
+            p08ExactCase86 = true
+        } else {
+            p08ExactCase86 = false
+        }; precondition(p08ExactCase86)
         control.pointee.reentrantApplicationRejections += 1
-        precondition(control.pointee.context.phase == .idle && !control.pointee.frameActive)
+        let p08ExactCase87: Bool;
+        if case .idle = control.pointee.context.phase {
+            if !control.pointee.frameActive {
+                p08ExactCase87 = true
+            } else {
+                p08ExactCase87 = false
+            }
+        } else {
+            p08ExactCase87 = false
+        }; precondition(p08ExactCase87)
         var admission = CounterAdmission(borrowing: control)
         let accepted = admission.submit(stateChange: value).result == .queued
         if accepted { control.pointee.applicationCallbacks += 1 }
@@ -99,7 +165,11 @@ struct CounterApplicationOwners {
     }
     mutating func serviceSource(value: UInt8) -> Bool {
         guard CounterControl.acceptsProducer(at: control, producerOrigin), deliveryEnabled, gate.begin() == .admitted else { return false }
-        defer { precondition(gate.complete() == nil) }
+        defer {
+            let p08Presence74: Bool;
+            if case .none = gate.complete() { p08Presence74 = true } else { p08Presence74 = false };
+            precondition(p08Presence74)
+        }
         return withUnsafeMutablePointer(to: &self) { application in
             application.pointee.source.service(value: value) { value in
                 application.pointee.repository.receive(value) { application.pointee.deliver($0) }
@@ -114,12 +184,19 @@ struct CounterApplicationOwners {
             repository.detach(token)
             control.pointee.observationsDetached += 1
         }
-        precondition(gate.quiesce() == nil)
+        let p08Presence75: Bool;
+        if case .none = gate.quiesce() { p08Presence75 = true } else { p08Presence75 = false };
+        precondition(p08Presence75)
         // Both actual stopped owners refuse callback delivery. These callback
         // bodies must remain uncalled after shutdown, before owner release.
         precondition(!source.service(value: 1) { _ in preconditionFailure("stopped counter source delivered") })
         precondition(!repository.receive(1) { _ in preconditionFailure("detached counter observation delivered") })
-        precondition(gate.begin() == .rejected(.unavailable))
+        let p08ExactCase88: Bool;
+        if case .rejected(.unavailable) = gate.begin() {
+            p08ExactCase88 = true
+        } else {
+            p08ExactCase88 = false
+        }; precondition(p08ExactCase88)
         control.pointee.stoppedApplicationChecks += 1
     }
 }

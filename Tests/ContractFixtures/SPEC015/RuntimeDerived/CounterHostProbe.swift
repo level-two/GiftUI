@@ -64,12 +64,39 @@ func counterRunHostLifecycle<Geometry, Candidate, Committed, Hits>(
     failAfterRuntime: Bool, joinChecks: Int
 ) -> Int
 where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
-    precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
-    precondition(host.runOpportunity() == .invalidLifecycle)
+    let p08ExactCase63: Bool;
+    if case .valid = host.lifecycleState {
+        if host.owner.constructions == 0 {
+            if pointer.pointee.finalized == 0 {
+                p08ExactCase63 = true
+            } else {
+                p08ExactCase63 = false
+            }
+        } else {
+            p08ExactCase63 = false
+        }
+    } else {
+        p08ExactCase63 = false
+    }; precondition(p08ExactCase63)
+    let p08ExactCase64: Bool;
+    if case .invalidLifecycle = host.runOpportunity() {
+        p08ExactCase64 = true
+    } else {
+        p08ExactCase64 = false
+    }; precondition(p08ExactCase64)
     var count = 2 + joinChecks
     let activation = host.activate()
     if failAfterRuntime || pointer.pointee.idleQuiesceMode != 0 {
-        precondition(activation == .failure(.configuration(.arithmeticOverflow)) && host.lifecycleState == .failed)
+        let p08ExactCase65: Bool;
+        if case .failure(.configuration(.arithmeticOverflow)) = activation {
+            if case .failed = host.lifecycleState {
+                p08ExactCase65 = true
+            } else {
+                p08ExactCase65 = false
+            }
+        } else {
+            p08ExactCase65 = false
+        }; precondition(p08ExactCase65)
         let failedStep: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
         precondition(host.owner.activationStep == failedStep && host.owner.constructions == 1)
         precondition(pointer.pointee.teardowns == 1 && pointer.pointee.finalized == (failedStep < 3 ? 0 : failedStep < 5 ? 1 : 2))
@@ -78,7 +105,20 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         precondition(pointer.pointee.observationsInstalled == (failedStep >= 4 ? 1 : 0) && pointer.pointee.observationsDetached == (failedStep >= 4 ? 1 : 0))
         count += 6
     } else {
-        precondition(activation == .active && host.owner.activationStep == 7 && host.owner.constructions == 1)
+        let p08ExactCase66: Bool;
+        if case .active = activation {
+            if host.owner.activationStep == 7 {
+                if host.owner.constructions == 1 {
+                    p08ExactCase66 = true
+                } else {
+                    p08ExactCase66 = false
+                }
+            } else {
+                p08ExactCase66 = false
+            }
+        } else {
+            p08ExactCase66 = false
+        }; precondition(p08ExactCase66)
         precondition(pointer.pointee.finalized == 2 && pointer.pointee.commits == 1 && pointer.pointee.committedRecords == 2)
         precondition(pointer.pointee.runtime.admission.pendingStateCount == 1)
         let wakeControl = CounterHostControl(pointer: pointer)
@@ -88,12 +128,39 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         guard case .noWork = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter no idle polling") }
         count += 7 + counterHostCorpus(host: &host, control: pointer)
     }
-    precondition(host.activate() == .failure(.invariant) && host.owner.constructions == 1)
+    let p08ExactCase67: Bool;
+    if case .failure(.invariant) = host.activate() {
+        if host.owner.constructions == 1 { p08ExactCase67 = true } else { p08ExactCase67 = false }
+    } else {
+        p08ExactCase67 = false
+    }; precondition(p08ExactCase67)
     host.teardown()
-    precondition(host.lifecycleState == .quiescent && !host.controller.assemblyReportRuntimeUseIsValid && host.owner.teardownStep == 8)
+    let p08ExactCase68: Bool;
+    if case .quiescent = host.lifecycleState {
+        if !host.controller.assemblyReportRuntimeUseIsValid {
+            if host.owner.teardownStep == 8 {
+                p08ExactCase68 = true
+            } else {
+                p08ExactCase68 = false
+            }
+        } else {
+            p08ExactCase68 = false
+        }
+    } else {
+        p08ExactCase68 = false
+    }; precondition(p08ExactCase68)
     precondition(pointer.pointee.teardowns == 1 && pointer.pointee.committedRecords == 0 && !pointer.pointee.hasRoot)
     host.teardown()
-    precondition(host.owner.teardownStep == 8 && host.runOpportunity() == .invalidLifecycle)
+    let p08ExactCase69: Bool;
+    if host.owner.teardownStep == 8 {
+        if case .invalidLifecycle = host.runOpportunity() {
+            p08ExactCase69 = true
+        } else {
+            p08ExactCase69 = false
+        }
+    } else {
+        p08ExactCase69 = false
+    }; precondition(p08ExactCase69)
     precondition(host.assemblyReport == report)
     let selectedFailure: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
     let expectedApplication = selectedFailure == 1 ? 0 : 1
@@ -104,11 +171,21 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     precondition(pointer.pointee.observationsInstalled == expectedObservation && pointer.pointee.observationsDetached == expectedObservation)
     precondition(pointer.pointee.stoppedApplicationChecks >= expectedApplication)
     var stoppedAdmission = CounterAdmission(borrowing: pointer)
-    precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
+    let p08ExactCase70: Bool;
+    if case .unavailable = stoppedAdmission.submit(stateChange: 9).result {
+        p08ExactCase70 = true
+    } else {
+        p08ExactCase70 = false
+    }; precondition(p08ExactCase70)
     precondition(pointer.pointee.runtime.admission.pendingStateCount == 0)
     precondition(!pointer.pointee.inputGate.inputIsEligible)
     let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
-    precondition(rejectedInput == .sourceQuiesced(.inputUnavailable))
+    let p08ExactCase71: Bool;
+    if case .sourceQuiesced(.inputUnavailable) = rejectedInput {
+        p08ExactCase71 = true
+    } else {
+        p08ExactCase71 = false
+    }; precondition(p08ExactCase71)
     return count + 13
 }
 
@@ -129,12 +206,29 @@ private struct CounterOwnedSchedulerHost: MVPHostInstance {
 func counterOwnedSchedulerCompatibility(_ report: HostAssemblyReport) -> Int {
     var instance = CounterOwnedSchedulerHost(assemblyReport: report)
     var scheduler = HostScheduledOpportunityController(assemblyReport: report, initialFrameOriginMicroseconds: 0)
-    precondition(scheduler.recordAcceptedFact(at: 1) == .success(.requestWake))
-    precondition(scheduler.record(.semanticDirty, at: 1) == .success(.coalesced))
+    let p08ExactCase72: Bool;
+    if case .success(.requestWake) = scheduler.recordAcceptedFact(at: 1) {
+        p08ExactCase72 = true
+    } else {
+        p08ExactCase72 = false
+    }; precondition(p08ExactCase72)
+    let p08ExactCase73: Bool;
+    if case .success(.coalesced) = scheduler.record(.semanticDirty, at: 1) {
+        p08ExactCase73 = true
+    } else {
+        p08ExactCase73 = false
+    }; precondition(p08ExactCase73)
     guard case .wait(untilMicroseconds: 250000) = scheduler.service(at: 1, instance: &instance) else { preconditionFailure("owned pacing") }
     guard case .cycle(_, .cycle(.failure(_, .execution(.capacityExhausted), nil))) = scheduler.service(at: 250000, instance: &instance) else { preconditionFailure("owned exact failure") }
     instance.teardown()
-    precondition(scheduler.service(at: 500000, instance: &instance) == .rejected(.invalidLifecycle, pacing: nil))
+    let p08ExactCase74: Bool;
+    if case .rejected(.invalidLifecycle, pacing: nil) = scheduler.service(
+        at: 500000, instance: &instance)
+    {
+        p08ExactCase74 = true
+    } else {
+        p08ExactCase74 = false
+    }; precondition(p08ExactCase74)
     precondition(instance.calls == 1)
     return 6
 }

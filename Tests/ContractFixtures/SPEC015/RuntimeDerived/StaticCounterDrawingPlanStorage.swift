@@ -44,21 +44,22 @@ package struct StaticCounterDrawingPlanStorage:
     }
 
     package var summary: DrawingPlanSummary {
-        precondition(publishedSummary != nil)
+        let p08Presence2: Bool;
+        if case .some = publishedSummary { p08Presence2 = true } else { p08Presence2 = false };
+        precondition(p08Presence2)
         return publishedSummary!
     }
 
     package mutating func acquire() -> Bool {
-        guard !isActive, publishedSummary == nil else { return false }
+        guard !isActive, case .none = publishedSummary else { return false }
         region.initializeMemory(as: UInt8.self, repeating: 0)
         isActive = true
         return true
     }
 
     package mutating func beginCanvas(identity: UInt16, origin: Point) -> Bool {
-        guard isActive, currentCanvas == nil, identity != 0,
-            canvasCount < limits.maximumCanvasOccurrences,
-            canvasRecord(for: identity) == nil
+        guard isActive, case .none = currentCanvas, identity != 0,
+            canvasCount < limits.maximumCanvasOccurrences, case .none = canvasRecord(for: identity)
         else { return false }
         currentCanvas = identity
         currentFirstStroke = strokeCount
@@ -106,7 +107,7 @@ package struct StaticCounterDrawingPlanStorage:
         }
         var subpathIndex: UInt16 = 0
         while subpathIndex < path.subpathCount {
-            guard path.subpath(at: subpathIndex) != nil else { return false }
+            guard case .some = path.subpath(at: subpathIndex) else { return false }
             subpathIndex += 1
         }
 
@@ -150,11 +151,9 @@ package struct StaticCounterDrawingPlanStorage:
     }
 
     package mutating func seal(canvasOccurrenceCount: UInt16) -> DrawingPlanResult {
-        guard isActive, currentCanvas == nil,
-            canvasOccurrenceCount == canvasCount,
+        guard isActive, case .none = currentCanvas, canvasOccurrenceCount == canvasCount,
             canvasCount <= limits.maximumCanvasOccurrences,
-            strokeCount <= limits.maximumPlanStrokes,
-            normalizedStrokeOperationCount == strokeCount,
+            strokeCount <= limits.maximumPlanStrokes, normalizedStrokeOperationCount == strokeCount,
             validateRecords()
         else { return .failure(.invariantViolation) }
         let summary = DrawingPlanSummary(
@@ -187,7 +186,7 @@ package struct StaticCounterDrawingPlanStorage:
     }
 
     package func strokeCount(of canvas: UInt16) -> UInt16? {
-        guard publishedSummary != nil else { return nil }
+        guard case .some = publishedSummary else { return nil }
         return canvasRecord(for: canvas)?.strokeCount
     }
 
@@ -233,9 +232,8 @@ package struct StaticCounterDrawingPlanStorage:
     private func strokeRecord(
         of canvas: UInt16, at index: UInt16
     ) -> StaticCounterPlanStrokeRecord? {
-        guard publishedSummary != nil,
-            let record = canvasRecord(for: canvas), index < record.strokeCount,
-            let ordinal = checkedSum(record.firstStroke, index)
+        guard case .some = publishedSummary, let record = canvasRecord(for: canvas),
+            index < record.strokeCount, let ordinal = checkedSum(record.firstStroke, index)
         else { return nil }
         return StaticCounterDrawingPlanRecords.stroke(at: ordinal, in: region)
     }
@@ -267,9 +265,9 @@ package struct StaticCounterDrawingPlanStorage:
                 var pointOrdinal = expectedPoint
                 while pointOrdinal < nextPoint {
                     guard
-                        StaticCounterDrawingPlanRecords.point(
+                        case .some = StaticCounterDrawingPlanRecords.point(
                             at: pointOrdinal, in: region
-                        ) != nil
+                        )
                     else { return false }
                     pointOrdinal += 1
                 }

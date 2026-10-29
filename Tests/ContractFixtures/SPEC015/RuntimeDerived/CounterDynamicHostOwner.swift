@@ -223,9 +223,14 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     mutating func releasePlatformOwners() {
         switch consume self {
         case .active(let coordinator, let cache, let span):
-            precondition(coordinator.isQuiescent && cache == nil)
-            let extracted = coordinator.takeQuiescedOpportunity()
-            switch consume extracted {
+                let p08Presence68: Bool;
+                if coordinator.isQuiescent {
+                    if case .none = cache { p08Presence68 = true } else { p08Presence68 = false }
+                } else {
+                    p08Presence68 = false
+                }; precondition(p08Presence68)
+                let extracted = coordinator.takeQuiescedOpportunity()
+                switch consume extracted {
             case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
             case .none: preconditionFailure("quiesced counter opportunity missing")
             }
@@ -305,8 +310,10 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     mutating func acceptFirstPresentationAndEnableInput() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 4)
         state.controlPointer.pointee.offer = .accepted
-        guard case .success(let summary) = state.runOpportunity(), summary.logicalFrameDisposition == .committed else { return .failure(.invariant, progress: .init()) }
-        application!.inputEnabled = true
+            guard case .success(let summary) = state.runOpportunity(),
+                case .committed = summary.logicalFrameDisposition
+            else { return .failure(.invariant, progress: .init()) }
+            application!.inputEnabled = true
         activationStep = 5; return state.controlPointer.pointee.idleQuiesceMode == 5 ? .failure(.configuration(.arithmeticOverflow), progress: .init()) : .advanced
     }
     mutating func startAcquisitionThroughApplicationOpportunity() -> HostActivationStepResult<ActivationFailure> {
@@ -318,13 +325,30 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         precondition(activationStep == 6)
         state.controlPointer.pointee.establishCounterScheduler(report: assembly.report)
         let control = state.controlPointer
-        let runtimeProjection = control.pointee.hasRoot
-            && control.pointee.committedRecords == 2
-            && control.pointee.admissionController != nil
-            && control.pointee.wake != nil
-            && control.pointee.scheduler != nil
-        let applicationProjection = application!.constructedProjectionIsValid
-        precondition(runtimeProjection && applicationProjection)
+            let runtimeProjection: Bool;
+            if control.pointee.hasRoot {
+                if control.pointee.committedRecords == 2 {
+                    if case .some = control.pointee.admissionController {
+                        if case .some = control.pointee.wake {
+                            if case .some = control.pointee.scheduler {
+                                runtimeProjection = true
+                            } else {
+                                runtimeProjection = false
+                            }
+                        } else {
+                            runtimeProjection = false
+                        }
+                    } else {
+                        runtimeProjection = false
+                    }
+                } else {
+                    runtimeProjection = false
+                }
+            } else {
+                runtimeProjection = false
+            }
+            let applicationProjection = application!.constructedProjectionIsValid
+            precondition(runtimeProjection && applicationProjection)
         #if !hasFeature(Embedded)
         precondition(state.controlPointer.pointee.backend.constructedEndpoints == 1)
         precondition(state.controlPointer.pointee.backend.constructedProjection == assembly.endpoint)

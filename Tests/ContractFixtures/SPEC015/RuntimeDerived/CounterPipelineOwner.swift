@@ -65,8 +65,11 @@ struct CounterControl {
         return claim
     }
     mutating func tryClaimRuntimeSlot() -> UInt64? {
-        guard runtimeSlotPhase == .vacant && runtimeSlotOwner == nil && runtimeEndpoint == nil,
-            runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil else { return nil }
+        guard case .vacant = runtimeSlotPhase, case .none = runtimeSlotOwner,
+            case .none = runtimeEndpoint, case .none = runtimeRootIdentity,
+            case .none = runtimeActionIdentity, case .none = runtimeCandidateRootIdentity,
+            case .none = runtimeCandidateActionIdentity
+        else { return nil }
         let next = runtimeLastOwnerSerial.addingReportingOverflow(1)
         guard !next.overflow else { return nil }
         runtimeLastOwnerSerial = next.partialValue
@@ -87,24 +90,68 @@ struct CounterControl {
     }
     borrowing func requireVacantRuntimeSlot() {
         let phaseVacant = runtimeSlotPhase == .vacant
-        let ownerAbsent = runtimeSlotOwner == nil
-        let endpointAbsent = runtimeEndpoint == nil
-        let rootAbsent = runtimeRootIdentity == nil
-        let actionAbsent = runtimeActionIdentity == nil
-        let candidateRootAbsent = runtimeCandidateRootIdentity == nil
-        let candidateActionAbsent = runtimeCandidateActionIdentity == nil
+        let ownerAbsent: Bool;
+        if case .none = runtimeSlotOwner { ownerAbsent = true } else { ownerAbsent = false }
+        let endpointAbsent: Bool;
+        if case .none = runtimeEndpoint { endpointAbsent = true } else { endpointAbsent = false }
+        let rootAbsent: Bool;
+        if case .none = runtimeRootIdentity { rootAbsent = true } else { rootAbsent = false }
+        let actionAbsent: Bool;
+        if case .none = runtimeActionIdentity { actionAbsent = true } else { actionAbsent = false }
+        let candidateRootAbsent: Bool;
+        if case .none = runtimeCandidateRootIdentity {
+            candidateRootAbsent = true
+        } else {
+            candidateRootAbsent = false
+        }
+        let candidateActionAbsent: Bool;
+        if case .none = runtimeCandidateActionIdentity {
+            candidateActionAbsent = true
+        } else {
+            candidateActionAbsent = false
+        }
         Self.requireVacantFacts(phaseVacant: phaseVacant, ownerAbsent: ownerAbsent,
             endpointAbsent: endpointAbsent, rootAbsent: rootAbsent, actionAbsent: actionAbsent,
             candidateRootAbsent: candidateRootAbsent, candidateActionAbsent: candidateActionAbsent)
     }
     static func requireVacantRuntimeSlot(at control: UnsafeMutablePointer<CounterControl>) {
         let phaseVacant = control.pointee.runtimeSlotPhase == .vacant
-        let ownerAbsent = control.pointee.runtimeSlotOwner == nil
-        let endpointAbsent = control.pointee.runtimeEndpoint == nil
-        let rootAbsent = control.pointee.runtimeRootIdentity == nil
-        let actionAbsent = control.pointee.runtimeActionIdentity == nil
-        let candidateRootAbsent = control.pointee.runtimeCandidateRootIdentity == nil
-        let candidateActionAbsent = control.pointee.runtimeCandidateActionIdentity == nil
+        let ownerAbsent: Bool;
+        if case .none = control.pointee.runtimeSlotOwner {
+            ownerAbsent = true
+        } else {
+            ownerAbsent = false
+        }
+        let endpointAbsent: Bool;
+        if case .none = control.pointee.runtimeEndpoint {
+            endpointAbsent = true
+        } else {
+            endpointAbsent = false
+        }
+        let rootAbsent: Bool;
+        if case .none = control.pointee.runtimeRootIdentity {
+            rootAbsent = true
+        } else {
+            rootAbsent = false
+        }
+        let actionAbsent: Bool;
+        if case .none = control.pointee.runtimeActionIdentity {
+            actionAbsent = true
+        } else {
+            actionAbsent = false
+        }
+        let candidateRootAbsent: Bool;
+        if case .none = control.pointee.runtimeCandidateRootIdentity {
+            candidateRootAbsent = true
+        } else {
+            candidateRootAbsent = false
+        }
+        let candidateActionAbsent: Bool;
+        if case .none = control.pointee.runtimeCandidateActionIdentity {
+            candidateActionAbsent = true
+        } else {
+            candidateActionAbsent = false
+        }
         Self.requireVacantFacts(phaseVacant: phaseVacant, ownerAbsent: ownerAbsent,
             endpointAbsent: endpointAbsent, rootAbsent: rootAbsent, actionAbsent: actionAbsent,
             candidateRootAbsent: candidateRootAbsent, candidateActionAbsent: candidateActionAbsent)
@@ -113,7 +160,8 @@ struct CounterControl {
         let sameOwner = runtimeSlotOwner == claim
         let installed = runtimeSlotPhase == .installed
         let quiesced = runtimeSlotPhase == .quiesced
-        let endpointPresent = runtimeEndpoint != nil
+        let endpointPresent: Bool;
+        if case .some = runtimeEndpoint { endpointPresent = true } else { endpointPresent = false }
         Self.requireClaimFacts(sameOwner: sameOwner, installed: installed, quiesced: quiesced,
             endpointPresent: endpointPresent)
     }
@@ -121,19 +169,60 @@ struct CounterControl {
         let sameOwner = control.pointee.runtimeSlotOwner == claim
         let installed = control.pointee.runtimeSlotPhase == .installed
         let quiesced = control.pointee.runtimeSlotPhase == .quiesced
-        let endpointPresent = control.pointee.runtimeEndpoint != nil
+        let endpointPresent: Bool;
+        if case .some = control.pointee.runtimeEndpoint {
+            endpointPresent = true
+        } else {
+            endpointPresent = false
+        }
         Self.requireClaimFacts(sameOwner: sameOwner, installed: installed, quiesced: quiesced,
             endpointPresent: endpointPresent)
     }
     mutating func completeRuntimeInstallation(_ claim: UInt64) {
-        precondition(runtimeSlotOwner == claim && runtimeSlotPhase == .installing && runtimeEndpoint != nil)
-        precondition(runtimeRootIdentity == nil && runtimeActionIdentity == nil && runtimeCandidateRootIdentity == nil && runtimeCandidateActionIdentity == nil)
+        let p08Presence60: Bool;
+        if runtimeSlotOwner == claim {
+            if case .installing = runtimeSlotPhase {
+                if case .some = runtimeEndpoint {
+                    p08Presence60 = true
+                } else {
+                    p08Presence60 = false
+                }
+            } else {
+                p08Presence60 = false
+            }
+        } else {
+            p08Presence60 = false
+        }; precondition(p08Presence60)
+        let p08Presence61: Bool;
+        if case .none = runtimeRootIdentity {
+            if case .none = runtimeActionIdentity {
+                if case .none = runtimeCandidateRootIdentity {
+                    if case .none = runtimeCandidateActionIdentity {
+                        p08Presence61 = true
+                    } else {
+                        p08Presence61 = false
+                    }
+                } else {
+                    p08Presence61 = false
+                }
+            } else {
+                p08Presence61 = false
+            }
+        } else {
+            p08Presence61 = false
+        }; precondition(p08Presence61)
         runtimeSlotPhase = .installed
     }
     mutating func markRuntimeQuiesced(_ claim: UInt64) {
-        Self.requireClaimFacts(sameOwner: runtimeSlotOwner == claim,
-            installed: runtimeSlotPhase == .installed, quiesced: runtimeSlotPhase == .quiesced,
-            endpointPresent: runtimeEndpoint != nil)
+        let sameOwner = runtimeSlotOwner == claim
+        let installed = runtimeSlotPhase == .installed
+        let quiesced = runtimeSlotPhase == .quiesced
+        let endpointPresent: Bool;
+        if case .some = runtimeEndpoint { endpointPresent = true } else { endpointPresent = false }
+        Self.requireClaimFacts(
+            sameOwner: sameOwner,
+            installed: installed, quiesced: quiesced,
+            endpointPresent: endpointPresent)
         precondition(!backend.active)
         runtimeSlotPhase = .quiesced
     }
@@ -142,8 +231,9 @@ struct CounterControl {
         precondition(cleared)
     }
     mutating func tryClearRuntimeSlot(_ claim: UInt64) -> Bool {
-        guard runtimeSlotOwner == claim && runtimeSlotPhase == .quiesced,
-              runtimeEndpoint != nil && !backend.active else { return false }
+        guard runtimeSlotOwner == claim, case .quiesced = runtimeSlotPhase,
+            case .some = runtimeEndpoint, !backend.active
+        else { return false }
         let idle = runtimeEndpoint!.actual.sink.isIdleForOffer
         guard idle else { return false }
         // Offers are synchronous and resolved before quiescence. These owned
@@ -152,31 +242,67 @@ struct CounterControl {
         runtimeRootIdentity = nil; runtimeActionIdentity = nil
         runtimeCandidateRootIdentity = nil; runtimeCandidateActionIdentity = nil
         runtimeSlotOwner = nil; runtimeSlotPhase = .vacant
-        Self.requireVacantFacts(phaseVacant: runtimeSlotPhase == .vacant, ownerAbsent: runtimeSlotOwner == nil,
-            endpointAbsent: runtimeEndpoint == nil, rootAbsent: runtimeRootIdentity == nil,
-            actionAbsent: runtimeActionIdentity == nil, candidateRootAbsent: runtimeCandidateRootIdentity == nil,
-            candidateActionAbsent: runtimeCandidateActionIdentity == nil)
+        let phaseVacant = runtimeSlotPhase == .vacant
+        let ownerAbsent: Bool;
+        if case .none = runtimeSlotOwner { ownerAbsent = true } else { ownerAbsent = false }
+        let endpointAbsent: Bool;
+        if case .none = runtimeEndpoint { endpointAbsent = true } else { endpointAbsent = false }
+        let rootAbsent: Bool;
+        if case .none = runtimeRootIdentity { rootAbsent = true } else { rootAbsent = false }
+        let actionAbsent: Bool;
+        if case .none = runtimeActionIdentity { actionAbsent = true } else { actionAbsent = false }
+        let candidateRootAbsent: Bool;
+        if case .none = runtimeCandidateRootIdentity {
+            candidateRootAbsent = true
+        } else {
+            candidateRootAbsent = false
+        }
+        let candidateActionAbsent: Bool;
+        if case .none = runtimeCandidateActionIdentity {
+            candidateActionAbsent = true
+        } else {
+            candidateActionAbsent = false
+        }
+        Self.requireVacantFacts(
+            phaseVacant: phaseVacant, ownerAbsent: ownerAbsent,
+            endpointAbsent: endpointAbsent, rootAbsent: rootAbsent, actionAbsent: actionAbsent,
+            candidateRootAbsent: candidateRootAbsent, candidateActionAbsent: candidateActionAbsent)
         return true
     }
     private var producerOrigin: CounterProducerOrigin?
     private var selectedProducer = false
     mutating func installProducerOrigin(owner: UInt, serial: UInt64) {
-        precondition(!selectedProducer && producerOrigin == nil && admissionController == nil)
+        let p08Presence62: Bool;
+        if !selectedProducer {
+            if case .none = producerOrigin {
+                if case .none = admissionController {
+                    p08Presence62 = true
+                } else {
+                    p08Presence62 = false
+                }
+            } else {
+                p08Presence62 = false
+            }
+        } else {
+            p08Presence62 = false
+        }; precondition(p08Presence62)
         selectedProducer = true; producerOrigin = .init(owner: owner, serial: serial)
     }
     func snapshotProducerOrigin() -> CounterProducerOrigin? { producerOrigin }
     func acceptsProducer(_ origin: CounterProducerOrigin?) -> Bool {
-        selectedProducer ? origin != nil && origin == producerOrigin : origin == nil
+        if selectedProducer {
+            guard case .some = origin else { return false }; return origin == producerOrigin
+        }; if case .none = origin { return true }; return false
     }
     static func snapshotProducerOrigin(at control: UnsafeMutablePointer<CounterControl>) -> CounterProducerOrigin? {
         control.pointee.producerOrigin
     }
     static func acceptsProducer(at control: UnsafeMutablePointer<CounterControl>, _ origin: CounterProducerOrigin?) -> Bool {
         if control.pointee.selectedProducer {
-            guard origin != nil else { return false }
+            guard case .some = origin else { return false }
             return origin == control.pointee.producerOrigin
         }
-        return origin == nil
+        if case .none = origin { return true }; return false
     }
     mutating func retireProducerOrigin() {
         precondition(!inputGate.inputIsEligible && !wakeEnabled && !frameActive && admission.pointerCount == 0 && admission.pendingStateCount == 0 && !admission.sealActive)
@@ -194,7 +320,12 @@ struct CounterControl {
     private(set) var actionDispatches = 0
     mutating func observeSealedAction(_ action: CapturedAction<SemanticCompleteIdentity>?) { lastSealedAction = action }
     mutating func observeActionDispatch(_ action: CapturedAction<SemanticCompleteIdentity>, context: ExecutionContext) {
-        precondition(context.phase == .mutating && lastSealedAction == action)
+        let p08ExactCase43: Bool;
+        if case .mutating = context.phase {
+            if lastSealedAction == action { p08ExactCase43 = true } else { p08ExactCase43 = false }
+        } else {
+            p08ExactCase43 = false
+        }; precondition(p08ExactCase43)
         let next = actionDispatches.addingReportingOverflow(1); precondition(!next.overflow)
         actionDispatches = next.partialValue; lastDispatchedAction = action; lastDispatchContext = context
     }
@@ -244,7 +375,7 @@ struct CounterControl {
     var stoppedApplicationChecks = 0
     var show = true
     var mutate: Bool {
-        get { admission.pendingState != nil }
+        get { if case .some = admission.pendingState { return true }; return false }
         set { admission.pendingState = newValue ? 1 : nil }
     }
     mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) {
@@ -335,7 +466,9 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     }
     var pending = false
     var presentationIntentState: PresentationIntentState { quiescent || control.pointee.unavailable ? .unavailable : pending ? .pending : .satisfied }
-    var hasAllocatedCandidateFrame: Bool { phase.context.candidateFrame != nil }
+    var hasAllocatedCandidateFrame: Bool {
+        if case .some = phase.context.candidateFrame { return true }; return false
+    }
     var quiescent = false
     var presentationTeardownComplete = false
     @_lifetime(copy models, copy root, copy semantic, copy semanticCodec, copy values, borrow control, copy geometry, copy interaction)
@@ -399,11 +532,16 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         control.pointee.context = phase.context
         counterTrace("stage", stage)
         control.pointee.stages |= UInt16(1) << stage.rawValue
-        if stage == .applyAdmittedWork && control.pointee.injectCompletionAtApply {
+        if case .applyAdmittedWork = stage, control.pointee.injectCompletionAtApply {
             control.pointee.injectCompletionAtApply = false
             let finalized = control.pointee.finalized
             var producer = CounterAdmission(borrowing: control)
-            precondition(producer.submit(completion: 0).result == .queued)
+            let p08ExactCase44: Bool;
+            if case .queued = producer.submit(completion: 0).result {
+                p08ExactCase44 = true
+            } else {
+                p08ExactCase44 = false
+            }; precondition(p08ExactCase44)
             control.pointee.lateCallbackObservedActive = phase.context.phase == .mutating
             control.pointee.lateCallbackDidNotRunRuntime = control.pointee.finalized == finalized
         }
@@ -438,7 +576,9 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     // No target capability, dispatch callback or second pending owner is retained.
     borrowing func prepareProducedAction(_ produced: CounterProducedAction) -> Bool {
         guard CounterControl.acceptsProducer(at: control, produced.origin) else { return false }
-        guard !control.pointee.unavailable && control.pointee.context.phase == .idle else { return false }
+        guard !control.pointee.unavailable, case .idle = control.pointee.context.phase else {
+            return false
+        }
         var admission = CounterAdmission(borrowing: control)
         let result = control.pointee.inputGate.submit(phase: .down, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: control.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
         guard case .queued = result else { return false }
@@ -446,8 +586,9 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     }
     borrowing func deliverProducedAction(_ produced: CounterProducedAction) -> Bool {
         guard CounterControl.acceptsProducer(at: control, produced.origin) else { return false }
-        guard !control.pointee.unavailable && control.pointee.context.phase == .idle,
-              control.pointee.runtime.pointer.capture.current == produced.captured else { return false }
+        guard !control.pointee.unavailable, case .idle = control.pointee.context.phase,
+            control.pointee.runtime.pointer.capture.current == produced.captured
+        else { return false }
         // Use the retained original value itself after the real down established
         // this sequence. The actual up resolver, seal and mutation revalidate it.
         control.pointee.runtime.pointer.capture.replace(with: produced.captured)
@@ -471,11 +612,20 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         for index in 0..<2 where selected < limits.execution.maximumInputEvents {
             guard let pointer = control.pointee.admission.pendingPointers[index] else { continue }
             let validRevision = pointer.presentationRevision == interaction.committedRevision
-            let validSource = staged.source == nil || staged.source == pointer.source
+            let validSource: Bool;
+            if case .none = staged.source {
+                validSource = true
+            } else {
+                if staged.source == pointer.source {
+                    validSource = true
+                } else {
+                    validSource = false
+                }
+            }
             let validation = staged.sequence.validate(phase: pointer.phase, sequence: pointer.sequence, ordinal: pointer.ordinal, targetGateAllowsResynchronization: true)
             let valid = validRevision && validSource && (validation == .accepted || validation == .consumedWhileCancelled)
             var createsActivation = false
-            if valid && validation == .accepted {
+            if valid, case .accepted = validation {
                 staged.source = pointer.source
                 let gesture: PointerGestureOutcome<SemanticCompleteIdentity>
                 switch pointer.phase {
@@ -489,7 +639,18 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             guard transaction.stagePointer(pointer, provenanceValid: valid, createsActivation: createsActivation, transitionReservationAvailable: true) else { break }
             selected += 1
         }
-        switch transaction.finish(pendingStateChangeFacts: control.pointee.admission.pendingStateCount, pendingCompletionFacts: control.pointee.admission.pendingCompletion == nil ? 0 : 1, includesDirtyRederivation: changed, includesPresentationRecovery: pending, batchReservationAvailable: true) {
+        let pendingStateChangeFacts = control.pointee.admission.pendingStateCount
+        let pendingCompletionFacts: UInt16;
+        if case .none = control.pointee.admission.pendingCompletion {
+            pendingCompletionFacts = 0
+        } else {
+            pendingCompletionFacts = 1
+        }
+        switch transaction.finish(
+            pendingStateChangeFacts: pendingStateChangeFacts,
+            pendingCompletionFacts: pendingCompletionFacts, includesDirtyRederivation: changed,
+            includesPresentationRecovery: pending, batchReservationAvailable: true)
+        {
         case .failure(let failure):
             if let cancelled = failure.cancelledSequence {
                 control.pointee.cancelPointerSequence(source: cancelled.source, sequence: cancelled.sequence)
@@ -527,7 +688,12 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         return .applied(applied)
     }
     mutating func dispatch(_ captured: CapturedAction<SemanticCompleteIdentity>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
-        precondition(phase.context.phase == .mutating)
+        let p08ExactCase45: Bool;
+        if case .mutating = phase.context.phase {
+            p08ExactCase45 = true
+        } else {
+            p08ExactCase45 = false
+        }; precondition(p08ExactCase45)
         guard let rootIdentity else { return .applied(false) }
         let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
         let result = RuntimeRecordInteractionBridge.dispatch(captured, records: interaction, target: target, actionType: CounterAction.self, operation: CounterHandler.operation)
@@ -618,17 +784,23 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
                 for index: UInt16 in 0..<bank.recordCount {
                     var identity = bank.completeIdentity(for: bank.reference(at: index)!)!
                     guard identity.append(.init(kind: .customBody)) else { return .failure(.execution(.invariantViolation)) }
-                    if root.generation(identity: identity, ordinal: 0, publishable: true) != nil { target = identity; break }
+                    if case .some = root.generation(
+                        identity: identity, ordinal: 0, publishable: true)
+                    {
+                        target = identity; break
+                    }
                 }
                 for index: UInt16 in 0..<bank.recordCount {
                     let ref = bank.reference(at: index)!
-                    guard bank.record(ref)?.kind == .action else { continue }
+                    guard case .some(.action) = bank.record(ref)?.kind else { continue }
                     guard let target, let bounds = geometry.bounds(ref), let clip = geometry.clip(ref) else { return .failure(.execution(.invariantViolation)) }
                     let identity = bank.completeIdentity(for: ref)!
                     switch RuntimeRecordInteractionBridge.append(record: ref, semantic: bank, root: root, rootIdentity: target, rootOrdinal: 0, actionType: CounterAction.self, roles: CounterRoles.self, isEnabled: counterActionIsEnabled(ref, bank: bank), bounds: bounds, clip: clip, paintOrder: paintOrder, interaction: &interaction) {
                     case .failure(let error): return .failure(.focusedOwner(.interaction(error)))
                     case .requiresGeneration:
-                        guard let generation = generations.generation(for: identity), interaction.assignGeneration(generation, to: identity) == nil else { return .failure(.execution(.identityExhausted)) }
+                        guard let generation = generations.generation(for: identity),
+                            case .none = interaction.assignGeneration(generation, to: identity)
+                        else { return .failure(.execution(.identityExhausted)) }
                     case .preserved: break
                     }
                     paintOrder += 1
@@ -647,8 +819,23 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {
         if let error = boundary(.semanticAndObservablePublication) { return .failure(error) }
         let revision: SemanticRevision
-        if changed || phase.context.semanticRevision == nil { guard let next = revisions.reserve() else { return .failure(.execution(.identityExhausted)) }; revision = next }
-        else { revision = phase.context.semanticRevision! }
+        let needsRevision: Bool;
+        if changed {
+            needsRevision = true
+        } else {
+            if case .none = phase.context.semanticRevision {
+                needsRevision = true
+            } else {
+                needsRevision = false
+            }
+        }
+        if needsRevision {
+            guard let next = revisions.reserve() else {
+                return .failure(.execution(.identityExhausted))
+            }; revision = next
+        } else {
+            revision = phase.context.semanticRevision!
+        }
         if let error = phase.transition(to: .publishing) { return .failure(.execution(error)) }
         do throws(ObservableStateError) {
             try models.withDiscovery { () throws(ObservableStateError) in
@@ -742,11 +929,22 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         control.pointee.admission.finishAttempt()
         completedContext = phase.context
         control.pointee.committedRecords = interaction.committedRecordCount
-        control.pointee.hasRoot = rootIdentity != nil
+        let hasRoot: Bool; if case .some = rootIdentity { hasRoot = true } else { hasRoot = false };
+        control.pointee.hasRoot = hasRoot
         control.pointee.frameActive = frameActive
         if phase.context.phase != .idle {
-            precondition(phase.transition(to: .finalizing) == nil)
-            precondition(phase.transition(to: .idle) == nil)
+            let p08Presence63: Bool;
+            if case .none = phase.transition(to: .finalizing) {
+                p08Presence63 = true
+            } else {
+                p08Presence63 = false
+            }; precondition(p08Presence63)
+            let p08Presence64: Bool;
+            if case .none = phase.transition(to: .idle) {
+                p08Presence64 = true
+            } else {
+                p08Presence64 = false
+            }; precondition(p08Presence64)
         }
         control.pointee.context = phase.context
         counterTrace("finalized", (completedContext, control.pointee.applied, control.pointee.commits, interaction.committedRecordCount, values.count, models.phase))
@@ -1958,7 +2156,11 @@ struct CounterRecordingObservation: Equatable {
     @inline(never)
     mutating func installAcceptedProbe(_ index: Int, control: UnsafeMutablePointer<CounterControl>) {
         guard let probe = value.glyphRecords[0] else { preconditionFailure("baseline glyph positive") }
-        control.pointee.lastFrame.glyphRecords[index] = value.glyphRecords[index] == nil ? probe : nil
+        if case .none = value.glyphRecords[index] {
+            control.pointee.lastFrame.glyphRecords[index] = probe
+        } else {
+            control.pointee.lastFrame.glyphRecords[index] = nil
+        }
     }
     @inline(never)
     mutating func restoreAcceptedProbe(_ index: Int, control: UnsafeMutablePointer<CounterControl>) {
@@ -2151,7 +2353,11 @@ struct CounterRuntimeSlotBaseline: ~Copyable {
         backend = counterObserveBackend(control.pointee.backend)
         phase = control.pointee.runtimeSlotPhase; owner = control.pointee.runtimeSlotOwner
         lastSerial = control.pointee.runtimeLastOwnerSerial
-        endpointPresent = control.pointee.runtimeEndpoint != nil
+        if case .some = control.pointee.runtimeEndpoint {
+            endpointPresent = true
+        } else {
+            endpointPresent = false
+        }
         control.pointee.runtimeEndpoint?.captureBaselinePrefix(into: &endpoint)
         endpoint.health = CounterEndpoint.runtimeBaselineHealth(at: control)
         control.pointee.runtimeEndpoint?.captureBaselineSuffix(into: &endpoint)
@@ -2195,7 +2401,12 @@ struct CounterRuntimeSlotBaseline: ~Copyable {
         guard sameowner else { return false }
         let samelastSerial = lastSerial == control.pointee.runtimeLastOwnerSerial
         guard samelastSerial else { return false }
-        let sameendpointPresent = endpointPresent == (control.pointee.runtimeEndpoint != nil)
+        let currentEndpointPresent: Bool;
+        if case .some = control.pointee.runtimeEndpoint {
+            currentEndpointPresent = true
+        } else {
+            currentEndpointPresent = false
+        }; let sameendpointPresent = endpointPresent == currentEndpointPresent
         guard sameendpointPresent else { return false }
         let sameroot = matchesRoot(control)
         guard sameroot else { return false }

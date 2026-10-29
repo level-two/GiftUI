@@ -16,10 +16,10 @@ where Geometry: ~Copyable & ~Escapable, Candidate: ~Copyable & ~Escapable, Commi
     mutating func quiesceOpportunity() {
         quiescent = true
         control.pointee.unavailable = true
-        if phase.context.phase == .idle { terminatePresentation() }
+        if case .idle = phase.context.phase { terminatePresentation() }
     }
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
-        guard phase.context.phase == .idle else {
+        guard case .idle = phase.context.phase else {
             return .failure(phase.context, .execution(.reentrancyViolation), nil)
         }
         guard !control.pointee.unavailable else {
@@ -43,21 +43,22 @@ where Geometry: ~Copyable & ~Escapable, Candidate: ~Copyable & ~Escapable, Commi
             return .failure(completedContext, failure ?? .execution(.invariantViolation), nil)
         }
         var events: ExecutionOperationalEvents = []
-        if disposition.semanticDisposition == .published,
-            let priorIntent, priorIntent.semanticRevision != phase.context.semanticRevision {
+        if case .published = disposition.semanticDisposition, let priorIntent,
+            priorIntent.semanticRevision != phase.context.semanticRevision
+        {
             events.insert(.superseded)
         }
         var intent: PresentationPendingIntent?
         var terminal = false
-        if operational == .backpressured {
+        if case .some(.backpressured) = operational {
             let transition = recovery.recordBackpressure(for: phase.context.semanticRevision!)
             events.formUnion(transition.operationalEvents); intent = transition.intent
             control.pointee.emitCounterWake(.presentationPending)
-        } else if operational == .retryableRefusal {
+        } else if case .some(.retryableRefusal) = operational {
             let transition = recovery.recordRetryableRefusal(for: phase.context.semanticRevision!)
             events.formUnion(transition.operationalEvents); intent = transition.intent; terminal = transition.exhausted
             if !terminal { control.pointee.emitCounterWake(.presentationPending) }
-        } else if disposition.presentationIntentState == .pending {
+        } else if case .pending = disposition.presentationIntentState {
             intent = priorIntent
         } else if let priorIntent {
             // Accepted/newer publication or a post-publication failure satisfies
@@ -65,7 +66,7 @@ where Geometry: ~Copyable & ~Escapable, Candidate: ~Copyable & ~Escapable, Commi
             recovery.clearPending(for: priorIntent.semanticRevision)
         }
         if case .nonRetryableRefusal = failure { terminal = true }
-        if failure == .execution(.requiredFacilityUnavailable) { terminal = true }
+        if case .some(.execution(.requiredFacilityUnavailable)) = failure { terminal = true }
         if terminal {
             if let retained = recovery.pendingIntent { recovery.clearPending(for: retained.semanticRevision) }
             intent = nil
@@ -112,7 +113,9 @@ struct CounterQueuedFacts: ExecutionPendingAdmissionStorage {
     let control: UnsafeMutablePointer<CounterControl>
     var pointerCount: UInt16 { control.pointee.admission.pointerCount }
     var stateChangeCount: UInt16 { control.pointee.admission.pendingStateCount }
-    var completionCount: UInt16 { control.pointee.admission.pendingCompletion == nil ? 0 : 1 }
+    var completionCount: UInt16 {
+        if case .none = control.pointee.admission.pendingCompletion { return 0 }; return 1
+    }
     func isValid(stateChange: borrowing UInt8) -> Bool { stateChange <= 9 }
     func isValid(completion: borrowing UInt16) -> Bool { completion == 0 }
     mutating func enqueue(pointer: NormalizedPointerEvent) -> Bool { control.pointee.admission.enqueue(pointer) }
@@ -140,11 +143,21 @@ struct CounterAdmission: ExecutionAdmissionSink {
     init(control: UnsafeMutablePointer<CounterControl>, limits: ExecutionLimits) {
         self.control = control
         producerOrigin = CounterControl.snapshotProducerOrigin(at: control); rejectionContext = control.pointee.context
-        precondition(control.pointee.admissionController == nil)
+        let p08Presence58: Bool;
+        if case .none = control.pointee.admissionController {
+            p08Presence58 = true
+        } else {
+            p08Presence58 = false
+        }; precondition(p08Presence58)
         control.pointee.admissionController = Controller(limits: limits, context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, storage: CounterQueuedFacts(control: control))
     }
     init(borrowing control: UnsafeMutablePointer<CounterControl>) {
-        precondition(control.pointee.admissionController != nil)
+        let p08Presence59: Bool;
+        if case .some = control.pointee.admissionController {
+            p08Presence59 = true
+        } else {
+            p08Presence59 = false
+        }; precondition(p08Presence59)
         self.control = control
         producerOrigin = CounterControl.snapshotProducerOrigin(at: control); rejectionContext = control.pointee.context
     }
@@ -153,15 +166,24 @@ struct CounterAdmission: ExecutionAdmissionSink {
     }
     mutating func submit(pointer: NormalizedPointerEvent) -> ExecutionAdmissionOutcome {
         guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
-        synchronize(); let outcome = controller.submit(pointer: pointer); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.pointer", outcome); return outcome
+        synchronize(); let outcome = controller.submit(pointer: pointer);
+        if case .queued = outcome.result {
+            control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+        }; counterTrace("admission.pointer", outcome); return outcome
     }
     mutating func submit(stateChange: UInt8) -> ExecutionAdmissionOutcome {
         guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
-        synchronize(); let outcome = controller.submit(stateChange: stateChange); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.state", outcome); return outcome
+        synchronize(); let outcome = controller.submit(stateChange: stateChange);
+        if case .queued = outcome.result {
+            control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+        }; counterTrace("admission.state", outcome); return outcome
     }
     mutating func submit(completion: UInt16) -> ExecutionAdmissionOutcome {
         guard CounterControl.acceptsProducer(at: control, producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
-        synchronize(); let outcome = controller.submit(completion: completion); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.completion", outcome); return outcome
+        synchronize(); let outcome = controller.submit(completion: completion);
+        if case .queued = outcome.result {
+            control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+        }; counterTrace("admission.completion", outcome); return outcome
     }
 }
 struct CounterPointerState {
@@ -204,7 +226,10 @@ struct CounterAdmissionBacking: Equatable {
         for index in 0..<34 { if left.pendingStates[index] != right.pendingStates[index] || left.sealedStates[index] != right.sealedStates[index] { return false } }
         return true
     }
-    var pointerCount: UInt16 { var count: UInt16 = 0; for i in 0..<2 where pendingPointers[i] != nil { count += 1 }; return count }
+    var pointerCount: UInt16 {
+        var count: UInt16 = 0;
+        for i in 0 ..< 2 { if case .some = pendingPointers[i] { count += 1 } }; return count
+    }
     var pendingState: UInt8? {
         get { pendingStateCount == 0 ? nil : pendingStates[0] }
         set { pendingStateCount = 0; if let newValue { _ = enqueue(state: newValue) } }
@@ -214,18 +239,28 @@ struct CounterAdmissionBacking: Equatable {
         pendingStates[Int(pendingStateCount)] = state; pendingStateCount += 1; return true
     }
     mutating func enqueue(completion: UInt16) -> Bool {
-        guard completion == 0, pendingCompletion == nil else { return false }
+        guard completion == 0, case .none = pendingCompletion else { return false }
         pendingCompletion = completion; return true
     }
     mutating func enqueue(_ pointer: NormalizedPointerEvent) -> Bool {
-        for i in 0..<2 where pendingPointers[i] == nil { pendingPointers[i] = pointer; return true }; return false
+        for i in 0 ..< 2 {
+            if case .none = pendingPointers[i] { pendingPointers[i] = pointer; return true }
+        }; return false
     }
     mutating func cancel(source: InputSourceID, sequence: PointerSequenceID) {
         for i in 0..<2 { if let event = pendingPointers[i], event.source == source && event.sequence == sequence { pendingPointers[i] = nil } }
     }
     mutating func seal(_ summary: AdmissionSummary) -> Bool {
-        guard !sealActive, summary.inputEventCount <= pointerCount, summary.stateChangeFactCount <= pendingStateCount,
-              summary.completionFactCount <= (pendingCompletion == nil ? 0 : 1), summary.semanticActionCount <= 2 else { return false }
+        guard !sealActive, summary.inputEventCount <= pointerCount,
+            summary.stateChangeFactCount <= pendingStateCount
+        else { return false }
+        let completionFactCount = summary.completionFactCount
+        if case .none = pendingCompletion {
+            guard completionFactCount <= 0 else { return false }
+        } else {
+            guard completionFactCount <= 1 else { return false }
+        }
+        guard summary.semanticActionCount <= 2 else { return false }
         sealedPointerCount = 0
         for i in 0..<2 where sealedPointerCount < summary.inputEventCount {
             if let event = pendingPointers[i] { sealedPointers[Int(sealedPointerCount)] = event; pendingPointers[i] = nil; sealedPointerCount += 1 }

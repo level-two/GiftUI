@@ -1,0 +1,24 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:3497:51: error: ending the lifetime of a value of type '@callee_guaranteed (CounterStorageRegion) -> ()' can cause a deallocation
+3454 |     var semanticOwners = SemanticRecordOwnerNamespace()
+3455 |     do {
+3456 |         return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+     |                `- note: called from here
+3457 |         return p08CheckGraphSelection(owner: owner, outer: outer)
+     |                `- note: called from here
+3458 | 
+3459 |         }
+     :
+3495 | fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, outer: borrowing P08StaticOuterView) -> Int {
+3496 |     var count = 46
+3497 |         guard case .valid(let audit) = outer.audit(owner: owner) else { preconditionFailure("counter graph audit") }
+     |                                                   `- error: ending the lifetime of a value of type '@callee_guaranteed (CounterStorageRegion) -> ()' can cause a deallocation
+3498 |         let control = outer.control
+3499 |         func reject(_ negative: CounterConstructionNegative) {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift:67:5: note: called from here
+65 | #endif
+66 | package func p08CounterStaticResourceEntryV1() -> Int {
+67 |     p08CounterGraph() + counterExerciseStaticScopedStorage() + p08CounterHost()
+   |     `- note: called from here
+68 | }
+69 | #endif

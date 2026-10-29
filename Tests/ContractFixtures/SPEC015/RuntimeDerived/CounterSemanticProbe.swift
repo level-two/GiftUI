@@ -71,7 +71,16 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore, semantic
     var key: _GiftUIModelKey<CounterModelSchema>?
     for value: UInt8 in 0...9 {
         do throws(ObservableStateError) {
-            if let key { counterSemanticExpect(models.mutate(key, mutation: .fact(value), report: { .dirtied }) == .success(.dirtied)); checks += 1 }
+            if let key {
+                let p08ExactCase11: Bool;
+                if case .success(.dirtied) = models.mutate(
+                    key, mutation: .fact(value), report: { .dirtied })
+                {
+                    p08ExactCase11 = true
+                } else {
+                    p08ExactCase11 = false
+                }; counterSemanticExpect(p08ExactCase11); checks += 1
+            }
             try models.beginFrame()
             try models.withDiscovery { () throws(ObservableStateError) in
                 guard case .success = root.beginCandidate() else { preconditionFailure("counter begin") }
@@ -84,7 +93,14 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore, semantic
             preconditionFailure("counter expansion") }
             if value == 0 {
                 do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
-                catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+                catch {
+                    let p08ExactCase12: Bool;
+                    if case .reentrancyViolation = error {
+                        p08ExactCase12 = true
+                    } else {
+                        p08ExactCase12 = false
+                    }; counterSemanticExpect(p08ExactCase12); checks += 1
+                }
 
             }
             do throws(DrawingError) {
@@ -124,7 +140,14 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore, semantic
         if value == 0 {
             try semantic.withPublishedView { _ in
                 do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("published reader reset accepted") }
-                catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+                catch {
+                    let p08ExactCase13: Bool;
+                    if case .reentrancyViolation = error {
+                        p08ExactCase13 = true
+                    } else {
+                        p08ExactCase13 = false
+                    }; counterSemanticExpect(p08ExactCase13); checks += 1
+                }
             }
         }
     }
@@ -134,9 +157,23 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore, semantic
         // replacement strategies require reclaiming retained former backing.
         var transfer = try models.retain(key!)
         var cache = try models.retain(key!)
-        counterSemanticExpect(root.replace(identity: identity!, ordinal: 0, transferring: &transfer, seed: .init(value: 3)) == .failure(.retainedModel)); checks += 1
+        let p08ExactCase14: Bool;
+        if case .failure(.retainedModel) = root.replace(
+            identity: identity!, ordinal: 0, transferring: &transfer, seed: .init(value: 3))
+        {
+            p08ExactCase14 = true
+        } else {
+            p08ExactCase14 = false
+        }; counterSemanticExpect(p08ExactCase14); checks += 1
         try models.release(&cache)
-        counterSemanticExpect(root.replace(identity: identity!, ordinal: 0, transferring: &transfer, seed: .init(value: 3)) == .success(.replaced)); checks += 1
+        let p08ExactCase15: Bool;
+        if case .success(.replaced) = root.replace(
+            identity: identity!, ordinal: 0, transferring: &transfer, seed: .init(value: 3))
+        {
+            p08ExactCase15 = true
+        } else {
+            p08ExactCase15 = false
+        }; counterSemanticExpect(p08ExactCase15); checks += 1
         let replacement = root.modelKey(identity: identity!, ordinal: 0)!
         counterSemanticExpect(replacement != key); checks += 1
         try models.beginFrame()
@@ -147,7 +184,13 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore, semantic
             }
         } catch { throw ObservableStateError(accessFailure: error) }
         try models.endFrame()
-        counterSemanticExpect(models.mutate(key!, mutation: .reset, report: { .dirtied }) == .failure(.staleModel)); checks += 1
+        let p08ExactCase16: Bool;
+        if case .failure(.staleModel) = models.mutate(key!, mutation: .reset, report: { .dirtied })
+        {
+            p08ExactCase16 = true
+        } else {
+            p08ExactCase16 = false
+        }; counterSemanticExpect(p08ExactCase16); checks += 1
         try root.shutdown(); checks += 1
     } catch {
     #if !hasFeature(Embedded)
@@ -157,7 +200,14 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore, semantic
     try semantic.resetAfterQuiescence(); checks += 1
     try semantic.resetAfterQuiescence(); checks += 1
     do throws(SemanticExpansionError) { try semantic.withPublishedView { _ in preconditionFailure("reset publication visible") } }
-    catch { counterSemanticExpect(error == .invariantViolation); checks += 1 }
+    catch {
+        let p08ExactCase17: Bool;
+        if case .invariantViolation = error {
+            p08ExactCase17 = true
+        } else {
+            p08ExactCase17 = false
+        }; counterSemanticExpect(p08ExactCase17); checks += 1
+    }
     return checks
 }
 private func counterSemanticBacking(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) -> Int {

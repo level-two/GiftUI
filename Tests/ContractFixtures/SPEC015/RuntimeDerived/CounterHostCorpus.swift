@@ -125,7 +125,12 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout 
         guard case .cycle(.admittedWork, .cycle(.success(let summary))) = counterServiceHost(at: timestamp, host: &host, control: wakeControl) else { preconditionFailure("counter actual paced host typed action") }
         counterCorpusExpect(summary.admission.inputEventCount == 2 && summary.admission.semanticActionCount == (changed ? 1 : 0))
         counterCorpusExpect(control.pointee.applied == applied + (changed ? 1 : 0))
-        counterCorpusExpect(control.pointee.runtime.pointer.capture.current == nil)
+        let p08Presence69: Bool;
+        if case .none = control.pointee.runtime.pointer.capture.current {
+            p08Presence69 = true
+        } else {
+            p08Presence69 = false
+        }; counterCorpusExpect(p08Presence69)
         checks += 5 + counterCheckHostFrame(control.pointee, value: expected)
         sequence += 1
     }
