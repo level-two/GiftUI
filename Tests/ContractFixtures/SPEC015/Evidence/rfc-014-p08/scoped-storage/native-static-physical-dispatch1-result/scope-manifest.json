@@ -1,0 +1,163 @@
+{
+  "baseline": "10a6b7bf",
+  "source_and_fixture": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "bytes": 301732,
+      "sha256": "4178d502ca05d42457041eb2981108a940b7c22d5970af3bb8f3006359be63b6"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+      "bytes": 2477,
+      "sha256": "03b17db81a516b97d440769a0d93bcfb735b0c80dd9d3666fde5bcd581f14fe6"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/PhysicalFactsQualification.swift": {
+      "bytes": 565,
+      "sha256": "0b1a5f26dd4e4d7dc48bbf1abd6162d2f64ed696176954bca20093fab254ea95"
+    }
+  },
+  "evidence_directory": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-physical-dispatch1-result",
+  "exact_archive_members": [
+    "PhysicalFactsQualification.swift",
+    "README.md",
+    "candidate.patch",
+    "dispatch-actual-entry.raw",
+    "dispatch-actual-entry2.raw",
+    "dispatch-approved-validation.json",
+    "dispatch-consolidated-correction.json",
+    "dispatch-fatal-source-attribution.json",
+    "dispatch-functional-build.json",
+    "dispatch-functional-build.raw",
+    "dispatch-functional-build2.json",
+    "dispatch-functional-build2.raw",
+    "dispatch-functional-build3.json",
+    "dispatch-functional-build3.raw",
+    "dispatch-functional-execute3.json",
+    "dispatch-functional-execute3.raw",
+    "dispatch-link-retained-evidence.json",
+    "dispatch-link-retained-object-evidence.json",
+    "dispatch-missing-row-fatal3.json",
+    "dispatch-missing-row-fatal3.raw",
+    "dispatch-outcome.json",
+    "dispatch-plan.json",
+    "dispatch-plan2.json",
+    "dispatch-source-freeze.json",
+    "independent-review.md",
+    "ledger.json",
+    "outcome.json",
+    "scope-manifest.json"
+  ],
+  "files": {
+    "dispatch-functional-build2.json": {
+      "bytes": 9772,
+      "sha256": "94ffad6b9c8cc0f050ceb41e4901f4c3ce2bbe3ce0f9d8f8d84cf8d8e0b5d960"
+    },
+    "dispatch-functional-build2.raw": {
+      "bytes": 217,
+      "sha256": "b6062dc0468f5b63ca4716c675729431476465dc9ab8c1d687da8a71b7bbf7fd"
+    },
+    "dispatch-functional-build3.raw": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "outcome.json": {
+      "bytes": 7433,
+      "sha256": "489709d60bc9295e82565349c18c53e67471796c0d16f317e12ee89575e20784"
+    },
+    "dispatch-functional-build3.json": {
+      "bytes": 9999,
+      "sha256": "db2c124042490f6c36830d4ebafd5d36d05d815f9693774932119eaf510a1092"
+    },
+    "independent-review.md": {
+      "bytes": 2262,
+      "sha256": "8cf7de25e8f78560885831d642cf02d8e4c89784f14826509184801db894f6b1"
+    },
+    "candidate.patch": {
+      "bytes": 25426,
+      "sha256": "1429a24c9688ee797b3276cf6c7c87a73522278fea05b15508698b600d92b2c6"
+    },
+    "dispatch-consolidated-correction.json": {
+      "bytes": 5351,
+      "sha256": "637278760df86e0abf53c8c60ea3407c6fd81482e1027f491dfdeac6b9f1acd6"
+    },
+    "dispatch-link-retained-object-evidence.json": {
+      "bytes": 605,
+      "sha256": "049c4a53cb3c7d310fbbba6c76ac5886031594bde1fca22f3416bafd716d9c55"
+    },
+    "PhysicalFactsQualification.swift": {
+      "bytes": 565,
+      "sha256": "0b1a5f26dd4e4d7dc48bbf1abd6162d2f64ed696176954bca20093fab254ea95"
+    },
+    "dispatch-functional-execute3.raw": {
+      "bytes": 143,
+      "sha256": "eedbf5e85e93aecf6c1340a9a61ef9f4001f8026b42c760ae5047bf73b386491"
+    },
+    "dispatch-plan.json": {
+      "bytes": 26131,
+      "sha256": "68910d0d5e810d0f855b1fe9efd0f1322e13ba5d716cc2ddacbf0b28cd8565a3"
+    },
+    "dispatch-missing-row-fatal3.raw": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "README.md": {
+      "bytes": 2377,
+      "sha256": "453348a7505b63feac0badda333fa746161101c966fb03441acf0894f587306e"
+    },
+    "dispatch-link-retained-evidence.json": {
+      "bytes": 535,
+      "sha256": "0f6eb5da05c0057a1ba79d07eb11a3e123913e94b149778637543dc3fdc6e05b"
+    },
+    "dispatch-functional-build.json": {
+      "bytes": 9768,
+      "sha256": "0170822c4eef75df0c644446bd63a583fed85b0ae75cefcb135ba2f84a901a1b"
+    },
+    "dispatch-functional-execute3.json": {
+      "bytes": 665,
+      "sha256": "9d831943bf3de6a7dfb7254d3b21b34b138ca148eee8ec6fe54f4b9ef531a9ec"
+    },
+    "dispatch-source-freeze.json": {
+      "bytes": 731,
+      "sha256": "8d048729a6b394fdcc1f486dc5e691726cf81e0810d93b3a23d171e9b0f59f51"
+    },
+    "dispatch-approved-validation.json": {
+      "bytes": 12750,
+      "sha256": "b446f156be463f5816093fd24021a3910e55272897fa5fcf3e6a9600a8bb40bb"
+    },
+    "dispatch-outcome.json": {
+      "bytes": 6713,
+      "sha256": "f4f2e71902f4404918fc45ab684f513235eb00879abd1ba8c9d2defd32439bae"
+    },
+    "dispatch-actual-entry2.raw": {
+      "bytes": 80984,
+      "sha256": "44df3db5ee8831e1c09d6257f3b19967205185070ec9bc75359c3fadb8f32348"
+    },
+    "dispatch-functional-build.raw": {
+      "bytes": 217,
+      "sha256": "b6062dc0468f5b63ca4716c675729431476465dc9ab8c1d687da8a71b7bbf7fd"
+    },
+    "dispatch-plan2.json": {
+      "bytes": 26369,
+      "sha256": "19c2d97e610553aaf29c8d7bc5f52918f52b912574040e6346091f36066220a6"
+    },
+    "dispatch-fatal-source-attribution.json": {
+      "bytes": 20361,
+      "sha256": "ed2d1415832f94f4bec2b3b898e423cafc1e79a55f2b214ce40aaa905b0796bc"
+    },
+    "dispatch-missing-row-fatal3.json": {
+      "bytes": 690,
+      "sha256": "5b85ff374465773c20a3c53d665abf4ef872ae5983ece7c7fe6acaa697753ef2"
+    },
+    "dispatch-actual-entry.raw": {
+      "bytes": 80984,
+      "sha256": "9eb6fd88df0881de2c19e78e8ba2cb0d37630ea93751574b4888c661a38cc970"
+    },
+    "ledger.json": {
+      "role": "Final continuous-session amended ledger; snapshot/bookkeeping reserve explicit",
+      "bytes": 4740,
+      "sha256": "ceb25b476c4d57bc6c8813c499d3affca29729eb8ad43d3fb68a314f76f4203d"
+    }
+  },
+  "qualification": "scopeddispatchACCEPT492+sourceattributedfatal; ordinaryfull42DrawingLimitsFAIL",
+  "root_only_index_commit": true,
+  "binary_not_copied": "6741224B dispatch-functional3 bound by build3 receipt",
+  "amendment": "ExplicituserApprove16MiBforthispackage;7MBexe; original14:59:05deadline/512MiBprocessing/historyunchanged"
+}

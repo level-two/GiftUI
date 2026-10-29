@@ -1,0 +1,16 @@
+{
+  "input": ".build/contracts/p08-native-static-graph-effect-attribution1/probe-case-pattern/P08CounterRuntime.o",
+  "input_bytes": 2708720,
+  "command": [
+    "nm",
+    "-m",
+    ".build/contracts/p08-native-static-graph-effect-attribution1/probe-case-pattern/P08CounterRuntime.o"
+  ],
+  "exit": 0,
+  "full_stdout_bytes": 1679092,
+  "full_stdout_sha256": "4b42957f09d3245f7db2533d46671245e39e4b76f05758f513caa42573147a92",
+  "selected_complete_symbol_lines": [
+    "000000000009d4a4 (__TEXT,__text) external [no dead strip] _giftui_rfc014_counter_entry"
+  ],
+  "no_llvm_or_new_link_acquisition": true
+}

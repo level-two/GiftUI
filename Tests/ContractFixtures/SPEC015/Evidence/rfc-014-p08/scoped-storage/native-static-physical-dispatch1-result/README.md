@@ -1,0 +1,11 @@
+# Native Static physical-accounting dispatch qualification
+
+The frozen candidate passed its focused paired Static/Dynamic functional oracle:492 checks. The full42 annotated allocation entry still fails at DrawingLimits construction; this is scoped advancement, not complete allocation closure or cold proof.
+
+Mixed physical accounting and Dynamic g0/g1/g4/g3 retained extents, five banks, optional/tail accounting and all26 totals remain. Exact inventory/object/final operations are shared with a new Native-only Static audit. Exhaustive caller review keeps Embedded and mismatched owners on the original mixed path. The test-only original complete physicalFacts body independently checks all rows/bank fields/totals. Actual selected Static and Dynamic audits, insufficient-render refusal, mismatched-owner behavior,46faults,10capacity refusals, default/surplus inventory and reverse destruction run in the same focused program.
+
+The same binary's missing-row negative exits SIGTRAP−5 with0rawbytes and no guard breach. This status alone is insufficient: dispatch-fatal-source-attribution.json retains the complete validator and exact fatal mode/prefix. It shows unchanged scalar/bank facts with empty geometry rows reaching the existing report-equality precondition before returning to Main's fallback. No debugger/runtime-PC claim is made. Final independent review in independent-review.md accepts this scope, with the full-entry failure explicit.
+
+Both original3.5MB link failures and the earlier wrong malformed-row typed expectation remain preserved. Retained original object evidence established no-dead-strip Cexport retention. Only the oracleflag omits the Native Cexport annotation; its full Swift body and ordinary42gate export remain. That isolation did not meet3.5MB. Explicit user answer “Approve16MiB for this package” amended only sharedretention8→16MiB and executablecap7MB; original14:59:05UTC deadline,512MiB processing, raw limits and history remain. The final6,741,224Bbinary is not duplicated here.
+
+outcome/approvedplan contain exact commands, source and artifact hashes, measured exits/raws, limits and scope. candidate.patch+the verbatim Main reproduce the exact candidate from10a6b7bf. U03/global unsafe-bridge, lifetime-image and cold/resource obligations remain OPEN; retained Hostcandidate remains unadopted. Root alone owns staging/commit.

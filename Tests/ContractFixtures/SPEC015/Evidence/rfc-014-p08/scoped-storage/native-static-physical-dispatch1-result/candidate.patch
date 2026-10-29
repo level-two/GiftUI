@@ -1,0 +1,308 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
+index 36cbfc9c..c1ea5d87 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
+@@ -41,7 +41,9 @@ func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?, _ backing: Unsaf
+                 backing: UnsafeMutableRawBufferPointer(start: backing, count: byteCount)))
+     }
+ #else
++#if !GIFTUI_PHYSICAL_FACTS_QUALIFICATION
+ @_cdecl("giftui_rfc014_counter_entry")
++#endif
+ func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?) -> UInt32 {
+     UInt32(p08CounterRoute(write: write))
+ }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+index dc7d6d23..55f0346a 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift
+@@ -1716,7 +1716,101 @@ fileprivate struct P08OwnedPhysicalFacts {
+     let interaction: CounterPhysicalInteractionFacts
+ }
+ extension P08TypedBackingOwner {
++    private borrowing func physicalEntry(_ id: P08PhysicalID) -> P08InitializedEntry {
++        for index in 0..<acquired { if inventory[index]!.id == id { return inventory[index]! } }
++        preconditionFailure("missing original physical facts")
++    }
++    private static func appendPhysicalObject(_ e: P08InitializedEntry, family: Int, payload: Int = 0, into rows: inout CounterPhysicalGeometryFacts) {
++        let objectBytes = e.count.multipliedReportingOverflow(by: e.stride)
++        precondition(!objectBytes.overflow && e.retainedBytes >= objectBytes.partialValue + payload)
++        rows.append(.init(family: family, kind: .inlineValue, count: e.count, size: e.size, stride: e.stride, alignment: e.alignment, chargedBytes: UInt64(objectBytes.partialValue)))
++        rows.append(.elements(UInt8.self, count: e.retainedBytes - objectBytes.partialValue - payload, family: family))
++    }
++    private static func finishPhysicalFacts(_ rows: CounterPhysicalGeometryFacts, banks: CounterPhysicalInteractionFacts) -> P08OwnedPhysicalFacts {
++        var totals: InlineArray<26, UInt64> = .init(repeating: 0)
++        for index in 0..<rows.count {
++            let row = rows.regions[index]!
++            let next = totals[row.family].addingReportingOverflow(row.chargedBytes)
++            precondition(!next.overflow); totals[row.family] = next.partialValue
++        }
++        let geometry = CounterGeometryMeasurement(layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, drawing: counterDrawingLimits,
++            layoutBytes: totals[12], renderBytes: totals[13], pathBytes: totals[15], planBytes: totals[16])
++        return .init(geometry: geometry, geometryRegions: rows, interaction: banks)
++    }
+     fileprivate borrowing func physicalFacts() -> P08OwnedPhysicalFacts {
++        let p08ExactCase24: Bool;
++        if case .idle = lifecycle { p08ExactCase24 = true } else { p08ExactCase24 = false };
++        precondition(p08ExactCase24)
++        var rows = CounterPhysicalGeometryFacts()
++        let banks: CounterPhysicalInteractionFacts
++        switch slots {
++        case .static(let s):
++
++            Self.appendPhysicalObject(physicalEntry(.b0), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.b1), family: 12, into: &rows)
++            Self.appendPhysicalObject(physicalEntry(.g0), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.g1), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.g2), family: 12, into: &rows)
++            Self.appendPhysicalObject(physicalEntry(.g4), family: 13, into: &rows); Self.appendPhysicalObject(physicalEntry(.b2), family: 15, into: &rows); Self.appendPhysicalObject(physicalEntry(.b3), family: 16, into: &rows); Self.appendPhysicalObject(physicalEntry(.g3), family: 16, into: &rows)
++            banks = .init(
++                candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.c0).retainedBytes) },
++                candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.h0).retainedBytes) },
++                prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.r0).retainedBytes) },
++                committed: s.r1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.r1).retainedBytes) },
++                committedHits: s.h1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.h1).retainedBytes) },
++                stateMetadataBytes: MemoryLayout<P08ScopedKeys>.size - MemoryLayout<P08CandidateAccess>.size - 2 * MemoryLayout<P08CommittedAccess>.size - 2 * MemoryLayout<P08HitAccess>.size)
++        #if !hasFeature(Embedded)
++        case .dynamic(let s):
++            s.g0.withBorrow { p in
++                Self.appendPhysicalObject(physicalEntry(.g0), family: 12, payload: Int(p.pointee.reservedPayloadBytes), into: &rows)
++                p.pointee.visitRetainedPayloadExtents { count, size, stride, alignment in rows.append(.init(family: 12, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
++            }
++            s.g1.withBorrow { p in
++                Self.appendPhysicalObject(physicalEntry(.g1), family: 12, payload: Int(p.pointee.reservedPayloadBytes), into: &rows)
++                p.pointee.visitRetainedPayloadExtents { count, size, stride, alignment in rows.append(.init(family: 12, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
++            }
++            s.g4.withBorrow { p in
++                Self.appendPhysicalObject(physicalEntry(.g4), family: 13, payload: Int(p.pointee.reservedPayloadBytes), into: &rows)
++                p.pointee.visitRetainedPayloadExtents { count, size, stride, alignment in rows.append(.init(family: 13, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
++            }
++            s.g3.withBorrow { p in
++                Self.appendPhysicalObject(physicalEntry(.g3), family: 16, payload: Int(p.pointee.livePathReservedPayloadBytes + p.pointee.planReservedPayloadBytes), into: &rows)
++                p.pointee.visitRetainedPathExtents { count, size, stride, alignment in rows.append(.init(family: 15, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
++                p.pointee.visitRetainedPlanExtents { count, size, stride, alignment in rows.append(.init(family: 16, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
++            }
++            banks = .init(
++                candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.c0).retainedBytes) },
++                candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.h0).retainedBytes) },
++                prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.r0).retainedBytes) },
++                committed: s.r1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.r1).retainedBytes) },
++                committedHits: s.h1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.h1).retainedBytes) },
++                stateMetadataBytes: MemoryLayout<P08ScopedKeys>.size - MemoryLayout<P08CandidateAccess>.size - 2 * MemoryLayout<P08CommittedAccess>.size - 2 * MemoryLayout<P08HitAccess>.size)
++        #endif
++        }
++        return Self.finishPhysicalFacts(rows, banks: banks)
++    }
++    // Called only by the proven Native Static reservation path. The mixed
++    // entry remains available to Embedded and mismatched-owner controls.
++    fileprivate borrowing func staticPhysicalFacts() -> P08OwnedPhysicalFacts {
++        let p08ExactCase24: Bool;
++        if case .idle = lifecycle { p08ExactCase24 = true } else { p08ExactCase24 = false };
++        precondition(p08ExactCase24)
++        guard case .static(let s) = slots else { preconditionFailure("Static physical facts require Static slots") }
++        var rows = CounterPhysicalGeometryFacts()
++        let banks: CounterPhysicalInteractionFacts
++
++
++            Self.appendPhysicalObject(physicalEntry(.b0), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.b1), family: 12, into: &rows)
++            Self.appendPhysicalObject(physicalEntry(.g0), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.g1), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.g2), family: 12, into: &rows)
++            Self.appendPhysicalObject(physicalEntry(.g4), family: 13, into: &rows); Self.appendPhysicalObject(physicalEntry(.b2), family: 15, into: &rows); Self.appendPhysicalObject(physicalEntry(.b3), family: 16, into: &rows); Self.appendPhysicalObject(physicalEntry(.g3), family: 16, into: &rows)
++            banks = .init(
++                candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.c0).retainedBytes) },
++                candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.h0).retainedBytes) },
++                prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.r0).retainedBytes) },
++                committed: s.r1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.r1).retainedBytes) },
++                committedHits: s.h1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.h1).retainedBytes) },
++                stateMetadataBytes: MemoryLayout<P08ScopedKeys>.size - MemoryLayout<P08CandidateAccess>.size - 2 * MemoryLayout<P08CommittedAccess>.size - 2 * MemoryLayout<P08HitAccess>.size)
++        return Self.finishPhysicalFacts(rows, banks: banks)
++    }
++    #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION
++    fileprivate borrowing func originalPhysicalFactsForQualification() -> P08OwnedPhysicalFacts {
+         let p08ExactCase24: Bool;
+         if case .idle = lifecycle { p08ExactCase24 = true } else { p08ExactCase24 = false };
+         precondition(p08ExactCase24)
+@@ -1783,6 +1877,7 @@ extension P08TypedBackingOwner {
+             layoutBytes: totals[12], renderBytes: totals[13], pathBytes: totals[15], planBytes: totals[16])
+         return .init(geometry: geometry, geometryRegions: rows, interaction: banks)
+     }
++    #endif
+ }
+ 
+ // Only the two concrete counter owners conform; observations are owned facts.
+@@ -2657,7 +2752,14 @@ fileprivate struct P08StaticOuterView: ~Copyable {
+         p08RequireFreshControl(control)
+     }
+     borrowing func audit(owner: borrowing P08TypedBackingOwner, report: (CounterStorageRegion) -> Void = { _ in }) -> RuntimeProfileValidationResult {
+-        let facts = owner.physicalFacts()
++        audit(facts: owner.physicalFacts(), report: report)
++    }
++    #if !hasFeature(Embedded)
++        borrowing func auditStatic(owner: borrowing P08TypedBackingOwner, report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
++            audit(facts: owner.staticPhysicalFacts(), report: report)
++        }
++    #endif
++    fileprivate borrowing func audit(facts: P08OwnedPhysicalFacts, report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
+         return counterValidatePhysicalBacking(profile: .static, limits: limits, root: root.pointee.storageLayout,
+             rootMetadataRegion: .inline(CounterStaticRootStorage.self, family: 7, chargedBytes: root.pointee.storageLayout.metadataBytes, kind: .metadataPadding),
+             semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: records.count), paths: .elements(SemanticPathEntry.self, count: paths.count), payloads: .elements(CounterPayload?.self, count: payloads.count), scalars: .elements(UInt32.self, count: scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
+@@ -3082,7 +3184,12 @@ fileprivate func runP08ScopedBody(session: consuming P08StorageSession,
+ @inline(never)
+ fileprivate func p08PrepareStaticHost(outer: borrowing P08StaticOuterView, owner: inout P08TypedBackingOwner)
+     -> (audit: RuntimeStorageAudit, assembly: CounterHostAssembly) {
+-    guard case .valid(let audit) = outer.audit(owner: owner, report: { _ in }),
++    #if hasFeature(Embedded)
++        let physicalAudit = outer.audit(owner: owner, report: { _ in })
++    #else
++        let physicalAudit = outer.auditStatic(owner: owner, report: { _ in })
++    #endif
++    guard case .valid(let audit) = physicalAudit,
+         let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind)
+     else { preconditionFailure("counter valid-only host") }
+     return (audit, assembly)
+@@ -3496,7 +3603,12 @@ fileprivate func p08CheckGraphDefinition() {
+ }
+ fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, outer: borrowing P08StaticOuterView) -> Int {
+     var count = 46
+-    guard case .valid(let audit) = outer.audit(owner: owner, report: { _ in }) else {
++    #if hasFeature(Embedded)
++        let physicalAudit = outer.audit(owner: owner, report: { _ in })
++    #else
++        let physicalAudit = outer.auditStatic(owner: owner, report: { _ in })
++    #endif
++    guard case .valid(let audit) = physicalAudit else {
+         preconditionFailure("counter graph audit")
+     }
+     let control = outer.control
+@@ -4755,3 +4867,135 @@ func p08MetadataSummary8() -> UInt32 { p08MetadataScalarFact(8, 0) }
+ @inline(__always)
+ func p08MetadataSummary9() -> UInt32 { p08MetadataScalarFact(9, 0) }
+ #endif
++
++
++#if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
++fileprivate func p08RequireSameRegions(_ a: CounterPhysicalGeometryFacts, _ b: CounterPhysicalGeometryFacts) {
++    precondition(a.count == b.count)
++    for index in 0..<a.count {
++        let x = a.regions[index]!, y = b.regions[index]!
++        precondition(x.family == y.family && x.kind == y.kind && x.count == y.count)
++        precondition(x.size == y.size && x.stride == y.stride && x.alignment == y.alignment && x.chargedBytes == y.chargedBytes)
++    }
++}
++fileprivate func p08RequireSameBank(_ a: CounterPhysicalBankFacts, _ b: CounterPhysicalBankFacts) {
++    let x = a.bank, y = b.bank
++    precondition(x.count == y.count && x.capacity == y.capacity && x.retainedIdentitySlots == y.retainedIdentitySlots)
++    precondition(x.retainedPayloadBytes == y.retainedPayloadBytes && x.inlineSize == y.inlineSize && x.inlineStride == y.inlineStride && x.inlineAlignment == y.inlineAlignment)
++    precondition(a.recordSize == b.recordSize && a.recordStride == b.recordStride && a.recordAlignment == b.recordAlignment)
++    precondition(a.optionalRecords == b.optionalRecords && a.retainedBytes == b.retainedBytes)
++}
++fileprivate func p08RequireSamePhysicalFacts(_ a: P08OwnedPhysicalFacts, _ b: P08OwnedPhysicalFacts) {
++    precondition(a.geometry == b.geometry)
++    p08RequireSameRegions(a.geometryRegions, b.geometryRegions)
++    p08RequireSameBank(a.interaction.candidate, b.interaction.candidate)
++    p08RequireSameBank(a.interaction.candidateHits, b.interaction.candidateHits)
++    p08RequireSameBank(a.interaction.prepared, b.interaction.prepared)
++    p08RequireSameBank(a.interaction.committed, b.interaction.committed)
++    p08RequireSameBank(a.interaction.committedHits, b.interaction.committedHits)
++    precondition(a.interaction.stateMetadataBytes == b.interaction.stateMetadataBytes)
++    var ar = CounterPhysicalGeometryFacts(), br = CounterPhysicalGeometryFacts()
++    a.interaction.visitStorageRegions { ar.append($0) }
++    b.interaction.visitStorageRegions { br.append($0) }
++    p08RequireSameRegions(ar, br)
++    var at: InlineArray<26, UInt64> = .init(repeating: 0), bt: InlineArray<26, UInt64> = .init(repeating: 0)
++    for index in 0..<a.geometryRegions.count { let x = a.geometryRegions.regions[index]!; at[x.family] += x.chargedBytes }
++    for index in 0..<b.geometryRegions.count { let x = b.geometryRegions.regions[index]!; bt[x.family] += x.chargedBytes }
++    for index in 0..<ar.count { let x = ar.regions[index]!; at[x.family] += x.chargedBytes }
++    for index in 0..<br.count { let x = br.regions[index]!; bt[x.family] += x.chargedBytes }
++    for family in 0..<26 { precondition(at[family] == bt[family]) }
++}
++package func p08CounterPhysicalFactsQualification() -> Int {
++    var models = ObservableModelOwnerNamespace(), semantics = SemanticRecordOwnerNamespace()
++    var checks = 0
++    do {
++        checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer, _ in
++            let original = owner.originalInventory()
++            let reference = owner.originalPhysicalFactsForQualification()
++            p08RequireSamePhysicalFacts(owner.physicalFacts(), reference)
++            p08RequireSamePhysicalFacts(owner.staticPhysicalFacts(), reference)
++            let expected = outer.audit(facts: reference, report: { _ in })
++            let actual = outer.auditStatic(owner: owner, report: { _ in })
++            precondition(actual == expected)
++            guard case .valid = actual else { preconditionFailure("Static audit") }
++            let required = outer.limits.renderWorkspace
++            precondition(required.maximumSemanticScopes > 1)
++            let deficient = RenderWorkspaceCapacity(maximumSemanticScopes: required.maximumSemanticScopes - 1, maximumLayoutScopes: reference.geometry.renderWorkspace.maximumLayoutScopes, maximumTraversalDepth: reference.geometry.renderWorkspace.maximumTraversalDepth, maximumTextLines: reference.geometry.renderWorkspace.maximumTextLines)!
++            let refusedGeometry = CounterGeometryMeasurement(layout: reference.geometry.layout, render: reference.geometry.render, renderWorkspace: deficient, drawing: reference.geometry.drawing, layoutBytes: reference.geometry.layoutBytes, renderBytes: reference.geometry.renderBytes, pathBytes: reference.geometry.pathBytes, planBytes: reference.geometry.planBytes)
++            let refused = P08OwnedPhysicalFacts(geometry: refusedGeometry, geometryRegions: reference.geometryRegions, interaction: reference.interaction)
++            guard case .invalid(.insufficientStorage) = outer.audit(facts: refused, report: { _ in }) else { preconditionFailure("render capacity must refuse") }
++            var count = withP08SelectedDynamic(modelOwner: try! models.issue(), semanticOwner: try! semantics.issue()) { dynamicOwner, dynamicOuter, _ in
++                let dynamicOriginal = dynamicOwner.originalInventory()
++                let dynamicReference = dynamicOwner.originalPhysicalFactsForQualification()
++                p08RequireSamePhysicalFacts(dynamicOwner.physicalFacts(), dynamicReference)
++                guard case .valid(let audited) = dynamicOuter.audit(owner: dynamicOwner) else { preconditionFailure("Dynamic audit") }
++                precondition(audited.profile == .dynamic)
++                // Keep the existing mixed/mismatched-owner behavior, whatever its exact result.
++                precondition(outer.audit(owner: dynamicOwner, report: { _ in }) == outer.audit(facts: dynamicReference, report: { _ in }))
++                dynamicOwner.requireEmpty(); dynamicOwner.release()
++                return p08VerifyDestruction(dynamicOwner.destructionTranscript(), original: dynamicOriginal, expectedCount: 9) + 4
++            }
++            owner.requireEmpty(); owner.release()
++            count += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
++            return count + 5
++        }
++    } catch { preconditionFailure("physical facts namespaces") }
++    for surplus in [false, true] {
++        checks += withP08StaticReservation(surplus: surplus) { owner in
++            precondition(owner.initialize() == nil)
++            let original = owner.originalInventory(), reference = owner.originalPhysicalFactsForQualification()
++            p08RequireSamePhysicalFacts(owner.physicalFacts(), reference)
++            p08RequireSamePhysicalFacts(owner.staticPhysicalFacts(), reference)
++            owner.requireEmpty(); owner.release()
++            return p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14) + 2
++        }
++        checks += withP08DynamicReservation(surplus: surplus) { owner in
++            precondition(owner.initialize() == nil)
++            let original = owner.originalInventory(), reference = owner.originalPhysicalFactsForQualification()
++            p08RequireSamePhysicalFacts(owner.physicalFacts(), reference)
++            owner.requireEmpty(); owner.release()
++            return p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 9) + 1
++        }
++    }
++    let staticIDs: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
++    let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]
++    for index in 0..<14 { for after in [false, true] {
++        let fault = P08AcquisitionFault(id: staticIDs[index]!, completed: 0, afterInstall: after)
++        checks += withP08StaticReservation { owner in
++            precondition(owner.initialize(fault: fault) != nil)
++            return p08VerifyFault(owner, fault: fault, ids: staticIDs, objects: 14)
++        }
++    } }
++    for index in 0..<9 { for after in [false, true] {
++        let fault = P08AcquisitionFault(id: dynamicIDs[index]!, completed: 0, afterInstall: after)
++        checks += withP08DynamicReservation { owner in
++            precondition(owner.initialize(fault: fault) != nil)
++            return p08VerifyFault(owner, fault: fault, ids: dynamicIDs, objects: 9)
++        }
++    } }
++    let invalid: InlineArray<5, InlineArray<5, UInt16>> = [[1,2,2,2,2], [2,1,2,2,1], [2,2,1,1,2], [2,2,2,1,2], [2,2,2,2,1]]
++    for index in 0..<5 {
++        checks += withP08StaticReservation(capacities: invalid[index]) { owner in
++            guard case .some(.invalidCapacity) = owner.initialize() else { preconditionFailure("Static capacity refusal") }
++            return 1
++        }
++        checks += withP08DynamicReservation(capacities: invalid[index]) { owner in
++            guard case .some(.invalidCapacity) = owner.initialize() else { preconditionFailure("Dynamic capacity refusal") }
++            return 1
++        }
++    }
++    return checks
++}
++package func p08CounterPhysicalFactsMissingRowsFatal() {
++    var models = ObservableModelOwnerNamespace(), semantics = SemanticRecordOwnerNamespace()
++    do {
++        withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer, _ in
++            let reference = owner.originalPhysicalFactsForQualification()
++            let malformed = P08OwnedPhysicalFacts(geometry: reference.geometry, geometryRegions: .init(), interaction: reference.interaction)
++            _ = outer.audit(facts: malformed, report: { _ in })
++            preconditionFailure("missing physical row audit returned")
++        }
++    } catch { preconditionFailure("physical facts namespaces") }
++}
++
++#endif

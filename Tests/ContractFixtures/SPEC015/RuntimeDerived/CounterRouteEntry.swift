@@ -41,7 +41,9 @@ func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?, _ backing: Unsaf
                 backing: UnsafeMutableRawBufferPointer(start: backing, count: byteCount)))
     }
 #else
+#if !GIFTUI_PHYSICAL_FACTS_QUALIFICATION
 @_cdecl("giftui_rfc014_counter_entry")
+#endif
 func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?) -> UInt32 {
     UInt32(p08CounterRoute(write: write))
 }

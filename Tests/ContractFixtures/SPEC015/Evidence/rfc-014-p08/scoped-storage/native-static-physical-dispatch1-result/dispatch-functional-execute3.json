@@ -1,0 +1,18 @@
+{
+  "name": "dispatch-functional-execute3",
+  "argv": [
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/dispatch-functional3"
+  ],
+  "start_utc": "2026-10-29T14:41:32.463982+00:00",
+  "duration_seconds": 0.625532865524292,
+  "exit": 0,
+  "raw_read_bytes": 143,
+  "raw_retained_bytes": 143,
+  "raw_lines": 1,
+  "breach": null,
+  "artifacts": {},
+  "per_file_hard_cap": 100000,
+  "deadline_utc": "2026-10-29T14:59:05.930656+00:00",
+  "pipe_accounting": "All bytes read/drained charged; no claim unread compiler-emitted bytes equal read.",
+  "raw_sha256": "eedbf5e85e93aecf6c1340a9a61ef9f4001f8026b42c760ae5047bf73b386491"
+}

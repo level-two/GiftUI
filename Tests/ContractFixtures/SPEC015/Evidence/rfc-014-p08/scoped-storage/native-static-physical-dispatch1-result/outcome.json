@@ -1,0 +1,134 @@
+{
+  "status": "SCOPED_DISPATCH_ACCEPTED__PAIRED492_PASS__SOURCE_ATTRIBUTED_FATAL_PASS__FULL42_DRAWINGLIMITS_FAIL",
+  "baseline": "10a6b7bf",
+  "updated_utc": "2026-10-29T14:48:34.744904+00:00",
+  "fixed_session_deadline": "2026-10-29T14:59:05.930656+00:00",
+  "owned_source_manifest": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "bytes": 301732,
+      "sha256": "4178d502ca05d42457041eb2981108a940b7c22d5970af3bb8f3006359be63b6"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+      "bytes": 2477,
+      "sha256": "03b17db81a516b97d440769a0d93bcfb735b0c80dd9d3666fde5bcd581f14fe6"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/PhysicalFactsQualification.swift": {
+      "bytes": 565,
+      "sha256": "0b1a5f26dd4e4d7dc48bbf1abd6162d2f64ed696176954bca20093fab254ea95"
+    }
+  },
+  "source_changes": "Shared exact original physical inventory/object/final26totals helpers. Existing mixed Static/Dynamic selector preserved. New Native-only auditStatic at exhaustively proven Native reservation sites; Embedded/mismatch use original mixed audit. Independent test-only complete original body. Corrected typed insufficientStorage and samebinary missingrowfatal modes. Testflag-only Native Cexport annotation omission; complete Swift entry body and ordinaryCexport preserved.",
+  "current_actual_results": {
+    "dispatch-actual-entry": {
+      "receipt": "dispatch-actual-entry.json",
+      "raw": "dispatch-actual-entry.raw",
+      "exit": 1,
+      "raw_bytes": 80984,
+      "raw_sha256": "9eb6fd88df0881de2c19e78e8ba2cb0d37630ea93751574b4888c661a38cc970",
+      "artifacts": {},
+      "breach": null
+    },
+    "dispatch-functional-build": {
+      "receipt": "dispatch-functional-build.json",
+      "raw": "dispatch-functional-build.raw",
+      "exit": 1,
+      "raw_bytes": 217,
+      "raw_sha256": "b6062dc0468f5b63ca4716c675729431476465dc9ab8c1d687da8a71b7bbf7fd",
+      "artifacts": {},
+      "breach": null
+    },
+    "dispatch-actual-entry2": {
+      "receipt": "dispatch-actual-entry2.json",
+      "raw": "dispatch-actual-entry2.raw",
+      "exit": 1,
+      "raw_bytes": 80984,
+      "raw_sha256": "44df3db5ee8831e1c09d6257f3b19967205185070ec9bc75359c3fadb8f32348",
+      "artifacts": {},
+      "breach": null
+    },
+    "dispatch-functional-build2": {
+      "receipt": "dispatch-functional-build2.json",
+      "raw": "dispatch-functional-build2.raw",
+      "exit": 1,
+      "raw_bytes": 217,
+      "raw_sha256": "b6062dc0468f5b63ca4716c675729431476465dc9ab8c1d687da8a71b7bbf7fd",
+      "artifacts": {},
+      "breach": null
+    },
+    "dispatch-functional-build3": {
+      "receipt": "dispatch-functional-build3.json",
+      "raw": "dispatch-functional-build3.raw",
+      "exit": 0,
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/dispatch-functional3": {
+          "bytes": 6741224,
+          "sha256": "8a5f995c37f160e7e529466cfc5550a57158db232f2c7f283cc39142be66afe2"
+        }
+      },
+      "breach": null
+    },
+    "dispatch-functional-execute3": {
+      "receipt": "dispatch-functional-execute3.json",
+      "raw": "dispatch-functional-execute3.raw",
+      "exit": 0,
+      "raw_bytes": 143,
+      "raw_sha256": "eedbf5e85e93aecf6c1340a9a61ef9f4001f8026b42c760ae5047bf73b386491",
+      "artifacts": {},
+      "breach": null
+    },
+    "dispatch-missing-row-fatal3": {
+      "receipt": "dispatch-missing-row-fatal3.json",
+      "raw": "dispatch-missing-row-fatal3.raw",
+      "exit": -5,
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {},
+      "breach": null
+    }
+  },
+  "normal_and_fatal_execution": "Approved samecandidate buildPASS6741224B; normalpairedoracle exit0/143B checks492. Separate samebinary missingrowmode exit\u22125(SIGTRAP), raw0, noboundbreach. Explicit complete source/path proof attributes known report-equalityprecondition; nonzero alone is not proof, no runtimePC claim.",
+  "source_review": "Coordinator final scoped ACCEPT: exactbinary/source bindings, fullpaired492controls, source/path-attributed missingrowprecondition, allNative/Embedded/mismatch callsite boundaries verified. Signal\u22125/raw0 alone is not proof; no runtimePC observation or completeallocation/cold claim.",
+  "consolidated_blockers": [
+    "Complete annotated actual42Staticentry remainsFAIL at imported DrawingLimits constructor (CounterGeometry20\u2192finishPhysicalFacts\u2192staticPhysicalFacts\u2192auditStatic\u2192graph\u2192entry). No observedallocation, universal sourceimpossibility, productionfixed or coldproof claim.",
+    "Original3.5MBresourceattempts failed and remainpreserved. Explicit human16MiB/7MBamendment enabled finalsamecandidate functionalvalidation; no retroactive green."
+  ],
+  "retained_link_evidence": [
+    "dispatch-link-retained-evidence.json",
+    "dispatch-link-retained-object-evidence.json"
+  ],
+  "failure_preservation": [
+    "dispatch-plan.json",
+    "dispatch-plan2.json",
+    "dispatch-consolidated-correction.json",
+    "dispatch-source-freeze.json",
+    "dispatch-edit.py",
+    "dispatch-oracle.py"
+  ],
+  "reviewable_one_validation_recipe": "dispatch-reviewable-validation.json",
+  "active_limits_unchanged": {
+    "retention_amended_bytes": 16777216,
+    "processing_bytes": 536870912,
+    "fixed_original_deadline": "2026-10-29T14:59:05.930656+00:00",
+    "executable_hardcap_bytes": 7000000,
+    "raw_pergroup_lines": 32768,
+    "all_session_raw_hardcap_bytes": 500000,
+    "definition": "Count own source/evidence/raw/help/object bytes read,hashed,parsed; every own read recorded before access. Compiler-internal IO/memory and tool-internal Git/index reads are not analysis payload reads. External root/reviewer reservations conservative; prior sessions remain separately qualified/uncertain."
+  },
+  "no_index_or_commit_by_owner": true,
+  "next_action": "Root exactscope commit; no required validation remains for scopeddispatch. Globalactual42DrawingLimits and U03/cold obligations remainOPEN.",
+  "approval": {
+    "approved_by": "Explicit human answer forwarded by root",
+    "exact_user_answer": "Approve 16 MiB for this package",
+    "scope": "This continuous package sharedretention8\u219216MiB; one frozen paired oracle executablecap7MB, normal+fatal+independentreview; no time/processing/group/history reset",
+    "received_utc": "2026-10-29T14:40:18.692320+00:00"
+  },
+  "fatal_attribution": "dispatch-fatal-source-attribution.json, complete validator body and mode/prefix source. Main fallback exists; sourceproof shows reportfamily12 missing versus positive original geometry bytes, so validator cannot return to fallback under tested concrete prefix.",
+  "publication_archive": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-physical-dispatch1-result",
+  "root_publication_processing": {
+    "additional_conservative_reserve_bytes": 2097152,
+    "combined_upper_bytes": 109202931,
+    "note": "Additional provision for final root manifest/source hash verification and closing notebook publication; conservative uncertainty, not an exact per-read certificate. Reviewer closing reads remain within existing reviewer provision. No historical qualification changes."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "input": ".build/contracts/p08-native-static-fullentry-presence1/functional-binary",
+  "input_bytes": 6693104,
+  "command": [
+    "nm",
+    "-m",
+    ".build/contracts/p08-native-static-fullentry-presence1/functional-binary"
+  ],
+  "exit": 0,
+  "full_stdout_bytes": 4690745,
+  "full_stdout_sha256": "007aa84a752c2fc1e4f8198e613445083f8194bff99c7b0f20fc7c0dc857554d",
+  "selected_complete_symbol_lines": [
+    "000000010009cd58 (__TEXT,__text) external _giftui_rfc014_counter_entry"
+  ],
+  "no_llvm_or_new_link_acquisition": true
+}

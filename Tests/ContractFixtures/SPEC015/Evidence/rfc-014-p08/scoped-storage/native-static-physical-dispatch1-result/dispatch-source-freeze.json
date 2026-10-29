@@ -1,0 +1,9 @@
+{
+  "baseline": "10a6b7bf",
+  "source": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+  "before_sha256": "6047aba6f2fa0b8e9ddb83b66c4ebe9412598a7d86a2f964cf853765e884f025",
+  "after_before_oracle_sha256": "11c7c9a759348017fb37f31e1327ba6e79dfb7711c20be582897514be59a1122",
+  "original_physicalFacts_complete_body_sha256": "c2dd9a1c9da57218273122d85d15f374a2bd7083e3a29274566dac36eb7dc8c5",
+  "oracle_reference": "GIFTUI_PHYSICAL_FACTS_QUALIFICATION only; copied original complete function with name change only",
+  "ordinary_contract": "Original mixed selection preserved; Native-only auditStatic new private validStatic entry; Embedded unchanged mixed audit; owner storage/lifetime/API unchanged."
+}

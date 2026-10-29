@@ -1,0 +1,83 @@
+{
+  "session_start_utc": "2026-10-29T12:59:05.930656+00:00",
+  "session_deadline_utc": "2026-10-29T14:59:05.930656+00:00",
+  "baseline_git": "86a6aaa9",
+  "processing_limit_bytes": 536870912,
+  "retention_limit_bytes": 16777216,
+  "processing_own_metered_bytes": 70007847,
+  "processing_reserved_root_bytes": 10485760,
+  "processing_reserved_coordinator_bytes": 26612172,
+  "transcript_reserved_own_bytes": 409600,
+  "transcript_reserved_root_bytes": 393216,
+  "transcript_reserved_coordinator_bytes": 131072,
+  "closing_records_reserved_bytes": 131072,
+  "retained_before_compiler_bytes": 0,
+  "definition": "Count own source/evidence/raw/help/object bytes read,hashed,parsed; every own read recorded before access. Compiler-internal IO/memory and tool-internal Git/index reads are not analysis payload reads. External root/reviewer reservations conservative; prior sessions remain separately qualified/uncertain.",
+  "preexisting_baseline_uncertainty": "Root initial untracked status output was truncated (~28KB); reservedRoot1MiB covers declared<150KB read/transcript estimate conservatively. No oldsession requalification.",
+  "source_scope_before_analysis": "SemanticRuntimeRecords.swift + exact ObservableModelOwnerNamespace defining file to identify; no mutation yet.",
+  "old_cumulative_output_ceiling_bytes": 2147483648,
+  "old_protected_reserve_bytes": 33554432,
+  "coordinator_uncertainty": "Initial directoryrg orientation not exactmetered; reviewer requests conservative8MiB charge, replacing2MiB. Future directreads exactincrementals.",
+  "processing_external_detail": {
+    "root_conservative_bytes": 2097152,
+    "coordinator_initial_orientation_uncertainty_bytes": 8388608,
+    "coordinator_later_exact_incremental_bytes": 3543500,
+    "mechanism_advice_unmetered_bounded_nextfamily_inspection_conservative_bytes": 8388608,
+    "note": "Reviewer exact later charge additive; advice shell/source scan uncertainty explicitly conservative, not exact. No oldsession charge reset.",
+    "dispatch_reviewer_reserved_bytes": 6291456,
+    "dispatch_review_exact_before_amendment_bytes": 2367116,
+    "dispatch_final_review_exact_under_amendment_bytes": 7572634
+  },
+  "transcript_advice_charge_from_own_reserve_bytes": 32768,
+  "closing_snapshot": {
+    "owned_task_retained_bytes_before_finalledger": 3315179,
+    "archive_expected_without_finalledger_bytes": 171472,
+    "new_fixture_outside_owned_root_bytes": 4990,
+    "transcript_and_closing_reserved_bytes": 868352,
+    "own_metered_processing_bytes": 28101896,
+    "external_processing_charged_bytes": 21369292,
+    "processing_total_upper_charge_bytes": 49471188,
+    "final_ledger_copy_and_bookkeeping_growth_covered_by_unreleased_closing_reserve": true
+  },
+  "publication_archive": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-namespace-qualification1-result",
+    "hard_cap_bytes": 204800,
+    "prewrite_forecast_bytes": 183472,
+    "copied_only_text_records_no_modules_objects_binaries": true
+  },
+  "next_batch_baseline": "10a6b7bf",
+  "dispatch_closing_snapshot_pending_amendment": {
+    "owned_task_retained_bytes": 3651043,
+    "outside_task_retained_and_source_growth_charge_bytes": 204624,
+    "unreleased_transcript_closing_reserve_bytes": 901120,
+    "charged_retention_bytes": 4756787,
+    "remaining_active8MiB_bytes": 3631821,
+    "own_metered_processing_bytes": 61532425,
+    "external_processing_upper_charge_bytes": 28709324,
+    "total_processing_upper_charge_bytes": 90241749
+  },
+  "retention_amendment": {
+    "approved_by": "Explicit human answer forwarded by root",
+    "exact_user_answer": "Approve 16 MiB for this package",
+    "scope": "This continuous package sharedretention8\u219216MiB; one frozen paired oracle executablecap7MB, normal+fatal+independentreview; no time/processing/group/history reset",
+    "received_utc": "2026-10-29T14:40:18.692320+00:00"
+  },
+  "dispatch_publication_archive": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-physical-dispatch1-result",
+    "bytes": 325872,
+    "files": 25,
+    "no_binary_module_duplication": true
+  },
+  "dispatch_final_snapshot": {
+    "owned_task_retained_bytes": 10458620,
+    "external_archives_fixtures_positive_source_growth_bytes": 541379,
+    "unreleased_transcript_and_closing_reserved_bytes": 1064960,
+    "total_before_final_ledger_copy_bytes": 12064959,
+    "active_retention_limit_bytes": 16777216,
+    "own_metered_processing_bytes": 70003107,
+    "external_processing_upper_charge_bytes": 37097932,
+    "processing_upper_total_bytes": 107101039,
+    "active_processing_limit_bytes": 536870912,
+    "final_ledger_copy_metadata_growth_covered_by_closing_reserve": true
+  }
+}
