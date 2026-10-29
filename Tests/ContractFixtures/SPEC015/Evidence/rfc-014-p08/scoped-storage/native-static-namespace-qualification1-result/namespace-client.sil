@@ -1,0 +1,171 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+import GiftUISemanticCore
+
+import GiftUIObservableState
+
+@_noAllocation @inline(never) package func namespaceImportedCaller(_ twice: Bool) -> UInt32
+
+// namespaceImportedCaller(_:)
+// Isolation: unspecified
+sil [noinline] [no_allocation] [perf_constraint] @$s23NamespaceImportedClient09namespaceB6Callerys6UInt32VSbF : $@convention(thin) (Bool) -> UInt32 {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "twice"                                     // users: %17, %1
+bb0(%0 : $Bool):
+  debug_value %0, let, name "twice", argno 1      // id: %1
+  %2 = alloc_stack [lexical] [var_decl] $ObservableModelOwnerNamespace, var, name "model", type $ObservableModelOwnerNamespace // users: %6, %13, %19, %44
+  %3 = metatype $@thin ObservableModelOwnerNamespace.Type // user: %5
+  // function_ref ObservableModelOwnerNamespace.init()
+  %4 = function_ref @$s21GiftUIObservableState29ObservableModelOwnerNamespaceVACycfC : $@convention(method) (@thin ObservableModelOwnerNamespace.Type) -> @owned ObservableModelOwnerNamespace // user: %5
+  %5 = apply %4(%3) : $@convention(method) (@thin ObservableModelOwnerNamespace.Type) -> @owned ObservableModelOwnerNamespace // user: %6
+  store %5 to %2                                  // id: %6
+  %7 = alloc_stack [lexical] [var_decl] $SemanticRecordOwnerNamespace, var, name "semantic", type $SemanticRecordOwnerNamespace // users: %11, %24, %29, %42
+  %8 = metatype $@thin SemanticRecordOwnerNamespace.Type // user: %10
+  // function_ref SemanticRecordOwnerNamespace.init()
+  %9 = function_ref @$s18GiftUISemanticCore28SemanticRecordOwnerNamespaceVACycfC : $@convention(method) (@thin SemanticRecordOwnerNamespace.Type) -> @owned SemanticRecordOwnerNamespace // user: %10
+  %10 = apply %9(%8) : $@convention(method) (@thin SemanticRecordOwnerNamespace.Type) -> @owned SemanticRecordOwnerNamespace // user: %11
+  store %10 to %7                                 // id: %11
+  // function_ref ObservableModelOwnerNamespace.issue()
+  %12 = function_ref @$s21GiftUIObservableState29ObservableModelOwnerNamespaceV5issueAA0deF8IdentityVyAA0dC5ErrorOYKF : $@convention(method) (@inout ObservableModelOwnerNamespace) -> (ObservableModelOwnerIdentity, @error ObservableStateError) // users: %19, %13
+  try_apply %12(%2) : $@convention(method) (@inout ObservableModelOwnerNamespace) -> (ObservableModelOwnerIdentity, @error ObservableStateError), normal bb1, error bb15 // id: %13
+
+// %14                                            // user: %15
+bb1(%14 : $ObservableModelOwnerIdentity):         // Preds: bb0
+  %15 = struct_extract %14, #ObservableModelOwnerIdentity.rawValue // users: %16, %33
+  debug_value %15, let, name "modelValue"         // id: %16
+  %17 = struct_extract %0, #Bool._value           // users: %28, %18
+  cond_br %17, bb2, bb4                           // id: %18
+
+bb2:                                              // Preds: bb1
+  try_apply %12(%2) : $@convention(method) (@inout ObservableModelOwnerNamespace) -> (ObservableModelOwnerIdentity, @error ObservableStateError), normal bb3, error bb16 // id: %19
+
+bb3(%20 : $ObservableModelOwnerIdentity):         // Preds: bb2
+  br bb5                                          // id: %21
+
+bb4:                                              // Preds: bb1
+  br bb5                                          // id: %22
+
+bb5:                                              // Preds: bb3 bb4
+  // function_ref SemanticRecordOwnerNamespace.issue()
+  %23 = function_ref @$s18GiftUISemanticCore28SemanticRecordOwnerNamespaceV5issueAA0deF8IdentityVyAA0D14ExpansionErrorOYKF : $@convention(method) (@inout SemanticRecordOwnerNamespace) -> (SemanticRecordOwnerIdentity, @error SemanticExpansionError) // users: %29, %24
+  try_apply %23(%7) : $@convention(method) (@inout SemanticRecordOwnerNamespace) -> (SemanticRecordOwnerIdentity, @error SemanticExpansionError), normal bb6, error bb20 // id: %24
+
+// %25                                            // user: %26
+bb6(%25 : $SemanticRecordOwnerIdentity):          // Preds: bb5
+  %26 = struct_extract %25, #SemanticRecordOwnerIdentity.rawValue // users: %34, %27
+  debug_value %26, let, name "semanticValue"      // id: %27
+  cond_br %17, bb7, bb9                           // id: %28
+
+bb7:                                              // Preds: bb6
+  try_apply %23(%7) : $@convention(method) (@inout SemanticRecordOwnerNamespace) -> (SemanticRecordOwnerIdentity, @error SemanticExpansionError), normal bb8, error bb21 // id: %29
+
+bb8(%30 : $SemanticRecordOwnerIdentity):          // Preds: bb7
+  br bb10                                         // id: %31
+
+bb9:                                              // Preds: bb6
+  br bb10                                         // id: %32
+
+bb10:                                             // Preds: bb8 bb9
+  %33 = struct_extract %15, #UInt32._value        // user: %36
+  %34 = struct_extract %26, #UInt32._value        // user: %36
+  %35 = integer_literal $Builtin.Int1, 0          // user: %36
+  %36 = builtin "uadd_with_overflow_Int32"(%33, %34, %35) : $(Builtin.Int32, Builtin.Int1) // user: %37
+  %37 = tuple_extract %36, 0                      // user: %40
+  debug_value undef : $*SemanticRecordOwnerNamespace, var, name "semantic", expr op_deref // id: %38
+  debug_value undef : $*ObservableModelOwnerNamespace, var, name "model", expr op_deref // id: %39
+  br bb11(%37)                                    // id: %40
+
+// %41                                            // user: %43
+bb11(%41 : $Builtin.Int32):                       // Preds: bb18 bb19 bb10 bb13 bb14
+  dealloc_stack %7                                // id: %42
+  %43 = struct $UInt32 (%41)                      // user: %45
+  dealloc_stack %2                                // id: %44
+  return %43                                      // id: %45
+
+// %46                                            // users: %47, %48
+bb12(%46 : $ObservableStateError):                // Preds: bb16 bb15
+  debug_value %46, let, name "error"              // id: %47
+  switch_enum %46, case #ObservableStateError.modelGenerationExhausted!enumelt: bb13, default bb14 // id: %48
+
+bb13:                                             // Preds: bb12
+  %49 = integer_literal $Builtin.Int32, 102       // user: %52
+  debug_value undef : $*SemanticRecordOwnerNamespace, var, name "semantic", expr op_deref // id: %50
+  debug_value undef : $*ObservableModelOwnerNamespace, var, name "model", expr op_deref // id: %51
+  br bb11(%49)                                    // id: %52
+
+bb14:                                             // Preds: bb12
+  %53 = integer_literal $Builtin.Int32, 101       // user: %56
+  debug_value undef : $*SemanticRecordOwnerNamespace, var, name "semantic", expr op_deref // id: %54
+  debug_value undef : $*ObservableModelOwnerNamespace, var, name "model", expr op_deref // id: %55
+  br bb11(%53)                                    // id: %56
+
+// %57                                            // user: %58
+bb15(%57 : $ObservableStateError):                // Preds: bb0
+  br bb12(%57)                                    // id: %58
+
+// %59                                            // user: %60
+bb16(%59 : $ObservableStateError):                // Preds: bb2
+  br bb12(%59)                                    // id: %60
+
+// %61                                            // users: %62, %63
+bb17(%61 : $SemanticExpansionError):              // Preds: bb21 bb20
+  debug_value %61, let, name "error"              // id: %62
+  switch_enum %61, case #SemanticExpansionError.invalidIdentity!enumelt: bb18, default bb19 // id: %63
+
+bb18:                                             // Preds: bb17
+  %64 = integer_literal $Builtin.Int32, 104       // user: %67
+  debug_value undef : $*SemanticRecordOwnerNamespace, var, name "semantic", expr op_deref // id: %65
+  debug_value undef : $*ObservableModelOwnerNamespace, var, name "model", expr op_deref // id: %66
+  br bb11(%64)                                    // id: %67
+
+bb19:                                             // Preds: bb17
+  %68 = integer_literal $Builtin.Int32, 103       // user: %71
+  debug_value undef : $*SemanticRecordOwnerNamespace, var, name "semantic", expr op_deref // id: %69
+  debug_value undef : $*ObservableModelOwnerNamespace, var, name "model", expr op_deref // id: %70
+  br bb11(%68)                                    // id: %71
+
+// %72                                            // user: %73
+bb20(%72 : $SemanticExpansionError):              // Preds: bb5
+  br bb17(%72)                                    // id: %73
+
+// %74                                            // user: %75
+bb21(%74 : $SemanticExpansionError):              // Preds: bb7
+  br bb17(%74)                                    // id: %75
+} // end sil function '$s23NamespaceImportedClient09namespaceB6Callerys6UInt32VSbF'
+
+// ObservableModelOwnerNamespace.init()
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState29ObservableModelOwnerNamespaceVACycfC : $@convention(method) (@thin ObservableModelOwnerNamespace.Type) -> @owned ObservableModelOwnerNamespace {
+[global: read,write,copy]
+} // end sil function '$s21GiftUIObservableState29ObservableModelOwnerNamespaceVACycfC'
+
+// SemanticRecordOwnerNamespace.init()
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s18GiftUISemanticCore28SemanticRecordOwnerNamespaceVACycfC : $@convention(method) (@thin SemanticRecordOwnerNamespace.Type) -> @owned SemanticRecordOwnerNamespace {
+[global: ]
+} // end sil function '$s18GiftUISemanticCore28SemanticRecordOwnerNamespaceVACycfC'
+
+// ObservableModelOwnerNamespace.issue()
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s21GiftUIObservableState29ObservableModelOwnerNamespaceV5issueAA0deF8IdentityVyAA0dC5ErrorOYKF : $@convention(method) (@inout ObservableModelOwnerNamespace) -> (ObservableModelOwnerIdentity, @error ObservableStateError) {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+} // end sil function '$s21GiftUIObservableState29ObservableModelOwnerNamespaceV5issueAA0deF8IdentityVyAA0dC5ErrorOYKF'
+
+// SemanticRecordOwnerNamespace.issue()
+// Isolation: unspecified
+sil [no_allocation] [perf_constraint] @$s18GiftUISemanticCore28SemanticRecordOwnerNamespaceV5issueAA0deF8IdentityVyAA0D14ExpansionErrorOYKF : $@convention(method) (@inout SemanticRecordOwnerNamespace) -> (SemanticRecordOwnerIdentity, @error SemanticExpansionError) {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+} // end sil function '$s18GiftUISemanticCore28SemanticRecordOwnerNamespaceV5issueAA0deF8IdentityVyAA0D14ExpansionErrorOYKF'
+
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'NamespaceImportedClient/NamespaceQualification.swift' => '/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/AllocationGate/NamespaceQualification.swift'
+
+

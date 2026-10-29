@@ -2,6 +2,9 @@
 package struct ObservableModelOwnerIdentity: Equatable, Sendable {
     package let rawValue: UInt32
 
+    #if GIFTUI_NAMESPACE_QUALIFICATION
+        @_noAllocation
+    #endif
     fileprivate init(rawValue: UInt32) {
         self.rawValue = rawValue
     }
@@ -12,17 +15,26 @@ package struct ObservableModelOwnerIdentity: Equatable, Sendable {
 package struct ObservableModelOwnerNamespace: ~Copyable {
     private var nextValue: UInt32?
 
+    #if GIFTUI_NAMESPACE_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {
         nextValue = 0
     }
 
     // Internal boundary fixture entry; production starts at zero.
+    #if GIFTUI_NAMESPACE_QUALIFICATION
+        @_noAllocation
+    #endif
     init(nextValue: UInt32?) {
         self.nextValue = nextValue
     }
 
     package var isExhausted: Bool { nextValue == nil }
 
+    #if GIFTUI_NAMESPACE_QUALIFICATION
+        @_noAllocation
+    #endif
     package mutating func issue() throws(ObservableStateError) -> ObservableModelOwnerIdentity {
         guard let value = nextValue else { throw .modelGenerationExhausted }
         let successor = value.addingReportingOverflow(1)

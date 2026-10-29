@@ -1,0 +1,273 @@
+{
+  "status": "NAMESPACE_FAMILY_QUALIFIED__FULL42_ENTRY_FAIL_NEW_ACCOUNTING_DEPENDENCY",
+  "closed_utc": "2026-10-29T13:21:54.014903+00:00",
+  "fixed_start_utc": "2026-10-29T12:59:05.930656+00:00",
+  "fixed_deadline_utc": "2026-10-29T14:59:05.930656+00:00",
+  "baseline": "86a6aaa9",
+  "owned_manifest": {
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": {
+      "bytes": 19661,
+      "sha256": "dccf4b25cac6aab6120584833e8775ef031929ecf96d9157a0e99b8b494f8543"
+    },
+    "Sources/GiftUIObservableState/ObservableModelIdentity.swift": {
+      "bytes": 2081,
+      "sha256": "6a7f0c558b9e4a8a940c63f023643208361210e2929f2967460c38c9c2e7328b"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/NamespaceQualification.swift": {
+      "bytes": 4990,
+      "sha256": "5a851f6b14c6b3e4c5f8822b4a28e764998e3c495524558ae70fece0434a7c5a"
+    }
+  },
+  "source_scope": "Only two Source files plus one focused fixture. Root owns index/commit. Adjacent ObservableModelAllocationNamespace unchanged/unqualified; no Host adoption.",
+  "source_change": "Conditional defining-module noAllocation on seven ordinary concrete identity/namespace constructors and issuers; one fixture-only internal Semantic cursor seed initializer additionally checked. Existing cursor fields/zero defaults, typed throw cases, UInt32.max transition to sticky nil, noncopyability and signatures unchanged. Model isExhausted getter remains ordinary/unannotated; tested behavior only.",
+  "qualifications": {
+    "producer": "Fresh whole10sourceSemantic and13sourceObservable module/object pairs compiled with performance checker + GIFTUI_NAMESPACE_QUALIFICATION and GIFTUI_ACCOUNTING_QUALIFICATION, without GIFTUI_NAMESPACE_BOUNDARY_FIXTURE. Complete source freeze and argv batch-plan.json; compiler pins reused from effect-attribution1/freeze.json, no binary rehash.",
+    "imported_client": "Complete10981B namespace-client.sil: noinline no_allocation root, opaque imported ctor declarations, four typed try_apply sites, exact typed error catches and normal/error cleanup; no Error existential or box/ref allocation. This tests those concrete operations, not every possible namespace caller.",
+    "boundary": "Separate same-module executables; Semantic original10sources + fixture and seam flag, Model original complete identity+values source files + fixture. Neither substituted as production-module proof. Each executes once: zero/sequential0,1; max exactly once; repeated exhaustion twice; initially nil; independent ordinary cursor continues2. Model exhaustion accessor state also checked. Normal functional programs only, no cold/observed allocation/timing claim.",
+    "controls": "Unchanged positive exit0; allocating negative exit1 with actual allocation diagnostic. Prior constructor cross-module soundness control applicability preserved.",
+    "lifetime_reuse": "Exact prior U03 references below retain only their documented conditional source predicates. The18-class matrix remainsOPEN/executionqualificationFALSE; callback report explicitly leaves library-source\u2192compiled-image applicability open. New namespace modules do NOT refresh the old compiled bytes/SIL or close U03/global safety/cold. Current ordinary namespace field/layout/default/typedthrow/issuance bodies and noncopyability equal86a6aaa9 except checked-effect constraints; no cursor reset or ownership conversion. New checked defining-module bodies + full annotated imported caller (typed normal/error edges and stack cleanup) + repeated exact boundary catches independently cover this concrete namespace package, not all unsafe bridge/retirement paths.",
+    "compatibility": "namespace-compatibility.json: old/new defined external symbols none removed or added for both ordinary modules; object hashes differ and no binary identity claimed. Serialized/new module effects paired with fresh matching objects. Reused RuntimeCore/Interaction and candidateHost exact prior accepted accounting identities/body/layout/default applicability; current first-I trace confirms actual modules. Host unchanged/notadopted."
+  },
+  "result_bindings": {
+    "GiftUISemanticCore": {
+      "receipt": "GiftUISemanticCore.json",
+      "receipt_sha256": "b10224c98a3b1d50efa5825fe4ac52645e7b21c6731fddfb7deb925859999a60",
+      "exit": 0,
+      "raw": "GiftUISemanticCore.raw",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/production/GiftUISemanticCore.swiftmodule": {
+          "bytes": 872544,
+          "sha256": "2dcb6465f1a081644c64cb572629f3fc2fdd1d73a0af24d0e9d202de6840df57"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/production/GiftUISemanticCore.o": {
+          "bytes": 505944,
+          "sha256": "6e495d4a3958540d49224084cf7ddae1794fa67663e3ea433b0a0fa75d4e0907"
+        }
+      }
+    },
+    "GiftUIObservableState": {
+      "receipt": "GiftUIObservableState.json",
+      "receipt_sha256": "a10d0c8fa877d13585c5a8b6a61c15e9f60c3927e0718de5c2e1a88f21947c4f",
+      "exit": 0,
+      "raw": "GiftUIObservableState.raw",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/production/GiftUIObservableState.swiftmodule": {
+          "bytes": 359340,
+          "sha256": "c367c375235032307aa9ab59c837b93a8e04503d3b7e7f2019788d7e61e0046b"
+        },
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/production/GiftUIObservableState.o": {
+          "bytes": 254456,
+          "sha256": "9cc8c3ef28e189859c82214577ca405cd749c79443a5858c21c078a7e26311b2"
+        }
+      }
+    },
+    "format-owned": {
+      "receipt": "format-owned.json",
+      "receipt_sha256": "f0f353829b55627860314fa1e3d63ca793a3fd09a22c98863ad9f1173131febf",
+      "exit": 0,
+      "raw": "format-owned.raw",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {}
+    },
+    "format-lint": {
+      "receipt": "format-lint.json",
+      "receipt_sha256": "22bbeae251945a95abe2304d9d9942435e74dc3dfb0a2dc6fd5ca337cfe75f56",
+      "exit": 0,
+      "raw": "format-lint.raw",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {}
+    },
+    "actual-entry": {
+      "receipt": "actual-entry.json",
+      "receipt_sha256": "8a34ef5c228789f5a1379de7b5e72a2b6ebc641a018c13296633d81f8cc3004f",
+      "exit": 1,
+      "raw": "actual-entry.raw",
+      "raw_bytes": 79789,
+      "raw_sha256": "0ff1b8df66f0f66d6f3a101eb4c2115a979c1db387b4e9d8799c5759f81ab247",
+      "artifacts": {}
+    },
+    "positive": {
+      "receipt": "positive.json",
+      "receipt_sha256": "202ef009f2700dd4a8276f2b65b758813191c88fe19ed19bc3eb0d8c532687e0",
+      "exit": 0,
+      "raw": "positive.raw",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/positive.o": {
+          "bytes": 944,
+          "sha256": "8d5b217097cd2e203e0b989b5ceb0a31a50c50f5f75c73862c14a7054ad13789"
+        }
+      }
+    },
+    "allocation-negative": {
+      "receipt": "allocation-negative.json",
+      "receipt_sha256": "c0a1816de6527485bdced8d77604af8d7bb5dac54e25edf8ecae1f5e56d86df1",
+      "exit": 1,
+      "raw": "allocation-negative.raw",
+      "raw_bytes": 393,
+      "raw_sha256": "6d2edcdccb7586cfd0a4a11dfa9165c9b880624b7013384b3a19636701781b7f",
+      "artifacts": {}
+    },
+    "namespace-imported-check": {
+      "receipt": "namespace-imported-check.json",
+      "receipt_sha256": "36b81040b4c554bd4865a60234c30d29aca78b1035e9cab7d5e616f987fd9eb1",
+      "exit": 0,
+      "raw": "namespace-imported-check.raw",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/namespace-client.sil": {
+          "bytes": 10981,
+          "sha256": "6eb65d4b08ffb3004f78e0d1a3adbe9889edeec6e5bd5c02ab8f3402ac0153f9"
+        }
+      }
+    },
+    "semantic-boundary-build": {
+      "receipt": "semantic-boundary-build.json",
+      "receipt_sha256": "788db7f9877e288be04ab1541aa3a1c8f88ab64b39b05312699463d65cefcfb3",
+      "exit": 1,
+      "raw": "semantic-boundary-build.raw",
+      "raw_bytes": 695,
+      "raw_sha256": "30b7a6655db7a71703d13baba3f3387cc44c27dac32ea3dd040f114e9c069ecc",
+      "artifacts": {}
+    },
+    "model-boundary-build": {
+      "receipt": "model-boundary-build.json",
+      "receipt_sha256": "2d0e55fbe004df75c7e6cf17454b9f727b235c20b91dfc42a4e7953416f5d507",
+      "exit": 1,
+      "raw": "model-boundary-build.raw",
+      "raw_bytes": 187,
+      "raw_sha256": "a5637cd6266d7c7fe22f522338f2046e0737552540c239b09c8a17f26f9b21d4",
+      "artifacts": {}
+    },
+    "semantic-boundary-build2": {
+      "receipt": "semantic-boundary-build2.json",
+      "receipt_sha256": "ab482803a0b52f29606fedb22178eb13c6d97348d933ff4f3febb5c995e7ddce",
+      "exit": 0,
+      "raw": "semantic-boundary-build2.raw",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/semantic-boundary": {
+          "bytes": 708272,
+          "sha256": "3db1d8878ee2976fe5f001ef869b8cbd6cc7c89e7bf250afb6cbd4ca9f2f1ae9"
+        }
+      }
+    },
+    "model-boundary-build2": {
+      "receipt": "model-boundary-build2.json",
+      "receipt_sha256": "e1cd586b764865ccc06ba4b45feee0667e37a3aee5e97cfe7faa9c4dc580c855",
+      "exit": 0,
+      "raw": "model-boundary-build2.raw",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifacts": {
+        "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1/model-boundary": {
+          "bytes": 332832,
+          "sha256": "6854855ea00729748f52678fe5dbca72a9459dc6fbd4c294c873adecc1573b81"
+        }
+      }
+    },
+    "semantic-boundary-execute": {
+      "receipt": "semantic-boundary-execute.json",
+      "receipt_sha256": "996ec50e8ee3f2dff46745ed4cf8183538b62218be85a580eeef6e8bb5b7ad4f",
+      "exit": 0,
+      "raw": "semantic-boundary-execute.raw",
+      "raw_bytes": 118,
+      "raw_sha256": "96aa4aad0d2bacaeec68d9ff9faa94c7d4b8f0c224be7218f6d0bc59925a26f4",
+      "artifacts": {}
+    },
+    "model-boundary-execute": {
+      "receipt": "model-boundary-execute.json",
+      "receipt_sha256": "137c11b407ee1aee8a91f9d7e92dbf1dec2050d48841183b35e093f33752b90a",
+      "exit": 0,
+      "raw": "model-boundary-execute.raw",
+      "raw_bytes": 134,
+      "raw_sha256": "0cdcd458d757852f46c8373936356fa12432f2edd548e63e29114c70f599487c",
+      "artifacts": {}
+    }
+  },
+  "failure_history": "Original duplicate-local semantic fixture compile failure and nonexistent GiftUI.o link failure retained, including boundary-fixture-attempt1.swift. Consolidated correction changed second local name + bound only GiftUI.o to exact prior accepted focused-plan-final path. Corrected builds launched before later review-before-run message arrived; root acknowledged. No third repair/extra producer.",
+  "fullentry_residual": {
+    "raw": "actual-entry.raw",
+    "actual42_inputs_unchanged": true,
+    "root_annotation_and_GIFTUI_COUNTER_ALLOCATION_GATE_unchanged": true,
+    "action_difference": "Original emitmodule/object replaced with emitSIL to /dev/null; added module-load remarks; same42sourceorder/module/package/target/Osize/WMO/lifetimefeatures/searchprovenance. No executable run.",
+    "diagnosed": "CounterScopedStorage.swift1751 DynamicLayoutWorkspace.reservedPayloadBytes through g0 withBorrow in physicalFacts\u2192Static outer.audit\u2192p08CheckGraphSelection\u2192p08CounterGraph\u2192p08CounterStaticResourceEntryV1.",
+    "provider": "Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift",
+    "provider_sha256": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+    "complete_getter": "    package var reservedPayloadBytes: UInt64 {\n        UInt64(scopes.capacity * MemoryLayout<DynamicLayoutWorkspaceScope>.stride)\n            + UInt64(scopeIndex.capacity * MemoryLayout<Int?>.stride)\n            + UInt64(lines.capacity * MemoryLayout<LayoutTextLine<SemanticRecordReference>>.stride)\n            + UInt64(\n                glyphs.capacity\n                    * MemoryLayout<LayoutPositionedGlyph<SemanticRecordReference>>.stride)\n            + UInt64(depth.capacity * MemoryLayout<SemanticRecordReference>.stride)\n    }",
+    "immediate_family": "g0 and g1 are P08TypedSlot<DynamicLayoutWorkspace>; getter sums retained capacity*stride for scopes/scopeIndex/lines/glyphs/depth. physicalFacts object helper subtracts payload from entry retainedBytes, visits full typed extents into family12 rows, totals26families and constructs geometry audit facts. Dynamic arm remains present when checking generic owner; no branch deletion/provider annotation or path-infeasibility correction in this package. g4/g3 accounting neighbors remain unqualified, no next-failure claim.",
+    "meaning": "Compiler unavailable-body/performance diagnostic, not an observed allocation or proof of reachable runtime allocation; complete entry remains FAIL."
+  },
+  "historical_output": {
+    "prior_accounting_record": ".build/contracts/p08-native-static-physical-accounting1/outcome.json",
+    "prior_qualification_unchanged": "Old2GiB historical ceiling plus protected32MiB reserve remains additional; immutable prior named-root sample1449410518B plus this full8MiB envelope and reserve is1491353558B, below2147483648B. No old failures requalified.",
+    "new_package_below8MiB_also_adds_to_historical2GiB_ceiling": true
+  },
+  "limits": {
+    "processing_limit_bytes": 536870912,
+    "retention_limit_bytes": 8388608,
+    "fixed_child_max_seconds": 900,
+    "raw_group_line_limit": 32768,
+    "all_new_raw_combined_hard_cap": 500000,
+    "per_file_artifact_caps": "Semantic1MB,Observable500KB,Semantictest1.8MB,Modeltest600KB; no sidecars (devnull from outset), no pruning/compression/overwriting failures.",
+    "capture": "Chunks charged before retention; oversize chunk kills child and drains charged tails. No emitted==read assumption. Known finite file cap totals plus raw/record/transcript reservations stay below8MiB.",
+    "processing_definition": "Count own source/evidence/raw/help/object bytes read,hashed,parsed; every own read recorded before access. Compiler-internal IO/memory and tool-internal Git/index reads are not analysis payload reads. External root/reviewer reservations conservative; prior sessions remain separately qualified/uncertain."
+  },
+  "stop": "No further source/producer. Scoped namespace success and fullentry blocker remain separate; parent independent review/commit required.",
+  "u03_prior_references": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-retained-safety2-result/README.md",
+      "sha256": "8e845701791a30f37344c805e780982db7e88f2eca00c966d358d7875d761a58",
+      "bytes": 2290
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-callback-retirement1-result/README.md",
+      "sha256": "948f2c9aafe2748fa66ebbec353ca84cd5e86fa745fb12c3e62fd42d0d940c2a",
+      "bytes": 2190
+    }
+  ],
+  "publication_manifest": {
+    "maintained_sources_and_fixture": [
+      "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "Sources/GiftUIObservableState/ObservableModelIdentity.swift",
+      "Tests/ContractFixtures/SPEC015/AllocationGate/NamespaceQualification.swift"
+    ],
+    "evidence_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-namespace-qualification1",
+    "minimum_repro_records": [
+      "outcome.json",
+      "ledger.json",
+      "batch-plan.json",
+      "namespace-compatibility.json",
+      "namespace-client.sil",
+      "actual-entry.json",
+      "actual-entry.raw",
+      "GiftUISemanticCore.json",
+      "GiftUIObservableState.json",
+      "positive.json",
+      "allocation-negative.json",
+      "allocation-negative.raw",
+      "semantic-boundary-build.json",
+      "semantic-boundary-build.raw",
+      "model-boundary-build.json",
+      "model-boundary-build.raw",
+      "boundary-fixture-attempt1.swift",
+      "semantic-boundary-build2.json",
+      "model-boundary-build2.json",
+      "semantic-boundary-execute.json",
+      "semantic-boundary-execute.raw",
+      "model-boundary-execute.json",
+      "model-boundary-execute.raw"
+    ],
+    "note": "Parent selects durable archive paths; no binary/module duplicate or index/commit by owner."
+  },
+  "independent_review": "Coordinator scoped ACCEPT: complete source equivalence, ordinary/fixture separation, typed catches, full normal/error caller cleanup and artifact hashes verified. U03 remainsOPEN; fullentryFAIL/newaccountingdependency and Hostnonadoption unchanged."
+}

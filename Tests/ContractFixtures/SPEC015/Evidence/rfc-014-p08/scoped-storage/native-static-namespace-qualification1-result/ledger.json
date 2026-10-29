@@ -1,0 +1,45 @@
+{
+  "session_start_utc": "2026-10-29T12:59:05.930656+00:00",
+  "session_deadline_utc": "2026-10-29T14:59:05.930656+00:00",
+  "baseline_git": "86a6aaa9",
+  "processing_limit_bytes": 536870912,
+  "retention_limit_bytes": 8388608,
+  "processing_own_metered_bytes": 28104739,
+  "processing_reserved_root_bytes": 9437184,
+  "processing_reserved_coordinator_bytes": 11932108,
+  "transcript_reserved_own_bytes": 409600,
+  "transcript_reserved_root_bytes": 262144,
+  "transcript_reserved_coordinator_bytes": 65536,
+  "closing_records_reserved_bytes": 131072,
+  "retained_before_compiler_bytes": 0,
+  "definition": "Count own source/evidence/raw/help/object bytes read,hashed,parsed; every own read recorded before access. Compiler-internal IO/memory and tool-internal Git/index reads are not analysis payload reads. External root/reviewer reservations conservative; prior sessions remain separately qualified/uncertain.",
+  "preexisting_baseline_uncertainty": "Root initial untracked status output was truncated (~28KB); reservedRoot1MiB covers declared<150KB read/transcript estimate conservatively. No oldsession requalification.",
+  "source_scope_before_analysis": "SemanticRuntimeRecords.swift + exact ObservableModelOwnerNamespace defining file to identify; no mutation yet.",
+  "old_cumulative_output_ceiling_bytes": 2147483648,
+  "old_protected_reserve_bytes": 33554432,
+  "coordinator_uncertainty": "Initial directoryrg orientation not exactmetered; reviewer requests conservative8MiB charge, replacing2MiB. Future directreads exactincrementals.",
+  "processing_external_detail": {
+    "root_conservative_bytes": 1048576,
+    "coordinator_initial_orientation_uncertainty_bytes": 8388608,
+    "coordinator_later_exact_incremental_bytes": 3543500,
+    "mechanism_advice_unmetered_bounded_nextfamily_inspection_conservative_bytes": 8388608,
+    "note": "Reviewer exact later charge additive; advice shell/source scan uncertainty explicitly conservative, not exact. No oldsession charge reset."
+  },
+  "transcript_advice_charge_from_own_reserve_bytes": 32768,
+  "closing_snapshot": {
+    "owned_task_retained_bytes_before_finalledger": 3315179,
+    "archive_expected_without_finalledger_bytes": 171472,
+    "new_fixture_outside_owned_root_bytes": 4990,
+    "transcript_and_closing_reserved_bytes": 868352,
+    "own_metered_processing_bytes": 28101896,
+    "external_processing_charged_bytes": 21369292,
+    "processing_total_upper_charge_bytes": 49471188,
+    "final_ledger_copy_and_bookkeeping_growth_covered_by_unreleased_closing_reserve": true
+  },
+  "publication_archive": {
+    "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-namespace-qualification1-result",
+    "hard_cap_bytes": 204800,
+    "prewrite_forecast_bytes": 183472,
+    "copied_only_text_records_no_modules_objects_binaries": true
+  }
+}

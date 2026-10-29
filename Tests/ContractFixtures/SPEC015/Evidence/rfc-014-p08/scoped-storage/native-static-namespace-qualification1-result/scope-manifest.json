@@ -1,0 +1,89 @@
+{
+  "baseline": "86a6aaa9",
+  "source_and_fixture": {
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": {
+      "bytes": 19661,
+      "sha256": "dccf4b25cac6aab6120584833e8775ef031929ecf96d9157a0e99b8b494f8543"
+    },
+    "Sources/GiftUIObservableState/ObservableModelIdentity.swift": {
+      "bytes": 2081,
+      "sha256": "6a7f0c558b9e4a8a940c63f023643208361210e2929f2967460c38c9c2e7328b"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/NamespaceQualification.swift": {
+      "bytes": 4990,
+      "sha256": "5a851f6b14c6b3e4c5f8822b4a28e764998e3c495524558ae70fece0434a7c5a"
+    }
+  },
+  "archive_path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-namespace-qualification1-result",
+  "archive_files": {
+    "outcome.json": {
+      "bytes": 17415,
+      "sha256": "5ccf1745b3a142adbdbd1cfe8cc4cc032eed7b79475aa9a5b082e621cb261e4c"
+    },
+    "batch-plan.json": {
+      "bytes": 46280,
+      "sha256": "08e198774046bdddb13b8d2c54d9c8f572f390c353d450b570a2336776af2d95"
+    },
+    "source-freeze.json": {
+      "bytes": 830,
+      "sha256": "61e0332119c8f393aaaf2802787f502768f61f4fd479cb14ff9df647ea4e6515"
+    },
+    "namespace-compatibility.json": {
+      "bytes": 1731,
+      "sha256": "0c495a1915de9d789b255ae2d131d4497d763440c39876a0fbf8134cac51b18d"
+    },
+    "namespace-client.sil": {
+      "bytes": 10981,
+      "sha256": "6eb65d4b08ffb3004f78e0d1a3adbe9889edeec6e5bd5c02ab8f3402ac0153f9"
+    },
+    "namespace-imported-check.json": {
+      "bytes": 2907,
+      "sha256": "36b81040b4c554bd4865a60234c30d29aca78b1035e9cab7d5e616f987fd9eb1"
+    },
+    "actual-entry.raw": {
+      "bytes": 79789,
+      "sha256": "0ff1b8df66f0f66d6f3a101eb4c2115a979c1db387b4e9d8799c5759f81ab247"
+    },
+    "allocation-negative.raw": {
+      "bytes": 393,
+      "sha256": "6d2edcdccb7586cfd0a4a11dfa9165c9b880624b7013384b3a19636701781b7f"
+    },
+    "semantic-boundary-build.raw": {
+      "bytes": 695,
+      "sha256": "30b7a6655db7a71703d13baba3f3387cc44c27dac32ea3dd040f114e9c069ecc"
+    },
+    "model-boundary-build.raw": {
+      "bytes": 187,
+      "sha256": "a5637cd6266d7c7fe22f522338f2046e0737552540c239b09c8a17f26f9b21d4"
+    },
+    "boundary-fixture-attempt1.swift": {
+      "bytes": 4966,
+      "sha256": "40524fc237d2e4f8262315fdbab1514e63490c6b7684f0bb9abe491f2954ee8a"
+    },
+    "semantic-boundary-execute.raw": {
+      "bytes": 118,
+      "sha256": "96aa4aad0d2bacaeec68d9ff9faa94c7d4b8f0c224be7218f6d0bc59925a26f4"
+    },
+    "model-boundary-execute.raw": {
+      "bytes": 134,
+      "sha256": "0cdcd458d757852f46c8373936356fa12432f2edd548e63e29114c70f599487c"
+    },
+    "README.md": {
+      "bytes": 2047,
+      "sha256": "175dd197320af1a5ab00d4b019473979767c2e5884b11520a83fdad529099814"
+    },
+    "ledger.json": {
+      "bytes": 2843,
+      "sha256": "3537efaa2c82ae9449c986c3c6a0bbb8addd552fdac096db8fc8b7d71fcd9b73"
+    },
+    "independent-review.md": {
+      "bytes": 1434,
+      "sha256": "7a2a0b8d7879cc7abd92471d134f0d9344bb4e94a65c897ba31d2bfca4396afd"
+    }
+  },
+  "qualification": "namespace-scoped ACCEPT / full42entryFAIL; no Host adoption",
+  "root_only_index_commit": true,
+  "reviewer_exact_incremental_processing_bytes": 3543500,
+  "reviewer_initial_uncertainty_charge_bytes": 8388608,
+  "manifest_self_excluded": true
+}

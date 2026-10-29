@@ -1,0 +1,10 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/AllocationGate/NamespaceQualification.swift:36:21: error: invalid redeclaration of 'identity'
+ 32 |             var ordinary = SemanticRecordOwnerNamespace()
+ 33 |             do {
+ 34 |                 let identity = try ordinary.issue()
+    |                     `- note: 'identity' previously declared here
+ 35 |                 precondition(identity.rawValue == 0)
+ 36 |                 let identity = try ordinary.issue()
+    |                     `- error: invalid redeclaration of 'identity'
+ 37 |                 precondition(identity.rawValue == 1)
+ 38 |             } catch { preconditionFailure("ordinary semantic issuance") }

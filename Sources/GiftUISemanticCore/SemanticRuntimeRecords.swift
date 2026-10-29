@@ -181,13 +181,31 @@ package struct SemanticRuntimeRecord: Sendable {
 @usableFromInline
 package struct SemanticRecordOwnerIdentity: Equatable, Sendable, BitwiseCopyable {
     package let rawValue: UInt32
+    #if GIFTUI_NAMESPACE_QUALIFICATION
+        @_noAllocation
+    #endif
     fileprivate init(_ rawValue: UInt32) { self.rawValue = rawValue }
 }
 
 /// Host assembly keeps this namespace across store teardown and reconstruction.
 package struct SemanticRecordOwnerNamespace: ~Copyable {
     private var next: UInt32? = 0
+    #if GIFTUI_NAMESPACE_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {}
+
+    #if GIFTUI_NAMESPACE_BOUNDARY_FIXTURE
+        // Same-module boundary tests seed the existing cursor once.
+        #if GIFTUI_NAMESPACE_QUALIFICATION
+            @_noAllocation
+        #endif
+        init(nextValue: UInt32?) { next = nextValue }
+    #endif
+
+    #if GIFTUI_NAMESPACE_QUALIFICATION
+        @_noAllocation
+    #endif
     package mutating func issue() throws(SemanticExpansionError) -> SemanticRecordOwnerIdentity {
         guard let value = next else { throw .invalidIdentity }
         let successor = value.addingReportingOverflow(1)

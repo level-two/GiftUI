@@ -1,0 +1,2 @@
+error: link command failed with exit code 1 (use -v to see invocation)
+clang: error: no such file or directory: '/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUI.o'
