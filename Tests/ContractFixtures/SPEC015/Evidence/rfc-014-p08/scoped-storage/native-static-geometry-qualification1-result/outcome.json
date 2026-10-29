@@ -1,0 +1,71 @@
+{
+  "status": "GEOMETRY_SCALAR_FAMILY_QUALIFIED__BOUNDARY61_PASS__ACTUAL42_STORAGECAPACITIES_FAIL",
+  "baseline": "1e147925",
+  "source_scope": {
+    "Sources/GiftUI/GiftUI.swift": {
+      "bytes": 4791,
+      "sha256": "57d0c1ece1381ea87728eee97a6dcd3c4d624a7b4cd108893531310bfe04ff78"
+    },
+    "Sources/GiftUILayout/LayoutValues.swift": {
+      "bytes": 2302,
+      "sha256": "06ef8ff75757a222ed8105ab74c6df9f03f4b6fd5f9d933026ded30275f81681"
+    },
+    "Sources/GiftUIDrawing/DrawingLimits.swift": {
+      "bytes": 2953,
+      "sha256": "b25d620c0b75397fdef759f7c60939417f8bc74eb68310d1931e41d949e19731"
+    },
+    "Sources/GiftUIRenderLowering/RenderProductionValues.swift": {
+      "bytes": 2533,
+      "sha256": "b49292b6dd9a101109dcaf073cb905a7a5acb4f08fe81080f00f9e2c43a9b8a9"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/GeometryQualification.swift": {
+      "bytes": 5764,
+      "sha256": "5ec6b671cb18fc22710d736d75987983ece7bb2bf094f51af8563b232697608c"
+    }
+  },
+  "normalization": "source-normalization.json",
+  "same_fixed_deadline": "2026-10-29T21:34:38.834107+00:00",
+  "defining_modules": "Fresh whole GiftUI/GiftUILayout/GiftUIRenderLowering/GiftUIDrawing module/object pairs; exact qualified and ordinary recipes in batch-plan.json. Fresh GiftUI uses enable-testing, unlike retained baseline.",
+  "actual42_result": "Exact42input annotated entry exit1 at CounterProfileStorage.swift45 ownership.storageCapacities through root.storageLayout\u2192auditStatic\u2192graph\u2192entry. All nine intended module providers authenticated by exact loader traces. No cold/global/P08 claim.",
+  "focused_validation": "Seven-object same-candidate executable1152304B,61 checks, all8 runtime-argument noinline imported checked wrappers; actual5 globals values, every scalar guard, all stored fields/layouts, zero-size acceptance and signed arithmetic/Rect endpoint overflow.",
+  "declared_and_retained_dependencies": {
+    "declared_target_closure": [
+      "GiftUI",
+      "GiftUIExecution",
+      "GiftUISemanticCore",
+      "GiftUITextResources",
+      "GiftUIRenderCore",
+      "GiftUILayout",
+      "GiftUIRenderLowering",
+      "GiftUIDrawing"
+    ],
+    "retained_object_modules": [
+      "GiftUI",
+      "GiftUISemanticCore",
+      "GiftUITextResources",
+      "GiftUIRenderCore",
+      "GiftUILayout",
+      "GiftUIRenderLowering",
+      "GiftUIDrawing"
+    ],
+    "omitted_declared_module": "Execution is a declared dependency; successful complete dead_strip link has no retained symbol requiring its object. No claim that it is absent from declared target closure."
+  },
+  "abi": "All four ordinary/qualified defined-global-symbol inventories identical. Every baseline export remains. GiftUI has26 extra defined witness/initializer symbols in both fresh enable-testing recipes; other3baseline inventories unchanged. No baseline binary-identity/resource closure claim.",
+  "controls": "Positive compile0, allocating-negative compile1 with allocation diagnostic; repository format lint0. Prior opaque checked producer/imported consumer soundness facility remains applicable: no new suppression or serialized-body weakening.",
+  "preserved_failures": [
+    "Wrong-provider actual-entry FAIL selected old Host ahead of retained candidate; complete raw+argv preserved.",
+    "First four-object link FAIL24KB undefined descriptor/function symbols; no executable resulted.",
+    "Plan-order FileNotFoundError before compiler/executable launch; recorded separately.",
+    "Seven-object corrected link+execute completed before STOP/reassess message arrived; complete closure independently reviewed afterward. No retrospective preflight claim.",
+    "Initial ABI baseline equality assertion FAIL; exact26 additions and classification erratum preserved."
+  ],
+  "provider_trace": "provider-order-and-loading.json",
+  "historical_obligations": "Prior failures/limits/accounting uncertainty preserved; unadopted Hostcandidate, current-callee/U03/lifetime/unsafe-bridge/cold/physical/resource/target/P08 exit remain OPEN.",
+  "resource_accounting": "Own explicit reads metered before access; initial orientation charged conservative1MiB, root2MiB and coordinator8MiB provided conservatively. Compiler/internal Git IO excluded. Own transcript upper reserve512KiB; reviewer128KiB includes32KiB advice despite earlier12KiB split forecast miss. Exact transcript audit and exact external per-read certificate unavailable. No clock/cap reset or old16MiB transfer.",
+  "source_or_producer_remaining": false,
+  "review": "Independent coordinator substantive ACCEPT; transcribed delivered review in independent-review.md. Publication/ledger closure only remains.",
+  "next_whole_family": "Actual Observable owner/root capacity and byte-partition descriptors plus reached construction/guards/defaults/identity/allocation namespace dependencies; whole family forecast required within same fixed session and remaining8MiB; no next edit/producer yet.",
+  "coordinator_processing_charged_bytes": 5550852,
+  "coordinator_processing_note": "Includes512KiB advice exactly once; final2,365,282B review/hash charge and earlier conservative uncertainty. Advice transcript exceeded12KiB split forecast and consumes32KiB of existing128KiB total.",
+  "publication_archive": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result"
+}

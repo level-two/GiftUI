@@ -1,0 +1,1 @@
+GEOMETRY_QUALIFICATION checks=61 actual-inputs=5 scalar-guards=all signed-overflow=both zero-size=accepted fields-and-layout=preserved

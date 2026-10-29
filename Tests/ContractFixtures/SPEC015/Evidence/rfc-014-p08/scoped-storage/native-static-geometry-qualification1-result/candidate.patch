@@ -1,0 +1,96 @@
+diff --git a/Sources/GiftUI/GiftUI.swift b/Sources/GiftUI/GiftUI.swift
+index 50b0c397..fb134195 100644
+--- a/Sources/GiftUI/GiftUI.swift
++++ b/Sources/GiftUI/GiftUI.swift
+@@ -4,6 +4,9 @@ public struct Point: Equatable, Hashable, Sendable {
+     public let x: GeometryScalar
+     public let y: GeometryScalar
+ 
++    #if GIFTUI_GEOMETRY_QUALIFICATION
++        @_noAllocation
++    #endif
+     public init(x: GeometryScalar, y: GeometryScalar) {
+         self.x = x
+         self.y = y
+@@ -14,6 +17,9 @@ public struct Size: Equatable, Hashable, Sendable {
+     public let width: GeometryScalar
+     public let height: GeometryScalar
+ 
++    #if GIFTUI_GEOMETRY_QUALIFICATION
++        @_noAllocation
++    #endif
+     public init?(width: GeometryScalar, height: GeometryScalar) {
+         guard width >= 0, height >= 0 else {
+             return nil
+@@ -27,6 +33,9 @@ public struct Rect: Equatable, Hashable, Sendable {
+     public let origin: Point
+     public let size: Size
+ 
++    #if GIFTUI_GEOMETRY_QUALIFICATION
++        @_noAllocation
++    #endif
+     public init?(origin: Point, size: Size) {
+         guard GeometryArithmetic.add(origin.x, size.width) != nil,
+             GeometryArithmetic.add(origin.y, size.height) != nil
+@@ -77,6 +86,9 @@ public struct ProposedSize: Equatable, Hashable, Sendable {
+ @usableFromInline
+ package enum GeometryArithmetic {
+     @usableFromInline
++    #if GIFTUI_GEOMETRY_QUALIFICATION
++        @_noAllocation
++    #endif
+     package static func add(
+         _ lhs: GeometryScalar,
+         _ rhs: GeometryScalar
+diff --git a/Sources/GiftUIDrawing/DrawingLimits.swift b/Sources/GiftUIDrawing/DrawingLimits.swift
+index ad7b3bd3..b251382f 100644
+--- a/Sources/GiftUIDrawing/DrawingLimits.swift
++++ b/Sources/GiftUIDrawing/DrawingLimits.swift
+@@ -22,6 +22,9 @@ package struct DrawingLimits: Equatable, Sendable {
+             && maximumNormalizedStrokeOperations >= other.maximumNormalizedStrokeOperations
+     }
+ 
++    #if GIFTUI_GEOMETRY_QUALIFICATION
++        @_noAllocation
++    #endif
+     package init?(
+         maximumLineWidth: GeometryScalar,
+         maximumCanvasOccurrences: UInt16,
+diff --git a/Sources/GiftUILayout/LayoutValues.swift b/Sources/GiftUILayout/LayoutValues.swift
+index 7cbded0a..741fdafe 100644
+--- a/Sources/GiftUILayout/LayoutValues.swift
++++ b/Sources/GiftUILayout/LayoutValues.swift
+@@ -15,6 +15,9 @@ package struct LayoutLimits: Equatable, Sendable {
+     @usableFromInline
+     package let maximumPositionedGlyphs: UInt16
+ 
++    #if GIFTUI_GEOMETRY_QUALIFICATION
++        @_noAllocation
++    #endif
+     package init?(
+         maximumScopes: UInt16,
+         maximumDepth: UInt16,
+diff --git a/Sources/GiftUIRenderLowering/RenderProductionValues.swift b/Sources/GiftUIRenderLowering/RenderProductionValues.swift
+index 040f95e3..edc6605a 100644
+--- a/Sources/GiftUIRenderLowering/RenderProductionValues.swift
++++ b/Sources/GiftUIRenderLowering/RenderProductionValues.swift
+@@ -6,6 +6,9 @@ package struct RenderLimits: Equatable, Sendable {
+     package let maximumPositionedGlyphs: UInt16
+     package let maximumClipDepth: UInt16
+ 
++    #if GIFTUI_GEOMETRY_QUALIFICATION
++        @_noAllocation
++    #endif
+     package init?(
+         maximumOperations: UInt16,
+         maximumPositionedGlyphs: UInt16,
+@@ -29,6 +32,9 @@ package struct RenderWorkspaceCapacity: Equatable, Sendable {
+     package let maximumTraversalDepth: UInt16
+     package let maximumTextLines: UInt16
+ 
++    #if GIFTUI_GEOMETRY_QUALIFICATION
++        @_noAllocation
++    #endif
+     package init?(
+         maximumSemanticScopes: UInt16,
+         maximumLayoutScopes: UInt16,

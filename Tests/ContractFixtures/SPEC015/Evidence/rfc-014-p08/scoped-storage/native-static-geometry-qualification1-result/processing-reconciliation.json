@@ -1,0 +1,8 @@
+{
+  "append_only_rows": 494,
+  "summed_charges_including_orientation": 56410749,
+  "previous_displayed_counter_was_lower": true,
+  "reason": "Runner and caller Meter instances could retain stale counters; every charge still appended. Sum is reconciled once at closing. This preserves uncertainty rather than treating transient ledger counters as exact.",
+  "root_reserve_bytes": 2097152,
+  "coordinator_reserve_bytes": 8388608
+}

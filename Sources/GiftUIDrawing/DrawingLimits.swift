@@ -22,6 +22,9 @@ package struct DrawingLimits: Equatable, Sendable {
             && maximumNormalizedStrokeOperations >= other.maximumNormalizedStrokeOperations
     }
 
+    #if GIFTUI_GEOMETRY_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumLineWidth: GeometryScalar,
         maximumCanvasOccurrences: UInt16,

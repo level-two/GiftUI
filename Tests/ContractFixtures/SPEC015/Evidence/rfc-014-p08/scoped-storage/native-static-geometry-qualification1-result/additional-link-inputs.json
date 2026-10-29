@@ -1,0 +1,14 @@
+{
+  ".build/contracts/p08-native-static-namespace-qualification1/production/GiftUISemanticCore.o": {
+    "bytes": 505944,
+    "sha256": "6e495d4a3958540d49224084cf7ddae1794fa67663e3ea433b0a0fa75d4e0907"
+  },
+  ".build/contracts/p08-counter-8erdhh4s/GiftUIRenderCore.o": {
+    "bytes": 62200,
+    "sha256": "c9af28358386ec70afa85fed17c84e99e65494f8b804c44f82dfd231bd41b52a"
+  },
+  ".build/contracts/p08-counter-8erdhh4s/GiftUITextResources.o": {
+    "bytes": 102840,
+    "sha256": "46d11fcc93d3a13f7307a28d5a5606d0749167c2d7aa9e865959ff3b5d05a33b"
+  }
+}

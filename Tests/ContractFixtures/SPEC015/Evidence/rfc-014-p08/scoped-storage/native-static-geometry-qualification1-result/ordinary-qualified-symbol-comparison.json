@@ -1,0 +1,165 @@
+{
+  "GiftUI": {
+    "inputs": {
+      "baseline": {
+        "path": ".build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.o",
+        "bytes": 354032,
+        "sha256": "697e1435723ab9721bdcda4fe029a190cef1b7fa1d609381e5e0905c3163575c",
+        "defined_global_symbol_count": 1309,
+        "symbol_inventory_sha256": "915b0c0d1c8c917ed445c4089bdc48c6eb7b8550e9074dd52113dc7a1af1e71b",
+        "pipe_processing_charged_bytes": 206608
+      },
+      "ordinary": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/ordinary/GiftUI.o",
+        "bytes": 354240,
+        "sha256": "81d518d49801bbda4e3965de3d834e44902846dc72612d969dcd4f389e028abd",
+        "defined_global_symbol_count": 1335,
+        "symbol_inventory_sha256": "e99c2945107a6293e1d190c1d6afffb7891fecd30d66eee3db2739ad64c81751",
+        "pipe_processing_charged_bytes": 206608
+      },
+      "qualified": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUI.o",
+        "bytes": 354240,
+        "sha256": "13718b19c6310da6e28c2eb4760f7cdfc7ef609032f998007830f0ec229c6a94",
+        "defined_global_symbol_count": 1335,
+        "symbol_inventory_sha256": "e99c2945107a6293e1d190c1d6afffb7891fecd30d66eee3db2739ad64c81751",
+        "pipe_processing_charged_bytes": 206608
+      }
+    },
+    "baseline_to_ordinary_added": [
+      "_$s6GiftUI01_A15UIDrawingStatusOSHAASH13_rawHashValue4seedS2i_tFTW",
+      "_$s6GiftUI01_A15UIDrawingStatusOSHAASH4hash4intoys6HasherVz_tFTW",
+      "_$s6GiftUI01_A15UIDrawingStatusOSHAASH9hashValueSivgTW",
+      "_$s6GiftUI01_A15UIDrawingStatusOSQAASQ2eeoiySbx_xtFZTW",
+      "_$s6GiftUI01_A15UIDrawingStatusOSYAASY8rawValue03RawF0QzvgTW",
+      "_$s6GiftUI01_A15UIDrawingStatusOSYAASY8rawValuexSg03RawF0Qz_tcfCTW",
+      "_$s6GiftUI12InputOrdinalVSHAASH13_rawHashValue4seedS2i_tFTW",
+      "_$s6GiftUI12InputOrdinalVSHAASH4hash4intoys6HasherVz_tFTW",
+      "_$s6GiftUI12InputOrdinalVSHAASH9hashValueSivgTW",
+      "_$s6GiftUI12InputOrdinalVSQAASQ2eeoiySbx_xtFZTW",
+      "_$s6GiftUI12PointerPhaseOSHAASH13_rawHashValue4seedS2i_tFTW",
+      "_$s6GiftUI12PointerPhaseOSHAASH4hash4intoys6HasherVz_tFTW",
+      "_$s6GiftUI12PointerPhaseOSHAASH9hashValueSivgTW",
+      "_$s6GiftUI12PointerPhaseOSQAASQ2eeoiySbx_xtFZTW",
+      "_$s6GiftUI12PointerPhaseOSYAASY8rawValue03RawF0QzvgTW",
+      "_$s6GiftUI12PointerPhaseOSYAASY8rawValuexSg03RawF0Qz_tcfCTW",
+      "_$s6GiftUI13InputSourceIDVSHAASH13_rawHashValue4seedS2i_tFTW",
+      "_$s6GiftUI13InputSourceIDVSHAASH4hash4intoys6HasherVz_tFTW",
+      "_$s6GiftUI13InputSourceIDVSHAASH9hashValueSivgTW",
+      "_$s6GiftUI13InputSourceIDVSQAASQ2eeoiySbx_xtFZTW",
+      "_$s6GiftUI17PointerSequenceIDVSHAASH13_rawHashValue4seedS2i_tFTW",
+      "_$s6GiftUI17PointerSequenceIDVSHAASH4hash4intoys6HasherVz_tFTW",
+      "_$s6GiftUI17PointerSequenceIDVSHAASH9hashValueSivgTW",
+      "_$s6GiftUI17PointerSequenceIDVSQAASQ2eeoiySbx_xtFZTW",
+      "_$s6GiftUI22NormalizedPointerEventVSQAASQ2eeoiySbx_xtFZTW",
+      "_$s6GiftUI7ShadingV10colorValueAcA5ColorV_tcfC"
+    ],
+    "baseline_to_ordinary_removed": [],
+    "ordinary_to_qualified_added": [],
+    "ordinary_to_qualified_removed": [],
+    "ordinary_qualified_equal": true,
+    "baseline_exports_preserved": true
+  },
+  "GiftUILayout": {
+    "inputs": {
+      "baseline": {
+        "path": ".build/contracts/p08-counter-8erdhh4s/GiftUILayout.o",
+        "bytes": 170544,
+        "sha256": "4acacd15bbcd071d3c0a125d0b8171b38905f176a371ab1721e3fd36abb67bd6",
+        "defined_global_symbol_count": 426,
+        "symbol_inventory_sha256": "1459f037ff093997da3dd1a371c824eb417f780b56f6b8b749476d86adf24b27",
+        "pipe_processing_charged_bytes": 141072
+      },
+      "ordinary": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/ordinary/GiftUILayout.o",
+        "bytes": 170544,
+        "sha256": "bb696205c1669d6dba73593a9c62f24a17db84a38be55d17bf3f20195dfa61e2",
+        "defined_global_symbol_count": 426,
+        "symbol_inventory_sha256": "1459f037ff093997da3dd1a371c824eb417f780b56f6b8b749476d86adf24b27",
+        "pipe_processing_charged_bytes": 141072
+      },
+      "qualified": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUILayout.o",
+        "bytes": 170544,
+        "sha256": "9086b460efca0aebd1056622e953179fe33d6abbb835957c2568264e0f0e689a",
+        "defined_global_symbol_count": 426,
+        "symbol_inventory_sha256": "1459f037ff093997da3dd1a371c824eb417f780b56f6b8b749476d86adf24b27",
+        "pipe_processing_charged_bytes": 141072
+      }
+    },
+    "baseline_to_ordinary_added": [],
+    "baseline_to_ordinary_removed": [],
+    "ordinary_to_qualified_added": [],
+    "ordinary_to_qualified_removed": [],
+    "ordinary_qualified_equal": true,
+    "baseline_exports_preserved": true
+  },
+  "GiftUIRenderLowering": {
+    "inputs": {
+      "baseline": {
+        "path": ".build/contracts/p08-counter-8erdhh4s/GiftUIRenderLowering.o",
+        "bytes": 78864,
+        "sha256": "3986519534e1804e84555aa2ac12c236b2cfcc048acdaa6443b9178c4c37830d",
+        "defined_global_symbol_count": 159,
+        "symbol_inventory_sha256": "718a55f65eb58d5e157d474f30135ccad0715bff69c756d27114573fa059bd40",
+        "pipe_processing_charged_bytes": 141072
+      },
+      "ordinary": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/ordinary/GiftUIRenderLowering.o",
+        "bytes": 78864,
+        "sha256": "91e413821e089ee6cb68d73027b3d724e0b68cb7400ab1554b4b18e6cd969907",
+        "defined_global_symbol_count": 159,
+        "symbol_inventory_sha256": "718a55f65eb58d5e157d474f30135ccad0715bff69c756d27114573fa059bd40",
+        "pipe_processing_charged_bytes": 141072
+      },
+      "qualified": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUIRenderLowering.o",
+        "bytes": 78864,
+        "sha256": "4a45ecb43d5050c1be552cf2cb6108e41dcd3448b65392c10623fa033438d9ed",
+        "defined_global_symbol_count": 159,
+        "symbol_inventory_sha256": "718a55f65eb58d5e157d474f30135ccad0715bff69c756d27114573fa059bd40",
+        "pipe_processing_charged_bytes": 141072
+      }
+    },
+    "baseline_to_ordinary_added": [],
+    "baseline_to_ordinary_removed": [],
+    "ordinary_to_qualified_added": [],
+    "ordinary_to_qualified_removed": [],
+    "ordinary_qualified_equal": true,
+    "baseline_exports_preserved": true
+  },
+  "GiftUIDrawing": {
+    "inputs": {
+      "baseline": {
+        "path": ".build/contracts/p08-counter-8erdhh4s/GiftUIDrawing.o",
+        "bytes": 135880,
+        "sha256": "b90d20965cfdf1e718a481cf9d5e565059db92e6d28765863d6878541523b9b9",
+        "defined_global_symbol_count": 305,
+        "symbol_inventory_sha256": "6576b8507894239e204c68fe6bafab9dcf771a593586f938ee050a051d629344",
+        "pipe_processing_charged_bytes": 141072
+      },
+      "ordinary": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/ordinary/GiftUIDrawing.o",
+        "bytes": 136408,
+        "sha256": "99c3243ff7cb363bfafd2f1e9c559b7725673e7ab1627a67f841a067cef588b0",
+        "defined_global_symbol_count": 305,
+        "symbol_inventory_sha256": "6576b8507894239e204c68fe6bafab9dcf771a593586f938ee050a051d629344",
+        "pipe_processing_charged_bytes": 141072
+      },
+      "qualified": {
+        "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUIDrawing.o",
+        "bytes": 136408,
+        "sha256": "731d5faf0267bec87aa4fa21e1bb5cd6c6357a3af45fb98beb257463fa33e16f",
+        "defined_global_symbol_count": 305,
+        "symbol_inventory_sha256": "6576b8507894239e204c68fe6bafab9dcf771a593586f938ee050a051d629344",
+        "pipe_processing_charged_bytes": 141072
+      }
+    },
+    "baseline_to_ordinary_added": [],
+    "baseline_to_ordinary_removed": [],
+    "ordinary_to_qualified_added": [],
+    "ordinary_to_qualified_removed": [],
+    "ordinary_qualified_equal": true,
+    "baseline_exports_preserved": true
+  }
+}

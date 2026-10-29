@@ -6,6 +6,9 @@ package struct RenderLimits: Equatable, Sendable {
     package let maximumPositionedGlyphs: UInt16
     package let maximumClipDepth: UInt16
 
+    #if GIFTUI_GEOMETRY_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumOperations: UInt16,
         maximumPositionedGlyphs: UInt16,
@@ -29,6 +32,9 @@ package struct RenderWorkspaceCapacity: Equatable, Sendable {
     package let maximumTraversalDepth: UInt16
     package let maximumTextLines: UInt16
 
+    #if GIFTUI_GEOMETRY_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumSemanticScopes: UInt16,
         maximumLayoutScopes: UInt16,

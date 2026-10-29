@@ -1,0 +1,143 @@
+{
+  "source_paths": [
+    "Sources/GiftUI/GiftUI.swift",
+    "Sources/GiftUILayout/LayoutValues.swift",
+    "Sources/GiftUIDrawing/DrawingLimits.swift",
+    "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+    "Tests/ContractFixtures/SPEC015/AllocationGate/GeometryQualification.swift"
+  ],
+  "evidence_directory": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result",
+  "archive_files": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/README.md": {
+      "bytes": 3254,
+      "sha256": "830094daea3143df1076496dc4536c5f5f9dfd095bf0a50e2fcb57bfa153e415"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/actual-entry.raw": {
+      "bytes": 78783,
+      "sha256": "0537dc3e7bd78ec2432268a7a5ebed14f0e81b72f6f96286e9156b33fc740a55"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/actual-entry2.raw": {
+      "bytes": 80963,
+      "sha256": "675b11a87907864a52608a86e7e384b4e2f14c09661a289916beb1bed651a7e8"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/additional-link-inputs.json": {
+      "bytes": 553,
+      "sha256": "f7fa508be5009ec478e429d1ad5bbfc2cf494ddd0e2b5b224ecf78841411e33e"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/allocation-negative-source.json": {
+      "bytes": 195,
+      "sha256": "e91ae2b126a98c9d4108123c22ed361a05644f0b7a46fbb80961e1be506ebef5"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/allocation-negative.raw": {
+      "bytes": 393,
+      "sha256": "6d2edcdccb7586cfd0a4a11dfa9165c9b880624b7013384b3a19636701781b7f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/baseline-recipe-difference.json": {
+      "bytes": 7867,
+      "sha256": "11fe9a40aa9a951ac3c763ab92f8f3cdb39c8db1101518b783ab01844cfaf21b"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/batch-plan.json": {
+      "bytes": 55168,
+      "sha256": "3854caf96710cee8e715e6a920a481ea5cccb24f39944b93f1d04ec7d116affe"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/candidate.patch": {
+      "bytes": 3619,
+      "sha256": "5e38dea7fdccc89586a65b16620494cf8ad7bea63cb0fb1e935a51e028a649be"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/close.py": {
+      "bytes": 7118,
+      "sha256": "4992b00e54c758c2b88de31d0ac170c95e1f9c1b11409d0f862dad5bf534904c"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/compare-symbols.py": {
+      "bytes": 2334,
+      "sha256": "7fd244478824df3fb40a61cf8218255d8770fc31d986b0a5a43fe370cad31052"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/final-checks.py": {
+      "bytes": 3112,
+      "sha256": "8ad5d6f9b4423f9f76fe75c93151db008211a8b57f9eb43fe9fc4bb52eaf6b74"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/geometry-functional-build.raw": {
+      "bytes": 24225,
+      "sha256": "a25202de081dca6061452e2ed3d023697fc42bbc4ee9711dd56766173fb99b3a"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/geometry-functional-build2.raw": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/geometry-functional-execute.raw": {
+      "bytes": 135,
+      "sha256": "9e6ecda1f8dd8eea20f9dc6a9260819ddbb0268d769c12a68c77f440d9e7daf0"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/independent-review.md": {
+      "bytes": 1477,
+      "sha256": "5327aef2b216df8e9e2379efded4549bd2c6b41445e88ce5b269f6a1bb44875d"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/input-freeze.json": {
+      "bytes": 24463,
+      "sha256": "dcdabb6493f03f77253f7f5a0897c9b69afa984e19c3900f251238b621d50fff"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/meter.py": {
+      "bytes": 1916,
+      "sha256": "76f8aa10e0ec028f605c166c5469d34c2e7c10015a716973077efeb866c8b2fd"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/ordinary-qualified-symbol-comparison.json": {
+      "bytes": 8233,
+      "sha256": "92a6fa04a7ec18f0d889681350675e393025adaaed136f5a49e7840c67867143"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/outcome.json": {
+      "bytes": 5385,
+      "sha256": "fabbc5a548cc677b4d871d09f9ce71a61fc4322ca154b51a2c6d2e293f843c3f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/positive-source.json": {
+      "bytes": 197,
+      "sha256": "023f42275259da4b18a7bfe907f36974075fbd3d08738f916a9ed79a2570f23d"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/prepare.py": {
+      "bytes": 4619,
+      "sha256": "3a8658ab5367f0d3ccbfff17de25141d2ef4a54d1b548312a1130a3dd1456383"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/preserved-initial-symbol-assertion-failure.json": {
+      "bytes": 2593,
+      "sha256": "e187948b278a565a2fd96c0783976c851b7f9ace4da9dd5be31ac0d9f30fbf52"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/preserved-launch-order-failure.json": {
+      "bytes": 278,
+      "sha256": "92c32d692767815ffc771cacd481b72ec6160410f1dc63f5e1686fb6272a9a92"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/processing-reconciliation.json": {
+      "bytes": 429,
+      "sha256": "b8d3b99b6eeb68b1b04fa67e53dd047bb2a6e5a15f19b05ee7f741fa0fc46a1f"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/provider-order-and-loading.json": {
+      "bytes": 4524,
+      "sha256": "ae14dc16b0392b3594283ac51f6af01bb90b143ecb53fb9ac31fe9774c26ca90"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/publish.py": {
+      "bytes": 7558,
+      "sha256": "68afdc22bb1825df52bcd98c9e8c759b01fb4c0692ed4c0c31b1757652bcee51"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/run.py": {
+      "bytes": 2751,
+      "sha256": "4e9a995e5d608bfe8c7231830ee9bc1e9496315944af8b8354ac95c629414ffe"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/source-before.json": {
+      "bytes": 619,
+      "sha256": "e659381aacb97ed6e8753de58bc73ffb0cfb918530eb0bdb9d495c16a58bf7f7"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/source-freeze.json": {
+      "bytes": 805,
+      "sha256": "f6f533c735b391fe4feeadf92567481cee6259686688e8faacd59070b9c4c099"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/source-normalization.json": {
+      "bytes": 1107,
+      "sha256": "8ead1ef24b4d4a77e76eb5c777f700b9fbf0814ce1158815bc33e2274c9153ee"
+    },
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-geometry-qualification1-result/validation-summary.json": {
+      "bytes": 13776,
+      "sha256": "c0016bc968241795677ad81f4f150f790cf3569111197250d7073df4a76219e1"
+    }
+  },
+  "producer_root": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1",
+  "baseline": "1e147925",
+  "no_index_commit_by_owner": true
+}

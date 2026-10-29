@@ -1,0 +1,52 @@
+{
+  "failure": "First script wrongly required exact identity of all symbol names, including compiler-generated outlined helpers from different original producer recipe. No report was saved before assert. Full measured differences follow, pending classification.",
+  "comparison": {
+    "baseline": {
+      "count": 1309,
+      "digest": "915b0c0d1c8c917ed445c4089bdc48c6eb7b8550e9074dd52113dc7a1af1e71b"
+    },
+    "ordinary": {
+      "count": 1335,
+      "digest": "e99c2945107a6293e1d190c1d6afffb7891fecd30d66eee3db2739ad64c81751"
+    },
+    "qualified": {
+      "count": 1335,
+      "digest": "e99c2945107a6293e1d190c1d6afffb7891fecd30d66eee3db2739ad64c81751"
+    },
+    "baseline\u2192ordinary": {
+      "added": [
+        "_$s6GiftUI01_A15UIDrawingStatusOSHAASH13_rawHashValue4seedS2i_tFTW",
+        "_$s6GiftUI01_A15UIDrawingStatusOSHAASH4hash4intoys6HasherVz_tFTW",
+        "_$s6GiftUI01_A15UIDrawingStatusOSHAASH9hashValueSivgTW",
+        "_$s6GiftUI01_A15UIDrawingStatusOSQAASQ2eeoiySbx_xtFZTW",
+        "_$s6GiftUI01_A15UIDrawingStatusOSYAASY8rawValue03RawF0QzvgTW",
+        "_$s6GiftUI01_A15UIDrawingStatusOSYAASY8rawValuexSg03RawF0Qz_tcfCTW",
+        "_$s6GiftUI12InputOrdinalVSHAASH13_rawHashValue4seedS2i_tFTW",
+        "_$s6GiftUI12InputOrdinalVSHAASH4hash4intoys6HasherVz_tFTW",
+        "_$s6GiftUI12InputOrdinalVSHAASH9hashValueSivgTW",
+        "_$s6GiftUI12InputOrdinalVSQAASQ2eeoiySbx_xtFZTW",
+        "_$s6GiftUI12PointerPhaseOSHAASH13_rawHashValue4seedS2i_tFTW",
+        "_$s6GiftUI12PointerPhaseOSHAASH4hash4intoys6HasherVz_tFTW",
+        "_$s6GiftUI12PointerPhaseOSHAASH9hashValueSivgTW",
+        "_$s6GiftUI12PointerPhaseOSQAASQ2eeoiySbx_xtFZTW",
+        "_$s6GiftUI12PointerPhaseOSYAASY8rawValue03RawF0QzvgTW",
+        "_$s6GiftUI12PointerPhaseOSYAASY8rawValuexSg03RawF0Qz_tcfCTW",
+        "_$s6GiftUI13InputSourceIDVSHAASH13_rawHashValue4seedS2i_tFTW",
+        "_$s6GiftUI13InputSourceIDVSHAASH4hash4intoys6HasherVz_tFTW",
+        "_$s6GiftUI13InputSourceIDVSHAASH9hashValueSivgTW",
+        "_$s6GiftUI13InputSourceIDVSQAASQ2eeoiySbx_xtFZTW",
+        "_$s6GiftUI17PointerSequenceIDVSHAASH13_rawHashValue4seedS2i_tFTW",
+        "_$s6GiftUI17PointerSequenceIDVSHAASH4hash4intoys6HasherVz_tFTW",
+        "_$s6GiftUI17PointerSequenceIDVSHAASH9hashValueSivgTW",
+        "_$s6GiftUI17PointerSequenceIDVSQAASQ2eeoiySbx_xtFZTW",
+        "_$s6GiftUI22NormalizedPointerEventVSQAASQ2eeoiySbx_xtFZTW",
+        "_$s6GiftUI7ShadingV10colorValueAcA5ColorV_tcfC"
+      ],
+      "removed": []
+    },
+    "ordinary\u2192qualified": {
+      "added": [],
+      "removed": []
+    }
+  }
+}

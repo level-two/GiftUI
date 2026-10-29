@@ -15,6 +15,9 @@ package struct LayoutLimits: Equatable, Sendable {
     @usableFromInline
     package let maximumPositionedGlyphs: UInt16
 
+    #if GIFTUI_GEOMETRY_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumScopes: UInt16,
         maximumDepth: UInt16,

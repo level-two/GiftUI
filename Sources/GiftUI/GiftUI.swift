@@ -4,6 +4,9 @@ public struct Point: Equatable, Hashable, Sendable {
     public let x: GeometryScalar
     public let y: GeometryScalar
 
+    #if GIFTUI_GEOMETRY_QUALIFICATION
+        @_noAllocation
+    #endif
     public init(x: GeometryScalar, y: GeometryScalar) {
         self.x = x
         self.y = y
@@ -14,6 +17,9 @@ public struct Size: Equatable, Hashable, Sendable {
     public let width: GeometryScalar
     public let height: GeometryScalar
 
+    #if GIFTUI_GEOMETRY_QUALIFICATION
+        @_noAllocation
+    #endif
     public init?(width: GeometryScalar, height: GeometryScalar) {
         guard width >= 0, height >= 0 else {
             return nil
@@ -27,6 +33,9 @@ public struct Rect: Equatable, Hashable, Sendable {
     public let origin: Point
     public let size: Size
 
+    #if GIFTUI_GEOMETRY_QUALIFICATION
+        @_noAllocation
+    #endif
     public init?(origin: Point, size: Size) {
         guard GeometryArithmetic.add(origin.x, size.width) != nil,
             GeometryArithmetic.add(origin.y, size.height) != nil
@@ -77,6 +86,9 @@ public struct ProposedSize: Equatable, Hashable, Sendable {
 @usableFromInline
 package enum GeometryArithmetic {
     @usableFromInline
+    #if GIFTUI_GEOMETRY_QUALIFICATION
+        @_noAllocation
+    #endif
     package static func add(
         _ lhs: GeometryScalar,
         _ rhs: GeometryScalar

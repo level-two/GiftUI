@@ -1,0 +1,18 @@
+{
+  "Sources/GiftUI/GiftUI.swift": {
+    "bytes": 4503,
+    "sha256": "aef4b66eeec863c29068d1054535401707604f71eda3f740fc7e581b3066d6c6"
+  },
+  "Sources/GiftUILayout/LayoutValues.swift": {
+    "bytes": 2230,
+    "sha256": "29d40d755afff76ff779ca6b06a53c754fd0cd147ab6f551d62f6b2b6047c1c5"
+  },
+  "Sources/GiftUIDrawing/DrawingLimits.swift": {
+    "bytes": 2881,
+    "sha256": "b0536b67ce01bf07422ce132edd978b47e5fd1d5dc48b37ae3fac3e096658ee1"
+  },
+  "Sources/GiftUIRenderLowering/RenderProductionValues.swift": {
+    "bytes": 2389,
+    "sha256": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc"
+  }
+}

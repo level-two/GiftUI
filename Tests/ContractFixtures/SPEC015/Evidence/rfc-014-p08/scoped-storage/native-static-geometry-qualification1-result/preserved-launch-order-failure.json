@@ -1,0 +1,4 @@
+{
+  "status": "NO_COMPILER_NO_EXECUTABLE_LAUNCHED",
+  "cause": "Plan iteration used stored order, placing original execute before appended build2; FileNotFoundError on nonexistent executable. Corrected explicit sequential run uses unchanged seven-object build2 then execute."
+}
