@@ -1,0 +1,67 @@
+{
+  "status": "STOP_SUPPORTED_OPTION_DOCUMENTATION_BLOCKER",
+  "finished_utc": "2026-10-29T07:18:35.438199+00:00",
+  "original_annotated_candidate_preserved": true,
+  "retained_host_matches_prior_provenance": true,
+  "original_counter_input_count": 42,
+  "semantic_compiler_invocations": 0,
+  "help_only_invocations": [
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-frontend",
+        "-help-hidden"
+      ],
+      "exit": 0,
+      "stdout": "frontend-help.stdout",
+      "stdout_bytes": 89085
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-frontend",
+        "-Xllvm",
+        "-help-hidden"
+      ],
+      "exit": 1,
+      "stderr": "llvm-help.stderr",
+      "stderr_bytes": 52,
+      "meaning": "Invocation failed before LLVM help; not evidence that flags do not exist."
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-frontend",
+        "-emit-sil",
+        "-Xllvm",
+        "-help-hidden"
+      ],
+      "exit": 1,
+      "stderr": "llvm-help-action.stderr",
+      "stderr_bytes": 63,
+      "meaning": "Sole root-authorized help correction requires input; no source input was supplied."
+    }
+  ],
+  "grounded_frontend_option": "-debug-diagnostic-names: Include diagnostic names when printing",
+  "blocker": "Successful installed frontend help does not document performance-checker pass naming, selected-function pass printing, or rejected-edge attribution; LLVM help was not obtained without a source input. No speculative flags or source-bearing help invocation authorized.",
+  "needed_artifact": "Supported option documentation for this exact Swift6.4 compiler identifying performance-checker pass/edge diagnostics with bounded selected-function output, or separately authorized checker-source evidence.",
+  "inference_boundary": "Prior client-emission1 postoptimization annotation-removed SIL complete5-body/2068-line index cannot establish role-mapping1 annotated checker-phase rejection operation/reachability. Existing rejection at GraphValidationProbe.swift7:69 remains exact678B evidence only. No unavailable callee, allocation event, model impossibility, behavior PASS or product fix is inferred.",
+  "bounds": {
+    "overall_seconds": 7200,
+    "compile_seconds_max": 900,
+    "semantic_compile_forecast_bytes": 0,
+    "processing_exact_hash_bytes": 386666730,
+    "other_read_processing_conservative_charge_bytes": 16777216,
+    "processing_total_charge_bytes": 403443946,
+    "processing_limit_bytes": 536870912,
+    "shared_transcript_limit_bytes": 8388608,
+    "diagnostic_limit_bytes": 1048576,
+    "diagnostic_line_limit": 32768,
+    "old_cumulative_limit_bytes": 2147483648,
+    "old_protected_reserve_bytes": 33554432,
+    "old_guard_reused_for_review": "role-mapping1/graph-compile-guard/launch-guard.py",
+    "old_guard_not_executed": true,
+    "clock_no_launch": "No compile timer launched; conservative overall session allowance fixed in session.json."
+  },
+  "mutations": "Only new effect-attribution1 package; no maintained-source restoration/mutation, product rebuild, fixtures, suite, hardware, network, installation, index or commit."
+}

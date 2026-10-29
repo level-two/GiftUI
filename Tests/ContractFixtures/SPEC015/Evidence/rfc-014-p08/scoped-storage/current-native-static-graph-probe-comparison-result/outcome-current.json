@@ -1,0 +1,10 @@
+{
+  "supersedes_classification_only": "outcome.json initial supported-option blocker is obsolete; old failed records preserved.",
+  "status": "PROBE_CASE_PATTERN_COMPILE_PASS",
+  "result": "probe-case-pattern/terminal.json",
+  "meaning": "Task-local corrected graph/mapping probe normal annotated compile only. No behavioral oracle execution, fullallocation PASS, productiongraph closure or solecause claim.",
+  "source_before_sha256": "71335c5090394fd6d9de455192df25bc6e62af9049db620fcd51b5b74aa0026b",
+  "source_after_sha256": "3e73c41c0496ca51b8ad0d3407b6d1eca904132981ca16db9b8fec7ccd7a91b6",
+  "processing_charge_bytes": 523505898,
+  "session_deadline_unchanged": "2026-10-29T09:00:35.113979+00:00"
+}

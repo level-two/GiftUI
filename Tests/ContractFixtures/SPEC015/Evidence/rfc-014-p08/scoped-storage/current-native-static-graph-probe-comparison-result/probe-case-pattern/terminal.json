@@ -1,0 +1,51 @@
+{
+  "exit": 0,
+  "guard": null,
+  "finished_utc": "2026-10-29T07:33:27.729669+00:00",
+  "elapsed_seconds": 29.623424,
+  "raw_stream_bytes_read": {
+    "stdout": 0,
+    "stderr": 0
+  },
+  "pipe_tail_bytes_read": 0,
+  "emitted_equals_read_proved": true,
+  "retained_new_stdout_stderr_bytes": 0,
+  "retained_new_stdout_stderr_lines": 0,
+  "aggregate_semantic_retained_bytes": 734746,
+  "new_artifact_bytes_metadata": [
+    {
+      "name": "P08CounterRuntime.swiftmodule",
+      "bytes": 1775392,
+      "sha256": null,
+      "not_hashed": "Preserve new8MiB read/processing budget; compiler outputs not reread."
+    },
+    {
+      "name": "P08CounterRuntime.abi.json",
+      "bytes": 149,
+      "sha256": null,
+      "not_hashed": "Preserve new8MiB read/processing budget; compiler outputs not reread."
+    },
+    {
+      "name": "P08CounterRuntime.swiftsourceinfo",
+      "bytes": 344944,
+      "sha256": null,
+      "not_hashed": "Preserve new8MiB read/processing budget; compiler outputs not reread."
+    },
+    {
+      "name": "P08CounterRuntime.swiftdoc",
+      "bytes": 4444,
+      "sha256": null,
+      "not_hashed": "Preserve new8MiB read/processing budget; compiler outputs not reread."
+    },
+    {
+      "name": "P08CounterRuntime.o",
+      "bytes": 2708720,
+      "sha256": null,
+      "not_hashed": "Preserve new8MiB read/processing budget; compiler outputs not reread."
+    }
+  ],
+  "processing_conservative_charge_bytes": 523505898,
+  "no_fixture_execution": true,
+  "no_real_entry_compile": true,
+  "maintained_sources_untouched": true
+}

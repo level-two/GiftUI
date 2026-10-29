@@ -1,0 +1,11 @@
+{
+  "start_utc": "2026-10-29T07:00:35.113979+00:00",
+  "deadline_utc": "2026-10-29T09:00:35.113979+00:00",
+  "duration_limit_seconds": 7200,
+  "processing_limit_bytes": 536870912,
+  "shared_transcript_limit_bytes": 8388608,
+  "diagnostic_retained_limit_bytes": 1048576,
+  "diagnostic_line_limit": 32768,
+  "freeze_started_utc": "2026-10-29T07:15:35.113979+00:00",
+  "start_basis": "Conservative15min allowance preceding first recorded freeze timestamp includes initial saved-artifact reads; no semantic compiler launched and no deadline reset."
+}

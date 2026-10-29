@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "-frontend",
+    "-emit-sil",
+    "-Xllvm",
+    "-help-hidden"
+  ],
+  "exit": 1,
+  "stdout_bytes": 0,
+  "stderr_bytes": 63,
+  "no_input_source": true
+}

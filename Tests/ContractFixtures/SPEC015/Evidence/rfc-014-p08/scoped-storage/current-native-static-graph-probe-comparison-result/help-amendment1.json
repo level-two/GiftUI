@@ -1,0 +1,37 @@
+{
+  "amends_not_replaces": "outcome.json",
+  "reason": "Independent coordinator rejected external-blocker classification: both prior LLVMhelp commands failed invocation validation. Root authorized exactly one empty-source help acquisition.",
+  "start_utc": "2026-10-29T07:20:51.958745+00:00",
+  "finished_utc": "2026-10-29T07:20:51.999949+00:00",
+  "same_session_deadline_utc": "2026-10-29T09:00:35.113979+00:00",
+  "argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "-frontend",
+    "-emit-sil",
+    "-module-name",
+    "DiagnosticHelp",
+    "-Xllvm",
+    "-help-hidden",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/empty.swift",
+    "-o",
+    "/dev/null"
+  ],
+  "exit": 0,
+  "guard": null,
+  "output_bytes": 375698,
+  "output_limit_bytes": 1048576,
+  "timeout_seconds": 30,
+  "processing_charge_before_bytes": 403443946,
+  "help_only_empty_source": true,
+  "no_product_compile": true,
+  "llvm-help-empty.stdout": {
+    "bytes": 375698,
+    "lines": 2762,
+    "sha256": "d2b339ddb49c1878f9289f519a0b3a908fe76eafc7bd885c1aca7c978965090a"
+  },
+  "llvm-help-empty.stderr": {
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

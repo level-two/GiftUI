@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift",
+      "sha256": "f2d6f177fac842326f47af57dbe4317a813563987762dc15802f249098c24b4a",
+      "before_sha256": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "sha256": "ba727807091fd67e2cc002a3f8ae1f5fd68a28ae8a7d208d29fc2934c0bf43f6",
+      "before_sha256": "1c529f7ccbd4c59aafa9589b177f0a602079d8588ba0cc1643c60cde41ebe2fe"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/AllocationGate/GraphValidationProbe.swift",
+      "sha256": "71335c5090394fd6d9de455192df25bc6e62af9049db620fcd51b5b74aa0026b",
+      "before_sha256": "49ff786905d8c226d75f9512e21159a8093481c853e1c41b859baa35f66b6182"
+    }
+  ],
+  "mapping": "Explicit unchanged0...17 role cases; defaultnil; graphoracle9 unchanged, independent256literalcase+roundtrip oracle.",
+  "formatter_passed": true,
+  "unrelated_swift_diff_unchanged": true
+}

@@ -1,0 +1,214 @@
+{
+  "scope": "Only this finite proof/correction directory; root sole index owner; no product adoption",
+  "head_baseline": "3f9ba09d15273e9e9ead898df45c089e9d4ab4fd",
+  "files": [
+    {
+      "path": "session.json",
+      "bytes": 547,
+      "sha256": "c1dc9d77cb593734abef0257303bf07d998f3dccbbc26ce4a7510bd415f7a83a",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/session.json"
+    },
+    {
+      "path": "freeze.json",
+      "bytes": 32811,
+      "sha256": "e7309acf5d84fb99de56246984390f3b1907bb8cd2292b41ed665151628b6d78",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/freeze.json"
+    },
+    {
+      "path": "GraphValidationProbe.swift",
+      "bytes": 3002,
+      "sha256": "71335c5090394fd6d9de455192df25bc6e62af9049db620fcd51b5b74aa0026b",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift"
+    },
+    {
+      "path": "outcome.json",
+      "bytes": 3318,
+      "sha256": "3f66f1eacd05ac9ec7027a76b9a5e612aca8b63534a220c66001d431f3e24408",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/outcome.json"
+    },
+    {
+      "path": "outcome-current.json",
+      "bytes": 706,
+      "sha256": "3013ddc5de5d4bd6b48f42ba54c41f49dab66e20469ffb8214df0bcc04ecbfad",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/outcome-current.json"
+    },
+    {
+      "path": "help-record.json",
+      "bytes": 349,
+      "sha256": "fd45556e8981d214993882a41f92ffbe7f70d3f1372c858ce922cf50cbef302f",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/help-record.json"
+    },
+    {
+      "path": "llvm-help.stderr",
+      "bytes": 52,
+      "sha256": "dbfd16dc29662279ad3d4e607b1feee81cb86d7613e961af386e92d3f26df72b",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/llvm-help.stderr"
+    },
+    {
+      "path": "llvm-help-action.json",
+      "bytes": 259,
+      "sha256": "53ed277139850ee1eeb8ba54d953a2381b7a286bbd5ac4d5d08b3b23b508a958",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/llvm-help-action.json"
+    },
+    {
+      "path": "llvm-help-action.stderr",
+      "bytes": 63,
+      "sha256": "a261fb0237ba66c177eaa35dcbce3f3be125816c8485e286eeb51e3c6c45730f",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/llvm-help-action.stderr"
+    },
+    {
+      "path": "help-amendment1.json",
+      "bytes": 1292,
+      "sha256": "20392826a0c10cb422180826ec0de569312337bfd60a7cd5bc0b68df075403d2",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/help-amendment1.json"
+    },
+    {
+      "path": "semantic-launch.json",
+      "bytes": 11348,
+      "sha256": "f082a043732801d1beb89cbc79e37dccc041d266e2a1c24bfbc39069e837e79a",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/semantic-launch.json"
+    },
+    {
+      "path": "semantic-terminal.json",
+      "bytes": 878,
+      "sha256": "ca8500fb65986b8158b4441ce6df915c43110dbbbaf3ab6e999741f98f71df3c",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/semantic-terminal.json"
+    },
+    {
+      "path": "semantic-complete-snapshots.sil",
+      "bytes": 65289,
+      "sha256": "163da6d29b5033bd20c6d8a16a481ff9fbfebe839a7b6bf0dff92237a74f0e21",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/semantic-complete-snapshots.sil"
+    },
+    {
+      "path": "semantic-nonbody-context.stderr",
+      "bytes": 153693,
+      "sha256": "7b1d4c240e775ac4ec027b2b82f251d65dc50f6919631945c31c891d5d30d4a0",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/semantic-nonbody-context.stderr"
+    },
+    {
+      "path": "semantic-attempt2-launch.json",
+      "bytes": 11390,
+      "sha256": "b2afbf0e9ceccd52640563ef9bb9838ce0d7fe813074e94d9835475e8528909e",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/semantic-attempt2-launch.json"
+    },
+    {
+      "path": "semantic-attempt2-terminal.json",
+      "bytes": 1021,
+      "sha256": "a8560f2200e1d00736148ee865d964663fb9cef7d76063d18e4725ab1c64d697",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/semantic-attempt2-terminal.json"
+    },
+    {
+      "path": "semantic-attempt2-complete-snapshots.sil",
+      "bytes": 514045,
+      "sha256": "261e5d2a284d43b93f7cab56807a527f31a718ba7b168159c8b144e84368a379",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/semantic-attempt2-complete-snapshots.sil"
+    },
+    {
+      "path": "semantic-attempt2-nonbody-context.stderr",
+      "bytes": 1719,
+      "sha256": "0102c75d2f8ee8a2e5d55c1e45e4a1c8ee6c9650ab46978edb0c1d13a39e0b18",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/semantic-attempt2-nonbody-context.stderr"
+    },
+    {
+      "path": "diagnose-once.py",
+      "bytes": 8211,
+      "sha256": "c4903a36ebb622f25864684316ec9aca89e49b2d2f0be6ac2ef58606fffa0a64",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/diagnose-once.py"
+    },
+    {
+      "path": "diagnose-attempt2.py",
+      "bytes": 9762,
+      "sha256": "87d269fa5b98d561f38a154f0c5be9a88fbe36dadb83eb6c1dd7f6a64debbbd6",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/diagnose-attempt2.py"
+    },
+    {
+      "path": "probe-case-pattern/GraphValidationProbe.swift",
+      "bytes": 3000,
+      "sha256": "3e73c41c0496ca51b8ad0d3407b6d1eca904132981ca16db9b8fec7ccd7a91b6",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/probe-case-pattern/GraphValidationProbe.swift"
+    },
+    {
+      "path": "probe-case-pattern/launch.json",
+      "bytes": 7602,
+      "sha256": "2e211e511a0cb24c796c88f37e63a06341c490812f196b101ed13f117fb6cb9c",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/probe-case-pattern/launch.json"
+    },
+    {
+      "path": "probe-case-pattern/terminal.json",
+      "bytes": 1549,
+      "sha256": "15383007f5390b4b5ab19d3a15a1b5a014294f374ee72a4bc14f0053aab1afbc",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/probe-case-pattern/terminal.json"
+    },
+    {
+      "path": "probe-case-pattern/source.diff",
+      "bytes": 576,
+      "sha256": "1ee272f414f41c9d8ddfe70369142fdf7a72223989ea6b96c27756b2c9afe46e",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/probe-case-pattern/source.diff"
+    },
+    {
+      "path": "probe-case-pattern/stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/probe-case-pattern/stdout"
+    },
+    {
+      "path": "probe-case-pattern/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": ".build/contracts/p08-native-static-graph-effect-attribution1/probe-case-pattern/stderr"
+    },
+    {
+      "path": "prior-role-candidate/outcome.json",
+      "bytes": 4017,
+      "sha256": "f1147fe40a42a5bfa5bbfb4a5bc1057c6487a6152f4b839d5d38eb27204c3e92",
+      "origin": ".build/contracts/p08-native-static-graph-role-mapping1/outcome.json"
+    },
+    {
+      "path": "prior-role-candidate/provenance.json",
+      "bytes": 3800,
+      "sha256": "a6d7ff1473d660f250d7d854601a71b2c4ed653239e90f6f1e08f682efa89374",
+      "origin": ".build/contracts/p08-native-static-graph-role-mapping1/provenance.json"
+    },
+    {
+      "path": "prior-role-candidate/source-freeze.json",
+      "bytes": 1037,
+      "sha256": "50285ef2fb6fd1cad85fe5eeaf350cc7c59d9524dcbbe84c7fb805223b716a63",
+      "origin": ".build/contracts/p08-native-static-graph-role-mapping1/source-freeze.json"
+    },
+    {
+      "path": "prior-role-candidate/plan.json",
+      "bytes": 25439,
+      "sha256": "52bd210940a8853572cc11c055ba8bb90407341cee8a1f86bc02962dce13b004",
+      "origin": ".build/contracts/p08-native-static-graph-role-mapping1/plan.json"
+    },
+    {
+      "path": "prior-role-candidate/candidate/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift",
+      "bytes": 2470,
+      "sha256": "f2d6f177fac842326f47af57dbe4317a813563987762dc15802f249098c24b4a",
+      "origin": ".build/contracts/p08-native-static-graph-role-mapping1/candidate/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift"
+    },
+    {
+      "path": "prior-role-candidate/candidate/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "bytes": 13792,
+      "sha256": "ba727807091fd67e2cc002a3f8ae1f5fd68a28ae8a7d208d29fc2934c0bf43f6",
+      "origin": ".build/contracts/p08-native-static-graph-role-mapping1/candidate/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6203,
+      "sha256": "1a1352d4d530a0dbbdf00d0bc7a1b447b1871cb6748a6f62480cd7b255577e04",
+      "origin": "root-authored final result or transcribed independent review"
+    },
+    {
+      "path": "independent-review.md",
+      "bytes": 1913,
+      "sha256": "b2e4cc1ce73f58cf13b4af826dead6fc5c34dfda9efb027ad48846231d93c16f",
+      "origin": "root-authored final result or transcribed independent review"
+    }
+  ],
+  "copied_payload_bytes_processed": 883037,
+  "conservative_processing_bound": 536088810,
+  "processing_cap": 536870912,
+  "transcript_and_closing_reserve": 1048576
+}

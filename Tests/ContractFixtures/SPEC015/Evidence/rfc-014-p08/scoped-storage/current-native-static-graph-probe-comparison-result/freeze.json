@@ -1,0 +1,632 @@
+{
+  "original_graph_argv": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host",
+    "-experimental-performance-annotations",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq",
+    "-swift-version",
+    "6",
+    "-Osize",
+    "-whole-module-optimization",
+    "-enable-experimental-feature",
+    "LifetimeDependence",
+    "-enable-experimental-feature",
+    "Lifetimes",
+    "-package-name",
+    "giftui",
+    "-module-cache-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/cache",
+    "-disable-sandbox",
+    "-target",
+    "arm64-apple-macosx26.0",
+    "-sdk",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-load-plugin-executable",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-parse-as-library",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static",
+    "-enable-testing",
+    "-module-name",
+    "P08CounterRuntime",
+    "-emit-module",
+    "-emit-object",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/AllocationGate/GraphValidationProbe.swift",
+    "-emit-module-path",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/graph/P08CounterRuntime.swiftmodule",
+    "-o",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/graph/P08CounterRuntime.o"
+  ],
+  "files": [
+    {
+      "path": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "bytes": 230720,
+      "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+      "bytes": 2755,
+      "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "bytes": 3865,
+      "sha256": "2fec41d84cfb72b2035e84a62825326a12e05649d37bcfb1cc5e39170d869bde"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "bytes": 14924,
+      "sha256": "db76bf5f5618a3230d7ba436765fe9129b808f4bbee5bfee18659cbf0bb8dac3"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "bytes": 13210,
+      "sha256": "0f345c9e20c9b81e9ca9b1e523d04ed61d625fd89b1ca8dcd62da9c453761896"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+      "bytes": 14096,
+      "sha256": "ef593f34bce2f6d36544c559033ba9a7261cb2b513ce8c6feaaaccbea2f5bd60"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+      "bytes": 4899,
+      "sha256": "441edad25b562185db844ec9a2eb76c53335059b6ea04c434d196f65b9c4d243"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+      "bytes": 9545,
+      "sha256": "9dea8f9e607e3599846f64a0dae1f51fc027162a2fe92d6da5868b8375147ead"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "bytes": 1642,
+      "sha256": "2a191b58ddbf077edb182e8a5947d07be77de7035c2f61d8afe35167f69bc825"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+      "bytes": 10654,
+      "sha256": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+      "bytes": 12042,
+      "sha256": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+      "bytes": 10872,
+      "sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+      "bytes": 8215,
+      "sha256": "36d137a0fdf0d6159dfc8502b86bd5bc78037fa1cfa5a86038513c9523b31677"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "bytes": 4288,
+      "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutFacts.swift",
+      "bytes": 19446,
+      "sha256": "0e13001714af86c5f93cc150678c07c0b3a32c58b3a524fd43edb23eae19990b"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+      "bytes": 7294,
+      "sha256": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+      "bytes": 8687,
+      "sha256": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+      "bytes": 10957,
+      "sha256": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+      "bytes": 5420,
+      "sha256": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+      "bytes": 3860,
+      "sha256": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+      "bytes": 11497,
+      "sha256": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift",
+      "bytes": 259876,
+      "sha256": "6e66e7e1324cd1fbb1e413f341521e676fb5103d1e38ed57adc6e37a84ce4113"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorageProbe.swift",
+      "bytes": 565,
+      "sha256": "cad68fa082cb9c694956d9a7d0785a61425a524b91da38e5c45e4ca83fd2469f"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "bytes": 15700,
+      "sha256": "400ff005c364568e27a132cb92b5a46488dd0ad3f5fd08597e734b57bf22161e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "bytes": 119320,
+      "sha256": "292323a7960b1cd405b914325aeed737b683d9e402679e32101b5c5879f2cf73"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "bytes": 42780,
+      "sha256": "945dd1bce5fdfc43a923d0174ba38a1ea115b84b3034823926dd16cb83316bb7"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+      "bytes": 12814,
+      "sha256": "abae5f87b3390863d8a68657c98b46a0fe9829f96a332affe44fbbb4fcce4d5a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+      "bytes": 7999,
+      "sha256": "6d713ae96bf4982c46f30289068dc97e5d4e32e3dae69f1874dd5e808d053d2b"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "bytes": 6911,
+      "sha256": "526b5ae57a80b96139b43d001d45cc1599789a11bc817bf8724086900f9a2331"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "bytes": 5050,
+      "sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "bytes": 17027,
+      "sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "bytes": 27771,
+      "sha256": "ae4b199c59a751a89145151703e32f9f29da521c0291f3406c4273fb0cde1776"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "bytes": 17169,
+      "sha256": "5f7a60ddaace1825d99b3e2ab6b51bcffc6a2cfdceb35306c1e4d3a883efada2"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "bytes": 25337,
+      "sha256": "681563cb43971e376de8805e33092e5aaff5a67d0fed27097a020b1e5dce0d32"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "bytes": 10682,
+      "sha256": "43d3b7db7e70041a3992ce152136f8d35ef600fd8dd4e43bdfb3d89129e518df"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "bytes": 8733,
+      "sha256": "590e0dcbbaa9fc6d40e133780875ba5f961aeee9f03a8a3370fea9260eab9697"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "bytes": 25371,
+      "sha256": "46ab40914dade59536f53650bd97ce8d74ee57da86a8a826330f629c64a89f9c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "bytes": 25233,
+      "sha256": "06b5775b618a78b757495de8c86a2352b8e8371e0c854f3d93463f685585f05e"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+      "bytes": 4411,
+      "sha256": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "bytes": 5901,
+      "sha256": "60d013e2570e5ea3ac6efbbadb97dd79d6b7fa0a47e680e72a7071909fddb686"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "bytes": 22685,
+      "sha256": "bfe4a208dd72fe47cb2a72331228cf9c9981114e03d49a91b99541957e7f80b5"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "bytes": 1096,
+      "sha256": "cf9f5467416298dd64f604f5d0edf436b1736dc5972d78721da38c61151cb588"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "bytes": 2127,
+      "sha256": "bb744479e131424967c344791ec76d597416f3b604cc203fa9c25d49551c6ce2"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/AllocationGate/GraphValidationProbe.swift",
+      "bytes": 895,
+      "sha256": "49ff786905d8c226d75f9512e21159a8093481c853e1c41b859baa35f66b6182"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/GiftUIHostConfiguration.swiftdoc",
+      "bytes": 784,
+      "sha256": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/GiftUIHostConfiguration.swiftmodule",
+      "bytes": 564860,
+      "sha256": "21920ef9918cd4bfaed4f08d2c87e349a3fdf7774525c7a322509e5fe9f16e76"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/GiftUIHostConfiguration.o",
+      "bytes": 732168,
+      "sha256": "666fb92664a82064b0a6d4368dedb39bd207574328dfae7a35101cd8f910a82f"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/GiftUIHostConfiguration.abi.json",
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/host/GiftUIHostConfiguration.swiftsourceinfo",
+      "bytes": 148452,
+      "sha256": "1c8996c7a9a7997b5ebbb53f6216abb7eec40940cc8956a04dbb8af2eadc7e4c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/candidate/Tests/ContractFixtures/SPEC015/AllocationGate/GraphValidationProbe.swift",
+      "bytes": 3002,
+      "sha256": "71335c5090394fd6d9de455192df25bc6e62af9049db620fcd51b5b74aa0026b"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/candidate/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift",
+      "bytes": 2470,
+      "sha256": "f2d6f177fac842326f47af57dbe4317a813563987762dc15802f249098c24b4a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-role-mapping1/candidate/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "bytes": 13792,
+      "sha256": "ba727807091fd67e2cc002a3f8ae1f5fd68a28ae8a7d208d29fc2934c0bf43f6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterRuntime.swiftmodule",
+      "bytes": 1775844,
+      "sha256": "ea9a0331e0441427315267bc53f99b8e88205361b77cb9dc88a2f22a57fb37f6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUISemanticCore.swiftmodule",
+      "bytes": 901476,
+      "sha256": "d6d5dea23f9638c2becd33edb1007a036a577b668dea3e264320749edf58783a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIDrawing.swiftmodule",
+      "bytes": 188412,
+      "sha256": "c4b45974111fc0c7cbc3f81674b973ede069d248511f3ef6f0551e5827121ff6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeStatic.swiftmodule",
+      "bytes": 134032,
+      "sha256": "f42f044c0dcc74c662e006bf6b4a0bb12f722f6c29e139d0b2a3b60c1aa45418"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUILayout.swiftmodule",
+      "bytes": 325168,
+      "sha256": "0e46ae9a6a1946032bc0aa7ad32f23bed247c4ebba3f0666c155c2d9de8bba0a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeDynamic.swiftmodule",
+      "bytes": 232608,
+      "sha256": "e82227dfc8b92c8be573a34becd3079fff233147f5f823c30c3fd0117c26cbed"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIInteraction.swiftmodule",
+      "bytes": 236216,
+      "sha256": "bf503b936d91cb7bcce3238da15fe19cd3b6bdb0f8098cfc69f84a8d69854247"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterSchema.swiftmodule",
+      "bytes": 26912,
+      "sha256": "0ca47e048d96177f97538d326fb8744ae3084095ac8503898b930dbae0bc4ba0"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIObservableState.swiftmodule",
+      "bytes": 374200,
+      "sha256": "2b47ecbf2220ca5fd732a02e9601cc27e35817c7462c7db97d1b95fc1c8db8cb"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderLowering.swiftmodule",
+      "bytes": 78284,
+      "sha256": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIHostConfiguration.swiftmodule",
+      "bytes": 553092,
+      "sha256": "d672c74375745254d91c70a05e005ffaf35df05c51c72170d6aff925c301d282"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIReferenceTextResources.swiftmodule",
+      "bytes": 2763080,
+      "sha256": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUITextResources.swiftmodule",
+      "bytes": 133944,
+      "sha256": "3a002fbde7c5f5e80e8ed7a54f9667fdf8d7a539d680bf22a4d0dddba6e63e5c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRuntimeCore.swiftmodule",
+      "bytes": 373204,
+      "sha256": "0d3395643360c48d9a90cb8e0d160a2da43ee0fb97b3f0f3ccc8a0087d9d6a66"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIExecution.swiftmodule",
+      "bytes": 630224,
+      "sha256": "be305f612e79902dfc6e1c15e8556b2277cc8ec7e12a95f26f40c243a7ddb7ec"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterTable.swiftmodule",
+      "bytes": 34628,
+      "sha256": "5a447e5a8b47cc267f20cf553b3e843e7c9bb26974b3a4624f8a972628c48e15"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderCore.swiftmodule",
+      "bytes": 85828,
+      "sha256": "b9e814e54286c6bd238cd62200fb1ba9d4ff8e75084689628a754d039fc71460"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterPresentation.swiftmodule",
+      "bytes": 70544,
+      "sha256": "a8ac243abf300445ad59ff7257018f9b0c73a461a7a95c6b54e3058ec9a354c6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/P08CounterNativeExclusivity.swiftmodule",
+      "bytes": 1808808,
+      "sha256": "eb80b63267f306d4e007a13d86172122a0f436933554ca0c5f1bf9e6f32f779d"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIHostConfiguration.swiftmodule",
+      "bytes": 553092,
+      "sha256": "d672c74375745254d91c70a05e005ffaf35df05c51c72170d6aff925c301d282"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIDisplayCore.swiftmodule",
+      "bytes": 46672,
+      "sha256": "48a141edee55477ebf6fa2617e1aac66cf054a595c9384c0b5f9ca5d81edd014"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUISurfaceCore.swiftmodule",
+      "bytes": 32204,
+      "sha256": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/RuntimeCycleProbe.swiftmodule",
+      "bytes": 713500,
+      "sha256": "90af010a615d598a773e89fd028eb4df078f651bba074d1a06939ef15f7cb794"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUICapabilities.swiftmodule",
+      "bytes": 320112,
+      "sha256": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/P08ScopedHostProbe.swiftmodule",
+      "bytes": 67304,
+      "sha256": "9170fe636cb37fdfa326777687ba905b0f2673e10549fdfb1ad8d1720366bc07"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIBackendIntegration.swiftmodule",
+      "bytes": 132748,
+      "sha256": "ced85e7082ae50be7163664c39d904e552e4718b934c8d7f23595a78b669ec83"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIFailureCore.swiftmodule",
+      "bytes": 179604,
+      "sha256": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIRasterCore.swiftmodule",
+      "bytes": 146232,
+      "sha256": "c907425f15ddf034389d40c6f1b7672c0e851820894c5c4889c7fbcc22f9e4af"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/GiftUI.swiftmodule",
+      "bytes": 347436,
+      "sha256": "aa0f91486d612c2506b569c0e81aecb1ae616c10ef050664055f969927e10c48"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/AnalyzerPresentation.swiftmodule",
+      "bytes": 37184,
+      "sha256": "42a9e3a319dc7c238c13b75baaf3cd1396664d6081cc9c755161df1190eb2283"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/CounterPresentation.swiftmodule",
+      "bytes": 129728,
+      "sha256": "d21d586706c48d12ebbff82b9ea6e47921ac3f5e47d0bb05d4662fa9616be281"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/CounterSchema.swiftmodule",
+      "bytes": 26440,
+      "sha256": "57d0fc3d8ba460a975f2fc602ff1c11107c5d6c185b0d561cb82ce7053169182"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/SignalAnalyzerDomain.swiftmodule",
+      "bytes": 47984,
+      "sha256": "5cabd13f4e2b7a0ed2edb77f6cf21ecd46110cb96ab94c01b4165c78bbd32798"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/AnalyzerSchema.swiftmodule",
+      "bytes": 34440,
+      "sha256": "1a8b5038adfcd3c5ec838b78608882bceb8abd1c84ca66ff9da7d4985e45d218"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/8e72c5a1adf5f02b-i9ayjitl/macos-static/DeclarationHost.swiftmodule",
+      "bytes": 42704,
+      "sha256": "0c104b39342dadd1d8494d3cfe9c866c44f77fbe1b5fb0ad9e335db963e5cca2"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/CycleSchema.swiftmodule",
+      "bytes": 26840,
+      "sha256": "cfdc62729d488c3d9df0f8c0b029c32b8650a9e7ecbc2b0d0df8f364884eb8b0"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUISemanticCore.swiftmodule",
+      "bytes": 901476,
+      "sha256": "d6d5dea23f9638c2becd33edb1007a036a577b668dea3e264320749edf58783a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/CycleTable.swiftmodule",
+      "bytes": 34488,
+      "sha256": "ec9a0f40ac6c4f8ae24d421ae93ba4f09d78e975aeae2aa32ea30f570c112bfc"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIDrawing.swiftmodule",
+      "bytes": 188412,
+      "sha256": "c4b45974111fc0c7cbc3f81674b973ede069d248511f3ef6f0551e5827121ff6"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRuntimeStatic.swiftmodule",
+      "bytes": 134032,
+      "sha256": "f42f044c0dcc74c662e006bf6b4a0bb12f722f6c29e139d0b2a3b60c1aa45418"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUILayout.swiftmodule",
+      "bytes": 325168,
+      "sha256": "0e46ae9a6a1946032bc0aa7ad32f23bed247c4ebba3f0666c155c2d9de8bba0a"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRuntimeDynamic.swiftmodule",
+      "bytes": 232608,
+      "sha256": "e82227dfc8b92c8be573a34becd3079fff233147f5f823c30c3fd0117c26cbed"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIInteraction.swiftmodule",
+      "bytes": 236216,
+      "sha256": "bf503b936d91cb7bcce3238da15fe19cd3b6bdb0f8098cfc69f84a8d69854247"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIObservableState.swiftmodule",
+      "bytes": 374200,
+      "sha256": "2b47ecbf2220ca5fd732a02e9601cc27e35817c7462c7db97d1b95fc1c8db8cb"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRenderLowering.swiftmodule",
+      "bytes": 78284,
+      "sha256": "2f78f910754d5b831679716b683f9b351909f6f65c2a35794808bee5638d5b53"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIReferenceTextResources.swiftmodule",
+      "bytes": 2763080,
+      "sha256": "c852bebd8ad7261ccacbe541b482c0696b291b3be58c9692fd0d55a5520aeda1"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUITextResources.swiftmodule",
+      "bytes": 133944,
+      "sha256": "3a002fbde7c5f5e80e8ed7a54f9667fdf8d7a539d680bf22a4d0dddba6e63e5c"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRuntimeCore.swiftmodule",
+      "bytes": 373204,
+      "sha256": "0d3395643360c48d9a90cb8e0d160a2da43ee0fb97b3f0f3ccc8a0087d9d6a66"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIExecution.swiftmodule",
+      "bytes": 630224,
+      "sha256": "be305f612e79902dfc6e1c15e8556b2277cc8ec7e12a95f26f40c243a7ddb7ec"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/RuntimeCycleProbe.swiftmodule",
+      "bytes": 668656,
+      "sha256": "1629bb1e269c7dba2fcdc40e6419d8373777d08311858d67c0d140b38d69d5e3"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/CyclePresentation.swiftmodule",
+      "bytes": 69236,
+      "sha256": "a53bf776343280f162b813b8b33759def4eadd06a86c0a7d7cfc387809d4bd88"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/P07TargetWorkspace.swiftmodule",
+      "bytes": 212704,
+      "sha256": "9194d640f951f87545d9d3ca759f6b559fb1b78cfbebdeb1555d8f946006333b"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp56b3trr0/macos-static/GiftUIRenderCore.swiftmodule",
+      "bytes": 85828,
+      "sha256": "b9e814e54286c6bd238cd62200fb1ba9d4ff8e75084689628a754d039fc71460"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+      "bytes": 17113200,
+      "sha256": "651cf63bd8c07d18d143fd09370427fdacf8c6967c38e14c71d2ea5f7d9b2814"
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-frontend",
+      "bytes": 345961024,
+      "sha256": "32d565dc81f4e714f91da71cc1a501a335c20347c15d5ab522f9cacf9d225caf"
+    }
+  ],
+  "counter_input_count": 42,
+  "annotated_candidate_copy": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift",
+  "copy_sha256": "71335c5090394fd6d9de455192df25bc6e62af9049db620fcd51b5b74aa0026b",
+  "processing_bytes_hashed": 386666730,
+  "immutable_old_artifacts": true
+}

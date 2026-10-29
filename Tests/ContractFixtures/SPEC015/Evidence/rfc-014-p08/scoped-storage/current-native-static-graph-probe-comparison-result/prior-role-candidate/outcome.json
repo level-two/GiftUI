@@ -1,0 +1,77 @@
+{
+  "status": "STOP_ROLE_MAPPING_CANDIDATE_REJECTED",
+  "saved_utc": "2026-10-28T21:24:03.764914+00:00",
+  "phase_start": "2026-10-28T21:20:22.557304+00:00",
+  "phase_deadline": "2026-10-28T21:35:22.557304+00:00",
+  "preserved_candidate": "candidate/ contains exact two Host files with explicit18-case initializer and independent256-literal-case/roundtrip probe; source-freeze.json and diffs bind before/after.",
+  "executed_steps": [
+    {
+      "name": "host",
+      "exit": 0,
+      "expected_exit": 0,
+      "step_passed": true,
+      "guard_clean": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6437586b465ed2e7736756f462346b90db9371207bf50a37b038e47082e8bde1"
+    },
+    {
+      "name": "positive",
+      "exit": 0,
+      "expected_exit": 0,
+      "step_passed": true,
+      "guard_clean": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "allocation-negative",
+      "exit": 1,
+      "expected_exit": 1,
+      "step_passed": true,
+      "guard_clean": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6d2edcdccb7586cfd0a4a11dfa9165c9b880624b7013384b3a19636701781b7f"
+    },
+    {
+      "name": "graph-compile",
+      "exit": 1,
+      "expected_exit": 0,
+      "step_passed": false,
+      "guard_clean": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ccafede6855a5bb7bf477ff9585444c1cc500f0bfa6d0779120580eb7a61b074"
+    }
+  ],
+  "not_executed": [
+    "graph link",
+    "graph valid+8invalid behavioral oracle9",
+    "exhaustive256 mapping/roundtrip behavioral oracle",
+    "actual complete Static entry allocation compile"
+  ],
+  "diagnostic": "graph-compile-guard/stderr complete678B: called function is not available in this module and can have unpredictable performance, GraphValidationProbe.swift7:69.",
+  "meaning": "Graph no-allocation annotation still rejected. No mapping behavior PASS, full allocation PASS, actual allocation/lock event, or compiler/model impossibility is proved.",
+  "provenance": "provenance.json verifies actual first-I fresh Host path/module/object/current23sources and original generated artifact hash. No live loader trace.",
+  "restoration": [
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift",
+      "candidate_sha256": "f2d6f177fac842326f47af57dbe4317a813563987762dc15802f249098c24b4a",
+      "restored_sha256": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+      "matches_batch_entry_bytes": true
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "candidate_sha256": "ba727807091fd67e2cc002a3f8ae1f5fd68a28ae8a7d208d29fc2934c0bf43f6",
+      "restored_sha256": "1c529f7ccbd4c59aafa9589b177f0a602079d8588ba0cc1643c60cde41ebe2fe",
+      "matches_batch_entry_bytes": true
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/AllocationGate/GraphValidationProbe.swift",
+      "candidate_sha256": "71335c5090394fd6d9de455192df25bc6e62af9049db620fcd51b5b74aa0026b",
+      "restored_sha256": "49ff786905d8c226d75f9512e21159a8093481c853e1c41b859baa35f66b6182",
+      "matches_batch_entry_bytes": true
+    }
+  ],
+  "remaining_support": "Preexisting --rebuild-host gate/probe support retained exactly as before this batch; no index/commit or new source variant.",
+  "inference_boundary": "No new SIL inspection performed for this batch. Prior client-emission SIL cannot establish which direct operation is unavailable after adding the explicit initializer. Exact compiler-effect dependency remains unresolved.",
+  "stop": "No further compiler, source, receipt campaign, fullsuite, provider/live/hardware or scope/index activity. Independent failed-outcome/restoration review only."
+}

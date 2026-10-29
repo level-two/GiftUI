@@ -1,0 +1,16 @@
+{
+  "help_argv": [
+    [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-frontend",
+      "-help-hidden"
+    ],
+    [
+      "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "-frontend",
+      "-Xllvm",
+      "-help-hidden"
+    ]
+  ],
+  "help_only": true
+}

@@ -1,0 +1,55 @@
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+// counterGraphAllocationProbe()
+// Isolation: unspecified
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:7:69: error: called function is not available in this module and can have unpredictable performance [performance_callee_unavailable]
+ 5 | @_noAllocation
+ 6 | package func counterGraphAllocationProbe() -> Int {
+ 7 |     guard HostComponentGraphValidation.validate(CounterHostGraph()) == nil else { return 0 }
+   |                                                                     `- error: called function is not available in this module and can have unpredictable performance [performance_callee_unavailable]
+ 8 |     for mode: UInt8 in 0...7 {
+ 9 |         let failure = HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode))

@@ -1,0 +1,11 @@
+--- frozen-annotated-candidate
++++ probe-case-pattern/GraphValidationProbe.swift
+@@ -4,7 +4,7 @@
+ // oracle, not a replacement for the complete Static allocation boundary.
+ @_noAllocation
+ package func counterGraphAllocationProbe() -> Int {
+-    guard HostComponentGraphValidation.validate(CounterHostGraph()) == nil else { return 0 }
++    if case .some = HostComponentGraphValidation.validate(CounterHostGraph()) { return 0 }
+     for mode: UInt8 in 0...7 {
+         let failure = HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode))
+         switch mode {

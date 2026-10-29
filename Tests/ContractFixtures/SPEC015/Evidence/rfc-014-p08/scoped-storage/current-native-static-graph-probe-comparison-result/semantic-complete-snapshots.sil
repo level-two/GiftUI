@@ -1,0 +1,748 @@
+*** SIL module before SILGen Passes ***
+sil [no_allocation] [ossa] @$s17P08CounterRuntime27counterGraphAllocationProbeSiyF : $@convention(thin) () -> Int {
+bb0:
+  //     guard HostComponentGraphValidation.validate(CounterHostGraph()) == nil else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:7
+  %0 = metatype $@thin Optional<HostConfigurationError>.Type // user: %16
+  %1 = metatype $@thin HostComponentGraphValidation.Type // user: %8
+  %2 = metatype $@thin CounterHostGraph.Type      // user: %4
+  // function_ref CounterHostGraph.init()
+  %3 = function_ref @$s17P08CounterRuntime0B9HostGraphVACycfC : $@convention(method) (@thin CounterHostGraph.Type) -> CounterHostGraph // user: %4
+  %4 = apply %3(%2) : $@convention(method) (@thin CounterHostGraph.Type) -> CounterHostGraph // user: %6
+  %5 = alloc_stack $CounterHostGraph              // users: %9, %8, %6
+  store %4 to [trivial] %5                        // id: %6
+  // function_ref static HostComponentGraphValidation.validate<A>(_:)
+  %7 = function_ref @$s23GiftUIHostConfiguration28HostComponentGraphValidationO8validateyAA0dC5ErrorOSgxAA0deF4ViewRzlFZ : $@convention(method) <τ_0_0 where τ_0_0 : HostComponentGraphView> (@in_guaranteed τ_0_0, @thin HostComponentGraphValidation.Type) -> Optional<HostConfigurationError> // user: %8
+  %8 = apply %7<CounterHostGraph>(%5, %1) : $@convention(method) <τ_0_0 where τ_0_0 : HostComponentGraphView> (@in_guaranteed τ_0_0, @thin HostComponentGraphValidation.Type) -> Optional<HostConfigurationError> // user: %11
+  dealloc_stack %5                                // id: %9
+  %10 = alloc_stack $Optional<HostConfigurationError> // users: %18, %16, %11
+  store %8 to [trivial] %10                       // id: %11
+  %12 = enum $Optional<HostConfigurationError>, #Optional.none!enumelt // user: %14
+  %13 = alloc_stack $Optional<HostConfigurationError> // users: %17, %16, %14
+  store %12 to [trivial] %13                      // id: %14
+  // function_ref static Optional<A>.== infix(_:_:)
+  %15 = function_ref @$sSqsSQRzlE2eeoiySbxSg_ABtFZ : $@convention(method) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed Optional<τ_0_0>, @in_guaranteed Optional<τ_0_0>, @thin Optional<τ_0_0>.Type) -> Bool // user: %16
+  %16 = apply %15<HostConfigurationError>(%10, %13, %0) : $@convention(method) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed Optional<τ_0_0>, @in_guaranteed Optional<τ_0_0>, @thin Optional<τ_0_0>.Type) -> Bool // user: %19
+  dealloc_stack %13                               // id: %17
+  dealloc_stack %10                               // id: %18
+  %19 = struct_extract %16, #Bool._value          // user: %20
+  cond_br %19, bb1, bb38                          // id: %20
+
+bb1:                                              // Preds: bb0
+  //     for mode: UInt8 in 0...7 {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:8
+  %21 = alloc_box ${ var IndexingIterator<ClosedRange<UInt8>> }, var, name "$generator" // users: %212, %204, %186, %148, %110, %22
+  %22 = begin_borrow [var_decl] %21               // users: %211, %203, %185, %147, %109, %23
+  %23 = project_box %22, 0                        // users: %52, %47
+  %24 = alloc_stack $ClosedRange<UInt8>           // users: %49, %43, %40
+  %25 = metatype $@thin UInt8.Type
+  %26 = metatype $@thick UInt8.Type               // user: %40
+  %27 = integer_literal $Builtin.IntLiteral, 0    // user: %30
+  %28 = metatype $@thin UInt8.Type                // user: %30
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %29 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %30
+  %30 = apply %29(%27, %28) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %32
+  %31 = alloc_stack $UInt8                        // users: %42, %40, %32
+  store %30 to [trivial] %31                      // id: %32
+  %33 = integer_literal $Builtin.IntLiteral, 7    // user: %36
+  %34 = metatype $@thin UInt8.Type                // user: %36
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %35 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %36
+  %36 = apply %35(%33, %34) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %38
+  %37 = alloc_stack $UInt8                        // users: %41, %40, %38
+  store %36 to [trivial] %37                      // id: %38
+  // function_ref static Comparable.... infix(_:_:)
+  %39 = function_ref @$sSLsE3zzzoiySNyxGx_xtFZ : $@convention(method) <τ_0_0 where τ_0_0 : Comparable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> @out ClosedRange<τ_0_0> // user: %40
+  %40 = apply %39<UInt8>(%24, %31, %37, %26) : $@convention(method) <τ_0_0 where τ_0_0 : Comparable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> @out ClosedRange<τ_0_0>
+  dealloc_stack %37                               // id: %41
+  dealloc_stack %31                               // id: %42
+  %43 = load [trivial] %24                        // user: %45
+  %44 = alloc_stack $ClosedRange<UInt8>           // users: %48, %47, %45
+  store %43 to [trivial] %44                      // id: %45
+  // function_ref Collection<>.makeIterator()
+  %46 = function_ref @$sSlss16IndexingIteratorVyxG0B0RtzrlE04makeB0ACyF : $@convention(method) <τ_0_0 where τ_0_0 : Collection, τ_0_0.Iterator == IndexingIterator<τ_0_0>> (@in τ_0_0) -> @out IndexingIterator<τ_0_0> // user: %47
+  %47 = apply %46<ClosedRange<UInt8>>(%23, %44) : $@convention(method) <τ_0_0 where τ_0_0 : Collection, τ_0_0.Iterator == IndexingIterator<τ_0_0>> (@in τ_0_0) -> @out IndexingIterator<τ_0_0>
+  dealloc_stack %44                               // id: %48
+  dealloc_stack %24                               // id: %49
+  br bb2                                          // id: %50
+
+// Loop header
+bb2:                                              // Preds: bb36 bb1
+  //     for mode: UInt8 in 0...7 {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:8
+  %51 = alloc_stack $Optional<UInt8>              // users: %61, %210, %56, %54
+  %52 = begin_access [modify] [unknown] %23       // users: %55, %54
+  // function_ref IndexingIterator.next()
+  %53 = function_ref @$ss16IndexingIteratorV4next7ElementQzSgyF : $@convention(method) <τ_0_0 where τ_0_0 : Collection> (@inout IndexingIterator<τ_0_0>) -> @out Optional<τ_0_0.Element> // user: %54
+  %54 = apply %53<ClosedRange<UInt8>>(%51, %52) : $@convention(method) <τ_0_0 where τ_0_0 : Collection> (@inout IndexingIterator<τ_0_0>) -> @out Optional<τ_0_0.Element>
+  end_access %52                                  // id: %55
+  %56 = load [trivial] %51                        // user: %57
+  switch_enum %56, case #Optional.some!enumelt: bb3, case #Optional.none!enumelt: bb37 // id: %57
+
+// %58                                            // user: %59
+bb3(%58 : $UInt8):                                // Preds: bb2
+  //     for mode: UInt8 in 0...7 {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:8
+  %59 = move_value [var_decl] %58                 // users: %208, %202, %184, %146, %108, %62, %60
+  debug_value %59, let, name "$element"           // id: %60
+  dealloc_stack %51                               // id: %61
+  %62 = move_value [var_decl] %59                 // users: %207, %201, %183, %151, %145, %113, %107, %75, %67, %63
+  debug_value %62, let, name "mode"               // id: %63
+  //         let failure = HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode))	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:9
+  %64 = metatype $@thin HostComponentGraphValidation.Type // user: %71
+  %65 = metatype $@thin CounterInvalidGraph.Type  // user: %67
+  // function_ref CounterInvalidGraph.init(mode:)
+  %66 = function_ref @$s17P08CounterRuntime0B12InvalidGraphV4modeACs5UInt8V_tcfC : $@convention(method) (UInt8, @thin CounterInvalidGraph.Type) -> CounterInvalidGraph // user: %67
+  %67 = apply %66(%62, %65) : $@convention(method) (UInt8, @thin CounterInvalidGraph.Type) -> CounterInvalidGraph // user: %69
+  %68 = alloc_stack $CounterInvalidGraph          // users: %72, %71, %69
+  store %67 to [trivial] %68                      // id: %69
+  // function_ref static HostComponentGraphValidation.validate<A>(_:)
+  %70 = function_ref @$s23GiftUIHostConfiguration28HostComponentGraphValidationO8validateyAA0dC5ErrorOSgxAA0deF4ViewRzlFZ : $@convention(method) <τ_0_0 where τ_0_0 : HostComponentGraphView> (@in_guaranteed τ_0_0, @thin HostComponentGraphValidation.Type) -> Optional<HostConfigurationError> // user: %71
+  %71 = apply %70<CounterInvalidGraph>(%68, %64) : $@convention(method) <τ_0_0 where τ_0_0 : HostComponentGraphView> (@in_guaranteed τ_0_0, @thin HostComponentGraphValidation.Type) -> Optional<HostConfigurationError> // user: %73
+  dealloc_stack %68                               // id: %72
+  %73 = move_value [var_decl] %71                 // users: %206, %189, %200, %167, %182, %129, %144, %91, %106, %74
+  debug_value %73, let, name "failure"            // id: %74
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  %75 = move_value [var_decl] %62                 // users: %90, %112, %83
+  %76 = integer_literal $Builtin.IntLiteral, 0    // user: %79
+  %77 = metatype $@thin UInt8.Type                // user: %79
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %78 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %79
+  %79 = apply %78(%76, %77) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %81
+  %80 = alloc_stack $UInt8                        // users: %87, %85, %81
+  store %79 to [trivial] %80                      // id: %81
+  %82 = alloc_stack $UInt8                        // users: %86, %85, %83
+  store %75 to [trivial] %82                      // id: %83
+  // function_ref ~= infix<A>(_:_:)
+  %84 = function_ref @$ss2teoiySbx_xtSQRzlF : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %85
+  %85 = apply %84<UInt8>(%80, %82) : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %88
+  dealloc_stack %82                               // id: %86
+  dealloc_stack %80                               // id: %87
+  %88 = struct_extract %85, #Bool._value          // user: %89
+  cond_br %88, bb4, bb12                          // id: %89
+
+bb4:                                              // Preds: bb3
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %75                             // id: %90
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  switch_enum %73, case #Optional.some!enumelt: bb6, case #Optional.none!enumelt: bb5 // id: %91
+
+bb5:                                              // Preds: bb4
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  br bb11                                         // id: %92
+
+// %93                                            // user: %94
+bb6(%93 : $HostConfigurationError):               // Preds: bb4
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  switch_enum %93, case #HostConfigurationError.missingRole!enumelt: bb8, default bb7 // id: %94
+
+bb7(%95 : $HostConfigurationError):               // Preds: bb6
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  br bb11                                         // id: %96
+
+// %97                                            // user: %98
+bb8(%97 : $HostComponentRole):                    // Preds: bb6
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  switch_enum %97, case #HostComponentRole.residualPolicy!enumelt: bb10, default bb9 // id: %98
+
+bb9(%99 : $HostComponentRole):                    // Preds: bb8
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  br bb11                                         // id: %100
+
+bb10:                                             // Preds: bb8
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  br bb36                                         // id: %101
+
+bb11:                                             // Preds: bb9 bb7 bb5
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  %102 = integer_literal $Builtin.IntLiteral, 0   // user: %105
+  %103 = metatype $@thin Int.Type                 // user: %105
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %104 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %105
+  %105 = apply %104(%102, %103) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %111
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  extend_lifetime %73                             // id: %106
+  extend_lifetime %62                             // id: %107
+  extend_lifetime %59                             // id: %108
+  end_borrow %22                                  // id: %109
+  destroy_value %21                               // id: %110
+  br bb39(%105)                                   // id: %111
+
+bb12:                                             // Preds: bb3
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %75                             // id: %112
+  %113 = move_value [var_decl] %62                // users: %128, %150, %121
+  %114 = integer_literal $Builtin.IntLiteral, 1   // user: %117
+  %115 = metatype $@thin UInt8.Type               // user: %117
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %116 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %117
+  %117 = apply %116(%114, %115) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %119
+  %118 = alloc_stack $UInt8                       // users: %125, %123, %119
+  store %117 to [trivial] %118                    // id: %119
+  %120 = alloc_stack $UInt8                       // users: %124, %123, %121
+  store %113 to [trivial] %120                    // id: %121
+  // function_ref ~= infix<A>(_:_:)
+  %122 = function_ref @$ss2teoiySbx_xtSQRzlF : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %123
+  %123 = apply %122<UInt8>(%118, %120) : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %126
+  dealloc_stack %120                              // id: %124
+  dealloc_stack %118                              // id: %125
+  %126 = struct_extract %123, #Bool._value        // user: %127
+  cond_br %126, bb13, bb21                        // id: %127
+
+bb13:                                             // Preds: bb12
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %113                            // id: %128
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  switch_enum %73, case #Optional.some!enumelt: bb15, case #Optional.none!enumelt: bb14 // id: %129
+
+bb14:                                             // Preds: bb13
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  br bb20                                         // id: %130
+
+// %131                                           // user: %132
+bb15(%131 : $HostConfigurationError):             // Preds: bb13
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  switch_enum %131, case #HostConfigurationError.duplicateRole!enumelt: bb17, default bb16 // id: %132
+
+bb16(%133 : $HostConfigurationError):             // Preds: bb15
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  br bb20                                         // id: %134
+
+// %135                                           // user: %136
+bb17(%135 : $HostComponentRole):                  // Preds: bb15
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  switch_enum %135, case #HostComponentRole.wakeRequester!enumelt: bb19, default bb18 // id: %136
+
+bb18(%137 : $HostComponentRole):                  // Preds: bb17
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  br bb20                                         // id: %138
+
+bb19:                                             // Preds: bb17
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  br bb36                                         // id: %139
+
+bb20:                                             // Preds: bb18 bb16 bb14
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  %140 = integer_literal $Builtin.IntLiteral, 0   // user: %143
+  %141 = metatype $@thin Int.Type                 // user: %143
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %142 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %143
+  %143 = apply %142(%140, %141) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %149
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  extend_lifetime %73                             // id: %144
+  extend_lifetime %62                             // id: %145
+  extend_lifetime %59                             // id: %146
+  end_borrow %22                                  // id: %147
+  destroy_value %21                               // id: %148
+  br bb39(%143)                                   // id: %149
+
+bb21:                                             // Preds: bb12
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %113                            // id: %150
+  %151 = move_value [var_decl] %62                // users: %166, %188, %159
+  %152 = integer_literal $Builtin.IntLiteral, 3   // user: %155
+  %153 = metatype $@thin UInt8.Type               // user: %155
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %154 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %155
+  %155 = apply %154(%152, %153) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %157
+  %156 = alloc_stack $UInt8                       // users: %163, %161, %157
+  store %155 to [trivial] %156                    // id: %157
+  %158 = alloc_stack $UInt8                       // users: %162, %161, %159
+  store %151 to [trivial] %158                    // id: %159
+  // function_ref ~= infix<A>(_:_:)
+  %160 = function_ref @$ss2teoiySbx_xtSQRzlF : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %161
+  %161 = apply %160<UInt8>(%156, %158) : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %164
+  dealloc_stack %158                              // id: %162
+  dealloc_stack %156                              // id: %163
+  %164 = struct_extract %161, #Bool._value        // user: %165
+  cond_br %164, bb22, bb30                        // id: %165
+
+bb22:                                             // Preds: bb21
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %151                            // id: %166
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  switch_enum %73, case #Optional.some!enumelt: bb24, case #Optional.none!enumelt: bb23 // id: %167
+
+bb23:                                             // Preds: bb22
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  br bb29                                         // id: %168
+
+// %169                                           // user: %170
+bb24(%169 : $HostConfigurationError):             // Preds: bb22
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  switch_enum %169, case #HostConfigurationError.missingRole!enumelt: bb26, default bb25 // id: %170
+
+bb25(%171 : $HostConfigurationError):             // Preds: bb24
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  br bb29                                         // id: %172
+
+// %173                                           // user: %174
+bb26(%173 : $HostComponentRole):                  // Preds: bb24
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  switch_enum %173, case #HostComponentRole.useCaseSet!enumelt: bb28, default bb27 // id: %174
+
+bb27(%175 : $HostComponentRole):                  // Preds: bb26
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  br bb29                                         // id: %176
+
+bb28:                                             // Preds: bb26
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  br bb36                                         // id: %177
+
+bb29:                                             // Preds: bb27 bb25 bb23
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  %178 = integer_literal $Builtin.IntLiteral, 0   // user: %181
+  %179 = metatype $@thin Int.Type                 // user: %181
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %180 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %181
+  %181 = apply %180(%178, %179) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %187
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  extend_lifetime %73                             // id: %182
+  extend_lifetime %62                             // id: %183
+  extend_lifetime %59                             // id: %184
+  end_borrow %22                                  // id: %185
+  destroy_value %21                               // id: %186
+  br bb39(%181)                                   // id: %187
+
+bb30:                                             // Preds: bb21
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %151                            // id: %188
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  switch_enum %73, case #Optional.some!enumelt: bb32, case #Optional.none!enumelt: bb31 // id: %189
+
+bb31:                                             // Preds: bb30
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  br bb35                                         // id: %190
+
+// %191                                           // user: %192
+bb32(%191 : $HostConfigurationError):             // Preds: bb30
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  switch_enum %191, case #HostConfigurationError.invalidGraph!enumelt: bb34, default bb33 // id: %192
+
+bb33(%193 : $HostConfigurationError):             // Preds: bb32
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  br bb35                                         // id: %194
+
+bb34:                                             // Preds: bb32
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  br bb36                                         // id: %195
+
+bb35:                                             // Preds: bb33 bb31
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  %196 = integer_literal $Builtin.IntLiteral, 0   // user: %199
+  %197 = metatype $@thin Int.Type                 // user: %199
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %198 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %199
+  %199 = apply %198(%196, %197) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %205
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  extend_lifetime %73                             // id: %200
+  extend_lifetime %62                             // id: %201
+  extend_lifetime %59                             // id: %202
+  end_borrow %22                                  // id: %203
+  destroy_value %21                               // id: %204
+  br bb39(%199)                                   // id: %205
+
+bb36:                                             // Preds: bb34 bb28 bb19 bb10
+  //     }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:20
+  extend_lifetime %73                             // id: %206
+  extend_lifetime %62                             // id: %207
+  extend_lifetime %59                             // id: %208
+  br bb2                                          // id: %209
+
+bb37:                                             // Preds: bb2
+  //     }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:20
+  dealloc_stack %51                               // id: %210
+  end_borrow %22                                  // id: %211
+  destroy_value %21                               // id: %212
+  //     return 9	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:21
+  %213 = integer_literal $Builtin.IntLiteral, 9   // user: %216
+  %214 = metatype $@thin Int.Type                 // user: %216
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %215 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %216
+  %216 = apply %215(%213, %214) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %217
+  br bb39(%216)                                   // id: %217
+
+bb38:                                             // Preds: bb0
+  //     guard HostComponentGraphValidation.validate(CounterHostGraph()) == nil else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:7
+  %218 = integer_literal $Builtin.IntLiteral, 0   // user: %221
+  %219 = metatype $@thin Int.Type                 // user: %221
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %220 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %221
+  %221 = apply %220(%218, %219) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %222
+  br bb39(%221)                                   // id: %222
+
+// %223                                           // user: %224
+bb39(%223 : $Int):                                // Preds: bb37 bb35 bb29 bb20 bb11 bb38
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  return %223                                     // id: %224
+} // end sil function '$s17P08CounterRuntime27counterGraphAllocationProbeSiyF'
+  *** SIL module after #0, stage SILGen Passes, pass 0: SILGenCleanup (silgen-cleanup)
+sil [no_allocation] [ossa] @$s17P08CounterRuntime27counterGraphAllocationProbeSiyF : $@convention(thin) () -> Int {
+bb0:
+  //     guard HostComponentGraphValidation.validate(CounterHostGraph()) == nil else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:7
+  %0 = metatype $@thin Optional<HostConfigurationError>.Type // user: %16
+  %1 = metatype $@thin HostComponentGraphValidation.Type // user: %8
+  %2 = metatype $@thin CounterHostGraph.Type      // user: %4
+  // function_ref CounterHostGraph.init()
+  %3 = function_ref @$s17P08CounterRuntime0B9HostGraphVACycfC : $@convention(method) (@thin CounterHostGraph.Type) -> CounterHostGraph // user: %4
+  %4 = apply %3(%2) : $@convention(method) (@thin CounterHostGraph.Type) -> CounterHostGraph // user: %6
+  %5 = alloc_stack $CounterHostGraph              // users: %9, %8, %6
+  store %4 to [trivial] %5                        // id: %6
+  // function_ref static HostComponentGraphValidation.validate<A>(_:)
+  %7 = function_ref @$s23GiftUIHostConfiguration28HostComponentGraphValidationO8validateyAA0dC5ErrorOSgxAA0deF4ViewRzlFZ : $@convention(method) <τ_0_0 where τ_0_0 : HostComponentGraphView> (@in_guaranteed τ_0_0, @thin HostComponentGraphValidation.Type) -> Optional<HostConfigurationError> // user: %8
+  %8 = apply %7<CounterHostGraph>(%5, %1) : $@convention(method) <τ_0_0 where τ_0_0 : HostComponentGraphView> (@in_guaranteed τ_0_0, @thin HostComponentGraphValidation.Type) -> Optional<HostConfigurationError> // user: %11
+  dealloc_stack %5                                // id: %9
+  %10 = alloc_stack $Optional<HostConfigurationError> // users: %18, %16, %11
+  store %8 to [trivial] %10                       // id: %11
+  %12 = enum $Optional<HostConfigurationError>, #Optional.none!enumelt // user: %14
+  %13 = alloc_stack $Optional<HostConfigurationError> // users: %17, %16, %14
+  store %12 to [trivial] %13                      // id: %14
+  // function_ref static Optional<A>.== infix(_:_:)
+  %15 = function_ref @$sSqsSQRzlE2eeoiySbxSg_ABtFZ : $@convention(method) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed Optional<τ_0_0>, @in_guaranteed Optional<τ_0_0>, @thin Optional<τ_0_0>.Type) -> Bool // user: %16
+  %16 = apply %15<HostConfigurationError>(%10, %13, %0) : $@convention(method) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed Optional<τ_0_0>, @in_guaranteed Optional<τ_0_0>, @thin Optional<τ_0_0>.Type) -> Bool // user: %19
+  dealloc_stack %13                               // id: %17
+  dealloc_stack %10                               // id: %18
+  %19 = struct_extract %16, #Bool._value          // user: %20
+  cond_br %19, bb1, bb38                          // id: %20
+
+bb1:                                              // Preds: bb0
+  //     for mode: UInt8 in 0...7 {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:8
+  %21 = alloc_box ${ var IndexingIterator<ClosedRange<UInt8>> }, var, name "$generator" // users: %212, %204, %186, %148, %110, %22
+  %22 = begin_borrow [var_decl] %21               // users: %211, %203, %185, %147, %109, %23
+  %23 = project_box %22, 0                        // users: %52, %47
+  %24 = alloc_stack $ClosedRange<UInt8>           // users: %49, %43, %40
+  %25 = metatype $@thin UInt8.Type
+  %26 = metatype $@thick UInt8.Type               // user: %40
+  %27 = integer_literal $Builtin.IntLiteral, 0    // user: %30
+  %28 = metatype $@thin UInt8.Type                // user: %30
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %29 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %30
+  %30 = apply %29(%27, %28) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %32
+  %31 = alloc_stack $UInt8                        // users: %42, %40, %32
+  store %30 to [trivial] %31                      // id: %32
+  %33 = integer_literal $Builtin.IntLiteral, 7    // user: %36
+  %34 = metatype $@thin UInt8.Type                // user: %36
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %35 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %36
+  %36 = apply %35(%33, %34) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %38
+  %37 = alloc_stack $UInt8                        // users: %41, %40, %38
+  store %36 to [trivial] %37                      // id: %38
+  // function_ref static Comparable.... infix(_:_:)
+  %39 = function_ref @$sSLsE3zzzoiySNyxGx_xtFZ : $@convention(method) <τ_0_0 where τ_0_0 : Comparable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> @out ClosedRange<τ_0_0> // user: %40
+  %40 = apply %39<UInt8>(%24, %31, %37, %26) : $@convention(method) <τ_0_0 where τ_0_0 : Comparable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> @out ClosedRange<τ_0_0>
+  dealloc_stack %37                               // id: %41
+  dealloc_stack %31                               // id: %42
+  %43 = load [trivial] %24                        // user: %45
+  %44 = alloc_stack $ClosedRange<UInt8>           // users: %48, %47, %45
+  store %43 to [trivial] %44                      // id: %45
+  // function_ref Collection<>.makeIterator()
+  %46 = function_ref @$sSlss16IndexingIteratorVyxG0B0RtzrlE04makeB0ACyF : $@convention(method) <τ_0_0 where τ_0_0 : Collection, τ_0_0.Iterator == IndexingIterator<τ_0_0>> (@in τ_0_0) -> @out IndexingIterator<τ_0_0> // user: %47
+  %47 = apply %46<ClosedRange<UInt8>>(%23, %44) : $@convention(method) <τ_0_0 where τ_0_0 : Collection, τ_0_0.Iterator == IndexingIterator<τ_0_0>> (@in τ_0_0) -> @out IndexingIterator<τ_0_0>
+  dealloc_stack %44                               // id: %48
+  dealloc_stack %24                               // id: %49
+  br bb2                                          // id: %50
+
+// Loop header
+bb2:                                              // Preds: bb36 bb1
+  //     for mode: UInt8 in 0...7 {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:8
+  %51 = alloc_stack $Optional<UInt8>              // users: %61, %210, %56, %54
+  %52 = begin_access [modify] [unknown] %23       // users: %55, %54
+  // function_ref IndexingIterator.next()
+  %53 = function_ref @$ss16IndexingIteratorV4next7ElementQzSgyF : $@convention(method) <τ_0_0 where τ_0_0 : Collection> (@inout IndexingIterator<τ_0_0>) -> @out Optional<τ_0_0.Element> // user: %54
+  %54 = apply %53<ClosedRange<UInt8>>(%51, %52) : $@convention(method) <τ_0_0 where τ_0_0 : Collection> (@inout IndexingIterator<τ_0_0>) -> @out Optional<τ_0_0.Element>
+  end_access %52                                  // id: %55
+  %56 = load [trivial] %51                        // user: %57
+  switch_enum %56, case #Optional.some!enumelt: bb3, case #Optional.none!enumelt: bb37 // id: %57
+
+// %58                                            // user: %59
+bb3(%58 : $UInt8):                                // Preds: bb2
+  //     for mode: UInt8 in 0...7 {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:8
+  %59 = move_value [var_decl] %58                 // users: %208, %202, %184, %146, %108, %62, %60
+  debug_value %59, let, name "$element"           // id: %60
+  dealloc_stack %51                               // id: %61
+  %62 = move_value [var_decl] %59                 // users: %207, %201, %183, %151, %145, %113, %107, %75, %67, %63
+  debug_value %62, let, name "mode"               // id: %63
+  //         let failure = HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode))	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:9
+  %64 = metatype $@thin HostComponentGraphValidation.Type // user: %71
+  %65 = metatype $@thin CounterInvalidGraph.Type  // user: %67
+  // function_ref CounterInvalidGraph.init(mode:)
+  %66 = function_ref @$s17P08CounterRuntime0B12InvalidGraphV4modeACs5UInt8V_tcfC : $@convention(method) (UInt8, @thin CounterInvalidGraph.Type) -> CounterInvalidGraph // user: %67
+  %67 = apply %66(%62, %65) : $@convention(method) (UInt8, @thin CounterInvalidGraph.Type) -> CounterInvalidGraph // user: %69
+  %68 = alloc_stack $CounterInvalidGraph          // users: %72, %71, %69
+  store %67 to [trivial] %68                      // id: %69
+  // function_ref static HostComponentGraphValidation.validate<A>(_:)
+  %70 = function_ref @$s23GiftUIHostConfiguration28HostComponentGraphValidationO8validateyAA0dC5ErrorOSgxAA0deF4ViewRzlFZ : $@convention(method) <τ_0_0 where τ_0_0 : HostComponentGraphView> (@in_guaranteed τ_0_0, @thin HostComponentGraphValidation.Type) -> Optional<HostConfigurationError> // user: %71
+  %71 = apply %70<CounterInvalidGraph>(%68, %64) : $@convention(method) <τ_0_0 where τ_0_0 : HostComponentGraphView> (@in_guaranteed τ_0_0, @thin HostComponentGraphValidation.Type) -> Optional<HostConfigurationError> // user: %73
+  dealloc_stack %68                               // id: %72
+  %73 = move_value [var_decl] %71                 // users: %206, %189, %200, %167, %182, %129, %144, %91, %106, %74
+  debug_value %73, let, name "failure"            // id: %74
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  %75 = move_value [var_decl] %62                 // users: %90, %112, %83
+  %76 = integer_literal $Builtin.IntLiteral, 0    // user: %79
+  %77 = metatype $@thin UInt8.Type                // user: %79
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %78 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %79
+  %79 = apply %78(%76, %77) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %81
+  %80 = alloc_stack $UInt8                        // users: %87, %85, %81
+  store %79 to [trivial] %80                      // id: %81
+  %82 = alloc_stack $UInt8                        // users: %86, %85, %83
+  store %75 to [trivial] %82                      // id: %83
+  // function_ref ~= infix<A>(_:_:)
+  %84 = function_ref @$ss2teoiySbx_xtSQRzlF : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %85
+  %85 = apply %84<UInt8>(%80, %82) : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %88
+  dealloc_stack %82                               // id: %86
+  dealloc_stack %80                               // id: %87
+  %88 = struct_extract %85, #Bool._value          // user: %89
+  cond_br %88, bb4, bb12                          // id: %89
+
+bb4:                                              // Preds: bb3
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %75                             // id: %90
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  switch_enum %73, case #Optional.some!enumelt: bb6, case #Optional.none!enumelt: bb5 // id: %91
+
+bb5:                                              // Preds: bb4
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  br bb11                                         // id: %92
+
+// %93                                            // user: %94
+bb6(%93 : $HostConfigurationError):               // Preds: bb4
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  switch_enum %93, case #HostConfigurationError.missingRole!enumelt: bb8, default bb7 // id: %94
+
+bb7(%95 : $HostConfigurationError):               // Preds: bb6
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  br bb11                                         // id: %96
+
+// %97                                            // user: %98
+bb8(%97 : $HostComponentRole):                    // Preds: bb6
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  switch_enum %97, case #HostComponentRole.residualPolicy!enumelt: bb10, default bb9 // id: %98
+
+bb9(%99 : $HostComponentRole):                    // Preds: bb8
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  br bb11                                         // id: %100
+
+bb10:                                             // Preds: bb8
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  br bb36                                         // id: %101
+
+bb11:                                             // Preds: bb9 bb7 bb5
+  //             guard case .missingRole(.residualPolicy)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:12
+  %102 = integer_literal $Builtin.IntLiteral, 0   // user: %105
+  %103 = metatype $@thin Int.Type                 // user: %105
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %104 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %105
+  %105 = apply %104(%102, %103) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %111
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  extend_lifetime %73                             // id: %106
+  extend_lifetime %62                             // id: %107
+  extend_lifetime %59                             // id: %108
+  end_borrow %22                                  // id: %109
+  destroy_value %21                               // id: %110
+  br bb39(%105)                                   // id: %111
+
+bb12:                                             // Preds: bb3
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %75                             // id: %112
+  %113 = move_value [var_decl] %62                // users: %128, %150, %121
+  %114 = integer_literal $Builtin.IntLiteral, 1   // user: %117
+  %115 = metatype $@thin UInt8.Type               // user: %117
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %116 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %117
+  %117 = apply %116(%114, %115) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %119
+  %118 = alloc_stack $UInt8                       // users: %125, %123, %119
+  store %117 to [trivial] %118                    // id: %119
+  %120 = alloc_stack $UInt8                       // users: %124, %123, %121
+  store %113 to [trivial] %120                    // id: %121
+  // function_ref ~= infix<A>(_:_:)
+  %122 = function_ref @$ss2teoiySbx_xtSQRzlF : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %123
+  %123 = apply %122<UInt8>(%118, %120) : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %126
+  dealloc_stack %120                              // id: %124
+  dealloc_stack %118                              // id: %125
+  %126 = struct_extract %123, #Bool._value        // user: %127
+  cond_br %126, bb13, bb21                        // id: %127
+
+bb13:                                             // Preds: bb12
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %113                            // id: %128
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  switch_enum %73, case #Optional.some!enumelt: bb15, case #Optional.none!enumelt: bb14 // id: %129
+
+bb14:                                             // Preds: bb13
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  br bb20                                         // id: %130
+
+// %131                                           // user: %132
+bb15(%131 : $HostConfigurationError):             // Preds: bb13
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  switch_enum %131, case #HostConfigurationError.duplicateRole!enumelt: bb17, default bb16 // id: %132
+
+bb16(%133 : $HostConfigurationError):             // Preds: bb15
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  br bb20                                         // id: %134
+
+// %135                                           // user: %136
+bb17(%135 : $HostComponentRole):                  // Preds: bb15
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  switch_enum %135, case #HostComponentRole.wakeRequester!enumelt: bb19, default bb18 // id: %136
+
+bb18(%137 : $HostComponentRole):                  // Preds: bb17
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  br bb20                                         // id: %138
+
+bb19:                                             // Preds: bb17
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  br bb36                                         // id: %139
+
+bb20:                                             // Preds: bb18 bb16 bb14
+  //             guard case .duplicateRole(.wakeRequester)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:14
+  %140 = integer_literal $Builtin.IntLiteral, 0   // user: %143
+  %141 = metatype $@thin Int.Type                 // user: %143
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %142 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %143
+  %143 = apply %142(%140, %141) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %149
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  extend_lifetime %73                             // id: %144
+  extend_lifetime %62                             // id: %145
+  extend_lifetime %59                             // id: %146
+  end_borrow %22                                  // id: %147
+  destroy_value %21                               // id: %148
+  br bb39(%143)                                   // id: %149
+
+bb21:                                             // Preds: bb12
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %113                            // id: %150
+  %151 = move_value [var_decl] %62                // users: %166, %188, %159
+  %152 = integer_literal $Builtin.IntLiteral, 3   // user: %155
+  %153 = metatype $@thin UInt8.Type               // user: %155
+  // function_ref UInt8.init(_builtinIntegerLiteral:)
+  %154 = function_ref @$ss5UInt8V22_builtinIntegerLiteralABBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %155
+  %155 = apply %154(%152, %153) : $@convention(method) (Builtin.IntLiteral, @thin UInt8.Type) -> UInt8 // user: %157
+  %156 = alloc_stack $UInt8                       // users: %163, %161, %157
+  store %155 to [trivial] %156                    // id: %157
+  %158 = alloc_stack $UInt8                       // users: %162, %161, %159
+  store %151 to [trivial] %158                    // id: %159
+  // function_ref ~= infix<A>(_:_:)
+  %160 = function_ref @$ss2teoiySbx_xtSQRzlF : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %161
+  %161 = apply %160<UInt8>(%156, %158) : $@convention(thin) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %164
+  dealloc_stack %158                              // id: %162
+  dealloc_stack %156                              // id: %163
+  %164 = struct_extract %161, #Bool._value        // user: %165
+  cond_br %164, bb22, bb30                        // id: %165
+
+bb22:                                             // Preds: bb21
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %151                            // id: %166
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  switch_enum %73, case #Optional.some!enumelt: bb24, case #Optional.none!enumelt: bb23 // id: %167
+
+bb23:                                             // Preds: bb22
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  br bb29                                         // id: %168
+
+// %169                                           // user: %170
+bb24(%169 : $HostConfigurationError):             // Preds: bb22
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  switch_enum %169, case #HostConfigurationError.missingRole!enumelt: bb26, default bb25 // id: %170
+
+bb25(%171 : $HostConfigurationError):             // Preds: bb24
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  br bb29                                         // id: %172
+
+// %173                                           // user: %174
+bb26(%173 : $HostComponentRole):                  // Preds: bb24
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  switch_enum %173, case #HostComponentRole.useCaseSet!enumelt: bb28, default bb27 // id: %174
+
+bb27(%175 : $HostComponentRole):                  // Preds: bb26
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  br bb29                                         // id: %176
+
+bb28:                                             // Preds: bb26
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  br bb36                                         // id: %177
+
+bb29:                                             // Preds: bb27 bb25 bb23
+  //             guard case .missingRole(.useCaseSet)? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:16
+  %178 = integer_literal $Builtin.IntLiteral, 0   // user: %181
+  %179 = metatype $@thin Int.Type                 // user: %181
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %180 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %181
+  %181 = apply %180(%178, %179) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %187
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  extend_lifetime %73                             // id: %182
+  extend_lifetime %62                             // id: %183
+  extend_lifetime %59                             // id: %184
+  end_borrow %22                                  // id: %185
+  destroy_value %21                               // id: %186
+  br bb39(%181)                                   // id: %187
+
+bb30:                                             // Preds: bb21
+  //         switch mode {	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:10
+  extend_lifetime %151                            // id: %188
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  switch_enum %73, case #Optional.some!enumelt: bb32, case #Optional.none!enumelt: bb31 // id: %189
+
+bb31:                                             // Preds: bb30
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  br bb35                                         // id: %190
+
+// %191                                           // user: %192
+bb32(%191 : $HostConfigurationError):             // Preds: bb30
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  switch_enum %191, case #HostConfigurationError.invalidGraph!enumelt: bb34, default bb33 // id: %192
+
+bb33(%193 : $HostConfigurationError):             // Preds: bb32
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  br bb35                                         // id: %194
+
+bb34:                                             // Preds: bb32
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  br bb36                                         // id: %195
+
+bb35:                                             // Preds: bb33 bb31
+  //             guard case .invalidGraph? = failure else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:18
+  %196 = integer_literal $Builtin.IntLiteral, 0   // user: %199
+  %197 = metatype $@thin Int.Type                 // user: %199
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %198 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %199
+  %199 = apply %198(%196, %197) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %205
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  extend_lifetime %73                             // id: %200
+  extend_lifetime %62                             // id: %201
+  extend_lifetime %59                             // id: %202
+  end_borrow %22                                  // id: %203
+  destroy_value %21                               // id: %204
+  br bb39(%199)                                   // id: %205
+
+bb36:                                             // Preds: bb34 bb28 bb19 bb10
+  //     }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:20
+  extend_lifetime %73                             // id: %206
+  extend_lifetime %62                             // id: %207
+  extend_lifetime %59                             // id: %208
+  br bb2                                          // id: %209
+
+bb37:                                             // Preds: bb2
+  //     }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:20
+  dealloc_stack %51                               // id: %210
+  end_borrow %22                                  // id: %211
+  destroy_value %21                               // id: %212
+  //     return 9	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:21
+  %213 = integer_literal $Builtin.IntLiteral, 9   // user: %216
+  %214 = metatype $@thin Int.Type                 // user: %216
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %215 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %216
+  %216 = apply %215(%213, %214) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %217
+  br bb39(%216)                                   // id: %217
+
+bb38:                                             // Preds: bb0
+  //     guard HostComponentGraphValidation.validate(CounterHostGraph()) == nil else { return 0 }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:7
+  %218 = integer_literal $Builtin.IntLiteral, 0   // user: %221
+  %219 = metatype $@thin Int.Type                 // user: %221
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %220 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %221
+  %221 = apply %220(%218, %219) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %222
+  br bb39(%221)                                   // id: %222
+
+// %223                                           // user: %224
+bb39(%223 : $Int):                                // Preds: bb37 bb35 bb29 bb20 bb11 bb38
+  // }	SourceLoc: /Users/eugene/work/GiftUI/.build/contracts/p08-native-static-graph-effect-attribution1/GraphValidationProbe.swift:22
+  return %223                                     // id: %224
+} // end sil function '$s17P08CounterRuntime27counterGraphAllocationProbeSiyF'

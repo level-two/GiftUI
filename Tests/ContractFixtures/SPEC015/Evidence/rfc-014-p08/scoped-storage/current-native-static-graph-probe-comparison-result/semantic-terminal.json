@@ -1,0 +1,22 @@
+{
+  "exit": -9,
+  "stop_reason": "nonbody_context_cap",
+  "raw_stream_bytes_counted": {
+    "stdout": 0,
+    "stderr": 218862
+  },
+  "finished_utc": "2026-10-29T07:24:55.360507+00:00",
+  "elapsed_seconds": 1.65338325,
+  "complete_bodies_seen": 2,
+  "complete_bodies_retained": 2,
+  "earlier_complete_bodies_discarded": 0,
+  "discarded_complete_body_bytes": 0,
+  "incomplete_body_discarded": false,
+  "incomplete_body_bytes": 0,
+  "pending_unprocessed_bytes": 7,
+  "retained_snapshot_bytes": 65289,
+  "retained_context_bytes": 153693,
+  "all_raw_bytes_counted_before_selection": true,
+  "processing_charge_ceiling_bytes": 407857112,
+  "complete_context_limitations": "A cap-triggered stop cannot establish compiler rejection attribution. Earlier complete snapshots discarded by ring are counted; terminal compiler-phase context is preserved only if run completes without cap."
+}
