@@ -404,6 +404,12 @@ existing requirements; a percentage speedup alone does not satisfy IT-AC-009.
 
 ## Deferred and Follow-up Work
 
+The 2026-10-31 [contract cleanup allocation](iteration-004-backend-and-application-integration.md#contract-cleanup-after-iteration-003)
+places CC-01–04 in FW-037/FW-038 and iteration 4 after the iteration-3 delivery/
+closure decision. It adds no post-P08 cleanup gate or P08–P12 subtask. Only a
+bounded simplification necessary for a current delivery blocker belongs in its
+existing task; preserve the current rules, acceptance and delivery sequence.
+
 - FW-027 and FW-032 are selected for this iteration's resumption. Their historical
   exceptions and evidence remain; no algorithm or connected action is implied.
 - FW-024/025/026 remain candidate partial-frame/reuse/projection directions;

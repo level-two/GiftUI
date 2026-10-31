@@ -12,6 +12,7 @@ iterations:
   ITERATION-003: docs/iterations/iteration-003-dev-ux-improvement.md
   # Mandatory MR rules link to concrete MP recipes: docs/iterations/iteration-003-review/memory-migration-practices.md (100-commit inventory ending 169174c9).
   ITERATION-004: docs/iterations/iteration-004-backend-and-application-integration.md
+  # CC-01–04 contract cleanup: FW-037/FW-038, after ITERATION-003 delivery/closure; I4-06 assessment and I4-01–04 consolidation, existing criteria/gates.
 features:
   external-application-integration:
     title: External Application and Backend Integration

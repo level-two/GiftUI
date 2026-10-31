@@ -13,6 +13,7 @@ source:
   - RFC-013
   - docs/iterations/iteration-004-backend-and-application-integration.md
 related_future_work:
+  - FW-037
   - FW-039
 related_explorations: []
 related_spikes: []
@@ -56,6 +57,38 @@ coverage remains unchanged and no speedup has yet been measured.
 The remaining runner/application/package redesign below stays captured for
 iteration 4. This partial process adoption neither closes FW-038 nor promotes
 a deferred architecture or authorizes an experiment.
+
+## Concrete accounting cleanup finding — 2026-10-31
+
+**CC-03 — Resource proof has become an execution subsystem.** The reviewed
+[CounterPhysicalAccountingEngine and visitors](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift)
+carry request/resume phases, intermediate counters, type-layout requests and
+callback visitors to qualify accounting under the allocation constraint. This
+is primarily Counter fixture/integration complexity, not a demonstrated defect
+in every production owner. The accepted graph/accounting implementation remains
+valid evidence within its recorded boundary.
+
+Assess small concrete facts supplied by physical owners and a bounded accounting
+operation over those facts, keeping observation separate from mutable accumulation
+where appropriate. Candidate success is fewer request/callback/forwarding layers
+and independently maintained accounting facts, with exact region inventory,
+ordered reports, overflow/refusal behavior and initialization/destruction costs
+preserved. Keep the old/new oracle independent. Do not infer savings from fewer
+source lines or allocator-symbol counts.
+
+[FW-037](fw-037-core-wide-storage-ownership-generalization.md#concrete-contract-cleanup-findings--2026-10-31)
+owns CC-01/02/04 configuration/traversal/descriptor boundaries. The shared
+[iteration-4 allocation](../iterations/iteration-004-backend-and-application-integration.md#contract-cleanup-after-iteration-003)
+requires structural before/after counts, equivalent contract coverage and
+comparable focused/full validation timings, with actual resource deltas and
+unavailable measurements reported. A speedup is a hypothesis until measured.
+
+Eugene explicitly selected capture and post-ITERATION-003 scheduling on
+2026-10-31. Revisit with I4-06 assessment and I4-01–04 consolidation after the
+iteration-3 delivery/closure decision; P08 PASS alone does not start this cleanup.
+This creates no P08–P12 cleanup subtask or prerequisite. Required current safety,
+allocation and fit corrections remain current work; broader cleanup must not be
+used to postpone them. Existing runner consolidation remains part of this item.
 
 ## Consolidation Candidate for Iteration 004
 

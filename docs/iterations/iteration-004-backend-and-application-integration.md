@@ -5,7 +5,7 @@ status: approved
 revision: 4
 approved_revision: 4
 created: 2026-10-09
-updated: 2026-10-15
+updated: 2026-10-31
 features:
   - external-application-integration
   - giftui-mvp-architecture
@@ -96,6 +96,71 @@ also assigns analogous pre-existing gaps outside the selected counter safety/
 dependency path to exact mandatory next-iteration residuals, preserving required
 counter fixes, new regressions/shared breaks and architectural gates in scope.
 
+## Contract Cleanup after ITERATION-003
+
+On 2026-10-31 Eugene agreed to keep the broader cleanup after ITERATION-003 and
+instructed: “capture these concrete cleanup findings in FW-037/FW-038 and the
+Iteration 04 plan, with clear scope and success criteria, keeping Iteration 03
+focused on delivery.” This is a concrete allocation within existing I4-06
+assessment and I4-01–04 consolidation, with I4-07 compatibility where affected.
+Revision 4 and I4-AC-001–008 remain the governing delivery commitment; this does
+not add a new cleanup milestone or select a replacement API/architecture.
+
+**Entry:** begin this cleanup after the explicit iteration-3 delivery/closure
+decision and the applicable iteration-4 entry gates. P08 PASS alone is not its
+start trigger. Read-only capture here does not activate iteration 4. Keep P08–P12
+focused on analyzer/counter delivery, measured performance and adoption. A
+specific contract simplification necessary to resolve a current delivery blocker
+still belongs to that existing task and its normal authority; it does not start
+the broader cleanup.
+
+| Finding / source | Focused scope and candidate outcome | Existing allocation |
+| --- | --- | --- |
+| CC-01 / [FW-037](../future-work/fw-037-core-wide-storage-ownership-generalization.md#concrete-contract-cleanup-findings--2026-10-31) | Reconcile overlapping limits/audit/profile-validation inputs; assess one authoritative checked representation after raw validation, with fewer independently supplied facts and consistency joins | I4-06 boundary assessment; I4-03 assembly; I4-AC-003/004/007 |
+| CC-02 / FW-037 | Reduce semantic traversal's adapter-visible bookkeeping and forwarding; keep shared control/failure state with its owner and retain concrete storage/lifetime enforcement | I4-06 assessment; applicable I4-01/03 owner plans; I4-AC-004/007 |
+| CC-03 / [FW-038](../future-work/fw-038-scoped-contract-validation-cost.md#concrete-accounting-cleanup-finding--2026-10-31) | Simplify Counter physical accounting's request/resume/callback machinery through owner-supplied concrete facts and bounded accounting; preserve complete costs and independent ordered-report oracles | I4-01–04 consolidation; I4-07 only for affected selected ownership duties; I4-AC-004/005/008 |
+| CC-04 / FW-037 | Confine incomplete resource descriptors to genuine input boundaries; assess complete owner-specific internal values instead of repeatedly propagating optional facts | I4-06 assessment; I4-03 assembly; I4-AC-003/004/007 |
+
+### Cleanup assessment and adoption success criteria
+
+1. **Reproducible baseline:** identify adopted iteration-3 source/compiler/profile
+   and artifacts. Recount the selected interfaces: independently supplied facts,
+   duplicated limits/audits, mutable protocol requirements, forwarding methods,
+   accounting phases/callback layers and relevant compilation commands. The
+   captured 17-method/six-property traversal count is an observation, not a fixed
+   future target or an instruction to merge all operations.
+2. **Focused disposition:** give each CC-01–04 finding an adopt/retain/defer result,
+   affected owner/contracts and reason. Assess the finite Counter first; verify
+   the selected boundary against Signal Analyzer and I4-06's existing second
+   consumer/PC-simulator composition requirements. Name evidence gaps. This
+   satisfies the assessment portion without promising an unproved redesign.
+3. **Demonstrated structural reduction for adoption:** a selected cleanup must
+   reduce the counted obligations it targets, such as separately supplied audit
+   copies or adapter mutation/forwarding requirements. No duplicate state machine,
+   replacement universal-owner abstraction, hidden mutable authority or equivalent
+   obligations relocated into extra wrappers. Explain any necessary trade-off.
+4. **Equivalent guarantees:** preserve invalid-input/first-error order, all
+   semantic/action/pixel results, complete ordered region reports, overflow and
+   refusal, ownership/escape/exclusivity, partial initialization and backing-last
+   cleanup. Reconcile every affected required test to retained or replacement
+   coverage with an independent oracle; preserve applicable compiler negatives.
+5. **Measured costs:** compare before/after backing, temporary/copy costs,
+   heap/stack/RAM/flash and code size where affected, plus focused/full validation
+   time and repeated compiler invocations under identified conditions. Meet the
+   accepted per-application resource/performance limits; report regressions and
+   unknowns explicitly. No percentage speedup or total reduction is assumed.
+6. **Contract and delivery integration:** route cross-module/API/ownership changes
+   through RFC-013 or the affected accepted ADR/Specification amendment before
+   implementation. Realize selected changes in the existing owner plans and
+   supported consumer build paths, reuse applicable evidence, refresh invalidated
+   dependencies and record final results under I4-AC-003/004/005/007/008 as relevant.
+   Do not create a second runner or proof controller solely for this cleanup.
+
+The scope is the four named boundaries. Package proliferation, a whole-Core
+rewrite, unrelated style work and weaker acceptance coverage are excluded.
+FW-037/FW-038 stay `captured`; scheduling an assessment does not approve their
+candidate realizations or promote their lifecycle status.
+
 ## Exclusions
 
 - A new rendering algorithm solely to justify a new backend module, universal
@@ -167,6 +232,11 @@ On 2026-10-13, Eugene authorized making the ownership-and-transfer assessment
 model explicit in FW-037 and referencing it from I4-06 / I4-AC-007. This clarifies
 revision 3's existing assessment; it adds no implementation commitment or
 ownership contract. See [FW-037 disposition](../future-work/fw-037-core-wide-storage-ownership-generalization.md#disposition).
+
+The 2026-10-31 [contract cleanup allocation](#contract-cleanup-after-iteration-003)
+records the maintainer's explicit scheduling instruction within existing revision-4
+outcomes. It refines assessment/adoption evidence and preserves criterion IDs;
+it does not advance the iteration status or authorize a candidate contract.
 
 ## Closure and Follow-up
 

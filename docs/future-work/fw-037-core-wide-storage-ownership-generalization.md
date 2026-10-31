@@ -6,11 +6,13 @@ status: captured
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-10-31
 source:
+  - docs/iterations/iteration-004-backend-and-application-integration.md
   - RFC-015
   - ADR-039
 related_future_work:
+  - FW-038
   - FW-022
   - FW-035
 related_explorations:
@@ -68,6 +70,46 @@ and [RFC-015 scoped access](../rfcs/rfc-015-p08-scoped-storage-ownership.md).
 Determine which rules merit shared Core architecture and which remain specific
 to their subsystem; approved Specifications retain authority for current behavior.
 
+## Concrete contract cleanup findings — 2026-10-31
+
+Eugene agreed to defer the reviewed cleanup until after ITERATION-003 and asked
+to capture it here, in FW-038 and in the iteration-4 plan. This adds concrete
+assessment inputs to I4-06; it does not select replacement contracts.
+
+- **CC-01 — Overlapping configuration facts.**
+  [HostStructuralConfiguration](../../Sources/GiftUIHostConfiguration/HostConfigurationValues.swift)
+  supplies both limits and audit; the audit already contains limits, and
+  [CheckedMVPHostConfigurationValidator](../../Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift)
+  separately receives a profile-validation result containing an audit. Assess
+  one authoritative checked representation after raw-input validation, reducing
+  independently supplied copies and repeated consistency checks. Keep invalid
+  input and mismatch tests at the boundary where raw descriptors enter.
+- **CC-02 — Traversal adapters expose bookkeeping.**
+  [SemanticExpansionTraversalOperations](../../Sources/GiftUISemanticCore/GiftUISemanticCore.swift)
+  currently requires 17 methods and six mutable properties. The concrete
+  [CounterSemanticTraversal](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift)
+  repeats state and forwarding. Assess keeping control/failure bookkeeping with
+  its owner while adapters supply only varying storage and application operations.
+  Preserve shared traversal, concrete storage and checked backing lifetimes.
+- **CC-04 — Incomplete descriptors propagate internally.**
+  [RuntimeProfileLimitInputs and RuntimeStorageCapacities](../../Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift)
+  expose many optional facts subsequently unwrapped and reconciled. Assess raw
+  descriptors at the input boundary followed by complete owner-specific internal
+  values. Preserve exact missing/invalid/insufficient input errors and their order;
+  do not replace meaningful absence with guessed defaults.
+
+[CC-03 accounting and proof machinery](fw-038-scoped-contract-validation-cost.md#concrete-accounting-cleanup-finding--2026-10-31)
+is owned by FW-038. The
+[iteration-4 cleanup allocation and success criteria](../iterations/iteration-004-backend-and-application-integration.md#contract-cleanup-after-iteration-003)
+are the shared delivery breakdown. Use the adopted iteration-3 handoff as the
+baseline, recount these interfaces and assess the finite Counter first, then
+check Signal Analyzer and the existing external-consumer/ownership scenarios.
+Success requires fewer independently supplied facts and mutable/forwarding
+requirements at the selected boundary, with equivalent behavior, ownership and
+resource guarantees. Moving the same obligations behind more wrappers does not
+establish simplification; an evidenced retain/defer disposition remains valid
+for I4-06 where simplification is not justified.
+
 ## Why Deferred
 
 P08 needs a coherent finite carrier and physical slot design, not a universal
@@ -95,6 +137,9 @@ should generalize across them. This item adds only that narrow observation.
   experiments, compiler changes or reopened repair allowances.
 
 ## Revisit Triggers
+
+- Reassess CC-01/02/04 after the explicit ITERATION-003 delivery/closure decision,
+  under the iteration-4 cleanup allocation; do not launch on P08 PASS alone.
 
 - Start of ITERATION-004 I4-06, alongside package/access and host integration
   review; inventory gaps even if the P08 evidence below is not yet complete.
