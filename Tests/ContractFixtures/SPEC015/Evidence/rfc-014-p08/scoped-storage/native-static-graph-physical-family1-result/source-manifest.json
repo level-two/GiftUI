@@ -1,0 +1,213 @@
+{
+  "owned_paths": {
+    "Sources/GiftUI/GiftUI.swift": {
+      "sha256": "8ea58f7ced583d9a2e02f1b8eed02d2d251d3f21e8124a14212aa7ef5449c671",
+      "bytes": 4877,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUICapabilities/GiftUICapabilities.swift": {
+      "sha256": "ce36ae3b2d65377189bb4b1f02bf157610ba5a9e8ea71a2867bf36fa5d3707d6",
+      "bytes": 51490,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIFailureCore/GiftUIFailureCore.swift": {
+      "sha256": "4b6d59a5af45c2dd136471269abcd22b94c05c5fff59a321c4f6ba3b924462ed",
+      "bytes": 16115,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": {
+      "sha256": "5ea52a1e97a687da356a1e66421bee62d0c3fe5eecf402b01c748f02856eb9dc",
+      "bytes": 3308,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": {
+      "sha256": "901fa9b5e2de7f8049be43ee927fb65a135986d8c1f948e882265f8d18a4bee4",
+      "bytes": 5082,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": {
+      "sha256": "abc6752921dd10ad99c321cf9df7b803323b79dd4ca6a07f5f2b5574157f6b54",
+      "bytes": 6790,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": {
+      "sha256": "48fa81a15f524f757250ced079c8c51f1ccb0573005ead302881ff898b430b69",
+      "bytes": 18316,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": {
+      "sha256": "a5eb018ef8e00ca7cf77fd0721caf5ff5ca68b025fbc3c270cff485b40a6d099",
+      "bytes": 2769,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": {
+      "sha256": "7ba0cc7b80ae6d9a627226a2dca998d783695a6022ec4569c5df787adb7befb7",
+      "bytes": 2024,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": {
+      "sha256": "0a65ca39da4e0198d37b341b40906fae7925168eff0b668157d9673ce0a6376f",
+      "bytes": 3845,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": {
+      "sha256": "f14acccf9a75cdddbdb380ae9bce3d07f96fa5344654091d8de8290d07547a2a",
+      "bytes": 7668,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": {
+      "sha256": "5e3f496deecd0a67cd497cc822d8576125c7c632cffdeeb14eae8da8951414e6",
+      "bytes": 7554,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIRasterCore/RasterPayloadLimits.swift": {
+      "sha256": "3489a0aeaba953c56ae13ee69402fa70b26211653ebb51f0b5f84a2b70b1d2b2",
+      "bytes": 3685,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": {
+      "sha256": "f12656ee3481887fb19c006404828fa976dffe6556b79c90fc3e900a61b30661",
+      "bytes": 22287,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUISurfaceCore/SurfaceValues.swift": {
+      "sha256": "ae2f058fa2455bbf2f2c33ea5323197150c3e47fa73245abc4700a563994dc7a",
+      "bytes": 4081,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": {
+      "sha256": "3ac9a7a0b90976e3646d4e95bcf15ba5d0f59fd4f3744bd54b749554164ce35e",
+      "bytes": 1921,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift": {
+      "sha256": "09cedcdcaed6c3562fb0508e09d46359bd8ab246e60939319137232cc713d289",
+      "bytes": 898,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIExecution/ExecutionValues.swift": {
+      "sha256": "def70ac63d4b11ef119317845ea37e3a9200f64649cd2520bf7f9042f8b2fa1f",
+      "bytes": 3045,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIExecution/WakeValues.swift": {
+      "sha256": "c1267eb9d9d37f83c54b3279b1e6c005924f0c16238663bef18627bb9c0bbd7f",
+      "bytes": 1060,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIExecution/InputSourceSequenceState.swift": {
+      "sha256": "b2bcf689a69a01eabf76abddb2c0092e4782f8811c553a3b7ef6c4ce7df7a8c7",
+      "bytes": 5293,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIExecution/PointerActionCapture.swift": {
+      "sha256": "8ea21069653f65f3d384ab063ce14e471746a47e638ca3867270e71f60598732",
+      "bytes": 1936,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIObservableState/ObservableStateValues.swift": {
+      "sha256": "60d31f10ed5c8770db1b947de6861a9806f9be3ca9040cffe1afba5678da360b",
+      "bytes": 2557,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIInteraction/InteractionValues.swift": {
+      "sha256": "c9ca7079d9f7d0cd601e55cd8fc6645b40047936a284245b8af49826e271f79c",
+      "bytes": 7023,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIDrawing/DrawingLimits.swift": {
+      "sha256": "1edecf29cd7835ae83bf8d1de8361f7a9151e2b90fc6bdbe7785cb87cbb14c6f",
+      "bytes": 3023,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": {
+      "sha256": "34d65b79df71cf6600d94cfe21630318e8821fb21788dc520328160f44334bab",
+      "bytes": 9615,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": {
+      "sha256": "de53c506c5b6f5af48facfee6706f859b2f15ff933fed4ed02be453769cfe89e",
+      "bytes": 6370,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUIRenderCore/RenderValues.swift": {
+      "sha256": "e1ec9a3eac260de0ccb9a81ddd2acc39b3f11e38b6c71c16cb76b061240e0172",
+      "bytes": 2624,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": {
+      "sha256": "d9f4165a09778f97e99189f0da57a92aae44c98e9b1dae1c7baf312651ccdda4",
+      "bytes": 20091,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": {
+      "sha256": "aba72d2175ded647bdb7114d0b3ad24c90d2246ec7001cbe42700bcec083e417",
+      "bytes": 21276,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+      "sha256": "e7f78ff0afeffd60c1bf20cf5126e9c8684b3bdb56ee23f49bc4fe16ab3b4df3",
+      "bytes": 102313,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": {
+      "sha256": "19208df7c36c8d39f6203f5b03765e686b469af81c58440ebb6398400304e45b",
+      "bytes": 337510,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": {
+      "sha256": "2375f25d9b15459b8ccfdf86adb56b68030ad87d9d4d2b3c094de1a04f4af946",
+      "bytes": 20671,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": {
+      "sha256": "93c35bc562f508e5d0a90b9f7a348d9760b98b61277936972be57571590d3f84",
+      "bytes": 11576,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": {
+      "sha256": "18124630b1f127c736b156e7c73195e5cb511899a3a28e1383883d2ee8f7096c",
+      "bytes": 10607,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": {
+      "sha256": "13014f888a8fc817657429aae22fca1891fb2c8b9ea648cf28063b4efab04028",
+      "bytes": 15145,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+      "sha256": "01f2f59e0b653f3d0de87081466a7dcdb83718ade51c4f8850e1b174c2c42a25",
+      "bytes": 530656,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+      "sha256": "16f9345be9955be46c11cc4b78d999de421fea5fe3549553e40fbc96e99c170a",
+      "bytes": 16640,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": {
+      "sha256": "674e42699642ce324d8152b5e659618202c7ee676628513f5746843286b04de9",
+      "bytes": 8926,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+      "sha256": "8037105f0889e66284b95b2306eed6cabb41f40981965044f93c3776f0465078",
+      "bytes": 125971,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/PhysicalReportAccumulatorQualification.swift": {
+      "sha256": "6d89a128c678d03a9a4661928dfe0be312dd35b43ca249ee919f69b33a4224b4",
+      "bytes": 4481,
+      "basis": "Retainedhistoricalscalaroracle; currentstandaloneexecutionnotclaimed"
+    },
+    "Tests/ContractFixtures/SPEC015/AllocationGate/PhysicalAccountingStreamQualificationMain.swift": {
+      "sha256": "9d070d67e399c1711331912dc949e3ee883c8eeed8cbfe65b4ad98e458a6abe5",
+      "bytes": 17649,
+      "basis": "Exactcurrenttestedprovideror43sourcefreeze; currentworkingtreeunchangedsincefreeze"
+    }
+  },
+  "sources_are_durable_in_same_commit_as_packet": true,
+  "post_image_source_edits": false,
+  "protected_TargetHost_paths_excluded": true,
+  "no_wholePackage_claim": true
+}

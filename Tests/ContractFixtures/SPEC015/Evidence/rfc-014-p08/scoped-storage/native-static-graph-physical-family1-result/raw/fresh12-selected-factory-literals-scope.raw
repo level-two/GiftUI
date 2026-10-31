@@ -1,0 +1,54 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:665:9: warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 663 |     guard counterRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .insufficientStorage }
+ 664 |     let keys = interactionFacts.measurement
+ 665 |     let keyLimits = identityCapacities
+     |         `- warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 666 |     let semanticLimits = semantic.limits
+ 667 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:666:9: warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 664 |     let keys = interactionFacts.measurement
+ 665 |     let keyLimits = identityCapacities
+ 666 |     let semanticLimits = semantic.limits
+     |         `- warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 667 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+ 668 |         let payloadBytes = semantic.payloads.bytes, let scalarBytes = semantic.scalars.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:213:16: error: called function is not available in this module and can have unpredictable performance
+ 211 | 
+ 212 | private func counterInitialSemanticRecords() -> InlineArray<128, SemanticRuntimeRecord> {
+ 213 |     let seed = SemanticRuntimeRecord()
+     |                `- error: called function is not available in this module and can have unpredictable performance
+ 214 |     return [seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed, seed]
+ 215 | }
+     :
+ 222 | struct CounterSemanticBacking: ~Copyable {
+ 223 |     var pending = CounterPendingBacking()
+ 224 |     var records: InlineArray<128, SemanticRuntimeRecord> = counterInitialSemanticRecords()
+     |                                                            `- note: called from here
+ 225 |     var paths: InlineArray<384, SemanticPathEntry> = counterInitialSemanticPaths()
+ 226 |     var payloads: InlineArray<256, CounterPayload?> = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:2858:27: note: called from here
+2856 |     var root: CounterStaticRootStorage
+2857 |     var semantic: StaticSemanticRecordStorage
+2858 |     var semanticBacking = CounterSemanticBacking()
+     |                           `- note: called from here
+2859 |     var canvas = StaticCanvasValueStorage()
+2860 |     var canvasBacking: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = [nil]
+     :
+2970 | fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity,
+2971 |     backing: UnsafeMutableRawBufferPointer?, _ body: (inout P08TypedBackingOwner, borrowing P08StaticOuterView, borrowing CounterSemanticCodec) -> Result) -> Result {
+2972 |     var outer = P08StaticOuter(modelOwner: modelOwner, semanticOwner: semanticOwner)
+     |                 `- note: called from here
+2973 |     let limits = outer.limits
+2974 |     do throws(SemanticExpansionError) {
+     :
+5271 |     var semanticOwners = SemanticRecordOwnerNamespace()
+5272 |     do {
+5273 |         return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+     |                `- note: called from here
+5274 |             outer.auditStatic(owner: owner, report: { _ in })
+5275 |         }
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>

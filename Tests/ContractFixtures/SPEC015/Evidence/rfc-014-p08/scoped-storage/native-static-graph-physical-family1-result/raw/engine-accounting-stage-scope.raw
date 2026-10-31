@@ -1,0 +1,47 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:655:9: warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 653 |     guard counterRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .insufficientStorage }
+ 654 |     let keys = interactionFacts.measurement
+ 655 |     let keyLimits = identityCapacities
+     |         `- warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 656 |     let semanticLimits = semantic.limits
+ 657 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:656:9: warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 654 |     let keys = interactionFacts.measurement
+ 655 |     let keyLimits = identityCapacities
+ 656 |     let semanticLimits = semantic.limits
+     |         `- warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 657 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+ 658 |         let payloadBytes = semantic.payloads.bytes, let scalarBytes = semantic.scalars.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:140:911: error: called function is not available in this module and can have unpredictable performance
+138 | 
+139 | func counterActualLimits(_ profile: RuntimeProfileKind) -> RuntimeProfileLimits {
+140 |     RuntimeProfileLimits(records: .init(maximumPathEntries: 192, maximumPathDepth: 24, maximumPathChildFanout: 5, maximumPayloadBytesPerBank: 4096, maximumIdentityComponentsPerKey: 24, maximumInteractionIdentityComponents: 48), models: .init(maximumModelSlots: 2, maximumOwningTickets: 4, maximumFramePins: 2, maximumModelCaptureBanks: 0), semantic: .init(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2)!, maximumSemanticStructuralOccurrences: 64, layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, renderSink: CounterRenderSink().capacity, maximumOrdinaryRenderOperations: 24, execution: .init(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2)!, observableState: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!, interaction: .init(maximumActions: 2, maximumHitRegions: 2)!, drawing: counterDrawingLimits, staticCanvas: profile == .static ? .init(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: UInt16(MemoryLayout<CounterValueTable.CaptureStorage>.stride))! : nil, profile: profile)!
+    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               `- error: called function is not available in this module and can have unpredictable performance
+141 | }
+142 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:2855:18: note: called from here
+2853 | 
+2854 | fileprivate struct P08StaticOuter: ~Copyable {
+2855 |     let limits = counterActualLimits(.static)
+     |                  `- note: called from here
+2856 |     var root: CounterStaticRootStorage
+2857 |     var semantic: StaticSemanticRecordStorage
+     :
+2970 | fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity,
+2971 |     backing: UnsafeMutableRawBufferPointer?, _ body: (inout P08TypedBackingOwner, borrowing P08StaticOuterView, borrowing CounterSemanticCodec) -> Result) -> Result {
+2972 |     var outer = P08StaticOuter(modelOwner: modelOwner, semanticOwner: semanticOwner)
+     |                 `- note: called from here
+2973 |     let limits = outer.limits
+2974 |     do throws(SemanticExpansionError) {
+     :
+5271 |     var semanticOwners = SemanticRecordOwnerNamespace()
+5272 |     do {
+5273 |         return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+     |                `- note: called from here
+5274 |             outer.auditStatic(owner: owner, report: { _ in })
+5275 |         }
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>

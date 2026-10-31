@@ -5,6 +5,9 @@ package struct RenderSinkCapacity: Equatable, Sendable {
     package let maximumOperations: UInt16
     package let maximumPositionedGlyphs: UInt16
 
+    #if GIFTUI_LIMITS_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         maximumOperations: UInt16,
         maximumPositionedGlyphs: UInt16

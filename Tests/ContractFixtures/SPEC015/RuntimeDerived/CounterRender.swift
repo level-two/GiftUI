@@ -29,7 +29,7 @@ struct CounterRenderSink: DrawingOperationSink {
     var firstPoint: Point?
     var secondPoint: Point?
     var strokeHeader: StraightLineStrokeHeader?
-    var glyphRecords: InlineArray<64, PositionedGlyph?> = .init(repeating: nil)
+    var glyphRecords: InlineArray<64, PositionedGlyph?> = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
     mutating func begin(_ header: RenderPlanHeader) -> Bool { self.header = header; return true }
     mutating func fillRect(_ operation: FillRectOperation) -> Bool { operations += 1; return true }
     mutating func beginPositionedGlyphs(_ operation: PositionedGlyphOperationHeader) -> Bool { operations += 1; return true }
@@ -136,8 +136,11 @@ func counterRenderActual(semantic: borrowing SemanticRecordStore, models: borrow
     }
 }
 
+#if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF
+@_noAllocation
+#endif
 func counterActualLimits(_ profile: RuntimeProfileKind) -> RuntimeProfileLimits {
-    RuntimeProfileLimits(records: .init(maximumPathEntries: 192, maximumPathDepth: 24, maximumPathChildFanout: 5, maximumPayloadBytesPerBank: 4096, maximumIdentityComponentsPerKey: 24, maximumInteractionIdentityComponents: 48), models: .init(maximumModelSlots: 2, maximumOwningTickets: 4, maximumFramePins: 2, maximumModelCaptureBanks: 0), semantic: .init(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2)!, maximumSemanticStructuralOccurrences: 64, layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, renderSink: CounterRenderSink().capacity, maximumOrdinaryRenderOperations: 24, execution: .init(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2)!, observableState: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!, interaction: .init(maximumActions: 2, maximumHitRegions: 2)!, drawing: counterDrawingLimits, staticCanvas: profile == .static ? .init(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: UInt16(MemoryLayout<CounterValueTable.CaptureStorage>.stride))! : nil, profile: profile)!
+    RuntimeProfileLimits(records: .init(maximumPathEntries: 192, maximumPathDepth: 24, maximumPathChildFanout: 5, maximumPayloadBytesPerBank: 4096, maximumIdentityComponentsPerKey: 24, maximumInteractionIdentityComponents: 48), models: .init(maximumModelSlots: 2, maximumOwningTickets: 4, maximumFramePins: 2, maximumModelCaptureBanks: 0), semantic: .init(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2)!, maximumSemanticStructuralOccurrences: 64, layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, renderSink: CounterRenderSink().capacity, maximumOrdinaryRenderOperations: 24, execution: .init(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2)!, observableState: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!, interaction: .init(maximumActions: 2, maximumHitRegions: 2)!, drawing: counterDrawingLimits, staticCanvas: profile.rawValue == RuntimeProfileKind.static.rawValue ? .init(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: UInt16(MemoryLayout<CounterValueTable.CaptureStorage>.stride))! : nil, profile: profile)!
 }
 
 func counterVerifyPlan<P: DrawingPlanView>(_ plan: borrowing P, canvas: SemanticRecordReference, bounds: Rect, value: UInt8) -> Int where P.Identity == SemanticRecordReference {

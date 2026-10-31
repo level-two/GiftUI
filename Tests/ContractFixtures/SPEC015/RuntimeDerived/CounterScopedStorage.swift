@@ -20,7 +20,10 @@ import GiftUIInteraction
 
 // All creation and projection of selected capabilities is confined to this file.
 // Layout/source inspection does not establish numeric ABI or target fit.
-fileprivate enum P08PhysicalID: UInt8 { case b0, b1, b2, b3, g0, g1, g2, g3, g4, c0, h0, r0, r1, h1 }
+fileprivate enum P08PhysicalID: UInt8 {
+    case b0, b1, b2, b3, g0, g1, g2, g3, g4, c0, h0, r0, r1, h1
+    static func == (lhs: Self, rhs: Self) -> Bool { lhs.rawValue == rhs.rawValue }
+}
 fileprivate enum P08PhysicalLifecycle { case reserved, idle, active, released }
 fileprivate enum P08BackingInitializationFailure: Equatable { case invalidReservation, invalidCapacity, constructor, injected(P08PhysicalID, Int) }
 fileprivate struct P08InitializedEntry: Equatable {
@@ -31,6 +34,46 @@ fileprivate struct P08InitializedEntry: Equatable {
     let stride: Int
     let alignment: Int
     let retainedBytes: Int
+}
+fileprivate enum P08InitializedEntryIndexAccess {
+    static func get(_ rows: borrowing InlineArray<14, P08InitializedEntry?>, at index: Int) -> P08InitializedEntry? {
+        switch index {
+        case 0: rows[0]
+        case 1: rows[1]
+        case 2: rows[2]
+        case 3: rows[3]
+        case 4: rows[4]
+        case 5: rows[5]
+        case 6: rows[6]
+        case 7: rows[7]
+        case 8: rows[8]
+        case 9: rows[9]
+        case 10: rows[10]
+        case 11: rows[11]
+        case 12: rows[12]
+        case 13: rows[13]
+        default: preconditionFailure("inventory index out of bounds")
+        }
+    }
+    static func set(_ rows: inout InlineArray<14, P08InitializedEntry?>, at index: Int, to value: P08InitializedEntry?) {
+        switch index {
+        case 0: rows[0] = value
+        case 1: rows[1] = value
+        case 2: rows[2] = value
+        case 3: rows[3] = value
+        case 4: rows[4] = value
+        case 5: rows[5] = value
+        case 6: rows[6] = value
+        case 7: rows[7] = value
+        case 8: rows[8] = value
+        case 9: rows[9] = value
+        case 10: rows[10] = value
+        case 11: rows[11] = value
+        case 12: rows[12] = value
+        case 13: rows[13] = value
+        default: preconditionFailure("inventory index out of bounds")
+        }
+    }
 }
 fileprivate struct P08AcquisitionFault {
     let id: P08PhysicalID
@@ -310,7 +353,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
     private mutating func record(_ entry: P08InitializedEntry) {
         precondition(acquired < 14)
         for index in 0..<acquired {
-            let other = inventory[index]!
+            let other = P08InitializedEntryIndexAccess.get(inventory, at: index)!
             let entryExtent = UInt(entry.stride).multipliedReportingOverflow(by: UInt(entry.count))
             let otherExtent = UInt(other.stride).multipliedReportingOverflow(by: UInt(other.count))
             precondition(!entryExtent.overflow && !otherExtent.overflow)
@@ -319,7 +362,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             precondition(!a.overflow && !b.overflow && (a.partialValue <= other.address || b.partialValue <= entry.address))
             precondition(entry.id != other.id)
         }
-        inventory[acquired] = entry; acquired += 1
+        P08InitializedEntryIndexAccess.set(&inventory, at: acquired, to: entry); acquired += 1
     }
     private func validateReservations() -> Bool {
         var ranges: InlineArray<14, (UInt, Int, Int, Int)?> = .init(repeating: nil)
@@ -616,10 +659,10 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
     private mutating func destroyPrefix() {
         while acquired > 0 {
             acquired -= 1
-            let entry = inventory[acquired]!
+            let entry = P08InitializedEntryIndexAccess.get(inventory, at: acquired)!
             destroyOriginal(entry)
-            destruction[destroyed] = entry; destroyed += 1
-            inventory[acquired] = nil
+            P08InitializedEntryIndexAccess.set(&destruction, at: destroyed, to: entry); destroyed += 1
+            P08InitializedEntryIndexAccess.set(&inventory, at: acquired, to: nil)
         }
         lifecycle = .reserved
     }
@@ -683,7 +726,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
         if case .idle = lifecycle {
             requireEmpty()
             var remaining = acquired
-            while remaining > 0 { remaining -= 1; destroyOriginal(inventory[remaining]!) }
+            while remaining > 0 { remaining -= 1; destroyOriginal(P08InitializedEntryIndexAccess.get(inventory, at: remaining)!) }
         } else { precondition(acquired == 0) }
     }
     fileprivate func requireEmpty() {
@@ -1324,7 +1367,7 @@ fileprivate struct P08SessionPreparation {
 extension P08TypedBackingOwner {
     @inline(never)
     private borrowing func sessionEntry(_ id: P08PhysicalID) -> P08InitializedEntry {
-        for index in 0..<14 { if let entry = inventory[index], entry.id == id { return entry } }
+        for index in 0..<14 { if let entry = P08InitializedEntryIndexAccess.get(inventory, at: index), entry.id == id { return entry } }
         preconditionFailure("unacquired physical region")
     }
     @inline(never)
@@ -1716,25 +1759,122 @@ fileprivate struct P08OwnedPhysicalFacts {
     let interaction: CounterPhysicalInteractionFacts
 }
 extension P08TypedBackingOwner {
+    #if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF
+        @_noAllocation
+    #endif
+    private borrowing func physicalBankFacts(_ slot: borrowing P08TypedSlot<CounterStaticCandidate>, id: P08PhysicalID) -> CounterPhysicalBankFacts {
+        switch slot {
+        case .padded(let slot):
+            let p08Presence9: Bool;
+            if case .some = slot.pointee.slot { p08Presence9 = true } else { p08Presence9 = false };
+            precondition(p08Presence9)
+            return withUnsafeMutablePointer(to: &slot.pointee.slot!) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.alignment) }
+        case .native(let slot):
+            let p08Presence10: Bool;
+            if case .some = slot.pointee { p08Presence10 = true } else { p08Presence10 = false };
+            precondition(p08Presence10)
+            return withUnsafeMutablePointer(to: &slot.pointee!) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.alignment) }
+        case .embedded(let slot, _):
+            return withUnsafeMutablePointer(to: &slot.pointee) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>?>.alignment) }
+        }
+    }
+
+    #if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF
+        @_noAllocation
+    #endif
+    private borrowing func physicalBankFacts(_ slot: borrowing P08TypedSlot<CounterStaticCommitted>, id: P08PhysicalID) -> CounterPhysicalBankFacts {
+        switch slot {
+        case .padded(let slot):
+            let p08Presence9: Bool;
+            if case .some = slot.pointee.slot { p08Presence9 = true } else { p08Presence9 = false };
+            precondition(p08Presence9)
+            return withUnsafeMutablePointer(to: &slot.pointee.slot!) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.alignment) }
+        case .native(let slot):
+            let p08Presence10: Bool;
+            if case .some = slot.pointee { p08Presence10 = true } else { p08Presence10 = false };
+            precondition(p08Presence10)
+            return withUnsafeMutablePointer(to: &slot.pointee!) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.alignment) }
+        case .embedded(let slot, _):
+            return withUnsafeMutablePointer(to: &slot.pointee) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>?>.alignment) }
+        }
+    }
+
+    #if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF
+        @_noAllocation
+    #endif
+    private borrowing func physicalBankFacts(_ slot: borrowing P08TypedSlot<CounterStaticHits>, id: P08PhysicalID) -> CounterPhysicalBankFacts {
+        switch slot {
+        case .padded(let slot):
+            let p08Presence9: Bool;
+            if case .some = slot.pointee.slot { p08Presence9 = true } else { p08Presence9 = false };
+            precondition(p08Presence9)
+            return withUnsafeMutablePointer(to: &slot.pointee.slot!) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.alignment) }
+        case .native(let slot):
+            let p08Presence10: Bool;
+            if case .some = slot.pointee { p08Presence10 = true } else { p08Presence10 = false };
+            precondition(p08Presence10)
+            return withUnsafeMutablePointer(to: &slot.pointee!) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.alignment) }
+        case .embedded(let slot, _):
+            return withUnsafeMutablePointer(to: &slot.pointee) { let requested = physicalEntry(id).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: true, retainedBytes: retained, recordSize: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.size, recordStride: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.stride, recordAlignment: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>?>.alignment) }
+        }
+    }
+
     private borrowing func physicalEntry(_ id: P08PhysicalID) -> P08InitializedEntry {
-        for index in 0..<acquired { if inventory[index]!.id == id { return inventory[index]! } }
+        let limit = acquired
+        precondition(limit >= 0)
+        var index = 0
+        while index < limit {
+            if P08InitializedEntryIndexAccess.get(inventory, at: index)!.id == id { return P08InitializedEntryIndexAccess.get(inventory, at: index)! }
+            index += 1
+        }
         preconditionFailure("missing original physical facts")
     }
     private static func appendPhysicalObject(_ e: P08InitializedEntry, family: Int, payload: Int = 0, into rows: inout CounterPhysicalGeometryFacts) {
         let objectBytes = e.count.multipliedReportingOverflow(by: e.stride)
         precondition(!objectBytes.overflow && e.retainedBytes >= objectBytes.partialValue + payload)
         rows.append(.init(family: family, kind: .inlineValue, count: e.count, size: e.size, stride: e.stride, alignment: e.alignment, chargedBytes: UInt64(objectBytes.partialValue)))
-        rows.append(.elements(UInt8.self, count: e.retainedBytes - objectBytes.partialValue - payload, family: family))
+        rows.append(.elements(count: e.retainedBytes - objectBytes.partialValue - payload, family: family, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment))
     }
     private static func finishPhysicalFacts(_ rows: CounterPhysicalGeometryFacts, banks: CounterPhysicalInteractionFacts) -> P08OwnedPhysicalFacts {
-        var totals: InlineArray<26, UInt64> = .init(repeating: 0)
-        for index in 0..<rows.count {
+        var totals: InlineArray<26, UInt64> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        let limit = rows.count
+        precondition(limit >= 0)
+        var index = 0
+        while index < limit {
             let row = rows.regions[index]!
-            let next = totals[row.family].addingReportingOverflow(row.chargedBytes)
-            precondition(!next.overflow); totals[row.family] = next.partialValue
+            let next = CounterFamilyValueIndexAccess.get(totals, at: row.family).addingReportingOverflow(row.chargedBytes)
+            precondition(!next.overflow); CounterFamilyValueIndexAccess.set(&totals, at: row.family, to: next.partialValue)
+            index += 1
         }
         let geometry = CounterGeometryMeasurement(layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, drawing: counterDrawingLimits,
-            layoutBytes: totals[12], renderBytes: totals[13], pathBytes: totals[15], planBytes: totals[16])
+            layoutBytes: CounterFamilyValueIndexAccess.get(totals, at: 12), renderBytes: CounterFamilyValueIndexAccess.get(totals, at: 13), pathBytes: CounterFamilyValueIndexAccess.get(totals, at: 15), planBytes: CounterFamilyValueIndexAccess.get(totals, at: 16))
         return .init(geometry: geometry, geometryRegions: rows, interaction: banks)
     }
     fileprivate borrowing func physicalFacts() -> P08OwnedPhysicalFacts {
@@ -1750,11 +1890,11 @@ extension P08TypedBackingOwner {
             Self.appendPhysicalObject(physicalEntry(.g0), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.g1), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.g2), family: 12, into: &rows)
             Self.appendPhysicalObject(physicalEntry(.g4), family: 13, into: &rows); Self.appendPhysicalObject(physicalEntry(.b2), family: 15, into: &rows); Self.appendPhysicalObject(physicalEntry(.b3), family: 16, into: &rows); Self.appendPhysicalObject(physicalEntry(.g3), family: 16, into: &rows)
             banks = .init(
-                candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.c0).retainedBytes) },
-                candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.h0).retainedBytes) },
-                prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.r0).retainedBytes) },
-                committed: s.r1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.r1).retainedBytes) },
-                committedHits: s.h1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.h1).retainedBytes) },
+                candidate: physicalBankFacts(s.c0, id: .c0),
+                candidateHits: physicalBankFacts(s.h0, id: .h0),
+                prepared: physicalBankFacts(s.r0, id: .r0),
+                committed: physicalBankFacts(s.r1, id: .r1),
+                committedHits: physicalBankFacts(s.h1, id: .h1),
                 stateMetadataBytes: MemoryLayout<P08ScopedKeys>.size - MemoryLayout<P08CandidateAccess>.size - 2 * MemoryLayout<P08CommittedAccess>.size - 2 * MemoryLayout<P08HitAccess>.size)
         #if !hasFeature(Embedded)
         case .dynamic(let s):
@@ -1776,11 +1916,26 @@ extension P08TypedBackingOwner {
                 p.pointee.visitRetainedPlanExtents { count, size, stride, alignment in rows.append(.init(family: 16, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
             }
             banks = .init(
-                candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.c0).retainedBytes) },
-                candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.h0).retainedBytes) },
-                prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.r0).retainedBytes) },
-                committed: s.r1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.r1).retainedBytes) },
-                committedHits: s.h1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: physicalEntry(.h1).retainedBytes) },
+                candidate: s.c0.withBorrow {                 let requested = physicalEntry(.c0).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: false, retainedBytes: retained, recordSize: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>>.size, recordStride: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>>.stride, recordAlignment: MemoryLayout<InteractionCandidateRecord<SemanticCompleteIdentity>>.alignment) },
+                candidateHits: s.h0.withBorrow {                 let requested = physicalEntry(.h0).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: false, retainedBytes: retained, recordSize: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>>.size, recordStride: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>>.stride, recordAlignment: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>>.alignment) },
+                prepared: s.r0.withBorrow {                 let requested = physicalEntry(.r0).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: false, retainedBytes: retained, recordSize: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>>.size, recordStride: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>>.stride, recordAlignment: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>>.alignment) },
+                committed: s.r1.withBorrow {                 let requested = physicalEntry(.r1).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: false, retainedBytes: retained, recordSize: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>>.size, recordStride: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>>.stride, recordAlignment: MemoryLayout<BoundActionRecord<SemanticCompleteIdentity>>.alignment) },
+                committedHits: s.h1.withBorrow {                 let requested = physicalEntry(.h1).retainedBytes
+                let facts = $0.pointee.ownedInteractionBankMeasurement
+                let retained = CounterPhysicalBankFacts.retainedExtent(facts, requested: requested)
+                return CounterPhysicalBankFacts.owned(bank: facts, optionalRecords: false, retainedBytes: retained, recordSize: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>>.size, recordStride: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>>.stride, recordAlignment: MemoryLayout<InteractionHitRegion<SemanticCompleteIdentity>>.alignment) },
                 stateMetadataBytes: MemoryLayout<P08ScopedKeys>.size - MemoryLayout<P08CandidateAccess>.size - 2 * MemoryLayout<P08CommittedAccess>.size - 2 * MemoryLayout<P08HitAccess>.size)
         #endif
         }
@@ -1801,11 +1956,11 @@ extension P08TypedBackingOwner {
             Self.appendPhysicalObject(physicalEntry(.g0), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.g1), family: 12, into: &rows); Self.appendPhysicalObject(physicalEntry(.g2), family: 12, into: &rows)
             Self.appendPhysicalObject(physicalEntry(.g4), family: 13, into: &rows); Self.appendPhysicalObject(physicalEntry(.b2), family: 15, into: &rows); Self.appendPhysicalObject(physicalEntry(.b3), family: 16, into: &rows); Self.appendPhysicalObject(physicalEntry(.g3), family: 16, into: &rows)
             banks = .init(
-                candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.c0).retainedBytes) },
-                candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.h0).retainedBytes) },
-                prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.r0).retainedBytes) },
-                committed: s.r1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.r1).retainedBytes) },
-                committedHits: s.h1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: physicalEntry(.h1).retainedBytes) },
+                candidate: physicalBankFacts(s.c0, id: .c0),
+                candidateHits: physicalBankFacts(s.h0, id: .h0),
+                prepared: physicalBankFacts(s.r0, id: .r0),
+                committed: physicalBankFacts(s.r1, id: .r1),
+                committedHits: physicalBankFacts(s.h1, id: .h1),
                 stateMetadataBytes: MemoryLayout<P08ScopedKeys>.size - MemoryLayout<P08CandidateAccess>.size - 2 * MemoryLayout<P08CommittedAccess>.size - 2 * MemoryLayout<P08HitAccess>.size)
         return Self.finishPhysicalFacts(rows, banks: banks)
     }
@@ -1823,7 +1978,7 @@ extension P08TypedBackingOwner {
             let objectBytes = e.count.multipliedReportingOverflow(by: e.stride)
             precondition(!objectBytes.overflow && e.retainedBytes >= objectBytes.partialValue + payload)
             rows.append(.init(family: family, kind: .inlineValue, count: e.count, size: e.size, stride: e.stride, alignment: e.alignment, chargedBytes: UInt64(objectBytes.partialValue)))
-            rows.append(.elements(UInt8.self, count: e.retainedBytes - objectBytes.partialValue - payload, family: family))
+            rows.append(p08OriginalRegionElements(UInt8.self, count: e.retainedBytes - objectBytes.partialValue - payload, family: family))
         }
         let banks: CounterPhysicalInteractionFacts
         switch slots {
@@ -1833,11 +1988,11 @@ extension P08TypedBackingOwner {
             object(entry(.g0), family: 12, into: &rows); object(entry(.g1), family: 12, into: &rows); object(entry(.g2), family: 12, into: &rows)
             object(entry(.g4), family: 13, into: &rows); object(entry(.b2), family: 15, into: &rows); object(entry(.b3), family: 16, into: &rows); object(entry(.g3), family: 16, into: &rows)
             banks = .init(
-                candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.c0).retainedBytes) },
-                candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.h0).retainedBytes) },
-                prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.r0).retainedBytes) },
-                committed: s.r1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.r1).retainedBytes) },
-                committedHits: s.h1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.h1).retainedBytes) },
+                candidate: s.c0.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.c0).retainedBytes) },
+                candidateHits: s.h0.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.h0).retainedBytes) },
+                prepared: s.r0.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.r0).retainedBytes) },
+                committed: s.r1.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.r1).retainedBytes) },
+                committedHits: s.h1.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>?.self, optionalRecords: true, retainedBytes: entry(.h1).retainedBytes) },
                 stateMetadataBytes: MemoryLayout<P08ScopedKeys>.size - MemoryLayout<P08CandidateAccess>.size - 2 * MemoryLayout<P08CommittedAccess>.size - 2 * MemoryLayout<P08HitAccess>.size)
         #if !hasFeature(Embedded)
         case .dynamic(let s):
@@ -1859,11 +2014,11 @@ extension P08TypedBackingOwner {
                 p.pointee.visitRetainedPlanExtents { count, size, stride, alignment in rows.append(.init(family: 16, kind: .elements, count: count, size: size, stride: stride, alignment: alignment, chargedBytes: CounterExtent(count: count, stride: stride, alignment: alignment).bytes!)) }
             }
             banks = .init(
-                candidate: s.c0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.c0).retainedBytes) },
-                candidateHits: s.h0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.h0).retainedBytes) },
-                prepared: s.r0.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.r0).retainedBytes) },
-                committed: s.r1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.r1).retainedBytes) },
-                committedHits: s.h1.withBorrow { CounterPhysicalBankFacts.owned($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.h1).retainedBytes) },
+                candidate: s.c0.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: InteractionCandidateRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.c0).retainedBytes) },
+                candidateHits: s.h0.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.h0).retainedBytes) },
+                prepared: s.r0.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.r0).retainedBytes) },
+                committed: s.r1.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: BoundActionRecord<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.r1).retainedBytes) },
+                committedHits: s.h1.withBorrow { p08OriginalPhysicalBankFacts($0.pointee, record: InteractionHitRegion<SemanticCompleteIdentity>.self, optionalRecords: false, retainedBytes: entry(.h1).retainedBytes) },
                 stateMetadataBytes: MemoryLayout<P08ScopedKeys>.size - MemoryLayout<P08CandidateAccess>.size - 2 * MemoryLayout<P08CommittedAccess>.size - 2 * MemoryLayout<P08HitAccess>.size)
         #endif
         }
@@ -2702,7 +2857,7 @@ fileprivate struct P08StaticOuter: ~Copyable {
     var semantic: StaticSemanticRecordStorage
     var semanticBacking = CounterSemanticBacking()
     var canvas = StaticCanvasValueStorage()
-    var canvasBacking: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)
+    var canvasBacking: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = [nil]
     var control = CounterControl()
     init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
         root = CounterStaticRootStorage(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
@@ -2760,15 +2915,15 @@ fileprivate struct P08StaticOuterView: ~Copyable {
         }
     #endif
     fileprivate borrowing func audit(facts: P08OwnedPhysicalFacts, report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
-        return counterValidatePhysicalBacking(profile: .static, limits: limits, root: root.pointee.storageLayout,
-            rootMetadataRegion: .inline(CounterStaticRootStorage.self, family: 7, chargedBytes: root.pointee.storageLayout.metadataBytes, kind: .metadataPadding),
-            semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: records.count), paths: .elements(SemanticPathEntry.self, count: paths.count), payloads: .elements(CounterPayload?.self, count: payloads.count), scalars: .elements(UInt32.self, count: scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
+        return counterValidateScopedPhysicalBacking(profile: .static, limits: limits, root: root.pointee.storageLayout,
+            rootMetadataRegion: .inline(family: 7, chargedBytes: root.pointee.storageLayout.metadataBytes, kind: .metadataPadding, size: MemoryLayout<CounterStaticRootStorage>.size, stride: MemoryLayout<CounterStaticRootStorage>.stride, alignment: MemoryLayout<CounterStaticRootStorage>.alignment),
+            semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(count: records.count, stride: MemoryLayout<SemanticRuntimeRecord>.stride, alignment: MemoryLayout<SemanticRuntimeRecord>.alignment), paths: .elements(count: paths.count, stride: MemoryLayout<SemanticPathEntry>.stride, alignment: MemoryLayout<SemanticPathEntry>.alignment), payloads: .elements(count: payloads.count, stride: MemoryLayout<CounterPayload?>.stride, alignment: MemoryLayout<CounterPayload?>.alignment), scalars: .elements(count: scalars.count, stride: MemoryLayout<UInt32>.stride, alignment: MemoryLayout<UInt32>.alignment), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
             geometry: facts.geometry, interactionFacts: facts.interaction, identityCapacities: (24, 48),
             descriptorBytes: MemoryLayout<P08GeometryAccess>.size + MemoryLayout<P08CandidateAccess>.size + 2 * MemoryLayout<P08CommittedAccess>.size + 2 * MemoryLayout<P08HitAccess>.size,
-            geometryType: P08GeometryAccess.self, candidateType: P08CandidateAccess.self, committedType: P08CommittedAccess.self, hitType: P08HitAccess.self,
+
             canvasCount: entries.count, canvasCapacity: 1, canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size + MemoryLayout<CounterPendingBacking>.size,
-            factoryRegion: .elements(UInt8.self, count: outerMetadataBytes + MemoryLayout<P08TypedBackingOwner>.stride + MemoryLayout<P08HostRunFacts?>.stride, family: 24),
-            factoryDescriptorRegion: .inline(Self.self, family: 24), geometryRegions: facts.geometryRegions, report: report)
+            factoryRegion: .elements(count: outerMetadataBytes + MemoryLayout<P08TypedBackingOwner>.stride + MemoryLayout<P08HostRunFacts?>.stride, family: 24, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment),
+            factoryDescriptorRegion: .inline(family: 24, size: MemoryLayout<Self>.size, stride: MemoryLayout<Self>.stride, alignment: MemoryLayout<Self>.alignment), geometryRegions: facts.geometryRegions, report: report)
     }
 }
 #if !hasFeature(Embedded)
@@ -3384,16 +3539,16 @@ fileprivate struct P08DynamicOuterView: ~Copyable {
         let facts = owner.physicalFacts(), extent = semantic.pointee.retainedExtents
         let model = root.pointee.storageLayout
         let optionalBytes = MemoryLayout<DynamicLayoutWorkspace?>.stride + MemoryLayout<DynamicResolvedLayoutStorage?>.stride + MemoryLayout<DynamicDrawingPlanWorkspace?>.stride + MemoryLayout<DynamicRenderWorkspace?>.stride + MemoryLayout<CounterDynamicCandidate?>.stride + 2 * MemoryLayout<CounterDynamicCommitted?>.stride + 2 * MemoryLayout<CounterDynamicHits?>.stride
-        return counterValidatePhysicalBacking(profile: .dynamic, limits: limits, root: model,
-            rootMetadataRegion: .inline(ObservableModelOwnership.self, family: 7, chargedBytes: model.metadataBytes - MemoryLayout<UInt16>.size - 2 * MemoryLayout<Bool>.size - MemoryLayout<DynamicObservableModelStorage<CounterOwnedModel, CounterModelSchema>>.size, kind: .partition),
-            semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: extent.records), paths: .elements(SemanticPathEntry.self, count: extent.paths), payloads: .elements(CounterPayload?.self, count: extent.payloads), scalars: .elements(UInt32.self, count: extent.scalars), controlBytes: extent.controlBytes),
+        return counterValidateScopedPhysicalBacking(profile: .dynamic, limits: limits, root: model,
+            rootMetadataRegion: .inline(family: 7, chargedBytes: model.metadataBytes - MemoryLayout<UInt16>.size - 2 * MemoryLayout<Bool>.size - MemoryLayout<DynamicObservableModelStorage<CounterOwnedModel, CounterModelSchema>>.size, kind: .partition, size: MemoryLayout<ObservableModelOwnership>.size, stride: MemoryLayout<ObservableModelOwnership>.stride, alignment: MemoryLayout<ObservableModelOwnership>.alignment),
+            semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(count: extent.records, stride: MemoryLayout<SemanticRuntimeRecord>.stride, alignment: MemoryLayout<SemanticRuntimeRecord>.alignment), paths: .elements(count: extent.paths, stride: MemoryLayout<SemanticPathEntry>.stride, alignment: MemoryLayout<SemanticPathEntry>.alignment), payloads: .elements(count: extent.payloads, stride: MemoryLayout<CounterPayload?>.stride, alignment: MemoryLayout<CounterPayload?>.alignment), scalars: .elements(count: extent.scalars, stride: MemoryLayout<UInt32>.stride, alignment: MemoryLayout<UInt32>.alignment), controlBytes: extent.controlBytes),
             geometry: facts.geometry, interactionFacts: facts.interaction, identityCapacities: (24, 48),
             descriptorBytes: MemoryLayout<P08GeometryAccess>.size + MemoryLayout<P08CandidateAccess>.size + 2 * MemoryLayout<P08CommittedAccess>.size + 2 * MemoryLayout<P08HitAccess>.size,
-            geometryType: P08GeometryAccess.self, candidateType: P08CandidateAccess.self, committedType: P08CommittedAccess.self, hitType: P08HitAccess.self,
+
             canvasCount: canvas.pointee.retainedElementCapacity, canvasCapacity: canvas.pointee.capacity,
             canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size + MemoryLayout<CounterPendingBacking>.size,
-            factoryRegion: .elements(UInt8.self, count: MemoryLayout<P08DynamicOuter>.stride - MemoryLayout<CounterPendingBacking>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08DynamicReservation>.stride - optionalBytes + MemoryLayout<P08TypedBackingOwner>.stride + MemoryLayout<P08HostRunFacts?>.stride, family: 24),
-            factoryDescriptorRegion: .inline(Self.self, family: 24), geometryRegions: facts.geometryRegions, report: { _ in })
+            factoryRegion: .elements(count: MemoryLayout<P08DynamicOuter>.stride - MemoryLayout<CounterPendingBacking>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08DynamicReservation>.stride - optionalBytes + MemoryLayout<P08TypedBackingOwner>.stride + MemoryLayout<P08HostRunFacts?>.stride, family: 24, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment),
+            factoryDescriptorRegion: .inline(family: 24, size: MemoryLayout<Self>.size, stride: MemoryLayout<Self>.stride, alignment: MemoryLayout<Self>.alignment), geometryRegions: facts.geometryRegions, report: { _ in })
     }
 }
 fileprivate func withP08SelectedDynamic<Result>(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity,
@@ -3569,19 +3724,68 @@ package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> I
     } catch { preconditionFailure("counter graph profile identities") }
 }
 #endif
+#if GIFTUI_COUNTER_VISITOR_STATE_EFFECT_PROOF && !hasFeature(Embedded)
+// Same actual namespaces, factory, specialization and report literal as the
+// production graph path. Only unrelated post-audit rejection checks are absent.
+@_noAllocation
+package func p08ActualVisitorAuditEffectProof() -> Int {
+    p08CheckGraphDefinition()
+    var modelOwners = ObservableModelOwnerNamespace()
+    var semanticOwners = SemanticRecordOwnerNamespace()
+    do {
+        return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+            let physicalAudit = outer.auditStatic(owner: owner, report: { _ in })
+            guard case .valid(let audit) = physicalAudit else {
+                preconditionFailure("counter graph audit")
+            }
+            let control = outer.control
+            var positive = CounterConstructionObservation()
+            let p08Presence34: Bool;
+            if case .some = CounterHostAssembly.validate(
+                audit, kind: counterStaticHostKind, negative: nil, observation: &positive)
+            {
+                p08Presence34 = true
+            } else {
+                p08Presence34 = false
+            }; precondition(p08Presence34)
+            guard case .valid? = positive.result else { preconditionFailure("counter graph positive") }
+            precondition(positive.runtimeReads == 1 && positive.textReads == 1 && positive.workloadReads == 1 && positive.capabilityReads == 1 && positive.endpointReads == 1 && positive.applicationReads == 1 && positive.inputReads == 1 && positive.policyReads == 1)
+            let p08Presence35: Bool;
+            if control.pointee.applicationConstructions == 0 {
+                if control.pointee.finalized == 0 {
+                    if case .none = control.pointee.wake {
+                        p08Presence35 = true
+                    } else {
+                        p08Presence35 = false
+                    }
+                } else {
+                    p08Presence35 = false
+                }
+            } else {
+                p08Presence35 = false
+            }; precondition(p08Presence35)
+            return 4
+        }
+    } catch { preconditionFailure("counter graph profile identities") }
+}
+#endif
+
 fileprivate func p08CheckGraphDefinition() {
 
     // Independent expected vector from the reviewed actual-owner inventory:
     // endpoint6 needs backing0, text1 and configuration2–5; wake16 retains
     // audit0 and capability2–5 in its full report. Operation-only peers add no edge.
     let expectedMasks: InlineArray<18, UInt32> = [0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 1, 0, 0, 1, 0, 61, 0]
-    for index: UInt8 in 0..<18 {
+    var index: UInt8 = 0
+    while index < 18 {
         let record = CounterHostGraph().record(at: index)!
         precondition(record.role.rawValue == index)
         precondition(record.dependencies.rawValue == expectedMasks[Int(index)])
+
+        index += 1
     }
     let p08Presence28: Bool;
-    if case .none = HostComponentGraphValidation.validate(CounterHostGraph()) {
+    if case .none = counterValidateHostGraph(CounterHostGraph()) {
         p08Presence28 = true
     } else {
         p08Presence28 = false
@@ -3592,13 +3796,16 @@ fileprivate func p08CheckGraphDefinition() {
     } else {
         p08Presence29 = false
     }; precondition(p08Presence29)
-    for mode: UInt8 in 0 ... 7 {
+    var mode: UInt8 = 0
+    while mode < 8 {
         let p08Presence30: Bool;
-        if case .some = HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode)) {
+        if case .some = counterValidateHostGraph(CounterInvalidGraph(mode: mode)) {
             p08Presence30 = true
         } else {
             p08Presence30 = false
         }; precondition(p08Presence30)
+
+        mode += 1
     }
 }
 fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, outer: borrowing P08StaticOuterView) -> Int {
@@ -3615,7 +3822,7 @@ fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, o
         func reject(_ negative: CounterConstructionNegative) {
             let graph = CounterHostGraph(negative: negative)
         let p08Presence31: Bool;
-        if case .none = HostComponentGraphValidation.validate(graph) {
+        if case .none = counterValidateHostGraph(graph) {
             p08Presence31 = true
         } else {
             p08Presence31 = false
@@ -3652,10 +3859,18 @@ fileprivate func p08CheckGraphSelection(owner: borrowing P08TypedBackingOwner, o
         }; precondition(p08Presence33)
         count += 5
     }
-        for origin: UInt8 in 0...5 { reject(.omitted(.rasterEndpoint, origin)) }
+    var origin: UInt8 = 0
+    while origin < 6 {
+        reject(.omitted(.rasterEndpoint, origin))
+        origin += 1
+    }
         reject(.omitted(.factAdmission, 0))
         reject(.omitted(.rootModelTarget, 0))
-        for origin: UInt8 in [0, 2, 3, 4, 5] { reject(.omitted(.wakeRequester, origin)) }
+        reject(.omitted(.wakeRequester, 0))
+        reject(.omitted(.wakeRequester, 2))
+        reject(.omitted(.wakeRequester, 3))
+        reject(.omitted(.wakeRequester, 4))
+        reject(.omitted(.wakeRequester, 5))
         reject(.hiddenSelectedText)
         reject(.hiddenRetainedReport)
         reject(.undeclaredBoundText)
@@ -4993,9 +5208,251 @@ package func p08CounterPhysicalFactsMissingRowsFatal() {
             let reference = owner.originalPhysicalFactsForQualification()
             let malformed = P08OwnedPhysicalFacts(geometry: reference.geometry, geometryRegions: .init(), interaction: reference.interaction)
             _ = outer.audit(facts: malformed, report: { _ in })
-            preconditionFailure("missing physical row audit returned")
+            return // Caller exits97 if the actual missing-row guard was absent.
         }
     } catch { preconditionFailure("physical facts namespaces") }
 }
 
+#endif
+
+#if GIFTUI_COUNTER_ENGINE_FACTS_ORACLE
+func p08PhysicalIDEqualityQualification() -> Int {
+    let ids: [P08PhysicalID] = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
+    var checks = 0
+    for left in ids.indices {
+        for right in ids.indices {
+            precondition((ids[left] == ids[right]) == (left == right))
+            checks += 1
+        }
+    }
+    return checks
+}
+#endif
+
+#if GIFTUI_COUNTER_ENGINE_FACTS_ORACLE
+func p08InventoryIndexQualification() -> Int {
+    var rows: InlineArray<14, P08InitializedEntry?> = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
+    var checks = 0
+    for index in 0..<14 {
+        if case .none = P08InitializedEntryIndexAccess.get(rows, at: index) {} else { preconditionFailure("inventory initial nil") }
+        checks += 1
+        let entry = P08InitializedEntry(id: P08PhysicalID(rawValue: UInt8(index))!, address: UInt(index + 1) * 128, count: index + 1, size: 8, stride: 8, alignment: 8, retainedBytes: (index + 1) * 8)
+        P08InitializedEntryIndexAccess.set(&rows, at: index, to: entry)
+    }
+    let original = rows
+    for index in 0..<14 {
+        let entry = P08InitializedEntry(id: P08PhysicalID(rawValue: UInt8(index))!, address: UInt(index + 1) * 128, count: index + 1, size: 8, stride: 8, alignment: 8, retainedBytes: (index + 1) * 8)
+        let actual = P08InitializedEntryIndexAccess.get(rows, at: index)!
+        precondition(actual == entry)
+        checks += 1
+        P08InitializedEntryIndexAccess.set(&rows, at: index, to: nil)
+        if case .none = P08InitializedEntryIndexAccess.get(rows, at: index) {} else { preconditionFailure("inventory clear") }
+        checks += 1
+        precondition(original[index]! == entry)
+        checks += 1
+    }
+    return checks
+}
+func p08InventoryInvalidIndexQualification(_ index: Int, write: Bool) {
+    var rows: InlineArray<14, P08InitializedEntry?> = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
+    if write { P08InitializedEntryIndexAccess.set(&rows, at: index, to: nil) }
+    else { _ = P08InitializedEntryIndexAccess.get(rows, at: index) }
+    return
+}
+#endif
+
+#if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF && !hasFeature(Embedded)
+// The complete owned result remains observable beyond the identical pinned factory.
+@_noAllocation
+@inline(never)
+package func p08ActualOwnedPhysicalAuditEffectProof() -> RuntimeProfileValidationResult {
+    p08CheckGraphDefinition()
+    var modelOwners = ObservableModelOwnerNamespace()
+    var semanticOwners = SemanticRecordOwnerNamespace()
+    do {
+        return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+            outer.auditStatic(owner: owner, report: { _ in })
+        }
+    } catch { preconditionFailure("counter physical audit namespace") }
+}
+#endif
+
+private func counterValidateScopedPhysicalBacking(profile: RuntimeProfileKind, limits: RuntimeProfileLimits,
+    root: CounterRootLayout, rootMetadataRegion: CounterStorageRegion, semantic: CounterSemanticMeasurement, geometry: CounterGeometryMeasurement,
+    interactionFacts: CounterPhysicalInteractionFacts, identityCapacities: (perKey: UInt16, perBank: UInt32),
+    descriptorBytes: Int = 0,
+    canvasCount: Int, canvasCapacity: UInt16, canvasControlBytes: Int,
+    factoryRegion: CounterStorageRegion,
+    factoryDescriptorRegion: CounterStorageRegion? = nil,
+    geometryRegions: borrowing CounterPhysicalGeometryFacts,
+    report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult{
+    typealias Owner = CounterPipelineOwner<P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess>
+    var engine = CounterPhysicalAccountingEngine(CounterPhysicalAccountingInput(profile: profile, limits: limits, root: root, rootMetadataRegion: rootMetadataRegion, semantic: semantic, geometry: geometry, interactionFacts: interactionFacts, identityCapacities: identityCapacities, descriptorBytes: descriptorBytes, canvasCount: canvasCount, canvasCapacity: canvasCapacity, canvasControlBytes: canvasControlBytes, factoryRegion: factoryRegion, factoryDescriptorRegion: factoryDescriptorRegion))
+    while true {
+        let request = engine.next()
+        switch request {
+        case .staticCoordinatorSize: engine.acceptSize(MemoryLayout<StaticRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, Owner>>.size)
+        case .dynamicCoordinatorSize:
+            #if !hasFeature(Embedded)
+                engine.acceptSize(MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, Owner>>.size)
+            #else
+                preconditionFailure("unexpected Dynamic accounting")
+            #endif
+        case .geometrySize: engine.acceptSize(MemoryLayout<P08GeometryAccess>.size)
+        case .keyStateSize: engine.acceptSize(MemoryLayout<InteractionOwnedKeyState<P08CandidateAccess, P08CommittedAccess, P08HitAccess>>.size)
+        case .staticCoordinatorLayout: engine.acceptLayout(.init(size: MemoryLayout<StaticRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, Owner>>.size, stride: MemoryLayout<StaticRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, Owner>>.stride, alignment: MemoryLayout<StaticRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, Owner>>.alignment))
+        case .dynamicCoordinatorLayout:
+            #if !hasFeature(Embedded)
+                engine.acceptLayout(.init(size: MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, Owner>>.size, stride: MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, Owner>>.stride, alignment: MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, CounterAdmission, Owner>>.alignment))
+            #else
+                preconditionFailure("unexpected Dynamic accounting")
+            #endif
+        case .region(let region): counterRecordAccountingRegion(region, engine: &engine, report: report)
+        case .visitGeometry, .visitInteraction:
+            counterVisitConcreteAccountingRegions(request, engine: &engine, geometry: geometryRegions, interaction: interactionFacts, report: report)
+        case .done(let result): return result
+        }
+    }
+}
+
+#if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+// Test adapters preserve actual argument assembly; all accounting policy remains in its two independently retained implementations.
+extension P08StaticOuterView {
+fileprivate borrowing func auditOriginalForAccountingStream(facts: P08OwnedPhysicalFacts, report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
+        return p08OriginalCounterValidatePhysicalBacking(profile: .static, limits: limits, root: root.pointee.storageLayout,
+            rootMetadataRegion: .inline(family: 7, chargedBytes: root.pointee.storageLayout.metadataBytes, kind: .metadataPadding, size: MemoryLayout<CounterStaticRootStorage>.size, stride: MemoryLayout<CounterStaticRootStorage>.stride, alignment: MemoryLayout<CounterStaticRootStorage>.alignment),
+            semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(count: records.count, stride: MemoryLayout<SemanticRuntimeRecord>.stride, alignment: MemoryLayout<SemanticRuntimeRecord>.alignment), paths: .elements(count: paths.count, stride: MemoryLayout<SemanticPathEntry>.stride, alignment: MemoryLayout<SemanticPathEntry>.alignment), payloads: .elements(count: payloads.count, stride: MemoryLayout<CounterPayload?>.stride, alignment: MemoryLayout<CounterPayload?>.alignment), scalars: .elements(count: scalars.count, stride: MemoryLayout<UInt32>.stride, alignment: MemoryLayout<UInt32>.alignment), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
+            geometry: facts.geometry, interactionFacts: facts.interaction, identityCapacities: (24, 48),
+            descriptorBytes: MemoryLayout<P08GeometryAccess>.size + MemoryLayout<P08CandidateAccess>.size + 2 * MemoryLayout<P08CommittedAccess>.size + 2 * MemoryLayout<P08HitAccess>.size,
+
+            geometryType: P08GeometryAccess.self, candidateType: P08CandidateAccess.self, committedType: P08CommittedAccess.self, hitType: P08HitAccess.self,
+            canvasCount: entries.count, canvasCapacity: 1, canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size + MemoryLayout<CounterPendingBacking>.size,
+            factoryRegion: .elements(count: outerMetadataBytes + MemoryLayout<P08TypedBackingOwner>.stride + MemoryLayout<P08HostRunFacts?>.stride, family: 24, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment),
+            factoryDescriptorRegion: .inline(family: 24, size: MemoryLayout<Self>.size, stride: MemoryLayout<Self>.stride, alignment: MemoryLayout<Self>.alignment), geometryRegions: facts.geometryRegions, report: report)
+    }
+}
+extension P08DynamicOuterView {
+fileprivate borrowing func auditForAccountingStream(facts: P08OwnedPhysicalFacts, report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
+        let extent = semantic.pointee.retainedExtents
+        let model = root.pointee.storageLayout
+        let optionalBytes = MemoryLayout<DynamicLayoutWorkspace?>.stride + MemoryLayout<DynamicResolvedLayoutStorage?>.stride + MemoryLayout<DynamicDrawingPlanWorkspace?>.stride + MemoryLayout<DynamicRenderWorkspace?>.stride + MemoryLayout<CounterDynamicCandidate?>.stride + 2 * MemoryLayout<CounterDynamicCommitted?>.stride + 2 * MemoryLayout<CounterDynamicHits?>.stride
+        return counterValidateScopedPhysicalBacking(profile: .dynamic, limits: limits, root: model,
+            rootMetadataRegion: .inline(family: 7, chargedBytes: model.metadataBytes - MemoryLayout<UInt16>.size - 2 * MemoryLayout<Bool>.size - MemoryLayout<DynamicObservableModelStorage<CounterOwnedModel, CounterModelSchema>>.size, kind: .partition, size: MemoryLayout<ObservableModelOwnership>.size, stride: MemoryLayout<ObservableModelOwnership>.stride, alignment: MemoryLayout<ObservableModelOwnership>.alignment),
+            semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(count: extent.records, stride: MemoryLayout<SemanticRuntimeRecord>.stride, alignment: MemoryLayout<SemanticRuntimeRecord>.alignment), paths: .elements(count: extent.paths, stride: MemoryLayout<SemanticPathEntry>.stride, alignment: MemoryLayout<SemanticPathEntry>.alignment), payloads: .elements(count: extent.payloads, stride: MemoryLayout<CounterPayload?>.stride, alignment: MemoryLayout<CounterPayload?>.alignment), scalars: .elements(count: extent.scalars, stride: MemoryLayout<UInt32>.stride, alignment: MemoryLayout<UInt32>.alignment), controlBytes: extent.controlBytes),
+            geometry: facts.geometry, interactionFacts: facts.interaction, identityCapacities: (24, 48),
+            descriptorBytes: MemoryLayout<P08GeometryAccess>.size + MemoryLayout<P08CandidateAccess>.size + 2 * MemoryLayout<P08CommittedAccess>.size + 2 * MemoryLayout<P08HitAccess>.size,
+
+            canvasCount: canvas.pointee.retainedElementCapacity, canvasCapacity: canvas.pointee.capacity,
+            canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size + MemoryLayout<CounterPendingBacking>.size,
+            factoryRegion: .elements(count: MemoryLayout<P08DynamicOuter>.stride - MemoryLayout<CounterPendingBacking>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08DynamicReservation>.stride - optionalBytes + MemoryLayout<P08TypedBackingOwner>.stride + MemoryLayout<P08HostRunFacts?>.stride, family: 24, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment),
+            factoryDescriptorRegion: .inline(family: 24, size: MemoryLayout<Self>.size, stride: MemoryLayout<Self>.stride, alignment: MemoryLayout<Self>.alignment), geometryRegions: facts.geometryRegions, report: report)
+    }
+fileprivate borrowing func auditOriginalForAccountingStream(facts: P08OwnedPhysicalFacts, report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
+        let extent = semantic.pointee.retainedExtents
+        let model = root.pointee.storageLayout
+        let optionalBytes = MemoryLayout<DynamicLayoutWorkspace?>.stride + MemoryLayout<DynamicResolvedLayoutStorage?>.stride + MemoryLayout<DynamicDrawingPlanWorkspace?>.stride + MemoryLayout<DynamicRenderWorkspace?>.stride + MemoryLayout<CounterDynamicCandidate?>.stride + 2 * MemoryLayout<CounterDynamicCommitted?>.stride + 2 * MemoryLayout<CounterDynamicHits?>.stride
+        return p08OriginalCounterValidatePhysicalBacking(profile: .dynamic, limits: limits, root: model,
+            rootMetadataRegion: .inline(family: 7, chargedBytes: model.metadataBytes - MemoryLayout<UInt16>.size - 2 * MemoryLayout<Bool>.size - MemoryLayout<DynamicObservableModelStorage<CounterOwnedModel, CounterModelSchema>>.size, kind: .partition, size: MemoryLayout<ObservableModelOwnership>.size, stride: MemoryLayout<ObservableModelOwnership>.stride, alignment: MemoryLayout<ObservableModelOwnership>.alignment),
+            semantic: .init(limits: semantic.pointee.storageLimits, records: .elements(count: extent.records, stride: MemoryLayout<SemanticRuntimeRecord>.stride, alignment: MemoryLayout<SemanticRuntimeRecord>.alignment), paths: .elements(count: extent.paths, stride: MemoryLayout<SemanticPathEntry>.stride, alignment: MemoryLayout<SemanticPathEntry>.alignment), payloads: .elements(count: extent.payloads, stride: MemoryLayout<CounterPayload?>.stride, alignment: MemoryLayout<CounterPayload?>.alignment), scalars: .elements(count: extent.scalars, stride: MemoryLayout<UInt32>.stride, alignment: MemoryLayout<UInt32>.alignment), controlBytes: extent.controlBytes),
+            geometry: facts.geometry, interactionFacts: facts.interaction, identityCapacities: (24, 48),
+            descriptorBytes: MemoryLayout<P08GeometryAccess>.size + MemoryLayout<P08CandidateAccess>.size + 2 * MemoryLayout<P08CommittedAccess>.size + 2 * MemoryLayout<P08HitAccess>.size,
+
+            geometryType: P08GeometryAccess.self, candidateType: P08CandidateAccess.self, committedType: P08CommittedAccess.self, hitType: P08HitAccess.self,
+            canvasCount: canvas.pointee.retainedElementCapacity, canvasCapacity: canvas.pointee.capacity,
+            canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size + MemoryLayout<CounterPendingBacking>.size,
+            factoryRegion: .elements(count: MemoryLayout<P08DynamicOuter>.stride - MemoryLayout<CounterPendingBacking>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08DynamicReservation>.stride - optionalBytes + MemoryLayout<P08TypedBackingOwner>.stride + MemoryLayout<P08HostRunFacts?>.stride, family: 24, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment),
+            factoryDescriptorRegion: .inline(family: 24, size: MemoryLayout<Self>.size, stride: MemoryLayout<Self>.stride, alignment: MemoryLayout<Self>.alignment), geometryRegions: facts.geometryRegions, report: report)
+    }
+}
+
+private func p08RequireSameAccountingReport(_ a: [CounterStorageRegion], _ b: [CounterStorageRegion]) -> Int {
+    precondition(a.count == b.count)
+    for i in a.indices {
+        let x = a[i], y = b[i]
+        precondition(x.family == y.family && x.kind.rawValue == y.kind.rawValue)
+        precondition(x.count == y.count && x.size == y.size && x.stride == y.stride)
+        precondition(x.alignment == y.alignment && x.chargedBytes == y.chargedBytes)
+    }
+    return 1 + a.count * 7
+}
+private func p08AccountingStreamCases(_ facts: P08OwnedPhysicalFacts, required: RenderWorkspaceCapacity) -> [P08OwnedPhysicalFacts] {
+    precondition(required.maximumSemanticScopes > 1)
+    let deficient = RenderWorkspaceCapacity(maximumSemanticScopes: required.maximumSemanticScopes - 1,
+        maximumLayoutScopes: facts.geometry.renderWorkspace.maximumLayoutScopes,
+        maximumTraversalDepth: facts.geometry.renderWorkspace.maximumTraversalDepth,
+        maximumTextLines: facts.geometry.renderWorkspace.maximumTextLines)!
+    let geometry = CounterGeometryMeasurement(layout: facts.geometry.layout, render: facts.geometry.render,
+        renderWorkspace: deficient, drawing: facts.geometry.drawing, layoutBytes: facts.geometry.layoutBytes,
+        renderBytes: facts.geometry.renderBytes, pathBytes: facts.geometry.pathBytes, planBytes: facts.geometry.planBytes)
+    let refused = P08OwnedPhysicalFacts(geometry: geometry, geometryRegions: facts.geometryRegions, interaction: facts.interaction)
+    var regions = facts.geometryRegions
+    precondition(regions.count <= 45)
+    for _ in 0..<3 {
+        regions.append(.elements(count: Int.max, family: 12, chargedBytes: UInt64(Int.max), size: 1, stride: 1, alignment: 1))
+    }
+    let overflow = P08OwnedPhysicalFacts(geometry: facts.geometry, geometryRegions: regions, interaction: facts.interaction)
+    return [facts, refused, overflow]
+}
+private func p08CheckAccountingStreamOutcome(_ result: RuntimeProfileValidationResult, rows: [CounterStorageRegion], mode: Int) {
+    switch mode {
+    case 0: guard case .valid = result else { preconditionFailure("normal stream must validate") }
+    case 1:
+        guard case .invalid(.insufficientStorage) = result else { preconditionFailure("preflight stream refusal") }
+        precondition(rows.isEmpty)
+    case 2:
+        guard case .invalid(.arithmeticOverflow) = result else { preconditionFailure("final stream overflow refusal") }
+        let huge = rows.indices.filter { rows[$0].family == 12 && rows[$0].count == Int.max }
+        precondition(huge.count == 3)
+        precondition(huge.last! < rows.count - 1)
+        precondition(rows[(huge.last! + 1)...].contains { $0.family == 24 })
+    default: preconditionFailure("unknown stream control")
+    }
+}
+private func p08CompareStaticAccountingStreams(_ outer: borrowing P08StaticOuterView, facts: P08OwnedPhysicalFacts) -> Int {
+    var checks = 0
+    for (mode, input) in p08AccountingStreamCases(facts, required: outer.limits.renderWorkspace).enumerated() {
+        var actualRows: [CounterStorageRegion] = [], originalRows: [CounterStorageRegion] = []
+        let actual = outer.audit(facts: input, report: { actualRows.append($0) })
+        let original = outer.auditOriginalForAccountingStream(facts: input, report: { originalRows.append($0) })
+        precondition(actual == original)
+        checks += 1 + p08RequireSameAccountingReport(actualRows, originalRows)
+        p08CheckAccountingStreamOutcome(actual, rows: actualRows, mode: mode)
+        p08CheckAccountingStreamOutcome(original, rows: originalRows, mode: mode)
+        checks += 2
+    }
+    return checks
+}
+private func p08CompareDynamicAccountingStreams(_ outer: borrowing P08DynamicOuterView, facts: P08OwnedPhysicalFacts) -> Int {
+    var checks = 0
+    for (mode, input) in p08AccountingStreamCases(facts, required: outer.limits.renderWorkspace).enumerated() {
+        var actualRows: [CounterStorageRegion] = [], originalRows: [CounterStorageRegion] = []
+        let actual = outer.auditForAccountingStream(facts: input, report: { actualRows.append($0) })
+        let original = outer.auditOriginalForAccountingStream(facts: input, report: { originalRows.append($0) })
+        precondition(actual == original)
+        checks += 1 + p08RequireSameAccountingReport(actualRows, originalRows)
+        p08CheckAccountingStreamOutcome(actual, rows: actualRows, mode: mode)
+        p08CheckAccountingStreamOutcome(original, rows: originalRows, mode: mode)
+        checks += 2
+    }
+    return checks
+}
+package func p08CounterAccountingStreamQualification() -> Int {
+    var models = ObservableModelOwnerNamespace(), semantics = SemanticRecordOwnerNamespace()
+    do {
+        return withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer, _ in
+            let original = owner.originalInventory()
+            var checks = p08CompareStaticAccountingStreams(outer, facts: owner.originalPhysicalFactsForQualification())
+            checks += withP08SelectedDynamic(modelOwner: try! models.issue(), semanticOwner: try! semantics.issue()) { dynamicOwner, dynamicOuter, _ in
+                let original = dynamicOwner.originalInventory()
+                var count = p08CompareDynamicAccountingStreams(dynamicOuter, facts: dynamicOwner.originalPhysicalFactsForQualification())
+                dynamicOwner.requireEmpty(); dynamicOwner.release()
+                count += p08VerifyDestruction(dynamicOwner.destructionTranscript(), original: original, expectedCount: 9)
+                return count
+            }
+            owner.requireEmpty(); owner.release()
+            checks += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
+            return checks
+        }
+    } catch { preconditionFailure("accounting stream namespace") }
+}
 #endif

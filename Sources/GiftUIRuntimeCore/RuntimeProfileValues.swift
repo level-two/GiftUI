@@ -401,3 +401,73 @@ package enum RuntimeProfileValidationResult: Equatable, Sendable {
     case valid(RuntimeStorageAudit)
     case invalid(RuntimeProfileValidationError)
 }
+
+extension RuntimeProfileLimits {
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    package func matchesForHostStartup(_ other: Self) -> Bool {
+        guard records.maximumPathEntries == other.records.maximumPathEntries,
+            records.maximumPathDepth == other.records.maximumPathDepth,
+            records.maximumPathChildFanout == other.records.maximumPathChildFanout,
+            records.maximumPayloadBytesPerBank == other.records.maximumPayloadBytesPerBank,
+            records.maximumIdentityComponentsPerKey
+                == other.records.maximumIdentityComponentsPerKey,
+            records.maximumInteractionIdentityComponents
+                == other.records.maximumInteractionIdentityComponents,
+            models.maximumModelSlots == other.models.maximumModelSlots,
+            models.maximumOwningTickets == other.models.maximumOwningTickets,
+            models.maximumFramePins == other.models.maximumFramePins,
+            models.maximumModelCaptureBanks == other.models.maximumModelCaptureBanks,
+            semantic.maximumDepth == other.semantic.maximumDepth,
+            semantic.maximumSemanticNodes == other.semantic.maximumSemanticNodes,
+            semantic.maximumBodyEvaluations == other.semantic.maximumBodyEvaluations,
+            semantic.maximumModifierApplications == other.semantic.maximumModifierApplications,
+            semantic.maximumActionOccurrences == other.semantic.maximumActionOccurrences,
+            maximumSemanticStructuralOccurrences == other.maximumSemanticStructuralOccurrences,
+            layout.maximumScopes == other.layout.maximumScopes,
+            layout.maximumDepth == other.layout.maximumDepth,
+            layout.maximumTextScalars == other.layout.maximumTextScalars,
+            layout.maximumTextLines == other.layout.maximumTextLines,
+            layout.maximumPositionedGlyphs == other.layout.maximumPositionedGlyphs,
+            render.maximumOperations == other.render.maximumOperations,
+            render.maximumPositionedGlyphs == other.render.maximumPositionedGlyphs,
+            render.maximumClipDepth == other.render.maximumClipDepth,
+            renderWorkspace.maximumSemanticScopes == other.renderWorkspace.maximumSemanticScopes,
+            renderWorkspace.maximumLayoutScopes == other.renderWorkspace.maximumLayoutScopes,
+            renderWorkspace.maximumTraversalDepth == other.renderWorkspace.maximumTraversalDepth,
+            renderWorkspace.maximumTextLines == other.renderWorkspace.maximumTextLines,
+            renderSink.maximumOperations == other.renderSink.maximumOperations,
+            renderSink.maximumPositionedGlyphs == other.renderSink.maximumPositionedGlyphs,
+            maximumOrdinaryRenderOperations == other.maximumOrdinaryRenderOperations,
+            execution.maximumInputEvents == other.execution.maximumInputEvents,
+            execution.maximumStateChangeFacts == other.execution.maximumStateChangeFacts,
+            execution.maximumCompletionFacts == other.execution.maximumCompletionFacts,
+            execution.maximumSemanticActions == other.execution.maximumSemanticActions,
+            execution.maximumActiveInputSources == other.execution.maximumActiveInputSources,
+            execution.maximumCommittedActions == other.execution.maximumCommittedActions,
+            observableState.maximumLocations == other.observableState.maximumLocations,
+            observableState.maximumRegistrations == other.observableState.maximumRegistrations,
+            observableState.maximumStagedAssociations
+                == other.observableState.maximumStagedAssociations,
+            interaction.maximumActions == other.interaction.maximumActions,
+            interaction.maximumHitRegions == other.interaction.maximumHitRegions,
+            drawing.maximumLineWidth == other.drawing.maximumLineWidth,
+            drawing.maximumCanvasOccurrences == other.drawing.maximumCanvasOccurrences,
+            drawing.maximumLivePathPoints == other.drawing.maximumLivePathPoints,
+            drawing.maximumLivePathSubpaths == other.drawing.maximumLivePathSubpaths,
+            drawing.maximumPlanStrokes == other.drawing.maximumPlanStrokes,
+            drawing.maximumPlanPoints == other.drawing.maximumPlanPoints,
+            drawing.maximumPlanSubpaths == other.drawing.maximumPlanSubpaths,
+            drawing.maximumNormalizedStrokeOperations
+                == other.drawing.maximumNormalizedStrokeOperations
+        else { return false }
+        switch (staticCanvas, other.staticCanvas) {
+        case (.none, .none): return true
+        case (.some(let lhs), .some(let rhs)):
+            return lhs.maximumStaticCallableCases == rhs.maximumStaticCallableCases
+                && lhs.maximumStaticCaptureBytes == rhs.maximumStaticCaptureBytes
+        case (.none, .some), (.some, .none): return false
+        }
+    }
+}

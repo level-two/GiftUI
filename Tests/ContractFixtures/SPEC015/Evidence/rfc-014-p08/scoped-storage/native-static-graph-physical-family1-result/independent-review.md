@@ -1,0 +1,11 @@
+# Independent review — finite package accepted
+
+Reviewer: `/root/coordinator`, independent read-only Sol 6.1 Medium reviewer. Final reported cumulative processing: **64,529,751 bytes**, carried within the internal 64 MiB provision; no counter reset.
+
+**FINAL finite-package ACCEPT.** All 41 owned source hashes and exact packet membership were verified; protected TargetHost paths are absent. The frozen 43-source Counter object and image are authentic. Ordinary checks pass: 492 physical, graph result 130, 1,115 engine/facts, 2,312 independent complete old/new accounting-stream and 96,402 factory/default checks. Existing 196 identity, 56 inventory and 109 runtime-equality assertions remain live. All eight exact-image fatal modes observed exit −5/raw 0/no guard; the current missing-row and inventory helpers return to the distinct Main exit 97 fallback when their actual guard is absent. This supports source-path control claims, without runtime-PC/backtrace attribution. Repository format lint exits zero.
+
+Maintained owned-export compatibility across 14 changed providers is supported, including an independent nm check of the Execution sequence zero-argument/memberwise/default-mode entries. Own-annotation-off ordinary objects import the checked dependency graph; this is not wholly ordinary-graph or global binary-inventory equivalence.
+
+**Allocation qualification is not accepted.** The actual owned-result root still rejects possible deallocation of `Builtin.FixedArray<2, Optional<CounterOwnedModel>>`; complete entry separately rejects generic Text validation. No cold/resource, Embedded/Pi layout transfer or P08 closure follows. Guard deferral and Text implementation are absent from this tested freeze and belong to subsequent work.
+
+The two local review-output scope failures, their conservative generated-output/processing charges, the earlier wrong Host baseline, incomplete first stream oracle, misleading old fatal fallback, failed guards and partial-capture uncertainty remain preserved. Parser corrections were analysis-only and do not erase failed attempts or create machine-producer results. This verdict requires no further source change or producer. Root alone owns staging and commits.

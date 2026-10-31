@@ -8,6 +8,9 @@ import GiftUIRuntimeCore
 import GiftUISemanticCore
 
 package enum SignalAnalyzerWorkloadStartupValidation {
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package static func validate(
         configuration: HostStructuralConfiguration
     ) -> HostConfigurationError? {
@@ -51,7 +54,7 @@ package enum SignalAnalyzerWorkloadStartupValidation {
             limits.models.maximumOwningTickets == 4,
             limits.models.maximumFramePins == 2,
             limits.models.maximumModelCaptureBanks == (isCounter ? 0 : 1),
-            workload.requiredRuntimeLimits == limits,
+            workload.requiredRuntimeLimits.matchesForHostStartup(limits),
             workload.semanticNodeOccurrences == limits.semantic.maximumSemanticNodes,
             workload.semanticStructuralOccurrences
                 == limits.maximumSemanticStructuralOccurrences,

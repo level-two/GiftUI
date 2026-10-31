@@ -4,6 +4,9 @@ import GiftUISurfaceCore
 import GiftUITextResources
 
 package enum HostEndpointStartupValidation {
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package static func validateInert(
         _ endpoint: HostEndpointConfiguration,
         effectivePresentation: EffectiveRasterPresentation,
@@ -11,11 +14,14 @@ package enum HostEndpointStartupValidation {
     ) -> HostConfigurationError? {
         let descriptor = endpoint.descriptor
         let payload = endpoint.payloadLimits
-        guard endpoint.effectivePresentation == effectivePresentation,
-            descriptor.capabilityExtent == effectivePresentation.extent,
-            descriptor.encoding == effectivePresentation.encoding,
+        guard
+            RasterPresentationEqualityProjection.matches(
+                endpoint.effectivePresentation, effectivePresentation),
+            RasterPresentationEqualityProjection.matches(
+                descriptor.capabilityExtent, effectivePresentation.extent),
+            descriptor.encoding.rawValue == effectivePresentation.encoding.rawValue,
             descriptor.bytesPerRow == effectivePresentation.rowBytes.rawValue,
-            descriptor.realization == effectivePresentation.realization,
+            descriptor.realization.rawValue == effectivePresentation.realization.rawValue,
             descriptor.regionWidth == effectivePresentation.regionExtent.width,
             descriptor.regionHeight == effectivePresentation.regionExtent.height,
             endpoint.surfaceWritableCapacityBytes
@@ -27,14 +33,14 @@ package enum HostEndpointStartupValidation {
             payload.maximumInFlightPayloads == effectivePresentation.inFlightCount,
             payload.maximumInFlightBytes
                 == effectivePresentation.requiredInFlightBytes.rawValue,
-            endpoint.displaySubmissionLifetime
-                == effectivePresentation.submissionLifetime,
-            endpoint.displayHandoff == effectivePresentation.handoff,
+            endpoint.displaySubmissionLifetime.rawValue
+                == effectivePresentation.submissionLifetime.rawValue,
+            endpoint.displayHandoff.rawValue == effectivePresentation.handoff.rawValue,
             endpoint.displayMaximumInFlightPayloads
                 == effectivePresentation.inFlightCount,
             endpoint.displayMaximumInFlightBytes
                 == effectivePresentation.requiredInFlightBytes.rawValue,
-            endpoint.textRasterRealization == selectedTextRasterRealization,
+            endpoint.textRasterRealization.rawValue == selectedTextRasterRealization.rawValue,
             endpoint.healthOwnerCount == 1,
             endpoint.endpointAndDisplayShareHealthOwner
         else { return .invalidEndpointDescriptor }

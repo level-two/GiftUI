@@ -320,6 +320,9 @@ public struct GiftUIOperationalHealth: Sendable, Equatable {
     public private(set) var failureCount: UInt32
     public private(set) var countersSaturated: Bool
 
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     public init(state: GiftUIOperationalHealthState = .available) {
         self.state = state
         transitionCount = 0
@@ -473,4 +476,29 @@ public protocol GiftUIDiagnosticSink {
     mutating func consume(
         _ record: GiftUIDiagnosticRecord
     ) -> GiftUIDiagnosticSinkResult
+}
+
+package enum GiftUIDispositionOptionProjection {
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    package static func option(_ value: GiftUIResidualDisposition) -> GiftUIAllowedDispositions {
+        switch value {
+        case .continueOperation: .continueOperation
+        case .requestPacedRetry: .requestPacedRetry
+        case .markFacilityUnavailable: .markFacilityUnavailable
+        case .quiesceAffectedScope: .quiesceAffectedScope
+        case .invokeFatalHook: .invokeFatalHook
+        }
+    }
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    package static func options(
+        _ first: GiftUIResidualDisposition, _ second: GiftUIResidualDisposition
+    ) -> GiftUIAllowedDispositions {
+        let firstOption = option(first)
+        let secondOption = option(second)
+        return GiftUIAllowedDispositions(rawValue: firstOption.rawValue | secondOption.rawValue)
+    }
 }

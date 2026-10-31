@@ -2,6 +2,9 @@ import GiftUIExecution
 import GiftUIRuntimeCore
 
 package enum HostApplicationStartupValidation {
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package static func validateActionAndModel(
         _ actionAndModel: HostActionModelConfiguration,
         structural: HostStructuralConfiguration
@@ -38,6 +41,9 @@ package enum HostApplicationStartupValidation {
         return nil
     }
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package static func validateInputAndWake(
         _ inputAndWake: HostInputWakeConfiguration,
         structural: HostStructuralConfiguration

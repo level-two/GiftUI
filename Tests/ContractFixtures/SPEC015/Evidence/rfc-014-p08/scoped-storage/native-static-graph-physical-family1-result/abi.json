@@ -1,0 +1,408 @@
+{
+  "modules": {
+    "GiftUICapabilities": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUICapabilities.o",
+      "baseline_count": 892,
+      "checked_count": 907,
+      "ordinary_count": 907,
+      "baseline_nm_sha256": "62ad0d4430e21c04ead57f2a1ddc3bcd64846a9941e4875e1bf85b3b995513c9",
+      "checked_nm_sha256": "06998b7a48829aa47164a6d9f0e6bbebbb1a283b85206de64b62f5496a47ac54",
+      "ordinary_nm_sha256": "4854d5fde8dd46eecc0bc05b107cc3c62d6efd9691e264a09cc1b87a758ec678",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 15,
+      "linkage_changes": []
+    },
+    "GiftUIFailureCore": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIFailureCore.o",
+      "baseline_count": 548,
+      "checked_count": 554,
+      "ordinary_count": 554,
+      "baseline_nm_sha256": "f7d77d510f4b7b40a10a80969c250e205b0d5908322fb982f9f327f1d796cc43",
+      "checked_nm_sha256": "8caf8a2a379c43dfa8c82982a36d3b34a83dfec7b6f5ace110e78d8aa54b8cca",
+      "ordinary_nm_sha256": "8caf8a2a379c43dfa8c82982a36d3b34a83dfec7b6f5ace110e78d8aa54b8cca",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "linkage_changes": [],
+      "added_count": 6
+    },
+    "GiftUIRenderCore": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIRenderCore.o",
+      "baseline_count": 260,
+      "checked_count": 260,
+      "ordinary_count": 260,
+      "baseline_nm_sha256": "ebf092d606174090ecb114733839bb1ab03c1ec3297ca74ae6246b056d13a054",
+      "checked_nm_sha256": "ebf092d606174090ecb114733839bb1ab03c1ec3297ca74ae6246b056d13a054",
+      "ordinary_nm_sha256": "ebf092d606174090ecb114733839bb1ab03c1ec3297ca74ae6246b056d13a054",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 0,
+      "linkage_changes": []
+    },
+    "GiftUIDrawing": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/qualified/GiftUIDrawing.o",
+      "baseline_count": 305,
+      "checked_count": 305,
+      "ordinary_count": 305,
+      "baseline_nm_sha256": "13a70731471cda6f93c2ffbf03be6c100578f2827d2b7f7a5bcd87fad766c1dc",
+      "checked_nm_sha256": "13a70731471cda6f93c2ffbf03be6c100578f2827d2b7f7a5bcd87fad766c1dc",
+      "ordinary_nm_sha256": "13a70731471cda6f93c2ffbf03be6c100578f2827d2b7f7a5bcd87fad766c1dc",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 0,
+      "linkage_changes": []
+    },
+    "GiftUIExecution": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-8erdhh4s/GiftUIExecution.o",
+      "baseline_count": 2005,
+      "checked_count": 1997,
+      "ordinary_count": 1997,
+      "baseline_nm_sha256": "40f42367b82f72979c669f2cb25a217297f6fe4a2b57f16799f4dae3c6e54dc3",
+      "checked_nm_sha256": "21c93ce4e5f31f4d6a3a57878a40507a4fed925a72c825694fb48ecc6965431b",
+      "ordinary_nm_sha256": "21c93ce4e5f31f4d6a3a57878a40507a4fed925a72c825694fb48ecc6965431b",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [
+        {
+          "symbol": "_$s6GiftUI12InputOrdinalVACSQAAWL",
+          "linkage": "D"
+        },
+        {
+          "symbol": "_$s6GiftUI12InputOrdinalVACSQAAWl",
+          "linkage": "T"
+        },
+        {
+          "symbol": "_$s6GiftUI12PointerPhaseOACSQAAWL",
+          "linkage": "D"
+        },
+        {
+          "symbol": "_$s6GiftUI12PointerPhaseOACSQAAWl",
+          "linkage": "T"
+        },
+        {
+          "symbol": "_$s6GiftUI13InputSourceIDVACSQAAWL",
+          "linkage": "D"
+        },
+        {
+          "symbol": "_$s6GiftUI13InputSourceIDVACSQAAWl",
+          "linkage": "T"
+        },
+        {
+          "symbol": "_$s6GiftUI17PointerSequenceIDVACSQAAWL",
+          "linkage": "D"
+        },
+        {
+          "symbol": "_$s6GiftUI17PointerSequenceIDVACSQAAWl",
+          "linkage": "T"
+        }
+      ],
+      "checked_ordinary_difference": [],
+      "linkage_changes": [],
+      "added_count": 0,
+      "sequence_initializer_entries_preserved": [
+        "_$s15GiftUIExecution24InputSourceSequenceStateV4ModeO8rawValueAESgs5UInt8V_tcfC",
+        "_$s15GiftUIExecution24InputSourceSequenceStateV4ModeOSYAASY8rawValuexSg03RawI0Qz_tcfCTW",
+        "_$s15GiftUIExecution24InputSourceSequenceStateV4mode8sequence7ordinalA2C4ModeO_0A2UI07PointerE2IDVSgAI0C7OrdinalVSgtcfC",
+        "_$s15GiftUIExecution24InputSourceSequenceStateV4mode8sequence7ordinalA2C4ModeO_0A2UI07PointerE2IDVSgAI0C7OrdinalVSgtcfcfA_",
+        "_$s15GiftUIExecution24InputSourceSequenceStateVACycfC"
+      ]
+    },
+    "GiftUIObservableState": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/owner-root-nongeneric/GiftUIObservableState.o",
+      "baseline_count": 690,
+      "checked_count": 690,
+      "ordinary_count": 690,
+      "baseline_nm_sha256": "87d822fc4d6ef2c77a02f081a9cf69338de326743c124b4f5722a0f0e78111f2",
+      "checked_nm_sha256": "88fb57f69ba2746515e6bf241ea99a4d60c7538baa8a8a18e5a591af2d898ce6",
+      "ordinary_nm_sha256": "a1135a5266748373ade88f9e8e080edbb2774d0a6d4c020e3037880ffb493ade",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 0,
+      "linkage_changes": []
+    },
+    "GiftUIInteraction": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/modules/GiftUIInteraction.o",
+      "baseline_count": 481,
+      "checked_count": 481,
+      "ordinary_count": 481,
+      "baseline_nm_sha256": "484bb0f306d1d18f4fedfd48054118045557022cb69bab410de08a5591ba4639",
+      "checked_nm_sha256": "484bb0f306d1d18f4fedfd48054118045557022cb69bab410de08a5591ba4639",
+      "ordinary_nm_sha256": "484bb0f306d1d18f4fedfd48054118045557022cb69bab410de08a5591ba4639",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 0,
+      "linkage_changes": []
+    },
+    "GiftUISurfaceCore": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUISurfaceCore.o",
+      "baseline_count": 56,
+      "checked_count": 56,
+      "ordinary_count": 56,
+      "baseline_nm_sha256": "dca2f62453beaa73493e7882449a9b9c131b3192fd8afc7018b5868a2e41be2c",
+      "checked_nm_sha256": "dca2f62453beaa73493e7882449a9b9c131b3192fd8afc7018b5868a2e41be2c",
+      "ordinary_nm_sha256": "dca2f62453beaa73493e7882449a9b9c131b3192fd8afc7018b5868a2e41be2c",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 0,
+      "linkage_changes": []
+    },
+    "GiftUIRasterCore": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-eq4djphq/GiftUIRasterCore.o",
+      "baseline_count": 365,
+      "checked_count": 365,
+      "ordinary_count": 365,
+      "baseline_nm_sha256": "3596a073044900040fc40c5467ee34b8763a2888d8199f24be695de9519961c2",
+      "checked_nm_sha256": "ae7a863939b4d11fe696f5992f6eb583c7502c8f2cecb7df96ac07d5e96cb88a",
+      "ordinary_nm_sha256": "ae7a863939b4d11fe696f5992f6eb583c7502c8f2cecb7df96ac07d5e96cb88a",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 0,
+      "linkage_changes": []
+    },
+    "GiftUIRuntimeCore": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-physical-accounting1/qualified2/GiftUIRuntimeCore.o",
+      "baseline_count": 971,
+      "checked_count": 1467,
+      "ordinary_count": 1467,
+      "baseline_nm_sha256": "0ad80ccadf9d01012651904bfd6939da6e998fab62d14bc5fae76a8e6ca8a01b",
+      "checked_nm_sha256": "7279d65f74d95a965625d00942dc8f0f90e2125885c7e32a17f66491bfd4175e",
+      "ordinary_nm_sha256": "7279d65f74d95a965625d00942dc8f0f90e2125885c7e32a17f66491bfd4175e",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [
+        {
+          "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL",
+          "linkage": "D"
+        },
+        {
+          "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl",
+          "linkage": "T"
+        },
+        {
+          "symbol": "_get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAB0D12StagedValuesVyq0_q1_G noncopyable.2",
+          "linkage": "S"
+        },
+        {
+          "symbol": "_get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAD0iJ5ScopeVyxq_G noncopyable.1",
+          "linkage": "S"
+        }
+      ],
+      "checked_ordinary_difference": [],
+      "added_count": 500,
+      "linkage_changes": []
+    },
+    "GiftUIHostConfiguration": {
+      "baseline": ".build/contracts/p08-counter-8erdhh4s/GiftUIHostConfiguration.o",
+      "baseline_count": 1702,
+      "checked_count": 1719,
+      "ordinary_count": 1719,
+      "baseline_nm_sha256": "839f8ed13ceb7629d7c419ba969710db2a67e69922569d8dba998870e2588ee9",
+      "checked_nm_sha256": "90a7206cc81d841c21674028c0dca12e295f67c25f6079c1d3eab9e14c4ff090",
+      "ordinary_nm_sha256": "90a7206cc81d841c21674028c0dca12e295f67c25f6079c1d3eab9e14c4ff090",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [
+        {
+          "symbol": "_$s6GiftUI12PointerPhaseOACSQAAWL",
+          "linkage": "D"
+        },
+        {
+          "symbol": "_$s6GiftUI12PointerPhaseOACSQAAWl",
+          "linkage": "T"
+        },
+        {
+          "symbol": "_$s6GiftUI13InputSourceIDVACSQAAWL",
+          "linkage": "D"
+        },
+        {
+          "symbol": "_$s6GiftUI13InputSourceIDVACSQAAWl",
+          "linkage": "T"
+        },
+        {
+          "symbol": "_$s6GiftUI22NormalizedPointerEventVACSQAAWL",
+          "linkage": "D"
+        },
+        {
+          "symbol": "_$s6GiftUI22NormalizedPointerEventVACSQAAWl",
+          "linkage": "T"
+        }
+      ],
+      "checked_ordinary_difference": [],
+      "linkage_changes": [],
+      "added_count": 23
+    },
+    "GiftUIRuntimeStatic": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/qualified/GiftUIRuntimeStatic.o",
+      "baseline_count": 300,
+      "checked_count": 300,
+      "ordinary_count": 300,
+      "baseline_nm_sha256": "bbbde216706269e676932c9f4c607badcbb0eda3cb6db165c359beadf0f9acdd",
+      "checked_nm_sha256": "bbbde216706269e676932c9f4c607badcbb0eda3cb6db165c359beadf0f9acdd",
+      "ordinary_nm_sha256": "bbbde216706269e676932c9f4c607badcbb0eda3cb6db165c359beadf0f9acdd",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 0,
+      "linkage_changes": []
+    },
+    "GiftUISemanticCore": {
+      "baseline": ".build/contracts/p08-counter-8erdhh4s/GiftUISemanticCore.o",
+      "baseline_count": 1242,
+      "checked_count": 1243,
+      "ordinary_count": 1243,
+      "baseline_nm_sha256": "d6b175e2ebf1fdd8b9f4536e91cf40ea57470f6f492ec94bdcb3638147c0d1b3",
+      "checked_nm_sha256": "75e675e19d52bb18ff0a733230097ca1caaa8d5226064cb3e3b0e501b922bdf9",
+      "ordinary_nm_sha256": "75e675e19d52bb18ff0a733230097ca1caaa8d5226064cb3e3b0e501b922bdf9",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "added_count": 1,
+      "linkage_changes": []
+    },
+    "GiftUI": {
+      "baseline": "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-geometry-qualification1/qualified/GiftUI.o",
+      "baseline_count": 1335,
+      "checked_count": 1335,
+      "ordinary_count": 1335,
+      "baseline_nm_sha256": "47509d4580246c8eae552698ae044aa816d2a1cabf9a2ced2336e035224de1f5",
+      "checked_nm_sha256": "47509d4580246c8eae552698ae044aa816d2a1cabf9a2ced2336e035224de1f5",
+      "ordinary_nm_sha256": "47509d4580246c8eae552698ae044aa816d2a1cabf9a2ced2336e035224de1f5",
+      "owned_baseline_missing": [],
+      "all_baseline_only": [],
+      "checked_ordinary_difference": [],
+      "linkage_changes": [],
+      "added_count": 0
+    }
+  },
+  "scope": "All14currentchangedproviders;maintainedownedexportsretained;fullglobaldefinedsymbol/linkagesetscheckedvsown-annotationOFFordinaryequal",
+  "ordinary_dependency_graph": "checkedcurrentdeps;notwhollyordinarygraph",
+  "baseline_foreign_compiler_artifacts": [
+    {
+      "emitting_baseline_provider": "GiftUIRuntimeCore",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL",
+      "nm_definition_class": "D",
+      "exact_nm_m_linkage": [
+        "0000000000010a88 (__DATA,__data) weak private external _$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL"
+      ],
+      "demangled": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWL ---> lazy protocol witness table cache variable for type GiftUISemanticCore.SemanticCompleteIdentity and conformance GiftUISemanticCore.SemanticCompleteIdentity : Swift.Equatable in GiftUISemanticCore",
+      "classification": "Foreign Swift-generated Equatable witness cache/accessor",
+      "owning_current_provider": "GiftUISemanticCore",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIRuntimeCore",
+      "symbol": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl",
+      "nm_definition_class": "T",
+      "exact_nm_m_linkage": [
+        "00000000000070f8 (__TEXT,__text) weak private external _$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl"
+      ],
+      "demangled": "_$s18GiftUISemanticCore24SemanticCompleteIdentityVACSQAAWl ---> lazy protocol witness table accessor for type GiftUISemanticCore.SemanticCompleteIdentity and conformance GiftUISemanticCore.SemanticCompleteIdentity : Swift.Equatable in GiftUISemanticCore",
+      "classification": "Foreign Swift-generated Equatable witness cache/accessor",
+      "owning_current_provider": "GiftUISemanticCore",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIRuntimeCore",
+      "symbol": "_get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAB0D12StagedValuesVyq0_q1_G noncopyable.2",
+      "nm_definition_class": "S",
+      "exact_nm_m_linkage": [
+        "0000000000010dae (__TEXT,__swift5_typeref) weak private external _get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAB0D12StagedValuesVyq0_q1_G noncopyable.2"
+      ],
+      "demangled": "_get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAB0D12StagedValuesVyq0_q1_G noncopyable.2 ---> _get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAB0D12StagedValuesVyq0_q1_G noncopyable.2",
+      "classification": "Compiler-generated generic type-metadata thunk; not an owned declared API",
+      "owning_current_provider": "GiftUIRuntimeCore",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIRuntimeCore",
+      "symbol": "_get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAD0iJ5ScopeVyxq_G noncopyable.1",
+      "nm_definition_class": "S",
+      "exact_nm_m_linkage": [
+        "0000000000010da8 (__TEXT,__swift5_typeref) weak private external _get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAD0iJ5ScopeVyxq_G noncopyable.1"
+      ],
+      "demangled": "_get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAD0iJ5ScopeVyxq_G noncopyable.1 ---> _get_type_metadata SQR0_s8SendableR0_13GiftUIDrawing16CanvasValueTableR1_0B17UIObservableState23ObservableModelReadSlotVyxG6Domain_0L0RT1_Ri_zr2_lAD0iJ5ScopeVyxq_G noncopyable.1",
+      "classification": "Compiler-generated generic type-metadata thunk; not an owned declared API",
+      "owning_current_provider": "GiftUIRuntimeCore",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIHostConfiguration",
+      "symbol": "_$s6GiftUI12PointerPhaseOACSQAAWL",
+      "nm_definition_class": "D",
+      "exact_nm_m_linkage": [
+        "0000000000031b40 (__DATA,__data) weak private external _$s6GiftUI12PointerPhaseOACSQAAWL"
+      ],
+      "demangled": "_$s6GiftUI12PointerPhaseOACSQAAWL ---> lazy protocol witness table cache variable for type GiftUI.PointerPhase and conformance GiftUI.PointerPhase : Swift.Equatable in GiftUI",
+      "classification": "Foreign Swift-generated Equatable witness cache/accessor",
+      "owning_current_provider": "GiftUI",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIHostConfiguration",
+      "symbol": "_$s6GiftUI12PointerPhaseOACSQAAWl",
+      "nm_definition_class": "T",
+      "exact_nm_m_linkage": [
+        "0000000000028908 (__TEXT,__text) weak private external _$s6GiftUI12PointerPhaseOACSQAAWl"
+      ],
+      "demangled": "_$s6GiftUI12PointerPhaseOACSQAAWl ---> lazy protocol witness table accessor for type GiftUI.PointerPhase and conformance GiftUI.PointerPhase : Swift.Equatable in GiftUI",
+      "classification": "Foreign Swift-generated Equatable witness cache/accessor",
+      "owning_current_provider": "GiftUI",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIHostConfiguration",
+      "symbol": "_$s6GiftUI13InputSourceIDVACSQAAWL",
+      "nm_definition_class": "D",
+      "exact_nm_m_linkage": [
+        "0000000000031930 (__DATA,__data) weak private external _$s6GiftUI13InputSourceIDVACSQAAWL"
+      ],
+      "demangled": "_$s6GiftUI13InputSourceIDVACSQAAWL ---> lazy protocol witness table cache variable for type GiftUI.InputSourceID and conformance GiftUI.InputSourceID : Swift.Equatable in GiftUI",
+      "classification": "Foreign Swift-generated Equatable witness cache/accessor",
+      "owning_current_provider": "GiftUI",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIHostConfiguration",
+      "symbol": "_$s6GiftUI13InputSourceIDVACSQAAWl",
+      "nm_definition_class": "T",
+      "exact_nm_m_linkage": [
+        "00000000000093bc (__TEXT,__text) weak private external _$s6GiftUI13InputSourceIDVACSQAAWl"
+      ],
+      "demangled": "_$s6GiftUI13InputSourceIDVACSQAAWl ---> lazy protocol witness table accessor for type GiftUI.InputSourceID and conformance GiftUI.InputSourceID : Swift.Equatable in GiftUI",
+      "classification": "Foreign Swift-generated Equatable witness cache/accessor",
+      "owning_current_provider": "GiftUI",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIHostConfiguration",
+      "symbol": "_$s6GiftUI22NormalizedPointerEventVACSQAAWL",
+      "nm_definition_class": "D",
+      "exact_nm_m_linkage": [
+        "0000000000031928 (__DATA,__data) weak private external _$s6GiftUI22NormalizedPointerEventVACSQAAWL"
+      ],
+      "demangled": "_$s6GiftUI22NormalizedPointerEventVACSQAAWL ---> lazy protocol witness table cache variable for type GiftUI.NormalizedPointerEvent and conformance GiftUI.NormalizedPointerEvent : Swift.Equatable in GiftUI",
+      "classification": "Foreign Swift-generated Equatable witness cache/accessor",
+      "owning_current_provider": "GiftUI",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    },
+    {
+      "emitting_baseline_provider": "GiftUIHostConfiguration",
+      "symbol": "_$s6GiftUI22NormalizedPointerEventVACSQAAWl",
+      "nm_definition_class": "T",
+      "exact_nm_m_linkage": [
+        "000000000000937c (__TEXT,__text) weak private external _$s6GiftUI22NormalizedPointerEventVACSQAAWl"
+      ],
+      "demangled": "_$s6GiftUI22NormalizedPointerEventVACSQAAWl ---> lazy protocol witness table accessor for type GiftUI.NormalizedPointerEvent and conformance GiftUI.NormalizedPointerEvent : Swift.Equatable in GiftUI",
+      "classification": "Foreign Swift-generated Equatable witness cache/accessor",
+      "owning_current_provider": "GiftUI",
+      "current_link_resolution": "Currentordinaryfunctional image linked with defaultundefinederror; no missing requiredreference. Thisdoesnotclaimglobalbinaryinventoryidentity."
+    }
+  ],
+  "prior_provenance": "abi-current.json +original-provider-receipt-binding.json; wrongcandidatebaselinehistorical",
+  "current_machine_link": "stream31-functional-link.json defaultundefinederrorresolvedallneededreferences"
+}

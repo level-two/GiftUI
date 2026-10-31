@@ -4,6 +4,9 @@ package struct ExecutionWakeReasons: OptionSet, Equatable, Sendable {
     package let rawValue: UInt8
 
     @usableFromInline
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(rawValue: UInt8) {
         self.rawValue = rawValue & 0x07
     }

@@ -1,0 +1,17 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:665:9: warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 663 |     guard counterRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .insufficientStorage }
+ 664 |     let keys = interactionFacts.measurement
+ 665 |     let keyLimits = identityCapacities
+     |         `- warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 666 |     let semanticLimits = semantic.limits
+ 667 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:666:9: warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 664 |     let keys = interactionFacts.measurement
+ 665 |     let keyLimits = identityCapacities
+ 666 |     let semanticLimits = semantic.limits
+     |         `- warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 667 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+ 668 |         let payloadBytes = semantic.payloads.bytes, let scalarBytes = semantic.scalars.bytes,
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>

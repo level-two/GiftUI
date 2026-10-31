@@ -1,0 +1,188 @@
+{
+  "primary_artifacts_retained_locally": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/qualified/GiftUI.swiftmodule": {
+      "bytes": 388592,
+      "sha256": "e7f5778fd00b8c4ef94b402f236d20710000d066f2c95290552ee386a883d09b"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/qualified/GiftUI.o": {
+      "bytes": 354240,
+      "sha256": "04b11adb8a016d0c3dc8a6a822436ade101e2e07a9e1dca9c164cc3c26eb2f3d"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/ordinary/GiftUI.o": {
+      "bytes": 354240,
+      "sha256": "42f6b41f4687840e89893f17e5042ce61ede085daefcdda06e10989492a09adc"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUICapabilities.swiftmodule": {
+      "bytes": 328192,
+      "sha256": "62a987e57b2e7c0df874d96ccbe3f839a3f1ffc34eef801b2e1c4fd140051914"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUICapabilities.o": {
+      "bytes": 229424,
+      "sha256": "8e1e104845f7b491f9e4ea0919afec4b6322c5192ab464bc204a8e583224e5eb"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/ordinary/GiftUICapabilities.o": {
+      "bytes": 229424,
+      "sha256": "f9ba5802b2fe8b44d898ab413c183e061cf5cda9189a1970ed880654755f4c13"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/qualified/GiftUIDrawing.swiftmodule": {
+      "bytes": 188416,
+      "sha256": "96e4b8d8c723097021dea49b933e30fd7df6601e1024e7e18a6daf209382f7c0"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/qualified/GiftUIDrawing.o": {
+      "bytes": 135880,
+      "sha256": "4857abcfd60985decd5145c0dd0018a1ae45d2c2aadec741d9d1e147235c2712"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/ordinary/GiftUIDrawing.o": {
+      "bytes": 135880,
+      "sha256": "64b9bd1e38dd114163b3161166a51ac0b2c34e29971feb562f65e28531bc5507"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/qualified/GiftUIExecution.swiftmodule": {
+      "bytes": 631640,
+      "sha256": "2c6f0cc05a05c7429a447c7198cae1c9b97c1850d9d347373c48244f57fdc1ef"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/qualified/GiftUIExecution.o": {
+      "bytes": 571056,
+      "sha256": "c7bf8e07006e215110e238906caf1e02fc7574b86c39ec77281ae3b04e46d365"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/ordinary/GiftUIExecution.o": {
+      "bytes": 571056,
+      "sha256": "044d0775f4756a1ea2c6fe6d5f3a002a01b6b0371002e194825f28a4db11f7eb"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/qualified/GiftUIFailureCore.swiftmodule": {
+      "bytes": 181620,
+      "sha256": "bb2ab24178de7573bcbcdb93f12d319aa4a07bca77264b0c99e26fa8f1f5ecce"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/qualified/GiftUIFailureCore.o": {
+      "bytes": 128920,
+      "sha256": "0dd23e570ccd0994bb6ab40164a305e6c61226a58cd8e0cbe8b4bc2d74576933"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/ordinary/GiftUIFailureCore.o": {
+      "bytes": 128920,
+      "sha256": "7ce0a3629d3f8caec609be16f5e9c1ba0439cd10dfa489df5aa931dde6e291fa"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/qualified/GiftUIHostConfiguration.swiftmodule": {
+      "bytes": 559468,
+      "sha256": "42bac1187035d554a79b1d24509b0cdd1f2544dcbb9e394a327664c747c46b6a"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/qualified/GiftUIHostConfiguration.o": {
+      "bytes": 740352,
+      "sha256": "72e9a256d3cecf588bdba5db700a6d2ed639c740d93634c46e44c44bd5d1255b"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/defaults31/ordinary/GiftUIHostConfiguration.o": {
+      "bytes": 740352,
+      "sha256": "9e5eb41552bc3e95fe0d3ac8dd5f36e41ba06f5e4cd7888120a10cf7f9406d57"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIInteraction.swiftmodule": {
+      "bytes": 236216,
+      "sha256": "1d557f3229a61c4736537866ffdd59e2e32f7ea1c50ae6d2c1577a0b29459e2d"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIInteraction.o": {
+      "bytes": 190120,
+      "sha256": "686b38642833313df2a979996bb3669a39bd2886b0c13683bd43d37231ff4782"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/ordinary/GiftUIInteraction.o": {
+      "bytes": 190120,
+      "sha256": "a85e6ad68374b95569d40a68de8aee33ae4a64aeeb23d4b61b00ed88dffbc42d"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIObservableState.swiftmodule": {
+      "bytes": 375336,
+      "sha256": "dc278cf7698f2dca5843a3a66a12fcf2b768c795537757f2f3e7a8ff67bf2fe4"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIObservableState.o": {
+      "bytes": 254752,
+      "sha256": "7084311dc53d96cd430c3c3e3ac250af1ee739c308c18552d4ba6f5a12062671"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/ordinary/GiftUIObservableState.o": {
+      "bytes": 254752,
+      "sha256": "1e3af3257666526dc30cbe3b6e4a4f1d89985cfe01f1a0a9f9354fd796d7cac4"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIRasterCore.swiftmodule": {
+      "bytes": 146232,
+      "sha256": "35f11956491b1a24b8b45c15157310a329239f66dbb8fe4bfb303f2bd5194937"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIRasterCore.o": {
+      "bytes": 126544,
+      "sha256": "0c0ae936d8c996bbf4753edc395b4cabad73a017ddb8eb959b44a91c4b467007"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/ordinary/GiftUIRasterCore.o": {
+      "bytes": 126544,
+      "sha256": "eb891a3afae9d32e7400455071b2cc3ca5fe40e66229d7c2b3bba7614b8cc534"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIRenderCore.swiftmodule": {
+      "bytes": 85828,
+      "sha256": "0f9cd244c33f66d54c590c91d0bc8de40e4f7ab1805596e0506c6ddd933ae996"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIRenderCore.o": {
+      "bytes": 62200,
+      "sha256": "a7a07b3edba66190950aaa97376f5fd1d1d13061aa6699bb1d2e859e0ae12115"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/ordinary/GiftUIRenderCore.o": {
+      "bytes": 62200,
+      "sha256": "6d37484a998cba5977771833e76ca27d4408e042666f1fc547537cf5bf9d4b4b"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIRuntimeCore.swiftmodule": {
+      "bytes": 530228,
+      "sha256": "701d6967cfc30a70c5bb07f83b0a226bcadc7aa838be53f21ea83cf2ff9e3a59"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUIRuntimeCore.o": {
+      "bytes": 495752,
+      "sha256": "c355fe751739a521712c21f3daa9339e8afe69fcf1806f9edf5a11b787e58298"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/ordinary/GiftUIRuntimeCore.o": {
+      "bytes": 495752,
+      "sha256": "20a9105fc6c2054e5d44bede4b5aae13add43de55754bac3b4e95806361e8581"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/qualified/GiftUIRuntimeStatic.swiftmodule": {
+      "bytes": 134172,
+      "sha256": "186f580f9ae352e75ddeb171642ad371271d6869638018c089883a47730163b0"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/qualified/GiftUIRuntimeStatic.o": {
+      "bytes": 281080,
+      "sha256": "5acf1fb29c4f7001b364b1ca297b4b35f5f6955a7ee3a5593fe1759b50c2c445"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/ordinary/GiftUIRuntimeStatic.o": {
+      "bytes": 281080,
+      "sha256": "2788175d548bc965448d6aa77d3d628bdf427dbc405a62b57323793e00ddae4c"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/qualified/GiftUISemanticCore.swiftmodule": {
+      "bytes": 901772,
+      "sha256": "b3ce403c772e6d932d709c8e6c05e5f1464405cfc770d6ea36bf0f92dcf5dc90"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/qualified/GiftUISemanticCore.o": {
+      "bytes": 505944,
+      "sha256": "708fb2ca549e6656db5674d0b0a5f0e3ff967273e4107247de5df97a81b51d25"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/factory-providers/ordinary/GiftUISemanticCore.o": {
+      "bytes": 505944,
+      "sha256": "757041ad3da2d4a5cd9d917281a4d9289d6c0255364d4f090de7dde1bb4f69ad"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUISurfaceCore.swiftmodule": {
+      "bytes": 32204,
+      "sha256": "dfa6896e2e02bf931030fad0662270e1c977d43bf8fce5f8cc00d323444bfe66"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/qualified/GiftUISurfaceCore.o": {
+      "bytes": 12144,
+      "sha256": "c72e42385d1917b8494e6c83cf495c138da30283d7b8d70f55f0c7bfc94fb29f"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/ordinary/GiftUISurfaceCore.o": {
+      "bytes": 12144,
+      "sha256": "729fe3f1b2fa50c6d586b105d0a2247caa10ecbb5af60a13b325a62f980091b6"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/stream31/P08CounterRuntime.o": {
+      "bytes": 2980944,
+      "sha256": "485d46e159845506de5fee4c24d0310080a631c13e050f3b768818f3d2a09929"
+    },
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/stream31/current-family-stream-functional": {
+      "bytes": 4909648,
+      "sha256": "ba8a7859a4d75d7a89f434ffdd5c464db326b57bd753c2217917e30548a2c7ba"
+    }
+  },
+  "large_artifacts_not_duplicated_in_Git_packet": true,
+  "compiler_receipt_binding": "original-provider-receipt-binding.json in localcurrent-family-fresh; frozencompiler/sourceSDKchainfromactualCounterreceipt",
+  "functional_plan": "stream31/plan.json",
+  "provider_plan_chain": [
+    "plan.json",
+    "factory-providers/plan.json",
+    "defaults31/plan.json"
+  ]
+}

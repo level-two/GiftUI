@@ -8,6 +8,9 @@ package struct RasterPayloadLimits: Equatable, Sendable {
     package let maximumGlyphRasterBytes: UInt32
     package let maximumStrokeWorkspaceBytes: UInt32
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumRasterBytes: UInt32,
         maximumPayloadBytes: UInt32,
@@ -43,9 +46,16 @@ package struct RasterPayloadLimits: Equatable, Sendable {
         self.maximumStrokeWorkspaceBytes = maximumStrokeWorkspaceBytes
     }
 
-    package var maximumInFlightBytes: UInt32 {
-        maximumPayloadBytes * UInt32(maximumInFlightPayloads)
-    }
+    #if GIFTUI_STARTUP_QUALIFICATION
+        package var maximumInFlightBytes: UInt32 {
+            @_noAllocation
+            get { maximumPayloadBytes * UInt32(maximumInFlightPayloads) }
+        }
+    #else
+        package var maximumInFlightBytes: UInt32 {
+            maximumPayloadBytes * UInt32(maximumInFlightPayloads)
+        }
+    #endif
 
     package func admitsRasterBytes(_ bytes: UInt32) -> Bool {
         bytes <= maximumRasterBytes

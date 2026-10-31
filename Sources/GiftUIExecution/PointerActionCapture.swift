@@ -5,6 +5,7 @@ package struct PointerActionCapture<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
     @usableFromInline internal private(set) var captured: CapturedAction<Identity>?
 
+    @inlinable
     package init() {}
 
     @inlinable

@@ -125,6 +125,9 @@ package enum PointerPhase: UInt8, Equatable, Sendable {
 package struct InputSourceID: Equatable, Hashable, Sendable {
     package let rawValue: UInt16
 
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(rawValue: UInt16) {
         self.rawValue = rawValue
     }

@@ -9,9 +9,9 @@ import GiftUISemanticCore
 
 // Bounded observations copied from actual traversal, never fed back as topology.
 struct CounterSemanticSnapshot: Equatable {
-    var scalars: InlineArray<22, UInt32> = .init(repeating: 0)
+    var scalars: InlineArray<22, UInt32> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     var scalarCount: UInt16 = 0
-    var textLengths: InlineArray<4, UInt16> = .init(repeating: 0)
+    var textLengths: InlineArray<4, UInt16> = [0, 0, 0, 0]
     var texts: UInt16 = 0
     var disabledMask: UInt8 = 0
     var disabledCount: UInt8 = 0

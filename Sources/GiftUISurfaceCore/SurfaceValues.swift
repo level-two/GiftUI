@@ -51,13 +51,28 @@ package struct RasterSurfaceDescriptor: Equatable, Sendable {
     package let regionWidth: UInt16
     package let regionHeight: UInt16
 
-    package var capabilityExtent: CapabilityExtent {
-        CapabilityExtent(
-            width: UInt16(bounds.size.width),
-            height: UInt16(bounds.size.height)
-        )!
-    }
+    #if GIFTUI_STARTUP_QUALIFICATION
+        package var capabilityExtent: CapabilityExtent {
+            @_noAllocation
+            get {
+                CapabilityExtent(
+                    width: UInt16(bounds.size.width),
+                    height: UInt16(bounds.size.height)
+                )!
+            }
+        }
+    #else
+        package var capabilityExtent: CapabilityExtent {
+            CapabilityExtent(
+                width: UInt16(bounds.size.width),
+                height: UInt16(bounds.size.height)
+            )!
+        }
+    #endif
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         bounds: Rect,
         encoding: CanonicalPixelEncoding,
@@ -66,13 +81,14 @@ package struct RasterSurfaceDescriptor: Equatable, Sendable {
         regionWidth: UInt16,
         regionHeight: UInt16
     ) {
-        guard bounds.origin == Point(x: 0, y: 0),
+        guard bounds.origin.x == 0, bounds.origin.y == 0,
             bounds.size.width > 0,
             bounds.size.height > 0,
             let width = UInt16(exactly: bounds.size.width),
-            let height = UInt16(exactly: bounds.size.height),
-            CapabilityExtent(width: width, height: height) != nil,
-            regionWidth == width,
+            let height = UInt16(exactly: bounds.size.height)
+        else { return nil }
+        guard case .some = CapabilityExtent(width: width, height: height) else { return nil }
+        guard regionWidth == width,
             regionHeight > 0,
             regionHeight <= height
         else {

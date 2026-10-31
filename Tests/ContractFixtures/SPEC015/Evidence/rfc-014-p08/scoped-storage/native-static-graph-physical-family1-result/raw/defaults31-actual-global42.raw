@@ -1,0 +1,71 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:665:9: warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 663 |     guard counterRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .insufficientStorage }
+ 664 |     let keys = interactionFacts.measurement
+ 665 |     let keyLimits = identityCapacities
+     |         `- warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 666 |     let semanticLimits = semantic.limits
+ 667 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:666:9: warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 664 |     let keys = interactionFacts.measurement
+ 665 |     let keyLimits = identityCapacities
+ 666 |     let semanticLimits = semantic.limits
+     |         `- warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 667 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+ 668 |         let payloadBytes = semantic.payloads.bytes, let scalarBytes = semantic.scalars.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift:37:31: error: generic function calls can cause metadata allocation or locks
+ 35 |     func raster() -> GiftUIReferenceTextRasterView { .init() }
+ 36 |     func validate() -> TextResourceValidationResult {
+ 37 |         TextResourceValidator.validate(GiftUIReferenceTextResources.targetPackage, requiring: realization)
+    |                               `- error: generic function calls can cause metadata allocation or locks
+ 38 |     }
+ 39 | }
+    :
+ 46 |     var origins: UInt32 { input.origins }
+ 47 |     var realization: RasterRealizationID { input.realization }
+ 48 |     func validate() -> TextResourceValidationResult { input.validate() }
+    |                                                             `- note: called from here
+ 49 |     func metrics() -> GiftUIReferenceTextMetricsView {
+ 50 |         switch self {
+    :
+295 |         observation.workloadReads += 1
+296 |         observation.textReads += 1
+297 |         let selectedTextValidation = inputs.text.validate()
+    |                                                  `- note: called from here
+298 |         observation.applicationReads += 1
+299 |         observation.inputReads += 1
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:3832:45: note: called from here
+3718 |     var semanticOwners = SemanticRecordOwnerNamespace()
+3719 |     do {
+3720 |         return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+     |                `- note: called from here
+3721 |         return p08CheckGraphSelection(owner: owner, outer: outer)
+     |                `- note: called from here
+3722 | 
+3723 |         }
+     :
+3830 |         var observation = CounterConstructionObservation()
+3831 |         let p08Presence32: Bool;
+3832 |         if case .none = CounterHostAssembly.validate(
+     |                                             `- note: called from here
+3833 |             audit, kind: counterStaticHostKind, negative: negative, observation: &observation)
+3834 |         {
+     :
+3862 |     var origin: UInt8 = 0
+3863 |     while origin < 6 {
+3864 |         reject(.omitted(.rasterEndpoint, origin))
+     |         `- note: called from here
+3865 |         origin += 1
+3866 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift:69:5: note: called from here
+67 | #endif
+68 | package func p08CounterStaticResourceEntryV1() -> Int {
+69 |     p08CounterGraph() + counterExerciseStaticScopedStorage() + p08CounterHost()
+   |     `- note: called from here
+70 | }
+71 | #endif
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>

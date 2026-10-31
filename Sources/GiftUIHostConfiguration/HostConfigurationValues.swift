@@ -34,15 +34,48 @@ package enum HostComponentRole: UInt8, Equatable, Sendable {
     case normalizedInput = 15
     case wakeRequester = 16
     case residualPolicy = 17
+    #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    @usableFromInline
+    package init?(rawValue: UInt8) {
+        switch rawValue {
+        case 0: self = .runtimeProfile
+        case 1: self = .textResourcePackage
+        case 2: self = .renderProducerContribution
+        case 3: self = .rasterBackendContribution
+        case 4: self = .surfaceDisplayContribution
+        case 5: self = .hostResourcePolicyContribution
+        case 6: self = .rasterEndpoint
+        case 7: self = .applicationExecutor
+        case 8: self = .signalSource
+        case 9: self = .signalRepository
+        case 10: self = .useCaseSet
+        case 11: self = .factAdmission
+        case 12: self = .actionDomain
+        case 13: self = .actionHandler
+        case 14: self = .rootModelTarget
+        case 15: self = .normalizedInput
+        case 16: self = .wakeRequester
+        case 17: self = .residualPolicy
+        default: return nil
+        }
+    }
 }
 
 package struct HostComponentRoleSet: OptionSet, Equatable, Sendable {
     package let rawValue: UInt32
 
+    #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(rawValue: UInt32) {
         self.rawValue = rawValue
     }
 
+    #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(_ role: HostComponentRole) {
         rawValue = UInt32(1) << UInt32(role.rawValue)
     }
@@ -52,6 +85,9 @@ package struct HostComponentRecord: Equatable, Sendable {
     package let role: HostComponentRole
     package let dependencies: HostComponentRoleSet
 
+    #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(role: HostComponentRole, dependencies: HostComponentRoleSet) {
         self.role = role
         self.dependencies = dependencies
@@ -72,6 +108,9 @@ package struct HostPacingPolicy: Equatable, Sendable {
     package let maximumActionInducedFactsPerServiceWindow: UInt8
     package let maximumRetryableRefusals: UInt8
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         minimumFrameIntervalMicroseconds: UInt32,
         maximumFactServiceLatencyMicroseconds: UInt32,
@@ -120,6 +159,24 @@ package struct SignalAnalyzerHostCardinality: Equatable, Sendable {
     package let compactFactCapacity: UInt16
     package let reservedFailureFactCapacity: UInt16
     package let normalizedInputSourceCapacity: UInt16
+
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    init(
+        actionCaseCount: UInt16, rootModelLocationCount: UInt16, activeRegistrationCount: UInt16,
+        stagedAssociationCount: UInt16, snapshotFactCapacity: UInt16, compactFactCapacity: UInt16,
+        reservedFailureFactCapacity: UInt16, normalizedInputSourceCapacity: UInt16
+    ) {
+        self.actionCaseCount = actionCaseCount
+        self.rootModelLocationCount = rootModelLocationCount
+        self.activeRegistrationCount = activeRegistrationCount
+        self.stagedAssociationCount = stagedAssociationCount
+        self.snapshotFactCapacity = snapshotFactCapacity
+        self.compactFactCapacity = compactFactCapacity
+        self.reservedFailureFactCapacity = reservedFailureFactCapacity
+        self.normalizedInputSourceCapacity = normalizedInputSourceCapacity
+    }
 }
 
 package struct SignalAnalyzerDrawingWorkload: Equatable, Sendable {
@@ -133,6 +190,27 @@ package struct SignalAnalyzerDrawingWorkload: Equatable, Sendable {
     package let greatestLineWidth: GeometryScalar
     package let staticCallableCases: UInt16?
     package let maximumStaticCaptureBytes: UInt16?
+
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    init(
+        canvasOccurrences: UInt16, maximumLivePathPoints: UInt16, maximumLivePathSubpaths: UInt16,
+        submittedStrokes: UInt16, snapshottedPoints: UInt16, snapshottedSubpaths: UInt16,
+        normalizedStrokeOperations: UInt16, greatestLineWidth: GeometryScalar,
+        staticCallableCases: UInt16?, maximumStaticCaptureBytes: UInt16?
+    ) {
+        self.canvasOccurrences = canvasOccurrences
+        self.maximumLivePathPoints = maximumLivePathPoints
+        self.maximumLivePathSubpaths = maximumLivePathSubpaths
+        self.submittedStrokes = submittedStrokes
+        self.snapshottedPoints = snapshottedPoints
+        self.snapshottedSubpaths = snapshottedSubpaths
+        self.normalizedStrokeOperations = normalizedStrokeOperations
+        self.greatestLineWidth = greatestLineWidth
+        self.staticCallableCases = staticCallableCases
+        self.maximumStaticCaptureBytes = maximumStaticCaptureBytes
+    }
 }
 
 package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
@@ -156,6 +234,42 @@ package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
     package let semanticActionsPerOpportunity: UInt16
     package let completionFactsPerOpportunity: UInt16
     package let drawing: SignalAnalyzerDrawingWorkload
+
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    init(
+        schemaVersion: UInt16, requiredPathEntries: UInt32, requiredPayloadBytesPerBank: UInt32,
+        requiredInteractionIdentityComponents: UInt32, requiredPathDepth: UInt16,
+        requiredPathChildFanout: UInt16, requiredIdentityComponentsPerKey: UInt16,
+        requiredRuntimeLimits: RuntimeProfileLimits, semanticNodeOccurrences: UInt16,
+        semanticStructuralOccurrences: UInt16, renderSemanticScopeOccurrences: UInt16,
+        layoutScopeOccurrences: UInt16, maximumRenderTraversalDepth: UInt16,
+        renderTextLineCount: UInt16, positionedGlyphCount: UInt16, ordinaryRenderOperations: UInt16,
+        inputEventsPerOpportunity: UInt16, semanticActionsPerOpportunity: UInt16,
+        completionFactsPerOpportunity: UInt16, drawing: SignalAnalyzerDrawingWorkload
+    ) {
+        self.schemaVersion = schemaVersion
+        self.requiredPathEntries = requiredPathEntries
+        self.requiredPayloadBytesPerBank = requiredPayloadBytesPerBank
+        self.requiredInteractionIdentityComponents = requiredInteractionIdentityComponents
+        self.requiredPathDepth = requiredPathDepth
+        self.requiredPathChildFanout = requiredPathChildFanout
+        self.requiredIdentityComponentsPerKey = requiredIdentityComponentsPerKey
+        self.requiredRuntimeLimits = requiredRuntimeLimits
+        self.semanticNodeOccurrences = semanticNodeOccurrences
+        self.semanticStructuralOccurrences = semanticStructuralOccurrences
+        self.renderSemanticScopeOccurrences = renderSemanticScopeOccurrences
+        self.layoutScopeOccurrences = layoutScopeOccurrences
+        self.maximumRenderTraversalDepth = maximumRenderTraversalDepth
+        self.renderTextLineCount = renderTextLineCount
+        self.positionedGlyphCount = positionedGlyphCount
+        self.ordinaryRenderOperations = ordinaryRenderOperations
+        self.inputEventsPerOpportunity = inputEventsPerOpportunity
+        self.semanticActionsPerOpportunity = semanticActionsPerOpportunity
+        self.completionFactsPerOpportunity = completionFactsPerOpportunity
+        self.drawing = drawing
+    }
 }
 
 package struct HostStructuralConfiguration: Equatable, Sendable {
@@ -167,6 +281,9 @@ package struct HostStructuralConfiguration: Equatable, Sendable {
     package let workload: SignalAnalyzerHostWorkload
     package let pacing: HostPacingPolicy
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         kind: MVPHostKind,
         profile: RuntimeProfileKind,
@@ -204,6 +321,9 @@ package struct HostActionModelConfiguration: Equatable, Sendable {
     package let retainsOwnerReferences: Bool
     package let callbacksAreReentrant: Bool
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         firstActionCode: UInt16,
         lastActionCode: UInt16,
@@ -251,6 +371,9 @@ package struct HostInputWakeConfiguration: Equatable, Sendable {
     package let applicationAndMutationDomainsAreDistinct: Bool
     package let wakeRequesterIsNonReentrant: Bool
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         normalizedInputSourceCount: UInt16,
         targetLocalPresentationGateCount: UInt8,
@@ -280,6 +403,9 @@ package struct HostEndpointConfiguration: Equatable, Sendable {
     package let healthOwnerCount: UInt8
     package let endpointAndDisplayShareHealthOwner: Bool
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         effectivePresentation: EffectiveRasterPresentation,
         descriptor: RasterSurfaceDescriptor,

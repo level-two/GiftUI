@@ -26,8 +26,11 @@ struct CounterExtent: Equatable {
         let product = UInt64(count).multipliedReportingOverflow(by: UInt64(stride))
         return product.overflow ? nil : product.partialValue
     }
+    static func elements(count: Int, stride: Int, alignment: Int) -> Self {
+        .init(count: count, stride: stride, alignment: alignment)
+    }
     static func elements<T: ~Copyable & ~Escapable>(_ type: T.Type, count: Int) -> Self {
-        .init(count: count, stride: MemoryLayout<T>.stride, alignment: MemoryLayout<T>.alignment)
+        elements(count: count, stride: MemoryLayout<T>.stride, alignment: MemoryLayout<T>.alignment)
     }
 }
 struct CounterInteractionMeasurement: Equatable {
@@ -147,13 +150,18 @@ struct CounterPhysicalBankFacts {
     let recordAlignment: Int
     let optionalRecords: Bool
     let retainedBytes: Int
+    static func retainedExtent(_ bank: InteractionOwnedBankMeasurement, requested: Int?) -> Int {
+        let total = bank.inlineSize.addingReportingOverflow(bank.retainedPayloadBytes)
+        precondition(!total.overflow)
+        return requested ?? total.partialValue
+    }
+    static func owned(bank: InteractionOwnedBankMeasurement, optionalRecords: Bool, retainedBytes: Int, recordSize: Int, recordStride: Int, recordAlignment: Int) -> Self {
+        .init(bank: bank, recordSize: recordSize, recordStride: recordStride, recordAlignment: recordAlignment, optionalRecords: optionalRecords, retainedBytes: retainedBytes)
+    }
     static func owned<T: InteractionOwnedBankMeasurementSource, Record>(_ bank: borrowing T, record: Record.Type, optionalRecords: Bool, retainedBytes: Int? = nil) -> Self {
         let facts = bank.ownedInteractionBankMeasurement
-        let total = facts.inlineSize.addingReportingOverflow(facts.retainedPayloadBytes)
-        precondition(!total.overflow)
-        return .init(bank: facts, recordSize: MemoryLayout<Record>.size,
-            recordStride: MemoryLayout<Record>.stride, recordAlignment: MemoryLayout<Record>.alignment,
-            optionalRecords: optionalRecords, retainedBytes: retainedBytes ?? total.partialValue)
+        let retained = retainedExtent(facts, requested: retainedBytes)
+        return owned(bank: facts, optionalRecords: optionalRecords, retainedBytes: retained, recordSize: MemoryLayout<Record>.size, recordStride: MemoryLayout<Record>.stride, recordAlignment: MemoryLayout<Record>.alignment)
     }
 }
 struct CounterPhysicalInteractionFacts: CounterStorageRegionSource {
@@ -184,23 +192,199 @@ struct CounterPhysicalInteractionFacts: CounterStorageRegionSource {
             let identityBytes = UInt64(count) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
             let records = count.multipliedReportingOverflow(by: facts.recordStride)
             precondition(!records.overflow && UInt64(records.partialValue) >= identityBytes && facts.retainedBytes >= records.partialValue)
-            visit(.elements(SemanticCompleteIdentity.self, count: count, family: keys))
+            visit(.elements(count: count, family: keys, size: MemoryLayout<SemanticCompleteIdentity>.size, stride: MemoryLayout<SemanticCompleteIdentity>.stride, alignment: MemoryLayout<SemanticCompleteIdentity>.alignment))
             visit(.init(family: family, kind: .elements, count: count, size: facts.recordSize,
                 stride: facts.recordStride, alignment: facts.recordAlignment, chargedBytes: UInt64(records.partialValue) - identityBytes))
-            visit(.elements(UInt8.self, count: facts.retainedBytes - records.partialValue, family: family))
+            visit(.elements(count: facts.retainedBytes - records.partialValue, family: family, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment))
         }
         bank(candidate, family: 19, keys: 5); bank(candidateHits, family: 19, keys: 5); bank(prepared, family: 19, keys: 5)
         bank(committed, family: 20, keys: 6); bank(committedHits, family: 20, keys: 6)
-        visit(.elements(UInt8.self, count: stateMetadataBytes, family: 19))
+        visit(.elements(count: stateMetadataBytes, family: 19, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment))
     }
 }
+// Fixed scalar record cells; no generic container construction metadata.
+struct CounterPhysicalRegionBuffer {
+    private var r00: CounterStorageRegion? = nil
+    private var r01: CounterStorageRegion? = nil
+    private var r02: CounterStorageRegion? = nil
+    private var r03: CounterStorageRegion? = nil
+    private var r04: CounterStorageRegion? = nil
+    private var r05: CounterStorageRegion? = nil
+    private var r06: CounterStorageRegion? = nil
+    private var r07: CounterStorageRegion? = nil
+    private var r08: CounterStorageRegion? = nil
+    private var r09: CounterStorageRegion? = nil
+    private var r10: CounterStorageRegion? = nil
+    private var r11: CounterStorageRegion? = nil
+    private var r12: CounterStorageRegion? = nil
+    private var r13: CounterStorageRegion? = nil
+    private var r14: CounterStorageRegion? = nil
+    private var r15: CounterStorageRegion? = nil
+    private var r16: CounterStorageRegion? = nil
+    private var r17: CounterStorageRegion? = nil
+    private var r18: CounterStorageRegion? = nil
+    private var r19: CounterStorageRegion? = nil
+    private var r20: CounterStorageRegion? = nil
+    private var r21: CounterStorageRegion? = nil
+    private var r22: CounterStorageRegion? = nil
+    private var r23: CounterStorageRegion? = nil
+    private var r24: CounterStorageRegion? = nil
+    private var r25: CounterStorageRegion? = nil
+    private var r26: CounterStorageRegion? = nil
+    private var r27: CounterStorageRegion? = nil
+    private var r28: CounterStorageRegion? = nil
+    private var r29: CounterStorageRegion? = nil
+    private var r30: CounterStorageRegion? = nil
+    private var r31: CounterStorageRegion? = nil
+    private var r32: CounterStorageRegion? = nil
+    private var r33: CounterStorageRegion? = nil
+    private var r34: CounterStorageRegion? = nil
+    private var r35: CounterStorageRegion? = nil
+    private var r36: CounterStorageRegion? = nil
+    private var r37: CounterStorageRegion? = nil
+    private var r38: CounterStorageRegion? = nil
+    private var r39: CounterStorageRegion? = nil
+    private var r40: CounterStorageRegion? = nil
+    private var r41: CounterStorageRegion? = nil
+    private var r42: CounterStorageRegion? = nil
+    private var r43: CounterStorageRegion? = nil
+    private var r44: CounterStorageRegion? = nil
+    private var r45: CounterStorageRegion? = nil
+    private var r46: CounterStorageRegion? = nil
+    private var r47: CounterStorageRegion? = nil
+    var count: Int { 48 }
+    subscript(_ index: Int) -> CounterStorageRegion? {
+        get {
+            switch index {
+            case 0: return r00
+            case 1: return r01
+            case 2: return r02
+            case 3: return r03
+            case 4: return r04
+            case 5: return r05
+            case 6: return r06
+            case 7: return r07
+            case 8: return r08
+            case 9: return r09
+            case 10: return r10
+            case 11: return r11
+            case 12: return r12
+            case 13: return r13
+            case 14: return r14
+            case 15: return r15
+            case 16: return r16
+            case 17: return r17
+            case 18: return r18
+            case 19: return r19
+            case 20: return r20
+            case 21: return r21
+            case 22: return r22
+            case 23: return r23
+            case 24: return r24
+            case 25: return r25
+            case 26: return r26
+            case 27: return r27
+            case 28: return r28
+            case 29: return r29
+            case 30: return r30
+            case 31: return r31
+            case 32: return r32
+            case 33: return r33
+            case 34: return r34
+            case 35: return r35
+            case 36: return r36
+            case 37: return r37
+            case 38: return r38
+            case 39: return r39
+            case 40: return r40
+            case 41: return r41
+            case 42: return r42
+            case 43: return r43
+            case 44: return r44
+            case 45: return r45
+            case 46: return r46
+            case 47: return r47
+            default: preconditionFailure("physical region index out of bounds")
+            }
+        }
+        set {
+            switch index {
+            case 0: r00 = newValue
+            case 1: r01 = newValue
+            case 2: r02 = newValue
+            case 3: r03 = newValue
+            case 4: r04 = newValue
+            case 5: r05 = newValue
+            case 6: r06 = newValue
+            case 7: r07 = newValue
+            case 8: r08 = newValue
+            case 9: r09 = newValue
+            case 10: r10 = newValue
+            case 11: r11 = newValue
+            case 12: r12 = newValue
+            case 13: r13 = newValue
+            case 14: r14 = newValue
+            case 15: r15 = newValue
+            case 16: r16 = newValue
+            case 17: r17 = newValue
+            case 18: r18 = newValue
+            case 19: r19 = newValue
+            case 20: r20 = newValue
+            case 21: r21 = newValue
+            case 22: r22 = newValue
+            case 23: r23 = newValue
+            case 24: r24 = newValue
+            case 25: r25 = newValue
+            case 26: r26 = newValue
+            case 27: r27 = newValue
+            case 28: r28 = newValue
+            case 29: r29 = newValue
+            case 30: r30 = newValue
+            case 31: r31 = newValue
+            case 32: r32 = newValue
+            case 33: r33 = newValue
+            case 34: r34 = newValue
+            case 35: r35 = newValue
+            case 36: r36 = newValue
+            case 37: r37 = newValue
+            case 38: r38 = newValue
+            case 39: r39 = newValue
+            case 40: r40 = newValue
+            case 41: r41 = newValue
+            case 42: r42 = newValue
+            case 43: r43 = newValue
+            case 44: r44 = newValue
+            case 45: r45 = newValue
+            case 46: r46 = newValue
+            case 47: r47 = newValue
+            default: preconditionFailure("physical region index out of bounds")
+            }
+        }
+    }
+}
+
 struct CounterPhysicalGeometryFacts: CounterStorageRegionSource {
-    var regions: InlineArray<48, CounterStorageRegion?> = .init(repeating: nil)
+    var regions = CounterPhysicalRegionBuffer()
     var count = 0
     mutating func append(_ region: CounterStorageRegion) {
         precondition(count < regions.count); regions[count] = region; count += 1
     }
     borrowing func visitStorageRegions(_ visit: (CounterStorageRegion) -> Void) {
-        for index in 0..<count { visit(regions[index]!) }
+        let limit = count
+        precondition(limit >= 0)
+        var index = 0
+        while index < limit {
+            visit(regions[index]!)
+            index += 1
+        }
     }
 }
+
+#if GIFTUI_PHYSICAL_FACTS_QUALIFICATION
+func p08OriginalPhysicalBankFacts<T: InteractionOwnedBankMeasurementSource, Record>(_ bank: borrowing T, record: Record.Type, optionalRecords: Bool, retainedBytes: Int? = nil) -> CounterPhysicalBankFacts {
+    let facts = bank.ownedInteractionBankMeasurement
+    let total = facts.inlineSize.addingReportingOverflow(facts.retainedPayloadBytes)
+    precondition(!total.overflow)
+    return .init(bank: facts, recordSize: MemoryLayout<Record>.size, recordStride: MemoryLayout<Record>.stride, recordAlignment: MemoryLayout<Record>.alignment, optionalRecords: optionalRecords, retainedBytes: retainedBytes ?? total.partialValue)
+}
+#endif

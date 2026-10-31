@@ -1,0 +1,14 @@
+{
+  "reviewer": "/root/coordinator",
+  "model_role": "Independentread-onlyreviewer",
+  "verified": "All41sourcehashes/exactpacketmembership; authentic43sourceobject/image; complete2312stream/96402factory+previouscontrols;8source-pathfatalcontrols/lint;14providerownedABIwithsequenceentriesindependentlyverified",
+  "final_status": "ACCEPT_FINITE_ORDINARY_IMPLEMENTATION_AND_COMPATIBILITY",
+  "NoHeap_eligibility": "UNPROVED",
+  "processing_charge_carried_last_reported": 62627402,
+  "processing_charge_carried_final": 64529751,
+  "open_failures": [
+    "Owned-rootFixedArray2OptionalModelcleanup",
+    "GlobalgenericTextvalidation"
+  ],
+  "scope_limit": "NoNoHeap/cold/resource/platform/P08closure"
+}

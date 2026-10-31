@@ -64,6 +64,9 @@ package struct StaticCanvasLimits: Equatable, Sendable {
     @usableFromInline
     package let maximumStaticCaptureBytes: UInt16
 
+    #if GIFTUI_LIMITS_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumStaticCallableCases: UInt16,
         maximumStaticCaptureBytes: UInt16

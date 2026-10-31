@@ -123,9 +123,9 @@ enum CounterConstructionNegative {
     }
     func declaredOrigins(_ original: UInt32, role: HostComponentRole) -> UInt32 {
         switch self {
-        case .omitted(let target, let origin): return role == target ? original & ~(1 << origin) : original
-        case .hiddenSelectedText: return role == .rasterEndpoint ? original & ~CounterReferenceTextInput.reference.origins : original
-        case .hiddenRetainedReport: return role == .wakeRequester ? 0 : original
+        case .omitted(let target, let origin): return role.rawValue == target.rawValue ? original & ~(1 << origin) : original
+        case .hiddenSelectedText: return role.rawValue == HostComponentRole.rasterEndpoint.rawValue ? original & ~CounterReferenceTextInput.reference.origins : original
+        case .hiddenRetainedReport: return role.rawValue == HostComponentRole.wakeRequester.rawValue ? 0 : original
         case .undeclaredBoundText: return original
         }
     }
@@ -170,24 +170,26 @@ struct CounterHostAssembly {
         let graph = CounterHostGraph(negative: negative)
         let inputs = negative?.actualInputs ?? .canonical
         // This is before even eager capability resolution/text validation.
-        if let error = HostComponentGraphValidation.validate(graph) {
+        if let error = counterValidateHostGraph(graph) {
             observation.result = .invalid(stage: .graph, error: error)
             return nil
         }
-        for index: UInt8 in 0..<18 {
+        var index: UInt8 = 0
+        while index < 18 {
             let declared = graph.record(at: index)!
             guard declared.dependencies.rawValue == inputs.origins(for: declared.role) else {
                 observation.result = .invalid(stage: .graph, error: .invalidGraph)
                 return nil
             }
+            index += 1
         }
         observation.capabilityReads += 1
-        let operations: RasterOperationSet = [.opaqueRectangles, .positionedText, .straightLineStrokes, .clipping, .damage]
+        let operations = RasterPresentationOptionProjection.requiredOperations()
         let extent = CapabilityExtent(width: 100, height: 120)!
         #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
         let bytes = CapabilityByteCount(rawValue: 800)
-        let requirement = RasterPresentationRequirement(operations: operations, extent: extent, operationStream: .synchronousBorrowedOneShot, acceptedEncodings: .rgb565BigEndian, acceptedSubmissionLifetimes: .synchronousBorrow, maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, absence: .required)!
-        let realization = RasterRealizationContribution(kind: .tiled, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: .rgb565BigEndian, producedSubmissionLifetimes: .synchronousBorrow, maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 4, rowByteAlignment: 2, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
+        let requirement = RasterPresentationRequirement(operations: operations, extent: extent, operationStream: .synchronousBorrowedOneShot, acceptedEncodings: RasterPresentationOptionProjection.encoding(.rgb565BigEndian), acceptedSubmissionLifetimes: RasterPresentationOptionProjection.lifetime(.synchronousBorrow), maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, absence: .required)!
+        let realization = RasterRealizationContribution(kind: .tiled, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: RasterPresentationOptionProjection.encoding(.rgb565BigEndian), producedSubmissionLifetimes: RasterPresentationOptionProjection.lifetime(.synchronousBorrow), maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 4, rowByteAlignment: 2, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
         var contributions = RasterPresentationContributions()
             let p08ExactCase55: Bool;
             if case .inserted = contributions.insert(
@@ -210,8 +212,8 @@ struct CounterHostAssembly {
             if case .inserted = contributions.insert(
                 .surfaceDisplay(
                     .init(
-                        extent: extent, encodings: .rgb565BigEndian,
-                        acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous,
+                        extent: extent, encodings: RasterPresentationOptionProjection.encoding(.rgb565BigEndian),
+                        acceptedSubmissionLifetimes: RasterPresentationOptionProjection.lifetime(.synchronousBorrow), handoffs: RasterPresentationOptionProjection.handoff(.synchronous),
                         maximumRegionWidth: 100, maximumRegionHeight: 4, rowByteAlignment: 2,
                         maximumInFlightCount: 1, maximumInFlightBytes: bytes)!))
             {
@@ -224,9 +226,9 @@ struct CounterHostAssembly {
                 .hostResourcePolicy(
                     .init(
                         maximumRasterBytes: bytes, maximumPayloadBytes: bytes,
-                        maximumInFlightBytes: bytes, allowedRealizations: .tiled,
-                        allowedEncodings: .rgb565BigEndian, preferredRealization: .tiled,
-                        preferredEncoding: .rgb565BigEndian)!))
+                        maximumInFlightBytes: bytes, allowedRealizations: RasterPresentationOptionProjection.realization(.tiled),
+                        allowedEncodings: RasterPresentationOptionProjection.encoding(.rgb565BigEndian), preferredRealization: .tiled,
+                        preferredEncoding: RasterPresentationOptionProjection.encoding(.rgb565BigEndian))!))
             {
                 p08ExactCase58 = true
             } else {
@@ -238,8 +240,8 @@ struct CounterHostAssembly {
         let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgb565BigEndian, bytesPerRow: 200, realization: .tiled, regionWidth: 100, regionHeight: 4)!, payloadLimits: .init(maximumRasterBytes: 800, maximumPayloadBytes: 800, maximumRegionsPerPayload: 1, maximumRegionSubmissionsPerFrame: 300000, maximumTileVisitsPerFrame: 750, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 800, maximumStrokeWorkspaceBytes: 800)!, surfaceWritableCapacityBytes: 800, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 800, textRasterRealization: inputs.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
         #else
         let bytes = CapabilityByteCount(rawValue: 48000)
-        let requirement = RasterPresentationRequirement(operations: operations, extent: extent, operationStream: .synchronousBorrowedOneShot, acceptedEncodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, absence: .required)!
-        let realization = RasterRealizationContribution(kind: .fullSurface, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: .rgba8888, producedSubmissionLifetimes: .synchronousBorrow, maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 120, rowByteAlignment: 4, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
+        let requirement = RasterPresentationRequirement(operations: operations, extent: extent, operationStream: .synchronousBorrowedOneShot, acceptedEncodings: RasterPresentationOptionProjection.encoding(.rgba8888), acceptedSubmissionLifetimes: RasterPresentationOptionProjection.lifetime(.synchronousBorrow), maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, absence: .required)!
+        let realization = RasterRealizationContribution(kind: .fullSurface, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: RasterPresentationOptionProjection.encoding(.rgba8888), producedSubmissionLifetimes: RasterPresentationOptionProjection.lifetime(.synchronousBorrow), maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 120, rowByteAlignment: 4, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
         var contributions = RasterPresentationContributions()
             let p08ExactCase59: Bool;
             if case .inserted = contributions.insert(
@@ -262,8 +264,8 @@ struct CounterHostAssembly {
             if case .inserted = contributions.insert(
                 .surfaceDisplay(
                     .init(
-                        extent: extent, encodings: .rgba8888,
-                        acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous,
+                        extent: extent, encodings: RasterPresentationOptionProjection.encoding(.rgba8888),
+                        acceptedSubmissionLifetimes: RasterPresentationOptionProjection.lifetime(.synchronousBorrow), handoffs: RasterPresentationOptionProjection.handoff(.synchronous),
                         maximumRegionWidth: 100, maximumRegionHeight: 120, rowByteAlignment: 4,
                         maximumInFlightCount: 1, maximumInFlightBytes: bytes)!))
             {
@@ -276,9 +278,9 @@ struct CounterHostAssembly {
                 .hostResourcePolicy(
                     .init(
                         maximumRasterBytes: bytes, maximumPayloadBytes: bytes,
-                        maximumInFlightBytes: bytes, allowedRealizations: .fullSurface,
-                        allowedEncodings: .rgba8888, preferredRealization: .fullSurface,
-                        preferredEncoding: .rgba8888)!))
+                        maximumInFlightBytes: bytes, allowedRealizations: RasterPresentationOptionProjection.realization(.fullSurface),
+                        allowedEncodings: RasterPresentationOptionProjection.encoding(.rgba8888), preferredRealization: .fullSurface,
+                        preferredEncoding: RasterPresentationOptionProjection.encoding(.rgba8888))!))
             {
                 p08ExactCase62 = true
             } else {
@@ -301,5 +303,35 @@ struct CounterHostAssembly {
         observation.result = result
         guard case .valid(let report) = result else { return nil }
         return Self(report: report, endpoint: endpoint, ledger: validator.validationAccessLedger)
+    }
+}
+
+// Finite adapters only execute requests; all graph validation policy is shared.
+#if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF
+@_noAllocation
+#endif
+func counterValidateHostGraph(_ graph: borrowing CounterHostGraph) -> HostConfigurationError? {
+    var engine = HostComponentGraphValidation.Engine()
+    while true {
+        switch engine.request() {
+        case .count: engine.acceptCount(graph.count)
+        case .record(let index): engine.acceptRecord(graph.record(at: index))
+        case .finished: return engine.result()
+        }
+    }
+}
+
+// Finite adapters only execute requests; all graph validation policy is shared.
+#if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF
+@_noAllocation
+#endif
+func counterValidateHostGraph(_ graph: borrowing CounterInvalidGraph) -> HostConfigurationError? {
+    var engine = HostComponentGraphValidation.Engine()
+    while true {
+        switch engine.request() {
+        case .count: engine.acceptCount(graph.count)
+        case .record(let index): engine.acceptRecord(graph.record(at: index))
+        case .finished: return engine.result()
+        }
     }
 }

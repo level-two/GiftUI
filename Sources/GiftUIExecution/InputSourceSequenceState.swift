@@ -10,6 +10,9 @@ enum InputSequenceValidation: UInt8, Equatable, Sendable {
 package struct TargetInputSequenceGate: Equatable, Sendable {
     private var nextSubmittedSequenceRaw: UInt32?
 
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(nextSubmittedSequenceRaw: UInt32? = 0) {
         self.nextSubmittedSequenceRaw = nextSubmittedSequenceRaw
     }
@@ -46,6 +49,20 @@ struct InputSourceSequenceState: Equatable, Sendable {
     private(set) var mode: Mode = .synchronized
     private(set) var sequence: PointerSequenceID?
     private(set) var ordinal: InputOrdinal?
+
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
+    init() {}
+
+    // Preserve the original synthesized memberwise entry and its defaults.
+    init(
+        mode: Mode = .synchronized, sequence: PointerSequenceID? = nil, ordinal: InputOrdinal? = nil
+    ) {
+        self.mode = mode
+        self.sequence = sequence
+        self.ordinal = ordinal
+    }
 
     mutating func validate(
         phase: PointerPhase,

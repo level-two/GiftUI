@@ -7,6 +7,9 @@ package struct ObservableStateLimits: Equatable, Sendable {
     @usableFromInline package let maximumStagedAssociations: UInt16
 
     @usableFromInline
+    #if GIFTUI_LIMITS_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumLocations: UInt16,
         maximumRegistrations: UInt16,

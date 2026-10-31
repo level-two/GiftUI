@@ -51,6 +51,11 @@ enum CounterRuntimeSlotPhase: UInt8, Equatable { case vacant, installing, instal
 
 // Five independent stored fields below are borrowed separately. These scalar
 // claims record the one pipeline installation; they are not Interaction state.
+private func counterInitialActionPoints() -> InlineArray<2, Point> {
+    let seed = Point(x: 0, y: 0)
+    return [seed, seed]
+}
+
 struct CounterControl {
     var runtimeEndpoint: CounterEndpoint?
     var runtimeRootIdentity: SemanticCompleteIdentity?
@@ -340,7 +345,7 @@ struct CounterControl {
     var forwardedWakeRequestCount: UInt32 = 0
     var hostWakeRequests = 0
     var wakeTakes = 0
-    var lastTakenWakeReasons: ExecutionWakeReasons = []
+    var lastTakenWakeReasons = ExecutionWakeReasons(rawValue: 0)
     var acceptedFactWakeRecords = 0
     var disabledWakeRejections = 0
     var injectCompletionAtApply = false
@@ -349,7 +354,7 @@ struct CounterControl {
     var inputGate = HostNormalizedInputGate(configuredSource: .init(rawValue: 0))
     var semanticSnapshot = CounterSemanticSnapshot()
     var lastFrame = CounterRenderSink()
-    var actionPoints: InlineArray<2, Point> = .init(repeating: Point(x: 0, y: 0))
+    var actionPoints: InlineArray<2, Point> = counterInitialActionPoints()
     var admission: CounterAdmissionBacking {
         get { runtime.admission }
         set { runtime.admission = newValue }
@@ -399,7 +404,7 @@ struct CounterControl {
     var teardowns = 0
     var terminalRetry = false
     var failAfterMutation = false
-    var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
+    var cleanupOrder: InlineArray<9, UInt8> = [255, 255, 255, 255, 255, 255, 255, 255, 255]
     var cleanupCount = 0
     var boundaryFailure: RunCycleFailure<RuntimeOwnerFailure> = .execution(.capacityExhausted)
     var fault: RuntimeCompletePipelineStage?

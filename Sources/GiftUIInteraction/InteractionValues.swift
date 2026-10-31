@@ -18,6 +18,9 @@ package struct InteractionLimits: Equatable, Sendable {
     @usableFromInline
     package let maximumHitRegions: UInt16
 
+    #if GIFTUI_LIMITS_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumActions: UInt16,
         maximumHitRegions: UInt16

@@ -4,6 +4,9 @@ import GiftUIRenderLowering
 import GiftUIRuntimeCore
 
 package enum SignalAnalyzerDrawingStartupValidation {
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package static func validate(
         workload: SignalAnalyzerHostWorkload,
         limits: RuntimeProfileLimits,

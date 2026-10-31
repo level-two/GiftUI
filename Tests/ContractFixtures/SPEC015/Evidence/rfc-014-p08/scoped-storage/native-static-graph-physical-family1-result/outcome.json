@@ -1,0 +1,24 @@
+{
+  "status": "FINITE_ORDINARY_IMPLEMENTATION_AND_COMPATIBILITY_ACCEPTED",
+  "normal": "physical facts Static/Dynamic independent rows, five banks, 26 totals, audits, mismatch, refusal, faults, surplus, destruction PASS checks=492 graph=130 engineFacts=1115 stream=2312 factory=96402",
+  "counts": {
+    "physical": 492,
+    "graph": 130,
+    "engineFacts": 1115,
+    "full_old_new_stream": 2312,
+    "factory_defaults": 96402,
+    "ID_pairs": 196,
+    "inventory": 56,
+    "runtime_equality": 109
+  },
+  "fatal_controls": 8,
+  "lint_exit": 0,
+  "factory_NoHeap": "FAIL:possibledeallocationofBuiltin.FixedArray<2,Optional<CounterOwnedModel>>atfailableRootinit",
+  "global_NoHeap": "FAIL:genericTextResourceValidator.validate",
+  "Native_layout_scope_only": true,
+  "cold_resource_platform_P08_closure": false,
+  "source_count": 41,
+  "current_work_is_substantive_implementation_tests_and_evidence": true,
+  "independent_review": "independent-review.md",
+  "NoHeap_P08_acceptance": false
+}

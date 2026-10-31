@@ -9,6 +9,9 @@ package struct CanvasPendingMetadata {
     @usableFromInline internal var owner: SemanticRecordOwnerIdentity?
     @usableFromInline internal var bank: UInt8 = 0
     @usableFromInline internal var revision: UInt32 = 0
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     @inlinable package init() {}
 }
 

@@ -1,0 +1,224 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:102:9: warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 76 | package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+ 77 |     @usableFromInline
+ 78 |     package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+    |                               `- note: setter for property 'lifecycleState' is not '@usableFromInline' or public
+ 79 |     @usableFromInline
+ 80 |     package internal(set) var progress = HostActivationProgress()
+    :
+100 |             return .failure(invariantFailure)
+101 |         }
+102 |         lifecycleState = .activating
+    |         `- warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+103 | 
+104 |         if let failure = record(
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:135:9: warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 76 | package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+ 77 |     @usableFromInline
+ 78 |     package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+    |                               `- note: setter for property 'lifecycleState' is not '@usableFromInline' or public
+ 79 |     @usableFromInline
+ 80 |     package internal(set) var progress = HostActivationProgress()
+    :
+133 |         }
+134 | 
+135 |         lifecycleState = .active
+    |         `- warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+136 |         return .active
+137 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:147:9: warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 76 | package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+ 77 |     @usableFromInline
+ 78 |     package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+    |                               `- note: setter for property 'lifecycleState' is not '@usableFromInline' or public
+ 79 |     @usableFromInline
+ 80 |     package internal(set) var progress = HostActivationProgress()
+    :
+145 |             return
+146 |         }
+147 |         lifecycleState = .quiescing
+    |         `- warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+148 | 
+149 |         owner.refuseApplicationDeliveryAndInput()
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:158:9: warning: setter for property 'progress' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 78 |     package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+ 79 |     @usableFromInline
+ 80 |     package internal(set) var progress = HostActivationProgress()
+    |                               `- note: setter for property 'progress' is not '@usableFromInline' or public
+ 81 |     @usableFromInline
+ 82 |     package internal(set) var assemblyReportRuntimeUseIsValid = true
+    :
+156 |         owner.invalidateAssemblyReportRuntimeUse()
+157 | 
+158 |         progress = HostActivationProgress()
+    |         `- warning: setter for property 'progress' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+159 |         assemblyReportRuntimeUseIsValid = false
+160 |         lifecycleState = .quiescent
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:159:9: warning: setter for property 'assemblyReportRuntimeUseIsValid' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 80 |     package internal(set) var progress = HostActivationProgress()
+ 81 |     @usableFromInline
+ 82 |     package internal(set) var assemblyReportRuntimeUseIsValid = true
+    |                               `- note: setter for property 'assemblyReportRuntimeUseIsValid' is not '@usableFromInline' or public
+ 83 | 
+ 84 |     @usableFromInline
+    :
+157 | 
+158 |         progress = HostActivationProgress()
+159 |         assemblyReportRuntimeUseIsValid = false
+    |         `- warning: setter for property 'assemblyReportRuntimeUseIsValid' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+160 |         lifecycleState = .quiescent
+161 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:160:9: warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 76 | package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+ 77 |     @usableFromInline
+ 78 |     package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+    |                               `- note: setter for property 'lifecycleState' is not '@usableFromInline' or public
+ 79 |     @usableFromInline
+ 80 |     package internal(set) var progress = HostActivationProgress()
+    :
+158 |         progress = HostActivationProgress()
+159 |         assemblyReportRuntimeUseIsValid = false
+160 |         lifecycleState = .quiescent
+    |         `- warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+161 |     }
+162 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:170:13: warning: setter for property 'progress' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 78 |     package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+ 79 |     @usableFromInline
+ 80 |     package internal(set) var progress = HostActivationProgress()
+    |                               `- note: setter for property 'progress' is not '@usableFromInline' or public
+ 81 |     @usableFromInline
+ 82 |     package internal(set) var assemblyReportRuntimeUseIsValid = true
+    :
+168 |         switch result {
+169 |         case .advanced:
+170 |             progress = progress.merging(successfulProgress)
+    |             `- warning: setter for property 'progress' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+171 |             return nil
+172 |         case .failure(let failure, let partialProgress):
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:173:13: warning: setter for property 'progress' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 78 |     package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+ 79 |     @usableFromInline
+ 80 |     package internal(set) var progress = HostActivationProgress()
+    |                               `- note: setter for property 'progress' is not '@usableFromInline' or public
+ 81 |     @usableFromInline
+ 82 |     package internal(set) var assemblyReportRuntimeUseIsValid = true
+    :
+171 |             return nil
+172 |         case .failure(let failure, let partialProgress):
+173 |             progress = progress.merging(partialProgress)
+    |             `- warning: setter for property 'progress' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+174 |             return failure
+175 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift:192:9: warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 76 | package struct MVPHostActivationController<Failure: Equatable & Sendable> {
+ 77 |     @usableFromInline
+ 78 |     package internal(set) var lifecycleState: MVPHostLifecycleState = .valid
+    |                               `- note: setter for property 'lifecycleState' is not '@usableFromInline' or public
+ 79 |     @usableFromInline
+ 80 |     package internal(set) var progress = HostActivationProgress()
+    :
+190 |             owner.quiesceConstructedRuntime()
+191 |         }
+192 |         lifecycleState = .failed
+    |         `- warning: setter for property 'lifecycleState' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+193 |         return .failure(failure)
+194 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:73:9: warning: setter for property 'owner' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 55 |     package let assemblyReport: HostAssemblyReport
+ 56 |     @usableFromInline
+ 57 |     package internal(set) var owner: Owner
+    |                               `- note: setter for property 'owner' is not '@usableFromInline' or public
+ 58 |     @usableFromInline
+ 59 |     package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
+    :
+ 71 |         guard assemblyReport.kind == expectedKind else { return nil }
+ 72 |         self.assemblyReport = assemblyReport
+ 73 |         self.owner = consume owner
+    |         `- warning: setter for property 'owner' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 74 |         controller = MVPHostActivationController()
+ 75 |         self.invariantFailure = invariantFailure
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:74:9: warning: setter for property 'controller' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 57 |     package internal(set) var owner: Owner
+ 58 |     @usableFromInline
+ 59 |     package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
+    |                               `- note: setter for property 'controller' is not '@usableFromInline' or public
+ 60 |     @usableFromInline
+ 61 |     internal let invariantFailure: Owner.ActivationFailure
+    :
+ 72 |         self.assemblyReport = assemblyReport
+ 73 |         self.owner = consume owner
+ 74 |         controller = MVPHostActivationController()
+    |         `- warning: setter for property 'controller' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 75 |         self.invariantFailure = invariantFailure
+ 76 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:85:9: warning: setter for property 'controller' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 57 |     package internal(set) var owner: Owner
+ 58 |     @usableFromInline
+ 59 |     package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
+    |                               `- note: setter for property 'controller' is not '@usableFromInline' or public
+ 60 |     @usableFromInline
+ 61 |     internal let invariantFailure: Owner.ActivationFailure
+    :
+ 83 |     @inlinable
+ 84 |     package mutating func activate() -> HostActivationResult<Owner.ActivationFailure> {
+ 85 |         controller.activate(owner: &owner, invariantFailure: invariantFailure)
+    |         `- warning: setter for property 'controller' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 86 |     }
+ 87 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:85:37: warning: setter for property 'owner' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 55 |     package let assemblyReport: HostAssemblyReport
+ 56 |     @usableFromInline
+ 57 |     package internal(set) var owner: Owner
+    |                               `- note: setter for property 'owner' is not '@usableFromInline' or public
+ 58 |     @usableFromInline
+ 59 |     package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
+    :
+ 83 |     @inlinable
+ 84 |     package mutating func activate() -> HostActivationResult<Owner.ActivationFailure> {
+ 85 |         controller.activate(owner: &owner, invariantFailure: invariantFailure)
+    |                                     `- warning: setter for property 'owner' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 86 |     }
+ 87 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:96:9: warning: setter for property 'controller' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 57 |     package internal(set) var owner: Owner
+ 58 |     @usableFromInline
+ 59 |     package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
+    |                               `- note: setter for property 'controller' is not '@usableFromInline' or public
+ 60 |     @usableFromInline
+ 61 |     internal let invariantFailure: Owner.ActivationFailure
+    :
+ 94 |     @inlinable
+ 95 |     package mutating func teardown() {
+ 96 |         controller.teardown(owner: &owner)
+    |         `- warning: setter for property 'controller' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 97 |     }
+ 98 | }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:96:37: warning: setter for property 'owner' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 55 |     package let assemblyReport: HostAssemblyReport
+ 56 |     @usableFromInline
+ 57 |     package internal(set) var owner: Owner
+    |                               `- note: setter for property 'owner' is not '@usableFromInline' or public
+ 58 |     @usableFromInline
+ 59 |     package internal(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
+    :
+ 94 |     @inlinable
+ 95 |     package mutating func teardown() {
+ 96 |         controller.teardown(owner: &owner)
+    |                                     `- warning: setter for property 'owner' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 97 |     }
+ 98 | }

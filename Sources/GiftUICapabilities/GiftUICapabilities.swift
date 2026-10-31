@@ -2,6 +2,9 @@ public struct CapabilityExtent: Equatable, Sendable {
     public let width: UInt16
     public let height: UInt16
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init?(width: UInt16, height: UInt16) {
         guard width > 0, height > 0 else { return nil }
         self.width = width
@@ -11,6 +14,9 @@ public struct CapabilityExtent: Equatable, Sendable {
 
 public struct CapabilityByteCount: Equatable, Comparable, Sendable {
     public let rawValue: UInt32
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init(rawValue: UInt32) { self.rawValue = rawValue }
     public static func < (lhs: Self, rhs: Self) -> Bool {
         lhs.rawValue < rhs.rawValue
@@ -19,6 +25,9 @@ public struct CapabilityByteCount: Equatable, Comparable, Sendable {
 
 public struct RasterOperationSet: OptionSet, Equatable, Sendable {
     public let rawValue: UInt8
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init(rawValue: UInt8) { self.rawValue = rawValue }
     public static let opaqueRectangles = Self(rawValue: 1 << 0)
     public static let positionedText = Self(rawValue: 1 << 1)
@@ -34,6 +43,9 @@ public enum OperationStreamLifetime: UInt8, Equatable, Sendable {
 
 public struct CanonicalPixelEncodingSet: OptionSet, Equatable, Sendable {
     public let rawValue: UInt8
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init(rawValue: UInt8) { self.rawValue = rawValue }
     public static let rgb565BigEndian = Self(rawValue: 1 << 0)
     public static let rgba8888 = Self(rawValue: 1 << 1)
@@ -41,6 +53,9 @@ public struct CanonicalPixelEncodingSet: OptionSet, Equatable, Sendable {
 
 public struct SubmissionLifetimeSet: OptionSet, Equatable, Sendable {
     public let rawValue: UInt8
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init(rawValue: UInt8) { self.rawValue = rawValue }
     public static let synchronousBorrow = Self(rawValue: 1 << 0)
     public static let synchronousCopy = Self(rawValue: 1 << 1)
@@ -49,6 +64,9 @@ public struct SubmissionLifetimeSet: OptionSet, Equatable, Sendable {
 
 public struct SubmissionHandoffSet: OptionSet, Equatable, Sendable {
     public let rawValue: UInt8
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init(rawValue: UInt8) { self.rawValue = rawValue }
     public static let synchronous = Self(rawValue: 1 << 0)
     public static let queued = Self(rawValue: 1 << 1)
@@ -70,6 +88,9 @@ public struct RasterPresentationRequirement: Equatable, Sendable {
     public let maximumInFlightBytes: CapabilityByteCount
     public let absence: CapabilityAbsence
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init?(
         operations: RasterOperationSet,
         extent: CapabilityExtent,
@@ -102,6 +123,9 @@ public struct RenderProducerContribution: Equatable, Sendable {
     public let operations: RasterOperationSet
     public let operationStream: OperationStreamLifetime
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init?(
         operations: RasterOperationSet,
         operationStream: OperationStreamLifetime
@@ -119,6 +143,9 @@ public enum RasterRealizationKind: UInt8, Equatable, Sendable {
 
 public struct RasterRealizationKindSet: OptionSet, Equatable, Sendable {
     public let rawValue: UInt8
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init(rawValue: UInt8) { self.rawValue = rawValue }
     public static let fullSurface = Self(rawValue: 1 << 0)
     public static let tiled = Self(rawValue: 1 << 1)
@@ -137,6 +164,9 @@ public struct RasterRealizationContribution: Equatable, Sendable {
     public let maximumRasterBytes: CapabilityByteCount
     public let maximumPayloadBytes: CapabilityByteCount
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init?(
         kind: RasterRealizationKind,
         operations: RasterOperationSet,
@@ -221,6 +251,9 @@ public struct RasterBackendContribution: Equatable, Sendable {
     public let primary: RasterRealizationContribution
     public let alternate: RasterRealizationContribution?
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init?(
         primary: RasterRealizationContribution,
         alternate: RasterRealizationContribution?
@@ -242,6 +275,9 @@ public struct SurfaceDisplayContribution: Equatable, Sendable {
     public let maximumInFlightCount: UInt8
     public let maximumInFlightBytes: CapabilityByteCount
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init?(
         extent: CapabilityExtent,
         encodings: CanonicalPixelEncodingSet,
@@ -284,6 +320,9 @@ public struct RasterPresentationPolicy: Equatable, Sendable {
     public let preferredRealization: RasterRealizationKind
     public let preferredEncoding: CanonicalPixelEncodingSet
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init?(
         maximumRasterBytes: CapabilityByteCount,
         maximumPayloadBytes: CapabilityByteCount,
@@ -325,6 +364,9 @@ public struct RasterPresentationContributions: Equatable, Sendable {
     var hostResourcePolicy: RasterPresentationPolicy?
     var duplicateMask: UInt8
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init() {
         renderProducer = nil
         rasterBackend = nil
@@ -333,6 +375,9 @@ public struct RasterPresentationContributions: Equatable, Sendable {
         duplicateMask = 0
     }
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public mutating func insert(
         _ contribution: RasterPresentationContribution
     ) -> RasterPresentationContributionInsertion {
@@ -868,6 +913,9 @@ public struct RasterPresentationResolverWorkspace: Equatable, Sendable {
     var firstCandidate: NormalizedRasterPresentationCandidate?
     var secondCandidate: NormalizedRasterPresentationCandidate?
 
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init?(usableCandidateCapacity: UInt8 = 2) {
         guard usableCandidateCapacity <= Self.candidateCapacity else { return nil }
         self.usableCandidateCapacity = usableCandidateCapacity
@@ -940,6 +988,9 @@ public enum RasterPresentationResolution: Equatable, Sendable {
 }
 
 public enum RasterPresentationResolver {
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public static func resolve(
         requirement: RasterPresentationRequirement,
         contributions: borrowing RasterPresentationContributions,
@@ -1168,6 +1219,9 @@ public enum RasterPresentationResolver {
 
 public struct CapabilitySnapshot: Equatable, Sendable {
     public let rasterPresentation: EffectiveRasterPresentation?
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
     public init(rasterPresentation: EffectiveRasterPresentation?) {
         self.rasterPresentation = rasterPresentation
     }
@@ -1263,5 +1317,68 @@ extension RasterRealizationKind {
         case .fullSurface: .fullSurface
         case .tiled: .tiled
         }
+    }
+}
+
+// Preserves selected named-option first use at opaque package boundaries.
+package enum RasterPresentationOptionProjection {
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
+    package static func requiredOperations() -> RasterOperationSet {
+        RasterOperationSet(
+            rawValue: RasterOperationSet.opaqueRectangles.rawValue
+                | RasterOperationSet.positionedText.rawValue
+                | RasterOperationSet.straightLineStrokes.rawValue
+                | RasterOperationSet.clipping.rawValue | RasterOperationSet.damage.rawValue)
+    }
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
+    package static func encoding(_ value: CanonicalPixelEncoding) -> CanonicalPixelEncodingSet {
+        switch value {
+        case .rgb565BigEndian: .rgb565BigEndian
+        case .rgba8888: .rgba8888
+        }
+    }
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
+    package static func lifetime(_ value: SubmissionLifetime) -> SubmissionLifetimeSet {
+        switch value {
+        case .synchronousBorrow: .synchronousBorrow
+        case .synchronousCopy: .synchronousCopy
+        case .ownershipTransfer: .ownershipTransfer
+        }
+    }
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
+    package static func handoff(_ value: SubmissionHandoff) -> SubmissionHandoffSet {
+        switch value {
+        case .synchronous: .synchronous
+        case .queued: .queued
+        }
+    }
+    #if GIFTUI_CAPABILITY_QUALIFICATION && !GIFTUI_CAPABILITY_INSTRUMENTATION
+        @_noAllocation
+    #endif
+    package static func realization(_ value: RasterRealizationKind) -> RasterRealizationKindSet {
+        value.option
+    }
+}
+
+package enum RasterPresentationEqualityProjection {
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    package static func matches(
+        _ lhs: EffectiveRasterPresentation, _ rhs: EffectiveRasterPresentation
+    ) -> Bool { lhs == rhs }
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    package static func matches(_ lhs: CapabilityExtent, _ rhs: CapabilityExtent) -> Bool {
+        lhs == rhs
     }
 }

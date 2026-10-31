@@ -122,8 +122,8 @@ struct CounterRecordSink: SemanticExpansionSink, ~Escapable {
 
 struct CounterPendingBacking: ~Copyable {
     var metadata = CanvasPendingMetadata()
-    var captures: InlineArray<24, CounterValueTable.CaptureStorage?> = .init(repeating: nil)
-    var payloadOrdinals: InlineArray<24, UInt16> = .init(repeating: .max)
+    var captures: InlineArray<24, CounterValueTable.CaptureStorage?> = [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
+    var payloadOrdinals: InlineArray<24, UInt16> = [.max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max, .max]
     static var capacity: UInt16 { 24 }
     static var paddingBytes: Int {
         let fields = MemoryLayout<CanvasPendingMetadata>.size

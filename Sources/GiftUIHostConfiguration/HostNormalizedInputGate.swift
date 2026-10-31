@@ -39,6 +39,9 @@ package struct HostNormalizedInputGate: Sendable {
     private var lastAdmittedOrdinal: InputOrdinal?
     private var physicalPresentationRevision: PresentationRevision?
 
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         configuredSource: InputSourceID,
         nextSubmittedSequenceRaw: UInt32? = 0

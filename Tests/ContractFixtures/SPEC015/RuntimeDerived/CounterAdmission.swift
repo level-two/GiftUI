@@ -208,12 +208,12 @@ struct CounterWake: ExecutionWakeRequester, Sendable {
 
 
 struct CounterAdmissionBacking: Equatable {
-    var pendingPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)
-    var pendingStates: InlineArray<34, UInt8> = .init(repeating: 0)
+    var pendingPointers: InlineArray<2, NormalizedPointerEvent?> = [nil, nil]
+    var pendingStates: InlineArray<34, UInt8> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     var pendingStateCount: UInt16 = 0
     var pendingCompletion: UInt16?
-    var sealedPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)
-    var sealedStates: InlineArray<34, UInt8> = .init(repeating: 0)
+    var sealedPointers: InlineArray<2, NormalizedPointerEvent?> = [nil, nil]
+    var sealedStates: InlineArray<34, UInt8> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     var sealedStateCount: UInt16 = 0
     var sealedStateCursor: UInt16 = 0
     var sealedCompletion: UInt16?

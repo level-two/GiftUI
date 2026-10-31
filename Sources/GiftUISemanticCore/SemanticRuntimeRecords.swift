@@ -20,6 +20,9 @@ package struct SemanticPathComponent: Equatable, Sendable {
     package let modifier: UInt16
 
     @usableFromInline
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(kind: Kind, ordinal: UInt8 = 0, role: UInt16 = 0, modifier: UInt16 = 0) {
         self.kind = kind
         self.ordinal = ordinal
@@ -104,6 +107,9 @@ package struct SemanticRecordLimits: Equatable, Sendable {
     package let textScalars: UInt16
     @usableFromInline
     package let payloadBytes: UInt32
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         records: UInt16, paths: UInt16, depth: UInt16, fanout: UInt16,
         payloads: UInt16, textScalars: UInt16, payloadBytes: UInt32
@@ -144,6 +150,9 @@ package struct SemanticPathEntry: Sendable {
     @usableFromInline
     package var matchedPath: UInt16 = .max
     @usableFromInline
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {}
 }
 
@@ -174,6 +183,9 @@ package struct SemanticRuntimeRecord: Sendable {
     @usableFromInline
     package var modifierChainIndex: UInt16 = 0
     @usableFromInline
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {}
 }
 
@@ -267,6 +279,9 @@ package struct SemanticRecordBankMetadata {
     @usableFromInline
     package var failure: SemanticExpansionError?
     @usableFromInline
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {}
 }
 

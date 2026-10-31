@@ -55,6 +55,9 @@ package struct ExecutionLimits: Equatable, Sendable {
     package let maximumActiveInputSources: UInt16
     package let maximumCommittedActions: UInt16
 
+    #if GIFTUI_LIMITS_QUALIFICATION
+        @_noAllocation
+    #endif
     package init?(
         maximumInputEvents: UInt16,
         maximumStateChangeFacts: UInt16,
@@ -89,6 +92,9 @@ package struct ExecutionContext: Equatable, Sendable {
     @usableFromInline
     package let phase: ExecutionPhase
 
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(
         cycle: RunCycleID?,
         semanticRevision: SemanticRevision?,

@@ -14,6 +14,9 @@ package enum HostResidualPolicyTableValidation {
         return true
     }
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package static func expectedRow(
         for context: HostResidualPolicyContext
     ) -> (
@@ -23,24 +26,31 @@ package enum HostResidualPolicyTableValidation {
         switch context {
         case .presentationBackpressure, .presentationRetryableRefusal:
             return (
-                [.requestPacedRetry, .quiesceAffectedScope],
+                GiftUIDispositionOptionProjection.options(
+                    .requestPacedRetry, .quiesceAffectedScope),
                 .requestPacedRetry
             )
         case .containedCandidateFailure:
             return (
-                [.continueOperation, .quiesceAffectedScope],
+                GiftUIDispositionOptionProjection.options(
+                    .continueOperation, .quiesceAffectedScope),
                 .continueOperation
             )
         case .staleInputOrRegistration:
-            return (.continueOperation, .continueOperation)
+            return (
+                GiftUIDispositionOptionProjection.option(.continueOperation), .continueOperation
+            )
         case .safetyNotProven:
             return (
-                [.quiesceAffectedScope, .invokeFatalHook],
+                GiftUIDispositionOptionProjection.options(.quiesceAffectedScope, .invokeFatalHook),
                 .quiesceAffectedScope
             )
         case .startupValidation, .activation, .presentationUnavailable,
             .backendOperationalFailure:
-            return (.quiesceAffectedScope, .quiesceAffectedScope)
+            return (
+                GiftUIDispositionOptionProjection.option(.quiesceAffectedScope),
+                .quiesceAffectedScope
+            )
         }
     }
 }

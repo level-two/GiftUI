@@ -2,15 +2,31 @@ import GiftUISemanticCore
 
 /// Static assembly supplies initialized typed backing before entering this
 /// lifetime. No array, allocation, generated topology or byte rebinding occurs.
+private func initialStaticSemanticMetadata() -> InlineArray<2, SemanticRecordBankMetadata> {
+    let seed = SemanticRecordBankMetadata()
+    return [seed, seed]
+}
+
 package struct StaticSemanticRecordStorage: ~Copyable {
-    private var metadata: InlineArray<2, SemanticRecordBankMetadata> = .init(repeating: .init())
+    private var metadata: InlineArray<2, SemanticRecordBankMetadata> =
+        initialStaticSemanticMetadata()
     private let limits: SemanticRecordLimits
     private let owner: SemanticRecordOwnerIdentity
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init(limits: SemanticRecordLimits, owner: SemanticRecordOwnerIdentity) {
         self.limits = limits
         self.owner = owner
     }
-    package var storageLimits: SemanticRecordLimits { limits }
+    #if GIFTUI_SEMANTIC_READONLY_QUALIFICATION
+        package var storageLimits: SemanticRecordLimits {
+            @_noAllocation
+            get { limits }
+        }
+    #else
+        package var storageLimits: SemanticRecordLimits { limits }
+    #endif
     package var storageOwner: SemanticRecordOwnerIdentity { owner }
 
     package mutating func withLifetime<Result>(

@@ -41,6 +41,9 @@ package struct CanvasStagedMetadata {
     @usableFromInline
     package internal(set) var releases: UInt16 = 0
     @inlinable
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {}
 }
 

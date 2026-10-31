@@ -1,0 +1,47 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:665:9: warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 663 |     guard counterRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .insufficientStorage }
+ 664 |     let keys = interactionFacts.measurement
+ 665 |     let keyLimits = identityCapacities
+     |         `- warning: initialization of immutable value 'keyLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 666 |     let semanticLimits = semantic.limits
+ 667 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:666:9: warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 664 |     let keys = interactionFacts.measurement
+ 665 |     let keyLimits = identityCapacities
+ 666 |     let semanticLimits = semantic.limits
+     |         `- warning: initialization of immutable value 'semanticLimits' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+ 667 |     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
+ 668 |         let payloadBytes = semantic.payloads.bytes, let scalarBytes = semantic.scalars.bytes,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift:140:5: error: ending the lifetime of a value of type 'Builtin.FixedArray<2, Optional<CounterOwnedModel>>' can cause a deallocation
+ 138 |     private let needsCapture: Bool
+ 139 | 
+ 140 |     init?(identity: ObservableModelOwnerIdentity, schema: UInt16, needsCapture: Bool,
+     |     `- error: ending the lifetime of a value of type 'Builtin.FixedArray<2, Optional<CounterOwnedModel>>' can cause a deallocation
+ 141 |         modelLimit: UInt16 = 2, claimLimit: UInt16 = 4, pinLimit: UInt16 = 2,
+ 142 |         captureLimit: UInt16? = nil) {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift:2863:16: note: called from here
+2861 |     var control = CounterControl()
+2862 |     init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
+2863 |         root = CounterStaticRootStorage(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
+     |                `- note: called from here
+2864 |         semantic = StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner)
+2865 |     }
+     :
+2970 | fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity,
+2971 |     backing: UnsafeMutableRawBufferPointer?, _ body: (inout P08TypedBackingOwner, borrowing P08StaticOuterView, borrowing CounterSemanticCodec) -> Result) -> Result {
+2972 |     var outer = P08StaticOuter(modelOwner: modelOwner, semanticOwner: semanticOwner)
+     |                 `- note: called from here
+2973 |     let limits = outer.limits
+2974 |     do throws(SemanticExpansionError) {
+     :
+5271 |     var semanticOwners = SemanticRecordOwnerNamespace()
+5272 |     do {
+5273 |         return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+     |                `- note: called from here
+5274 |             outer.auditStatic(owner: owner, report: { _ in })
+5275 |         }
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>

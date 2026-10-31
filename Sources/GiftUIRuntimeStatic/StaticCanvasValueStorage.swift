@@ -4,6 +4,9 @@ import GiftUIDrawing
 /// The host supplies its bounded inline entries before activation.
 package struct StaticCanvasValueStorage: ~Copyable {
     private var metadata = CanvasStagedMetadata()
+    #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {}
     package mutating func withLifetime<
         Identity: Equatable & Sendable, Table: CanvasValueTable, Result

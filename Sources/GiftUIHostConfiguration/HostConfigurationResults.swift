@@ -54,6 +54,34 @@ package struct HostAssemblyReport: Equatable, Sendable {
     package let minimumAcceptedTransitionSpacingMicroseconds: UInt32
     package let maximumCompactFactsPerServiceWindow: UInt16
     package let maximumRetryableRefusals: UInt8
+
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    init(
+        kind: MVPHostKind, profile: RuntimeProfileKind, storageAudit: RuntimeStorageAudit,
+        capabilitySnapshot: CapabilitySnapshot, effectivePresentation: EffectiveRasterPresentation,
+        drawingPlanOperationLimit: UInt16, minimumSinkOperationCapacity: UInt16,
+        cardinality: SignalAnalyzerHostCardinality, minimumFrameIntervalMicroseconds: UInt32,
+        maximumFactServiceLatencyMicroseconds: UInt32,
+        minimumAcceptedTransitionSpacingMicroseconds: UInt32,
+        maximumCompactFactsPerServiceWindow: UInt16, maximumRetryableRefusals: UInt8
+    ) {
+        self.kind = kind
+        self.profile = profile
+        self.storageAudit = storageAudit
+        self.capabilitySnapshot = capabilitySnapshot
+        self.effectivePresentation = effectivePresentation
+        self.drawingPlanOperationLimit = drawingPlanOperationLimit
+        self.minimumSinkOperationCapacity = minimumSinkOperationCapacity
+        self.cardinality = cardinality
+        self.minimumFrameIntervalMicroseconds = minimumFrameIntervalMicroseconds
+        self.maximumFactServiceLatencyMicroseconds = maximumFactServiceLatencyMicroseconds
+        self.minimumAcceptedTransitionSpacingMicroseconds =
+            minimumAcceptedTransitionSpacingMicroseconds
+        self.maximumCompactFactsPerServiceWindow = maximumCompactFactsPerServiceWindow
+        self.maximumRetryableRefusals = maximumRetryableRefusals
+    }
 }
 
 package enum HostValidationResult: Equatable, Sendable {
@@ -66,12 +94,21 @@ package struct HostValidationAccessLedger: Equatable, Sendable {
     package private(set) var accessCount: UInt8 = 0
     package let sideEffectCount: UInt16 = 0
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package init() {}
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     package func contains(_ stage: HostValidationStage) -> Bool {
         accessedStages & (UInt16(1) << UInt16(stage.rawValue)) != 0
     }
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     mutating func enter(_ stage: HostValidationStage) -> Bool {
         guard stage.rawValue == accessCount else { return false }
         accessedStages |= UInt16(1) << UInt16(stage.rawValue)
@@ -132,6 +169,14 @@ package protocol MVPHostConfigurationValidator: ~Copyable {
 struct HostValidationStateGuard: ~Copyable {
     private var hasBegun = false
 
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    init() {}
+
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
     mutating func begin() -> HostValidationResult? {
         guard !hasBegun else {
             return .invalid(stage: .graph, error: .invariantViolation)
