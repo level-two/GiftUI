@@ -10,10 +10,12 @@ iterations:
   ITERATION-001: docs/iterations/iteration-001-mvp.md
   ITERATION-002: docs/iterations/iteration-002-cleanup.md
   ITERATION-003: docs/iterations/iteration-003-dev-ux-improvement.md
+  # Mandatory MR rules link to concrete MP recipes: docs/iterations/iteration-003-review/memory-migration-practices.md (100-commit inventory ending 169174c9).
   ITERATION-004: docs/iterations/iteration-004-backend-and-application-integration.md
 features:
   external-application-integration:
     title: External Application and Backend Integration
+    # Current execution policy (2026-10-31): docs/iterations/iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset and #mandatory-batch-execution-workflow; MR-01–08, pattern qualification, batch migration, integrated repair, unchanged acceptance gates. Technical disposition/allowance remains in complexity-and-efficiency-checkpoint.md; comments below are history.
     # FW-040: docs/future-work/fw-040-compiler-specialized-view-derivation.md; future compiler-specialization investigation, no iteration assignment or current scope change.
     # Current P08 U02 uncertain startup STOP: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/startup-stop-review.md; wrapper failed after reported startup, process output/clock/ledger unavailable; conservatively session1/1 consumed, repairs/retries0/0, no restart/resume or manufactured result. Separate opaque review matches 127 payloads/six controls/dirty/cache/markers; fixed result absent. U01–U05/P08/R07/T8.1 open; no contract/scope/lifecycle change.
     # P08 U02 B01 re-review at 3db4e1b1: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/b01-independent-review.md; PASS technical readiness: exact disjoint 79+48 content sets, six controls, inclusive 512MiB ledger/terminal reserve; original inputs/roots/56 rows/1,892 sites/preservation match. Separate human attribution authorization required; no allowance or gate closure.
@@ -39,7 +41,7 @@ features:
     # Allocation: docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md.
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
-    # FW-038 captures validation cost and P08 test/application consolidation for RFC-013 / ITERATION-004 design; no current checks or contract change.
+    # FW-038: batch execution policy adopted in ITERATION-003 on 2026-10-31; infrastructure/test/application consolidation remains ITERATION-004 work. Required coverage and contracts unchanged.
     # Independent authority/configuration PASS: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-counter-resource-configuration-independent-review.md; normal guarded counter build ready, new image and address-specific proof pending.
     # Current rebuilt counter resource PASS: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-firmware-final-fit-result.md; ELF0e54fe25, main95469/106496, ISR6672/8192, RAM255612/262144; fresh corrected address proof, independent new-image review next. P08 matrix/SO/exit open.
     # Current Native426/profile coverage independently PASS: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-native-combined-coverage-result.md; 384fresh+19overlap+23retained, raw focused statuses unchanged. Matched allocation/stack/physical/caller/exit next.
@@ -193,7 +195,7 @@ features:
     # Native P08 gates368assertions/37checks each; four-profile baseline/runtime/Foundation pass; SPEC-015 implementing/planactive, fullP08/P10-P12 open.
     # SPEC-009 scoped coordinator correction implementing; T9.1 belongs to P07, amended conformance pending.
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
-    # ITERATION-003 revision 5 governs bounded runtime/memory/performance preparation.
+    # ITERATION-003 revision 5 retains delivery scope; mandatory MR-01–08 and batch workflow adopted 2026-10-31. No criterion or lifecycle status change.
     # Distribution/reuse/integration delivery transferred to ITERATION-004.
     # FW-016/FW-030 and EXP-002 supply evidence; topology/access contracts remain gated.
     # macOS physical-pointer validation is postponed under FW-031.

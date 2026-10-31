@@ -10,7 +10,22 @@ The [revision-5 authorization](efficiency-sequencing-approval.md#bounded-prepara
 makes ME-01–04 one bounded phase; their IDs retain traceability, not separate
 budgets or permission to grow independent investigations.
 
-## Current RFC-014 activity — bounded implementation plan ready, 2026-10-10
+## Current execution policy — 2026-10-31
+
+Apply the iteration's [mandatory memory rules MR-01–08](../iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset)
+and [batch execution workflow](../iteration-003-dev-ux-improvement.md#mandatory-batch-execution-workflow).
+Inventory a coherent mechanism group, qualify its pattern using applicable
+retained evidence or focused actual-consumer checks, migrate matching sites
+in one batch, then integrate and repair grouped failures before full acceptance.
+Record rule coverage and exceptions in the existing package receipt.
+
+Use the [delivery checkpoint](complexity-and-efficiency-checkpoint.md) for the
+single current technical disposition, next package and actual remaining allowance.
+Its preparation steps 1–3 are closed; do not replay them. P08 remains open;
+P09–P12 and all owner acceptance/dependency gates remain. Historical checkpoints
+below establish provenance, not new run budgets or per-helper permission gates.
+
+## RFC-014 implementation authorization — historical 2026-10-10
 
 Eugene authorized one final bounded package and directed subsequent work toward
 implementation. [SPIKE-074](../../spikes/spike-074-final-access-ownership.md) is

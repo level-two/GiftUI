@@ -1,5 +1,25 @@
 # RFC-014 task context guide
 
+## Current execution policy — 2026-10-31
+
+Apply the iteration's [mandatory memory rules MR-01–08](../iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset)
+and [batch execution workflow](../iteration-003-dev-ux-improvement.md#mandatory-batch-execution-workflow).
+Inventory a coherent mechanism group, qualify its pattern using applicable
+retained evidence or focused actual-consumer checks, migrate matching sites
+in one batch, then integrate and repair grouped failures before full acceptance.
+Record rule coverage and exceptions in the existing package receipt.
+Use the [memory migration practices](memory-migration-practices.md) selector
+to find concrete code, historical scoped evidence and limitations before
+inventing a realization. Record matching MP recipe IDs with MR coverage.
+
+Use the [delivery checkpoint](complexity-and-efficiency-checkpoint.md) for the
+single current technical disposition, next package and actual remaining allowance.
+Its preparation steps 1–3 are closed; do not replay them. P08 remains open;
+P09–P12 and all owner acceptance/dependency gates remain. Historical checkpoints
+below establish provenance, not new run budgets or per-helper permission gates.
+
+## Retained checkpoints — historical through 2026-10-19
+
 Current P08 U02 startup boundary — **STOP / uncertain startup; session 1/1 consumed**.
 The [independent startup review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/startup-stop-review.md)
 records a wrapper failure after reported session startup, with process output,

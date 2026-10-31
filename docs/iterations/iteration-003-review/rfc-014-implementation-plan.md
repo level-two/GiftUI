@@ -13,6 +13,27 @@ proof, applicable validation and independent review. This does not release other
 P08/cold/resource duties, restart stopped provider controllers, change P09/P10 order,
 waive the failed/unexecuted unit gate or renew the consumed twelve-hour allowance.
 
+
+## Current execution policy — 2026-10-31
+
+Apply the iteration's [mandatory memory rules MR-01–08](../iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset)
+and [batch execution workflow](../iteration-003-dev-ux-improvement.md#mandatory-batch-execution-workflow).
+Inventory a coherent mechanism group, qualify its pattern using applicable
+retained evidence or focused actual-consumer checks, migrate matching sites
+in one batch, then integrate and repair grouped failures before full acceptance.
+Record rule coverage and exceptions in the existing package receipt.
+The [memory migration practices](memory-migration-practices.md) provide
+required starting recipes and examples for matching mechanisms; record a
+justified exception when their preconditions do not hold.
+
+Use the [delivery checkpoint](complexity-and-efficiency-checkpoint.md) for the
+single current technical disposition, next package and actual remaining allowance.
+Its preparation steps 1–3 are closed; do not replay them. P08 remains open;
+P09–P12 and all owner acceptance/dependency gates remain. Historical checkpoints
+below establish provenance, not new run budgets or per-helper permission gates.
+
+## Retained package checkpoints — historical through 2026-10-19
+
 Current P08 U02 startup boundary — **STOP / uncertain startup; session 1/1 consumed**.
 The [independent startup review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/startup-stop-review.md)
 records a wrapper failure after reported session startup, with process output,
@@ -1257,7 +1278,14 @@ P10's broad gate is `scripts/test.sh all-hardware-free`. Reuse its exact artifac
 for P11 where possible. Any new required focused check must be explicitly
 registered with the top-level runner, not silently discovered or skipped.
 
-### Focused testing campaigns — maintainer instruction, 2026-10-15
+### Focused testing campaigns — maintainer instructions, 2026-10-15 and 2026-10-31
+
+The [mandatory batch workflow](../iteration-003-dev-ux-improvement.md#mandatory-batch-execution-workflow)
+now specifies development order: pattern qualification, grouped migration,
+integrated repair, then complete acceptance at the existing gates. MR-01–08
+are required review checks, mapped in each batch receipt. The focused-evidence
+applicability rules below continue to govern reuse; no per-site full-matrix run
+is required merely because another equivalent site was migrated.
 
 Eugene requested retaining the existing sequential test infrastructure, excluding
 untested two-worker execution, and using shorter focused campaigns when they

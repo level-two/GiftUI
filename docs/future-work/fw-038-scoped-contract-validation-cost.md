@@ -6,8 +6,9 @@ status: captured
 authors:
   - codex
 created: 2026-10-14
-updated: 2026-10-16
+updated: 2026-10-31
 source:
+  - docs/iterations/iteration-003-dev-ux-improvement.md
   - SPEC-015
   - RFC-013
   - docs/iterations/iteration-004-backend-and-application-integration.md
@@ -41,6 +42,21 @@ builds these outside the root SwiftPM target graph; firmware consumes a derived
 CMake recipe. This reuses framework sources but creates separate application and
 build orchestration responsibilities.
 
+## Immediate process adoption — 2026-10-31
+
+Eugene requested explicit governing-document updates and a mandatory ruleset.
+The [iteration-3 rules and workflow](../iterations/iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset)
+now require representative pattern qualification, grouped migration, integrated
+repair, dependency-based evidence refresh and complete existing acceptance gates.
+They also require one current summary/receipt and measured validation cost.
+This execution-policy portion applies now using existing drivers; it does not
+wait for P08 completion or iteration-4 infrastructure consolidation. Required
+coverage remains unchanged and no speedup has yet been measured.
+
+The remaining runner/application/package redesign below stays captured for
+iteration 4. This partial process adoption neither closes FW-038 nor promotes
+a deferred architecture or authorizes an experiment.
+
 ## Consolidation Candidate for Iteration 004
 
 Evaluate this with existing I4-01–04 package/backend/consumer work and I4-07
@@ -70,7 +86,7 @@ privileged shared-package access. Record cold/warm and focused/full timings;
 no speedup or safe matrix reduction is established by this capture. Exact module
 boundaries and changes to required evidence remain upstream review decisions.
 
-## Why Deferred
+## Why Infrastructure Consolidation Remains Deferred
 
 The current P08 task must establish the existing lifetime/ownership proof first.
 Changing its driver structure or accepted evidence during a failed-source repair
@@ -97,7 +113,9 @@ optimization must first define evidence equivalence and a bounded measurement.
 
 ## Disposition
 
-Captured; not promoted or independently scheduled. The 2026-10-15 request is
+Captured for remaining infrastructure consolidation. The 2026-10-31 execution
+policy is adopted in iteration 3 without a new criterion or lifecycle promotion.
+The 2026-10-15 request is
 recorded as a consolidation candidate for the existing ITERATION-004 separation
 work. Revisit when RFC-013 package/access and supported build design resumes,
 before maintaining a second counter path through extraction. This capture does

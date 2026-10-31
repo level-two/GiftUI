@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-24
+updated: 2026-10-31
 related_design_notes:
   - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
@@ -38,6 +38,18 @@ product backing is retained, Embedded aliases/behavior unchanged. Qualify actual
 setup-through-cleanup callees/non-relocation, output equivalence and text/storage
 cost, then applicable validation and one independent package review. Full/profile/
 resource/other-callee acceptance remains open; no P09 migration or unit waiver.
+
+
+Current coordination (2026-10-31): T11.1 / RP-RD, RP-SO and RP-TB follows the
+[mandatory memory ruleset](../iterations/iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset)
+and [batch execution workflow](../iterations/iteration-003-dev-ux-improvement.md#mandatory-batch-execution-workflow).
+Map each changed path to MR-01–08 and its exact existing criterion IDs in the
+package receipt. Qualify representative patterns, migrate matching sites together,
+validate actual integrated owners, and group repairs before complete acceptance.
+Keep the current disposition/allowance in the
+[delivery checkpoint](../iterations/iteration-003-review/complexity-and-efficiency-checkpoint.md);
+its closed preparation is not repeated. No contract, acceptance or execution
+allowance changes follow; older checkpoints below remain historical.
 
 The [RFC-015 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
 is adopted under [explicit acceptance/application](../iterations/iteration-003-review/rfc-015-contract-acceptance.md).
@@ -772,6 +784,15 @@ No note is required for mechanical target registration, fixture manifests,
 straightforward value declarations, or report wiring.
 
 ## Integration and Validation Order
+
+For remaining iteration-3 migration, execute the following stages in coherent
+batches under the [mandatory workflow](../iterations/iteration-003-dev-ux-improvement.md#mandatory-batch-execution-workflow).
+Use representative actual-boundary checks early, including affected target
+feasibility, and focused checks while editing; exhaustive mandatory coverage is
+completed at the existing package acceptance gates. Retain all criterion rows
+and owner-specific negative controls. A representative pass cannot close another
+site's acceptance row without valid applicable evidence. Check MR-01–08 at batch
+review and refresh only results invalidated by changed inputs/dependencies.
 
 1. Freeze fixture schemas, import boundaries, and the migration baseline.
 2. Implement and test Runtime Core values, limits, audits, protocols, and the

@@ -5,7 +5,7 @@ status: active
 revision: 5
 approved_revision: 5
 created: 2026-10-04
-updated: 2026-10-15
+updated: 2026-10-31
 features:
   - external-application-integration
   - giftui-mvp-architecture
@@ -14,11 +14,19 @@ related_future_work:
   - FW-027
   - FW-032
   - FW-035
+  - FW-038
 approval: "Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
 closure: null
 ---
 
 # ITERATION-003: Runtime Memory and Efficiency
+
+The [mandatory memory ruleset](#mandatory-memory-ruleset) and
+[mandatory batch execution workflow](#mandatory-batch-execution-workflow),
+adopted on 2026-10-31, govern remaining implementation and validation. The
+[delivery checkpoint](iteration-003-review/complexity-and-efficiency-checkpoint.md)
+holds the current technical disposition and execution allowance. Its closed
+2026-10-20 preparation steps are history, not a prerequisite to repeat.
 
 Approved revision 5 prioritizes safe runtime graph derivation, memory efficiency
 and measured frame/acquisition performance. Backend/platform extraction, focused
@@ -95,6 +103,135 @@ External application integration remains at RFC stage under accepted
 PROPOSAL-007 and draft RFC-013, with external delivery scheduled in iteration 4.
 Independent performance architecture needs its applicable investment and
 RFC/ADR/Spec gates; iteration approval does not supply those decisions.
+
+## Mandatory memory ruleset
+
+**Effective 2026-10-31 for remaining I3-04/I3-05 implementation, including
+P08–P12.** These rules are mandatory implementation and review checks derived
+from the accepted contracts below. They do not select a new storage architecture,
+change public contracts or authorize Core-wide migration. Apply them to every
+changed ownership/allocation/lifetime path and its affected callers. A batch
+cannot be accepted with an unresolved applicable rule violation.
+
+| Rule | Mandatory requirement | Compliance evidence |
+| --- | --- | --- |
+| MR-01 — Explicit ownership | Identify the physical backing owner, all independent owning claims and the release condition. Keys, identities and borrowed descriptors are nonowning; checking a generation through freed backing is forbidden. | Owner/backing/claim/retirement mapping for the changed paths; retained-owner, stale-key and replacement/refusal controls. |
+| MR-02 — Backing-dependent lifetime | Tie scoped access to the actual live backing through the approved noncopyable/nonescapable carriers and lifetime dependencies. Keep unsafe construction in the existing restricted factories; validate initialization, alignment, bounds, provenance and disjointness there. A borrowed pointer descriptor alone is insufficient. | Actual caller/factory/consumer chain; applicable positive twins and classified copy, escape and alias negatives; review every changed unsafe boundary. |
+| MR-03 — Exclusive mutation | Use the checked mutation route. Preserve frame-wide mutation exclusion through the last body/Canvas read. Validate phase, identity, capacity and fallible preconditions before writes; compound commits must not replay admitted effects or acquire unaccounted rollback copies. | Mutation/read-phase and failed-preflight controls; behavior and error-order equivalence at the actual consumer. |
+| MR-04 — Bounded allocation | Use the profile's approved bounded storage realization with explicit capacity refusal. Static paths must have no heap fallback throughout the required charged lifetime, including setup, first use, refusal and destruction. Native Static model construction uses caller-supplied typed backing; preserve approved Dynamic and Embedded realizations. | Current construction-through-cleanup allocation checks, first-excess/refusal controls, actual backing inventory and required cold/provider evidence. Prewarming or shifting work outside measurement cannot establish compliance. |
+| MR-05 — Qualified compilation patterns | Reuse a demonstrated concrete storage/dispatch/lending pattern for equivalent sites. Treat generic instantiation, module/provider boundaries, compiler flags and profile as qualification inputs. Do not assume that a struct, nonescaping closure, `@inlinable`, forced inlining or an allocation annotation alone proves complete-path behavior. | Representative compiler/effect check through the real consumer boundary and an explicit applicability mapping to batch sites; refresh it when a relevant input changes. |
+| MR-06 — Structured retirement | Track initialized storage and unwind only its successful prefix. Preserve commit/discard and replacement semantics; quiesce producers/callbacks, retire registrations and claims, destroy initialized values exactly once, then release/reuse backing last. Role swaps must not lose physical destruction ownership. | Fault-at-step, early-return, failed-activation, retained-claim and repeated-session controls plus ordered cleanup observations. |
+| MR-07 — Complete physical cost | Count backing, ownership metadata, captures, copies, alignment, temporaries and simultaneous storage. Bound feasible nested main/IRQ stacks and flash/RAM against each application's accepted limits. A smaller handle, zero heap, successful link or high-water sample alone does not establish fit. | Current source-route and physical ledgers, actual linked artifacts, complete stack/ABI/resource checks; separate measured values, conservative bounds and unknowns. |
+| MR-08 — Shared semantics | Preserve common algorithms, error precedence, access/report order, actions, semantic results and pixels across approved profiles. Mechanical migration must not introduce a fixture-only alternative state machine or change public ownership/behavior to satisfy a probe. | Independent old/new or reference oracles over actual consumers, including refusal and cleanup; affected cross-profile checks. |
+
+Authority: [ADR-036](../adrs/adr-036-scoped-model-access-and-bounded-ownership.md)
+(MR-01–04/06), [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md)
+(MR-01/07), [ADR-039](../adrs/adr-039-scoped-storage-ownership.md)
+(MR-02/06/08), [ADR-041](../adrs/adr-041-native-static-typed-model-backing.md)
+(MR-04/05), [SPEC-013](../specs/spec-013-runtime-profiles.md)
+(RP-RD, RP-SO, RP-TB) and [SPEC-015](../specs/spec-015-host-configuration.md)
+(HC-RD, HC-SO, HC-TB). Exact contract declarations and acceptance criteria remain
+in those documents. An apparent conflict goes to the owning contract review;
+this checklist cannot override it.
+
+### Required implementation practices and examples
+
+Workers MUST consult the matching recipes in the
+[memory migration practices](iteration-003-review/memory-migration-practices.md)
+before choosing a realization. The guide mines the latest 100 commits ending
+at `169174c9` and supplies before/after code, existing symbols, scoped results,
+failed approaches and required checks. Use an applicable existing pattern;
+record and qualify a non-equivalent case in the same batch receipt. This is not
+a blanket refactor or permission to copy an unaccepted experiment.
+
+## Mandatory batch execution workflow
+
+Eugene explicitly requested this process update on 2026-10-31: “revisit current
+iteration's governing documents and explicitly update them to improve the
+process with the proposed changes and approaches”, followed by “also do not
+forget about the explicit and mandatory RULESET”. This adopts the execution
+policy below under approved revision 5. Delivery scope, IT-AC IDs, architecture,
+Specification acceptance criteria and lifecycle status are unchanged; no scope
+revision increment is needed for this work-order/evidence-strategy update.
+
+1. **Inventory one coherent batch.** In the existing package receipt, list its
+   production/fixture sites, affected consumers/profiles and governing criterion
+   IDs. Group sites by ownership/allocation/lifetime mechanism. For each group,
+   name the existing factory/carrier pattern and applicable MP recipe IDs,
+   map MR-01–08 to evidence or a
+   justified not-applicable disposition, and list genuine exceptions. Do not
+   start another repository-wide inventory or create a record per helper.
+2. **Qualify the pattern before multiplying it.** Reuse applicable existing
+   evidence first. Where evidence is missing, run the smallest representative
+   real module/consumer chain with positive and relevant negative controls,
+   including construction, operation, failure and destruction. Check affected
+   ARMv6/Embedded compilation and early resource feasibility when shared ownership,
+   storage, dispatch or toolchain inputs change. A host-only pass is insufficient
+   for those patterns. Qualification is specific to its types/boundaries/profile;
+   a new mechanism or non-equivalent site returns here, not to a blind mass edit.
+3. **Migrate matching sites together.** Apply the qualified pattern across the
+   whole inventoried group, including callers, fixtures and cleanup. Use
+   mechanical transformations where safe. Compile affected modules and run the
+   focused rule/behavior checks during the batch; do not run the full matrix or
+   require a separate approval/review/receipt for each annotation, helper or file.
+   Complete matching edits before expanding validation. Unsafe or contract-changing
+   exceptions block their dependent paths, not unrelated conforming groups.
+4. **Validate the integrated batch and repair by mechanism.** Once coherent,
+   exercise the actual owner-to-consumer-to-retirement chains, independent
+   behavior/refusal/cleanup oracles, complete allocation entry and affected
+   resource/ABI paths. Collect independent failures in one run where the runner
+   can do so safely, group them by cause, and repair related sites together.
+   Stop invalid dependent execution. After two unproductive corrections of the
+   same mechanism, reassess it internally before another candidate; report a
+   genuine contract/scope/resource/authority decision rather than requesting
+   routine per-helper permission. Retain required independent package review.
+5. **Run complete acceptance at the existing package/iteration boundaries.**
+   Representative checks are development feedback, never replacements for
+   mandated owner-specific controls. Preserve P08's complete exit evidence before
+   P09, P10's `scripts/test.sh all-hardware-free`, P11's required connected/target
+   evidence and P12 adoption/removal gates. Preserve positive twins, classified
+   negative causes, required compiler passes, current-source coverage, strict
+   cold/zero-heap proof and per-application resource limits. Format maintained
+   Swift with `scripts/format-swift.sh` before the repository gate.
+6. **Refresh only invalidated evidence.** For each changed input, identify the
+   affected contract, transitive consumer, profile and result. Reuse a result
+   only when source/dependency/compiler/flags/profile/artifact identities still
+   apply under the existing verifier or reviewed applicability assessment.
+   Changes to a shared lifetime pattern invalidate all dependent sites; compiler
+   or configuration changes invalidate their affected profile evidence. When
+   impact is uncertain, broaden validation. A focused pass is labelled focused;
+   complete acceptance requires every mandatory row covered by valid evidence.
+
+### One current record and measured feedback cost
+
+Maintain one current package summary in the
+[delivery checkpoint](iteration-003-review/complexity-and-efficiency-checkpoint.md)
+and link its existing result receipt from owner plans. The receipt records the
+batch inventory/rule mapping, exact commands and input/artifact identities,
+what ran/reused/failed/remains open, grouped exceptions and the next concrete
+step. Update it per coherent outcome; do not copy status histories into each
+plan or create preparation/review/reconciliation packets per microstep.
+Preserve historical failures and required raw evidence without new receipt-only
+commits for routine intermediate failures. Use existing drivers and result
+formats; this policy does not require a new runner, controller or evidence schema.
+
+Record elapsed compile/check/integration/full-gate time, command counts and
+avoidable repeated compilation from existing runner outputs in that same receipt.
+Compare focused and full timings only for identified workloads/inputs, marking
+uncontrolled observations as such. Investigate a costly repeated step before
+expanding it; report actual savings or unknowns, never a promised speedup factor.
+An unchanged passing package is not rerun or polished without a changed dependency,
+unresolved failure or a required scheduled gate.
+
+This policy governs prospective work within existing authorization. It creates
+no per-rule/per-file run budgets or review gates, renews no consumed experiment,
+and resets no current execution/accounting ceiling. Historical sessions remain
+historical; use the checkpoint's latest explicit authorization and remaining
+allowance. Required independent reviews and connected-action authorization remain.
+The closed preparation steps 1–3 are not reopened. Full application/test/package
+consolidation stays in ITERATION-004 via
+[FW-038](../future-work/fw-038-scoped-contract-validation-cost.md); it is not a
+prerequisite for adopting this workflow now.
 
 ## Preparation Baseline
 
@@ -243,9 +380,10 @@ Use existing per-application budgets; establish missing counter limits before
 implementation. A larger stack requires a complete bound within the total RAM
 budget, not merely a lower-bound witness or observed high-water mark.
 
-Run focused checks per change, format maintained Swift before the repository
-test gate, then run the final combined hardware-free and required connected
-matrix on adopted production artifacts. Four-FPS and lossless acquisition are
+Apply the mandatory batch workflow: qualify representative patterns early,
+compile/check focused affected paths during migration, validate coherent batches,
+and run the final combined hardware-free and required connected matrix on adopted
+production artifacts. Format maintained Swift before the repository test gate. Four-FPS and lossless acquisition are
 existing requirements; a percentage speedup alone does not satisfy IT-AC-009.
 
 ## Dependencies and Open Questions
@@ -274,6 +412,10 @@ existing requirements; a percentage speedup alone does not satisfy IT-AC-009.
   required by this iteration or a governing contract remains current work.
 - FW-035 retains generated-graph/interchangeable-frontend questions outside scope.
 - FW-016/FW-030 and EXP-002 feed accepted PROPOSAL-007 and iteration-4 delivery.
+
+- [FW-038](../future-work/fw-038-scoped-contract-validation-cost.md) feeds
+  iteration-4 consolidation; the mandatory batch workflow applies immediately
+  within the current iteration using existing runners and unchanged coverage.
 
 ## Revision and Approval History
 
