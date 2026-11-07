@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-15
+updated: 2026-11-07
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -37,6 +37,7 @@ related_future_work:
   - FW-030
   - FW-035
   - FW-038
+  - FW-041
 related_explorations:
   - EXP-002
 related_spikes:
@@ -192,3 +193,12 @@ cannot be deferred as an optional optimization.
 ITERATION-004 separation. Evaluate test ownership, supported consumer reuse and
 coverage-preserving driver retirement with this RFC's package/assembly decisions;
 no module topology or reduction of required proof is selected by the capture.
+
+## Deferred and Follow-up Work
+
+[FW-041](../future-work/fw-041-framework-client-failure-boundary.md) records the
+framework/client failure ownership review and candidate separation, scheduled
+by ITERATION-004 revision 5 I4-08 / I4-AC-009. Resolve framework containment,
+client business failures and the narrow host lifecycle boundary before dependent
+public assembly decisions. Reconcile ADR-014/015/016 and the affected owner
+Specifications; the capture does not amend their contracts or approve an API.

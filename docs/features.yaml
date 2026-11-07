@@ -15,6 +15,7 @@ iterations:
   # CC-01–04 contract cleanup: FW-037/FW-038, after ITERATION-003 delivery/closure; I4-06 assessment and I4-01–04 consolidation, existing criteria/gates.
 features:
   external-application-integration:
+    # FW-041: docs/future-work/fw-041-framework-client-failure-boundary.md; ITERATION-004 revision 5 I4-08 / I4-AC-009 boundary review and migration proposal, no architecture approval.
     title: External Application and Backend Integration
     # Current execution policy (2026-10-31): docs/iterations/iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset and #mandatory-batch-execution-workflow; MR-01–08, pattern qualification, batch migration, integrated repair, unchanged acceptance gates. Technical disposition/allowance remains in complexity-and-efficiency-checkpoint.md; comments below are history.
     # FW-040: docs/future-work/fw-040-compiler-specialized-view-derivation.md; future compiler-specialization investigation, no iteration assignment or current scope change.
