@@ -6,7 +6,7 @@ status: promoted
 authors:
   - codex
 created: 2026-10-02
-updated: 2026-10-09
+updated: 2026-11-07
 source:
   - SPEC-015
 related_future_work:
@@ -146,6 +146,17 @@ pending. The original promotion history and Exploration status are preserved.
 - [FW-006](fw-006-generated-target-configuration.md)
 - [FW-016](fw-016-post-mvp-package-distribution-topology.md)
 - [FW-029](fw-029-reduce-source-conditional-compilation.md)
+
+## Reusable host clarification — 2026-11-07
+
+The maintainer explicitly requested reusable black-box hosts and migration of
+Signal Analyzer to that supported path. This is delivery within the already
+promoted PROPOSAL-007 investment, not a new deferred initiative. See
+[RFC-013's requirement](../rfcs/rfc-013-external-application-and-backend-integration.md#reusable-host-delivery-requirement--2026-11-07)
+and [ITERATION-004 revision 8](../iterations/iteration-004-backend-and-application-integration.md#revision-and-approval-history).
+The earlier application-owned final wiring means selecting supported host inputs;
+it does not require clients to orchestrate framework internals. Public API,
+backing and lifecycle realization remain subject to architecture/Spec gates.
 
 ## Current sequencing — 2026-10-09
 

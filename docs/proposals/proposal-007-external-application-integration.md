@@ -6,7 +6,7 @@ status: accepted
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-16
+updated: 2026-11-07
 proposal: []
 related_rfcs:
   - RFC-013
@@ -89,6 +89,19 @@ records the `decision` stage. Eugene then explicitly accepted all three ADRs;
 the [acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md)
 preserves that gate. Affected Spec approval remains outstanding. RFC-013's
 independent external-delivery design remains draft.
+
+## Reusable host delivery clarification — 2026-11-07
+
+Eugene explicitly strengthened the external-host outcome in
+[ITERATION-004 revision 8](../iterations/iteration-004-backend-and-application-integration.md#revision-and-approval-history).
+EI-001–005 retain their IDs and accepted investment: supported hosts encapsulate
+framework assembly/lifecycle, and both the external counter and Signal Analyzer
+must adopt them. Clients supply application behavior, services, resources and
+configuration; fewer bootstrap lines alone are insufficient. Signal Analyzer's
+bespoke framework wiring must be migrated and retired, with justified application
+adapters retained. [RFC-013](../rfcs/rfc-013-external-application-and-backend-integration.md#reusable-host-delivery-requirement--2026-11-07)
+records the requirement and unresolved design questions. This clarification
+approves delivery scope, not a public API, package topology or ownership contract.
 
 ## Summary
 

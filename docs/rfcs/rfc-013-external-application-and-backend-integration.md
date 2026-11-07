@@ -81,6 +81,68 @@ package/backend/host delivery belongs to
 Runtime and external API decisions may be reviewed separately where independently
 coherent. PROPOSAL-007 does not grant blanket authority for performance redesign.
 
+## Reusable host delivery requirement — 2026-11-07
+
+Eugene explicitly requested reusable hosts supplied as an easy-to-integrate
+black box, then instructed: “Please capture this explicitly in RFC-013 and
+strengthen the iteration-004 acceptance criteria, including migrating Signal
+Analyzer to the reusable host. Update dependent documents and commit.”
+[ITERATION-004 revision 8](../iterations/iteration-004-backend-and-application-integration.md#revision-and-approval-history)
+records this approved delivery requirement under PROPOSAL-007 EI-001–005.
+It does not approve this draft's eventual API or ownership realization.
+
+Supported GiftUI hosts must encapsulate framework assembly and lifecycle
+orchestration: runtime/storage setup, scheduling, input routing, rendering,
+presentation and teardown. Clients supply portable views, application state,
+business services/data sources, resources and explicit target/resource policy
+configuration through supported inputs. Clients must not recreate framework
+state machines, wire internal owners or maintain framework storage offsets and
+source lists. Merely publishing assembly primitives or shortening bootstrap
+syntax does not satisfy this requirement.
+
+Black-box integration describes the normal consumer experience, not opaque
+constraints or a new semantic owner. Preserve ADR-007's separate component
+ownership and dependency direction. Resource limits, capabilities, startup
+validation and operational diagnostics remain explicit and inspectable. A
+custom display/backend adapter must use narrow supported extension contracts
+through the same host path; customization must not require a second bootstrap.
+
+Both the external counter and Signal Analyzer must use the reusable host path
+on macOS Dynamic/Static, Raspberry Pi 1 ARMv6 Dynamic and nRF52840 Static.
+Signal Analyzer must cease depending on bespoke framework assembly in
+`SignalAnalyzerTargetHost` and firmware setup; retain only justified
+application-specific capture/domain/service adapters and configuration. Inventory
+each existing responsibility, record its destination, and remove superseded
+production wiring after equivalent validation. Renaming the module or moving
+its application-specific assembly unchanged into a public package is insufficient.
+The module name itself is not a required removal target.
+
+RFC-014 P09 migrates the analyzer to runtime traversal; P12 cuts over that
+runtime. Neither establishes reusable-host adoption. Coordinate I4-03/04 with
+I4-07's ownership residuals, I4-08's failure-boundary review and I4-10's model
+API migration, preserving their separate gates and avoiding duplicate work.
+
+### Design questions and evidence
+
+The review must compare supported presets/factories, explicit advanced component
+assembly, and application-owned versus host-owned event-loop integration. A
+primitive-only assembly surface may support advanced use but cannot be the only
+normal integration path. Exact API/package names, backing ownership and lending,
+service lifetimes, activation/shutdown, policy customization and diagnostic
+contracts remain review blockers, not accepted choices or optional deferred work.
+Map resulting decisions to ADR-007/008 and affected owner Specs, including
+SPEC-003/009/013/014/015; obtain amendments where needed before implementation.
+
+Prove adoption with external-package builds, both applications' actual host
+entry points and dependency scans, a responsibility/migration inventory, and
+supported/custom-adapter activation, failure and teardown tests. Count generated
+inputs and hidden prerequisites in setup comparisons. Preserve independent
+state/action/pixel oracles and explicit RAM/stack/heap/flash and timing evidence
+across all four configurations. Encapsulation must not hide allocation, introduce
+runtime discovery, merge semantic owners or silently increase resource budgets.
+This requirement is current iteration work; general services and configuration
+generation remain outside it under FW-009/FW-006 unless separately approved.
+
 ## Constraints to preserve
 
 - Portable presentation imports GiftUI alone; platform and display selection

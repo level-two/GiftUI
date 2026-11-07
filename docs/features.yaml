@@ -12,6 +12,7 @@ iterations:
   ITERATION-003: docs/iterations/iteration-003-dev-ux-improvement.md
   # Mandatory MR rules link to concrete MP recipes: docs/iterations/iteration-003-review/memory-migration-practices.md (100-commit inventory ending 169174c9).
   ITERATION-004: docs/iterations/iteration-004-backend-and-application-integration.md
+  # Revision 8: I4-03 / I4-AC-001–005 require reusable host encapsulation and counter/analyzer adoption; RFC-013 remains draft.
   # Revision 6 I4-09/I4-AC-010: FW-042 fixed-buffer InlineArray/Span assessment; adoption remains separately gated.
   # CC-01–04 contract cleanup: FW-037/FW-038, after ITERATION-003 delivery/closure; I4-06 assessment and I4-01–04 consolidation, existing criteria/gates.
 features:
