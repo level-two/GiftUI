@@ -2,20 +2,21 @@
 id: ITERATION-004
 title: Backend and Application Integration
 status: approved
-revision: 5
-approved_revision: 5
+revision: 6
+approved_revision: 6
 created: 2026-10-09
 updated: 2026-11-07
 features:
   - external-application-integration
   - giftui-mvp-architecture
   - signal-analyzer
-approval: "Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition."
+approval: "Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition."
 related_future_work:
   - FW-036
   - FW-037
   - FW-038
   - FW-041
+  - FW-042
 closure: null
 ---
 
@@ -33,6 +34,8 @@ Revision 4 adds full RFC-015 delivery (I4-07), with only its necessary dependenc
 path retained in P08; see the [delivery allocation](iteration-003-review/rfc-015-delivery-allocation.md).
 Revision 5 adds the requested framework/client failure-boundary review and
 migration proposal (I4-08); see [FW-041](../future-work/fw-041-framework-client-failure-boundary.md).
+Revision 6 adds the requested fixed-buffer InlineArray/Span assessment (I4-09),
+sourced from [FW-042](../future-work/fw-042-inline-array-and-span-storage-assessment.md).
 This iteration is approved, not active; production extraction waits for its
 entry gates. Architecture and Specification approvals remain separate.
 
@@ -55,6 +58,7 @@ semantic and runtime-derivation results established in iteration 3.
 | I4-06 — Core-wide storage ownership assessment | Maintainer request 2026-10-13; FW-037; focused RFC-015 findings | Evaluate physical ownership, transaction ownership, scoped access and ownership/responsibility transfer using the [FW-037 assessment model](../future-work/fw-037-core-wide-storage-ownership-generalization.md#ownership-and-transfer-model-to-assess) across frontend/backend/platform boundaries, including a PC simulator; recommend which boundaries to generalize and which to keep local | Exploration/evidence and disposition; reuse EXP-002 where appropriate, then normal Proposal/RFC/ADR/Spec gates before adopting a Core-wide contract |
 | I4-07 — Complete RFC-015 scoped-storage delivery | Maintainer request 2026-10-13; approved RFC-015; accepted ADR-039 and approved/applied SPEC-011/013/015 packet | Complete the full selected RFC scope, reusing the minimum P08 implementation/evidence and delivering the remaining contracts, implementation, compatibility, conformance and documentation | Follow the [delivery allocation](iteration-003-review/rfc-015-delivery-allocation.md); accept ADR and approve Spec amendments before implementation; separate bounded execution authority; no Core-wide generalization |
 | I4-08 — Framework/client failure ownership | Maintainer request 2026-11-07; [FW-041](../future-work/fw-041-framework-client-failure-boundary.md), findings F-01–06 | Review the mixed failure boundary and propose framework-owned containment, client-owned business failures and a narrow host lifecycle seam; deliver an explicit contract/migration/validation plan | Review and proposal only; route through RFC-013 under PROPOSAL-007 where covered, or obtain investment approval for expanded scope; accepted ADRs and approved Spec amendments before implementation |
+| I4-09 — Fixed-buffer InlineArray and Span assessment | Maintainer request 2026-11-07; [FW-042](../future-work/fw-042-inline-array-and-span-storage-assessment.md) | Inventory homogeneous tuple buffers; assess InlineArray ownership and Span/MutableSpan borrowing with exact layout, allocation, copying, lifetime and stable-address evidence; recommend migrate/retain/defer per candidate | Assessment and disposition; coordinate I4-05/06/07, use an Exploration/bounded Spike if needed, and route adoption through applicable maintenance or contract gates |
 
 Use the same bounded counter/status application, changing text, typed actions,
 disabled Button and small Canvas variant as iteration 3. It must now be a real
@@ -64,6 +68,11 @@ same backend/host assembly. Keep Signal Analyzer as the nontrivial compatibility
 application. Runtime graph derivation remains mandatory for both applications.
 
 ## Delivery Order and Gates
+
+Assess I4-09 after identifying the compiler baseline under I4-05 and alongside
+I4-06/I4-07 ownership work. Record candidate-specific evidence and routing before
+any replacement; retaining a tuple is valid where semantics, ABI, address stability
+or target evidence require it. This assessment does not activate production migration.
 
 1. Assess the compiler baseline under I4-05 early enough to inform extraction.
    Establish the exact P07 failure/reproducer result, matching ARMv6 SDK availability,
@@ -219,6 +228,7 @@ history. The transfer is approved under iteration-3 revision 4.
 | I4-AC-007 | Ownership assessment records a boundary/owner/dependency map covering borrowing, mutation, ownership versus access-capability transfer, acceptance and cleanup on success/refusal/failure; concrete reuse gaps, alternatives and an adopt-later/retain-local/defer recommendation with lifecycle routing | Static/Embedded and Dynamic ownership; external frontend/backend consumer and PC simulator composition | [FW-037 assessment model](../future-work/fw-037-core-wide-storage-ownership-generalization.md#ownership-and-transfer-model-to-assess) / EXP-002 evidence and disposition; distinguish portable semantics from Swift enforcement and target realization, account for resource/lifetime costs, and identify missing P08 or second-consumer evidence; no Core or simulator implementation implied |
 | I4-AC-008 | Full RFC-015 scope has accepted decisions, approved/applied Spec amendments, implemented residual work and complete conformance dispositions; P08 results are reused with no unnecessary migration | All four governed configurations; existing target evidence requirements preserved | B1–B4 and adopted IN-SO-001–003 / RP-SO-001–003 / HC-SO-001–003 mapped to current-source evidence, caller/physical inventories and owner conformance reports; exact P08 residual handoff, independent review and human lifecycle transitions; failure remains unmet unless explicitly excepted |
 | I4-AC-009 | F-01–06 each have an owner/disposition, proposed client/framework/host boundary, affected ADR/Spec map and ordered migration/validation plan; unresolved decisions and gates are explicit | External counter and Signal Analyzer; macOS Dynamic/Static, ARMv6 Dynamic, nRF52840 Static addressed by the plan | FW-041 review evidence; RFC-013 proposal or explicit upstream routing; fault scenarios and resource/compatibility checks above; no implementation or target pass inferred from the review |
+| I4-AC-010 | Fixed-buffer assessment inventories tuple candidates and records migrate/retain/defer recommendations with ownership, borrowing and lifetime rationale; distinguishes semantic tuples, ABI storage and pinned/asynchronous buffers | macOS Dynamic/Static, Raspberry Pi 1 ARMv6 and nRF52840 Embedded feasibility on identified toolchains | [FW-042](../future-work/fw-042-inline-array-and-span-storage-assessment.md): layout/stride/alignment, backing and temporary/copy costs, zero-heap/stack/RAM/flash implications, lifetime/exclusivity negative controls and positive twins, stable-address constraints; reproducible evidence or explicit gaps, affected contracts and adoption gates; no replacement or compiler upgrade implied |
 
 The matrix is macOS Dynamic, macOS Static, Raspberry Pi 1
 `armv6-unknown-linux-gnueabihf` Dynamic with framebuffer/PiScreen, and
@@ -229,7 +239,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 ## Dependencies and Open Questions
 
-- Iteration-3 revision 4 and this revision 5 are approved. Their feature and
+- Iteration-3 revision 4 and this revision 6 are approved. Their feature and
   implementation gates remain separate.
 - Production migration depends on iteration-3 safe memory/stack, sustained
   workload, runtime-derivation and compatibility evidence, or a specifically
@@ -259,6 +269,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 | 3 | 2026-10-13 | Add I4-06 / I4-AC-007 Core-wide storage ownership assessment, including frontend/backend/platform and PC simulator boundaries | Eugene: “Add the produced future work item to the next iteration scope.” The item is FW-037; [request record](../future-work/fw-037-core-wide-storage-ownership-generalization.md#disposition) |
 | 4 | 2026-10-13 | Add I4-07 / I4-AC-008 full RFC-015 delivery; retain only necessary changes and their complete proof in P08 | Eugene: “Please include full RFC 015 scope work into the next iteration, while preserving P08 staying focused on the only necessary changes”; [allocation and provenance](iteration-003-review/rfc-015-delivery-allocation.md) |
 | 5 | 2026-11-07 | Add I4-08 / I4-AC-009 framework/client failure-boundary review, proposal and migration/validation plan; architecture and implementation remain gated | Eugene: “Put it into the next iteration scope and commit”; [full request and scope](../future-work/fw-041-framework-client-failure-boundary.md#disposition) |
+| 6 | 2026-11-07 | Add I4-09 / I4-AC-010 fixed-buffer InlineArray/Span assessment; implementation and compiler adoption remain separately gated | Eugene: “please formalize it in the future work item and add to the next iteration”, followed by “and commit”; [request record](../future-work/fw-042-inline-array-and-span-storage-assessment.md#disposition) |
 
 On 2026-10-13, Eugene authorized making the ownership-and-transfer assessment
 model explicit in FW-037 and referencing it from I4-06 / I4-AC-007. This clarifies
@@ -272,7 +283,7 @@ it does not advance the iteration status or authorize a candidate contract.
 
 ## Closure and Follow-up
 
-At closure, disposition I4-AC-001–009 as met, unmet or explicitly excepted with
+At closure, disposition I4-AC-001–010 as met, unmet or explicitly excepted with
 current evidence. Preserve remaining work and triggers, and obtain a human
 closure decision. Do not infer delivery from transferred scope or passed studies.
 
@@ -282,6 +293,14 @@ infrastructure while preserving meaningful coverage. Revisit during RFC-013
 package/assembly design for I4-01–04 and coordinate with I4-07. This is a linked
 follow-up, not a new approved criterion or amendment to revision 4; current P08
 proof obligations remain in force.
+
+## Deferred and Follow-up Work
+
+[FW-042](../future-work/fw-042-inline-array-and-span-storage-assessment.md) remains
+`captured`; I4-09 commits to assessment, not wholesale tuple replacement. Its
+trigger is iteration-4 storage planning after compiler identification. Route
+remaining uncertainty to an Exploration and adoption through normal gates.
+Current iteration-3 obligations and prior I4-AC-001–009 remain unchanged.
 
 ## References
 
