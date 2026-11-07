@@ -6,9 +6,10 @@ status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-28
+updated: 2026-11-07
 proposal: []
 related_rfcs:
+  - RFC-016
   - RFC-001
   - RFC-002
   - RFC-004
@@ -216,3 +217,10 @@ lack a concrete MVP requirement.
 - [RFC-004: Run Cycle and Frame Transaction](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [SPEC-001: Signal Analyzer Reference Application](../specs/spec-001-signal-analyzer-reference-application.md)
+
+## Draft Authoring API Follow-up — 2026-11-07
+
+[RFC-016](../rfcs/rfc-016-observable-model-authoring-api.md) drafts the observable model authoring surface and a
+conditional migration plan under accepted PROPOSAL-005. It preserves accepted
+observation and scoped ownership semantics; it does not amend this artifact's
+approval, commit iteration scope, or authorize implementation.

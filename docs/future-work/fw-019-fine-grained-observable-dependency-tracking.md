@@ -6,8 +6,9 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-11-07
 source:
+  - RFC-016
   - RFC-008
 related_future_work:
   - FW-004
@@ -103,3 +104,10 @@ Proposal and RFC rather than entering implementation directly.
 - [PROPOSAL-005: Observable Reference State](../proposals/proposal-005-observable-reference-state.md)
 - [FW-004: Retained Render Tree](fw-004-retained-render-tree.md)
 - [SPIKE-003: Portable Observable Reference State Feasibility](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
+
+## Authoring API Boundary — 2026-11-07
+
+[RFC-016](../rfcs/rfc-016-observable-model-authoring-api.md) references this existing deferred scope while drafting
+model authoring improvements. Its generated coarse reporting does not introduce
+public bindings or fine-grained dependency tracking. This item's disposition and
+revisit triggers remain unchanged; no promotion or implementation follows.

@@ -6,8 +6,9 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-09-09
+updated: 2026-11-07
 source:
+  - RFC-016
   - RFC-002
   - RFC-008
   - SPEC-006
@@ -82,3 +83,10 @@ RFC, ADR, and Specification gates.
 - [SPEC-006: Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md)
 - [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)
+
+## Authoring API Boundary — 2026-11-07
+
+[RFC-016](../rfcs/rfc-016-observable-model-authoring-api.md) references this existing deferred scope while drafting
+model authoring improvements. Its generated coarse reporting does not introduce
+public bindings or fine-grained dependency tracking. This item's disposition and
+revisit triggers remain unchanged; no promotion or implementation follows.

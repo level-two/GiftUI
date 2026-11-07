@@ -275,6 +275,7 @@ features:
       - PROPOSAL-005
     rfcs:
       - RFC-008
+      - RFC-016
     adrs:
       - ADR-024
       - ADR-025

@@ -6,10 +6,11 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-29
+updated: 2026-11-07
 proposal:
   - PROPOSAL-005
 related_rfcs:
+  - RFC-016
   - RFC-001
   - RFC-002
   - RFC-004
@@ -1371,3 +1372,10 @@ and capacities still required in an approved Specification.
 - [GiftUI Embedded Layer Inventory](../engineering/POC_HISTORICAL_BASELINE.md)
 - [GiftUI Runtime Profile Migration Plan](../engineering/POC_HISTORICAL_BASELINE.md)
 - [Legacy GiftUI Framework Specification](../engineering/POC_HISTORICAL_BASELINE.md)
+
+## Draft Authoring API Follow-up — 2026-11-07
+
+[RFC-016](../rfcs/rfc-016-observable-model-authoring-api.md) drafts the observable model authoring surface and a
+conditional migration plan under accepted PROPOSAL-005. It preserves accepted
+observation and scoped ownership semantics; it does not amend this artifact's
+approval, commit iteration scope, or authorize implementation.
