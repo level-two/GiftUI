@@ -30,7 +30,7 @@ block dependent use until classified. No implementation allowance is reset.
 The [approved analyzer transfer](analyzer-delivery-transfer.md) supersedes earlier
 iteration placement and whole-sequence dependency wording below. Iteration 3
 revision 6 retains P08 plus framework/counter P10–P12; iteration 4 revision 9
-owns analyzer P09–P12 with I4-03/04 and I4-07/10 coordination. ME-05–09 split
+owns analyzer P09–P12 with I4-03/04 and I4-07 coordination. ME-05–09 split
 accordingly. Preserve all criteria and historical evidence/failed checks; no
 execution allowance, technical PASS, lifecycle transition or closure is implied.
 Iteration-3 ME-09 hands off exact framework/counter results and transferred,

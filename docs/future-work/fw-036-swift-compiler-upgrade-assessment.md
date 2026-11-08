@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-11
-updated: 2026-10-12
+updated: 2026-11-08
 source:
   - RFC-014
 related_future_work: []
@@ -19,6 +19,18 @@ target_milestone: ITERATION-004
 ---
 
 # FW-036: Swift Compiler Upgrade Assessment
+
+## Iteration-4 scope narrowing — 2026-11-08
+
+I4-05 / I4-AC-006 now verifies the approved Swift 6.4/paired SDK baseline for
+supported external consumer builds and investigates only named integration
+blockers. Reuse qualified comparison evidence. A broad newer-compiler survey
+is no longer required for iteration-4 closure. It remains captured here; revisit
+when a supported consumer cannot compile safely or a measured tooling limitation
+justifies comparison. Compiler adoption still needs separate approval.
+
+This follows the approved [revision 12](../iterations/iteration-004-backend-and-application-integration.md);
+earlier broader scheduling statements below are historical. Capture status is unchanged.
 
 ## Revisit — 2026-10-12
 

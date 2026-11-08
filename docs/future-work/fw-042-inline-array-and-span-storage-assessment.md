@@ -6,9 +6,10 @@ status: captured
 authors:
   - codex
 created: 2026-11-07
-updated: 2026-11-07
+updated: 2026-11-08
 source:
   - docs/iterations/iteration-004-backend-and-application-integration.md
+  - docs/iterations/iteration-005-authoring-and-storage-assessment.md
   - Sources/GiftUIRuntimeStatic/StaticProfileStorage.swift
 related_future_work: []
 related_explorations: []
@@ -16,10 +17,18 @@ related_spikes: []
 promoted_to: []
 supersedes: []
 superseded_by: []
-target_milestone: ITERATION-004
+target_milestone: ITERATION-005
 ---
 
 # FW-042: InlineArray and Span for Fixed Buffer Storage
+
+## Transfer to iteration 5 — 2026-11-08
+
+Eugene explicitly requested moving I4-09 to the next iteration while narrowing
+iteration 4. [ITERATION-005](../iterations/iteration-005-authoring-and-storage-assessment.md)
+I5-01 / I5-AC-001 now owns the unchanged assessment outcome formerly assigned
+to I4-09 / I4-AC-010. Status remains captured; adoption is separately gated.
+The earlier allocation below is historical, not a current iteration-4 gate.
 
 ## Observation / Opportunity
 
@@ -61,8 +70,9 @@ iteration-3 delivery and resource evidence must remain intact.
 
 ## Revisit Triggers
 
-- During ITERATION-004 I4-09 planning, after I4-05 identifies the compiler baseline,
-  inventory tuple buffers and coordinate with I4-06 ownership and I4-07 delivery.
+- During ITERATION-005 I5-01 planning, use the adopted iteration-4 compiler and
+  ownership evidence to inventory tuple buffers; coordinate with I5-02 without
+  making assessment or replacement an iteration-4 dependency.
 - Earlier only if a measured tuple-buffer cost or safety defect blocks an existing
   requirement; route that specific blocker through its current owner and gates.
 

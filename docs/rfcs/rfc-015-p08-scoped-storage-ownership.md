@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-24
+updated: 2026-11-08
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -26,6 +26,7 @@ related_specs:
   - SPEC-013
   - SPEC-015
 related_future_work:
+  - FW-046
   - FW-037
 related_explorations: []
 related_spikes:
@@ -52,7 +53,8 @@ other limits, zero heap, corpus, ownership and full feasible resource proof rema
 
 ## Summary
 
-Full delivery is scheduled in ITERATION-004 I4-07 by the
+Integration-required delivery and full residual classification are scheduled in
+ITERATION-004 I4-07 by the revised
 [maintainer-approved allocation](../iterations/iteration-003-review/rfc-015-delivery-allocation.md).
 P08 retains only necessary changes and their complete safety/resource evidence.
 This scheduling amendment preserves the selected architecture and downstream gates.
@@ -1171,8 +1173,9 @@ architecture must return upstream; it cannot be repaired by weakening them.
   ready plans before implementation. Separately record the bounded production
   validation/repair disposition; no historical allowance is reopened by this RFC.
   Complete B1–B3 evidence applicable to the adopted P08 dependency path before
-  P08 acceptance. Full RFC-wide completion belongs to ITERATION-004 I4-07 under
-  the delivery allocation; no necessary P08 safety/fit obligation is deferred.
+  P08 acceptance. ITERATION-004 I4-07 retains all integration dependencies;
+  non-integration completion is captured in FW-046 under the revised delivery
+  allocation. No necessary adopted-path safety/fit obligation is deferred.
 
 ## Deferred and Follow-up Work
 
@@ -1201,14 +1204,14 @@ conformance. Historical experiment budgets remain closed.
 
 [FW-037](../future-work/fw-037-core-wide-storage-ownership-generalization.md)
 captures evaluation of this separation for frontend/backend/platform-independent
-GiftUI Core and simulator integration. The maintainer scheduled this assessment
-in [ITERATION-004](../iterations/iteration-004-backend-and-application-integration.md)
-revision 3, I4-06 / I4-AC-007. It will assess a concrete second consumer and
-record any missing P08 evidence; scheduling does not generalize this decision.
-Existing FW-022, FW-035 and EXP-002 retain simulator, generated-frontends and
-integration-shape questions. None is required to settle P08. I4-07 separately
-owns full RFC delivery; FW-037 does not absorb required B1–B4 obligations or
-make P08 safety/fit failures optional.
+GiftUI Core and simulator integration. Revision 12 narrows I4-06 / I4-AC-007
+to the counter, recording adapter and analyzer's actual integration boundaries;
+broader research remains captured in FW-037. Existing FW-022, FW-035 and EXP-002
+retain simulator, generated-frontends and integration-shape questions. I4-07
+retains every B1–B4 dependency of selected compositions and classifies the rest
+under [FW-046](../future-work/fw-046-non-integration-scoped-storage-residuals.md).
+No contract or required safety/fit proof changes; full conformance remains open
+where any required evidence is missing.
 
 ## Decision Summary
 

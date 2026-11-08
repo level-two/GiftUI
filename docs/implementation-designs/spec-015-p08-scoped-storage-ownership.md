@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-14
+updated: 2026-11-08
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work:
   - FW-038
@@ -17,6 +17,18 @@ superseded_by: null
 ---
 
 # Implementation Design — P08 Scoped Storage Ownership
+
+## Current iteration allocation — 2026-11-08
+
+[ITERATION-004 revision 12](../iterations/iteration-004-backend-and-application-integration.md)
+limits I4-07 delivery to all dependencies of supported counter/adapter/analyzer
+compositions, including actual analyzer dispatcher/factory compatibility. It still
+requires complete B1–B4 and ownership-criterion residual classification. Exact
+non-integration residuals are preserved under [FW-046](../future-work/fw-046-non-integration-scoped-storage-residuals.md)
+with dependency evidence and owner; full Spec tasks/criteria remain open until
+all required coverage is met. Earlier full-RFC iteration-4 scheduling is superseded
+only as delivery allocation. Contracts, task IDs and prior evidence are unchanged.
+Core-wide research remains FW-037; RFC-016 authoring belongs to iteration 5.
 
 Current [E/F bounded actual consumer result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/ef-resolution-consumer-result/README.md), 2026-10-18:
 allfocused compile/privacy/body/SIL prerequisites PASS; bothactualselected metadata

@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-31
+updated: 2026-11-08
 related_design_notes:
   - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
@@ -25,6 +25,18 @@ superseded_by: null
 ---
 
 # SPEC-013 Implementation Plan
+
+## Current iteration allocation — 2026-11-08
+
+[ITERATION-004 revision 12](../iterations/iteration-004-backend-and-application-integration.md)
+limits I4-07 delivery to all dependencies of supported counter/adapter/analyzer
+compositions, including actual analyzer dispatcher/factory compatibility. It still
+requires complete B1–B4 and ownership-criterion residual classification. Exact
+non-integration residuals are preserved under [FW-046](../future-work/fw-046-non-integration-scoped-storage-residuals.md)
+with dependency evidence and owner; full Spec tasks/criteria remain open until
+all required coverage is met. Earlier full-RFC iteration-4 scheduling is superseded
+only as delivery allocation. Contracts, task IDs and prior evidence are unchanged.
+Core-wide research remains FW-037; RFC-016 authoring belongs to iteration 5.
 
 ## P08 freeze allocation — 2026-11-08
 

@@ -28,7 +28,7 @@ consumed execution allowances remain recorded; no pass or retry is inferred.
 | Package | ITERATION-003 | ITERATION-004 |
 | --- | --- | --- |
 | P08 | Complete finite counter and required framework paths, all four routes, safety, lifetime, cold/allocation, ABI and complete resource/fit evidence, with independent exit review | Reuse only applicable evidence; I4-07 still owns its existing residuals |
-| P09 | No intermediate analyzer host migration required | Entire analyzer migration joins I4-03 reusable GiftUI-owned host adoption; coordinate I4-07 ownership and I4-10 model authoring through their normal approval gates |
+| P09 | No intermediate analyzer host migration required | Entire analyzer migration joins I4-03 reusable GiftUI-owned host adoption; coordinate I4-07 ownership through normal approval gates; model authoring is ITERATION-005 I5-02, not an adoption prerequisite |
 | P10 | Framework/counter functional conformance and required hardware-free gate after P08; all 180 owner criteria receive explicit retained/transferred/unmet dispositions | Analyzer integration, application oracles and final changed-path four-profile conformance after P09 |
 | P11 | Complete framework/counter physical storage, stack/IRQ, allocation, ABI and applicable target evidence | Final analyzer resource and connected sustained-workload certification on the reusable-host composition |
 | P12 | Framework/counter adoption, safe removal of their obsolete inputs, documentation and handoff after their P10/P11 gates | Analyzer production cutover, generated graph/build-dependency removal, replaced host wiring retirement and final owner conformance after analyzer P10/P11 gates |
@@ -36,7 +36,7 @@ consumed execution allowances remain recorded; no pass or retry is inferred.
 Package IDs stay stable. P08 → framework/counter P10 → P11 → P12 is the
 iteration-3 sequence; P09 is no longer a prerequisite for that branch.
 Iteration 4 performs P09 → analyzer P10 → P11 → P12 together with I4-03/04,
-coordinated with I4-07/10. Do not implement and certify a disposable intermediate
+coordinated with I4-07. Do not implement and certify a disposable intermediate
 SignalAnalyzerTargetHost merely to satisfy the old ordering.
 
 Shared regressions, safety defects and evidence needed by adopted framework or

@@ -15,7 +15,9 @@ does not require a feature-manifest entry merely to be captured.
 FW-034 is reserved in the [preparation archive](../iterations/iteration-003-review/preparation-archive.md); FW-035 is retained by the reconstructed preparation. Check existing artifacts and reservations before allocating the next ID.
 
 - [FW-040: Compiler-Specialized View Derivation](fw-040-compiler-specialized-view-derivation.md): candidate investigation for a future performance-focused iteration after runtime-derivation conformance, or earlier on a measured resource problem.
-- [FW-042: InlineArray and Span for Fixed Buffer Storage](fw-042-inline-array-and-span-storage-assessment.md): ITERATION-004 I4-09 assessment of tuple-buffer replacement with precise allocation, ownership and lifetime evidence; adoption remains separately gated.
+- [FW-042: InlineArray and Span for Fixed Buffer Storage](fw-042-inline-array-and-span-storage-assessment.md): ITERATION-005 I5-01 assessment of tuple-buffer replacement with precise allocation, ownership and lifetime evidence; adoption remains separately gated.
+
+- [FW-046: Non-integration Scoped Storage Residuals](fw-046-non-integration-scoped-storage-residuals.md): preserve RFC-015 residuals excluded by evidenced iteration-4 dependency classification; no full conformance or iteration-5 assignment implied.
 
 ## Vision-related opportunities
 

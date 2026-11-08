@@ -6,7 +6,7 @@ status: accepted
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-16
+updated: 2026-11-08
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -34,6 +34,15 @@ target_milestone: ITERATION-004
 ---
 
 # ADR-039: Scoped Storage Ownership
+
+## Delivery scheduling clarification — 2026-11-08
+
+[ITERATION-004 revision 12](../iterations/iteration-004-backend-and-application-integration.md)
+narrows I4-07 to integration-required residuals and complete applicability
+classification; unrelated residuals remain unmet under
+[FW-046](../future-work/fw-046-non-integration-scoped-storage-residuals.md).
+Broader FW-037 Core/simulator assessment is unscheduled. This supersedes only
+iteration scheduling prose below; the accepted decision and all contracts remain unchanged.
 
 ## Status
 

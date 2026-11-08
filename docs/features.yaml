@@ -7,6 +7,7 @@
 # docs/engineering/DOCUMENTATION_RULES.md.
 schema_version: 1
 iterations:
+  # Current scope: ITERATION-004 r12 integration dependencies; ITERATION-005 r1 authoring/storage transfer.
   # Current 2026-11-08: ITERATION-003 r8 / ITERATION-004 r11; S1–S3 may remain unmet at closeout, affected reuse blocked.
   # docs/iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md; other closure/contract gates unchanged.
   # Current 2026-11-08: ITERATION-003 r7 / ITERATION-004 r10; P08 FROZEN/UNMET, no full-P08 entry gate.
@@ -20,8 +21,9 @@ iterations:
   ITERATION-003: docs/iterations/iteration-003-dev-ux-improvement.md
   # Mandatory MR rules link to concrete MP recipes: docs/iterations/iteration-003-review/memory-migration-practices.md (100-commit inventory ending 169174c9).
   ITERATION-004: docs/iterations/iteration-004-backend-and-application-integration.md
+  ITERATION-005: docs/iterations/iteration-005-authoring-and-storage-assessment.md
   # Revision 8: I4-03 / I4-AC-001–005 require reusable host encapsulation and counter/analyzer adoption; RFC-013 remains draft.
-  # Revision 6 I4-09/I4-AC-010: FW-042 fixed-buffer InlineArray/Span assessment; adoption remains separately gated.
+  # FW-042 assessment transferred to ITERATION-005 I5-01/I5-AC-001; adoption separately gated.
   # CC-01–04 contract cleanup: FW-037/FW-038, after ITERATION-003 delivery/closure; I4-06 assessment and I4-01–04 consolidation, existing criteria/gates.
 features:
   external-application-integration:
@@ -29,7 +31,7 @@ features:
     title: External Application and Backend Integration
     # Current execution policy (2026-10-31): docs/iterations/iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset and #mandatory-batch-execution-workflow; MR-01–08, pattern qualification, batch migration, integrated repair, unchanged acceptance gates. Technical disposition/allowance remains in complexity-and-efficiency-checkpoint.md; comments below are history.
     # FW-040: docs/future-work/fw-040-compiler-specialized-view-derivation.md; future compiler-specialization investigation, no iteration assignment or current scope change.
-    # FW-042: docs/future-work/fw-042-inline-array-and-span-storage-assessment.md; captured, scheduled assessment in ITERATION-004 revision 6.
+    # FW-042: captured; assessment in ITERATION-005 I5-01 after ITERATION-004 revision 12 transfer.
     # Current P08 U02 uncertain startup STOP: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/startup-stop-review.md; wrapper failed after reported startup, process output/clock/ledger unavailable; conservatively session1/1 consumed, repairs/retries0/0, no restart/resume or manufactured result. Separate opaque review matches 127 payloads/six controls/dirty/cache/markers; fixed result absent. U01–U05/P08/R07/T8.1 open; no contract/scope/lifecycle change.
     # P08 U02 B01 re-review at 3db4e1b1: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/b01-independent-review.md; PASS technical readiness: exact disjoint 79+48 content sets, six controls, inclusive 512MiB ledger/terminal reserve; original inputs/roots/56 rows/1,892 sites/preservation match. Separate human attribution authorization required; no allowance or gate closure.
     # P08 U02 B01 correction: Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/README.md; NOT READY pending separate Strong re-review; exact evidence/preservation read boundaries and aggregate accounting corrected, no attribution/allowance or contract/scope/lifecycle change.
@@ -50,7 +52,7 @@ features:
     # PROPOSAL-007 accepted; RFC-013 draft; RFC-014 approved 2026-10-10 under conditional finalization.
     # RFC-015 approved 2026-10-13 under conditional human instruction after fresh readiness review.
     # Approval: docs/iterations/iteration-003-review/rfc-015-readiness-and-approval.md; B1–B4 are downstream obligations.
-    # ITERATION-004 revision 4 I4-07 owns full RFC-015 delivery; P08 retains only necessary changes/proof.
+    # ITERATION-004 revision 12 I4-07 owns integration-required RFC-015 delivery; non-integration residuals FW-046.
     # Allocation: docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md.
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
@@ -277,6 +279,7 @@ features:
       - giftui-mvp-architecture
     milestone: MVP
   observable-reference-state:
+    # RFC-016 remains draft; authoring delivery transferred to ITERATION-005 I5-02/I5-AC-002.
     # SPEC-010 P03 package exit passed at 15b47e2a after separate Strong review; T10.1/P10–P12 remain open.
     # Approved SPEC-006/010 scoped visitors: docs/iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-visitor-constraint-amendment--2026-10-10.
     title: Observable Reference State

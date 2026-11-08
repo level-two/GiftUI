@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-11-07
-updated: 2026-11-07
+updated: 2026-11-08
 source:
   - RFC-013
   - docs/iterations/iteration-004-backend-and-application-integration.md
@@ -20,6 +20,18 @@ target_milestone: ITERATION-004
 ---
 
 # FW-041: Separate Framework and Client Failure Ownership
+
+## Iteration-4 scope narrowing — 2026-11-08
+
+I4-08 / I4-AC-009 classifies F-01–06 and reviews only public host failure and
+lifecycle decisions required by the counter, recording adapter and analyzer.
+Unrelated failure-system redesign remains captured here. Revisit when a named
+consumer requires a changed failure boundary; necessary containment, partial
+mutation/publication and teardown safety cannot be deferred. Review does not
+approve a replacement API.
+
+This follows the approved [revision 12](../iterations/iteration-004-backend-and-application-integration.md);
+earlier broader scheduling statements below are historical. Capture status is unchanged.
 
 ## Observation / Opportunity
 

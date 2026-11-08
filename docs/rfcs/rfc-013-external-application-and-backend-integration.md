@@ -120,8 +120,9 @@ The module name itself is not a required removal target.
 Under the [approved delivery transfer](../iterations/iteration-003-review/analyzer-delivery-transfer.md),
 RFC-014 analyzer P09–P12 now join iteration-4 reusable-host adoption. Runtime
 traversal and cutover alone do not establish that adoption. Coordinate I4-03/04 with
-I4-07's ownership residuals, I4-08's failure-boundary review and I4-10's model
-API migration, preserving their separate gates and avoiding duplicate work.
+I4-07's required ownership residuals and I4-08's public host failure-boundary
+review. RFC-016 authoring migration belongs to ITERATION-005 I5-02 and is not
+a prerequisite for this integration; preserve existing approved observation contracts.
 
 ### Counter-first migration and P08 reuse — 2026-11-08
 
@@ -172,7 +173,7 @@ unchanged as the supported host.
    internal owner wiring or handwritten framework source lists. Qualify supported
    and recording-adapter compositions across all four governed configurations.
 4. Migrate Signal Analyzer through the same qualified host contracts. Coordinate
-   I4-07 ownership residuals, I4-08 failure boundaries and I4-10 model authoring;
+   I4-07 required ownership residuals and I4-08 public host failure boundaries;
    address analyzer-specific capture/admission and workload needs through the
    normal contract gates. Complete analyzer P09–P12 on that final composition.
 

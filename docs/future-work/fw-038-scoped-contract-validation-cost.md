@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-14
-updated: 2026-10-31
+updated: 2026-11-08
 source:
   - docs/iterations/iteration-003-dev-ux-improvement.md
   - SPEC-015
@@ -24,6 +24,17 @@ target_milestone: null
 ---
 
 # FW-038: Scoped Contract Validation Cost
+
+## Iteration-4 scope narrowing — 2026-11-08
+
+I4-01–04/I4-07 retain coverage-preserving consolidation necessary for supported
+external integration. CC-03 and other cleanup receive named dependency or defer
+dispositions; unrelated runner/accounting/validation optimization remains here.
+Revisit on a measured supported-build/validation bottleneck or a concrete
+consumer requirement. No mandatory broad cleanup or new proof controller follows.
+
+This follows the approved [revision 12](../iterations/iteration-004-backend-and-application-integration.md);
+earlier broader scheduling statements below are historical. Capture status is unchanged.
 
 ## Observation / Opportunity
 

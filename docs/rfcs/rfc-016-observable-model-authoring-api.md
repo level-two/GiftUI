@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-11-07
-updated: 2026-11-07
+updated: 2026-11-08
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -38,10 +38,19 @@ related_explorations: []
 related_spikes: []
 supersedes: []
 superseded_by: []
-target_milestone: ITERATION-004
+target_milestone: ITERATION-005
 ---
 
 # RFC-016: Observable Model Authoring API
+
+## Current iteration allocation — 2026-11-08
+
+Under Eugene's explicit instruction to move I4-10 to the next iteration,
+[ITERATION-005](../iterations/iteration-005-authoring-and-storage-assessment.md)
+I5-02 / I5-AC-002 receives the unchanged Q1–Q5, OA-01–07 and M0–M6 outcomes.
+Use iteration 4's qualified reusable-host counter/analyzer baseline; authoring
+migration is counter-first and follows its own RFC/ADR/Spec/ready-plan gates.
+RFC-016 remains draft. Iteration 4 has no dependency on this API or migration.
 
 ## Summary
 
@@ -85,7 +94,8 @@ The original requirement traces to ITERATION-001's changing Signal Analyzer
 capture, status, error and visible-window presentation across four stacks. This
 refinement is subsequent authoring work, not a new MVP commitment. ITERATION-004
 already records an unresolved analyzer dispatcher/reference integration residual;
-I4-10 now schedules this RFC and gated migration, without closing that residual.
+ITERATION-005 I5-02 now schedules this RFC and gated migration; iteration 4
+resolves its existing-contract residual independently, without waiting for this API.
 
 ## Scope and Decision Boundary
 
@@ -423,7 +433,7 @@ architecture amendment rather than presenting it as implementation detail.
 - [Internal storage bridge](../../Sources/GiftUIObservableState/ObservableStateModel.swift)
 - [Checked mutation contract](../../Sources/GiftUIObservableState/ObservableModelMutation.swift)
 
-## Iteration Allocation — 2026-11-07
+## Historical Iteration Allocation — 2026-11-07
 
 After the draft was presented, Eugene instructed: “please add work on this rfc
 and changes into the next iteration and commit”. ITERATION-004 revision 7

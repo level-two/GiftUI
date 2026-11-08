@@ -23,4 +23,4 @@ Roadmap entries represent expected work. [Future Work](../future-work/README.md)
 records possibilities and does not enter the roadmap without explicit
 prioritization.
 
-Current post-MVP work follows [iteration 3](../iterations/iteration-003-dev-ux-improvement.md) runtime/memory/efficiency, then [iteration 4](../iterations/iteration-004-backend-and-application-integration.md) external delivery. The [activity plan](../iterations/iteration-003-review/memory-efficiency-plan.md) is the single current work order.
+Current post-MVP work follows [iteration 3](../iterations/iteration-003-dev-ux-improvement.md) runtime/memory/efficiency, then [iteration 4](../iterations/iteration-004-backend-and-application-integration.md) external delivery, then [iteration 5](../iterations/iteration-005-authoring-and-storage-assessment.md) model authoring and fixed-buffer assessment. Iteration 4 revision 12 limits supporting work to integration dependencies. The [activity plan](../iterations/iteration-003-review/memory-efficiency-plan.md) is the single current work order.

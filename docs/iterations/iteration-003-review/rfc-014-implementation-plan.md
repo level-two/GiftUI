@@ -30,7 +30,7 @@ block dependent use until classified. No implementation allowance is reset.
 The [approved transfer](analyzer-delivery-transfer.md) governs package scheduling:
 ITERATION-003 revision 6 retains P08 and framework/counter P10–P12;
 ITERATION-004 revision 9 owns analyzer P09–P12 with I4-03/04 reusable-host adoption,
-coordinated with I4-07/10. Acceptance criteria, package IDs and evidence standards
+coordinated with I4-07. Acceptance criteria, package IDs and evidence standards
 remain unchanged. Earlier whole-sequence iteration-3 wording is superseded only
 for this allocation. P08 and shared-path safety/fit blockers remain in iteration 3.
 

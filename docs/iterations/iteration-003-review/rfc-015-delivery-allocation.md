@@ -1,5 +1,21 @@
 # RFC-015 delivery allocation — 2026-10-13
 
+## Current allocation — iteration-4 revision 12, 2026-11-08
+
+Eugene approved narrowing iteration 4 to external integration. I4-07 now owns
+all RFC-015 dependencies of the supported counter, recording adapter and analyzer,
+including the actual owned dispatcher factories below, plus complete B1–B4 and
+nine-criterion residual classification. No adopted-path safety, compatibility or
+resource obligation is deferred. Classify exact non-integration caller/evidence
+residuals under [FW-046](../../future-work/fw-046-non-integration-scoped-storage-residuals.md),
+with dependency justification and owner; they remain unmet and unscheduled.
+I4-06 is an integration-boundary assessment; broader generalization stays FW-037.
+
+This supersedes the historical full-RFC iteration-4 scheduling below, preserving
+all architecture, contracts and consumed allowances. Full Spec completion still
+requires all applicable criteria, regardless of iteration closure. See
+[revision 12](../iteration-004-backend-and-application-integration.md).
+
 Current resource authority — 2026-10-16: [ADR-040](../../adrs/adr-040-counter-physical-sram-budget.md)
 and the [explicit human acceptance](p08-counter-resource-acceptance.md) permit the
 finite counter up to physical RAM262144 with sufficient main/ISR reservations.

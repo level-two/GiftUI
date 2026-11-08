@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-13
-updated: 2026-10-31
+updated: 2026-11-08
 source:
   - docs/iterations/iteration-004-backend-and-application-integration.md
   - RFC-015
@@ -25,6 +25,18 @@ target_milestone: ITERATION-004
 ---
 
 # FW-037: Core-wide Storage Ownership Generalization
+
+## Iteration-4 scope narrowing — 2026-11-08
+
+I4-06 / I4-AC-007 now covers only ownership/transfer/cleanup decisions needed
+by the external counter, recording adapter and reusable-host analyzer. Broader
+Core-wide, alternate-frontend and PC-simulator research below remains captured
+without an iteration commitment. Revisit when a concrete additional consumer
+requires generalization. CC-01/02/04 receive integration-dependency dispositions;
+only required changes enter iteration-4 owner plans.
+
+This follows the approved [revision 12](../iterations/iteration-004-backend-and-application-integration.md);
+earlier broader scheduling statements below are historical. Capture status is unchanged.
 
 ## Observation / Opportunity
 
