@@ -88,6 +88,13 @@ case "${profile}" in
         ;;
 esac
 
+# Match the feature flags declared for GiftUI targets in Package.swift. These
+# checks compile the value fixtures directly, outside SwiftPM's settings.
+flags+=(
+    -enable-experimental-feature LifetimeDependence
+    -enable-experimental-feature Lifetimes
+)
+
 compiler_version="$("${compiler}" --version | tr '\n' ' ')"
 printf 'profile\t%s\ncompiler\t%s\ncompiler_sha256\t%s\ncompiler_version\t%s\ntarget\t%s\noptimization\t%s\n' \
     "${profile}" "${compiler}" "$(shasum -a 256 "${compiler}" | awk '{print $1}')" \

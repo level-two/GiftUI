@@ -107,6 +107,13 @@ case "${profile}" in
         ;;
 esac
 
+# Match the feature flags declared for GiftUI targets in Package.swift. These
+# checks compile the public declarations directly, outside SwiftPM's settings.
+flags+=(
+    -enable-experimental-feature LifetimeDependence
+    -enable-experimental-feature Lifetimes
+)
+
 sources=()
 while IFS= read -r source; do
     sources+=("${source}")
@@ -125,8 +132,8 @@ record_command "${module_command[@]}"
 "${module_command[@]}" >/dev/null
 
 for fragment in \
-    'public struct Canvas :' \
-    'public typealias Body = Swift.Never' \
+    'public protocol Canvas : GiftUI.View, GiftUI._GiftUISemanticPrimitivePayload where Self.Body == Swift.Never' \
+    'func _giftUIDraw(in bounds: GiftUI.Rect, context: inout GiftUI.GraphicsContext, read: borrowing GiftUI._GiftUIFrameRead<Self.Domain>) throws(GiftUI.DrawingError)' \
     'throws(GiftUI.DrawingError)' \
     'public struct GraphicsContext : ~Swift.Copyable' \
     'public mutating func withPath<Result>' \
@@ -144,18 +151,13 @@ for forbidden in 'any Error' 'Foundation.'; do
         fail "emitted interface contains forbidden dependency: ${forbidden}"
 done
 grep -Fq \
-    'package func _giftUIInvokeCanvas(context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError)' \
+    'package func _giftUIInvokeCanvas(context: inout GiftUI.GraphicsContext, size: GiftUI.Size, read: borrowing GiftUI._GiftUIFrameRead<Self.Domain>) throws(GiftUI.DrawingError)' \
     "${package_interface_path}" ||
     fail 'emitted package interface lacks the non-returning Canvas invocation bridge'
 ! grep -Eq 'package (var|func) .*draw.*->' "${package_interface_path}" ||
     fail 'emitted package interface contains a closure-returning Canvas lookup'
-if [[ "${profile}" == macos-dynamic || "${profile}" == raspberry-pi-armv6 ]]; then
-    grep -Fq 'private let draw:' "${interface_path}" ||
-        fail 'dynamic profile omitted bounded Canvas closure storage'
-else
-    ! grep -Fq 'private let draw:' "${interface_path}" ||
-        fail 'static profile retained Canvas closure storage'
-fi
+! grep -Fq 'private let draw:' "${interface_path}" ||
+    fail 'Canvas interface exposes retained closure storage'
 printf 'public-interface\tpass\npackage-canvas-bridge\tpass\nprofile-canvas-storage\tpass\n' >>"${audit_path}"
 
 fixture_count=0

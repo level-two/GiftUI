@@ -126,7 +126,9 @@ assessment, close iteration 3, or change P08 from FROZEN / UNMET.
 ## Nine scoped-ownership criteria
 
 These are dispositions of the remaining P08 obligations, not full Spec acceptance.
-The original 180-criterion P10 matrix is still required separately.
+The 180-row P10 matrix remains required. The current gate ran and failed; see
+the [closeout handoff](../closeout-2026-11-08/README.md#current-closure-gates)
+and [P10 run receipt](../closeout-2026-11-08/p10-run-usFDdIBT/p10-run.md).
 
 | Criterion | Retained evidence | Open allocation |
 | --- | --- | --- |
@@ -148,17 +150,16 @@ The original 180-criterion P10 matrix is still required separately.
    stays blocked until resolution or replacement plus validation and independent
    review. No safety PASS or Spec completion follows. Other shared failures are
    outside this disposition.
-2. **P10 integrated validation/dispositions are missing.** The configured runner
-   report location `.build/test-reports/all-hardware-free` does not exist in the
-   inspected workspace. The historical checkpoint records Unit FAILED and
-   Interaction UNEXECUTED; no current result was found that supersedes that
-   disposition. This is not a fresh test failure or proof that a run never occurred
-   elsewhere. Locate and qualify an existing full-gate receipt or execute the
-   required formatted-source gate as a separate closure activity. Classify each
-   failure as shared, transferred analyzer/composition, or unrelated with evidence;
-   the four Counter collections do not substitute for it. Finish all 180 owner
-   criterion dispositions, including R1, without claiming a full-suite PASS from
-   focused evidence.
+2. **P10 integrated validation/dispositions remain unmet.** The required gate
+   completed as `run-usFDdIBT` with 24 passes and 59 failures. See the current
+   receipt and retained log archive linked above. The run was on a dirty worktree
+   and its outer metadata does not pin a complete source manifest; treat it as
+   diagnostic failure evidence, not a clean-tree conformance result. The 180
+   owner rows are updated to remain UNMET; classify retained shared failures
+   separately from approved analyzer/composition transfers. Historical Unit
+   FAILED and Interaction UNEXECUTED are not superseded by this failed run. The
+   four Counter collections do not substitute for P10. Do not claim a full-suite
+   PASS from focused evidence.
 3. **Independent acceptance of the overall freeze assessment is pending.** The
    Pi handoff has independent acceptance and the Native result has scoped independent
    acceptance. Neither reviews this iteration-wide classification, input inventory,
@@ -177,9 +178,10 @@ The original 180-criterion P10 matrix is still required separately.
    availability, old-image stack completion, external-counter host extraction and
    analyzer migration are not additional iteration-3 entry/closure requirements.
 
-No product-code changes, broad gate, new tests, P08 certification, target query,
-or remote action were performed. This follow-up classified retained source and
-proof evidence only. The separately open iteration-3 work is P10 gate/disposition, overall review
-and handoff closeout with explicit S1–S3 restrictions. Affected shared-safety
-resolution is a gate to dependent iteration-4 reuse; not resumption of P08 certification. This assessment
-is ready for review, not for an implemented or iteration-closed transition.
+This bounded shared-safety assessment used retained evidence only. A subsequent
+P10 run and focused validation updates are recorded in the closeout handoff; they
+do not change the shared-safety findings above. The separately open iteration-3
+work is disposition of retained P10 failures, overall review and handoff closeout
+with explicit S1–S3 restrictions. Affected shared-safety resolution is a gate to
+dependent iteration-4 reuse; not resumption of P08 certification. This assessment
+is not an implemented or iteration-closed transition.

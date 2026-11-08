@@ -112,10 +112,15 @@ fi
 } >"${metadata_path}"
 
 failures=0
+check_index=0
 run_check() {
     local id="$1"
     shift
-    local log="${report_dir}/logs/${id}.log"
+    check_index=$((check_index + 1))
+    # Prefix the display name with its run order. Some supported filesystems
+    # are case-insensitive, while fixed-check IDs and registered SPEC IDs may
+    # differ only by case (for example, spec-013-* and SPEC-013-*).
+    local log="${report_dir}/logs/$(printf '%03d' "${check_index}")-${id}.log"
     local result
     active_check="${id}"
     printf '==> %s\n' "${id}"
@@ -139,6 +144,13 @@ run_check() {
 run_check governance "${PROJECT_ROOT}/scripts/validate-governance.rb"
 run_check governance-tooling "${PROJECT_ROOT}/scripts/governance/test.sh"
 run_check swift-format "${PROJECT_ROOT}/scripts/format-swift.sh" --lint
+# Record the selected host Swift identity without changing the user's toolchain.
+if ! command -v swift >/dev/null 2>&1; then
+    printf 'error: Swift is not available on PATH\n' >&2
+    exit 1
+fi
+printf 'swift_executable=%s\nswift_version=%s\n' \
+    "$(command -v swift)" "$(swift --version | head -n 1)" >>"${metadata_path}"
 run_check spec-002-compiler-baseline python3 "${PROJECT_ROOT}/scripts/contracts/check-spec-002-compiler-baseline.py"
 run_check driver-registry "${PROJECT_ROOT}/scripts/contracts/check-driver-registry.rb"
 run_check nrf-topology python3 "${PROJECT_ROOT}/scripts/contracts/check-spec-001-nrf-topology.py"
@@ -157,6 +169,8 @@ run_check spec-013-nrf-static \
 run_check root-tests giftui_swiftpm \
     --package-path "${PROJECT_ROOT}" \
     --scratch-path "${report_dir}/swiftpm" \
+    --cache-path "${PROJECT_ROOT}/.build" \
+    --skip-update \
     --cache-root "${report_dir}" \
     --swift-flag -DGIFTUI_DYNAMIC_PROFILE \
     -- test

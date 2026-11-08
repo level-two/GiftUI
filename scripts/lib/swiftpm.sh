@@ -3,8 +3,9 @@
 # Shared host-side SwiftPM invocation. Cross-compilation setup remains owned by
 # scripts/raspberry-pi and scripts/nrf52840.
 giftui_swiftpm() {
-    local package_path="" scratch_path="" cache_root="" configuration=""
+    local package_path="" scratch_path="" cache_path="" cache_root="" configuration=""
     local target="" product="" disable_sandbox=false
+    local skip_update=false
     # Bash 3.2 treats expansion of an empty local array as an unbound variable
     # under `set -u`, so retain and skip one private sentinel.
     local -a swift_flags=("__giftui_no_swift_flag__")
@@ -12,12 +13,14 @@ giftui_swiftpm() {
         case "$1" in
             --package-path) package_path="$2"; shift 2 ;;
             --scratch-path) scratch_path="$2"; shift 2 ;;
+            --cache-path) cache_path="$2"; shift 2 ;;
             --cache-root) cache_root="$2"; shift 2 ;;
             --configuration) configuration="$2"; shift 2 ;;
             --target) target="$2"; shift 2 ;;
             --product) product="$2"; shift 2 ;;
             --swift-flag) swift_flags+=("$2"); shift 2 ;;
             --disable-sandbox) disable_sandbox=true; shift ;;
+            --skip-update) skip_update=true; shift ;;
             --) shift; break ;;
             *) printf 'error: unknown giftui_swiftpm option: %s\n' "$1" >&2; return 2 ;;
         esac
@@ -32,10 +35,12 @@ giftui_swiftpm() {
     shift
     command+=(--package-path "${package_path}")
     [[ -z "${scratch_path}" ]] || command+=(--scratch-path "${scratch_path}")
+    [[ -z "${cache_path}" ]] || command+=(--cache-path "${cache_path}")
     [[ -z "${configuration}" ]] || command+=(--configuration "${configuration}")
     [[ -z "${target}" ]] || command+=(--target "${target}")
     [[ -z "${product}" ]] || command+=(--product "${product}")
     [[ "${disable_sandbox}" == false ]] || command+=(--disable-sandbox)
+    [[ "${skip_update}" == false ]] || command+=(--skip-update)
     local flag
     for flag in "${swift_flags[@]}"; do
         [[ "${flag}" == "__giftui_no_swift_flag__" ]] || command+=(-Xswiftc "${flag}")

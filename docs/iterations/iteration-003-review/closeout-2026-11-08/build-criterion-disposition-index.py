@@ -75,11 +75,11 @@ def main():
                     "planned_evidence": evidence,
                     "owner_plan_status": status,
                     "P10_current_disposition": (
-                        "P08 scoped classification retained; integrated current P10 "
-                        "gate remains UNMET"
+                        "P08 scoped classification retained; P10 run-usFDdIBT "
+                        "gate remains UNMET (59/83 checks failed)"
                         if group == "P08 scoped-ownership"
-                        else "UNMET: current all-hardware-free gate not run; historical "
-                        "2026-10-09 run is baseline only"
+                        else "UNMET: all-hardware-free run-usFDdIBT failed 59/83 checks; "
+                        "aggregate failure does not establish criterion conformance"
                     ),
                     "P11_current_disposition": (
                         "UNMET overall P11 gate: this index records planned evidence "
