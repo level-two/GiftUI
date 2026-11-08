@@ -2,8 +2,8 @@
 id: ITERATION-003
 title: Runtime Memory and Efficiency
 status: active
-revision: 7
-approved_revision: 7
+revision: 8
+approved_revision: 8
 created: 2026-10-04
 updated: 2026-11-08
 features:
@@ -15,11 +15,23 @@ related_future_work:
   - FW-032
   - FW-035
   - FW-038
-approval: "Revision 7: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 6: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
+approval: "Revision 8: Eugene approved iteration-3 closeout with named P08 S1–S3 gaps unmet and affected iteration-4 reuse blocked on 2026-11-08; docs/iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md. Revision 7: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 6: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
 closure: null
 ---
 
 # ITERATION-003: Runtime Memory and Efficiency
+
+## Approved restricted-use closeout disposition — 2026-11-08
+
+Revision 8 applies the [S1–S3 closeout disposition](iteration-003-review/p08-unmet-safety-closeout-disposition.md).
+The named gaps may remain explicitly unmet at iteration-3 closure. They block
+only affected iteration-4 reuse/adoption until resolved or replaced and validated;
+unrelated qualified work and normally approved resolution work may proceed.
+P08 remains FROZEN / UNMET. P10 validation/criterion dispositions, independent
+overall freeze acceptance, retained P11/P12/ME-09 handoff and explicit human closure
+remain required. Earlier blanket S1–S3 closure/entry blockers are superseded only
+by this exact disposition; other shared defects and contract gates are unchanged.
+
 
 ## Approved P08 freeze — 2026-11-08
 
@@ -453,6 +465,7 @@ existing task; preserve the current rules, acceptance and delivery sequence.
 
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
+| 8 | 2026-11-08 | Permit closeout with S1–S3 unmet and affected reuse blocked; retain remaining gates | [Explicit restricted-use disposition](iteration-003-review/p08-unmet-safety-closeout-disposition.md) |
 | 7 | 2026-11-08 | Freeze P08 UNMET; transfer counter composition certification and dependent adoption; preserve shared safety blockers and revise entry gates | [Explicit approval and allocation](iteration-003-review/p08-freeze-and-certification-transfer.md) |
 | 6 | 2026-11-08 | Transfer analyzer P09–P12 to iteration 4; retain P08/framework/counter validation and revise entry gates without waiving acceptance | [Explicit approval and transfer map](iteration-003-review/analyzer-delivery-transfer.md) |
 | 1 | 2026-10-04 | Initial Dev UX candidates | Discussion only; preserved in commit `232f0041` |

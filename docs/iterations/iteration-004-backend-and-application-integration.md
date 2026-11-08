@@ -2,8 +2,8 @@
 id: ITERATION-004
 title: Backend and Application Integration
 status: approved
-revision: 10
-approved_revision: 10
+revision: 11
+approved_revision: 11
 created: 2026-10-09
 updated: 2026-11-08
 features:
@@ -11,7 +11,7 @@ features:
   - giftui-mvp-architecture
   - signal-analyzer
   - observable-reference-state
-approval: "Revision 10: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 9: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition. Revision 7: Eugene explicitly requested work on RFC-016 and its changes in the next iteration and a commit on 2026-11-07; exact request recorded in the revision history. Revision 8: Eugene explicitly requested reusable black-box host capture, stronger acceptance criteria and Signal Analyzer migration on 2026-11-07; exact request recorded in the revision history."
+approval: "Revision 11: Eugene approved iteration-3 closeout with named P08 S1–S3 gaps unmet and affected iteration-4 reuse blocked on 2026-11-08; docs/iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md. Revision 10: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 9: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition. Revision 7: Eugene explicitly requested work on RFC-016 and its changes in the next iteration and a commit on 2026-11-07; exact request recorded in the revision history. Revision 8: Eugene explicitly requested reusable black-box host capture, stronger acceptance criteria and Signal Analyzer migration on 2026-11-07; exact request recorded in the revision history."
 related_future_work:
   - FW-036
   - FW-037
@@ -22,6 +22,18 @@ closure: null
 ---
 
 # ITERATION-004: Backend and Application Integration
+
+## Approved restricted-use closeout disposition — 2026-11-08
+
+Revision 11 applies the [S1–S3 closeout disposition](iteration-003-review/p08-unmet-safety-closeout-disposition.md).
+The named gaps may remain explicitly unmet at iteration-3 closure. They block
+only affected iteration-4 reuse/adoption until resolved or replaced and validated;
+unrelated qualified work and normally approved resolution work may proceed.
+P08 remains FROZEN / UNMET. P10 validation/criterion dispositions, independent
+overall freeze acceptance, retained P11/P12/ME-09 handoff and explicit human closure
+remain required. Earlier blanket S1–S3 closure/entry blockers are superseded only
+by this exact disposition; other shared defects and contract gates are unchanged.
+
 
 ## Approved P08 freeze — 2026-11-08
 
@@ -107,8 +119,8 @@ Production entry requires an explicit human iteration-3 delivery/closure decisio
 and reviewed P08 freeze classification plus retained framework/counter P10–P12
 evidence, or an explicit applicable
 exception for a retained failure. The handoff records exact source/toolchain/artifact
-identities, budgets and counter/analyzer unknowns. Full P08 PASS is not required
-for entry; the freeze alone does not activate this
+identities, budgets and counter/analyzer unknowns. Full P08 PASS and S1–S3 resolution are not required
+for blanket iteration entry; affected reuse remains blocked under the register; the freeze alone does not activate this
 iteration. Transferred analyzer P09–P12 results are delivery/adoption gates here,
 not entry prerequisites; their absence alone requires no entry exception.
 Normal architecture, Specification and ready-plan gates remain before implementation.
@@ -150,7 +162,7 @@ For I4-AC-001/003/004/005/008, the migration receipt must include:
   analyzer fit or I4-AC-012 sustained-workload certification.
 
 Reviewed freeze classification and the iteration-3 handoff replace the full-P08
-completion prerequisite. Shared safety blockers remain binding; transferred
+completion prerequisite. S1–S3 affected-reuse restrictions remain binding; transferred
 certification must pass on the supported counter host before dependent adoption.
 Reuse does not declare P08 passed or expand its scope. RFC-013 stays draft.
 
@@ -341,7 +353,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 ## Dependencies and Open Questions
 
-- Iteration-3 revision 7 and iteration-4 revision 10 are approved. Feature and
+- Iteration-3 revision 8 and iteration-4 revision 11 are approved. Feature and
   implementation approvals remain separate.
 - Production migration uses the entry gates above: retained framework/counter
   evidence and human handoff/closure, or a specific retained-gate exception.
@@ -367,6 +379,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
+| 11 | 2026-11-08 | Permit closeout with S1–S3 unmet and affected reuse blocked; retain remaining gates | [Explicit restricted-use disposition](iteration-003-review/p08-unmet-safety-closeout-disposition.md) |
 | 10 | 2026-11-08 | Freeze P08 UNMET; transfer counter composition certification and dependent adoption; preserve shared safety blockers and revise entry gates | [Explicit approval and allocation](iteration-003-review/p08-freeze-and-certification-transfer.md) |
 | 9 | 2026-11-08 | Transfer analyzer P09–P12 to iteration 4; retain P08/framework/counter validation and revise entry gates without waiving acceptance | [Explicit approval and transfer map](iteration-003-review/analyzer-delivery-transfer.md) |
 | 1 | 2026-10-09 | Transfer backend/package/external-host delivery after iteration-3 memory and efficiency work | [Explicit sequencing approval](iteration-003-review/efficiency-sequencing-approval.md) |

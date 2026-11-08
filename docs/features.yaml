@@ -7,6 +7,8 @@
 # docs/engineering/DOCUMENTATION_RULES.md.
 schema_version: 1
 iterations:
+  # Current 2026-11-08: ITERATION-003 r8 / ITERATION-004 r11; S1–S3 may remain unmet at closeout, affected reuse blocked.
+  # docs/iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md; other closure/contract gates unchanged.
   # Current 2026-11-08: ITERATION-003 r7 / ITERATION-004 r10; P08 FROZEN/UNMET, no full-P08 entry gate.
   # docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md: shared safety retained; composition certification I4-AC-013.
   # Counter-first I4-03/04 execution (2026-11-08): reuse qualified P08 mechanisms/evidence, external counter then analyzer.

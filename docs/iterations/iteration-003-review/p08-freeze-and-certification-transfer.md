@@ -1,5 +1,15 @@
 # Approved P08 freeze and certification transfer — 2026-11-08
 
+## Subsequent restricted-use closeout disposition
+
+The [approved S1–S3 disposition](p08-unmet-safety-closeout-disposition.md) permits
+iteration-3 closeout with those named gaps explicitly unmet and affected iteration-4
+reuse blocked until resolved or replaced and validated. It supersedes any blanket
+requirement below to resolve S1–S3 before closure. P08 stays FROZEN / UNMET;
+remaining P10, independent overall review, P11/P12/ME-09 and human closure gates
+are preserved. Other shared defects and normal contract gates remain binding.
+
+
 ## Approval and status
 
 Eugene explicitly instructed:
@@ -89,7 +99,9 @@ Iteration 3 completes the bounded freeze/handoff review, retained shared/framewo
 counter P10 validation, retained P11 accounting, and P12 documentation/only those
 removals whose adoption gates actually pass. Run the required hardware-free gate;
 record transferred composition/analyzer failures as unmet with cause and destination,
-never as a full-suite PASS. A shared failure cannot be relabeled as transferred.
+never as a full-suite PASS. A shared failure cannot be relabeled as composition certification. Named S1–S3
+gaps have the separate restricted-use closeout disposition linked above; other
+shared failures still require their own explicit applicable disposition.
 ME-09 requests a human delivery/closure decision with retained results and both
 counter-certification and analyzer residuals. Unmet retained obligations require
 their own explicit applicable disposition. This amendment does not close iteration 3.
@@ -98,7 +110,8 @@ Iteration-4 extraction entry requires that human handoff/closure decision, revie
 freeze classification, exact retained input identities and normal RFC/ADR/Spec/plan
 approvals. **Full P08 PASS and old-composition certification are no longer entry
 requirements.** Missing transferred certification alone needs no separate entry
-exception. Shared safety blockers still block the affected extraction/use; unrelated
+exception. S1–S3 still block affected reuse/adoption, while approved resolution/replacement
+work and unrelated
 qualified work may proceed. Existing consumed allowances are not reset.
 
 During counter-first extraction, establish early supported-target resource feasibility

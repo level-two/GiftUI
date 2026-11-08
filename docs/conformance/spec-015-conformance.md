@@ -19,6 +19,15 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
+## Restricted-use closeout disposition — 2026-11-08
+
+The [approved S1–S3 disposition](../iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md)
+permits iteration-3 closure with those gaps unmet after remaining closure gates.
+Affected iteration-4 reuse stays blocked until resolved or replaced and validated.
+This is not a Spec exception or PASS: preserve affected criterion/owner task status,
+P08 FROZEN / UNMET, independent overall review and all other validation obligations.
+
+
 ## P08 freeze allocation — 2026-11-08
 
 The [approved P08 freeze](../iterations/iteration-003-review/p08-freeze-and-certification-transfer.md)

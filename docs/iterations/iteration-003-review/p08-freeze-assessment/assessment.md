@@ -2,7 +2,11 @@
 
 ## Decision
 
-**Assessment complete; iteration-3 closure NOT READY. P08 remains FROZEN / UNMET.**
+**Assessment complete; remaining closure gates still pending. P08 remains FROZEN / UNMET.**
+The [approved restricted-use disposition](../p08-unmet-safety-closeout-disposition.md)
+allows S1–S3 to remain unmet at iteration-3 closure, with affected iteration-4
+reuse blocked until resolved or replaced and validated. This changes scheduling,
+not the technical findings or scope of the independent review below.
 This is an evidence-only classification under the [approved freeze](../p08-freeze-and-certification-transfer.md),
 not the independent acceptance of this assessment, a P08/SO-09 PASS, a repair
 campaign or an implemented transition. No compiler, runtime test, target query,
@@ -131,14 +135,14 @@ The original 180-criterion P10 matrix is still required separately.
 | HC-SO-002 | Validation/error order, refusal, retirement and independent behavior oracles | S1–S3 remaining affected premises |
 | HC-SO-003 | Four routes, declared ABI and linked evidence within original scope | T1–T3/T5; no full P08 PASS |
 
-## Exact remaining iteration-3 closure blockers
+## Closure dispositions and remaining gates
 
-1. **Affected shared-safety premises S1–S3 are unresolved.** Establish their
-   applicability to retained shared paths and resolve required premises or prove
-   those paths do not rely on them. This is not a request to finish the Pi whole
-   stack graph. The approved freeze does not permit a blanket transfer of these
-   unknowns. Any explicit maintainer disposition must identify its exact scope;
-   this assessment grants none.
+1. **S1–S3 remain unresolved but are explicitly dispositioned for closeout.**
+   They are no longer standalone iteration-3 closure blockers. Preserve the exact
+   restrictions and accountable owners in the handoff; affected iteration-4 reuse
+   stays blocked until resolution or replacement plus validation and independent
+   review. No safety PASS or Spec completion follows. Other shared failures are
+   outside this disposition.
 2. **P10 integrated validation/dispositions are missing.** The configured runner
    report location `.build/test-reports/all-hardware-free` does not exist in the
    inspected workspace. The historical checkpoint records Unit FAILED and
@@ -170,7 +174,7 @@ The original 180-criterion P10 matrix is still required separately.
 
 No product-code changes, broad gate, new tests, P08 certification, target query,
 or remote action were performed. This follow-up classified retained source and
-proof evidence only. The separately open work is the scoped shared-safety
-applicability resolution and P10 gate/disposition package, followed by overall
-review and handoff closeout; not resumption of P08 certification. This assessment
+proof evidence only. The separately open iteration-3 work is P10 gate/disposition, overall review
+and handoff closeout with explicit S1–S3 restrictions. Affected shared-safety
+resolution is a gate to dependent iteration-4 reuse; not resumption of P08 certification. This assessment
 is ready for review, not for an implemented or iteration-closed transition.

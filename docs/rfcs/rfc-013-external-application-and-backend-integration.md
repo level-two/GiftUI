@@ -125,6 +125,15 @@ API migration, preserving their separate gates and avoiding duplicate work.
 
 ### Counter-first migration and P08 reuse — 2026-11-08
 
+The [approved restricted-use closeout disposition](../iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md)
+allows iteration 3 to close with S1–S3 unmet after its other gates. Counter-first
+extraction must map affected callbacks and Endpoint/Target/emitter ownership paths
+to the blocked-reuse register. Unrelated qualified work and normally approved
+resolution/replacement work may proceed; affected reuse/adoption requires resolution
+or replacement plus criterion-linked validation and independent review. This draft
+neither discharges those gaps nor selects a new callback/ownership contract.
+
+
 Eugene requested: “Please capture this counter-first migration approach in RFC-013
 and the iteration-4 plan, making reuse of the P08 implementation and evidence
 explicit. Update dependent documents and commit.” This establishes delivery

@@ -1,5 +1,16 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+## Current restricted-use closeout allocation — 2026-11-08
+
+The [approved S1–S3 disposition](p08-unmet-safety-closeout-disposition.md) allows
+iteration-3 closeout with the named gaps unmet; resolution or replacement plus
+validation is required before affected iteration-4 reuse, not blanket iteration
+entry. Preserve P10/180-criterion dispositions, independent overall freeze review,
+retained P11/P12/ME-09 and human closure. Earlier shared-safety closure blockers
+apply subject to this exact disposition. P08 remains FROZEN / UNMET; other
+shared failures, source allowances and architecture/contract gates are unchanged.
+
+
 ## Current P08 freeze disposition — 2026-11-08
 
 The [approved freeze](p08-freeze-and-certification-transfer.md) governs current
