@@ -22,6 +22,17 @@ superseded_by: null
 
 # SPEC-007 Implementation Plan
 
+## Delivery allocation — approved 2026-11-08
+
+The [approved transfer and criterion map](../iterations/iteration-003-review/analyzer-delivery-transfer.md)
+keeps P08 and framework/counter P10–P12 in ITERATION-003 revision 6 and assigns
+analyzer P09–P12 to ITERATION-004 revision 9 alongside reusable-host adoption.
+All acceptance mappings and owner checkpoints below remain required; shared
+criteria retain separate framework/counter and analyzer dispositions. No task is
+completed by transfer. Earlier P09 dependencies apply to the analyzer branch;
+framework/counter P10 follows P08. Full Spec completion awaits all its obligations.
+
+
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**

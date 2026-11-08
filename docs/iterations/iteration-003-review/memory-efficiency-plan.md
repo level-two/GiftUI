@@ -1,7 +1,21 @@
 # Iteration 3 activity plan
 
+## Approved delivery allocation — 2026-11-08
+
+The [approved analyzer transfer](analyzer-delivery-transfer.md) supersedes earlier
+iteration placement and whole-sequence dependency wording below. Iteration 3
+revision 6 retains P08 plus framework/counter P10–P12; iteration 4 revision 9
+owns analyzer P09–P12 with I4-03/04 and I4-07/10 coordination. ME-05–09 split
+accordingly. Preserve all criteria and historical evidence/failed checks; no
+execution allowance, technical PASS, lifecycle transition or closure is implied.
+Iteration-3 ME-09 hands off exact framework/counter results and transferred,
+unmet analyzer obligations. Final analyzer certification is an iteration-4
+adoption gate, not an iteration-4 entry prerequisite. Shared regressions and
+counter safety/fit remain current blockers. See the linked transfer map and gates.
+
+
 This is the single current coordination plan for
-[approved iteration-3 revision 5](../iteration-003-dev-ux-improvement.md), with
+[approved iteration-3 revision 6](../iteration-003-dev-ux-improvement.md), with
 external delivery in [iteration 4](../iteration-004-backend-and-application-integration.md).
 It replaces the archived preparation/completion checklists under the
 [2026-10-09 cleanup authorization](preparation-archive.md). It is not a ready

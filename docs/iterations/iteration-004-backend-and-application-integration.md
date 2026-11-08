@@ -2,16 +2,16 @@
 id: ITERATION-004
 title: Backend and Application Integration
 status: approved
-revision: 8
-approved_revision: 8
+revision: 9
+approved_revision: 9
 created: 2026-10-09
-updated: 2026-11-07
+updated: 2026-11-08
 features:
   - external-application-integration
   - giftui-mvp-architecture
   - signal-analyzer
   - observable-reference-state
-approval: "Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition. Revision 7: Eugene explicitly requested work on RFC-016 and its changes in the next iteration and a commit on 2026-11-07; exact request recorded in the revision history. Revision 8: Eugene explicitly requested reusable black-box host capture, stronger acceptance criteria and Signal Analyzer migration on 2026-11-07; exact request recorded in the revision history."
+approval: "Revision 9: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition. Revision 7: Eugene explicitly requested work on RFC-016 and its changes in the next iteration and a commit on 2026-11-07; exact request recorded in the revision history. Revision 8: Eugene explicitly requested reusable black-box host capture, stronger acceptance criteria and Signal Analyzer migration on 2026-11-07; exact request recorded in the revision history."
 related_future_work:
   - FW-036
   - FW-037
@@ -22,6 +22,17 @@ closure: null
 ---
 
 # ITERATION-004: Backend and Application Integration
+
+## Approved delivery allocation — 2026-11-08
+
+Revision 9 applies the [approved analyzer transfer](iteration-003-review/analyzer-delivery-transfer.md).
+P08 and framework/counter P10–P12 remain in iteration 3. Analyzer P09 and
+analyzer-specific P10–P12 move to iteration 4 with reusable-host adoption.
+The transfer map preserves IT-AC-004–010 and every Spec obligation; the original
+criterion wording below defines the required results across the two iterations.
+Analyzer obligations are transferred and unmet, never implicitly passed.
+Earlier sequencing statements are historical where superseded by this allocation.
+
 
 Approved destination for the delivery transfer described in the
 [iteration-3 memory/efficiency plan](iteration-003-review/memory-efficiency-plan.md).
@@ -49,8 +60,9 @@ entry gates. Architecture and Specification approvals remain separate.
 
 Make the measured, resource-safe runtime reusable by an external application
 and display-adapter author through focused packages, backend/platform
-components and supported host/build entry points. Preserve the memory, timing,
-semantic and runtime-derivation results established in iteration 3.
+components and supported host/build entry points. Preserve the framework/counter results established in iteration 3 and establish
+the transferred analyzer runtime-derivation, resource and timing results on the
+final reusable-host composition.
 
 ## Included Scope
 
@@ -78,6 +90,16 @@ remain application-owned. Runtime graph derivation remains mandatory for both
 applications; RFC-014 P09/P12 alone does not establish reusable-host adoption.
 
 ## Delivery Order and Gates
+
+Production entry requires an explicit human iteration-3 delivery/closure decision
+and the retained P08/framework/counter P10–P12 evidence, or an explicit applicable
+exception for a retained failure. The handoff records exact source/toolchain/artifact
+identities, budgets and analyzer unknowns. P08 PASS alone does not activate this
+iteration. Transferred analyzer P09–P12 results are delivery/adoption gates here,
+not entry prerequisites; their absence alone requires no entry exception.
+Normal architecture, Specification and ready-plan gates remain before implementation.
+See the [complete entry/adoption rules](iteration-003-review/analyzer-delivery-transfer.md#iteration-4-entry-and-adoption-gates).
+
 
 For I4-10, follow RFC-016 M0–M6: inventory the adopted baseline, resolve and
 review Q1–Q5, obtain architecture/contract approvals, derive a ready plan, migrate
@@ -114,7 +136,9 @@ or target evidence require it. This assessment does not activate production migr
    bespoke assembly responsibility, retain justified application adapters, and
    retire replaced production wiring after equivalent validation. Run the external
    consumer/adapter matrix and compare final analyzer memory,
-   timing and loaded behavior with the iteration-3 baseline.
+   timing and loaded behavior with the identified pre-migration analyzer baseline.
+   Complete transferred P09–P12 and IT-AC-004–010 obligations on the final host,
+   including required connected certification before production cutover.
 6. Publish documentation and criterion dispositions; request human closure.
 
 I4-07 explicitly includes the accepted P08 residual for the two unchanged legacy
@@ -142,8 +166,8 @@ not add a new cleanup milestone or select a replacement API/architecture.
 
 **Entry:** begin this cleanup after the explicit iteration-3 delivery/closure
 decision and the applicable iteration-4 entry gates. P08 PASS alone is not its
-start trigger. Read-only capture here does not activate iteration 4. Keep P08–P12
-focused on analyzer/counter delivery, measured performance and adoption. A
+start trigger. Read-only capture here does not activate iteration 4. Keep iteration-3 P08 and framework/counter P10–P12 focused on delivery;
+coordinate analyzer P09–P12 with I4-03/04 rather than an intermediate host. A
 specific contract simplification necessary to resolve a current delivery blocker
 still belongs to that existing task and its normal authority; it does not start
 the broader cleanup.
@@ -243,7 +267,7 @@ history. The transfer is approved under iteration-3 revision 4.
 | I4-AC-001 (from IT-AC-001) | Real external counter and Signal Analyzer consume supported reusable hosts; portable presentation imports GiftUI and unused concrete platforms are omitted | All four configurations | External counter clean-package builds plus actual analyzer entry-point/dependency scans; no analyzer internals, privileged access or framework source lists in the external consumer; ADR-008 and affected SPEC-002/013/014/015 |
 | I4-AC-002 (from IT-AC-002) | External recording adapter reuses existing raster/session/validation owners with no copied state machine or second bootstrap | Native Dynamic/Static execution; actual ARMv6/Embedded supported and recording compile/link | Exact fill/glyph/stroke, clipping/order, borrow/transfer, refusal/health/retirement fixtures; SPEC-009/012/014 |
 | I4-AC-003 (from IT-AC-003) | Each target has fewer manual setup actions and user-maintained infrastructure files than the same consumer baseline; reusable hosts own framework assembly and lifecycle orchestration for both applications; clients supply views/state/services/resources/configuration without internal owner wiring, copied framework state machines or handwritten framework offsets | All four configurations | Reproducible before/after inventory including generation and prerequisites; classify every SignalAnalyzerTargetHost/firmware assembly responsibility as reusable-host-owned, justified application adapter/configuration or retired; source/build scans prove removal of replaced bespoke production wiring; supported/recording configuration, negative activation and teardown cases; SPEC-003/004/005/013/015 |
-| I4-AC-004 (renewed IT-AC-004/006) | Both applications use reusable hosts and preserve runtime-derived graphs, profile semantics, state/actions/pixels/failures and iteration-3 resource/performance results; analyzer regression-only coverage or runtime traversal migration alone is insufficient | All four configurations, actual supported targets for timing claims | Final exact artifact/flag comparisons, approved budgets and governing Spec conformance; repeat changed-path connected tests when required |
+| I4-AC-004 (renewed IT-AC-004/006) | Both applications use reusable hosts and runtime-derived graphs; preserve framework/counter results and establish transferred analyzer derivation, semantics, state/actions/pixels/failures and resource/performance results; analyzer regression-only coverage or runtime traversal migration alone is insufficient | All four configurations, actual supported targets for timing claims | Final exact artifact/flag comparisons, approved budgets and governing Spec conformance; repeat changed-path connected tests when required |
 | I4-AC-005 (from IT-AC-005) | Application and adapter authors can reproduce and customize supported integration; every criterion has an evidenced disposition | All supported build routes | Quick start using the supported host, custom-adapter guide through the same host path, explicit client/host responsibility and resource/capability/diagnostic inventory, Signal Analyzer migration/removal map, package/API compatibility notes; exact evidence identities and human closure |
 | I4-AC-006 | Compiler assessment records an evidenced upgrade-or-retain recommendation, target-tooling availability, estimated effort and required contract/evidence refresh | macOS Dynamic/Static, actual ARMv6 and Embedded toolchain feasibility | P07 reproducer plus lifetime-negative controls; SwiftSyntax/macros, paired SDK, ABI/VFP, zero-heap and size/stack validation plan; no adoption implied |
 | I4-AC-007 | Ownership assessment records a boundary/owner/dependency map covering borrowing, mutation, ownership versus access-capability transfer, acceptance and cleanup on success/refusal/failure; concrete reuse gaps, alternatives and an adopt-later/retain-local/defer recommendation with lifecycle routing | Static/Embedded and Dynamic ownership; external frontend/backend consumer and PC simulator composition | [FW-037 assessment model](../future-work/fw-037-core-wide-storage-ownership-generalization.md#ownership-and-transfer-model-to-assess) / EXP-002 evidence and disposition; distinguish portable semantics from Swift enforcement and target realization, account for resource/lifetime costs, and identify missing P08 or second-consumer evidence; no Core or simulator implementation implied |
@@ -251,6 +275,7 @@ history. The transfer is approved under iteration-3 revision 4.
 | I4-AC-009 | F-01–06 each have an owner/disposition, proposed client/framework/host boundary, affected ADR/Spec map and ordered migration/validation plan; unresolved decisions and gates are explicit | External counter and Signal Analyzer; macOS Dynamic/Static, ARMv6 Dynamic, nRF52840 Static addressed by the plan | FW-041 review evidence; RFC-013 proposal or explicit upstream routing; fault scenarios and resource/compatibility checks above; no implementation or target pass inferred from the review |
 | I4-AC-010 | Fixed-buffer assessment inventories tuple candidates and records migrate/retain/defer recommendations with ownership, borrowing and lifetime rationale; distinguishes semantic tuples, ABI storage and pinned/asynchronous buffers | macOS Dynamic/Static, Raspberry Pi 1 ARMv6 and nRF52840 Embedded feasibility on identified toolchains | [FW-042](../future-work/fw-042-inline-array-and-span-storage-assessment.md): layout/stride/alignment, backing and temporary/copy costs, zero-heap/stack/RAM/flash implications, lifetime/exclusivity negative controls and positive twins, stable-address constraints; reproducible evidence or explicit gaps, affected contracts and adoption gates; no replacement or compiler upgrade implied |
 | I4-AC-011 | RFC-016 Q1–Q5 have reviewed resolutions; required decisions and Spec amendments are explicitly approved; counter and analyzer use the supported authoring surface without handwritten observation SPI, with complete migration/conformance dispositions | macOS Dynamic/Static, Raspberry Pi 1 ARMv6 Dynamic and nRF52840 Embedded Static | OA-01–07 and M0–M6 evidence: generated-source/diagnostic fixtures, service/fact and actual owned-dispatcher integration, ownership/refusal/reporting equivalence, resource comparisons and migration guide; unresolved approval or unimplemented migration remains unmet unless explicitly excepted |
+| I4-AC-012 (transferred IT-AC-007–010) | Final reusable-host analyzer has complete cost accounting, safe bounded actual compositions and meets the unchanged sustained acquisition/presentation requirements; resolve transferred storage/transfer unknowns before adoption | All four configurations; connected Pi and nRF supported artifacts for target claims | P11 exact linked artifacts, complete live-storage/main/IRQ stack, ABI/zero-heap/RAM/flash proof and phase measurements; at least 30 continuous seconds at 80 events/s and four-FPS target cadence, no loss/reordering/duplicates/stale facts/capacity rejection, original SPEC-001 latency/coalescing/frame/state checks; [full transfer map](iteration-003-review/analyzer-delivery-transfer.md#acceptance-transfer-map) |
 
 The matrix is macOS Dynamic, macOS Static, Raspberry Pi 1
 `armv6-unknown-linux-gnueabihf` Dynamic with framebuffer/PiScreen, and
@@ -261,12 +286,13 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 ## Dependencies and Open Questions
 
-- Iteration-3 revision 4 and this revision 7 are approved. Their feature and
-  implementation gates remain separate.
-- Production migration depends on iteration-3 safe memory/stack, sustained
-  workload, runtime-derivation and compatibility evidence, or a specifically
-  accepted exception defining the downstream risk. Inventory/design preparation
-  may proceed while those gates are open.
+- Iteration-3 revision 6 and iteration-4 revision 9 are approved. Feature and
+  implementation approvals remain separate.
+- Production migration uses the entry gates above: retained framework/counter
+  evidence and human handoff/closure, or a specific retained-gate exception.
+  Analyzer derivation, safety/fit, sustained workload and cutover are transferred
+  delivery requirements, not prerequisites to beginning their own migration.
+  Inventory/design preparation may proceed while entry gates remain open.
 - PROPOSAL-007 remains accepted and RFC-013 draft. Reuse valid studies and
   failures; do not reset SPIKE-067's exhausted allowance or adopt its code by
   moving files. New architecture/contracts remain separate human gates.
@@ -286,6 +312,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
+| 9 | 2026-11-08 | Transfer analyzer P09–P12 to iteration 4; retain P08/framework/counter validation and revise entry gates without waiving acceptance | [Explicit approval and transfer map](iteration-003-review/analyzer-delivery-transfer.md) |
 | 1 | 2026-10-09 | Transfer backend/package/external-host delivery after iteration-3 memory and efficiency work | [Explicit sequencing approval](iteration-003-review/efficiency-sequencing-approval.md) |
 | 2 | 2026-10-11 | Add I4-05 / I4-AC-006 compiler assessment; upgrade adoption remains separately gated | Eugene: “Please add this as a task to the next iteration.” In context, “this” is evaluation of the cost and impact of bumping Swift; [request record](../future-work/fw-036-swift-compiler-upgrade-assessment.md#disposition) |
 | 3 | 2026-10-13 | Add I4-06 / I4-AC-007 Core-wide storage ownership assessment, including frontend/backend/platform and PC simulator boundaries | Eugene: “Add the produced future work item to the next iteration scope.” The item is FW-037; [request record](../future-work/fw-037-core-wide-storage-ownership-generalization.md#disposition) |
@@ -307,7 +334,7 @@ it does not advance the iteration status or authorize a candidate contract.
 
 ## Closure and Follow-up
 
-At closure, disposition I4-AC-001–011 as met, unmet or explicitly excepted with
+At closure, disposition I4-AC-001–012 and transferred IT-AC-004–010 as met, unmet or explicitly excepted with
 current evidence. Preserve remaining work and triggers, and obtain a human
 closure decision. Do not infer delivery from transferred scope or passed studies.
 

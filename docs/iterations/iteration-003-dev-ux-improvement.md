@@ -2,10 +2,10 @@
 id: ITERATION-003
 title: Runtime Memory and Efficiency
 status: active
-revision: 5
-approved_revision: 5
+revision: 6
+approved_revision: 6
 created: 2026-10-04
-updated: 2026-10-31
+updated: 2026-11-08
 features:
   - external-application-integration
   - giftui-mvp-architecture
@@ -15,11 +15,22 @@ related_future_work:
   - FW-032
   - FW-035
   - FW-038
-approval: "Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
+approval: "Revision 6: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
 closure: null
 ---
 
 # ITERATION-003: Runtime Memory and Efficiency
+
+## Approved delivery allocation — 2026-11-08
+
+Revision 6 applies the [approved analyzer transfer](iteration-003-review/analyzer-delivery-transfer.md).
+P08 and framework/counter P10–P12 remain in iteration 3. Analyzer P09 and
+analyzer-specific P10–P12 move to iteration 4 with reusable-host adoption.
+The transfer map preserves IT-AC-004–010 and every Spec obligation; the original
+criterion wording below defines the required results across the two iterations.
+Analyzer obligations are transferred and unmet, never implicitly passed.
+Earlier sequencing statements are historical where superseded by this allocation.
+
 
 The [mandatory memory ruleset](#mandatory-memory-ruleset) and
 [mandatory batch execution workflow](#mandatory-batch-execution-workflow),
@@ -84,17 +95,15 @@ changing revision 5's delivery criteria, limits or required validation.
 
 ## Goal
 
-Establish a safe, measured runtime-derived Signal Analyzer and finite counter
-across macOS Dynamic, macOS Static, Raspberry Pi 1 Dynamic and nRF52840 Embedded
-Static. Account for intermediate representations, copies, repeated traversal
-and simultaneous storage; remove demonstrated avoidable costs. Validate the
-analyzer's existing sustained acquisition and presentation requirements before
-stabilizing external backend and host APIs.
+Establish a safe, measured runtime-derived framework and finite counter across
+macOS Dynamic, macOS Static, Raspberry Pi 1 Dynamic and nRF52840 Embedded Static.
+Complete P08 and framework/counter P10–P12 with full applicable safety, resource,
+functional and adoption evidence. Remove obsolete counter/framework graph inputs
+only where their adoption gates pass; preserve analyzer baseline dependencies.
 
-Remove generated expanded/unwrapped view-graph files and their production
-build dependencies. Derive both applications' graphs from portable declarations
-at runtime while preserving bounded zero-heap Static execution, identity,
-state/action semantics, pixels and failure/publication behavior.
+Hand off the analyzer-specific migration, runtime graph removal, resource and
+sustained-workload certification to iteration 4 for delivery on the reusable
+GiftUI-owned host. Record exact residuals and unknowns under the approved transfer.
 
 This is post-MVP work. ITERATION-001 closed with recorded exceptions; the
 existing features remain implemented at their previously approved contracts.
@@ -188,7 +197,7 @@ revision increment is needed for this work-order/evidence-strategy update.
 5. **Run complete acceptance at the existing package/iteration boundaries.**
    Representative checks are development feedback, never replacements for
    mandated owner-specific controls. Preserve P08's complete exit evidence before
-   P09, P10's `scripts/test.sh all-hardware-free`, P11's required connected/target
+   framework/counter P10 and later iteration-4 P09; preserve P10's `scripts/test.sh all-hardware-free`, P11's required connected/target
    evidence and P12 adoption/removal gates. Preserve positive twins, classified
    negative causes, required compiler passes, current-source coverage, strict
    cold/zero-heap proof and per-application resource limits. Format maintained
@@ -258,8 +267,8 @@ claims about the final production image.
 
 | Item | Source / feature | Intended outcome | Lifecycle routing |
 | --- | --- | --- | --- |
-| I3-04 — Runtime view-graph derivation | Revision 3 amendment; giftui-mvp-architecture / signal-analyzer | Both applications derive their complete graph at runtime on all four configurations; retire production analyzer graph generation with equivalent coverage | RFC-013 runtime work and affected SPEC-001/006/010/012/013/015; required architecture/contract approvals before adoption |
-| I3-05 — Memory and execution efficiency | FW-027 / FW-032, target phase evidence and SPIKE-067 resource findings; signal-analyzer / giftui-mvp-architecture | Account for live data and phase cost, establish safe storage/stack bounds, implement measured improvements and satisfy existing loaded frame/acquisition requirements | ME-01–09; route compatible internal changes through existing contracts and independently significant changes through appropriate Proposal/RFC/ADR/Spec gates |
+| I3-04 — Runtime view-graph derivation | Revision 3 amendment; giftui-mvp-architecture / signal-analyzer | Framework/counter runtime derivation on all four configurations; analyzer derivation and graph retirement transferred to iteration-4 I4-03/04 | RFC-013 runtime work and affected SPEC-001/006/010/012/013/015; required architecture/contract approvals before adoption |
+| I3-05 — Memory and execution efficiency | FW-027 / FW-032, target phase evidence and SPIKE-067 resource findings; signal-analyzer / giftui-mvp-architecture | Account for live data and phase cost, establish safe storage/stack bounds, implement measured framework/counter improvements; analyzer loaded frame/acquisition requirements transfer unchanged to I4-AC-012 | ME-01–09; route compatible internal changes through existing contracts and independently significant changes through appropriate Proposal/RFC/ADR/Spec gates |
 | Internal host and backend corrections needed by I3-04/05 | Existing runtime, raster, endpoint and platform compositions | Fix measured lifetime, scheduling, layout, raster or projection costs without requiring package extraction first | Preserve existing authority boundaries; identify and approve any necessary contract change |
 | Backend preparation and handoff | EXP-002 / PROPOSAL-007 | Inventory ownership/access and recording controls alongside profiling; hand off stable cost/lifetime constraints | Analysis may proceed alongside iteration 3; public API stabilization and extraction are iteration-4 delivery |
 
@@ -308,8 +317,9 @@ base or additional core module is selected by this scope.
    budgets and ready implementation plans. Do not select algorithms in code.
 3. ME-06 and ME-07: implement the authorized runtime/storage and performance
    changes in attributable steps; coordinate changes sharing an owner.
-4. ME-08: validate exact integrated artifacts, including required connected
-   sustained-workload measurements; publish conformance evidence and gaps.
+4. ME-08: validate exact framework/counter artifacts and applicable target evidence;
+   transfer analyzer integrated/connected workload measurements to iteration 4.
+   Publish retained conformance evidence and exact transferred gaps.
 5. ME-09: provide the backend handoff and request human iteration disposition.
 
 The [detailed plan](iteration-003-review/memory-efficiency-plan.md) defines
@@ -352,7 +362,9 @@ parallel workers are excluded. This execution guidance leaves revision 5's
 scope, criteria and bounded activity allowances unchanged.
 
 Transferred IT-AC-001–003 retain their disposition above. IT-AC-004–010 below
-are current exit obligations, not replacement Specification acceptance criteria.
+retain their complete acceptance wording. Their framework/counter portions are
+iteration-3 exits; analyzer portions are mandatory iteration-4 exits under the
+[transfer map](iteration-003-review/analyzer-delivery-transfer.md#acceptance-transfer-map).
 
 | ID | Observable result | Required configurations | Evidence / governing contract |
 | --- | --- | --- | --- |
@@ -427,6 +439,7 @@ existing task; preserve the current rules, acceptance and delivery sequence.
 
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
+| 6 | 2026-11-08 | Transfer analyzer P09–P12 to iteration 4; retain P08/framework/counter validation and revise entry gates without waiving acceptance | [Explicit approval and transfer map](iteration-003-review/analyzer-delivery-transfer.md) |
 | 1 | 2026-10-04 | Initial Dev UX candidates | Discussion only; preserved in commit `232f0041` |
 | 2 | 2026-10-05 | Focused packages, reusable backend and simpler setup with shared consumer/matrix | [Scope review and approval](iteration-003-review/scope-review-and-approval.md) |
 | 3 | 2026-10-06 | Add I3-04 / IT-AC-006 runtime graph derivation | [Runtime amendment](iteration-003-review/runtime-derivation-scope-amendment.md); complete prior scope preserved in `86caf53c` |
@@ -447,8 +460,11 @@ plan's current readiness table. No automatic experimental continuation follows.
 At closure, report IT-AC-001–003 as transferred, IT-AC-005's split explicitly,
 and IT-AC-004–010 as met, unmet or individually excepted with evidence. Obtain
 human closure; feature architecture, contract and implemented transitions remain
-separate. Iteration-4 production extraction depends on the memory/performance,
-runtime-derivation and compatibility gates or a specifically accepted exception.
+separate. Iteration-4 production entry requires the retained framework/counter gates and
+human handoff/closure decision, or an applicable exception for retained failures.
+Transferred analyzer memory/performance, derivation and compatibility results are
+iteration-4 delivery obligations, not entry gates. Report these as transferred,
+unmet at iteration-3 closure; this is not full product or Spec conformance.
 
 ## References
 
