@@ -16,3 +16,18 @@ FW-034 is reserved in the [preparation archive](../iterations/iteration-003-revi
 
 - [FW-040: Compiler-Specialized View Derivation](fw-040-compiler-specialized-view-derivation.md): candidate investigation for a future performance-focused iteration after runtime-derivation conformance, or earlier on a measured resource problem.
 - [FW-042: InlineArray and Span for Fixed Buffer Storage](fw-042-inline-array-and-span-storage-assessment.md): ITERATION-004 I4-09 assessment of tuple-buffer replacement with precise allocation, ownership and lifetime evidence; adoption remains separately gated.
+
+## Vision-related opportunities
+
+These captures originated in the [long-term vision](../VISION.md) discussion.
+They preserve specific questions without assigning delivery milestones. Each
+item records its own evidence needs and revisit triggers; none depends on
+building the whole platform vision first.
+
+| Capture | Question preserved |
+| --- | --- |
+| [FW-022: Target simulator](fw-022-contract-accurate-embedded-target-simulator.md) | Can production owners support useful target previews and reproducible interaction/capture comparisons? |
+| [FW-044: Resource accountability](fw-044-resource-accountability-development-loop.md) | Can predictions, build costs, and runtime observations be compared and attributed for one workload? |
+| [FW-007: Realization planning](fw-007-cost-aware-capability-planning.md) | When do measured trade-offs justify more than explicit target policy? |
+| [FW-045: Frontends and migration](fw-045-frontend-neutral-migration-platform.md) | What can a representative existing UI or alternate frontend express through GiftUI, and where are the gaps? |
+| [FW-035: Generated graphs](fw-035-generated-view-graph-for-interchangeable-frontends.md) | Does a concrete frontend consumer actually need graph generation? |

@@ -6,14 +6,16 @@ status: captured
 authors:
   - codex
 created: 2026-10-06
-updated: 2026-10-19
+updated: 2026-11-08
 source:
+  - docs/VISION.md
   - SPEC-015
   - RFC-014
   - ADR-038
   - docs/iterations/iteration-003-dev-ux-improvement.md
   - RFC-013
 related_future_work:
+  - FW-045
   - FW-037
   - FW-040
 related_explorations: []
@@ -87,3 +89,10 @@ occurrence topology. This item's scope, status and revisit triggers are unchange
 [FW-037](fw-037-core-wide-storage-ownership-generalization.md) separately captures
 possible Core-wide storage/access ownership generalization from the P08 draft.
 It changes no scope, architecture, status or revisit trigger in this item.
+
+## Related Migration Opportunity
+
+[FW-045](fw-045-frontend-neutral-migration-platform.md) captures assessment of
+an existing UI or concrete alternative frontend. Such a case could supply
+consumer evidence for this item, but only if it demonstrates a need for generated
+graphs. A migration opportunity alone does not satisfy this item's trigger.

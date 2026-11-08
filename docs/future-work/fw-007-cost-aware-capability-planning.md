@@ -6,12 +6,14 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-10-16
+updated: 2026-11-08
 source:
+  - docs/VISION.md
   - RFC-006
   - ADR-018
   - docs/implementation-designs/spec-015-p08-structured-operations.md
-related_future_work: []
+related_future_work:
+  - FW-044
 related_explorations: []
 related_spikes: []
 promoted_to: []
@@ -106,3 +108,11 @@ current rather than being deferred here.
 ## References
 
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
+
+## Related Reporting Opportunity
+
+[FW-044](fw-044-resource-accountability-development-loop.md) asks how to compare
+and attribute predictions, built-image costs, and runtime observations for one
+workload. The configuration-estimation evidence above can inform that assessment.
+Automatic realization selection remains this item's separate question and does
+not become a prerequisite for reporting.

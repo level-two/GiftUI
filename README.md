@@ -1,32 +1,33 @@
 # GiftUI
 
 GiftUI is a SwiftUI-inspired declarative UI framework for Linux and embedded
-Swift targets. Its MVP is validated by one substantially shared low-frequency
-digital Signal Analyzer across macOS dynamic/static, Raspberry Pi 1/Linux, and
-nRF52840 Embedded Swift configurations.
+Swift targets, with macOS development and validation configurations. It provides
+views, layout, text and opaque color rendering, observable state, interaction,
+Canvas drawing, and dynamic and static runtime profiles.
 
-## Current implementation state
+For the long-term destination, read the [vision](docs/VISION.md). For the values
+guiding design choices, read the [principles](docs/PRINCIPLES.md). This README
+covers the current implementation, validation status, and repository workflows.
 
-All fifteen MVP Specifications are implemented under the recorded maintainer
-approvals. The framework includes declarative views, layout, text and opaque
-color rendering, observable state, interaction, Canvas drawing, runtime
-profiles, backend integration, and target-host configuration. The
-[Specification portfolio](docs/roadmap/MVP_SPECIFICATION_PORTFOLIO.md) links
-the governing contracts and their current lifecycle states.
+## Project status
 
-The [iteration closeout](Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md)
-records 72 passing hardware-free checks across all four profiles, reviewed
-pixel references, and connected target observations. SPEC-001, SPEC-011, and
-SPEC-015 close with explicit maintainer-approved exceptions: Pi and nRF
-cadence fails, and complete connected input, fault/recovery, trace, and
-sustained-load evidence remains incomplete. This closes the current iteration;
-full measured MVP conformance remains outstanding. Its numbered scope is
-[ITERATION-001: GiftUI MVP](docs/iterations/iteration-001-mvp.md).
+GiftUI is under active development. The Signal Analyzer reference application
+exercises a substantially shared UI across macOS dynamic/static, Raspberry Pi
+1/Linux, and nRF52840 Embedded Swift configurations. Backend integration and
+target-host configuration connect the framework to those environments.
 
-Follow-up is preserved in [Pi performance](docs/future-work/fw-027-pi-performance-investigation-resumption.md),
-[macOS pointer validation](docs/future-work/fw-031-macos-connected-pointer-validation-resumption.md),
-[nRF performance](docs/future-work/fw-032-nrf-performance-improvement.md), and
-[connected validation](docs/future-work/fw-033-connected-validation-follow-up.md).
+The [MVP iteration](docs/iterations/iteration-001-mvp.md) closed in October 2026
+with recorded exceptions. Its [closeout evidence](Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md)
+records hardware-free checks and connected-target observations. Full measured
+MVP conformance remains outstanding: Pi and nRF timing requirements were not
+met, and some connected input, fault/recovery, trace, and sustained-load
+validation remained incomplete at closeout.
+
+Subsequent work is tracked in [Runtime Memory and Efficiency](docs/iterations/iteration-003-dev-ux-improvement.md)
+and [Backend and Application Integration](docs/iterations/iteration-004-backend-and-application-integration.md).
+The [feature manifest](docs/features.yaml) links current lifecycle states and
+governing artifacts. Historical closeout results do not establish conformance
+of later changes.
 
 ## Build and test
 
@@ -125,22 +126,16 @@ scripts/nrf52840/flash.sh --application <application>
 See the repository skills under `skills/` for the complete setup, diagnostic,
 build, deploy, and flash workflows and their safety constraints.
 
-## Engineering governance
+## Contributing and project documentation
 
-Major features follow the gated Proposal → RFC → ADR → Specification →
-Implementation Plan → Conformance lifecycle. Start with:
+Start with the [code style](docs/engineering/CODE_STYLE.md) and
+[feature lifecycle](docs/engineering/FEATURE_LIFECYCLE.md). Repository-aware
+agents also follow the [AI agent rules](docs/engineering/AI_AGENT_RULES.md).
 
-- [MVP scope](docs/iterations/iteration-001-mvp.md)
-- [numbered iteration scopes](docs/iterations/README.md)
-- [feature lifecycle](docs/engineering/FEATURE_LIFECYCLE.md)
-- [AI agent rules](docs/engineering/AI_AGENT_RULES.md)
-- [code style](docs/engineering/CODE_STYLE.md)
-- [feature manifest](docs/features.yaml)
-- [SPEC-002 implementation plan](docs/implementation-plans/spec-002-implementation-plan.md)
-
-Accepted ADRs and approved, implementing, or implemented Specifications are authoritative.
-Draft, proposed, review, superseded, legacy, deferred, and Spike material is
-not implementation authority.
+- [Iteration scopes](docs/iterations/README.md): delivery goals and boundaries.
+- [Architecture](docs/architecture/README.md): explanations of accepted decisions.
+- [Documentation rules](docs/engineering/DOCUMENTATION_RULES.md): document roles,
+  authority, and traceability.
 
 ## Historical proof of concept
 

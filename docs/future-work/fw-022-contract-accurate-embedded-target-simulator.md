@@ -6,10 +6,12 @@ status: captured
 authors:
   - codex
 created: 2026-09-11
-updated: 2026-10-13
+updated: 2026-11-08
 source:
+  - docs/VISION.md
   - SPEC-015
 related_future_work:
+  - FW-044
   - FW-037
 related_explorations: []
 related_spikes: []
@@ -56,13 +58,12 @@ on macOS dynamic, macOS static, Raspberry Pi/Linux with framebuffer and
 PiScreen, and nRF52840 with the supported TFT. Builds, host fixtures, emulators,
 and simulators cannot substitute for the required connected-target evidence.
 
-The approved contracts that would make the simulator trustworthy are also not
-yet fully implemented. In particular, production owners for interaction,
-drawing, runtime profiles, backend integration, and host configuration must
-exist before a simulator can compose them without duplicating behavior or
-reviving obsolete proof-of-concept ownership. SPEC-013 through SPEC-015 have
-approved contracts and ready plans, but their downstream production targets
-and complete conformance evidence remain pending.
+At capture, production owner availability and conformance were prerequisites
+for evaluating shared execution. Their current readiness must be checked against
+the governing Specifications and evidence when this item is revisited. This
+capture is not a live implementation-status record. A simulator assessment
+would need to establish which owners it can reuse without duplicating behavior
+or reviving obsolete proof-of-concept ownership.
 
 This is a major cross-cutting feature rather than lightweight implementation
 work. It could establish new host composition, tooling, instrumentation,
@@ -91,7 +92,10 @@ feasibility are established.
 
 ## Candidate System Shape
 
-The following is a candidate for later Exploration, not an accepted design:
+The system shape, fidelity table, resource/performance models, and evidence
+suggestions below preserve candidate analysis for later Exploration. They are
+not selected simulator requirements or verified fidelity claims; a bounded
+assessment could reject or narrow them.
 
 ```text
 portable GiftUI application
@@ -175,7 +179,7 @@ peripheral model, followed by comparison with separately authorized hardware
 measurements. User-facing estimates should be ranges or budgets with explicit
 assumptions rather than false precision.
 
-Every run should emit an evidence manifest containing at least:
+A candidate evidence manifest could record:
 
 - repository revision and dirty state;
 - compiler, SDK, optimization mode, flags, and target triple;
@@ -217,11 +221,12 @@ application costs so one owner cannot hide cost inside another. Static paths
 should fail when a declared store is absent, insufficient, inconsistent, or
 overflows; they should not silently resize or fall back to heap storage.
 
-The first nRF52840 simulator preset should reproduce the approved 480 x 320
+One candidate nRF52840 assessment could reproduce the captured 480 x 320
 surface, 480 x 4 RGB565 region, 960-byte row, and 3,840-byte raster, payload,
-and in-flight bounds without a complete framebuffer. The Signal Analyzer
-fixture should also preserve the approved workload, capacity, and 250 ms
-service/frame pacing inputs instead of inventing reduced simulator values.
+and in-flight bounds without a complete framebuffer. A Signal Analyzer
+comparison would need matching workload, capacity, and pacing inputs; the
+250 ms value recorded here is capture context. Verify all dimensions and limits
+against the governing target contract before selecting an assessment fixture.
 
 ## Performance Model
 
@@ -354,3 +359,17 @@ authority to implement or to claim embedded-hardware equivalence.
 [FW-037](fw-037-core-wide-storage-ownership-generalization.md) separately captures
 possible Core-wide storage/access ownership generalization from the P08 draft.
 It changes no scope, architecture, status or revisit trigger in this item.
+
+## Additional Developer Workflows — 2026-11-08
+
+The maintainer's direction map supplied two concrete uses to assess: a fast
+preview of one screen under a selected target profile, and replay of one
+interaction with comparable simulator/device captures. Either could provide a
+smaller evaluation case than a complete interactive simulator. Preview latency,
+semantic and visual agreement, and unsupported target effects would be useful
+questions; no latency target or fidelity guarantee is selected here.
+
+[FW-044](fw-044-resource-accountability-development-loop.md) separately asks how
+to compare and attribute resource evidence. This simulator capture concerns
+execution and fidelity; it does not require the general reporting or optimization
+product to be built first. The additional workflows do not change its triggers.
