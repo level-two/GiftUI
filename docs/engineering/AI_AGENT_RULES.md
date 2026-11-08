@@ -14,15 +14,16 @@ Before drafting or implementing major feature work:
 
 1. read [Feature Lifecycle](FEATURE_LIFECYCLE.md) and
    [Documentation Rules](DOCUMENTATION_RULES.md);
-2. read [GiftUI MVP Scope](../iterations/iteration-001-mvp.md), `docs/VISION.md`, and
-   `docs/PRINCIPLES.md`;
+2. read [Vision](../VISION.md), [Principles](../PRINCIPLES.md), and
+   [GiftUI MVP Scope](../iterations/iteration-001-mvp.md), using their distinct
+   roles below;
 3. inspect [the feature manifest](../features.yaml);
 4. locate the feature's linked Proposal, RFCs, accepted ADRs, approved
    Specifications, implementation records, deferred-track items, and current
    conformance evidence;
 5. read affected architecture documentation and applicable repository skills;
-6. state the current lifecycle stage, MVP justification, and any missing gate
-   before proceeding.
+6. state the current lifecycle stage, MVP justification or post-MVP
+   classification, and any missing gate before proceeding.
 
 For iteration work, also read the governing numbered scope and
 [Numbered Iteration Scopes](ITERATION_SCOPES.md). Trace the work to its approved
@@ -31,6 +32,33 @@ their own explicitly approved scope.
 
 If the manifest or an artifact does not yet exist, report the gap. Do not
 invent a relationship to make the chain appear complete.
+
+## Using the grounding documents
+
+- [Vision](../VISION.md) describes the long-term destination. Use it to explain
+  how a proposed investment serves that direction, not to infer current
+  capabilities, delivery order, or implementation commitments.
+- [Principles](../PRINCIPLES.md) guide design trade-offs. Apply the relevant
+  principles to concrete choices rather than copying their list into plans,
+  reviews, or agent instructions.
+- [README](../../README.md) is the practical entry point for current status and
+  workflows. Follow its links to governing artifacts when assessing authority
+  or conformance; a summary is not a substitute for those records.
+
+For implementation, trace the work to the applicable scope, accepted ADRs, and
+approved Specifications. Alignment with the vision or a principle does not
+approve architecture, expand an iteration, or authorize a new feature. If a
+proposed choice raises a concrete tension with the direction or principles,
+explain the trade-off and route any needed contract change through the existing
+lifecycle; do not silently override the current contract.
+
+Future possibilities do not require speculative abstractions or extra
+prerequisites for already authorized work. Capture a concrete out-of-scope
+opportunity through the deferred track, reusing an existing item when suitable.
+Link to the vision or principles for context and keep opportunity tracking in
+the deferred-work documents and index, rather than turning the grounding
+documents into backlogs. This guidance adds no approval gate or requirement for
+a separate vision-alignment artifact.
 
 ## Allowed actions
 

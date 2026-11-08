@@ -18,11 +18,14 @@ Before major feature design or implementation:
 
 1. Read `docs/engineering/FEATURE_LIFECYCLE.md` and
    `docs/engineering/AI_AGENT_RULES.md`.
-2. Read `docs/iterations/iteration-001-mvp.md` and identify the reference-application or stack
-   validation requirement that makes the work necessary now.
-3. Inspect `docs/features.yaml` and determine the feature's lifecycle stage.
-4. Locate authoritative accepted ADRs and approved Specifications.
-5. Treat draft, proposed, review, legacy, rejected, deprecated, and superseded
+2. Read [Vision](docs/VISION.md) and [Principles](docs/PRINCIPLES.md), applying
+   their distinct roles as described in
+   [Using the grounding documents](docs/engineering/AI_AGENT_RULES.md#using-the-grounding-documents).
+3. Read `docs/iterations/iteration-001-mvp.md` and identify the reference-application
+   or stack-validation requirement for MVP work, or classify the work as post-MVP.
+4. Inspect `docs/features.yaml` and determine the feature's lifecycle stage.
+5. Locate authoritative accepted ADRs and approved Specifications.
+6. Treat draft, proposed, review, legacy, rejected, deprecated, and superseded
    documents as non-authoritative.
 
 For iteration work, read `docs/engineering/ITERATION_SCOPES.md` and the
