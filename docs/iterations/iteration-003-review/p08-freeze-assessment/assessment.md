@@ -13,6 +13,11 @@ campaign or an implemented transition. No compiler, runtime test, target query,
 deployment or flash ran. The assessment reuses the existing independently reviewed
 Pi handoff and Native results; it does not independently re-prove their semantics.
 
+The current [iteration-3 closeout handoff](../closeout-2026-11-08/README.md)
+records the retained P10/P11 evidence, current P12 disposition, 180-row owner
+criterion index and remaining review/decision gates. It does not upgrade this assessment
+to accepted or close iteration 3.
+
 The expensive old-composition stack/provider/launch certification is transferred.
 The remaining technical stop is narrower: unresolved alias/lifetime/reentrancy and
 callback-owner premises for affected shared mechanisms, plus retained framework

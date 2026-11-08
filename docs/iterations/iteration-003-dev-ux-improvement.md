@@ -32,6 +32,11 @@ overall freeze acceptance, retained P11/P12/ME-09 handoff and explicit human clo
 remain required. Earlier blanket S1–S3 closure/entry blockers are superseded only
 by this exact disposition; other shared defects and contract gates are unchanged.
 
+The current [closeout handoff](iteration-003-review/closeout-2026-11-08/README.md)
+records retained P10/P11 evidence, the 180-row criterion dispositions, P12 no-removal,
+and the remaining overall-review and human-closure gates. It does not change this
+iteration's status or close P08.
+
 
 ## Approved P08 freeze — 2026-11-08
 
