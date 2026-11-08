@@ -7,6 +7,8 @@
 # docs/engineering/DOCUMENTATION_RULES.md.
 schema_version: 1
 iterations:
+  # Counter-first I4-03/04 execution (2026-11-08): reuse qualified P08 mechanisms/evidence, external counter then analyzer.
+  # RFC-013 counter-first-migration-and-p08-reuse--2026-11-08; scope revisions and lifecycle statuses unchanged.
   # Approved 2026-11-08: ITERATION-003 r6 retains P08/framework/counter P10–P12; ITERATION-004 r9 owns analyzer P09–P12.
   # Transfer/entry gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md; criteria/statuses unchanged.
   ITERATION-001: docs/iterations/iteration-001-mvp.md

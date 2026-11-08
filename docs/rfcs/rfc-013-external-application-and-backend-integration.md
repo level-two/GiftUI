@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-08
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -117,10 +117,68 @@ production wiring after equivalent validation. Renaming the module or moving
 its application-specific assembly unchanged into a public package is insufficient.
 The module name itself is not a required removal target.
 
-RFC-014 P09 migrates the analyzer to runtime traversal; P12 cuts over that
-runtime. Neither establishes reusable-host adoption. Coordinate I4-03/04 with
+Under the [approved delivery transfer](../iterations/iteration-003-review/analyzer-delivery-transfer.md),
+RFC-014 analyzer P09–P12 now join iteration-4 reusable-host adoption. Runtime
+traversal and cutover alone do not establish that adoption. Coordinate I4-03/04 with
 I4-07's ownership residuals, I4-08's failure-boundary review and I4-10's model
 API migration, preserving their separate gates and avoiding duplicate work.
+
+### Counter-first migration and P08 reuse — 2026-11-08
+
+Eugene requested: “Please capture this counter-first migration approach in RFC-013
+and the iteration-4 plan, making reuse of the P08 implementation and evidence
+explicit. Update dependent documents and commit.” This establishes delivery
+sequencing under I4-03/04, not approval of this draft's API or ownership design.
+
+The P08 counter is a repository fixture with local host/pipeline assembly, not
+yet an external consumer. Its concrete starting points include
+[CounterHostOwner](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift),
+[CounterPipelineOwner](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift),
+profile storage and scoped-backing construction, and the existing GiftUI
+[SignalAnalyzerPresetHostInstance](../../Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift).
+Internal imports and `@testable` joins expose the current integration gap.
+Use these mechanisms and their qualified evidence as the extraction baseline;
+do not restart host implementation from an empty design or publish the fixture
+unchanged as the supported host.
+
+1. Finish the existing P08 and framework/counter iteration-3 obligations. At the
+   handoff, pin source, compiler/SDK, flags, profiles, artifacts and criterion
+   results; preserve failures and limits. P08 is not assumed complete by this RFC.
+2. Inventory the counter's assembly responsibilities before extraction: classify
+   each as reusable framework/host responsibility, application behavior or test
+   instrumentation. Preserve separate component ownership. Views, model/state,
+   actions, business services and explicit resource/target configuration stay
+   consumer inputs; fault injection and probe bookkeeping stay in tests. Host
+   construction, storage/lifetime coordination, scheduling, input/render joins,
+   activation, refusal and teardown are candidates for the supported host path,
+   subject to the approved ownership and API contracts.
+3. After normal RFC/ADR/Spec and iteration entry gates, extract the qualified
+   mechanisms into the supported GiftUI host. Make the counter a real external
+   package using supported interfaces, with no `@testable`/privileged imports,
+   internal owner wiring or handwritten framework source lists. Qualify supported
+   and recording-adapter compositions across all four governed configurations.
+4. Migrate Signal Analyzer through the same qualified host contracts. Coordinate
+   I4-07 ownership residuals, I4-08 failure boundaries and I4-10 model authoring;
+   address analyzer-specific capture/admission and workload needs through the
+   normal contract gates. Complete analyzer P09–P12 on that final composition.
+
+Reuse implementation and evidence deliberately. The migration receipt must map
+old symbols/responsibilities to their destination or retirement and each relevant
+P08 criterion/result to **reuse with applicability justification**, **refresh**,
+or **unmet**. Consider source/dependency changes, module/access and generic
+specialization boundaries, compiler/SDK/flags, concrete types, profile, backing
+layout, lifetime, artifact and measurement conditions. Extracted code is not
+unchanged evidence merely because its body is identical. Refresh invalidated
+actual-consumer, allocation/cold, lifetime/refusal/cleanup, resource/ABI and target
+checks; retain independent state/action/pixel oracles and applicable compiler
+negative controls. Never replace those oracles with captured candidate output.
+
+Counter qualification is the first adoption milestone, not proof of analyzer
+scale, resource fit or cadence. Compare the extracted counter against its pinned
+P08 baseline, then certify the final analyzer independently. Retire duplicated
+fixture orchestration only after equivalent replacement coverage exists; keep
+useful fault controls and baseline oracles. No P08 budget, safety duty or failed
+check is waived, and no new P08 generalization task is introduced.
 
 ### Design questions and evidence
 

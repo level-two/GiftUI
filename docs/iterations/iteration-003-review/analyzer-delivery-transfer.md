@@ -83,3 +83,15 @@ until its full obligations pass or receive explicit applicable exceptions.
 This is committed delivery rescheduling, not optional Future Work. Existing
 FW-027/032 and the I4-07 residual allocation retain their links and obligations;
 no new speculative work or deferred artifact is introduced.
+
+
+## Counter-first realization — 2026-11-08
+
+The subsequent maintainer instruction makes P08 implementation and qualified
+proof the extraction baseline: [RFC-013 sequence and evidence rules](../../rfcs/rfc-013-external-application-and-backend-integration.md#counter-first-migration-and-p08-reuse--2026-11-08),
+[iteration-4 execution and receipt requirements](../iteration-004-backend-and-application-integration.md#counter-first-extraction-and-evidence-handoff).
+After this transfer's entry/contract gates, extract the reusable host from the
+counter's qualified mechanisms, validate the external counter, then adopt the
+same host in Signal Analyzer. Preserve independent oracles; explicitly qualify
+reuse and refresh invalidated evidence. No added P08 generalization, assumed
+completion, altered acceptance obligation or changed scope revision follows.

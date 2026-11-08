@@ -18,6 +18,15 @@ Framework/counter failures still block their adoption absent an applicable
 maintainer exception. Final analyzer certification runs on its reusable host.
 
 
+## Counter implementation reuse in iteration 4 — 2026-11-08
+
+P08 remains the finite counter implementation/proof package. Its mechanisms and
+qualified evidence feed [counter-first host extraction](../iteration-004-backend-and-application-integration.md#counter-first-extraction-and-evidence-handoff)
+under I4-03/04 after the existing entry and contract gates. The external counter
+qualifies the supported reusable host before analyzer P09 adoption. Inventory
+responsibilities and evidence reuse/refresh; do not expose fixture internals as
+the public host, add generalization to P08 or infer analyzer resource conformance.
+
 ## Approved P08 Native typed-backing amendment — 2026-10-24
 
 The [explicit decision](p08-native-typed-backing-approval.md), extracted as

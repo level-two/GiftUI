@@ -101,6 +101,43 @@ Normal architecture, Specification and ready-plan gates remain before implementa
 See the [complete entry/adoption rules](iteration-003-review/analyzer-delivery-transfer.md#iteration-4-entry-and-adoption-gates).
 
 
+### Counter-first extraction and evidence handoff
+
+The maintainer's 2026-11-08 instruction is recorded in
+[RFC-013's counter-first migration section](../rfcs/rfc-013-external-application-and-backend-integration.md#counter-first-migration-and-p08-reuse--2026-11-08).
+This clarifies execution of approved revision 9 within I4-03/04 and existing
+acceptance criteria; it adds no scope or architecture approval.
+
+Use the completed P08 implementation and qualified evidence as the concrete
+baseline. Inventory CounterHostOwner, CounterPipelineOwner, profile/scoped storage
+and the existing shared host machinery; classify framework assembly, application
+behavior and test instrumentation before extraction. After entry and contract
+gates, first deliver the external counter on the reusable GiftUI-owned host,
+then migrate Signal Analyzer through the same supported contracts. Counter
+qualification must cover all four governed configurations, supported and recording
+compositions, and activation/refusal/teardown before dependent analyzer adoption.
+Analyzer-specific design preparation may proceed earlier; no intermediate bespoke
+analyzer host migration or second bootstrap is required.
+
+For I4-AC-001/003/004/005/008, the migration receipt must include:
+
+- A pinned P08 source/compiler/SDK/flags/profile/artifact and criterion baseline,
+  preserving incomplete results, plus a symbol/responsibility destination map.
+- Explicit reuse/refresh/unmet dispositions for relevant P08 evidence. Check
+  changed module/access, generic/type, dependency, backing/lifetime and measurement
+  conditions; reuse only with an applicability argument and refresh invalidated
+  actual-consumer, cold/allocation, safety, resource/ABI and target checks.
+- External counter builds without privileged access, internal owner wiring or
+  handwritten framework source lists; application behavior/configuration remains
+  in the consumer and fault injection remains in tests. Preserve component owners.
+- Independent semantic/action/pixel and failure/cleanup oracles, applicable compiler
+  negatives, before/after resource costs and replacement-coverage mappings before
+  retiring duplicated fixture orchestration. Counter evidence does not satisfy
+  analyzer fit or I4-AC-012 sustained-workload certification.
+
+P08 completion and iteration-3 handoff remain prerequisites as stated above;
+reuse does not declare them passed or expand their scope. RFC-013 stays draft.
+
 For I4-10, follow RFC-016 M0–M6: inventory the adopted baseline, resolve and
 review Q1–Q5, obtain architecture/contract approvals, derive a ready plan, migrate
 the counter and analyzer, then validate all four profiles and author documentation.
@@ -130,8 +167,9 @@ or target evidence require it. This assessment does not activate production migr
    through the approved owner plans before dependent integration; reuse qualified
    P08 evidence and refresh only changed paths. I4-06 assessment is not a prerequisite
    to realizing RFC-015's already selected finite ownership contract.
-4. Derive ready implementation plans; extract one coherent vertical consumer
-   path and test it before migrating further supported platform compositions.
+4. Derive ready implementation plans; extract the P08-based counter into the
+   supported reusable host, qualify its external supported/recording compositions
+   on all four routes, and record evidence reuse/refresh before analyzer adoption.
 5. Migrate Signal Analyzer to the qualified reusable host path; inventory each
    bespoke assembly responsibility, retain justified application adapters, and
    retire replaced production wiring after equivalent validation. Run the external
