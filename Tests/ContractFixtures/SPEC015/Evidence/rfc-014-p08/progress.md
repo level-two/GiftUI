@@ -1,5 +1,17 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## Governing freeze — 2026-11-08
+
+P08 is **FROZEN / UNMET**, not PASS, under the [approved freeze](../../../../../docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md).
+Stop old-composition certification work solely aimed at P08 exit. Preserve all
+receipts, failures and conditional premises below. Shared safety defects and
+unclassified safety predicates still block dependent use; bounded classification
+and handoff remain required. Composition-specific certification and dependent
+counter adoption belong to iteration-4 I4-AC-013. Earlier next-step recipes and
+continuation directions below are historical, not authority to resume a frozen
+campaign. No prior allowance is reset and no Spec/task completion is inferred.
+
+
 Current P08 boundary — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
 and [independent result review](scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/independent-review.md)

@@ -1,5 +1,16 @@
 # Approved analyzer delivery transfer — 2026-11-08
 
+## Subsequent P08 freeze amendment
+
+The [2026-11-08 freeze allocation](p08-freeze-and-certification-transfer.md)
+supersedes this record's full-P08 and complete counter-certification prerequisites.
+Iteration-3 revision 7 retains shared safety, bounded freeze review and applicable
+validation; iteration-4 revision 10 owns composition-specific counter certification
+and dependent adoption under I4-AC-013. P08 remains FROZEN / UNMET. The analyzer
+transfer and its acceptance obligations remain unchanged. Earlier rows below
+preserve the prior approved allocation; use the linked amendment for current entry.
+
+
 ## Approval and scope
 
 Eugene explicitly approved this allocation on 2026-11-08:

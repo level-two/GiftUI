@@ -2,8 +2,8 @@
 id: ITERATION-004
 title: Backend and Application Integration
 status: approved
-revision: 9
-approved_revision: 9
+revision: 10
+approved_revision: 10
 created: 2026-10-09
 updated: 2026-11-08
 features:
@@ -11,7 +11,7 @@ features:
   - giftui-mvp-architecture
   - signal-analyzer
   - observable-reference-state
-approval: "Revision 9: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition. Revision 7: Eugene explicitly requested work on RFC-016 and its changes in the next iteration and a commit on 2026-11-07; exact request recorded in the revision history. Revision 8: Eugene explicitly requested reusable black-box host capture, stronger acceptance criteria and Signal Analyzer migration on 2026-11-07; exact request recorded in the revision history."
+approval: "Revision 10: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 9: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition. Revision 7: Eugene explicitly requested work on RFC-016 and its changes in the next iteration and a commit on 2026-11-07; exact request recorded in the revision history. Revision 8: Eugene explicitly requested reusable black-box host capture, stronger acceptance criteria and Signal Analyzer migration on 2026-11-07; exact request recorded in the revision history."
 related_future_work:
   - FW-036
   - FW-037
@@ -22,6 +22,18 @@ closure: null
 ---
 
 # ITERATION-004: Backend and Application Integration
+
+## Approved P08 freeze — 2026-11-08
+
+Revision 10 applies the [P08 freeze and certification transfer](iteration-003-review/p08-freeze-and-certification-transfer.md).
+P08 is FROZEN / UNMET, not PASS. Iteration 3 retains shared safety blockers,
+bounded freeze/handoff reconciliation and applicable framework/counter validation.
+Composition-specific counter certification and dependent adoption move to I4-03/04/07
+and I4-AC-013. Full P08 PASS is no longer an iteration-4 entry gate; reviewed
+classification, human handoff/closure and normal contract gates remain required.
+Earlier complete-P08/whole-counter-fit prerequisites below are superseded by this
+allocation; no criterion, resource limit or safety requirement is waived.
+
 
 ## Approved delivery allocation — 2026-11-08
 
@@ -92,9 +104,11 @@ applications; RFC-014 P09/P12 alone does not establish reusable-host adoption.
 ## Delivery Order and Gates
 
 Production entry requires an explicit human iteration-3 delivery/closure decision
-and the retained P08/framework/counter P10–P12 evidence, or an explicit applicable
+and reviewed P08 freeze classification plus retained framework/counter P10–P12
+evidence, or an explicit applicable
 exception for a retained failure. The handoff records exact source/toolchain/artifact
-identities, budgets and analyzer unknowns. P08 PASS alone does not activate this
+identities, budgets and counter/analyzer unknowns. Full P08 PASS is not required
+for entry; the freeze alone does not activate this
 iteration. Transferred analyzer P09–P12 results are delivery/adoption gates here,
 not entry prerequisites; their absence alone requires no entry exception.
 Normal architecture, Specification and ready-plan gates remain before implementation.
@@ -108,7 +122,7 @@ The maintainer's 2026-11-08 instruction is recorded in
 This clarifies execution of approved revision 9 within I4-03/04 and existing
 acceptance criteria; it adds no scope or architecture approval.
 
-Use the completed P08 implementation and qualified evidence as the concrete
+Use the frozen, incomplete P08 implementation and qualified evidence as the concrete
 baseline. Inventory CounterHostOwner, CounterPipelineOwner, profile/scoped storage
 and the existing shared host machinery; classify framework assembly, application
 behavior and test instrumentation before extraction. After entry and contract
@@ -135,8 +149,10 @@ For I4-AC-001/003/004/005/008, the migration receipt must include:
   retiring duplicated fixture orchestration. Counter evidence does not satisfy
   analyzer fit or I4-AC-012 sustained-workload certification.
 
-P08 completion and iteration-3 handoff remain prerequisites as stated above;
-reuse does not declare them passed or expand their scope. RFC-013 stays draft.
+Reviewed freeze classification and the iteration-3 handoff replace the full-P08
+completion prerequisite. Shared safety blockers remain binding; transferred
+certification must pass on the supported counter host before dependent adoption.
+Reuse does not declare P08 passed or expand its scope. RFC-013 stays draft.
 
 For I4-10, follow RFC-016 M0–M6: inventory the adopted baseline, resolve and
 review Q1–Q5, obtain architecture/contract approvals, derive a ready plan, migrate
@@ -314,6 +330,7 @@ history. The transfer is approved under iteration-3 revision 4.
 | I4-AC-010 | Fixed-buffer assessment inventories tuple candidates and records migrate/retain/defer recommendations with ownership, borrowing and lifetime rationale; distinguishes semantic tuples, ABI storage and pinned/asynchronous buffers | macOS Dynamic/Static, Raspberry Pi 1 ARMv6 and nRF52840 Embedded feasibility on identified toolchains | [FW-042](../future-work/fw-042-inline-array-and-span-storage-assessment.md): layout/stride/alignment, backing and temporary/copy costs, zero-heap/stack/RAM/flash implications, lifetime/exclusivity negative controls and positive twins, stable-address constraints; reproducible evidence or explicit gaps, affected contracts and adoption gates; no replacement or compiler upgrade implied |
 | I4-AC-011 | RFC-016 Q1–Q5 have reviewed resolutions; required decisions and Spec amendments are explicitly approved; counter and analyzer use the supported authoring surface without handwritten observation SPI, with complete migration/conformance dispositions | macOS Dynamic/Static, Raspberry Pi 1 ARMv6 Dynamic and nRF52840 Embedded Static | OA-01–07 and M0–M6 evidence: generated-source/diagnostic fixtures, service/fact and actual owned-dispatcher integration, ownership/refusal/reporting equivalence, resource comparisons and migration guide; unresolved approval or unimplemented migration remains unmet unless explicitly excepted |
 | I4-AC-012 (transferred IT-AC-007–010) | Final reusable-host analyzer has complete cost accounting, safe bounded actual compositions and meets the unchanged sustained acquisition/presentation requirements; resolve transferred storage/transfer unknowns before adoption | All four configurations; connected Pi and nRF supported artifacts for target claims | P11 exact linked artifacts, complete live-storage/main/IRQ stack, ABI/zero-heap/RAM/flash proof and phase measurements; at least 30 continuous seconds at 80 events/s and four-FPS target cadence, no loss/reordering/duplicates/stale facts/capacity rejection, original SPEC-001 latency/coalescing/frame/state checks; [full transfer map](iteration-003-review/analyzer-delivery-transfer.md#acceptance-transfer-map) |
+| I4-AC-013 (counter portions of IT-AC-007/008) | Frozen P08 composition-specific residuals are mapped to retained/replacement evidence; supported reusable counter host has complete required safety, cold/allocation, stack/IRQ, ABI and resource certification before adoption and dependent analyzer adoption | All four governed configurations; applicable provider/target evidence and supported/recording compositions | [Freeze allocation and classification](iteration-003-review/p08-freeze-and-certification-transfer.md); exact input/artifact and reuse/refresh/unmet ledger, early target feasibility, independent final conformance review, unchanged budgets; no implied historical P08 PASS |
 
 The matrix is macOS Dynamic, macOS Static, Raspberry Pi 1
 `armv6-unknown-linux-gnueabihf` Dynamic with framebuffer/PiScreen, and
@@ -324,7 +341,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 ## Dependencies and Open Questions
 
-- Iteration-3 revision 6 and iteration-4 revision 9 are approved. Feature and
+- Iteration-3 revision 7 and iteration-4 revision 10 are approved. Feature and
   implementation approvals remain separate.
 - Production migration uses the entry gates above: retained framework/counter
   evidence and human handoff/closure, or a specific retained-gate exception.
@@ -350,6 +367,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
+| 10 | 2026-11-08 | Freeze P08 UNMET; transfer counter composition certification and dependent adoption; preserve shared safety blockers and revise entry gates | [Explicit approval and allocation](iteration-003-review/p08-freeze-and-certification-transfer.md) |
 | 9 | 2026-11-08 | Transfer analyzer P09–P12 to iteration 4; retain P08/framework/counter validation and revise entry gates without waiving acceptance | [Explicit approval and transfer map](iteration-003-review/analyzer-delivery-transfer.md) |
 | 1 | 2026-10-09 | Transfer backend/package/external-host delivery after iteration-3 memory and efficiency work | [Explicit sequencing approval](iteration-003-review/efficiency-sequencing-approval.md) |
 | 2 | 2026-10-11 | Add I4-05 / I4-AC-006 compiler assessment; upgrade adoption remains separately gated | Eugene: “Please add this as a task to the next iteration.” In context, “this” is evaluation of the cost and impact of bumping Swift; [request record](../future-work/fw-036-swift-compiler-upgrade-assessment.md#disposition) |
@@ -372,7 +390,7 @@ it does not advance the iteration status or authorize a candidate contract.
 
 ## Closure and Follow-up
 
-At closure, disposition I4-AC-001–012 and transferred IT-AC-004–010 as met, unmet or explicitly excepted with
+At closure, disposition I4-AC-001–013 and transferred IT-AC-004–010 as met, unmet or explicitly excepted with
 current evidence. Preserve remaining work and triggers, and obtain a human
 closure decision. Do not infer delivery from transferred scope or passed studies.
 

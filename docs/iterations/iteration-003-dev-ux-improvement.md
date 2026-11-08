@@ -2,8 +2,8 @@
 id: ITERATION-003
 title: Runtime Memory and Efficiency
 status: active
-revision: 6
-approved_revision: 6
+revision: 7
+approved_revision: 7
 created: 2026-10-04
 updated: 2026-11-08
 features:
@@ -15,11 +15,23 @@ related_future_work:
   - FW-032
   - FW-035
   - FW-038
-approval: "Revision 6: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
+approval: "Revision 7: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 6: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
 closure: null
 ---
 
 # ITERATION-003: Runtime Memory and Efficiency
+
+## Approved P08 freeze — 2026-11-08
+
+Revision 7 applies the [P08 freeze and certification transfer](iteration-003-review/p08-freeze-and-certification-transfer.md).
+P08 is FROZEN / UNMET, not PASS. Iteration 3 retains shared safety blockers,
+bounded freeze/handoff reconciliation and applicable framework/counter validation.
+Composition-specific counter certification and dependent adoption move to I4-03/04/07
+and I4-AC-013. Full P08 PASS is no longer an iteration-4 entry gate; reviewed
+classification, human handoff/closure and normal contract gates remain required.
+Earlier complete-P08/whole-counter-fit prerequisites below are superseded by this
+allocation; no criterion, resource limit or safety requirement is waived.
+
 
 ## Approved delivery allocation — 2026-11-08
 
@@ -97,8 +109,9 @@ changing revision 5's delivery criteria, limits or required validation.
 
 Establish a safe, measured runtime-derived framework and finite counter across
 macOS Dynamic, macOS Static, Raspberry Pi 1 Dynamic and nRF52840 Embedded Static.
-Complete P08 and framework/counter P10–P12 with full applicable safety, resource,
-functional and adoption evidence. Remove obsolete counter/framework graph inputs
+Freeze P08 without PASS; complete retained framework/counter P10–P12 safety,
+functional, accounting and handoff work. Transfer composition-specific counter
+certification and dependent adoption to iteration 4. Remove obsolete counter/framework graph inputs
 only where their adoption gates pass; preserve analyzer baseline dependencies.
 
 Hand off the analyzer-specific migration, runtime graph removal, resource and
@@ -196,8 +209,8 @@ revision increment is needed for this work-order/evidence-strategy update.
    routine per-helper permission. Retain required independent package review.
 5. **Run complete acceptance at the existing package/iteration boundaries.**
    Representative checks are development feedback, never replacements for
-   mandated owner-specific controls. Preserve P08's complete exit evidence before
-   framework/counter P10 and later iteration-4 P09; preserve P10's `scripts/test.sh all-hardware-free`, P11's required connected/target
+   mandated owner-specific controls. Require the reviewed P08 freeze classification before
+   dependent handoff; preserve P10's `scripts/test.sh all-hardware-free`, P11's required connected/target
    evidence and P12 adoption/removal gates. Preserve positive twins, classified
    negative causes, required compiler passes, current-source coverage, strict
    cold/zero-heap proof and per-application resource limits. Format maintained
@@ -362,8 +375,9 @@ parallel workers are excluded. This execution guidance leaves revision 5's
 scope, criteria and bounded activity allowances unchanged.
 
 Transferred IT-AC-001–003 retain their disposition above. IT-AC-004–010 below
-retain their complete acceptance wording. Their framework/counter portions are
-iteration-3 exits; analyzer portions are mandatory iteration-4 exits under the
+retain their complete acceptance wording. Their retained shared/framework/counter portions are iteration-3 exits; counter
+composition certification follows the P08 freeze allocation and analyzer portions
+remain mandatory iteration-4 exits under the
 [transfer map](iteration-003-review/analyzer-delivery-transfer.md#acceptance-transfer-map).
 
 | ID | Observable result | Required configurations | Evidence / governing contract |
@@ -439,6 +453,7 @@ existing task; preserve the current rules, acceptance and delivery sequence.
 
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
+| 7 | 2026-11-08 | Freeze P08 UNMET; transfer counter composition certification and dependent adoption; preserve shared safety blockers and revise entry gates | [Explicit approval and allocation](iteration-003-review/p08-freeze-and-certification-transfer.md) |
 | 6 | 2026-11-08 | Transfer analyzer P09–P12 to iteration 4; retain P08/framework/counter validation and revise entry gates without waiving acceptance | [Explicit approval and transfer map](iteration-003-review/analyzer-delivery-transfer.md) |
 | 1 | 2026-10-04 | Initial Dev UX candidates | Discussion only; preserved in commit `232f0041` |
 | 2 | 2026-10-05 | Focused packages, reusable backend and simpler setup with shared consumer/matrix | [Scope review and approval](iteration-003-review/scope-review-and-approval.md) |
@@ -461,7 +476,8 @@ At closure, report IT-AC-001–003 as transferred, IT-AC-005's split explicitly,
 and IT-AC-004–010 as met, unmet or individually excepted with evidence. Obtain
 human closure; feature architecture, contract and implemented transitions remain
 separate. Iteration-4 production entry requires the retained framework/counter gates and
-human handoff/closure decision, or an applicable exception for retained failures.
+human handoff/closure and reviewed freeze classification, or an applicable
+exception for retained failures; full P08 PASS is not required.
 Transferred analyzer memory/performance, derivation and compatibility results are
 iteration-4 delivery obligations, not entry gates. Report these as transferred,
 unmet at iteration-3 closure; this is not full product or Spec conformance.

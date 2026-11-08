@@ -1,5 +1,19 @@
 # Iteration 3 activity plan
 
+## Current P08 freeze disposition — 2026-11-08
+
+The [approved freeze](p08-freeze-and-certification-transfer.md) governs current
+execution: P08 FROZEN / UNMET, no old-composition certification campaign solely
+for a PASS. Iteration 3 retains shared safety blockers, bounded classification/
+handoff review and applicable P10/P11/P12 work; iteration 4 I4-03/04/07 and
+I4-AC-013 own composition-specific certification and dependent counter adoption.
+Full P08/SO-09 PASS is no longer an extraction entry prerequisite. Reviewed
+classification, human iteration handoff/closure and contract gates remain.
+Historical complete-exit dependencies below are superseded only in scheduling;
+all underlying criteria and failures remain. Unknown mixed safety/cost predicates
+block dependent use until classified. No implementation allowance is reset.
+
+
 ## Approved delivery allocation — 2026-11-08
 
 The [approved analyzer transfer](analyzer-delivery-transfer.md) supersedes earlier

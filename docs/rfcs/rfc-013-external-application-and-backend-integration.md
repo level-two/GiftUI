@@ -141,9 +141,14 @@ Use these mechanisms and their qualified evidence as the extraction baseline;
 do not restart host implementation from an empty design or publish the fixture
 unchanged as the supported host.
 
-1. Finish the existing P08 and framework/counter iteration-3 obligations. At the
-   handoff, pin source, compiler/SDK, flags, profiles, artifacts and criterion
-   results; preserve failures and limits. P08 is not assumed complete by this RFC.
+1. Use the [approved P08 freeze](../iterations/iteration-003-review/p08-freeze-and-certification-transfer.md):
+   P08 stays FROZEN / UNMET. Complete bounded classification and retained shared
+   validation, then obtain the iteration-3 handoff/closure decision. Pin source,
+   compiler/SDK, flags, profiles, artifacts and criterion results with failures and
+   limits. Full old-composition certification is not an extraction entry gate;
+   shared safety defects or required unresolved safety premises still block the
+   affected use. Complete transferred certification on the supported counter host
+   under I4-AC-013 before its adoption and dependent analyzer adoption.
 2. Inventory the counter's assembly responsibilities before extraction: classify
    each as reusable framework/host responsibility, application behavior or test
    instrumentation. Preserve separate component ownership. Views, model/state,

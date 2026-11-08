@@ -7,6 +7,8 @@
 # docs/engineering/DOCUMENTATION_RULES.md.
 schema_version: 1
 iterations:
+  # Current 2026-11-08: ITERATION-003 r7 / ITERATION-004 r10; P08 FROZEN/UNMET, no full-P08 entry gate.
+  # docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md: shared safety retained; composition certification I4-AC-013.
   # Counter-first I4-03/04 execution (2026-11-08): reuse qualified P08 mechanisms/evidence, external counter then analyzer.
   # RFC-013 counter-first-migration-and-p08-reuse--2026-11-08; scope revisions and lifecycle statuses unchanged.
   # Approved 2026-11-08: ITERATION-003 r6 retains P08/framework/counter P10–P12; ITERATION-004 r9 owns analyzer P09–P12.

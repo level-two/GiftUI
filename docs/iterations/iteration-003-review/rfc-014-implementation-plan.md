@@ -1,5 +1,19 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+## Current P08 freeze disposition — 2026-11-08
+
+The [approved freeze](p08-freeze-and-certification-transfer.md) governs current
+execution: P08 FROZEN / UNMET, no old-composition certification campaign solely
+for a PASS. Iteration 3 retains shared safety blockers, bounded classification/
+handoff review and applicable P10/P11/P12 work; iteration 4 I4-03/04/07 and
+I4-AC-013 own composition-specific certification and dependent counter adoption.
+Full P08/SO-09 PASS is no longer an extraction entry prerequisite. Reviewed
+classification, human iteration handoff/closure and contract gates remain.
+Historical complete-exit dependencies below are superseded only in scheduling;
+all underlying criteria and failures remain. Unknown mixed safety/cost predicates
+block dependent use until classified. No implementation allowance is reset.
+
+
 ## Approved cross-iteration allocation — 2026-11-08
 
 The [approved transfer](analyzer-delivery-transfer.md) governs package scheduling:
@@ -1108,7 +1122,7 @@ The old 2/2 guard and all closed investigation budgets remain closed. B03 is
 | **P08-B01**; approved Option B documents | Reconcile the actual eighteen-role factory/owner trace with direct construction inputs, activation wiring and operation-only calls. Identify every mandatory borrowed/retained input, bound construction callback, backing and derived configuration origin. Distinguish the finite counter's actual executor gate from its aggregate; shared Mutation vocabulary from live target access; use-case start and normalized submit operational arguments from construction inputs. Audit admission→canonical wake, binding identity, scheduler, deadlines, phase and backing-last teardown separately. | Commit the inventory and exact proposed masks/projection changes for separate Strong review before source edits. Do not declare current masks valid. A required upward construction edge, hidden origin, ambiguous lifetime or new ownership choice stops for upstream resolution. No compiler invocation. |
 | **P08-B02**; B01 reviewed | Replace only the two failed whole-coordinator projection helper shapes and directly corresponding activation call sites using the existing approved controlPointer projections. Reconcile direct construction masks and directly corresponding graph controls with B01's actual inputs; eliminate physical-placement-only edges, retain every required configuration/backing origin. Preserve initializer root/model association, cache lifetime, actual application/endpoint checks and all operational wake proofs. | Commit the bounded source/test diff with its applicability and evidence gaps. No public protocol redesign, automatic Option A forwarding, new wake accumulator, retained requester adapter, unsafe conformance, allocator/capacity/compiler change or unrelated refactor. No feasibility claim before B03. |
 | **P08-B03**; B02 complete, reviewed inputs available | Format maintained Swift, then invoke the existing native counter gate **once**, using the verified pinned Swift 6.4 runtime dependency receipt below. Capture exact source/compiler/module identities, command, assertions/controls, diagnostics and outcome. | **No automatic repair or rerun**, whether pass or fail. Freeze evidence, commit the outcome and stop for separate Strong result review. Success establishes only the bounded native slice; failure preserves the exact blocker for maintainer disposition. Never reset the old 2/2 guard or enlarge the one-attempt allowance. |
-| **Remaining P08**; B03 passes and independent result review accepts | Continue existing registered macOS Dynamic/Static, Pi ARMv6 and nRF Embedded application routes; actual counter action/text/stroke and host lifetime/activation/failure coverage; early linked Pi/nRF images with RAM/stack/allocator/ABI evidence. | Record source/artifact-specific results and limitations; separate Strong P08 exit review must pass before P09. A native graph pass or cross-build is not complete host/application/hardware conformance. |
+| **Remaining P08**; B03 passes and independent result review accepts | Continue existing registered macOS Dynamic/Static, Pi ARMv6 and nRF Embedded application routes; actual counter action/text/stroke and host lifetime/activation/failure coverage; early linked Pi/nRF images with RAM/stack/allocator/ABI evidence. | Record source/artifact-specific results and limitations; reviewed freeze/handoff classification and iteration-4 entry gates precede P09; full P08 exit remains unmet. A native graph pass or cross-build is not complete host/application/hardware conformance. |
 | **P09→P10→P11→P12**; preceding existing gates | Analyzer migration → integrated functional conformance → complete resource/workload evidence → production cutover/closeout, within each unchanged package footprint below. | Execute sequentially as separately assigned bounded packages, report and commit each package boundary, retain existing repair/escalation and connected-work approvals. Request implemented transitions separately after conformance; no auto-run during this activity. |
 
 The predeclared single native invocation, for the later assigned B03 only, is:
@@ -1147,7 +1161,7 @@ or graph implementation has been performed by this documentation update.
 | **P11 — Complete resource and workload evidence**; corresponding application branch of P10 | Actual linked artifacts, map/stack/allocator inspection and existing workload runners; implementation repairs only within the package owning the failure. | Complete live-storage/stack/IRQ ledger, ABI and linked Static zero heap, matched Dynamic costs, preserved three banks and target limits. Record measured 30s acquisition/frame results where authorized. Hardware-free proof and connected evidence are separate; unmet timing/hardware criteria block full adoption, not authorize transport redesign. |
 | **P12 — Production cutover and closeout**; corresponding application branch of P10/P11 migration gates pass or explicit applicable maintainer disposition | Remove superseded expanded topology/closure production build inputs; preserve independent baseline controls and resource generation. Update nine conformance reports, author/build guidance and task dispositions. | Production uses only runtime derivation; final build-dependency scan plus focused post-removal checks. Every criterion cites final artifact/evidence or explicit exception. Request implemented transition separately. If adoption is blocked, record the exact residual gate, keep the baseline route and leave cutover incomplete; no automatic follow-on phase. |
 
-Execution is sequential within each branch: iteration 3 P08 → framework/counter P10 → P11 → P12; iteration 4 P09 → analyzer P10 → P11 → P12 after its entry and contract gates. P05 and P06 have independent
+Execution is sequential within each branch: iteration 3 frozen P08 classification → retained framework/counter P10 → retained P11 → limited P12/handoff; iteration 4 P09 → analyzer P10 → P11 → P12 after its entry and contract gates. P05 and P06 have independent
 owner surfaces after their dependencies, but this plan does not authorize new
 parallel agents. All shared interfaces are fixed by the approved Specs.
 

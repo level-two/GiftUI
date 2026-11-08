@@ -19,6 +19,17 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
+## P08 freeze allocation — 2026-11-08
+
+The [approved P08 freeze](../iterations/iteration-003-review/p08-freeze-and-certification-transfer.md)
+keeps P08/R07/T8.1 and incomplete SO-09 UNMET. Shared safety blockers and retained
+validation stay binding; composition-specific counter certification and dependent
+adoption move to ITERATION-004 I4-03/04/07 / I4-AC-013. Earlier full-P08 entry
+prerequisites are replaced by reviewed freeze classification and human handoff,
+not by a conformance PASS. Every original criterion still needs retained or
+replacement evidence; this does not mark any owner task or Spec complete.
+
+
 Current Native label coverage — **independently qualified426/profile PASS**.
 The [combined focused result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-current-native-combined-coverage-result.md)
 closes384missing controls per profile with retained runtime evidence. Raw receipts

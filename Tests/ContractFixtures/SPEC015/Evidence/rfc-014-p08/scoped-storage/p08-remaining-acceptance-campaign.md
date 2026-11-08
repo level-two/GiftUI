@@ -1,5 +1,17 @@
 # Remaining P08 acceptance campaign — 2026-10-16
 
+## Governing freeze — 2026-11-08
+
+P08 is **FROZEN / UNMET**, not PASS, under the [approved freeze](../../../../../../docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md).
+Stop old-composition certification work solely aimed at P08 exit. Preserve all
+receipts, failures and conditional premises below. Shared safety defects and
+unclassified safety predicates still block dependent use; bounded classification
+and handoff remain required. Composition-specific certification and dependent
+counter adoption belong to iteration-4 I4-AC-013. Earlier next-step recipes and
+continuation directions below are historical, not authority to resume a frozen
+campaign. No prior allowance is reset and no Spec/task completion is inferred.
+
+
 This is an evidence execution checklist for the existing finite counter, not a
 new design/source allowance. The [new nRF image review](p08-current-firmware-final-fit-independent-review.md)
 accepts its complete resource proof. Run the following work sequentially, freeze
