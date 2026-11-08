@@ -36,6 +36,8 @@ scratch="${output}/swiftpm"
 
 build=("${swift_driver}" build --disable-sandbox --package-path "${PROJECT_ROOT}" \
     --scratch-path "${scratch}" --cache-path "${PROJECT_ROOT}/.build" \
+    --skip-update \
+    --build-system native \
     --destination "${GIFTUI_PI_STATIC_DESTINATION}" \
     --configuration release --target GiftUIBackendIntegration \
     --static-swift-stdlib -Xswiftc -whole-module-optimization \

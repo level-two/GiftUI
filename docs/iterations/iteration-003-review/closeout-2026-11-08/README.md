@@ -15,8 +15,10 @@ failed 59 of 83 checks under the selected macOS Swift 6.3.3 baseline. The durabl
 exact run identity, and failure classifications; raw logs, results and
 child-report ledger are preserved in
 [`receipt.tar.gz`](p10-run-usFDdIBT/receipt.tar.gz). Focused post-run checks
-closed the stale SPEC-005 asset inventory only; they do not replace the failed
-full gate. No old-image P08 proof or
+repaired the Pi SDK-selection invocation and passed the SPEC-002 and SPEC-014
+ARMv6 profile drivers. SPEC-005 now reaches its exact package-surface check but
+still emits 22 declarations where the approved Spec requires 20. These checks
+do not replace the failed full gate. No old-image P08 proof or
 hardware campaign was restarted. P08 stays frozen. The scoped Native no-heap
 conclusion remains valid only for its reviewed Native Static image and
 predicates; it does not inherit the compiler's rejected generic allocation
@@ -26,7 +28,14 @@ promise.
 
 | Gate | Evidence and disposition | Remaining requirement |
 | --- | --- | --- |
-| P10 — current hardware-free validation | The authoritative `scripts/test.sh all-hardware-free` run `run-usFDdIBT` at revision `c7c7da31c245b7a5afb68ee64d5f57bf2cab12a7` recorded 24 passes and 59 failures in 83 serialized checks. Its raw `results.tsv` SHA-256 is `a140241b389f3cde526ee5c755659b2db12e079480c897d387e065164d4e821c`; metadata SHA-256 is `a07a8906380a9555c22303deb3b38ae7342b189c808b1e119cb03d1e6b396716`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md), [exact run identity](p10-run-usFDdIBT/run-identity.txt), and archived raw logs. | The run used a dirty worktree and outer metadata does not contain a complete dirty-source manifest, so it is failure evidence for the observed run, not a reproducible clean-tree conformance result. Focused post-run SPEC-005 identity checks passed after refreshing the asset inventory; the full gate was not rerun. P10 remains **FAILED / UNMET**; transferred analyzer/composition failures remain assigned to approved I4 destinations, and retained I3 framework/counter failures are not waived. The 74/74 historical run is not current evidence. |
+| P10 — current hardware-free validation | The `scripts/test.sh all-hardware-free` run `run-usFDdIBT` at revision `c7c7da31c245b7a5afb68ee64d5f57bf2cab12a7` recorded 24 passes and 59 failures in 83 serialized checks. Its raw `results.tsv` SHA-256 is `a140241b389f3cde526ee5c755659b2db12e079480c897d387e065164d4e821c`; metadata SHA-256 is `a07a8906380a9555c22303deb3b38ae7342b189c808b1e119cb03d1e6b396716`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md), [exact run identity](p10-run-usFDdIBT/run-identity.txt), and archived raw logs. | The run used a dirty worktree and outer metadata does not contain a complete dirty-source manifest, so it is failure evidence for the observed run, not a reproducible clean-tree conformance result. Post-run SPEC-002 and SPEC-014 ARMv6 profile drivers pass after the Pi SDK-selection fix. SPEC-005 still fails the exact package-surface check (22 declarations vs 20 specified). These targeted results do not change the archived aggregate; the full gate was not rerun. P10 remains **FAILED / UNMET**; transferred analyzer/composition failures remain assigned to approved I4 destinations, and retained I3 framework/counter failures are not waived. The 74/74 historical run is not current evidence. |
+
+Compact, hash-bound post-run SPEC-002 Pi, SPEC-014 Pi, and SPEC-005 macOS
+Dynamic receipts are retained in
+[`post-run-targeted-receipts.tar.gz`](post-run-targeted-receipts.tar.gz),
+SHA-256 `36d58dc61057dd2d2e70d05e2faa8f33483af927528f398ac07c8ff729f8bd0b`;
+the full binary-bearing reports remain in `.build` and are identified by their
+run IDs and report hashes in the P10 receipt.
 | P10 — criterion dispositions | [Criterion index](criterion-dispositions.csv) is generated from the nine current owner-plan matrices and contains the 180 P10 owner rows plus nine scoped-ownership rows. The 180 P10 rows are SPEC-001 49, SPEC-002 10, SPEC-006 21, SPEC-007 11, SPEC-010 16, SPEC-011 15, SPEC-012 17, SPEC-013 19, and SPEC-015 22. | All 189 current rows remain explicitly dispositioned: 180 P10 owner rows stay UNMET because the integrated gate failed; nine SO rows retain the separately approved P08 classification and do not imply P10 conformance. The additional SO rows are IN 3, RP 3, and HC 3. Historical owner-plan evidence/status is preserved and is not promoted by aggregate results. |
 | P11 — physical/resource accounting | Reuse only the exact scopes below. Four P08 collection receipts have 849 declared input matches and 3,404 declared artifact/hash-size matches in the retained audit; this is not proof of full semantics or P11 conformance. | Full criterion-linked joined storage/stack/IRQ/allocation/ABI accounting and applicable target evidence remain incomplete. No all-route fit or connected-performance pass follows from the selected results. |
 | P12 — adoption/removal | **No removal and no cutover.** Preserve generated baselines and independent controls while adoption gates are unmet. SPEC-013 and SPEC-015 conformance reports remain `collecting`. | Complete P10/P11 evidence and criterion-linked conformance before any removal/cutover; document exact retained sources/artifacts and justified no-removal. No deletion was made for this closeout. |

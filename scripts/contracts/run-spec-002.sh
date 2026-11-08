@@ -529,22 +529,19 @@ run_raspberry_pi() {
         mkdir -p "${build_dir}"
     fi
     printf 'build_directory=%s\n' "${build_dir}" >>"${metadata_path}"
-    local -a foundation_selection=(--product GiftUI)
-    if [[ "${compiler_baseline}" == rfc-014 ]]; then
-        # GiftUI is an automatic library product: --product otherwise expands
-        # to the default application build instead of this Foundation gate.
-        foundation_selection=(--target GiftUI)
-    fi
+    # GiftUI is an automatic library product. Select its target directly so
+    # the historical and RFC-014 checks both build the same Foundation scope.
+    local -a foundation_selection=(--target GiftUI)
     local -a command=(
         "${compiler}" build --package-path "${PROJECT_ROOT}"
         --scratch-path "${build_dir}/swiftpm"
+        --cache-path "${PROJECT_ROOT}/.build" --skip-update
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
-        --configuration release "${foundation_selection[@]}" --static-swift-stdlib
+        --configuration release --build-system native
+        "${foundation_selection[@]}" --static-swift-stdlib
         -Xswiftc -whole-module-optimization
     )
     if [[ "${compiler_baseline}" == rfc-014 ]]; then
-        # Preserve the destination-based cross-build layout on Swift 6.4.
-        command+=(--build-system native)
         for flag in "${migration_flags[@]}"; do command+=(-Xswiftc "${flag}"); done
     fi
     sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
