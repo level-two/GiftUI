@@ -1,159 +1,149 @@
 import GiftUI
+import GiftUIObservableState
 import Testing
 
 @testable import GiftUIRuntimeStatic
 
-private struct StaticStorageModel: _GiftUIObservableReference {
-    let identity: UInt8
-    var reportDuringAttach = false
+private enum StaticStorageSchema: _GiftUIModelSchema {
+    struct Seed {
+        let identity: UInt8
+        var reportDuringAttach = false
+    }
+}
 
-    mutating func _giftUIAttachChangeSink(
+private struct StaticStorageModel: ObservableStateModel, ObservableModelMutation {
+    typealias Schema = StaticStorageSchema
+    typealias Mutation = UInt8
+    typealias Prepared = UInt8
+
+    var identity: UInt8
+    var reportDuringAttach: Bool
+    private(set) var attachment: _GiftUIObservationAttachment?
+
+    static func materialize(_ seed: Schema.Seed) -> Self {
+        Self(identity: seed.identity, reportDuringAttach: seed.reportDuringAttach)
+    }
+
+    var isEmptyReplacement: Bool { false }
+
+    mutating func attach(
         _ sink: consuming _GiftUIObservableChangeSink
     ) -> _GiftUIObservationAttachment? {
-        var offered = consume sink
-        let attachment = offered.attachment
-        if reportDuringAttach { _ = offered.reportChange() }
+        var sink = consume sink
+        let attachment = sink.attachment
+        if reportDuringAttach { _ = sink.reportChange() }
+        self.attachment = attachment
         return attachment
     }
 
-    mutating func _giftUIDetachChangeSink(
-        _ attachment: _GiftUIObservationAttachment
-    ) {}
+    mutating func detach(_ attachment: _GiftUIObservationAttachment) -> Bool {
+        guard self.attachment == attachment else { return false }
+        self.attachment = nil
+        return true
+    }
+
+    mutating func reportChange() -> _GiftUIObservableChangeReportOutcome {
+        .dirtied
+    }
+
+    borrowing func preflight(_ mutation: Mutation) throws(ObservableStateError) -> Prepared {
+        mutation
+    }
+
+    mutating func commit(_ prepared: Prepared) -> Bool {
+        identity = prepared
+        return true
+    }
 }
 
-@Test func staticModelStorageMaterializesAttachesThenEvaluatesBoundBody() {
-    var record = StaticObservableRegistrationRecord()
-    var storage = StaticObservableModelStorage<StaticStorageModel>()
-    #expect(record.beginAttachment(generation: 0) == nil)
-
-    let result = storage.withMaterializedBoundState(
-        State(wrappedValue: StaticStorageModel(identity: 4)),
-        replacementRoute: { _ in },
-        makeSink: {
-            record.makeSink(reportRoute: { reported in
-                record.acceptReport(reported)
-            })
-        },
-        acceptAttachment: { record.acceptAttachmentReturn($0) },
-        body: { state in
-            #expect(record.isActive)
-            return state.wrappedValue.identity
-        }
-    )
-    guard case .bound(.materialized, let identity) = result else {
-        Issue.record("static model did not complete materialized binding")
-        return
-    }
-    #expect(identity == 4)
-    #expect(record.isActive)
-    #expect(storage.withModel { $0.identity } == 4)
+private enum StaticStorageReadDomain: _GiftUIReadDomain {
+    typealias Slot = ObservableModelReadSlot<StaticStorageModel>
 }
 
-@Test func staticModelStorageSuppressesBodyAndCleansPoisonedAttachment() {
-    var record = StaticObservableRegistrationRecord()
-    var storage = StaticObservableModelStorage<StaticStorageModel>()
-    #expect(record.beginAttachment(generation: 1) == nil)
-    var bodyWasEvaluated = false
-
-    let result = storage.withMaterializedBoundState(
-        State(
-            wrappedValue: StaticStorageModel(
-                identity: 5,
-                reportDuringAttach: true
-            )
-        ),
-        replacementRoute: { _ in },
-        makeSink: {
-            record.makeSink(reportRoute: { reported in
-                record.acceptReport(reported)
-            })
-        },
-        acceptAttachment: { record.acceptAttachmentReturn($0) },
-        body: { _ in
-            bodyWasEvaluated = true
-        }
-    )
-    guard case .failure(let failure) = result else {
-        Issue.record("poisoned static attachment unexpectedly evaluated")
-        return
-    }
-    #expect(failure == .staleAttachment)
-    #expect(!bodyWasEvaluated)
-    #expect(!record.isActive)
-    let isOccupied = storage.isOccupied
-    #expect(!isOccupied)
+private func modelIdentity(
+    at index: Int,
+    slots: Span<StaticStorageReadDomain.Slot>
+) -> UInt8? {
+    guard index >= 0, index < slots.count else { return nil }
+    return slots[index].model.pointee?.identity
 }
 
-@Test func staticModelStorageBindsAttemptLocallyAndPreservesFirstInitializer() {
-    var storage = StaticObservableModelStorage<StaticStorageModel>()
-    var routedReplacement: StaticStorageModel?
-
-    let first = storage.withBoundState(
-        State(wrappedValue: StaticStorageModel(identity: 1)),
-        replacementRoute: { routedReplacement = $0 },
-        body: { state in
-            state.wrappedValue.identity
-        }
-    )
-    guard case .bound(let firstOperation, let firstIdentity) = first else {
-        Issue.record("first static binding failed")
-        return
-    }
-    #expect(firstOperation == .materialized)
-    #expect(firstIdentity == 1)
-    let isOccupied = storage.isOccupied
-    #expect(isOccupied)
-
-    let repeated = storage.withBoundState(
-        State(wrappedValue: StaticStorageModel(identity: 2)),
-        replacementRoute: { routedReplacement = $0 },
-        body: { state in
-            let preservedIdentity = state.wrappedValue.identity
-            state.wrappedValue = StaticStorageModel(identity: 3)
-            return preservedIdentity
-        }
-    )
-    guard case .bound(let repeatedOperation, let repeatedIdentity) = repeated else {
-        Issue.record("repeated static binding failed")
-        return
-    }
-    #expect(repeatedOperation == .preserved)
-    #expect(repeatedIdentity == 1)
-    #expect(routedReplacement?.identity == 3)
-    #expect(storage.withModel { $0.identity } == 1)
+private func nextOwner() throws -> ObservableModelOwnerIdentity {
+    var namespace = ObservableModelOwnerNamespace()
+    return try namespace.issue()
 }
 
-@Test func staticModelStorageOwnsOnlyInlineTypedOptionalStorage() {
+@Test func staticModelStorageMaterializesAndPublishesTypedSeed() throws {
+    var storage = StaticObservableRootAdapter<StaticStorageModel, UInt32>(
+        identity: try nextOwner(), schema: 0x51, needsCapture: false
+    )!
+
+    try storage.withLifetime { (scope, root) throws(ObservableStateError) in
+        #expect(root.beginCandidate() == .success(.candidateStarted))
+        var state = State<StaticStorageSchema>(seed: .init(identity: 4))
+        #expect(root.encounter(identity: 9, ordinal: 0, state: &state) == .success(.materialized))
+        #expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
+
+        let identity: UInt8?
+        do throws(_GiftUIAccessFailure) {
+            identity = try scope.withRead(StaticStorageReadDomain.self) { read in
+                modelIdentity(at: 0, slots: read.slots)
+            }
+        } catch {
+            throw ObservableStateError(accessFailure: error)
+        }
+        #expect(identity == 4)
+        #expect(root.generation(identity: 9, ordinal: 0) == 0)
+    }
+}
+
+@Test func staticModelStorageRejectsMutationReportedDuringAttachment() throws {
+    var storage = StaticObservableRootAdapter<StaticStorageModel, UInt32>(
+        identity: try nextOwner(), schema: 0x51, needsCapture: false
+    )!
+
+    try storage.withLifetime { (_, root) throws(ObservableStateError) in
+        #expect(root.beginCandidate() == .success(.candidateStarted))
+        var state = State<StaticStorageSchema>(
+            seed: .init(identity: 5, reportDuringAttach: true)
+        )
+        #expect(
+            root.encounter(identity: 9, ordinal: 0, state: &state)
+                == .failure(.staleAttachment)
+        )
+        #expect(root.finishCandidate(.discard) == .success(.candidateDiscarded))
+        #expect(root.modelKey(identity: 9, ordinal: 0) == nil)
+    }
+}
+
+@Test func staticModelStorageStagesReplacementBeforeChangingTheLiveKey() throws {
+    var storage = StaticObservableModelStorage<StaticStorageModel, StaticStorageSchema>(
+        identity: try nextOwner(), schema: 0x51, needsCapture: false
+    )!
+
+    try storage.withLifetime { (scope) throws(ObservableStateError) in
+        var ticket = try scope.materialize(StaticStorageModel.materialize(.init(identity: 1)))
+        try scope.register(ticket)
+        let originalKey = ticket.key
+        let reservation = try scope.stageReplacement(
+            transferring: ticket,
+            seed: .init(identity: 2),
+            registrationAvailable: true,
+            stagingAvailable: true
+        )
+        #expect(ticket.key == originalKey)
+        var replacement = try scope.commitReplacement(reservation, transferring: &ticket)
+        #expect(replacement.key != originalKey)
+        #expect(replacement.key._giftUISlot != originalKey._giftUISlot)
+        try scope.release(&replacement)
+    }
+}
+
+@Test func staticModelStorageOwnsOnlyInlineTypedOptionalStorage() throws {
+    let owner = try nextOwner()
+    let storage = StaticObservableModelStorage<StaticStorageModel, StaticStorageSchema>(
+        identity: owner, schema: 0x51, needsCapture: false
+    )!
     #expect(
-        MemoryLayout<StaticObservableModelStorage<StaticStorageModel>>.stride
-            == MemoryLayout<(StaticStorageModel?, StaticStorageModel?)>.stride
-    )
-}
-
-@Test func staticModelStorageStagesReplacementApartFromTheLiveModel() {
-    var storage = StaticObservableModelStorage<StaticStorageModel>()
-    _ = storage.withBoundState(
-        State(wrappedValue: StaticStorageModel(identity: 1)),
-        replacementRoute: { _ in },
-        body: { _ in () }
-    )
-
-    let stagedFirst = storage.stageReplacement(StaticStorageModel(identity: 2))
-    #expect(stagedFirst)
-    let hasFirstCandidate = storage.hasStagedReplacement
-    #expect(hasFirstCandidate)
-    let stagedSecond = storage.stageReplacement(StaticStorageModel(identity: 3))
-    #expect(!stagedSecond)
-    #expect(storage.withModel { $0.identity } == 1)
-    let former = storage.commitReplacement()
-    #expect(former?.identity == 1)
-    #expect(storage.withModel { $0.identity } == 2)
-    let hasCommittedCandidate = storage.hasStagedReplacement
-    #expect(!hasCommittedCandidate)
-
-    let stagedDiscard = storage.stageReplacement(StaticStorageModel(identity: 4))
-    #expect(stagedDiscard)
-    let discarded = storage.discardReplacement()
-    #expect(discarded?.identity == 4)
-    #expect(storage.withModel { $0.identity } == 2)
+        storage.storageLayout.modelBytes == MemoryLayout<InlineArray<2, StaticStorageModel?>>.size)
 }

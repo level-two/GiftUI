@@ -1,63 +1,89 @@
 import GiftUI
 import GiftUIExecution
+import GiftUIObservableState
 import Testing
 
 @testable import GiftUIRuntimeStatic
 
-private struct StaticTargetModel: _GiftUIObservableReference {
-    let identity: UInt8
+private enum StaticTargetSchema: _GiftUIModelSchema {
+    struct Seed {
+        let identity: UInt8
+    }
+}
+
+private struct StaticTargetModel: ObservableStateModel, ObservableModelMutation {
+    typealias Schema = StaticTargetSchema
+    typealias Mutation = UInt8
+    typealias Prepared = UInt8
+
+    var identity: UInt8
     private(set) var attachment: _GiftUIObservationAttachment?
 
-    mutating func _giftUIAttachChangeSink(
+    static func materialize(_ seed: Schema.Seed) -> Self {
+        Self(identity: seed.identity)
+    }
+
+    var isEmptyReplacement: Bool { false }
+
+    mutating func attach(
         _ sink: consuming _GiftUIObservableChangeSink
     ) -> _GiftUIObservationAttachment? {
         attachment = sink.attachment
         return attachment
     }
 
-    mutating func _giftUIDetachChangeSink(
+    mutating func detach(
         _ attachment: _GiftUIObservationAttachment
-    ) {
-        guard self.attachment == attachment else { return }
+    ) -> Bool {
+        guard self.attachment == attachment else { return false }
         self.attachment = nil
+        return true
+    }
+
+    mutating func reportChange() -> _GiftUIObservableChangeReportOutcome {
+        .dirtied
+    }
+
+    borrowing func preflight(_ mutation: Mutation) throws(ObservableStateError) -> Prepared {
+        mutation
+    }
+
+    mutating func commit(_ prepared: Prepared) -> Bool {
+        identity = prepared
+        return true
     }
 }
 
-@Test func copiedStaticTargetAccessPreservesTheTypedStorageIdentity() {
-    var root = StaticObservableRootAdapter<StaticTargetModel, UInt32>(
-        structuralIdentity: 0x5341_0400,
-        declarationOrdinal: 0
-    )
-    _ = root.beginCandidate()
-    _ = root.withEncounter(
-        state: State(wrappedValue: StaticTargetModel(identity: 1)),
-        replacementRoute: { _ in },
-        reportRoute: { _ in .staleAttachment },
-        body: { _ in () }
-    )
-    _ = root.finishCandidate(.publish)
+@Test func copiedStaticTargetAccessKeepsTheGenerationCheckedMutationRoute() throws {
+    var ownerNamespace = ObservableModelOwnerNamespace()
+    let owner = try ownerNamespace.issue()
+    var storage = StaticObservableRootAdapter<StaticTargetModel, UInt32>(
+        identity: owner,
+        schema: 0x0400,
+        needsCapture: false
+    )!
 
-    withUnsafeMutablePointer(to: &root) { pointer in
-        var first = StaticObservableRootTargetAccess(root: pointer)
-        var copy = first
-        var identities: [UInt8] = []
+    try storage.withLifetime { _, root in
+        #expect(root.beginCandidate() == .success(.candidateStarted))
+        var state = State<StaticTargetSchema>(seed: .init(identity: 1))
+        #expect(root.encounter(identity: 7, ordinal: 0, state: &state) == .success(.materialized))
+        #expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
 
-        #expect(first.currentGeneration() == ObservableTargetGeneration(rawValue: 0))
-        #expect(
-            first.withCurrentModel(
-                matching: ObservableTargetGeneration(rawValue: 0)
-            ) { identities.append($0.identity) }
+        let first = StaticObservableRootTargetAccess(
+            root: root, identity: 7, ordinal: 0
         )
-        #expect(
-            copy.withCurrentModel(
-                matching: ObservableTargetGeneration(rawValue: 0)
-            ) { identities.append($0.identity) }
+        var copy = StaticObservableRootTargetAccess(
+            root: root, identity: 7, ordinal: 0
         )
+        let generation = ObservableTargetGeneration(rawValue: 0)
+
+        #expect(first.currentGeneration() == generation)
+        #expect(first.mutate(matching: generation, mutation: 2) == .success(.dirtied))
+        #expect(copy.mutate(matching: generation, mutation: 3) == .success(.dirtied))
         #expect(
-            !copy.withCurrentModel(
-                matching: ObservableTargetGeneration(rawValue: 1)
-            ) { identities.append($0.identity) }
+            copy.mutate(
+                matching: ObservableTargetGeneration(rawValue: 1), mutation: 4
+            ) == .failure(.staleModel)
         )
-        #expect(identities == [1, 1])
     }
 }

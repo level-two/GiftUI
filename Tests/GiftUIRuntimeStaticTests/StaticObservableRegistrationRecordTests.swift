@@ -5,7 +5,16 @@ import Testing
 
 @testable import GiftUIRuntimeStatic
 
-private struct StaticRegistrationModel: _GiftUIObservableReference {
+private enum StaticRegistrationSchema: _GiftUIModelSchema {
+    struct Seed {
+        let identity: UInt8
+        var reportDuringAttach = false
+    }
+}
+
+private struct StaticRegistrationModel: ObservableStateModel {
+    typealias Schema = StaticRegistrationSchema
+
     let identity: UInt8
     let reportDuringAttach: Bool
     private(set) var attachment: _GiftUIObservationAttachment?
@@ -15,39 +24,132 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
         self.reportDuringAttach = reportDuringAttach
     }
 
-    mutating func _giftUIAttachChangeSink(
+    static func materialize(_ seed: Schema.Seed) -> Self {
+        Self(identity: seed.identity, reportDuringAttach: seed.reportDuringAttach)
+    }
+
+    var isEmptyReplacement: Bool { false }
+
+    mutating func attach(
         _ sink: consuming _GiftUIObservableChangeSink
     ) -> _GiftUIObservationAttachment? {
-        var offered = consume sink
-        let attachment = offered.attachment
+        var sink = consume sink
+        let attachment = sink.attachment
         if reportDuringAttach {
-            _ = offered.reportChange()
+            _ = sink.reportChange()
         }
         self.attachment = attachment
         return attachment
     }
 
-    mutating func _giftUIDetachChangeSink(
+    mutating func detach(
         _ attachment: _GiftUIObservationAttachment
-    ) {
-        guard self.attachment == attachment else { return }
+    ) -> Bool {
+        guard self.attachment == attachment else { return false }
         self.attachment = nil
+        return true
+    }
+
+    mutating func reportChange() -> _GiftUIObservableChangeReportOutcome {
+        .dirtied
+    }
+}
+
+private struct StaticRegistrationStorage {
+    private(set) var model: StaticRegistrationModel?
+    private(set) var candidate: StaticRegistrationModel?
+
+    mutating func install(_ model: StaticRegistrationModel) {
+        self.model = model
+    }
+
+    mutating func attachChangeSink(
+        _ sink: consuming _GiftUIObservableChangeSink
+    ) -> _GiftUIObservationAttachment? {
+        model?.attach(consume sink)
+    }
+
+    mutating func stageReplacement(_ model: StaticRegistrationModel) -> Bool {
+        guard candidate == nil else { return false }
+        candidate = model
+        return true
+    }
+
+    mutating func attachCandidateChangeSink(
+        _ sink: consuming _GiftUIObservableChangeSink
+    ) -> _GiftUIObservationAttachment? {
+        candidate?.attach(consume sink)
+    }
+
+    mutating func detachChangeSink(_ attachment: _GiftUIObservationAttachment) -> Bool {
+        model?.detach(attachment) ?? false
+    }
+
+    mutating func detachCandidateChangeSink(_ attachment: _GiftUIObservationAttachment) -> Bool {
+        candidate?.detach(attachment) ?? false
+    }
+
+    mutating func commitReplacement() -> StaticRegistrationModel? {
+        let former = model
+        model = candidate
+        candidate = nil
+        return former
+    }
+
+    mutating func discardReplacement() -> StaticRegistrationModel? {
+        defer { candidate = nil }
+        return candidate
+    }
+
+    borrowing func withModel<Result>(
+        _ body: (borrowing StaticRegistrationModel) -> Result
+    ) -> Result? {
+        guard let model else { return nil }
+        return body(model)
+    }
+
+    mutating func removeModel() -> StaticRegistrationModel? {
+        defer { model = nil }
+        return model
+    }
+}
+
+private func staticRegistrationReport(
+    context: UnsafeMutableRawPointer,
+    slot: UInt16,
+    generation: UInt32
+) -> UInt8 {
+    context.assumingMemoryBound(to: StaticObservableRegistrationRecord.self).pointee
+        .acceptReport(.init(slot: slot, generation: generation)).rawValue
+}
+
+private func makeStaticRegistrationSink(
+    record: inout StaticObservableRegistrationRecord
+) -> _GiftUIObservableChangeSink? {
+    withUnsafeMutablePointer(to: &record) { pointer in
+        pointer.pointee.makeSink(
+            context: UnsafeMutableRawPointer(pointer), reportRoute: staticRegistrationReport
+        )
+    }
+}
+
+private func makeStaticReplacementSink(
+    record: inout StaticObservableRegistrationRecord
+) -> _GiftUIObservableChangeSink? {
+    withUnsafeMutablePointer(to: &record) { pointer in
+        pointer.pointee.makeReplacementSink(
+            context: UnsafeMutableRawPointer(pointer), reportRoute: staticRegistrationReport
+        )
     }
 }
 
 @Test func staticRegistrationRecordCommitsAndDiscardsTypedReplacement() {
     var record = StaticObservableRegistrationRecord()
-    var storage = StaticObservableModelStorage<StaticRegistrationModel>()
-    _ = storage.withBoundState(
-        State(wrappedValue: StaticRegistrationModel(identity: 1)),
-        replacementRoute: { _ in },
-        body: { _ in () }
-    )
+    var storage = StaticRegistrationStorage()
+    storage.install(StaticRegistrationModel(identity: 1))
     #expect(record.beginAttachment(generation: 0) == nil)
     guard
-        let initialSink = record.makeSink(reportRoute: { reported in
-            record.acceptReport(reported)
-        })
+        let initialSink = makeStaticRegistrationSink(record: &record)
     else {
         Issue.record("static registration did not issue its initial sink")
         return
@@ -66,10 +168,7 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
     )
     #expect(didStageReplacement)
     guard
-        let replacementSink = record.makeReplacementSink(reportRoute: {
-            reported in
-            record.acceptReport(reported)
-        })
+        let replacementSink = makeStaticReplacementSink(record: &record)
     else {
         Issue.record("static registration did not issue its replacement sink")
         return
@@ -99,9 +198,7 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
     )
     #expect(didStagePoisoned)
     guard
-        let poisonedSink = record.makeReplacementSink(reportRoute: { reported in
-            record.acceptReport(reported)
-        })
+        let poisonedSink = makeStaticReplacementSink(record: &record)
     else {
         Issue.record("static registration did not issue the poisoned sink")
         return
@@ -125,17 +222,11 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
 
 @Test func staticRegistrationRecordPreflightsReplacementWithoutMutation() {
     var record = StaticObservableRegistrationRecord()
-    var storage = StaticObservableModelStorage<StaticRegistrationModel>()
-    _ = storage.withBoundState(
-        State(wrappedValue: StaticRegistrationModel()),
-        replacementRoute: { _ in },
-        body: { _ in () }
-    )
+    var storage = StaticRegistrationStorage()
+    storage.install(StaticRegistrationModel())
     _ = record.beginAttachment(generation: 0)
     guard
-        let sink = record.makeSink(reportRoute: { reported in
-            record.acceptReport(reported)
-        })
+        let sink = makeStaticRegistrationSink(record: &record)
     else {
         Issue.record("static registration did not issue its initial sink")
         return
@@ -166,17 +257,11 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
 
 @Test func staticRegistrationRecordResetsReplacementStateForReinsertion() {
     var record = StaticObservableRegistrationRecord()
-    var storage = StaticObservableModelStorage<StaticRegistrationModel>()
-    _ = storage.withBoundState(
-        State(wrappedValue: StaticRegistrationModel(identity: 1)),
-        replacementRoute: { _ in },
-        body: { _ in () }
-    )
+    var storage = StaticRegistrationStorage()
+    storage.install(StaticRegistrationModel(identity: 1))
     _ = record.beginAttachment(generation: 0)
     guard
-        let initialSink = record.makeSink(reportRoute: { reported in
-            record.acceptReport(reported)
-        })
+        let initialSink = makeStaticRegistrationSink(record: &record)
     else {
         Issue.record("static registration did not issue its initial sink")
         return
@@ -190,10 +275,7 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
     )
     _ = storage.stageReplacement(StaticRegistrationModel(identity: 2))
     guard
-        let replacementSink = record.makeReplacementSink(reportRoute: {
-            reported in
-            record.acceptReport(reported)
-        })
+        let replacementSink = makeStaticReplacementSink(record: &record)
     else {
         Issue.record("static registration did not issue its replacement sink")
         return
@@ -215,16 +297,10 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
     #expect(storage.removeModel()?.identity == 2)
     #expect(!record.isActive)
 
-    _ = storage.withBoundState(
-        State(wrappedValue: StaticRegistrationModel(identity: 3)),
-        replacementRoute: { _ in },
-        body: { _ in () }
-    )
+    storage.install(StaticRegistrationModel(identity: 3))
     #expect(record.beginAttachment(generation: 2) == nil)
     guard
-        let reinsertedSink = record.makeSink(reportRoute: { reported in
-            record.acceptReport(reported)
-        })
+        let reinsertedSink = makeStaticRegistrationSink(record: &record)
     else {
         Issue.record("static registration did not issue its reinserted sink")
         return
@@ -245,22 +321,11 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
 
 @Test func staticRegistrationRecordOwnsDirectReportStateApartFromModelStorage() {
     var record = StaticObservableRegistrationRecord()
-    var storage = StaticObservableModelStorage<StaticRegistrationModel>()
-    let binding = storage.withBoundState(
-        State(wrappedValue: StaticRegistrationModel()),
-        replacementRoute: { _ in },
-        body: { _ in () }
-    )
-    guard case .bound(.materialized, ()) = binding else {
-        Issue.record("static model did not materialize")
-        return
-    }
+    var storage = StaticRegistrationStorage(model: StaticRegistrationModel())
 
     #expect(record.beginAttachment(generation: 0) == nil)
     guard
-        let sink = record.makeSink(reportRoute: { reported in
-            record.acceptReport(reported)
-        })
+        let sink = makeStaticRegistrationSink(record: &record)
     else {
         Issue.record("static registration did not issue a sink")
         return
@@ -292,18 +357,12 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
 
 @Test func staticRegistrationRecordRejectsAttachTimeReportBeforeActivation() {
     var record = StaticObservableRegistrationRecord()
-    var storage = StaticObservableModelStorage<StaticRegistrationModel>()
-    _ = storage.withBoundState(
-        State(wrappedValue: StaticRegistrationModel(reportDuringAttach: true)),
-        replacementRoute: { _ in },
-        body: { _ in () }
-    )
+    var storage = StaticRegistrationStorage()
+    storage.install(StaticRegistrationModel(reportDuringAttach: true))
 
     #expect(record.beginAttachment(generation: 4) == nil)
     guard
-        let sink = record.makeSink(reportRoute: { reported in
-            record.acceptReport(reported)
-        })
+        let sink = makeStaticRegistrationSink(record: &record)
     else {
         Issue.record("static registration did not issue a sink")
         return

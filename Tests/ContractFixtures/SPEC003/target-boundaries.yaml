@@ -125,6 +125,8 @@ active:
       - GiftUIFailureExecution
       - GiftUIRuntimeCore
       - GiftUIRuntimeFailureAdapterFixture
+  # SPEC-015 Module Contract permits the host to import approved contract-owner
+  # modules needed for composition; this list mirrors the Package.swift target.
   GiftUIHostConfiguration:
     type: regular
     dependencies:
@@ -132,10 +134,17 @@ active:
       - GiftUIBackendIntegration
       - GiftUICapabilities
       - GiftUIDisplayCore
+      - GiftUIDrawing
       - GiftUIExecution
       - GiftUIFailureCore
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
       - GiftUIRasterCore
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
       - GiftUIRuntimeCore
+      - GiftUISemanticCore
       - GiftUISurfaceCore
       - GiftUITextResources
   GiftUITextResourceFailureAdapterFixture:

@@ -135,13 +135,21 @@ func generatedStaticCanvasSwitchCoversEveryDeclaredID() throws {
 
     for id: UInt16 in 1 ... 3 {
         try withGeneratedCanvasContext { context in
-            try table.invoke(id: id, captures: captures, context: &context, size: size)
+            try withEmptyFrameRead { read in
+                try table.invoke(
+                    id: id, captures: captures, context: &context, size: size, read: read
+                )
+            }
         }
         #expect(table.lastInvokedID == id)
     }
     #expect(throws: DrawingError.invariantViolation) {
         try withGeneratedCanvasContext { context in
-            try table.invoke(id: 0, captures: captures, context: &context, size: size)
+            try withEmptyFrameRead { read in
+                try table.invoke(
+                    id: 0, captures: captures, context: &context, size: size, read: read
+                )
+            }
         }
     }
 }
@@ -200,11 +208,14 @@ func staticCanvasOccurrenceDestroysInlineCaptureAfterSuccessfulInvocation() thro
     var occurrence = makeStaticOccurrence(lifetime: lifetime)
 
     try withGeneratedCanvasContext { context in
-        try occurrence.invoke(
-            table: &table,
-            context: &context,
-            size: Size(width: 7, height: 9)!
-        )
+        try withEmptyFrameRead { read in
+            try occurrence.invoke(
+                table: &table,
+                read: read,
+                context: &context,
+                size: Size(width: 7, height: 9)!
+            )
+        }
     }
 
     #expect(table.probe.invocationCount == 1)
@@ -213,11 +224,14 @@ func staticCanvasOccurrenceDestroysInlineCaptureAfterSuccessfulInvocation() thro
     #expect(lifetime.destructionCount == 1)
     #expect(throws: DrawingError.invariantViolation) {
         try withGeneratedCanvasContext { context in
-            try occurrence.invoke(
-                table: &table,
-                context: &context,
-                size: Size(width: 7, height: 9)!
-            )
+            try withEmptyFrameRead { read in
+                try occurrence.invoke(
+                    table: &table,
+                    read: read,
+                    context: &context,
+                    size: Size(width: 7, height: 9)!
+                )
+            }
         }
     }
     #expect(table.probe.invocationCount == 1)
@@ -232,11 +246,14 @@ func staticCanvasOccurrenceDestroysInlineCaptureAfterTypedThrow() {
 
     #expect(throws: DrawingError.invalidValue) {
         try withGeneratedCanvasContext { context in
-            try occurrence.invoke(
-                table: &table,
-                context: &context,
-                size: Size(width: 7, height: 9)!
-            )
+            try withEmptyFrameRead { read in
+                try occurrence.invoke(
+                    table: &table,
+                    read: read,
+                    context: &context,
+                    size: Size(width: 7, height: 9)!
+                )
+            }
         }
     }
     #expect(table.probe.invocationCount == 1)
@@ -340,11 +357,14 @@ func staticBindingUsesCommonLifecycleGeneratedTableAndInlineCapture() throws {
         return
     }
     try withGeneratedCanvasContext { context in
-        try binding.invokeCanvas(
-            occurrence: &occurrence,
-            context: &context,
-            size: Size(width: 3, height: 5)!
-        )
+        try withEmptyFrameRead { read in
+            try binding.invokeCanvas(
+                occurrence: &occurrence,
+                context: &context,
+                size: Size(width: 3, height: 5)!,
+                read: read
+            )
+        }
     }
     #expect(occurrence.state == .released)
     #expect(occurrence.releaseCount == 1)
@@ -389,6 +409,9 @@ private final class StaticCanvasInvocationProbe {
 }
 
 private struct StagingPoisonCanvasTable: StaticCanvasCallableTable {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias CaptureStorage = GeneratedCanvasCaptureStorage
+
     let callableCaseCount: UInt16 = 3
     let probe: StaticCanvasInvocationProbe
 
@@ -405,8 +428,10 @@ private struct StagingPoisonCanvasTable: StaticCanvasCallableTable {
         id: UInt16,
         captures: borrowing GeneratedCanvasCaptureStorage,
         context: inout GraphicsContext,
-        size: Size
+        size: Size,
+        read: borrowing _GiftUIFrameRead<Domain>
     ) throws(DrawingError) {
+        _ = read
         probe.invocationCount += 1
     }
 }
@@ -438,6 +463,9 @@ private enum StaticCaptureTableResult {
 }
 
 private struct StaticCaptureTable: StaticCanvasCallableTable {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias CaptureStorage = StaticInlineCapture
+
     let callableCaseCount: UInt16 = 1
     let result: StaticCaptureTableResult
     let probe: StaticCanvasInvocationProbe
@@ -450,8 +478,10 @@ private struct StaticCaptureTable: StaticCanvasCallableTable {
         id: UInt16,
         captures: borrowing StaticInlineCapture,
         context: inout GraphicsContext,
-        size: Size
+        size: Size,
+        read: borrowing _GiftUIFrameRead<Domain>
     ) throws(DrawingError) {
+        _ = read
         probe.invocationCount += 1
         _ = captures.scalar
         _ = size
@@ -543,6 +573,14 @@ private func withGeneratedCanvasContext<Result>(
     }
 }
 
+private func withEmptyFrameRead<Result>(
+    _ body: (borrowing _GiftUIFrameRead<_GiftUIEmptyReadDomain>) throws -> Result
+) rethrows -> Result {
+    let slots = Span<UInt8>()
+    let read = _GiftUIFrameRead<_GiftUIEmptyReadDomain>(slots: slots)
+    return try body(read)
+}
+
 private extension RuntimeProfileValidationResult {
     var audit: RuntimeStorageAudit? {
         guard case .valid(let audit) = self else { return nil }
@@ -597,6 +635,20 @@ private func idleStaticExecutionContext() -> ExecutionContext {
 
 private func staticLimits() -> RuntimeProfileLimits {
     RuntimeProfileLimits(
+        records: RuntimeRecordLimits(
+            maximumPathEntries: 1,
+            maximumPathDepth: 1,
+            maximumPathChildFanout: 1,
+            maximumPayloadBytesPerBank: 1,
+            maximumIdentityComponentsPerKey: 1,
+            maximumInteractionIdentityComponents: 1
+        ),
+        models: RuntimeModelLimits(
+            maximumModelSlots: 1,
+            maximumOwningTickets: 1,
+            maximumFramePins: 1,
+            maximumModelCaptureBanks: 0
+        ),
         semantic: SemanticExpansionLimits(
             maximumDepth: 1,
             maximumSemanticNodes: 1,

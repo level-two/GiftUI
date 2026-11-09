@@ -1,5 +1,5 @@
 // Generated from these checked SPEC-010/SPEC-012 inputs:
-// 02831ec5318c786ef899dcae52c0f82910981af79658f4e81bdb45e8645c862b
+// efdd1ac4b46d270de976b43361974c2fa80100b2b73e8291319c624de544af19
 // fffe5b6f20e9939d6f46809678d0217556c05595003be1089ad7093157497109
 // Do not edit independently of the owning generator inputs.
 
@@ -37,6 +37,9 @@ struct GeneratedCanvasCaptureStorage: Equatable, Sendable {
 }
 
 struct GeneratedRuntimeCanvasTable: StaticCanvasCallableTable {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias CaptureStorage = GeneratedCanvasCaptureStorage
+
     let callableCaseCount: UInt16 = 3
     private(set) var lastInvokedID: UInt16?
 
@@ -53,8 +56,10 @@ struct GeneratedRuntimeCanvasTable: StaticCanvasCallableTable {
         id: UInt16,
         captures: borrowing GeneratedCanvasCaptureStorage,
         context: inout GraphicsContext,
-        size: Size
+        size: Size,
+        read: borrowing _GiftUIFrameRead<Domain>
     ) throws(DrawingError) {
+        _ = read
         switch id {
         case 1:
             _ = captures.color
@@ -111,6 +116,16 @@ struct GeneratedStaticRegions: StaticProfileStorageRegions, ~Copyable {
 
     var byteCounts: RuntimeStorageByteCounts {
         RuntimeStorageByteCounts(
+            semanticCandidatePathBytes: 0,
+            semanticPublishedPathBytes: 0,
+            semanticCandidatePayloadBytes: 0,
+            semanticPublishedPayloadBytes: 0,
+            identityMatchWorkspaceBytes: 0,
+            interactionCandidateIdentityBytes: 0,
+            interactionCommittedIdentityBytes: 0,
+            modelMetadataBytes: 0,
+            modelOwnerBytes: 0,
+            framePinBytes: 0,
             semanticCandidateBytes: UInt32(MemoryLayout.size(ofValue: semanticCandidate)),
             semanticPublishedBytes: UInt32(MemoryLayout.size(ofValue: semanticPublished)),
             layoutCandidateBytes: UInt32(MemoryLayout.size(ofValue: layoutCandidate)),
