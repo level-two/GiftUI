@@ -116,11 +116,10 @@ produced.
    ambiguous failure as a proven source defect.
 3. **Repair validation inputs without weakening accepted contracts.** Reconcile
    the SPEC-005 asset manifest, SPEC-011 evidence keys, and SPEC-012
-   declaration/value fixtures. The post-run SPEC-005 22-versus-20 package
-   surface mismatch is a separate unresolved shared API issue: retain the exact
-   20-item contract unless maintainers approve a Spec change through lifecycle
-   review. The corrected Pi invocation has separate focused pass receipts; it
-   does not change this archived result.
+   declaration/value fixtures. The later SPEC-005 current-tree follow-up below
+   now passes all four profile harnesses with the exact 20-item package
+   surface; the earlier 22-versus-20 mismatch is resolved without a Spec
+   change. These focused receipts do not change the archived result.
 
 The first compilation batch has two distinct questions. The RFC-014 lifetime
 diagnostics in this archive came from Swift 6.3.3, not the approved Swift 6.4.0
@@ -156,6 +155,41 @@ compiler allocation-effect failure remains explicit; the reviewed Native
 Static no-heap conclusion applies only to its exact image and predicates.
 
 ## Post-run focused checks
+
+### SPEC-006 package-surface follow-up
+
+The archived 83-check run remains unchanged at 24 passes and 59 failures. A
+separate current-tree run of
+`ruby scripts/contracts/check-spec-006-dependency-surface.rb` fails its exact
+package-declaration comparison within `GiftUISemanticCore.swift`; this is not
+an additional archived execution or a module-wide package declaration count.
+The checker expects 17 declarations in that file. It finds 18:
+it adds `SemanticBodyEvaluation`, `SemanticExpansionAttempt`, and
+`SemanticExpansionTraversalOperations`, while it does not declare the
+allowlist-only names `SemanticStateBindingOutcome` and `expandSemanticTree`.
+The source instead exports `expandSemanticTreeWithStateBinding`.
+
+The approved RFC-014 amendment requires checked scoped body access and routes
+binding/access failures through the SPEC-010 bridge, but does not name the
+current bridge declarations ([SPEC-006 RFC-014 section](../../../../specs/spec-006-declarative-view-semantics.md#rfc-014-runtime-amendment)). `SemanticBodyEvaluation` is used by the cross-target `GiftUIObservableState.ObservableSemanticBodyBinding` ([source](../../../../../Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift)). `SemanticExpansionAttempt` and `SemanticExpansionTraversalOperations` feed package-level `SemanticRecordTraversalRealization` ([source](../../../../../Sources/GiftUISemanticCore/SemanticRecordExpansion.swift)) and the named P08 `CounterSemanticTraversal` fixture ([source](../../../../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift)); this is fixture instrumentation, not evidence of a second traversal algorithm. The derived comparison scans only `GiftUISemanticCore.swift` ([checker](../../../../../scripts/contracts/check-spec-006-dependency-surface.rb), [allowlist](../../../../../Tests/ContractFixtures/SPEC006/semantic-surface-allowlist.tsv)); the package `SemanticRecordStore.expand` overloads are elsewhere and need separate T6.3 classification. `SemanticStateBindingOutcome` is listed but absent. `expandSemanticTree` is also absent from `Sources/`, but nine current test files still call it, so the tests require an approved adapter or migration. P08 remains FROZEN / UNMET; this note does not change its fixture, accepted SPEC-006/010 text, or the allowlist.
+
+**Decision required:** the exact package-surface rule is normative in accepted
+SPEC-006, so this is not safely resolved by changing only the derived checker
+or allowlist. The current recommendation and candidate wording are retained in
+the [SPEC-006 package-surface decision packet](spec-006-package-surface-decision.md).
+Independent read-only review confirms a maintainer decision is needed if the
+current API shape is retained. It also corrected the caller map: the
+Roles/Codec/Binding `SemanticRecordStore.expand` overload is used by SPEC-006,
+SPEC-007, and SPEC-012 fixtures; the supplied-Traversal overload is used by
+SPEC-015 Counter fixtures; neither has production `Sources/` callers. The
+production `SemanticBodyEvaluation` consumer is `GiftUIObservableState`; the
+production stateful expansion call in `SignalAnalyzerTargetHost` remains
+within the existing I4 analyzer transfer. Four record-expansion package
+helpers also require explicit classification in a complete target-wide
+allowlist. The packet recommends a narrow Spec clarification only if retaining
+the present API shape, and otherwise a strict implementation refactor. No Spec,
+source, or allowlist edits were made. This issue does not block other retained
+P10 checks.
 
 - `scripts/format-swift.sh --lint`, changed shell syntax checks, and
   `git diff --check` passed before the final P10 run.
@@ -196,11 +230,28 @@ Static no-heap conclusion applies only to its exact image and predicates.
   `.build/p10-diagnostics/spec012-rfc014-values-final`; the principal log
   hashes are `0b12080ca35e413651253957192b986446ef30d0574c4c5db3d6c006bfaaadc7`
   and `b18ed77060b3cc27816b7345194e7107733a7514ca8f7e592f00e70dfffe20a6`.
-  The compiler hash is
+  The macOS Dynamic compiler hash is
   `79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`, SDK
   `/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk`.
   These checks do not retroactively change the four archived failures or
-  establish the three other SPEC-012 profile runs.
+  establish the other profile checks.
+- The same SPEC-012 declaration and bounded-value-layout fixtures now pass on
+  the other three current profile compilers. Each declaration run passed seven
+  positive and nine negative cases; each value run passed seven layouts.
+  macOS Static used the pinned Swift 6.4 compiler at macOS 26.0; Pi used the
+  pinned ARMv6 cross compiler; nRF used the pinned Embedded Swift compiler for
+  `nrf52840dk/nrf52840`. Outputs are retained in `.build/p10-diagnostics/`
+  under `spec012-static-rfc014-{declarations,values}`, `spec012-pi-{declarations,values}`,
+  and `spec012-nrf-{declarations,values}`. The common declaration result file
+  SHA-256 is `7c1298e1d0541f0e206c57158c9494f0554f27bd6d26263f11b2230673f4ab4e`;
+  the common bounded-layout TSV SHA-256 is
+  `ac71eccae46c9907a585645b13995ac56849ffe3af7103045bbc48e114bc6dd5`. Compiler
+  identity file hashes are `477122d1d8380db21602a7c2caa1fdfd1e92d72c8a7bc03cc4673e1d311d37e6`
+  (macOS Static), `8bbe26bafc2f35fb756de5c2a6e43cd2f6931cfd5f0f676ba4c001f59caee2e2`
+  (Pi), and `664a009f2377044ff39a232c16156d567fe2f34d3725d539aad2409dece260f5`
+  (nRF). These are compiler/fixture checks only, not complete SPEC-012 profile
+  conformance or hardware execution, and do not rewrite the four archived
+  failures.
 - The current SPEC-011 harness check passes with the approved `T12.1` evidence
   task included: `ruby scripts/contracts/check-spec-011-harness.rb` reported 14
   ordered fixtures, 53 task edges, and 13 criteria. The four archived profile
@@ -217,8 +268,39 @@ Static no-heap conclusion applies only to its exact image and predicates.
   `c8fc9f10602a628d8f7a688050f92a5804ce25f17c47223e5e347289cc4bb051`,
   `7c86246e91e42a057849c25564204e8441bfc89f1ccf53d3618620bf70796d64`, and
   `f62cb1edca6dd6dcdc65abf025702cc384b1d3013335b647685d4dea4d1d87c7`).
-  This confirms the target-compatibility issue without resolving the supported
-  minimum deployment policy.
+  This confirmed the availability issue at the time of the archived run. The
+  later approved macOS 26 package-minimum decision above resolves that specific
+  target incompatibility; it does not resolve the other compile failures.
+- A fresh focused Static profile test used the pinned Swift 6.4 compiler and
+  macOS 26.5 SDK with isolated caches. The command was
+  `swift test --disable-sandbox --skip-update --package-path /Users/eugene/work/GiftUI
+  --scratch-path /Users/eugene/work/GiftUI/.build/p10-diagnostics/spec013-static-macos26-swift64/swiftpm
+  --cache-path /Users/eugene/work/GiftUI/.build -Xswiftc -DGIFTUI_STATIC_PROFILE
+  --filter GiftUIRuntimeStaticTests`; it exits 1 during compilation at
+  `SignalAnalyzerPresentation/SignalAnalyzerView.swift` with schema inference
+  and cascading `View` conformance diagnostics. Raw log:
+  `.build/p10-diagnostics/spec013-static-macos26-swift64/run.log`, SHA-256
+  `40617734734f53af6bb838e680302cc3ef9d3972cb34e2c8393a3e083c8410e8`. The
+  compiler is the pinned Swift 6.4 binary (SHA-256
+  `79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`); current
+  HEAD is `4c21859ba6f43c09a5870de231915a5fc28cfdc8`. This is a prerequisite
+  block before test assertions, with the analyzer-specific portion retaining
+  its existing I4 destination.
+- A separate focused `GiftUIRuntimeDynamic` target build identifies another
+  shared runtime compile issue, apart from `DynamicSemanticHostStorage`'s
+  analyzer-specific caller. `DynamicRuntimeProfileBinding` still instantiates
+  the current `DynamicCanvasCallableStorage<Identity, Table>` with one type
+  argument and calls the removed direct stage/invoke/release APIs. This binding
+  has no current production constructor/caller, but Dynamic lifecycle and
+  cross-profile tests still instantiate it and assert Canvas staging/cleanup;
+  SPEC-013 evidence also names the binding. Accepted SPEC-012 allows bounded
+  typed Dynamic Canvas storage while preserving value/invoke/release semantics,
+  and SPEC-013 requires bounded storage and exact cleanup. Adding a dummy table
+  argument or dropping the behavior would not meet that evidence. The proper
+  resolution needs an explicit choice between a Dynamic-specific bounded
+  owned-value store and threading an application `CanvasValueTable` through the
+  retained binding/tests. No architecture choice or source repair is made here;
+  this shared compile issue is not assigned wholesale to the analyzer transfer.
 - The SPEC-002 Foundation checker was corrected to rely on exact public and
   package owner-set comparisons rather than rejecting every `package` line in
   the public interface. Against the retained Dynamic and Static interface
@@ -352,3 +434,91 @@ version is 26.5. Changed input hashes: `Package.swift`
 was recorded from revision `33690346` with dirty sources;
 it is focused diagnostic evidence only. It does not alter the archived 24-pass,
 59-failure P10 receipt, close P08, or change the I4 and S1–S3 restrictions.
+
+## Current SPEC-003 and SPEC-015 diagnostic follow-up — 2026-11-09
+
+These later diagnostic attempts do not change the archived 24-pass/59-failure
+result and are not profile-conformance receipts. Their raw logs are retained
+in [`focused-current-diagnostics-2026-11-09.tar.gz`](focused-current-diagnostics-2026-11-09.tar.gz),
+SHA-256 `df994abb7021e87b4fe63d00b1659ac01ad00f67741b5e871a669bf5ce811ce0`.
+
+The current SPEC-003 macOS Dynamic driver passed its fixture, profile-corpus,
+dependency, execution-correlation, integration, and Core-boundary checks. Its
+filtered SwiftPM test build then failed while generating a dSYM with
+`Operation not permitted`; no test assertions ran. That raw log is
+`spec003/run.log` (SHA-256
+`f60e9b5de0c6d7c38f294baa02fe6e01d42916b19e6039e9909b18b1e3430db7`); the
+raw SwiftPM output is `spec003/complete-suite.raw.txt` (SHA-256
+`33fcac86f7c5bbca71ff09e53aff7c034259f9784d55844494125ee3a7b83a06`). The
+exact command ledger SHA-256 is
+`2f455bc905bdfefe33274a6613d02f48dad15b5ad8bd9a531452baa1d10479b2`, and the
+input manifest SHA-256 is
+`8399e22c4980c57b3106f7cebe62b4c26c6c4b619fc11619474217d32c454854`. These
+attempts show that the earlier dependency-list repair is not sufficient for a
+full SPEC-003 profile pass; they do not establish a new SPEC-003 product
+failure.
+
+Four later SPEC-015 host-target build attempts—macOS Dynamic, macOS Static,
+Raspberry Pi ARMv6, and nRF52840 Embedded—each passed the current harness,
+negative-corpus, source-boundary, generated-workload, and validation-purity
+stages, then stopped while building `GiftUIHostConfiguration` at the same
+`SignalAnalyzerPresentation/SignalAnalyzerView.swift` schema-inference and
+View-conformance errors. Each also passed the package API, noncopyable
+conformer, Sendable value, and negative compile host-surface checks. The host
+target was compiled for arm64 macOS in each attempt, so these are not
+embedded-device executions. All four logged
+`-DGIFTUI_DYNAMIC_PROFILE`, so they are not evidence of profile-specific
+validation. The logs are
+`spec015-macos-dynamic-host-build.log` (SHA-256
+`52d42cd23751e5fc102b8cab7dc3f5fe2936d96c44ee0645a58f265612b36607`),
+`spec015-macos-static-host-build.log` (`ad6eeba65475b635587723bbc1860d80168d3d54ed281498c498af90984e8b46`),
+`spec015-pi-host-build.log` (`74a7b2acf7955185280c120a5e0c6493900514b3c1481ad5046b26fbfc05c0b5`),
+and `spec015-nrf-host-build.log` (`35194d9bf58cc65f45618c21a481bd5d2fa41d28f68a631407f4d1febef8268f`).
+This current diagnostic points to the already-authorized I4 analyzer work; it
+does not recover the missing original child diagnostics or rewrite the four
+archived failed rows. The separately observed Dynamic Canvas storage API
+mismatch remains a shared runtime compile blocker and is not included in the
+analyzer transfer. The shared issue was independently reproduced by a focused
+`GiftUIRuntimeDynamic` target build under the approved Swift 6.4 toolchain and
+macOS 26 target. It fails at the one-argument `DynamicCanvasCallableStorage`
+specialization before target tests run; its raw log is
+`dynamic-runtime-canvas-target.log` (SHA-256
+`7511b0a283a36850a95d3d9485f8f3205e5ae0ab8af9aa93cbc3a25c08ca7ad4`).
+
+## Current SPEC-005 four-profile follow-up — 2026-11-09
+
+After a bounded validator hardening, the current SPEC-005 driver passed on all
+four hardware-free profiles. The archived P10 counts remain 24 passes and 59
+failed executions; these current receipts do not retroactively change that
+run. They use the project-local Swift 6.4.0 compiler (SHA-256
+`79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`). Both
+macOS profiles target `arm64-apple-macosx26.0` with SDK 26.5; Raspberry Pi
+cross-build targets `armv6-unknown-linux-gnueabihf`; nRF cross-build targets
+`armv7em-none-none-eabi` for `nrf52840dk/nrf52840` on Zephyr 4.3.0. Neither
+embedded profile was executed on hardware, deployed, or flashed.
+
+The shared source change saturates the validator's payload callback count at
+two. SPEC-005 requires exactly one callback for a valid available payload; a
+second or later invocation must remain rejected rather than allowing a
+wrapping `UInt8` counter to return to one. The nRF check initially exposed a
+stale compiler-label assumption: it required a compiler-generated
+`OUTLINED_FUNCTION_16` name for the exact four-instruction callback epilogue.
+The corrected checker accepts any numbered outlined label only after it
+verifies those same exact instructions at the referenced target. The failed
+first attempt is preserved under `.build/contract-reports/spec-005/.tmp-nrf52840-embedded-77760/`;
+the direct checker recheck passed before the fresh profile run.
+
+| Profile | Current run ID / input-set SHA-256 | `metadata.txt` SHA-256 | `run.log` SHA-256 |
+| --- | --- | --- | --- |
+| macOS Dynamic | `4c21859ba6f43c09a5870de231915a5fc28cfdc8-deb6fb9959bd2e21` / `deb6fb9959bd2e21cd961f6553a96ba2bd66f18586da2812ab06ad3ad9a71a73` | `f2901483e180267c176ce53395e4d059d90dc9904dfb99426e5da00419888ded` | `69cdcd304745cf433aa764a28da81fc1ef96fcdf248eb698d3108eebe7f04dd6` |
+| macOS Static | same / same | `49894a3b65d4042ff189f77b82cb8bde962ccfcb422b559258e7b805008d5de2` | `4404b127ab6254f0db3ca49ec3aa03c79e73a01611e63e76daee22d438a4961d` |
+| Raspberry Pi ARMv6 | same / same | `19873129e10128f9c076c22afbca50ea26d4443f9027e8f97c9d2cb7dc83f8e0` | `1c8243694e4117d3edb5bd79f20470c88031f92477e55a17a839166eb5dcb7e6` |
+| nRF52840 Embedded | `4c21859ba6f43c09a5870de231915a5fc28cfdc8-6c26dbe9f27d9205` / `6c26dbe9f27d9205e0bf7f150009f5490443213e31fbfe4a71a4d7a8cbb1ecc0` | `47ee0ac45bc0688b01e17fc9ee7fb7a8e15390abbcc7fbfa57f3324e6698e0a3` | `09bb3b54135511b08387ccf5950a19d7e074c1f678501d5d86974a2c10556670` |
+
+The first three profiles share an input set containing the saturated counter
+change. The nRF input set additionally binds the corrected
+`scripts/contracts/check-spec-005-nrf-resources.rb` checker (SHA-256
+`38b5dfa1293f76aa445577b9e31eeb0b640186e456e5c67c2d82e37fa0d800c3`). The
+nRF check reports zero RAM delta, 28,832 bytes flash delta, and 716 bytes
+maximum stack for the qualified resource path. These focused SPEC-005 passes
+do not satisfy other P10 rows or change P08's FROZEN / UNMET state.
