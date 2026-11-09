@@ -117,7 +117,7 @@ if [[ "${profile}" == "macos-static" ]]; then
     compiler="$(xcrun --find swiftc)"
     sdk="$(xcrun --sdk macosx --show-sdk-path)"
     ir="${output_root}/static-profile-layouts.ll"
-    run_command "${compiler}" -target arm64-apple-macosx15.0 -sdk "${sdk}" \
+    run_command "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" \
         -O -whole-module-optimization -DGIFTUI_STATIC_PROFILE -language-mode 6 \
         -package-name giftui -parse-as-library \
         -I "${output_root}/swiftpm/arm64-apple-macosx/debug/Modules" \
@@ -126,14 +126,14 @@ if [[ "${profile}" == "macos-static" ]]; then
     allocation_ir="${output_root}/static-binding-allocation.ll"
     allocation_sil="${output_root}/static-binding-allocation.sil"
     implementation_sources=("${PROJECT_ROOT}"/Sources/GiftUIRuntimeStatic/*.swift)
-    run_command "${compiler}" -target arm64-apple-macosx15.0 -sdk "${sdk}" \
+    run_command "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" \
         -O -whole-module-optimization -DGIFTUI_STATIC_PROFILE \
         -DGIFTUI_STATIC_PROFILE_IMPLEMENTATION -language-mode 6 \
         -package-name giftui -parse-as-library \
         -I "${output_root}/swiftpm/arm64-apple-macosx/debug/Modules" \
         -emit-ir -module-name GiftUIRuntimeStaticAllocationProbe \
         "${implementation_sources[@]}" "${PROBE}" -o "${allocation_ir}"
-    run_command "${compiler}" -target arm64-apple-macosx15.0 -sdk "${sdk}" \
+    run_command "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" \
         -O -whole-module-optimization -DGIFTUI_STATIC_PROFILE \
         -DGIFTUI_STATIC_PROFILE_IMPLEMENTATION -language-mode 6 \
         -package-name giftui -parse-as-library \

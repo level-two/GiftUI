@@ -9,8 +9,8 @@ fi
 
 macos_version="$(sw_vers -productVersion)"
 macos_major="${macos_version%%.*}"
-if (( macos_major < 15 )); then
-    echo "error: macOS 15 or newer is required (found ${macos_version})" >&2
+if (( macos_major < 26 )); then
+    echo "error: macOS 26 or newer is required (found ${macos_version})" >&2
     exit 1
 fi
 
@@ -24,8 +24,8 @@ xcode_minor_and_patch="${xcode_semver#*.}"
 xcode_minor="${xcode_minor_and_patch%%.*}"
 sdk_version="$(xcrun --sdk macosx --show-sdk-version)"
 
-if (( xcode_major < 16 || (xcode_major == 16 && xcode_minor < 3) )); then
-    echo "error: Xcode 16.3 or newer is required (found ${xcode_semver})" >&2
+if (( xcode_major < 26 )); then
+    echo "error: Xcode 26 or newer is required for the macOS 26 SDK (found ${xcode_semver})" >&2
     exit 1
 fi
 

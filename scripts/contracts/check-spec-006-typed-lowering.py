@@ -98,7 +98,7 @@ syntax_library = syntax_modules.parent / 'lib/libMacroSupport.a'
 macro_imports = [part for i, flag in enumerate(macro_arguments[:-1]) if flag == '-I'
                  for part in ('-I', macro_arguments[i + 1])]
 host_checks = out / 'macro-checks'
-run('macro-check-build', [host_compiler, '-swift-version', '6', '-target', 'arm64-apple-macosx15.0',
+run('macro-check-build', [host_compiler, '-swift-version', '6', '-target', 'arm64-apple-macosx26.0',
                          '-module-cache-path', out / 'cache', '-disable-sandbox',
                          *macro_imports, '-parse-as-library',
                          FIXTURE / 'MacroChecks.swift', ROOT / 'Sources/GiftUIMacros/ObservableStateHostMacro.swift',

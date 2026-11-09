@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-24
+updated: 2026-11-09
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -97,6 +97,13 @@ target_milestone: MVP
 > Earlier completed evidence applies to `53740a73`, not to this new implementation.
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
+> **macOS deployment minimum approved — 2026-11-09.** Eugene directed: “Move
+> the package minimum to macOS 26 and align the governing docs and checks.” The
+> package minimum is macOS 26.0 for both macOS profiles. macOS 15 deployment
+> support is dropped; Raspberry Pi ARMv6 and nRF52840 targets are unchanged.
+> This platform-minimum decision does not change the approved Swift 6.4 project-
+> local compiler baseline or close any P08/P10/iteration gate.
+
 performance work to future iterations and closure of the remaining Specifications.
 [Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
 as `implemented` with approved exceptions for measured timing failures and
@@ -435,6 +442,14 @@ mechanics into portable Presentation or claim connected-hardware conformance.
 ## Scope
 
 This Specification covers:
+### Supported macOS deployment minimum
+
+The macOS Dynamic and Static package configurations require macOS 26.0 or later.
+The package declaration and maintained macOS compiler-check targets MUST use
+the same 26.0 minimum; the host SDK/check environment requires Xcode 26 or later.
+No macOS 15 compatibility implementation is required.
+Raspberry Pi ARMv6 and nRF52840 targets do not inherit this desktop minimum.
+
 
 - target-host configuration for macOS dynamic, macOS static, Raspberry Pi 1 /
   Linux dynamic, and nRF52840 static;

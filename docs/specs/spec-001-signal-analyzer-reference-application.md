@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-10-10
+updated: 2026-11-09
 proposal:
   - PROPOSAL-002
   - PROPOSAL-007
@@ -266,6 +266,10 @@ The contract applies to these MVP configurations:
 | macOS | Static | Static-composition and runtime constraint validation |
 | Raspberry Pi/Linux | Dynamic | Linux, framebuffer, display, and input validation |
 | nRF52840/TFT | Static | Embedded Swift, fixed-capacity, display, and resource validation |
+
+Both macOS configurations target macOS 26.0 or later, as specified by the
+approved deployment-minimum amendment in [SPEC-015](spec-015-host-configuration.md).
+macOS 15 deployment support is no longer part of the package contract.
 
 Exact colors, typography, pixel dimensions, decorative styling, host window
 chrome, and hardware signal acquisition are outside the normative visual

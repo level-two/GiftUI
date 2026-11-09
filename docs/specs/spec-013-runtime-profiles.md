@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-10-24
+updated: 2026-11-09
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -461,7 +461,9 @@ This Specification covers:
   resource evidence.
 
 It applies to dynamic macOS, static macOS, dynamic Raspberry Pi/Linux, and
-static nRF52840 configurations. Connected-target assembly is downstream.
+static nRF52840 configurations. The macOS profiles require macOS 26.0 or later
+under [SPEC-015's approved deployment minimum](spec-015-host-configuration.md).
+Connected-target assembly is downstream.
 
 ## Goals
 

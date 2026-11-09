@@ -1085,7 +1085,10 @@ while shared ownership metadata drives idempotent attempt reset and quiescent
 all-storage teardown. The structural checker rejects dynamic collections,
 reference storage, allocation entry points, type erasure, and reflection in
 the production storage source. The tuple-backed representation avoids Swift's
-macOS-26-only `InlineArray` while retaining macOS 15 support. Evidence is in
+macOS-26-only `InlineArray` while retaining macOS 15 support at the time of
+implementation. The maintainer later approved macOS 26.0 as the package minimum
+on 2026-11-09; the earlier compatibility objective is historical and no longer
+governs the supported deployment floor. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-storage.md`.
 
 T4.3 completed Static Canvas startup and staging validation without moving the

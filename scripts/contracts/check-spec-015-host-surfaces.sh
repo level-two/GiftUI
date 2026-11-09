@@ -43,7 +43,7 @@ common_flags=(
     -typecheck
     -swift-version 6
     -strict-concurrency=complete
-    -target "${architecture}-apple-macosx15.0"
+    -target "${architecture}-apple-macosx26.0"
     -sdk "${sdk}"
     -I "${module_path}"
 )

@@ -15,7 +15,7 @@ trap 'rm -rf "${temporary_root}"' EXIT
 
 while IFS=$'\t' read -r id entry; do
     [[ -n "${id}" && "${id}" != \#* ]] || continue
-    "${compiler}" -target arm64-apple-macosx15.0 -sdk "${sdk}" \
+    "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" \
         -I "${module_dir}" -typecheck "${FIXTURE_ROOT}/${entry}" \
         >"${temporary_root}/${id}.stdout" 2>"${temporary_root}/${id}.stderr" || {
         cat "${temporary_root}/${id}.stderr" >&2

@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "GiftUI",
     platforms: [
-        .macOS(.v15)
+        .macOS(.v26)
     ],
     products: [
         .library(name: "GiftUI", targets: ["GiftUI"]),

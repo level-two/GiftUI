@@ -52,6 +52,11 @@ scripts/test.sh --profile nrf52840-embedded
 scripts/test.sh --profile all-hardware-free
 ```
 
+The package's minimum macOS deployment target is macOS 26.0 for both macOS
+profiles. Host development and macOS profile checks require macOS 26 and Xcode
+26 or newer. macOS 15 deployment support was dropped by maintainer approval on
+2026-11-09. This does not change the Raspberry Pi or nRF52840 targets.
+
 Each invocation keeps reports under `.build/test-reports/<selection>/run-*`.
 `latest-<selection>.txt` points atomically to the last finished invocation,
 including failures. `metadata.txt`, `results.tsv`, logs and `child-reports.tsv`

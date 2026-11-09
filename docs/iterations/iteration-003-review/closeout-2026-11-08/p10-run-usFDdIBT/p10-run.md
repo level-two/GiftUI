@@ -304,3 +304,18 @@ metadata SHA-256 `8f9f44f899f12df24d2cef893e9b6cf739a77a073771bda799f3c3cd082dbb
 It ran in the shared dirty worktree; only the reports and hash manifests are
 archived, not a complete source snapshot. It shows the exact-surface failure
 after 22 declarations; P10 and the affected criterion rows remain unmet.
+
+## Post-report platform-minimum decision — 2026-11-09
+
+After this report was prepared, Eugene approved raising the package minimum to
+macOS 26. The retained macOS 15 InlineArray availability blocker is therefore
+resolved by an explicit support-boundary change, not by a compatibility-storage
+implementation. `Package.swift`, the host environment preflight, maintained
+macOS compiler-check targets, and SPEC-001/013/015 are aligned to macOS 26.0;
+the host preflight also requires Xcode 26 or later for the matching SDK.
+macOS 15 support is dropped; Raspberry Pi ARMv6 and nRF52840 targets are
+unchanged. This decision does not alter the archived P10 result: it remains 24
+passes and 59 failures, and the failed checks must be classified and validated
+under the current baseline before P10 can pass. P08 remains FROZEN / UNMET;
+analyzer migration and composition certification retain their I4 destinations,
+and S1–S3 restrictions remain in force.
