@@ -61,6 +61,15 @@ case "${profile}" in
     *) fail "unknown profile: ${profile}" ;;
 esac
 
+# Current SPEC-010 compiled View/State contracts use the approved RFC-014
+# lifetime features. Select the project-local compiler for full macOS profiles.
+if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
+    # shellcheck source=compiler-baseline.sh
+    source "${SCRIPT_DIR}/compiler-baseline.sh"
+    giftui_rfc014_select_compiler "${PROJECT_ROOT}" "${profile}"
+    export GIFTUI_CONTRACT_SWIFTC
+fi
+
 if [[ "${compiler_baseline}" == rfc-014 ]]; then
     [[ -n "${giftui_build}" ]] || fail 'RFC-014 selected-component checks require --giftui-build with a verified P02 core receipt'
     exec python3 "${SCRIPT_DIR}/check-spec-010-model-identities.py" --profile "${profile}" --giftui-build "${giftui_build}"
@@ -70,6 +79,9 @@ fi
 declared_inputs() {
     {
         find "${FIXTURE_ROOT}" -type f -print
+        if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
+            printf '%s\n' "${GIFTUI_CONTRACT_SWIFTC}"
+        fi
         find "${PROJECT_ROOT}/Sources/GiftUI" -type f -name '*.swift' -print
         find "${PROJECT_ROOT}/Sources/GiftUIMacros" -type f -name '*.swift' -print
         find "${PROJECT_ROOT}/Sources/GiftUIObservableState" -type f -name '*.swift' -print
@@ -162,6 +174,9 @@ log_path="${report_dir}/run.log"
     printf 'input_set_sha256=%s\n' "${input_set_sha256}"
     printf 'run_id=%s\n' "${run_id}"
     printf 'invocation=scripts/contracts/run-spec-010.sh --profile %s\n' "${profile}"
+    if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
+        printf 'compiler_baseline=rfc-014\n'
+    fi
     printf 'public_contract_compile=pending\n'
     printf 'portable_host_compile=pending\n'
     printf 'evidence_complete=false\n'
@@ -226,7 +241,7 @@ compile_portable_host() {
     mkdir -p "${module_cache}"
     local -a command=(
         "${compiler}" "$@" -module-cache-path "${module_cache}" -I "${module_dir}"
-        -parse-as-library -emit-object
+        -parse-as-library -emit-object -package-name GiftUI
         -module-name SPEC010PortableProfile "${generated}" -o "${object}"
     )
     record_command "${command[@]}"
@@ -294,7 +309,7 @@ run_fixture_set() {
 
 compile_macos() {
     local compiler sdk profile_flag module
-    compiler="$(xcrun --find swiftc)"
+    compiler="${GIFTUI_CONTRACT_SWIFTC}"
     sdk="$(xcrun --sdk macosx --show-sdk-path)"
     if [[ "${profile}" == "macos-dynamic" ]]; then
         profile_flag=-DGIFTUI_DYNAMIC_PROFILE
@@ -307,13 +322,14 @@ compile_macos() {
     printf 'optimization=-O -whole-module-optimization\n' >>"${metadata_path}"
     module="${report_dir}/build/GiftUI.swiftmodule"
     local -a sources=("${PROJECT_ROOT}"/Sources/GiftUI/*.swift)
-    local -a command=("${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" -O -whole-module-optimization "${profile_flag}" -language-mode 6 -package-name GiftUI -module-cache-path "${report_dir}/build/module-cache" -parse-as-library -emit-module -module-name GiftUI "${sources[@]}" -emit-module-path "${module}")
+    local -a command=("${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -O -whole-module-optimization "${profile_flag}" -language-mode 6 -package-name GiftUI -module-cache-path "${report_dir}/build/module-cache" -parse-as-library -emit-module -module-name GiftUI "${sources[@]}" -emit-module-path "${module}")
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
     record_image portable-module "${module}"
-    run_fixture_set "${compiler}" "${report_dir}/build" -target arm64-apple-macosx26.0 -sdk "${sdk}" "${profile_flag}" -language-mode 6
+    run_fixture_set "${compiler}" "${report_dir}/build" -target arm64-apple-macosx26.0 -sdk "${sdk}" -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes "${profile_flag}" -language-mode 6
     compile_portable_host "${compiler}" "${report_dir}/build" nm \
         -target arm64-apple-macosx26.0 -sdk "${sdk}" "${profile_flag}" \
+        -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes \
         -language-mode 6 -O -whole-module-optimization
 }
 
@@ -335,6 +351,8 @@ compile_raspberry_pi() {
         "${compiler}" -target "${GIFTUI_PI_TARGET}" -sdk "${sdk_root}"
         -resource-dir "${sdk_root}/usr/lib/swift_static"
         -Xcc "--gcc-toolchain=${sdk_root}/usr"
+        -enable-experimental-feature LifetimeDependence
+        -enable-experimental-feature Lifetimes
         -O -whole-module-optimization -language-mode 6 -package-name GiftUI
         -module-cache-path "${report_dir}/build/module-cache"
         -parse-as-library -emit-module -module-name GiftUI "${sources[@]}"
@@ -343,12 +361,19 @@ compile_raspberry_pi() {
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
     record_image portable-module "${module}"
-    run_fixture_set "${compiler}" "$(dirname "${module}")" -target "${GIFTUI_PI_TARGET}" -sdk "${sdk_root}" -resource-dir "${sdk_root}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${sdk_root}/usr"
+    run_fixture_set "${compiler}" "$(dirname "${module}")" \
+        -target "${GIFTUI_PI_TARGET}" -sdk "${sdk_root}" \
+        -resource-dir "${sdk_root}/usr/lib/swift_static" \
+        -Xcc "--gcc-toolchain=${sdk_root}/usr" \
+        -enable-experimental-feature LifetimeDependence \
+        -enable-experimental-feature Lifetimes
     compile_portable_host "${compiler}" "$(dirname "${module}")" \
         "${GIFTUI_PI_HOST_BIN_DIR}/llvm-nm" \
         -target "${GIFTUI_PI_TARGET}" \
         -sdk "${sdk_root}" -resource-dir "${sdk_root}/usr/lib/swift_static" \
         -Xcc "--gcc-toolchain=${sdk_root}/usr" \
+        -enable-experimental-feature LifetimeDependence \
+        -enable-experimental-feature Lifetimes \
         -O -whole-module-optimization
 }
 
@@ -361,14 +386,20 @@ compile_nrf52840() {
     printf 'optimization=-Osize -whole-module-optimization\n' >>"${metadata_path}"
     local module="${report_dir}/build/GiftUI.swiftmodule"
     local -a sources=("${PROJECT_ROOT}"/Sources/GiftUI/*.swift)
-    local -a command=("${GIFTUI_NRF_SWIFTC}" -target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded -Osize -whole-module-optimization -module-cache-path "${report_dir}/build/module-cache" -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16 -package-name GiftUI -parse-as-library -emit-module -module-name GiftUI "${sources[@]}" -emit-module-path "${module}")
+    local -a command=("${GIFTUI_NRF_SWIFTC}" -target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -Osize -whole-module-optimization -module-cache-path "${report_dir}/build/module-cache" -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16 -package-name GiftUI -parse-as-library -emit-module -module-name GiftUI "${sources[@]}" -emit-module-path "${module}")
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
     record_image portable-module "${module}"
-    run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" -target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded -Osize -whole-module-optimization -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+    run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" \
+        -target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded \
+        -enable-experimental-feature LifetimeDependence \
+        -enable-experimental-feature Lifetimes -Osize -whole-module-optimization \
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
     compile_portable_host "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" \
         "${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm" \
         -target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded \
+        -enable-experimental-feature LifetimeDependence \
+        -enable-experimental-feature Lifetimes \
         -Osize -whole-module-optimization -Xcc -mfloat-abi=hard \
         -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
 }

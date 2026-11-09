@@ -1,5 +1,3 @@
-import Foundation
-
 /// Host/schema adapter output. IDs describe concrete witness types, never
 /// occurrence positions; actual values are supplied by semantic traversal.
 func canvasWitnessTable(

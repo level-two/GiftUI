@@ -12,5 +12,9 @@ struct Model: _GiftUIObservableReference {
     ) {}
 }
 
-var state = State(wrappedValue: Model())
-_ = state._giftUIBind(read: { Model() }, replace: { _ in })
+enum ModelSchema: _GiftUIModelSchema {
+    typealias Seed = Model
+}
+
+var state = State<ModelSchema>(seed: Model())
+_ = state._giftUIBinding

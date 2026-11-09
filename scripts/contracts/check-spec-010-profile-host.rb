@@ -26,8 +26,9 @@ fail_check("portable expansion retained the macro attribute") if
 
 required_expansion = [
   "public struct PortableProfileModel: _GiftUIObservableReference",
-  "@State private var primary = PortableProfileModel()",
-  "@GiftUI.State private var secondary = PortableProfileModel()",
+  "public enum PortableProfileSchema: _GiftUIModelSchema",
+  "@State<PortableProfileSchema> private var primary: _GiftUIModelKey<PortableProfileSchema>?",
+  "@GiftUI.State<PortableProfileSchema> private var secondary:\n        _GiftUIModelKey<PortableProfileSchema>?",
   "visitor.visit(&_primary, declarationOrdinal: 0)",
   "visitor.visit(&_secondary, declarationOrdinal: 1)",
   "visitor.visitStatefulCustomView(self)",

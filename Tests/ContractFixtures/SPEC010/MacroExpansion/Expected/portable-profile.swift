@@ -13,13 +13,27 @@ public struct PortableProfileModel: _GiftUIObservableReference {
         _ attachment: _GiftUIObservationAttachment
     ) {}
 }
+
+public enum PortableProfileSchema: _GiftUIModelSchema {
+    public typealias Seed = PortableProfileModel
+}
 public struct PortableProfileHost: View {
-    @State private var primary = PortableProfileModel()
-    @GiftUI.State private var secondary = PortableProfileModel()
+    public typealias Domain = _GiftUIEmptyReadDomain
 
-    public init() {}
+    @State<PortableProfileSchema> private var primary: _GiftUIModelKey<PortableProfileSchema>?
+    @GiftUI.State<PortableProfileSchema> private var secondary:
+        _GiftUIModelKey<PortableProfileSchema>?
 
-    public var body: Never { fatalError() }
+    public init() {
+        _primary = State<PortableProfileSchema>(seed: PortableProfileModel())
+        _secondary = State<PortableProfileSchema>(seed: PortableProfileModel())
+    }
+
+    public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> EmptyView<Domain>
+    {
+        EmptyView()
+    }
 
     public mutating func _giftUIVisitObservableStateDeclarations<
         Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable

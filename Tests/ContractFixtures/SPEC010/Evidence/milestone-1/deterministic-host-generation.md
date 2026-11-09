@@ -43,3 +43,19 @@ The macro emits the SPEC-006 stateful traversal member because its approved
 visitor signature is already present. This task proves deterministic emission
 and compilation; dependent T1.4 remains responsible for category behavior and
 the absence of handwritten application overrides.
+
+## P10 implementation-evidence reconciliation — 2026-11-09
+
+The T1.2 account above describes the original macro implementation. The current
+`GiftUIMacros-tool` also has a `--lower-source` host CLI mode used by
+SPEC-006/010/012/013/015 contract fixtures; it is a mode in the same executable,
+not a separate target. `GiftUIMacros.swift` uses Foundation for command-line
+error output, and `FiniteSourceLowering.swift` uses Foundation to read the
+host-side JSON schema. Neither Foundation import is in
+`ObservableStateHostMacro.swift`, and the CLI/lowerer are host build tooling;
+the macro target remains unproductized and outside every target dependency
+closure. `CanvasWitnessLowering.swift` has no Foundation use. The P10 checker
+now limits Foundation imports to those two source files while continuing to
+reject runtime, application, platform, and product-target dependencies. This
+records the implementation detail without changing SPEC-010's host-only macro
+contract or the exact target dependency graph.

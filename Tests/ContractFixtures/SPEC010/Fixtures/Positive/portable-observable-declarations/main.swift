@@ -14,13 +14,19 @@ public struct PortableModel: _GiftUIObservableReference {
     ) {}
 }
 
-public struct PortableHost: _GiftUIObservableStateHost {
-    @State private var model = PortableModel()
+public enum PortableSchema: _GiftUIModelSchema {
+    public typealias Seed = PortableModel
+}
 
-    public init() {}
+public struct PortableHost: _GiftUIObservableStateHost {
+    @State<PortableSchema> private var model: _GiftUIModelKey<PortableSchema>?
+
+    public init() {
+        _model = State<PortableSchema>(seed: PortableModel())
+    }
 
     public mutating func _giftUIVisitObservableStateDeclarations<
-        Visitor: _GiftUIObservableStateDeclarationVisitor
+        Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
     >(_ visitor: inout Visitor) {
         visitor.visit(&_model, declarationOrdinal: 0)
     }
