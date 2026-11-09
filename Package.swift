@@ -168,6 +168,10 @@ let package = Package(
                 "GiftUIRenderCore",
                 "GiftUIExecution",
                 "GiftUITextResources",
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
             ]
         ),
         .target(
@@ -301,6 +305,10 @@ let package = Package(
                 "GiftUISemanticCore",
                 "GiftUISurfaceCore",
                 "GiftUITextResources",
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
             ]
         ),
         .target(

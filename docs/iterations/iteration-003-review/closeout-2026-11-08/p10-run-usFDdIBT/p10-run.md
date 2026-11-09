@@ -57,7 +57,7 @@ Every row below is one failed execution from the archived `results.tsv`, assigne
 | SPEC-010 checker expects a superseded decorator implementation shape | `SPEC-010-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}` (4) | The assertion was intended to cover the state binding contract, including `OS-008`; it does not establish a dependency or binding failure. | Current implementation aliases the noncopyable borrowed `ObservableStateRootScope`; `withBoundDeclaration` visits declarations before the body and suppresses the body on binding failure. `ObservableSemanticBodyBinding` performs the typed read. The corrected checker and Swift 6.4/macOS 26 target build pass. | **Validation infrastructure** | SPEC-010 validation owner; exact target imports, body ordering, and no-retained-declaration checks remain enforced. Four historical executions remain failed. |
 | SPEC-011 task evidence key set differs | `SPEC-011-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}` (4) | No normative `IN-*` acceptance criterion is directly shown false; `IN-012` is only the nearest evidence-provenance topic. Owner scope: `IN-001..013`, `IN-RD-001..002`. | Each `check-spec-011-harness.rb` invocation fails at `task evidence keys differ`, before a profile conformance result. | **Validation infrastructure** | SPEC-011 evidence/harness owner; accepted task inventory governs. Reconcile expected keys and emitted evidence, then validate the affected checks. |
 | SPEC-012 declaration/value probes were stale against the approved protocol Canvas API | `SPEC-012-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}` (4) | The archived checks do not establish a product failure; the declaration fixtures used the removed closure initializer and focused profile source lists omitted required framework declarations. | With the approved Swift 6.4.0 compiler at `arm64-apple-macosx26.0`, declaration fixtures now pass (7 positive, 9 negative), and the macOS Dynamic value-profile check passes all seven bounded layouts. The checker now compares normalized module-qualified interface text and compiles a complete GiftUI source module. | **Validation infrastructure** | SPEC-012 validation owner; fixture/checker sources follow the approved RFC-014 Canvas protocol and current module. Four archived rows remain failed; the focused Dynamic receipts do not replace all-profile validation. |
-| SPEC-015 profile drivers fail, but the retained records do not distinguish compiler failure from test failure | `SPEC-015-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}` (4) | Directly implicated only: `HC-016` full profile driver. Other `HC` assertions were not established. `HC-SO-001..003` remain separately restricted under P08. | Archived `logs/030/047/064/081-SPEC-015-*.log` entries are empty and the linked child reports have no compiler diagnostics or test assertion output. | **Unclassified** | Missing fact: determine whether each profile failed compilation or a test and retain its diagnostic. Recover existing child output if available; otherwise capture it during the next authorized affected validation. Do not implement a speculative fix. |
+| SPEC-015 profile drivers fail, but the retained records do not distinguish compiler failure from test failure | `SPEC-015-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}` (4) | Directly implicated only: `HC-016` full profile driver. Other `HC` assertions were not established. `HC-SO-001..003` remain separately restricted under P08. | Archived `logs/030/047/064/081-SPEC-015-*.log` entries are empty. A later focused macOS Dynamic run passes all five input/host-surface stages, then stops at the transferred `SignalAnalyzerPresentation` source errors; this narrows the current failure but does not recover the archived four causes or establish the other three profiles. | **Unclassified** | Historical rows remain unclassified. The follow-up analyzer diagnostics retain their existing I4 destination. Recover or rerun the other profile drivers before reclassifying those historical failures; do not implement a speculative fix. |
 | Integrated Pi checks cannot resolve the `linux` destination SDK | `SPEC-002-raspberry-pi-armv6`, `SPEC-014-raspberry-pi-armv6` (2) | No product criterion verdict: failure precedes cross-build/evidence assertions. Spec scopes are `PF-001..010` and `BI-001..015`; Pi composition/resource certification remains separately under I4-AC-013. | Archived child reports show SDK resolution failure. Separate post-run SPEC-002/014 ARMv6 driver receipts pass after the runner invocation was corrected. | **Validation infrastructure** | P10/Pi runner owner. Invocation repair is retained in commit `806c886`; focused receipts do not execute hardware, close I4-AC-013, or rewrite the archived result. |
 
 ### Exclusive category totals
@@ -319,3 +319,36 @@ passes and 59 failures, and the failed checks must be classified and validated
 under the current baseline before P10 can pass. P08 remains FROZEN / UNMET;
 analyzer migration and composition certification retain their I4 destinations,
 and S1–S3 restrictions remain in force.
+
+## Focused SPEC-015 macOS Dynamic follow-up — 2026-11-09
+
+The approved Swift 6.4 compiler at `arm64-apple-macosx26.0` ran
+`scripts/contracts/run-spec-015.sh --profile macos-dynamic` in the shared dirty
+worktree. The SPEC-015 harness, negative-corpus, source-boundary,
+generated-workload, validation-purity, and host-surface checks all passed. The
+subsequent filtered `GiftUIHostConfigurationTests` build stopped in
+`SignalAnalyzerPresentation/SignalAnalyzerView.swift` on `Schema` inference and
+View-conformance errors. That analyzer-specific source work retains its I4
+destination; this focused run is not a complete profile pass and does not
+reclassify the four archived SPEC-015 failures.
+
+The run exposed and corrected a package-validation setup issue: the `GiftUIDrawing`
+and `GiftUIHostConfiguration` SwiftPM targets use the RFC-014
+`LifetimeDependence` and `Lifetimes` features but lacked those target settings.
+The focused host-surface checker now resolves `swift`/`swiftc` from the same
+selected toolchain and accepts both SwiftPM product-module layouts. Its direct
+run passed all exact package API and negative-compile assertions.
+
+The partial profile receipt is retained in
+[`spec-015-macos-dynamic-followup.tar.gz`](spec-015-macos-dynamic-followup.tar.gz),
+SHA-256 `bdad9b6fb653b99884c871a093f0e1493915c43222fd280e0940f0a3790d2d9a`.
+It contains the exact command list, combined driver log, and host-surface report.
+The compiler is the project-local Swift 6.4.0 `swiftc`, SHA-256
+`79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`; SDK
+version is 26.5. Changed input hashes: `Package.swift`
+`d0565f06d47d169cb58dba7dc9b209c06ea90a8d7ddce6bd4b9910b987531640` and
+`scripts/contracts/check-spec-015-host-surfaces.sh`
+`b14077ad672d6d6e2a111955c225722a1984c8422e7d40c28a32912d812e3378`. The run
+was recorded from revision `33690346` with dirty sources;
+it is focused diagnostic evidence only. It does not alter the archived 24-pass,
+59-failure P10 receipt, close P08, or change the I4 and S1–S3 restrictions.

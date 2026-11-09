@@ -20,6 +20,14 @@ fi
 mkdir -p "${OUTPUT_ROOT}/module-cache"
 export CLANG_MODULE_CACHE_PATH="${OUTPUT_ROOT}/module-cache"
 export SWIFTPM_MODULECACHE_OVERRIDE="${OUTPUT_ROOT}/module-cache"
+swift_executable="${GIFTUI_SWIFT_EXECUTABLE:-swift}"
+if [[ -n "${GIFTUI_SWIFTC_EXECUTABLE:-}" ]]; then
+    compiler="${GIFTUI_SWIFTC_EXECUTABLE}"
+elif [[ -n "${GIFTUI_SWIFT_EXECUTABLE:-}" ]]; then
+    compiler="$(dirname "${swift_executable}")/swiftc"
+else
+    compiler="$(xcrun --find swiftc)"
+fi
 
 # shellcheck source=../lib/swiftpm.sh
 source "${PROJECT_ROOT}/scripts/lib/swiftpm.sh"
@@ -30,13 +38,14 @@ giftui_swiftpm \
     --disable-sandbox \
     -- build --target GiftUIHostConfiguration >/dev/null
 
-binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
-module_file="${binary_dir}/Modules/GiftUIHostConfiguration.swiftmodule"
-[[ -n "${module_file}" ]] || fail 'built host configuration module was not found'
-module_path="$(dirname "${module_file}")"
-[[ -d "${module_path}" ]] || fail "missing built module path: ${module_path}"
+binary_dir="$("${swift_executable}" build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
+module_path="${binary_dir}/Modules"
+if [[ ! -e "${module_path}/GiftUIHostConfiguration.swiftmodule" ]]; then
+    module_path="${binary_dir}"
+fi
+[[ -e "${module_path}/GiftUIHostConfiguration.swiftmodule" ]] || \
+    fail "built host configuration module was not found under ${binary_dir}"
 
-compiler="$(xcrun --find swiftc)"
 sdk="$(xcrun --sdk macosx --show-sdk-path)"
 architecture="$(uname -m)"
 common_flags=(
