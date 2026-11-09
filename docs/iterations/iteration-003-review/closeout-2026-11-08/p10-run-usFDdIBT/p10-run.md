@@ -257,6 +257,21 @@ P10 checks.
   ordered fixtures, 53 task edges, and 13 criteria. The four archived profile
   rows remain failed; this focused harness pass does not establish profile
   conformance.
+- Four later SPEC-010 profile-driver runs are retained as focused diagnostics,
+  not conformance passes. They were generated at dirty revision
+  `d35f434f66c8c5d8b05f1e49852580b73289a4d0`, not `4c21859`. The macOS pair
+  shares input-set SHA-256
+  `288914e818299424a6dd86082bbba21da9812d39707301981159e840e185b92f`; Pi and
+  nRF share `5b4e1da82a678432403932570c3858d6ea4885a35390d8d59313f74016849d35`.
+  Each report-generation command exits 0, but each metadata record has
+  `public_contract_compile=pending`, `evidence_complete=false`, and all
+  `OS-001..OS-012` missing; each log ends fail-closed. The shared run-log hashes
+  are `21733676f61ce762f84e031f655d2eb6c329fa36fcf0c68275efe63f79b968f7`
+  (macOS pair) and
+  `a2260331a1ec9d6a6194fd62d993151cd91d369d3857412dc893e67162598e66`
+  (Pi/nRF pair). Commands, metadata, manifests, images, and logs are retained
+  in [`spec010-four-profile-focused-runs-2026-11-09.tar.gz`](spec010-four-profile-focused-runs-2026-11-09.tar.gz),
+  SHA-256 `b723e7d3b5381e2eccd7deb1292161ce90bfd81d15ae60136c72950763bd2083`.
 - Under the approved Swift 6.4 compiler, `GiftUISemanticCore` builds at target
   `arm64-apple-macosx26.0` and fails at `arm64-apple-macosx15.0` with
   `InlineArray` availability diagnostics. The SPEC-015 host-test command also
@@ -296,11 +311,20 @@ P10 checks.
   SPEC-013 evidence also names the binding. Accepted SPEC-012 allows bounded
   typed Dynamic Canvas storage while preserving value/invoke/release semantics,
   and SPEC-013 requires bounded storage and exact cleanup. Adding a dummy table
-  argument or dropping the behavior would not meet that evidence. The proper
-  resolution needs an explicit choice between a Dynamic-specific bounded
-  owned-value store and threading an application `CanvasValueTable` through the
-  retained binding/tests. No architecture choice or source repair is made here;
-  this shared compile issue is not assigned wholesale to the analyzer transfer.
+  argument or dropping the behavior would not meet that evidence. The concrete
+  analyzer-side `DynamicSemanticHostStorage` caller and its table/domain/read
+  propagation fall under the existing
+  [I4-07 actual-dispatcher residual](../../rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13).
+  `DynamicRuntimeProfileBinding` is a separate case: SPEC-013 T3.5 and its
+  implementation plan identify it as the current production profile binding,
+  but source search finds no current production constructor/caller; tests still
+  exercise its staging and cleanup behavior. The shared storage change in
+  `6c551bb2` left that path uncompilable. Restoring its full behavior requires
+  the table/domain/read plumbing currently assigned to I4-07, while treating it
+  as a legacy proof-of-concept requires authority that does not follow from the
+  cited generic implementation note alone. This narrow I3/I4 classification
+  remains unresolved pending maintainer disposition. The generic bounded
+  storage contract and unrelated shared compile failures are not transferred.
 - The SPEC-002 Foundation checker was corrected to rely on exact public and
   package owner-set comparisons rather than rejecting every `package` line in
   the public interface. Against the retained Dynamic and Static interface
