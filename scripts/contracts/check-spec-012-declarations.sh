@@ -131,6 +131,13 @@ module_command=(
 record_command "${module_command[@]}"
 "${module_command[@]}" >/dev/null
 
+# Swift 6.4 spells qualified names in emitted interfaces with `::`, while the
+# retained assertions use the equivalent dotted module qualification.
+normalized_interface_path="${output_root}/artifacts/GiftUI.swiftinterface.normalized"
+normalized_package_interface_path="${output_root}/artifacts/GiftUI.package.swiftinterface.normalized"
+sed 's/::/./g' "${interface_path}" >"${normalized_interface_path}"
+sed 's/::/./g' "${package_interface_path}" >"${normalized_package_interface_path}"
+
 for fragment in \
     'public protocol Canvas : GiftUI.View, GiftUI._GiftUISemanticPrimitivePayload where Self.Body == Swift.Never' \
     'func _giftUIDraw(in bounds: GiftUI.Rect, context: inout GiftUI.GraphicsContext, read: borrowing GiftUI._GiftUIFrameRead<Self.Domain>) throws(GiftUI.DrawingError)' \
@@ -143,7 +150,7 @@ for fragment in \
     'public enum LineCap : Swift.UInt8' \
     'public enum LineJoin : Swift.UInt8' \
     'public enum DrawingError : Swift.Error'; do
-    grep -Fq "${fragment}" "${interface_path}" ||
+    grep -Fq "${fragment}" "${normalized_interface_path}" ||
         fail "emitted interface lacks: ${fragment}"
 done
 for forbidden in 'any Error' 'Foundation.'; do
@@ -152,7 +159,7 @@ for forbidden in 'any Error' 'Foundation.'; do
 done
 grep -Fq \
     'package func _giftUIInvokeCanvas(context: inout GiftUI.GraphicsContext, size: GiftUI.Size, read: borrowing GiftUI._GiftUIFrameRead<Self.Domain>) throws(GiftUI.DrawingError)' \
-    "${package_interface_path}" ||
+    "${normalized_package_interface_path}" ||
     fail 'emitted package interface lacks the non-returning Canvas invocation bridge'
 ! grep -Eq 'package (var|func) .*draw.*->' "${package_interface_path}" ||
     fail 'emitted package interface contains a closure-returning Canvas lookup'
@@ -238,6 +245,8 @@ printf 'declaration-sil\tpass\nundefined-symbols\tpass\n' >>"${audit_path}"
 
 focused_sources=(
     "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
+    "${PROJECT_ROOT}/Sources/GiftUI/DeclarativeView.swift"
+    "${PROJECT_ROOT}/Sources/GiftUI/ObservableState.swift"
     "${PROJECT_ROOT}/Sources/GiftUI/Color.swift"
     "${PROJECT_ROOT}/Sources/GiftUI/DrawingStyles.swift"
     "${PROJECT_ROOT}/Sources/GiftUI/DrawingSurface.swift"

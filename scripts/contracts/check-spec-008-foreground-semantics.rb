@@ -13,8 +13,13 @@ def fail_check(message)
   exit 1
 end
 
-required_order = [
+empty_stack_guard = [
   "workspace.currentForeground == nil",
+  "case .none = workspace.currentForeground",
+].find { |fragment| SOURCE.include?(fragment) }
+fail_check("root foreground empty-stack guard is missing") unless empty_stack_guard
+required_order = [
+  empty_stack_guard,
   "workspace.pushForeground(rootForeground)",
   "sink.begin(preflight.header)",
 ]

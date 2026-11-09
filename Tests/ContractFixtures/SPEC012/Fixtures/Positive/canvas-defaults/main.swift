@@ -1,8 +1,18 @@
 import GiftUI
 
-func canvasWithDefaults() -> Canvas {
-    Canvas { (_, _) throws(DrawingError) in
+struct CanvasWithDefaults: Canvas {
+    typealias Domain = _GiftUIEmptyReadDomain
+
+    func _giftUIDraw(
+        in _: Rect,
+        context _: inout GraphicsContext,
+        read _: borrowing _GiftUIFrameRead<Domain>
+    ) throws(DrawingError) {
         _ = StrokeStyle()
         _ = Shading.color(.white)
     }
+}
+
+func canvasWithDefaults() -> CanvasWithDefaults {
+    CanvasWithDefaults()
 }

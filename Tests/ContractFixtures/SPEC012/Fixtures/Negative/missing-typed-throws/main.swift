@@ -4,8 +4,14 @@ enum FixtureError: Error {
     case unsupported
 }
 
-func canvasWithUntypedError() -> Canvas {
-    Canvas { _, _ in
+struct CanvasWithUntypedError: Canvas {
+    typealias Domain = _GiftUIEmptyReadDomain
+
+    func _giftUIDraw(
+        in _: Rect,
+        context _: inout GraphicsContext,
+        read _: borrowing _GiftUIFrameRead<Domain>
+    ) throws {
         throw FixtureError.unsupported
     }
 }

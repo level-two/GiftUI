@@ -22,7 +22,7 @@ required_declarations = %w[
 ]
 required_declarations.each do |name|
   matches = Dir[ROOT.join("Sources/**/*.swift")].select do |path|
-    File.read(path).match?(/package (?:struct|enum|protocol) #{name}\b/)
+    File.read(path).match?(/(?:@usableFromInline\s+)?package (?:struct|enum|protocol) #{name}\b/)
   end
   fail_check("#{name} ownership differs: #{matches}") unless matches == [name == "ExecutionOpportunityRunner" ? runner.to_s : SOURCE.to_s]
 end
@@ -45,7 +45,7 @@ end
 
 capture = source[/package struct CapturedAction<Identity>.*?^}/m]
 fail_check("captured action declaration is missing") unless capture
-stored = capture.scan(/^\s*package let ([^\n]+)$/).flatten
+stored = capture.scan(/^\s*(?:@usableFromInline\s+)?package let ([^\n]+)$/).flatten
 fail_check("captured action storage differs: #{stored}") unless stored == ["identity: Identity", "generation: ActionGeneration"]
 
 forbidden = /\b(?:public|open|any|Any|String|Array|ContiguousArray|class|actor|closure|callable|handler|model|targetGeneration|GiftUISemanticCore|GiftUILayout|GiftUIRenderLowering|GiftUIFailureCore|GiftUICapabilities|GiftUIRuntime)\b/

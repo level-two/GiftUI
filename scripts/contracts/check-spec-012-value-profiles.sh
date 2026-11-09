@@ -102,12 +102,9 @@ printf 'profile\t%s\ncompiler\t%s\ncompiler_sha256\t%s\ncompiler_version\t%s\nta
 
 module_dir="${output_root}/modules"
 module_flags=("${flags[@]}" -parse-as-library -package-name GiftUI -emit-module)
+giftui_sources=("${PROJECT_ROOT}"/Sources/GiftUI/*.swift)
 run_command "${compiler}" "${module_flags[@]}" -module-name GiftUI \
-    "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift" \
-    "${PROJECT_ROOT}/Sources/GiftUI/Color.swift" \
-    "${PROJECT_ROOT}/Sources/GiftUI/BoundedText.swift" \
-    "${PROJECT_ROOT}/Sources/GiftUI/DrawingStyles.swift" \
-    "${PROJECT_ROOT}/Sources/GiftUI/DrawingSurface.swift" \
+    "${giftui_sources[@]}" \
     -emit-module-path "${module_dir}/GiftUI.swiftmodule" >/dev/null
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name GiftUITextResources \
     "${PROJECT_ROOT}/Sources/GiftUITextResources/GiftUITextResources.swift" \
