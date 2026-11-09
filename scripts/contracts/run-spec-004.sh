@@ -236,8 +236,8 @@ run_fixture_set() {
 run_dependency_checks() {
     command -v swift >/dev/null || fail 'swift is missing'
     local package_json="${report_dir}/package.json"
-    record_command swift package dump-package
-    swift package dump-package >"${package_json}" 2>>"${log_path}"
+    record_command swift package --disable-sandbox --skip-update dump-package
+    swift package --disable-sandbox --skip-update dump-package >"${package_json}" 2>>"${log_path}"
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" \
         <"${package_json}" >>"${log_path}" 2>&1
@@ -352,6 +352,7 @@ run_allocation_probe() {
     local -a probe_command=(
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -package-name GiftUI
         -module-name GiftUICapabilitiesAllocationProbe
         -L "${probe_dir}" -lGiftUIAllocationInterposer
         -Xlinker -rpath -Xlinker "${probe_dir}"
@@ -387,7 +388,7 @@ run_target_layout_probe() {
     local layout_ir="${report_dir}/semantics/capability-layout.ll"
     local layout_report="${report_dir}/semantics/capability-layout.tsv"
     local -a command=(
-        "${compiler}" "$@" -parse-as-library -emit-ir
+        "${compiler}" "$@" -package-name GiftUI -parse-as-library -emit-ir
         -module-name GiftUICapabilityLayoutProbe
         "${EXPECTED_SOURCE}"
         "${FIXTURE_ROOT}/Instrumentation/LayoutProbe.swift"
@@ -481,6 +482,7 @@ run_semantic_probe() {
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}"
         -DGIFTUI_CAPABILITY_INSTRUMENTATION -language-mode 6
+        -package-name GiftUI
         -module-name GiftUICapabilitiesSemanticProbe
         "${EXPECTED_SOURCE}"
         "${FIXTURE_ROOT}/SemanticProbe/main.swift"
@@ -560,10 +562,21 @@ run_macos() {
     local compiler compiler_version sdk_path sdk_version profile_flag extension image
     local giftui_dir giftui_module dependency_scan product_links undefined_symbols
     local defined_symbols instrumentation_symbols
-    compiler="$(xcrun --find swiftc)"
+    if [[ -n "${GIFTUI_SWIFTC_EXECUTABLE:-}" ]]; then
+        compiler="${GIFTUI_SWIFTC_EXECUTABLE}"
+    else
+        compiler="$(xcrun --find swiftc)"
+    fi
     compiler_version="$("${compiler}" --version 2>&1)"
-    require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
-    require_exact_fragment "${compiler_version}" 'swiftlang-6.3.3.1.3' 'macOS compiler build'
+    if [[ -n "${GIFTUI_SWIFTC_EXECUTABLE:-}" ]]; then
+        require_exact_fragment "${compiler_version}" 'Apple Swift version 6.4' 'RFC-014 macOS compiler'
+        require_exact_fragment "$(hash_file "${compiler}")" \
+            '79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69' \
+            'RFC-014 macOS compiler hash'
+    else
+        require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
+        require_exact_fragment "${compiler_version}" 'swiftlang-6.3.3.1.3' 'macOS compiler build'
+    fi
     sdk_path="$(xcrun --sdk macosx --show-sdk-path)"
     sdk_version="$(xcrun --sdk macosx --show-sdk-version)"
     [[ -d "${sdk_path}" ]] || fail "macOS SDK is missing: ${sdk_path}"
@@ -579,7 +592,8 @@ run_macos() {
     local -a command=(
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}"
-        -language-mode 6 -parse-as-library -module-name GiftUICapabilities
+        -language-mode 6 -parse-as-library -package-name GiftUI
+        -module-name GiftUICapabilities
         -enable-library-evolution -emit-library -emit-module
         -emit-module-path "${report_dir}/build/GiftUICapabilities.swiftmodule"
         -emit-module-interface-path "${report_dir}/build/GiftUICapabilities.swiftinterface"
@@ -706,10 +720,13 @@ run_raspberry_pi() {
 
     giftui_pi_prepare_build_environment
     local -a command=(
-        "${swift_driver}" build --package-path "${PROJECT_ROOT}"
+        "${swift_driver}" build --disable-sandbox --skip-update
+        --cache-path "${PROJECT_ROOT}/.build"
+        --package-path "${PROJECT_ROOT}"
         --scratch-path "${report_dir}/build/swiftpm"
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
-        --configuration release --product GiftUICapabilities --static-swift-stdlib
+        --build-system native
+        --configuration release --target GiftUICapabilities --static-swift-stdlib
         -Xswiftc -whole-module-optimization
     )
     record_command "${command[@]}"
@@ -806,7 +823,8 @@ run_nrf52840() {
         -enable-experimental-feature Embedded
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
-        -parse-as-library -emit-module -module-name GiftUICapabilities
+        -package-name GiftUI -parse-as-library -emit-module
+        -module-name GiftUICapabilities
         "${EXPECTED_SOURCE}" -emit-module-path "${module}"
     )
     record_command "${command[@]}"
@@ -819,7 +837,8 @@ run_nrf52840() {
         -enable-experimental-feature Embedded
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
-        -parse-as-library -emit-object -module-name GiftUICapabilities
+        -package-name GiftUI -parse-as-library -emit-object
+        -module-name GiftUICapabilities
         "${EXPECTED_SOURCE}" -o "${capability_object}"
     )
     record_command "${object_command[@]}"

@@ -548,6 +548,7 @@ compile_nrf_resource_archive() {
         -Xfrontend -function-sections -Xfrontend -disable-stack-protector
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
         -Xcc -fshort-enums -Xcc -fno-pic -Xcc -fno-pie
+        -package-name GiftUI
         -DGIFTUI_STATIC_PROFILE -DGIFTUI_RESOURCE_C_MAIN -language-mode 6
     )
     mkdir -p "${module_dir}" "${object_dir}"
@@ -652,7 +653,8 @@ compile_macos_capability_adapter() {
     local -a capability_command=(
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}" -language-mode 6
-        -parse-as-library -emit-module -module-name GiftUICapabilities
+        -parse-as-library -package-name GiftUI -emit-module
+        -module-name GiftUICapabilities
         "${CAPABILITY_SOURCE}" -emit-module-path "${capability_module}"
     )
     record_command "${capability_command[@]}"
@@ -662,7 +664,7 @@ compile_macos_capability_adapter() {
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}" -language-mode 6
         -I "${report_dir}/build" -I "${adapter_dir}"
-        -parse-as-library -emit-module
+        -parse-as-library -package-name GiftUI -emit-module
         -module-name GiftUICapabilityFailureAdapterFixture
         "${CAPABILITY_ADAPTER_SOURCE}" -emit-module-path "${adapter_module}"
     )
@@ -716,7 +718,9 @@ run_complete_semantic_suite_macos() {
 
     local filter='GiftUIFailureCoreTests|GiftUIFailureDiagnosticsTests|GiftUIFoundationFailureAdapterTests|GiftUICapabilityFailureAdapterTests'
     local -a command=(
-        "${swift_driver}" test --package-path "${PROJECT_ROOT}"
+        "${swift_driver}" test --disable-sandbox --skip-update
+        --cache-path "${PROJECT_ROOT}/.build"
+        --package-path "${PROJECT_ROOT}"
         --scratch-path "${suite_dir}"
         --configuration release
         -Xswiftc -whole-module-optimization
@@ -854,8 +858,8 @@ run_fixture_set() {
 run_dependency_checks() {
     command -v swift >/dev/null || fail 'swift is missing'
     local package_json="${report_dir}/package.json"
-    record_command swift package dump-package
-    swift package dump-package >"${package_json}" 2>>"${log_path}"
+    record_command swift package --disable-sandbox --skip-update dump-package
+    swift package --disable-sandbox --skip-update dump-package >"${package_json}" 2>>"${log_path}"
 
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" <"${package_json}" >>"${log_path}" 2>&1
@@ -1027,10 +1031,21 @@ run_macos() {
     command -v xcrun >/dev/null || fail 'xcrun is missing'
 
     local compiler compiler_version sdk_path sdk_version profile_flag capacity_flag image extension
-    compiler="$(xcrun --find swiftc)"
+    if [[ -n "${GIFTUI_SWIFTC_EXECUTABLE:-}" ]]; then
+        compiler="${GIFTUI_SWIFTC_EXECUTABLE}"
+    else
+        compiler="$(xcrun --find swiftc)"
+    fi
     compiler_version="$("${compiler}" --version 2>&1)"
-    require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
-    require_exact_fragment "${compiler_version}" 'swiftlang-6.3.3.1.3' 'macOS compiler build'
+    if [[ -n "${GIFTUI_SWIFTC_EXECUTABLE:-}" ]]; then
+        require_exact_fragment "${compiler_version}" 'Apple Swift version 6.4' 'RFC-014 macOS compiler'
+        require_exact_fragment "$(hash_file "${compiler}")" \
+            '79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69' \
+            'RFC-014 macOS compiler hash'
+    else
+        require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
+        require_exact_fragment "${compiler_version}" 'swiftlang-6.3.3.1.3' 'macOS compiler build'
+    fi
     sdk_path="$(xcrun --sdk macosx --show-sdk-path)"
     sdk_version="$(xcrun --sdk macosx --show-sdk-version)"
     [[ -d "${sdk_path}" ]] || fail "macOS SDK is missing: ${sdk_path}"
@@ -1048,7 +1063,8 @@ run_macos() {
     local -a command=(
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}"
-        -language-mode 6 -parse-as-library -module-name GiftUIFailureCore
+        -language-mode 6 -parse-as-library -package-name GiftUI
+        -module-name GiftUIFailureCore
         -enable-library-evolution
         -emit-library -emit-module
         -emit-module-path "${report_dir}/build/GiftUIFailureCore.swiftmodule"
@@ -1125,10 +1141,13 @@ run_raspberry_pi() {
 
     giftui_pi_prepare_build_environment
     local -a command=(
-        "${swift_driver}" build --package-path "${PROJECT_ROOT}"
+        "${swift_driver}" build --disable-sandbox --skip-update
+        --cache-path "${PROJECT_ROOT}/.build"
+        --package-path "${PROJECT_ROOT}"
         --scratch-path "${report_dir}/build/swiftpm"
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
-        --configuration release --target GiftUICapabilityFailureAdapterFixture
+        --configuration release --build-system native
+        --target GiftUICapabilityFailureAdapterFixture
         --static-swift-stdlib
         -Xswiftc -whole-module-optimization
     )
@@ -1238,7 +1257,7 @@ run_nrf52840() {
         -enable-experimental-feature Embedded
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
-        -parse-as-library -emit-module -module-name GiftUIFailureCore
+        -package-name GiftUI -parse-as-library -emit-module -module-name GiftUIFailureCore
         "${SOURCE_ROOT}/GiftUIFailureCore.swift" -emit-module-path "${module}"
     )
     record_command "${command[@]}"
@@ -1251,7 +1270,7 @@ run_nrf52840() {
         -enable-experimental-feature Embedded
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
-        -parse-as-library -emit-object -module-name GiftUIFailureCore
+        -package-name GiftUI -parse-as-library -emit-object -module-name GiftUIFailureCore
         "${SOURCE_ROOT}/GiftUIFailureCore.swift" -o "${core_object}"
     )
     record_command "${object_command[@]}"
@@ -1277,7 +1296,7 @@ run_nrf52840() {
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
         -I "${report_dir}/build"
-        -parse-as-library -emit-module
+        -package-name GiftUI -parse-as-library -emit-module
         -module-name GiftUIFailureProfileCorpusProbe
         "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
         -emit-module-path "${probe_module}"
@@ -1295,7 +1314,7 @@ run_nrf52840() {
         -enable-experimental-feature Embedded
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
-        -parse-as-library -emit-module -module-name GiftUICapabilities
+        -package-name GiftUI -parse-as-library -emit-module -module-name GiftUICapabilities
         "${CAPABILITY_SOURCE}" -emit-module-path "${capability_module}"
     )
     record_command "${capability_command[@]}"
@@ -1306,7 +1325,7 @@ run_nrf52840() {
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
         -I "${report_dir}/build" -I "${adapter_dir}"
-        -parse-as-library -emit-module
+        -package-name GiftUI -parse-as-library -emit-module
         -module-name GiftUICapabilityFailureAdapterFixture
         "${CAPABILITY_ADAPTER_SOURCE}" -emit-module-path "${adapter_module}"
     )

@@ -458,6 +458,19 @@ attempts show that the earlier dependency-list repair is not sufficient for a
 full SPEC-003 profile pass; they do not establish a new SPEC-003 product
 failure.
 
+A follow-up with the same filtered suite and SwiftPM's
+`-debug-info-format none` option moved past the dSYM stage but stopped on the
+already-transferred `SignalAnalyzerPresentation/SignalAnalyzerView.swift`
+compile errors (`any Canvas` cannot conform to `View`, and a `Text` generic
+parameter is unresolved). No test assertions ran. This distinguishes the
+original dSYM tooling failure from the current package-wide analyzer compile
+prerequisite; it does not transfer the separate `GiftUIRuntimeDynamic`
+specialization error into analyzer ownership. The command, metadata, and raw
+output are retained in
+[`spec003-macos-dynamic-no-debug-followup-2026-11-09.tar.gz`](spec003-macos-dynamic-no-debug-followup-2026-11-09.tar.gz),
+SHA-256 `d903ded0f28b801ce5d1035bbd4b9d315c6673a2465bdb9420ae43efa8d9e1e6`;
+the raw log SHA-256 is `2e07c190b6551cf50bb3fc88229595b418d281ecad80e4e29031a1c7199d1faf`.
+
 Four later SPEC-015 host-target build attempts—macOS Dynamic, macOS Static,
 Raspberry Pi ARMv6, and nRF52840 Embedded—each passed the current harness,
 negative-corpus, source-boundary, generated-workload, and validation-purity
@@ -484,6 +497,51 @@ macOS 26 target. It fails at the one-argument `DynamicCanvasCallableStorage`
 specialization before target tests run; its raw log is
 `dynamic-runtime-canvas-target.log` (SHA-256
 `7511b0a283a36850a95d3d9485f8f3205e5ae0ab8af9aa93cbc3a25c08ca7ad4`).
+
+## Current SPEC-003 Pi and nRF profile follow-up — 2026-11-09
+
+The current Pi and nRF SPEC-003 profile drivers now pass after two narrow
+validation-command repairs. The Pi driver selected SwiftPM's Xcode build
+system for its Linux SDK and failed with `unable to resolve run destination
+SDK: 'linux'`; it now explicitly requests the native build system, matching
+the accepted SPEC-002 runner pattern. The nRF driver omitted `-package-name
+GiftUI` from direct compiles that use package SPI; adding the package identity
+to those module, object, probe, and resource-support commands resolves the
+Swift 6.4 compiler's explicit package-name diagnostic. These runner-only
+repairs changed no product source or accepted API contract.
+
+| Profile | Result / run ID / input-set SHA-256 | Metadata SHA-256 | Driver log SHA-256 |
+| --- | --- | --- | --- |
+| Raspberry Pi ARMv6 | Passed, `efe8a406ec3412cf6844246b3e61847d2107a6be-7ca8e3ed9ed8de47` / `7ca8e3ed9ed8de4747e20ec6ce50ee3f577a939a48f3bef5f0216e028aff6a28` | `12a644b96e3ef22f4f6ce34503b2ac0e59fe801f6aff1718baed821f5ee7ba7b` | `4001baa321070f2cb5d6b93626cc49a6ddb52d6c2e9e5212760f1aa5e80f75ed` |
+| nRF52840 Embedded | Passed, `efe8a406ec3412cf6844246b3e61847d2107a6be-1e6580b92efad838` / `1e6580b92efad838948ee4dac27de691c06138ff8136528a93805812f2290028` | `8a3d08f6674a63ed8433201d17411ee7ade63463ff7e0fa986da26bccf0a250f` | `b875d839f6b9614a9888c5ac188a70284de1c30bad5df5e09ad6bd04e5329c77` |
+
+The updated runner SHA-256 is `28542f29e424675cb6503683977b05baaf2571717fb67bfe5901721a30c1fc8c`.
+The compact current run receipts (metadata, commands, source-input hashes,
+driver logs, image/report hash manifests, and layout results) are retained in
+[`spec003-pi-nrf-current-runs-2026-11-09.tar.gz`](spec003-pi-nrf-current-runs-2026-11-09.tar.gz),
+SHA-256 `0d5b8f86f985028ad070c2bad2f622a823c547f81f3ce5bda392fdcae96d9c97`.
+Both are cross-compilation and resource-evidence runs only: no Pi deployment,
+nRF flashing, or hardware execution occurred. These two current profile
+passes do not rewrite the corresponding archived failed executions or clear
+the remaining SPEC-003 macOS test-build prerequisite.
+
+## Current SPEC-004 four-profile follow-up — 2026-11-09
+
+The corrected SPEC-004 dependency fixture now passes its full focused profile
+driver on macOS Dynamic, macOS Static, Raspberry Pi ARMv6, and nRF52840
+Embedded. All four use input-set SHA-256
+`9f8d905fc37188caa4b61fea663bc4474ad58b683dbf233b398e0bc95a8f8449` and run
+ID `efe8a406ec3412cf6844246b3e61847d2107a6be-9f8d905fc37188ca`. Both macOS
+profiles use the pinned Swift 6.4 compiler at macOS 26.0 / SDK 26.5; the
+embedded profiles use their pinned ARMv6 and nRF52840 toolchains. The compact
+reports retain commands, input manifests, driver logs, image/report hash
+manifests, and capability layout outputs in
+[`spec004-four-profile-current-runs-2026-11-09.tar.gz`](spec004-four-profile-current-runs-2026-11-09.tar.gz),
+SHA-256 `be001d16e41109e541968fefd7c6a769d15c57ad9b731822791eacf982cfecd1`.
+The four current runs validate the repaired exact host-dependency fixture and
+profile resource checks; they do not change the four archived SPEC-004 failed
+executions or the archived P10 count of 24 passes and 59 failures. Neither
+embedded profile was deployed, flashed, or run on hardware.
 
 ## Current SPEC-005 four-profile follow-up — 2026-11-09
 

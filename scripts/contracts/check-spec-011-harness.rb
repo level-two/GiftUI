@@ -32,6 +32,7 @@ expected_tasks = (0..10).flat_map do |milestone|
   count = { 0 => 4, 1 => 5, 2 => 5, 3 => 6, 4 => 4, 5 => 6, 6 => 4, 7 => 5, 8 => 5, 9 => 5, 10 => 3 }.fetch(milestone)
   (1..count).map { |task| "T#{milestone}.#{task}" }
 end
+expected_tasks << "T12.1"
 abort "task evidence keys differ" unless evidence.keys.sort == expected_tasks.sort
 
 criteria = File.readlines(File.join(fixtures, "required-evidence.tsv")).reject { |line| line.start_with?("#") || line.strip.empty? }.map { |line| line.split("\t").first }
