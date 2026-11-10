@@ -1,0 +1,1 @@
+GIFTUI_SWIFT_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift" GIFTUI_SWIFTC_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc" scripts/test.sh all-hardware-free

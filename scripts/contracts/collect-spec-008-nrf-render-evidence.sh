@@ -33,6 +33,8 @@ compiler="${GIFTUI_NRF_SWIFTC}"
 flags=(
     -target "${GIFTUI_NRF_SWIFT_TARGET}"
     -enable-experimental-feature Embedded
+    -enable-experimental-feature LifetimeDependence
+    -enable-experimental-feature Lifetimes
     -Osize -whole-module-optimization -DGIFTUI_STATIC_PROFILE
     -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
     -Xcc -fshort-enums -Xcc -fno-pic -Xcc -fno-pie

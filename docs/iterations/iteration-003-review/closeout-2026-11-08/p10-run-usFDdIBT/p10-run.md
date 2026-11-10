@@ -960,3 +960,91 @@ Focused logs and check receipts are retained with these SHA-256 identities:
 | `spec003-diagnostic-capacity-64-tests-build.log` | `719ca446935b54128de7a0d1e39ff8d8650efa05b67a57c255e43df5ce301950` |
 | `spec003-diagnostic-capacity-64-tests.log` | `ad5c16b0d652747bcaaf086ca426efd696323ebf88fae26dc63af37952bbb0a4` |
 | `spec003-diagnostic-conflict-build.log` | `b6b4a13e03fc380a99f453254f669acd2a1b7b9dadb4bd2ad8865ea16f64ec41` |
+
+## Earlier fresh integrated run, superseded — 2026-11-10
+
+The `run-MM4217u6` result below is retained historical evidence. It is
+superseded as the latest integrated run by `run-DqItCC6l`, recorded at the end
+of this document.
+
+The fresh command `GIFTUI_SWIFT_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift" GIFTUI_SWIFTC_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc" scripts/test.sh all-hardware-free` completed as **FAILED / UNMET: 56 passed, 27 failed of 83 checks**. This is a new integrated execution; it does not rewrite the historical 24/59 result above. It ran on the dirty worktree at HEAD `ba03d1a342187a4b79fe2fa28c6e785419461b94`; tracked-diff fingerprint at run start was `2e33459c3ed283956c89e8eca38a6d08924157cea1b3c783730791f1ce6dc475`. The pinned Swift 6.4 driver and compiler both hash to `79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`. SwiftPM child invocations also used the local P08 comparison expansion of Swift 6.4.0; no global toolchain or target was changed.
+
+| Profile group | Pass | Fail | Total |
+| --- | ---: | ---: | ---: |
+| macOS Dynamic | 10 | 7 | 17 |
+| macOS Static | 10 | 8 | 18 |
+| Raspberry Pi ARMv6 cross-build | 12 | 5 | 17 |
+| nRF52840 hardware-free build | 12 | 5 | 17 |
+| Common checks | 12 | 2 | 14 |
+| **Total** | **56** | **27** | **83** |
+
+The 27 failed rows are `spec-013-macos-static`, `root-tests`, `spec-003-diagnostic-buffer`, SPEC-001 (four profiles), SPEC-003 macOS Dynamic/Static, SPEC-007 (four profiles), SPEC-008 (four profiles), SPEC-011 (four profiles), SPEC-014 macOS Dynamic/Static, and SPEC-015 (four profiles). The exact names, exit codes, child-report references, and raw logs are in the receipt directory below.
+
+Failure disposition stays attached to the actual causes. Analyzer schema-inference and `View` conformance errors block analyzer-dependent package and fixture compilation and remain on the approved I4 analyzer migration. The SPEC-001 compiler output also reports current shared Semantic Core associated-type lifetime constraint errors (`cannot suppress Copyable/Escapable requirement`); this is a retained shared compile blocker, not covered by the analyzer transfer. SPEC-007 fixture schemas and import boundaries pass, but its conformance reports are incomplete. SPEC-008's failure corpus passes; the macOS Dynamic rendering build then fails in `dsymutil` with `Operation not permitted`, while the other profile executions remain failed in their profile-specific reports. SPEC-011 reaches its exact declaration/migration checks but currently fails differing declaration/evidence/consumer inventories by profile. SPEC-014 macOS reports retain one analyzer-blocked incomplete prerequisite each. SPEC-015 remains failed across its four profiles; these results do not alter its prior approved named DynamicRuntimeProfileBinding I4-07 transfer or transfer the general shared runtime contract.
+
+Bounded fixes exercised by this run include the SPEC-002 sandbox/profile invocation correction (all nine SPEC-002 checks pass), the SPEC-008 current generic Text probe spelling, and the SPEC-011 current consumer and selected-toolchain/scratch handling. The SPEC-008 runtime evidence build still has an environment-level `dsymutil` failure; this is retained as a failure, not waived. SPEC-007's incomplete reports and SPEC-011's remaining exact-surface/evidence mismatches are still actionable retained P10 work. No failed row is reclassified as passing, and no P08 proof campaign or hardware execution was run.
+
+P08 remains FROZEN / UNMET. S1–S3 reuse remains blocked pending resolution or replacement plus validation and independent review. Analyzer-specific work remains transferred to I4; counter-composition certification remains I4-AC-013. General shared-runtime obligations, SPEC-007/008/011 failures, the shared associated-type lifetime compile blocker, overall freeze acceptance, retained accounting/conformance, and the separate human iteration-closure decision remain open. The gate is not complete.
+
+The exact run command, `metadata.txt`, `results.tsv`, `child-reports.tsv`, and compressed raw `logs/` are retained in [`current-run-MM4217u6`](current-run-MM4217u6/). Receipt hashes:
+
+| File | SHA-256 |
+| --- | --- |
+| `metadata.txt` | `fc3bbe48cf67d14c34d088f22384e01c2f882ae439bd3bcd62dea281d6b9aa7e` |
+| `results.tsv` | `ba62ca78b7dc10f88e6a3be85ddeecc6546deb8bcb2858c8b5a75ac1e24ac3a4` |
+| `child-reports.tsv` | `bdeb75400bb6493ee436139774f0d6554b4c7de1a24e6927e5ec4f90cff27b82` |
+| `logs.tar.gz` | `d2caba022167ed39a7aa90270f30eb6a06489bed94b1968ad3bb013e0f5fe6c6` |
+| `command.txt` | `db9abf22d3cccd6c7bbecee8458532f48f0448962cb70e56656c6e3d252f3424` |
+
+## Latest integrated all-hardware-free run — 2026-11-10
+
+The latest `scripts/test.sh all-hardware-free` run is `run-DqItCC6l`. It
+completed all 83 serialized checks and remains **FAILED / UNMET: 60 passed,
+23 failed**. This result supersedes `run-MM4217u6` as the latest integrated
+run; both runs and their raw receipts remain preserved. Profile-group totals
+are macOS Dynamic 11/6, macOS Static 11/7, Raspberry Pi ARMv6 13/4, nRF52840
+13/4, and common checks 12/2 (pass/fail).
+
+The exact command was:
+
+```sh
+GIFTUI_SWIFT_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift" \
+GIFTUI_SWIFTC_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc" \
+scripts/test.sh all-hardware-free
+```
+
+The run used HEAD `ba03d1a342187a4b79fe2fa28c6e785419461b94` with a dirty
+worktree. Its retained source-identity receipt explicitly says it does not
+contain a complete dirty-source manifest. Both Swift driver and compiler are
+the pinned local Swift 6.4.0 binaries, SHA-256
+`79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`; no global
+toolchain selection changed. The command, metadata, result ledger, child-report
+ledger, raw logs archive, and stated source identity are under
+[`current-run-DqItCC6l`](current-run-DqItCC6l/).
+
+The 23 failed checks reconcile to three causes:
+
+| Cause | Failed checks | Disposition |
+| --- | ---: | --- |
+| Shared Semantic Core associated-type constraints rejected by Swift 6.4 | 5: SPEC-001 in all four profiles and `spec-003-diagnostic-buffer` | Retained shared compile blocker. Do not weaken noncopyable/nonescapable visitor and binding constraints without a separately approved contract change. |
+| Analyzer schema inference / `View` conformance compilation | 14: `spec-013-macos-static`, `root-tests`, SPEC-003 macOS Dynamic/Static, SPEC-011 in all four profiles, SPEC-014 macOS Dynamic/Static, and SPEC-015 in all four profiles | Analyzer-specific failures remain on the approved I4 migration destination. Their raw executions remain failed; the transfer does not waive other checks or imply a full P10 pass. |
+| SPEC-007 conformance lifecycle is incomplete while P08 is frozen | 4: SPEC-007 in all four profiles | Product fixture/schema checks pass, but the conformance report is still collecting and plan active. Do not mark the feature complete while P08 is FROZEN / UNMET. |
+
+This run has zero failures in SPEC-008. Its four focused hardware-free profile
+receipts also pass after the collector fixes; those targeted receipts are
+supporting evidence and do not retroactively change earlier failed runs. The
+run did not produce a clean-worktree source snapshot, a P10 pass, a P08 pass,
+or an iteration closure. Existing S1–S3 restricted-reuse blocks, I4-AC-013
+counter-composition certification, P11/P12 evidence, overall freeze review,
+and the separate human iteration-closure decision remain unchanged.
+
+Receipt SHA-256 values:
+
+| File | SHA-256 |
+| --- | --- |
+| `metadata.txt` | `85d0e77583f7546596be16fe523b407197413e91737ededb5472a497ef719355` |
+| `results.tsv` | `7eb14fab9286984ed2fb9abd369b427c64d848f15e16d12851f4392af883b3d4` |
+| `child-reports.tsv` | `ac0c954ca5efdc9552f63aa576276ccac8cca29b7773088cec9da2a7b300b9b7` |
+| `logs.tar.gz` | `ef4c6b288debaef1d52b85f52c1fc1ffb34f1f9e47273007ee5aaced4b1fdde6` |
+| `command.txt` | `db9abf22d3cccd6c7bbecee8458532f48f0448962cb70e56656c6e3d252f3424` |
+| `source-identity.txt` | `af749657d3ce9850cfe687123ca1ece79660c8d858b1c6af1e934cd1f89359ef` |

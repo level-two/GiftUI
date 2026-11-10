@@ -30,24 +30,52 @@ record_command() {
     printf '\n' >>"${commands}"
 }
 
-compiler="$(xcrun --find swiftc)"
+compiler="${GIFTUI_SWIFTC_EXECUTABLE:-$(xcrun --find swiftc)}"
 clang="$(xcrun --find clang)"
 sdk="$(xcrun --sdk macosx --show-sdk-path)"
+swift_driver="${GIFTUI_SWIFT_EXECUTABLE:-swift}"
 profile_flag=-DGIFTUI_DYNAMIC_PROFILE
 [[ "${profile}" != "macos-static" ]] || profile_flag=-DGIFTUI_STATIC_PROFILE
 scratch="${output}/swiftpm"
 
-build=(swift build --disable-sandbox --package-path "${PROJECT_ROOT}" \
-    --scratch-path "${scratch}" -c release --target GiftUIRenderLowering \
+build=("${swift_driver}" build --disable-sandbox --build-system native \
+    --package-path "${PROJECT_ROOT}" \
+    --cache-path "${PROJECT_ROOT}/.build" --scratch-path "${scratch}" \
+    -c release --target GiftUIRenderLowering \
     -Xswiftc "${profile_flag}" -Xswiftc -whole-module-optimization \
-    -Xswiftc -target -Xswiftc arm64-apple-macosx26.0)
+    -Xswiftc -target -Xswiftc arm64-apple-macosx26.0 \
+    -Xswiftc -gnone)
 record_command "${build[@]}"
 "${build[@]}" >/dev/null
 
-module="$(find "${scratch}" -type f -path '*/release/Modules/GiftUIRenderLowering.swiftmodule' -print -quit)"
+module="$(find "${scratch}" \( \
+    -path '*/release/Modules/GiftUIRenderLowering.swiftmodule' -o \
+    -path '*/Products/Release/GiftUIRenderLowering.swiftmodule' \
+\) -print -quit)"
 [[ -n "${module}" ]] || fail 'optimized Render Lowering module is missing'
-bin="$(dirname "$(dirname "${module}")")"
-module_dir="${bin}/Modules"
+if [[ "${module}" == */Products/Release/GiftUIRenderLowering.swiftmodule ]]; then
+    module_dir="$(dirname "${module}")"
+    build_root="${scratch}/out/Intermediates.noindex/GiftUI.build/Release"
+    objects=(
+        "${build_root}"/GiftUI-t.build/Objects-normal/arm64/*.o
+        "${build_root}"/GiftUITextResources-t.build/Objects-normal/arm64/*.o
+        "${build_root}"/GiftUISemanticCore-t.build/Objects-normal/arm64/*.o
+        "${build_root}"/GiftUILayout-t.build/Objects-normal/arm64/*.o
+        "${build_root}"/GiftUIRenderCore-t.build/Objects-normal/arm64/*.o
+        "${build_root}"/GiftUIRenderLowering-t.build/Objects-normal/arm64/*.o
+    )
+else
+    bin="$(dirname "$(dirname "${module}")")"
+    module_dir="${bin}/Modules"
+    objects=(
+        "${bin}"/GiftUI.build/*.swift.o
+        "${bin}"/GiftUITextResources.build/*.swift.o
+        "${bin}"/GiftUISemanticCore.build/*.swift.o
+        "${bin}"/GiftUILayout.build/*.swift.o
+        "${bin}"/GiftUIRenderCore.build/*.swift.o
+        "${bin}"/GiftUIRenderLowering.build/*.swift.o
+    )
+fi
 
 interposer="${output}/libAllocation.dylib"
 compile_interposer=("${clang}" -target arm64-apple-macosx26.0 -isysroot "${sdk}" \
@@ -67,18 +95,11 @@ compile_baseline=("${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" \
 record_command "${compile_baseline[@]}"
 "${compile_baseline[@]}"
 
-objects=(
-    "${bin}"/GiftUI.build/*.swift.o
-    "${bin}"/GiftUITextResources.build/*.swift.o
-    "${bin}"/GiftUISemanticCore.build/*.swift.o
-    "${bin}"/GiftUILayout.build/*.swift.o
-    "${bin}"/GiftUIRenderCore.build/*.swift.o
-    "${bin}"/GiftUIRenderLowering.build/*.swift.o
-)
 candidate="${output}/render-probe"
 candidate_map="${output}/render-probe.map"
 compile_candidate=("${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" \
     -O -whole-module-optimization "${profile_flag}" -parse-as-library -package-name giftui \
+    -enable-experimental-feature Lifetimes \
     -I "${module_dir}" "${PROBE_ROOT}/RenderViewBorrowProbe.swift" \
     "${PROBE_ROOT}/RenderEvidenceMain.swift" "${objects[@]}" "${interposer}" \
     -Xlinker -rpath -Xlinker "${output}" -Xlinker -map -Xlinker "${candidate_map}" \
@@ -105,6 +126,7 @@ probe_ir="${output}/render-resource.ll"
 workspace="${output}/concrete-workspace.tsv"
 compile_ir=("${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" \
     -O -whole-module-optimization "${profile_flag}" -package-name giftui \
+    -enable-experimental-feature Lifetimes \
     -I "${module_dir}" -parse-as-library -emit-ir \
     "${PROBE_ROOT}/RenderViewBorrowProbe.swift" -o "${probe_ir}")
 record_command "${compile_ir[@]}"
