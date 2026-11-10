@@ -1,0 +1,850 @@
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift build --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch --cache-path /Users/eugene/work/GiftUI/.build --target GiftUIRuntimeDynamicTests --disable-sandbox --skip-update
+Building for debugging...
+[Computing dependencies]
+[Pre-planning 1 / 442]
+[Planning deferred tasks]
+[106 / 230] GiftUIMacros
+[116 / 284]
+[122 / 284]
+[128 / 284]
+[129 / 284]
+[136 / 284]
+[139 / 284]
+[142 / 284]
+[147 / 284]
+[148 / 284]
+[149 / 284]
+[150 / 284]
+[153 / 284]
+[154 / 284]
+[155 / 284]
+[160 / 284] GiftUIMacros
+[161 / 284] GiftUIMacros
+[163 / 284] GiftUIMacros
+[179 / 298] GiftUI
+[203 / 318] GiftUISemanticCore
+[214 / 318] GiftUITextResources
+[222 / 319] GiftUISemanticCore
+[227 / 324] GiftUIRenderCore
+[243 / 338] GiftUIExecution
+[248 / 338] GiftUIExecution
+[254 / 338] GiftUIExecution
+[255 / 338] GiftUITextResources
+[280 / 365] GiftUIRenderCore
+[287 / 365] GiftUIObservableState
+[290 / 365] GiftUIObservableState
+[294 / 365] GiftUIExecution
+[309 / 373] GiftUILayout
+[313 / 381] GiftUIInteraction
+[324 / 381]
+[345 / 395] GiftUIInteraction
+[354 / 395] GiftUIInteraction
+[356 / 395] GiftUIDrawing
+[365 / 396] GiftUIDrawing
+[378 / 409] GiftUIRuntimeCore
+[385 / 410] GiftUIRuntimeDynamic
+warning: '--skip-update' option is deprecated and will be removed in a future release
+warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (0.26s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (1.04s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift:18:34: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 16 |         } else if payloadCopy is _GiftUITextPayload {
+ 17 |             self = .text
+ 18 |         } else if payloadCopy is Canvas {
+    |                                  `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 19 |             self = .canvas
+ 20 |         } else {
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift:9:30: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 7 |         if payload is _GiftUITextPayload {
+ 8 |             self = .text
+ 9 |         } else if payload is Canvas {
+   |                              `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+10 |             self = .canvas
+11 |         } else {
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:14:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+12 |     @inline(__always)
+13 |     package init() {
+14 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+15 |     }
+16 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:26:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+24 |         with captured: CapturedAction<Identity>?
+25 |     ) {
+26 |         self.captured = captured
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+27 |     }
+28 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:35:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+33 |     ) -> Bool
+34 |     where ActionView: ExecutionActionView, ActionView.Identity == Identity {
+35 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+36 |         guard let identity = actionView.hit(at: point),
+37 |             let generation = actionView.generation(for: identity),
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:43:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+41 |         }
+42 | 
+43 |         captured = CapturedAction(
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+44 |             identity: identity,
+45 |             generation: generation
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:52:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+50 |     @inlinable
+51 |     mutating func cancelForMovement() {
+52 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+53 |     }
+54 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:63:17: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+61 |     ) -> CapturedAction<Identity>?
+62 |     where ActionView: ExecutionActionView, ActionView.Identity == Identity {
+63 |         defer { captured = nil }
+   |                 `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+64 |         guard provenanceValid, generationUnambiguous,
+65 |             let captured,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:78:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+76 |     @inlinable
+77 |     package mutating func cancel() {
+78 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+79 |     }
+80 | }
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:84:9: warning: setter for property 'components' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 67 |     }
+ 68 |     @usableFromInline
+ 69 |     internal private(set) var components: InlineArray<34, SemanticPathComponent> = .init(
+    |                               `- note: setter for property 'components' is not '@usableFromInline' or public
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+    :
+ 82 |         guard count < Self.capacity, component.isValid, (count == 0) == (component.kind == .root)
+ 83 |         else { return false }
+ 84 |         components[Int(count)] = component
+    |         `- warning: setter for property 'components' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 85 |         count += 1
+ 86 |         return true
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:85:9: warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+ 72 |     package private(set) var count: UInt16 = 0
+    |                              `- note: setter for property 'count' is not '@usableFromInline' or public
+ 73 |     @inlinable
+ 74 |     package init() {}
+    :
+ 83 |         else { return false }
+ 84 |         components[Int(count)] = component
+ 85 |         count += 1
+    |         `- warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 86 |         return true
+ 87 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:91:9: warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+ 72 |     package private(set) var count: UInt16 = 0
+    |                              `- note: setter for property 'count' is not '@usableFromInline' or public
+ 73 |     @inlinable
+ 74 |     package init() {}
+    :
+ 89 |     package mutating func removeLast() {
+ 90 |         precondition(count > 0)
+ 91 |         count -= 1
+    |         `- warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 92 |     }
+ 93 |     @inlinable
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:14:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+12 |     @inline(__always)
+13 |     package init() {
+14 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+15 |     }
+16 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:26:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+24 |         with captured: CapturedAction<Identity>?
+25 |     ) {
+26 |         self.captured = captured
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+27 |     }
+28 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:35:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+33 |     ) -> Bool
+34 |     where ActionView: ExecutionActionView, ActionView.Identity == Identity {
+35 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+36 |         guard let identity = actionView.hit(at: point),
+37 |             let generation = actionView.generation(for: identity),
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:43:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+41 |         }
+42 | 
+43 |         captured = CapturedAction(
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+44 |             identity: identity,
+45 |             generation: generation
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:52:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+50 |     @inlinable
+51 |     mutating func cancelForMovement() {
+52 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+53 |     }
+54 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:63:17: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+61 |     ) -> CapturedAction<Identity>?
+62 |     where ActionView: ExecutionActionView, ActionView.Identity == Identity {
+63 |         defer { captured = nil }
+   |                 `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+64 |         guard provenanceValid, generationUnambiguous,
+65 |             let captured,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift:78:9: warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 7 |     // The initializer below initializes the same canonical Optional type directly.
+ 8 |     // swift-format-ignore: UseShorthandTypeNames
+ 9 |     @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
+   |                                                 `- note: setter for property 'captured' is not '@usableFromInline' or public
+10 | 
+11 |     @inlinable
+   :
+76 |     @inlinable
+77 |     package mutating func cancel() {
+78 |         captured = nil
+   |         `- warning: setter for property 'captured' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+79 |     }
+80 | }
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:84:9: warning: setter for property 'components' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 67 |     }
+ 68 |     @usableFromInline
+ 69 |     internal private(set) var components: InlineArray<34, SemanticPathComponent> = .init(
+    |                               `- note: setter for property 'components' is not '@usableFromInline' or public
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+    :
+ 82 |         guard count < Self.capacity, component.isValid, (count == 0) == (component.kind == .root)
+ 83 |         else { return false }
+ 84 |         components[Int(count)] = component
+    |         `- warning: setter for property 'components' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 85 |         count += 1
+ 86 |         return true
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:85:9: warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+ 72 |     package private(set) var count: UInt16 = 0
+    |                              `- note: setter for property 'count' is not '@usableFromInline' or public
+ 73 |     @inlinable
+ 74 |     package init() {}
+    :
+ 83 |         else { return false }
+ 84 |         components[Int(count)] = component
+ 85 |         count += 1
+    |         `- warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 86 |         return true
+ 87 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:91:9: warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+ 72 |     package private(set) var count: UInt16 = 0
+    |                              `- note: setter for property 'count' is not '@usableFromInline' or public
+ 73 |     @inlinable
+ 74 |     package init() {}
+    :
+ 89 |     package mutating func removeLast() {
+ 90 |         precondition(count > 0)
+ 91 |         count -= 1
+    |         `- warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 92 |     }
+ 93 |     @inlinable
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1845:29: warning: setter for property 'failure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+  35 |     internal var counters: LayoutCounters
+  36 |     @usableFromInline
+  37 |     package internal(set) var failure: LayoutError?
+     |                               `- note: setter for property 'failure' is not '@usableFromInline' or public
+  38 | 
+  39 |     @inlinable
+     :
+1843 |     @inlinable
+1844 |     internal mutating func fail<T>(_ error: LayoutError) -> T? {
+1845 |         if failure == nil { failure = error }
+     |                             `- warning: setter for property 'failure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+1846 |         return nil
+1847 |     }
+/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift:1845:29: warning: setter for property 'failure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+  35 |     internal var counters: LayoutCounters
+  36 |     @usableFromInline
+  37 |     package internal(set) var failure: LayoutError?
+     |                               `- note: setter for property 'failure' is not '@usableFromInline' or public
+  38 | 
+  39 |     @inlinable
+     :
+1843 |     @inlinable
+1844 |     internal mutating func fail<T>(_ error: LayoutError) -> T? {
+1845 |         if failure == nil { failure = error }
+     |                             `- warning: setter for property 'failure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+1846 |         return nil
+1847 |     }
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:181:41: warning: setter for property 'committedComponents' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 31 |     internal var candidateComponents: UInt32 = 0
+ 32 |     @usableFromInline
+ 33 |     package internal(set) var committedComponents: UInt32 = 0
+    |                               `- note: setter for property 'committedComponents' is not '@usableFromInline' or public
+ 34 |     @usableFromInline
+ 35 |     internal var isStaging = false
+    :
+179 |         if case .commit = disposition, !ready { return }
+180 |         state.resolveCandidate(disposition)
+181 |         if case .commit = disposition { committedComponents = candidateComponents }
+    |                                         `- warning: setter for property 'committedComponents' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+182 |         candidateComponents = 0
+183 |         failure = nil
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:181:41: warning: setter for property 'committedComponents' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 31 |     internal var candidateComponents: UInt32 = 0
+ 32 |     @usableFromInline
+ 33 |     package internal(set) var committedComponents: UInt32 = 0
+    |                               `- note: setter for property 'committedComponents' is not '@usableFromInline' or public
+ 34 |     @usableFromInline
+ 35 |     internal var isStaging = false
+    :
+179 |         if case .commit = disposition, !ready { return }
+180 |         state.resolveCandidate(disposition)
+181 |         if case .commit = disposition { committedComponents = candidateComponents }
+    |                                         `- warning: setter for property 'committedComponents' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+182 |         candidateComponents = 0
+183 |         failure = nil
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:27:15: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+ 27 |         body(&storage)
+    |               `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 28 |     }
+ 29 |     @usableFromInline
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:34:9: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 32 |     @inlinable
+ 33 |     package init(storage: Storage) {
+ 34 |         self.storage = storage
+    |         `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 35 |         isActive = true
+ 36 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:35:9: warning: setter for property 'isActive' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 28 |     }
+ 29 |     @usableFromInline
+ 30 |     package internal(set) var isActive: Bool
+    |                               `- note: setter for property 'isActive' is not '@usableFromInline' or public
+ 31 | 
+ 32 |     @inlinable
+ 33 |     package init(storage: Storage) {
+ 34 |         self.storage = storage
+ 35 |         isActive = true
+    |         `- warning: setter for property 'isActive' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 36 |     }
+ 37 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:49:19: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 47 |                 subpathDemand: 1
+ 48 |             )
+ 49 |             guard storage.startFirstSubpath(at: point) else {
+    |                   `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 50 |                 throw DrawingError.invariantViolation
+ 51 |             }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:64:19: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 62 | 
+ 63 |         if current.pointCount == 1 {
+ 64 |             guard storage.replaceCurrentSubpathStart(with: point) else {
+    |                   `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 65 |                 throw DrawingError.invariantViolation
+ 66 |             }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:71:15: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 69 | 
+ 70 |         try requireCapacity(pointDemand: 1, subpathDemand: 1)
+ 71 |         guard storage.startNextSubpath(at: point) else {
+    |               `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 72 |             throw DrawingError.invariantViolation
+ 73 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:91:15: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 89 | 
+ 90 |         try requireCapacity(pointDemand: 1, subpathDemand: 0)
+ 91 |         guard storage.appendLine(to: point) else {
+    |               `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 92 |             throw DrawingError.invariantViolation
+ 93 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:98:9: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 96 |     @inlinable
+ 97 |     package mutating func reset() {
+ 98 |         storage.reset()
+    |         `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 99 |         isActive = false
+100 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:99:9: warning: setter for property 'isActive' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 28 |     }
+ 29 |     @usableFromInline
+ 30 |     package internal(set) var isActive: Bool
+    |                               `- note: setter for property 'isActive' is not '@usableFromInline' or public
+ 31 | 
+ 32 |     @inlinable
+    :
+ 97 |     package mutating func reset() {
+ 98 |         storage.reset()
+ 99 |         isActive = false
+    |         `- warning: setter for property 'isActive' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+100 |     }
+101 | 
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:143:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 38 | package struct CanvasStagedMetadata {
+ 39 |     @usableFromInline
+ 40 |     package internal(set) var count: UInt16 = 0
+    |                               `- note: setter for property 'count' is not '@usableFromInline' or public
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    :
+141 |         entries[Int(count)] = CanvasStagedEntry(
+142 |             identity: identity, witness: id, value: consume value)
+143 |         state.pointee.count += 1
+    |         `- warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+144 |     }
+145 |     @inlinable
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:167:13: warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 40 |     package internal(set) var count: UInt16 = 0
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    |                               `- note: setter for property 'releases' is not '@usableFromInline' or public
+ 43 |     @inlinable
+ 44 |     #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+    :
+165 |             guard entries[Int(index)]?.value != nil else { return }
+166 |             entries[Int(index)]!.value = nil
+167 |             state.pointee.releases += 1
+    |             `- warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+168 |             return
+169 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:178:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 38 | package struct CanvasStagedMetadata {
+ 39 |     @usableFromInline
+ 40 |     package internal(set) var count: UInt16 = 0
+    |                               `- note: setter for property 'count' is not '@usableFromInline' or public
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    :
+176 |             entries[Int(index)] = nil
+177 |         }
+178 |         state.pointee.count = 0
+    |         `- warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+179 |     }
+180 | }
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:143:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 38 | package struct CanvasStagedMetadata {
+ 39 |     @usableFromInline
+ 40 |     package internal(set) var count: UInt16 = 0
+    |                               `- note: setter for property 'count' is not '@usableFromInline' or public
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    :
+141 |         entries[Int(count)] = CanvasStagedEntry(
+142 |             identity: identity, witness: id, value: consume value)
+143 |         state.pointee.count += 1
+    |         `- warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+144 |     }
+145 |     @inlinable
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:167:13: warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 40 |     package internal(set) var count: UInt16 = 0
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    |                               `- note: setter for property 'releases' is not '@usableFromInline' or public
+ 43 |     @inlinable
+ 44 |     #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
+    :
+165 |             guard entries[Int(index)]?.value != nil else { return }
+166 |             entries[Int(index)]!.value = nil
+167 |             state.pointee.releases += 1
+    |             `- warning: setter for property 'releases' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+168 |             return
+169 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift:178:9: warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 38 | package struct CanvasStagedMetadata {
+ 39 |     @usableFromInline
+ 40 |     package internal(set) var count: UInt16 = 0
+    |                               `- note: setter for property 'count' is not '@usableFromInline' or public
+ 41 |     @usableFromInline
+ 42 |     package internal(set) var releases: UInt16 = 0
+    :
+176 |             entries[Int(index)] = nil
+177 |         }
+178 |         state.pointee.count = 0
+    |         `- warning: setter for property 'count' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+179 |     }
+180 | }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:27:15: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+ 27 |         body(&storage)
+    |               `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 28 |     }
+ 29 |     @usableFromInline
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:34:9: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 32 |     @inlinable
+ 33 |     package init(storage: Storage) {
+ 34 |         self.storage = storage
+    |         `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 35 |         isActive = true
+ 36 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:35:9: warning: setter for property 'isActive' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 28 |     }
+ 29 |     @usableFromInline
+ 30 |     package internal(set) var isActive: Bool
+    |                               `- note: setter for property 'isActive' is not '@usableFromInline' or public
+ 31 | 
+ 32 |     @inlinable
+ 33 |     package init(storage: Storage) {
+ 34 |         self.storage = storage
+ 35 |         isActive = true
+    |         `- warning: setter for property 'isActive' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 36 |     }
+ 37 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:49:19: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 47 |                 subpathDemand: 1
+ 48 |             )
+ 49 |             guard storage.startFirstSubpath(at: point) else {
+    |                   `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 50 |                 throw DrawingError.invariantViolation
+ 51 |             }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:64:19: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 62 | 
+ 63 |         if current.pointCount == 1 {
+ 64 |             guard storage.replaceCurrentSubpathStart(with: point) else {
+    |                   `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 65 |                 throw DrawingError.invariantViolation
+ 66 |             }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:71:15: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 69 | 
+ 70 |         try requireCapacity(pointDemand: 1, subpathDemand: 1)
+ 71 |         guard storage.startNextSubpath(at: point) else {
+    |               `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 72 |             throw DrawingError.invariantViolation
+ 73 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:91:15: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 89 | 
+ 90 |         try requireCapacity(pointDemand: 1, subpathDemand: 0)
+ 91 |         guard storage.appendLine(to: point) else {
+    |               `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 92 |             throw DrawingError.invariantViolation
+ 93 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:98:9: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 22 | package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
+ 23 |     @usableFromInline
+ 24 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 25 |     @inlinable
+ 26 |     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+    :
+ 96 |     @inlinable
+ 97 |     package mutating func reset() {
+ 98 |         storage.reset()
+    |         `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 99 |         isActive = false
+100 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift:99:9: warning: setter for property 'isActive' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 28 |     }
+ 29 |     @usableFromInline
+ 30 |     package internal(set) var isActive: Bool
+    |                               `- note: setter for property 'isActive' is not '@usableFromInline' or public
+ 31 | 
+ 32 |     @inlinable
+    :
+ 97 |     package mutating func reset() {
+ 98 |         storage.reset()
+ 99 |         isActive = false
+    |         `- warning: setter for property 'isActive' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+100 |     }
+101 | 
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift:42:13: warning: setter for property 'committedReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+17 |     internal var pendingReservationCount: UInt32
+18 |     @usableFromInline
+19 |     package internal(set) var committedReservationCount: UInt32
+   |                               `- note: setter for property 'committedReservationCount' is not '@usableFromInline' or public
+20 |     @usableFromInline
+21 |     package internal(set) var retiredReservationCount: UInt32
+   :
+40 |     package mutating func resolveCandidate(committed: Bool) {
+41 |         if committed {
+42 |             committedReservationCount = adding(
+   |             `- warning: setter for property 'committedReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+43 |                 pendingReservationCount,
+44 |                 to: committedReservationCount
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift:47:13: warning: setter for property 'retiredReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+19 |     package internal(set) var committedReservationCount: UInt32
+20 |     @usableFromInline
+21 |     package internal(set) var retiredReservationCount: UInt32
+   |                               `- note: setter for property 'retiredReservationCount' is not '@usableFromInline' or public
+22 | 
+23 |     package init() {
+   :
+45 |             )
+46 |         } else {
+47 |             retiredReservationCount = adding(
+   |             `- warning: setter for property 'retiredReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+48 |                 pendingReservationCount,
+49 |                 to: retiredReservationCount
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift:42:13: warning: setter for property 'committedReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+17 |     internal var pendingReservationCount: UInt32
+18 |     @usableFromInline
+19 |     package internal(set) var committedReservationCount: UInt32
+   |                               `- note: setter for property 'committedReservationCount' is not '@usableFromInline' or public
+20 |     @usableFromInline
+21 |     package internal(set) var retiredReservationCount: UInt32
+   :
+40 |     package mutating func resolveCandidate(committed: Bool) {
+41 |         if committed {
+42 |             committedReservationCount = adding(
+   |             `- warning: setter for property 'committedReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+43 |                 pendingReservationCount,
+44 |                 to: committedReservationCount
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift:47:13: warning: setter for property 'retiredReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+19 |     package internal(set) var committedReservationCount: UInt32
+20 |     @usableFromInline
+21 |     package internal(set) var retiredReservationCount: UInt32
+   |                               `- note: setter for property 'retiredReservationCount' is not '@usableFromInline' or public
+22 | 
+23 |     package init() {
+   :
+45 |             )
+46 |         } else {
+47 |             retiredReservationCount = adding(
+   |             `- warning: setter for property 'retiredReservationCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+48 |                 pendingReservationCount,
+49 |                 to: retiredReservationCount
+error: SwiftCompile normal arm64 /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift failed with a nonzero exit code. Command line:     cd /Users/eugene/work
+    builtin-SwiftPerFileCompile DynamicRuntimeExecutionBindingAdapter.swift
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift:10:34: error: generic type 'DynamicCanvasCallableStorage' specialized with too few type parameters (got 1, but expected 2)
+  8 | package struct DynamicRuntimeProfileBinding: ~Copyable {
+  9 |     private var storage: DynamicProfileStorage
+ 10 |     private var canvasCallables: DynamicCanvasCallableStorage<DynamicStructuralIdentity>
+    |                                  `- error: generic type 'DynamicCanvasCallableStorage' specialized with too few type parameters (got 1, but expected 2)
+ 11 |     private var lifecycle: RuntimeCoordinatorLifecycle
+ 12 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift:5:16: note: generic struct 'DynamicCanvasCallableStorage' declared here
+ 3 | 
+ 4 | /// Bounded concrete values; this store never retains an escaping draw closure.
+ 5 | package struct DynamicCanvasCallableStorage<
+   |                `- note: generic struct 'DynamicCanvasCallableStorage' declared here
+ 6 |     Identity: Equatable & Sendable, Table: CanvasValueTable
+ 7 | >: ~Copyable {
+Failed frontend command:
+/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend -frontend -c /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableProfileSlotStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicProfileBoundary.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicProfileStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift -primary-file /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift -emit-dependencies-path /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/DynamicRuntimeExecutionBindingAdapter.d -emit-const-values-path /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/DynamicRuntimeExecutionBindingAdapter.swiftconstvalues -emit-reference-dependencies-path /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/DynamicRuntimeExecutionBindingAdapter.swiftdeps -serialize-diagnostics-path /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/DynamicRuntimeExecutionBindingAdapter.dia -target arm64-apple-macos26.0 -load-resolved-plugin \#/Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Products/Debug/GiftUIMacros\#GiftUIMacros -load-resolved-plugin /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/host/plugins/libSwiftMacros.dylib\#\#SwiftMacros -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -I /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Products/Debug -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib -Isystem /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing -F /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Products/Debug/PackageFrameworks -F /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Products/Debug -F /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks -module-cache-path /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/SwiftExplicitPrecompiledModules -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=5 -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -load-plugin-executable /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Products/Debug/GiftUIMacros\#GiftUIMacros -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/ModuleCache.noindex/Session.modulevalidation -disable-sandbox -Xcc -working-directory -Xcc /Users/eugene/work -enable-anonymous-context-mangled-names -file-compilation-dir /Users/eugene/work -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I/Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Products/Debug/include -Xcc -I/Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/DerivedSources-normal/arm64 -Xcc -I/Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/DerivedSources/arm64 -Xcc -I/Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name GiftUIRuntimeDynamic -package-name giftui -const-gather-protocols-file /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic_const_extract_protocols.json -in-process-plugin-server-path /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -clang-target arm64-apple-macos26.5 -target-sdk-version 26.5 -target-sdk-name macosx26.5 -parse-as-library -o /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/DynamicRuntimeExecutionBindingAdapter.o -debug-module-path /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic.swiftmodule -index-unit-output-path /GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/DynamicRuntimeExecutionBindingAdapter.o -index-store-path /Users/eugene/work/GiftUI/.build/p10-focused/dynamic-scratch/out -index-system-modules
+error: Build failed
+swiftpm-failure-class=compiler-or-test

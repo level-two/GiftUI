@@ -1,0 +1,114 @@
+{
+  "date": "2026-11-10",
+  "status": "candidate evidence; maintainer decision pending; no contract/source/allowlist change",
+  "compiler": {
+    "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+  },
+  "target": "arm64-apple-macosx26.0",
+  "sdk": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+  "profiles": [
+    "GIFTUI_DYNAMIC_PROFILE",
+    "GIFTUI_STATIC_PROFILE"
+  ],
+  "flags": [
+    "-O",
+    "-whole-module-optimization",
+    "-swift-version 6",
+    "-enable-experimental-feature LifetimeDependence",
+    "-enable-experimental-feature Lifetimes",
+    "-parse-as-library",
+    "-package-name GiftUI",
+    "-emit-module",
+    "-emit-module-interface-path"
+  ],
+  "package_interface_identical_across_profiles": true,
+  "package_interface_sha256": "210fba09a4c627ea2c16552aa6ceb50ed72d8981fbb335e63a25135c0fa4469d",
+  "top_level_package_declaration_count": 51,
+  "compiled_reference_map_rows": 533,
+  "known_compiler_warning": "Emitting Swift module interface without -enable-library-evolution produces compiler warning; treated as this build\u2019s declaration snapshot, not a stable library-evolution ABI guarantee.",
+  "outputs": {
+    ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/GiftUISemanticCore.package.swiftinterface": "210fba09a4c627ea2c16552aa6ceb50ed72d8981fbb335e63a25135c0fa4469d",
+    ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/GiftUISemanticCore.private.swiftinterface": "61d092cd490f9aead9b08c0f63cef2584d6d95e31c465f5ee61eccff683e033b",
+    ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/GiftUISemanticCore.swiftinterface": "61d092cd490f9aead9b08c0f63cef2584d6d95e31c465f5ee61eccff683e033b",
+    ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/GiftUISemanticCore.abi.json": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/compiled-package-top-level.tsv": "11569a16f544eabad2f9a8fa1a46939afa888f50da4dd9e92995851b095399c5",
+    ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/compiled-package-reference-map.tsv": "7a8af3fbbece737f05f12a43b497cb3bc66ee1d2a7ad762105f4b9e26375a27a",
+    ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/exact-expansion-operations.txt": "00829462ec9f8a002e2d35b7265defeae5f18ccfbf9266073c16e2e481b8991c",
+    ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/compiler.log": "a9f210dfb74eb4cb24c01f4a4d6bf9476a86a95b57f787a1aaa5561039b35204"
+  },
+  "inputs": {
+    "Package.swift": "d0565f06d47d169cb58dba7dc9b209c06ea90a8d7ddce6bd4b9910b987531640",
+    "docs/specs/spec-006-declarative-view-semantics.md": "cb1570fd599e1472b76aafacc8895b381eee18a1e20342d3aa8ddebbe6382a6e",
+    "docs/implementation-plans/spec-006-implementation-plan.md": "87ef1942563075be1eac00e49e94adb4325eff1345e4ef5f65b3032670206f11",
+    "Tests/ContractFixtures/SPEC006/semantic-surface-allowlist.tsv": "6aed3a54b68079ae592529dcbdfed9b3f682dc14cdcb2af7e378a8960806f6fd",
+    "scripts/contracts/check-spec-006-dependency-surface.rb": "d48207b6db029c68a38084be56758bb757ef46676f52c7096d79a5812453091f",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "0526c6259995fd41b08d8bc3799915838eb6c2312454e25c541ed2cba6f8b299",
+    "Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift": "2e9857d32da453382660186e140c20524ae12d0f19e6e56b36de8b448bc8af51",
+    "Sources/GiftUISemanticCore/SemanticLayoutView.swift": "6fd6c725f82d0526064201f5121a14a91197d141fa338d7c9d0711d7872a0f48",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "2b9bf9fb82708661bba70d94cd5a19bcbe13fe760f32b6df782f4e8cbf9acb47",
+    "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": "e4fabbc84c3c62ceac89b5942f37e49ce6f0b16594424ab533e55267e29d35d0",
+    "Sources/GiftUISemanticCore/SemanticRecordPayload.swift": "a5000583e2131d12bfdcc99b982462e025bf1eacd6e417449778d2c65630fb6b",
+    "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": "051594389e35ff960160d77051ea49fbe756d0d6d5827bd42339702d0f7c513b",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745",
+    "Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift": "9b57946d2828782214052d5ad8200cadc342a27e64ba6d776553efc571ec9048",
+    "Sources/GiftUISemanticCore/SemanticRenderView.swift": "33b3673638f7443b6d55d4c2e51ccdb739ae4f5ddec5e6a557480cb2d27d5de4",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "86c9dca7adac22ae265f50b4522d163a66cd8b7fdd5c4a145836da117dfeeab1",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "240898db920babd9c6e3ecd10216f90126f60f5b0975ba0c752b504c773f2c51",
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "578514c2224b9311fbfa51c3e58b87a9c6b3801af961ba3a1a18d316d681eec0",
+    "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift": "5d2b5f979eb7517ec3da36472328d8bb2d3384bcbb656f5ba14fdd89f35354b3"
+  },
+  "reproduction": "See p10-run.md \u00a7SPEC-006 inventory command. Repeat the same swiftc invocation once per profile define with CLANG_MODULE_CACHE_PATH under .build; no global toolchain mutation.",
+  "source_files": [
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+    "Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift",
+    "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordPayload.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+    "Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift",
+    "Sources/GiftUISemanticCore/SemanticRenderView.swift",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift"
+  ],
+  "source_file_hashes": {
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "0526c6259995fd41b08d8bc3799915838eb6c2312454e25c541ed2cba6f8b299",
+    "Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift": "2e9857d32da453382660186e140c20524ae12d0f19e6e56b36de8b448bc8af51",
+    "Sources/GiftUISemanticCore/SemanticLayoutView.swift": "6fd6c725f82d0526064201f5121a14a91197d141fa338d7c9d0711d7872a0f48",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "2b9bf9fb82708661bba70d94cd5a19bcbe13fe760f32b6df782f4e8cbf9acb47",
+    "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": "e4fabbc84c3c62ceac89b5942f37e49ce6f0b16594424ab533e55267e29d35d0",
+    "Sources/GiftUISemanticCore/SemanticRecordPayload.swift": "a5000583e2131d12bfdcc99b982462e025bf1eacd6e417449778d2c65630fb6b",
+    "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": "051594389e35ff960160d77051ea49fbe756d0d6d5827bd42339702d0f7c513b",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "e4641d258ce459de1214996a49131ae322b4d26157dfe66300bb43cc98dc4745",
+    "Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift": "9b57946d2828782214052d5ad8200cadc342a27e64ba6d776553efc571ec9048",
+    "Sources/GiftUISemanticCore/SemanticRenderView.swift": "33b3673638f7443b6d55d4c2e51ccdb739ae4f5ddec5e6a557480cb2d27d5de4",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "86c9dca7adac22ae265f50b4522d163a66cd8b7fdd5c4a145836da117dfeeab1",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "240898db920babd9c6e3ecd10216f90126f60f5b0975ba0c752b504c773f2c51"
+  },
+  "profile_outputs": {
+    "GIFTUI_DYNAMIC_PROFILE": ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/GiftUISemanticCore.package.swiftinterface",
+    "GIFTUI_STATIC_PROFILE": ".build/p10-diagnostics/spec006-spi-inventory-2026-11-10/static/GiftUISemanticCore.package.swiftinterface"
+  },
+  "exact_command_template": [
+    "CLANG_MODULE_CACHE_PATH=\"$PWD/.build/p10-diagnostics/spec006-spi-inventory-2026-11-10/clang-cache\"",
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "-target arm64-apple-macosx26.0",
+    "-sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+    "-O -whole-module-optimization -D<PROFILE_DEFINE>",
+    "-swift-version 6 -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes",
+    "-parse-as-library -package-name GiftUI",
+    "-I .build/p10-diagnostics/spec012-rfc014-declarations-final/modules",
+    "-module-name GiftUISemanticCore",
+    "Sources/GiftUISemanticCore/*.swift",
+    "-emit-module -emit-module-path <PROFILE_OUTPUT>/GiftUISemanticCore.swiftmodule",
+    "-emit-module-interface-path <PROFILE_OUTPUT>/GiftUISemanticCore.swiftinterface"
+  ],
+  "profile_define_values": {
+    "GIFTUI_DYNAMIC_PROFILE": "GIFTUI_DYNAMIC_PROFILE",
+    "GIFTUI_STATIC_PROFILE": "GIFTUI_STATIC_PROFILE"
+  },
+  "text_reference_map_sha256": "7a8af3fbbece737f05f12a43b497cb3bc66ee1d2a7ad762105f4b9e26375a27a",
+  "top_level_index_sha256": "11569a16f544eabad2f9a8fa1a46939afa888f50da4dd9e92995851b095399c5"
+}

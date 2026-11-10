@@ -16,7 +16,7 @@
         var workspace = CanvasAdapterWorkspace()
         var sink = SemanticLayoutResultSink(storage: CanvasAdapterStorage(capacity: 1))
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             root,
             limits: canvasAdapterLimits,
             workspace: &workspace,
@@ -66,7 +66,7 @@
         var workspace = CanvasAdapterWorkspace()
         var sink = SemanticLayoutResultSink(storage: CanvasAdapterStorage(capacity: 2))
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             CanvasPair(),
             limits: canvasAdapterLimits,
             workspace: &workspace,
@@ -89,7 +89,7 @@
         var refusingSink = SemanticLayoutResultSink(
             storage: CanvasAdapterStorage(capacity: 1)
         )
-        let refusal = expandSemanticTree(
+        let refusal = expandStatelessSemanticTreeForTesting(
             CanvasPair(),
             limits: canvasAdapterLimits,
             workspace: &refusingWorkspace,
@@ -108,7 +108,7 @@
         var sink = SemanticLayoutResultSink(
             storage: CanvasAdapterStorage(capacity: 1)
         )
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             Canvas { (_, _) throws(DrawingError) in
                 throw DrawingError.invalidValue
             },
@@ -151,6 +151,14 @@
     )!
 
     private struct CanvasPair: View {
+        typealias Domain = _GiftUIEmptyReadDomain
+
+        func _giftUIEvaluate(
+            read: borrowing _GiftUIFrameRead<Domain>
+        ) throws(_GiftUIAccessFailure) -> Body {
+            body
+        }
+
         var body: some View {
             VStack {
                 Canvas { _, _ in }

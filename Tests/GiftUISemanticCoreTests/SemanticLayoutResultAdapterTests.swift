@@ -5,12 +5,12 @@ import Testing
 
 @Test
 func canvasExpansionPublishesOneIdentityPreservingLeafWithoutInvokingDrawing() {
-    var invocationCount = 0
-    let root = Canvas { _, _ in invocationCount += 1 }
+    let invocationCount = AdapterCanvasCounter()
+    let root = AdapterCanvas(invocationCount: invocationCount)
     var workspace = AdapterWorkspace()
     var sink = SemanticLayoutResultSink(storage: AdapterStorage())
 
-    let result = expandSemanticTree(
+    let result = expandStatelessSemanticTreeForTesting(
         root,
         limits: SemanticExpansionLimits(
             maximumDepth: 8,
@@ -40,7 +40,24 @@ func canvasExpansionPublishesOneIdentityPreservingLeafWithoutInvokingDrawing() {
     #expect(sink.textScalarCount(of: identity) == nil)
     #expect(sink.renderView.scope(at: identity) == .canvas)
     #expect(sink.renderView.layoutIdentity(for: identity) == identity)
-    #expect(invocationCount == 0)
+    #expect(invocationCount.value == 0)
+}
+
+private struct AdapterCanvas: Canvas {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    let invocationCount: AdapterCanvasCounter
+
+    func _giftUIDraw(
+        in bounds: Rect,
+        context: inout GraphicsContext,
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(DrawingError) { invocationCount.value += 1 }
+}
+
+private final class AdapterCanvasCounter {
+    var value = 0
 }
 
 @Test
@@ -49,7 +66,7 @@ func successfulSemanticExpansionIsItsOwnBorrowedLayoutView() {
     var workspace = AdapterWorkspace()
     var sink = SemanticLayoutResultSink(storage: AdapterStorage())
 
-    let result = expandSemanticTree(
+    let result = expandStatelessSemanticTreeForTesting(
         root,
         limits: SemanticExpansionLimits(
             maximumDepth: 32,
@@ -103,7 +120,7 @@ func successfulSemanticExpansionExposesTheSameResultAsItsRenderView() {
     var workspace = AdapterWorkspace()
     var sink = SemanticLayoutResultSink(storage: AdapterStorage())
 
-    let result = expandSemanticTree(
+    let result = expandStatelessSemanticTreeForTesting(
         AdapterRenderRoot(),
         limits: AdapterRenderRoot.limits,
         workspace: &workspace,
@@ -151,7 +168,7 @@ func invalidTextMarkerRemainsInvalidInTheSharedLayoutProjection() {
     var workspace = AdapterWorkspace()
     var sink = SemanticLayoutResultSink(storage: AdapterStorage())
 
-    let result = expandSemanticTree(
+    let result = expandStatelessSemanticTreeForTesting(
         AdapterInvalidTextRoot(),
         limits: AdapterRenderRoot.limits,
         workspace: &workspace,
@@ -194,6 +211,8 @@ private func reachableIdentities<View: SemanticRenderView>(
 }
 
 private struct AdapterRenderRoot: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+
     static let limits = SemanticExpansionLimits(
         maximumDepth: 32,
         maximumSemanticNodes: 16,
@@ -202,7 +221,9 @@ private struct AdapterRenderRoot: View {
         maximumActionOccurrences: 1
     )!
 
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> some View<Domain> {
         Text("render")
             .foregroundStyle(.red)
             .background(.blue)
@@ -211,7 +232,11 @@ private struct AdapterRenderRoot: View {
 }
 
 private struct AdapterInvalidTextRoot: View {
-    var body: some View {
+    typealias Domain = _GiftUIEmptyReadDomain
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> some View<Domain> {
         Text(
             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         )
@@ -219,11 +244,15 @@ private struct AdapterInvalidTextRoot: View {
 }
 
 private struct AdapterRoot: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 3) {
+    typealias Domain = _GiftUIEmptyReadDomain
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> some View<Domain> {
+        try VStack(alignment: .leading, spacing: 3) {
             AdapterActionLeaf()
-            Spacer(minLength: 2)
-            Text("A°").padding(4)
+            Spacer<_GiftUIEmptyReadDomain>(minLength: 2)
+            Text<_GiftUIEmptyReadDomain>("A°").padding(4)
         }
     }
 }
@@ -233,15 +262,19 @@ private enum AdapterAction: UInt16, GiftUIAction {
 }
 
 private struct AdapterActionLeaf: View, _GiftUISemanticActionPayload {
+    typealias Domain = _GiftUIEmptyReadDomain
+
     let _giftUIAction = AdapterAction.run
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         fatalError("AdapterActionLeaf has no view body")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(self)
     }
 }

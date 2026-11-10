@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-10-10
+updated: 2026-11-10
 proposal:
   - PROPOSAL-003
   - PROPOSAL-007
@@ -836,13 +836,35 @@ Path depth is checked before entering the next component. Counters MUST NOT
 include inactive branches, absent optionals, rejected reservations, or work
 after the first failure.
 
-The expansion entry point MUST be the sole generic package operation over
-`Root: View`, a profile-owned `SemanticExpansionWorkspace`, and a
-`SemanticExpansionSink`. It accepts the root by nonescaping borrow, immutable
-limits, and `inout` caller-owned workspace and sink, and returns
-`SemanticExpansionResult`. Both protocols are package SPI owned by
-`GiftUISemanticCore`; their exact associated identity and storage types MAY be
-profile-specific, but they MUST provide these operations:
+Semantic Core MUST implement one bounded expansion traversal engine shared by
+all profiles. Package entry points MAY be provided for direct caller-owned
+workspace/sink expansion with scoped SPEC-010 state binding, and for
+`SemanticRecordStore` record realization with a typed payload codec. These
+entry points MUST delegate to the same traversal engine; they MUST NOT create
+independent body dispatch, identity, limit accounting, recursion, staging,
+publication, or rollback paths. The state-binding bridge MAY return the owned
+body or the exact semantic, access, and binding failure required by the
+RFC-014 amendment and SPEC-010; Semantic Core MUST NOT import Observable State.
+Any fixture-only package traversal support MUST be separately identified in
+the T6.3 allowlist and MUST NOT be represented as an additional production
+entry point. Exact package declarations and cross-module callers MUST be
+audited across the complete Semantic Core target, not only one source file.
+
+**Approved clarification — 2026-11-10.** Eugene approved the narrow
+SPEC-006 package-SPI clarification presented in the P10 decision packet:
+“Approve both bounded changes. Have the weaker coordinator apply them, update
+the governing docs, commit, and continue the remaining P10 work autonomously.
+Involve yourself only for genuine decisions.” This clause preserves the
+single traversal engine and all bounds, transaction, no-allocation,
+state-binding-order, typed-failure, and profile-independence requirements. It
+does not authorize additional package declarations beyond the complete
+reviewed compiled-interface/member inventory linked from T6.3 evidence. The
+P08 supplied-traversal route remains restricted to its approved uses; this
+clarification does not lift its reuse gate or alter P08 FROZEN / UNMET.
+
+Both protocols remain package SPI owned by `GiftUISemanticCore`; their exact
+associated identity and storage types MAY be profile-specific, but they MUST
+provide these operations:
 
 1. report all finite path, identity, staging, and sink capacities before the
    attempt;

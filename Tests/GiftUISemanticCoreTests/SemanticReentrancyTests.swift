@@ -10,7 +10,7 @@ final class SemanticReentrancyTests: XCTestCase {
         var workspace = ReentryWorkspace(state: sharedState)
         var sink = ReentrySink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             ReentryRoot(probe: probe),
             limits: reentryLimits,
             workspace: &workspace,
@@ -66,7 +66,7 @@ private final class ReentryProbe {
         var workspace = ReentryWorkspace(state: workspaceState)
         var sink = ReentrySink()
         results.append(
-            expandSemanticTree(
+            expandStatelessSemanticTreeForTesting(
                 ReentryPrimitive(),
                 limits: reentryLimits,
                 workspace: &workspace,
@@ -78,9 +78,14 @@ private final class ReentryProbe {
 }
 
 private struct ReentryRoot: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = ReentryPrimitive
+
     let probe: ReentryProbe
 
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> ReentryPrimitive {
         probe.attempt(.callback)
         probe.attempt(.invalidation)
         probe.attempt(.externalInput)
@@ -89,10 +94,15 @@ private struct ReentryRoot: View {
 }
 
 private struct ReentryPrimitive: View, _GiftUISemanticPrimitivePayload {
-    var body: Never { fatalError("primitive body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("primitive body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 }

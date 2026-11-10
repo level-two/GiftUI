@@ -1,0 +1,153 @@
+Test Suite 'All tests' started at 2026-11-10 10:27:24.772.
+Test Suite 'GiftUIDrawingTests.xctest' started at 2026-11-10 10:27:24.773.
+Test Suite 'GiftUIDrawingImportTests' started at 2026-11-10 10:27:24.773.
+Test Case '-[GiftUIDrawingTests.GiftUIDrawingImportTests testFocusedTargetLoads]' started.
+Test Case '-[GiftUIDrawingTests.GiftUIDrawingImportTests testFocusedTargetLoads]' passed (0.000 seconds).
+Test Suite 'GiftUIDrawingImportTests' passed at 2026-11-10 10:27:24.774.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+Test Suite 'GiftUIDrawingTests.xctest' passed at 2026-11-10 10:27:24.774.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+Test Suite 'All tests' passed at 2026-11-10 10:27:24.774.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.000 (0.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.4 (efd8d65801f569d)
+↳ Target Platform: arm64-apple-macosx
+◇ Test canvasPlanProducerValidatesOrderAndInvokesWithExactLayoutValues() started.
+✔ Test canvasPlanProducerValidatesOrderAndInvokesWithExactLayoutValues() passed after 0.001 seconds.
+◇ Test canvasPlanProducerAdmitsTheFirstDerivationWithoutAPublishedRevision() started.
+✔ Test canvasPlanProducerAdmitsTheFirstDerivationWithoutAPublishedRevision() passed after 0.001 seconds.
+◇ Test canvasPlanProducerSealsAnEmptyAttemptWithoutInvokingOrRetainingACallable() started.
+✔ Test canvasPlanProducerSealsAnEmptyAttemptWithoutInvokingOrRetainingACallable() passed after 0.001 seconds.
+◇ Test canvasPlanProducerReleasesEachCallableOnceOnLaterThrowAndInvokesNoSuffix() started.
+✔ Test canvasPlanProducerReleasesEachCallableOnceOnLaterThrowAndInvokesNoSuffix() passed after 0.001 seconds.
+◇ Test canvasPlanProducerTranslatesSnapshotsOnceAndPreservesOriginAndClip() started.
+✔ Test canvasPlanProducerTranslatesSnapshotsOnceAndPreservesOriginAndClip() passed after 0.001 seconds.
+◇ Test canvasPlanProducerDiscardsTheWholePlanOnTranslationOverflow() started.
+✔ Test canvasPlanProducerDiscardsTheWholePlanOnTranslationOverflow() passed after 0.001 seconds.
+◇ Test drawingFailureJoinsPrepublicationDirtyRecoveryWithoutReplayingEffects() started.
+✔ Test drawingFailureJoinsPrepublicationDirtyRecoveryWithoutReplayingEffects() passed after 0.001 seconds.
+◇ Test refusalRecoveryUsesFreshCanvasRecordsAndRetainsOnlyPresentationIntent() started.
+✔ Test refusalRecoveryUsesFreshCanvasRecordsAndRetainsOnlyPresentationIntent() passed after 0.001 seconds.
+◇ Test canvasPlanProducerRejectsInvalidEntryBeforeClientInvocation(_:) started.
+◇ Test case passing 1 argument failure → .workspaceReentry to canvasPlanProducerRejectsInvalidEntryBeforeClientInvocation(_:) started.
+◇ Test case passing 1 argument failure → .wrongPhase to canvasPlanProducerRejectsInvalidEntryBeforeClientInvocation(_:) started.
+◇ Test case passing 1 argument failure → .absentCycle to canvasPlanProducerRejectsInvalidEntryBeforeClientInvocation(_:) started.
+◇ Test case passing 1 argument failure → .existingCandidate to canvasPlanProducerRejectsInvalidEntryBeforeClientInvocation(_:) started.
+✔ Test canvasPlanProducerRejectsInvalidEntryBeforeClientInvocation(_:) with 4 test cases passed after 0.004 seconds.
+◇ Test canvasPlanProducerRejectsIncompleteOrNonPainterOrderedIdentityCoverage(_:) started.
+◇ Test case passing 1 argument failure → .duplicate to canvasPlanProducerRejectsIncompleteOrNonPainterOrderedIdentityCoverage(_:) started.
+◇ Test case passing 1 argument failure → .missingLayout to canvasPlanProducerRejectsIncompleteOrNonPainterOrderedIdentityCoverage(_:) started.
+◇ Test case passing 1 argument failure → .reversePainterOrder to canvasPlanProducerRejectsIncompleteOrNonPainterOrderedIdentityCoverage(_:) started.
+◇ Test case passing 1 argument failure → .missingInRangeIdentity to canvasPlanProducerRejectsIncompleteOrNonPainterOrderedIdentityCoverage(_:) started.
+◇ Test case passing 1 argument failure → .overLimit to canvasPlanProducerRejectsIncompleteOrNonPainterOrderedIdentityCoverage(_:) started.
+✔ Test canvasPlanProducerRejectsIncompleteOrNonPainterOrderedIdentityCoverage(_:) with 5 test cases passed after 0.006 seconds.
+◇ Test canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+◇ Test case passing 1 argument violation → .observedStateMutation to canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+◇ Test case passing 1 argument violation → .actionDispatch to canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+◇ Test case passing 1 argument violation → .factSubmission to canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+◇ Test case passing 1 argument violation → .wakeRequest to canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+◇ Test case passing 1 argument violation → .capabilityQuery to canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+◇ Test case passing 1 argument violation → .backendQuery to canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+◇ Test case passing 1 argument violation → .cycleStart to canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+◇ Test case passing 1 argument violation → .cycleReentry to canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) started.
+✔ Test canvasPlanProducerStopsAfterTheFirstDetectableClientViolation(_:) with 8 test cases passed after 0.013 seconds.
+◇ Test canvasPreflightCombinesOrdinaryAndStrokeCountsAndResetsItsWorkspace() started.
+✔ Test canvasPreflightCombinesOrdinaryAndStrokeCountsAndResetsItsWorkspace() passed after 0.001 seconds.
+◇ Test canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .summaryCanvas to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .summaryStroke to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .summaryPoint to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .summarySubpath to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .summaryNormalized to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .origin to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .clip to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .lineWidth to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .missingPoint to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .extraPoint to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .subpathGap to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .extraSubpath to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .extraStroke to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+◇ Test case passing 1 argument fault → .unexpectedNonCanvas to canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) started.
+✔ Test canvasPreflightRejectsEveryImmutablePlanDisagreement(_:) with 14 test cases passed after 0.034 seconds.
+◇ Test canvasPreflightFailsClosedForCombinedAndConfiguredCapacity() started.
+✔ Test canvasPreflightFailsClosedForCombinedAndConfiguredCapacity() passed after 0.001 seconds.
+◇ Test canvasProductionCompletesBothTraversalsAndStreamsOneCombinedTransaction() started.
+✔ Test canvasProductionCompletesBothTraversalsAndStreamsOneCombinedTransaction() passed after 0.001 seconds.
+◇ Test canvasProductionRejectsFinalPlanSummaryMismatchBeforeBegin() started.
+✔ Test canvasProductionRejectsFinalPlanSummaryMismatchBeforeBegin() passed after 0.001 seconds.
+◇ Test zeroCanvasCombinedProductionMatchesOrdinaryRenderingExactly() started.
+✔ Test zeroCanvasCombinedProductionMatchesOrdinaryRenderingExactly() passed after 0.001 seconds.
+◇ Test canvasProductionAppliesExactOfferFailureAndDiscardSemantics(_:) started.
+◇ Test case passing 1 argument fault → .idleRefusal to canvasProductionAppliesExactOfferFailureAndDiscardSemantics(_:) started.
+◇ Test case passing 1 argument fault → .actualCapacity to canvasProductionAppliesExactOfferFailureAndDiscardSemantics(_:) started.
+◇ Test case passing 1 argument fault → .strokeRefusal to canvasProductionAppliesExactOfferFailureAndDiscardSemantics(_:) started.
+◇ Test case passing 1 argument fault → .headerDrift to canvasProductionAppliesExactOfferFailureAndDiscardSemantics(_:) started.
+◇ Test case passing 1 argument fault → .streamingPlanCorruption to canvasProductionAppliesExactOfferFailureAndDiscardSemantics(_:) started.
+✔ Test canvasProductionAppliesExactOfferFailureAndDiscardSemantics(_:) with 5 test cases passed after 0.006 seconds.
+◇ Test drawingFailuresMapToTheExactOwnerFacts() started.
+✔ Test drawingFailuresMapToTheExactOwnerFacts() passed after 0.001 seconds.
+◇ Test offerTimeDrawingFailuresRemainSeparateFromDerivationFailures() started.
+✔ Test offerTimeDrawingFailuresRemainSeparateFromDerivationFailures() passed after 0.001 seconds.
+◇ Test everyPostValidationLivePathStorageRefusalIsInvariantAndUnchanged(_:) started.
+◇ Test case passing 1 argument operation → .startFirst to everyPostValidationLivePathStorageRefusalIsInvariantAndUnchanged(_:) started.
+◇ Test case passing 1 argument operation → .replaceStart to everyPostValidationLivePathStorageRefusalIsInvariantAndUnchanged(_:) started.
+◇ Test case passing 1 argument operation → .startNext to everyPostValidationLivePathStorageRefusalIsInvariantAndUnchanged(_:) started.
+◇ Test case passing 1 argument operation → .appendLine to everyPostValidationLivePathStorageRefusalIsInvariantAndUnchanged(_:) started.
+✔ Test everyPostValidationLivePathStorageRefusalIsInvariantAndUnchanged(_:) with 4 test cases passed after 0.004 seconds.
+◇ Test livePathArithmeticOverflowPrecedesStorageMutation() started.
+✔ Test livePathArithmeticOverflowPrecedesStorageMutation() passed after 0.001 seconds.
+◇ Test strokeSnapshotFaultsPreserveTheEntireFormerPlan() started.
+✔ Test strokeSnapshotFaultsPreserveTheEntireFormerPlan() passed after 0.001 seconds.
+◇ Test invalidWidthStopsBeforePathOrPlanInspection() started.
+✔ Test invalidWidthStopsBeforePathOrPlanInspection() passed after 0.001 seconds.
+◇ Test snapshotWorkIsLinearWithSeparateLiveAndPlanHighWater(_:) started.
+◇ Test case passing 1 argument admittedPoints → 1 to snapshotWorkIsLinearWithSeparateLiveAndPlanHighWater(_:) started.
+◇ Test case passing 1 argument admittedPoints → 2 to snapshotWorkIsLinearWithSeparateLiveAndPlanHighWater(_:) started.
+◇ Test case passing 1 argument admittedPoints → 4 to snapshotWorkIsLinearWithSeparateLiveAndPlanHighWater(_:) started.
+◇ Test case passing 1 argument admittedPoints → 8 to snapshotWorkIsLinearWithSeparateLiveAndPlanHighWater(_:) started.
+✔ Test snapshotWorkIsLinearWithSeparateLiveAndPlanHighWater(_:) with 4 test cases passed after 0.005 seconds.
+◇ Test planPublicationDiscardAndResetPoisonEveryPriorAccessPath() started.
+✔ Test planPublicationDiscardAndResetPoisonEveryPriorAccessPath() passed after 0.001 seconds.
+◇ Test drawingPlanWorkspacePublishesExactTotalsAndTotalBoundedLookups() started.
+✔ Test drawingPlanWorkspacePublishesExactTotalsAndTotalBoundedLookups() passed after 0.001 seconds.
+◇ Test drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+◇ Test case passing 1 argument malformed → .duplicateCanvas to drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+◇ Test case passing 1 argument malformed → .missingCanvas to drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+◇ Test case passing 1 argument malformed → .summaryCanvasCount to drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+◇ Test case passing 1 argument malformed → .summaryStrokeCount to drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+◇ Test case passing 1 argument malformed → .normalizedCount to drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+◇ Test case passing 1 argument malformed → .headerPointCount to drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+◇ Test case passing 1 argument malformed → .headerSubpathCount to drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+◇ Test case passing 1 argument malformed → .subpathOutsidePoints to drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) started.
+✔ Test drawingPlanWorkspaceRejectsEveryInconsistentCandidate(_:) with 8 test cases passed after 0.013 seconds.
+◇ Test packagePlanValueInitializersCopyEveryFieldWithoutNormalization() started.
+✔ Test packagePlanValueInitializersCopyEveryFieldWithoutNormalization() passed after 0.001 seconds.
+◇ Test subpathRangeRequiresANonemptyRepresentableHalfOpenRange() started.
+✔ Test subpathRangeRequiresANonemptyRepresentableHalfOpenRange() passed after 0.001 seconds.
+◇ Test drawingValueFieldsCasesAndRawValuesAreExact() started.
+✔ Test drawingValueFieldsCasesAndRawValuesAreExact() passed after 0.001 seconds.
+◇ Test drawingValuesMeetCopySendAndHostLayoutContracts() started.
+✔ Test drawingValuesMeetCopySendAndHostLayoutContracts() passed after 0.001 seconds.
+◇ Test drawingLimitsRejectEveryZeroFieldAndInvalidOperationRelation() started.
+✔ Test drawingLimitsRejectEveryZeroFieldAndInvalidOperationRelation() passed after 0.001 seconds.
+◇ Test dynamicAndStaticFixtureIdentityStorageAdmitEqualityAndRejectFirstExcess() started.
+✔ Test dynamicAndStaticFixtureIdentityStorageAdmitEqualityAndRejectFirstExcess() passed after 0.001 seconds.
+◇ Test livePathMutationHasTheSameExactDynamicAndStaticTranscript() started.
+✔ Test livePathMutationHasTheSameExactDynamicAndStaticTranscript() passed after 0.001 seconds.
+◇ Test livePathRejectsMissingCurrentPointAndEachFirstExcessAtomically() started.
+✔ Test livePathRejectsMissingCurrentPointAndEachFirstExcessAtomically() passed after 0.001 seconds.
+◇ Test generatedStaticCanvasTableHasCompleteDenseCasesAndGreatestUnionSize() started.
+✔ Test generatedStaticCanvasTableHasCompleteDenseCasesAndGreatestUnionSize() passed after 0.001 seconds.
+◇ Test generatedStaticCanvasDispatchPreservesCaseOrderValuesAndDistinctOccurrences() started.
+✔ Test generatedStaticCanvasDispatchPreservesCaseOrderValuesAndDistinctOccurrences() passed after 0.001 seconds.
+◇ Test generatedStaticCanvasThrowDestroysCaptureAndCannotBeInvokedAgain() started.
+✔ Test generatedStaticCanvasThrowDestroysCaptureAndCannotBeInvokedAgain() passed after 0.001 seconds.
+◇ Test strokeSnapshotsAreOrderedImmutableAndPreserveExplicitSubpaths() started.
+✔ Test strokeSnapshotsAreOrderedImmutableAndPreserveExplicitSubpaths() passed after 0.001 seconds.
+◇ Test emptyAndOnePointPathsProduceCanonicalOrderedNoOpRecords() started.
+✔ Test emptyAndOnePointPathsProduceCanonicalOrderedNoOpRecords() passed after 0.001 seconds.
+◇ Test styleAndWholeSnapshotCapacityFailuresPrecedeMutation() started.
+✔ Test styleAndWholeSnapshotCapacityFailuresPrecedeMutation() passed after 0.001 seconds.
+◇ Test malformedLivePathFailsBeforePlanMutation() started.
+✔ Test malformedLivePathFailsBeforePlanMutation() passed after 0.001 seconds.
+✔ Test run with 43 tests in 0 suites passed after 0.129 seconds.

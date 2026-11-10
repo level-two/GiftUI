@@ -1054,6 +1054,7 @@ private func drawingStatus(for error: any Error) -> UInt8 {
     }
     return switch error {
     case .invalidValue: _GiftUIDrawingStatus.invalidValue.rawValue
+    case .invalidModelAccess: _GiftUIDrawingStatus.invalidModelAccess.rawValue
     case .invalidPathState: _GiftUIDrawingStatus.invalidPathState.rawValue
     case .arithmeticOverflow: _GiftUIDrawingStatus.arithmeticOverflow.rawValue
     case .capacityExhausted: _GiftUIDrawingStatus.capacityExhausted.rawValue

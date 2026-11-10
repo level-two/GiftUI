@@ -173,7 +173,10 @@ private struct GeneratedStaticCanvasOccurrence {
             id: id,
             captures: captures,
             context: &context,
-            size: size
+            size: size,
+            read: _GiftUIFrameRead<GeneratedStaticCanvasCallableTable.Domain>(
+                slots: Span<UInt8>()
+            )
         )
     }
 }

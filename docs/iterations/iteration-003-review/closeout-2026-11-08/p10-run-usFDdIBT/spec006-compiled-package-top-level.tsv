@@ -1,0 +1,52 @@
+name	kind	interface_line	compiled_declaration_start
+SemanticExpansionLimits	struct	11	package struct SemanticExpansionLimits : Swift::Equatable, Swift::Sendable {
+SemanticExpansionSummary	struct	27	package struct SemanticExpansionSummary : Swift::Equatable, Swift::Sendable {
+SemanticExpansionError	enum	43	package enum SemanticExpansionError : Swift::UInt8, Swift::Error, Swift::Equatable, Swift::Sendable {
+SemanticExpansionResult	enum	59	package enum SemanticExpansionResult : Swift::Equatable, Swift::Sendable {
+SemanticBodyEvaluation	enum	66	package enum SemanticBodyEvaluation<Body, BindingFailure> {
+SemanticStatefulBinding	protocol	73	package protocol SemanticStatefulBinding : ~Copyable, ~Escapable {
+BoundSemanticExpansionResult	enum	81	package enum BoundSemanticExpansionResult<BindingFailure> : Swift::Equatable, Swift::Sendable where BindingFailure : Swift::Equatable, BindingFailure : Swift::Sendable {
+SemanticExpansionWorkspace	protocol	90	package protocol SemanticExpansionWorkspace {
+SemanticExpansionSink	protocol	108	package protocol SemanticExpansionSink : ~Escapable {
+SemanticRecordingRole	struct	186	package struct SemanticRecordingRole : Swift::RawRepresentable, Swift::Hashable, Swift::Sendable {
+SemanticRecordingPathComponent	enum	194	package enum SemanticRecordingPathComponent : Swift::Hashable, Swift::Sendable {
+SemanticRecordingIdentity	protocol	207	package protocol SemanticRecordingIdentity : Swift::Equatable, Swift::Sendable {
+SemanticRecordingEvent	enum	212	package enum SemanticRecordingEvent<Identity> : Swift::Equatable, Swift::Sendable where Identity : GiftUISemanticCore::SemanticRecordingIdentity {
+SemanticRecordingStorage	protocol	220	package protocol SemanticRecordingStorage {
+SemanticRecordingSink	struct	233	package struct SemanticRecordingSink<Storage> : GiftUISemanticCore::SemanticExpansionSink where Storage : GiftUISemanticCore::SemanticRecordingStorage {
+SemanticExpansionAttempt	struct	268	package struct SemanticExpansionAttempt {
+SemanticExpansionTraversalOperations	protocol	834	package protocol SemanticExpansionTraversalOperations : GiftUI::_GiftUISemanticTraversalVisitor, ~Copyable, ~Escapable {
+expandSemanticTreeWithStateBinding	func	1996	@inlinable @inline(__always) package func expandSemanticTreeWithStateBinding<Root, Workspace, Sink, StateBinding>(_ root: borrowing Root, limits: GiftUISemanticCore::SemanticExpansionLimits, workspace: inout Workspace, sink: inout Sink, stateBinding: consuming StateBinding) -> GiftUISemanticCore::BoundSemanticExpansionResult<StateBinding.Failure> where Root : GiftUI::View, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, StateBinding : GiftUISemanticCore::SemanticStatefulBinding, Root.Domain == StateBinding.Domain, Workspace.Identity == Sink.Identity, Sink.Identity == StateBinding.Identity, StateBinding : ~Copyable, StateBinding : ~Escapable {
+SemanticLayoutResultStorage	protocol	2029	package protocol SemanticLayoutResultStorage : GiftUISemanticCore::SemanticLayoutView {
+SemanticLayoutResultSink	struct	2045	package struct SemanticLayoutResultSink<Storage> : GiftUISemanticCore::SemanticExpansionSink, GiftUISemanticCore::SemanticLayoutView where Storage : GiftUISemanticCore::SemanticLayoutResultStorage {
+SemanticLayoutPrimitive	enum	2094	package enum SemanticLayoutPrimitive : Swift::Equatable, Swift::Sendable {
+SemanticLayoutModifier	enum	2106	package enum SemanticLayoutModifier : Swift::Equatable, Swift::Sendable {
+SemanticLayoutView	protocol	2116	package protocol SemanticLayoutView : ~Escapable {
+SemanticRecordPayloadCodec	protocol	2130	package protocol SemanticRecordPayloadCodec : ~Escapable {
+SemanticPayloadWriter	struct	2154	package struct SemanticPayloadWriter : ~Swift::Copyable, ~Swift::Escapable {
+SemanticRecordWorkspaceState	struct	2200	package struct SemanticRecordWorkspaceState {
+SemanticRecordTraversalRealization	protocol	2300	package protocol SemanticRecordTraversalRealization : GiftUISemanticCore::SemanticExpansionTraversalOperations, ~Copyable, ~Escapable where Self.TraversalIdentity == GiftUISemanticCore::SemanticCompleteIdentity {
+SemanticRecordLayoutView	struct	2384	package struct SemanticRecordLayoutView : GiftUISemanticCore::SemanticLayoutView, Swift::BitwiseCopyable, ~Swift::Escapable {
+SemanticRecordPayload	enum	2412	package enum SemanticRecordPayload : Swift::Equatable, Swift::Sendable {
+SemanticRecordRenderView	struct	2429	package struct SemanticRecordRenderView : GiftUISemanticCore::SemanticRenderView, Swift::BitwiseCopyable, ~Swift::Escapable {
+withSemanticRecordStore	func	2459	@inlinable @inline(__always) package func withSemanticRecordStore<Result>(metadata: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRecordBankMetadata>, records: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRuntimeRecord>, paths: inout Swift::MutableSpan<GiftUISemanticCore::SemanticPathEntry>, payloads: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRecordPayload?>, scalars: inout Swift::MutableSpan<Swift::UInt32>, limits: GiftUISemanticCore::SemanticRecordLimits, capacity: GiftUISemanticCore::SemanticRecordLimits? = nil, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, _ body: (borrowing GiftUISemanticCore::SemanticRecordStore) throws(GiftUISemanticCore::SemanticExpansionError) -> Result) throws(GiftUISemanticCore::SemanticExpansionError) -> Result {
+withSemanticRecordStore	func	2512	@inlinable @inline(__always) package func withSemanticRecordStore<Result>(metadata: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRecordBankMetadata>, records: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRuntimeRecord>, paths: inout Swift::MutableSpan<GiftUISemanticCore::SemanticPathEntry>, payloads: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRecordPayload?>, scalars: inout Swift::MutableSpan<Swift::UInt32>, limits: GiftUISemanticCore::SemanticRecordLimits, capacity: GiftUISemanticCore::SemanticRecordLimits? = nil, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, _ body: (borrowing GiftUISemanticCore::SemanticRecordStore) throws(GiftUISemanticCore::SemanticExpansionError) -> Result) throws(GiftUISemanticCore::SemanticExpansionError) -> Result {
+SemanticRecordStore	struct	2567	package struct SemanticRecordStore : ~Swift::Copyable, ~Swift::Escapable {
+SemanticRecordSinkState	struct	2773	package struct SemanticRecordSinkState : ~Swift::Escapable {
+SemanticRecordView	struct	2912	@frozen package struct SemanticRecordView : Swift::BitwiseCopyable, ~Swift::Escapable {
+SemanticRenderResultStorage	protocol	3036	package protocol SemanticRenderResultStorage : GiftUISemanticCore::SemanticLayoutResultStorage {
+SemanticRenderScope	enum	3041	package enum SemanticRenderScope : Swift::Equatable, Swift::Sendable {
+SemanticRenderView	protocol	3052	package protocol SemanticRenderView : ~Escapable {
+SemanticDeclarationRoles	protocol	3065	package protocol SemanticDeclarationRoles {
+SemanticPathComponent	struct	3070	package struct SemanticPathComponent : Swift::Equatable, Swift::Sendable {
+SemanticCompleteIdentity	struct	3114	package struct SemanticCompleteIdentity : Swift::Equatable, Swift::Sendable {
+SemanticRecordLimits	struct	3153	package struct SemanticRecordLimits : Swift::Equatable, Swift::Sendable {
+SemanticPathEntry	struct	3173	package struct SemanticPathEntry : Swift::Sendable {
+SemanticRuntimeRecord	struct	3196	package struct SemanticRuntimeRecord : Swift::Sendable {
+SemanticRecordOwnerIdentity	struct	3234	@frozen package struct SemanticRecordOwnerIdentity : Swift::Equatable, Swift::Sendable, Swift::BitwiseCopyable {
+SemanticRecordOwnerNamespace	struct	3239	package struct SemanticRecordOwnerNamespace : ~Swift::Copyable, Swift::Sendable {
+SemanticRecordReference	struct	3245	package struct SemanticRecordReference : Swift::Equatable, Swift::Sendable {
+SemanticRecordBankMetadata	struct	3260	package struct SemanticRecordBankMetadata {
+SemanticRecordBankBuffers	struct	3304	@frozen package struct SemanticRecordBankBuffers {
+SemanticStandardPayload	enum	3494	package enum SemanticStandardPayload : Swift::Equatable, Swift::Sendable {
+SemanticStandardPayloadCodec	enum	3512	package enum SemanticStandardPayloadCodec {

@@ -1,0 +1,174 @@
+Test Suite 'All tests' started at 2026-11-10 10:27:24.482.
+Test Suite 'GiftUISemanticCoreTests.xctest' started at 2026-11-10 10:27:24.483.
+Test Suite 'SemanticDeclarationCorpusTests' started at 2026-11-10 10:27:24.483.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testActionIdentitiesAndOrderingAreStableAndValueIndependent]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testActionIdentitiesAndOrderingAreStableAndValueIndependent]' passed (0.001 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testActionValueIsConsumedSynchronouslyWithoutRetainingDeclarationLifetime]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testActionValueIsConsumedSynchronouslyWithoutRetainingDeclarationLifetime]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testBothConditionalBranchesUseOnlyTheirSelectedPath]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testBothConditionalBranchesUseOnlyTheirSelectedPath]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testEmptyAndEveryFixedArityHaveExactLeftToRightTranscript]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testEmptyAndEveryFixedArityHaveExactLeftToRightTranscript]' passed (0.001 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testForcedIdentityAliasFailsAtomically]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testForcedIdentityAliasFailsAtomically]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testModifierChainsPreserveSourceOrderAndTypedPayloads]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testModifierChainsPreserveSourceOrderAndTypedPayloads]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testModifierPayloadChangesDoNotReplaceDescendantIdentity]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testModifierPayloadChangesDoNotReplaceDescendantIdentity]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testModifiersOnCustomGroupsNestedContentAndSiblingsKeepScopesSeparate]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testModifiersOnCustomGroupsNestedContentAndSiblingsKeepScopesSeparate]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testNestedConditionalAndOptionalCombinationIsDepthFirst]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testNestedConditionalAndOptionalCombinationIsDepthFirst]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testNestedCustomViewsEvaluateEachBodyExactlyOnce]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testNestedCustomViewsEvaluateEachBodyExactlyOnce]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testOptionalPresenceAndAbsenceHaveExactDistinctTranscripts]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testOptionalPresenceAndAbsenceHaveExactDistinctTranscripts]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testPermittedZeroActionAndModifierLimitsFailAtomicallyWithoutRetention]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testPermittedZeroActionAndModifierLimitsFailAtomicallyWithoutRetention]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testSiblingInsertionInInactiveBranchCannotChangeActiveTranscript]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testSiblingInsertionInInactiveBranchCannotChangeActiveTranscript]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testSpec007LayoutPayloadsPreservePrimitiveChildrenAndModifierOrder]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testSpec007LayoutPayloadsPreservePrimitiveChildrenAndModifierOrder]' passed (0.001 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testSpec008TextAndStylePayloadsPreserveModifierOrderAndIdentity]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testSpec008TextAndStylePayloadsPreserveModifierOrderAndIdentity]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testStructuralIdentityRelationsUseCompleteCanonicalPathsAndEndpointRoles]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testStructuralIdentityRelationsUseCompleteCanonicalPathsAndEndpointRoles]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testViewReturningPropertyAndFunctionMatchInlineFixedContent]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticDeclarationCorpusTests testViewReturningPropertyAndFunctionMatchInlineFixedContent]' passed (0.000 seconds).
+Test Suite 'SemanticDeclarationCorpusTests' passed at 2026-11-10 10:27:24.489.
+	 Executed 17 tests, with 0 failures (0 unexpected) in 0.006 (0.007) seconds
+Test Suite 'SemanticExpansionAttemptTests' started at 2026-11-10 10:27:24.489.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testAdvertisedStorageRefusalIsInvariantViolation]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testAdvertisedStorageRefusalIsInvariantViolation]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testBeginAndPublishFailuresDiscardAndResetWithoutPublication]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testBeginAndPublishFailuresDiscardAndResetWithoutPublication]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testCallerOwnedCapacitiesAllowExactUseAndRejectOneOver]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testCallerOwnedCapacitiesAllowExactUseAndRejectOneOver]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testCoincidentFailuresStopAtTheFirstNormativeDetectingPoint]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testCoincidentFailuresStopAtTheFirstNormativeDetectingPoint]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testDeclaredOperationLimitPrecedesSinkStorageAndHook]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testDeclaredOperationLimitPrecedesSinkStorageAndHook]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testDepthRefusalPrecedesWorkspaceEntryAndPreservesFirstFailure]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testDepthRefusalPrecedesWorkspaceEntryAndPreservesFirstFailure]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testEachDeclaredLimitAllowsExactBoundaryThenRejectsOneOver]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testEachDeclaredLimitAllowsExactBoundaryThenRejectsOneOver]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testEveryCallerOwnedCapacityRejectsBeforeItsHook]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testEveryCallerOwnedCapacityRejectsBeforeItsHook]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testEveryCounterAndDepthRefuseBeforeWrapping]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testEveryCounterAndDepthRefuseBeforeWrapping]' passed (0.130 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testFailedWorkspaceCanBeReusedByALaterValidAttempt]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testFailedWorkspaceCanBeReusedByALaterValidAttempt]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testGenericEntryExpandsAnEmptyRootAndPublishesOnce]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testGenericEntryExpandsAnEmptyRootAndPublishesOnce]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testIdentityFailurePrecedesOperationAndStorageReservation]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testIdentityFailurePrecedesOperationAndStorageReservation]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testSuccessfulAttemptPublishesOnceAndReturnsToIdle]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionAttemptTests testSuccessfulAttemptPublishesOnceAndReturnsToIdle]' passed (0.000 seconds).
+Test Suite 'SemanticExpansionAttemptTests' passed at 2026-11-10 10:27:24.622.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.131 (0.132) seconds
+Test Suite 'SemanticExpansionTraversalTests' started at 2026-11-10 10:27:24.622.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testActionContainerFailureIsAtomicAndObjectsAreReusable]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testActionContainerFailureIsAtomicAndObjectsAreReusable]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testActionContainerStagesBeforeEmptyOneAndFiveChildContent]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testActionContainerStagesBeforeEmptyOneAndFiveChildContent]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testActionContainerUsesOrdinaryNestedConditionalOptionalAndModifierTraversal]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testActionContainerUsesOrdinaryNestedConditionalOptionalAndModifierTraversal]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testActionNodePrecedesActionAndModifierChainUsesSourceOrder]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testActionNodePrecedesActionAndModifierChainUsesSourceOrder]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testBodyLimitStopsBeforeTheRejectedBodyAndPublishesNothing]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testBodyLimitStopsBeforeTheRejectedBodyAndPublishesNothing]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testButtonStagesOneActionAtItsIdentityBeforeStoredLabel]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testButtonStagesOneActionAtItsIdentityBeforeStoredLabel]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testDetectableNeverBodyFailsWithoutEvaluatingIt]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testDetectableNeverBodyFailsWithoutEvaluatingIt]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testEveryStateBindingFailureSuppressesBodyAndSemanticPublication]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testEveryStateBindingFailureSuppressesBodyAndSemanticPublication]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testMissingAndMultipleVisitorCategoriesFailAtomically]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testMissingAndMultipleVisitorCategoriesFailAtomically]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testNestedDeclarationExpandsDepthFirstAndSkipsInactiveContent]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testNestedDeclarationExpandsDepthFirstAndSkipsInactiveContent]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testPrimitiveContainerFailureIsAtomicAndObjectsAreReusable]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testPrimitiveContainerFailureIsAtomicAndObjectsAreReusable]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testPrimitiveContainerStagesBeforeEmptyOneAndFiveChildContent]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testPrimitiveContainerStagesBeforeEmptyOneAndFiveChildContent]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testPrimitiveContainerUsesOrdinaryNestedConditionalOptionalAndModifierTraversal]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testPrimitiveContainerUsesOrdinaryNestedConditionalOptionalAndModifierTraversal]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testSiblingModifierChainsDoNotInterleave]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testSiblingModifierChainsDoNotInterleave]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testStatefulDecoratorBindsLexicallyBeforeUnchangedSemanticTraversal]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testStatefulDecoratorBindsLexicallyBeforeUnchangedSemanticTraversal]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testWorkspacePathCapacityFailsBeforeTheNextEntry]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionTraversalTests testWorkspacePathCapacityFailsBeforeTheNextEntry]' passed (0.000 seconds).
+Test Suite 'SemanticExpansionTraversalTests' passed at 2026-11-10 10:27:24.626.
+	 Executed 16 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'SemanticExpansionValueTests' started at 2026-11-10 10:27:24.626.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testErrorsUseTheirExactUInt8Codes]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testErrorsUseTheirExactUInt8Codes]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testGenericEntryRejectsAnAlreadyActiveWorkspaceBeforeTouchingTheSink]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testGenericEntryRejectsAnAlreadyActiveWorkspaceBeforeTouchingTheSink]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testLimitsAcceptExactMinimumRequiredCountsAndZeroOptionalCounts]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testLimitsAcceptExactMinimumRequiredCountsAndZeroOptionalCounts]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testLimitsRejectEachZeroRequiredCount]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testLimitsRejectEachZeroRequiredCount]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testOwnedValuesMeetTheirHostLayoutBounds]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testOwnedValuesMeetTheirHostLayoutBounds]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testSummaryPreservesEveryExactCounter]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticExpansionValueTests testSummaryPreservesEveryExactCounter]' passed (0.000 seconds).
+Test Suite 'SemanticExpansionValueTests' passed at 2026-11-10 10:27:24.627.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'SemanticRecordingSinkTests' started at 2026-11-10 10:27:24.627.
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testActionAndModifiersPublishClosedOrderedVocabulary]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testActionAndModifiersPublishClosedOrderedVocabulary]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testCustomBodyEventOccursImmediatelyBeforeReturnedDeclaration]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testCustomBodyEventOccursImmediatelyBeforeReturnedDeclaration]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testEmptyRootPublishesOneExactStructuralEventAtDepthTwo]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testEmptyRootPublishesOneExactStructuralEventAtDepthTwo]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testRefusedAttemptIsObservableButCannotReplaceCommittedRecording]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testRefusedAttemptIsObservableButCannotReplaceCommittedRecording]' passed (0.000 seconds).
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testSummaryMismatchRefusesPublication]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticRecordingSinkTests testSummaryMismatchRefusesPublication]' passed (0.000 seconds).
+Test Suite 'SemanticRecordingSinkTests' passed at 2026-11-10 10:27:24.628.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'SemanticReentrancyTests' started at 2026-11-10 10:27:24.628.
+Test Case '-[GiftUISemanticCoreTests.SemanticReentrancyTests testCallbackInvalidationAndExternalInputCannotReenterActiveRoot]' started.
+Test Case '-[GiftUISemanticCoreTests.SemanticReentrancyTests testCallbackInvalidationAndExternalInputCannotReenterActiveRoot]' passed (0.000 seconds).
+Test Suite 'SemanticReentrancyTests' passed at 2026-11-10 10:27:24.628.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'GiftUISemanticCoreTests.xctest' passed at 2026-11-10 10:27:24.628.
+	 Executed 58 tests, with 0 failures (0 unexpected) in 0.142 (0.145) seconds
+Test Suite 'All tests' passed at 2026-11-10 10:27:24.628.
+	 Executed 58 tests, with 0 failures (0 unexpected) in 0.142 (0.146) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.4 (efd8d65801f569d)
+↳ Target Platform: arm64-apple-macosx
+◇ Test semanticCoreIsImportable() started.
+✔ Test semanticCoreIsImportable() passed after 0.001 seconds.
+◇ Test semanticLayoutPrimitiveMapsEveryApprovedPayloadExactly() started.
+✔ Test semanticLayoutPrimitiveMapsEveryApprovedPayloadExactly() passed after 0.001 seconds.
+◇ Test semanticLayoutModifierMapsApprovedPayloadsAndRejectsUnknownOnes() started.
+✔ Test semanticLayoutModifierMapsApprovedPayloadsAndRejectsUnknownOnes() passed after 0.001 seconds.
+◇ Test layoutProfileViewsExposeEqualMeaningWithoutComparingIdentityBytes() started.
+✔ Test layoutProfileViewsExposeEqualMeaningWithoutComparingIdentityBytes() passed after 0.001 seconds.
+◇ Test layoutProfileViewsPreserveExactIdentityRelationsAndBounds() started.
+✔ Test layoutProfileViewsPreserveExactIdentityRelationsAndBounds() passed after 0.001 seconds.
+◇ Test malformedLayoutProfileViewCanInjectMissingInRangeContent() started.
+✔ Test malformedLayoutProfileViewCanInjectMissingInRangeContent() passed after 0.001 seconds.
+◇ Test canvasExpansionPublishesOneIdentityPreservingLeafWithoutInvokingDrawing() started.
+✔ Test canvasExpansionPublishesOneIdentityPreservingLeafWithoutInvokingDrawing() passed after 0.001 seconds.
+◇ Test successfulSemanticExpansionIsItsOwnBorrowedLayoutView() started.
+✔ Test successfulSemanticExpansionIsItsOwnBorrowedLayoutView() passed after 0.001 seconds.
+◇ Test successfulSemanticExpansionExposesTheSameResultAsItsRenderView() started.
+✔ Test successfulSemanticExpansionExposesTheSameResultAsItsRenderView() passed after 0.001 seconds.
+◇ Test invalidTextMarkerRemainsInvalidInTheSharedLayoutProjection() started.
+✔ Test invalidTextMarkerRemainsInvalidInTheSharedLayoutProjection() passed after 0.001 seconds.
+◇ Test semanticLayoutViewBorrowsOneExactIdentityType() started.
+✔ Test semanticLayoutViewBorrowsOneExactIdentityType() passed after 0.001 seconds.
+◇ Test semanticRenderScopeHasTheExactClosedCasesAndValues() started.
+✔ Test semanticRenderScopeHasTheExactClosedCasesAndValues() passed after 0.001 seconds.
+◇ Test semanticRenderScopeMapsCanvasWithoutChangingUnknownPrimitiveBehavior() started.
+✔ Test semanticRenderScopeMapsCanvasWithoutChangingUnknownPrimitiveBehavior() passed after 0.001 seconds.
+◇ Test semanticRenderViewPreservesCountsChildOrderAndLayoutIdentitySelection() started.
+✔ Test semanticRenderViewPreservesCountsChildOrderAndLayoutIdentitySelection() passed after 0.001 seconds.
+◇ Test semanticRenderViewRejectsUnknownIdentitiesAndOutOfRangeChildren() started.
+✔ Test semanticRenderViewRejectsUnknownIdentitiesAndOutOfRangeChildren() passed after 0.001 seconds.
+✔ Test run with 15 tests in 0 suites passed after 0.012 seconds.

@@ -1,0 +1,3631 @@
+import GiftUI
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@usableFromInline
+package struct SemanticExpansionLimits : Swift::Equatable, Swift::Sendable {
+  @usableFromInline
+  package let maximumDepth: Swift::UInt16
+  @usableFromInline
+  package let maximumSemanticNodes: Swift::UInt16
+  @usableFromInline
+  package let maximumBodyEvaluations: Swift::UInt16
+  @usableFromInline
+  package let maximumModifierApplications: Swift::UInt16
+  @usableFromInline
+  package let maximumActionOccurrences: Swift::UInt16
+  package init?(maximumDepth: Swift::UInt16, maximumSemanticNodes: Swift::UInt16, maximumBodyEvaluations: Swift::UInt16, maximumModifierApplications: Swift::UInt16, maximumActionOccurrences: Swift::UInt16)
+  @usableFromInline
+  @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_struct_equals(_ a: GiftUISemanticCore::SemanticExpansionLimits, _ b: GiftUISemanticCore::SemanticExpansionLimits) -> Swift::Bool
+}
+@usableFromInline
+package struct SemanticExpansionSummary : Swift::Equatable, Swift::Sendable {
+  @usableFromInline
+  package let semanticNodeCount: Swift::UInt16
+  @usableFromInline
+  package let bodyEvaluationCount: Swift::UInt16
+  @usableFromInline
+  package let modifierApplicationCount: Swift::UInt16
+  @usableFromInline
+  package let actionOccurrenceCount: Swift::UInt16
+  package let maximumObservedDepth: Swift::UInt16
+  @usableFromInline
+  package init(semanticNodeCount: Swift::UInt16, bodyEvaluationCount: Swift::UInt16, modifierApplicationCount: Swift::UInt16, actionOccurrenceCount: Swift::UInt16, maximumObservedDepth: Swift::UInt16)
+  @usableFromInline
+  @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_struct_equals(_ a: GiftUISemanticCore::SemanticExpansionSummary, _ b: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+}
+@usableFromInline
+package enum SemanticExpansionError : Swift::UInt8, Swift::Error, Swift::Equatable, Swift::Sendable {
+  case capacityExhausted
+  case invalidIdentity
+  case reentrancyViolation
+  case invariantViolation
+  @usableFromInline
+  @inlinable package init?(rawValue: Swift::UInt8)
+  @usableFromInline
+  package typealias RawValue = Swift::UInt8
+  @usableFromInline
+  package var rawValue: Swift::UInt8 {
+    @usableFromInline
+    @inlinable get
+  }
+}
+@usableFromInline
+package enum SemanticExpansionResult : Swift::Equatable, Swift::Sendable {
+  case success(GiftUISemanticCore::SemanticExpansionSummary)
+  case failure(GiftUISemanticCore::SemanticExpansionError)
+  @usableFromInline
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::SemanticExpansionResult, _ b: GiftUISemanticCore::SemanticExpansionResult) -> Swift::Bool
+}
+@usableFromInline
+package enum SemanticBodyEvaluation<Body, BindingFailure> {
+  case body(Body)
+  case semanticFailure(GiftUISemanticCore::SemanticExpansionError)
+  case bindingFailure(BindingFailure)
+  case accessFailure(GiftUI::_GiftUIAccessFailure)
+}
+@usableFromInline
+package protocol SemanticStatefulBinding : ~Copyable, ~Escapable {
+  associatedtype Domain : GiftUI::_GiftUIReadDomain
+  associatedtype Identity : Swift::Equatable
+  associatedtype Failure : Swift::Equatable, Swift::Sendable
+  borrowing func evaluate<Declaration>(_ declaration: borrowing Declaration, beforeBody: () -> GiftUISemanticCore::SemanticExpansionError?, body: (borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> Declaration.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<Declaration.Body, Self.Failure> where Declaration : GiftUI::View, Self.Domain == Declaration.Domain, Declaration.Domain == Declaration.Body.Domain
+  borrowing func evaluateStateful<Declaration>(_ declaration: borrowing Declaration, structuralIdentity: Self.Identity, beforeBody: () -> GiftUISemanticCore::SemanticExpansionError?, body: (borrowing Declaration, borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> Declaration.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<Declaration.Body, Self.Failure> where Declaration : GiftUI::View, Declaration : GiftUI::_GiftUIObservableStateHost, Self.Domain == Declaration.Domain, Declaration.Domain == Declaration.Body.Domain
+}
+@usableFromInline
+package enum BoundSemanticExpansionResult<BindingFailure> : Swift::Equatable, Swift::Sendable where BindingFailure : Swift::Equatable, BindingFailure : Swift::Sendable {
+  case success(GiftUISemanticCore::SemanticExpansionSummary)
+  case semanticFailure(GiftUISemanticCore::SemanticExpansionError)
+  case bindingFailure(BindingFailure)
+  case accessFailure(GiftUI::_GiftUIAccessFailure)
+  @usableFromInline
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::BoundSemanticExpansionResult<BindingFailure>, _ b: GiftUISemanticCore::BoundSemanticExpansionResult<BindingFailure>) -> Swift::Bool
+}
+@usableFromInline
+package protocol SemanticExpansionWorkspace {
+  associatedtype Identity : Swift::Equatable
+  var maximumPathComponents: Swift::UInt16 { get }
+  var maximumIdentities: Swift::UInt16 { get }
+  var isExpanding: Swift::Bool { get }
+  mutating func beginExpansion() -> Swift::Bool
+  mutating func enterRoot<Declaration>(_ declaration: Declaration.Type, identity: inout Self.Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Declaration : GiftUI::View
+  mutating func enterCustomBody<Declaration>(_ declaration: Declaration.Type, identity: inout Self.Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Declaration : GiftUI::View
+  mutating func enterFixedChild(_ index: Swift::UInt8, identity: inout Self.Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  mutating func enterConditionalBranch(_ index: Swift::UInt8, identity: inout Self.Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  mutating func enterOptionalPresence(identity: inout Self.Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  mutating func enterDeclarationRole<Declaration>(_ declaration: Declaration.Type, identity: inout Self.Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  mutating func leavePathComponent()
+  mutating func completeExpansion()
+  mutating func discardExpansion()
+  mutating func resetExpansion()
+}
+@usableFromInline
+package protocol SemanticExpansionSink : ~Escapable {
+  associatedtype Identity : Swift::Equatable
+  var stagingFailure: GiftUISemanticCore::SemanticExpansionError? { get }
+  var maximumStructuralOccurrences: Swift::UInt16 { get }
+  var maximumBodyEvaluations: Swift::UInt16 { get }
+  var maximumSemanticOccurrences: Swift::UInt16 { get }
+  var maximumModifierApplications: Swift::UInt16 { get }
+  var maximumActionOccurrences: Swift::UInt16 { get }
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func beginExpansion() -> Swift::Bool
+  #else
+  mutating func beginExpansion() -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageStructuralOccurrence(identity: borrowing Self.Identity) -> Swift::Bool
+  #else
+  mutating func stageStructuralOccurrence(identity: borrowing Self.Identity) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageBodyEvaluation(identity: borrowing Self.Identity) -> Swift::Bool
+  #else
+  mutating func stageBodyEvaluation(identity: borrowing Self.Identity) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageSemanticOccurrence<Payload>(identity: borrowing Self.Identity, payload: borrowing Payload) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticPrimitivePayload
+  #else
+  mutating func stageSemanticOccurrence<Payload>(identity: borrowing Self.Identity, payload: borrowing Payload) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticPrimitivePayload
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageModifierApplication<Payload>(identity: borrowing Self.Identity, payload: borrowing Payload, chainIndex: Swift::UInt16) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticModifierPayload
+  #else
+  mutating func stageModifierApplication<Payload>(identity: borrowing Self.Identity, payload: borrowing Payload, chainIndex: Swift::UInt16) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticModifierPayload
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageActionOccurrence<Action>(identity: borrowing Self.Identity, action: borrowing Action) -> Swift::Bool where Action : GiftUI::GiftUIAction
+  #else
+  mutating func stageActionOccurrence<Action>(identity: borrowing Self.Identity, action: borrowing Action) -> Swift::Bool where Action : GiftUI::GiftUIAction
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func publishExpansion(_ summary: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+  #else
+  mutating func publishExpansion(_ summary: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func discardExpansion()
+  #else
+  mutating func discardExpansion()
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func resetExpansion()
+  #else
+  mutating func resetExpansion()
+  #endif
+  #endif
+}
+extension GiftUISemanticCore::SemanticExpansionSink {
+  package var stagingFailure: GiftUISemanticCore::SemanticExpansionError? {
+    get
+  }
+}
+@usableFromInline
+package struct SemanticRecordingRole : Swift::RawRepresentable, Swift::Hashable, Swift::Sendable {
+  @usableFromInline
+  package let rawValue: Swift::UInt16
+  @usableFromInline
+  package init(rawValue: Swift::UInt16)
+  @usableFromInline
+  package typealias RawValue = Swift::UInt16
+}
+package enum SemanticRecordingPathComponent : Swift::Hashable, Swift::Sendable {
+  case root
+  case customBody
+  case fixedChild(Swift::UInt8)
+  case conditionalBranch(Swift::UInt8)
+  case optionalPresence
+  case declarationRole(GiftUISemanticCore::SemanticRecordingRole)
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::SemanticRecordingPathComponent, _ b: GiftUISemanticCore::SemanticRecordingPathComponent) -> Swift::Bool
+  package func hash(into hasher: inout Swift::Hasher)
+  package var hashValue: Swift::Int {
+    get
+  }
+}
+package protocol SemanticRecordingIdentity : Swift::Equatable, Swift::Sendable {
+  var componentCount: Swift::UInt16 { get }
+  var declarationRole: GiftUISemanticCore::SemanticRecordingRole { get }
+  func component(at index: Swift::UInt16) -> GiftUISemanticCore::SemanticRecordingPathComponent?
+}
+package enum SemanticRecordingEvent<Identity> : Swift::Equatable, Swift::Sendable where Identity : GiftUISemanticCore::SemanticRecordingIdentity {
+  case enterStructuralOccurrence(path: Identity, declarationRole: GiftUISemanticCore::SemanticRecordingRole)
+  case evaluateCustomBody(path: Identity, declarationRole: GiftUISemanticCore::SemanticRecordingRole)
+  case stageSemanticOccurrence(path: Identity, declarationRole: GiftUISemanticCore::SemanticRecordingRole)
+  case applyModifier(path: Identity, modifierRole: GiftUISemanticCore::SemanticRecordingRole, chainIndex: Swift::UInt16)
+  case associateAction(path: Identity, actionRole: GiftUISemanticCore::SemanticRecordingRole)
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::SemanticRecordingEvent<Identity>, _ b: GiftUISemanticCore::SemanticRecordingEvent<Identity>) -> Swift::Bool
+}
+package protocol SemanticRecordingStorage {
+  associatedtype Identity : GiftUISemanticCore::SemanticRecordingIdentity
+  var maximumStructuralOccurrences: Swift::UInt16 { get }
+  var maximumBodyEvaluations: Swift::UInt16 { get }
+  var maximumSemanticOccurrences: Swift::UInt16 { get }
+  var maximumModifierApplications: Swift::UInt16 { get }
+  var maximumActionOccurrences: Swift::UInt16 { get }
+  mutating func beginRecording() -> Swift::Bool
+  mutating func stage(_ event: borrowing GiftUISemanticCore::SemanticRecordingEvent<Self.Identity>) -> Swift::Bool
+  mutating func publishRecording(_ summary: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+  mutating func discardRecording()
+  mutating func resetRecording()
+}
+package struct SemanticRecordingSink<Storage> : GiftUISemanticCore::SemanticExpansionSink where Storage : GiftUISemanticCore::SemanticRecordingStorage {
+  package var storage: Storage
+  @_hasInitialValue private var bodyEvaluationCount: Swift::UInt16
+  @_hasInitialValue private var semanticNodeCount: Swift::UInt16
+  @_hasInitialValue private var modifierApplicationCount: Swift::UInt16
+  @_hasInitialValue private var actionOccurrenceCount: Swift::UInt16
+  @_hasInitialValue private var maximumObservedDepth: Swift::UInt16
+  package init(storage: Storage)
+  package var maximumStructuralOccurrences: Swift::UInt16 {
+    get
+  }
+  package var maximumBodyEvaluations: Swift::UInt16 {
+    get
+  }
+  package var maximumSemanticOccurrences: Swift::UInt16 {
+    get
+  }
+  package var maximumModifierApplications: Swift::UInt16 {
+    get
+  }
+  package var maximumActionOccurrences: Swift::UInt16 {
+    get
+  }
+  package mutating func beginExpansion() -> Swift::Bool
+  package mutating func stageStructuralOccurrence(identity: borrowing Storage.Identity) -> Swift::Bool
+  package mutating func stageBodyEvaluation(identity: borrowing Storage.Identity) -> Swift::Bool
+  package mutating func stageSemanticOccurrence<Payload>(identity: borrowing Storage.Identity, payload: borrowing Payload) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticPrimitivePayload
+  package mutating func stageModifierApplication<Payload>(identity: borrowing Storage.Identity, payload: borrowing Payload, chainIndex: Swift::UInt16) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticModifierPayload
+  package mutating func stageActionOccurrence<Action>(identity: borrowing Storage.Identity, action: borrowing Action) -> Swift::Bool where Action : GiftUI::GiftUIAction
+  package mutating func publishExpansion(_ summary: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+  package mutating func discardExpansion()
+  package mutating func resetExpansion()
+  package typealias Identity = Storage.Identity
+}
+@usableFromInline
+package struct SemanticExpansionAttempt {
+  @usableFromInline
+  internal let limits: GiftUISemanticCore::SemanticExpansionLimits
+  @usableFromInline
+  @_hasInitialValue internal var semanticNodeCount: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var bodyEvaluationCount: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var modifierApplicationCount: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var actionOccurrenceCount: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var maximumObservedDepth: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var currentDepth: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var identityCount: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var structuralOccurrenceCount: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var workspacePathCapacity: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var workspaceIdentityCapacity: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var sinkStructuralCapacity: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var sinkBodyCapacity: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var sinkSemanticCapacity: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var sinkModifierCapacity: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var sinkActionCapacity: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue internal var workspaceBegan: Swift::Bool
+  @usableFromInline
+  @_hasInitialValue internal var sinkBegan: Swift::Bool
+  @usableFromInline
+  @_hasInitialValue internal var firstFailure: GiftUISemanticCore::SemanticExpansionError?
+  @usableFromInline
+  package init(limits: GiftUISemanticCore::SemanticExpansionLimits)
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func begin<Workspace, Sink>(workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil, !workspaceBegan, !sinkBegan else {
+            return record(.invariantViolation)
+        }
+        guard !workspace.isExpanding else {
+            return record(.reentrancyViolation)
+        }
+
+        workspacePathCapacity = workspace.maximumPathComponents
+        workspaceIdentityCapacity = workspace.maximumIdentities
+        sinkStructuralCapacity = sink.maximumStructuralOccurrences
+        sinkBodyCapacity = sink.maximumBodyEvaluations
+        sinkSemanticCapacity = sink.maximumSemanticOccurrences
+        sinkModifierCapacity = sink.maximumModifierApplications
+        sinkActionCapacity = sink.maximumActionOccurrences
+
+        guard workspace.beginExpansion() else {
+            return record(.invariantViolation)
+        }
+        workspaceBegan = true
+
+        guard sink.beginExpansion() else {
+            return fail(.invariantViolation, workspace: &workspace, sink: &sink)
+        }
+        sinkBegan = true
+        return nil
+    }
+  #else
+  @inlinable @inline(__always) package mutating func begin<Workspace, Sink>(workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil, !workspaceBegan, !sinkBegan else {
+            return record(.invariantViolation)
+        }
+        guard !workspace.isExpanding else {
+            return record(.reentrancyViolation)
+        }
+
+        workspacePathCapacity = workspace.maximumPathComponents
+        workspaceIdentityCapacity = workspace.maximumIdentities
+        sinkStructuralCapacity = sink.maximumStructuralOccurrences
+        sinkBodyCapacity = sink.maximumBodyEvaluations
+        sinkSemanticCapacity = sink.maximumSemanticOccurrences
+        sinkModifierCapacity = sink.maximumModifierApplications
+        sinkActionCapacity = sink.maximumActionOccurrences
+
+        guard workspace.beginExpansion() else {
+            return record(.invariantViolation)
+        }
+        workspaceBegan = true
+
+        guard sink.beginExpansion() else {
+            return fail(.invariantViolation, workspace: &workspace, sink: &sink)
+        }
+        sinkBegan = true
+        return nil
+    }
+  #endif
+  #endif
+  @inlinable @inline(__always) package mutating func enterRoot<Declaration, Workspace>(_ declaration: Declaration.Type, workspace: inout Workspace, identity: inout Workspace.Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Declaration : GiftUI::View, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterRoot(declaration, identity: &$1)
+        }
+    }
+  @inlinable @inline(__always) package mutating func enterCustomBody<Declaration, Workspace>(_ declaration: Declaration.Type, workspace: inout Workspace, identity: inout Workspace.Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Declaration : GiftUI::View, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterCustomBody(declaration, identity: &$1)
+        }
+    }
+  @inlinable @inline(__always) package mutating func enterFixedChild<Workspace>(_ index: Swift::UInt8, workspace: inout Workspace, identity: inout Workspace.Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterFixedChild(index, identity: &$1)
+        }
+    }
+  @inlinable @inline(__always) package mutating func enterConditionalBranch<Workspace>(_ index: Swift::UInt8, workspace: inout Workspace, identity: inout Workspace.Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterConditionalBranch(index, identity: &$1)
+        }
+    }
+  @inlinable @inline(__always) package mutating func enterOptionalPresence<Workspace>(workspace: inout Workspace, identity: inout Workspace.Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterOptionalPresence(identity: &$1)
+        }
+    }
+  @inlinable @inline(__always) package mutating func enterDeclarationRole<Declaration, Workspace>(_ declaration: Declaration.Type, workspace: inout Workspace, identity: inout Workspace.Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterDeclarationRole(declaration, identity: &$1)
+        }
+    }
+  @inlinable @inline(__always) package mutating func leavePathComponent<Workspace>(workspace: inout Workspace) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace {
+        guard firstFailure == nil else { return firstFailure }
+        guard currentDepth > 0 else { return record(.invariantViolation) }
+        workspace.leavePathComponent()
+        currentDepth -= 1
+        return nil
+    }
+  @inlinable @inline(__always) internal mutating func reserveBodyEvaluation() -> GiftUISemanticCore::SemanticExpansionError? {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: bodyEvaluationCount,
+                limit: limits.maximumBodyEvaluations
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        bodyEvaluationCount = next
+        return nil
+    }
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func stageBodyEvaluation<Workspace, Sink>(identity: borrowing Workspace.Identity, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        if let error = reserveBodyEvaluation() {
+            return error
+        }
+        guard bodyEvaluationCount <= sinkBodyCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageBodyEvaluation(identity: identity) else {
+            return record(.invariantViolation)
+        }
+        return nil
+    }
+  #else
+  @inlinable @inline(__always) package mutating func stageBodyEvaluation<Workspace, Sink>(identity: borrowing Workspace.Identity, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        if let error = reserveBodyEvaluation() {
+            return error
+        }
+        guard bodyEvaluationCount <= sinkBodyCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageBodyEvaluation(identity: identity) else {
+            return record(.invariantViolation)
+        }
+        return nil
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func stageStructuralOccurrence<Workspace, Sink>(identity: borrowing Workspace.Identity, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: structuralOccurrenceCount,
+                limit: sinkStructuralCapacity
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        structuralOccurrenceCount = next
+        guard sink.stageStructuralOccurrence(identity: identity) else {
+            return record(sink.stagingFailure ?? .invariantViolation)
+        }
+        return nil
+    }
+  #else
+  @inlinable @inline(__always) package mutating func stageStructuralOccurrence<Workspace, Sink>(identity: borrowing Workspace.Identity, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: structuralOccurrenceCount,
+                limit: sinkStructuralCapacity
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        structuralOccurrenceCount = next
+        guard sink.stageStructuralOccurrence(identity: identity) else {
+            return record(sink.stagingFailure ?? .invariantViolation)
+        }
+        return nil
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func stageSemanticOccurrence<Payload, Workspace, Sink>(identity: borrowing Workspace.Identity, payload: borrowing Payload, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Payload : GiftUI::_GiftUISemanticPrimitivePayload, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: semanticNodeCount,
+                limit: limits.maximumSemanticNodes
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        semanticNodeCount = next
+        guard semanticNodeCount <= sinkSemanticCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageSemanticOccurrence(identity: identity, payload: payload) else {
+            return record(sink.stagingFailure ?? .invariantViolation)
+        }
+        return nil
+    }
+  #else
+  @inlinable @inline(__always) package mutating func stageSemanticOccurrence<Payload, Workspace, Sink>(identity: borrowing Workspace.Identity, payload: borrowing Payload, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Payload : GiftUI::_GiftUISemanticPrimitivePayload, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: semanticNodeCount,
+                limit: limits.maximumSemanticNodes
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        semanticNodeCount = next
+        guard semanticNodeCount <= sinkSemanticCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageSemanticOccurrence(identity: identity, payload: payload) else {
+            return record(sink.stagingFailure ?? .invariantViolation)
+        }
+        return nil
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func stageModifierApplication<Payload, Workspace, Sink>(identity: borrowing Workspace.Identity, payload: borrowing Payload, chainIndex: Swift::UInt16, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Payload : GiftUI::_GiftUISemanticModifierPayload, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: modifierApplicationCount,
+                limit: limits.maximumModifierApplications
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        modifierApplicationCount = next
+        guard modifierApplicationCount <= sinkModifierCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard
+            sink.stageModifierApplication(
+                identity: identity,
+                payload: payload,
+                chainIndex: chainIndex
+            )
+        else {
+            return record(sink.stagingFailure ?? .invariantViolation)
+        }
+        return nil
+    }
+  #else
+  @inlinable @inline(__always) package mutating func stageModifierApplication<Payload, Workspace, Sink>(identity: borrowing Workspace.Identity, payload: borrowing Payload, chainIndex: Swift::UInt16, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Payload : GiftUI::_GiftUISemanticModifierPayload, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: modifierApplicationCount,
+                limit: limits.maximumModifierApplications
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        modifierApplicationCount = next
+        guard modifierApplicationCount <= sinkModifierCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard
+            sink.stageModifierApplication(
+                identity: identity,
+                payload: payload,
+                chainIndex: chainIndex
+            )
+        else {
+            return record(sink.stagingFailure ?? .invariantViolation)
+        }
+        return nil
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func stageActionOccurrence<Action, Workspace, Sink>(identity: borrowing Workspace.Identity, action: borrowing Action, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Action : GiftUI::GiftUIAction, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let nextSemanticNode = reservedValue(
+                after: semanticNodeCount,
+                limit: limits.maximumSemanticNodes
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        semanticNodeCount = nextSemanticNode
+        guard semanticNodeCount <= sinkSemanticCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard
+            let nextAction = reservedValue(
+                after: actionOccurrenceCount,
+                limit: limits.maximumActionOccurrences
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        actionOccurrenceCount = nextAction
+        guard actionOccurrenceCount <= sinkActionCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageActionOccurrence(identity: identity, action: action) else {
+            return record(sink.stagingFailure ?? .invariantViolation)
+        }
+        return nil
+    }
+  #else
+  @inlinable @inline(__always) package mutating func stageActionOccurrence<Action, Workspace, Sink>(identity: borrowing Workspace.Identity, action: borrowing Action, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError? where Action : GiftUI::GiftUIAction, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let nextSemanticNode = reservedValue(
+                after: semanticNodeCount,
+                limit: limits.maximumSemanticNodes
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        semanticNodeCount = nextSemanticNode
+        guard semanticNodeCount <= sinkSemanticCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard
+            let nextAction = reservedValue(
+                after: actionOccurrenceCount,
+                limit: limits.maximumActionOccurrences
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        actionOccurrenceCount = nextAction
+        guard actionOccurrenceCount <= sinkActionCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageActionOccurrence(identity: identity, action: action) else {
+            return record(sink.stagingFailure ?? .invariantViolation)
+        }
+        return nil
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func succeed<Workspace, Sink>(workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionResult where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        if let firstFailure {
+            return .failure(fail(firstFailure, workspace: &workspace, sink: &sink))
+        }
+        guard workspaceBegan, sinkBegan, currentDepth == 0, maximumObservedDepth > 0 else {
+            return .failure(
+                fail(.invariantViolation, workspace: &workspace, sink: &sink)
+            )
+        }
+
+        let summary = SemanticExpansionSummary(
+            semanticNodeCount: semanticNodeCount,
+            bodyEvaluationCount: bodyEvaluationCount,
+            modifierApplicationCount: modifierApplicationCount,
+            actionOccurrenceCount: actionOccurrenceCount,
+            maximumObservedDepth: maximumObservedDepth
+        )
+        workspace.completeExpansion()
+        guard sink.publishExpansion(summary) else {
+            return .failure(
+                fail(.invariantViolation, workspace: &workspace, sink: &sink)
+            )
+        }
+        workspace.resetExpansion()
+        sink.resetExpansion()
+        workspaceBegan = false
+        sinkBegan = false
+        return .success(summary)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func succeed<Workspace, Sink>(workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionResult where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        if let firstFailure {
+            return .failure(fail(firstFailure, workspace: &workspace, sink: &sink))
+        }
+        guard workspaceBegan, sinkBegan, currentDepth == 0, maximumObservedDepth > 0 else {
+            return .failure(
+                fail(.invariantViolation, workspace: &workspace, sink: &sink)
+            )
+        }
+
+        let summary = SemanticExpansionSummary(
+            semanticNodeCount: semanticNodeCount,
+            bodyEvaluationCount: bodyEvaluationCount,
+            modifierApplicationCount: modifierApplicationCount,
+            actionOccurrenceCount: actionOccurrenceCount,
+            maximumObservedDepth: maximumObservedDepth
+        )
+        workspace.completeExpansion()
+        guard sink.publishExpansion(summary) else {
+            return .failure(
+                fail(.invariantViolation, workspace: &workspace, sink: &sink)
+            )
+        }
+        workspace.resetExpansion()
+        sink.resetExpansion()
+        workspaceBegan = false
+        sinkBegan = false
+        return .success(summary)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func fail<Workspace, Sink>(_ error: GiftUISemanticCore::SemanticExpansionError, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        let error = record(error)
+        if workspaceBegan {
+            workspace.discardExpansion()
+        }
+        if sinkBegan {
+            sink.discardExpansion()
+        }
+        if workspaceBegan {
+            workspace.resetExpansion()
+        }
+        if sinkBegan {
+            sink.resetExpansion()
+        }
+        workspaceBegan = false
+        sinkBegan = false
+        return error
+    }
+  #else
+  @inlinable @inline(__always) package mutating func fail<Workspace, Sink>(_ error: GiftUISemanticCore::SemanticExpansionError, workspace: inout Workspace, sink: inout Sink) -> GiftUISemanticCore::SemanticExpansionError where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        let error = record(error)
+        if workspaceBegan {
+            workspace.discardExpansion()
+        }
+        if sinkBegan {
+            sink.discardExpansion()
+        }
+        if workspaceBegan {
+            workspace.resetExpansion()
+        }
+        if sinkBegan {
+            sink.resetExpansion()
+        }
+        workspaceBegan = false
+        sinkBegan = false
+        return error
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func discardForOwnerFailure<Workspace, Sink>(workspace: inout Workspace, sink: inout Sink) where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        if workspaceBegan {
+            workspace.discardExpansion()
+        }
+        if sinkBegan {
+            sink.discardExpansion()
+        }
+        if workspaceBegan {
+            workspace.resetExpansion()
+        }
+        if sinkBegan {
+            sink.resetExpansion()
+        }
+        workspaceBegan = false
+        sinkBegan = false
+    }
+  #else
+  @inlinable @inline(__always) package mutating func discardForOwnerFailure<Workspace, Sink>(workspace: inout Workspace, sink: inout Sink) where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, Workspace.Identity == Sink.Identity, Sink : ~Escapable {
+        if workspaceBegan {
+            workspace.discardExpansion()
+        }
+        if sinkBegan {
+            sink.discardExpansion()
+        }
+        if workspaceBegan {
+            workspace.resetExpansion()
+        }
+        if sinkBegan {
+            sink.resetExpansion()
+        }
+        workspaceBegan = false
+        sinkBegan = false
+    }
+  #endif
+  #endif
+  @inlinable @inline(__always) internal mutating func enterPath<Workspace>(workspace: inout Workspace, identity: inout Workspace.Identity?, enter: (inout Workspace, inout Workspace.Identity?) -> GiftUISemanticCore::SemanticExpansionError?) -> GiftUISemanticCore::SemanticExpansionError? where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace {
+        guard firstFailure == nil else { return firstFailure }
+        let nextDepth = currentDepth.addingReportingOverflow(1)
+        guard !nextDepth.overflow,
+            nextDepth.partialValue <= limits.maximumDepth,
+            nextDepth.partialValue <= workspacePathCapacity
+        else {
+            return record(.capacityExhausted)
+        }
+
+        identity = nil
+        if let error = enter(&workspace, &identity) {
+            return record(error)
+        }
+        guard identity != nil else { return record(.invalidIdentity) }
+        guard
+            let nextIdentityCount = reservedValue(
+                after: identityCount,
+                limit: workspaceIdentityCapacity
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        identityCount = nextIdentityCount
+
+        currentDepth = nextDepth.partialValue
+        if currentDepth > maximumObservedDepth {
+            maximumObservedDepth = currentDepth
+        }
+        return nil
+    }
+  @inlinable @inline(__always) internal func reservedValue(after count: Swift::UInt16, limit: Swift::UInt16) -> Swift::UInt16? {
+        let next = count.addingReportingOverflow(1)
+        guard !next.overflow, next.partialValue <= limit else { return nil }
+        return next.partialValue
+    }
+  @inlinable @inline(__always) internal mutating func record(_ error: GiftUISemanticCore::SemanticExpansionError) -> GiftUISemanticCore::SemanticExpansionError {
+        if firstFailure == nil {
+            firstFailure = error
+        }
+        return firstFailure ?? error
+    }
+}
+@usableFromInline
+package protocol SemanticExpansionTraversalOperations : GiftUI::_GiftUISemanticTraversalVisitor, ~Copyable, ~Escapable {
+  associatedtype TraversalIdentity : Swift::Equatable
+  associatedtype TraversalBindingFailure : Swift::Equatable, Swift::Sendable
+  var failure: GiftUISemanticCore::SemanticExpansionError? { get set }
+  var bindingFailure: Self.TraversalBindingFailure? { get set }
+  var accessFailure: GiftUI::_GiftUIAccessFailure? { get set }
+  var currentIdentity: Self.TraversalIdentity? { get set }
+  var currentCategoryWasVisited: Swift::Bool { get set }
+  var nextModifierChainIndex: Swift::UInt16 { get set }
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func beginExpansion() -> GiftUISemanticCore::SemanticExpansionError?
+  #else
+  mutating func beginExpansion() -> GiftUISemanticCore::SemanticExpansionError?
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func discardTraversalForOwnerFailure()
+  #else
+  mutating func discardTraversalForOwnerFailure()
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func failTraversal(_ error: GiftUISemanticCore::SemanticExpansionError) -> GiftUISemanticCore::SemanticExpansionError
+  #else
+  mutating func failTraversal(_ error: GiftUISemanticCore::SemanticExpansionError) -> GiftUISemanticCore::SemanticExpansionError
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func succeedTraversal() -> GiftUISemanticCore::SemanticExpansionResult
+  #else
+  mutating func succeedTraversal() -> GiftUISemanticCore::SemanticExpansionResult
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func enterTraversalRoot<D>(_ declaration: D.Type, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View
+  #else
+  mutating func enterTraversalRoot<D>(_ declaration: D.Type, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func enterTraversalCustomBody<D>(_ declaration: D.Type, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View
+  #else
+  mutating func enterTraversalCustomBody<D>(_ declaration: D.Type, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func enterTraversalFixedChild(_ index: Swift::UInt8, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError?
+  #else
+  mutating func enterTraversalFixedChild(_ index: Swift::UInt8, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError?
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func enterTraversalConditionalBranch(_ index: Swift::UInt8, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError?
+  #else
+  mutating func enterTraversalConditionalBranch(_ index: Swift::UInt8, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError?
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func enterTraversalOptionalPresence(identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError?
+  #else
+  mutating func enterTraversalOptionalPresence(identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError?
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func enterTraversalDeclarationRole<D>(_ declaration: D.Type, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError?
+  #else
+  mutating func enterTraversalDeclarationRole<D>(_ declaration: D.Type, identity: inout Self.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError?
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func leaveTraversalPathComponent() -> GiftUISemanticCore::SemanticExpansionError?
+  #else
+  mutating func leaveTraversalPathComponent() -> GiftUISemanticCore::SemanticExpansionError?
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageTraversalStructuralOccurrence(identity: borrowing Self.TraversalIdentity) -> GiftUISemanticCore::SemanticExpansionError?
+  #else
+  mutating func stageTraversalStructuralOccurrence(identity: borrowing Self.TraversalIdentity) -> GiftUISemanticCore::SemanticExpansionError?
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageTraversalSemanticOccurrence<P>(identity: borrowing Self.TraversalIdentity, payload: borrowing P) -> GiftUISemanticCore::SemanticExpansionError? where P : GiftUI::_GiftUISemanticPrimitivePayload
+  #else
+  mutating func stageTraversalSemanticOccurrence<P>(identity: borrowing Self.TraversalIdentity, payload: borrowing P) -> GiftUISemanticCore::SemanticExpansionError? where P : GiftUI::_GiftUISemanticPrimitivePayload
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageTraversalModifierApplication<P>(identity: borrowing Self.TraversalIdentity, payload: borrowing P, chainIndex: Swift::UInt16) -> GiftUISemanticCore::SemanticExpansionError? where P : GiftUI::_GiftUISemanticModifierPayload
+  #else
+  mutating func stageTraversalModifierApplication<P>(identity: borrowing Self.TraversalIdentity, payload: borrowing P, chainIndex: Swift::UInt16) -> GiftUISemanticCore::SemanticExpansionError? where P : GiftUI::_GiftUISemanticModifierPayload
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func stageTraversalActionOccurrence<A>(identity: borrowing Self.TraversalIdentity, action: borrowing A) -> GiftUISemanticCore::SemanticExpansionError? where A : GiftUI::GiftUIAction
+  #else
+  mutating func stageTraversalActionOccurrence<A>(identity: borrowing Self.TraversalIdentity, action: borrowing A) -> GiftUISemanticCore::SemanticExpansionError? where A : GiftUI::GiftUIAction
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func evaluateTraversalBody<D>(_ declaration: borrowing D, identity: Self.TraversalIdentity, body: (borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> D.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<D.Body, Self.TraversalBindingFailure> where D : GiftUI::View, Self.Domain == D.Domain, D.Domain == D.Body.Domain
+  #else
+  mutating func evaluateTraversalBody<D>(_ declaration: borrowing D, identity: Self.TraversalIdentity, body: (borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> D.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<D.Body, Self.TraversalBindingFailure> where D : GiftUI::View, Self.Domain == D.Domain, D.Domain == D.Body.Domain
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  mutating func evaluateTraversalStatefulBody<D>(_ declaration: borrowing D, identity: Self.TraversalIdentity, body: (borrowing D, borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> D.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<D.Body, Self.TraversalBindingFailure> where D : GiftUI::View, D : GiftUI::_GiftUIObservableStateHost, Self.Domain == D.Domain, D.Domain == D.Body.Domain
+  #else
+  mutating func evaluateTraversalStatefulBody<D>(_ declaration: borrowing D, identity: Self.TraversalIdentity, body: (borrowing D, borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> D.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<D.Body, Self.TraversalBindingFailure> where D : GiftUI::View, D : GiftUI::_GiftUIObservableStateHost, Self.Domain == D.Domain, D.Domain == D.Body.Domain
+  #endif
+  #endif
+}
+extension GiftUISemanticCore::SemanticExpansionTraversalOperations where Self : ~Copyable, Self : ~Escapable {
+  @inlinable internal var stopped: Swift::Bool {
+    get {
+        if failure != nil { return true }
+        if bindingFailure != nil { return true }
+        return accessFailure != nil
+    }
+  }
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func finalizeExpansion() -> GiftUISemanticCore::BoundSemanticExpansionResult<Self.TraversalBindingFailure> {
+        if let failure = bindingFailure {
+            discardTraversalForOwnerFailure()
+            return .bindingFailure(failure)
+        }
+        if let failure = accessFailure {
+            discardTraversalForOwnerFailure()
+            return .accessFailure(failure)
+        }
+        if let failure {
+            return .semanticFailure(failTraversal(failure))
+        }
+        switch succeedTraversal() {
+        case .success(let summary): return .success(summary)
+        case .failure(let error): return .semanticFailure(error)
+        }
+    }
+  #else
+  @inlinable @inline(__always) package mutating func finalizeExpansion() -> GiftUISemanticCore::BoundSemanticExpansionResult<Self.TraversalBindingFailure> {
+        if let failure = bindingFailure {
+            discardTraversalForOwnerFailure()
+            return .bindingFailure(failure)
+        }
+        if let failure = accessFailure {
+            discardTraversalForOwnerFailure()
+            return .accessFailure(failure)
+        }
+        if let failure {
+            return .semanticFailure(failTraversal(failure))
+        }
+        switch succeedTraversal() {
+        case .success(let summary): return .success(summary)
+        case .failure(let error): return .semanticFailure(error)
+        }
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func expandRoot<Root>(_ root: borrowing Root) where Root : GiftUI::View, Self.Domain == Root.Domain {
+        guard !stopped else { return }
+        var rootIdentity: TraversalIdentity?
+        if let error = enterTraversalRoot(
+            Root.self,
+            identity: &rootIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let rootIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+
+        currentIdentity = rootIdentity
+        expandDeclaration(root)
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+        }
+    }
+  #else
+  @inlinable @inline(__always) package mutating func expandRoot<Root>(_ root: borrowing Root) where Root : GiftUI::View, Self.Domain == Root.Domain {
+        guard !stopped else { return }
+        var rootIdentity: TraversalIdentity?
+        if let error = enterTraversalRoot(
+            Root.self,
+            identity: &rootIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let rootIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+
+        currentIdentity = rootIdentity
+        expandDeclaration(root)
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+        }
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitCustomView<Declaration>(_ declaration: borrowing Declaration, body: (borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> Declaration.Body) where Declaration : GiftUI::View, Self.Domain == Declaration.Domain, Declaration.Domain == Declaration.Body.Domain {
+        guard let bodyIdentity = beginBody(Declaration.self) else { return }
+        let result = evaluateTraversalBody(declaration, identity: bodyIdentity, body: body)
+        finishBody(result)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitCustomView<Declaration>(_ declaration: borrowing Declaration, body: (borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> Declaration.Body) where Declaration : GiftUI::View, Self.Domain == Declaration.Domain, Declaration.Domain == Declaration.Body.Domain {
+        guard let bodyIdentity = beginBody(Declaration.self) else { return }
+        let result = evaluateTraversalBody(declaration, identity: bodyIdentity, body: body)
+        finishBody(result)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitStatefulCustomView<Declaration>(_ declaration: borrowing Declaration, body: (borrowing Declaration, borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> Declaration.Body) where Declaration : GiftUI::View, Declaration : GiftUI::_GiftUIObservableStateHost, Self.Domain == Declaration.Domain, Declaration.Domain == Declaration.Body.Domain {
+        guard let bodyIdentity = beginBody(Declaration.self) else { return }
+        let result = evaluateTraversalStatefulBody(declaration, identity: bodyIdentity, body: body)
+        finishBody(result)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitStatefulCustomView<Declaration>(_ declaration: borrowing Declaration, body: (borrowing Declaration, borrowing GiftUI::_GiftUIFrameRead<Self.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> Declaration.Body) where Declaration : GiftUI::View, Declaration : GiftUI::_GiftUIObservableStateHost, Self.Domain == Declaration.Domain, Declaration.Domain == Declaration.Body.Domain {
+        guard let bodyIdentity = beginBody(Declaration.self) else { return }
+        let result = evaluateTraversalStatefulBody(declaration, identity: bodyIdentity, body: body)
+        finishBody(result)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func beginBody<Declaration>(_ type: Declaration.Type) -> Self.TraversalIdentity? where Declaration : GiftUI::View {
+        guard beginCategory() else { return nil }
+        var identity: TraversalIdentity?
+        if let error = enterTraversalCustomBody(type, identity: &identity) {
+            stop(error)
+            return nil
+        }
+        guard let identity else {
+            stop(.invalidIdentity)
+            return nil
+        }
+        currentIdentity = identity
+        return identity
+    }
+  #else
+  @inlinable @inline(__always) package mutating func beginBody<Declaration>(_ type: Declaration.Type) -> Self.TraversalIdentity? where Declaration : GiftUI::View {
+        guard beginCategory() else { return nil }
+        var identity: TraversalIdentity?
+        if let error = enterTraversalCustomBody(type, identity: &identity) {
+            stop(error)
+            return nil
+        }
+        guard let identity else {
+            stop(.invalidIdentity)
+            return nil
+        }
+        currentIdentity = identity
+        return identity
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func finishBody<Body>(_ result: GiftUISemanticCore::SemanticBodyEvaluation<Body, Self.TraversalBindingFailure>) where Body : GiftUI::View, Self.Domain == Body.Domain {
+        switch result {
+        case .body(let body):
+            expandDeclaration(body)
+            guard !stopped else { return }
+            if let error = leaveTraversalPathComponent() { stop(error) }
+        case .semanticFailure(let error): stop(error)
+        case .bindingFailure(let error): bindingFailure = error
+        case .accessFailure(let error): accessFailure = error
+        }
+    }
+  #else
+  @inlinable @inline(__always) package mutating func finishBody<Body>(_ result: GiftUISemanticCore::SemanticBodyEvaluation<Body, Self.TraversalBindingFailure>) where Body : GiftUI::View, Self.Domain == Body.Domain {
+        switch result {
+        case .body(let body):
+            expandDeclaration(body)
+            guard !stopped else { return }
+            if let error = leaveTraversalPathComponent() { stop(error) }
+        case .semanticFailure(let error): stop(error)
+        case .bindingFailure(let error): bindingFailure = error
+        case .accessFailure(let error): accessFailure = error
+        }
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitEmpty() {
+        _ = beginCategory()
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitEmpty() {
+        _ = beginCategory()
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func visitFixed<A, B>(_ a: borrowing A, _ b: borrowing B) where A : GiftUI::View, B : GiftUI::View, Self.Domain == A.Domain, A.Domain == B.Domain {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+    }
+  #else
+  @inlinable package mutating func visitFixed<A, B>(_ a: borrowing A, _ b: borrowing B) where A : GiftUI::View, B : GiftUI::View, Self.Domain == A.Domain, A.Domain == B.Domain {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitFixed<A, B, C>(_ a: borrowing A, _ b: borrowing B, _ c: borrowing C) where A : GiftUI::View, B : GiftUI::View, C : GiftUI::View, Self.Domain == A.Domain, A.Domain == B.Domain, B.Domain == C.Domain {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitFixed<A, B, C>(_ a: borrowing A, _ b: borrowing B, _ c: borrowing C) where A : GiftUI::View, B : GiftUI::View, C : GiftUI::View, Self.Domain == A.Domain, A.Domain == B.Domain, B.Domain == C.Domain {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitFixed<A, B, C, D>(_ a: borrowing A, _ b: borrowing B, _ c: borrowing C, _ d: borrowing D) where A : GiftUI::View, B : GiftUI::View, C : GiftUI::View, D : GiftUI::View, Self.Domain == A.Domain, A.Domain == B.Domain, B.Domain == C.Domain, C.Domain == D.Domain {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+        expandFixedChild(d, index: 3)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitFixed<A, B, C, D>(_ a: borrowing A, _ b: borrowing B, _ c: borrowing C, _ d: borrowing D) where A : GiftUI::View, B : GiftUI::View, C : GiftUI::View, D : GiftUI::View, Self.Domain == A.Domain, A.Domain == B.Domain, B.Domain == C.Domain, C.Domain == D.Domain {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+        expandFixedChild(d, index: 3)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitFixed<A, B, C, D, E>(_ a: borrowing A, _ b: borrowing B, _ c: borrowing C, _ d: borrowing D, _ e: borrowing E) where A : GiftUI::View, B : GiftUI::View, C : GiftUI::View, D : GiftUI::View, E : GiftUI::View, Self.Domain == A.Domain, A.Domain == B.Domain, B.Domain == C.Domain, C.Domain == D.Domain, D.Domain == E.Domain {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+        expandFixedChild(d, index: 3)
+        expandFixedChild(e, index: 4)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitFixed<A, B, C, D, E>(_ a: borrowing A, _ b: borrowing B, _ c: borrowing C, _ d: borrowing D, _ e: borrowing E) where A : GiftUI::View, B : GiftUI::View, C : GiftUI::View, D : GiftUI::View, E : GiftUI::View, Self.Domain == A.Domain, A.Domain == B.Domain, B.Domain == C.Domain, C.Domain == D.Domain, D.Domain == E.Domain {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+        expandFixedChild(d, index: 3)
+        expandFixedChild(e, index: 4)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitConditionalFirst<First, Second>(_ content: borrowing First, second: Second.Type) where First : GiftUI::View, Second : GiftUI::View, Self.Domain == First.Domain, First.Domain == Second.Domain {
+        guard beginCategory() else { return }
+        expandConditionalChild(content, branch: 0)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitConditionalFirst<First, Second>(_ content: borrowing First, second: Second.Type) where First : GiftUI::View, Second : GiftUI::View, Self.Domain == First.Domain, First.Domain == Second.Domain {
+        guard beginCategory() else { return }
+        expandConditionalChild(content, branch: 0)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitConditionalSecond<First, Second>(first: First.Type, _ content: borrowing Second) where First : GiftUI::View, Second : GiftUI::View, Self.Domain == First.Domain, First.Domain == Second.Domain {
+        guard beginCategory() else { return }
+        expandConditionalChild(content, branch: 1)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitConditionalSecond<First, Second>(first: First.Type, _ content: borrowing Second) where First : GiftUI::View, Second : GiftUI::View, Self.Domain == First.Domain, First.Domain == Second.Domain {
+        guard beginCategory() else { return }
+        expandConditionalChild(content, branch: 1)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitOptionalAbsent<Content>(_ content: Content.Type) where Content : GiftUI::View, Self.Domain == Content.Domain {
+        _ = beginCategory()
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitOptionalAbsent<Content>(_ content: Content.Type) where Content : GiftUI::View, Self.Domain == Content.Domain {
+        _ = beginCategory()
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitOptionalPresent<Content>(_ content: borrowing Content) where Content : GiftUI::View, Self.Domain == Content.Domain {
+        guard beginCategory() else { return }
+        var presenceIdentity: TraversalIdentity?
+        if let error = enterTraversalOptionalPresence(
+            identity: &presenceIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let presenceIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = presenceIdentity
+
+        expandFixedChild(content, index: 0)
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+        }
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitOptionalPresent<Content>(_ content: borrowing Content) where Content : GiftUI::View, Self.Domain == Content.Domain {
+        guard beginCategory() else { return }
+        var presenceIdentity: TraversalIdentity?
+        if let error = enterTraversalOptionalPresence(
+            identity: &presenceIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let presenceIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = presenceIdentity
+
+        expandFixedChild(content, index: 0)
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+        }
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitPrimitive<Payload>(_ payload: borrowing Payload) where Payload : GiftUI::_GiftUISemanticPrimitivePayload {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = stageTraversalSemanticOccurrence(
+            identity: currentIdentity,
+            payload: payload)
+        {
+            stop(error)
+        }
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitPrimitive<Payload>(_ payload: borrowing Payload) where Payload : GiftUI::_GiftUISemanticPrimitivePayload {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = stageTraversalSemanticOccurrence(
+            identity: currentIdentity,
+            payload: payload)
+        {
+            stop(error)
+        }
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitPrimitive<Content, Payload>(content: borrowing Content, payload: borrowing Payload) where Content : GiftUI::View, Payload : GiftUI::_GiftUISemanticPrimitivePayload, Self.Domain == Content.Domain {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = stageTraversalSemanticOccurrence(
+            identity: currentIdentity,
+            payload: payload)
+        {
+            stop(error)
+            return
+        }
+
+        expandFixedChild(content, index: 0)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitPrimitive<Content, Payload>(content: borrowing Content, payload: borrowing Payload) where Content : GiftUI::View, Payload : GiftUI::_GiftUISemanticPrimitivePayload, Self.Domain == Content.Domain {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = stageTraversalSemanticOccurrence(
+            identity: currentIdentity,
+            payload: payload)
+        {
+            stop(error)
+            return
+        }
+
+        expandFixedChild(content, index: 0)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitActionPrimitive<Payload>(_ payload: borrowing Payload) where Payload : GiftUI::_GiftUISemanticActionPayload {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = stageTraversalActionOccurrence(
+            identity: currentIdentity,
+            action: payload._giftUIAction)
+        {
+            stop(error)
+        }
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitActionPrimitive<Payload>(_ payload: borrowing Payload) where Payload : GiftUI::_GiftUISemanticActionPayload {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = stageTraversalActionOccurrence(
+            identity: currentIdentity,
+            action: payload._giftUIAction)
+        {
+            stop(error)
+        }
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitActionPrimitive<Content, Payload>(content: borrowing Content, payload: borrowing Payload) where Content : GiftUI::View, Payload : GiftUI::_GiftUISemanticActionPayload, Self.Domain == Content.Domain {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = stageTraversalActionOccurrence(
+            identity: currentIdentity,
+            action: payload._giftUIAction)
+        {
+            stop(error)
+            return
+        }
+
+        expandFixedChild(content, index: 0)
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitActionPrimitive<Content, Payload>(content: borrowing Content, payload: borrowing Payload) where Content : GiftUI::View, Payload : GiftUI::_GiftUISemanticActionPayload, Self.Domain == Content.Domain {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = stageTraversalActionOccurrence(
+            identity: currentIdentity,
+            action: payload._giftUIAction)
+        {
+            stop(error)
+            return
+        }
+
+        expandFixedChild(content, index: 0)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func visitModifier<Content, Payload>(content: borrowing Content, payload: borrowing Payload) where Content : GiftUI::View, Payload : GiftUI::_GiftUISemanticModifierPayload, Self.Domain == Content.Domain {
+        guard beginCategory(), let modifierIdentity = currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+
+        expandDeclaration(content, continuingModifierChain: true)
+        guard !stopped else { return }
+        let chainIndex = nextModifierChainIndex
+        if let error = stageTraversalModifierApplication(
+            identity: modifierIdentity,
+            payload: payload,
+            chainIndex: chainIndex)
+        {
+            stop(error)
+            return
+        }
+        nextModifierChainIndex += 1
+    }
+  #else
+  @inlinable @inline(__always) package mutating func visitModifier<Content, Payload>(content: borrowing Content, payload: borrowing Payload) where Content : GiftUI::View, Payload : GiftUI::_GiftUISemanticModifierPayload, Self.Domain == Content.Domain {
+        guard beginCategory(), let modifierIdentity = currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+
+        expandDeclaration(content, continuingModifierChain: true)
+        guard !stopped else { return }
+        let chainIndex = nextModifierChainIndex
+        if let error = stageTraversalModifierApplication(
+            identity: modifierIdentity,
+            payload: payload,
+            chainIndex: chainIndex)
+        {
+            stop(error)
+            return
+        }
+        nextModifierChainIndex += 1
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func expandDeclaration<Declaration>(_ declaration: borrowing Declaration, continuingModifierChain: Swift::Bool = false) where Declaration : GiftUI::View, Self.Domain == Declaration.Domain {
+        guard !stopped else { return }
+        let parentIdentity = currentIdentity
+        let parentCategoryWasVisited = currentCategoryWasVisited
+        let parentModifierChainIndex = nextModifierChainIndex
+        currentCategoryWasVisited = false
+        if !continuingModifierChain {
+            nextModifierChainIndex = 0
+        }
+
+        var declarationIdentity: TraversalIdentity?
+        if let error = enterTraversalDeclarationRole(
+            Declaration.self,
+            identity: &declarationIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let declarationIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = declarationIdentity
+        if let error = stageTraversalStructuralOccurrence(
+            identity: declarationIdentity)
+        {
+            stop(error)
+            return
+        }
+
+        declaration._giftUITraverse(&self)
+        if !stopped, !currentCategoryWasVisited {
+            stop(.invariantViolation)
+        }
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+            return
+        }
+
+        currentIdentity = parentIdentity
+        currentCategoryWasVisited = parentCategoryWasVisited
+        if !continuingModifierChain {
+            nextModifierChainIndex = parentModifierChainIndex
+        }
+    }
+  #else
+  @inlinable @inline(__always) package mutating func expandDeclaration<Declaration>(_ declaration: borrowing Declaration, continuingModifierChain: Swift::Bool = false) where Declaration : GiftUI::View, Self.Domain == Declaration.Domain {
+        guard !stopped else { return }
+        let parentIdentity = currentIdentity
+        let parentCategoryWasVisited = currentCategoryWasVisited
+        let parentModifierChainIndex = nextModifierChainIndex
+        currentCategoryWasVisited = false
+        if !continuingModifierChain {
+            nextModifierChainIndex = 0
+        }
+
+        var declarationIdentity: TraversalIdentity?
+        if let error = enterTraversalDeclarationRole(
+            Declaration.self,
+            identity: &declarationIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let declarationIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = declarationIdentity
+        if let error = stageTraversalStructuralOccurrence(
+            identity: declarationIdentity)
+        {
+            stop(error)
+            return
+        }
+
+        declaration._giftUITraverse(&self)
+        if !stopped, !currentCategoryWasVisited {
+            stop(.invariantViolation)
+        }
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+            return
+        }
+
+        currentIdentity = parentIdentity
+        currentCategoryWasVisited = parentCategoryWasVisited
+        if !continuingModifierChain {
+            nextModifierChainIndex = parentModifierChainIndex
+        }
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func expandFixedChild<Content>(_ content: borrowing Content, index: Swift::UInt8) where Content : GiftUI::View, Self.Domain == Content.Domain {
+        guard !stopped else { return }
+        let parentIdentity = currentIdentity
+        var childIdentity: TraversalIdentity?
+        if let error = enterTraversalFixedChild(
+            index,
+            identity: &childIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let childIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = childIdentity
+
+        expandDeclaration(content)
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+            return
+        }
+        currentIdentity = parentIdentity
+    }
+  #else
+  @inlinable @inline(__always) package mutating func expandFixedChild<Content>(_ content: borrowing Content, index: Swift::UInt8) where Content : GiftUI::View, Self.Domain == Content.Domain {
+        guard !stopped else { return }
+        let parentIdentity = currentIdentity
+        var childIdentity: TraversalIdentity?
+        if let error = enterTraversalFixedChild(
+            index,
+            identity: &childIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let childIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = childIdentity
+
+        expandDeclaration(content)
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+            return
+        }
+        currentIdentity = parentIdentity
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func expandConditionalChild<Content>(_ content: borrowing Content, branch: Swift::UInt8) where Content : GiftUI::View, Self.Domain == Content.Domain {
+        guard !stopped else { return }
+        let parentIdentity = currentIdentity
+        var branchIdentity: TraversalIdentity?
+        if let error = enterTraversalConditionalBranch(
+            branch,
+            identity: &branchIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let branchIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = branchIdentity
+
+        expandFixedChild(content, index: 0)
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+            return
+        }
+        currentIdentity = parentIdentity
+    }
+  #else
+  @inlinable @inline(__always) package mutating func expandConditionalChild<Content>(_ content: borrowing Content, branch: Swift::UInt8) where Content : GiftUI::View, Self.Domain == Content.Domain {
+        guard !stopped else { return }
+        let parentIdentity = currentIdentity
+        var branchIdentity: TraversalIdentity?
+        if let error = enterTraversalConditionalBranch(
+            branch,
+            identity: &branchIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let branchIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = branchIdentity
+
+        expandFixedChild(content, index: 0)
+        guard !stopped else { return }
+        if let error = leaveTraversalPathComponent() {
+            stop(error)
+            return
+        }
+        currentIdentity = parentIdentity
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func beginCategory() -> Swift::Bool {
+        guard !stopped else { return false }
+        guard !currentCategoryWasVisited else {
+            stop(.invariantViolation)
+            return false
+        }
+        currentCategoryWasVisited = true
+        return true
+    }
+  #else
+  @inlinable @inline(__always) package mutating func beginCategory() -> Swift::Bool {
+        guard !stopped else { return false }
+        guard !currentCategoryWasVisited else {
+            stop(.invariantViolation)
+            return false
+        }
+        currentCategoryWasVisited = true
+        return true
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable @inline(__always) package mutating func stop(_ error: GiftUISemanticCore::SemanticExpansionError) {
+        if failure == nil {
+            failure = error
+        }
+    }
+  #else
+  @inlinable @inline(__always) package mutating func stop(_ error: GiftUISemanticCore::SemanticExpansionError) {
+        if failure == nil {
+            failure = error
+        }
+    }
+  #endif
+  #endif
+}
+@usableFromInline
+internal struct SemanticExpansionTraversal<Workspace, Sink, StateBinding> : ~Swift::Copyable, ~Swift::Escapable, GiftUISemanticCore::SemanticExpansionTraversalOperations where Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, StateBinding : GiftUISemanticCore::SemanticStatefulBinding, Workspace.Identity == Sink.Identity, Sink.Identity == StateBinding.Identity, Sink : ~Escapable, StateBinding : ~Copyable, StateBinding : ~Escapable {
+  @usableFromInline
+  internal typealias Domain = StateBinding.Domain
+  @usableFromInline
+  internal typealias TraversalIdentity = Workspace.Identity
+  @usableFromInline
+  internal typealias TraversalBindingFailure = StateBinding.Failure
+  @usableFromInline
+  internal var attempt: GiftUISemanticCore::SemanticExpansionAttempt
+  @usableFromInline
+  internal var workspace: Workspace
+  @usableFromInline
+  internal var sink: Sink
+  @usableFromInline
+  internal let stateBinding: StateBinding
+  @usableFromInline
+  @_hasInitialValue internal var failure: GiftUISemanticCore::SemanticExpansionError?
+  @usableFromInline
+  @_hasInitialValue internal var bindingFailure: StateBinding.Failure?
+  @usableFromInline
+  @_hasInitialValue internal var accessFailure: GiftUI::_GiftUIAccessFailure?
+  @usableFromInline
+  @_hasInitialValue internal var currentIdentity: Workspace.Identity?
+  @usableFromInline
+  @_hasInitialValue internal var currentCategoryWasVisited: Swift::Bool
+  @usableFromInline
+  @_hasInitialValue internal var nextModifierChainIndex: Swift::UInt16
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(copy stateBinding, copy sink)
+  @usableFromInline
+  internal init(attempt: GiftUISemanticCore::SemanticExpansionAttempt, workspace: Workspace, sink: Sink, stateBinding: consuming StateBinding)
+  #else
+  @lifetime(copy stateBinding, copy sink)
+  @usableFromInline
+  internal init(attempt: GiftUISemanticCore::SemanticExpansionAttempt, workspace: Workspace, sink: Sink, stateBinding: consuming StateBinding)
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func beginExpansion() -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.begin(workspace: &workspace, sink: &sink)
+    }
+  #else
+  @inlinable package mutating func beginExpansion() -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.begin(workspace: &workspace, sink: &sink)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func discardTraversalForOwnerFailure() {
+        attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
+    }
+  #else
+  @inlinable package mutating func discardTraversalForOwnerFailure() {
+        attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func failTraversal(_ error: GiftUISemanticCore::SemanticExpansionError) -> GiftUISemanticCore::SemanticExpansionError {
+        attempt.fail(error, workspace: &workspace, sink: &sink)
+    }
+  #else
+  @inlinable package mutating func failTraversal(_ error: GiftUISemanticCore::SemanticExpansionError) -> GiftUISemanticCore::SemanticExpansionError {
+        attempt.fail(error, workspace: &workspace, sink: &sink)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func succeedTraversal() -> GiftUISemanticCore::SemanticExpansionResult {
+        attempt.succeed(workspace: &workspace, sink: &sink)
+    }
+  #else
+  @inlinable package mutating func succeedTraversal() -> GiftUISemanticCore::SemanticExpansionResult {
+        attempt.succeed(workspace: &workspace, sink: &sink)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func enterTraversalRoot<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View {
+        attempt.enterRoot(declaration, workspace: &workspace, identity: &identity)
+    }
+  #else
+  @inlinable package mutating func enterTraversalRoot<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View {
+        attempt.enterRoot(declaration, workspace: &workspace, identity: &identity)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func enterTraversalCustomBody<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View {
+        attempt.enterCustomBody(declaration, workspace: &workspace, identity: &identity)
+    }
+  #else
+  @inlinable package mutating func enterTraversalCustomBody<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View {
+        attempt.enterCustomBody(declaration, workspace: &workspace, identity: &identity)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func enterTraversalFixedChild(_ index: Swift::UInt8, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.enterFixedChild(index, workspace: &workspace, identity: &identity)
+    }
+  #else
+  @inlinable package mutating func enterTraversalFixedChild(_ index: Swift::UInt8, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.enterFixedChild(index, workspace: &workspace, identity: &identity)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func enterTraversalConditionalBranch(_ index: Swift::UInt8, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.enterConditionalBranch(index, workspace: &workspace, identity: &identity)
+    }
+  #else
+  @inlinable package mutating func enterTraversalConditionalBranch(_ index: Swift::UInt8, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.enterConditionalBranch(index, workspace: &workspace, identity: &identity)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func enterTraversalOptionalPresence(identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? { attempt.enterOptionalPresence(workspace: &workspace, identity: &identity) }
+  #else
+  @inlinable package mutating func enterTraversalOptionalPresence(identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? { attempt.enterOptionalPresence(workspace: &workspace, identity: &identity) }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func enterTraversalDeclarationRole<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.enterDeclarationRole(declaration, workspace: &workspace, identity: &identity)
+    }
+  #else
+  @inlinable package mutating func enterTraversalDeclarationRole<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity?) -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.enterDeclarationRole(declaration, workspace: &workspace, identity: &identity)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func leaveTraversalPathComponent() -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.leavePathComponent(workspace: &workspace)
+    }
+  #else
+  @inlinable package mutating func leaveTraversalPathComponent() -> GiftUISemanticCore::SemanticExpansionError? {
+        attempt.leavePathComponent(workspace: &workspace)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func stageTraversalStructuralOccurrence(identity: borrowing GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity) -> GiftUISemanticCore::SemanticExpansionError? { attempt.stageStructuralOccurrence(identity: identity, workspace: &workspace, sink: &sink) }
+  #else
+  @inlinable package mutating func stageTraversalStructuralOccurrence(identity: borrowing GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity) -> GiftUISemanticCore::SemanticExpansionError? { attempt.stageStructuralOccurrence(identity: identity, workspace: &workspace, sink: &sink) }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func stageTraversalSemanticOccurrence<P>(identity: borrowing GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, payload: borrowing P) -> GiftUISemanticCore::SemanticExpansionError? where P : GiftUI::_GiftUISemanticPrimitivePayload {
+        attempt.stageSemanticOccurrence(
+            identity: identity, payload: payload, workspace: &workspace, sink: &sink)
+    }
+  #else
+  @inlinable package mutating func stageTraversalSemanticOccurrence<P>(identity: borrowing GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, payload: borrowing P) -> GiftUISemanticCore::SemanticExpansionError? where P : GiftUI::_GiftUISemanticPrimitivePayload {
+        attempt.stageSemanticOccurrence(
+            identity: identity, payload: payload, workspace: &workspace, sink: &sink)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func stageTraversalModifierApplication<P>(identity: borrowing GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, payload: borrowing P, chainIndex: Swift::UInt16) -> GiftUISemanticCore::SemanticExpansionError? where P : GiftUI::_GiftUISemanticModifierPayload {
+        attempt.stageModifierApplication(
+            identity: identity, payload: payload, chainIndex: chainIndex, workspace: &workspace,
+            sink: &sink)
+    }
+  #else
+  @inlinable package mutating func stageTraversalModifierApplication<P>(identity: borrowing GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, payload: borrowing P, chainIndex: Swift::UInt16) -> GiftUISemanticCore::SemanticExpansionError? where P : GiftUI::_GiftUISemanticModifierPayload {
+        attempt.stageModifierApplication(
+            identity: identity, payload: payload, chainIndex: chainIndex, workspace: &workspace,
+            sink: &sink)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func stageTraversalActionOccurrence<A>(identity: borrowing GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, action: borrowing A) -> GiftUISemanticCore::SemanticExpansionError? where A : GiftUI::GiftUIAction {
+        attempt.stageActionOccurrence(
+            identity: identity, action: action, workspace: &workspace, sink: &sink)
+    }
+  #else
+  @inlinable package mutating func stageTraversalActionOccurrence<A>(identity: borrowing GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, action: borrowing A) -> GiftUISemanticCore::SemanticExpansionError? where A : GiftUI::GiftUIAction {
+        attempt.stageActionOccurrence(
+            identity: identity, action: action, workspace: &workspace, sink: &sink)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func evaluateTraversalBody<D>(_ declaration: borrowing D, identity: GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, body: (borrowing GiftUI::_GiftUIFrameRead<GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> D.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<D.Body, GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalBindingFailure> where D : GiftUI::View, StateBinding.Domain == D.Domain, D.Domain == D.Body.Domain {
+        stateBinding.evaluate(
+            declaration,
+            beforeBody: {
+                attempt.stageBodyEvaluation(identity: identity, workspace: &workspace, sink: &sink)
+            }, body: body)
+    }
+  #else
+  @inlinable package mutating func evaluateTraversalBody<D>(_ declaration: borrowing D, identity: GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, body: (borrowing GiftUI::_GiftUIFrameRead<GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> D.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<D.Body, GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalBindingFailure> where D : GiftUI::View, StateBinding.Domain == D.Domain, D.Domain == D.Body.Domain {
+        stateBinding.evaluate(
+            declaration,
+            beforeBody: {
+                attempt.stageBodyEvaluation(identity: identity, workspace: &workspace, sink: &sink)
+            }, body: body)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @inlinable package mutating func evaluateTraversalStatefulBody<D>(_ declaration: borrowing D, identity: GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, body: (borrowing D, borrowing GiftUI::_GiftUIFrameRead<GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> D.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<D.Body, GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalBindingFailure> where D : GiftUI::View, D : GiftUI::_GiftUIObservableStateHost, StateBinding.Domain == D.Domain, D.Domain == D.Body.Domain {
+        stateBinding.evaluateStateful(
+            declaration, structuralIdentity: identity,
+            beforeBody: {
+                attempt.stageBodyEvaluation(identity: identity, workspace: &workspace, sink: &sink)
+            }, body: body)
+    }
+  #else
+  @inlinable package mutating func evaluateTraversalStatefulBody<D>(_ declaration: borrowing D, identity: GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalIdentity, body: (borrowing D, borrowing GiftUI::_GiftUIFrameRead<GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.Domain>) throws(GiftUI::_GiftUIAccessFailure) -> D.Body) -> GiftUISemanticCore::SemanticBodyEvaluation<D.Body, GiftUISemanticCore::SemanticExpansionTraversal<Workspace, Sink, StateBinding>.TraversalBindingFailure> where D : GiftUI::View, D : GiftUI::_GiftUIObservableStateHost, StateBinding.Domain == D.Domain, D.Domain == D.Body.Domain {
+        stateBinding.evaluateStateful(
+            declaration, structuralIdentity: identity,
+            beforeBody: {
+                attempt.stageBodyEvaluation(identity: identity, workspace: &workspace, sink: &sink)
+            }, body: body)
+    }
+  #endif
+  #endif
+}
+@inlinable @inline(__always) package func expandSemanticTreeWithStateBinding<Root, Workspace, Sink, StateBinding>(_ root: borrowing Root, limits: GiftUISemanticCore::SemanticExpansionLimits, workspace: inout Workspace, sink: inout Sink, stateBinding: consuming StateBinding) -> GiftUISemanticCore::BoundSemanticExpansionResult<StateBinding.Failure> where Root : GiftUI::View, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, StateBinding : GiftUISemanticCore::SemanticStatefulBinding, Root.Domain == StateBinding.Domain, Workspace.Identity == Sink.Identity, Sink.Identity == StateBinding.Identity, StateBinding : ~Copyable, StateBinding : ~Escapable {
+    var attempt = SemanticExpansionAttempt(limits: limits)
+    if let error = attempt.begin(workspace: &workspace, sink: &sink) {
+        return .semanticFailure(error)
+    }
+    var traversal = SemanticExpansionTraversal(
+        attempt: attempt, workspace: workspace, sink: sink, stateBinding: consume stateBinding)
+    traversal.expandRoot(root)
+    let result = traversal.finalizeExpansion()
+    workspace = traversal.workspace
+    sink = traversal.sink
+    return result
+}
+@inlinable @inline(__always) internal func expandSemanticTreeConsumingSinkWithStateBinding<Root, Workspace, Sink, StateBinding>(_ root: borrowing Root, limits: GiftUISemanticCore::SemanticExpansionLimits, workspace: inout Workspace, sink: consuming Sink, stateBinding: consuming StateBinding) -> GiftUISemanticCore::BoundSemanticExpansionResult<StateBinding.Failure> where Root : GiftUI::View, Workspace : GiftUISemanticCore::SemanticExpansionWorkspace, Sink : GiftUISemanticCore::SemanticExpansionSink, StateBinding : GiftUISemanticCore::SemanticStatefulBinding, Root.Domain == StateBinding.Domain, Workspace.Identity == Sink.Identity, Sink.Identity == StateBinding.Identity, Sink : ~Escapable, StateBinding : ~Copyable, StateBinding : ~Escapable {
+    var localSink = consume sink
+    var attempt = SemanticExpansionAttempt(limits: limits)
+    if let error = attempt.begin(workspace: &workspace, sink: &localSink) {
+        return .semanticFailure(error)
+    }
+    var traversal = SemanticExpansionTraversal(
+        attempt: attempt, workspace: workspace, sink: localSink,
+        stateBinding: consume stateBinding)
+    traversal.expandRoot(root)
+    let result = traversal.finalizeExpansion()
+    workspace = traversal.workspace
+    return result
+}
+extension GiftUISemanticCore::SemanticLayoutPrimitive {
+  package init<Payload>(payload: borrowing Payload) where Payload : GiftUI::_GiftUISemanticPrimitivePayload
+}
+extension GiftUISemanticCore::SemanticLayoutModifier {
+  package init?<Payload>(payload: borrowing Payload) where Payload : GiftUI::_GiftUISemanticModifierPayload
+}
+package protocol SemanticLayoutResultStorage : GiftUISemanticCore::SemanticLayoutView {
+  var maximumStructuralOccurrences: Swift::UInt16 { get }
+  var maximumBodyEvaluations: Swift::UInt16 { get }
+  var maximumSemanticOccurrences: Swift::UInt16 { get }
+  var maximumModifierApplications: Swift::UInt16 { get }
+  var maximumActionOccurrences: Swift::UInt16 { get }
+  mutating func beginSemanticResult() -> Swift::Bool
+  mutating func stageStructuralOccurrence(identity: borrowing Self.Identity) -> Swift::Bool
+  mutating func stageBodyEvaluation(identity: borrowing Self.Identity) -> Swift::Bool
+  mutating func stagePrimitive<Payload>(identity: borrowing Self.Identity, primitive: GiftUISemanticCore::SemanticLayoutPrimitive, payload: borrowing Payload) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticPrimitivePayload
+  mutating func stageModifier<Payload>(identity: borrowing Self.Identity, modifier: GiftUISemanticCore::SemanticLayoutModifier, payload: borrowing Payload, chainIndex: Swift::UInt16) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticModifierPayload
+  mutating func stageActionOccurrence(identity: borrowing Self.Identity) -> Swift::Bool
+  mutating func publishSemanticResult(_ summary: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+  mutating func discardSemanticResult()
+  mutating func resetSemanticResult()
+}
+package struct SemanticLayoutResultSink<Storage> : GiftUISemanticCore::SemanticExpansionSink, GiftUISemanticCore::SemanticLayoutView where Storage : GiftUISemanticCore::SemanticLayoutResultStorage {
+  package var storage: Storage
+  package init(storage: Storage)
+  package var maximumStructuralOccurrences: Swift::UInt16 {
+    get
+  }
+  package var maximumBodyEvaluations: Swift::UInt16 {
+    get
+  }
+  package var maximumSemanticOccurrences: Swift::UInt16 {
+    get
+  }
+  package var maximumModifierApplications: Swift::UInt16 {
+    get
+  }
+  package var maximumActionOccurrences: Swift::UInt16 {
+    get
+  }
+  package mutating func beginExpansion() -> Swift::Bool
+  package mutating func stageStructuralOccurrence(identity: borrowing Storage.Identity) -> Swift::Bool
+  package mutating func stageBodyEvaluation(identity: borrowing Storage.Identity) -> Swift::Bool
+  package mutating func stageSemanticOccurrence<Payload>(identity: borrowing Storage.Identity, payload: borrowing Payload) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticPrimitivePayload
+  package mutating func stageModifierApplication<Payload>(identity: borrowing Storage.Identity, payload: borrowing Payload, chainIndex: Swift::UInt16) -> Swift::Bool where Payload : GiftUI::_GiftUISemanticModifierPayload
+  package mutating func stageActionOccurrence<Action>(identity: borrowing Storage.Identity, action: borrowing Action) -> Swift::Bool where Action : GiftUI::GiftUIAction
+  package mutating func publishExpansion(_ summary: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+  package mutating func discardExpansion()
+  package mutating func resetExpansion()
+  package var rootIdentity: Storage.Identity {
+    get
+  }
+  package var scopeCount: Swift::UInt16 {
+    get
+  }
+  package func primitive(at identity: Storage.Identity) -> GiftUISemanticCore::SemanticLayoutPrimitive?
+  package func childCount(of identity: Storage.Identity) -> Swift::UInt16?
+  package func child(of identity: Storage.Identity, at index: Swift::UInt16) -> Storage.Identity?
+  package func modifierCount(of identity: Storage.Identity) -> Swift::UInt16?
+  package func modifierScope(of identity: Storage.Identity, at index: Swift::UInt16) -> Storage.Identity?
+  package func modifier(of identity: Storage.Identity, at index: Swift::UInt16) -> GiftUISemanticCore::SemanticLayoutModifier?
+  package func textScalarCount(of identity: Storage.Identity) -> Swift::UInt16?
+  package func textScalar(of identity: Storage.Identity, at index: Swift::UInt16) -> Swift::UInt32?
+  package typealias Identity = Storage.Identity
+}
+extension GiftUISemanticCore::SemanticLayoutResultSink where Storage : GiftUISemanticCore::SemanticRenderResultStorage {
+  package var renderView: Storage.RenderView {
+    get
+  }
+}
+@usableFromInline
+package enum SemanticLayoutPrimitive : Swift::Equatable, Swift::Sendable {
+  case proxy
+  case vStack(alignment: GiftUI::HorizontalAlignment, spacing: GiftUI::GeometryScalar)
+  case hStack(alignment: GiftUI::VerticalAlignment, spacing: GiftUI::GeometryScalar)
+  case zStack(alignment: GiftUI::Alignment)
+  case spacer(minLength: GiftUI::GeometryScalar)
+  case text
+  case canvas
+  @usableFromInline
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::SemanticLayoutPrimitive, _ b: GiftUISemanticCore::SemanticLayoutPrimitive) -> Swift::Bool
+}
+@usableFromInline
+package enum SemanticLayoutModifier : Swift::Equatable, Swift::Sendable {
+  case passthrough
+  case padding(edges: GiftUI::EdgeSet, length: GiftUI::GeometryScalar)
+  case paddingInsets(GiftUI::EdgeInsets)
+  case fixedFrame(width: GiftUI::GeometryScalar?, height: GiftUI::GeometryScalar?, alignment: GiftUI::Alignment)
+  case flexibleFrame(minWidth: GiftUI::GeometryScalar?, maxWidth: GiftUI::FrameLimit?, minHeight: GiftUI::GeometryScalar?, maxHeight: GiftUI::FrameLimit?, alignment: GiftUI::Alignment)
+  @usableFromInline
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::SemanticLayoutModifier, _ b: GiftUISemanticCore::SemanticLayoutModifier) -> Swift::Bool
+}
+@usableFromInline
+package protocol SemanticLayoutView : ~Escapable {
+  associatedtype Identity : Swift::Equatable, Swift::Sendable
+  var rootIdentity: Self.Identity { get }
+  var scopeCount: Swift::UInt16 { get }
+  func primitive(at identity: Self.Identity) -> GiftUISemanticCore::SemanticLayoutPrimitive?
+  func childCount(of identity: Self.Identity) -> Swift::UInt16?
+  func child(of identity: Self.Identity, at index: Swift::UInt16) -> Self.Identity?
+  func modifierCount(of identity: Self.Identity) -> Swift::UInt16?
+  func modifierScope(of identity: Self.Identity, at index: Swift::UInt16) -> Self.Identity?
+  func modifier(of identity: Self.Identity, at index: Swift::UInt16) -> GiftUISemanticCore::SemanticLayoutModifier?
+  func textScalarCount(of identity: Self.Identity) -> Swift::UInt16?
+  func textScalar(of identity: Self.Identity, at index: Swift::UInt16) -> Swift::UInt32?
+}
+@usableFromInline
+package protocol SemanticRecordPayloadCodec : ~Escapable {
+  associatedtype Sink : GiftUISemanticCore::SemanticExpansionSink, ~Escapable where Self.Sink.Identity == GiftUISemanticCore::SemanticCompleteIdentity
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(copy self, copy state)
+  borrowing func makeSink(state: consuming GiftUISemanticCore::SemanticRecordSinkState) -> Self.Sink
+  #else
+  @lifetime(copy self, copy state)
+  borrowing func makeSink(state: consuming GiftUISemanticCore::SemanticRecordSinkState) -> Self.Sink
+  #endif
+  #endif
+  borrowing func prepare(maximumSemanticNodes: Swift::UInt16) -> GiftUISemanticCore::SemanticExpansionError?
+  borrowing func discardPending()
+  borrowing func ownsPendingCandidate(owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, bank: Swift::UInt8, revision: Swift::UInt32, required: Swift::Bool) -> Swift::Bool
+  borrowing func primitive<Value>(_ value: borrowing Value, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter) -> GiftUISemanticCore::SemanticExpansionError? where Value : GiftUI::_GiftUISemanticPrimitivePayload
+  borrowing func modifier<Value>(_ value: borrowing Value, chainIndex: Swift::UInt16, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter) -> GiftUISemanticCore::SemanticExpansionError? where Value : GiftUI::_GiftUISemanticModifierPayload
+  borrowing func action<Value>(_ value: borrowing Value, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter) -> GiftUISemanticCore::SemanticExpansionError? where Value : GiftUI::GiftUIAction
+}
+extension GiftUISemanticCore::SemanticRecordPayloadCodec where Self : ~Escapable {
+  @inlinable package borrowing func prepare(maximumSemanticNodes: Swift::UInt16) -> GiftUISemanticCore::SemanticExpansionError? { nil }
+  @inlinable package borrowing func discardPending() {}
+  @inlinable package borrowing func ownsPendingCandidate(owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, bank: Swift::UInt8, revision: Swift::UInt32, required: Swift::Bool) -> Swift::Bool { !required }
+}
+@usableFromInline
+package struct SemanticPayloadWriter : ~Swift::Copyable, ~Swift::Escapable {
+  @usableFromInline
+  internal let bank: GiftUISemanticCore::SemanticRecordBankBuffers
+  @usableFromInline
+  internal let limits: GiftUISemanticCore::SemanticRecordLimits
+  @usableFromInline
+  internal let owner: GiftUISemanticCore::SemanticRecordOwnerIdentity
+  @usableFromInline
+  internal let bankNumber: Swift::UInt8
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(borrow bank)
+  @usableFromInline
+  internal init(bank: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, limits: GiftUISemanticCore::SemanticRecordLimits, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, bankNumber: Swift::UInt8)
+  #else
+  @lifetime(borrow bank)
+  @usableFromInline
+  internal init(bank: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, limits: GiftUISemanticCore::SemanticRecordLimits, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, bankNumber: Swift::UInt8)
+  #endif
+  #endif
+  @inlinable package borrowing func store(_ value: consuming GiftUISemanticCore::SemanticRecordPayload, kind: GiftUISemanticCore::SemanticRuntimeRecord.GiftUISemanticCore::Kind, chainIndex: Swift::UInt16 = 0, text: borrowing Swift::Span<Swift::UInt32>) -> GiftUISemanticCore::SemanticExpansionError? {
+        bank.store(consume value, kind: kind, chainIndex: chainIndex, text: text, limits: limits)
+    }
+  @inlinable package borrowing func store(_ value: consuming GiftUISemanticCore::SemanticRecordPayload, kind: GiftUISemanticCore::SemanticRuntimeRecord.GiftUISemanticCore::Kind, chainIndex: Swift::UInt16 = 0) -> GiftUISemanticCore::SemanticExpansionError? {
+        let empty = Span<UInt32>()
+        return store(consume value, kind: kind, chainIndex: chainIndex, text: empty)
+    }
+  @inlinable package borrowing func storeCanvas(additionalBytes: Swift::UInt64, reserve: (Swift::UInt16, GiftUISemanticCore::SemanticRecordReference) -> GiftUISemanticCore::SemanticExpansionError?) -> GiftUISemanticCore::SemanticExpansionError? {
+        if let failure = bank.preflightStore(
+            textCount: 0, limits: limits, additionalBytes: additionalBytes)
+        {
+            return failure
+        }
+        let record = bank.paths[Int(bank.metadata.pointee.activePath)].nearestRecord
+        let reference = SemanticRecordReference(
+            owner: owner, bank: bankNumber, revision: bank.metadata.pointee.revision,
+            ordinal: record)
+        if let failure = reserve(bank.metadata.pointee.payloads, reference) { return failure }
+        let empty = Span<UInt32>()
+        bank.commitStore(
+            .canvas, kind: .pendingCanvas, chainIndex: 0, text: empty,
+            additionalBytes: additionalBytes)
+        return nil
+    }
+}
+@usableFromInline
+package struct SemanticRecordWorkspaceState {
+  @usableFromInline
+  package typealias Identity = GiftUISemanticCore::SemanticCompleteIdentity
+  private let bank: GiftUISemanticCore::SemanticRecordBankBuffers
+  private let limits: GiftUISemanticCore::SemanticRecordLimits
+  @_hasInitialValue private var identity: GiftUISemanticCore::SemanticCompleteIdentity
+  @_hasStorage @_hasInitialValue package var isExpanding: Swift::Bool {
+    get
+  }
+  @usableFromInline
+  internal init(bank: GiftUISemanticCore::SemanticRecordBankBuffers, limits: GiftUISemanticCore::SemanticRecordLimits)
+  @usableFromInline
+  package var maximumPathComponents: Swift::UInt16 {
+    get
+  }
+  @usableFromInline
+  package var maximumIdentities: Swift::UInt16 {
+    get
+  }
+  @usableFromInline
+  package mutating func beginExpansion() -> Swift::Bool
+  @usableFromInline
+  package mutating func enter(_ component: GiftUISemanticCore::SemanticPathComponent, identity output: inout GiftUISemanticCore::SemanticRecordWorkspaceState.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  @inlinable @inline(__always) package mutating func enterRoot<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::SemanticRecordWorkspaceState.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View { enter(.init(kind: .root), identity: &identity) }
+  @inlinable @inline(__always) package mutating func enterCustomBody<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::SemanticRecordWorkspaceState.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View { enter(.init(kind: .customBody), identity: &identity) }
+  @usableFromInline
+  package mutating func enterFixedChild(_ index: Swift::UInt8, identity: inout GiftUISemanticCore::SemanticRecordWorkspaceState.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  @usableFromInline
+  package mutating func enterConditionalBranch(_ index: Swift::UInt8, identity: inout GiftUISemanticCore::SemanticRecordWorkspaceState.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  @usableFromInline
+  package mutating func enterOptionalPresence(identity: inout GiftUISemanticCore::SemanticRecordWorkspaceState.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  @inlinable @inline(__always) package mutating func enterDeclarationRole<D, Roles>(_ declaration: D.Type, roles: Roles.Type, identity: inout GiftUISemanticCore::SemanticRecordWorkspaceState.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError? where Roles : GiftUISemanticCore::SemanticDeclarationRoles {
+        guard let role = Roles.role(of: declaration), role.rawValue != 0 else {
+            return invalidIdentity()
+        }
+        return enter(
+            .init(
+                kind: .declarationRole, role: role.rawValue,
+                modifier: Roles.modifierDiscriminator(of: declaration)), identity: &identity)
+    }
+  @usableFromInline
+  package mutating func invalidIdentity() -> GiftUISemanticCore::SemanticExpansionError
+  @usableFromInline
+  package mutating func leavePathComponent()
+  @usableFromInline
+  package mutating func completeExpansion()
+  @usableFromInline
+  package mutating func discardExpansion()
+  @usableFromInline
+  package mutating func resetExpansion()
+}
+@usableFromInline
+internal struct RecordWorkspace<Roles> : GiftUISemanticCore::SemanticExpansionWorkspace where Roles : GiftUISemanticCore::SemanticDeclarationRoles {
+  @usableFromInline
+  internal typealias Identity = GiftUISemanticCore::SemanticCompleteIdentity
+  @usableFromInline
+  internal var state: GiftUISemanticCore::SemanticRecordWorkspaceState
+  @inlinable @inline(__always) internal init(bank: GiftUISemanticCore::SemanticRecordBankBuffers, limits: GiftUISemanticCore::SemanticRecordLimits) {
+        state = SemanticRecordWorkspaceState(bank: bank, limits: limits)
+    }
+  @usableFromInline
+  internal var maximumPathComponents: Swift::UInt16 {
+    get
+  }
+  @usableFromInline
+  internal var maximumIdentities: Swift::UInt16 {
+    get
+  }
+  @usableFromInline
+  internal var isExpanding: Swift::Bool {
+    get
+  }
+  @usableFromInline
+  internal mutating func beginExpansion() -> Swift::Bool
+  @inlinable @inline(__always) internal mutating func enterRoot<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::RecordWorkspace<Roles>.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View {
+        state.enterRoot(declaration, identity: &identity)
+    }
+  @inlinable @inline(__always) internal mutating func enterCustomBody<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::RecordWorkspace<Roles>.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError? where D : GiftUI::View {
+        state.enterCustomBody(declaration, identity: &identity)
+    }
+  @usableFromInline
+  internal mutating func enterFixedChild(_ index: Swift::UInt8, identity: inout GiftUISemanticCore::RecordWorkspace<Roles>.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  @usableFromInline
+  internal mutating func enterConditionalBranch(_ index: Swift::UInt8, identity: inout GiftUISemanticCore::RecordWorkspace<Roles>.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  @usableFromInline
+  internal mutating func enterOptionalPresence(identity: inout GiftUISemanticCore::RecordWorkspace<Roles>.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError?
+  @inlinable @inline(__always) internal mutating func enterDeclarationRole<D>(_ declaration: D.Type, identity: inout GiftUISemanticCore::RecordWorkspace<Roles>.GiftUISemanticCore::Identity?) -> GiftUISemanticCore::SemanticExpansionError? {
+        state.enterDeclarationRole(declaration, roles: Roles.self, identity: &identity)
+    }
+  @usableFromInline
+  internal mutating func leavePathComponent()
+  @usableFromInline
+  internal mutating func completeExpansion()
+  @usableFromInline
+  internal mutating func discardExpansion()
+  @usableFromInline
+  internal mutating func resetExpansion()
+}
+#if compiler(>=5.3) && $ClosureLifetimes
+@usableFromInline
+package protocol SemanticRecordTraversalRealization : GiftUISemanticCore::SemanticExpansionTraversalOperations, ~Copyable, ~Escapable where Self.TraversalIdentity == GiftUISemanticCore::SemanticCompleteIdentity {
+  associatedtype Codec : GiftUISemanticCore::SemanticRecordPayloadCodec, ~Escapable
+  associatedtype StateBinding : GiftUISemanticCore::SemanticStatefulBinding, ~Copyable, ~Escapable where Self.Domain == Self.StateBinding.Domain, Self.TraversalBindingFailure == Self.StateBinding.Failure, Self.StateBinding.Identity == GiftUISemanticCore::SemanticCompleteIdentity
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(copy sink, copy codec, copy stateBinding)
+  static func make(attempt: GiftUISemanticCore::SemanticExpansionAttempt, workspace: GiftUISemanticCore::SemanticRecordWorkspaceState, sink: consuming GiftUISemanticCore::SemanticRecordSinkState, codec: borrowing Self.Codec, stateBinding: consuming Self.StateBinding) -> Self
+  #else
+  @lifetime(copy sink, copy codec, copy stateBinding)
+  static func make(attempt: GiftUISemanticCore::SemanticExpansionAttempt, workspace: GiftUISemanticCore::SemanticRecordWorkspaceState, sink: consuming GiftUISemanticCore::SemanticRecordSinkState, codec: borrowing Self.Codec, stateBinding: consuming Self.StateBinding) -> Self
+  #endif
+}
+#endif
+@inlinable @inline(__always) internal func expandSemanticTreeWithSuppliedTraversal<Root, Traversal>(_ root: borrowing Root, traversal: consuming Traversal) -> GiftUISemanticCore::BoundSemanticExpansionResult<Traversal.TraversalBindingFailure> where Root : GiftUI::View, Traversal : GiftUISemanticCore::SemanticRecordTraversalRealization, Root.Domain == Traversal.Domain, Traversal : ~Copyable, Traversal : ~Escapable {
+    var traversal = consume traversal
+    if let error = traversal.beginExpansion() { return .semanticFailure(error) }
+    traversal.expandRoot(root)
+    return traversal.finalizeExpansion()
+}
+extension GiftUISemanticCore::SemanticRecordStore {
+  @inlinable @inline(__always) package borrowing func expand<Root, Traversal>(_ root: borrowing Root, codec: borrowing Traversal.Codec, limits: GiftUISemanticCore::SemanticExpansionLimits, binding: consuming Traversal.StateBinding, traversal: Traversal.Type) -> GiftUISemanticCore::BoundSemanticExpansionResult<Traversal.TraversalBindingFailure> where Root : GiftUI::View, Traversal : GiftUISemanticCore::SemanticRecordTraversalRealization, Root.Domain == Traversal.Domain, Traversal : ~Copyable, Traversal : ~Escapable {
+        let number: UInt8
+        do throws(SemanticExpansionError) { number = try beginCandidate() } catch {
+            return .semanticFailure(error)
+        }
+        guard let bank = expansionBank(number) else { return .semanticFailure(.invariantViolation) }
+        if let error = codec.prepare(maximumSemanticNodes: limits.maximumSemanticNodes) {
+            bank.clear()
+            return .semanticFailure(error)
+        }
+        let workspace = SemanticRecordWorkspaceState(bank: bank, limits: self.limits)
+        let sink = SemanticRecordSinkState(
+            bank: bank, owner: owner, bankNumber: number,
+            limits: self.limits, expansion: limits)
+        let supplied = Traversal.make(
+            attempt: SemanticExpansionAttempt(limits: limits), workspace: workspace,
+            sink: consume sink, codec: codec, stateBinding: consume binding)
+        let result = expandSemanticTreeWithSuppliedTraversal(root, traversal: consume supplied)
+        switch result {
+        case .success: break
+        default:
+            codec.discardPending()
+            bank.clear()
+        }
+        return result
+    }
+  @inlinable @inline(__always) package borrowing func expand<Root, Roles, Codec, Binding>(_ root: borrowing Root, roles: Roles.Type, codec: borrowing Codec, limits: GiftUISemanticCore::SemanticExpansionLimits, binding: consuming Binding) -> GiftUISemanticCore::BoundSemanticExpansionResult<Binding.Failure> where Root : GiftUI::View, Roles : GiftUISemanticCore::SemanticDeclarationRoles, Codec : GiftUISemanticCore::SemanticRecordPayloadCodec, Binding : GiftUISemanticCore::SemanticStatefulBinding, Root.Domain == Binding.Domain, Binding.Identity == GiftUISemanticCore::SemanticCompleteIdentity, Codec : ~Escapable, Binding : ~Copyable, Binding : ~Escapable {
+        let number: UInt8
+        do throws(SemanticExpansionError) { number = try beginCandidate() } catch {
+            return .semanticFailure(error)
+        }
+        guard let bank = expansionBank(number) else { return .semanticFailure(.invariantViolation) }
+        if let error = codec.prepare(maximumSemanticNodes: limits.maximumSemanticNodes) {
+            bank.clear()
+            return .semanticFailure(error)
+        }
+        var workspace = RecordWorkspace<Roles>(bank: bank, limits: self.limits)
+        let state = SemanticRecordSinkState(
+            bank: bank, owner: owner, bankNumber: number,
+            limits: self.limits, expansion: limits)
+        let sink = codec.makeSink(state: consume state)
+        let result = expandSemanticTreeConsumingSinkWithStateBinding(
+            root, limits: limits, workspace: &workspace, sink: consume sink,
+            stateBinding: consume binding)
+        switch result {
+        case .success: break
+        default:
+             
+            codec.discardPending()
+            bank.clear()
+        }
+        return result
+    }
+}
+extension GiftUISemanticCore::SemanticStandardPayload {
+  package var layoutPrimitive: GiftUISemanticCore::SemanticLayoutPrimitive? {
+    get
+  }
+  package var layoutModifier: GiftUISemanticCore::SemanticLayoutModifier? {
+    get
+  }
+  package var renderScope: GiftUISemanticCore::SemanticRenderScope {
+    get
+  }
+}
+package struct SemanticRecordLayoutView : GiftUISemanticCore::SemanticLayoutView, Swift::BitwiseCopyable, ~Swift::Escapable {
+  private let view: GiftUISemanticCore::SemanticRecordView
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(copy view)
+  package init(_ view: borrowing GiftUISemanticCore::SemanticRecordView)
+  #else
+  @lifetime(copy view)
+  package init(_ view: borrowing GiftUISemanticCore::SemanticRecordView)
+  #endif
+  #endif
+  package var rootIdentity: GiftUISemanticCore::SemanticRecordReference {
+    get
+  }
+  package var scopeCount: Swift::UInt16 {
+    get
+  }
+  package func primitive(at identity: GiftUISemanticCore::SemanticRecordReference) -> GiftUISemanticCore::SemanticLayoutPrimitive?
+  package func childCount(of identity: GiftUISemanticCore::SemanticRecordReference) -> Swift::UInt16?
+  package func child(of identity: GiftUISemanticCore::SemanticRecordReference, at index: Swift::UInt16) -> GiftUISemanticCore::SemanticRecordReference?
+  package func modifierCount(of identity: GiftUISemanticCore::SemanticRecordReference) -> Swift::UInt16?
+  package func modifierScope(of identity: GiftUISemanticCore::SemanticRecordReference, at index: Swift::UInt16) -> GiftUISemanticCore::SemanticRecordReference?
+  package func modifier(of identity: GiftUISemanticCore::SemanticRecordReference, at index: Swift::UInt16) -> GiftUISemanticCore::SemanticLayoutModifier?
+  package func textScalarCount(of identity: GiftUISemanticCore::SemanticRecordReference) -> Swift::UInt16?
+  package func textScalar(of identity: GiftUISemanticCore::SemanticRecordReference, at index: Swift::UInt16) -> Swift::UInt32?
+  package typealias Identity = GiftUISemanticCore::SemanticRecordReference
+}
+@usableFromInline
+package enum SemanticRecordPayload : Swift::Equatable, Swift::Sendable {
+  case standard(GiftUISemanticCore::SemanticStandardPayload)
+  case canvas
+  @usableFromInline
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::SemanticRecordPayload, _ b: GiftUISemanticCore::SemanticRecordPayload) -> Swift::Bool
+}
+extension GiftUISemanticCore::SemanticRecordPayload {
+  package var layoutPrimitive: GiftUISemanticCore::SemanticLayoutPrimitive? {
+    get
+  }
+  package var layoutModifier: GiftUISemanticCore::SemanticLayoutModifier? {
+    get
+  }
+  package var renderScope: GiftUISemanticCore::SemanticRenderScope {
+    get
+  }
+}
+package struct SemanticRecordRenderView : GiftUISemanticCore::SemanticRenderView, Swift::BitwiseCopyable, ~Swift::Escapable {
+  private let view: GiftUISemanticCore::SemanticRecordView
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(copy view)
+  package init(_ view: borrowing GiftUISemanticCore::SemanticRecordView)
+  #else
+  @lifetime(copy view)
+  package init(_ view: borrowing GiftUISemanticCore::SemanticRecordView)
+  #endif
+  #endif
+  package var rootIdentity: GiftUISemanticCore::SemanticRecordReference {
+    get
+  }
+  package var semanticScopeCount: Swift::UInt16 {
+    get
+  }
+  package var renderSnapshotVersion: Swift::UInt32 {
+    get
+  }
+  package func semanticIdentity(at ordinal: Swift::UInt16) -> GiftUISemanticCore::SemanticRecordReference?
+  package func semanticOrdinal(of identity: GiftUISemanticCore::SemanticRecordReference) -> Swift::UInt16?
+  package func scope(at identity: GiftUISemanticCore::SemanticRecordReference) -> GiftUISemanticCore::SemanticRenderScope?
+  package func layoutIdentity(for identity: GiftUISemanticCore::SemanticRecordReference) -> GiftUISemanticCore::SemanticRecordReference?
+  package func child(of identity: GiftUISemanticCore::SemanticRecordReference, at index: Swift::UInt16) -> GiftUISemanticCore::SemanticRecordReference?
+  package func childCount(of identity: GiftUISemanticCore::SemanticRecordReference) -> Swift::UInt16?
+  package typealias Identity = GiftUISemanticCore::SemanticRecordReference
+}
+#if compiler(>=5.3) && $LifetimeDependence
+#if compiler(>=5.3) && $Lifetimes
+@inlinable @inline(__always) package func withSemanticRecordStore<Result>(metadata: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRecordBankMetadata>, records: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRuntimeRecord>, paths: inout Swift::MutableSpan<GiftUISemanticCore::SemanticPathEntry>, payloads: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRecordPayload?>, scalars: inout Swift::MutableSpan<Swift::UInt32>, limits: GiftUISemanticCore::SemanticRecordLimits, capacity: GiftUISemanticCore::SemanticRecordLimits? = nil, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, _ body: (borrowing GiftUISemanticCore::SemanticRecordStore) throws(GiftUISemanticCore::SemanticExpansionError) -> Result) throws(GiftUISemanticCore::SemanticExpansionError) -> Result {
+    let capacity = capacity ?? limits
+    guard capacity.records >= limits.records, capacity.paths >= limits.paths,
+        capacity.payloads >= limits.payloads, capacity.textScalars >= limits.textScalars,
+        metadata.count == 2, records.count >= Int(capacity.records) * 2,
+        paths.count >= Int(capacity.paths) * 2, payloads.count >= Int(capacity.payloads) * 2,
+        scalars.count >= Int(capacity.textScalars) * 2
+    else { throw .capacityExhausted }
+    guard metadata[0].phase == .idle, metadata[1].phase == .idle else { throw .reentrancyViolation }
+    return try metadata.withUnsafeMutableBufferPointer { (meta) throws(SemanticExpansionError) in
+        try records.withUnsafeMutableBufferPointer {
+            (recordBuffer) throws(SemanticExpansionError) in
+            try paths.withUnsafeMutableBufferPointer {
+                (pathBuffer) throws(SemanticExpansionError) in
+                try payloads.withUnsafeMutableBufferPointer {
+                    (payloadBuffer) throws(SemanticExpansionError) in
+                    try scalars.withUnsafeMutableBufferPointer {
+                        (scalarBuffer) throws(SemanticExpansionError) in
+                        func bank(_ number: Int) -> SemanticRecordBankBuffers {
+                            SemanticRecordBankBuffers(
+                                metadata: meta.baseAddress! + number,
+                                records: .init(
+                                    rebasing: recordBuffer[
+                                        (number * Int(capacity.records))
+                                            ..< ((number + 1) * Int(capacity.records))]),
+                                paths: .init(
+                                    rebasing: pathBuffer[
+                                        (number * Int(capacity.paths))
+                                            ..< ((number + 1) * Int(capacity.paths))]),
+                                payloads: .init(
+                                    rebasing: payloadBuffer[
+                                        (number * Int(capacity.payloads))
+                                            ..< ((number + 1) * Int(capacity.payloads))]),
+                                scalars: .init(
+                                    rebasing: scalarBuffer[
+                                        (number * Int(capacity.textScalars))
+                                            ..< ((number + 1) * Int(capacity.textScalars))]))
+                        }
+                        let a = bank(0)
+                        let b = bank(1)
+                        let scope = SemanticRecordStore(a: a, b: b, limits: limits, owner: owner)
+                        defer {
+                            a.clear()
+                            b.clear()
+                        }
+                        return try body(scope)
+                    }
+                }
+            }
+        }
+    }
+}
+#else
+@inlinable @inline(__always) package func withSemanticRecordStore<Result>(metadata: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRecordBankMetadata>, records: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRuntimeRecord>, paths: inout Swift::MutableSpan<GiftUISemanticCore::SemanticPathEntry>, payloads: inout Swift::MutableSpan<GiftUISemanticCore::SemanticRecordPayload?>, scalars: inout Swift::MutableSpan<Swift::UInt32>, limits: GiftUISemanticCore::SemanticRecordLimits, capacity: GiftUISemanticCore::SemanticRecordLimits? = nil, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, _ body: (borrowing GiftUISemanticCore::SemanticRecordStore) throws(GiftUISemanticCore::SemanticExpansionError) -> Result) throws(GiftUISemanticCore::SemanticExpansionError) -> Result {
+    let capacity = capacity ?? limits
+    guard capacity.records >= limits.records, capacity.paths >= limits.paths,
+        capacity.payloads >= limits.payloads, capacity.textScalars >= limits.textScalars,
+        metadata.count == 2, records.count >= Int(capacity.records) * 2,
+        paths.count >= Int(capacity.paths) * 2, payloads.count >= Int(capacity.payloads) * 2,
+        scalars.count >= Int(capacity.textScalars) * 2
+    else { throw .capacityExhausted }
+    guard metadata[0].phase == .idle, metadata[1].phase == .idle else { throw .reentrancyViolation }
+    return try metadata.withUnsafeMutableBufferPointer { (meta) throws(SemanticExpansionError) in
+        try records.withUnsafeMutableBufferPointer {
+            (recordBuffer) throws(SemanticExpansionError) in
+            try paths.withUnsafeMutableBufferPointer {
+                (pathBuffer) throws(SemanticExpansionError) in
+                try payloads.withUnsafeMutableBufferPointer {
+                    (payloadBuffer) throws(SemanticExpansionError) in
+                    try scalars.withUnsafeMutableBufferPointer {
+                        (scalarBuffer) throws(SemanticExpansionError) in
+                        func bank(_ number: Int) -> SemanticRecordBankBuffers {
+                            SemanticRecordBankBuffers(
+                                metadata: meta.baseAddress! + number,
+                                records: .init(
+                                    rebasing: recordBuffer[
+                                        (number * Int(capacity.records))
+                                            ..< ((number + 1) * Int(capacity.records))]),
+                                paths: .init(
+                                    rebasing: pathBuffer[
+                                        (number * Int(capacity.paths))
+                                            ..< ((number + 1) * Int(capacity.paths))]),
+                                payloads: .init(
+                                    rebasing: payloadBuffer[
+                                        (number * Int(capacity.payloads))
+                                            ..< ((number + 1) * Int(capacity.payloads))]),
+                                scalars: .init(
+                                    rebasing: scalarBuffer[
+                                        (number * Int(capacity.textScalars))
+                                            ..< ((number + 1) * Int(capacity.textScalars))]))
+                        }
+                        let a = bank(0)
+                        let b = bank(1)
+                        let scope = SemanticRecordStore(a: a, b: b, limits: limits, owner: owner)
+                        defer {
+                            a.clear()
+                            b.clear()
+                        }
+                        return try body(scope)
+                    }
+                }
+            }
+        }
+    }
+}
+#endif
+#endif
+@usableFromInline
+package struct SemanticRecordStore : ~Swift::Copyable, ~Swift::Escapable {
+  @usableFromInline
+  internal let a: GiftUISemanticCore::SemanticRecordBankBuffers
+  @usableFromInline
+  internal let b: GiftUISemanticCore::SemanticRecordBankBuffers
+  @usableFromInline
+  package let limits: GiftUISemanticCore::SemanticRecordLimits
+  @usableFromInline
+  internal let owner: GiftUISemanticCore::SemanticRecordOwnerIdentity
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(borrow a, borrow b)
+  @usableFromInline
+  internal init(a: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, b: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, limits: GiftUISemanticCore::SemanticRecordLimits, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity)
+  #else
+  @lifetime(borrow a, borrow b)
+  @usableFromInline
+  internal init(a: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, b: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, limits: GiftUISemanticCore::SemanticRecordLimits, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity)
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(copy self)
+  @inlinable package borrowing func borrowedStore() -> GiftUISemanticCore::SemanticRecordStore {
+        SemanticRecordStore(borrowing: self)
+    }
+  #else
+  @lifetime(copy self)
+  @inlinable package borrowing func borrowedStore() -> GiftUISemanticCore::SemanticRecordStore {
+        SemanticRecordStore(borrowing: self)
+    }
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(copy other)
+  @inlinable internal init(borrowing other: borrowing GiftUISemanticCore::SemanticRecordStore) {
+        a = other.a
+        b = other.b
+        limits = other.limits
+        owner = other.owner
+    }
+  #else
+  @lifetime(copy other)
+  @inlinable internal init(borrowing other: borrowing GiftUISemanticCore::SemanticRecordStore) {
+        a = other.a
+        b = other.b
+        limits = other.limits
+        owner = other.owner
+    }
+  #endif
+  #endif
+  @inlinable internal borrowing func bank(_ number: Swift::UInt8) -> GiftUISemanticCore::SemanticRecordBankBuffers {
+        number == 0 ? a : b
+    }
+  @inlinable internal var candidate: Swift::UInt8? {
+    get {
+        if a.metadata.pointee.phase == .candidate { return 0 }
+        if b.metadata.pointee.phase == .candidate { return 1 }
+        return nil
+    }
+  }
+  @inlinable internal var published: Swift::UInt8? {
+    get {
+        if a.metadata.pointee.phase == .published { return 0 }
+        if b.metadata.pointee.phase == .published { return 1 }
+        return nil
+    }
+  }
+  package borrowing func resetAfterQuiescence() throws(GiftUISemanticCore::SemanticExpansionError)
+  @inlinable @inline(__always) package borrowing func beginCandidate() throws(GiftUISemanticCore::SemanticExpansionError) -> Swift::UInt8 {
+        guard candidate == nil, a.metadata.pointee.phase != .expanding,
+            b.metadata.pointee.phase != .expanding
+        else { throw .reentrancyViolation }
+        let number: UInt8
+        if a.metadata.pointee.phase == .idle {
+            number = 0
+        } else if b.metadata.pointee.phase == .idle {
+            number = 1
+        } else {
+            throw .capacityExhausted
+        }
+        let selected = bank(number)
+        guard selected.metadata.pointee.readers == 0 else { throw .invariantViolation }
+        let next = selected.metadata.pointee.revision.addingReportingOverflow(1)
+        guard !next.overflow, next.partialValue != 0 else { throw .invalidIdentity }
+        selected.clear()
+        selected.metadata.pointee.revision = next.partialValue
+        selected.metadata.pointee.phase = .expanding
+        return number
+    }
+  @inlinable package borrowing func discardCandidate() throws(GiftUISemanticCore::SemanticExpansionError) {
+        for number: UInt8 in 0 ..< 2 {
+            let selected = bank(number)
+            if selected.metadata.pointee.phase == .candidate
+                || selected.metadata.pointee.phase == .expanding
+            {
+                guard !hasPendingCanvas(selected) else { throw .invariantViolation }
+                if selected.metadata.pointee.readers == 0 {
+                    selected.clear()
+                } else {
+                    selected.metadata.pointee.phase = .retired
+                }
+                return
+            }
+        }
+        throw .invariantViolation
+    }
+  @inlinable package borrowing func discardCandidate<Codec>(using codec: borrowing Codec) throws(GiftUISemanticCore::SemanticExpansionError) where Codec : GiftUISemanticCore::SemanticRecordPayloadCodec, Codec : ~Escapable {
+        for number: UInt8 in 0 ..< 2 {
+            let selected = bank(number)
+            if selected.metadata.pointee.phase == .candidate
+                || selected.metadata.pointee.phase == .expanding
+            {
+                guard
+                    codec.ownsPendingCandidate(
+                        owner: owner, bank: number, revision: selected.metadata.pointee.revision,
+                        required: hasPendingCanvas(selected))
+                else { throw .invariantViolation }
+                codec.discardPending()
+                if selected.metadata.pointee.readers == 0 {
+                    selected.clear()
+                } else {
+                    selected.metadata.pointee.phase = .retired
+                }
+                return
+            }
+        }
+        throw .invariantViolation
+    }
+  @inlinable package borrowing func validatePendingCandidate<Codec>(using codec: borrowing Codec) throws(GiftUISemanticCore::SemanticExpansionError) where Codec : GiftUISemanticCore::SemanticRecordPayloadCodec, Codec : ~Escapable {
+        guard let candidate else { throw .invariantViolation }
+        let selected = bank(candidate)
+        guard selected.metadata.pointee.readers == 0 else { throw .reentrancyViolation }
+        guard
+            codec.ownsPendingCandidate(
+                owner: owner, bank: candidate, revision: selected.metadata.pointee.revision,
+                required: hasPendingCanvas(selected))
+        else { throw .invariantViolation }
+    }
+  @inlinable package borrowing func publishCandidate() throws(GiftUISemanticCore::SemanticExpansionError) {
+        guard let candidate else { throw .invariantViolation }
+        let next = bank(candidate)
+        guard !hasPendingCanvas(next) else { throw .invariantViolation }
+        if let published {
+            let prior = bank(published)
+            if let failure = next.reconcile(with: prior, limits: limits) { throw failure }
+            prior.metadata.pointee.phase = .retired
+            if prior.metadata.pointee.readers == 0 { prior.clear() }
+        }
+        next.metadata.pointee.phase = .published
+    }
+  @inlinable @inline(__always) package borrowing func withCandidateView<Result>(_ body: (borrowing GiftUISemanticCore::SemanticRecordView) throws(GiftUISemanticCore::SemanticExpansionError) -> Result) throws(GiftUISemanticCore::SemanticExpansionError) -> Result {
+        guard let candidate, !hasPendingCanvas(bank(candidate)) else { throw .invariantViolation }
+        return try withView(candidate, body)
+    }
+  @inlinable internal borrowing func hasPendingCanvas(_ bank: GiftUISemanticCore::SemanticRecordBankBuffers) -> Swift::Bool {
+        for index in 0 ..< Int(bank.metadata.pointee.records) {
+            if bank.records[index].kind == .pendingCanvas { return true }
+        }
+        return false
+    }
+  @inlinable package borrowing func takePendingCanvas(_ body: (GiftUISemanticCore::SemanticRecordReference, Swift::UInt16) throws(GiftUISemanticCore::SemanticExpansionError) -> Swift::Void) throws(GiftUISemanticCore::SemanticExpansionError) {
+        guard let candidate else { throw .invariantViolation }
+        let selected = bank(candidate)
+        guard selected.metadata.pointee.readers == 0 else { throw .reentrancyViolation }
+        for index in 0 ..< Int(selected.metadata.pointee.records) {
+            let record = selected.records[index]
+            guard record.kind == .pendingCanvas else { continue }
+            guard record.payload < selected.metadata.pointee.payloads,
+                case .canvas? = selected.payloads[Int(record.payload)]
+            else { throw .invariantViolation }
+            let reference = SemanticRecordReference(
+                owner: owner, bank: candidate,
+                revision: selected.metadata.pointee.revision, ordinal: UInt16(index))
+            try body(reference, record.payload)
+            selected.records[index].kind = .primitive
+        }
+    }
+  @inlinable @inline(__always) package borrowing func withPublishedView<Result>(_ body: (borrowing GiftUISemanticCore::SemanticRecordView) throws(GiftUISemanticCore::SemanticExpansionError) -> Result) throws(GiftUISemanticCore::SemanticExpansionError) -> Result {
+        guard let published else { throw .invariantViolation }
+        return try withView(published, body)
+    }
+  @inlinable @inline(__always) internal borrowing func withView<Result>(_ number: Swift::UInt8, _ body: (borrowing GiftUISemanticCore::SemanticRecordView) throws(GiftUISemanticCore::SemanticExpansionError) -> Result) throws(GiftUISemanticCore::SemanticExpansionError) -> Result {
+        let selected = bank(number)
+        let readers = selected.metadata.pointee.readers.addingReportingOverflow(1)
+        guard !readers.overflow else { throw .capacityExhausted }
+        selected.metadata.pointee.readers = readers.partialValue
+        defer {
+            selected.metadata.pointee.readers -= 1
+            if selected.metadata.pointee.readers == 0 && selected.metadata.pointee.phase == .retired
+            {
+                selected.clear()
+            }
+        }
+        let view = SemanticRecordView(bank: selected, number: number, owner: owner)
+        return try body(view)
+    }
+  @inlinable internal borrowing func expansionBank(_ number: Swift::UInt8) -> GiftUISemanticCore::SemanticRecordBankBuffers? {
+        guard number < 2 else { return nil }
+        let selected = bank(number)
+        guard selected.metadata.pointee.phase == .expanding else { return nil }
+        return selected
+    }
+}
+@usableFromInline
+package struct SemanticRecordSinkState : ~Swift::Escapable {
+  private let bank: GiftUISemanticCore::SemanticRecordBankBuffers
+  private let owner: GiftUISemanticCore::SemanticRecordOwnerIdentity
+  private let bankNumber: Swift::UInt8
+  private let limits: GiftUISemanticCore::SemanticRecordLimits
+  private let expansion: GiftUISemanticCore::SemanticExpansionLimits
+  @_hasInitialValue private var bodyCount: Swift::UInt16
+  @_hasInitialValue private var semanticCount: Swift::UInt16
+  @_hasInitialValue private var modifierCount: Swift::UInt16
+  @_hasInitialValue private var actionCount: Swift::UInt16
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(borrow bank)
+  @usableFromInline
+  internal init(bank: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, bankNumber: Swift::UInt8, limits: GiftUISemanticCore::SemanticRecordLimits, expansion: GiftUISemanticCore::SemanticExpansionLimits)
+  #else
+  @lifetime(borrow bank)
+  @usableFromInline
+  internal init(bank: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, bankNumber: Swift::UInt8, limits: GiftUISemanticCore::SemanticRecordLimits, expansion: GiftUISemanticCore::SemanticExpansionLimits)
+  #endif
+  #endif
+  @usableFromInline
+  package var stagingFailure: GiftUISemanticCore::SemanticExpansionError? {
+    get
+  }
+  @usableFromInline
+  package var maximumStructuralOccurrences: Swift::UInt16 {
+    get
+  }
+  @usableFromInline
+  package var maximumBodyEvaluations: Swift::UInt16 {
+    get
+  }
+  @usableFromInline
+  package var maximumSemanticOccurrences: Swift::UInt16 {
+    get
+  }
+  @usableFromInline
+  package var maximumModifierApplications: Swift::UInt16 {
+    get
+  }
+  @usableFromInline
+  package var maximumActionOccurrences: Swift::UInt16 {
+    get
+  }
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func beginExpansion() -> Swift::Bool
+  #else
+  @usableFromInline
+  package mutating func beginExpansion() -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func stageStructuralOccurrence(identity: borrowing GiftUISemanticCore::SemanticCompleteIdentity) -> Swift::Bool
+  #else
+  @usableFromInline
+  package mutating func stageStructuralOccurrence(identity: borrowing GiftUISemanticCore::SemanticCompleteIdentity) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func stageBodyEvaluation(identity: borrowing GiftUISemanticCore::SemanticCompleteIdentity) -> Swift::Bool
+  #else
+  @usableFromInline
+  package mutating func stageBodyEvaluation(identity: borrowing GiftUISemanticCore::SemanticCompleteIdentity) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(borrow self)
+  @usableFromInline
+  package borrowing func payloadWriter() -> GiftUISemanticCore::SemanticPayloadWriter
+  #else
+  @lifetime(borrow self)
+  @usableFromInline
+  package borrowing func payloadWriter() -> GiftUISemanticCore::SemanticPayloadWriter
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func stageSemanticResult(_ error: GiftUISemanticCore::SemanticExpansionError?) -> Swift::Bool
+  #else
+  @usableFromInline
+  package mutating func stageSemanticResult(_ error: GiftUISemanticCore::SemanticExpansionError?) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func stageModifierResult(_ error: GiftUISemanticCore::SemanticExpansionError?) -> Swift::Bool
+  #else
+  @usableFromInline
+  package mutating func stageModifierResult(_ error: GiftUISemanticCore::SemanticExpansionError?) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func stageActionResult(_ error: GiftUISemanticCore::SemanticExpansionError?) -> Swift::Bool
+  #else
+  @usableFromInline
+  package mutating func stageActionResult(_ error: GiftUISemanticCore::SemanticExpansionError?) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func publishExpansion(_ summary: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+  #else
+  @usableFromInline
+  package mutating func publishExpansion(_ summary: GiftUISemanticCore::SemanticExpansionSummary) -> Swift::Bool
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func discardExpansion()
+  #else
+  @usableFromInline
+  package mutating func discardExpansion()
+  #endif
+  #endif
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @usableFromInline
+  package mutating func resetExpansion()
+  #else
+  @usableFromInline
+  package mutating func resetExpansion()
+  #endif
+  #endif
+}
+@usableFromInline
+@frozen package struct SemanticRecordView : Swift::BitwiseCopyable, ~Swift::Escapable {
+  @usableFromInline
+  internal let metadata: Swift::UnsafePointer<GiftUISemanticCore::SemanticRecordBankMetadata>
+  @usableFromInline
+  internal let records: Swift::UnsafeBufferPointer<GiftUISemanticCore::SemanticRuntimeRecord>
+  @usableFromInline
+  internal let paths: Swift::UnsafeBufferPointer<GiftUISemanticCore::SemanticPathEntry>
+  @usableFromInline
+  internal let payloads: Swift::UnsafeBufferPointer<GiftUISemanticCore::SemanticRecordPayload?>
+  @usableFromInline
+  internal let scalars: Swift::UnsafeBufferPointer<Swift::UInt32>
+  @usableFromInline
+  package let bankNumber: Swift::UInt8
+  @usableFromInline
+  package let revision: Swift::UInt32
+  @usableFromInline
+  internal let owner: GiftUISemanticCore::SemanticRecordOwnerIdentity
+  #if compiler(>=5.3) && $LifetimeDependence
+  #if compiler(>=5.3) && $Lifetimes
+  @_lifetime(borrow bank)
+  @inlinable internal init(bank: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, number: Swift::UInt8, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity) {
+        self.owner = owner
+        metadata = UnsafePointer(bank.metadata)
+        records = UnsafeBufferPointer(bank.records)
+        paths = UnsafeBufferPointer(bank.paths)
+        payloads = UnsafeBufferPointer(bank.payloads)
+        scalars = UnsafeBufferPointer(bank.scalars)
+        bankNumber = number
+        revision = bank.metadata.pointee.revision
+    }
+  #else
+  @lifetime(borrow bank)
+  @inlinable internal init(bank: borrowing GiftUISemanticCore::SemanticRecordBankBuffers, number: Swift::UInt8, owner: GiftUISemanticCore::SemanticRecordOwnerIdentity) {
+        self.owner = owner
+        metadata = UnsafePointer(bank.metadata)
+        records = UnsafeBufferPointer(bank.records)
+        paths = UnsafeBufferPointer(bank.paths)
+        payloads = UnsafeBufferPointer(bank.payloads)
+        scalars = UnsafeBufferPointer(bank.scalars)
+        bankNumber = number
+        revision = bank.metadata.pointee.revision
+    }
+  #endif
+  #endif
+  @inlinable internal var valid: Swift::Bool {
+    get {
+        metadata.pointee.revision == revision && metadata.pointee.readers > 0
+            && (metadata.pointee.phase == .candidate
+                || metadata.pointee.phase == .published
+                || metadata.pointee.phase == .retired)
+    }
+  }
+  @inlinable package var isCandidate: Swift::Bool {
+    get { valid && metadata.pointee.phase == .candidate }
+  }
+  package var rootReference: GiftUISemanticCore::SemanticRecordReference {
+    get
+  }
+  @inlinable package var recordCount: Swift::UInt16 {
+    get { valid ? metadata.pointee.records : 0 }
+  }
+  @inlinable package var pathCount: Swift::UInt16 {
+    get { valid ? metadata.pointee.paths : 0 }
+  }
+  @inlinable package var payloadCount: Swift::UInt16 {
+    get { valid ? metadata.pointee.payloads : 0 }
+  }
+  package var scalarCount: Swift::UInt16 {
+    get
+  }
+  package var payloadBytes: Swift::UInt32 {
+    get
+  }
+  package var componentComparisons: Swift::UInt32 {
+    get
+  }
+  @inlinable package func reference(at ordinal: Swift::UInt16) -> GiftUISemanticCore::SemanticRecordReference? {
+        guard valid, ordinal < recordCount else { return nil }
+        return SemanticRecordReference(
+            owner: owner, bank: bankNumber, revision: revision, ordinal: ordinal)
+    }
+  @inlinable package func record(_ reference: GiftUISemanticCore::SemanticRecordReference) -> GiftUISemanticCore::SemanticRuntimeRecord? {
+        guard valid, reference.owner == owner, reference.bank == bankNumber,
+            reference.revision == revision,
+            reference.ordinal < recordCount
+        else { return nil }
+        return records[Int(reference.ordinal)]
+    }
+  @inlinable package func payload(at index: Swift::UInt16) -> GiftUISemanticCore::SemanticRecordPayload? {
+        guard valid, index < payloadCount else { return nil }
+        return payloads[Int(index)]
+    }
+  package func scalar(at index: Swift::UInt16) -> Swift::UInt32?
+  package func path(at index: Swift::UInt16) -> GiftUISemanticCore::SemanticPathEntry?
+  @inlinable package func completeIdentity(for reference: GiftUISemanticCore::SemanticRecordReference) -> GiftUISemanticCore::SemanticCompleteIdentity? {
+        guard let record = record(reference), record.path < pathCount,
+            paths[Int(record.path)].component.kind == .declarationRole
+        else { return nil }
+        var reversed: InlineArray<34, SemanticPathComponent> = .init(repeating: .init(kind: .root))
+        var cursor = record.path
+        var count = 0
+        while cursor != .max {
+            guard cursor < pathCount, count < Int(SemanticCompleteIdentity.capacity) else {
+                return nil
+            }
+            let entry = paths[Int(cursor)]
+            guard entry.parent == .max || entry.parent < cursor else { return nil }
+            reversed[count] = entry.component
+            count += 1
+            cursor = entry.parent
+        }
+        var identity = SemanticCompleteIdentity()
+        while count > 0 {
+            count -= 1
+            guard identity.append(reversed[count]) else { return nil }
+        }
+        return identity
+    }
+  package func sameIdentity(_ reference: GiftUISemanticCore::SemanticRecordReference, as other: GiftUISemanticCore::SemanticRecordReference, in view: borrowing GiftUISemanticCore::SemanticRecordView) -> Swift::Bool
+}
+extension GiftUISemanticCore::SemanticRenderScope {
+  package init<Payload>(primitivePayload: borrowing Payload) where Payload : GiftUI::_GiftUISemanticPrimitivePayload
+  package init<Payload>(modifierPayload: borrowing Payload) where Payload : GiftUI::_GiftUISemanticModifierPayload
+}
+package protocol SemanticRenderResultStorage : GiftUISemanticCore::SemanticLayoutResultStorage {
+  associatedtype RenderView : GiftUISemanticCore::SemanticRenderView where Self.Identity == Self.RenderView.Identity
+  var renderView: Self.RenderView { get }
+}
+@usableFromInline
+package enum SemanticRenderScope : Swift::Equatable, Swift::Sendable {
+  case structural
+  case clipBoundary
+  case text
+  case canvas
+  case foregroundStyle(GiftUI::Color)
+  case background(GiftUI::Color)
+  @usableFromInline
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::SemanticRenderScope, _ b: GiftUISemanticCore::SemanticRenderScope) -> Swift::Bool
+}
+@usableFromInline
+package protocol SemanticRenderView : ~Escapable {
+  associatedtype Identity : Swift::Equatable, Swift::Sendable
+  var rootIdentity: Self.Identity { get }
+  var semanticScopeCount: Swift::UInt16 { get }
+  var renderSnapshotVersion: Swift::UInt32 { get }
+  func semanticIdentity(at ordinal: Swift::UInt16) -> Self.Identity?
+  func semanticOrdinal(of identity: Self.Identity) -> Swift::UInt16?
+  func scope(at identity: Self.Identity) -> GiftUISemanticCore::SemanticRenderScope?
+  func layoutIdentity(for identity: Self.Identity) -> Self.Identity?
+  func childCount(of identity: Self.Identity) -> Swift::UInt16?
+  func child(of identity: Self.Identity, at index: Swift::UInt16) -> Self.Identity?
+}
+@usableFromInline
+package protocol SemanticDeclarationRoles {
+  static func role<Declaration>(of declaration: Declaration.Type) -> GiftUISemanticCore::SemanticRecordingRole?
+  static func modifierDiscriminator<Declaration>(of declaration: Declaration.Type) -> Swift::UInt16
+}
+@usableFromInline
+package struct SemanticPathComponent : Swift::Equatable, Swift::Sendable {
+  @usableFromInline
+  package enum Kind : Swift::UInt8, Swift::Sendable {
+    case root, customBody, fixedChild, conditionalBranch, optionalPresence, declarationRole
+    @usableFromInline
+    @inlinable package init?(rawValue: Swift::UInt8)
+    @usableFromInline
+    package typealias RawValue = Swift::UInt8
+    @usableFromInline
+    package var rawValue: Swift::UInt8 {
+      @usableFromInline
+      @inlinable get
+    }
+  }
+  @usableFromInline
+  package let kind: GiftUISemanticCore::SemanticPathComponent.GiftUISemanticCore::Kind
+  @usableFromInline
+  package let ordinal: Swift::UInt8
+  @usableFromInline
+  package let role: Swift::UInt16
+  @usableFromInline
+  package let modifier: Swift::UInt16
+  @inlinable package init(kind: GiftUISemanticCore::SemanticPathComponent.GiftUISemanticCore::Kind, ordinal: Swift::UInt8 = 0, role: Swift::UInt16 = 0, modifier: Swift::UInt16 = 0) {
+        self.kind = kind
+        self.ordinal = ordinal
+        self.role = role
+        self.modifier = modifier
+    }
+  @inlinable package var isValid: Swift::Bool {
+    get {
+        switch kind {
+        case .fixedChild: ordinal < 5 && role == 0 && modifier == 0
+        case .conditionalBranch: ordinal < 2 && role == 0 && modifier == 0
+        case .declarationRole: ordinal == 0 && role != 0
+        default: ordinal == 0 && role == 0 && modifier == 0
+        }
+    }
+  }
+  @inlinable package static func == (lhs: GiftUISemanticCore::SemanticPathComponent, rhs: GiftUISemanticCore::SemanticPathComponent) -> Swift::Bool {
+        lhs.kind == rhs.kind && lhs.ordinal == rhs.ordinal
+            && lhs.role == rhs.role && lhs.modifier == rhs.modifier
+    }
+}
+@usableFromInline
+package struct SemanticCompleteIdentity : Swift::Equatable, Swift::Sendable {
+  @usableFromInline
+  @_hasInitialValue package static let capacity: Swift::UInt16
+  package static func capacityForAccounting() -> Swift::UInt16
+  @usableFromInline
+  @_hasStorage @_hasInitialValue internal var components: Swift::InlineArray<34, GiftUISemanticCore::SemanticPathComponent> {
+    get
+  }
+  @usableFromInline
+  @_hasStorage @_hasInitialValue package var count: Swift::UInt16 {
+    get
+  }
+  @inlinable package init() {}
+  @inlinable package func component(at index: Swift::UInt16) -> GiftUISemanticCore::SemanticPathComponent? {
+        guard index < count else { return nil }
+        return components[Int(index)]
+    }
+  @inlinable package mutating func append(_ component: GiftUISemanticCore::SemanticPathComponent) -> Swift::Bool {
+        guard count < Self.capacity, component.isValid, (count == 0) == (component.kind == .root)
+        else { return false }
+        components[Int(count)] = component
+        count += 1
+        return true
+    }
+  @inlinable package mutating func removeLast() {
+        precondition(count > 0)
+        count -= 1
+    }
+  @inlinable package static func == (lhs: GiftUISemanticCore::SemanticCompleteIdentity, rhs: GiftUISemanticCore::SemanticCompleteIdentity) -> Swift::Bool {
+        guard lhs.count == rhs.count else { return false }
+        var i: UInt16 = 0
+        while i < lhs.count {
+            if lhs.components[Int(i)] != rhs.components[Int(i)] { return false }
+            i += 1
+        }
+        return true
+    }
+}
+@usableFromInline
+package struct SemanticRecordLimits : Swift::Equatable, Swift::Sendable {
+  @usableFromInline
+  package let records: Swift::UInt16
+  @usableFromInline
+  package let paths: Swift::UInt16
+  @usableFromInline
+  package let depth: Swift::UInt16
+  @usableFromInline
+  package let fanout: Swift::UInt16
+  @usableFromInline
+  package let payloads: Swift::UInt16
+  @usableFromInline
+  package let textScalars: Swift::UInt16
+  @usableFromInline
+  package let payloadBytes: Swift::UInt32
+  package init?(records: Swift::UInt16, paths: Swift::UInt16, depth: Swift::UInt16, fanout: Swift::UInt16, payloads: Swift::UInt16, textScalars: Swift::UInt16, payloadBytes: Swift::UInt32)
+  @usableFromInline
+  @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_struct_equals(_ a: GiftUISemanticCore::SemanticRecordLimits, _ b: GiftUISemanticCore::SemanticRecordLimits) -> Swift::Bool
+}
+@usableFromInline
+package struct SemanticPathEntry : Swift::Sendable {
+  @usableFromInline
+  @_hasInitialValue package var component: GiftUISemanticCore::SemanticPathComponent
+  @usableFromInline
+  @_hasInitialValue package var parent: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var firstChild: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var lastChild: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var nextSibling: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var childCount: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var depth: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var nearestRecord: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var matchedPath: Swift::UInt16
+  @usableFromInline
+  package init()
+}
+@usableFromInline
+package struct SemanticRuntimeRecord : Swift::Sendable {
+  @usableFromInline
+  package enum Kind : Swift::UInt8, Swift::Sendable {
+    case structural, primitive, action, modifier, pendingCanvas
+    @usableFromInline
+    @inlinable package init?(rawValue: Swift::UInt8)
+    @usableFromInline
+    package typealias RawValue = Swift::UInt8
+    @usableFromInline
+    package var rawValue: Swift::UInt8 {
+      @usableFromInline
+      @inlinable get
+    }
+  }
+  @usableFromInline
+  @_hasInitialValue package var parent: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var firstChild: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var lastChild: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var nextSibling: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var path: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var kind: GiftUISemanticCore::SemanticRuntimeRecord.GiftUISemanticCore::Kind
+  @usableFromInline
+  @_hasInitialValue package var payload: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var firstTextScalar: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var textScalarCount: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var modifierChainIndex: Swift::UInt16
+  @usableFromInline
+  package init()
+}
+@usableFromInline
+@frozen package struct SemanticRecordOwnerIdentity : Swift::Equatable, Swift::Sendable, Swift::BitwiseCopyable {
+  package let rawValue: Swift::UInt32
+  @usableFromInline
+  @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_struct_equals(_ a: GiftUISemanticCore::SemanticRecordOwnerIdentity, _ b: GiftUISemanticCore::SemanticRecordOwnerIdentity) -> Swift::Bool
+}
+package struct SemanticRecordOwnerNamespace : ~Swift::Copyable, Swift::Sendable {
+  @_hasInitialValue private var next: Swift::UInt32?
+  package init()
+  package mutating func issue() throws(GiftUISemanticCore::SemanticExpansionError) -> GiftUISemanticCore::SemanticRecordOwnerIdentity
+}
+@usableFromInline
+package struct SemanticRecordReference : Swift::Equatable, Swift::Sendable {
+  @usableFromInline
+  package let owner: GiftUISemanticCore::SemanticRecordOwnerIdentity
+  @usableFromInline
+  package let bank: Swift::UInt8
+  @usableFromInline
+  package let revision: Swift::UInt32
+  @usableFromInline
+  package let ordinal: Swift::UInt16
+  @usableFromInline
+  internal init(owner: GiftUISemanticCore::SemanticRecordOwnerIdentity, bank: Swift::UInt8, revision: Swift::UInt32, ordinal: Swift::UInt16)
+  @usableFromInline
+  @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_struct_equals(_ a: GiftUISemanticCore::SemanticRecordReference, _ b: GiftUISemanticCore::SemanticRecordReference) -> Swift::Bool
+}
+@usableFromInline
+package struct SemanticRecordBankMetadata {
+  @usableFromInline
+  package enum Phase : Swift::UInt8 {
+    case idle, expanding, candidate, published, retired
+    @usableFromInline
+    @inlinable package init?(rawValue: Swift::UInt8)
+    @usableFromInline
+    package typealias RawValue = Swift::UInt8
+    @usableFromInline
+    package var rawValue: Swift::UInt8 {
+      @usableFromInline
+      @inlinable get
+    }
+  }
+  @usableFromInline
+  @_hasInitialValue package var phase: GiftUISemanticCore::SemanticRecordBankMetadata.GiftUISemanticCore::Phase
+  @usableFromInline
+  @_hasInitialValue package var revision: Swift::UInt32
+  @usableFromInline
+  @_hasInitialValue package var readers: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var records: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var paths: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var payloads: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var scalars: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var payloadBytes: Swift::UInt32
+  @usableFromInline
+  @_hasInitialValue package var activePath: Swift::UInt16
+  @usableFromInline
+  @_hasInitialValue package var matchedRevision: Swift::UInt32
+  @usableFromInline
+  @_hasInitialValue package var componentComparisons: Swift::UInt32
+  @usableFromInline
+  @_hasInitialValue package var summary: GiftUISemanticCore::SemanticExpansionSummary?
+  @usableFromInline
+  @_hasInitialValue package var failure: GiftUISemanticCore::SemanticExpansionError?
+  @usableFromInline
+  package init()
+}
+@usableFromInline
+@frozen package struct SemanticRecordBankBuffers {
+  @usableFromInline
+  package let metadata: Swift::UnsafeMutablePointer<GiftUISemanticCore::SemanticRecordBankMetadata>
+  @usableFromInline
+  package let records: Swift::UnsafeMutableBufferPointer<GiftUISemanticCore::SemanticRuntimeRecord>
+  @usableFromInline
+  package let paths: Swift::UnsafeMutableBufferPointer<GiftUISemanticCore::SemanticPathEntry>
+  @usableFromInline
+  package let payloads: Swift::UnsafeMutableBufferPointer<GiftUISemanticCore::SemanticRecordPayload?>
+  @usableFromInline
+  package let scalars: Swift::UnsafeMutableBufferPointer<Swift::UInt32>
+  @usableFromInline
+  package init(metadata: Swift::UnsafeMutablePointer<GiftUISemanticCore::SemanticRecordBankMetadata>, records: Swift::UnsafeMutableBufferPointer<GiftUISemanticCore::SemanticRuntimeRecord>, paths: Swift::UnsafeMutableBufferPointer<GiftUISemanticCore::SemanticPathEntry>, payloads: Swift::UnsafeMutableBufferPointer<GiftUISemanticCore::SemanticRecordPayload?>, scalars: Swift::UnsafeMutableBufferPointer<Swift::UInt32>)
+  package func fits(_ limits: GiftUISemanticCore::SemanticRecordLimits) -> Swift::Bool
+  @inlinable package func clear() {
+        precondition(metadata.pointee.readers == 0)
+        for index in 0 ..< Int(metadata.pointee.payloads) { payloads[index] = nil }
+        let revision = metadata.pointee.revision
+        metadata.pointee = SemanticRecordBankMetadata()
+        metadata.pointee.revision = revision
+    }
+  @inlinable package func fail(_ failure: GiftUISemanticCore::SemanticExpansionError) -> GiftUISemanticCore::SemanticExpansionError {
+        if metadata.pointee.failure == nil { metadata.pointee.failure = failure }
+        return metadata.pointee.failure!
+    }
+  @inlinable package func enter(_ component: GiftUISemanticCore::SemanticPathComponent, limits: GiftUISemanticCore::SemanticRecordLimits) -> GiftUISemanticCore::SemanticExpansionError? {
+        guard metadata.pointee.phase == .expanding else { return fail(.invariantViolation) }
+        if let failure = metadata.pointee.failure { return failure }
+        let parent = metadata.pointee.activePath
+        guard component.isValid,
+            (parent == .max) == (component.kind == .root),
+            parent == .max || parent < metadata.pointee.paths
+        else { return fail(.invalidIdentity) }
+        let depth = parent == .max ? 1 : UInt32(paths[Int(parent)].depth) + 1
+        guard depth <= limits.depth, metadata.pointee.paths < limits.paths else {
+            return fail(.capacityExhausted)
+        }
+        if parent != .max {
+            guard paths[Int(parent)].childCount < limits.fanout else {
+                return fail(.capacityExhausted)
+            }
+            var child = paths[Int(parent)].firstChild
+            while child != .max {
+                guard child < metadata.pointee.paths else { return fail(.invalidIdentity) }
+                if paths[Int(child)].component == component { return fail(.invalidIdentity) }
+                child = paths[Int(child)].nextSibling
+            }
+        } else if metadata.pointee.paths != 0 {
+            return fail(.invalidIdentity)
+        }
+        let index = metadata.pointee.paths
+        var entry = SemanticPathEntry()
+        entry.component = component
+        entry.parent = parent
+        entry.depth = UInt16(depth)
+        if parent != .max {
+            entry.nearestRecord = paths[Int(parent)].nearestRecord
+            let last = paths[Int(parent)].lastChild
+            if last == .max {
+                paths[Int(parent)].firstChild = index
+            } else {
+                paths[Int(last)].nextSibling = index
+            }
+            paths[Int(parent)].lastChild = index
+            paths[Int(parent)].childCount += 1
+        }
+        paths[Int(index)] = entry
+        metadata.pointee.paths += 1
+        metadata.pointee.activePath = index
+        return nil
+    }
+  package func leave()
+  @inlinable package func appendRecord(limits: GiftUISemanticCore::SemanticRecordLimits) -> GiftUISemanticCore::SemanticExpansionError? {
+        if let failure = metadata.pointee.failure { return failure }
+        let path = metadata.pointee.activePath
+        guard metadata.pointee.phase == .expanding, path < metadata.pointee.paths,
+            paths[Int(path)].component.kind == .declarationRole
+        else { return fail(.invalidIdentity) }
+        guard metadata.pointee.records < limits.records else { return fail(.capacityExhausted) }
+        let index = metadata.pointee.records
+        let parent = paths[Int(path)].nearestRecord
+        var record = SemanticRuntimeRecord()
+        record.path = path
+        record.parent = parent
+        if parent != .max {
+            guard parent < index else { return fail(.invalidIdentity) }
+            let last = records[Int(parent)].lastChild
+            if last == .max {
+                records[Int(parent)].firstChild = index
+            } else {
+                records[Int(last)].nextSibling = index
+            }
+            records[Int(parent)].lastChild = index
+        } else if index != 0 {
+            return fail(.invalidIdentity)
+        }
+        records[Int(index)] = record
+        paths[Int(path)].nearestRecord = index
+        metadata.pointee.records += 1
+        return nil
+    }
+  @inlinable package func store(_ value: consuming GiftUISemanticCore::SemanticRecordPayload, kind: GiftUISemanticCore::SemanticRuntimeRecord.GiftUISemanticCore::Kind, chainIndex: Swift::UInt16 = 0, text: borrowing Swift::Span<Swift::UInt32>, limits: GiftUISemanticCore::SemanticRecordLimits, additionalBytes: Swift::UInt64 = 0) -> GiftUISemanticCore::SemanticExpansionError? {
+        if let failure = preflightStore(
+            textCount: text.count, limits: limits, additionalBytes: additionalBytes)
+        {
+            return failure
+        }
+        commitStore(
+            consume value, kind: kind, chainIndex: chainIndex, text: text,
+            additionalBytes: additionalBytes)
+        return nil
+    }
+  @inlinable internal func preflightStore(textCount: Swift::Int, limits: GiftUISemanticCore::SemanticRecordLimits, additionalBytes: Swift::UInt64 = 0) -> GiftUISemanticCore::SemanticExpansionError? {
+        if let failure = metadata.pointee.failure { return failure }
+        let path = metadata.pointee.activePath
+        guard metadata.pointee.phase == .expanding, path < metadata.pointee.paths else {
+            return fail(.invalidIdentity)
+        }
+        let record = paths[Int(path)].nearestRecord
+        guard record < metadata.pointee.records, records[Int(record)].path == path,
+            records[Int(record)].payload == .max
+        else { return fail(.invalidIdentity) }
+        guard textCount <= Int(limits.textScalars) else { return .capacityExhausted }
+        let scalarEnd = UInt32(metadata.pointee.scalars) + UInt32(textCount)
+        let bytes =
+            UInt64(metadata.pointee.payloadBytes)
+            + UInt64(MemoryLayout<SemanticRecordPayload?>.stride) + UInt64(
+                textCount) * 4 + UInt64(additionalBytes)
+        guard metadata.pointee.payloads < limits.payloads, scalarEnd <= limits.textScalars,
+            bytes <= limits.payloadBytes
+        else { return fail(.capacityExhausted) }
+        return nil
+    }
+  @inlinable internal func commitStore(_ value: consuming GiftUISemanticCore::SemanticRecordPayload, kind: GiftUISemanticCore::SemanticRuntimeRecord.GiftUISemanticCore::Kind, chainIndex: Swift::UInt16, text: borrowing Swift::Span<Swift::UInt32>, additionalBytes: Swift::UInt64) {
+        let path = metadata.pointee.activePath
+        let record = paths[Int(path)].nearestRecord
+        let scalarEnd = UInt32(metadata.pointee.scalars) + UInt32(text.count)
+        let bytes =
+            UInt64(metadata.pointee.payloadBytes)
+            + UInt64(MemoryLayout<SemanticRecordPayload?>.stride) + UInt64(text.count) * 4
+            + UInt64(additionalBytes)
+        let payloadIndex = metadata.pointee.payloads
+        payloads[Int(payloadIndex)] = consume value
+        for index in 0 ..< text.count {
+            scalars[Int(metadata.pointee.scalars) + index] = text[index]
+        }
+        records[Int(record)].kind = kind
+        records[Int(record)].payload = payloadIndex
+        records[Int(record)].firstTextScalar = metadata.pointee.scalars
+        records[Int(record)].textScalarCount = UInt16(text.count)
+        records[Int(record)].modifierChainIndex = chainIndex
+        metadata.pointee.payloads += 1
+        metadata.pointee.scalars = UInt16(scalarEnd)
+        metadata.pointee.payloadBytes = UInt32(bytes)
+    }
+  @inlinable package func reconcile(with published: GiftUISemanticCore::SemanticRecordBankBuffers, limits: GiftUISemanticCore::SemanticRecordLimits) -> GiftUISemanticCore::SemanticExpansionError? {
+        guard metadata.pointee.phase == .candidate, published.metadata.pointee.phase == .published
+        else { return fail(.invariantViolation) }
+        metadata.pointee.componentComparisons = 0
+        metadata.pointee.matchedRevision = published.metadata.pointee.revision
+        for index in 0 ..< Int(metadata.pointee.paths) {
+            paths[index].matchedPath = .max
+            let parent = paths[index].parent
+            var match: UInt16 = .max
+            if parent == .max {
+                guard index == 0 else { return fail(.invalidIdentity) }
+                if published.metadata.pointee.paths > 0 { match = 0 }
+            } else {
+                guard parent < index else { return fail(.invalidIdentity) }
+                let priorParent = paths[Int(parent)].matchedPath
+                if priorParent != .max { match = published.paths[Int(priorParent)].firstChild }
+            }
+            var scanned: UInt16 = 0
+            while match != .max {
+                guard match < published.metadata.pointee.paths, scanned < limits.fanout else {
+                    return fail(.invalidIdentity)
+                }
+                scanned += 1
+                metadata.pointee.componentComparisons += 1
+                if paths[index].component == published.paths[Int(match)].component {
+                    paths[index].matchedPath = match
+                    break
+                }
+                match = published.paths[Int(match)].nextSibling
+            }
+        }
+        return nil
+    }
+}
+@usableFromInline
+package enum SemanticStandardPayload : Swift::Equatable, Swift::Sendable {
+  case vStack(GiftUI::_GiftUIVStackPayload)
+  case hStack(GiftUI::_GiftUIHStackPayload)
+  case zStack(GiftUI::_GiftUIZStackPayload)
+  case spacer(GiftUI::_GiftUISpacerPayload)
+  case text
+  case padding(GiftUI::_GiftUIPaddingPayload)
+  case insets(GiftUI::_GiftUIPaddingInsetsPayload)
+  case fixedFrame(GiftUI::_GiftUIFixedFramePayload)
+  case flexibleFrame(GiftUI::_GiftUIFlexibleFramePayload)
+  case foreground(GiftUI::Color)
+  case background(GiftUI::Color)
+  case disabled(Swift::Bool)
+  case action(role: Swift::UInt16, code: Swift::UInt16)
+  @usableFromInline
+  @_semantics("derived_enum_equals") @_implements(Swift::Equatable, ==(_:_:)) package static func __derived_enum_equals(_ a: GiftUISemanticCore::SemanticStandardPayload, _ b: GiftUISemanticCore::SemanticStandardPayload) -> Swift::Bool
+}
+@usableFromInline
+package enum SemanticStandardPayloadCodec {
+  @usableFromInline
+  package typealias Payload = GiftUISemanticCore::SemanticStandardPayload
+  @inlinable internal static func project<Value, Expected>(_ value: borrowing Value, as type: Expected.Type) -> Expected {
+        precondition(Value.self == Expected.self)
+        return withUnsafePointer(to: value) { source in
+            source.withMemoryRebound(to: Expected.self, capacity: 1) { $0.pointee }
+        }
+    }
+  @inlinable package static func primitive<Value>(_ value: borrowing Value, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter) -> GiftUISemanticCore::SemanticExpansionError? where Value : GiftUI::_GiftUISemanticPrimitivePayload {
+        primitive(value, writer: writer, wrapping: { .standard($0) })
+    }
+  @inlinable package static func primitive<Value>(_ value: borrowing Value, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter, wrapping wrap: (GiftUISemanticCore::SemanticStandardPayloadCodec.GiftUISemanticCore::Payload) -> GiftUISemanticCore::SemanticRecordPayload) -> GiftUISemanticCore::SemanticExpansionError? where Value : GiftUI::_GiftUISemanticPrimitivePayload {
+        if Value.self == _GiftUIVStackPayload.self {
+            return writer.store(
+                wrap(.vStack(Self.project(value, as: _GiftUIVStackPayload.self))), kind: .primitive)
+        }
+        if Value.self == _GiftUIHStackPayload.self {
+            return writer.store(
+                wrap(.hStack(Self.project(value, as: _GiftUIHStackPayload.self))), kind: .primitive)
+        }
+        if Value.self == _GiftUIZStackPayload.self {
+            return writer.store(
+                wrap(.zStack(Self.project(value, as: _GiftUIZStackPayload.self))), kind: .primitive)
+        }
+        if Value.self == _GiftUISpacerPayload.self {
+            return writer.store(
+                wrap(.spacer(Self.project(value, as: _GiftUISpacerPayload.self))), kind: .primitive)
+        }
+        if Value.self == _GiftUITextPayload.self {
+            let text = Self.project(value, as: _GiftUITextPayload.self)
+            var scalars: InlineArray<96, UInt32> = .init(repeating: 0)
+            var count = 0
+            switch text.content {
+            case .invalidDeclaration:
+                scalars[0] = 0xD800
+                count = 1
+            case .admitted(let text):
+                 
+                 
+                text.withNonthrowingUTF8 { bytes in
+                    var index = 0
+                    while index < bytes.count {
+                        let lead = bytes[index]
+                        index += 1
+                        var value: UInt32
+                        var remaining: Int
+                        if lead < 0x80 {
+                            value = UInt32(lead)
+                            remaining = 0
+                        } else if lead < 0xE0 {
+                            value = UInt32(lead & 0x1F)
+                            remaining = 1
+                        } else if lead < 0xF0 {
+                            value = UInt32(lead & 0x0F)
+                            remaining = 2
+                        } else {
+                            value = UInt32(lead & 0x07)
+                            remaining = 3
+                        }
+                        for _ in 0 ..< remaining {
+                            value = (value << 6) | UInt32(bytes[index] & 0x3F)
+                            index += 1
+                        }
+                        scalars[count] = value
+                        count += 1
+                    }
+                }
+            }
+            return scalars.span.withUnsafeBufferPointer { values in
+                let admitted = UnsafeBufferPointer(start: values.baseAddress, count: count)
+                let span = Span(_unsafeElements: admitted)
+                return writer.store(wrap(.text), kind: .primitive, text: span)
+            }
+        }
+         
+        return .invariantViolation
+    }
+  @inlinable package static func modifier<Value>(_ value: borrowing Value, chainIndex: Swift::UInt16, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter) -> GiftUISemanticCore::SemanticExpansionError? where Value : GiftUI::_GiftUISemanticModifierPayload {
+        modifier(value, chainIndex: chainIndex, writer: writer, wrapping: { .standard($0) })
+    }
+  @inlinable package static func modifier<Value>(_ value: borrowing Value, chainIndex: Swift::UInt16, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter, wrapping wrap: (GiftUISemanticCore::SemanticStandardPayloadCodec.GiftUISemanticCore::Payload) -> GiftUISemanticCore::SemanticRecordPayload) -> GiftUISemanticCore::SemanticExpansionError? where Value : GiftUI::_GiftUISemanticModifierPayload {
+        let owned: Payload
+        if Value.self == _GiftUIPaddingPayload.self {
+            owned = .padding(Self.project(value, as: _GiftUIPaddingPayload.self))
+        } else if Value.self == _GiftUIPaddingInsetsPayload.self {
+            owned = .insets(Self.project(value, as: _GiftUIPaddingInsetsPayload.self))
+        } else if Value.self == _GiftUIFixedFramePayload.self {
+            owned = .fixedFrame(Self.project(value, as: _GiftUIFixedFramePayload.self))
+        } else if Value.self == _GiftUIFlexibleFramePayload.self {
+            owned = .flexibleFrame(Self.project(value, as: _GiftUIFlexibleFramePayload.self))
+        } else if Value.self == _GiftUIForegroundStylePayload.self {
+            owned = .foreground(Self.project(value, as: _GiftUIForegroundStylePayload.self).color)
+        } else if Value.self == _GiftUIBackgroundPayload.self {
+            owned = .background(Self.project(value, as: _GiftUIBackgroundPayload.self).color)
+        } else if Value.self == DisabledSemanticPayload.self {
+            owned = .disabled(Self.project(value, as: DisabledSemanticPayload.self).isDisabled)
+        } else {
+            return .invariantViolation
+        }
+        return writer.store(wrap(owned), kind: .modifier, chainIndex: chainIndex)
+    }
+  @inlinable package static func action<Roles, Value>(_ value: borrowing Value, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter, roles: Roles.Type) -> GiftUISemanticCore::SemanticExpansionError? where Roles : GiftUISemanticCore::SemanticDeclarationRoles, Value : GiftUI::GiftUIAction {
+        action(value, writer: writer, roles: roles, wrapping: { .standard($0) })
+    }
+  @inlinable package static func action<Roles, Value>(_ value: borrowing Value, writer: borrowing GiftUISemanticCore::SemanticPayloadWriter, roles: Roles.Type, wrapping wrap: (GiftUISemanticCore::SemanticStandardPayloadCodec.GiftUISemanticCore::Payload) -> GiftUISemanticCore::SemanticRecordPayload) -> GiftUISemanticCore::SemanticExpansionError? where Roles : GiftUISemanticCore::SemanticDeclarationRoles, Value : GiftUI::GiftUIAction {
+        guard let role = Roles.role(of: Value.self), role.rawValue != 0 else {
+            return .invalidIdentity
+        }
+        return writer.store(wrap(.action(role: role.rawValue, code: value.rawValue)), kind: .action)
+    }
+}
+extension GiftUISemanticCore::SemanticExpansionError : Swift::Hashable {}
+extension GiftUISemanticCore::SemanticExpansionError : Swift::RawRepresentable {}
+extension GiftUISemanticCore::SemanticPathComponent.GiftUISemanticCore::Kind : Swift::Equatable {}
+extension GiftUISemanticCore::SemanticPathComponent.GiftUISemanticCore::Kind : Swift::Hashable {}
+extension GiftUISemanticCore::SemanticPathComponent.GiftUISemanticCore::Kind : Swift::RawRepresentable {}
+extension GiftUISemanticCore::SemanticRuntimeRecord.GiftUISemanticCore::Kind : Swift::Equatable {}
+extension GiftUISemanticCore::SemanticRuntimeRecord.GiftUISemanticCore::Kind : Swift::Hashable {}
+extension GiftUISemanticCore::SemanticRuntimeRecord.GiftUISemanticCore::Kind : Swift::RawRepresentable {}
+extension GiftUISemanticCore::SemanticRecordBankMetadata.GiftUISemanticCore::Phase : Swift::Equatable {}
+extension GiftUISemanticCore::SemanticRecordBankMetadata.GiftUISemanticCore::Phase : Swift::Hashable {}
+extension GiftUISemanticCore::SemanticRecordBankMetadata.GiftUISemanticCore::Phase : Swift::RawRepresentable {}
+extension GiftUISemanticCore::SemanticRecordBankBuffers : Swift::BitwiseCopyable {}

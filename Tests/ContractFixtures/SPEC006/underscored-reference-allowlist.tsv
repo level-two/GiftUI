@@ -5,8 +5,29 @@ _GiftUIObservableChangeSink	SPEC-010	borrowed observation sink
 _GiftUIObservableReference	SPEC-010	observable model constraint
 _GiftUIObservableStateDeclarationVisitor	SPEC-010	state declaration visitor
 _GiftUIObservationAttachment	SPEC-010	attachment identity
+_GiftUIBoundState	SPEC-010	typed key binding descriptor
+_GiftUIDrawingOperations	SPEC-012	typed scoped GraphicsContext and Path operation table
+_GiftUIEmptyReadDomain	SPEC-006	empty read domain for stateless views
+_GiftUIModelKey	SPEC-006	typed model identity handle
+_GiftUIModelSchema	SPEC-010	generated State schema constraint
+_GiftUIStateInitial	SPEC-010	owned seed or candidate before binding
 _GiftUISemanticActionPayload	SPEC-006	action payload category
 _GiftUISemanticModifierPayload	SPEC-006	modifier payload category
 _GiftUISemanticPrimitivePayload	SPEC-006	primitive payload category
 _GiftUISemanticTraversalVisitor	SPEC-006	sealed leaf, content, action-leaf, and action-content traversal visitor
 _giftUITraverse	SPEC-006	declaration traversal witness
+_GiftUIAccessFailure	SPEC-006	typed access failure used by generated reads and the state-binding bridge
+_GiftUIFrameRead	SPEC-006	borrowed frame read supplied to generated bodies and the state-binding bridge
+_GiftUIReadDomain	SPEC-006	associated domain constraint for generated bodies and state binding
+_GiftUIBackgroundPayload	SPEC-006	semantic modifier payload crossing the GiftUI package boundary
+_GiftUIFixedFramePayload	SPEC-006	semantic modifier payload crossing the GiftUI package boundary
+_GiftUIFlexibleFramePayload	SPEC-006	semantic modifier payload crossing the GiftUI package boundary
+_GiftUIForegroundStylePayload	SPEC-006	semantic modifier payload crossing the GiftUI package boundary
+_GiftUIHStackPayload	SPEC-006	semantic primitive payload crossing the GiftUI package boundary
+_GiftUIPaddingInsetsPayload	SPEC-006	semantic modifier payload crossing the GiftUI package boundary
+_GiftUIPaddingPayload	SPEC-006	semantic modifier payload crossing the GiftUI package boundary
+_GiftUISpacerPayload	SPEC-006	semantic primitive payload crossing the GiftUI package boundary
+_GiftUITextPayload	SPEC-006	semantic primitive payload crossing the GiftUI package boundary
+_GiftUITextContent	SPEC-006	semantic Text payload discriminator; nested bounded text uses SPEC-005
+_GiftUIVStackPayload	SPEC-006	semantic primitive payload crossing the GiftUI package boundary
+_GiftUIZStackPayload	SPEC-006	semantic primitive payload crossing the GiftUI package boundary

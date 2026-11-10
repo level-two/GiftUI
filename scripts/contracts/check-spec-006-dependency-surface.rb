@@ -2,10 +2,12 @@
 # frozen_string_literal: true
 
 require "pathname"
+require "digest"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
 SEMANTIC = ROOT.join("Sources/GiftUISemanticCore/GiftUISemanticCore.swift")
 SURFACE = ROOT.join("Tests/ContractFixtures/SPEC006/semantic-surface-allowlist.tsv")
+PACKAGE_INTERFACE = ROOT.join("Tests/ContractFixtures/SPEC006/compiled-package-interface.allowlist.swiftinterface")
 UNDERSCORED = ROOT.join("Tests/ContractFixtures/SPEC006/underscored-reference-allowlist.tsv")
 PACKAGE = ROOT.join("Package.swift")
 
@@ -24,6 +26,10 @@ def table(path, width)
   end
 end
 
+def normalized_interface(path)
+  path.each_line.reject { |line| line.start_with?("// swift-") }.join
+end
+
 source = SEMANTIC.read
 fail_check("Semantic Core imports differ") unless source.scan(/^import (\S+)/).flatten == ["GiftUI"]
 
@@ -40,10 +46,15 @@ unexpected_source = actual_underscored - allowed_underscored
 fail_check("underscored source references are unlisted: #{unexpected_source}") unless unexpected_source.empty?
 
 package = PACKAGE.read
-semantic_target = package[/\.target\(\s*name: "GiftUISemanticCore",\s*dependencies: \[(.*?)\]\s*\)/m, 1]
+semantic_target = package[/\.target\(\s*name: "GiftUISemanticCore",(.*?)\n\s*\),/m, 1]
 fail_check("Semantic Core target declaration differs") unless semantic_target
-dependencies = semantic_target.scan(/"([A-Za-z0-9_]+)"/).flatten
+dependency_list = semantic_target[/dependencies:\s*\[(.*?)\]/m, 1]
+fail_check("Semantic Core dependency list differs") unless dependency_list
+dependencies = dependency_list.scan(/"([A-Za-z0-9_]+)"/).flatten
 fail_check("Semantic Core target dependencies differ") unless dependencies == ["GiftUI"]
+
+expected_package_interface = normalized_interface(PACKAGE_INTERFACE)
+fail_check("compiled package interface allowlist is empty") if expected_package_interface.empty?
 
 arguments = ARGV.dup
 if arguments.empty?
@@ -64,12 +75,27 @@ compiled_underscored = (giftui_interface.read + semantic_interface.read)
 unexpected = compiled_underscored - allowed_underscored
 fail_check("compiled interface has unexpected underscored references: #{unexpected}") unless unexpected.empty?
 
+actual_package_interface = normalized_interface(semantic_interface)
+unless actual_package_interface == expected_package_interface
+  fail_check(
+    "complete Semantic Core package interface/member inventory differs " \
+    "from the approved Swift 6.4 snapshot"
+  )
+end
+
+package_api_declarations = actual_package_interface.scan(/^package\s+(?:func|struct|enum|protocol|class|typealias)\b/).length
+package_api_members = actual_package_interface.scan(/^[ \t]+(?:package|case)\s+/).length
+
 output.write([
   "schema_version=1",
   "semantic_dependencies=GiftUI",
   "semantic_declarations=#{declared.length}",
   "underscored_allowlist=#{allowed_underscored.length}",
   "compiled_underscored=#{compiled_underscored.length}",
+  "compiled_package_interface_sha256=#{Digest::SHA256.hexdigest(actual_package_interface)}",
+  "package_api_declarations=#{package_api_declarations}",
+  "package_api_members=#{package_api_members}",
+  "package_api_inventory=complete-exact-interface-snapshot",
   "forbidden_production_uses=0",
   "runtime_profile_targets=downstream",
   "migration_inventory=separately-verified",

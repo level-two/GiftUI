@@ -101,10 +101,21 @@ func semanticRenderScopeHasTheExactClosedCasesAndValues() {
 
 @Test
 func semanticRenderScopeMapsCanvasWithoutChangingUnknownPrimitiveBehavior() {
-    #expect(SemanticRenderScope(primitivePayload: Canvas { _, _ in }) == .canvas)
+    #expect(SemanticRenderScope(primitivePayload: SemanticRenderCanvas()) == .canvas)
 
     struct UnknownPrimitive: _GiftUISemanticPrimitivePayload {}
     #expect(SemanticRenderScope(primitivePayload: UnknownPrimitive()) == .structural)
+}
+
+private struct SemanticRenderCanvas: Canvas {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIDraw(
+        in bounds: Rect,
+        context: inout GraphicsContext,
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(DrawingError) {}
 }
 
 @Test

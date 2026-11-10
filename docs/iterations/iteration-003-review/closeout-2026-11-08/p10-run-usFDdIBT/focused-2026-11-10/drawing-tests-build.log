@@ -1,0 +1,59 @@
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift build --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/p10-focused/drawing-scratch --cache-path /Users/eugene/work/GiftUI/.build --target GiftUIDrawingTests --disable-sandbox --skip-update
+Building for debugging...
+[Computing dependencies]
+[1 / 5] GiftUISemanticCore
+[2 / 6] GiftUISemanticCore
+[9 / 13] GiftUIRenderLowering
+[13 / 17] GiftUIDrawingFailureAdapterFixture
+[15 / 19] GiftUISemanticCore
+[22 / 25] GiftUIDrawingTests-product
+[24 / 25] GiftUIDrawingTests-product
+[25 / 28] GiftUIDrawingTests-product
+Build complete! (3,21 с)
+warning: '--skip-update' option is deprecated and will be removed in a future release
+warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:84:9: warning: setter for property 'components' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 67 |     }
+ 68 |     @usableFromInline
+ 69 |     internal private(set) var components: InlineArray<34, SemanticPathComponent> = .init(
+    |                               `- note: setter for property 'components' is not '@usableFromInline' or public
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+    :
+ 82 |         guard count < Self.capacity, component.isValid, (count == 0) == (component.kind == .root)
+ 83 |         else { return false }
+ 84 |         components[Int(count)] = component
+    |         `- warning: setter for property 'components' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 85 |         count += 1
+ 86 |         return true
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:85:9: warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+ 72 |     package private(set) var count: UInt16 = 0
+    |                              `- note: setter for property 'count' is not '@usableFromInline' or public
+ 73 |     @inlinable
+ 74 |     package init() {}
+    :
+ 83 |         else { return false }
+ 84 |         components[Int(count)] = component
+ 85 |         count += 1
+    |         `- warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 86 |         return true
+ 87 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:91:9: warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+ 72 |     package private(set) var count: UInt16 = 0
+    |                              `- note: setter for property 'count' is not '@usableFromInline' or public
+ 73 |     @inlinable
+ 74 |     package init() {}
+    :
+ 89 |     package mutating func removeLast() {
+ 90 |         precondition(count > 0)
+ 91 |         count -= 1
+    |         `- warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 92 |     }
+ 93 |     @inlinable

@@ -9,7 +9,7 @@ final class SemanticRecordingSinkTests: XCTestCase {
         var sink = makeSink()
         let limits = makeLimits()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             ViewBuilder.buildBlock(),
             limits: limits,
             workspace: &workspace,
@@ -42,7 +42,7 @@ final class SemanticRecordingSinkTests: XCTestCase {
         var workspace = RecordingWorkspace()
         var sink = makeSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             RecordingCustom(bodyCounter: counter),
             limits: makeLimits(),
             workspace: &workspace,
@@ -84,7 +84,7 @@ final class SemanticRecordingSinkTests: XCTestCase {
         var workspace = RecordingWorkspace()
         var sink = makeSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             root,
             limits: makeLimits(),
             workspace: &workspace,
@@ -118,7 +118,7 @@ final class SemanticRecordingSinkTests: XCTestCase {
         var sink = makeSink()
 
         XCTAssertEqual(
-            expandSemanticTree(
+            expandStatelessSemanticTreeForTesting(
                 ViewBuilder.buildBlock(),
                 limits: makeLimits(),
                 workspace: &workspace,
@@ -139,7 +139,7 @@ final class SemanticRecordingSinkTests: XCTestCase {
         sink.storage.attemptedEvents.removeAll(keepingCapacity: true)
 
         XCTAssertEqual(
-            expandSemanticTree(
+            expandStatelessSemanticTreeForTesting(
                 RecordingCustom(bodyCounter: RecordingBodyCounter()),
                 limits: makeLimits(),
                 workspace: &workspace,
@@ -197,22 +197,32 @@ private final class RecordingBodyCounter {
 }
 
 private struct RecordingCustom: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = RecordingPrimitive
+
     let bodyCounter: RecordingBodyCounter
 
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> RecordingPrimitive {
         bodyCounter.count += 1
         return RecordingPrimitive()
     }
 }
 
 private struct RecordingPrimitive: View, _GiftUISemanticPrimitivePayload {
-    var body: Never {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         fatalError("recording primitive body is unreachable")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 }
@@ -223,31 +233,41 @@ private enum RecordingAction: UInt16, GiftUIAction {
 }
 
 private struct RecordingActionPrimitive: View, _GiftUISemanticActionPayload {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     let action: RecordingAction
 
     var _giftUIAction: RecordingAction { action }
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         fatalError("recording action primitive body is unreachable")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(self)
     }
 }
 
 private struct RecordingModifier<Content: View>: View, _GiftUISemanticModifierPayload {
+    typealias Domain = Content.Domain
+    typealias Body = EmptyView<Domain>
+
     let content: Content
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body {
         fatalError("recording modifier body is unreachable")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: self)
     }
 }

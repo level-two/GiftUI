@@ -1092,6 +1092,10 @@ extension SemanticExpansionTraversalOperations where Self: ~Copyable, Self: ~Esc
         _ declaration: borrowing Declaration,
         body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body
     ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        guard Declaration.Body.self != Never.self else {
+            stop(.invariantViolation)
+            return
+        }
         guard let bodyIdentity = beginBody(Declaration.self) else { return }
         let result = evaluateTraversalBody(declaration, identity: bodyIdentity, body: body)
         finishBody(result)
@@ -1104,6 +1108,10 @@ extension SemanticExpansionTraversalOperations where Self: ~Copyable, Self: ~Esc
         body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)
             throws(_GiftUIAccessFailure) -> Declaration.Body
     ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        guard Declaration.Body.self != Never.self else {
+            stop(.invariantViolation)
+            return
+        }
         guard let bodyIdentity = beginBody(Declaration.self) else { return }
         let result = evaluateTraversalStatefulBody(declaration, identity: bodyIdentity, body: body)
         finishBody(result)

@@ -1,0 +1,79 @@
+Building for debugging...
+[Computing dependencies]
+[Provisioning 2 / 95]
+[Pre-planning 1 / 2734]
+[Planning 2644 / 2734]
+[Planning deferred tasks]
+[Constructing 1513 / 6216]
+[244 / 1387] GiftUIObservableStateTests-product
+[589 / 1400] GiftUIDynamicConveniences
+[592 / 1432] GiftUIDynamicConveniences
+[595 / 1436] GiftUIDynamicConveniences
+[618 / 1469] GiftUI-product
+error: SwiftCompile normal arm64 failed with a nonzero exit code. Command line:     cd /Users/eugene/work
+    
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift:17:21: error: cannot copy the lifetime of an Escapable type
+15 | package extension DynamicRuntimeExecutionCoordinator
+16 | where Binding == DynamicRuntimeExecutionBindingAdapter {
+17 |     @_lifetime(copy admission, copy opportunity)
+   |                     |- error: cannot copy the lifetime of an Escapable type
+   |                     `- note: use '@_lifetime(borrow admission)' instead
+18 |     init(
+19 |         binding: UnsafeMutablePointer<DynamicRuntimeProfileBinding>, admission: consuming Admission,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift:17:37: error: cannot copy the lifetime of an Escapable type
+15 | package extension DynamicRuntimeExecutionCoordinator
+16 | where Binding == DynamicRuntimeExecutionBindingAdapter {
+17 |     @_lifetime(copy admission, copy opportunity)
+   |                                     |- error: cannot copy the lifetime of an Escapable type
+   |                                     `- note: use '@_lifetime(borrow opportunity)' instead
+18 |     init(
+19 |         binding: UnsafeMutablePointer<DynamicRuntimeProfileBinding>, admission: consuming Admission,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift:10:34: error: generic type 'DynamicCanvasCallableStorage' specialized with too few type parameters (got 1, but expected 2)
+  8 | package struct DynamicRuntimeProfileBinding: ~Copyable {
+  9 |     private var storage: DynamicProfileStorage
+ 10 |     private var canvasCallables: DynamicCanvasCallableStorage<DynamicStructuralIdentity>
+    |                                  `- error: generic type 'DynamicCanvasCallableStorage' specialized with too few type parameters (got 1, but expected 2)
+ 11 |     private var lifecycle: RuntimeCoordinatorLifecycle
+ 12 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift:5:16: note: generic struct 'DynamicCanvasCallableStorage' declared here
+ 3 | 
+ 4 | /// Bounded concrete values; this store never retains an escaping draw closure.
+ 5 | package struct DynamicCanvasCallableStorage<
+   |                `- note: generic struct 'DynamicCanvasCallableStorage' declared here
+ 6 |     Identity: Equatable & Sendable, Table: CanvasValueTable
+ 7 | >: ~Copyable {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift:96:27: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 94 |     package mutating func stageCanvas(
+ 95 |         identity: consuming DynamicStructuralIdentity,
+ 96 |         canvas: consuming Canvas
+    |                           `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 97 |     ) -> Bool {
+ 98 |         guard storage.storageLifetimeState == .attemptActive else { return false }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift:262:32: error: generic type 'DynamicCanvasCallableStorage' specialized with too few type parameters (got 1, but expected 2)
+260 |     private var publishedLayoutLookups: [DynamicSemanticLayoutLookup] = []
+261 |     private var publishedLayoutIndex: [DynamicSemanticIdentity: Int] = [:]
+262 |     private var canvasStorage: DynamicCanvasCallableStorage<DynamicSemanticIdentity>
+    |                                `- error: generic type 'DynamicCanvasCallableStorage' specialized with too few type parameters (got 1, but expected 2)
+263 |     private var publishedRenderView: DynamicSemanticRenderView?
+264 |     private var bodyEvaluationCount: UInt16 = 0
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift:5:16: note: generic struct 'DynamicCanvasCallableStorage' declared here
+ 3 | 
+ 4 | /// Bounded concrete values; this store never retains an escaping draw closure.
+ 5 | package struct DynamicCanvasCallableStorage<
+   |                `- note: generic struct 'DynamicCanvasCallableStorage' declared here
+ 6 |     Identity: Equatable & Sendable, Table: CanvasValueTable
+ 7 | >: ~Copyable {
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+Failed frontend command:
+/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-frontend -frontend -emit-module -experimental-skip-non-inlinable-function-bodies-without-types /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableProfileSlotStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicProfileBoundary.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicProfileStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift -target arm64-apple-macos26.0 -load-resolved-plugin \#/Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug/GiftUIMacros\#GiftUIMacros -load-resolved-plugin /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/host/plugins/libSwiftMacros.dylib\#\#SwiftMacros -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -I /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib -Isystem /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing -F /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug/PackageFrameworks -F /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug -F /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks -module-cache-path /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/SwiftExplicitPrecompiledModules -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=5 -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -load-plugin-executable /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug/GiftUIMacros\#GiftUIMacros -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -enable-experimental-feature Lifetimes -enable-experimental-feature LifetimeDependence -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Users/eugene/work -enable-anonymous-context-mangled-names -file-compilation-dir /Users/eugene/work -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I/Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug/include -Xcc -I/Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/DerivedSources-normal/arm64 -Xcc -I/Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/DerivedSources/arm64 -Xcc -I/Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name GiftUIRuntimeDynamic -package-name giftui -const-gather-protocols-file /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic_const_extract_protocols.json -in-process-plugin-server-path /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -clang-target arm64-apple-macos26.5 -target-sdk-version 26.5 -target-sdk-name macosx26.5 -emit-module-doc-path /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic.swiftdoc -emit-module-source-info-path /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic.swiftsourceinfo -emit-objc-header-path /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic-Swift.h -serialize-diagnostics-path /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic-primary-emit-module.dia -emit-dependencies-path /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic-primary-emit-module.d -parse-as-library -o /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic.swiftmodule -emit-abi-descriptor-path /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUIRuntimeDynamic-t.build/Objects-normal/arm64/GiftUIRuntimeDynamic.abi.json
+error: Libtool /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug/libGiftUI.a normal failed with a nonzero exit code. Command line:     cd /Users/eugene/work/GiftUI
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only arm64 -D -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -L/Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib -L/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/macosx/testing -filelist /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUI-product-p.build/Objects-normal/arm64/GiftUI.LinkFileList -no_warning_for_no_symbols -dependency_info /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Intermediates.noindex/GiftUI.build/Debug/GiftUI-product-p.build/Objects-normal/arm64/GiftUI_libtool_dependency_info.dat -o /Users/eugene/work/GiftUI/.build/p10-diagnostics/focused-static-6.4-macos26-final/out/Products/Debug/libGiftUI.a
+error: Build failed
+error: fatalError

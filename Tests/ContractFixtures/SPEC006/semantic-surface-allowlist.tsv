@@ -1,9 +1,9 @@
-# access	kind	name
+# access	kind	name (declarations in GiftUISemanticCore.swift only)
 package	struct	SemanticExpansionLimits
 package	struct	SemanticExpansionSummary
 package	enum	SemanticExpansionError
 package	enum	SemanticExpansionResult
-package	enum	SemanticStateBindingOutcome
+package	enum	SemanticBodyEvaluation
 package	protocol	SemanticStatefulBinding
 package	enum	BoundSemanticExpansionResult
 package	protocol	SemanticExpansionWorkspace
@@ -14,5 +14,6 @@ package	protocol	SemanticRecordingIdentity
 package	enum	SemanticRecordingEvent
 package	protocol	SemanticRecordingStorage
 package	struct	SemanticRecordingSink
-package	func	expandSemanticTree
+package	struct	SemanticExpansionAttempt
+package	protocol	SemanticExpansionTraversalOperations
 package	func	expandSemanticTreeWithStateBinding

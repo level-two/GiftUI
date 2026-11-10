@@ -996,6 +996,31 @@ The immutable-tag migration inventory remains a mandatory independent check;
 see the
 [dependency surface evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/dependency-surface.md).
 
+**Approved T6.3 clarification follow-up — 2026-11-10.** The historical
+completion above predates the approved package-SPI clarification recorded in
+SPEC-006. It does not establish the clarified requirement. The follow-up must
+compare the complete emitted `GiftUISemanticCore` package interface, including
+nested members and overload signatures, against the exact pinned inventory in
+the P10 closeout packet; classify production and fixture callers; verify that
+the typed adapters delegate to the one traversal engine; and migrate the nine
+test files that used the absent `expandSemanticTree` entry point. This derived
+check is not permission to add package SPI beyond that inventory. It preserves
+all prior bounds, typed failure, state-binding, no-allocation, borrow, and
+restricted P08 reuse requirements. The plan and SPEC-006 remain implementing;
+this follow-up is not an implementation or conformance completion claim.
+
+**Focused follow-up status — 2026-11-10.** The exact compiled-interface and
+source dependency checks pass against the retained Swift 6.4 snapshot, and the
+nine test files using the absent `expandSemanticTree` spelling now exercise
+the approved state-bound entry while preserving the existing assertions.
+Focused Semantic Core (58 XCTest and 15 Swift Testing cases) and Drawing (43
+Swift Testing cases) runs pass. The Dynamic test target remains blocked by the
+separately approved `DynamicRuntimeProfileBinding` transfer to I4-07; that
+route's assertions remain outstanding and reuse is blocked. The aggregate P10
+run remains 24 pass / 59 failed, and this follow-up does not mark T6.3 complete
+or change the feature lifecycle status. Detailed commands and retained logs
+are in the P10 closeout record.
+
 `T6.4` is complete: a shared compiler probe records size, stride, and alignment
 for every bounded SPEC-006 value and enforces the exact one-byte error plus the
 10- and 12-byte maxima. Optimized Semantic Core SIL contains no heap-allocation

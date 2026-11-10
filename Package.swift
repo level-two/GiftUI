@@ -485,7 +485,11 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUISemanticCoreTests",
-            dependencies: ["GiftUI", "GiftUIObservableState", "GiftUISemanticCore"]
+            dependencies: ["GiftUI", "GiftUIObservableState", "GiftUISemanticCore"],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
+            ]
         ),
         .testTarget(
             name: "GiftUITextResourcesTests",
@@ -499,6 +503,10 @@ let package = Package(
                 "GiftUIReferenceTextResources",
                 "GiftUISemanticCore",
                 "GiftUITextResources",
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
             ]
         ),
         .testTarget(
@@ -569,6 +577,10 @@ let package = Package(
                 "GiftUIRenderLowering",
                 "GiftUISemanticCore",
                 "GiftUITextResources",
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
             ]
         ),
         .testTarget(
@@ -592,6 +604,10 @@ let package = Package(
                 "GiftUIRenderLowering",
                 "GiftUISemanticCore",
                 "GiftUITextResources",
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
             ]
         ),
         .testTarget(
@@ -675,6 +691,10 @@ let package = Package(
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
                 "GiftUISemanticCore",
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
             ]
         ),
         .testTarget(

@@ -882,7 +882,7 @@ final class SemanticExpansionAttemptTests: XCTestCase {
         var sink = AttemptProbeSink()
 
         XCTAssertEqual(
-            expandSemanticTree(
+            expandStatelessSemanticTreeForTesting(
                 ViewBuilder.buildBlock(),
                 limits: limits,
                 workspace: &workspace,
@@ -1007,7 +1007,12 @@ private struct AttemptProbeIdentity: Equatable {
 }
 
 private struct AttemptProbeView: View {
-    var body: Never {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         fatalError("the T2.2 attempt fixture does not traverse a body")
     }
 }

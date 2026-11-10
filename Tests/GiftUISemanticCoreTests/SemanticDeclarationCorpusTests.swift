@@ -247,7 +247,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         )!
 
         XCTAssertEqual(
-            expandSemanticTree(
+            expandStatelessSemanticTreeForTesting(
                 CorpusA(),
                 limits: limits,
                 workspace: &workspace,
@@ -317,7 +317,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         var workspace = CorpusWorkspace()
         let payloadProbe = CorpusPayloadProbe()
         var sink = CorpusInspectingSink(probe: payloadProbe)
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             mixed,
             limits: corpusLimits,
             workspace: &workspace,
@@ -378,11 +378,15 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
 
     func testSpec008TextAndStylePayloadsPreserveModifierOrderAndIdentity() {
         let first = CorpusBackground(
-            content: CorpusForeground(content: Text("signal"), color: .red),
+            content: CorpusForeground(
+                content: Text<_GiftUIEmptyReadDomain>("signal"), color: .red
+            ),
             color: .blue
         )
         let second = CorpusBackground(
-            content: CorpusForeground(content: Text("signal"), color: .green),
+            content: CorpusForeground(
+                content: Text<_GiftUIEmptyReadDomain>("signal"), color: .green
+            ),
             color: .gray
         )
         let backgroundPath: [SemanticRecordingPathComponent] = [
@@ -413,7 +417,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         let payloadProbe = CorpusPayloadProbe()
         var sink = CorpusInspectingSink(probe: payloadProbe)
         XCTAssertEqual(
-            expandSemanticTree(
+            expandStatelessSemanticTreeForTesting(
                 first,
                 limits: corpusLimits,
                 workspace: &workspace,
@@ -427,10 +431,10 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
     func testSpec007LayoutPayloadsPreservePrimitiveChildrenAndModifierOrder() {
         let insets = EdgeInsets(top: 1, leading: 2, bottom: 3, trailing: 4)!
         let alignment = Alignment(horizontal: .center, vertical: .bottom)
-        let primitives = VStack(alignment: .leading, spacing: -1) {
-            HStack(alignment: .bottom, spacing: 2) {
-                ZStack(alignment: alignment) {
-                    Spacer(minLength: -3)
+        let primitives = try! VStack(alignment: .leading, spacing: -1) {
+            try! HStack(alignment: .bottom, spacing: 2) {
+                try! ZStack(alignment: alignment) {
+                    Spacer<_GiftUIEmptyReadDomain>(minLength: -3)
                 }
             }
         }
@@ -464,7 +468,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         let payloadProbe = CorpusPayloadProbe()
         var sink = CorpusInspectingSink(probe: payloadProbe)
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             modified,
             limits: corpusLimits,
             workspace: &workspace,
@@ -529,7 +533,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
                 action: .secondary,
                 lifetime: lifetime
             )
-            result = expandSemanticTree(
+            result = expandStatelessSemanticTreeForTesting(
                 declaration!,
                 limits: corpusLimits,
                 workspace: &workspace,
@@ -563,7 +567,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
                 lifetime: lifetime
             )
             XCTAssertEqual(
-                expandSemanticTree(
+                expandStatelessSemanticTreeForTesting(
                     declaration!,
                     limits: zeroActionLimits,
                     workspace: &workspace,
@@ -585,7 +589,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
             maximumActionOccurrences: 0
         )!
         XCTAssertEqual(
-            expandSemanticTree(
+            expandStatelessSemanticTreeForTesting(
                 CorpusInset(content: CorpusA(), value: 1),
                 limits: zeroModifierLimits,
                 workspace: &workspace,
@@ -700,7 +704,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         childRoles: [CorpusRole],
         file: StaticString = #filePath,
         line: UInt = #line
-    ) {
+    ) where Content.Domain == _GiftUIEmptyReadDomain {
         let tuplePath: [SemanticRecordingPathComponent] = [.root, .role(tupleRole)]
         var events: [CorpusEvent] = [.structural(path(tuplePath), tupleRole)]
         for (index, childRole) in childRoles.enumerated() {
@@ -726,7 +730,7 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         expectedSummary: SemanticExpansionSummary,
         file: StaticString = #filePath,
         line: UInt = #line
-    ) {
+    ) where Content.Domain == _GiftUIEmptyReadDomain {
         let observed = expand(content)
         XCTAssertEqual(observed.result, .success(expectedSummary), file: file, line: line)
         XCTAssertEqual(observed.events, expectedEvents, file: file, line: line)
@@ -734,10 +738,11 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
 
     private func expand<Content: View>(
         _ content: Content
-    ) -> (result: SemanticExpansionResult, events: [CorpusEvent]) {
+    ) -> (result: SemanticExpansionResult, events: [CorpusEvent])
+    where Content.Domain == _GiftUIEmptyReadDomain {
         var workspace = CorpusWorkspace()
         var sink = SemanticRecordingSink(storage: CorpusStorage())
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             content,
             limits: corpusLimits,
             workspace: &workspace,
@@ -887,41 +892,76 @@ extension Spacer: CorpusRoleProviding {
 }
 
 private struct CorpusA: View, _GiftUISemanticPrimitivePayload, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     static let corpusRole = CorpusRole.a
-    var body: Never { fatalError("primitive body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(_ visitor: inout Visitor) {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("primitive body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+        _ visitor: inout Visitor
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 }
 
 private struct CorpusB: View, _GiftUISemanticPrimitivePayload, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     static let corpusRole = CorpusRole.b
-    var body: Never { fatalError("primitive body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(_ visitor: inout Visitor) {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("primitive body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+        _ visitor: inout Visitor
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 }
 
 private struct CorpusC: View, _GiftUISemanticPrimitivePayload, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     static let corpusRole = CorpusRole.c
-    var body: Never { fatalError("primitive body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(_ visitor: inout Visitor) {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("primitive body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+        _ visitor: inout Visitor
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 }
 
 private struct CorpusD: View, _GiftUISemanticPrimitivePayload, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     static let corpusRole = CorpusRole.d
-    var body: Never { fatalError("primitive body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(_ visitor: inout Visitor) {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("primitive body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+        _ visitor: inout Visitor
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 }
 
 private struct CorpusE: View, _GiftUISemanticPrimitivePayload, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     static let corpusRole = CorpusRole.e
-    var body: Never { fatalError("primitive body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(_ visitor: inout Visitor) {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("primitive body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+        _ visitor: inout Visitor
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 }
@@ -934,40 +974,60 @@ private final class CorpusCounters {
 }
 
 private struct CorpusOuter: View, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = CorpusInner
+
     static let corpusRole = CorpusRole.outer
     let counters: CorpusCounters
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> CorpusInner {
         counters.outerBodies += 1
         return CorpusInner(counters: counters)
     }
 }
 
 private struct CorpusInner: View, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = CorpusA
+
     static let corpusRole = CorpusRole.inner
     let counters: CorpusCounters
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> CorpusA {
         counters.innerBodies += 1
         return CorpusA()
     }
 }
 
 private struct CorpusPropertyFunction: View, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = TupleView<CorpusA, CorpusB>
+
     static let corpusRole = CorpusRole.propertyFunction
     let counters: CorpusCounters
-    var body: some View { content }
-    private var content: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body { content }
+    private var content: Body {
         counters.propertyReads += 1
         return makeContent()
     }
-    private func makeContent() -> some View {
+    private func makeContent() -> Body {
         counters.functionCalls += 1
         return ViewBuilder.buildBlock(CorpusA(), CorpusB())
     }
 }
 
 private struct CorpusNestedCombination: View, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = TupleView<ConditionalContent<CorpusA, CorpusB>, OptionalContent<CorpusC>>
+
     static let corpusRole = CorpusRole.combination
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body {
         let conditional: ConditionalContent<CorpusA, CorpusB> = ViewBuilder.buildEither(
             first: CorpusA()
         )
@@ -983,14 +1043,18 @@ private protocol CorpusModifierValue {
 private struct CorpusInset<Content: View>: View, _GiftUISemanticModifierPayload,
     CorpusRoleProviding, CorpusModifierValue
 {
+    typealias Domain = Content.Domain
+    typealias Body = EmptyView<Domain>
     static var corpusRole: CorpusRole { .inset }
     let content: Content
     let value: Int
     var corpusModifierValue: Int { value }
-    var body: Never { fatalError("modifier body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: self)
     }
 }
@@ -998,19 +1062,26 @@ private struct CorpusInset<Content: View>: View, _GiftUISemanticModifierPayload,
 private struct CorpusTone<Content: View>: View, _GiftUISemanticModifierPayload,
     CorpusRoleProviding, CorpusModifierValue
 {
+    typealias Domain = Content.Domain
+    typealias Body = EmptyView<Domain>
     static var corpusRole: CorpusRole { .tone }
     let content: Content
     let value: Int
     var corpusModifierValue: Int { value }
-    var body: Never { fatalError("modifier body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: self)
     }
 }
 
 private struct CorpusForeground<Content: View>: View, CorpusRoleProviding {
+    typealias Domain = Content.Domain
+    typealias Body = EmptyView<Domain>
+
     static var corpusRole: CorpusRole { .foreground }
     let content: Content
     let payload: _GiftUIForegroundStylePayload
@@ -1020,15 +1091,20 @@ private struct CorpusForeground<Content: View>: View, CorpusRoleProviding {
         payload = _GiftUIForegroundStylePayload(color: color)
     }
 
-    var body: Never { fatalError("modifier body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: payload)
     }
 }
 
 private struct CorpusBackground<Content: View>: View, CorpusRoleProviding {
+    typealias Domain = Content.Domain
+    typealias Body = EmptyView<Domain>
+
     static var corpusRole: CorpusRole { .background }
     let content: Content
     let payload: _GiftUIBackgroundPayload
@@ -1038,10 +1114,12 @@ private struct CorpusBackground<Content: View>: View, CorpusRoleProviding {
         payload = _GiftUIBackgroundPayload(color: color)
     }
 
-    var body: Never { fatalError("modifier body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: payload)
     }
 }
@@ -1050,20 +1128,29 @@ private struct CorpusLayoutModifier<
     Content: View,
     Payload: _GiftUISemanticModifierPayload
 >: View, CorpusRoleProviding {
+    typealias Domain = Content.Domain
+    typealias Body = EmptyView<Domain>
     static var corpusRole: CorpusRole { .layoutModifier }
     let content: Content
     let payload: Payload
-    var body: Never { fatalError("layout modifier body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body { fatalError("layout modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: payload)
     }
 }
 
 private struct CorpusModifiedCustom: View, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = CorpusInset<CorpusA>
+
     static let corpusRole = CorpusRole.modifiedCustom
-    var body: some View { CorpusInset(content: CorpusA(), value: 5) }
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body { CorpusInset(content: CorpusA(), value: 5) }
 }
 
 private enum CorpusAction: UInt16, GiftUIAction {
@@ -1082,6 +1169,9 @@ private final class CorpusLifetimeToken {
 }
 
 private struct CorpusActionPrimitive: View, _GiftUISemanticActionPayload, CorpusRoleProviding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     static let corpusRole = CorpusRole.actionPrimitive
     let action: CorpusAction
     let lifetime: CorpusLifetimeToken?
@@ -1092,10 +1182,12 @@ private struct CorpusActionPrimitive: View, _GiftUISemanticActionPayload, Corpus
     }
 
     var _giftUIAction: CorpusAction { action }
-    var body: Never { fatalError("action primitive body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("action primitive body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(self)
     }
 }

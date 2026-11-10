@@ -185,6 +185,12 @@ fail_check("generated source does not name its manifest") unless
   generated.include?("Generated from Tests/ContractFixtures/SPEC012/static-canvas-manifest.yaml.")
 fail_check("generated table does not conform") unless
   generated.include?("struct GeneratedStaticCanvasCallableTable: StaticCanvasCallableTable")
+fail_check("generated table does not pin its empty read domain") unless
+  generated.include?("typealias Domain = _GiftUIEmptyReadDomain")
+fail_check("generated table does not pin its capture storage") unless
+  generated.include?("typealias CaptureStorage = GeneratedStaticCanvasCaptureStorage")
+fail_check("generated dispatch does not accept the scoped read value") unless
+  generated.include?("read: borrowing _GiftUIFrameRead<Domain>")
 fail_check("generated case count differs") unless
   generated.include?("let callableCaseCount: UInt16 = #{manifest.fetch('callable_case_count')}")
 manifest.fetch("callable_cases").each do |callable_case|

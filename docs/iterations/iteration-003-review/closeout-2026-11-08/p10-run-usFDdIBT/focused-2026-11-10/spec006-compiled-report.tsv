@@ -1,0 +1,12 @@
+schema_version=1
+semantic_dependencies=GiftUI
+semantic_declarations=18
+underscored_allowlist=32
+compiled_underscored=32
+compiled_package_interface_sha256=29f59af45bbfd509cdce9346d665ab4e43f815f2ef65eec2f455a1b418590420
+package_api_declarations=45
+package_api_members=273
+package_api_inventory=complete-exact-interface-snapshot
+forbidden_production_uses=0
+runtime_profile_targets=downstream
+migration_inventory=separately-verified

@@ -9,6 +9,14 @@ private enum SemanticHostAction: UInt16, GiftUIAction {
 }
 
 private struct SemanticHostRoot: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body {
+        body
+    }
+
     var body: some View {
         VStack {
             Button("Run", action: SemanticHostAction.run)
@@ -20,6 +28,14 @@ private struct SemanticHostRoot: View {
 }
 
 private struct StructuralExcessRoot: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body {
+        body
+    }
+
     var body: some View {
         VStack {
             Text("A")
@@ -47,7 +63,7 @@ private struct StructuralExcessRoot: View {
         canvasCapacity: 1
     )
 
-    let result = expandSemanticTree(
+    let result = expandStatelessSemanticTreeForTesting(
         SemanticHostRoot(),
         limits: limits,
         workspace: &workspace,
@@ -101,7 +117,7 @@ private struct StructuralExcessRoot: View {
     #expect(foundDegree)
 
     #expect(storage.modifierCount(of: action.identity) == 1)
-    let replacement = expandSemanticTree(
+    let replacement = expandStatelessSemanticTreeForTesting(
         StructuralExcessRoot(),
         limits: limits,
         workspace: &workspace,
@@ -137,7 +153,7 @@ private struct StructuralExcessRoot: View {
         canvasCapacity: 1
     )
 
-    let result = expandSemanticTree(
+    let result = expandStatelessSemanticTreeForTesting(
         SemanticHostRoot(),
         limits: limits,
         workspace: &workspace,
@@ -171,7 +187,7 @@ private struct StructuralExcessRoot: View {
         canvasCapacity: 0
     )
 
-    let result = expandSemanticTree(
+    let result = expandStatelessSemanticTreeForTesting(
         StructuralExcessRoot(),
         limits: limits,
         workspace: &workspace,

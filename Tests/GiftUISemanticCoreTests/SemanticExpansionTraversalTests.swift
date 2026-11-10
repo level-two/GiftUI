@@ -8,11 +8,11 @@ final class SemanticExpansionTraversalTests: XCTestCase {
     func testButtonStagesOneActionAtItsIdentityBeforeStoredLabel() {
         var workspace = TraversalWorkspace()
         var sink = TraversalSink()
-        let button = Button(action: TraversalAction.secondary) {
+        let button = try! Button(action: TraversalAction.secondary) {
             TraversalPrimitive(marker: 9)
         }
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             button,
             limits: makeLimits(),
             workspace: &workspace,
@@ -47,7 +47,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         var workspace = TraversalWorkspace()
         var sink = TraversalSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             TraversalRoot(bodyCounter: bodyCounter),
             limits: makeLimits(),
             workspace: &workspace,
@@ -96,7 +96,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         var workspace = TraversalWorkspace()
         var sink = TraversalSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             root,
             limits: makeLimits(),
             workspace: &workspace,
@@ -143,7 +143,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         var workspace = TraversalWorkspace()
         var sink = TraversalSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             root,
             limits: makeLimits(),
             workspace: &workspace,
@@ -185,7 +185,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             maximumActionOccurrences: 4
         )!
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             root,
             limits: limits,
             workspace: &workspace,
@@ -206,7 +206,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         var workspace = TraversalWorkspace(maximumPathComponents: 1)
         var sink = TraversalSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             ViewBuilder.buildBlock(),
             limits: makeLimits(),
             workspace: &workspace,
@@ -229,7 +229,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         var workspace = TraversalWorkspace()
         var sink = TraversalSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             TraversalNeverBody(bodyCounter: bodyCounter),
             limits: makeLimits(),
             workspace: &workspace,
@@ -250,21 +250,19 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         let root = TraversalStatefulRoot(trace: trace)
         var statefulWorkspace = TraversalWorkspace()
         var statefulSink = TraversalSink()
-        var binding = ObservableStateBindingDecorator(
-            reconciler: TraversalBindingReconciler(trace: trace)
-        )
+        let binding = TraversalTestBinding(trace: trace)
 
         let statefulResult = expandSemanticTreeWithStateBinding(
             root,
             limits: makeLimits(),
             workspace: &statefulWorkspace,
             sink: &statefulSink,
-            stateBinding: &binding
+            stateBinding: binding
         )
 
         var ordinaryWorkspace = TraversalWorkspace()
         var ordinarySink = TraversalSink()
-        let ordinaryResult = expandSemanticTree(
+        let ordinaryResult = expandStatelessSemanticTreeForTesting(
             TraversalOrdinaryBoundEquivalent(),
             limits: makeLimits(),
             workspace: &ordinaryWorkspace,
@@ -296,7 +294,8 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             )
         )
         XCTAssertEqual(trace.events, ["bind:0", "bind:1", "body"])
-        XCTAssertEqual(binding.reconciler.ordinals, [0, 1])
+        XCTAssertEqual(trace.ordinals, [0, 1])
+        XCTAssertEqual(trace.bodyValues, [8])
         XCTAssertEqual(
             statefulSink.committedEvents.map(\.kind),
             ordinarySink.committedEvents.map(\.kind)
@@ -326,12 +325,10 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             var workspace = TraversalWorkspace()
             var sink = TraversalSink()
             let failureOrdinal = UInt16(index % 2)
-            var binding = ObservableStateBindingDecorator(
-                reconciler: TraversalBindingReconciler(
-                    trace: trace,
-                    failure: error,
-                    failureOrdinal: failureOrdinal
-                )
+            let binding = TraversalTestBinding(
+                trace: trace,
+                failure: error,
+                failureOrdinal: failureOrdinal
             )
 
             let result = expandSemanticTreeWithStateBinding(
@@ -339,7 +336,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
                 limits: makeLimits(),
                 workspace: &workspace,
                 sink: &sink,
-                stateBinding: &binding
+                stateBinding: binding
             )
 
             XCTAssertEqual(result, .bindingFailure(error))
@@ -358,7 +355,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         let emptyBodyCounter = TraversalBodyCounter()
         var emptyWorkspace = TraversalWorkspace()
         var emptySink = TraversalSink()
-        let emptyResult = expandSemanticTree(
+        let emptyResult = expandStatelessSemanticTreeForTesting(
             TraversalPrimitiveContainer(marker: 10, bodyCounter: emptyBodyCounter) {},
             limits: makeLimits(),
             workspace: &emptyWorkspace,
@@ -373,7 +370,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         let oneBodyCounter = TraversalBodyCounter()
         var oneWorkspace = TraversalWorkspace()
         var oneSink = TraversalSink()
-        let oneResult = expandSemanticTree(
+        let oneResult = expandStatelessSemanticTreeForTesting(
             TraversalPrimitiveContainer(marker: 20, bodyCounter: oneBodyCounter) {
                 TraversalPrimitive(marker: 21)
             },
@@ -399,7 +396,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         let fiveBodyCounter = TraversalBodyCounter()
         var fiveWorkspace = TraversalWorkspace()
         var fiveSink = TraversalSink()
-        let fiveResult = expandSemanticTree(
+        let fiveResult = expandStatelessSemanticTreeForTesting(
             TraversalPrimitiveContainer(marker: 30, bodyCounter: fiveBodyCounter) {
                 TraversalPrimitive(marker: 31)
                 TraversalPrimitive(marker: 32)
@@ -436,7 +433,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         var workspace = TraversalWorkspace()
         var sink = TraversalSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             TraversalPrimitiveContainer(marker: 40, bodyCounter: bodyCounter) {
                 TraversalPrimitiveContainer(marker: 41, bodyCounter: bodyCounter) {
                     TraversalPrimitive(marker: 44)
@@ -479,7 +476,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             var workspace = TraversalWorkspace()
             var sink = TraversalSink(refusedSemanticStage: refusal)
 
-            let failure = expandSemanticTree(
+            let failure = expandStatelessSemanticTreeForTesting(
                 root,
                 limits: makeLimits(),
                 workspace: &workspace,
@@ -495,7 +492,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             XCTAssertEqual(bodyCounter.count, 0)
 
             sink.refusedSemanticStage = nil
-            let success = expandSemanticTree(
+            let success = expandStatelessSemanticTreeForTesting(
                 root,
                 limits: makeLimits(),
                 workspace: &workspace,
@@ -519,7 +516,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             maximumActionOccurrences: 16
         )!
 
-        let capacityFailure = expandSemanticTree(
+        let capacityFailure = expandStatelessSemanticTreeForTesting(
             root,
             limits: capacityLimits,
             workspace: &capacityWorkspace,
@@ -539,7 +536,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         let emptyBodyCounter = TraversalBodyCounter()
         var emptyWorkspace = TraversalWorkspace()
         var emptySink = TraversalSink()
-        let emptyResult = expandSemanticTree(
+        let emptyResult = expandStatelessSemanticTreeForTesting(
             TraversalActionContainer(action: .primary, bodyCounter: emptyBodyCounter) {},
             limits: makeLimits(),
             workspace: &emptyWorkspace,
@@ -558,7 +555,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         let oneBodyCounter = TraversalBodyCounter()
         var oneWorkspace = TraversalWorkspace()
         var oneSink = TraversalSink()
-        let oneResult = expandSemanticTree(
+        let oneResult = expandStatelessSemanticTreeForTesting(
             TraversalActionContainer(action: .secondary, bodyCounter: oneBodyCounter) {
                 TraversalPrimitive(marker: 61)
             },
@@ -586,7 +583,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         let fiveBodyCounter = TraversalBodyCounter()
         var fiveWorkspace = TraversalWorkspace()
         var fiveSink = TraversalSink()
-        let fiveResult = expandSemanticTree(
+        let fiveResult = expandStatelessSemanticTreeForTesting(
             TraversalActionContainer(action: .primary, bodyCounter: fiveBodyCounter) {
                 TraversalPrimitive(marker: 62)
                 TraversalPrimitive(marker: 63)
@@ -619,7 +616,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         var workspace = TraversalWorkspace()
         var sink = TraversalSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             TraversalActionContainer(action: .primary, bodyCounter: bodyCounter) {
                 TraversalActionContainer(action: .secondary, bodyCounter: bodyCounter) {
                     TraversalPrimitive(marker: 71)
@@ -665,7 +662,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             var workspace = TraversalWorkspace()
             var sink = sink
 
-            let failure = expandSemanticTree(
+            let failure = expandStatelessSemanticTreeForTesting(
                 root,
                 limits: makeLimits(),
                 workspace: &workspace,
@@ -682,7 +679,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
 
             sink.refuseActionStage = false
             sink.refusedSemanticStage = nil
-            let success = expandSemanticTree(
+            let success = expandStatelessSemanticTreeForTesting(
                 root,
                 limits: makeLimits(),
                 workspace: &workspace,
@@ -706,7 +703,7 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             maximumActionOccurrences: 1
         )!
 
-        let capacityFailure = expandSemanticTree(
+        let capacityFailure = expandStatelessSemanticTreeForTesting(
             root,
             limits: capacityLimits,
             workspace: &capacityWorkspace,
@@ -736,10 +733,10 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         _ content: Content,
         file: StaticString = #filePath,
         line: UInt = #line
-    ) {
+    ) where Content.Domain == _GiftUIEmptyReadDomain {
         var workspace = TraversalWorkspace()
         var sink = TraversalSink()
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             content,
             limits: makeLimits(),
             workspace: &workspace,
@@ -773,74 +770,154 @@ private final class TraversalBoundModel: _GiftUIObservableReference {
     ) {}
 }
 
+private enum TraversalBoundModelSchema: _GiftUIModelSchema {
+    typealias Seed = TraversalBoundModel
+}
+
 private final class TraversalBoundModelBox<Model> {
     var model: Model?
 }
 
 private final class TraversalBindingTrace {
     var events: [String] = []
+    var ordinals: [UInt16] = []
+    var bodyValues: [UInt8] = []
 }
 
 @ObservableStateHost
 private struct TraversalStatefulRoot: View {
-    @State private var first = TraversalBoundModel(value: 3)
-    @State private var second = TraversalBoundModel(value: 5)
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = TraversalPrimitive
+
+    @State<TraversalBoundModelSchema> private var first: _GiftUIModelKey<TraversalBoundModelSchema>?
+    @State<TraversalBoundModelSchema> private var second:
+        _GiftUIModelKey<TraversalBoundModelSchema>?
     let trace: TraversalBindingTrace
 
-    var body: TraversalPrimitive {
+    init(trace: TraversalBindingTrace) {
+        self.trace = trace
+        _first = State<TraversalBoundModelSchema>(seed: TraversalBoundModel(value: 3))
+        _second = State<TraversalBoundModelSchema>(seed: TraversalBoundModel(value: 5))
+    }
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> TraversalPrimitive {
         trace.events.append("body")
-        return TraversalPrimitive(marker: first.value + second.value)
+        let firstKey = try _first._giftUIKey()
+        let secondKey = try _second._giftUIKey()
+        guard firstKey._giftUISlot == 0, secondKey._giftUISlot == 1 else {
+            throw .wrongOwner
+        }
+        let value = read.slots[0] + read.slots[1]
+        trace.bodyValues.append(value)
+        return TraversalPrimitive(marker: value)
     }
 }
 
 private struct TraversalOrdinaryBoundEquivalent: View {
-    var body: TraversalPrimitive {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = TraversalPrimitive
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> TraversalPrimitive {
         TraversalPrimitive(marker: 8)
     }
 }
 
-private struct TraversalBindingReconciler: ObservableStateReconciler {
-    typealias StructuralIdentity = TraversalIdentity
+private struct TraversalDeclarationVisitor: _GiftUIObservableStateDeclarationVisitor {
+    let trace: TraversalBindingTrace
+    let failure: ObservableStateError?
+    let failureOrdinal: UInt16?
+    var readSlots: InlineArray<2, UInt8> = .init(repeating: 0)
+    var failed = false
+
+    mutating func visit<Schema: _GiftUIModelSchema>(
+        _ state: inout State<Schema>,
+        declarationOrdinal: UInt16
+    ) {
+        guard !failed else { return }
+        trace.events.append("bind:\(declarationOrdinal)")
+        trace.ordinals.append(declarationOrdinal)
+        if failureOrdinal == declarationOrdinal, failure != nil {
+            trace.events.append("fail:\(declarationOrdinal)")
+            failed = true
+            return
+        }
+        guard
+            declarationOrdinal < 2,
+            let initial = state._giftUIInitial,
+            case .seed(let seed) = initial,
+            let model = seed as? TraversalBoundModel
+        else {
+            failed = true
+            return
+        }
+        let key = _GiftUIModelKey<Schema>(
+            ownerInstance: 1,
+            allocationGeneration: 1,
+            slot: declarationOrdinal
+        )
+        let binding = _GiftUIBoundState(
+            locationSlot: declarationOrdinal,
+            declarationOrdinal: declarationOrdinal,
+            registrationGeneration: 1,
+            key: key
+        )
+        guard state._giftUIBind(binding) != nil else {
+            failed = true
+            return
+        }
+        readSlots[Int(declarationOrdinal)] = model.value
+    }
+}
+
+private struct TraversalTestBinding: SemanticStatefulBinding {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Identity = TraversalIdentity
+    typealias Failure = ObservableStateError
 
     let trace: TraversalBindingTrace
-    var ordinals: [UInt16] = []
     var failure: ObservableStateError? = nil
     var failureOrdinal: UInt16? = nil
 
-    mutating func beginCandidate() -> ObservableStateResult {
-        .success(.candidateStarted)
+    borrowing func evaluate<Declaration: View>(
+        _ declaration: borrowing Declaration,
+        beforeBody: () -> SemanticExpansionError?,
+        body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) -> SemanticBodyEvaluation<Declaration.Body, Failure>
+    where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        if let error = beforeBody() { return .semanticFailure(error) }
+        do throws(_GiftUIAccessFailure) {
+            return .body(try body(_GiftUIFrameRead<Domain>(slots: Span<UInt8>())))
+        } catch {
+            return .accessFailure(error)
+        }
     }
 
-    mutating func encounter<Model: _GiftUIObservableReference>(
-        structuralIdentity: TraversalIdentity,
-        declarationOrdinal: UInt16,
-        state: inout State<Model>
-    ) -> ObservableStateResult {
-        trace.events.append("bind:\(declarationOrdinal)")
-        ordinals.append(declarationOrdinal)
-        if failureOrdinal == declarationOrdinal, let failure {
-            trace.events.append("fail:\(declarationOrdinal)")
-            return .failure(failure)
-        }
-        let box = TraversalBoundModelBox<Model>()
-        guard
-            let initial = state._giftUIBind(
-                read: { box.model! },
-                replace: { box.model = $0 }
+    borrowing func evaluateStateful<Declaration: View & _GiftUIObservableStateHost>(
+        _ declaration: borrowing Declaration,
+        structuralIdentity: Identity,
+        beforeBody: () -> SemanticExpansionError?,
+        body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)
+            throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) -> SemanticBodyEvaluation<Declaration.Body, Failure>
+    where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        var copy = copy declaration
+        var visitor = TraversalDeclarationVisitor(
+            trace: trace, failure: failure, failureOrdinal: failureOrdinal)
+        copy._giftUIVisitObservableStateDeclarations(&visitor)
+        if visitor.failed, let failure { return .bindingFailure(failure) }
+        if visitor.failed { return .bindingFailure(.invariantViolation) }
+        if let error = beforeBody() { return .semanticFailure(error) }
+        do throws(_GiftUIAccessFailure) {
+            return .body(
+                try body(copy, _GiftUIFrameRead<Domain>(slots: visitor.readSlots.span))
             )
-        else {
-            return .failure(.invariantViolation)
+        } catch {
+            return .accessFailure(error)
         }
-        box.model = initial
-        return .success(.preserved)
-    }
-
-    mutating func finishCandidate(
-        _ disposition: ObservableStateCandidateDisposition
-    ) -> ObservableStateResult {
-        disposition == .publish
-            ? .success(.associationsCommitted)
-            : .success(.candidateDiscarded)
     }
 }
 
@@ -849,9 +926,18 @@ private final class TraversalBodyCounter {
 }
 
 private struct TraversalRoot: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = TupleView3<
+        TraversalPrimitive,
+        ConditionalContent<TraversalInactiveTrap, TraversalPrimitive>,
+        OptionalContent<TraversalInactiveTrap>
+    >
+
     let bodyCounter: TraversalBodyCounter
 
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body {
         bodyCounter.count += 1
         let conditional: ConditionalContent<TraversalInactiveTrap, TraversalPrimitive> =
             ViewBuilder.buildEither(second: TraversalPrimitive(marker: 2))
@@ -865,49 +951,72 @@ private struct TraversalRoot: View {
 }
 
 private struct TraversalInactiveTrap: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     init() {
         fatalError("inactive traversal content must not initialize")
     }
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         fatalError("inactive traversal content must not evaluate")
     }
 }
 
-private struct TraversalNestedCustom<Child: View>: View {
+private struct TraversalNestedCustom<Child: View>: View
+where Child.Domain == _GiftUIEmptyReadDomain {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Child
+
     let bodyCounter: TraversalBodyCounter
     let child: Child
 
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Child {
         bodyCounter.count += 1
         return child
     }
 }
 
 private struct TraversalLeafCustom: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = TraversalPrimitive
+
     let bodyCounter: TraversalBodyCounter
 
-    var body: some View {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> TraversalPrimitive {
         bodyCounter.count += 1
         return TraversalPrimitive(marker: 1)
     }
 }
 
 private struct TraversalPrimitive: View, _GiftUISemanticPrimitivePayload {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     let marker: UInt8
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         fatalError("primitive bodies are unreachable")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 }
 
 private struct TraversalPrimitiveContainer<Content: View>: View {
+    typealias Domain = Content.Domain
+
     typealias Body = Never
 
     let marker: UInt8
@@ -924,7 +1033,9 @@ private struct TraversalPrimitiveContainer<Content: View>: View {
         self.content = content()
     }
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         poison()
     }
 
@@ -933,9 +1044,9 @@ private struct TraversalPrimitiveContainer<Content: View>: View {
         fatalError("primitive container bodies are unreachable")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(
             content: content,
             payload: TraversalPrimitiveContainerPayload(marker: marker)
@@ -948,33 +1059,48 @@ private struct TraversalPrimitiveContainerPayload: _GiftUISemanticPrimitivePaylo
 }
 
 private struct TraversalNoCategory: View {
-    var body: Never { fatalError("missing-category body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("missing-category body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {}
+    ) where Visitor.Domain == Domain {}
 }
 
 private struct TraversalMultipleCategory: View, _GiftUISemanticPrimitivePayload {
-    var body: Never { fatalError("multiple-category body is unreachable") }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { fatalError("multiple-category body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
         visitor.visitPrimitive(self)
     }
 }
 
 private struct TraversalNeverBody: View {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     let bodyCounter: TraversalBodyCounter
-    var body: Never { poison() }
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never { poison() }
     private func poison() -> Never {
         bodyCounter.count += 1
         fatalError("detectable Never.body must not run")
     }
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
-        visitor.visitCustomView(self) { body }
+    ) where Visitor.Domain == Domain {
+        visitor.visitCustomView(self) { _ in poison() }
     }
 }
 
@@ -984,22 +1110,29 @@ private enum TraversalAction: UInt16, GiftUIAction {
 }
 
 private struct TraversalActionPrimitive: View, _GiftUISemanticActionPayload {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
     let action: TraversalAction
 
     var _giftUIAction: TraversalAction { action }
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         fatalError("action primitive bodies are unreachable")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(self)
     }
 }
 
 private struct TraversalActionContainer<Content: View>: View {
+    typealias Domain = Content.Domain
+
     typealias Body = Never
 
     let action: TraversalAction
@@ -1016,7 +1149,9 @@ private struct TraversalActionContainer<Content: View>: View {
         self.content = content()
     }
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         poison()
     }
 
@@ -1025,9 +1160,9 @@ private struct TraversalActionContainer<Content: View>: View {
         fatalError("action primitive container bodies are unreachable")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(
             content: content,
             payload: TraversalActionContainerPayload(action: action)
@@ -1042,16 +1177,21 @@ private struct TraversalActionContainerPayload: _GiftUISemanticActionPayload {
 }
 
 private struct TraversalModifier<Content: View>: View, _GiftUISemanticModifierPayload {
+    typealias Domain = Content.Domain
+    typealias Body = EmptyView<Domain>
+
     let content: Content
     let marker: UInt8
 
-    var body: Never {
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Body {
         fatalError("modifier bodies are unreachable")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: self)
     }
 }

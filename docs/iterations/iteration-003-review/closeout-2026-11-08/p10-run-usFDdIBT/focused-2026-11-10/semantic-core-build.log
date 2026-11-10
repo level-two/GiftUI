@@ -1,0 +1,7 @@
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift build --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/p10-focused/semantic-scratch --cache-path /Users/eugene/work/GiftUI/.build --target GiftUISemanticCoreTests --disable-sandbox --skip-update
+Building for debugging...
+[Using on-disk description]
+Build complete! (0,47 с)
+warning: '--skip-update' option is deprecated and will be removed in a future release
+warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.

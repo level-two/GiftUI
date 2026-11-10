@@ -43,6 +43,9 @@ struct GeneratedStaticCanvasCaptureStorage: Equatable, Sendable {
 }
 
 struct GeneratedStaticCanvasCallableTable: StaticCanvasCallableTable {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias CaptureStorage = GeneratedStaticCanvasCaptureStorage
+
     let callableCaseCount: UInt16 = 3
 
     func captureByteCount(for id: UInt16) -> UInt16? {
@@ -58,7 +61,8 @@ struct GeneratedStaticCanvasCallableTable: StaticCanvasCallableTable {
         id: UInt16,
         captures: borrowing GeneratedStaticCanvasCaptureStorage,
         context: inout GraphicsContext,
-        size: Size
+        size: Size,
+        read: borrowing _GiftUIFrameRead<Domain>
     ) throws(DrawingError) {
         switch id {
         case 1:

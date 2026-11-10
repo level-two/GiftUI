@@ -8,6 +8,14 @@ serialized checks and exited 1: 24 passed and 59 failed. The aggregate result
 does not prove any of the 189 owner-plan rows. Failure destinations remain split
 by actual cause; I4 transfers do not waive the P10 gate.
 
+**Approved bounded dispositions — 2026-11-10.** Eugene approved the exact
+SPEC-006 package-SPI clarification and transfer of only the named
+`DynamicRuntimeProfileBinding` compatibility path and its lifecycle/differential
+tests to I4-07. These dispositions do not alter the archived 24/59 result or
+turn any failed execution into a pass. The named transfer remains unmet and
+I4 reuse remains blocked until replacement, validation, and independent review.
+Other shared Dynamic storage and compile obligations remain in I3.
+
 ## Run identity and retained receipt
 
 - Run: `run-usFDdIBT`, recorded revision `c7c7da31c245b7a5afb68ee64d5f57bf2cab12a7`.
@@ -96,7 +104,13 @@ An early-exit profile check does not establish failure of every criterion in
 its Spec. Existing P10 dispositions remain UNMET until required evidence is
 produced.
 
-### Smallest coherent follow-up batches and closure recommendation
+### Historical smallest follow-up batches and closure recommendation
+
+This recommendation predates the 2026-11-10 maintainer approvals recorded
+later in this packet. Its SPEC-006 decision request and named
+`DynamicRuntimeProfileBinding` transfer request are superseded by those exact
+approvals. The retained compilation, validation, P10, P08, and overall closure
+gates below remain in force.
 
 1. **Unblock compilation before drawing product conclusions.** Resolve the
    shared target-compatibility diagnostics, then separate the Signal Analyzer
@@ -107,7 +121,9 @@ produced.
    rows now have focused evidence of stale checker assumptions, not a
    demonstrated source defect. The archived SPEC-006 fragment failures also
    reflect stale checker locations, but the separate current package-surface
-   mismatch is a normative contract issue awaiting maintainer disposition.
+   mismatch was a normative contract issue awaiting maintainer disposition at
+   the time; its bounded clarification was approved and validated later in
+   this packet.
    SPEC-003/004 fixtures now reflect the permitted current composition and
    their exact dependency checks pass. Current SPEC-004 four-profile runs and
    SPEC-003 Pi/nRF runs pass; the SPEC-003 macOS test build remains blocked at
@@ -149,21 +165,26 @@ follows I4-AC-013; affected I4 reuse remains blocked by S1–S3 until resolved o
 replaced with validated, independently reviewed evidence. Other shared
 failures remain I3 obligations.
 
-The maintainer decision is whether to fund the listed shared/validation repair
-batches under accepted contracts. Keeping those contracts requires the exact
-mismatches to be resolved and affected validation rerun; changing one requires
-the existing Specification/RFC approval process and still does not change this
-archived run. P11/P12, independent overall freeze acceptance, final
-accounting/handoff, and human iteration-3 closure remain separate gates. `R1`
-compiler allocation-effect failure remains explicit; the reviewed Native
-Static no-heap conclusion applies only to its exact image and predicates.
+At the time of this report, the maintainer decision was whether to fund the
+listed shared/validation repair batches under accepted contracts. The
+subsequent SPEC-006 and named I4-07 approvals authorize only their bounded
+changes and do not satisfy the other P10 batches. P11/P12, independent overall
+freeze acceptance, final accounting/handoff, and human iteration-3 closure
+remain separate gates. `R1` compiler allocation-effect failure remains
+explicit; the reviewed Native Static no-heap conclusion applies only to its
+exact image and predicates.
 
-## Post-run focused checks
+## Historical pre-approval focused checks
+
+This section records the pre-approval SPEC-006 finding. Its failing checker,
+decision-required language, and “no edits” status are historical and are
+superseded by the approval and post-approval implementation receipt later in
+this file. The archived 83-check result remains unchanged.
 
 ### SPEC-006 package-surface follow-up
 
 The archived 83-check run remains unchanged at 24 passes and 59 failures. A
-separate current-tree run of
+separate pre-approval current-tree run of
 `ruby scripts/contracts/check-spec-006-dependency-surface.rb` fails its exact
 package-declaration comparison within `GiftUISemanticCore.swift`; this is not
 an additional archived execution or a module-wide package declaration count.
@@ -177,12 +198,11 @@ The approved RFC-014 amendment requires checked scoped body access and routes
 binding/access failures through the SPEC-010 bridge, but does not name the
 current bridge declarations ([SPEC-006 RFC-014 section](../../../../specs/spec-006-declarative-view-semantics.md#rfc-014-runtime-amendment)). `SemanticBodyEvaluation` is used by the cross-target `GiftUIObservableState.ObservableSemanticBodyBinding` ([source](../../../../../Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift)). `SemanticExpansionAttempt` and `SemanticExpansionTraversalOperations` feed package-level `SemanticRecordTraversalRealization` ([source](../../../../../Sources/GiftUISemanticCore/SemanticRecordExpansion.swift)) and the named P08 `CounterSemanticTraversal` fixture ([source](../../../../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift)); this is fixture instrumentation, not evidence of a second traversal algorithm. The derived comparison scans only `GiftUISemanticCore.swift` ([checker](../../../../../scripts/contracts/check-spec-006-dependency-surface.rb), [allowlist](../../../../../Tests/ContractFixtures/SPEC006/semantic-surface-allowlist.tsv)); the package `SemanticRecordStore.expand` overloads are elsewhere and need separate T6.3 classification. `SemanticStateBindingOutcome` is listed but absent. `expandSemanticTree` is also absent from `Sources/`, but nine current test files still call it, so the tests require an approved adapter or migration. P08 remains FROZEN / UNMET; this note does not change its fixture, accepted SPEC-006/010 text, or the allowlist.
 
-**Decision required:** the exact package-surface rule is normative in accepted
-SPEC-006, so this is not safely resolved by changing only the derived checker
-or allowlist. The current recommendation and candidate wording are retained in
+**Pre-approval disposition:** the exact package-surface rule was normative in
+accepted SPEC-006, so this was not safely resolved by changing only the derived checker
+or allowlist. The historical recommendation and candidate wording are retained in
 the [SPEC-006 package-surface decision packet](spec-006-package-surface-decision.md).
-Independent read-only review confirms a maintainer decision is needed if the
-current API shape is retained. It also corrected the caller map: the
+The pre-approval read-only review corrected the caller map: the
 Roles/Codec/Binding `SemanticRecordStore.expand` overload is used by SPEC-006,
 SPEC-007, and SPEC-012 fixtures; the supplied-Traversal overload is used by
 SPEC-015 Counter fixtures; neither has production `Sources/` callers. The
@@ -190,10 +210,11 @@ production `SemanticBodyEvaluation` consumer is `GiftUIObservableState`; the
 production stateful expansion call in `SignalAnalyzerTargetHost` remains
 within the existing I4 analyzer transfer. Four record-expansion package
 helpers also require explicit classification in a complete target-wide
-allowlist. The packet recommends a narrow Spec clarification only if retaining
-the present API shape, and otherwise a strict implementation refactor. No Spec,
-source, or allowlist edits were made. This issue does not block other retained
-P10 checks.
+allowlist. The packet recommended a narrow Spec clarification only if retaining
+the present API shape, and otherwise a strict implementation refactor. At that
+time, no Spec, source, or allowlist edits had been made. The bounded
+clarification and implementation were approved later on 2026-11-10, as
+recorded below. This historical issue did not block other retained P10 checks.
 
 - `scripts/format-swift.sh --lint`, changed shell syntax checks, and
   `git diff --check` passed before the final P10 run.
@@ -608,3 +629,304 @@ change. The nRF input set additionally binds the corrected
 nRF check reports zero RAM delta, 28,832 bytes flash delta, and 716 bytes
 maximum stack for the qualified resource path. These focused SPEC-005 passes
 do not satisfy other P10 rows or change P08's FROZEN / UNMET state.
+
+## Approved disposition and implementation packet — SPEC-006 surface and SPEC-013 Dynamic binding
+
+The two bounded changes were approved by Eugene on 2026-11-10, with the exact
+approval wording recorded in
+[`spec-006-package-surface-decision.md`](spec-006-package-surface-decision.md).
+Their implementation changes derived checks and named test call paths but do
+not change the archived P10 result (24 pass / 59 failed). P08 remains FROZEN /
+UNMET; the supplied-Traversal P08 route and S1–S3 restricted-reuse condition
+remain in force.
+
+### Choice A — SPEC-006 package surface
+
+**Approved scope:** clarify that the requirement is one shared bounded
+traversal engine with the exact audited typed adapters described below. The
+accepted clause records this approval. A checker-only edit remains
+insufficient; the full interface/member inventory, delegation checks, and
+caller classification must pass.
+
+The bounded compiled inventory was generated with pinned Swift 6.4.0
+(`79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`),
+`arm64-apple-macosx26.0`, and SDK 26.5, once for each Dynamic/Static profile
+define. The two package interfaces are byte-identical (SHA-256
+`210fba09a4c627ea2c16552aa6ceb50ed72d8981fbb335e63a25135c0fa4469d`): 51
+top-level package declarations and 533 source/test/fixture reference rows.
+The compiled declaration index is
+[`spec006-compiled-package-top-level.tsv`](spec006-compiled-package-top-level.tsv);
+the reference map is
+[`spec006-compiled-package-reference-map.tsv`](spec006-compiled-package-reference-map.tsv).
+Full interfaces, exact expansion signatures, compiler log, input hashes,
+and reproduction parameters are in
+[`spec006-spi-inventory-2026-11-10.tar.gz`](spec006-spi-inventory-2026-11-10.tar.gz),
+whose SHA-256 is `7540cf3a2ea0ede761935eb14b65b347b6aba5e18d536ffbdb0a4fac1c8150e8`;
+the inventory manifest SHA-256 is
+`7cc1e3c773cd207da5797cc975fa6bc14a944fd458d539dd280c52a409977099`.
+The interface command emitted a library-evolution warning because it did not
+use `-enable-library-evolution`; this is an exact package declaration snapshot,
+not a stable library ABI claim. The reference map counts textual references;
+production roots and fixture invocations are separately classified in the
+linked SPEC-006 decision packet.
+
+The approved amendment preserves one traversal engine, all bounds,
+identity/order/failure semantics, transaction behavior, bind-before-body
+ordering, backend independence, no-allocation requirements, and failure
+routing. It permits only the enumerated declarations in the compiled
+inventory: the state-bound expansion/result bridge; typed record-store
+adapters and scoped constructors; and their named layout/render/record,
+recording, runtime-identity, bank, and payload package contracts. No
+unlisted package declaration is permitted by wildcard. The
+`SemanticRecordStore.expand` Roles/Codec/Binding adapter has SPEC-006/007/012/013
+fixture callers and no production caller. Its supplied-`Traversal` sibling
+has SPEC-015 Counter fixture callers, also no production caller; that P08 path
+is not generally authorized and retains the S1–S3 restriction.
+
+The absent `expandSemanticTree` spelling is called by nine test files. The
+approved migration uses the existing `expandSemanticTreeWithStateBinding`
+with a test-only empty-domain binding for stateless cases and the existing
+Observable State binding for tests exercising state. All success, limit,
+first-excess, ordering, failure, reentrancy, and recording assertions remain.
+The derived checker compares the complete target package interface, including
+nested package members, to the exact archived snapshot and rejects unlisted
+declarations or members. Its source and compiled-interface checks pass. The
+nine test files have been migrated. The Semantic Core and Drawing test targets
+build and their focused tests pass; the Dynamic target remains blocked by the
+separately transferred compatibility binding, so that target's assertions
+have not run.
+
+The alternative is the strict refactor: remove extra package entry routes,
+move fixture-only adapters out of production SPI, migrate tests to the single
+accepted entry, and preserve typed failure and record-fixture semantics. This
+is not a checker-only repair. The full candidate wording and exact interfaces
+are in the linked SPEC-006 packet. The compiler-generated snapshot resolves
+the earlier inventory gap, but it does not itself amend the Specification.
+
+### Choice B — `DynamicRuntimeProfileBinding` compatibility route
+
+**Approved disposition:** Eugene approved transfer of only this named
+compatibility binding and its binding-specific tests to SPEC-013 T3.5 / I4-07,
+with reuse blocked until the route is replaced or adapted, validated, and
+independently reviewed. The current compile failure remains failed evidence,
+not a pass. Keep the general bounded `DynamicCanvasCallableStorage` contract
+and its storage/invocation tests in I3.
+
+Current-source inventory finds no production constructor or caller of
+`DynamicRuntimeProfileBinding`; only
+`DynamicRuntimeExecutionBindingAdapter` and tests reference it. The retained
+focused compile diagnostic is in
+[focused compile diagnostic](dynamic-profile-binding-focused-compile.log)
+(its durable copy is in the focused diagnostics archive above): it instantiates
+`DynamicCanvasCallableStorage<DynamicStructuralIdentity>` with one type
+argument although the current generic requires a `Table`, and calls removed
+`stage` / direct `invoke` / `release` APIs. This is a compile prerequisite
+failure, not a failed runtime assertion.
+
+The approved transfer covers the binding-specific assertions in
+`DynamicProfileBoundaryTests.swift`:
+`dynamicBindingUsesCommonLifecycleAndOwnsAttemptCleanup` (shared lifecycle,
+reentrancy refusal, reservation, Canvas staging, attempt reset and release
+counts) and `dynamicBindingDefersActiveQuiescenceThenTearsDownOnce` (deferred
+quiescence, terminal teardown and idempotence). It also covers the Dynamic
+binding side of `ProfileDifferentialTests.swift`'s
+`dynamicAndStaticBindingsProduceEqualCanonicalTranscripts` and
+`dynamicAndStaticExecutionCoordinatorsUseTheCommonProtocolSeams`; those
+cross-profile assertions must be retained through an adapted replacement,
+not dropped. Relevant implementation/evidence references are SPEC-013 T3.5,
+RP-001, RP-004, RP-005, RP-011 and RP-012, and
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-profile-binding.md`.
+The RP criteria themselves are not waived; any affected I4 reuse remains
+blocked until equivalent evidence is accepted.
+
+The approved transfer is limited to the named binding API and its
+compile-dependent tests, because it has no current production caller. It does
+not transfer `DynamicSemanticHostStorage` table/domain/read propagation
+(analyzer-specific work already assigned to I4), generic Dynamic Canvas
+storage, unrelated runtime/shared compile failures, or broad SPEC-013 profile
+conformance. The remaining I3 obligations include generic Dynamic Canvas
+storage and its bounded-order, exact-invocation, and reject-after-release
+tests, unrelated shared compilation, and broad SPEC-013 profile conformance.
+The transferred binding lifecycle and differential assertions remain I4
+obligations.
+
+**Approved outcomes:** the exact SPEC-006 clarification and bounded
+migration/check delta are approved. The named Dynamic compatibility route is
+transferred to I4-07 with affected reuse blocked. Neither changes P08 status,
+S1–S3, the analyzer migration boundary, archived counts, or the requirement
+for independent validation.
+
+## Historical approval proposal (superseded by the approved outcomes above)
+
+The following proposal text is retained to show the decision basis. Its
+requested-choice and proposed-implementation wording is historical; the
+approved outcomes and current focused status above and below control.
+
+### SPEC-006 approved package SPI clarification
+
+The current accepted SPEC-006 §“Bounded expansion” requires the expansion entry
+to be the sole generic package operation over `Root`, workspace, and sink.
+RFC-014 does not relax that rule. The completed Dynamic/Static compiler
+interface snapshot removes the earlier incomplete-inventory caveat: 51
+top-level package declarations (the two `withSemanticRecordStore` overloads
+are separate rows) are indexed in
+[`spec006-compiled-package-top-level.tsv`](spec006-compiled-package-top-level.tsv),
+and 533 source/test/fixture text-reference rows are classified in
+[`spec006-compiled-package-reference-map.tsv`](spec006-compiled-package-reference-map.tsv).
+The source map is reference evidence, not a substitute for its caller-kind
+classification. Full signatures, exact engine operations, compiler command,
+all input/output hashes, and the compiler warning are in the linked inventory
+archive and manifest above.
+
+The approved clarification preserves one engine and unchanged semantic
+behavior, but permits the exact enumerated current SPI categories: the
+state-bound expansion entry/result; the typed record realization adapters and
+scoped store construction; and supporting expansion, recording,
+layout/render, record identity/bank/payload contracts needed across package
+targets. The 51-row TSV is a top-level navigation index, not a complete member allowlist. The exact candidate set is the complete compiled interface snapshot, including nested package members; the derived checker must compare all declarations and members against a normalized inventory of that full snapshot, with no prefix or wildcard allowance. The only direct production invocation of
+`expandSemanticTreeWithStateBinding` in `Sources/` is the analyzer-specific I4
+pipeline; the state-binding implementation is supplied by
+`GiftUIObservableState.ObservableSemanticBodyBinding`. Both
+`SemanticRecordStore.expand` overloads have fixture callers only. The supplied-Traversal overload remains under the
+P08/S1–S3 restricted-reuse boundary and gains no general authorization.
+
+The migration covers the nine files that called the absent
+`expandSemanticTree`: `SemanticDeclarationCorpusTests`,
+`SemanticExpansionAttemptTests`, `SemanticExpansionTraversalTests`,
+`SemanticExpansionValueTests`, `SemanticLayoutResultAdapterTests`,
+`SemanticRecordingSinkTests`, `SemanticReentrancyTests`,
+`DynamicSemanticHostStorageTests`, and `CanvasInvocationAdapterTests`. Stateless
+cases use a test-only empty-domain `SemanticStatefulBinding` through the
+existing entry; stateful cases retain the Observable State binding. The
+success, bounds, ordering, failure, reentrancy, and recording assertions stay
+intact. Focused compile and test results are recorded below; the archived
+P10 execution remains unchanged.
+
+The approved Spec clarification and exact declaration inventory/check/test
+delta are recorded in the Spec and implementation plan. The exact Spec text
+and authority analysis are in
+[`spec-006-package-surface-decision.md`](spec-006-package-surface-decision.md).
+
+### SPEC-013 `DynamicRuntimeProfileBinding` bounded I4-07 transfer
+
+Current source has no production constructor or caller of
+`DynamicRuntimeProfileBinding`; its only adapter is
+`DynamicRuntimeExecutionBindingAdapter`, also used only by the named tests.
+The retained Swift 6.4 macOS 26 focused diagnostic
+([log](dynamic-profile-binding-focused-compile.log), SHA-256
+`b6c5ce2d695f89a8e51cc8351f81812d5dc280f9c0b08656b6877a1530b78a59`)
+shows this binding still specializes `DynamicCanvasCallableStorage` with one
+type argument where the accepted typed storage requires two, and calls removed
+stage/direct-invoke/release operations. The adapter has associated escaping
+lifetime diagnostics. This is a compile prerequisite failure; no runtime
+assertion ran. Separately, `DynamicSemanticHostStorage` has a typed table/domain
+integration gap already assigned to I4-07; it is not included in this
+transfer.
+
+**Approved disposition:** Eugene explicitly transferred only this
+compatibility binding, `DynamicRuntimeExecutionBindingAdapter`, and its named
+test obligations under SPEC-013 T3.5 / I4-07 on 2026-11-10. Affected I4 reuse
+remains blocked until the route is replaced or adapted, validated, and
+independently reviewed. This exact approval resolves transfer authority for
+this named route only; generic Dynamic Canvas storage and unrelated shared
+compile failures remain I3 obligations. No SPEC-013 criterion is waived and
+the compile failure is not a pass.
+
+Affected code and assertions are:
+
+- `DynamicProfileBoundaryTests.dynamicBindingUsesCommonLifecycleAndOwnsAttemptCleanup`:
+  profile/audit identity, opportunity exclusivity, reservation, Canvas stage,
+  attempt cleanup and release counters.
+- `DynamicProfileBoundaryTests.dynamicBindingDefersActiveQuiescenceThenTearsDownOnce`:
+  deferred quiescence, refusal, terminal teardown, and idempotence.
+- The Dynamic side of `ProfileDifferentialTests.dynamicAndStaticBindingsProduceEqualCanonicalTranscripts`
+  and `dynamicAndStaticExecutionCoordinatorsUseTheCommonProtocolSeams`; preserve
+  the cross-profile comparison using a reviewed replacement rather than
+  deleting its assertions.
+
+This route touches implementation task T3.5 and evidence/criteria RP-001,
+RP-004, RP-005, RP-011, and RP-012. The criteria remain outstanding until
+replacement evidence is accepted. The general bounded
+`DynamicCanvasCallableStorage` contract, its direct bounded-order/invocation/
+release tests, other shared compile failures, the analyzer-specific
+`DynamicSemanticHostStorage` propagation, and all unrelated Dynamic profile
+conformance stay in I3 or their already-authorized owner. This candidate cannot
+transfer a new shared regression under the current RFC-015 disposition unless
+the maintainer explicitly resolves that classification. It is not a transfer
+of generic Dynamic Canvas storage.
+
+**Alternative:** retain this compatibility route in I3 and adapt it to the
+current typed-table and scoped lifetime contract, preserving every listed
+lifecycle and differential assertion. Because the current scoped `withLifetime`
+API does not match the binding's separated stage/invoke operations, the
+alternative needs an explicit lifetime-safe replacement design; do not add a
+dummy table argument or weaken the assertions.
+
+### Historical pre-approval choice and consequences
+
+This was the combined decision request before approval and is retained as
+historical context. On 2026-11-10, the maintainer approved the bounded SPEC-006
+clarification and the exact `DynamicRuntimeProfileBinding` I4-07 transfer
+recorded above. That approval does not alter the archived P10 receipt, waive
+other shared regressions, or establish a current full-gate pass. P08 remains
+FROZEN / UNMET, S1–S3 reuse remains restricted, and overall iteration-3
+closure remains a separate decision.
+
+## Focused post-approval validation — 2026-11-10
+
+These current focused results do not replace or edit the archived 83-check run.
+
+- The changed Semantic Core test target builds with pinned Apple Swift 6.4
+  (`arm64-apple-macosx26.0`, SDK 26.5) on macOS 26.6.2. It passed 58 XCTest
+  cases and 15 Swift Testing cases. This includes the restored stateful test
+  that binds seeds 3 and 5, reads both through `FrameRead`, and confirms
+  bind-before-body, plus the `Body == Never` pre-evaluation guard. The
+  stateful `Body == Never` branch has the same guard in source but is not
+  independently runtime-tested. Logs:
+  [`semantic-core-build.log`](focused-2026-11-10/semantic-core-build.log),
+  [`semantic-core-tests.log`](focused-2026-11-10/semantic-core-tests.log).
+- The changed Drawing test target builds and passes 43 Swift Testing cases,
+  including static Canvas table dispatch, ordering, and failure behavior.
+  Logs: [`drawing-tests-build.log`](focused-2026-11-10/drawing-tests-build.log),
+  [`drawing-tests.log`](focused-2026-11-10/drawing-tests.log).
+- The focused `GiftUIRuntimeDynamicTests` target build still fails at
+  `DynamicRuntimeProfileBinding`, which supplies one generic argument to
+  `DynamicCanvasCallableStorage` where the current API requires two. This is
+  the exact named I4-07 transfer; no Dynamic test assertion ran. Log:
+  [`dynamic-runtime-tests-build.log`](focused-2026-11-10/dynamic-runtime-tests-build.log).
+- A filtered package test did not reach execution because compilation stops in
+  `SignalAnalyzerView.swift` at the analyzer-specific schema inference and View
+  conformance errors. This remains with the approved I4 analyzer migration;
+  it does not transfer shared Semantic Core or make the run a pass. Log:
+  [`aggregate-semantic-filter.log`](focused-2026-11-10/aggregate-semantic-filter.log).
+- The SPEC-006 source and exact compiled-interface checks pass. The compiled
+  check compares the complete pinned Dynamic/Static Semantic Core package
+  interface and current GiftUI interface; 21 added exact underscored references
+  (32 total) are reviewed against their current owners/uses. The SPEC-012 static Canvas
+  manifest check passes: three generated cases, four occurrence records, and
+  14 negative build-time rejections.
+- Strict Swift 6.4 formatting/lint on changed maintained Swift files and
+  `git diff --check` pass. These results are against the current dirty working
+  tree. They are not a fresh all-hardware-free gate or profile conformance
+  receipt. The archived 24 pass / 59 failed counts remain unchanged.
+- Short governance validation passes: `build-authority-graph.rb --check`
+  reports 221 nodes / 2,128 edges. The SPEC-006 compiled check output and
+  normalized report, SPEC-006 source-check log, SPEC-012 check log, formatting
+  log, and authority-graph log are retained beside the focused test logs.
+
+Focused logs and check receipts are retained with these SHA-256 identities:
+
+| Log | SHA-256 |
+| --- | --- |
+| `aggregate-semantic-filter.log` | `50069e69ea15f5da7ba66e0b2104e46d18beafadcc1809fff5126efb189d16ae` |
+| `drawing-tests-build.log` | `c09e788d6976c4cc3584be9aa733bed19fa6229f9de8b1c7efbf75947daa7a70` |
+| `drawing-tests.log` | `a279a036c4cda7f5a4ce15a34cec71e470061c5a96d96f66a0be89d751d64994` |
+| `dynamic-runtime-tests-build.log` | `374af651e5ef85db2ef875ba1782a59b43b8997e312060ec253be4a7eb886447` |
+| `semantic-core-build.log` | `3c59ddbf8159647bc6032cad51ccec61903018559d0c762f4ece4c5e5fe88602` |
+| `semantic-core-tests.log` | `f4dec32ee24ed8707b3f8328e5ed4b25cb31144647e6d4fe65375f6d32dda9aa` |
+| `spec006-compiled-check.log` | `0a54744385c5dc8501d5ded0e2f02b0087f15c6a6f3f63f7329f68e7ef849d8c` |
+| `spec006-compiled-report.tsv` | `b254e88e545e0de0b2d37e81577699bc530976b256510af3f8dc2fe52d035c35` |
+| `spec006-source-check.log` | `2faf9d64f224587378874e1d95e9fa90c79d03c3e4050e2bef131c9ea70b00f4` |
+| `spec012-check.log` | `deb945bf798b14a63d5aa3f68a647163787e69b17ff944403fa6355f77149c62` |
+| `authority-graph-check.log` | `cceffe9b638f74af9c355aaa567f672b720d1574f9a491619e95cec35db07945` |
+| `format-lint.log` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |

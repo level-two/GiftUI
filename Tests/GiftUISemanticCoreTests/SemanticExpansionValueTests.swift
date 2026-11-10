@@ -63,7 +63,7 @@ final class SemanticExpansionValueTests: XCTestCase {
         var workspace = EntryProbeWorkspace(isExpanding: true)
         var sink = EntryProbeSink()
 
-        let result = expandSemanticTree(
+        let result = expandStatelessSemanticTreeForTesting(
             EntryProbeView(),
             limits: limits,
             workspace: &workspace,
@@ -93,7 +93,12 @@ final class SemanticExpansionValueTests: XCTestCase {
 private struct EntryProbeIdentity: Equatable {}
 
 private struct EntryProbeView: View {
-    var body: Never {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(
+        read: borrowing _GiftUIFrameRead<Domain>
+    ) throws(_GiftUIAccessFailure) -> Never {
         fatalError("entry probe body is not part of T2.1")
     }
 }
