@@ -150,37 +150,48 @@ and [P10 run receipt](../closeout-2026-11-08/p10-run-usFDdIBT/p10-run.md).
    stays blocked until resolution or replacement plus validation and independent
    review. No safety PASS or Spec completion follows. Other shared failures are
    outside this disposition.
-2. **P10 integrated validation/dispositions remain unmet.** The required gate
-   completed as `run-usFDdIBT` with 24 passes and 59 failures. See the current
-   receipt and retained log archive linked above. The run was on a dirty worktree
-   and its outer metadata does not pin a complete source manifest; treat it as
-   diagnostic failure evidence, not a clean-tree conformance result. The 180
-   owner rows are updated to remain UNMET; classify retained shared failures
-   separately from approved analyzer/composition transfers. Historical Unit
-   FAILED and Interaction UNEXECUTED are not superseded by this failed run. The
-   four Counter collections do not substitute for P10. Do not claim a full-suite
-   PASS from focused evidence.
-3. **Independent acceptance of the overall freeze assessment is pending.** The
-   Pi handoff has independent acceptance and the Native result has scoped independent
-   acceptance. Neither reviews this iteration-wide classification, input inventory,
-   nine-row mapping and closure list. Reuse those reviews; require only the missing
-   bounded overall review, not another semantic proof campaign.
-4. **Retained P11/P12/ME-09 closeout packet is not yet complete.** The current audit
-   supplies input identities and identifies reusable collections. Reconcile the
-   retained accounting/oracle facts and owner conformance reports into one final
-   source/artifact/criterion handoff with T1–T5 destinations. Record actual removals
-   or justified no-removal disposition; keep uncertified counter/analyzer baseline
-   inputs. Do not claim the current dirty workspace is an adopted certified image.
-   Transferred fit/target certification is not part of this closure blocker.
+2. **P10 integrated validation/dispositions remain unmet.** The latest gate
+   completed as `run-v8GRC8xq` with 55 passes and 28 failures. Its exact receipt
+   and retained log archive are linked in the current closeout handoff. The run
+   was on a dirty worktree and its metadata does not pin a complete source
+   manifest; treat it as diagnostic failure evidence, not a clean-tree
+   conformance result. The 180 owner rows remain UNMET; the nine additional SO
+   rows retain their separate restricted-use dispositions. Failures group as
+   20 Signal Analyzer compilation/workload prerequisites, two mixed SPEC-014
+   nested profile failures, four incomplete SPEC-007 conformance/lifecycle
+   rows, and two Pi sandbox/cache rows. The nested SPEC-014 reports include
+   SemanticRecord lifetime diagnostics under Xcode Swift 6.3.3 and do not hash
+   the diagnosed source file; they do not establish a defect under the outer
+   approved Swift 6.4 compiler. Analyzer implementation transfer is limited to
+   analyzer-specific work; it waives no P10 execution or shared criterion.
+   Separate focused SPEC-005/006 Pi passes do not alter integrated failures.
+   Historical Unit FAILED and Interaction UNEXECUTED are not superseded by this
+   run. The four Counter collections do
+   not substitute for P10. Do not claim a full-suite PASS from focused evidence.
+3. **The current bounded overall review is complete.** The [independent review](../closeout-2026-11-08/independent-review.md)
+   accepts the accuracy of the current closeout classification and binds this
+   assessment's hash. Its acceptance is limited to evidence/status reconciliation;
+   it does not accept P08, establish conformance, or close iteration 3. No new
+   semantic proof campaign is implied.
+4. **The retained P11/P12/ME-09 handoff is consolidated, but its gates remain
+   incomplete.** The current closeout packet records input identities, retained
+   accounting limits, owner criterion dispositions, T1–T5 destinations and
+   justified no-removal/no-cutover. P11's complete criterion-linked accounting
+   and conformance evidence is still absent; P12 adoption remains blocked.
+   The current bounded independent review is recorded in
+   [independent-review.md](../closeout-2026-11-08/independent-review.md); it is
+   not P11 conformance or adoption approval. Do not claim the dirty workspace is
+   an adopted certified image. Transferred fit/target certification is not an
+   iteration-3 closure blocker.
 5. **Human iteration-3 closure decision remains absent.** Both scope and Spec
    transitions stay unchanged. Request closure only after the retained gates above
    have evidence or exact explicit applicable dispositions. Full P08 PASS, Pi target
    availability, old-image stack completion, external-counter host extraction and
    analyzer migration are not additional iteration-3 entry/closure requirements.
 
-This bounded shared-safety assessment used retained evidence only. A subsequent
-P10 run and focused validation updates are recorded in the closeout handoff; they
-do not change the shared-safety findings above. The separately open iteration-3
+This bounded shared-safety assessment used retained evidence only. Current P10
+and focused validation updates are recorded in the closeout handoff; they do
+not change the shared-safety findings above. The separately open iteration-3
 work is disposition of retained P10 failures, overall review and handoff closeout
 with explicit S1–S3 restrictions. Affected shared-safety resolution is a gate to
 dependent iteration-4 reuse; not resumption of P08 certification. This assessment

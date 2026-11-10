@@ -1,4 +1,80 @@
-# Independent review — bounded freeze handoff
+# Independent review — current closeout packet
+
+Reviewed 2026-11-10. I accept the current closeout packet as an accurate
+bounded reconciliation of retained P10 executions, criterion dispositions,
+P11/P12 scope, and the P08/I4/restricted-use boundaries. This is an acceptance
+of the packet's accuracy only. It does not accept P08, establish conformance,
+authorize adoption, close iteration 3, or substitute for the separate human
+closure decision.
+
+## Current reviewed identities
+
+- Closeout README SHA-256: `a036c753faecf368b71744522975dd4a798cd16880844ec53c4d3dda68d580e5`
+- P10 receipt `p10-run.md` SHA-256: `0671e0d92c83671bcff78c06e9114f3fc379ecd9e2c56f69fb1db9878c97cd35`
+- Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825`
+- CSV generator SHA-256: `172071b6913c179d1dc2ae457497320c2c438b3c61e9ba9ec49cb15db0871854`
+- P08 assessment SHA-256: `566300e9e084823a0ac639b618e1a65a20676af20b171d62617ffa526eda359d`
+- Current P10 `run-v8GRC8xq` metadata SHA-256: `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`
+- Current P10 `results.tsv` SHA-256: `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`
+- Current P10 child-report ledger SHA-256: `e28cc7a7cf09f2cfe64c59642b309625589459fb1e4d4dcecf13d1da02945565`
+- Current P10 raw log archive SHA-256: `94d3974f9ab9e5a13da3efa10a1ff295f816296c27caaeb21c2b73c48b2541b6`
+
+## Current P10 reconciliation and criterion status
+
+The latest integrated all-hardware-free run completed all 83 serialized
+checks and remains FAILED / UNMET: 55 passed and 28 failed. The closeout's
+four disjoint failure groups sum to 28: 20 analyzer/workload prerequisite
+executions, two mixed SPEC-014 nested macOS prerequisite executions, four
+SPEC-007 lifecycle executions, and two Pi invocation/cache executions. These
+are failed executions; they are not represented as 28 independent criterion
+failures, and none promotes an owner criterion to PASS.
+
+The two nested SPEC-014 reports are correctly kept separate from the 20
+Signal Analyzer/workload cases. Their retained metadata selects Xcode Swift
+6.3.3 rather than the enclosing run's project-local Swift 6.4.0, and their
+source input lists omit `SemanticRecordExpansion.swift`. Both are dirty,
+blocked reports; their logs contain analyzer diagnostics and a Swift 6.3.3
+lifetime diagnostic, but that source-unbound nested diagnostic is not evidence
+of a defect under the approved Swift 6.4.0 baseline. The dynamic and static
+nested input-list SHA-256 is
+`c039585c94242dcbb2437b34ea9b400e77f1569c0fa2ff33a300f5abca08835d`; the
+retained metadata SHA-256 values are
+`a177017dcb38921830afcd4e24d0ae5cdfeb2dc35e1a6416ea6bf3963cf28d6a` and
+`451d218f365745f7ef979ec6d44c328447ad3d108be3cc8740d80be65181be36`; the
+run-log SHA-256 values are
+`74bca3cf121bad2895c6bebedc8c1a1ba82d3f722f482e9280feca8989d6a75b` and
+`f99779cddaf8f768f7f6468b86c0da92ce79252b5080b7335b1afd98c7fad4dd`. The
+report does not waive either failed execution or transfer a whole row.
+
+The criterion index contains 189 unique rows: 180 P10 owner rows, all UNMET,
+and nine P08 scoped-ownership rows preserving their separately approved
+classification. P11 is explicitly unmet at the overall-gate level; P12 records
+no removal or cutover. The index is a disposition record, not proof that each
+criterion failed or passed.
+
+## Freeze, transfer, and closure boundaries
+
+The packet keeps P08 FROZEN / UNMET. It preserves the S1–S3 affected-use block:
+those gaps may remain explicitly unmet under the approved I3 closeout rule,
+but affected I4 reuse stays blocked until resolved or replaced, validated, and
+independently reviewed. Analyzer-specific work remains within the existing I4
+allocation; counter-composition certification remains assigned to
+I4-AC-013. Neither transfer waives other shared I3 obligations. The scoped
+Native Static no-heap result remains limited to its reviewed image and stated
+predicates. P11 accounting and target evidence remain incomplete; P12 remains
+no-removal/no-cutover. The packet does not claim overall P10 acceptance, P08
+completion, Spec completion, adoption, or iteration closure. The separate
+human iteration-3 closure decision remains required.
+
+## Superseded historical review — 2026-11-08
+
+The review below is retained for history. Its identities predate the current
+v8 receipt and regenerated criterion index; the current review above binds the
+updated packet.
+
+---
+
+### Earlier bounded freeze handoff review
 
 Reviewed 2026-11-08. I accept the overall freeze assessment and closeout
 handoff as an accurate bounded evidence/status classification. This does not

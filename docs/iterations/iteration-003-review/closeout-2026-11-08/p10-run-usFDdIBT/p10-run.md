@@ -1069,11 +1069,54 @@ global toolchain selection changed.
 
 The 28 failed executions group as follows:
 
-| Root cause | Failed executions | Disposition |
+| Root cause | Failed executions | Criterion and authority disposition |
 | --- | ---: | --- |
-| Signal Analyzer presentation/workload prerequisite | 22: `root-tests`, SPEC-001 in four profiles, SPEC-003 diagnostic-buffer and macOS Dynamic/Static, SPEC-011 in four profiles, the SPEC-013 macOS-static prerequisite and macOS Static/Pi/nRF workload reports, SPEC-014 macOS Dynamic/Static, and SPEC-015 in four profiles | Current logs show `SignalAnalyzerView.swift` schema inference and `View` conformance errors; the SPEC-013 profile prerequisite is `signal-analyzer-workload`. Only analyzer-specific implementation work follows its approved I4 destination. No entire P10 check or shared criterion is transferred or waived by that allocation; all 22 integrated executions remain failed pending their prerequisite and required reruns. SPEC-015's named Dynamic compatibility binding retains its separate exact I4-07 transfer. |
-| SPEC-007 conformance lifecycle remains collecting while P08 is frozen | 4: SPEC-007 in all profiles | Conformance evidence remains incomplete. Do not mark the Spec complete or weaken the criterion. |
-| Pi profile invocation/cache environment | 2: SPEC-005 and SPEC-006 ARMv6 | Both integrated executions failed in sandbox/cache setup. Separate focused reruns with the approved project-local Swift 6.4/ARMv6 toolchain passed; those do not retroactively change these failed rows or the aggregate. |
+| Analyzer/workload prerequisite | 20: `root-tests`, SPEC-001 in four profiles, SPEC-003 diagnostic-buffer and macOS Dynamic/Static, SPEC-011 in four profiles, the SPEC-013 macOS-static prerequisite and macOS Static/Pi/nRF workload reports, and SPEC-015 in four profiles | The top-level run logs show `SignalAnalyzerView.swift` schema inference and `View` conformance failures; the SPEC-013 profile prerequisite is `signal-analyzer-workload`. These are failed executions, not 20 independent product defects. The corresponding owner rows remain UNMET in the 189-row index. Only analyzer-specific implementation work follows its approved I4 destination. No entire P10 check or shared criterion is transferred or waived. The SPEC-015 failures do not show that its separately transferred Dynamic compatibility binding caused these failures. |
+| Mixed SPEC-014 nested profile prerequisites and compiler mismatch | 2: SPEC-014 macOS Dynamic and macOS Static | Both nested reports contain `SignalAnalyzerView.swift` and `SemanticRecordExpansion.swift` diagnostics. Their metadata selects Xcode Swift 6.3.3, although the outer P10 run pins project-local Swift 6.4.0. The reports are dirty and their `input-hashes.tsv` files omit `SemanticRecordExpansion.swift`; those diagnostics are not bound to source bytes and do not establish a defect under the approved Swift 6.4 baseline. Retain the failed executions and owner criteria as UNMET. The analyzer-specific portion follows its existing I4 destination; the nested compiler selection/source-identity mismatch is validation infrastructure, not a whole-row transfer or waiver. |
+| SPEC-007 conformance lifecycle remains collecting while P08 is frozen | 4: SPEC-007 in all profiles | Current report lists LY-001..009 as passing on its older evidence, but RFC-014 amendment criteria LY-RD-001/002 remain unchecked and the current plan keeps T9.1/T12.1 open. The current check fails its completion/status guard; the actual Specification is `implementing`, plan `active`, report `collecting`. This is a substantive open conformance/lifecycle gate, not a checker-only reason to promote status. Do not mark the Spec complete or weaken the criterion. |
+| Pi profile invocation/cache environment | 2: SPEC-005 and SPEC-006 ARMv6 | Both integrated executions failed in sandbox/cache setup. Separate focused reruns with the approved project-local Swift 6.4/ARMv6 toolchain passed; they support those targeted validations but do not retroactively change these P10 execution rows or the aggregate. No individual criterion failure is inferred from the integrated environment errors. |
+
+The exact failed execution IDs partition into the groups above as follows; the
+hash-pinned `results.tsv` remains the canonical source for each exit code and
+log path.
+
+- Analyzer/workload prerequisite (20): `spec-013-macos-static`, `root-tests`,
+  `spec-003-diagnostic-buffer`, `SPEC-001` in macOS Dynamic, macOS Static,
+  Pi ARMv6, and nRF52840; `SPEC-003` in macOS Dynamic and macOS Static;
+  `SPEC-011` in all four profiles; `SPEC-013` in macOS Static, Pi ARMv6, and
+  nRF52840; and `SPEC-015` in all four profiles.
+- Mixed SPEC-014 nested reports (2): `SPEC-014` macOS Dynamic and macOS
+  Static. Both use Xcode Swift 6.3.3 rather than the enclosing run's approved
+  project-local Swift 6.4.0 compiler and omit `SemanticRecordExpansion.swift`
+  from their source hash lists. They include both analyzer and SemanticRecord
+  diagnostics; retain the failures, but do not treat the nested diagnostics as
+  verified defects under Swift 6.4.
+- SPEC-007 lifecycle (4): `SPEC-007` in macOS Dynamic, macOS Static, Pi ARMv6,
+  and nRF52840.
+- Pi environment (2): `SPEC-005-raspberry-pi-armv6` and
+  `SPEC-006-raspberry-pi-armv6`.
+
+The first two groups are failed executions, not 22 independent product
+defects. The Signal Analyzer-specific implementation cause follows its approved
+I4 destination; downstream test/report failures remain failed P10 executions
+and their owner criteria remain UNMET. The nested SPEC-014 compiler/source
+identity mismatch does not waive those executions. The separately named
+Dynamic runtime binding in SPEC-015 has its own narrow I4-07 transfer. The
+remaining shared criteria and all lifecycle failures remain I3 obligations.
+The two Pi rows are environment failures with separate focused passes, not
+retroactively passing integrated rows.
+
+The nested SPEC-014 report snapshots are retained under
+[`nested-spec014`](current-run-v8GRC8xq/nested-spec014/). The Dynamic attempt
+`3f7558be…-c039585c…-20261110T203627Z-4950` has metadata SHA-256
+`a177017d…cf28d6a`, run-log SHA-256 `74bca3cf…9d6a75b`, and input-hash-list
+SHA-256 `c039585c…a08835d`. The Static attempt
+`3f7558be…-c039585c…-20261110T204211Z-12114` has metadata SHA-256
+`451d218f…181be36`, run-log SHA-256 `f99779cd…fad4dd`, and the same input-hash
+list. Both metadata files identify dirty worktrees and Xcode Swift 6.3.3;
+neither input list contains `SemanticRecordExpansion.swift`. The source hash in
+this P10 record identifies the current working file only and is not a
+substitute for a missing historical input hash.
 
 Exact failed IDs and exit codes remain in `results.tsv`; raw per-check logs are
 inside the retained archive. Receipt SHA-256 values are:
@@ -1090,9 +1133,11 @@ P10 remains **FAILED / UNMET**. SPEC-006 macOS Dynamic/Static rows pass in
 this run by reusing input-hash-matched reports; this is not a fresh standalone
 compile. The older standalone semantic test-build
 receipt was an on-disk-description cache hit and is not independent fresh
-build evidence. The current integrated logs do not show the previously
-reported associated-type lifetime diagnostics, so those earlier messages are
-not counted as a current root cause. No P08 proof campaign, hardware execution,
+build evidence. The top-level selected compile logs omit previously reported
+SemanticRecord lifetime diagnostics, but the nested SPEC-014 macOS Dynamic and
+Static reports contain such diagnostics under Xcode Swift 6.3.3. Those nested
+reports are dirty and do not hash `SemanticRecordExpansion.swift`; they do not
+establish a defect under the approved Swift 6.4 baseline. No P08 proof campaign, hardware execution,
 or aggregate rerun was done after `run-v8GRC8xq`; the remaining causes have
 existing analyzer/lifecycle dispositions, while the two Pi environment rows
 have separate focused passes.

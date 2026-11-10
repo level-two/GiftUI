@@ -16,8 +16,11 @@ of 83. Its exact identity and failure classification are in the durable
 [P10 receipt](p10-run-usFDdIBT/p10-run.md); raw logs, results, and child-report
 ledger are retained in
 [`current-run-v8GRC8xq`](p10-run-usFDdIBT/current-run-v8GRC8xq/). The run is
-grouped as 22 Signal Analyzer compilation/workload prerequisites, four
-SPEC-007 lifecycle failures, and two Pi sandbox/cache failures. Separate
+grouped as 20 Signal Analyzer compilation/workload prerequisites, two mixed
+SPEC-014 nested-profile failures, four SPEC-007 lifecycle failures, and two Pi
+sandbox/cache failures. The nested SPEC-014 reports use Xcode Swift 6.3.3 and
+omit the diagnosed SemanticRecord source from their file hash list; they do not
+establish a defect under the outer run's approved Swift 6.4 baseline. Separate
 focused SPEC-005 and SPEC-006 ARMv6 reruns pass but do not change the integrated
 counts. The raw run used a dirty worktree and does not carry a complete
 source-file manifest. P10 remains failed. No old-image P08 proof or hardware
@@ -29,7 +32,7 @@ does not inherit the compiler's rejected generic allocation promise.
 
 | Gate | Evidence and disposition | Remaining requirement |
 | --- | --- | --- |
-| P10 — current hardware-free validation | The latest `scripts/test.sh all-hardware-free` run `run-v8GRC8xq` at HEAD `3f7558be20907767e9816477fac2b6604d80422e` recorded 55 passes and 28 failures in 83 serialized checks on pinned Swift 6.4.0. Its raw `results.tsv` SHA-256 is `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`; metadata SHA-256 is `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-v8GRC8xq/). The original 24/59 `run-usFDdIBT` and intermediate 60/23 run remain historical. | The latest run used a dirty worktree and has no complete source-file manifest. There are 22 compilation/workload prerequisite failures; only analyzer-specific implementation work follows the approved I4 allocation, and no entire P10 check is transferred or waived. Four SPEC-007 lifecycle rows remain incomplete, and two Pi sandbox/cache rows have separate focused passes without changing aggregate results. SPEC-006 macOS Dynamic/Static rows pass in v8 by reusing input-hash-matched reports; this is not a claim of a fresh standalone compile. The current full-run logs do not show the previously reported Semantic Core associated-type diagnostics. P10 remains **FAILED / UNMET**; no criterion row is promoted and no 74/74 historical run is current evidence. |
+| P10 — current hardware-free validation | The latest `scripts/test.sh all-hardware-free` run `run-v8GRC8xq` at HEAD `3f7558be20907767e9816477fac2b6604d80422e` recorded 55 passes and 28 failures in 83 serialized checks on pinned Swift 6.4.0. Its raw `results.tsv` SHA-256 is `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`; metadata SHA-256 is `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-v8GRC8xq/). The original 24/59 `run-usFDdIBT` and intermediate 60/23 run remain historical. | The latest run used a dirty worktree and has no complete source-file manifest. Twenty rows have Signal Analyzer compilation/workload prerequisites; two SPEC-014 nested profile reports are mixed and use Xcode Swift 6.3.3, not the pinned outer Swift 6.4 compiler. Their `SemanticRecordExpansion.swift` diagnostics are not tied to source bytes and do not establish a Swift 6.4 defect. No whole P10 check or shared criterion is transferred or waived. Four SPEC-007 lifecycle rows remain incomplete, and two Pi sandbox/cache rows have separate focused passes without changing aggregate results. SPEC-006 macOS Dynamic/Static rows pass in v8 by reusing input-hash-matched reports; this is not a claim of a fresh standalone compile. P10 remains **FAILED / UNMET**; no criterion row is promoted and no 74/74 historical run is current evidence. |
 
 Compact, hash-bound post-run SPEC-002 Pi, SPEC-014 Pi, and SPEC-005 macOS
 Dynamic receipts are retained in
@@ -40,7 +43,7 @@ run IDs and report hashes in the P10 receipt.
 | P10 — criterion dispositions | [Criterion index](criterion-dispositions.csv) is generated from the nine current owner-plan matrices and contains the 180 P10 owner rows plus nine scoped-ownership rows. The 180 P10 rows are SPEC-001 49, SPEC-002 10, SPEC-006 21, SPEC-007 11, SPEC-010 16, SPEC-011 15, SPEC-012 17, SPEC-013 19, and SPEC-015 22. | All 189 current rows remain explicitly dispositioned: 180 P10 owner rows stay UNMET because the integrated gate failed; nine SO rows retain the separately approved P08 classification and do not imply P10 conformance. The additional SO rows are IN 3, RP 3, and HC 3. Historical owner-plan evidence/status is preserved and is not promoted by aggregate results. |
 | P11 — physical/resource accounting | Reuse only the exact scopes below. Four P08 collection receipts have 849 declared input matches and 3,404 declared artifact/hash-size matches in the retained audit; this is not proof of full semantics or P11 conformance. | Full criterion-linked joined storage/stack/IRQ/allocation/ABI accounting and applicable target evidence remain incomplete. No all-route fit or connected-performance pass follows from the selected results. |
 | P12 — adoption/removal | **No removal and no cutover.** Preserve generated baselines and independent controls while adoption gates are unmet. SPEC-013 and SPEC-015 conformance reports remain `collecting`. | Complete P10/P11 evidence and criterion-linked conformance before any removal/cutover; document exact retained sources/artifacts and justified no-removal. No deletion was made for this closeout. |
-| ME-09 — handoff and decision | This packet consolidates current evidence, boundaries, transfers, failures, and required follow-up. | Obtain independent acceptance of the **overall** freeze assessment and this handoff; then request an explicit human iteration-3 closure decision. Neither action is recorded here. |
+| ME-09 — handoff and decision | This packet consolidates current evidence, boundaries, transfers, failures, and required follow-up. | The current independent review status is recorded in [independent-review.md](independent-review.md) against its named document hashes. Any acceptance is limited to the bounded evidence/status handoff; it does not satisfy P08, P10, P11/P12, or human iteration-3 closure. The explicit human closure decision remains outstanding. |
 
 The 180-row P10 owner matrix is reconciled as the 152 standard acceptance rows
 plus 28 `*-RD-*` disposition rows. The nine `*-SO-*` rows are additional
@@ -110,12 +113,10 @@ with its historical disposition in the [checkpoint](../complexity-and-efficiency
 
 ## Review and closure state
 
-The independent [overall handoff review](independent-review.md) accepts this
-packet as an accurate bounded handoff. It checks the authority/count
-reconciliation, historical vs current P10 applicability, P11 scopes, P12
-no-removal, T1–T5 destination map, status preservation, and links/hashes. This
-review does not accept P08 or iteration closure; P10 execution and human closure
-remain unmet.
+The [overall handoff review](independent-review.md) records the exact document
+hashes it reviewed. Its acceptance, if present, is limited to bounded evidence
+and status classification; it does not accept P08 or iteration closure. P10
+execution, P11/P12 conformance, and human closure remain unmet.
 
 After that review, ME-09 still requires a human disposition. Keep iteration 3
 `active`, P08 `FROZEN / UNMET`, conformance reports `collecting`, Specs at their
