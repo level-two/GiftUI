@@ -1,0 +1,25 @@
+Test Suite 'All tests' started at 2026-11-10 11:00:12.896.
+Test Suite 'GiftUIFailureDiagnosticsTests.xctest' started at 2026-11-10 11:00:12.897.
+Test Suite 'GiftUIFailureDiagnosticsTests' started at 2026-11-10 11:00:12.897.
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testAdmittedRecordsRemainInOrderAndFullBufferDropsNewRecord]' started.
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testAdmittedRecordsRemainInOrderAndFullBufferDropsNewRecord]' passed (0.001 seconds).
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testCallbackAndInterruptSinksCannotGainSemanticAuthority]' started.
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testCallbackAndInterruptSinksCannotGainSemanticAuthority]' passed (0.000 seconds).
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testDefaultDeveloperCapacityIsMacOSDynamicDefault]' started.
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testDefaultDeveloperCapacityIsMacOSDynamicDefault]' passed (0.000 seconds).
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testDeliveryCountersSaturateWithoutAffectingFurtherResults]' started.
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testDeliveryCountersSaturateWithoutAffectingFurtherResults]' passed (0.000 seconds).
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testDiagnosticConfigurationMatrixPreservesEveryCorrectnessValue]' started.
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testDiagnosticConfigurationMatrixPreservesEveryCorrectnessValue]' passed (0.000 seconds).
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testDroppedRecordCounterSaturates]' started.
+Test Case '-[GiftUIFailureDiagnosticsTests.GiftUIFailureDiagnosticsTests testDroppedRecordCounterSaturates]' passed (0.000 seconds).
+Test Suite 'GiftUIFailureDiagnosticsTests' passed at 2026-11-10 11:00:12.899.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'GiftUIFailureDiagnosticsTests.xctest' passed at 2026-11-10 11:00:12.899.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'All tests' passed at 2026-11-10 11:00:12.899.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.4 (efd8d65801f569d)
+↳ Target Platform: arm64-apple-macosx
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

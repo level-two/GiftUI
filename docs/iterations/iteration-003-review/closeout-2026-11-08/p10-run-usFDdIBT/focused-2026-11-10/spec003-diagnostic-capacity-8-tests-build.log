@@ -1,0 +1,48 @@
+warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+warning: 'swift-syntax': no connectivity to https://github.com/swiftlang/swift-syntax.git, using previously cached repository state
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (0.32s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+warning: 'swift-syntax': sandbox-exec: sandbox_apply: Operation not permitted
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (10.27s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Building for debugging...
+[Planning deferred tasks]
+[33 / 64] GiftUIFailureCore
+[37 / 68] GiftUIFailureCore
+[47 / 72] GiftUIFailureDiagnostics
+[55 / 72] GiftUIFailureDiagnostics
+[59 / 72] GiftUIFailureDiagnostics
+[62 / 73] GiftUIFailureDiagnosticsTests-product
+[70 / 172]
+[74 / 172]
+[83 / 172]
+[86 / 172]
+[87 / 172]
+[97 / 172]
+[100 / 172]
+[104 / 172]
+[110 / 172]
+[111 / 172]
+[113 / 172]
+[116 / 172]
+[118 / 172]
+[120 / 172]
+[121 / 172]
+[132 / 172]
+[135 / 172]
+[137 / 172]
+[139 / 172]
+[146 / 172]
+[147 / 172]
+[151 / 172]
+[154 / 172]
+[155 / 172]
+[156 / 172]
+[157 / 172]
+[161 / 172] GiftUIFailureDiagnosticsTests-product
+[166 / 172] GiftUIFailureDiagnosticsTests-product
+[168 / 172] GiftUIFailureDiagnosticsTests-product
+Build complete! (14,35 с)

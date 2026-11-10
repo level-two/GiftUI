@@ -1,0 +1,18 @@
+warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+warning: 'swift-syntax': no connectivity to https://github.com/swiftlang/swift-syntax.git, using previously cached repository state
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (0.34s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+warning: 'swift-syntax': sandbox-exec: sandbox_apply: Operation not permitted
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (10.20s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Building for debugging...
+[Planning deferred tasks]
+[24 / 40] GiftUIFailureCore
+[28 / 44] GiftUIFailureCore
+[38 / 48] GiftUIFailureDiagnostics
+[44 / 48] GiftUIFailureDiagnostics
+[47 / 48] GiftUIFailureCore
+Build complete! (1,36 с)

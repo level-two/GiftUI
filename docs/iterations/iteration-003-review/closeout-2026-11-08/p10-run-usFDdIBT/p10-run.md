@@ -53,7 +53,7 @@ Every row below is one failed execution from the archived `results.tsv`, assigne
 
 | Root-cause group | Failed check IDs (count) | Direct criterion evidence (not a blanket Spec verdict) | Decisive retained evidence | Category | Owner / authority / disposition |
 | --- | --- | --- | --- | --- | --- |
-| Root tests, diagnostic-buffer, SPEC-001, and the fixed SPEC-013 macOS Static precheck stop before a product verdict | `root-tests`, `spec-003-diagnostic-buffer`, `spec-013-macos-static`, `SPEC-001-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}` (7) | SPEC-001 owner scope: `SA-AC-001..045`, `SA-RD-001..004`. The fixed SPEC-013 precheck gates `RP-001`; registered SPEC-013 macOS Static is a separate passing execution. The two other fixed checks have no per-AC mapping. | `receipt.tar.gz!/logs/012-spec-013-macos-static.log`, `014-root-tests.log`, `015-spec-003-diagnostic-buffer.log`, `016-SPEC-001-macos-dynamic.log`, `033-SPEC-001-macos-static.log`, `050-SPEC-001-raspberry-pi-armv6.log`, and `067-SPEC-001-nrf52840-embedded.log`: shared Semantic Core and `SignalAnalyzerView` compile errors; no complete test result. | **Blocked by prerequisite** | Unblock shared compilation in I3. Only the analyzer-specific portion is covered by the existing I4 transfer; shared core errors remain I3. No check is transferred wholesale and no product verdict is inferred. |
+| Root tests, diagnostic-buffer, SPEC-001, and the fixed SPEC-013 macOS Static precheck stop before a product verdict | `root-tests`, `spec-003-diagnostic-buffer`, `spec-013-macos-static`, `SPEC-001-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}` (7) | SPEC-001 owner scope: `SA-AC-001..045`, `SA-RD-001..004`. The fixed SPEC-013 precheck gates `RP-001`; registered SPEC-013 macOS Static is a separate passing execution. The two other fixed checks have no per-AC mapping. | `receipt.tar.gz!/logs/012-spec-013-macos-static.log`, `014-root-tests.log`, `015-spec-003-diagnostic-buffer.log`, `016-SPEC-001-macos-dynamic.log`, `033-SPEC-001-macos-static.log`, `050-SPEC-001-raspberry-pi-armv6.log`, and `067-SPEC-001-nrf52840-embedded.log`: the archived executions stop in package compilation at shared Semantic Core and `SignalAnalyzerView` errors; no complete test result. Current focused Swift 6.4 Semantic Core and all four SPEC-003 diagnostic-buffer configurations pass their isolated tests, while the current filtered package build still stops at analyzer-specific `SignalAnalyzerView` errors. | **Blocked by prerequisite** | The archived failures remain unchanged. The current diagnostic-buffer implementation has focused positive-capacity and conflict-rejection coverage; full package-level checks remain blocked by compilation. Only the analyzer-specific portion follows the existing I4 transfer; no check is transferred wholesale and no product verdict is inferred. |
 | SPEC-014 macOS production-corpus prerequisite is blocked by compile errors | `SPEC-014-{macos-dynamic,macos-static}` (2) | Spec scope `BI-001..015`; the driver/reproduction gate `BI-015` and corpus-dependent behavior/resource criteria are blocked, not individually failed. | Retained SPEC-014 reports mark `macos-production-corpus` blocked; the archived run includes `InlineArray` availability and application compile diagnostics. The later approved macOS 26 minimum resolves the availability issue; separate current host-target diagnostics still stop at analyzer compilation. | **Blocked by prerequisite** | The archived prerequisite included both target availability and source compilation. Target policy is resolved; analyzer-owned errors follow I4, while any remaining shared compile issue stays in I3. |
 | SPEC-002 Foundation surface checker rejects valid package-interface declarations | `SPEC-002-{macos-dynamic,macos-static}`, `SPEC-002-rfc-014-{macos-dynamic,macos-static}` (4) | No product criterion failure is established by these four checks; they exercise the PF-001..010 public/package boundary, with no per-profile-to-individual-PF mapping retained. | Archived child logs report `public interface exposes package SPI`. The checker applied a blanket `^package ` rejection to the public interface even though retained Swift interfaces contain the expected five public and seven package owners. SPEC-002 defines package visibility as SPI outside the public client API. Exact public/package owner-set comparisons remain in the checker. P10 metadata records Swift 6.3.3 for these macOS profiles, while the approved RFC-014 baseline is Swift 6.4. Later focused Dynamic and Static runs pass with the corrected exact owner-set checker; the four archived rows remain failed. | **Validation infrastructure** | SPEC-002 validation owner. Keep exact public/package owner sets and validate the complete affected profiles after the remaining blockers. |
 | SPEC-003/004 host dependency registries lag the approved composition | `SPEC-003-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}`, `SPEC-004-{macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded}` (8) | No normative AC failure is established by the mismatched list alone: SPEC-003 `FAIL-AC-02` constrains `GiftUIFailureExecution` imports, and SPEC-004 `CR-002` does not prohibit the host's composition-owner dependencies. | Archived reports stop at `GiftUIHostConfiguration dependencies differ`. Current `Package.swift` declares 17 direct host dependencies used by current host source; SPEC-015 permits host composition from approved contract-owner modules. The two fixtures listed only 10. Their expected lists now match the current 17-edge manifest, and both exact dependency checkers pass on `dump-package` output. | **Validation infrastructure** | SPEC-003/004 validation owner. Preserve exact edge checking and the accepted directionality constraints. Eight historical executions remain failed; complete affected profile validation after the other repairs. |
@@ -905,6 +905,22 @@ These current focused results do not replace or edit the archived 83-check run.
   (32 total) are reviewed against their current owners/uses. The SPEC-012 static Canvas
   manifest check passes: three generated cases, four occurrence records, and
   14 negative build-time rejections.
+- The SPEC-003 diagnostic-buffer module builds independently for all four
+  selected capacities (0, 8, 16, 64) with pinned Swift 6.4. For each
+  capacity, the `GiftUIFailureDiagnosticsTests` target built independently
+  and its test bundle passed all six XCTest cases when run with `xcrun xctest`
+  (24 case executions total). The mutually selected 8+16 capacity build also
+  failed with the required `select exactly one GiftUI diagnostic-buffer
+  capacity` diagnostic. The generator `--check` passes. These are focused
+  target results, not a fresh complete P10 run; the archived fixed
+  diagnostic-buffer execution remains a failure. The build command was
+  `swift build --target GiftUIFailureDiagnosticsTests -Xswiftc
+  -DGIFTUI_DIAGNOSTICS_CAPACITY_<capacity>` with the pinned toolchain at
+  `.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift`;
+  each build used isolated scratch and module-cache paths under
+  `.build/p10-focused/diag-test-*` and `.build` as the package cache. The
+  resulting test bundles ran directly with `xcrun xctest`; the pinned
+  toolchain's `libTesting.dylib` was placed into each ignored build bundle.
 - Strict Swift 6.4 formatting/lint on changed maintained Swift files and
   `git diff --check` pass. These results are against the current dirty working
   tree. They are not a fresh all-hardware-free gate or profile conformance
@@ -930,3 +946,17 @@ Focused logs and check receipts are retained with these SHA-256 identities:
 | `spec012-check.log` | `deb945bf798b14a63d5aa3f68a647163787e69b17ff944403fa6355f77149c62` |
 | `authority-graph-check.log` | `cceffe9b638f74af9c355aaa567f672b720d1574f9a491619e95cec35db07945` |
 | `format-lint.log` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `spec003-diagnostic-capacity-zero-build.log` | `645428ecfdf9e8e13a16a0428b051d9491781f7b6dfed930f882f2f8e3a19e26` |
+| `spec003-diagnostic-capacity-8-build.log` | `675a33f10aed644aaf7b4991000ff55fddeae7fff4344bdcc46ede588d0498b0` |
+| `spec003-diagnostic-capacity-16-build.log` | `a4463b48df2e6e9d6eb055c88a94ec37d2934d20e9816b47879139e54a68208d` |
+| `spec003-diagnostic-capacity-64-build.log` | `17dc0e77b933b8a0e6cd260c1e92318706288011f5a7aae70873d827f57390e5` |
+| `spec003-diagnostic-generator-check.log` | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `spec003-diagnostic-capacity-zero-tests-build.log` | `1ae9ffd2bff215c95f4df47128cd5d1dd6e2c6bedd37aca2410b5d4fa9447994` |
+| `spec003-diagnostic-capacity-zero-tests.log` | `bce91a6688644e719623f3b6be288ff2e52b89f13f75fec0fef941ed1219b0e9` |
+| `spec003-diagnostic-capacity-8-tests-build.log` | `44e71ee59f25ec380c6a2b83ca8235448bfde160e522346705fd30c1bd57ed4c` |
+| `spec003-diagnostic-capacity-8-tests.log` | `657b4c1e4add5a1933c1d071497324f4b2a3ed69483590852df438dd2afd742c` |
+| `spec003-diagnostic-capacity-16-tests-build.log` | `74e9c782cbc3672636e4826f994e5df068e4538f6b12f7aa4e0d344d6630f833` |
+| `spec003-diagnostic-capacity-16-tests.log` | `f77472cc71d13041dc86c7b79aabebf5396a8ea402891a4633438c1ccef32197` |
+| `spec003-diagnostic-capacity-64-tests-build.log` | `719ca446935b54128de7a0d1e39ff8d8650efa05b67a57c255e43df5ce301950` |
+| `spec003-diagnostic-capacity-64-tests.log` | `ad5c16b0d652747bcaaf086ca426efd696323ebf88fae26dc63af37952bbb0a4` |
+| `spec003-diagnostic-conflict-build.log` | `b6b4a13e03fc380a99f453254f669acd2a1b7b9dadb4bd2ad8865ea16f64ec41` |
