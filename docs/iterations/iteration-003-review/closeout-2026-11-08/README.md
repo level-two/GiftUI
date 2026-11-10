@@ -11,24 +11,25 @@ or permission to adopt affected code.
 
 The original `run-usFDdIBT` P10 gate failed 59 of 83 checks under the archived
 Swift 6.3.3 baseline; it remains historical. The latest integrated run is
-`run-DqItCC6l` on the pinned local Swift 6.4.0 compiler: 60 passed and 23 failed
+`run-v8GRC8xq` on the pinned local Swift 6.4.0 compiler: 55 passed and 28 failed
 of 83. Its exact identity and failure classification are in the durable
 [P10 receipt](p10-run-usFDdIBT/p10-run.md); raw logs, results, and child-report
 ledger are retained in
-[`current-run-DqItCC6l`](p10-run-usFDdIBT/current-run-DqItCC6l/). Focused
-SPEC-008 runs now pass all four hardware-free profiles. P10 remains failed due
-to shared Swift 6.4 associated-type compilation errors, analyzer-specific
-compile blockers, and the active/frozen SPEC-007 conformance lifecycle. No
-old-image P08 proof or hardware campaign was restarted. P08 stays frozen. The
-scoped Native no-heap conclusion remains valid only for its reviewed Native
-Static image and predicates; it does not inherit the compiler's rejected
-generic allocation promise.
+[`current-run-v8GRC8xq`](p10-run-usFDdIBT/current-run-v8GRC8xq/). The run is
+grouped as 22 Signal Analyzer compilation/workload prerequisites, four
+SPEC-007 lifecycle failures, and two Pi sandbox/cache failures. Separate
+focused SPEC-005 and SPEC-006 ARMv6 reruns pass but do not change the integrated
+counts. The raw run used a dirty worktree and does not carry a complete
+source-file manifest. P10 remains failed. No old-image P08 proof or hardware
+campaign was restarted. P08 stays frozen. The scoped Native no-heap conclusion
+remains valid only for its reviewed Native Static image and predicates; it
+does not inherit the compiler's rejected generic allocation promise.
 
 ## Current closure gates
 
 | Gate | Evidence and disposition | Remaining requirement |
 | --- | --- | --- |
-| P10 — current hardware-free validation | The latest `scripts/test.sh all-hardware-free` run `run-DqItCC6l` at HEAD `ba03d1a342187a4b79fe2fa28c6e785419461b94` recorded 60 passes and 23 failures in 83 serialized checks on the pinned Swift 6.4.0 toolchain. Its raw `results.tsv` SHA-256 is `7eb14fab9286984ed2fb9abd369b427c64d848f15e16d12851f4392af883b3d4`; metadata SHA-256 is `85d0e77583f7546596be16fe523b407197413e91737ededb5472a497ef719355`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-DqItCC6l/). The original 24/59 `run-usFDdIBT` remains archived history. | The latest run used a dirty worktree and preserves that limit. Four current focused SPEC-008 profile receipts pass; they do not reclassify the prior failed executions. Remaining failures are the shared Swift 6.4 noncopyable/nonescapable associated-type compile rejection (5 checks), analyzer-specific compilation (14 checks, retained I4 destination), and SPEC-007's collecting/active lifecycle gate (4 checks while P08 remains frozen/unmet). P10 remains **FAILED / UNMET**; no criterion row is promoted by the aggregate and no 74/74 historical run is current evidence. |
+| P10 — current hardware-free validation | The latest `scripts/test.sh all-hardware-free` run `run-v8GRC8xq` at HEAD `3f7558be20907767e9816477fac2b6604d80422e` recorded 55 passes and 28 failures in 83 serialized checks on pinned Swift 6.4.0. Its raw `results.tsv` SHA-256 is `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`; metadata SHA-256 is `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-v8GRC8xq/). The original 24/59 `run-usFDdIBT` and intermediate 60/23 run remain historical. | The latest run used a dirty worktree and has no complete source-file manifest. There are 22 compilation/workload prerequisite failures; only analyzer-specific implementation work follows the approved I4 allocation, and no entire P10 check is transferred or waived. Four SPEC-007 lifecycle rows remain incomplete, and two Pi sandbox/cache rows have separate focused passes without changing aggregate results. SPEC-006 macOS Dynamic/Static rows pass in v8 by reusing input-hash-matched reports; this is not a claim of a fresh standalone compile. The current full-run logs do not show the previously reported Semantic Core associated-type diagnostics. P10 remains **FAILED / UNMET**; no criterion row is promoted and no 74/74 historical run is current evidence. |
 
 Compact, hash-bound post-run SPEC-002 Pi, SPEC-014 Pi, and SPEC-005 macOS
 Dynamic receipts are retained in

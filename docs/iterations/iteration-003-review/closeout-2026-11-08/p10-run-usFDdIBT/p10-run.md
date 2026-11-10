@@ -996,12 +996,13 @@ The exact run command, `metadata.txt`, `results.tsv`, `child-reports.tsv`, and c
 | `logs.tar.gz` | `d2caba022167ed39a7aa90270f30eb6a06489bed94b1968ad3bb013e0f5fe6c6` |
 | `command.txt` | `db9abf22d3cccd6c7bbecee8458532f48f0448962cb70e56656c6e3d252f3424` |
 
-## Latest integrated all-hardware-free run — 2026-11-10
+## Superseded integrated all-hardware-free run — 2026-11-10
 
-The latest `scripts/test.sh all-hardware-free` run is `run-DqItCC6l`. It
+The prior `scripts/test.sh all-hardware-free` run was `run-DqItCC6l`. It
 completed all 83 serialized checks and remains **FAILED / UNMET: 60 passed,
-23 failed**. This result supersedes `run-MM4217u6` as the latest integrated
-run; both runs and their raw receipts remain preserved. Profile-group totals
+23 failed**. This result superseded `run-MM4217u6` at the time; both runs and
+their raw receipts remain preserved. It is superseded by `run-v8GRC8xq` below.
+Profile-group totals
 are macOS Dynamic 11/6, macOS Static 11/7, Raspberry Pi ARMv6 13/4, nRF52840
 13/4, and common checks 12/2 (pass/fail).
 
@@ -1048,3 +1049,63 @@ Receipt SHA-256 values:
 | `logs.tar.gz` | `ef4c6b288debaef1d52b85f52c1fc1ffb34f1f9e47273007ee5aaced4b1fdde6` |
 | `command.txt` | `db9abf22d3cccd6c7bbecee8458532f48f0448962cb70e56656c6e3d252f3424` |
 | `source-identity.txt` | `af749657d3ce9850cfe687123ca1ece79660c8d858b1c6af1e934cd1f89359ef` |
+
+## Latest integrated all-hardware-free run — 2026-11-10
+
+The latest `scripts/test.sh all-hardware-free` run is `run-v8GRC8xq`. It
+completed all 83 serialized checks and remains **FAILED / UNMET: 55 passed,
+28 failed**. Profile-group totals are common checks 12/3, macOS Dynamic 11/6,
+macOS Static 10/7, Raspberry Pi ARMv6 10/7, and nRF52840 12/5 (pass/fail).
+The exact command, metadata, result ledger, child-report ledger, and raw logs
+archive are retained in [`current-run-v8GRC8xq`](current-run-v8GRC8xq/).
+
+The run used HEAD `3f7558be20907767e9816477fac2b6604d80422e` with a dirty
+worktree. Its metadata does not contain a complete dirty-source manifest, so
+the run is tied to its revision, project-local toolchain identity, and raw
+execution receipts, not claimed as a clean-source snapshot. The pinned
+project-local Swift 6.4.0 driver and compiler both have SHA-256
+`79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`; no
+global toolchain selection changed.
+
+The 28 failed executions group as follows:
+
+| Root cause | Failed executions | Disposition |
+| --- | ---: | --- |
+| Signal Analyzer presentation/workload prerequisite | 22: `root-tests`, SPEC-001 in four profiles, SPEC-003 diagnostic-buffer and macOS Dynamic/Static, SPEC-011 in four profiles, the SPEC-013 macOS-static prerequisite and macOS Static/Pi/nRF workload reports, SPEC-014 macOS Dynamic/Static, and SPEC-015 in four profiles | Current logs show `SignalAnalyzerView.swift` schema inference and `View` conformance errors; the SPEC-013 profile prerequisite is `signal-analyzer-workload`. Only analyzer-specific implementation work follows its approved I4 destination. No entire P10 check or shared criterion is transferred or waived by that allocation; all 22 integrated executions remain failed pending their prerequisite and required reruns. SPEC-015's named Dynamic compatibility binding retains its separate exact I4-07 transfer. |
+| SPEC-007 conformance lifecycle remains collecting while P08 is frozen | 4: SPEC-007 in all profiles | Conformance evidence remains incomplete. Do not mark the Spec complete or weaken the criterion. |
+| Pi profile invocation/cache environment | 2: SPEC-005 and SPEC-006 ARMv6 | Both integrated executions failed in sandbox/cache setup. Separate focused reruns with the approved project-local Swift 6.4/ARMv6 toolchain passed; those do not retroactively change these failed rows or the aggregate. |
+
+Exact failed IDs and exit codes remain in `results.tsv`; raw per-check logs are
+inside the retained archive. Receipt SHA-256 values are:
+
+| File | SHA-256 |
+| --- | --- |
+| `metadata.txt` | `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381` |
+| `results.tsv` | `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9` |
+| `child-reports.tsv` | `e28cc7a7cf09f2cfe64c59642b309625589459fb1e4d4dcecf13d1da02945565` |
+| `logs.tar.gz` | `94d3974f9ab9e5a13da3efa10a1ff295f816296c27caaeb21c2b73c48b2541b6` |
+| `command.txt` | `db9abf22d3cccd6c7bbecee8458532f48f0448962cb70e56656c6e3d252f3424` |
+
+P10 remains **FAILED / UNMET**. SPEC-006 macOS Dynamic/Static rows pass in
+this run by reusing input-hash-matched reports; this is not a fresh standalone
+compile. The older standalone semantic test-build
+receipt was an on-disk-description cache hit and is not independent fresh
+build evidence. The current integrated logs do not show the previously
+reported associated-type lifetime diagnostics, so those earlier messages are
+not counted as a current root cause. No P08 proof campaign, hardware execution,
+or aggregate rerun was done after `run-v8GRC8xq`; the remaining causes have
+existing analyzer/lifecycle dispositions, while the two Pi environment rows
+have separate focused passes.
+
+The current worktree `SemanticRecordExpansion.swift` SHA-256 is
+`c283f93920c926b0ea7fda4d893c3efacdd62da026d246a4f733bb9ce795bb1e`. The
+aggregate's dirty-source limitation means it is not represented as a file-level
+input hash in this run receipt. This hash is recorded to distinguish the
+current source from earlier compiler diagnostics, not to claim the entire
+worktree was immutably snapshotted.
+
+Focused Pi receipts are retained with the run record:
+[`SPEC-005`](current-run-v8GRC8xq/focused-followups/spec005-pi/) and
+[`SPEC-006`](current-run-v8GRC8xq/focused-followups/spec006-pi/). Their metadata
+binds current revision `3f7558be…` and the approved ARMv6 SDK; they establish
+only those targeted driver results, not P10 conformance.

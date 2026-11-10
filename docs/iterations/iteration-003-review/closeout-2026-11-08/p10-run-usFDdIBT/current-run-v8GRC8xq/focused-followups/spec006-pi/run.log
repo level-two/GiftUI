@@ -1,0 +1,111 @@
+SPEC-006 fixture schemas passed: 19 compile fixture(s).
+SPEC-006 migration inventory passed: 23 exact PoC path/family rows, no maintained compatibility shim.
+SPEC-006 normative audit passed: 26 API, behavior, lifecycle, error, performance, compatibility, testing, non-goal, and migration areas have stable evidence and checks.
+SPEC-006 portable declarations passed: identical GiftUI-only positive and negative fixtures cover all four profiles and emit a public interface.
+SPEC-006 action/view surface passed: UInt16 action domain and default custom traversal witness.
+SPEC-006 builder/wrapper surface check passed
+SPEC-006 dependency surface passed: exact leaf edge, declaration surface, underscored allowlist, and forbidden-surface scans are clean.
+SPEC-006 deferred work passed: FW-017 and FW-020 remain reciprocal, unpromoted post-MVP captures with concrete triggers and no implementation or fixture dependency.
+SPEC-006 conformance record passed: 17 criteria registered; report collecting; Specification implementing pending renewed review.
+SPEC-006 traversal surface check passed, including registered SPEC-008, SPEC-010, and SPEC-012 declarations
+SPEC-006 stateful binding passed: downward generic hook, owner decorator, lexical bind-before-body, and unchanged semantic result.
+SPEC-006 stateful binding failures passed: 12 exact owner errors, early/late injection, atomic discard, and no semantic substitution.
+warning: '--skip-update' option is deprecated and will be removed in a future release
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (0.31s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (1.18s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Building for production...
+[0/7] Write sources
+[3/7] Write swift-version-7730F15DD8509BE5.txt
+[3/7] Write swift-version-59EEC9ECD79D199D.txt
+[6/8] Compiling GiftUIMacros CanvasWitnessLowering.swift
+[6/8] Write Objects.LinkFileList
+[7/8] Linking GiftUIMacros-tool
+[9/9] Compiling GiftUI ActionHandler.swift
+[10/10] Compiling GiftUISemanticCore GiftUISemanticCore.swift
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift:18:34: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 16 |         } else if payloadCopy is _GiftUITextPayload {
+ 17 |             self = .text
+ 18 |         } else if payloadCopy is Canvas {
+    |                                  `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 19 |             self = .canvas
+ 20 |         } else {
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift:9:30: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 7 |         if payload is _GiftUITextPayload {
+ 8 |             self = .text
+ 9 |         } else if payload is Canvas {
+   |                              `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+10 |             self = .canvas
+11 |         } else {
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:84:9: warning: setter for property 'components' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 67 |     }
+ 68 |     @usableFromInline
+ 69 |     internal private(set) var components: InlineArray<34, SemanticPathComponent> = .init(
+    |                               `- note: setter for property 'components' is not '@usableFromInline' or public
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+    :
+ 82 |         guard count < Self.capacity, component.isValid, (count == 0) == (component.kind == .root)
+ 83 |         else { return false }
+ 84 |         components[Int(count)] = component
+    |         `- warning: setter for property 'components' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 85 |         count += 1
+ 86 |         return true
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:85:9: warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+ 72 |     package private(set) var count: UInt16 = 0
+    |                              `- note: setter for property 'count' is not '@usableFromInline' or public
+ 73 |     @inlinable
+ 74 |     package init() {}
+    :
+ 83 |         else { return false }
+ 84 |         components[Int(count)] = component
+ 85 |         count += 1
+    |         `- warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 86 |         return true
+ 87 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift:91:9: warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 70 |         repeating: .init(kind: .root))
+ 71 |     @usableFromInline
+ 72 |     package private(set) var count: UInt16 = 0
+    |                              `- note: setter for property 'count' is not '@usableFromInline' or public
+ 73 |     @inlinable
+ 74 |     package init() {}
+    :
+ 89 |     package mutating func removeLast() {
+ 90 |         precondition(count > 0)
+ 91 |         count -= 1
+    |         `- warning: setter for property 'count' is private and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 92 |     }
+ 93 |     @inlinable
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+Build of target: 'GiftUISemanticCore' complete! (24.05s)
+warning: '--build-system native' has been deprecated and will be removed in a future release; please report an issue at https://github.com/swiftlang/swift-package-manager/issues if you are unable to adopt the default build system.
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+
+<unknown>:0: warning: module interfaces are only supported with -enable-library-evolution
+<unknown>:0: warning: module interfaces are only supported with -enable-library-evolution
+<unknown>:0: warning: module interfaces are only supported with -enable-library-evolution
+<unknown>:0: warning: module interfaces are only supported with -enable-library-evolution
+<unknown>:0: warning: module interfaces are only supported with -enable-library-evolution
+<unknown>:0: warning: module interfaces are only supported with -enable-library-evolution
+SPEC-006 layout/allocation passed: four owned values, zero optimized heap allocation instructions, and target ABI evidence are recorded.
+SPEC-006 semantic profile report written: /Users/eugene/work/GiftUI/.build/contract-reports/spec-006/.tmp-raspberry-pi-armv6-45100/semantics/normalized-profile.txt
+SPEC-006 compiled dependency surface report written: /Users/eugene/work/GiftUI/.build/contract-reports/spec-006/.tmp-raspberry-pi-armv6-45100/semantics/dependency-surface.txt
+SPEC-006 complexity report written: /Users/eugene/work/GiftUI/.build/contract-reports/spec-006/.tmp-raspberry-pi-armv6-45100/semantics/complexity.tsv
+SPEC-006 report is fail-closed: 0 required item(s) pending.

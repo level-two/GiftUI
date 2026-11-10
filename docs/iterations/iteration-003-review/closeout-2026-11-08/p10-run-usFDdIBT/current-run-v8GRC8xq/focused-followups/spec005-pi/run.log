@@ -1,0 +1,73 @@
+SPEC-005 fixture manifest check passed: 17 fixtures.
+SPEC-005 normalized corpus check passed: 45 cases.
+SPEC-005 generated asset check passed: 22 registered assets.
+SPEC-005 adopted input check passed: 23 hashed inputs, exact provenance/counts, and nRF calibration.
+SPEC-005 reference generation check passed: exact source, license, provenance, pins, tables, payloads, and identity.
+SPEC-005 owner adapter check passed: exact imports, nine local mappings, owner facts, and diagnostic independence.
+SPEC-005 synchronous offer check passed: nominal IDs and point only, nested exact-once borrow, no production render policy.
+SPEC-005 assembly lifecycle check passed: build and selected-subset validation, gated publication, synchronous borrows, last-consumer teardown, and no partial failure exposure.
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift package --package-path /Users/eugene/work/GiftUI --disable-sandbox --skip-update dump-package
+warning: '--skip-update' option is deprecated and will be removed in a future release
+SPEC-002 dependency check passed: 84 targets, 382 direct edges, acyclic.
+SPEC-005 dependency check passed: 8 active targets, 0 reserved consumers, no standalone product.
+SPEC-005 downstream integration check passed: exact direct consumers, platform reachability, lookup/payload adapters, backend validation, and host lifetime.
+SPEC-005 portable source check passed: 4 presentation source files, zero text-resource, raster, backend, platform, device, or target-conditional branches.
+SPEC-005 canonical-byte check passed: literal prefix, fixed SHA-256 state, and no collection or host-layout serialization.
+SPEC-005 accessor check passed: scalar, identity, geometry, bitmap, partition, and outline seams are present.
+SPEC-005 payload-borrow check passed: exact catalogue guards, rebased borrow, and body-only rethrows.
+SPEC-005 bounds check passed: six independent ceilings and maximum-plus-one fixtures are present.
+SPEC-005 validator check passed: nine precedence classes and complete bounded traversals are present.
+SPEC-005 validation-corpus check passed: 9 isolated classes and all 36 raw-precedence pairs.
+SPEC-005 common-catalogue check passed: complete and payload-subset compositions preserve one identity.
+SPEC-005 validated-behavior check passed: geometry, mapping, break, lookup, and overflow goldens are present.
+SPEC-005 validator-instrumentation check passed: allocation, traversal, payload, comparison, and call-frequency probes are present.
+ok:    running on macOS
+ok:    host Swift executable exists
+ok:    host Swift is project-local
+ok:    host swift-autolink-extract exists
+ok:    host llvm-objdump exists
+ok:    host llvm-objcopy exists
+ok:    host Swift is 6.4
+ok:    static ARMv6 destination exists
+ok:    dynamic ARMv6 destination exists
+ok:    destination targets armv6-unknown-linux-gnueabihf
+ok:    destination uses the project-local SDK
+ok:    destination uses the project-local host tools
+ok:    destination contains no /opt SDK path
+ok:    cached SDK archive checksum
+ok:    cached macOS Swift package checksum
+
+Host:   Apple Swift version 6.4 (swift-6.4-RELEASE)
+Tools:  /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx
+Target: armv6-unknown-linux-gnueabihf
+SDK:    /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6
+
+GiftUI Raspberry Pi cross-compilation environment is ready
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (2.11s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (3.20s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Building for production...
+[0/7] Write sources
+[3/7] Write swift-version-59EEC9ECD79D199D.txt
+[3/7] Write swift-version-7730F15DD8509BE5.txt
+[6/8] Compiling GiftUIMacros CanvasWitnessLowering.swift
+[6/8] Write Objects.LinkFileList
+[7/8] Linking GiftUIMacros-tool
+[9/9] Compiling GiftUI ActionHandler.swift
+[10/10] Compiling GiftUITextResources GiftUITextResources.swift
+Build of target: 'GiftUITextResources' complete! (25.41s)
+warning: '--build-system native' has been deprecated and will be removed in a future release; please report an issue at https://github.com/swiftlang/swift-package-manager/issues if you are unable to adopt the default build system.
+SPEC-005 target-layout check passed: 16 bounded values.
+[0/1] Planning build
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version-7730F15DD8509BE5.txt
+[1/4] Write swift-version-59EEC9ECD79D199D.txt
+[4/4] Compiling GiftUIReferenceTextResources ReferenceBitmapPayload.generated.swift
+Build of target: 'GiftUIReferenceTextResources' complete! (8.01s)
+warning: '--build-system native' has been deprecated and will be removed in a future release; please report an issue at https://github.com/swiftlang/swift-package-manager/issues if you are unable to adopt the default build system.
+SPEC-005 ARMv6 resource check passed: bitmap-only final image and link map retain the exact target identity.
+SPEC-005 raspberry-pi-armv6 semantic transcript generated: 69 rows, corpus=b69afc6ea15020bef0a6d173203e6bd521333d2e548a31cb3e7c9c6333dd4b14
