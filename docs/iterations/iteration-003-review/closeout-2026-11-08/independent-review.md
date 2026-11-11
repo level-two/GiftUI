@@ -44,11 +44,31 @@ This review accepts the listed evidence identity and classification only. It
 does not accept SPEC-007 conformance, close P10/P11/P12, change any lifecycle
 status, approve hardware action, or authorize iteration closure.
 
-## Capacity, failure, and blocker reconciliation — 2026-11-11
+## Post-review owner reconciliation — 2026-11-11
 
-This earlier reconciliation is retained for chronology. Its 331-assertion
-counts and claim that the full Generic/Layout baseline remained pending are
-superseded by the review above.
+After the independent review above, the terminal blocker bundle was revised to
+remove its contradictory instructions to repeat completed offline probes and
+to wait for I4 analyzer delivery before considering I4 entry. The revised
+bundle records the approved no-cycle rule, exhausted offline work, and exact
+closure exception/review prerequisites. This owner-authored reconciliation is
+not independent acceptance of those edits. Current bundle SHA-256:
+`5945e39908e61d5bd2282e8db5818c40c442f96d79c1ef89c65ddd8fabb084a6`.
+
+A separate read-only consistency recheck accepted this updated wording within
+the requested scope: the 331-assertion/pending-differential statements are
+historical, the current bundle hash matches, the repeat-test footer is gone,
+and the no-cycle and closure prerequisites match the cited transfer and P08
+disposition authorities. This acceptance is limited to packet consistency; it
+does not accept the overall freeze assessment, P10/P11/P12 conformance, a Spec
+transition, or iteration closure.
+
+## Superseded historical reconciliation before the completed 368-assertion differential — 2026-11-11
+
+This earlier reconciliation is retained only for chronology. Its 331-assertion
+counts, older evidence hashes, and claim that the full Generic/Layout baseline
+remained pending describe the packet before completion of the differential;
+they are not current status. The current 368-assertion evidence, hashes, and
+disposition are stated in the first section above.
 
 A second read-only review checked the current SPEC-007 P05 extension and the
 terminal blocker bundle. The latest Dynamic and Static results each report 331
