@@ -161,13 +161,15 @@ is promoted by the aggregate.
 
 The partial T9.1 runtime-bank follow-up records formatting, strict lint, source
 parse, a fresh local Swift 6.4 `GiftUI` target build, and current P02/P05 owner
-receipts in all four profiles. P05 macOS Dynamic and Static runs compiled,
-linked, and executed 286 assertions each; Pi ARMv6 and nRF52840 cross-compiled
-and passed ABI checks without target execution. The exact receipts are in the
-[follow-up evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
-The four profile-specific P05 results do not complete LY-RD-001/002. T9.1
-remains open pending the four-profile differential and failure-cleanup
-matrices, P11 resource/connected dispositions, and P12 conformance/cutover
-evidence. The Specification remains
+receipts in all four profiles. The initial P05 macOS Dynamic and Static runs
+executed 286 assertions each. A later focused capacity follow-up executes 324
+assertions with zero failures on both macOS profiles, including independent
+first-excess scalar, line, and glyph cleanup/reuse cases; Pi ARMv6 and nRF52840
+cross-compiled and passed ABI checks without target execution. The exact
+receipts are in the [follow-up evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
+These results do not complete LY-RD-001/002. T9.1 remains open pending the
+baseline corpus and both application-layout differentials, embedded runtime
+evidence where required, P11 resource/connected dispositions, and P12
+conformance/cutover evidence. The Specification remains
 `implementing`, the plan `active`, and this report `collecting`; no
 `implemented` transition is authorized by this update.

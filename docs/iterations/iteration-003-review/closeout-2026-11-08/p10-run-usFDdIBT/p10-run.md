@@ -1327,6 +1327,21 @@ SPEC-007 executions, change criterion dispositions, or satisfy P11/P12. T9.1
 remains open; P08 remains FROZEN / UNMET and the separate human iteration
 closure decision remains outstanding.
 
+### Capacity probe extension — 2026-11-11
+
+A later focused P05 batch added separate first-excess scalar, line, and glyph
+failure/cleanup/reuse assertions. The current macOS Dynamic and Static receipts
+each pass 331 assertions with zero failures. Pi ARMv6 and nRF52840 were
+recompiled and passed architecture/ABI checks without target execution. Exact
+result and archive hashes are recorded in the
+[capacity follow-up evidence note](../../../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md#first-excess-capacity-follow-up--2026-11-11).
+This closes the focused macOS first-excess text-capacity test gap only. The
+baseline corpus and both application-layout differential, remaining failure
+matrix, embedded runtime behavior, P11, and P12 remain open. The SPEC-007
+statuses, integrated 55/28 P10 result, and all criterion dispositions remain
+unchanged. See the [terminal blocker and decision bundle](../terminal-blocker-and-decision-bundle-2026-11-11.md)
+for exact dependencies and follow-up owners.
+
 ## Focused root-test compile diagnostic — 2026-11-11
 
 Two root-test attempts are retained. The first did not export the project-local

@@ -42,7 +42,7 @@ is `f7911f700330cdf9338b1bd84129b107e9b8604caf601d197dd9eaba28a36760`, and
 its full output archive is
 [`nrf52840-p02-receipt.tar.gz`](runtime-bank-layout-followup-2026-11-11/nrf52840-p02-receipt.tar.gz), SHA-256
 `a9b03d415e9097aa7261e3aa18b65a47f093dd4ee2e06120cb40ae6aaab1e9da`. Both P02
-reports and P05 reports were generated at commit `b25e68e0` on a dirty
+reports and the original P05 reports were generated at commit `b25e68e0` on a dirty
 worktree using the project-local Swift 6.4 compiler (SHA-256
 `79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`). The
 P05 result JSON includes full input hash maps and command ledgers; each helper
@@ -56,12 +56,62 @@ the report binds the project-local Swift 6.4 compiler SHA-256
 recorded 61 input hashes were rechecked against the current worktree with no
 mismatches.
 
-Still open: LY-RD-001 runtime-bank differential coverage for the baseline corpus
-and both application layouts on all four configurations; LY-RD-002's complete
-failed begin/lookup/finish and first-excess cleanup/reuse matrix across the four
+Still open after this initial run: LY-RD-001 runtime-bank differential coverage
+for the baseline corpus and both application layouts on all four
 configurations; P11 resource/connected dispositions; P12 conformance and
 cutover. Pi and nRF P05 results establish cross-compilation and ABI only; they
 do not execute the bank assertions on target, and no hardware was used. The two
-macOS results execute the focused assertions but do not cover the four-profile
-differential or cleanup matrices. No acceptance criterion closes here; T9.1
-remains open.
+macOS results execute the focused assertions but do not cover the full
+four-profile differential. No acceptance criterion closes here; T9.1 remains
+open.
+
+## First-excess capacity follow-up — 2026-11-11
+
+`RuntimeDerived/LayoutOracleProbe.swift` now tests the first rejected text
+scalar, text line, and positioned glyph independently. Each path confirms
+capacity failure, inactive layout workspace and sink, no staged scopes/lines/
+glyphs, one candidate reader during the scoped callback and zero afterward,
+unchanged published bank/revision/root, and candidate discard. A final
+successful candidate layout and publication checks reuse after all three
+failures. This closes the previously absent macOS first-excess text-counter
+cases in LY-RD-002's focused probe; it does not close the full criterion.
+
+The updated probe was rerun through the focused P05 helper on all profiles at
+source commit `6a6883c38c831f8c604396e9d073cc6d3f9b1527` with a dirty worktree.
+The project-local Swift 6.4 compiler SHA-256 is
+`79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`.
+Dynamic and Static each executed 331 assertions with zero failures and two
+expected escaping-view negative compiles. The added case replays the retained
+T6 combined stack/overlay/spacer/frame/padding/text corpus through the runtime
+bank adapter and checks eight scopes, two scalars, one line, two glyphs, and
+clean workspace/sink completion. It asserts the ordered begin/scope/line/glyph/
+publish transcript. The malformed-link lookup case now also asserts unchanged
+published bank/revision/root and successful reuse after discard. Pi ARMv6 and nRF52840 were
+cross-compiled and passed their ABI checks; neither ran on hardware.
+
+| Profile | Current P05 result SHA-256 | Current P05 archive SHA-256 | Result |
+| --- | --- | --- | --- |
+| macOS Dynamic | `dc64a3862289e260c9f8f986280fe2677a95dd86846d1ec99c4d65f0e83bde61` | [`macos-dynamic.tar.gz`](runtime-bank-capacity-followup-2026-11-11/macos-dynamic.tar.gz) `c469b22cf42330b1c276e01fec26da1580b257a12bcdda6c147cd2b770c44967` | 331 assertions, zero failures; two expected negative compiles. |
+| macOS Static | `22647b66140c2fb250e33baded6be8eac9b81069c4b3c80cf85615c5e1d764ab` | [`macos-static.tar.gz`](runtime-bank-capacity-followup-2026-11-11/macos-static.tar.gz) `ca4b6290851e7464b5b17091ef7fe37c029cc08e7c5416f199e72e0a19d33c67` | 331 assertions, zero failures; two expected negative compiles. |
+| Raspberry Pi ARMv6 | `bae89a1908ae2b09086f1ac29adfa7d4d0c3524950ff6e120a227a7502e59074` | [`raspberry-pi-armv6.tar.gz`](runtime-bank-capacity-followup-2026-11-11/raspberry-pi-armv6.tar.gz) `97e6e0ea2c47abbf63926640e0a4072ed71c3b4735027f3d6cfca136a35d77f1` | Cross-compilation and ARMv6/ABI checks passed; no target execution. |
+| nRF52840 Embedded | `f4b0b8b22471dfec7f1b4637b0f5c60ebbed3ba6963114f1e5183315fac9afcc` | [`nrf52840-embedded.tar.gz`](runtime-bank-capacity-followup-2026-11-11/nrf52840-embedded.tar.gz) `2124005bb6e2b1431f7e8ff246e839275b8d8a3ecec92fd1ef72210a2a700811` | Cross-compilation and ARMv7E-M/VFP ABI checks passed; no target execution. |
+
+All result JSON input hashes were checked against the current worktree before
+archive retention. The current evidence proves the newly added first-excess
+paths, malformed-lookup preservation/reuse, and one retained T6 combined
+baseline case execute on the two macOS profiles and compile for both embedded
+targets. It does not provide embedded runtime behavior, the full baseline
+corpus/application-layout differential, P11 resource/connected dispositions,
+P12 adoption evidence, or an acceptance/lifecycle transition. The original
+286-assertion archives above remain immutable historical evidence; this
+follow-up does not alter the archived integrated P10 result.
+
+An additional local `swift test --filter GiftUILayoutTests` attempt used the
+project-local Swift 6.4 driver/compiler and repository-local module-cache
+overrides. SwiftPM reached compilation but failed in the transferred analyzer
+`SignalAnalyzerView` schema/View diagnostics before executing the filtered
+tests. The diagnostic confirms the established whole-package test route cannot
+provide the remaining full baseline differential until the authorized I4
+analyzer input is available; it is not a new Layout result or a reason to
+change any status. The focused standalone P05 route above remains the current
+bounded host evidence.

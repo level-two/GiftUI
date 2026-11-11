@@ -1,6 +1,49 @@
 # Independent review — current closeout packet
 
+## Capacity, failure, and blocker reconciliation — 2026-11-11
+
+A second read-only review checked the current SPEC-007 P05 extension and the
+terminal blocker bundle. The latest Dynamic and Static results each report 331
+assertions with zero failures. The embedded reports are cross-compilation and
+ABI checks only. All four result JSON and archive hashes match the current
+evidence note. The combined T6 case checks ordered begin/scope/line/glyph/
+publish events. The malformed-link lookup case checks unchanged published
+bank, revision, and root, releases readers, and then successfully reuses the
+candidate bank.
+
+The blocker boundary is accurate: the full Generic/Layout T4/T5/T6 differential
+remains an offline criterion action; the current case is one bounded T6 sample.
+An attempted filtered whole-package `swift test --filter GiftUILayoutTests`
+reached compile and failed at the transferred analyzer `SignalAnalyzerView`
+schema/View diagnostics before executing those tests. The two application
+layouts remain transferred to I4; embedded runtime remains subject to explicit
+target authorization. P11 lacks allocator attribution and connected/whole-route
+measurements; P12 correctly remains no-removal pending accepted inputs and
+gates. No current criterion, Spec status, P10 aggregate, P08 disposition, or
+human closure decision is promoted by this reconciliation.
+
+Current scoped identities:
+
+- Closeout README SHA-256: `08a3c9e27ac770d669ad667c38eac896a7be0de577d42034a0e5ccf3301783e8`
+- P10 receipt SHA-256: `cf5469ec4ddfdbab1e94fd98378cfa2f3cc6572dc803059706f80f3710586524`
+- SPEC-007 conformance report SHA-256: `c45cad0d61f1a13c8097d33855eab8db1b8e8d85c9e70a3debdb8d6a0f391674`
+- SPEC-007 implementation plan SHA-256: `880ce12ce7fc5416e800dd6baee1e29ca872474220b75672c6282832b4c45eb2`
+- Terminal blocker bundle SHA-256: `6aafa47bcc802ca3db0fef41c590efb8664e690af0062fa61a0a23e85e15a517`
+- SPEC-007 four-profile evidence note SHA-256: `3d52b082a64c49ad47d47de565ed3210bacba20a7a46be77ad9aef421067e856`
+- Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825` (189 rows)
+- CSV generator SHA-256: `172071b6913c179d1dc2ae457497320c2c438b3c61e9ba9ec49cb15db0871854`
+- Latest SPEC-007 P05 result SHA-256, Dynamic/Static/Pi/nRF: `dc64a3862289e260c9f8f986280fe2677a95dd86846d1ec99c4d65f0e83bde61` / `22647b66140c2fb250e33baded6be8eac9b81069c4b3c80cf85615c5e1d764ab` / `bae89a1908ae2b09086f1ac29adfa7d4d0c3524950ff6e120a227a7502e59074` / `f4b0b8b22471dfec7f1b4637b0f5c60ebbed3ba6963114f1e5183315fac9afcc`
+- Latest SPEC-007 P05 archive SHA-256, Dynamic/Static/Pi/nRF: `c469b22cf42330b1c276e01fec26da1580b257a12bcdda6c147cd2b770c44967` / `ca4b6290851e7464b5b17091ef7fe37c029cc08e7c5416f199e72e0a19d33c67` / `97e6e0ea2c47abbf63926640e0a4072ed71c3b4735027f3d6cfca136a35d77f1` / `2124005bb6e2b1431f7e8ff246e839275b8d8a3ecec92fd1ef72210a2a700811`
+
+This review accepts only the factual evidence and blocker wording in the
+listed artifacts. It does not accept SPEC-007 conformance, close P10/P11/P12,
+change lifecycle status, or approve I3 closure.
+
 ## Current evidence and handoff reconciliation — 2026-11-11
+
+This earlier reconciliation is retained for chronology. Its 286-assertion
+P05 counts and document hashes are superseded by the current capacity,
+failure, and blocker reconciliation above.
 
 A fresh read-only check of the scoped closeout materials confirmed that the
 README's action table identifies the exact missing four-profile SPEC-007

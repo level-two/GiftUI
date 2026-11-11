@@ -74,13 +74,17 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   reader-count and prior-publication assertions. Current P02 GiftUI receipts
   were built for all four profiles; P05 compiled each owner route and passed
   ARM/ABI checks for Pi and nRF. macOS Dynamic and Static also linked and
-  executed the probe, each passing 286 assertions plus the expected
+  executed the initial probe, each passing 286 assertions plus the expected
   escaping-view negative compiles. Pi/nRF were cross-compiled only; no target
   execution occurred. Formatting and strict lint pass. The
   [evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md)
   records the receipts and remaining LY-RD-001/002 and P10–P12 obligations.
-  These four P05 results do not close a criterion; T9.1 remains open.
-  See [runtime-bank follow-up](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
+  A subsequent focused capacity follow-up added separate first-excess scalar,
+  line, and glyph cleanup/reuse cases. Current Dynamic and Static receipts
+  pass 331 assertions each; embedded profiles were recompiled and ABI-checked
+  without target execution. Both evidence batches and hashes are retained.
+  These focused P05 results do not close a criterion; T9.1 remains open. See
+  [runtime-bank follow-up](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T9.1` adds fresh migration verification without

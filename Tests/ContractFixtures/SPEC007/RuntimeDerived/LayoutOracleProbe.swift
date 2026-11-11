@@ -15,16 +15,17 @@ private struct Node {
 }
 private struct OracleSink: LayoutResultSink, LayoutResultSinkState {
     var isLayoutActive = false
+    var events: [String] = []
     var scopes: [Rect] = []
     var clips: [Rect] = []
     var lines: [Rect] = []
     var glyphs: [Point] = []
-    mutating func begin(summary: LayoutSummary) -> Bool { isLayoutActive = true; return true }
-    mutating func stageScope(identity: SemanticRecordReference, bounds: Rect, clip: Rect) -> Bool { scopes.append(bounds); clips.append(clip); return true }
-    mutating func stageTextLine(identity: SemanticRecordReference, lineIndex: UInt16, bounds: Rect, baseline: Point, clip: Rect) -> Bool { lines.append(bounds); return true }
-    mutating func stageGlyph(identity: SemanticRecordReference, lineIndex: UInt16, glyphIndex: UInt16, instance: FontInstanceID, glyph: GlyphID, baseline: Point, clip: Rect) -> Bool { glyphs.append(baseline); return true }
-    mutating func publish() -> Bool { isLayoutActive = false; return true }
-    mutating func discard() { isLayoutActive = false }
+    mutating func begin(summary: LayoutSummary) -> Bool { events.append("begin"); isLayoutActive = true; return true }
+    mutating func stageScope(identity: SemanticRecordReference, bounds: Rect, clip: Rect) -> Bool { scopes.append(bounds); clips.append(clip); events.append("scope:\(identity.ordinal)"); return true }
+    mutating func stageTextLine(identity: SemanticRecordReference, lineIndex: UInt16, bounds: Rect, baseline: Point, clip: Rect) -> Bool { lines.append(bounds); events.append("line:\(identity.ordinal):\(lineIndex)"); return true }
+    mutating func stageGlyph(identity: SemanticRecordReference, lineIndex: UInt16, glyphIndex: UInt16, instance: FontInstanceID, glyph: GlyphID, baseline: Point, clip: Rect) -> Bool { glyphs.append(baseline); events.append("glyph:\(identity.ordinal):\(glyphIndex):\(glyph.rawValue)"); return true }
+    mutating func publish() -> Bool { events.append("publish"); isLayoutActive = false; return true }
+    mutating func discard() { events.append("discard"); isLayoutActive = false }
 }
 private struct Backing: ~Copyable {
     var metadata: InlineArray<2, SemanticRecordBankMetadata> = .init(repeating: .init())
@@ -62,6 +63,40 @@ private func exercise(_ store: borrowing SemanticRecordStore) throws(SemanticExp
     var checks: UInt32 = 0
     func expect(_ yes: Bool) { checks += 1; precondition(yes) }
     let normal = LayoutLimits(maximumScopes: 98, maximumDepth: 13, maximumTextScalars: 224, maximumTextLines: 98, maximumPositionedGlyphs: 224)!
+    // Re-run the retained T6 combined recording corpus through the runtime
+    // bank adapter: padded reference text, horizontal spacer, and framed
+    // overlay under a vertical root stack.
+    try seed([
+        Node(payload: .vStack(.init(alignment: .leading, spacing: 2)), parent: .max),
+        Node(payload: .padding(.init(edges: .all, length: 1)), parent: 0, kind: .modifier),
+        Node(payload: .text, parent: 1, text: [0x41, 0x00b0]),
+        Node(payload: .hStack(.init(alignment: .center, spacing: 0)), parent: 0),
+        Node(payload: .spacer(.init(minLength: 2)), parent: 3),
+        Node(payload: .zStack(.init(alignment: .leading)), parent: 0),
+        Node(payload: .flexibleFrame(.init(minWidth: 4, maxWidth: .infinity, minHeight: 3, maxHeight: .points(5), alignment: .center)), parent: 5, kind: .modifier),
+        Node(payload: .spacer(.init(minLength: 0)), parent: 6)
+    ], store)
+    try store.withCandidateView { view in
+        var workspace = BankLayoutWorkspace()
+        var sink = OracleSink()
+        let result = layout(
+            semantic: SemanticRecordLayoutView(view), metrics: StaticTextMetricsView(),
+            proposal: ProposedSize(width: 80, height: 60)!, limits: normal,
+            workspace: &workspace, sink: &sink)
+        guard case .success(let summary) = result else { preconditionFailure() }
+        expect(summary.scopeCount == 8)
+        expect(summary.textScalarCount == 2)
+        expect(summary.textLineCount == 1)
+        expect(summary.positionedGlyphCount == 2)
+        expect(sink.scopes.count == 8 && sink.lines.count == 1 && sink.glyphs.count == 2)
+        expect(sink.events == [
+            "begin", "scope:0", "scope:1", "scope:2", "line:2:0",
+            "glyph:2:0:0", "glyph:2:1:0", "scope:3", "scope:4", "scope:5",
+            "scope:6", "scope:7", "publish"
+        ])
+        expect(!workspace.isLayoutActive && !sink.isLayoutActive)
+    }
+    try store.discardCandidate()
     // Equal share and early remainder; absent/too-small proposal keeps minima;
     // horizontal cap does not compress children; ZStack overlays; empty stack.
     for scenario in 0..<6 {
@@ -148,9 +183,81 @@ private func exercise(_ store: borrowing SemanticRecordStore) throws(SemanticExp
         }
         try store.discardCandidate()
     }
+    // First-excess text counters fail atomically, release the candidate-bank
+    // borrow, preserve an already-published bank, and allow the other bank to
+    // be reused. Exercise scalar, line, and positioned-glyph limits separately
+    // because each counter has its own bounded workspace.
+    try seed([Node(payload: .vStack(.init(alignment: .leading, spacing: 0)), parent: .max)], store)
+    try store.publishCandidate()
+    let retainedBank = store.published!
+    let retainedRevision = store.bank(retainedBank).metadata.pointee.revision
+    var retainedRoot: SemanticRecordReference?
+    try store.withPublishedView { view in retainedRoot = view.rootReference }
+    let textCapacityCases: [(scalars: [UInt32], limits: LayoutLimits)] = [
+        (
+            [65, 66, 67],
+            LayoutLimits(
+                maximumScopes: 98, maximumDepth: 13, maximumTextScalars: 2,
+                maximumTextLines: 98, maximumPositionedGlyphs: 224)!
+        ),
+        (
+            [65, 10, 66],
+            LayoutLimits(
+                maximumScopes: 98, maximumDepth: 13, maximumTextScalars: 224,
+                maximumTextLines: 1, maximumPositionedGlyphs: 224)!
+        ),
+        (
+            [65, 66, 67],
+            LayoutLimits(
+                maximumScopes: 98, maximumDepth: 13, maximumTextScalars: 224,
+                maximumTextLines: 98, maximumPositionedGlyphs: 2)!
+        ),
+    ]
+    for testCase in textCapacityCases {
+        try seed([Node(payload: .text, parent: .max, text: testCase.scalars)], store)
+        let candidateBank = store.candidate!
+        try store.withCandidateView { view in
+            var workspace = BankLayoutWorkspace()
+            var sink = OracleSink()
+            let result = layout(
+                semantic: SemanticRecordLayoutView(view),
+                metrics: StaticTextMetricsView(), proposal: ProposedSize(width: 40, height: 40)!,
+                limits: testCase.limits, workspace: &workspace, sink: &sink)
+            expect(result == .failure(.capacityExhausted))
+            expect(!workspace.isLayoutActive && !sink.isLayoutActive)
+            expect(sink.scopes.isEmpty && sink.lines.isEmpty && sink.glyphs.isEmpty)
+            expect(store.bank(candidateBank).metadata.pointee.readers == 1)
+        }
+        expect(store.bank(candidateBank).metadata.pointee.readers == 0)
+        expect(store.published == retainedBank)
+        expect(store.bank(retainedBank).metadata.pointee.revision == retainedRevision)
+        try store.withPublishedView { view in expect(view.rootReference == retainedRoot!) }
+        try store.discardCandidate()
+        expect(store.bank(0).metadata.pointee.readers == 0)
+        expect(store.bank(1).metadata.pointee.readers == 0)
+    }
+    // Reuse after all three first-excess paths and publish the replacement.
+    try seed([Node(payload: .vStack(.init(alignment: .leading, spacing: 0)), parent: .max)], store)
+    try store.withCandidateView { view in
+        var workspace = BankLayoutWorkspace()
+        var sink = OracleSink()
+        let result = layout(
+            semantic: SemanticRecordLayoutView(view), metrics: StaticTextMetricsView(),
+            proposal: ProposedSize()!, limits: normal, workspace: &workspace, sink: &sink)
+        guard case .success = result else { preconditionFailure() }
+        expect(!workspace.isLayoutActive && !sink.isLayoutActive)
+    }
+    try store.publishCandidate()
+    try store.withPublishedView { view in expect(view.rootReference != retainedRoot) }
     // Malformed canonical link lookup fails before publishing, releases Layout
-    // workspace and scoped bank reader; discard proves no retained consumer.
+    // workspace and scoped bank reader, preserves the prior publication, and
+    // permits the candidate bank to be reused.
+    let lookupRetainedBank = store.published!
+    let lookupRetainedRevision = store.bank(lookupRetainedBank).metadata.pointee.revision
+    var lookupRetainedRoot: SemanticRecordReference?
+    try store.withPublishedView { view in lookupRetainedRoot = view.rootReference }
     try seed([Node(payload: .vStack(.init(alignment: .leading, spacing: 0)), parent: .max)], store, corrupt: true)
+    let lookupCandidateBank = store.candidate!
     try store.withCandidateView { view in
         var workspace = BankLayoutWorkspace(); var sink = OracleSink()
         let result = layout(semantic: SemanticRecordLayoutView(view), metrics: StaticTextMetricsView(), proposal: ProposedSize()!, limits: normal, workspace: &workspace, sink: &sink)
@@ -160,7 +267,20 @@ private func exercise(_ store: borrowing SemanticRecordStore) throws(SemanticExp
         let wrong = SemanticRecordReference(owner: view.rootReference.owner, bank: view.rootReference.bank, revision: view.rootReference.revision, ordinal: 125)
         expect(adapter.childCount(of: wrong) == nil); expect(adapter.modifierCount(of: wrong) == nil); expect(adapter.textScalar(of: wrong, at: 0) == nil)
     }
+    expect(store.bank(lookupCandidateBank).metadata.pointee.readers == 0)
+    expect(store.published == lookupRetainedBank)
+    expect(store.bank(lookupRetainedBank).metadata.pointee.revision == lookupRetainedRevision)
+    try store.withPublishedView { view in expect(view.rootReference == lookupRetainedRoot!) }
     try store.discardCandidate()
+    expect(store.bank(0).metadata.pointee.readers == 0 && store.bank(1).metadata.pointee.readers == 0)
+    try seed([Node(payload: .vStack(.init(alignment: .leading, spacing: 0)), parent: .max)], store)
+    try store.withCandidateView { view in
+        var workspace = BankLayoutWorkspace(); var sink = OracleSink()
+        let result = layout(semantic: SemanticRecordLayoutView(view), metrics: StaticTextMetricsView(), proposal: ProposedSize()!, limits: normal, workspace: &workspace, sink: &sink)
+        guard case .success = result else { preconditionFailure() }
+    }
+    try store.publishCandidate()
+    try store.withPublishedView { view in expect(view.rootReference != lookupRetainedRoot!) }
     return checks
 }
 @_cdecl("giftui_p05_layout_oracle") public func giftuiP05LayoutOracle() -> UInt32 {
