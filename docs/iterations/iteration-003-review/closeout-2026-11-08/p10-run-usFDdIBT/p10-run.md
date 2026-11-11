@@ -1195,3 +1195,90 @@ do not make either historical nested execution pass.
 Full input lists, command transcripts, prerequisite/evidence tables, and raw
 logs are retained in
 [`focused-followups/spec014-macos-swift64/`](current-run-v8GRC8xq/focused-followups/spec014-macos-swift64/).
+
+## Corrected SPEC-014 child-toolchain follow-up — 2026-11-11
+
+The preceding focused-run note is corrected: although its outer metadata named
+Swift 6.4, `collect-spec-014-macos-profile.sh` invoked bare `swift`, and the
+nested SwiftPM `description.json` selected Xcode Swift 6.3.3 for both archived
+profiles. Those diagnostics do not establish a Swift 6.4 Semantic Core defect.
+The collector now invokes the exported project-local driver, sets `SWIFT_EXEC`
+to its paired compiler, and pins SwiftPM to the native build system. The
+script change is recorded in the current report input manifest.
+
+The fresh Dynamic run `fa2c92a75ff19597d839d352bc167bf3590481d3-8e68c70dd5071adb-20261111T094944Z-62334`
+uses input-set SHA-256 `8e68c70dd5071adbf5b142c6edee4c33103c1549ec378df0df66729ebb9615e1`.
+Every compiler entry in its nested `description.json` names the project-local
+Swift 6.4 compiler. `SemanticRecordExpansion.swift` compiles without the prior
+diagnostics; `SignalAnalyzerView.swift` still blocks the production corpus with
+schema inference and View conformance errors. The report therefore remains
+blocked, and SPEC-014, P10, and the historical 55/28 aggregate remain unmet.
+The Static profile was not rerun after this collector fix.
+
+The compact evidence archive is
+[`spec014-dynamic-pinned-compiler-20261111/report.tar.gz`](focused-followups/spec014-dynamic-pinned-compiler-20261111/report.tar.gz),
+SHA-256 `3523a224c85444c5a46c7bbd88c1152bb71b1a3cb0329c28286ec64c28b5d9e3`.
+It contains the metadata, command, prerequisite, input and report-hash ledgers,
+the raw run log, and the nested SwiftPM `description.json`. The metadata SHA-256
+is `634bcf94c1643bdc4c9fdc9ae5cfeabc028fd7bf4729dbd8e0b2a71958afdc26`, the
+run-log SHA-256 is `adb2c92ca5097840390be2fecfb7222d12b0c9046e9af490b5bfe947594a4f6c`,
+the report-hash ledger SHA-256 is
+`80b97f7d3185aad353d68dd2f4702df02550a5c62915ac4b80b6145093e25deb`, and
+the nested `description.json` SHA-256 is
+`8e125634857c863ba59a84f8bd394ca8f27b5272f08acd5630b6e961036aff37`.
+
+## Latest retained integrated run — `run-b1kjDyaM` — 2026-11-10
+
+The latest retained integrated `scripts/test.sh all-hardware-free` run is
+`run-b1kjDyaM`. It completed all 83 serialized checks on the project-local
+Swift 6.4.0 compiler and remains **FAILED / UNMET: 60 passed, 23 failed**. Its
+recorded revision is `ba03d1a342187a4b79fe2fa28c6e785419461b94`. This run
+supersedes `run-v8GRC8xq` as the latest retained aggregate result; it does not
+erase or rewrite the earlier receipts. The run group totals are common checks
+12/3, macOS Dynamic 11/6, macOS Static 11/6, Raspberry Pi ARMv6 13/4, and
+nRF52840 13/4 (pass/fail).
+
+The exact command, metadata, results, child-report ledger, logs archive, and
+post-run source identity are retained in
+[`current-run-b1kjDyaM`](current-run-b1kjDyaM/). Receipt SHA-256 values:
+
+| File | SHA-256 |
+| --- | --- |
+| `metadata.txt` | `2e9591fad86641600d132d4e2a71ec38212fb262a952c9b202c68bafb933355b` |
+| `results.tsv` | `92475ddd253885e088a0c35f93896aa87dc65cc696b804801671b619ff58b49e` |
+| `child-reports.tsv` | `5ce3fa2796cdef152c4f97c3ef1ff03278f98e503fcc4d2613e213db10e16da7` |
+| `logs.tar.gz` | `179544e0af226a74d75468c2ec4e25195fa870fc8f6f639721465c561bc58885` |
+| `command.txt` | `db9abf22d3cccd6c7bbecee8458532f48f0448962cb70e56656c6e3d252f3424` |
+| `source-snapshot.txt` | `e1dc0534d57727d9b375bdacb123f93b27bda4127008f7d4f6d6b5ca79f30156` |
+
+The snapshot records a dirty worktree, tracked-diff fingerprint
+`2fbcbf4d341b7ad801a911303769407c7b7bcd299e951eb5af6cdce712501660`, status
+fingerprint `b736296a4c9ab43c1e0b4a07b631af41cb737dfa776ea37e5d7897e1895e400e`,
+and project-local Swift/SwiftC hash
+`79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`. The
+source snapshot was calculated after the run and contains no complete per-file
+source manifest. Treat the aggregate as retained diagnostic evidence, not a
+clean-tree conformance result.
+
+The failed execution IDs in the canonical `results.tsv` are: three analyzer /
+workload compile prerequisites (`spec-013-macos-static`, `root-tests`, and
+`spec-003-diagnostic-buffer`); four SPEC-001 profile compile failures; two
+SPEC-003 macOS harness failures; four SPEC-007 harness / lifecycle failures;
+four SPEC-011 profile failures; two SPEC-014 macOS production-corpus
+prerequisite failures; and four SPEC-015 profile failures. These groups sum to
+23 executions. Some SPEC-001 logs contain both analyzer and shared
+SemanticRecord diagnostics; sparse SPEC-011 and SPEC-015 logs do not support
+blanket criterion-level cause claims. Failed executions remain failed even
+where a later focused check passes or narrows the cause.
+
+For SPEC-014, the corrected Dynamic nested report below confirms project-local
+Swift 6.4 selection and compiles Semantic Core without the prior 6.3.3
+diagnostics, but remains blocked by analyzer schema/View errors. The Static
+profile has not been rerun through the corrected collector. For SPEC-007, the
+four harness failures remain lifecycle/conformance gates: the Spec is
+`implementing`, plan `active`, report `collecting`, and LY-RD-001/002 plus T9.1
+remain open. The 2026-11-11 runtime-bank probe follow-up was formatted and
+parsed, but that changed probe was not typechecked or executed. It does not
+close any criterion. P08 remains FROZEN / UNMET, P10 remains FAILED / UNMET,
+P11 accounting remains incomplete, P12 remains no-removal/no-cutover, and human
+iteration closure remains separate.

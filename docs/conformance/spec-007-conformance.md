@@ -149,3 +149,22 @@ It does not broaden earlier exceptions or prove connected timing, complete
 stack/lifetime safety, runtime graph migration or iteration-3 closure. The
 regression predates the RFC-014 runtime amendment and does not change the
 current `implementing` lifecycle status.
+
+## Current RFC-014 amendment status — 2026-11-11
+
+The latest retained integrated P10 receipt is
+[`run-b1kjDyaM`](../iterations/iteration-003-review/closeout-2026-11-08/p10-run-usFDdIBT/current-run-b1kjDyaM/):
+four SPEC-007 profile executions fail in the harness while the amendment's
+conformance report remains `collecting`. These failures do not establish that
+each criterion independently fails, and no baseline criterion is promoted by
+the aggregate.
+
+The partial T9.1 runtime-bank follow-up records formatting, strict lint, source
+parse, and a fresh local Swift 6.4 `GiftUI` target build as passing. The changed
+probe was not typechecked or executed, and the refreshed P05 helper fixture
+remains unverified. Therefore LY-RD-001/002 and T9.1 remain open; fresh P05
+owner reports, differential and failure-cleanup matrices, P11 resource and
+connected dispositions, and P12 conformance/cutover evidence are still
+required. The Specification remains `implementing`, the plan `active`, and this
+report `collecting`. This update records status and evidence limits; it does
+not authorize an `implemented` transition.

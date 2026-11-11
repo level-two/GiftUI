@@ -1,0 +1,13 @@
+schema_version=1
+invocation_id=run-b1kjDyaM
+selection=all-hardware-free
+repository_revision=ba03d1a342187a4b79fe2fa28c6e785419461b94
+profiles=macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
+contract_report_root=.build/contract-reports
+swift_executable=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift
+swiftc_executable=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc
+swift_version=Apple Swift version 6.4 (swift-6.4-RELEASE)
+failure_count=23
+status=failed
+exit_code=1
+active_check=none

@@ -1,16 +1,81 @@
 # Independent review — current closeout packet
 
-## Supplemental review — source-bound SPEC-014 and P11/P12 crosswalk — 2026-11-11
+## Integrated P10 chronology update — 2026-11-11
 
-The independent SPEC-014 reviewer accepted the current closeout wording and
-identity reconciliation as accurate and scope-limited. The P10 receipt and
-README retain the integrated **55 passed / 28 failed** result, keep P10 and P08
-UNMET, and distinguish later focused profile attempts from the archived gate.
-Both focused macOS SPEC-014 reports are blocked, source-bound to the same
-complete input-set SHA, and identify the current shared
-`SemanticRecordExpansion.swift` compiler errors under project-local Swift 6.4.
-No profile or criterion was promoted to PASS. This review does not constitute
-SPEC-014 conformance or accept the implementation.
+The prior acceptance below was hash-bound to `run-v8GRC8xq` and the packet
+revision at that time. It is historical for that revision. The later retained
+integrated run is `run-b1kjDyaM` (60 passed / 23 failed of 83, project-local
+Swift 6.4, dirty worktree); the updated README, P10 receipt, and generated
+criterion index now identify it as the latest aggregate. Its failure list
+contains analyzer/shared compile prerequisites, SPEC-003 harness failures,
+SPEC-007 lifecycle failures, SPEC-011 and SPEC-015 profile failures, and
+incomplete SPEC-014 macOS attempts. The new run is not a clean-tree result, its
+post-run snapshot is not a complete source manifest, and sparse reports do not
+support blanket criterion-level causes. Existing owner dispositions remain
+UNMET.
+
+The SPEC-007 report and lifecycle state remain `collecting` / `implementing` /
+`active`; the partial T9.1 probe was formatted and parsed but not typechecked or
+executed. LY-RD-001/002 and T9.1 remain open. P11 and P12 remain incomplete,
+with P12 limited to no-removal/no-cutover. This chronology update records the
+retained evidence and bounded read-only audit findings; it is not an acceptance
+of the new aggregate, conformance, P08, or iteration closure.
+
+The bounded audit confirmed that the P11 crosswalk treats selected receipts as
+partial evidence, keeps the wider joined resource/connected-target gaps open,
+and labels P12 no-removal as a safe retained disposition rather than an
+adoption pass. It corrected two phrases: the 54 live-store alias checks belong
+to the five-literal section's four live-store lists, and outstanding work is
+criterion-linked owner conformance updates/reports rather than nine extant
+reports. The audit also confirmed that the partial T9.1 probe was not
+typechecked or executed and that no SPEC-007 criterion or lifecycle status was
+promoted.
+
+The updated packet identities checked for this reconciliation are:
+
+- Closeout README SHA-256: `7e42572d5499541af13a3b8c1fd0482ca64446c73ef863731e6fa848ec70b9cf`
+- P10 receipt SHA-256: `0980d91a013de26a624aad8ea216a40f2657f1a2d1800a2e33667fda9cb3fa54`
+- P10 `run-b1kjDyaM` metadata SHA-256: `2e9591fad86641600d132d4e2a71ec38212fb262a952c9b202c68bafb933355b`
+- P10 `run-b1kjDyaM` results SHA-256: `92475ddd253885e088a0c35f93896aa87dc65cc696b804801671b619ff58b49e`
+- Criterion CSV SHA-256: `e7cc2ea1286a99acee74d5f7c9844db6106d172b001e547ff7444e2dd473b03e`
+- CSV generator SHA-256: `74e724f45b81229e10c390e977d78981aeb1d6023e793380289b665d268e4b62`
+- SPEC-007 conformance report SHA-256: `64c78733f9b0a72f134a795d03a33dacf40e2c0e3652bd2c05345be225f9e792`
+
+## Post-review toolchain correction — 2026-11-11
+
+After the review below, inspection of the nested SwiftPM build description
+showed that the two reports it described as Swift 6.4 actually selected Xcode
+Swift 6.3.3: the SPEC-014 collector invoked bare `swift`. This corrects the
+compiler attribution and supersedes the earlier claim that those reports
+established a current shared `SemanticRecordExpansion.swift` failure under
+Swift 6.4. The collector now uses its exported pinned driver and compiler. A
+fresh Dynamic attempt records the project-local Swift 6.4 path for all nested
+compiler jobs, compiles Semantic Core without those diagnostics, and remains
+blocked on Signal Analyzer schema/View errors. Its compact receipt is
+[`archived here`](p10-run-usFDdIBT/focused-followups/spec014-dynamic-pinned-compiler-20261111/report.tar.gz).
+
+This correction is a factual toolchain reconciliation, not an independent
+review or acceptance of SPEC-014, P10, P08, or iteration closure. The prior
+review remains preserved for its hash-bound packet and was not refreshed after
+this correction. The corrected attempt does not change the archived 55/28 P10
+result; the Static profile has not yet been rerun through the corrected
+collector.
+
+## Historical supplemental review (pre-correction) — SPEC-014 and P11/P12 crosswalk — 2026-11-11
+
+At the time of this supplemental review, the reviewer accepted the closeout
+wording and identity reconciliation as accurate and scope-limited. It retained
+the integrated **55 passed / 28 failed** result, kept P10 and P08 UNMET, and
+distinguished focused profile attempts from the archived gate. Its statement
+that both focused macOS SPEC-014 reports identified shared
+`SemanticRecordExpansion.swift` compiler errors under project-local Swift 6.4
+was based on outer metadata and was superseded by the post-review toolchain
+correction above: the nested reports selected Xcode Swift 6.3.3. The later
+corrected Dynamic attempt uses project-local Swift 6.4, compiles Semantic Core
+without those diagnostics, and remains blocked on Signal Analyzer errors; the
+Static profile has not been rerun. No profile or criterion was promoted to
+PASS. This historical review does not constitute SPEC-014 conformance or
+accept the implementation.
 
 The reviewer hash-bound these current documents:
 
@@ -43,7 +108,7 @@ of the packet's accuracy only. It does not accept P08, establish conformance,
 authorize adoption, close iteration 3, or substitute for the separate human
 closure decision.
 
-## Current reviewed identities
+## Reviewed identities for historical run-v8GRC8xq packet
 
 - Closeout README SHA-256: `a036c753faecf368b71744522975dd4a798cd16880844ec53c4d3dda68d580e5`
 - P10 receipt `p10-run.md` SHA-256: `0671e0d92c83671bcff78c06e9114f3fc379ecd9e2c56f69fb1db9878c97cd35`
@@ -55,7 +120,7 @@ closure decision.
 - Current P10 child-report ledger SHA-256: `e28cc7a7cf09f2cfe64c59642b309625589459fb1e4d4dcecf13d1da02945565`
 - Current P10 raw log archive SHA-256: `94d3974f9ab9e5a13da3efa10a1ff295f816296c27caaeb21c2b73c48b2541b6`
 
-## Current P10 reconciliation and criterion status
+## Historical P10 reconciliation and criterion status for run-v8GRC8xq
 
 The latest integrated all-hardware-free run completed all 83 serialized
 checks and remains FAILED / UNMET: 55 passed and 28 failed. The closeout's
