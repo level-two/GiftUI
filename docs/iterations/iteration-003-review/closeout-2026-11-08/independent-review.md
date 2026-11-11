@@ -5,9 +5,12 @@
 A fresh read-only check of the scoped closeout materials confirmed that the
 README's action table identifies the exact missing four-profile SPEC-007
 matrices, fresh embedded P02 receipts, joined P11 resource/connected evidence,
-and P12 dependency/cutover preparation. The root-test capture is correctly
-described as a dirty-worktree diagnostic without a complete source manifest;
-it does not establish a baseline defect or criterion disposition.
+and P12 dependency/cutover preparation. The explicitly pinned Swift 6.4
+root-test capture is correctly described as a dirty-worktree diagnostic without
+a complete source manifest; it reaches compilation and fails at the existing
+analyzer-owned errors, with no Semantic Core diagnostics. A prior unpinned
+attempt selected Xcode Swift 6.3.3 for compiler jobs and is retained as
+superseded evidence, not as a Swift 6.4 product conclusion.
 
 Both corrected SPEC-014 macOS reports are now available. Dynamic and Static
 select the pinned project-local Swift 6.4 compiler, clear the prior 6.3.3
@@ -21,8 +24,8 @@ closure decision is promoted here.
 
 Current scoped identities:
 
-- Closeout README SHA-256: `1dc2bd1be49528c488f83cd5ad593c5c63a60d7895b9c04035990dcd0fa1f0e4`
-- P10 receipt SHA-256: `c44345d09bac35fe31102db81366a1e5c5727665e79e9fa9a03d652ad0ca0034`
+- Closeout README SHA-256: `b74b008565d3b86d4e67eb29431fce624e8eea9e206861e7cdd6c9a468f4c7c3`
+- P10 receipt SHA-256: `8d2d18dcc962e6586a329c65312b63544192945b7fb4679695d6ebaaa8b877d3`
 - SPEC-007 conformance report SHA-256: `0d6c3e6f1481b9c8bbe9535c86b076acf40381ca16c484abd9849d8b6c79dd62`
 - SPEC-007 implementation plan SHA-256: `53f949caa3f132ce476af2a3aaff620aa12c99fb84a79cba779012906aa91997`
 - Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825` (189 rows)
@@ -30,7 +33,7 @@ Current scoped identities:
 - Focused SPEC-014 Dynamic metadata/log SHA-256: `634bcf94c1643bdc4c9fdc9ae5cfeabc028fd7bf4729dbd8e0b2a71958afdc26` / `adb2c92ca5097840390be2fecfb7222d12b0c9046e9af490b5bfe947594a4f6c`; archive SHA-256: `3523a224c85444c5a46c7bbd88c1152bb71b1a3cb0329c28286ec64c28b5d9e3`.
 - Focused SPEC-014 Static metadata/log SHA-256: `34e6276122fce0790e02706b0e3b2ac71bafd92a6a0949ce6c02708b20f80fc7` / `62d940283651cb1b185f5ddf2f6df612d621a79dbc068cad99535cf1db87fc12`; archive SHA-256: `6db4f34b40c60882bd6dbf55379fe3e6edd1052c9a1e5b8495e86789fffa035b`.
 - Focused SPEC-007 P05 Dynamic/Static result SHA-256: `8171a2048d6005cb167882b3c54cbda3cefb9f2bd4521a68f7cc70a99d1a1bc1` / `751e29f517d1df395c10154c8048d59705c2e49c845aa6ecd15bcbcd3b12318b`.
-- Dirty root-test diagnostic raw log SHA-256: `d534a132410a0f6c68a3b3205d889a2303c367b8f2f74f2457417b8112b34fb3`.
+- Pinned dirty root-test diagnostic raw log SHA-256: `35a807002395d427e89b79940f9d304a744cca69f3cba14f891b21cd2702d7eb`; its `report.tar.gz` SHA-256 is `0d2e00c807118c45d0d1e3e9a14ead37230fb46f0c1db871c24cd92dd103dcc4`. Earlier unpinned raw log SHA-256: `d534a132410a0f6c68a3b3205d889a2303c367b8f2f74f2457417b8112b34fb3`.
 - Latest completed integrated P10 `run-v8GRC8xq` remains 55/28; its retained metadata/results hashes are unchanged from the historical review below.
 
 This is a bounded factual reconciliation of the listed records and hashes. It
@@ -38,6 +41,9 @@ does not independently establish product conformance, accept a lifecycle
 transition, or replace the human iteration closure decision.
 A read-only independent recheck confirmed the listed current hashes and found
 no factual discrepancy in this reconciliation.
+A subsequent read-only check confirmed the pinned root-test log hash and its
+analyzer-only diagnostics; the earlier unpinned compiler output remains
+superseded for Swift 6.4 applicability.
 
 ## Integrated P10 chronology update — 2026-11-11
 

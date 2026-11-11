@@ -1325,17 +1325,24 @@ closure decision remains outstanding.
 
 ## Focused root-test compile diagnostic — 2026-11-11
 
-A focused root SwiftPM test invocation was also attempted with the project-local
-Swift 6.4 compiler and SwiftPM sandbox disabled. It reached compilation and
-exited with `swiftpm-failure-class=compiler-or-test`, logging analyzer
-`SignalAnalyzerView.swift` schema/Canvas/View diagnostics and
-`SemanticRecordExpansion.swift` associated-type/lifetime diagnostics. The
-capture comes from the current dirty worktree and has no complete per-file
-source manifest, so it is diagnostic only: it does not establish a defect under
-the approved Swift 6.4 baseline, assign a criterion-level cause, or supersede
-the latest completed aggregate. Its raw log SHA-256 is
-`d534a132410a0f6c68a3b3205d889a2303c367b8f2f74f2457417b8112b34fb3`; command
-and log are retained in
-[`root-tests-dirty-diagnostic-20261111`](focused-followups/root-tests-dirty-diagnostic-20261111/).
-The analyzer-specific portion remains assigned to I4; no shared implementation
-or accepted contract change is inferred from this unbound capture.
+Two root-test attempts are retained. The first did not export the project-local
+toolchain variables; although its driver was Swift 6.4, the SwiftPM build
+description selected Xcode Swift 6.3.3 for compiler jobs. Its Semantic Core
+associated-type/lifetime errors are not evidence under the approved compiler;
+see the [superseded unpinned log note](focused-followups/root-tests-dirty-diagnostic-20261111/).
+
+The bounded rerun explicitly pinned both SwiftPM and Swift compiler to the
+project-local Swift 6.4.0 toolchain, used a fresh scratch path, and disabled
+SwiftPM sandboxing. It reached compilation and failed at analyzer-owned
+`SignalAnalyzerView.swift` schema inference and dependent `View` conformance.
+There were no `SemanticRecordExpansion.swift` diagnostics in this pinned log.
+The complete output and command are retained in
+[`root-tests-pinned-20261111`](focused-followups/root-tests-pinned-20261111/); raw
+log SHA-256 is
+`35a807002395d427e89b79940f9d304a744cca69f3cba14f891b21cd2702d7eb`. Both
+attempts used a dirty worktree without a complete per-file source manifest, so
+they are diagnostic evidence, not criterion-level conformance or clean-source
+P10 results. Sandbox warnings appear during cached dependency resolution, but
+the pinned command proceeded to source compilation; they do not explain the
+observed analyzer compile failure. The failure remains within the existing I4
+analyzer allocation and does not change the latest completed 55/28 P10 result.

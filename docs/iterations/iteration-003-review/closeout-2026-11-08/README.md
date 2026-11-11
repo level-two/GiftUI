@@ -43,8 +43,10 @@ The corrected macOS Dynamic and Static SPEC-014 reports are retained in their
 [pinned-compiler follow-up archives](p10-run-usFDdIBT/focused-followups/). Both
 compile Semantic Core with project-local Swift 6.4 without the prior 6.3.3
 diagnostics; both remain blocked by analyzer-owned schema/View failures.
-The focused root-test attempt is also retained as a dirty-worktree diagnostic;
-its unbound Semantic Core diagnostics do not establish a baseline defect.
+The pinned root-test attempt is retained as a dirty-worktree diagnostic and
+stops at the analyzer-owned schema/View errors. An earlier unpinned attempt
+selected Xcode Swift 6.3.3 for compiler jobs; its Semantic Core diagnostics do
+not establish a defect under the approved Swift 6.4 baseline.
 
 The later focused SPEC-007 P05 bank-layout helper also compiled, linked, and
 executed under macOS Dynamic and Static, passing 286 assertions per profile.
