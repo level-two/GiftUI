@@ -1,8 +1,23 @@
 # Bounded P08 freeze assessment — 2026-11-08
 
+## Subsequent human iteration-3 closure — 2026-11-11
+
+Eugene explicitly approved the bounded P08 R1 applicability disposition, the
+closure-only P10 exception and ITERATION-003 closure on 2026-11-11. The exact
+approval and retained outcomes are in the
+[closure approval record](../closeout-2026-11-08/iteration-3-closure-approval-2026-11-11.md).
+This later decision supersedes the pre-closure statement below that iteration
+3 was not ready and the later checklist item saying human closure remained
+absent. It does not change this assessment's technical findings: P08 remains
+FROZEN / UNMET, SO-09 remains incomplete, R1 remains FAILED / UNMET, the 180
+P10 rows remain UNMET under their separate closure-only exception, and the
+S1–S3 affected-use restrictions remain in force. P11 remains UNMET at its
+overall gate and P12 remains no-removal/no-cutover. No Specification status
+or product conformance is promoted.
+
 ## Decision
 
-**Assessment complete; remaining closure gates still pending. P08 remains FROZEN / UNMET.**
+**Technical assessment complete; ITERATION-003 closed by separate human decision on 2026-11-11. P08 remains FROZEN / UNMET.**
 The [approved restricted-use disposition](../p08-unmet-safety-closeout-disposition.md)
 allows S1–S3 to remain unmet at iteration-3 closure, with affected iteration-4
 reuse blocked until resolved or replaced and validated. This changes scheduling,
@@ -15,8 +30,8 @@ Pi handoff and Native results; it does not independently re-prove their semantic
 
 The current [iteration-3 closeout handoff](../closeout-2026-11-08/README.md)
 records the retained P10/P11 evidence, current P12 disposition, 180-row owner
-criterion index and remaining review/decision gates. It does not upgrade this assessment
-to accepted or close iteration 3.
+criterion index and bounded human closure decision. It does not upgrade this
+assessment to accepted or change its technical findings.
 
 The expensive old-composition stack/provider/launch certification is transferred.
 The remaining technical stop is narrower: unresolved alias/lifetime/reentrancy and
@@ -183,11 +198,12 @@ and [P10 run receipt](../closeout-2026-11-08/p10-run-usFDdIBT/p10-run.md).
    not P11 conformance or adoption approval. Do not claim the dirty workspace is
    an adopted certified image. Transferred fit/target certification is not an
    iteration-3 closure blocker.
-5. **Human iteration-3 closure decision remains absent.** Both scope and Spec
-   transitions stay unchanged. Request closure only after the retained gates above
-   have evidence or exact explicit applicable dispositions. Full P08 PASS, Pi target
-   availability, old-image stack completion, external-counter host extraction and
-   analyzer migration are not additional iteration-3 entry/closure requirements.
+5. **At the 2026-11-08 assessment, the human closure decision was absent; this
+   was superseded by the 2026-11-11 approval recorded above.** The iteration is
+   now closed with the named P10/R1 dispositions. P08, Spec and product
+   conformance states remain unchanged. Full P08 PASS, Pi target availability,
+   old-image stack completion, external-counter host extraction and analyzer
+   migration were not additional iteration-3 closure requirements.
 
 This bounded shared-safety assessment used retained evidence only. Current P10
 and focused validation updates are recorded in the closeout handoff; they do

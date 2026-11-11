@@ -2,12 +2,15 @@
 
 ## Disposition
 
-**Closeout is not ready. P08 remains FROZEN / UNMET; iteration 3 remains active.**
-This packet records what the retained evidence supports and what remains open
-under the approved revision-8 closeout rule. The S1–S3 gaps may remain explicitly
-unmet at closure, but affected I4 reuse stays blocked until resolved or replaced
-and validated. This packet is not a P08 pass, Spec transition, iteration closure,
-or permission to adopt affected code.
+**ITERATION-003 closed on 2026-11-11 under the approved bounded dispositions.**
+The human approval and exact closure scope are recorded in the
+[closure approval record](iteration-3-closure-approval-2026-11-11.md). P08
+remains FROZEN / UNMET; SO-09 remains incomplete; S1–S3 remain unmet under the
+approved affected-use restriction. The separate P08 R1 disposition remains
+FAILED / UNMET. P10 remains FAILED at 55/28 with all 180 owner rows UNMET under
+the closure-only exception. P11 remains UNMET at its overall gate and P12 stays
+no-removal/no-cutover. No Specification status, product conformance or I4
+activation follows from closure.
 
 The original `run-usFDdIBT` P10 gate failed 59 of 83 checks under the archived
 Swift 6.3.3 baseline; it remains historical. The latest integrated run is
@@ -61,29 +64,30 @@ receipts and limits are in the
 It does not change the four failed SPEC-007 executions in the integrated P10
 result or close LY-RD-001/002.
 
-## Exact remaining actions and disposition
+## Retained evidence and post-closure dispositions
 
 | Item | Current evidence / prerequisite | Smallest next action | Scope and consequence |
 | --- | --- | --- | --- |
-| P10 aggregate | Latest completed run remains `run-v8GRC8xq` (55/28). The focused SPEC-014 Dynamic and Static runs now use the pinned Swift 6.4 compiler and both stop at analyzer-owned `SignalAnalyzerView` schema/View errors; current root-test log also contains errors from the dirty checkout and is diagnostic only because that invocation has no complete source manifest. | Resolve the already allocated analyzer migration prerequisite in I4, then run one source-bound complete P10 gate on the resulting authorized input set. | Do not count either focused run as aggregate success, infer a clean-source defect from the unbound root-test log, or transfer shared P10 rows. P10 stays FAILED / UNMET meanwhile. |
+| P10 aggregate | Latest completed run remains `run-v8GRC8xq` (55/28); the source manifest is incomplete and the run remains diagnostic failure evidence. The analyzer-specific cause alone follows the approved I4 transfer; downstream execution rows and owner criteria remain failed/UNMET. P08 R1 is a separate applicability disposition. | Human approved a closure-only exception for this failed aggregate, all 180 owner rows as UNMET, the four named SPEC-007 profile executions, and historical Unit FAILED / Interaction UNEXECUTED. Retain the exact causes and destinations; any future gate run belongs to the normal owner plan and must use an applicable authorized input set. | This exception does not turn the run green, establish any criterion, waive a product contract, promote a Spec, or authorize adoption. P10 stays FAILED / UNMET. |
 | SPEC-007 `LY-RD-001` | Current P02/P05 receipts exist for all four profiles. The complete 32-case Generic/Layout T4/T5/T6 differential is source-bound on all four: macOS Dynamic/Static execute 368 assertions, including the exact T6 transcript; Pi/nRF cross-compile and pass ABI checks only. Neither analyzer application layout is exercised here. Analyzer-specific application integration is transferred to I4 P09–P12 / I4-AC-012; composition certification is I4-AC-013. | No further I3 Generic/Layout baseline action is pending. Complete both analyzer application differentials in their approved I4 destination. Obtain target authorization before claiming embedded runtime behavior. | The analyzer app layouts and any required embedded execution remain open; analyzer layouts cannot be implemented or certified in this I3 closeout. Embedded compile/ABI is not runtime behavior. LY-RD-001 remains UNMET until the full applicable matrix and criterion review. |
 | SPEC-007 `LY-RD-002` | The expanded macOS probe covers reader release, prior-publication preservation, sink begin/stage/publish refusal, malformed lookup, excess depth/scope, first-excess scalar/line/glyph cleanup and candidate reuse. Pi/nRF results remain compile/ABI only. | The I3 offline first-excess text-counter gap is completed; current macOS probes also exercise failed begin, malformed lookup, and failed publish cleanup. The remaining LY-RD-002 gap is embedded runtime execution, requiring connected-target authorization. | macOS focused results are not four-profile execution. No connected hardware execution occurred; no criterion promotion follows. T9.1 remains open. |
 | P11 retained owner accounting | The retained crosswalk names exact owner and evidence scopes. Missing joined fields are Dynamic private-allocation attribution and complete route/lifetime peak; Pi provider/target identity and whole-route stack/IRQ/fit; nRF connected sustained workload; and per-route criterion-linked storage/stack/IRQ/allocation/ABI joins. Counter composition-specific certification is transferred to I4-AC-013; analyzer resource work to I4. P08 remains FROZEN/UNMET, so old-image refresh work is not authorized. | Keep the bounded evidence crosswalk as the P11 handoff. Produce each missing joined field in its assigned owner phase when exact input image/provider/workload exists; do not refresh frozen P08 inputs or substitute process-zone totals for private bytes. | No offline transformation can create missing allocator attribution or target/workload observations. Existing receipts remain usable only within bounds; P11 stays UNMET. |
 | P12 adoption | No-removal/no-cutover is recorded. Dependencies cannot be classified as removable until P10/P11 pass and the post-migration input set is accepted; analyzer inputs are transferred and P08-dependent counter adoption is held by I4-AC-013. | Preserve generated baselines and independent controls. The packet records explicit no-removal rationale and exact next prerequisites. Prepare a dependency/removal diff and post-removal checks only after the accepted input set and gates exist. | Production deletion, adoption pass, and cutover are not authorized by current evidence. P12 remains incomplete; no deletion was made. |
-| Lifecycle / iteration closeout | SPEC-007 remains `implementing`, plan `active`, conformance `collecting`; iteration 3 remains active, with P08 FROZEN / UNMET. | A maintainer must decide the Spec `implemented` transition only after its complete conformance evidence is accepted; the separate human iteration-3 closure decision follows the governing closeout gate. | This packet makes neither decision and does not authorize I4 activation or affected S1–S3 reuse. |
+| Lifecycle / iteration closeout | ITERATION-003 is `closed` under the [2026-11-11 human approval](iteration-3-closure-approval-2026-11-11.md). SPEC-007 remains `implementing`, plan `active`, conformance `collecting`; P08 remains FROZEN / UNMET. | Preserve current Spec statuses. A future `implemented` transition requires complete conformance evidence and its normal independent review. ITERATION-004 remains `approved`, not active. | I3 closure does not authorize I4 activation, product adoption, or affected S1–S3 reuse. |
 
 The fresh embedded P02 receipts are now retained and the cross-compiled P05
 routes pass. Connected-target execution and connected resource/accounting
 evidence were not produced because the task scope excludes hardware action.
-Human authorization is needed for that remaining target work. These exact gaps
-are the remaining boundary, not a generic request to repeat all historical
-campaigns. See the [terminal blocker and decision bundle](terminal-blocker-and-decision-bundle-2026-11-11.md) for each exact remaining item, its authority, completed preparation, prerequisite, and recommended next decision.
+Human authorization is needed before any connected-target action. These are
+continuing I4 evidence prerequisites, not open I3 closure decisions. See the
+[terminal blocker and decision bundle](terminal-blocker-and-decision-bundle-2026-11-11.md)
+for their authority, completed preparation and exact boundaries.
 
-## Current closure gates
+## Gate outcomes at I3 closure
 
 | Gate | Evidence and disposition | Remaining requirement |
 | --- | --- | --- |
-| P10 — current hardware-free validation | The latest integrated `scripts/test.sh all-hardware-free` run `run-v8GRC8xq` at revision `3f7558be20907767e9816477fac2b6604d80422e` recorded 55 passes and 28 failures in 83 serialized checks on pinned Swift 6.4.0. `results.tsv` SHA-256 is `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`; `metadata.txt` SHA-256 is `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-v8GRC8xq/). The earlier 60/23 `run-b1kjDyaM` is retained as an intermediate run; the original 24/59 and intermediate 56/27 and 60/23 results remain historical. | The integrated run used a dirty worktree without a complete source-file manifest. Twenty failed executions have analyzer/workload prerequisites, but only the analyzer-specific cause is transferred; downstream P10 executions and owner criteria remain failed/UNMET. Two nested SPEC-014 reports used Xcode Swift 6.3.3 and lacked source hashes; corrected pinned Swift 6.4 attempts compile Semantic Core without those diagnostics but remain blocked by analyzer schema/View errors. Four SPEC-007 lifecycle rows remain incomplete. Two Pi sandbox/cache rows have separate focused passes without changing the aggregate. The P10 receipt now also records a separate P08 R1 applicability mapping and outstanding disposition, historical Unit FAILED / Interaction UNEXECUTED, and the later 368-assertion Generic/Layout baseline reconciliation. These are failed executions, not independent criterion verdicts. No whole P10 check or shared criterion is transferred or waived. P10 remains **FAILED / UNMET**. |
+| P10 — current hardware-free validation | The latest integrated `scripts/test.sh all-hardware-free` run `run-v8GRC8xq` at revision `3f7558be20907767e9816477fac2b6604d80422e` recorded 55 passes and 28 failures in 83 serialized checks on pinned Swift 6.4.0. `results.tsv` SHA-256 is `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`; `metadata.txt` SHA-256 is `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-v8GRC8xq/). The earlier 60/23 `run-b1kjDyaM` is retained as an intermediate run; the original 24/59 and intermediate 56/27 and 60/23 results remain historical. | The integrated run used a dirty worktree without a complete source-file manifest. Twenty failed executions have analyzer/workload prerequisites, but only the analyzer-specific cause is transferred; downstream P10 executions and owner criteria remain failed/UNMET. Two nested SPEC-014 reports used Xcode Swift 6.3.3 and lacked source hashes; corrected pinned Swift 6.4 attempts compile Semantic Core without those diagnostics but remain blocked by analyzer schema/View errors. Four SPEC-007 lifecycle rows remain incomplete. Two Pi sandbox/cache rows have separate focused passes without changing the aggregate. The P10 receipt records the P08 R1 applicability mapping and its separately approved disposition, historical Unit FAILED / Interaction UNEXECUTED, and the later 368-assertion Generic/Layout baseline reconciliation. These are failed executions, not independent criterion verdicts. No whole P10 check or shared criterion is transferred or waived. P10 remains **FAILED / UNMET** under the closure-only exception. |
 
 Compact, hash-bound post-run SPEC-002 Pi, SPEC-014 Pi, and SPEC-005 macOS
 Dynamic receipts are retained in
@@ -94,7 +98,7 @@ run IDs and report hashes in the P10 receipt.
 | P10 — criterion dispositions | [Criterion index](criterion-dispositions.csv) is generated from the nine current owner-plan matrices and contains the 180 P10 owner rows plus nine scoped-ownership rows. The 180 P10 rows are SPEC-001 49, SPEC-002 10, SPEC-006 21, SPEC-007 11, SPEC-010 16, SPEC-011 15, SPEC-012 17, SPEC-013 19, and SPEC-015 22. | All 189 current rows remain explicitly dispositioned: 180 P10 owner rows stay UNMET because the integrated gate failed; nine SO rows retain the separately approved P08 classification and do not imply P10 conformance. The additional SO rows are IN 3, RP 3, and HC 3. Historical owner-plan evidence/status is preserved and is not promoted by aggregate results. |
 | P11 — physical/resource accounting | Reuse only the exact scopes below. Four P08 collection receipts have 849 declared input matches and 3,404 declared artifact/hash-size matches in the retained audit; this is not proof of full semantics or P11 conformance. | Full criterion-linked joined storage/stack/IRQ/allocation/ABI accounting and applicable target evidence remain incomplete. No all-route fit or connected-performance pass follows from the selected results. |
 | P12 — adoption/removal | **No removal and no cutover.** Preserve generated baselines and independent controls while adoption gates are unmet. SPEC-013 and SPEC-015 conformance reports remain `collecting`. | Complete P10/P11 evidence and criterion-linked conformance before any removal/cutover; document exact retained sources/artifacts and justified no-removal. No deletion was made for this closeout. |
-| ME-09 — handoff and decision | This packet consolidates current evidence, boundaries, transfers, failures, and required follow-up. | The current independent review status is recorded in [independent-review.md](independent-review.md) against its named document hashes. Any acceptance is limited to the bounded evidence/status handoff; it does not satisfy P08, P10, P11/P12, or human iteration-3 closure. The explicit human closure decision remains outstanding. |
+| ME-09 — handoff and decision | The independent overall review accepted the technical freeze/handoff classification within its stated scope; human closure was recorded separately on 2026-11-11. | Preserve the [review record](independent-review.md) and [human closure approval](iteration-3-closure-approval-2026-11-11.md). Any acceptance is limited to classification/handoff and the explicit I3 delivery decision; it does not satisfy P08, P10, P11/P12 conformance or authorize I4 adoption. | ITERATION-003 is closed; its P08/P10/P11/P12 and Spec outcomes remain exactly as recorded. |
 
 The 180-row P10 owner matrix is reconciled as the 152 standard acceptance rows
 plus 28 `*-RD-*` disposition rows. The nine `*-SO-*` rows are additional
@@ -174,8 +178,9 @@ route-peak accounting; T3 is nRF target execution and changed-host certification
 Those composition-specific obligations transfer to I4-AC-013. T4 is analyzer
 integration and certification, transferred to I4 P09–P12 / I4-AC-012. T5 is
 the incomplete full P08/SO-09 exit and remains P08 FROZEN / UNMET; it does not
-become a transferred pass. The bounded overall freeze review and human closure
-decision are separate retained I3 gates.
+become a transferred pass. The independent overall freeze review is technically
+accepted within scope, and the human I3 closure decision is recorded separately;
+neither changes P08 or product conformance status.
 
 The compiler's rejected CounterSemanticCodec allocation-effect promise remains
 a distinct failed result; it is not converted to PASS by the Native Static
@@ -187,11 +192,10 @@ with its historical disposition in the [checkpoint](../complexity-and-efficiency
 ## Review and closure state
 
 The [overall handoff review](independent-review.md) records the exact document
-hashes it reviewed. Its acceptance, if present, is limited to bounded evidence
-and status classification; it does not accept P08 or iteration closure. P10
-execution, P11/P12 conformance, and human closure remain unmet.
-
-After that review, ME-09 still requires a human disposition. Keep iteration 3
-`active`, P08 `FROZEN / UNMET`, conformance reports `collecting`, Specs at their
-existing lifecycle statuses, and iteration 4 unactivated until authorized. Do
-not claim iteration closure or implementation completion from this handoff.
+hashes reviewed and its bounded technical acceptance. The
+[human closure record](iteration-3-closure-approval-2026-11-11.md) closes
+ITERATION-003 while preserving P08 `FROZEN / UNMET`, the failed P10 result and
+180 UNMET rows, P11 `UNMET`, P12 no-removal/no-cutover, and existing Spec
+lifecycle statuses. ITERATION-004 remains approved but not active. I3 closure
+does not authorize I4 implementation, connected hardware action, product
+adoption or an implemented Spec transition.

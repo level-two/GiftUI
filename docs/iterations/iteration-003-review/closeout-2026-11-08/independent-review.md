@@ -1,5 +1,34 @@
 # Independent review records — current closeout packet
 
+## Post-review human closure receipt — 2026-11-11
+
+After the technical review recorded below, Eugene explicitly approved the
+separate P08 R1 applicability disposition, closure-only P10 exception and
+ITERATION-003 closure. The exact approval is preserved in the
+[closure record](iteration-3-closure-approval-2026-11-11.md). The review below
+remains a technical classification/handoff review; this receipt records the
+later human decision without changing its findings or claiming that the
+reviewer approved lifecycle status, conformance, product adoption or I4
+activation. ITERATION-003 is now closed; P08 remains FROZEN / UNMET, all 180
+P10 owner rows remain UNMET, P11 remains UNMET, P12 remains no-removal/no-
+cutover, and all affected-use restrictions continue.
+
+## Post-closure record verification — 2026-11-11
+
+An independent read-only review checked the recorded approval against the
+terminal bundle, the closed ITERATION-003 status, the updated P08 assessment,
+the closeout packet and the ITERATION-004 handoff receipt. It confirmed the
+approved boundaries and retained outcomes above, including the exact P10
+55/28 result, 180 UNMET owner rows, four failed SPEC-007 profile executions,
+historical Unit FAILED / Interaction UNEXECUTED, separate P08 R1 disposition,
+S1–S3 restrictions, P11/P12 limits, unchanged Specification statuses, and
+ITERATION-004 approved but not active. The R1 source identity remains consistent
+with the reviewed P08 record; no `CounterSemanticCodec` reference was found in
+`Sources/`. The only finding was stale revision metadata in the features index
+and I4 document update date; both were corrected. This verification is a
+technical record check and does not expand the human approval or claim
+conformance, adoption, or lifecycle transition.
+
 ## SPEC-007 Generic/Layout evidence review — 2026-11-11
 
 An independent read-only review checked the completed Generic/Layout T4/T5/T6
@@ -476,10 +505,10 @@ passes do not change its archived failed result.
 
 ## Closure boundary
 
-The handoff accurately keeps P08 **FROZEN / UNMET**, iteration 3 active, P11
-incomplete, and P12 at no-removal/no-cutover. It retains the S1–S3 affected-use
-restriction and distinguishes transferred analyzer/composition obligations
-from retained I3 failures. No pass is inferred for target execution, whole-route
-fit, criteria, P08, or iteration closure. Human closure and adoption remain
-separate pending gates. No tests, proof reruns, or campaigns were run for this
-review.
+At the time of this review, the handoff kept P08 **FROZEN / UNMET**, iteration
+3 open, P11 incomplete, and P12 at no-removal/no-cutover. It retained the S1–S3
+affected-use restriction and distinguished transferred analyzer/composition
+obligations from retained I3 failures. No pass was inferred for target
+execution, whole-route fit, criteria, P08, or iteration closure. The later
+human closure is recorded in the post-review receipt above. No tests, proof
+reruns, or campaigns were run for this review.

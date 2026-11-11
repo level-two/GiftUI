@@ -1,11 +1,11 @@
 ---
 id: ITERATION-003
 title: Runtime Memory and Efficiency
-status: active
+status: closed
 revision: 8
 approved_revision: 8
 created: 2026-10-04
-updated: 2026-11-08
+updated: 2026-11-11
 features:
   - external-application-integration
   - giftui-mvp-architecture
@@ -16,10 +16,37 @@ related_future_work:
   - FW-035
   - FW-038
 approval: "Revision 8: Eugene approved iteration-3 closeout with named P08 S1–S3 gaps unmet and affected iteration-4 reuse blocked on 2026-11-08; docs/iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md. Revision 7: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 6: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
-closure: null
+closure: >-
+  Closed by explicit human approval on 2026-11-11 under
+  iteration-003-review/closeout-2026-11-08/iteration-3-closure-approval-2026-11-11.md.
+  P08 remains FROZEN/UNMET; P10 and R1 remain failed/unmet under their
+  separate closure-only dispositions; P11 remains unmet; P12 remains
+  no-removal/no-cutover. No Specification status or I4 activation is implied.
 ---
 
 # ITERATION-003: Runtime Memory and Efficiency
+
+## Human closure decision — 2026-11-11
+
+Eugene explicitly approved the bounded closeout decisions and ITERATION-003
+closure on 2026-11-11. The exact approval provenance and dispositions are
+recorded in the [closure approval record](iteration-003-review/closeout-2026-11-08/iteration-3-closure-approval-2026-11-11.md).
+The iteration status is now `closed`; its approved scope revision remains 8
+because this decision records closure and explicit exceptions without changing
+the committed criteria.
+
+P08 remains FROZEN / UNMET and SO-09 remains incomplete. The separately
+approved P10 exception leaves `run-v8GRC8xq` FAILED at 55/28 and all 180 P10
+owner rows UNMET. P08 R1 remains a distinct FAILED / UNMET applicability
+disposition. S1–S3 remain under the approved affected-use restriction. P11
+remains UNMET at the overall gate and P12 remains no-removal/no-cutover. No
+Specification status is promoted and ITERATION-004 is not activated.
+
+The [current closeout handoff](iteration-003-review/closeout-2026-11-08/README.md)
+records retained evidence and the approved I4 destinations. I4 entry and
+implementation remain subject to its reviewed-input, normal contract/plan,
+and affected-use prerequisites; this I3 closure does not authorize product
+adoption or connected target work.
 
 ## Approved restricted-use closeout disposition — 2026-11-08
 
@@ -28,14 +55,16 @@ The named gaps may remain explicitly unmet at iteration-3 closure. They block
 only affected iteration-4 reuse/adoption until resolved or replaced and validated;
 unrelated qualified work and normally approved resolution work may proceed.
 P08 remains FROZEN / UNMET. P10 validation/criterion dispositions, independent
-overall freeze acceptance, retained P11/P12/ME-09 handoff and explicit human closure
-remain required. Earlier blanket S1–S3 closure/entry blockers are superseded only
-by this exact disposition; other shared defects and contract gates are unchanged.
+overall freeze acceptance, retained P11/P12/ME-09 handoff and explicit human
+closure were still required when this revision was approved. The 2026-11-11
+closure record above later closes the iteration without marking those evidence
+gates met. Earlier blanket S1–S3 closure/entry blockers are superseded only by
+this exact disposition; other shared defects and contract gates are unchanged.
 
 The current [closeout handoff](iteration-003-review/closeout-2026-11-08/README.md)
-records retained P10/P11 evidence, the 180-row criterion dispositions, P12 no-removal,
-and the remaining overall-review and human-closure gates. It does not change this
-iteration's status or close P08.
+records retained P10/P11 evidence, the 180-row criterion dispositions and P12
+no-removal. The subsequent 2026-11-11 closure decision is recorded above; it
+does not change this assessment's P08 status or close P08.
 
 
 ## Approved P08 freeze — 2026-11-08
@@ -481,24 +510,31 @@ existing task; preserve the current rules, acceptance and delivery sequence.
 
 ## Closure and Follow-up
 
-This iteration is active with closure open. The first bounded ME-01–04 phase
-ended with an [inconclusive feasibility decision](iteration-003-review/feasibility-decision.md):
+The [2026-10-20 checkpoint](iteration-003-review/complexity-and-efficiency-checkpoint.md)
+adds the requested execution sequencing and final comparison to the existing
+plans. Scope revision 5 and all criterion IDs remain unchanged. Record maintained
+paths removed, complete resource costs and target performance separately at
+P11/P12/ME-09; passing proof steps is not itself a measured improvement.
+
+The first bounded ME-01–04 phase ended with an
+[inconclusive feasibility decision](iteration-003-review/feasibility-decision.md):
 the baseline is frozen, source/historical memory and performance evidence is
 recorded, and complete runtime-derived safety/performance remains unproved.
-This is a preparation disposition, not iteration closure or runtime-candidate
-adoption readiness. The later 4 MHz assessment and conditional 32 MHz review
-are also closed, with their distinct results preserved. I3-T01 is now the
-planned correction task; ME-05–09 remain partly or wholly open as shown in the
-plan's current readiness table. No automatic experimental continuation follows.
-At closure, report IT-AC-001–003 as transferred, IT-AC-005's split explicitly,
-and IT-AC-004–010 as met, unmet or individually excepted with evidence. Obtain
-human closure; feature architecture, contract and implemented transitions remain
-separate. Iteration-4 production entry requires the retained framework/counter gates and
-human handoff/closure and reviewed freeze classification, or an applicable
-exception for retained failures; full P08 PASS is not required.
-Transferred analyzer memory/performance, derivation and compatibility results are
-iteration-4 delivery obligations, not entry gates. Report these as transferred,
-unmet at iteration-3 closure; this is not full product or Spec conformance.
+This remains a preparation disposition, not runtime-candidate adoption
+readiness. The later 4 MHz assessment and conditional 32 MHz review are also
+closed, with their distinct results preserved. I3-T01 passed its hardware-free
+package. ME-05–09 dispositions remain recorded in the plan and closeout packet;
+closing the iteration does not promote any Specification or establish product
+conformance.
+
+The [2026-11-11 closure record](iteration-003-review/closeout-2026-11-08/iteration-3-closure-approval-2026-11-11.md)
+disposes IT-AC-001–010 with retained, transferred, unmet and explicitly
+excepted outcomes. ITERATION-004 remains approved, not active; its production
+entry still requires its reviewed freeze classification and exact retained
+input identities, plus applicable normal RFC/ADR/Specification and ready-plan
+gates. Transferred analyzer and counter-composition certification are I4
+delivery/adoption obligations, not I3 passes. Affected S1–S3 reuse remains
+blocked. Full P08 PASS and full product or Spec conformance are not claimed.
 
 ## References
 

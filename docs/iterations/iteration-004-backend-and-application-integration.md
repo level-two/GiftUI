@@ -2,16 +2,16 @@
 id: ITERATION-004
 title: Backend and Application Integration
 status: approved
-revision: 12
-approved_revision: 12
+revision: 13
+approved_revision: 13
 created: 2026-10-09
-updated: 2026-11-08
+updated: 2026-11-11
 features:
   - external-application-integration
   - giftui-mvp-architecture
   - signal-analyzer
   - observable-reference-state
-approval: "Revision 12: Eugene approved integration-focused narrowing and transfer of I4-09/I4-10 to ITERATION-005 on 2026-11-08; exact instruction in Revision and Approval History. Revision 11: Eugene approved iteration-3 closeout with named P08 S1–S3 gaps unmet and affected iteration-4 reuse blocked on 2026-11-08; docs/iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md. Revision 10: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 9: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition. Revision 7: Eugene explicitly requested work on RFC-016 and its changes in the next iteration and a commit on 2026-11-07; exact request recorded in the revision history. Revision 8: Eugene explicitly requested reusable black-box host capture, stronger acceptance criteria and Signal Analyzer migration on 2026-11-07; exact request recorded in the revision history."
+approval: "Revision 13: Eugene approved the exact bounded SPEC-006 package-SPI clarification and explicit transfer to I4-07 of the named DynamicRuntimeProfileBinding compatibility path and its named lifecycle/differential tests on 2026-11-10; exact approval is recorded in the P10 closeout packet and Revision and Approval History. Revision 12: Eugene approved integration-focused narrowing and transfer of I4-09/I4-10 to ITERATION-005 on 2026-11-08; exact instruction in Revision and Approval History. Revision 11: Eugene approved iteration-3 closeout with named P08 S1–S3 gaps unmet and affected iteration-4 reuse blocked on 2026-11-08; docs/iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md. Revision 10: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 9: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md. Revision 5: Eugene explicitly requested a framework/client failure-boundary review and future-work proposal in the next iteration on 2026-11-07; provenance in FW-041 Disposition. Revision 6: Eugene explicitly requested the InlineArray/Span future-work assessment in the next iteration on 2026-11-07; provenance in FW-042 Disposition. Revision 7: Eugene explicitly requested work on RFC-016 and its changes in the next iteration and a commit on 2026-11-07; exact request recorded in the revision history. Revision 8: Eugene explicitly requested reusable black-box host capture, stronger acceptance criteria and Signal Analyzer migration on 2026-11-07; exact request recorded in the revision history."
 related_future_work:
   - FW-036
   - FW-037
@@ -23,6 +23,26 @@ closure: null
 ---
 
 # ITERATION-004: Backend and Application Integration
+
+## ITERATION-003 closure handoff received — 2026-11-11
+
+ITERATION-003 was explicitly closed under the bounded decision recorded in its
+[closure approval](iteration-003-review/closeout-2026-11-08/iteration-3-closure-approval-2026-11-11.md)
+and [retained evidence handoff](iteration-003-review/closeout-2026-11-08/README.md).
+P08 remains FROZEN / UNMET with SO-09 incomplete; S1–S3 affected-use
+restrictions remain; the separate P08 R1 disposition remains FAILED / UNMET;
+P10 `run-v8GRC8xq` remains FAILED (55/28), all 180 owner rows remain UNMET
+under the closure-only exception, P11 remains UNMET, and P12 remains
+no-removal/no-cutover. No Specification status or product conformance changed.
+
+This is a handoff receipt, not an amendment to the approved ITERATION-004 scope
+or activation of the approved iteration. Before I4 activation and implementation,
+use the reviewed freeze classification and exact retained input identities and
+satisfy the normal applicable RFC/ADR/Specification and ready-plan gates.
+Affected S1–S3 paths remain blocked until resolved or replaced, validated and
+independently reviewed. Analyzer and Counter certification stay at their
+approved I4 destinations. No I4 implementation, connected hardware action or
+product adoption is authorized by the I3 closure.
 
 ## Approved scope narrowing — 2026-11-08
 
@@ -50,6 +70,27 @@ P08 remains FROZEN / UNMET. P10 validation/criterion dispositions, independent
 overall freeze acceptance, retained P11/P12/ME-09 handoff and explicit human closure
 remain required. Earlier blanket S1–S3 closure/entry blockers are superseded only
 by this exact disposition; other shared defects and contract gates are unchanged.
+
+## Approved bounded SPEC-006 and Dynamic compatibility dispositions — 2026-11-10
+
+Revision 13 records Eugene's exact approval in the P10 closeout packet. SPEC-006
+allows the audited state-binding and typed record-store package adapters only
+when they delegate to the one shared bounded traversal engine. T6.3 must check
+the complete compiled interface/member inventory and classify its caller set.
+This does not authorize additional SPI or general reuse of the supplied-
+Traversal P08 route.
+
+Only the named `DynamicRuntimeProfileBinding` compatibility path and its
+lifecycle/differential tests transfer to I4-07: `dynamicBindingUsesCommonLifecycleAndOwnsAttemptCleanup`,
+`dynamicBindingDefersActiveQuiescenceThenTearsDownOnce`,
+`dynamicAndStaticBindingsProduceEqualCanonicalTranscripts`, and
+`dynamicAndStaticExecutionCoordinatorsUseTheCommonProtocolSeams`. These are
+unmet transfer obligations, not passes or waivers. I4 reuse remains blocked
+until the path is repaired or replaced, validated, and independently reviewed.
+Generic `DynamicSemanticHostStorage` and Canvas storage remain I3 shared
+obligations; the analyzer-specific Dynamic semantic-host migration stays under
+the existing P09–P12 transfer. P08 remains FROZEN / UNMET, the S1–S3 reuse
+restrictions remain, and I4-AC-013 remains required.
 
 
 ## Approved P08 freeze — 2026-11-08
@@ -432,6 +473,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
+| 13 | 2026-11-10 | Approve exact SPEC-006 one-engine/typed-adapter clarification and transfer only the named DynamicRuntimeProfileBinding compatibility route and four named lifecycle/differential tests to I4-07; other shared obligations remain in I3 | Eugene: “Approve both bounded changes. Have the weaker coordinator apply them, update the governing docs, commit, and continue the remaining P10 work autonomously. Involve yourself only for genuine decisions.” |
 | 12 | 2026-11-08 | Narrow I4-05/06/07/08 to integration dependencies; transfer I4-09/10 and I4-AC-010/011 to iteration 5; revise waves/priorities, preserve revision-11 safety gates | Eugene: “Please narrow iteration 4 as recommended, move I4-09 and I4-10 to the next iteration, and update the waves, priorities, and dependent documents.” |
 | 11 | 2026-11-08 | Permit closeout with S1–S3 unmet and affected reuse blocked; retain remaining gates | [Explicit restricted-use disposition](iteration-003-review/p08-unmet-safety-closeout-disposition.md) |
 | 10 | 2026-11-08 | Freeze P08 UNMET; transfer counter composition certification and dependent adoption; preserve shared safety blockers and revise entry gates | [Explicit approval and allocation](iteration-003-review/p08-freeze-and-certification-transfer.md) |
