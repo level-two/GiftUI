@@ -1154,3 +1154,44 @@ Focused Pi receipts are retained with the run record:
 [`SPEC-006`](current-run-v8GRC8xq/focused-followups/spec006-pi/). Their metadata
 binds current revision `3f7558be…` and the approved ARMv6 SDK; they establish
 only those targeted driver results, not P10 conformance.
+
+## Source-bound SPEC-014 macOS follow-up — 2026-11-11
+
+The nested compiler-selection gap was corrected in the SPEC-014 driver and
+value-profile checker: both macOS profiles now select the project-local
+RFC-014 Swift 6.4 compiler and driver. The two focused runs below use the same
+complete input-set identity (`6634018ebfaf274a5822a7733b1cfe6860fcb9d285ad1e4795fe090b86e24a74`),
+including all `Sources/`, `Package.resolved`, driver/registry inputs and the
+approved target. Both input manifests include
+`Sources/GiftUISemanticCore/SemanticRecordExpansion.swift`
+(`c283f93920c926b0ea7fda4d893c3efacdd62da026d246a4f733bb9ce795bb1e`) and
+`Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift`
+(`c21ec7f17548c511a61e36e13000787b07a02746ad1720f70736d05dceb93b2d`). The
+runner, profile checker, and shared compiler selector are bound in the input
+manifest at SHA-256 `a501f058effaac96529672748ccff39d1f6e38dc158ac9559341661efeb5e63e`,
+`e22bde1f0149a3aa58c944fe5d43284ad3bc603a6e06ac29a513c69c13413179`, and
+`d1b1b075a337aa220a4694b4d22fd6da3f08a321f0ce06707f7496c7d62904c2`,
+respectively. The SDK is Xcode macOS 26.5. The
+compiler and Swift driver are both project-local Swift 6.4, binary SHA-256
+`79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`; SDK
+26.5, target `arm64-apple-macosx26.0`, optimization `-O -whole-module-optimization`.
+
+| Profile | Run ID | Result and retained identity |
+| --- | --- | --- |
+| macOS Dynamic | `4fc9f936220901bccdd5c408cf8899a25cd62f4c-6634018ebfaf274a-20261111T081741Z-56128` | Blocked, exit 1, one prerequisite: `macos-production-corpus`. `metadata.txt` SHA-256 `374c2d2ab72f7c205374c1e85fc84a6f2ce6ebd2d8b524ccff5327fd4c382b63`; `run.log` SHA-256 `cc2db92bd78b1b208c78a6d5f060d5cf887b37f3b2d19ab1ea68975e96c8901e`; `report-hashes.tsv` SHA-256 `2d7853168d9ea5865d150aaa68edbee4173514768326de9855e366afc3ceb5fd`. |
+| macOS Static | `4fc9f936220901bccdd5c408cf8899a25cd62f4c-6634018ebfaf274a-20261111T081858Z-56869` | Blocked, exit 1, one prerequisite: `macos-production-corpus`. `metadata.txt` SHA-256 `9b64e63625a6d3050ed48c8addd4e3f9a04230a19018c74a7542c0bc14d12f3b`; `run.log` SHA-256 `93f77aef22ef145c3dece97cc2d245076b0bdcfab286230dfc141bd2f2e0588e`; `report-hashes.tsv` SHA-256 `2f0ba219462a1121414b375e07b5998e5df05cd17de774f993e55f5c87837488`. |
+
+Both logs report Swift 6.4 errors in `SemanticRecordExpansion.swift`: the
+associated `StateBinding`/`Sink` declarations cannot suppress `Copyable` or
+`Escapable` as written, and the declared lifetime dependencies are rejected.
+The Static profile also contains `SignalAnalyzerView.swift` errors. The Dynamic
+and Static declaration/layout/import prerequisites pass; the production corpus
+does not. This is a current shared compile prerequisite under the approved
+toolchain, not evidence for transferring shared SPEC-006 implementation work
+to the analyzer destination. The bounded closeout made no production-source
+change. The archived 55/28 P10 result is unchanged, and these focused reports
+do not make either historical nested execution pass.
+
+Full input lists, command transcripts, prerequisite/evidence tables, and raw
+logs are retained in
+[`focused-followups/spec014-macos-swift64/`](current-run-v8GRC8xq/focused-followups/spec014-macos-swift64/).

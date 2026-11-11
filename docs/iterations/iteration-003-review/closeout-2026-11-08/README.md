@@ -18,9 +18,13 @@ ledger are retained in
 [`current-run-v8GRC8xq`](p10-run-usFDdIBT/current-run-v8GRC8xq/). The run is
 grouped as 20 Signal Analyzer compilation/workload prerequisites, two mixed
 SPEC-014 nested-profile failures, four SPEC-007 lifecycle failures, and two Pi
-sandbox/cache failures. The nested SPEC-014 reports use Xcode Swift 6.3.3 and
-omit the diagnosed SemanticRecord source from their file hash list; they do not
-establish a defect under the outer run's approved Swift 6.4 baseline. Separate
+sandbox/cache failures. The original nested SPEC-014 reports use Xcode Swift
+6.3.3 and omit the diagnosed SemanticRecord source from their file hash list;
+by themselves, they do not establish a defect under the outer run's approved
+Swift 6.4 baseline. Later focused, source-bound Swift 6.4 SPEC-014 reports
+confirm a current compile blocker in shared `SemanticRecordExpansion.swift`
+(and additional Static-profile analyzer diagnostics). This follow-up does not
+rewrite the archived 55/28 counts. Separate
 focused SPEC-005 and SPEC-006 ARMv6 reruns pass but do not change the integrated
 counts. The raw run used a dirty worktree and does not carry a complete
 source-file manifest. P10 remains failed. No old-image P08 proof or hardware
@@ -32,7 +36,7 @@ does not inherit the compiler's rejected generic allocation promise.
 
 | Gate | Evidence and disposition | Remaining requirement |
 | --- | --- | --- |
-| P10 — current hardware-free validation | The latest `scripts/test.sh all-hardware-free` run `run-v8GRC8xq` at HEAD `3f7558be20907767e9816477fac2b6604d80422e` recorded 55 passes and 28 failures in 83 serialized checks on pinned Swift 6.4.0. Its raw `results.tsv` SHA-256 is `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`; metadata SHA-256 is `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-v8GRC8xq/). The original 24/59 `run-usFDdIBT` and intermediate 60/23 run remain historical. | The latest run used a dirty worktree and has no complete source-file manifest. Twenty rows have Signal Analyzer compilation/workload prerequisites; two SPEC-014 nested profile reports are mixed and use Xcode Swift 6.3.3, not the pinned outer Swift 6.4 compiler. Their `SemanticRecordExpansion.swift` diagnostics are not tied to source bytes and do not establish a Swift 6.4 defect. No whole P10 check or shared criterion is transferred or waived. Four SPEC-007 lifecycle rows remain incomplete, and two Pi sandbox/cache rows have separate focused passes without changing aggregate results. SPEC-006 macOS Dynamic/Static rows pass in v8 by reusing input-hash-matched reports; this is not a claim of a fresh standalone compile. P10 remains **FAILED / UNMET**; no criterion row is promoted and no 74/74 historical run is current evidence. |
+| P10 — current hardware-free validation | The latest integrated `scripts/test.sh all-hardware-free` run `run-v8GRC8xq` at HEAD `3f7558be20907767e9816477fac2b6604d80422e` recorded 55 passes and 28 failures in 83 serialized checks on pinned Swift 6.4.0. Its raw `results.tsv` SHA-256 is `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`; metadata SHA-256 is `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-v8GRC8xq/). The original 24/59 `run-usFDdIBT` and intermediate 60/23 run remain historical. | The integrated run used a dirty worktree and has no complete source-file manifest. Twenty rows have Signal Analyzer compilation/workload prerequisites; two archived SPEC-014 nested reports used Xcode Swift 6.3.3 and lacked source hashes. Later focused SPEC-014 Swift 6.4 reports bind all Sources, including `SemanticRecordExpansion.swift`, and establish a current shared compile blocker; Static also retains analyzer diagnostics. These are blocked reports, not P10 passes, and do not change the integrated count. No whole P10 check or shared criterion is transferred or waived. Four SPEC-007 lifecycle rows remain incomplete, and two Pi sandbox/cache rows have separate focused passes without changing aggregate results. SPEC-006 macOS Dynamic/Static rows pass in v8 by reusing input-hash-matched reports; this is not a claim of a fresh standalone compile. P10 remains **FAILED / UNMET**; no criterion row is promoted and no 74/74 historical run is current evidence. |
 
 Compact, hash-bound post-run SPEC-002 Pi, SPEC-014 Pi, and SPEC-005 macOS
 Dynamic receipts are retained in
@@ -74,6 +78,28 @@ historical report into current conformance.
 | [Pi frozen-session handoff](../../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-freeze-session-handoff.md), SHA-256 `51e147ccc72c1f6d561efc2060c81760b8ab2e33e90c60109f85e8d3dcdbae02`; [independent classification review](../../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-freeze-session-handoff-independent-review.md), SHA-256 `e1294ff6c07cea6e2d700fc5d577bcb5cce34ad11db2acfef452d1fccaddc749` | Current retained graph is callback21: 2,987 bodies / 401,948 instructions, 216 machine-guard tables / 5,420 entries, with conditional target domains kept distinct. | P08 remains FROZEN / UNMET. Local/table proofs do not make complete stack/provider/fit claims. Do not resume old-image graph or stack campaigns for this closeout. |
 
 The collection-integrity snapshot [input-audit.json](../p08-freeze-assessment/input-audit.json), SHA-256 `b14f2f8ebbf94e238a54d508a749c713109172e92d53e96124478b32002b3e90`, was captured at review HEAD `ba843084…`, before the docs-only closeout authorization commit `b06791fd`. It checks declared receipt inputs and artifact hashes/sizes; it explicitly does not verify all semantic applicability, full transitive inventories, or SDK installation identity. The authorization commit did not refresh any certification evidence.
+
+### P11 retained-evidence crosswalk
+
+The retained receipts are inputs to the following criteria, not completed
+criteria. They cover selected evidence classes only; the criteria remain UNMET
+until the required joined evidence and independent dispositions exist.
+
+| Receipt | Relevant owner criteria | What the receipt supports | Still missing |
+| --- | --- | --- | --- |
+| Native Static reviewed image | `RP-SO-003`, `HC-SO-003`; resource aspects of `HC-015` | Exact reviewed image NoHeap and charged-entry/headroom result | Other profiles, whole-process memory, rejected compiler allocation promise, and connected workload |
+| Dynamic allocator report | `RP-SO-003`, `HC-SO-003` | Selected-client request/usable/rounding observations and bounded process/default-zone snapshots | Private allocator bytes, all-route lifetime/peak, unperturbed complete accounting, and fit |
+| Pi linked image and callback21 handoff | `RP-SO-003`, `HC-SO-003`; P08 scope also `RP-SO-001/002`, `HC-SO-001/002` | Retained image/ABI identity, finite conditional graph evidence, and explicitly open residuals | Connected target/provider identity, complete stack/IRQ/fit, shared alias/lifetime/reentry premises, and full owner-route coverage |
+| nRF exact-image review | `RP-SO-003`, `HC-SO-003`; resource aspects of `HC-015` | Exact image stack/RAM/flash bounds | Connected-target execution and sustained-workload evidence |
+| P08 scoped ownership and callback ledgers | `RP-SO-001/002`, `HC-SO-001/002`, plus `RP-SO-003`/`HC-SO-003` for resource portions | Named route-specific findings and unresolved ownership predicates | The 54 remaining live store predicates are limited to five-route records; they are not an aggregate safety proof. Borrow, alias, reentry, and provider conditions remain route-specific and unresolved where recorded. |
+
+`HC-RD-003` and `RP-RD-003` remain open disposition rows. The wider P11 gate
+also needs the complete criterion-linked resource, stack, IRQ, ABI, allocation,
+and applicable connected-target accounting. P12 remains “no cutover/removal”;
+that is a safe retained disposition, not completion of the adoption gate. The
+nine conformance reports, dependency/cutover review, and focused post-removal
+checks remain outstanding. These limits do not alter the existing I4 transfers
+or the S1–S3 affected-use restriction.
 
 ## Criterion transfer and handoff
 

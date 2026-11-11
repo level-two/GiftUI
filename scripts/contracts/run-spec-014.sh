@@ -48,14 +48,27 @@ case "${profile}" in
     *) fail_usage "unknown profile: ${profile}" ;;
 esac
 
+if [[ "${profile}" == macos-dynamic || "${profile}" == macos-static ]]; then
+    # RFC-014 macOS validation uses the project-local Swift 6.4 compiler. Do
+    # not let nested SwiftPM commands or the value-profile probe fall back to
+    # Xcode's independently selected compiler.
+    # shellcheck source=compiler-baseline.sh
+    source "${SCRIPT_DIR}/compiler-baseline.sh"
+    giftui_rfc014_select_compiler "${PROJECT_ROOT}" "${profile}" || exit 1
+    GIFTUI_SWIFTC_EXECUTABLE="${GIFTUI_CONTRACT_SWIFTC}"
+    GIFTUI_SWIFT_EXECUTABLE="$(dirname "${GIFTUI_SWIFTC_EXECUTABLE}")/swift"
+    [[ -x "${GIFTUI_SWIFT_EXECUTABLE}" ]] || {
+        printf 'error: pinned RFC-014 Swift driver is missing: %s\n' \
+            "${GIFTUI_SWIFT_EXECUTABLE}" >&2
+        exit 1
+    }
+    export GIFTUI_SWIFT_EXECUTABLE GIFTUI_SWIFTC_EXECUTABLE
+fi
+
 declared_inputs() {
     {
         find "${FIXTURE_ROOT}" -type f -print
-        find \
-            "${PROJECT_ROOT}/Sources/GiftUISurfaceCore" \
-            "${PROJECT_ROOT}/Sources/GiftUIRasterCore" \
-            "${PROJECT_ROOT}/Sources/GiftUIDisplayCore" \
-            "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration" \
+        find "${PROJECT_ROOT}/Sources" \
             "${PROJECT_ROOT}/Tests/GiftUISurfaceCoreTests" \
             "${PROJECT_ROOT}/Tests/GiftUIRasterCoreTests" \
             "${PROJECT_ROOT}/Tests/GiftUIDisplayCoreTests" \
@@ -64,6 +77,7 @@ declared_inputs() {
             -type f -print
         printf '%s\n' \
             "${PROJECT_ROOT}/Package.swift" \
+            "${PROJECT_ROOT}/Package.resolved" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC004/SemanticCorpus/cases.tsv" \
             "${PROJECT_ROOT}/docs/specs/spec-002-portable-foundation.md" \
@@ -90,6 +104,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-014-transactions.rb" \
             "${SCRIPT_DIR}/check-spec-014-value-layouts.rb" \
             "${SCRIPT_DIR}/check-spec-014-value-profiles.sh" \
+            "${SCRIPT_DIR}/compiler-baseline.sh" \
             "${SCRIPT_DIR}/check-target-dependencies.rb" \
             "${SCRIPT_DIR}/finalize-contract-metadata.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
@@ -97,7 +112,16 @@ declared_inputs() {
             "${SCRIPT_DIR}/report-spec-014-normalized-fixtures.rb" \
             "${SCRIPT_DIR}/spec014_fixture_loader.rb" \
             "${SCRIPT_DIR}/run-spec-014.sh" \
-            "${SCRIPT_DIR}/verify-contract-report.rb"
+            "${SCRIPT_DIR}/verify-contract-report.rb" \
+            "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
+            "${PROJECT_ROOT}/scripts/lib/swiftpm.sh" \
+            "${PROJECT_ROOT}/scripts/lib/serialize-validation.rb" \
+            "${PROJECT_ROOT}/scripts/raspberry-pi/common.sh" \
+            "${PROJECT_ROOT}/scripts/raspberry-pi/toolchain.env" \
+            "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh" \
+            "${PROJECT_ROOT}/scripts/nrf52840/common.sh" \
+            "${PROJECT_ROOT}/scripts/nrf52840/toolchain.env" \
+            "${PROJECT_ROOT}/scripts/nrf52840/doctor.sh"
     } | LC_ALL=C sort -u
 }
 
@@ -112,7 +136,9 @@ inputs_path="${staging}/input-hashes.tsv"
 identity_metadata="$(declared_inputs | "${SCRIPT_DIR}/report-input-identity.rb" \
     --root "${PROJECT_ROOT}" --revision "${revision}" --inventory "${inputs_path}")"
 input_set_sha256="$(printf '%s\n' "${identity_metadata}" | awk -F= '$1 == "input_set_sha256" { print $2 }')"
-run_id="$(printf '%s\n' "${identity_metadata}" | awk -F= '$1 == "run_id" { print $2 }')"
+input_run_id="$(printf '%s\n' "${identity_metadata}" | awk -F= '$1 == "run_id" { print $2 }')"
+attempt_id="$(date -u '+%Y%m%dT%H%M%SZ')-$$"
+run_id="${input_run_id}-${attempt_id}"
 [[ -n "${input_set_sha256}" && -n "${run_id}" ]] || fail_usage 'input identity calculation failed'
 
 canonical_report_dir="${REPORT_ROOT}/${run_id}/${profile}"
@@ -127,7 +153,8 @@ log_path="${staging}/run.log"
 {
     printf 'spec=SPEC-014\nprofile=%s\n' "${profile}"
     printf 'repository_revision=%s\nrepository_dirty=%s\n' "${revision}" "${dirty}"
-    printf 'input_set_sha256=%s\nrun_id=%s\n' "${input_set_sha256}" "${run_id}"
+    printf 'input_set_sha256=%s\ninput_identity_run_id=%s\nattempt_id=%s\nrun_id=%s\n' \
+        "${input_set_sha256}" "${input_run_id}" "${attempt_id}" "${run_id}"
     printf 'invocation=scripts/contracts/run-spec-014.sh --profile %s\n' "${profile}"
     printf 'output_root=.build/spec-014\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
@@ -180,7 +207,7 @@ run_package_checks() {
         --package-path "${PROJECT_ROOT}" \
         --scratch-path "${PROJECT_ROOT}/.build/spec-014/swiftpm/${profile}" \
         --cache-root "${PROJECT_ROOT}/.build/spec-014/cache/${profile}" \
-        --disable-sandbox -- package dump-package >"${package_json}" 2>>"${log_path}"
+        --disable-sandbox --skip-update -- package dump-package >"${package_json}" 2>>"${log_path}"
     local result=$?
     if [[ "${result}" -ne 0 ]]; then
         failures=$((failures + 1))
@@ -201,21 +228,24 @@ record_toolchain() {
     local result=0
     case "${profile}" in
         macos-dynamic | macos-static)
-            record_command xcrun --find swiftc
-            compiler="$(xcrun --find swiftc 2>>"${log_path}")" || result=$?
-            if [[ "${result}" -eq 0 ]]; then
-                version="$("${compiler}" --version 2>&1)" || result=$?
-                sdk="$(xcrun --sdk macosx --show-sdk-path 2>>"${log_path}")" || result=$?
-            fi
-            if [[ "${result}" -eq 0 && "${version}" == *'Apple Swift version 6.3.3'* && \
-                "${version}" == *'swiftlang-6.3.3.1.3'* && -d "${sdk}" ]]; then
-                printf 'compiler_path=%s\ncompiler_version=%s\nsdk_path=%s\n' \
-                    "${compiler}" "${version//$'\n'/ }" "${sdk}" >>"${metadata_path}"
+            compiler="${GIFTUI_SWIFTC_EXECUTABLE}"
+            swift_driver="${GIFTUI_SWIFT_EXECUTABLE}"
+            version="$("${compiler}" --version 2>&1)" || result=$?
+            swift_version="$("${swift_driver}" --version 2>&1)" || result=$?
+            sdk="$(xcrun --sdk macosx --show-sdk-path 2>>"${log_path}")" || result=$?
+            if [[ "${result}" -eq 0 && "${version}" == *'Apple Swift version 6.4 (swift-6.4-RELEASE)'* && \
+                "${swift_version}" == *'Apple Swift version 6.4 (swift-6.4-RELEASE)'* && -d "${sdk}" ]]; then
+                compiler_sha256="$(shasum -a 256 "${compiler}" | awk '{print $1}')"
+                swift_sha256="$(shasum -a 256 "${swift_driver}" | awk '{print $1}')"
+                printf 'compiler_path=%s\ncompiler_version=%s\ncompiler_sha256=%s\nswift_driver_path=%s\nswift_driver_version=%s\nswift_driver_sha256=%s\nsdk_path=%s\n' \
+                    "${compiler}" "${version//$'\n'/ }" "${compiler_sha256}" \
+                    "${swift_driver}" "${swift_version//$'\n'/ }" "${swift_sha256}" \
+                    "${sdk}" >>"${metadata_path}"
                 printf 'target=arm64-apple-macosx26.0\noptimization=-O -whole-module-optimization\n' >>"${metadata_path}"
-                printf 'toolchain\tcomplete\tpinned Apple Swift and macOS SDK recorded\n' >>"${prerequisites_path}"
+                printf 'toolchain\tcomplete\tpinned project-local RFC-014 Swift 6.4 and macOS SDK recorded\n' >>"${prerequisites_path}"
             else
                 failures=$((failures + 1))
-                printf 'toolchain\tblocked\tpinned Apple Swift 6.3.3 or macOS SDK unavailable\n' >>"${prerequisites_path}"
+                printf 'toolchain\tblocked\tpinned project-local RFC-014 Swift 6.4 or macOS SDK unavailable\n' >>"${prerequisites_path}"
             fi
             ;;
         raspberry-pi-armv6)

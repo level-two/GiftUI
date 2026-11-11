@@ -82,7 +82,7 @@ be deferred. Commit each completed package with its test/evidence disposition.
 **Complete — I3-T01 passed within the hardware-free validation boundary.** I3-T01.3 participates in the
 [single bounded task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs).
 Eugene requested proceeding with iteration-3 tasks and committing each step.
-The existing Specification remains `implemented`; historical ledgers below are preserved.
+The 2026-09-11 `implemented` transition below is historical and applies only to the pre-RFC-014 baseline. The current Specification remains `implementing`; RFC-014 approval reopened implementation work and did not authorize a new implemented transition. Historical ledgers below are preserved.
 
 - Contract mapping: LY-003–010. All other criteria retain their existing dispositions.
 - Exact source/test boundary: `Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift`, `StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift`, `StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift`; `Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFEmbeddedLayoutWorkspaceTests.swift`.
@@ -947,9 +947,14 @@ report, and that report maps `LY-001` through `LY-009` exactly once. The report
 finds no implementation deviation or approved exception and requests explicit
 human conformance review; it does not change SPEC-007 from `implementing`.
 
-The maintainer explicitly authorized the separately gated `implemented`
-transition on 2026-09-11. SPEC-007 and its complete conformance report now
-record that decision without changing this plan's completed task history.
+The maintainer authorized a separately gated `implemented` transition on
+2026-09-11 for the pre-RFC-014 baseline only. The linked historical report and
+completed task history preserve that disposition; they do not satisfy the
+current amended contract. RFC-014 approval on 2026-10-10 did not authorize a
+new lifecycle transition. SPEC-007 remains `implementing`, this plan remains
+`active`, and T9.1 plus LY-RD-001/002 and current conformance evidence remain
+open.
 
-Plan completion means every task has a recorded disposition; the separately
-authorized conformance transition now records SPEC-007 as `implemented`.
+Plan task dispositions are historical provenance. Completion of this plan and
+any later `implemented` transition require current evidence for all applicable
+criteria and a separate authorized conformance decision.

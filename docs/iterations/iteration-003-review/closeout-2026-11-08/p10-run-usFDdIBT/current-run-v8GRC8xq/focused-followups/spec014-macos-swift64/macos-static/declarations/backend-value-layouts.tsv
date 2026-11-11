@@ -1,0 +1,9 @@
+value	size	stride	alignment	requirement	bound
+CanonicalEncodedPixel	6	6	1	maximum	8
+RasterSurfaceDescriptor	30	32	4	maximum	32
+RasterPayloadLimits	32	32	4	maximum	40
+DisplayReservationID	4	4	4	exact	4
+DisplayReservationResult	5	8	4	reported	-
+DisplayTransferResult	1	1	1	reported	-
+DisplayTargetError	1	1	1	exact	1
+RasterBackendError	1	1	1	exact	1

@@ -68,7 +68,13 @@ optimization=""
 flags=()
 case "${profile}" in
     macos-dynamic | macos-static)
-        compiler="$(xcrun --find swiftc)"
+        # SPEC-014 macOS checks are part of the RFC-014 Swift 6.4 baseline.
+        # Select the project-local compiler directly rather than inheriting
+        # Xcode's unrelated xcrun selection.
+        # shellcheck source=compiler-baseline.sh
+        source "${SCRIPT_DIR}/compiler-baseline.sh"
+        giftui_rfc014_select_compiler "${PROJECT_ROOT}" "${profile}" || exit 1
+        compiler="${GIFTUI_CONTRACT_SWIFTC}"
         sdk="$(xcrun --sdk macosx --show-sdk-path)"
         target="arm64-apple-macosx26.0"
         optimization="-O -whole-module-optimization"

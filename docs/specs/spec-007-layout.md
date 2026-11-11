@@ -53,11 +53,15 @@ target_milestone: MVP
 > The amendment section controls conflicts with the retained baseline realization.
 > Earlier completed evidence applies to `53740a73`, not to this new implementation.
 
-> **Implementation status:** Implemented on 2026-09-11 after complete
-> conformance review and explicit maintainer authorization. The governing
-> Proposal and RFCs, accepted architectural decisions, and approved
-> Foundation, Failure, Text Resource, and Declarative contracts remain
-> authoritative prerequisites.
+> **Historical baseline status:** The pre-RFC-014 version of this Specification
+> was marked implemented on 2026-09-11 after its then-applicable conformance
+> review and explicit maintainer authorization. The RFC-014 amendment was
+> approved on 2026-10-10 and reopened implementation of the amended contract;
+> it did not authorize an implemented transition for the amended criteria.
+> Current lifecycle status is `implementing` (frontmatter); see the amendment
+> criteria below and the current conformance report. The governing Proposal and
+> RFCs, accepted architectural decisions, and approved Foundation, Failure,
+> Text Resource, and Declarative contracts remain authoritative prerequisites.
 
 ## RFC-014 runtime amendment
 

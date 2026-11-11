@@ -1,5 +1,41 @@
 # Independent review — current closeout packet
 
+## Supplemental review — source-bound SPEC-014 and P11/P12 crosswalk — 2026-11-11
+
+The independent SPEC-014 reviewer accepted the current closeout wording and
+identity reconciliation as accurate and scope-limited. The P10 receipt and
+README retain the integrated **55 passed / 28 failed** result, keep P10 and P08
+UNMET, and distinguish later focused profile attempts from the archived gate.
+Both focused macOS SPEC-014 reports are blocked, source-bound to the same
+complete input-set SHA, and identify the current shared
+`SemanticRecordExpansion.swift` compiler errors under project-local Swift 6.4.
+No profile or criterion was promoted to PASS. This review does not constitute
+SPEC-014 conformance or accept the implementation.
+
+The reviewer hash-bound these current documents:
+
+- Closeout README SHA-256: `d97c04dfb621714ddaae4799239c4a1da8d6ce87b40332f07c0f809f191acfd7`
+- P10 receipt SHA-256: `ce1ef6f008f83cad7c9c2a43df3c56fab2d2bd0c49e687d1a8ce21d652d78154`
+- SPEC-007 Specification SHA-256: `67d06c180f2971e7e41edc2e35211b78bc5f162dafdc71c9af2420e1dcf26112`
+- SPEC-007 plan SHA-256: `ae1009d261c50d954300a632959982cf057b503a183b45106e01f7826b4b5f0a`
+- SPEC-007 conformance report SHA-256: `c5e8424c9a413d2bbcd25a5c9a23a115e64b41539e2a65988a6c1cbf1d486d23`
+
+The SPEC-007 current lifecycle statuses remain `implementing`, `active`, and
+`collecting`; LY-RD-001/002 and T9.1/T12.1 remain open. No status promotion is
+supported. A separate bounded P11/P12 crosswalk review compared the README's
+current P11 evidence mapping to the owner matrices and confirmed that it names
+relevant criteria without treating any selected receipt as criterion closure.
+It also confirmed the 849 input / 3,404 artifact matches are collection
+integrity only, S1–S3 use restrictions remain, and P12 no-removal is not a
+cutover pass. The reviewer confirmed the current README SHA above after the
+crosswalk edits; no separate review artifact was generated for that bounded
+check.
+
+The focused SPEC-014 report identity details and blocked prerequisites are
+recorded in the P10 receipt's “Source-bound SPEC-014 macOS follow-up” section.
+This supplemental review does not change the P10 execution count or the
+criterion index.
+
 Reviewed 2026-11-10. I accept the current closeout packet as an accurate
 bounded reconciliation of retained P10 executions, criterion dispositions,
 P11/P12 scope, and the P08/I4/restricted-use boundaries. This is an acceptance

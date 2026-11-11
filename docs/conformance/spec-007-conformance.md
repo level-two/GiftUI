@@ -20,8 +20,12 @@ superseded_by: null
 
 # SPEC-007 Conformance Report
 
-> This complete report records evidence. The maintainer separately authorized
-> the governing Specification's `implemented` transition on 2026-09-11.
+> **Historical baseline report:** Its acceptance results and the separately
+> authorized 2026-09-11 `implemented` transition apply to the pre-RFC-014
+> contract only. The amendment approved on 2026-10-10 reopened implementation
+> for LY-RD-001/002; it did not transition the amended Specification. Current
+> lifecycle status is Specification `implementing`, plan `active`, and this
+> report `collecting`. The current amendment criteria are not complete here.
 
 ## RFC-014 P05 collection
 
@@ -29,7 +33,7 @@ P05 passed its finite package exit after [independent Strong review](../../Tests
 
 ## Review Scope
 
-- Governing contract: [SPEC-007 Proposal-Based Layout Contract](../specs/spec-007-layout.md), status `implemented` after complete conformance review and explicit maintainer authorization on 2026-09-11.
+- Governing contract: [SPEC-007 Proposal-Based Layout Contract](../specs/spec-007-layout.md). The evidence below is historical evidence for the pre-RFC-014 contract, whose `implemented` transition was authorized on 2026-09-11; it is not full conformance evidence for the current amended contract.
 - Completed plan: [SPEC-007 Implementation Plan](../implementation-plans/spec-007-implementation-plan.md).
 - Design note: [bounded layout attempt](../implementation-designs/spec-007-bounded-layout-attempt.md), status `current`.
 - Reviewed implementation revision: `c431b73a1df03590309515b967dd37cb847acf93`.
@@ -117,10 +121,12 @@ criterion and conceal no correctness gap.
 
 ## Review Conclusion
 
-All nine acceptance criteria have reproducible passing evidence, with no
-deviation or exception. The maintainer explicitly authorized that transition
-on 2026-09-11, so SPEC-007 is now `implemented`. This report records the
-decision; it did not grant the authorization.
+The nine baseline acceptance criteria have reproducible passing evidence, with
+no deviation or exception, for the pre-RFC-014 contract only. The maintainer
+authorized that baseline transition on 2026-09-11. The approved RFC-014
+amendment adds LY-RD-001/002, which remain open; this historical report does
+not establish current full conformance or authorize a transition for the
+amended Specification.
 
 ## SPEC-001 milestone 10 canonical embedded consumer — 2026-10-02
 
@@ -140,5 +146,6 @@ owner/profile report-integrity checks pass on `7d618db7`, with focused boundary,
 ordering, pixel, storage/reuse and target-build evidence in that report.
 This is hardware-free regression evidence on the generated production graph.
 It does not broaden earlier exceptions or prove connected timing, complete
-stack/lifetime safety, runtime graph migration or iteration-3 closure.
-The Specification remains `implemented` under its existing approval.
+stack/lifetime safety, runtime graph migration or iteration-3 closure. The
+regression predates the RFC-014 runtime amendment and does not change the
+current `implementing` lifecycle status.

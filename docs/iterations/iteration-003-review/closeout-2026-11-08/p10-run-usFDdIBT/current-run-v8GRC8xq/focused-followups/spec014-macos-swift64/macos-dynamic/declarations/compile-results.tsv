@@ -1,0 +1,7 @@
+# case	expectation	result
+compile-surface	pass	pass
+surface-cannot-import-raster	fail	pass
+raster-cannot-import-display	fail	pass
+display-cannot-import-raster	fail	pass
+integration-cannot-import-drawing	fail	pass
+giftui-cannot-import-integration	fail	pass

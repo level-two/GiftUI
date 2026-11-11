@@ -1,0 +1,6 @@
+profile	macos-dynamic
+compiler	/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc
+compiler_sha256	79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69
+compiler_version	Apple Swift version 6.4 (swift-6.4-RELEASE) Target: arm64-apple-macosx26.0 
+target	arm64-apple-macosx26.0
+optimization	-O -whole-module-optimization

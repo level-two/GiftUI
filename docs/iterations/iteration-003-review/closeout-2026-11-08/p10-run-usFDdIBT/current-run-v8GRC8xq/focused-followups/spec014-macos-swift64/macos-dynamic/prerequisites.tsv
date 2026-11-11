@@ -1,0 +1,27 @@
+# item	status	reason
+fixture-schema	complete	command passed
+migration-inventory	complete	command passed
+contributor-boundaries	complete	command passed
+capability-fixtures	complete	command passed
+conformance-report	complete	command passed
+startup-validation-boundaries	complete	command passed
+frame-work-arithmetic	complete	command passed
+failure-precedence-and-health	complete	command passed
+resource-instrumentation	complete	command passed
+text-resource-boundary	complete	command passed
+transaction-oracle	complete	command passed
+driver-registry	complete	command passed
+package-graph	complete	exact and reserved dependency graphs passed
+toolchain	complete	pinned project-local RFC-014 Swift 6.4 and macOS SDK recorded
+macos-production-corpus	blocked	command failed with exit 1
+declaration-layout-and-imports	complete	command passed
+target-GiftUISurfaceCore	complete	Sources/GiftUISurfaceCore
+target-GiftUIRasterCore	complete	Sources/GiftUIRasterCore
+target-GiftUIDisplayCore	complete	Sources/GiftUIDisplayCore
+target-GiftUIBackendIntegration	complete	Sources/GiftUIBackendIntegration
+test-target-GiftUISurfaceCoreTests	complete	Tests/GiftUISurfaceCoreTests
+test-target-GiftUIRasterCoreTests	complete	Tests/GiftUIRasterCoreTests
+test-target-GiftUIDisplayCoreTests	complete	Tests/GiftUIDisplayCoreTests
+test-target-GiftUIBackendIntegrationTests	complete	Tests/GiftUIBackendIntegrationTests
+fixture-corpus	complete	canonical cases are populated
+acceptance-evidence	complete	all criterion rows are complete

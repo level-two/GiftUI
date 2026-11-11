@@ -1,0 +1,330 @@
+SPEC-014 fixture check passed: 5 ordered corpora, 26 registered cases, and 0 pending criteria.
+SPEC-014 migration check passed: 31 dispositions and 6 forbidden-shape regressions.
+SPEC-014 contributor check passed: two fact-only adapters and no forbidden authority.
+SPEC-014 capability fixtures passed: four exact profiles and one nRF framebuffer rejection.
+SPEC-014 conformance record passed: 15 explicit dispositions; report complete; pending criteria remain unfulfilled.
+SPEC-014 startup validator check passed: exact stage order and no forbidden authority.
+SPEC-014 frame-work check passed: checked formulas and exact construction/header mappings.
+SPEC-014 failure check passed: complete mapping, precedence, reservation, drain, and diagnostic matrices.
+SPEC-014 resource instrumentation passed: 15 metrics, 7 methods, bounded counters, and zero static heap requirement.
+SPEC-014 text-resource check passed: exact identity, bounded records, and no fallback.
+SPEC-014 transaction check passed: 12 ordered transaction oracles.
+Contract driver registry check passed: 15 driver(s).
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift package --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/spec-014/swiftpm/macos-dynamic --disable-sandbox --skip-update dump-package
+warning: '--skip-update' option is deprecated and will be removed in a future release
+SPEC-002 dependency check passed: 84 targets, 382 direct edges, acyclic.
+SPEC-014 module contract passed: 10 frozen owners, 8 active, 6 downstream consumer, and 13 graph fixtures.
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:57:9: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 35 |     package let descriptor: RasterSurfaceDescriptor
+ 36 |     @usableFromInline
+ 37 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 38 |     @usableFromInline
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+    :
+ 55 |         else { return nil }
+ 56 |         self.descriptor = descriptor
+ 57 |         self.storage = storage
+    |         `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 58 |     }
+ 59 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:64:50: warning: setter for property 'presentationResponsibilityAccepted' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 37 |     package internal(set) var storage: Storage
+ 38 |     @usableFromInline
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+    |                               `- note: setter for property 'presentationResponsibilityAccepted' is not '@usableFromInline' or public
+ 40 |     @usableFromInline
+ 41 |     package internal(set) var drainedValidationFailure = false
+    :
+ 62 |         FullSurfaceRGBA8888Operations.beginFrame(
+ 63 |             header, descriptor: descriptor, activeHeader: &activeHeader,
+ 64 |             presentationResponsibilityAccepted: &presentationResponsibilityAccepted,
+    |                                                  `- warning: setter for property 'presentationResponsibilityAccepted' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 65 |             drainedValidationFailure: &drainedValidationFailure)
+ 66 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:65:40: warning: setter for property 'drainedValidationFailure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+ 40 |     @usableFromInline
+ 41 |     package internal(set) var drainedValidationFailure = false
+    |                               `- note: setter for property 'drainedValidationFailure' is not '@usableFromInline' or public
+ 42 | 
+ 43 |     @usableFromInline
+    :
+ 63 |             header, descriptor: descriptor, activeHeader: &activeHeader,
+ 64 |             presentationResponsibilityAccepted: &presentationResponsibilityAccepted,
+ 65 |             drainedValidationFailure: &drainedValidationFailure)
+    |                                        `- warning: setter for property 'drainedValidationFailure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 66 |     }
+ 67 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:74:71: warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 35 |     package let descriptor: RasterSurfaceDescriptor
+ 36 |     @usableFromInline
+ 37 |     package internal(set) var storage: Storage
+    |                               `- note: setter for property 'storage' is not '@usableFromInline' or public
+ 38 |     @usableFromInline
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+    :
+ 72 |     ) -> Bool {
+ 73 |         FullSurfaceRGBA8888Operations.replacePixel(
+ 74 |             at: point, with: pixel, descriptor: descriptor, storage: &storage,
+    |                                                                       `- warning: setter for property 'storage' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 75 |             activeHeader: activeHeader,
+ 76 |             presentationResponsibilityAccepted: presentationResponsibilityAccepted,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:77:40: warning: setter for property 'drainedValidationFailure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+ 40 |     @usableFromInline
+ 41 |     package internal(set) var drainedValidationFailure = false
+    |                               `- note: setter for property 'drainedValidationFailure' is not '@usableFromInline' or public
+ 42 | 
+ 43 |     @usableFromInline
+    :
+ 75 |             activeHeader: activeHeader,
+ 76 |             presentationResponsibilityAccepted: presentationResponsibilityAccepted,
+ 77 |             drainedValidationFailure: &drainedValidationFailure)
+    |                                        `- warning: setter for property 'drainedValidationFailure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 78 |     }
+ 79 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:84:50: warning: setter for property 'presentationResponsibilityAccepted' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 37 |     package internal(set) var storage: Storage
+ 38 |     @usableFromInline
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+    |                               `- note: setter for property 'presentationResponsibilityAccepted' is not '@usableFromInline' or public
+ 40 |     @usableFromInline
+ 41 |     package internal(set) var drainedValidationFailure = false
+    :
+ 82 |         FullSurfaceRGBA8888Operations.finishFrame(
+ 83 |             activeHeader: &activeHeader,
+ 84 |             presentationResponsibilityAccepted: &presentationResponsibilityAccepted)
+    |                                                  `- warning: setter for property 'presentationResponsibilityAccepted' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 85 |     }
+ 86 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:91:50: warning: setter for property 'presentationResponsibilityAccepted' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 37 |     package internal(set) var storage: Storage
+ 38 |     @usableFromInline
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+    |                               `- note: setter for property 'presentationResponsibilityAccepted' is not '@usableFromInline' or public
+ 40 |     @usableFromInline
+ 41 |     package internal(set) var drainedValidationFailure = false
+    :
+ 89 |         FullSurfaceRGBA8888Operations.discardFrame(
+ 90 |             activeHeader: &activeHeader,
+ 91 |             presentationResponsibilityAccepted: &presentationResponsibilityAccepted,
+    |                                                  `- warning: setter for property 'presentationResponsibilityAccepted' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 92 |             drainedValidationFailure: &drainedValidationFailure)
+ 93 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:92:40: warning: setter for property 'drainedValidationFailure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+ 40 |     @usableFromInline
+ 41 |     package internal(set) var drainedValidationFailure = false
+    |                               `- note: setter for property 'drainedValidationFailure' is not '@usableFromInline' or public
+ 42 | 
+ 43 |     @usableFromInline
+    :
+ 90 |             activeHeader: &activeHeader,
+ 91 |             presentationResponsibilityAccepted: &presentationResponsibilityAccepted,
+ 92 |             drainedValidationFailure: &drainedValidationFailure)
+    |                                        `- warning: setter for property 'drainedValidationFailure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 93 |     }
+ 94 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:99:50: warning: setter for property 'presentationResponsibilityAccepted' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 37 |     package internal(set) var storage: Storage
+ 38 |     @usableFromInline
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+    |                               `- note: setter for property 'presentationResponsibilityAccepted' is not '@usableFromInline' or public
+ 40 |     @usableFromInline
+ 41 |     package internal(set) var drainedValidationFailure = false
+    :
+ 97 |         FullSurfaceRGBA8888Operations.acceptPresentationResponsibility(
+ 98 |             activeHeader: activeHeader,
+ 99 |             presentationResponsibilityAccepted: &presentationResponsibilityAccepted)
+    |                                                  `- warning: setter for property 'presentationResponsibilityAccepted' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+100 |     }
+101 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift:114:40: warning: setter for property 'drainedValidationFailure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 39 |     package internal(set) var presentationResponsibilityAccepted = false
+ 40 |     @usableFromInline
+ 41 |     package internal(set) var drainedValidationFailure = false
+    |                               `- note: setter for property 'drainedValidationFailure' is not '@usableFromInline' or public
+ 42 | 
+ 43 |     @usableFromInline
+    :
+112 |         FullSurfaceRGBA8888Operations.handleValidationFailure(
+113 |             presentationResponsibilityAccepted: presentationResponsibilityAccepted,
+114 |             drainedValidationFailure: &drainedValidationFailure)
+    |                                        `- warning: setter for property 'drainedValidationFailure' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+115 |     }
+116 | 
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:104:9: warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 58 |     package let textRasterRealization: RasterRealizationID
+ 59 |     @usableFromInline
+ 60 |     package internal(set) var sink: Sink
+    |                               `- note: setter for property 'sink' is not '@usableFromInline' or public
+ 61 |     @usableFromInline
+ 62 |     package internal(set) var bodyCallCount: UInt32 = 0
+    :
+102 |         self.textRasterRealization = textRasterRealization
+103 |         self.envelopeValidator = envelopeValidator
+104 |         self.sink = sink
+    |         `- warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+105 |     }
+106 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:138:9: warning: setter for property 'reservationCallCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 62 |     package internal(set) var bodyCallCount: UInt32 = 0
+ 63 |     @usableFromInline
+ 64 |     package internal(set) var reservationCallCount: UInt32 = 0
+    |                               `- note: setter for property 'reservationCallCount' is not '@usableFromInline' or public
+ 65 |     @usableFromInline
+ 66 |     package internal(set) var lastDisplayError: DisplayTargetError?
+    :
+136 |             return failed(.contractViolation)
+137 |         }
+138 |         reservationCallCount = nextReservationCount.partialValue
+    |         `- warning: setter for property 'reservationCallCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+139 |         lastDisplayError = nil
+140 |         let reservation = sink.reserveFrame(
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:139:9: warning: setter for property 'lastDisplayError' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 64 |     package internal(set) var reservationCallCount: UInt32 = 0
+ 65 |     @usableFromInline
+ 66 |     package internal(set) var lastDisplayError: DisplayTargetError?
+    |                               `- note: setter for property 'lastDisplayError' is not '@usableFromInline' or public
+ 67 |     @usableFromInline
+ 68 |     package internal(set) var retainedProducerError: RenderProductionError?
+    :
+137 |         }
+138 |         reservationCallCount = nextReservationCount.partialValue
+139 |         lastDisplayError = nil
+    |         `- warning: setter for property 'lastDisplayError' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+140 |         let reservation = sink.reserveFrame(
+141 |             descriptor: descriptor,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:140:27: warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 58 |     package let textRasterRealization: RasterRealizationID
+ 59 |     @usableFromInline
+ 60 |     package internal(set) var sink: Sink
+    |                               `- note: setter for property 'sink' is not '@usableFromInline' or public
+ 61 |     @usableFromInline
+ 62 |     package internal(set) var bodyCallCount: UInt32 = 0
+    :
+138 |         reservationCallCount = nextReservationCount.partialValue
+139 |         lastDisplayError = nil
+140 |         let reservation = sink.reserveFrame(
+    |                           `- warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+141 |             descriptor: descriptor,
+142 |             payloadCapacityBytes: payloadLimits.maximumPayloadBytes,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:159:13: warning: setter for property 'lastDisplayError' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 64 |     package internal(set) var reservationCallCount: UInt32 = 0
+ 65 |     @usableFromInline
+ 66 |     package internal(set) var lastDisplayError: DisplayTargetError?
+    |                               `- note: setter for property 'lastDisplayError' is not '@usableFromInline' or public
+ 67 |     @usableFromInline
+ 68 |     package internal(set) var retainedProducerError: RenderProductionError?
+    :
+157 |             )!
+158 |         case .failure(let error):
+159 |             lastDisplayError = error
+    |             `- warning: setter for property 'lastDisplayError' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+160 |             return failed(.contractViolation)
+161 |         case .reserved:
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:171:9: warning: setter for property 'bodyCallCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 60 |     package internal(set) var sink: Sink
+ 61 |     @usableFromInline
+ 62 |     package internal(set) var bodyCallCount: UInt32 = 0
+    |                               `- note: setter for property 'bodyCallCount' is not '@usableFromInline' or public
+ 63 |     @usableFromInline
+ 64 |     package internal(set) var reservationCallCount: UInt32 = 0
+    :
+169 |             return failed(.contractViolation)
+170 |         }
+171 |         bodyCallCount = nextBodyCount.partialValue
+    |         `- warning: setter for property 'bodyCallCount' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+172 |         let streamResult = body(&sink)
+173 |         retainedProducerError = sink.retainedProducerError
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:172:34: warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 58 |     package let textRasterRealization: RasterRealizationID
+ 59 |     @usableFromInline
+ 60 |     package internal(set) var sink: Sink
+    |                               `- note: setter for property 'sink' is not '@usableFromInline' or public
+ 61 |     @usableFromInline
+ 62 |     package internal(set) var bodyCallCount: UInt32 = 0
+    :
+170 |         }
+171 |         bodyCallCount = nextBodyCount.partialValue
+172 |         let streamResult = body(&sink)
+    |                                  `- warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+173 |         retainedProducerError = sink.retainedProducerError
+174 |         return resolve(streamResult)
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:173:9: warning: setter for property 'retainedProducerError' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 66 |     package internal(set) var lastDisplayError: DisplayTargetError?
+ 67 |     @usableFromInline
+ 68 |     package internal(set) var retainedProducerError: RenderProductionError?
+    |                               `- note: setter for property 'retainedProducerError' is not '@usableFromInline' or public
+ 69 | 
+ 70 |     @usableFromInline
+    :
+171 |         bodyCallCount = nextBodyCount.partialValue
+172 |         let streamResult = body(&sink)
+173 |         retainedProducerError = sink.retainedProducerError
+    |         `- warning: setter for property 'retainedProducerError' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+174 |         return resolve(streamResult)
+175 |     }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:196:17: warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 58 |     package let textRasterRealization: RasterRealizationID
+ 59 |     @usableFromInline
+ 60 |     package internal(set) var sink: Sink
+    |                               `- note: setter for property 'sink' is not '@usableFromInline' or public
+ 61 |     @usableFromInline
+ 62 |     package internal(set) var bodyCallCount: UInt32 = 0
+    :
+194 |         if sink.presentationResponsibilityAccepted {
+195 |             if !sink.streamCompleted {
+196 |                 sink.finishTransferredFrameIfNeeded()
+    |                 `- warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+197 |             }
+198 |             return FrameOfferResult(disposition: .accepted, failure: nil)!
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:205:9: warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 58 |     package let textRasterRealization: RasterRealizationID
+ 59 |     @usableFromInline
+ 60 |     package internal(set) var sink: Sink
+    |                               `- note: setter for property 'sink' is not '@usableFromInline' or public
+ 61 |     @usableFromInline
+ 62 |     package internal(set) var bodyCallCount: UInt32 = 0
+    :
+203 |         }
+204 | 
+205 |         sink.discard()
+    |         `- warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+206 |         sink.cancelReservedFrame()
+207 |         switch streamResult {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift:206:9: warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+ 58 |     package let textRasterRealization: RasterRealizationID
+ 59 |     @usableFromInline
+ 60 |     package internal(set) var sink: Sink
+    |                               `- note: setter for property 'sink' is not '@usableFromInline' or public
+ 61 |     @usableFromInline
+ 62 |     package internal(set) var bodyCallCount: UInt32 = 0
+    :
+204 | 
+205 |         sink.discard()
+206 |         sink.cancelReservedFrame()
+    |         `- warning: setter for property 'sink' is internal and cannot be referenced from an '@inlinable' function; this will be an error in a future Swift language mode
+207 |         switch streamResult {
+208 |         case .producerFailed:
+SPEC-014 macos-dynamic declarations passed: 8 layouts, 5 protocol conformers, 8 Sendable values, 5 negative imports, and bounded resource instrumentation.
