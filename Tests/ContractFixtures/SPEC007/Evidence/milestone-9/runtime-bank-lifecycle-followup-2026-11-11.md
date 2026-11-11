@@ -106,12 +106,13 @@ P12 adoption evidence, or an acceptance/lifecycle transition. The original
 286-assertion archives above remain immutable historical evidence; this
 follow-up does not alter the archived integrated P10 result.
 
-An additional local `swift test --filter GiftUILayoutTests` attempt used the
-project-local Swift 6.4 driver/compiler and repository-local module-cache
-overrides. SwiftPM reached compilation but failed in the transferred analyzer
-`SignalAnalyzerView` schema/View diagnostics before executing the filtered
-tests. The diagnostic confirms the established whole-package test route cannot
-provide the remaining full baseline differential until the authorized I4
-analyzer input is available; it is not a new Layout result or a reason to
+The retained pinned root-test diagnostic used the project-local Swift 6.4
+driver/compiler and repository-local SwiftPM settings. SwiftPM reached
+compilation but failed in the transferred analyzer `SignalAnalyzerView`
+schema/View diagnostics before tests executed. Its raw log SHA-256 is
+`35a807002395d427e89b79940f9d304a744cca69f3cba14f891b21cd2702d7eb`; the
+P10 receipt records its exact command and archive. This whole-package route
+cannot provide the remaining full baseline differential until the authorized
+I4 analyzer input is available; it is not a new Layout result or a reason to
 change any status. The focused standalone P05 route above remains the current
 bounded host evidence.

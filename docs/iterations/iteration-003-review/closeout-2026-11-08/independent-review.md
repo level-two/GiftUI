@@ -13,9 +13,9 @@ candidate bank.
 
 The blocker boundary is accurate: the full Generic/Layout T4/T5/T6 differential
 remains an offline criterion action; the current case is one bounded T6 sample.
-An attempted filtered whole-package `swift test --filter GiftUILayoutTests`
-reached compile and failed at the transferred analyzer `SignalAnalyzerView`
-schema/View diagnostics before executing those tests. The two application
+The retained pinned root-test diagnostic reached compile and failed at the
+transferred analyzer `SignalAnalyzerView` schema/View diagnostics before tests
+executed (raw log SHA-256 `35a807002395d427e89b79940f9d304a744cca69f3cba14f891b21cd2702d7eb`). The two application
 layouts remain transferred to I4; embedded runtime remains subject to explicit
 target authorization. P11 lacks allocator attribution and connected/whole-route
 measurements; P12 correctly remains no-removal pending accepted inputs and
@@ -28,8 +28,8 @@ Current scoped identities:
 - P10 receipt SHA-256: `cf5469ec4ddfdbab1e94fd98378cfa2f3cc6572dc803059706f80f3710586524`
 - SPEC-007 conformance report SHA-256: `c45cad0d61f1a13c8097d33855eab8db1b8e8d85c9e70a3debdb8d6a0f391674`
 - SPEC-007 implementation plan SHA-256: `880ce12ce7fc5416e800dd6baee1e29ca872474220b75672c6282832b4c45eb2`
-- Terminal blocker bundle SHA-256: `6aafa47bcc802ca3db0fef41c590efb8664e690af0062fa61a0a23e85e15a517`
-- SPEC-007 four-profile evidence note SHA-256: `3d52b082a64c49ad47d47de565ed3210bacba20a7a46be77ad9aef421067e856`
+- Terminal blocker bundle SHA-256: `d1c26531328df2c5fb7e5746b6a498af46963ab16fa7117ef3a932cc98e12966`
+- SPEC-007 four-profile evidence note SHA-256: `2a1e3f4fcbb86f753bb1725c6590bbcb8a002a424c2392feedc03d9d39c75126`
 - Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825` (189 rows)
 - CSV generator SHA-256: `172071b6913c179d1dc2ae457497320c2c438b3c61e9ba9ec49cb15db0871854`
 - Latest SPEC-007 P05 result SHA-256, Dynamic/Static/Pi/nRF: `dc64a3862289e260c9f8f986280fe2677a95dd86846d1ec99c4d65f0e83bde61` / `22647b66140c2fb250e33baded6be8eac9b81069c4b3c80cf85615c5e1d764ab` / `bae89a1908ae2b09086f1ac29adfa7d4d0c3524950ff6e120a227a7502e59074` / `f4b0b8b22471dfec7f1b4637b0f5c60ebbed3ba6963114f1e5183315fac9afcc`
