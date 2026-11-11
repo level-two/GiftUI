@@ -17,22 +17,27 @@ select the pinned project-local Swift 6.4 compiler, clear the prior 6.3.3
 Semantic Core diagnostics, and remain blocked at analyzer-owned
 `SignalAnalyzerView` schema/View errors. The earlier paragraphs below that say
 the Static profile had not yet been rerun preserve their historical review-time
-state and are superseded for current status by this reconciliation. The focused
-SPEC-007 P05 Dynamic and Static runs remain partial 286-assertion results; no
-criterion, lifecycle status, P10 aggregate, P08 status, P11/P12 gate, or human
-closure decision is promoted here.
+state and are superseded for current status by this reconciliation. The
+focused SPEC-007 P05 Dynamic and Static runs remain partial 286-assertion
+results; Pi ARMv6 and nRF52840 cross-compile and pass ABI checks without target
+execution. The embedded P02 receipts and all four P05 archives are retained.
+No criterion, lifecycle status, P10 aggregate, P08 status, P11/P12 gate, or
+human closure decision is promoted here.
 
 Current scoped identities:
 
-- Closeout README SHA-256: `b74b008565d3b86d4e67eb29431fce624e8eea9e206861e7cdd6c9a468f4c7c3`
-- P10 receipt SHA-256: `8d2d18dcc962e6586a329c65312b63544192945b7fb4679695d6ebaaa8b877d3`
-- SPEC-007 conformance report SHA-256: `0d6c3e6f1481b9c8bbe9535c86b076acf40381ca16c484abd9849d8b6c79dd62`
-- SPEC-007 implementation plan SHA-256: `53f949caa3f132ce476af2a3aaff620aa12c99fb84a79cba779012906aa91997`
+- Closeout README SHA-256: `3e9f60b4aeac4bf54f94c12f31216fe5b4b25d8dcdff6ea25c9ccbd9f61cc2af`
+- P10 receipt SHA-256: `9de7ae5405735b5039b0de0982713ad663090ab6f62c93b769028cc0f856f091`
+- SPEC-007 conformance report SHA-256: `b23ce0d6c9ebfc82e7bbe71c0e6a6821ccfe91536414f8514872a3aa3a27a3b4`
+- SPEC-007 implementation plan SHA-256: `28a05474f3b2f2dd4625d0c8a40a36f8e5f4adae1f075bb4a957543d47ec3cf6`
 - Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825` (189 rows)
 - Criterion CSV generator SHA-256: `172071b6913c179d1dc2ae457497320c2c438b3c61e9ba9ec49cb15db0871854`
 - Focused SPEC-014 Dynamic metadata/log SHA-256: `634bcf94c1643bdc4c9fdc9ae5cfeabc028fd7bf4729dbd8e0b2a71958afdc26` / `adb2c92ca5097840390be2fecfb7222d12b0c9046e9af490b5bfe947594a4f6c`; archive SHA-256: `3523a224c85444c5a46c7bbd88c1152bb71b1a3cb0329c28286ec64c28b5d9e3`.
 - Focused SPEC-014 Static metadata/log SHA-256: `34e6276122fce0790e02706b0e3b2ac71bafd92a6a0949ce6c02708b20f80fc7` / `62d940283651cb1b185f5ddf2f6df612d621a79dbc068cad99535cf1db87fc12`; archive SHA-256: `6db4f34b40c60882bd6dbf55379fe3e6edd1052c9a1e5b8495e86789fffa035b`.
 - Focused SPEC-007 P05 Dynamic/Static result SHA-256: `8171a2048d6005cb167882b3c54cbda3cefb9f2bd4521a68f7cc70a99d1a1bc1` / `751e29f517d1df395c10154c8048d59705c2e49c845aa6ecd15bcbcd3b12318b`.
+- Focused SPEC-007 P05 Pi/nRF result SHA-256: `29b360a9097acf2a78eeaed84b6233014d03085acadbab3b9eaa199f34c831ab` / `31358ed602c1276aa050c578b1c499c97cf835b2a89b18a4290905a592d34490`; their cross-compile archive SHA-256: `311f65f3ea88235da1298031d8edb92d17b29294824c4876e57f116e8be32339` / `7ae8856dffc721df8a9e87edded131fa9424ac1d41c190e64a66ec7746da4c35`.
+- Embedded P02 Pi/nRF receipt archive SHA-256: `7637217021ee4919ebc36baacc22aa741d9b8e3112944b3c69998c068d8fd6f4` / `a9b03d415e9097aa7261e3aa18b65a47f093dd4ee2e06120cb40ae6aaab1e9da`; both retained reports record 27 passing checks and no target execution.
+- SPEC-007 four-profile evidence note SHA-256: `6ac57b88b38c540eac91153410ab1414d2f9719447602aa35019772312c0ce67`.
 - Pinned dirty root-test diagnostic raw log SHA-256: `35a807002395d427e89b79940f9d304a744cca69f3cba14f891b21cd2702d7eb`; its `report.tar.gz` SHA-256 is `0d2e00c807118c45d0d1e3e9a14ead37230fb46f0c1db871c24cd92dd103dcc4`. Earlier unpinned raw log SHA-256: `d534a132410a0f6c68a3b3205d889a2303c367b8f2f74f2457417b8112b34fb3`.
 - Latest completed integrated P10 `run-v8GRC8xq` remains 55/28; its retained metadata/results hashes are unchanged from the historical review below.
 

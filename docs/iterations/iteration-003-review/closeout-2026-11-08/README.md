@@ -50,7 +50,9 @@ not establish a defect under the approved Swift 6.4 baseline.
 
 The later focused SPEC-007 P05 bank-layout helper also compiled, linked, and
 executed under macOS Dynamic and Static, passing 286 assertions per profile.
-Its exact receipts and limits are in the
+Current Pi ARMv6 and nRF52840 P02 receipts and P05 cross-compilation/ABI reports
+are now retained as well; neither embedded profile executed on target. Exact
+receipts and limits are in the
 [T9.1 runtime-bank follow-up](../../../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
 It does not change the four failed SPEC-007 executions in the integrated P10
 result or close LY-RD-001/002.
@@ -60,17 +62,18 @@ result or close LY-RD-001/002.
 | Item | Current evidence / prerequisite | Smallest next action | Scope and consequence |
 | --- | --- | --- | --- |
 | P10 aggregate | Latest completed run remains `run-v8GRC8xq` (55/28). The focused SPEC-014 Dynamic and Static runs now use the pinned Swift 6.4 compiler and both stop at analyzer-owned `SignalAnalyzerView` schema/View errors; current root-test log also contains errors from the dirty checkout and is diagnostic only because that invocation has no complete source manifest. | Resolve the already allocated analyzer migration prerequisite in I4, then run one source-bound complete P10 gate on the resulting authorized input set. | Do not count either focused run as aggregate success, infer a clean-source defect from the unbound root-test log, or transfer shared P10 rows. P10 stays FAILED / UNMET meanwhile. |
-| SPEC-007 `LY-RD-001` | macOS P05 bank-layout helper passes 286 assertions in Dynamic and Static, but no current Pi/nRF P02 `GiftUI` build receipts are available. The required differential is baseline corpus plus both application layouts under all four profiles. | After current approved source builds produce fresh Pi/nRF P02 receipts, run the registered P05 owner route in both profiles; then complete and retain the four-profile baseline/application differential. | The two macOS receipts are partial and do not close this criterion. No target execution is implied by ARM cross-compilation. |
-| SPEC-007 `LY-RD-002` | Current probe exercises reader release, prior-publication preservation, sink begin/stage/publish refusal, excess depth/scope, and candidate reuse only in the focused macOS helper. The complete failed begin/lookup/finish and first-excess cleanup/reuse matrix is absent for all four profiles. | Extend/run that exact failure-cleanup matrix for Dynamic, Static, Pi ARMv6, and nRF52840; use fresh P02 receipts for embedded profiles and retain each route's result. | No criterion promotion until the full matrix is reviewed; T9.1 remains open. |
+| SPEC-007 `LY-RD-001` | Current P02/P05 owner receipts exist for all four profiles. The macOS helpers execute the 286-assertion layout probe; Pi ARMv6 and nRF52840 only cross-compile the probe and pass ABI checks. The required differential is baseline corpus plus both application layouts under all four profiles. | Complete and retain the baseline/application differential for each profile using the current P02 receipts. For embedded behavior that requires execution rather than compile/ABI evidence, obtain explicit connected-target authorization and run the owner matrix on target. | Current receipts establish build route readiness, not embedded runtime behavior; LY-RD-001 stays open. |
+| SPEC-007 `LY-RD-002` | The macOS probe exercises reader release, prior-publication preservation, sink begin/stage/publish refusal, excess depth/scope, and candidate reuse. Pi/nRF probe outputs are compile/ABI only. The complete failed begin/lookup/finish and first-excess cleanup/reuse matrix is absent for all four profiles. | Retain the full failure-cleanup matrix under Dynamic and Static. For embedded behavior requiring execution, obtain explicit connected-target authorization, run the same matrix on Pi ARMv6 and nRF52840, and retain each route's result. | No connected hardware execution was performed; no criterion promotion follows from compile/ABI checks. T9.1 remains open. |
 | P11 retained owner accounting | The crosswalk above names exact Native Static, Dynamic allocator, Pi, nRF and P08 scoped receipts, but the missing joined fields are not present: private allocator attribution and full route peak; Pi connected provider/target identity plus whole-route stack/fit; nRF connected sustained workload; and criterion-linked stack/IRQ/allocation/ABI joins for applicable routes. | Produce the missing route evidence under the named owner criteria, attach exact image/toolchain/provider identities and resource ledgers, then obtain independent disposition. | Existing scoped receipts remain usable only within their stated bounds. Full P11 remains UNMET; no inference of all-route fit or connected performance. |
 | P12 adoption | No-removal/no-cutover is recorded. Owner conformance is not complete and production dependency/cutover inventory plus focused post-removal checks are absent. | After P10/P11 and each applicable criterion pass, enumerate exact retained inputs and dependencies, prepare the cutover/removal diff and rollback evidence, then request human adoption disposition. | Preserve current production inputs and independent controls. No adoption pass or deletion is claimed. |
 | Lifecycle / iteration closeout | SPEC-007 remains `implementing`, plan `active`, conformance `collecting`; iteration 3 remains active, with P08 FROZEN / UNMET. | A maintainer must decide the Spec `implemented` transition only after its complete conformance evidence is accepted; the separate human iteration-3 closure decision follows the governing closeout gate. | This packet makes neither decision and does not authorize I4 activation or affected S1–S3 reuse. |
 
-The fresh embedded P02 receipts and connected-target/accounting evidence are
-external prerequisites to the listed owner checks; they are not supplied by
-the current workspace evidence. No Pi or nRF hardware was used. These exact
-gaps are the remaining authorized work boundary, not a generic request to
-repeat all historical campaigns.
+The fresh embedded P02 receipts are now retained and the cross-compiled P05
+routes pass. Connected-target execution and connected resource/accounting
+evidence were not produced because the task scope excludes hardware action.
+Human authorization is needed for that remaining target work. These exact gaps
+are the remaining boundary, not a generic request to repeat all historical
+campaigns.
 
 ## Current closure gates
 

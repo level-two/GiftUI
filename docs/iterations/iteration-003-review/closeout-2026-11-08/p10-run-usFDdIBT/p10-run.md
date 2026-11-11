@@ -1310,17 +1310,21 @@ iteration closure remains separate.
 ## Focused SPEC-007 P05 runtime-bank follow-up — 2026-11-11
 
 After the intermediate integrated runs above, the changed SPEC-007 bank-layout
-probe was compiled, linked, and executed by the P05 focused helper for macOS
-Dynamic and Static. Both runs passed 286 layout assertions and the expected
-escaping-view negative compiles. Exact source-bound inputs, core build receipts,
-commands, logs, output hashes, and compact binary-bearing archives are retained
-in the [runtime-bank follow-up evidence](../../../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
+probe was compiled through all four registered P05 profile routes. macOS
+Dynamic and Static compiled, linked, and executed the probe, each passing 286
+layout assertions and the expected escaping-view negative compiles. Pi ARMv6
+and nRF52840 P05 runs cross-compiled the probe and passed their architecture
+and ABI checks; neither executed on target. Fresh Pi and nRF P02 receipts each
+passed 27 checks and are separately archived. Exact source-bound inputs, core
+build receipts, commands, logs, hashes, and P02/P05 archives are retained in
+the [runtime-bank follow-up evidence](../../../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
 
-These two macOS P05 results establish only the focused bank-layout probe under
-the current source identity. They do not replace the four failed integrated
-SPEC-007 executions, complete the Pi/nRF owner routes, establish all LY-RD-001
-and LY-RD-002 matrices, change any criterion disposition, or satisfy P11/P12.
-T9.1 remains open; P08 remains FROZEN / UNMET and the separate human iteration
+These four profile P05 results establish the registered build routes, not the
+full LY-RD-001 baseline/application differential or LY-RD-002 failure-cleanup
+matrix. The two embedded profiles have no runtime assertion or connected-target
+evidence. The focused results do not replace the four failed integrated
+SPEC-007 executions, change criterion dispositions, or satisfy P11/P12. T9.1
+remains open; P08 remains FROZEN / UNMET and the separate human iteration
 closure decision remains outstanding.
 
 ## Focused root-test compile diagnostic — 2026-11-11

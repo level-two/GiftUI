@@ -160,13 +160,14 @@ establish that each criterion independently fails, and no baseline criterion
 is promoted by the aggregate.
 
 The partial T9.1 runtime-bank follow-up records formatting, strict lint, source
-parse, a fresh local Swift 6.4 `GiftUI` target build, and focused P05 macOS
-Dynamic and Static runs as passing. Both focused runs compiled, linked, and
-executed 286 assertions; the exact input-bound receipts are in the
+parse, a fresh local Swift 6.4 `GiftUI` target build, and current P02/P05 owner
+receipts in all four profiles. P05 macOS Dynamic and Static runs compiled,
+linked, and executed 286 assertions each; Pi ARMv6 and nRF52840 cross-compiled
+and passed ABI checks without target execution. The exact receipts are in the
 [follow-up evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
-The Pi and nRF owner routes have not been rerun; the macOS P05 results do not
-complete LY-RD-001/002. T9.1 remains open pending the four-profile differential
-and failure-cleanup matrices, fresh P05 owner reports, P11 resource/connected
-dispositions, and P12 conformance/cutover evidence. The Specification remains
+The four profile-specific P05 results do not complete LY-RD-001/002. T9.1
+remains open pending the four-profile differential and failure-cleanup
+matrices, P11 resource/connected dispositions, and P12 conformance/cutover
+evidence. The Specification remains
 `implementing`, the plan `active`, and this report `collecting`; no
 `implemented` transition is authorized by this update.
