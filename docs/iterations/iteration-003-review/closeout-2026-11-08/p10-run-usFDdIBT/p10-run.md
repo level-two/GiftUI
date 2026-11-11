@@ -1050,9 +1050,10 @@ Receipt SHA-256 values:
 | `command.txt` | `db9abf22d3cccd6c7bbecee8458532f48f0448962cb70e56656c6e3d252f3424` |
 | `source-identity.txt` | `af749657d3ce9850cfe687123ca1ece79660c8d858b1c6af1e934cd1f89359ef` |
 
-## Latest integrated all-hardware-free run — 2026-11-10
+## Prior integrated all-hardware-free run — `run-v8GRC8xq` — 2026-11-10
 
-The latest `scripts/test.sh all-hardware-free` run is `run-v8GRC8xq`. It
+At that time, the latest `scripts/test.sh all-hardware-free` run was
+`run-v8GRC8xq`. It
 completed all 83 serialized checks and remains **FAILED / UNMET: 55 passed,
 28 failed**. Profile-group totals are common checks 12/3, macOS Dynamic 11/6,
 macOS Static 10/7, Raspberry Pi ARMv6 10/7, and nRF52840 12/5 (pass/fail).
@@ -1138,9 +1139,9 @@ SemanticRecord lifetime diagnostics, but the nested SPEC-014 macOS Dynamic and
 Static reports contain such diagnostics under Xcode Swift 6.3.3. Those nested
 reports are dirty and do not hash `SemanticRecordExpansion.swift`; they do not
 establish a defect under the approved Swift 6.4 baseline. No P08 proof campaign, hardware execution,
-or aggregate rerun was done after `run-v8GRC8xq`; the remaining causes have
-existing analyzer/lifecycle dispositions, while the two Pi environment rows
-have separate focused passes.
+or aggregate rerun had been recorded after `run-v8GRC8xq` when this section was
+written. The later retained integrated result is recorded at the end of this
+file; it preserves v8 as historical evidence.
 
 The current worktree `SemanticRecordExpansion.swift` SHA-256 is
 `c283f93920c926b0ea7fda4d893c3efacdd62da026d246a4f733bb9ce795bb1e`. The

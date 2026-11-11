@@ -34,7 +34,7 @@ promoted.
 The updated packet identities checked for this reconciliation are:
 
 - Closeout README SHA-256: `7e42572d5499541af13a3b8c1fd0482ca64446c73ef863731e6fa848ec70b9cf`
-- P10 receipt SHA-256: `0980d91a013de26a624aad8ea216a40f2657f1a2d1800a2e33667fda9cb3fa54`
+- P10 receipt SHA-256: `5479655ee785ad011148fe850956978da93802d5a43af81ae7035a70c5e7042b`
 - P10 `run-b1kjDyaM` metadata SHA-256: `2e9591fad86641600d132d4e2a71ec38212fb262a952c9b202c68bafb933355b`
 - P10 `run-b1kjDyaM` results SHA-256: `92475ddd253885e088a0c35f93896aa87dc65cc696b804801671b619ff58b49e`
 - Criterion CSV SHA-256: `e7cc2ea1286a99acee74d5f7c9844db6106d172b001e547ff7444e2dd473b03e`
