@@ -77,7 +77,7 @@ module('GiftUIRenderCore', sorted((ROOT / 'Sources/GiftUIRenderCore').glob('*.sw
 module('GiftUIRenderLowering', sorted((ROOT / 'Sources/GiftUIRenderLowering').glob('*.swift')))
 
 fixture = ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived'
-module('BankLayoutProbe', [fixture / 'LayoutSupport.swift', fixture / 'LayoutProbe.swift', fixture / 'LayoutOracleProbe.swift'])
+module('BankLayoutProbe', [fixture / 'LayoutSupport.swift', fixture / 'LayoutProbe.swift', fixture / 'LayoutOracleProbe.swift', fixture / 'LayoutT4T5Differential.swift'])
 for name in ('EscapeLayout', 'EscapeRender'):
     source = fixture / (name + '.swift')
     inputs.append(source)

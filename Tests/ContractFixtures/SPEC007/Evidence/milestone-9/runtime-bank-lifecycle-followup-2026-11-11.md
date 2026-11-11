@@ -112,7 +112,25 @@ compilation but failed in the transferred analyzer `SignalAnalyzerView`
 schema/View diagnostics before tests executed. Its raw log SHA-256 is
 `35a807002395d427e89b79940f9d304a744cca69f3cba14f891b21cd2702d7eb`; the
 P10 receipt records its exact command and archive. This whole-package route
-cannot provide the remaining full baseline differential until the authorized
-I4 analyzer input is available; it is not a new Layout result or a reason to
-change any status. The focused standalone P05 route above remains the current
-bounded host evidence.
+cannot run the transferred analyzer application suite until its authorized I4
+input is available; it is not a new Layout result or a reason to change any
+status. The separate generic baseline action is covered by the bounded
+standalone P05 differential below.
+
+## Complete Generic/Layout baseline differential — 2026-11-11
+
+The retained Generic/Layout T4/T5/T6 baseline differential is now complete on
+all four P02 configurations. The added 32-case corpus compares generic-view
+layout to runtime-bank layout with normalized record identity and complete
+ordered scope/line/glyph output facts. macOS Dynamic and Static each execute
+368 P05 assertions with zero failures; Pi ARMv6 and nRF52840 compile the same
+source and pass ABI checks without target execution. Exact result identities,
+source/input hashes, compiler identity, commands, and artifacts are in the
+[differential evidence note](runtime-bank-layout-differential-2026-11-11.md)
+and its four archives.
+
+This completes only the generic baseline-corpus differential part of
+LY-RD-001. The two analyzer-specific application layouts remain assigned to I4
+P09–P12 / I4-AC-012; connected target execution remains unperformed. No
+criterion disposition changes, and T9.1, P10–P12, the SPEC-007 implemented
+transition, and iteration closure remain open.

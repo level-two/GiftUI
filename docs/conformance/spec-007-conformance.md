@@ -6,7 +6,7 @@ status: collecting
 reviewers:
   - codex
 created: 2026-09-11
-updated: 2026-10-11
+updated: 2026-11-11
 implementation_plan: ../implementation-plans/spec-007-implementation-plan.md
 related_future_work:
   - FW-001
@@ -161,15 +161,16 @@ is promoted by the aggregate.
 
 The partial T9.1 runtime-bank follow-up records formatting, strict lint, source
 parse, a fresh local Swift 6.4 `GiftUI` target build, and current P02/P05 owner
-receipts in all four profiles. The initial P05 macOS Dynamic and Static runs
-executed 286 assertions each. A later focused capacity follow-up executes 324
-assertions with zero failures on both macOS profiles, including independent
-first-excess scalar, line, and glyph cleanup/reuse cases; Pi ARMv6 and nRF52840
-cross-compiled and passed ABI checks without target execution. The exact
-receipts are in the [follow-up evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
-These results do not complete LY-RD-001/002. T9.1 remains open pending the
-baseline corpus and both application-layout differentials, embedded runtime
-evidence where required, P11 resource/connected dispositions, and P12
-conformance/cutover evidence. The Specification remains
+receipts in all four profiles. The latest P05 route includes the complete
+32-case Generic/Layout T4/T5/T6 baseline differential. macOS Dynamic and Static
+each execute 368 assertions with zero failures; Pi ARMv6 and nRF52840
+cross-compile and pass ABI checks without target execution. The exact
+source-bound results, input hashes, and archives are in the [differential
+evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-layout-differential-2026-11-11.md).
+This completes only the Generic/Layout baseline-corpus differential. LY-RD-001
+still lacks both transferred analyzer application-layout differentials and any
+target execution required by its final matrix. LY-RD-002 still lacks required
+embedded runtime evidence. T9.1 remains open, as do P11 resource/connected
+dispositions and P12 conformance/cutover evidence. The Specification remains
 `implementing`, the plan `active`, and this report `collecting`; no
 `implemented` transition is authorized by this update.

@@ -86,6 +86,19 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   These focused P05 results do not close a criterion; T9.1 remains open. See
   [runtime-bank follow-up](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
 
+  **2026-11-11 Generic/Layout baseline differential:** the P05 bank-layout
+  helper now includes the complete retained 32-case non-application T4/T5/T6
+  corpus. Each source-view result is normalized to the seeded runtime-record
+  ordinal and compared with the bank adapter's result, summary, ordered event
+  transcript, scope and line geometry/clips/baselines, and glyph/resource
+  identity/position/clip. Dynamic and Static each execute 368 assertions with
+  zero failures; Pi and nRF compile the same route and pass target ABI checks
+  without execution. The exact four reports and source/input hashes are in the
+  [differential evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-layout-differential-2026-11-11.md).
+  This completes only Generic/Layout's baseline-corpus action. The two
+  analyzer layouts remain transferred to I4 P09–P12 / I4-AC-012, and any
+  required target execution, P11/P12, and lifecycle gates remain open.
+
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T9.1` adds fresh migration verification without
 reopening unrelated implementation. P01–P12 define exact footprints/exits, three

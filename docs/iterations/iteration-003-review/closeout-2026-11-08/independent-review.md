@@ -1,6 +1,54 @@
 # Independent review — current closeout packet
 
+## Generic/Layout baseline differential reconciliation — 2026-11-11
+
+An independent read-only review checked the completed Generic/Layout T4/T5/T6
+baseline differential, the four P05 result archives and exact input hashes,
+the updated handoff claims, and the remaining P11/P12 boundaries. All four
+result JSON hashes and archive hashes match the evidence note and archived
+contents. The four reports bind the same current P02 receipts, project-local
+Swift 6.4 compiler SHA-256 `79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69`,
+and `LayoutT4T5Differential.swift` SHA-256
+`7af73e37d239bbc40bb6f1df293a776cb82eb45014446589c60c00274704c506`; all 62
+Dynamic/Static/Pi inputs and all 61 nRF inputs match the retained current
+files. Dynamic and Static execute 368 assertions with zero failures. Pi and
+nRF are compile/ABI-only results and do not claim target execution.
+
+The 32-case Generic/Layout differential covers the retained non-application
+T4/T5/T6 corpus, comparing normalized results, summaries, ordered event
+transcripts, scope/text geometry and clips, baselines, and glyph/resource
+identity. T6 additionally checks the exact eight-scope summary and canonical
+reference-glyph event transcript. The blocker bundle correctly marks the
+I3 Generic/Layout baseline action complete while leaving LY-RD-001 UNMET for
+the two transferred I4 application layouts and any required target evidence.
+P11's missing allocator/whole-route/connected observations and P12's
+gate-dependent no-removal boundary remain specific and actionable. The 55/28
+P10 result, all dispositions, P08 freeze, S1–S3 reuse restriction, feature
+statuses, and human lifecycle gates are unchanged.
+
+Current scoped identities:
+
+- Closeout README SHA-256: `36eed6a22832196d9d70031e1a4c90707f194bbe1854fd264c789d7f650d6141`
+- P10 receipt SHA-256: `cf5469ec4ddfdbab1e94fd98378cfa2f3cc6572dc803059706f80f3710586524`; owner rows and P08 classification remain unchanged from the previously reviewed packet.
+- SPEC-007 conformance report SHA-256: `ef15d44f865fa7e85f7b02f8cf5dfca115ceaa6552d994b7e6d8f8db619f11ac`
+- SPEC-007 implementation plan SHA-256: `acb3b0e691e9bbb0b2eb23e867c4bea4cbf480cd78cad532ac97239293cd8372`
+- Terminal blocker bundle SHA-256: `25dbdca86956fff5ba0bbca82245ffac074d2fbe180a89f9843574fa69041be8`
+- Generic/Layout differential evidence note SHA-256: `8f4183e9cf9da66bf2fd91d2bb57bdd68c5e656116483e60e073f6e12379960a`
+- Lifecycle evidence note SHA-256: `67f1ea6f327e74e0c28d1c148a9f51944eb62bf8a3da55660b57d896913b6a45`
+- Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825` (189 rows)
+- CSV generator SHA-256: `172071b6913c179d1dc2ae457497320c2c438b3c61e9ba9ec49cb15db0871854`
+- P05 result JSON SHA-256, Dynamic/Static/Pi/nRF: `f9ed91c86c99058fc33624e2cefaf289328aa4647c2eb75f8b0b6aafce05f353` / `ec02b2b6c853ba97c68bc4e47c603511cfae0512a1b01ba768e0347d70eaca8f` / `878d2a6d9d175162e74d554802351a29ddc69cc2db865b2265575d337acde00d` / `828ee33098d511eb0d14f18ee9018fa70a4382574b432c0a26718dc38117cbf8`
+- P05 archive SHA-256, Dynamic/Static/Pi/nRF: `ebcce36e113d1c16f37cfac02cda1f289dd5da789ecd3a1e06cdf4ab2b73f748` / `537258c8e510876073e379d7d5a72ca3cc86dfd3d9dd0e263aa855efb927b252` / `b7c833820e351e7df958bbf0188b9b961f15626ab6784fe29c730e6879d7e3af` / `3037445b688d6657df83287ce64dc180499f04accf2dee48a51681111200fa49`
+
+This review accepts the listed evidence identity and classification only. It
+does not accept SPEC-007 conformance, close P10/P11/P12, change any lifecycle
+status, approve hardware action, or authorize iteration closure.
+
 ## Capacity, failure, and blocker reconciliation — 2026-11-11
+
+This earlier reconciliation is retained for chronology. Its 331-assertion
+counts and claim that the full Generic/Layout baseline remained pending are
+superseded by the review above.
 
 A second read-only review checked the current SPEC-007 P05 extension and the
 terminal blocker bundle. The latest Dynamic and Static results each report 331
