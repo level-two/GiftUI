@@ -1,6 +1,6 @@
-# Independent review — current closeout packet
+# Independent review records — current closeout packet
 
-## Generic/Layout baseline differential reconciliation — 2026-11-11
+## SPEC-007 Generic/Layout evidence review — 2026-11-11
 
 An independent read-only review checked the completed Generic/Layout T4/T5/T6
 baseline differential, the four P05 result archives and exact input hashes,
@@ -26,7 +26,7 @@ gate-dependent no-removal boundary remain specific and actionable. The 55/28
 P10 result, all dispositions, P08 freeze, S1–S3 reuse restriction, feature
 statuses, and human lifecycle gates are unchanged.
 
-Current scoped identities:
+Snapshot identities checked by this focused evidence review:
 
 - Closeout README SHA-256: `36eed6a22832196d9d70031e1a4c90707f194bbe1854fd264c789d7f650d6141`
 - P10 receipt SHA-256: `cf5469ec4ddfdbab1e94fd98378cfa2f3cc6572dc803059706f80f3710586524`; owner rows and P08 classification remain unchanged from the previously reviewed packet.
@@ -44,23 +44,82 @@ This review accepts the listed evidence identity and classification only. It
 does not accept SPEC-007 conformance, close P10/P11/P12, change any lifecycle
 status, approve hardware action, or authorize iteration closure.
 
-## Post-review owner reconciliation — 2026-11-11
+## Historical owner reconciliation — prior bundle snapshot
 
-After the independent review above, the terminal blocker bundle was revised to
+After the focused evidence review above, the terminal blocker bundle was revised to
 remove its contradictory instructions to repeat completed offline probes and
 to wait for I4 analyzer delivery before considering I4 entry. The revised
 bundle records the approved no-cycle rule, exhausted offline work, and exact
 closure exception/review prerequisites. This owner-authored reconciliation is
-not independent acceptance of those edits. Current bundle SHA-256:
+not independent acceptance of those edits. The bundle snapshot at that point
+had SHA-256:
 `5945e39908e61d5bd2282e8db5818c40c442f96d79c1ef89c65ddd8fabb084a6`.
 
-A separate read-only consistency recheck accepted this updated wording within
-the requested scope: the 331-assertion/pending-differential statements are
-historical, the current bundle hash matches, the repeat-test footer is gone,
-and the no-cycle and closure prerequisites match the cited transfer and P08
+The separate read-only consistency recheck accepted that bundle snapshot within
+its scope: the 331-assertion/pending-differential statements were historical,
+its bundle hash matched the file, the repeat-test footer was gone, and the
+no-cycle and closure prerequisites matched the cited transfer and P08
 disposition authorities. This acceptance is limited to packet consistency; it
 does not accept the overall freeze assessment, P10/P11/P12 conformance, a Spec
 transition, or iteration closure.
+
+## Overall freeze and handoff review — 2026-11-11
+
+An independent read-only overall review followed the repository lifecycle and
+conformance review workflows. It examined the revision-8 closeout authorities,
+P08 freeze assessment and input inventory, P10 receipt and 189-row index,
+SPEC-007 Specification/plan/conformance state and latest differential evidence,
+P11 crosswalk, P12 no-removal disposition, and I3/I4 transfer rules. No tests
+were run and no statuses were changed.
+
+The reviewer accepts the technical freeze/handoff classification within the
+reviewed scope. It confirms there is no analyzer dependency cycle: analyzer
+P09–P12 certification is an I4 delivery/adoption gate, not an I4 entry
+prerequisite; I4 entry still requires the human I3 handoff/closure, reviewed
+classification, exact retained inputs, and normal contract/plan gates. The
+55/28 `run-v8GRC8xq` result is immutable failed evidence from a dirty worktree
+without a complete source manifest. All 180 P10 owner rows stay UNMET; no
+focused pass rewrites the aggregate. The analyzer-specific cause transfers
+only within its approved allocation; no entire P10 execution/owner row is
+transferred. P08 stays FROZEN/UNMET, SO-09 remains incomplete, and S1–S3
+remain under the approved affected-use restriction.
+
+The 32-case Generic/Layout T4/T5/T6 corpus passes 368 assertions on macOS
+Dynamic and Static; Pi/nRF are compile/ABI-only. The two analyzer application
+layouts remain transferred, other applicable target execution is absent, and
+SPEC-007 remains `implementing` with an `active` plan and `collecting`
+conformance report. P11's crosswalk accurately retains scoped evidence and
+missing private-allocation/whole-route/connected observations assigned to
+I4-AC-013 or analyzer owners. P12 no-removal/no-cutover is correct; no
+production dependency diff is justified before accepted inputs and adoption
+gates exist.
+
+The reviewer requires a separate applicability disposition for P08
+`RP-SO-003 / MR-04/05` R1. The P10 closure-only exception may explicitly
+include the four SPEC-007 profile failures and historical `Unit FAILED` /
+`Interaction UNEXECUTED`, but it does not implicitly dispose of R1. The
+separate R1 mapping in the P10 receipt now records the rejected compiler
+promise, its P08 fixture scope, absence of `CounterSemanticCodec` references
+in `Sources/` at the recorded snapshot, exact Native Static limit, and the
+restriction on any unproved relying consumer. A follow-up read-only check
+confirmed the four SPEC-007 execution IDs are printed explicitly in the
+decision wording.
+
+This is independent technical acceptance of the classification and handoff
+within the stated scope. It is not human acceptance where required, approval
+of the separate R1 disposition or P10 exception, a P08/SPEC conformance PASS,
+a Spec transition, product adoption, or iteration closure. Those human
+decisions remain pending.
+
+Current reviewed identities:
+
+- Closeout README SHA-256: `fe6d9885b18a53dc0c9835a2ca1aedb6aef9efda380fd0b58ab7d9b1580979a4`
+- P10 receipt SHA-256 after root-relative link correction: `70b50801aa71e52d1dd6f503acce3f66f2b942e851caf9aaaf23c55b8061b98a`; reviewer checked the same substantive R1/P05 content before this path-only correction.
+- Terminal blocker bundle SHA-256: `1cb62e28e7561048a7bbd07ee89b39daf9d966d0d0db6d2853a427b8e303c6fe`
+- Generic/Layout differential evidence note SHA-256: `8f4183e9cf9da66bf2fd91d2bb57bdd68c5e656116483e60e073f6e12379960a`
+- Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825`
+- `CounterSemantic.swift` SHA-256: `90dcad19b1301367dbf348151b77b65b8e934af7968655b78f1890d9156dddbe`
+- `CounterScopedStorage.swift` SHA-256: `01499054e180d8bcde91898faab739e342f1a561880c3b47dc7b774c9bb3be3e`
 
 ## Superseded historical reconciliation before the completed 368-assertion differential — 2026-11-11
 

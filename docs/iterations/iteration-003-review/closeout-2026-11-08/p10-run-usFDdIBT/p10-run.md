@@ -1365,3 +1365,61 @@ P10 results. Sandbox warnings appear during cached dependency resolution, but
 the pinned command proceeded to source compilation; they do not explain the
 observed analyzer compile failure. The failure remains within the existing I4
 analyzer allocation and does not change the latest completed 55/28 P10 result.
+
+## Post-run owner-applicability reconciliation — 2026-11-11
+
+This additive note updates the closeout interpretation of the immutable
+`run-v8GRC8xq`; it does not change its 55/28 result, archived execution rows,
+or the 180 UNMET owner dispositions.
+
+### P08 R1 — `RP-SO-003 / MR-04/05` allocation-effect applicability
+
+The maintained allocation-effect checker remains **FAILED** at the
+`CounterSemanticCodec` lifetime/deallocation effect. The failure is a rejected
+compiler promise, not an observed runtime allocation. It is separate from
+SPEC-013 P07-R1/P07-R2, which are different resolved rows. The concrete
+qualification type and fixture consumer are in
+[`CounterSemantic.swift`](../../../../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift)
+and [`CounterScopedStorage.swift`](../../../../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift);
+the retained qualification evidence records the rejected end-of-lifetime
+effect at `CounterScopedStorage.swift:3210/3212` in its source snapshot. At this
+review snapshot the files have SHA-256
+`90dcad19b1301367dbf348151b77b65b8e934af7968655b78f1890d9156dddbe` and
+`01499054e180d8bcde91898faab739e342f1a561880c3b47dc7b774c9bb3be3e`.
+`rg -n "CounterSemanticCodec" Sources` returned no production-source
+references at the reviewed worktree snapshot. This bounds the directly named
+consumer to the SPEC-015 P08 contract-fixture paths; it does not prove that
+arbitrary generic consumers elsewhere can rely on the rejected promise.
+
+The reviewed finite Native Static NoHeap and charged-entry headroom result
+remains valid only for its exact image and predicates. It does not turn the
+compiler check into PASS or establish Dynamic, Pi, nRF, whole-process, or
+arbitrary-consumer no-allocation behavior. Dynamic private allocation and
+whole-route accounting, Pi provider/target/stack/fit, and nRF connected
+workload evidence remain within their assigned I4-AC-013 composition gates.
+Any consumer whose safety or budget argument relies on the rejected generic
+promise remains blocked until that reliance is separately evidenced or
+normally dispositioned. This R1 entry is an explicit separate P10/P08
+applicability disposition; it is not covered by the 180-row P10 aggregate
+exception or the S1-S3 restricted-use approval.
+
+### Retained Unit and Interaction outcomes
+
+The historical root Unit result remains **FAILED** because compilation stopped
+at the recorded analyzer prerequisite before unit tests ran; Interaction remains
+**UNEXECUTED**. Neither outcome is assigned to S1-S3 or converted to a pass by
+the focused P05 results. Preserve both explicitly in any iteration-3 P10
+closure disposition, with the analyzer compile block and unexecuted test scope
+visible.
+
+### SPEC-007 P05 follow-up
+
+The later source-bound four-profile P05 evidence in the
+[Generic/Layout baseline differential note](../../../../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-layout-differential-2026-11-11.md)
+completes the retained 32-case non-application T4/T5/T6 differential. Dynamic
+and Static execute 368 assertions with zero failures; Pi/nRF are compile/ABI
+only. This supersedes earlier follow-up text in this receipt that described
+the baseline corpus as pending. The two analyzer application layouts remain
+transferred; LY-RD-001/002, T9.1 and the SPEC-007 lifecycle rows remain open.
+These focused results do not rewrite `run-v8GRC8xq` or promote any criterion
+or lifecycle status.
