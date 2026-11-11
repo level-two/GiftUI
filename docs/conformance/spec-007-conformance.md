@@ -152,19 +152,21 @@ current `implementing` lifecycle status.
 
 ## Current RFC-014 amendment status — 2026-11-11
 
-The latest retained integrated P10 receipt is
-[`run-b1kjDyaM`](../iterations/iteration-003-review/closeout-2026-11-08/p10-run-usFDdIBT/current-run-b1kjDyaM/):
-four SPEC-007 profile executions fail in the harness while the amendment's
-conformance report remains `collecting`. These failures do not establish that
-each criterion independently fails, and no baseline criterion is promoted by
-the aggregate.
+The latest completed integrated P10 receipt is
+[`run-v8GRC8xq`](../iterations/iteration-003-review/closeout-2026-11-08/p10-run-usFDdIBT/current-run-v8GRC8xq/):
+four SPEC-007 profile executions fail the lifecycle/conformance harness while
+the amendment's conformance report remains `collecting`. These failures do not
+establish that each criterion independently fails, and no baseline criterion
+is promoted by the aggregate.
 
 The partial T9.1 runtime-bank follow-up records formatting, strict lint, source
-parse, and a fresh local Swift 6.4 `GiftUI` target build as passing. The changed
-probe was not typechecked or executed, and the refreshed P05 helper fixture
-remains unverified. Therefore LY-RD-001/002 and T9.1 remain open; fresh P05
-owner reports, differential and failure-cleanup matrices, P11 resource and
-connected dispositions, and P12 conformance/cutover evidence are still
-required. The Specification remains `implementing`, the plan `active`, and this
-report `collecting`. This update records status and evidence limits; it does
-not authorize an `implemented` transition.
+parse, a fresh local Swift 6.4 `GiftUI` target build, and focused P05 macOS
+Dynamic and Static runs as passing. Both focused runs compiled, linked, and
+executed 286 assertions; the exact input-bound receipts are in the
+[follow-up evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
+The Pi and nRF owner routes have not been rerun; the macOS P05 results do not
+complete LY-RD-001/002. T9.1 remains open pending the four-profile differential
+and failure-cleanup matrices, fresh P05 owner reports, P11 resource/connected
+dispositions, and P12 conformance/cutover evidence. The Specification remains
+`implementing`, the plan `active`, and this report `collecting`; no
+`implemented` transition is authorized by this update.

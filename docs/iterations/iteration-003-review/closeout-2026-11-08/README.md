@@ -10,45 +10,71 @@ and validated. This packet is not a P08 pass, Spec transition, iteration closure
 or permission to adopt affected code.
 
 The original `run-usFDdIBT` P10 gate failed 59 of 83 checks under the archived
-Swift 6.3.3 baseline; it remains historical. The latest retained integrated
-run is `run-b1kjDyaM` on the pinned local Swift 6.4.0 compiler: 60 passed and
-23 failed of 83. Its exact identity and failure classification are in the
-durable [P10 receipt](p10-run-usFDdIBT/p10-run.md); raw logs, results,
-child-report ledger, and a tracked-source snapshot are retained in
-[`current-run-b1kjDyaM`](p10-run-usFDdIBT/current-run-b1kjDyaM/). It used a
-dirty worktree and records tracked diff/status fingerprints rather than a
-complete source-file manifest. The failures include analyzer/workload and
-shared compile prerequisites, SPEC-003 harness failures, four SPEC-007
-lifecycle failures, four SPEC-011 profile failures, two SPEC-014 macOS
-prerequisite failures, and four SPEC-015 profile failures. The original nested
-SPEC-014 reports use Xcode Swift 6.3.3 and omit the diagnosed SemanticRecord
-source from their file hash list; by themselves, they do not establish a
-defect under the outer run's approved
-Swift 6.4 baseline. Later focused, source-bound Swift 6.4 SPEC-014 reports
-initially appeared to confirm a current compile blocker in shared
-`SemanticRecordExpansion.swift`. A follow-up audit found that nested SwiftPM
-still selected Xcode Swift 6.3.3 because its collector invoked bare `swift`.
-The collector now uses the pinned local Swift 6.4 driver and compiler; a fresh
-Dynamic run compiles Semantic Core without those diagnostics and remains blocked
-by Signal Analyzer schema/view errors. This follow-up does not rewrite the
-archived 55/28 counts. Separate
-focused SPEC-005 and SPEC-006 ARMv6 reruns pass but do not change the integrated
-counts. The raw run used a dirty worktree and does not carry a complete
-source-file manifest. P10 remains failed. No old-image P08 proof or hardware
-campaign was restarted. P08 stays frozen. The scoped Native no-heap conclusion
-remains valid only for its reviewed Native Static image and predicates; it
-does not inherit the compiler's rejected generic allocation promise.
+Swift 6.3.3 baseline; it remains historical. The latest integrated run is
+`run-v8GRC8xq` on the pinned local Swift 6.4.0 compiler: 55 passed and 28 failed
+of 83. Its exact identity and failure classification are in the durable
+[P10 receipt](p10-run-usFDdIBT/p10-run.md); raw logs, results, and child-report
+ledger are retained in
+[`current-run-v8GRC8xq`](p10-run-usFDdIBT/current-run-v8GRC8xq/). An earlier
+`run-b1kjDyaM` result recorded 60/23 at ancestor revision `ba03d1a`; v8 ran
+later at descendant revision `3f7558be` and remains the latest aggregate. The
+v8 failures group as 20 analyzer/workload prerequisites, two mixed SPEC-014
+nested-profile failures, four SPEC-007 lifecycle failures, and two Pi
+sandbox/cache failures.
 
-The corrected Dynamic SPEC-014 report is retained in
-[`the pinned-compiler follow-up archive`](p10-run-usFDdIBT/focused-followups/spec014-dynamic-pinned-compiler-20261111/report.tar.gz).
-It confirms the shared Semantic Core compile diagnostics were caused by nested
-SwiftPM selecting Xcode 6.3.3; the remaining focused failure is analyzer-owned.
+The original nested SPEC-014 reports use Xcode Swift 6.3.3 and omit the
+diagnosed SemanticRecord source from their file hash list; by themselves, they
+do not establish a defect under the outer run's approved Swift 6.4 baseline.
+Later source-bound attempts also initially appeared to confirm a current
+`SemanticRecordExpansion.swift` compile blocker, but audit found nested SwiftPM
+still selected Xcode Swift 6.3.3 because its collector invoked bare `swift`.
+The collector now uses the pinned local Swift 6.4 driver and compiler; fresh
+Dynamic and Static runs compile Semantic Core without those diagnostics and
+remain blocked by Signal Analyzer schema/View errors. These follow-ups do not
+rewrite the archived 55/28 count.
+Focused SPEC-005 and SPEC-006 ARMv6 reruns pass without changing integrated
+results. The v8 run used a dirty worktree without a complete source-file
+manifest. P10 remains failed. No old-image P08 proof or hardware campaign was
+restarted. P08 stays frozen. The scoped Native no-heap conclusion remains valid
+only for its reviewed Native Static image and predicates; it does not inherit
+the compiler's rejected generic allocation promise.
+
+The corrected macOS Dynamic and Static SPEC-014 reports are retained in their
+[pinned-compiler follow-up archives](p10-run-usFDdIBT/focused-followups/). Both
+compile Semantic Core with project-local Swift 6.4 without the prior 6.3.3
+diagnostics; both remain blocked by analyzer-owned schema/View failures.
+The focused root-test attempt is also retained as a dirty-worktree diagnostic;
+its unbound Semantic Core diagnostics do not establish a baseline defect.
+
+The later focused SPEC-007 P05 bank-layout helper also compiled, linked, and
+executed under macOS Dynamic and Static, passing 286 assertions per profile.
+Its exact receipts and limits are in the
+[T9.1 runtime-bank follow-up](../../../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
+It does not change the four failed SPEC-007 executions in the integrated P10
+result or close LY-RD-001/002.
+
+## Exact remaining actions and disposition
+
+| Item | Current evidence / prerequisite | Smallest next action | Scope and consequence |
+| --- | --- | --- | --- |
+| P10 aggregate | Latest completed run remains `run-v8GRC8xq` (55/28). The focused SPEC-014 Dynamic and Static runs now use the pinned Swift 6.4 compiler and both stop at analyzer-owned `SignalAnalyzerView` schema/View errors; current root-test log also contains errors from the dirty checkout and is diagnostic only because that invocation has no complete source manifest. | Resolve the already allocated analyzer migration prerequisite in I4, then run one source-bound complete P10 gate on the resulting authorized input set. | Do not count either focused run as aggregate success, infer a clean-source defect from the unbound root-test log, or transfer shared P10 rows. P10 stays FAILED / UNMET meanwhile. |
+| SPEC-007 `LY-RD-001` | macOS P05 bank-layout helper passes 286 assertions in Dynamic and Static, but no current Pi/nRF P02 `GiftUI` build receipts are available. The required differential is baseline corpus plus both application layouts under all four profiles. | After current approved source builds produce fresh Pi/nRF P02 receipts, run the registered P05 owner route in both profiles; then complete and retain the four-profile baseline/application differential. | The two macOS receipts are partial and do not close this criterion. No target execution is implied by ARM cross-compilation. |
+| SPEC-007 `LY-RD-002` | Current probe exercises reader release, prior-publication preservation, sink begin/stage/publish refusal, excess depth/scope, and candidate reuse only in the focused macOS helper. The complete failed begin/lookup/finish and first-excess cleanup/reuse matrix is absent for all four profiles. | Extend/run that exact failure-cleanup matrix for Dynamic, Static, Pi ARMv6, and nRF52840; use fresh P02 receipts for embedded profiles and retain each route's result. | No criterion promotion until the full matrix is reviewed; T9.1 remains open. |
+| P11 retained owner accounting | The crosswalk above names exact Native Static, Dynamic allocator, Pi, nRF and P08 scoped receipts, but the missing joined fields are not present: private allocator attribution and full route peak; Pi connected provider/target identity plus whole-route stack/fit; nRF connected sustained workload; and criterion-linked stack/IRQ/allocation/ABI joins for applicable routes. | Produce the missing route evidence under the named owner criteria, attach exact image/toolchain/provider identities and resource ledgers, then obtain independent disposition. | Existing scoped receipts remain usable only within their stated bounds. Full P11 remains UNMET; no inference of all-route fit or connected performance. |
+| P12 adoption | No-removal/no-cutover is recorded. Owner conformance is not complete and production dependency/cutover inventory plus focused post-removal checks are absent. | After P10/P11 and each applicable criterion pass, enumerate exact retained inputs and dependencies, prepare the cutover/removal diff and rollback evidence, then request human adoption disposition. | Preserve current production inputs and independent controls. No adoption pass or deletion is claimed. |
+| Lifecycle / iteration closeout | SPEC-007 remains `implementing`, plan `active`, conformance `collecting`; iteration 3 remains active, with P08 FROZEN / UNMET. | A maintainer must decide the Spec `implemented` transition only after its complete conformance evidence is accepted; the separate human iteration-3 closure decision follows the governing closeout gate. | This packet makes neither decision and does not authorize I4 activation or affected S1–S3 reuse. |
+
+The fresh embedded P02 receipts and connected-target/accounting evidence are
+external prerequisites to the listed owner checks; they are not supplied by
+the current workspace evidence. No Pi or nRF hardware was used. These exact
+gaps are the remaining authorized work boundary, not a generic request to
+repeat all historical campaigns.
 
 ## Current closure gates
 
 | Gate | Evidence and disposition | Remaining requirement |
 | --- | --- | --- |
-| P10 — current hardware-free validation | The latest retained integrated `scripts/test.sh all-hardware-free` run `run-b1kjDyaM` at revision `ba03d1a342187a4b79fe2fa28c6e785419461b94` recorded 60 passes and 23 failures in 83 serialized checks on pinned Swift 6.4.0. `results.tsv` SHA-256 is `92475ddd253885e088a0c35f93896aa87dc65cc696b804801671b619ff58b49e`; `metadata.txt` SHA-256 is `2e9591fad86641600d132d4e2a71ec38212fb262a952c9b202c68bafb933355b`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-b1kjDyaM/). Earlier 24/59 `run-usFDdIBT`, 56/27 `run-MM4217u6`, 60/23 `run-DqItCC6l`, and 55/28 `run-v8GRC8xq` runs remain historical. | The run used a dirty worktree; its snapshot records tracked diff and status fingerprints, not a complete source-file manifest. Failed executions include three analyzer/workload compile prerequisites (`spec-013-macos-static`, `root-tests`, and `spec-003-diagnostic-buffer`), four SPEC-001 profile compile failures, two SPEC-003 macOS harness failures, four SPEC-007 harness/lifecycle failures, four SPEC-011 profile failures, two SPEC-014 macOS incomplete production-corpus attempts, and four SPEC-015 profile failures. The exact results and logs remain in the receipt; sparse logs do not support blanket criterion verdicts. Later corrected Dynamic SPEC-014 evidence uses pinned Swift 6.4, compiles Semantic Core without prior Swift 6.3.3 diagnostics, and remains blocked by Signal Analyzer schema/View errors; Static has not been rerun through the corrected collector. No focused evidence promotes an integrated execution or owner criterion. P10 remains **FAILED / UNMET**. |
+| P10 — current hardware-free validation | The latest integrated `scripts/test.sh all-hardware-free` run `run-v8GRC8xq` at revision `3f7558be20907767e9816477fac2b6604d80422e` recorded 55 passes and 28 failures in 83 serialized checks on pinned Swift 6.4.0. `results.tsv` SHA-256 is `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`; `metadata.txt` SHA-256 is `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`. See the [P10 receipt](p10-run-usFDdIBT/p10-run.md) and [exact current-run files](p10-run-usFDdIBT/current-run-v8GRC8xq/). The earlier 60/23 `run-b1kjDyaM` is retained as an intermediate run; the original 24/59 and intermediate 56/27 and 60/23 results remain historical. | The integrated run used a dirty worktree without a complete source-file manifest. Twenty failed rows have analyzer/workload prerequisites; two nested SPEC-014 reports used Xcode Swift 6.3.3 and lacked source hashes. The corrected Dynamic and Static SPEC-014 reports use pinned Swift 6.4 and compile Semantic Core without those diagnostics; both remain blocked by analyzer schema/View errors. Four SPEC-007 lifecycle rows remain incomplete; two Pi sandbox/cache rows have separate focused passes without changing the aggregate. SPEC-006 macOS Dynamic/Static rows pass by reusing matching reports, not by a fresh standalone compile. These are failed executions, not independent criterion verdicts. No whole P10 check or shared criterion is transferred or waived. P10 remains **FAILED / UNMET**. |
 
 Compact, hash-bound post-run SPEC-002 Pi, SPEC-014 Pi, and SPEC-005 macOS
 Dynamic receipts are retained in

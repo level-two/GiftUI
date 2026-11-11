@@ -1,25 +1,63 @@
 # Independent review — current closeout packet
 
+## Current evidence and handoff reconciliation — 2026-11-11
+
+A fresh read-only check of the scoped closeout materials confirmed that the
+README's action table identifies the exact missing four-profile SPEC-007
+matrices, fresh embedded P02 receipts, joined P11 resource/connected evidence,
+and P12 dependency/cutover preparation. The root-test capture is correctly
+described as a dirty-worktree diagnostic without a complete source manifest;
+it does not establish a baseline defect or criterion disposition.
+
+Both corrected SPEC-014 macOS reports are now available. Dynamic and Static
+select the pinned project-local Swift 6.4 compiler, clear the prior 6.3.3
+Semantic Core diagnostics, and remain blocked at analyzer-owned
+`SignalAnalyzerView` schema/View errors. The earlier paragraphs below that say
+the Static profile had not yet been rerun preserve their historical review-time
+state and are superseded for current status by this reconciliation. The focused
+SPEC-007 P05 Dynamic and Static runs remain partial 286-assertion results; no
+criterion, lifecycle status, P10 aggregate, P08 status, P11/P12 gate, or human
+closure decision is promoted here.
+
+Current scoped identities:
+
+- Closeout README SHA-256: `1dc2bd1be49528c488f83cd5ad593c5c63a60d7895b9c04035990dcd0fa1f0e4`
+- P10 receipt SHA-256: `c44345d09bac35fe31102db81366a1e5c5727665e79e9fa9a03d652ad0ca0034`
+- SPEC-007 conformance report SHA-256: `0d6c3e6f1481b9c8bbe9535c86b076acf40381ca16c484abd9849d8b6c79dd62`
+- SPEC-007 implementation plan SHA-256: `53f949caa3f132ce476af2a3aaff620aa12c99fb84a79cba779012906aa91997`
+- Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825` (189 rows)
+- Criterion CSV generator SHA-256: `172071b6913c179d1dc2ae457497320c2c438b3c61e9ba9ec49cb15db0871854`
+- Focused SPEC-014 Dynamic metadata/log SHA-256: `634bcf94c1643bdc4c9fdc9ae5cfeabc028fd7bf4729dbd8e0b2a71958afdc26` / `adb2c92ca5097840390be2fecfb7222d12b0c9046e9af490b5bfe947594a4f6c`; archive SHA-256: `3523a224c85444c5a46c7bbd88c1152bb71b1a3cb0329c28286ec64c28b5d9e3`.
+- Focused SPEC-014 Static metadata/log SHA-256: `34e6276122fce0790e02706b0e3b2ac71bafd92a6a0949ce6c02708b20f80fc7` / `62d940283651cb1b185f5ddf2f6df612d621a79dbc068cad99535cf1db87fc12`; archive SHA-256: `6db4f34b40c60882bd6dbf55379fe3e6edd1052c9a1e5b8495e86789fffa035b`.
+- Focused SPEC-007 P05 Dynamic/Static result SHA-256: `8171a2048d6005cb167882b3c54cbda3cefb9f2bd4521a68f7cc70a99d1a1bc1` / `751e29f517d1df395c10154c8048d59705c2e49c845aa6ecd15bcbcd3b12318b`.
+- Dirty root-test diagnostic raw log SHA-256: `d534a132410a0f6c68a3b3205d889a2303c367b8f2f74f2457417b8112b34fb3`.
+- Latest completed integrated P10 `run-v8GRC8xq` remains 55/28; its retained metadata/results hashes are unchanged from the historical review below.
+
+This is a bounded factual reconciliation of the listed records and hashes. It
+does not independently establish product conformance, accept a lifecycle
+transition, or replace the human iteration closure decision.
+A read-only independent recheck confirmed the listed current hashes and found
+no factual discrepancy in this reconciliation.
+
 ## Integrated P10 chronology update — 2026-11-11
 
-The prior acceptance below was hash-bound to `run-v8GRC8xq` and the packet
-revision at that time. It is historical for that revision. The later retained
-integrated run is `run-b1kjDyaM` (60 passed / 23 failed of 83, project-local
-Swift 6.4, dirty worktree); the updated README, P10 receipt, and generated
-criterion index now identify it as the latest aggregate. Its failure list
-contains analyzer/shared compile prerequisites, SPEC-003 harness failures,
-SPEC-007 lifecycle failures, SPEC-011 and SPEC-015 profile failures, and
-incomplete SPEC-014 macOS attempts. The new run is not a clean-tree result, its
-post-run snapshot is not a complete source manifest, and sparse reports do not
-support blanket criterion-level causes. Existing owner dispositions remain
-UNMET.
+The latest retained integrated run remains `run-v8GRC8xq` (55 passed / 28
+failed of 83, project-local Swift 6.4, dirty worktree). `run-b1kjDyaM` (60/23)
+is an intermediate integrated run at ancestor revision `ba03d1a`; the later v8
+run used descendant revision `3f7558be`. The updated README and P10 receipt
+keep v8 as latest while retaining b1kj as historical evidence. Its post-run
+snapshot is not a complete source manifest, and sparse reports do not support
+blanket criterion-level causes. Existing owner dispositions remain UNMET.
 
 The SPEC-007 report and lifecycle state remain `collecting` / `implementing` /
-`active`; the partial T9.1 probe was formatted and parsed but not typechecked or
-executed. LY-RD-001/002 and T9.1 remain open. P11 and P12 remain incomplete,
-with P12 limited to no-removal/no-cutover. This chronology update records the
-retained evidence and bounded read-only audit findings; it is not an acceptance
-of the new aggregate, conformance, P08, or iteration closure.
+`active`. The later focused P05 bank-layout runs compiled, linked, and executed
+the changed probe for macOS Dynamic and Static (286 assertions each); their
+source-bound receipts are retained. LY-RD-001/002 and T9.1 remain open because
+the four-profile differential and failure-cleanup evidence is incomplete. P11
+and P12 remain incomplete, with P12 limited to no-removal/no-cutover. This
+chronology update records the retained evidence and bounded read-only audit
+findings; it is not an acceptance of the aggregate, conformance, P08, or
+iteration closure.
 
 The bounded audit confirmed that the P11 crosswalk treats selected receipts as
 partial evidence, keeps the wider joined resource/connected-target gaps open,
@@ -27,19 +65,24 @@ and labels P12 no-removal as a safe retained disposition rather than an
 adoption pass. It corrected two phrases: the 54 live-store alias checks belong
 to the five-literal section's four live-store lists, and outstanding work is
 criterion-linked owner conformance updates/reports rather than nine extant
-reports. The audit also confirmed that the partial T9.1 probe was not
-typechecked or executed and that no SPEC-007 criterion or lifecycle status was
-promoted.
+reports. The audit also confirmed that the later two-profile focused P05 results
+do not promote a SPEC-007 criterion or lifecycle status.
 
 The updated packet identities checked for this reconciliation are:
 
-- Closeout README SHA-256: `7e42572d5499541af13a3b8c1fd0482ca64446c73ef863731e6fa848ec70b9cf`
-- P10 receipt SHA-256: `5479655ee785ad011148fe850956978da93802d5a43af81ae7035a70c5e7042b`
-- P10 `run-b1kjDyaM` metadata SHA-256: `2e9591fad86641600d132d4e2a71ec38212fb262a952c9b202c68bafb933355b`
-- P10 `run-b1kjDyaM` results SHA-256: `92475ddd253885e088a0c35f93896aa87dc65cc696b804801671b619ff58b49e`
-- Criterion CSV SHA-256: `e7cc2ea1286a99acee74d5f7c9844db6106d172b001e547ff7444e2dd473b03e`
-- CSV generator SHA-256: `74e724f45b81229e10c390e977d78981aeb1d6023e793380289b665d268e4b62`
+- Closeout README SHA-256: `1199f03c78266c8c313bc2a7bd340a0ed15c477236c51862bf0f5ca529ab6c88`
+- P10 receipt SHA-256: `1ea245701f03ef2dcb1410467788f25819dbd68437be8825d79c30a0740e483b`
+- P10 `run-v8GRC8xq` metadata SHA-256: `d0253fecfd220d5f7663ac533208e270533adb6e92e5dbc0892a112fe10a7381`
+- P10 `run-v8GRC8xq` results SHA-256: `1ba48aaadb67bd9c396e04661c55948d332ed37d27b0738f26682fbd450ea0d9`
+- P10 intermediate `run-b1kjDyaM` metadata SHA-256: `2e9591fad86641600d132d4e2a71ec38212fb262a952c9b202c68bafb933355b`
+- P10 intermediate `run-b1kjDyaM` results SHA-256: `92475ddd253885e088a0c35f93896aa87dc65cc696b804801671b619ff58b49e`
+- Criterion CSV SHA-256: `708a8aaf6ab376c51d2f744509ff1e01316abc711ae8d76b2f9ca7545ffc7825`
+- CSV generator SHA-256: `172071b6913c179d1dc2ae457497320c2c438b3c61e9ba9ec49cb15db0871854`
 - SPEC-007 conformance report SHA-256: `64c78733f9b0a72f134a795d03a33dacf40e2c0e3652bd2c05345be225f9e792`
+- SPEC-007 macOS Dynamic P05 result SHA-256: `8171a2048d6005cb167882b3c54cbda3cefb9f2bd4521a68f7cc70a99d1a1bc1`
+- SPEC-007 macOS Static P05 result SHA-256: `751e29f517d1df395c10154c8048d59705c2e49c845aa6ecd15bcbcd3b12318b`
+- SPEC-007 Dynamic archive SHA-256: `02065b0959fc04ca4ce87f570c76377525f4bba578801a8d59d3eedeb25c6756`
+- SPEC-007 Static archive SHA-256: `88b600fa4ad71aa57918b2c3acfe6209b665bcc2fd88cbda1df31bb14a14f608`
 
 ## Post-review toolchain correction — 2026-11-11
 
@@ -51,7 +94,8 @@ established a current shared `SemanticRecordExpansion.swift` failure under
 Swift 6.4. The collector now uses its exported pinned driver and compiler. A
 fresh Dynamic attempt records the project-local Swift 6.4 path for all nested
 compiler jobs, compiles Semantic Core without those diagnostics, and remains
-blocked on Signal Analyzer schema/View errors. Its compact receipt is
+blocked on Signal Analyzer schema/View errors. At the time, Static had not yet
+been rerun; its later blocked result is in the P10 receipt. The Dynamic compact receipt is
 [`archived here`](p10-run-usFDdIBT/focused-followups/spec014-dynamic-pinned-compiler-20261111/report.tar.gz).
 
 This correction is a factual toolchain reconciliation, not an independent

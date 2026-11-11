@@ -1,0 +1,2 @@
+source scripts/lib/swiftpm.sh
+giftui_swiftpm --package-path "$PWD" --scratch-path "$PWD/.build/test-reports/focused-p10-root-tests-current-20261111/swiftpm" --cache-path "$PWD/.build" --disable-sandbox --skip-update --cache-root "$PWD/.build/test-reports/focused-p10-root-tests-current-20261111" --swift-flag -DGIFTUI_DYNAMIC_PROFILE -- test

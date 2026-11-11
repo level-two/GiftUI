@@ -70,6 +70,16 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   **Evidence:** existing owner conformance report and immutable owner-driver
   reports linked to exact commits/artifacts; the [P05 exit](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md#final-p05-package-exit--2026-10-11) records all eight passing component routes at `fec8a27c` and remaining gates. T9.1 remains open.
 
+  **2026-11-11 partial follow-up:** the runtime-derived bank probe now records
+  reader-count and prior-publication assertions. With an exact-input current
+  SPEC-006 GiftUI build receipt, the P05 helper compiled, linked, and executed
+  for macOS Dynamic and Static; each passed 286 assertions plus the expected
+  escaping-view negative compiles. Formatting and strict lint also pass. The
+  [evidence note](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md)
+  records the receipts and remaining LY-RD-001/002 and P10–P12 obligations.
+  These two profile results do not close a criterion; T9.1 remains open.
+  See [runtime-bank follow-up](../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
+
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T9.1` adds fresh migration verification without
 reopening unrelated implementation. P01–P12 define exact footprints/exits, three

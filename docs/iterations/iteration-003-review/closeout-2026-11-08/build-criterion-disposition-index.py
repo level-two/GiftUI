@@ -75,11 +75,11 @@ def main():
                     "planned_evidence": evidence,
                     "owner_plan_status": status,
                     "P10_current_disposition": (
-                        "P08 scoped classification retained; current P10 run-b1kjDyaM "
-                        "remains UNMET (60/83 passed, 23 failed)"
+                        "P08 scoped classification retained; current P10 run-v8GRC8xq "
+                        "remains UNMET (55/83 passed, 28 failed)"
                         if group == "P08 scoped-ownership"
-                        else "UNMET: latest retained all-hardware-free run-b1kjDyaM had "
-                        "60/83 passes, 23 failures; historical run-usFDdIBT failed 59/83; "
+                        else "UNMET: latest all-hardware-free run-v8GRC8xq had 55/83 passes, "
+                        "28 failures; historical run-usFDdIBT failed 59/83; "
                         "aggregate failure does not establish criterion conformance"
                     ),
                     "P11_current_disposition": (

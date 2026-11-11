@@ -1,0 +1,1913 @@
+swiftpm-command: swift test --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/test-reports/focused-p10-root-tests-current-20261111/swiftpm --cache-path /Users/eugene/work/GiftUI/.build --disable-sandbox --skip-update -Xswiftc -DGIFTUI_DYNAMIC_PROFILE
+warning: '--skip-update' option is deprecated and will be removed in a future release
+warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (0.25s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (1.83s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Building for debugging...
+[0/147] /Users/eugene/work/GiftUI/.build/test-reports/focused-p10-root-tests-current-20261111/swiftpm/arm64-apple-macosx/debug/GiftUIPackageTests.derived/runner.swift
+[1/147] Write sources
+[4/147] Write SignalAnalyzerRaspberryPiARMv6-entitlement.plist
+[4/147] Write sources
+[13/147] Write SignalAnalyzerNRF52840HostOracle-entitlement.plist
+[13/147] Write SignalAnalyzerMacOSStatic-entitlement.plist
+[13/147] Write SignalAnalyzerMacOSDynamic-entitlement.plist
+[15/147] Write sources
+[130/147] Write swift-version--58304C5D6DBC2206.txt
+[132/178] Emitting module SignalAnalyzerDomain
+[134/178] Compiling SignalAnalyzerDomain ModuleBoundary.swift
+[136/178] Compiling SignalAnalyzerDomain AcquisitionState.swift
+[137/178] Compiling SignalAnalyzerDomain SignalPrimitiveValues.swift
+[138/178] Compiling SignalAnalyzerDomain AcquisitionState.swift
+[139/178] Compiling SignalAnalyzerDomain SignalAcquisitionContracts.swift
+[140/178] Compiling SignalAnalyzerDomain SignalCaptureChange.swift
+[141/178] Compiling SignalAnalyzerDomain SignalCapturePublication.swift
+[142/178] Compiling SignalAnalyzerDomain SignalAcquisitionContracts.swift
+[143/178] Compiling SignalAnalyzerDomain SignalAnalyzerDiagnostic.swift
+[144/178] Compiling SignalAnalyzerDomain SignalCaptureChange.swift
+[145/178] Compiling SignalAnalyzerDomain SignalCapturePublication.swift
+[146/178] Compiling SignalAnalyzerDomain SignalValues.swift
+[147/178] Compiling SignalAnalyzerDomain SignalAnalyzerDiagnostic.swift
+[148/178] Compiling SignalAnalyzerDomain SignalPrimitiveValues.swift
+[149/178] Compiling SignalAnalyzerDomain SignalValues.swift
+[150/178] Compiling GiftUIFailureCore GiftUIFailureCore.swift
+[151/178] Emitting module GiftUIFailureCore
+[153/191] Compiling GiftUIFailureCore GiftUIFailureCore.swift
+[154/196] Compiling SignalAnalyzerData ModuleBoundary.swift
+[155/204] Emitting module SignalAnalyzerData
+[156/204] Compiling GiftUICapabilities GiftUICapabilities.swift
+[157/204] Emitting module GiftUICapabilities
+[159/206] Compiling GiftUICapabilities GiftUICapabilities.swift
+[160/206] Compiling SignalAnalyzerData SignalCaptureStore.swift
+[161/206] Emitting module SignalAnalyzerData
+[162/206] Compiling SignalAnalyzerData ModuleBoundary.swift
+[163/206] Compiling SignalAnalyzerData SignalCaptureStore.swift
+[164/206] Emitting module GiftUICapabilityFailureAdapterFixture
+[165/206] Compiling GiftUICapabilityFailureAdapterFixture CapabilityFailureAdapter.swift
+[166/206] Compiling SignalAnalyzerData DefaultSignalAcquisitionRepository.swift
+[167/206] Compiling SignalAnalyzerData DeterministicSignalDataSource.swift
+[168/206] Compiling SignalAnalyzerData DeterministicSignalGenerator.swift
+[169/206] Emitting module GiftUIFailureDiagnostics
+[170/206] Compiling GiftUIFailureDiagnostics GiftUIFixedDiagnosticBuffer.swift
+[171/206] Compiling GiftUIFailureDiagnostics GiftUIDiagnosticProjector.swift
+[172/206] Emitting module GiftUIFailureDiagnostics
+[173/206] Compiling GiftUIFailureDiagnostics GiftUIFixedDiagnosticBuffer.swift
+[174/206] Compiling GiftUIFailureDiagnostics GiftUIDiagnosticProjector.swift
+[175/208] Compiling SignalAnalyzerData DeterministicSignalDataSource.swift
+[176/208] Compiling SignalAnalyzerData DeterministicSignalGenerator.swift
+[177/208] Compiling SignalAnalyzerData DefaultSignalAcquisitionRepository.swift
+[178/218] Emitting module GiftUICapabilityFailureAdapterFixture
+[179/218] Compiling GiftUICapabilityFailureAdapterFixture CapabilityFailureAdapter.swift
+[180/223] Compiling GiftUIMacros CanvasWitnessLowering.swift
+[181/223] Emitting module GiftUIMacros
+[182/223] Compiling SignalAnalyzerDataTests SignalCaptureStoreTests.swift
+[183/223] Compiling SignalAnalyzerDataTests SignalAnalyzerWorkloadOracleTests.swift
+[184/223] Compiling SignalAnalyzerDomainTests SignalAnalyzerDiagnosticTests.swift
+[185/223] Compiling SignalAnalyzerDomainTests SignalCapturePublicationTests.swift
+[186/223] Compiling GiftUIMacros ObservableStateHostMacro.swift
+[187/223] Compiling SignalAnalyzerDomainTests SignalAcquisitionContractTests.swift
+[188/223] Compiling SignalAnalyzerDomainTests SignalCaptureTests.swift
+[189/223] Compiling SignalAnalyzerDomainTests ModuleBoundaryTests.swift
+[190/223] Emitting module SignalAnalyzerDomainTests
+[191/223] Compiling SignalAnalyzerDataTests DeterministicSignalGeneratorTests.swift
+[192/223] Compiling SignalAnalyzerDataTests ModuleBoundaryTests.swift
+[193/223] Emitting module SignalAnalyzerDataTests
+[194/223] Compiling SignalAnalyzerDataTests DeterministicSignalDataSourceTests.swift
+[195/223] Compiling SignalAnalyzerDataTests DefaultSignalAcquisitionRepositoryTests.swift
+[196/223] Compiling SignalAnalyzerDataTests SignalAcquisitionRepositoryLifecycleTests.swift
+[197/223] Compiling GiftUIMacros GiftUIMacros.swift
+[198/223] Compiling GiftUIMacros FiniteSourceLowering.swift
+[198/223] Write Objects.LinkFileList
+[199/223] Linking GiftUIMacros-tool
+[201/257] Compiling GiftUI StyleModifiers.swift
+[202/258] Compiling GiftUI LayoutModifiers.swift
+[203/258] Compiling GiftUI LayoutContainers.swift
+[204/259] Compiling GiftUI StyleModifiers.swift
+[205/259] Compiling GiftUI Text.swift
+[206/259] Compiling GiftUI DrawingSurface.swift
+[207/259] Compiling GiftUI Disabled.swift
+[208/259] Compiling GiftUI DrawingStyles.swift
+[209/259] Compiling GiftUI GiftUI.swift
+[210/259] Compiling GiftUI LayoutValues.swift
+[211/259] Compiling GiftUI Text.swift
+[212/259] Compiling GiftUI Color.swift
+[213/259] Compiling GiftUI DeclarativeView.swift
+[214/259] Compiling GiftUI DrawingSurface.swift
+[215/259] Compiling GiftUI ActionHandler.swift
+[216/259] Compiling GiftUI BoundedText.swift
+[219/259] Compiling GiftUI Button.swift
+[220/259] Compiling GiftUI Canvas.swift
+[223/259] Compiling GiftUI LayoutValues.swift
+[224/259] Compiling GiftUI ObservableState.swift
+[225/259] Compiling GiftUI LayoutModifiers.swift
+[226/259] Compiling GiftUI GiftUI.swift
+[227/259] Compiling GiftUI LayoutContainers.swift
+[230/259] Compiling GiftUI ObservableState.swift
+[232/259] Emitting module GiftUI
+[235/317] Compiling SignalAnalyzerPresentation ModuleBoundary.swift
+[236/317] Compiling SignalAnalyzerPresentation SignalAnalyzerDiagnostic+BoundedText.swift
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[237/318] Emitting module SignalAnalyzerPresentation
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:6: error: generic parameter 'Schema' could not be inferred
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |      |- error: generic parameter 'Schema' could not be inferred
+    |      `- note: explicitly specify the generic arguments to fix this issue
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:24: error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |                        `- error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:5:16: error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+    |                |- error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 5 | }
+    | 6 | 
+    | 7 | package func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |   |              `- note: candidate has non-matching type '<Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:35:16: error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+ 33 | }
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+    |                |- error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 36 |     package let acquisitionState: AcquisitionState
+ 37 |     package let errorMessage: SignalAnalyzerDiagnostic?
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:64:16: error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+ 62 | }
+ 63 | 
+ 64 | package struct SignalAnalyzerWaveformView: View {
+    |                |- error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 65 |     package let layout: SignalAnalyzerLayoutConstraints
+ 66 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:144:16: error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+142 | }
+143 | 
+144 | package struct SignalAnalyzerTimeRulerView: View {
+    |                |- error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+145 |     package let visibleRange: Range<Duration>
+146 |     package var labelWidth: GeometryScalar = 72
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:168:16: error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+166 | }
+167 | 
+168 | package struct SignalAnalyzerChannelWaveformView: View {
+    |                |- error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+169 |     package var layout: SignalAnalyzerLayoutConstraints = .reference
+170 |     package let channelID: SignalChannelID
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:193:16: error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+191 | }
+192 | 
+193 | package struct SignalAnalyzerGridView: View {
+    |                |- error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+194 |     package var body: some View {
+195 |         makeSignalAnalyzerGridCanvas()
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:199:16: error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+197 | }
+198 | 
+199 | package struct SignalAnalyzerTraceView: View {
+    |                |- error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+200 |     package let channelID: SignalChannelID
+201 |     package let capture: SignalCapture
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:213:48: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+211 | }
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+    |                                                `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+214 |     Canvas { (context, size) throws(DrawingError) in
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:223:6: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+221 |     capture: SignalCapture,
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+    |      `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+224 |     Canvas { (context, size) throws(DrawingError) in
+225 |         try drawSignalAnalyzerTrace(
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:307:16: error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+305 | }
+306 | 
+307 | package struct SignalAnalyzerSquareButton: View {
+    |                |- error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+308 |     package let label: BoundedText
+309 |     package let action: SignalAnalyzerAction
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+[238/318] Compiling GiftUISemanticCore SemanticLayoutView.swift
+[239/319] Compiling GiftUISemanticCore SemanticLayoutResultSink.swift
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift:18:34: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 16 |         } else if payloadCopy is _GiftUITextPayload {
+ 17 |             self = .text
+ 18 |         } else if payloadCopy is Canvas {
+    |                                  `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+ 19 |             self = .canvas
+ 20 |         } else {
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+[240/319] Compiling SignalAnalyzerPresentation SignalAnalyzerTimelineFormatting.swift
+[241/319] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:6: error: generic parameter 'Schema' could not be inferred
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |      |- error: generic parameter 'Schema' could not be inferred
+    |      `- note: explicitly specify the generic arguments to fix this issue
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:24: error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |                        `- error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:5:16: error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+    |                |- error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 5 | }
+    | 6 | 
+    | 7 | package func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |   |              `- note: candidate has non-matching type '<Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:35:16: error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+ 33 | }
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+    |                |- error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 36 |     package let acquisitionState: AcquisitionState
+ 37 |     package let errorMessage: SignalAnalyzerDiagnostic?
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:64:16: error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+ 62 | }
+ 63 | 
+ 64 | package struct SignalAnalyzerWaveformView: View {
+    |                |- error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 65 |     package let layout: SignalAnalyzerLayoutConstraints
+ 66 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:144:16: error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+142 | }
+143 | 
+144 | package struct SignalAnalyzerTimeRulerView: View {
+    |                |- error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+145 |     package let visibleRange: Range<Duration>
+146 |     package var labelWidth: GeometryScalar = 72
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:168:16: error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+166 | }
+167 | 
+168 | package struct SignalAnalyzerChannelWaveformView: View {
+    |                |- error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+169 |     package var layout: SignalAnalyzerLayoutConstraints = .reference
+170 |     package let channelID: SignalChannelID
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:193:16: error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+191 | }
+192 | 
+193 | package struct SignalAnalyzerGridView: View {
+    |                |- error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+194 |     package var body: some View {
+195 |         makeSignalAnalyzerGridCanvas()
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:199:16: error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+197 | }
+198 | 
+199 | package struct SignalAnalyzerTraceView: View {
+    |                |- error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+200 |     package let channelID: SignalChannelID
+201 |     package let capture: SignalCapture
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:213:48: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+211 | }
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+    |                                                `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+214 |     Canvas { (context, size) throws(DrawingError) in
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:223:6: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+221 |     capture: SignalCapture,
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+    |      `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+224 |     Canvas { (context, size) throws(DrawingError) in
+225 |         try drawSignalAnalyzerTrace(
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:307:16: error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+305 | }
+306 | 
+307 | package struct SignalAnalyzerSquareButton: View {
+    |                |- error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+308 |     package let label: BoundedText
+309 |     package let action: SignalAnalyzerAction
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:14:27: error: incorrect argument label in call (have 'wrappedValue:', expected 'seed:')
+ 12 |     ) {
+ 13 |         self.layout = layout
+ 14 |         _viewModel = State(wrappedValue: viewModel)
+    |                           `- error: incorrect argument label in call (have 'wrappedValue:', expected 'seed:')
+ 15 |     }
+ 16 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:14:22: error: generic parameter 'Schema' could not be inferred
+ 12 |     ) {
+ 13 |         self.layout = layout
+ 14 |         _viewModel = State(wrappedValue: viewModel)
+    |                      |- error: generic parameter 'Schema' could not be inferred
+    |                      `- note: explicitly specify the generic arguments to fix this issue
+ 15 |     }
+ 16 | 
+
+macro expansion @ObservableStateHost:4:13: error: generic parameter 'Schema' could not be inferred
+`- /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:33:1: note: expanded code originates here
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 2 |     Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
+    | 3 | >(_ visitor: inout Visitor) {
+    | 4 |     visitor.visit(&_viewModel, declarationOrdinal: 0)
+    |   |             `- error: generic parameter 'Schema' could not be inferred
+    | 5 | }
+    | 6 | 
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:164:19: note: in call to function 'visit(_:declarationOrdinal:)'
+162 | 
+163 | public protocol _GiftUIObservableStateDeclarationVisitor: ~Copyable, ~Escapable {
+164 |     mutating func visit<Schema: _GiftUIModelSchema>(
+    |                   `- note: in call to function 'visit(_:declarationOrdinal:)'
+165 |         _ state: inout State<Schema>,
+166 |         declarationOrdinal: UInt16
+
+macro expansion @ObservableStateHost:10:13: error: instance method 'visitStatefulCustomView(_:body:)' requires the types 'Visitor.Domain' and 'SignalAnalyzerView.Domain' be equivalent
+`- /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:33:1: note: expanded code originates here
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    |10 |     visitor.visitStatefulCustomView(self) {
+    |   |             `- error: instance method 'visitStatefulCustomView(_:body:)' requires the types 'Visitor.Domain' and 'SignalAnalyzerView.Domain' be equivalent
+    |11 |         (declaration: borrowing Self, read: borrowing _GiftUIFrameRead<Domain>)
+    |12 |             throws(_GiftUIAccessFailure) in
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:97:19: note: where 'Self.Domain' = 'Visitor.Domain', 'Declaration.Domain' = 'SignalAnalyzerView.Domain'
+ 95 |     ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain
+ 96 | 
+ 97 |     mutating func visitStatefulCustomView<
+    |                   `- note: where 'Self.Domain' = 'Visitor.Domain', 'Declaration.Domain' = 'SignalAnalyzerView.Domain'
+ 98 |         Declaration: View & _GiftUIObservableStateHost
+ 99 |     >(
+
+macro expansion @ObservableStateHost:10:13: error: instance method 'visitStatefulCustomView(_:body:)' requires the types 'SignalAnalyzerView.Domain' and 'SignalAnalyzerView.Body.Domain' be equivalent
+`- /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:33:1: note: expanded code originates here
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    |10 |     visitor.visitStatefulCustomView(self) {
+    |   |             `- error: instance method 'visitStatefulCustomView(_:body:)' requires the types 'SignalAnalyzerView.Domain' and 'SignalAnalyzerView.Body.Domain' be equivalent
+    |11 |         (declaration: borrowing Self, read: borrowing _GiftUIFrameRead<Domain>)
+    |12 |             throws(_GiftUIAccessFailure) in
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:97:19: note: where 'Declaration.Domain' = 'SignalAnalyzerView.Domain', 'Declaration.Body.Domain' = 'SignalAnalyzerView.Body.Domain'
+ 95 |     ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain
+ 96 | 
+ 97 |     mutating func visitStatefulCustomView<
+    |                   `- note: where 'Declaration.Domain' = 'SignalAnalyzerView.Domain', 'Declaration.Body.Domain' = 'SignalAnalyzerView.Body.Domain'
+ 98 |         Declaration: View & _GiftUIObservableStateHost
+ 99 |     >(
+
+macro expansion @ObservableStateHost:13:25: error: value of type 'SignalAnalyzerView' has no member '_giftUIEvaluate'
+`- /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:33:1: note: expanded code originates here
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    |11 |         (declaration: borrowing Self, read: borrowing _GiftUIFrameRead<Domain>)
+    |12 |             throws(_GiftUIAccessFailure) in
+    |13 |         try declaration._giftUIEvaluate(read: read)
+    |   |                         `- error: value of type 'SignalAnalyzerView' has no member '_giftUIEvaluate'
+    |14 |     }
+    |15 | }
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:45:17: error: generic parameter 'D' could not be inferred
+ 43 |         HStack(alignment: .top, spacing: 4) {
+ 44 |             VStack(alignment: .leading, spacing: 2) {
+ 45 |                 Text("DIGITAL SIGNAL ANALYZER")
+    |                 |- error: generic parameter 'D' could not be inferred
+    |                 `- note: explicitly specify the generic arguments to fix this issue
+ 46 |                 Text("Four-channel acquisition")
+ 47 |                     .foregroundStyle(.gray)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:40:33: error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+ 38 |     package let layout: SignalAnalyzerLayoutConstraints
+ 39 | 
+ 40 |     package var body: some View {
+    |                                 `- error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+ 41 |         let controls = SignalAnalyzerControlState(
+ 42 |             acquisitionState: acquisitionState, selectedWindow: .twoSeconds)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:86:36: error: static method 'buildBlock' requires the types 'SignalAnalyzerSquareButton.Domain' and 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain' be equivalent
+ 84 |                 .frame(maxWidth: .points(layout.gridWidth), maxHeight: .points(layout.gridHeight))
+ 85 |             VStack(alignment: .leading, spacing: 0) {
+ 86 |                 HStack(spacing: 2) {
+    |                                    `- error: static method 'buildBlock' requires the types 'SignalAnalyzerSquareButton.Domain' and 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain' be equivalent
+ 87 |                     SignalAnalyzerSquareButton(
+ 88 |                         label: BoundedText("-")!, action: selectedWindow.shorterAction,
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:203:24: note: where 'A.Domain' = 'SignalAnalyzerSquareButton.Domain', 'B.Domain' = 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain'
+201 |     }
+202 | 
+203 |     public static func buildBlock<A: View, B: View, C: View>(
+    |                        `- note: where 'A.Domain' = 'SignalAnalyzerSquareButton.Domain', 'B.Domain' = 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain'
+204 |         _ a: A,
+205 |         _ b: B,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:86:36: error: static method 'buildBlock' requires the types 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain' and 'SignalAnalyzerSquareButton.Domain' be equivalent
+ 84 |                 .frame(maxWidth: .points(layout.gridWidth), maxHeight: .points(layout.gridHeight))
+ 85 |             VStack(alignment: .leading, spacing: 0) {
+ 86 |                 HStack(spacing: 2) {
+    |                                    `- error: static method 'buildBlock' requires the types 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain' and 'SignalAnalyzerSquareButton.Domain' be equivalent
+ 87 |                     SignalAnalyzerSquareButton(
+ 88 |                         label: BoundedText("-")!, action: selectedWindow.shorterAction,
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:203:24: note: where 'B.Domain' = 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain', 'C.Domain' = 'SignalAnalyzerSquareButton.Domain'
+201 |     }
+202 | 
+203 |     public static func buildBlock<A: View, B: View, C: View>(
+    |                        `- note: where 'B.Domain' = 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain', 'C.Domain' = 'SignalAnalyzerSquareButton.Domain'
+204 |         _ a: A,
+205 |         _ b: B,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:151:13: error: generic parameter 'D' could not be inferred
+149 |         let labels = SignalAnalyzerRulerLabels(visibleRange: visibleRange)
+150 |         HStack(spacing: 2) {
+151 |             Text(labels.lowerBound)
+    |             |- error: generic parameter 'D' could not be inferred
+    |             `- note: explicitly specify the generic arguments to fix this issue
+152 |                 .frame(width: labelWidth)
+153 |                 .foregroundStyle(.gray)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:148:33: error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+146 |     package var labelWidth: GeometryScalar = 72
+147 | 
+148 |     package var body: some View {
+    |                                 `- error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+149 |         let labels = SignalAnalyzerRulerLabels(visibleRange: visibleRange)
+150 |         HStack(spacing: 2) {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:178:13: error: generic parameter 'D' could not be inferred
+176 |         let level = capture.currentLevel(for: channelID)
+177 |         HStack(spacing: 2) {
+178 |             Text(name)
+    |             |- error: generic parameter 'D' could not be inferred
+    |             `- note: explicitly specify the generic arguments to fix this issue
+179 |                 .frame(width: layout.labelWidth, alignment: .leading)
+180 |             SignalAnalyzerTraceView(
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:175:33: error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+173 |     package let visibleRange: Range<Duration>
+174 | 
+175 |     package var body: some View {
+    |                                 `- error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+176 |         let level = capture.currentLevel(for: channelID)
+177 |         HStack(spacing: 2) {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:195:9: error: type 'any Canvas' cannot conform to 'View' [#ProtocolTypeNonConformance]
+192 | 
+193 | package struct SignalAnalyzerGridView: View {
+194 |     package var body: some View {
+    |                       `- note: required by opaque return type of property 'body'
+195 |         makeSignalAnalyzerGridCanvas()
+    |         |- error: type 'any Canvas' cannot conform to 'View' [#ProtocolTypeNonConformance]
+    |         `- note: only concrete types such as structs, enums and classes can conform to protocols
+196 |     }
+197 | }
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:205:9: error: type 'any Canvas' cannot conform to 'View' [#ProtocolTypeNonConformance]
+202 |     package let visibleRange: Range<Duration>
+203 | 
+204 |     package var body: some View {
+    |                       `- note: required by opaque return type of property 'body'
+205 |         makeSignalAnalyzerTraceCanvas(
+    |         |- error: type 'any Canvas' cannot conform to 'View' [#ProtocolTypeNonConformance]
+    |         `- note: only concrete types such as structs, enums and classes can conform to protocols
+206 |             channelID: channelID,
+207 |             capture: capture,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:214:5: error: 'any Canvas' cannot be constructed because it has no accessible initializers
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+214 |     Canvas { (context, size) throws(DrawingError) in
+    |     `- error: 'any Canvas' cannot be constructed because it has no accessible initializers
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+216 |     }
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:214:5: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+214 |     Canvas { (context, size) throws(DrawingError) in
+    |     `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+216 |     }
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:224:5: error: 'any Canvas' cannot be constructed because it has no accessible initializers
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+224 |     Canvas { (context, size) throws(DrawingError) in
+    |     `- error: 'any Canvas' cannot be constructed because it has no accessible initializers
+225 |         try drawSignalAnalyzerTrace(
+226 |             context: &context,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:224:5: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+224 |     Canvas { (context, size) throws(DrawingError) in
+    |     `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+225 |         try drawSignalAnalyzerTrace(
+226 |             context: &context,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:318:17: error: generic parameter 'D' could not be inferred
+316 |         VStack(spacing: 0) {
+317 |             Button(action: action) {
+318 |                 Text(label)
+    |                 |- error: generic parameter 'D' could not be inferred
+    |                 `- note: explicitly specify the generic arguments to fix this issue
+319 |                     .frame(width: size - 4, height: size - 4)
+320 |                     .background(fill)
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+[#OpaqueTypeInference]: <https://docs.swift.org/compiler/documentation/diagnostics/opaque-type-inference>
+[#ProtocolTypeNonConformance]: <https://docs.swift.org/compiler/documentation/diagnostics/protocol-type-non-conformance>
+[242/320] Compiling SignalAnalyzerPresentation SignalAnalyzerFailureNormalizer.swift
+[243/320] Compiling SignalAnalyzerPresentation SignalAnalyzerFailurePolicyValues.swift
+[244/320] Compiling SignalAnalyzerPresentation SignalAnalyzerLayoutConstraints.swift
+[245/320] Compiling SignalAnalyzerPresentation SignalAnalyzerOwnerFailureAdapter.swift
+[246/320] Compiling SignalAnalyzerPresentation SignalAnalyzerLayoutConstraints.swift
+[249/320] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureRule.swift
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[250/320] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureNormalizer.swift
+[251/320] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationAdmissionAdapter.swift
+[252/320] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeCondition.swift
+[255/320] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationValues.swift
+[256/320] Compiling SignalAnalyzerPresentation SignalAnalyzerOwnerFailureAdapter.swift
+[257/320] Emitting module SignalAnalyzerPresentation
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:6: error: generic parameter 'Schema' could not be inferred
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |      |- error: generic parameter 'Schema' could not be inferred
+    |      `- note: explicitly specify the generic arguments to fix this issue
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:24: error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |                        `- error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:5:16: error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+    |                |- error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 5 | }
+    | 6 | 
+    | 7 | package func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |   |              `- note: candidate has non-matching type '<Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:35:16: error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+ 33 | }
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+    |                |- error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 36 |     package let acquisitionState: AcquisitionState
+ 37 |     package let errorMessage: SignalAnalyzerDiagnostic?
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:64:16: error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+ 62 | }
+ 63 | 
+ 64 | package struct SignalAnalyzerWaveformView: View {
+    |                |- error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 65 |     package let layout: SignalAnalyzerLayoutConstraints
+ 66 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:144:16: error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+142 | }
+143 | 
+144 | package struct SignalAnalyzerTimeRulerView: View {
+    |                |- error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+145 |     package let visibleRange: Range<Duration>
+146 |     package var labelWidth: GeometryScalar = 72
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:168:16: error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+166 | }
+167 | 
+168 | package struct SignalAnalyzerChannelWaveformView: View {
+    |                |- error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+169 |     package var layout: SignalAnalyzerLayoutConstraints = .reference
+170 |     package let channelID: SignalChannelID
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:193:16: error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+191 | }
+192 | 
+193 | package struct SignalAnalyzerGridView: View {
+    |                |- error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+194 |     package var body: some View {
+195 |         makeSignalAnalyzerGridCanvas()
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:199:16: error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+197 | }
+198 | 
+199 | package struct SignalAnalyzerTraceView: View {
+    |                |- error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+200 |     package let channelID: SignalChannelID
+201 |     package let capture: SignalCapture
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:213:48: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+211 | }
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+    |                                                `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+214 |     Canvas { (context, size) throws(DrawingError) in
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:223:6: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+221 |     capture: SignalCapture,
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+    |      `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+224 |     Canvas { (context, size) throws(DrawingError) in
+225 |         try drawSignalAnalyzerTrace(
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:307:16: error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+305 | }
+306 | 
+307 | package struct SignalAnalyzerSquareButton: View {
+    |                |- error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+308 |     package let label: BoundedText
+309 |     package let action: SignalAnalyzerAction
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+[258/320] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationAdmissionAdapter.swift
+[259/320] Compiling SignalAnalyzerPresentation SignalAnalyzerTimelineFormatting.swift
+[260/320] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureNormalizer.swift
+[261/320] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationValues.swift
+[262/320] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeCondition.swift
+[263/320] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureRule.swift
+[264/320] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:6: error: generic parameter 'Schema' could not be inferred
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |      |- error: generic parameter 'Schema' could not be inferred
+    |      `- note: explicitly specify the generic arguments to fix this issue
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:6:24: error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  4 | @ObservableStateHost
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    |                        `- error: property type 'SignalAnalyzerViewModel' does not match 'wrappedValue' type '_GiftUIModelKey<Schema>?'
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+  8 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:5:16: error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+    |                |- error: type 'SignalAnalyzerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+  7 |     private let layout: SignalAnalyzerLayoutConstraints
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 5 | }
+    | 6 | 
+    | 7 | package func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |   |              `- note: candidate has non-matching type '<Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:35:16: error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+ 33 | }
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+    |                |- error: type 'SignalAnalyzerHeaderView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 36 |     package let acquisitionState: AcquisitionState
+ 37 |     package let errorMessage: SignalAnalyzerDiagnostic?
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:64:16: error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+ 62 | }
+ 63 | 
+ 64 | package struct SignalAnalyzerWaveformView: View {
+    |                |- error: type 'SignalAnalyzerWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+ 65 |     package let layout: SignalAnalyzerLayoutConstraints
+ 66 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:144:16: error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+142 | }
+143 | 
+144 | package struct SignalAnalyzerTimeRulerView: View {
+    |                |- error: type 'SignalAnalyzerTimeRulerView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+145 |     package let visibleRange: Range<Duration>
+146 |     package var labelWidth: GeometryScalar = 72
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:168:16: error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+166 | }
+167 | 
+168 | package struct SignalAnalyzerChannelWaveformView: View {
+    |                |- error: type 'SignalAnalyzerChannelWaveformView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+169 |     package var layout: SignalAnalyzerLayoutConstraints = .reference
+170 |     package let channelID: SignalChannelID
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:193:16: error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+191 | }
+192 | 
+193 | package struct SignalAnalyzerGridView: View {
+    |                |- error: type 'SignalAnalyzerGridView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+194 |     package var body: some View {
+195 |         makeSignalAnalyzerGridCanvas()
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:199:16: error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+197 | }
+198 | 
+199 | package struct SignalAnalyzerTraceView: View {
+    |                |- error: type 'SignalAnalyzerTraceView' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+200 |     package let channelID: SignalChannelID
+201 |     package let capture: SignalCapture
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:213:48: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+211 | }
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+    |                                                `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+214 |     Canvas { (context, size) throws(DrawingError) in
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:223:6: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+221 |     capture: SignalCapture,
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+    |      `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+224 |     Canvas { (context, size) throws(DrawingError) in
+225 |         try drawSignalAnalyzerTrace(
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:307:16: error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+305 | }
+306 | 
+307 | package struct SignalAnalyzerSquareButton: View {
+    |                |- error: type 'SignalAnalyzerSquareButton' does not conform to protocol 'View'
+    |                `- note: add stubs for conformance
+308 |     package let label: BoundedText
+309 |     package let action: SignalAnalyzerAction
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:68:10: note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 56 | 
+ 57 | public protocol View<Domain> {
+ 58 |     associatedtype Domain: _GiftUIReadDomain
+    |                    `- note: protocol requires nested type 'Domain'
+ 59 |     associatedtype Body: View
+    |                    `- note: protocol requires nested type 'Body'
+ 60 |     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+ 61 |         throws(_GiftUIAccessFailure) -> Body
+ 62 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: protocol requires function '_giftUITraverse' with type '<Visitor> (inout Visitor) -> ()'
+ 63 |         _ visitor: inout Visitor
+ 64 |     ) where Visitor.Domain == Domain
+    :
+ 66 | 
+ 67 | public extension View where Body.Domain == Domain {
+ 68 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+    |          `- note: candidate has non-matching type '<Self, Visitor> (inout Visitor) -> ()' [with Domain = _, Body = _]
+ 69 |         _ visitor: inout Visitor
+ 70 |     ) where Visitor.Domain == Domain {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:14:27: error: incorrect argument label in call (have 'wrappedValue:', expected 'seed:')
+ 12 |     ) {
+ 13 |         self.layout = layout
+ 14 |         _viewModel = State(wrappedValue: viewModel)
+    |                           `- error: incorrect argument label in call (have 'wrappedValue:', expected 'seed:')
+ 15 |     }
+ 16 | 
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:14:22: error: generic parameter 'Schema' could not be inferred
+ 12 |     ) {
+ 13 |         self.layout = layout
+ 14 |         _viewModel = State(wrappedValue: viewModel)
+    |                      |- error: generic parameter 'Schema' could not be inferred
+    |                      `- note: explicitly specify the generic arguments to fix this issue
+ 15 |     }
+ 16 | 
+
+macro expansion @ObservableStateHost:4:13: error: generic parameter 'Schema' could not be inferred
+`- /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:33:1: note: expanded code originates here
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 2 |     Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
+    | 3 | >(_ visitor: inout Visitor) {
+    | 4 |     visitor.visit(&_viewModel, declarationOrdinal: 0)
+    |   |             `- error: generic parameter 'Schema' could not be inferred
+    | 5 | }
+    | 6 | 
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:164:19: note: in call to function 'visit(_:declarationOrdinal:)'
+162 | 
+163 | public protocol _GiftUIObservableStateDeclarationVisitor: ~Copyable, ~Escapable {
+164 |     mutating func visit<Schema: _GiftUIModelSchema>(
+    |                   `- note: in call to function 'visit(_:declarationOrdinal:)'
+165 |         _ state: inout State<Schema>,
+166 |         declarationOrdinal: UInt16
+
+macro expansion @ObservableStateHost:10:13: error: instance method 'visitStatefulCustomView(_:body:)' requires the types 'Visitor.Domain' and 'SignalAnalyzerView.Domain' be equivalent
+`- /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:33:1: note: expanded code originates here
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    |10 |     visitor.visitStatefulCustomView(self) {
+    |   |             `- error: instance method 'visitStatefulCustomView(_:body:)' requires the types 'Visitor.Domain' and 'SignalAnalyzerView.Domain' be equivalent
+    |11 |         (declaration: borrowing Self, read: borrowing _GiftUIFrameRead<Domain>)
+    |12 |             throws(_GiftUIAccessFailure) in
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:97:19: note: where 'Self.Domain' = 'Visitor.Domain', 'Declaration.Domain' = 'SignalAnalyzerView.Domain'
+ 95 |     ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain
+ 96 | 
+ 97 |     mutating func visitStatefulCustomView<
+    |                   `- note: where 'Self.Domain' = 'Visitor.Domain', 'Declaration.Domain' = 'SignalAnalyzerView.Domain'
+ 98 |         Declaration: View & _GiftUIObservableStateHost
+ 99 |     >(
+
+macro expansion @ObservableStateHost:10:13: error: instance method 'visitStatefulCustomView(_:body:)' requires the types 'SignalAnalyzerView.Domain' and 'SignalAnalyzerView.Body.Domain' be equivalent
+`- /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:33:1: note: expanded code originates here
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    | 8 |     _ visitor: inout Visitor
+    | 9 | ) where Visitor.Domain == Domain {
+    |10 |     visitor.visitStatefulCustomView(self) {
+    |   |             `- error: instance method 'visitStatefulCustomView(_:body:)' requires the types 'SignalAnalyzerView.Domain' and 'SignalAnalyzerView.Body.Domain' be equivalent
+    |11 |         (declaration: borrowing Self, read: borrowing _GiftUIFrameRead<Domain>)
+    |12 |             throws(_GiftUIAccessFailure) in
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:97:19: note: where 'Declaration.Domain' = 'SignalAnalyzerView.Domain', 'Declaration.Body.Domain' = 'SignalAnalyzerView.Body.Domain'
+ 95 |     ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain
+ 96 | 
+ 97 |     mutating func visitStatefulCustomView<
+    |                   `- note: where 'Declaration.Domain' = 'SignalAnalyzerView.Domain', 'Declaration.Body.Domain' = 'SignalAnalyzerView.Body.Domain'
+ 98 |         Declaration: View & _GiftUIObservableStateHost
+ 99 |     >(
+
+macro expansion @ObservableStateHost:13:25: error: value of type 'SignalAnalyzerView' has no member '_giftUIEvaluate'
+`- /Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:33:1: note: expanded code originates here
+  2 | import SignalAnalyzerDomain
+  3 | 
+  4 | @ObservableStateHost
+    | `- note: in expansion of macro 'ObservableStateHost' on struct 'SignalAnalyzerView' here
+  5 | package struct SignalAnalyzerView: View {
+  6 |     @State private var viewModel: SignalAnalyzerViewModel
+    :
+ 31 |         .background(.black)
+ 32 |     }
+ 33 | }
+    +--- macro expansion @ObservableStateHost --------------------------
+    |11 |         (declaration: borrowing Self, read: borrowing _GiftUIFrameRead<Domain>)
+    |12 |             throws(_GiftUIAccessFailure) in
+    |13 |         try declaration._giftUIEvaluate(read: read)
+    |   |                         `- error: value of type 'SignalAnalyzerView' has no member '_giftUIEvaluate'
+    |14 |     }
+    |15 | }
+    +-------------------------------------------------------------------
+ 34 | 
+ 35 | package struct SignalAnalyzerHeaderView: View {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:45:17: error: generic parameter 'D' could not be inferred
+ 43 |         HStack(alignment: .top, spacing: 4) {
+ 44 |             VStack(alignment: .leading, spacing: 2) {
+ 45 |                 Text("DIGITAL SIGNAL ANALYZER")
+    |                 |- error: generic parameter 'D' could not be inferred
+    |                 `- note: explicitly specify the generic arguments to fix this issue
+ 46 |                 Text("Four-channel acquisition")
+ 47 |                     .foregroundStyle(.gray)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:40:33: error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+ 38 |     package let layout: SignalAnalyzerLayoutConstraints
+ 39 | 
+ 40 |     package var body: some View {
+    |                                 `- error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+ 41 |         let controls = SignalAnalyzerControlState(
+ 42 |             acquisitionState: acquisitionState, selectedWindow: .twoSeconds)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:86:36: error: static method 'buildBlock' requires the types 'SignalAnalyzerSquareButton.Domain' and 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain' be equivalent
+ 84 |                 .frame(maxWidth: .points(layout.gridWidth), maxHeight: .points(layout.gridHeight))
+ 85 |             VStack(alignment: .leading, spacing: 0) {
+ 86 |                 HStack(spacing: 2) {
+    |                                    `- error: static method 'buildBlock' requires the types 'SignalAnalyzerSquareButton.Domain' and 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain' be equivalent
+ 87 |                     SignalAnalyzerSquareButton(
+ 88 |                         label: BoundedText("-")!, action: selectedWindow.shorterAction,
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:203:24: note: where 'A.Domain' = 'SignalAnalyzerSquareButton.Domain', 'B.Domain' = 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain'
+201 |     }
+202 | 
+203 |     public static func buildBlock<A: View, B: View, C: View>(
+    |                        `- note: where 'A.Domain' = 'SignalAnalyzerSquareButton.Domain', 'B.Domain' = 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain'
+204 |         _ a: A,
+205 |         _ b: B,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:86:36: error: static method 'buildBlock' requires the types 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain' and 'SignalAnalyzerSquareButton.Domain' be equivalent
+ 84 |                 .frame(maxWidth: .points(layout.gridWidth), maxHeight: .points(layout.gridHeight))
+ 85 |             VStack(alignment: .leading, spacing: 0) {
+ 86 |                 HStack(spacing: 2) {
+    |                                    `- error: static method 'buildBlock' requires the types 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain' and 'SignalAnalyzerSquareButton.Domain' be equivalent
+ 87 |                     SignalAnalyzerSquareButton(
+ 88 |                         label: BoundedText("-")!, action: selectedWindow.shorterAction,
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift:203:24: note: where 'B.Domain' = 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain', 'C.Domain' = 'SignalAnalyzerSquareButton.Domain'
+201 |     }
+202 | 
+203 |     public static func buildBlock<A: View, B: View, C: View>(
+    |                        `- note: where 'B.Domain' = 'some View<SignalAnalyzerTimeRulerView.Domain>.Domain', 'C.Domain' = 'SignalAnalyzerSquareButton.Domain'
+204 |         _ a: A,
+205 |         _ b: B,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:151:13: error: generic parameter 'D' could not be inferred
+149 |         let labels = SignalAnalyzerRulerLabels(visibleRange: visibleRange)
+150 |         HStack(spacing: 2) {
+151 |             Text(labels.lowerBound)
+    |             |- error: generic parameter 'D' could not be inferred
+    |             `- note: explicitly specify the generic arguments to fix this issue
+152 |                 .frame(width: labelWidth)
+153 |                 .foregroundStyle(.gray)
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:148:33: error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+146 |     package var labelWidth: GeometryScalar = 72
+147 | 
+148 |     package var body: some View {
+    |                                 `- error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+149 |         let labels = SignalAnalyzerRulerLabels(visibleRange: visibleRange)
+150 |         HStack(spacing: 2) {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:178:13: error: generic parameter 'D' could not be inferred
+176 |         let level = capture.currentLevel(for: channelID)
+177 |         HStack(spacing: 2) {
+178 |             Text(name)
+    |             |- error: generic parameter 'D' could not be inferred
+    |             `- note: explicitly specify the generic arguments to fix this issue
+179 |                 .frame(width: layout.labelWidth, alignment: .leading)
+180 |             SignalAnalyzerTraceView(
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:175:33: error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+173 |     package let visibleRange: Range<Duration>
+174 | 
+175 |     package var body: some View {
+    |                                 `- error: function declares an opaque return type, but has no return statements in its body from which to infer an underlying type [#OpaqueTypeInference]
+176 |         let level = capture.currentLevel(for: channelID)
+177 |         HStack(spacing: 2) {
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:195:9: error: type 'any Canvas' cannot conform to 'View' [#ProtocolTypeNonConformance]
+192 | 
+193 | package struct SignalAnalyzerGridView: View {
+194 |     package var body: some View {
+    |                       `- note: required by opaque return type of property 'body'
+195 |         makeSignalAnalyzerGridCanvas()
+    |         |- error: type 'any Canvas' cannot conform to 'View' [#ProtocolTypeNonConformance]
+    |         `- note: only concrete types such as structs, enums and classes can conform to protocols
+196 |     }
+197 | }
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:205:9: error: type 'any Canvas' cannot conform to 'View' [#ProtocolTypeNonConformance]
+202 |     package let visibleRange: Range<Duration>
+203 | 
+204 |     package var body: some View {
+    |                       `- note: required by opaque return type of property 'body'
+205 |         makeSignalAnalyzerTraceCanvas(
+    |         |- error: type 'any Canvas' cannot conform to 'View' [#ProtocolTypeNonConformance]
+    |         `- note: only concrete types such as structs, enums and classes can conform to protocols
+206 |             channelID: channelID,
+207 |             capture: capture,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:214:5: error: 'any Canvas' cannot be constructed because it has no accessible initializers
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+214 |     Canvas { (context, size) throws(DrawingError) in
+    |     `- error: 'any Canvas' cannot be constructed because it has no accessible initializers
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+216 |     }
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:214:5: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+212 | 
+213 | package func makeSignalAnalyzerGridCanvas() -> Canvas {
+214 |     Canvas { (context, size) throws(DrawingError) in
+    |     `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+215 |         try drawSignalAnalyzerGrid(context: &context, size: size)
+216 |     }
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:224:5: error: 'any Canvas' cannot be constructed because it has no accessible initializers
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+224 |     Canvas { (context, size) throws(DrawingError) in
+    |     `- error: 'any Canvas' cannot be constructed because it has no accessible initializers
+225 |         try drawSignalAnalyzerTrace(
+226 |             context: &context,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:224:5: warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+222 |     visibleRange: Range<Duration>
+223 | ) -> Canvas {
+224 |     Canvas { (context, size) throws(DrawingError) in
+    |     `- warning: use of protocol 'Canvas' as a type must be written 'any Canvas'; this will be an error in a future Swift language mode [#ExistentialAny]
+225 |         try drawSignalAnalyzerTrace(
+226 |             context: &context,
+
+/Users/eugene/work/GiftUI/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift:318:17: error: generic parameter 'D' could not be inferred
+316 |         VStack(spacing: 0) {
+317 |             Button(action: action) {
+318 |                 Text(label)
+    |                 |- error: generic parameter 'D' could not be inferred
+    |                 `- note: explicitly specify the generic arguments to fix this issue
+319 |                     .frame(width: size - 4, height: size - 4)
+320 |                     .background(fill)
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+[#OpaqueTypeInference]: <https://docs.swift.org/compiler/documentation/diagnostics/opaque-type-inference>
+[#ProtocolTypeNonConformance]: <https://docs.swift.org/compiler/documentation/diagnostics/protocol-type-non-conformance>
+[265/320] Compiling SignalAnalyzerPresentation SignalAnalyzerWaveformGeometry.swift
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift:5:26: error: cannot suppress 'Escapable' requirement of an associated type
+  3 | @usableFromInline
+  4 | package protocol SemanticRecordPayloadCodec: ~Escapable {
+  5 |     associatedtype Sink: SemanticExpansionSink & ~Escapable
+    |                          `- error: cannot suppress 'Escapable' requirement of an associated type
+  6 |     where Sink.Identity == SemanticCompleteIdentity
+  7 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift:8:6: error: invalid lifetime dependence on an Escapable result
+  6 |     where Sink.Identity == SemanticCompleteIdentity
+  7 | 
+  8 |     @_lifetime(copy self, copy state)
+    |      `- error: invalid lifetime dependence on an Escapable result
+  9 |     borrowing func makeSink(state: consuming SemanticRecordSinkState) -> Sink
+ 10 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift:256:27: error: cannot suppress 'Escapable' requirement of an associated type
+254 |     ~Copyable, ~Escapable
+255 | where TraversalIdentity == SemanticCompleteIdentity {
+256 |     associatedtype Codec: SemanticRecordPayloadCodec & ~Escapable
+    |                           `- error: cannot suppress 'Escapable' requirement of an associated type
+257 |     associatedtype StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable
+258 |     where
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift:257:34: error: cannot suppress 'Copyable' requirement of an associated type
+255 | where TraversalIdentity == SemanticCompleteIdentity {
+256 |     associatedtype Codec: SemanticRecordPayloadCodec & ~Escapable
+257 |     associatedtype StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable
+    |                                  `- error: cannot suppress 'Copyable' requirement of an associated type
+258 |     where
+259 |         StateBinding.Domain == Domain, StateBinding.Identity == TraversalIdentity,
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift:257:34: error: cannot suppress 'Escapable' requirement of an associated type
+255 | where TraversalIdentity == SemanticCompleteIdentity {
+256 |     associatedtype Codec: SemanticRecordPayloadCodec & ~Escapable
+257 |     associatedtype StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable
+    |                                  `- error: cannot suppress 'Escapable' requirement of an associated type
+258 |     where
+259 |         StateBinding.Domain == Domain, StateBinding.Identity == TraversalIdentity,
+
+[266/320] Emitting module GiftUITextResources
+error: fatalError
+swiftpm-failure-class=compiler-or-test

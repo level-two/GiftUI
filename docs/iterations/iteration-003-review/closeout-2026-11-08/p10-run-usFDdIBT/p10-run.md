@@ -1050,9 +1050,9 @@ Receipt SHA-256 values:
 | `command.txt` | `db9abf22d3cccd6c7bbecee8458532f48f0448962cb70e56656c6e3d252f3424` |
 | `source-identity.txt` | `af749657d3ce9850cfe687123ca1ece79660c8d858b1c6af1e934cd1f89359ef` |
 
-## Prior integrated all-hardware-free run — `run-v8GRC8xq` — 2026-11-10
+## Latest retained integrated all-hardware-free run — `run-v8GRC8xq` — 2026-11-10
 
-At that time, the latest `scripts/test.sh all-hardware-free` run was
+The latest retained `scripts/test.sh all-hardware-free` run is
 `run-v8GRC8xq`. It
 completed all 83 serialized checks and remains **FAILED / UNMET: 55 passed,
 28 failed**. Profile-group totals are common checks 12/3, macOS Dynamic 11/6,
@@ -1140,8 +1140,8 @@ Static reports contain such diagnostics under Xcode Swift 6.3.3. Those nested
 reports are dirty and do not hash `SemanticRecordExpansion.swift`; they do not
 establish a defect under the approved Swift 6.4 baseline. No P08 proof campaign, hardware execution,
 or aggregate rerun had been recorded after `run-v8GRC8xq` when this section was
-written. The later retained integrated result is recorded at the end of this
-file; it preserves v8 as historical evidence.
+written. The `run-b1kjDyaM` result recorded at the end of this file predates
+v8 by timestamp and source revision; it remains an intermediate receipt.
 
 The current worktree `SemanticRecordExpansion.swift` SHA-256 is
 `c283f93920c926b0ea7fda4d893c3efacdd62da026d246a4f733bb9ce795bb1e`. The
@@ -1214,7 +1214,8 @@ Swift 6.4 compiler. `SemanticRecordExpansion.swift` compiles without the prior
 diagnostics; `SignalAnalyzerView.swift` still blocks the production corpus with
 schema inference and View conformance errors. The report therefore remains
 blocked, and SPEC-014, P10, and the historical 55/28 aggregate remain unmet.
-The Static profile was not rerun after this collector fix.
+The Static profile had not yet been rerun when this section was written; see
+the corrected Static follow-up below.
 
 The compact evidence archive is
 [`spec014-dynamic-pinned-compiler-20261111/report.tar.gz`](focused-followups/spec014-dynamic-pinned-compiler-20261111/report.tar.gz),
@@ -1228,14 +1229,34 @@ the report-hash ledger SHA-256 is
 the nested `description.json` SHA-256 is
 `8e125634857c863ba59a84f8bd394ca8f27b5272f08acd5630b6e961036aff37`.
 
-## Latest retained integrated run — `run-b1kjDyaM` — 2026-11-10
+The corrected Static collector was then run at current revision
+`e30d82e2bad5aa422f8789b0d745f2cf2dc00e75` with the same complete input-set
+SHA-256 `8e68c70dd5071adbf5b142c6edee4c33103c1549ec378df0df66729ebb9615e1`.
+The nested SwiftPM build description identifies project-local Swift 6.4 for the
+compiler jobs; declaration/layout/import and all pre-corpus assertions pass.
+The production corpus remains blocked by the Signal Analyzer `Schema`/`View`
+errors. `SemanticRecordExpansion.swift` emits no previous Swift 6.3.3 lifetime
+diagnostics. No implementation conclusion is drawn from this analyzer-owned
+blocker.
 
-The latest retained integrated `scripts/test.sh all-hardware-free` run is
-`run-b1kjDyaM`. It completed all 83 serialized checks on the project-local
+The Static report ID is
+`e30d82e2bad5aa422f8789b0d745f2cf2dc00e75-8e68c70dd5071adb-20261111T170436Z-70394`.
+Its metadata SHA-256 is `34e6276122fce0790e02706b0e3b2ac71bafd92a6a0949ce6c02708b20f80fc7`,
+input-hash manifest SHA-256 `8e68c70dd5071adbf5b142c6edee4c33103c1549ec378df0df66729ebb9615e1`,
+prerequisite ledger SHA-256 `517a7ecd2282fe0f3e50901656a5f1ff88584d898c74bfb1c6a1acb33d3b3eb0`,
+and raw run-log SHA-256 `62d940283651cb1b185f5ddf2f6df612d621a79dbc068cad99535cf1db87fc12`.
+The compact report archive is
+[`spec014-static-pinned-compiler-20261111/report.tar.gz`](focused-followups/spec014-static-pinned-compiler-20261111/report.tar.gz),
+SHA-256 `6db4f34b40c60882bd6dbf55379fe3e6edd1052c9a1e5b8495e86789fffa035b`.
+
+## Retained intermediate integrated run — `run-b1kjDyaM` — 2026-11-10
+
+This intermediate `scripts/test.sh all-hardware-free` run completed all 83
+serialized checks on the project-local
 Swift 6.4.0 compiler and remains **FAILED / UNMET: 60 passed, 23 failed**. Its
-recorded revision is `ba03d1a342187a4b79fe2fa28c6e785419461b94`. This run
-supersedes `run-v8GRC8xq` as the latest retained aggregate result; it does not
-erase or rewrite the earlier receipts. The run group totals are common checks
+recorded revision is `ba03d1a342187a4b79fe2fa28c6e785419461b94`. It predates
+the later `run-v8GRC8xq` result by timestamp and source revision, and does not
+supersede it. The run group totals are common checks
 12/3, macOS Dynamic 11/6, macOS Static 11/6, Raspberry Pi ARMv6 13/4, and
 nRF52840 13/4 (pass/fail).
 
@@ -1278,8 +1299,43 @@ diagnostics, but remains blocked by analyzer schema/View errors. The Static
 profile has not been rerun through the corrected collector. For SPEC-007, the
 four harness failures remain lifecycle/conformance gates: the Spec is
 `implementing`, plan `active`, report `collecting`, and LY-RD-001/002 plus T9.1
-remain open. The 2026-11-11 runtime-bank probe follow-up was formatted and
-parsed, but that changed probe was not typechecked or executed. It does not
-close any criterion. P08 remains FROZEN / UNMET, P10 remains FAILED / UNMET,
+remain open. At the time this intermediate-run note was written, the
+2026-11-11 runtime-bank probe follow-up had only passed format and parse. A
+later focused macOS Dynamic/Static P05 helper run compiled, linked, and
+executed that probe; see “Focused SPEC-007 P05 runtime-bank follow-up” below.
+It does not close any criterion. P08 remains FROZEN / UNMET, P10 remains FAILED / UNMET,
 P11 accounting remains incomplete, P12 remains no-removal/no-cutover, and human
 iteration closure remains separate.
+
+## Focused SPEC-007 P05 runtime-bank follow-up — 2026-11-11
+
+After the intermediate integrated runs above, the changed SPEC-007 bank-layout
+probe was compiled, linked, and executed by the P05 focused helper for macOS
+Dynamic and Static. Both runs passed 286 layout assertions and the expected
+escaping-view negative compiles. Exact source-bound inputs, core build receipts,
+commands, logs, output hashes, and compact binary-bearing archives are retained
+in the [runtime-bank follow-up evidence](../../../../Tests/ContractFixtures/SPEC007/Evidence/milestone-9/runtime-bank-lifecycle-followup-2026-11-11.md).
+
+These two macOS P05 results establish only the focused bank-layout probe under
+the current source identity. They do not replace the four failed integrated
+SPEC-007 executions, complete the Pi/nRF owner routes, establish all LY-RD-001
+and LY-RD-002 matrices, change any criterion disposition, or satisfy P11/P12.
+T9.1 remains open; P08 remains FROZEN / UNMET and the separate human iteration
+closure decision remains outstanding.
+
+## Focused root-test compile diagnostic — 2026-11-11
+
+A focused root SwiftPM test invocation was also attempted with the project-local
+Swift 6.4 compiler and SwiftPM sandbox disabled. It reached compilation and
+exited with `swiftpm-failure-class=compiler-or-test`, logging analyzer
+`SignalAnalyzerView.swift` schema/Canvas/View diagnostics and
+`SemanticRecordExpansion.swift` associated-type/lifetime diagnostics. The
+capture comes from the current dirty worktree and has no complete per-file
+source manifest, so it is diagnostic only: it does not establish a defect under
+the approved Swift 6.4 baseline, assign a criterion-level cause, or supersede
+the latest completed aggregate. Its raw log SHA-256 is
+`d534a132410a0f6c68a3b3205d889a2303c367b8f2f74f2457417b8112b34fb3`; command
+and log are retained in
+[`root-tests-dirty-diagnostic-20261111`](focused-followups/root-tests-dirty-diagnostic-20261111/).
+The analyzer-specific portion remains assigned to I4; no shared implementation
+or accepted contract change is inferred from this unbound capture.
