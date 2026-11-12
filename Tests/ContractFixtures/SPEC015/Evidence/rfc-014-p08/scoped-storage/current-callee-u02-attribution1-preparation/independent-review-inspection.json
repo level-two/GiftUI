@@ -1820,7 +1820,7 @@
     ],
     "cache": [
       {
-        "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+        "path": "unavailable",
         "bytes": 44198,
         "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
         "matches": true
@@ -1902,8 +1902,7 @@
       "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": 2048,
       "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": 26018,
       "scripts/nrf52840/build.sh": 10914,
-      "scripts/raspberry-pi/build.sh": 6433,
-      "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": 44198
+      "scripts/raspberry-pi/build.sh": 6433
     },
     "extra_file_count": 48,
     "extra_bytes": 875385,
@@ -1921,5 +1920,6 @@
     "markers_match": true,
     "cache_membership_matches": true,
     "result_destination_absent": true
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

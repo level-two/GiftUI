@@ -1,5 +1,6 @@
+# Historical excerpt: local file references removed; not intact certification evidence.
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata46-local/swift-9.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 

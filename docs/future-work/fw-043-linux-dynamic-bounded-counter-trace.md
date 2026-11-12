@@ -18,6 +18,8 @@ superseded_by: []
 target_milestone: null
 ---
 
+> Historical record: local supporting artifact references were removed during repository cleanup. This edited record does not establish current conformance.
+
 # FW-043: Assess bounded counter trace writing for Linux Dynamic
 
 > This capture preserves a candidate only. It does not change the retained P08
@@ -78,5 +80,5 @@ the receiving work's normal gates and do not themselves restart the frozen campa
   which explicitly records cross-compilation rather than target execution.
 - [CounterPipelineOwner.swift](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift),
   bounded Native writer and generic Dynamic `counterTrace` call path.
-- [Dynamic trace source review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/pi-current-stack-analysis-2026-11-07/dynamic-trace-source-review.md),
+- Dynamic trace source review,
   exact Linux call-site shape inventory and output-oracle disposition.

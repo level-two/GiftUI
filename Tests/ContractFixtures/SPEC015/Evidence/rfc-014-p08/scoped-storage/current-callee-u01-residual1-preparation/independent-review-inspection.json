@@ -116,9 +116,7 @@
   "maximum_command_output_sum_bytes": 452984832,
   "method": "Independent standard-library hashing/text/JSON/plist and read-only Git inspection; author inventory read, not executed/imported; no binary decoder or production invocation.",
   "output_absent": true,
-  "preexisting_cache_sha256": {
-    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-  },
+  "preexisting_cache_sha256": {},
   "preparation_file_sha256": {
     "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/README.md": "a59370b534d28c05b1c311e0fedcb18ba705f8ca0578861beb5b519f7b0cc74b",
     "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u01-residual1-preparation/inventory.json": "a8413f0ff20bf4c7bcbb66fd63026422da89e01b13f1f124b796d6b191564180",
@@ -179,5 +177,6 @@
   "runtime_matches_frozen_payload": true,
   "source42_hashes_match": true,
   "strict_cold_eligible": false,
-  "verdict": "PASS_bounded_identity_and_evidence_request_with_B1_execution_readiness_blocker"
+  "verdict": "PASS_bounded_identity_and_evidence_request_with_B1_execution_readiness_blocker",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

@@ -5,22 +5,22 @@
   "HEAD": "5f6f0261caf95e74cb91e5f7ab6cf62e58c108ba",
   "selected": {
     "packet": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/invocation/group.stdout",
+      "path": "unavailable",
       "bytes": 72903,
       "sha256": "1dc209fc2db96252ea549ba7b071e09e83958ea6feae6fbbfafaf1f5631c70e5"
     },
     "identity_map": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/identity-map.ndjson",
+      "path": "unavailable",
       "bytes": 110284,
       "sha256": "1f4ed0db298ee5193cc803a0b215816dc8331ea2fbe821ed305e1f203dc56008"
     },
     "frontier": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/current-frontier.json",
+      "path": "unavailable",
       "bytes": 137341,
       "sha256": "1eba2d12f2fca075c0626764cc5515f65ad4260ff8fdf301f4d8271266784c58"
     },
     "prior_ledger": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-local/state.json",
+      "path": "unavailable",
       "bytes": 39649,
       "sha256": "5012b2eb0b6af86f641f3408a58a800a0536f660c010eae1cd373d8766b1d540"
     }
@@ -41,5 +41,6 @@
     "shared": 8388608,
     "page_lines": 100,
     "page_bytes": 8192
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

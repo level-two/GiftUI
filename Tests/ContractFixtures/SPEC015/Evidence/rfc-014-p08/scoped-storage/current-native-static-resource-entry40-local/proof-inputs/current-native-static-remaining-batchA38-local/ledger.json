@@ -11,16 +11,16 @@
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py [[\\\"callsite\\\",\\\"0x50a6c\\\"]]\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable [[\\\"callsite\\\",\\\"0x50a6c\\\"]]\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py [[\"callsite\",\"0x50a6c\"]]",
+        "cmd": "python3 unavailable [[\"callsite\",\"0x50a6c\"]]",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/page-derived.py selected-1.stdout 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/page-derived.py selected-1.stdout 1",
+        "cmd": "python3 unavailable selected-1.stdout 1",
         "max_output_tokens": 10000
       }
     },
@@ -32,30 +32,30 @@
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 1 2\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 1 2\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 1 2",
+        "cmd": "python3 unavailable selected-1.stdout 1 2",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 3 4\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 3 4\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 3 4",
+        "cmd": "python3 unavailable selected-1.stdout 3 4",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 5 6\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 5 6\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 5 6",
+        "cmd": "python3 unavailable selected-1.stdout 5 6",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 7 8\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 7 8\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 7 8",
+        "cmd": "python3 unavailable selected-1.stdout 7 8",
         "max_output_tokens": 10000
       }
     },
@@ -81,219 +81,219 @@
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 9 10\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 9 10\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 9 10",
+        "cmd": "python3 unavailable selected-1.stdout 9 10",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py [[\\\"callsite\\\",\\\"0x15cb4\\\"],[\\\"callsite\\\",\\\"0x15cc0\\\"],[\\\"callsite\\\",\\\"0x1666c\\\"],[\\\"callsite\\\",\\\"0x50a60\\\"],[\\\"callsite\\\",\\\"0x50a00\\\"]]\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable [[\\\"callsite\\\",\\\"0x15cb4\\\"],[\\\"callsite\\\",\\\"0x15cc0\\\"],[\\\"callsite\\\",\\\"0x1666c\\\"],[\\\"callsite\\\",\\\"0x50a60\\\"],[\\\"callsite\\\",\\\"0x50a00\\\"]]\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py [[\"callsite\",\"0x15cb4\"],[\"callsite\",\"0x15cc0\"],[\"callsite\",\"0x1666c\"],[\"callsite\",\"0x50a60\"],[\"callsite\",\"0x50a00\"]]",
+        "cmd": "python3 unavailable [[\"callsite\",\"0x15cb4\"],[\"callsite\",\"0x15cc0\"],[\"callsite\",\"0x1666c\"],[\"callsite\",\"0x50a60\"],[\"callsite\",\"0x50a00\"]]",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-2.stdout 1 1",
+        "cmd": "python3 unavailable selected-2.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-3.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-3.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-3.stdout 1 1",
+        "cmd": "python3 unavailable selected-3.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-4.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-4.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-4.stdout 1 1",
+        "cmd": "python3 unavailable selected-4.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-5.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-5.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-5.stdout 1 1",
+        "cmd": "python3 unavailable selected-5.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-6.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-6.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-6.stdout 1 1",
+        "cmd": "python3 unavailable selected-6.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 11 12\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 11 12\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 11 12",
+        "cmd": "python3 unavailable selected-1.stdout 11 12",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/select-current-joins.py\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/select-current-joins.py",
+        "cmd": "python3 unavailable",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 13 14\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 13 14\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 13 14",
+        "cmd": "python3 unavailable selected-1.stdout 13 14",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 15 16\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 15 16\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 15 16",
+        "cmd": "python3 unavailable selected-1.stdout 15 16",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py [[\\\"callsite\\\",\\\"0x50a04\\\"],[\\\"callsite\\\",\\\"0x17060\\\"],[\\\"entry\\\",\\\"0xa374c\\\"],[\\\"entry\\\",\\\"0xa3854\\\"],[\\\"entry\\\",\\\"0xa3950\\\"]]\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable [[\\\"callsite\\\",\\\"0x50a04\\\"],[\\\"callsite\\\",\\\"0x17060\\\"],[\\\"entry\\\",\\\"0xa374c\\\"],[\\\"entry\\\",\\\"0xa3854\\\"],[\\\"entry\\\",\\\"0xa3950\\\"]]\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py [[\"callsite\",\"0x50a04\"],[\"callsite\",\"0x17060\"],[\"entry\",\"0xa374c\"],[\"entry\",\"0xa3854\"],[\"entry\",\"0xa3950\"]]",
+        "cmd": "python3 unavailable [[\"callsite\",\"0x50a04\"],[\"callsite\",\"0x17060\"],[\"entry\",\"0xa374c\"],[\"entry\",\"0xa3854\"],[\"entry\",\"0xa3950\"]]",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-7.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-7.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-7.stdout 1 1",
+        "cmd": "python3 unavailable selected-7.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-8.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-8.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-8.stdout 1 1",
+        "cmd": "python3 unavailable selected-8.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-9.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-9.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-9.stdout 1 1",
+        "cmd": "python3 unavailable selected-9.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-10.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-10.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-10.stdout 1 1",
+        "cmd": "python3 unavailable selected-10.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-11.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-11.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-11.stdout 1 1",
+        "cmd": "python3 unavailable selected-11.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 17 18\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 17 18\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 17 18",
+        "cmd": "python3 unavailable selected-1.stdout 17 18",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json 1 1",
+        "cmd": "python3 unavailable /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution1-preparation/roots.json 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/join-origin-assessment.py\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/join-origin-assessment.py",
+        "cmd": "python3 unavailable",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 19 20\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 19 20\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 19 20",
+        "cmd": "python3 unavailable selected-1.stdout 19 20",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 21 22\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 21 22\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 21 22",
+        "cmd": "python3 unavailable selected-1.stdout 21 22",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 23 24\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 23 24\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 23 24",
+        "cmd": "python3 unavailable selected-1.stdout 23 24",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 25 26\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 25 26\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 25 26",
+        "cmd": "python3 unavailable selected-1.stdout 25 26",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 27 28\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 27 28\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 27 28",
+        "cmd": "python3 unavailable selected-1.stdout 27 28",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 29 30\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 29 30\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 29 30",
+        "cmd": "python3 unavailable selected-1.stdout 29 30",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 31 31\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-1.stdout 31 31\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-1.stdout 31 31",
+        "cmd": "python3 unavailable selected-1.stdout 31 31",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py [[\\\"callsite\\\",\\\"0x50a4c\\\"],[\\\"callsite\\\",\\\"0x15cb0\\\"],[\\\"entry\\\",\\\"0x5284c\\\"]]\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable [[\\\"callsite\\\",\\\"0x50a4c\\\"],[\\\"callsite\\\",\\\"0x15cb0\\\"],[\\\"entry\\\",\\\"0x5284c\\\"]]\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py [[\"callsite\",\"0x50a4c\"],[\"callsite\",\"0x15cb0\"],[\"entry\",\"0x5284c\"]]",
+        "cmd": "python3 unavailable [[\"callsite\",\"0x50a4c\"],[\"callsite\",\"0x15cb0\"],[\"entry\",\"0x5284c\"]]",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-12.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-12.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-12.stdout 1 1",
+        "cmd": "python3 unavailable selected-12.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-13.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-13.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-13.stdout 1 1",
+        "cmd": "python3 unavailable selected-13.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-14.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 unavailable selected-14.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/view-selected.py selected-14.stdout 1 1",
+        "cmd": "python3 unavailable selected-14.stdout 1 1",
         "max_output_tokens": 10000
       }
     },
@@ -2223,5 +2223,6 @@
   },
   "model_end_utc": "2026-10-22T22:41:02.112855+00:00",
   "finished_utc": "2026-10-22T22:41:02.151225+00:00",
-  "elapsed_seconds": 1065.924712
+  "elapsed_seconds": 1065.924712,
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

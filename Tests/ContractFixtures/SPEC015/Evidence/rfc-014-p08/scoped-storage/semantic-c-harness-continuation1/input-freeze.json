@@ -13,7 +13,6 @@
   "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
   "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
   "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea",
-  "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
   ".build/contracts/p08-checked-state-correction2/TestMain-macos.swift": "f6aaa24985e00a4ec4523d76a854e9138e994e82a6f3d3236586a09556be779a",
   ".build/contracts/p08-checked-state-correction2/regression-compile-macos-linker-setup2-command.json": "60af41055ee410f256d84181d32ee2cb6c458bdca787baa280f4453684aa7278",
   ".build/contracts/p08-checked-state-correction2/runtime-setup3-environment.json": "506223b030858a44399fe9f76474a6f86de4ef4ea7e2b483427b38130f79e00b",
@@ -1291,5 +1290,6 @@
   "/Users/eugene/work/GiftUI/.build/contracts/p08-semantic-c-candidate1/result.json": "dcd35aeee4c20e53ee2076458cb45d4a6503b5bc853d3bb7ae2e4b2fb3c377cc",
   "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-checked-borrow-positive.swift": "32e00d41db76d893f98caf10d56bce5a0f55593b2357f44da48191956952fdc9",
   "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-borrow-escape-negative.swift": "6612bb7e950c65260e8c5caf43cddca85d1ccc8a20da991d45989b57dd6ce7e9",
-  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-borrow-init-negative.swift": "f837e7c21bd474cdd8298f40b466b1753277268046eef0b5b7dab1ad2a3a3fac"
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/semantic-c-harness-continuation1/privacy/semantic-c-borrow-init-negative.swift": "f837e7c21bd474cdd8298f40b466b1753277268046eef0b5b7dab1ad2a3a3fac",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

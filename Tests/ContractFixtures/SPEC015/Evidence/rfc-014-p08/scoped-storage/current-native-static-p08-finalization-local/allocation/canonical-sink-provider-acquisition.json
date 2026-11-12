@@ -37,7 +37,7 @@
       },
       "raw_sha256": "48af9ef444233108320ffbbeab4f2f385389390a00539bed6a20aaba7893a8b8",
       "raw": "canonical-sink-provider-0x193ce9f30.bin",
-      "projection": "canonical-sink-provider-0x193ce9f30.o",
+      "projection": "unavailable",
       "projection_sha256": "234ffb4a6eea0914210e33813532b7a1382d6c53f05b9014aa77985890cc7dee"
     },
     {
@@ -60,7 +60,7 @@
       },
       "raw_sha256": "69c5eee4187ea1759609f5cf8b445883280c495728db050da9429296dc6ed79b",
       "raw": "canonical-sink-provider-0x193d04854.bin",
-      "projection": "canonical-sink-provider-0x193d04854.o",
+      "projection": "unavailable",
       "projection_sha256": "f748a6d9e66e5cf9715fc4e9df885e45e58af7101c3128e2f84af24a679ee96e"
     },
     {
@@ -83,7 +83,7 @@
       },
       "raw_sha256": "4f716e37704d7f33058d86176a6f4707af3ff95c244a98c4582f9d7955d24b06",
       "raw": "canonical-sink-provider-0x193c52a84.bin",
-      "projection": "canonical-sink-provider-0x193c52a84.o",
+      "projection": "unavailable",
       "projection_sha256": "0ed1e837f3f661349a899807b3796978ac5ee6327b7f1f932a8fadffcafedd35"
     },
     {
@@ -106,7 +106,7 @@
       },
       "raw_sha256": "b57b709d482ec0595819ff9a3788151e6923585a2c0306115a67f39c660e2ebb",
       "raw": "canonical-sink-provider-0x193ced698.bin",
-      "projection": "canonical-sink-provider-0x193ced698.o",
+      "projection": "unavailable",
       "projection_sha256": "3a7e3c61eb8264fcd5b0219e6deb8b32f5e1e6d6563032f08f67a9a900bef7e0"
     }
   ],
@@ -136,10 +136,10 @@
     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
     "--disassemble",
     "--no-show-raw-insn",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193ce9f30.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193d04854.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193c52a84.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193ced698.o"
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable"
   ],
   "tool_sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
   "capture": {
@@ -149,5 +149,6 @@
     "stdout_sha256": "26b3ebcb82142f0e02ce832fd488b98ed311ef69c59811b9556778f285602ae4",
     "stderr_bytes": 0,
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

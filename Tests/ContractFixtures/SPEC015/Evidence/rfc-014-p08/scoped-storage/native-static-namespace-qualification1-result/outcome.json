@@ -25,7 +25,7 @@
     "imported_client": "Complete10981B namespace-client.sil: noinline no_allocation root, opaque imported ctor declarations, four typed try_apply sites, exact typed error catches and normal/error cleanup; no Error existential or box/ref allocation. This tests those concrete operations, not every possible namespace caller.",
     "boundary": "Separate same-module executables; Semantic original10sources + fixture and seam flag, Model original complete identity+values source files + fixture. Neither substituted as production-module proof. Each executes once: zero/sequential0,1; max exactly once; repeated exhaustion twice; initially nil; independent ordinary cursor continues2. Model exhaustion accessor state also checked. Normal functional programs only, no cold/observed allocation/timing claim.",
     "controls": "Unchanged positive exit0; allocating negative exit1 with actual allocation diagnostic. Prior constructor cross-module soundness control applicability preserved.",
-    "lifetime_reuse": "Exact prior U03 references below retain only their documented conditional source predicates. The18-class matrix remainsOPEN/executionqualificationFALSE; callback report explicitly leaves library-source\u2192compiled-image applicability open. New namespace modules do NOT refresh the old compiled bytes/SIL or close U03/global safety/cold. Current ordinary namespace field/layout/default/typedthrow/issuance bodies and noncopyability equal86a6aaa9 except checked-effect constraints; no cursor reset or ownership conversion. New checked defining-module bodies + full annotated imported caller (typed normal/error edges and stack cleanup) + repeated exact boundary catches independently cover this concrete namespace package, not all unsafe bridge/retirement paths.",
+    "lifetime_reuse": "Exact prior U03 references below retain only their documented conditional source predicates. The18-class matrix remainsOPEN/executionqualificationFALSE; callback report explicitly leaves library-source→compiled-image applicability open. New namespace modules do NOT refresh the old compiled bytes/SIL or close U03/global safety/cold. Current ordinary namespace field/layout/default/typedthrow/issuance bodies and noncopyability equal86a6aaa9 except checked-effect constraints; no cursor reset or ownership conversion. New checked defining-module bodies + full annotated imported caller (typed normal/error edges and stack cleanup) + repeated exact boundary catches independently cover this concrete namespace package, not all unsafe bridge/retirement paths.",
     "compatibility": "namespace-compatibility.json: old/new defined external symbols none removed or added for both ordinary modules; object hashes differ and no binary identity claimed. Serialized/new module effects paired with fresh matching objects. Reused RuntimeCore/Interaction and candidateHost exact prior accepted accounting identities/body/layout/default applicability; current first-I trace confirms actual modules. Host unchanged/notadopted."
   },
   "result_bindings": {
@@ -200,7 +200,7 @@
     "actual42_inputs_unchanged": true,
     "root_annotation_and_GIFTUI_COUNTER_ALLOCATION_GATE_unchanged": true,
     "action_difference": "Original emitmodule/object replaced with emitSIL to /dev/null; added module-load remarks; same42sourceorder/module/package/target/Osize/WMO/lifetimefeatures/searchprovenance. No executable run.",
-    "diagnosed": "CounterScopedStorage.swift1751 DynamicLayoutWorkspace.reservedPayloadBytes through g0 withBorrow in physicalFacts\u2192Static outer.audit\u2192p08CheckGraphSelection\u2192p08CounterGraph\u2192p08CounterStaticResourceEntryV1.",
+    "diagnosed": "CounterScopedStorage.swift1751 DynamicLayoutWorkspace.reservedPayloadBytes through g0 withBorrow in physicalFacts→Static outer.audit→p08CheckGraphSelection→p08CounterGraph→p08CounterStaticResourceEntryV1.",
     "provider": "Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift",
     "provider_sha256": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
     "complete_getter": "    package var reservedPayloadBytes: UInt64 {\n        UInt64(scopes.capacity * MemoryLayout<DynamicLayoutWorkspaceScope>.stride)\n            + UInt64(scopeIndex.capacity * MemoryLayout<Int?>.stride)\n            + UInt64(lines.capacity * MemoryLayout<LayoutTextLine<SemanticRecordReference>>.stride)\n            + UInt64(\n                glyphs.capacity\n                    * MemoryLayout<LayoutPositionedGlyph<SemanticRecordReference>>.stride)\n            + UInt64(depth.capacity * MemoryLayout<SemanticRecordReference>.stride)\n    }",
@@ -225,12 +225,12 @@
   "stop": "No further source/producer. Scoped namespace success and fullentry blocker remain separate; parent independent review/commit required.",
   "u03_prior_references": [
     {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-retained-safety2-result/README.md",
+      "path": "unavailable",
       "sha256": "8e845701791a30f37344c805e780982db7e88f2eca00c966d358d7875d761a58",
       "bytes": 2290
     },
     {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-callback-retirement1-result/README.md",
+      "path": "unavailable",
       "sha256": "948f2c9aafe2748fa66ebbec353ca84cd5e86fa745fb12c3e62fd42d0d940c2a",
       "bytes": 2190
     }
@@ -269,5 +269,6 @@
     ],
     "note": "Parent selects durable archive paths; no binary/module duplicate or index/commit by owner."
   },
-  "independent_review": "Coordinator scoped ACCEPT: complete source equivalence, ordinary/fixture separation, typed catches, full normal/error caller cleanup and artifact hashes verified. U03 remainsOPEN; fullentryFAIL/newaccountingdependency and Hostnonadoption unchanged."
+  "independent_review": "Coordinator scoped ACCEPT: complete source equivalence, ordinary/fixture separation, typed catches, full normal/error caller cleanup and artifact hashes verified. U03 remainsOPEN; fullentryFAIL/newaccountingdependency and Hostnonadoption unchanged.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

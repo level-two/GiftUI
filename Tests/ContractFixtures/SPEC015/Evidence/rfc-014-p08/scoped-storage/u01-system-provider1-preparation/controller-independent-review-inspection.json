@@ -3,9 +3,7 @@
   "S_launch_enabled": false,
   "aggregate_seconds": 240,
   "cache_bytes_verified": 5824684071,
-  "cache_file_sha256": {
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-  },
+  "cache_file_sha256": {},
   "cache_header_schema_assumed": false,
   "cache_members_verified": 15,
   "complete_loader_entries_verified": 8720,
@@ -68,5 +66,6 @@
   },
   "source42_hashes_match": true,
   "strict_cold_eligible": false,
-  "verdict": "PASS_exact_I_only_controller_environment_and_closed_schema_gate_readiness"
+  "verdict": "PASS_exact_I_only_controller_environment_and_closed_schema_gate_readiness",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

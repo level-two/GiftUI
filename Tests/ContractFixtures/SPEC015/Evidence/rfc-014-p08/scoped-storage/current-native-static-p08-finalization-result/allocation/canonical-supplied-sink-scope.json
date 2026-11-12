@@ -2255,7 +2255,7 @@
     }
   ],
   "evidence_bytes": 4019427,
-  "selection": "Explicit references from saved successful27Oct/currentoldSink proof sections+manifests, current supplied-Sink prefix/snapshots and root design-preservation files. No binary acquisition/directory-wide719file copy/new semantic claims. Final self-contained review path will be added after acceptance; canonical-review.md historical omnibus is not selected. Historical canonical-README.md is not selected; successful proof is durably retained via canonical-result.json and its manifest closure, with a new self-contained final review in this same package. Snapshot Markdown files are verbatim before-data, not current link authority. Exact prior canonical-source-freeze and six completed failure stderr copies/maps included; no history sweep.",
+  "selection": "Explicit references from saved successful27Oct/currentoldSink proof sections+manifests, current supplied-Sink prefix/snapshots and root design-preservation files. No binary acquisition/directory-wide719file copy/new semantic claims. Final self-contained review path will be added after acceptance; unavailable historical omnibus is not selected. Historical unavailable is not selected; successful proof is durably retained via canonical-result.json and its manifest closure, with a new self-contained final review in this same package. Snapshot Markdown files are verbatim before-data, not current link authority. Exact prior canonical-source-freeze and six completed failure stderr copies/maps included; no history sweep.",
   "successful_proof": "canonical-result.json:sink_qualification_2026_10_27 binds historical genericSink source/key and accepted allowed-normal first-required-use allocator-entry counterexample; not transferred to new concreteSink or changedTraversal key.",
   "external_reproducibility_dependencies": [
     ".build/contracts/p08-counter-dt4nfsxd/P08CounterRuntime.o",
@@ -2273,25 +2273,25 @@
     "/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.04.dyldlinkedit",
     "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/GiftUISemanticCore.o",
     "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-qzv33chp/P08CounterRuntime.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-0.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-1.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-10.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-11.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-12.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-13.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-2.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-3.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-4.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-5.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-6.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-7.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-8.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-9.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193c52a84.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193ce9f30.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193ced698.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-provider-0x193d04854.o",
-    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/decode-swift-group.py"
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable"
   ],
   "build_dependencies": [
     ".build/contracts/p08-counter-qzv33chp historical frozen binary/receipt",
@@ -2301,5 +2301,6 @@
     "activefull56fe9ffb receipt/artifacts: final afterhash/collection pending; no .build copy"
   ],
   "finality": "Independent terminal STOP review saved; doc-only review-link freeze refreshed with before snapshot. No source/test/guard changes, producer, restart, staging or accepted commit. Historical review omnibus remains excluded.",
-  "final_independent_review": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-final-review.md"
+  "final_independent_review": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/canonical-supplied-sink-final-review.md",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

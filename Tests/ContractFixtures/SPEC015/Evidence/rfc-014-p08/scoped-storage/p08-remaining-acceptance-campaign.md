@@ -1,3 +1,5 @@
+> Historical record: local supporting artifact references were removed during repository cleanup. This edited record does not establish current conformance.
+
 # Remaining P08 acceptance campaign — 2026-10-16
 
 ## Governing freeze — 2026-11-08
@@ -189,7 +191,7 @@ stack/IRQ/RAM/flash/rooted-allocation portion; do not rebuild it for unrelated d
 
 The current-source reconciliation and nine-row evidence matrix are recorded in
 the [integrated SO-09 gap disposition](../progress.md#integrated-so-09-gap-disposition--2026-11-07).
-The [bounded SO-09 preparation review](p08-so09-preparation-review-2026-11-07.md)
+The bounded SO-09 preparation review
 is a historical snapshot; its recommendation to defer substantial Pi analysis
 is superseded by the user's current instruction to continue blocker resolution
 and defer only long campaigns. The active work proceeds through focused current-

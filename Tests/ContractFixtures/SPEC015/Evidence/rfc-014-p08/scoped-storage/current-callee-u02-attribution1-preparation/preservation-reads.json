@@ -501,7 +501,7 @@
       "content_semantics": "forbidden"
     },
     {
-      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "path": "unavailable",
       "bytes": 44198,
       "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
       "purpose": "preexisting_cache_preservation",
@@ -669,5 +669,6 @@
     "no_resets": "one aggregate ledger for entire proposed session, including preservation checks, writing/accounting phase and rereads",
     "other_limits_unchanged": true,
     "preserve_terminal_verification_reservation": "Before semantic inspection, reserve the bytes needed for all remaining mandatory after-checks (127 payload hashes, control hashes, exact diff/base authentication and bounded metadata responses). Semantic reads cannot consume that reserve; limit exhaustion leaves rows unresolved and completes preservation/accounting without exceeding 512 MiB."
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

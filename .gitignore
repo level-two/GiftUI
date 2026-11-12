@@ -34,8 +34,6 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
-# Local, checksummed backups made before working-tree cleanup.
-.local-archives/
 # Python interpreter caches.
 __pycache__/
 *.py[cod]

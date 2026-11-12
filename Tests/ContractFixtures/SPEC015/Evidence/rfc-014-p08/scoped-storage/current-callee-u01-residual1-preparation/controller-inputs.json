@@ -7,9 +7,7 @@
     "/usr/lib/swift/libswiftCore.dylib",
     "/usr/lib/system/libsystem_c.dylib"
   ],
-  "cache_file_sha256": {
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-  },
+  "cache_file_sha256": {},
   "files": {
     "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/SDKSettings.json": {
       "bytes": 7774,
@@ -1050,12 +1048,6 @@
       "resolved": "/Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt",
       "sha256": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243"
     },
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
-      "bytes": 44198,
-      "is_symlink": false,
-      "resolved": "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
-      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-    },
     "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-counter.py": {
       "bytes": 43222,
       "is_symlink": false,
@@ -1093,5 +1085,6 @@
       "sha256": "0e4588f3c7e7f855acbfc0e540b9517b318545e8d60ccf5c31ddd04966fc791c"
     }
   },
-  "scope": "Frozen prior evidence, exact retained linked/object/runtime/tool/source inputs, preservation files/cache, complete loader trees and aliases. No producer code imported or executed."
+  "scope": "Frozen prior evidence, exact retained linked/object/runtime/tool/source inputs, preservation files/cache, complete loader trees and aliases. No producer code imported or executed.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

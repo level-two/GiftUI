@@ -137,7 +137,7 @@
       },
       "raw_sha256": "f2ff60055fd2ec79e7d1ab69344d670170f07d3bed4af365295ea193ce729db1",
       "raw": "canonical-sink-connection-0.bin",
-      "projection": "canonical-sink-connection-0.o",
+      "projection": "unavailable",
       "projection_sha256": "9c823dff4d684882b3ef3fb5b69064059896ce9d163652073b2655f7750ddc81"
     },
     {
@@ -162,7 +162,7 @@
       },
       "raw_sha256": "d7089b68c3996013fff90dea6bc850908ac3e374e2d246544bd0979184f82c84",
       "raw": "canonical-sink-connection-1.bin",
-      "projection": "canonical-sink-connection-1.o",
+      "projection": "unavailable",
       "projection_sha256": "f1c059f7027f06c48db99d7e0c4dcecede6570866f95ba677d2d6af72a3e9a8a"
     },
     {
@@ -187,7 +187,7 @@
       },
       "raw_sha256": "4342b4e5365ced57708311cc973d6adafed51a9253a0239fcf1f0a317df3b184",
       "raw": "canonical-sink-connection-2.bin",
-      "projection": "canonical-sink-connection-2.o",
+      "projection": "unavailable",
       "projection_sha256": "6b31db424ee3e9615a7336422079950b14c329efac99bfb5ade72cc9e1a91442"
     },
     {
@@ -212,7 +212,7 @@
       },
       "raw_sha256": "46a7e345faec3a2329b0a4026645c65542925b9f04a810ae16ebad8ea77fa31e",
       "raw": "canonical-sink-connection-3.bin",
-      "projection": "canonical-sink-connection-3.o",
+      "projection": "unavailable",
       "projection_sha256": "a609d0daded71476b091e87c949f14538d5f3752ab2230b742e9cd77cf4ec8e2"
     },
     {
@@ -237,7 +237,7 @@
       },
       "raw_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
       "raw": "canonical-sink-connection-4.bin",
-      "projection": "canonical-sink-connection-4.o",
+      "projection": "unavailable",
       "projection_sha256": "5dc3cd32b9bb097a92a00db6150b35a16c2cdaf9560553a27ab075cb7c1c4cd6"
     },
     {
@@ -262,7 +262,7 @@
       },
       "raw_sha256": "74e4f77a5dec489a8967e80ad8fac9a7216a51047c51c03502ba896d8acc4caa",
       "raw": "canonical-sink-connection-5.bin",
-      "projection": "canonical-sink-connection-5.o",
+      "projection": "unavailable",
       "projection_sha256": "64331baf89a697a904c7b91bda2b8612cb0beb1b683795b4552c5ca68d7570ae"
     },
     {
@@ -287,7 +287,7 @@
       },
       "raw_sha256": "df1c1651a424425671b14edc300951f6bf427ea66b249705c9cfd3a0bcce9cca",
       "raw": "canonical-sink-connection-6.bin",
-      "projection": "canonical-sink-connection-6.o",
+      "projection": "unavailable",
       "projection_sha256": "574939ffba1de1e0546e6b3144424af78d9c99f38cceae1203ede66c15fb8a52"
     },
     {
@@ -312,7 +312,7 @@
       },
       "raw_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
       "raw": "canonical-sink-connection-7.bin",
-      "projection": "canonical-sink-connection-7.o",
+      "projection": "unavailable",
       "projection_sha256": "c60515b27e299e9857de8a2ad98792ec5fefb1646b276479175b6e77a72b7bb9"
     },
     {
@@ -337,7 +337,7 @@
       },
       "raw_sha256": "91ab0b4022c6a45a4dca45bda1cb4cc86d1410c5461ffccdaa7ac3c1bb19033d",
       "raw": "canonical-sink-connection-8.bin",
-      "projection": "canonical-sink-connection-8.o",
+      "projection": "unavailable",
       "projection_sha256": "2d3486668ef6a6f302d2a39ba8c502aebe69a1828bf0f382a62aee7e80f66daa"
     },
     {
@@ -362,7 +362,7 @@
       },
       "raw_sha256": "8723c79e0ff63e49f138c4f79d68eb8fbfc4f865e0cdf7a24be30eab32a6b912",
       "raw": "canonical-sink-connection-9.bin",
-      "projection": "canonical-sink-connection-9.o",
+      "projection": "unavailable",
       "projection_sha256": "f3d871c8594047ccd7b8d24b6158ce1767e29c4110edb6ffe79cc7ccda906d8d"
     },
     {
@@ -387,7 +387,7 @@
       },
       "raw_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
       "raw": "canonical-sink-connection-10.bin",
-      "projection": "canonical-sink-connection-10.o",
+      "projection": "unavailable",
       "projection_sha256": "df14e3d5243b4883f103155a31cc8272cb9c38d5cf310d7e6769ff805f24c674"
     },
     {
@@ -412,7 +412,7 @@
       },
       "raw_sha256": "d3c844a0173107453aa9896cdb7276470625501e7ff067cd764c7a160ece5ca3",
       "raw": "canonical-sink-connection-11.bin",
-      "projection": "canonical-sink-connection-11.o",
+      "projection": "unavailable",
       "projection_sha256": "e6d212a54d4b3beb27fd673058612022e9a3a71c5faadb38dec199113d57545d"
     },
     {
@@ -437,7 +437,7 @@
       },
       "raw_sha256": "be1f7d463dfe0adeb9157e576e98a20ed6ab0133aec786586727792a131370d4",
       "raw": "canonical-sink-connection-12.bin",
-      "projection": "canonical-sink-connection-12.o",
+      "projection": "unavailable",
       "projection_sha256": "86b887d4c656986fe4a02963d0538ee814bb2d0b8b4cd79944f1f074826e3444"
     },
     {
@@ -462,7 +462,7 @@
       },
       "raw_sha256": "d3ad18388116bc508b33a9c321f6f13e2fde2294ae143c830ad4c43e2341688a",
       "raw": "canonical-sink-connection-13.bin",
-      "projection": "canonical-sink-connection-13.o",
+      "projection": "unavailable",
       "projection_sha256": "4301ccee11aa4dc85f08e5a88bd7ed1a3eb1a752fb22d7ddaf92737d500ee0d5"
     }
   ],
@@ -470,20 +470,20 @@
     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
     "--disassemble",
     "--no-show-raw-insn",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-0.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-1.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-2.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-3.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-4.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-5.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-6.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-7.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-8.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-9.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-10.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-11.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-12.o",
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-connection-13.o"
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable",
+    "unavailable"
   ],
   "capture": {
     "exit": 0,
@@ -492,5 +492,6 @@
     "stdout_sha256": "6340f7b836aac2429a86379f95bb90af79f6dd91c8c0187cb3b98a97ef12c9d3",
     "stderr_bytes": 0,
     "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

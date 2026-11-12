@@ -1,10 +1,5 @@
 {
-  "cache_files": {
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
-      "matches_preparation": true,
-      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-    }
-  },
+  "cache_files": {},
   "cache_membership_matches_preparation": true,
   "dirty_files": {
     "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
@@ -108,5 +103,6 @@
   "review_header_bytes_read": 0,
   "review_header_candidates_selected": 0,
   "review_network_requests": 0,
-  "reviewed_commit": "8250f8ece37bc2ebc458c13cdb31251d4dbad646"
+  "reviewed_commit": "8250f8ece37bc2ebc458c13cdb31251d4dbad646",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

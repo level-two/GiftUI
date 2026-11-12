@@ -50,11 +50,12 @@
         "bytes": 6433
       },
       {
-        "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+        "path": "unavailable",
         "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
         "bytes": 44198
       }
     ]
   },
-  "status": "source fixed candidate1/1; prepared gates pending; no compiler/tests/runtime"
+  "status": "source fixed candidate1/1; prepared gates pending; no compiler/tests/runtime",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

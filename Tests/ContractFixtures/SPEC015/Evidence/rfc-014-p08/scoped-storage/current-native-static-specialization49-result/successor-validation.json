@@ -65,8 +65,9 @@
     "exit": 143,
     "fixed_4h_deadline": "2026-10-23T15:51:12Z",
     "overrun_seconds_root_reported": 287,
-    "status": "TIMEOUT/nonqualifying; old final-review.md immutable, no synthetic result"
+    "status": "TIMEOUT/nonqualifying; old unavailable immutable, no synthetic result"
   },
   "root_successor_authority": "Human-authorized, root-launched separate 12-hour bounded run; not a retroextension of the old four-hour attempt. terminal guard reason=null and within_deadline/output_envelope=true.",
-  "no_runtime_resource_claim": true
+  "no_runtime_resource_claim": true,
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

@@ -54,9 +54,7 @@
     "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
     "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea"
   },
-  "pycache_sha256": {
-    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-  },
+  "pycache_sha256": {},
   "known_working_macos_harness_input_sha256": {
     ".build/contracts/p08-checked-state-correction2/TestMain-macos.swift": "f6aaa24985e00a4ec4523d76a854e9138e994e82a6f3d3236586a09556be779a",
     ".build/contracts/p08-checked-state-correction2/regression-compile-macos-linker-setup2-command.json": "60af41055ee410f256d84181d32ee2cb6c458bdca787baa280f4453684aa7278",
@@ -72,5 +70,6 @@
     "alter lifetime/private/zero-heap/cold assertions or compiler policy",
     "connect, deploy, flash or mutate global toolchain"
   ],
-  "independent_review": "8e64cc10"
+  "independent_review": "8e64cc10",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

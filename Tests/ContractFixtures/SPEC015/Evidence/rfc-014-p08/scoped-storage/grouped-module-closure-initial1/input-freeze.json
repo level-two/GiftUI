@@ -284,7 +284,6 @@
   "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
   "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
   "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea",
-  "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
   "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
   "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9",
   "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "e78ffc777fd3f3ea5dbc59befccc2fed294e0e9c002cbedd84c2a7efe8865a19",
@@ -297,5 +296,6 @@
   "/Users/eugene/work/GiftUI/.build/contracts/p08-witness-annotation-compatibility/macro-tests.log": "3d8d2ba00f46bbf83c61c5aa65ced8d008960faa7c92a23ef86893457a462d4a",
   "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/GiftUI-command.json": "27f6a23ed79aa648f79c5c8510b7d8c3f58966634a411dbc59765a58df1843da",
   "/Users/eugene/work/GiftUI/.build/contracts/p08-checked-state-correction2/lower-command.json": "d2216bd6510210cdc070c35263ff4157f170828f3f52dcd3791e87c404c4bf45",
-  "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-w700p_zi/checks.json": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c"
+  "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-w700p_zi/checks.json": "fdfc1feb9bd1a8d93fb1c210312fbb086d45b2862fdc509f1a527101cac1e36c",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

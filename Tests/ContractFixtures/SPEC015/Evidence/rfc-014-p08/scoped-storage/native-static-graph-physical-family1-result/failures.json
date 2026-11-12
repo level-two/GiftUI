@@ -865,16 +865,17 @@
     }
   ],
   "historical_retained_archives": [
-    "native-static-capture-qualification1-result",
-    "native-static-visitor-state1-result"
+    "unavailable",
+    "unavailable"
   ],
   "local_analysis_failures": [
     "Wrongunadoptedclient-emissionHostbaselinepreserved; correctedmaintainedbaselineauthenticatedwithoriginalreceipt/sourcehashes.",
     "InitialRuntimeguardSIGXFSZwasFAIL,notPASS; freshlargerguarddidnotaltercode/flags.",
     "BroadRuntimeStaticPackageattemptfailed; actualeight-sourceCounterrecipeauthenticated,nobridgefix/fullPackageclaim.",
     "Initialcombinedimage492didnotexerciseold190linepolicy; correctedstream2312nowdoes.",
-    "Oldmissingrowfatalfallbackalsotrapped; priorSIGTRAPnotisolatedguardproof; currentreturn\u2192exit97distinctionvalidated.",
+    "Oldmissingrowfatalfallbackalsotrapped; priorSIGTRAPnotisolatedguardproof; currentreturn→exit97distinctionvalidated.",
     "Two31OctreviewnumericoutputscopeFAILs:600000+1048576bytesconservativetranscript;2MiBAstrareadcharge andrevieweractualcarry;additional4MiBreserve,nocapreset."
   ],
-  "no_dropped_tail_zero_claim": "Priorcaptureverifiertruncateddump/read-drainuncertaintyremainshistorical; no laterPASSretroactivelyqualifiesthatattempt."
+  "no_dropped_tail_zero_claim": "Priorcaptureverifiertruncateddump/read-drainuncertaintyremainshistorical; no laterPASSretroactivelyqualifiesthatattempt.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

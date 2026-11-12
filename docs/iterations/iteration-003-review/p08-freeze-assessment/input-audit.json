@@ -5890,24 +5890,25 @@
   ],
   "reviewed_documents": [
     {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-freeze-session-handoff.md",
+      "path": "unavailable",
       "sha256": "51e147ccc72c1f6d561efc2060c81760b8ab2e33e90c60109f85e8d3dcdbae02"
     },
     {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-freeze-session-handoff-independent-review.md",
+      "path": "unavailable",
       "sha256": "e1294ff6c07cea6e2d700fc5d577bcb5cce34ad11db2acfef452d1fccaddc749"
     },
     {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-closure-2026-11-07/native-assessment.md",
+      "path": "unavailable",
       "sha256": "0ee99cf9f3f7ef6989900d9054c1ee65a1d8147872c99a05a282990da5d93c43"
     },
     {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-closure-2026-11-07/native-assessment-review.md",
+      "path": "unavailable",
       "sha256": "2cd4fc6364bee88d4588a6fea3d85e90624cb7af59184f6bc5b918a5464dc930"
     },
     {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/dynamic-allocator-private-accounting-2026-11-07/README.md",
+      "path": "unavailable",
       "sha256": "3624474bc9d27a4025d0f9349ca17d717beed7ae0b1df864a2c80e89edcfe29b"
     }
-  ]
+  ],
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

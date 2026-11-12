@@ -110,7 +110,7 @@
       "sha256": "db4732f66f26856bd0b06a18351085728e637fd796633fddbbbeb7388780d86b"
     },
     "provider_descriptor": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/provider-slices.json",
+      "path": "unavailable",
       "bytes": 26116,
       "sha256": "30a33f816141c4218747dab8f5d6eb0decc063d7e339f9ed20193e22a53f18eb"
     },
@@ -120,7 +120,7 @@
       "sha256": "ace2a09d22672332dc1ee2bc6a9e472c05124b13ea87235a1b927d2db1855ae1"
     },
     "provider_metadata": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata48-result/rows.json",
+      "path": "unavailable",
       "bytes": 18276,
       "sha256": "0f0ebe240689adaae3c23032ccb82561c33f1a984bfcfeb8c2727bfb67a591a6"
     },
@@ -145,7 +145,7 @@
       "sha256": "d9b83ba9e44bb1e339a1b62c29f783e969c9de2595188f0a3a445ee8ce840090"
     },
     "prior_fixed": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/findings.json",
+      "path": "unavailable",
       "bytes": 6745,
       "sha256": "ae1e227e6f4b086815612268ff1251420228f65c794f4e47ebf2466903bced0e"
     },
@@ -188,5 +188,6 @@
     "eight_selected_local_decoder_upper": 180000000,
     "model_context_and_control_forecast": 50000000,
     "planned_upper": 484183160
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

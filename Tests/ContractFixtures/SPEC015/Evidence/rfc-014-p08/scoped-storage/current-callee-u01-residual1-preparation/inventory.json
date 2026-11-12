@@ -524,9 +524,7 @@
     }
   ],
   "method": "Standard-library file membership/text/JSON/plist/SHA-256 inventory and read-only Git; no binary decoding/acquisition/runtime/tool launch.",
-  "preexisting_cache_sha256": {
-    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-  },
+  "preexisting_cache_sha256": {},
   "production_invocations": 0,
   "proposed_output_absent": "/Users/eugene/work/GiftUI/.build/contracts/p08-u01-residual-static1",
   "provenance_files": [
@@ -783,5 +781,6 @@
       "path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/man1/otool-classic.1",
       "sha256": "d394dd994259505236aeb626f98a60de00ce8b870351dfde6b029529157457a3"
     }
-  ]
+  ],
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

@@ -9,7 +9,7 @@
       "offset": 331967084,
       "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-0.bin",
       "sha256": "b4fdce19d2b842b12e722beb65f2e30f681f897e73359eebd12b973db5ca28bc",
-      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-0.o",
+      "projection": "unavailable",
       "projection_sha256": "f7f7341cdc5e517e6209d2f5606de9874d6e64ac3adb047a0c3554065f5721e0"
     },
     {
@@ -20,7 +20,7 @@
       "offset": 331699712,
       "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-1.bin",
       "sha256": "a8de8f22f2df980477958140a790ab42dca0b06d0e7da49c790c31cbded32d28",
-      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-1.o",
+      "projection": "unavailable",
       "projection_sha256": "6252bc7767ad78c308ccac4c2f1614c62990e6999e4d2bc1dc080230d94ad6cb"
     },
     {
@@ -31,7 +31,7 @@
       "offset": 331700196,
       "raw": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-2.bin",
       "sha256": "31d5cb76adc0abee38e6b5f76036fa651b2dc05863cd5f465b0e93dcdcc5d632",
-      "projection": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-2.o",
+      "projection": "unavailable",
       "projection_sha256": "55ac1ad47a4aa97a4cec555b7af7377cdc10a497e17e25c3243aa0a2a8fbcf31"
     }
   ],
@@ -68,13 +68,14 @@
     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
     "--disassemble",
     "--no-show-raw-insn",
-    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-0.o",
-    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-1.o",
-    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/canonical-sink-normal-support-2.o"
+    "unavailable",
+    "unavailable",
+    "unavailable"
   ],
   "exit": 0,
   "stdout_bytes": 12784,
   "stdout_lines": 347,
   "stdout_sha256": "47656b521a0c4492b293acd873cc7fb597d4825085520e68c60a1e56f9a3660e",
-  "stderr_bytes": 0
+  "stderr_bytes": 0,
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

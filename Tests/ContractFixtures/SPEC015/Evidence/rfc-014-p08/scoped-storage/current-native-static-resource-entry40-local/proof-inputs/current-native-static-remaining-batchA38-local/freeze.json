@@ -54,7 +54,7 @@
       "sha256": "10fc20b0220a138cda43cdd719e1d7ca5c2690f1a849884925b1bdad3649dbca"
     },
     "group_code": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/decode-selected.py",
+      "path": "unavailable",
       "bytes": 4179,
       "sha256": "2fc5afa1ae60818192090344dcad93f93d87e98829128489127e5229ee4a9451"
     }
@@ -71,7 +71,8 @@
   "reuse": "Reviewed798686cf constructor/local16/provider lemma; accepted capacity33 current full baseline and original79/48/6 auth/56groups1892sites3roots. No AUTH-only source promotion. Semantic current object permits necessary selected callees.",
   "delivery_alias": {
     "path": "/tmp/g35",
-    "target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/page.py",
+    "target": "unavailable",
     "prior_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA37-local/page.py"
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

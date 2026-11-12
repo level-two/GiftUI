@@ -19,9 +19,7 @@
     "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/system-swift-body-data.exit.json": "16a580cde4970fb8ce059cfea3bfebd365ebdfd43b184d84f6dfdc18f3641161",
     "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/u01-system-provider-static1-i-only-result1/terminal.json": "f69e78cd43dfcee1689cb477d1bd082f9e88e0ce0544748a553b390b774d6319"
   },
-  "cache_file_sha256": {
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-  },
+  "cache_file_sha256": {},
   "cache_members_verified": 15,
   "cache_schema_authenticated": false,
   "consumed_marker_identities": {
@@ -318,5 +316,6 @@
   "source42_hashes_match": true,
   "source_packet_members_verified": 13,
   "strict_cold_eligible": false,
-  "verdict": "PASS_bounded_retained_identity_interpretation_and_STOP_disposition"
+  "verdict": "PASS_bounded_retained_identity_interpretation_and_STOP_disposition",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

@@ -66,7 +66,7 @@
         "../current-native-static-review64-local/current-selected-swift-imports.json",
         "../current-native-static-review64-local/selected-swift-provider-exports.json",
         "../current-native-static-metadata47-result/rows.json",
-        "../current-native-static-metadata48-result/rows.json"
+        "unavailable"
       ],
       "limits": [
         "This is a conditional current dependency/candidate, not an unconditional defect or observed allocation.",
@@ -175,5 +175,6 @@
     }
   ],
   "decision": "No complete eligibility or unconditional/observed allocation claim. Current Error category reuse repaired by exact data identity; conditional arena effect stands. A separate mandatory Static Coordinator bridge now has exact generic metadata/witness/Role acquisition, with a current valid-key own-cache conditional factory candidate. This supports a finite specialization/bridge assessment, not automatic source edits, API change, prewarming or a global allocator verdict. No further acquisition selected after consolidation.",
-  "citation_resolution": "Paths beginning ../ are relative to this result directory; other paths are repository-root relative. Source and artifact identities are in sibling local/current-input-identities.json. Canonical large inputs are referenced, not copied."
+  "citation_resolution": "Paths beginning ../ are relative to this result directory; other paths are repository-root relative. Source and artifact identities are in sibling local/current-input-identities.json. Canonical large inputs are referenced, not copied.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

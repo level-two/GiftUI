@@ -53,12 +53,7 @@
     "runtime-lock.json": "4e357ba8bc5ff1c41135ef25afeb76a03265577455dbf8390945c70caa72f33a"
   },
   "preservation": {
-    "cache_files": {
-      "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
-        "matches_baseline": true,
-        "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-      }
-    },
+    "cache_files": {},
     "cache_membership_matches": true,
     "dirty_files": {
       "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": {
@@ -587,5 +582,6 @@
     "timed_out": false,
     "wire_byte_limit_claimed": false
   },
-  "total_bytes": 7582
+  "total_bytes": 7582,
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

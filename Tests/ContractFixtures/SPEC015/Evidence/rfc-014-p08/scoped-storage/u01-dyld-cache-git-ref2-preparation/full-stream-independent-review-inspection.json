@@ -1,10 +1,5 @@
 {
-  "cache_files": {
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
-      "matches_baseline": true,
-      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-    }
-  },
+  "cache_files": {},
   "cache_membership_matches": true,
   "compiler_build_target_test_operations": 0,
   "controller_executions": 0,
@@ -201,5 +196,6 @@
   "retries": 0,
   "reviewed_commit": "e9c7a059beccf6bb08ebd126643191d853b5647c",
   "syntax_ast_parse": "PASS; no import/execution of controller",
-  "validation_limits": "Offline source, AST, bytes/hash/JSON/stat and read-only Git inspection only. No controller behavioral test or transport attestation."
+  "validation_limits": "Offline source, AST, bytes/hash/JSON/stat and read-only Git inspection only. No controller behavioral test or transport attestation.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

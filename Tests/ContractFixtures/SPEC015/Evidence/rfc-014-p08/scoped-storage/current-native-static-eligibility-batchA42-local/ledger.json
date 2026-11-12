@@ -102,100 +102,100 @@
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-1.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-1.stdout 1 1",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 1 1",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 2 2\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 2 2",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 2 2",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 3 3\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-4.stdout 3 3",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 3 3",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-2.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-2.stdout 1 1",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-3.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-3.stdout 1 1",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-6.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-6.stdout 1 1",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 1 1\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 1 1",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 1 1",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 2 2\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 2 2\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 2 2",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 2 2",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 3 3\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 3 3\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 3 3",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 3 3",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 4 4\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 4 4\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 4 4",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 4 4",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 5 5\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 5 5\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 5 5",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 5 5",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 6 6\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 6 6\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 6 6",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 6 6",
         "max_output_tokens": 10000
       }
     },
     {
-      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 7 7\",\"max_output_tokens\":10000});text(r.output);",
+      "code": "// @exec: {\"max_output_tokens\":12000}\nconst r=await tools.exec_command({\"cmd\":\"python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 7 7\",\"max_output_tokens\":10000});text(r.output);",
       "args": {
-        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py ../current-native-static-eligibility-batchA41-local/selected-5.stdout 7 7",
+        "cmd": "python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/view-selected.py unavailable 7 7",
         "max_output_tokens": 10000
       }
     },
@@ -1076,5 +1076,6 @@
   "group_excerpt_upper_bytes": 350269,
   "group_excerpt_upper_lines": 5291,
   "execution_qualification": false,
-  "qualification_reason": "unrecorded inline request/payload before error; ordinary creation accounting uses stated upper allowances, not exact aggregate certification"
+  "qualification_reason": "unrecorded inline request/payload before error; ordinary creation accounting uses stated upper allowances, not exact aggregate certification",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

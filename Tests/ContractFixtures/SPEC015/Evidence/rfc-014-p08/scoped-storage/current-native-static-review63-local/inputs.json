@@ -16,10 +16,6 @@
       "bytes": 18272848,
       "sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c"
     },
-    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/provider-slices.json": {
-      "bytes": 26116,
-      "sha256": "30a33f816141c4218747dab8f5d6eb0decc063d7e339f9ed20193e22a53f18eb"
-    },
     "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA59-result/findings.json": {
       "bytes": 9135,
       "sha256": "833a309569829654387f8dde1fe6c978377cd1ec66c1422095df28f29642cc4a"
@@ -28,5 +24,6 @@
       "bytes": 331413,
       "sha256": "c7766b3c39585f2b4ca1b9c470bc2109f1442565db250b1fee7eaff8a096c4be"
     }
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

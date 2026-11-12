@@ -110,7 +110,7 @@
     },
     "reviewed_window_records": [
       {
-        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u04-diagnostic-windows1-result/window-attribution.json",
+        "path": "unavailable",
         "sha256": "4d6ad280e69b3043879b0baf2eb16d003fe366ae8b6e817a5c165be011af590d",
         "facts": [
           "W01",
@@ -119,7 +119,7 @@
         ]
       },
       {
-        "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u04-executed-provenance2-result/executed-window-attribution.json",
+        "path": "unavailable",
         "sha256": "ab44a841f53108b953a3626646ac9f746bffcb10c9624c1351b1b531d7edb226"
       }
     ],
@@ -239,5 +239,6 @@
     "safety": "Prior reviewed concrete source/lifetime/bridge/fault/linked-writer lemmas retained at their original scope",
     "BatchB": "Runtime/physical/current-image/cold/resource/profile gates remain separate"
   },
-  "updated_utc": "2026-10-22T21:08:44.388155+00:00"
+  "updated_utc": "2026-10-22T21:08:44.388155+00:00",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

@@ -25,12 +25,7 @@
   "five_dirty_diff_sha256": "731edcb6d8b9458a3c7519ea0efd9f3988314b510b105ddfef718013394c2ac7",
   "source42_count": 42,
   "source42_hashes_match": true,
-  "cache_files": {
-    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
-      "bytes": 44198,
-      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-    }
-  },
+  "cache_files": {},
   "cache_membership_exact": true,
   "markers": {
     "/Users/eugene/work/GiftUI/.build/contracts/p08-current-callee-collection1": {
@@ -59,5 +54,6 @@
     }
   },
   "result_destination_absent": true,
-  "preparation_method": "hash/blob/source-manifest equality and inventory copying only; raw SIL/object/source semantic bytes not inspected"
+  "preparation_method": "hash/blob/source-manifest equality and inventory copying only; raw SIL/object/source semantic bytes not inspected",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

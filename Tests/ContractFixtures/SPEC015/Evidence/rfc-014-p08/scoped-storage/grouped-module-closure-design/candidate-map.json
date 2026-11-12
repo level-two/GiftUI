@@ -1340,9 +1340,7 @@
     "corrections_consumed": 0,
     "historical": "all prior Native pipeline/checked-State budgets and witness candidate1/1 remain unchanged/exhausted or frozen; this is a separately user-authorized activity"
   },
-  "protected_pycache_sha256": {
-    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-  },
+  "protected_pycache_sha256": {},
   "authored_counter_schema_sha256": {
     "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
     "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9"
@@ -1371,5 +1369,6 @@
     ],
     "qualified_protocol_callers_retained": "ExecutionGestureAdapter.down/move/up dispatch through the unchanged @usableFromInline InteractionGestureResolver in InteractionValues.swift, using existing ABI-qualified PointerActionCapture operations in GiftUIExecution. Removing concrete witness serialization does not change these protocol requirements; do not remove unrelated qualified annotations.",
     "boundary": "This finite inspection does not claim every owner source-clean; the grouped fresh compile sweep records all independently diagnosable remaining failures before any correction. No compiler has run."
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

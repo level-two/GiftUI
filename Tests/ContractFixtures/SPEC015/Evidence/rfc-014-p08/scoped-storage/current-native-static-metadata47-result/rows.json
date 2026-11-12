@@ -37,7 +37,7 @@
   "helper_identity": {
     "page": "7d256c381c969204026a8bfdacf94af9c25e2bd78a63125f032cfa3e781ea41c",
     "decoder": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/decode-swift-group.py",
+      "path": "unavailable",
       "bytes": 7007,
       "sha256": "20bd2b3188155ad0532cbfdbf73f763bffa8fd310f7ae728a354dad53579c951",
       "role": "frozen one-invocation selected-projection decoder"
@@ -157,8 +157,9 @@
     "exception": {
       "type": "RuntimeError",
       "message": "complete decode and terminal reserve",
-      "traceback": "Traceback (most recent call last):\n  File \"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/decode-swift-group.py\", line 43, in <module>\n    caps=S.setdefault('swift_captures',[]);forecast=F['tool']['bytes']+len(selected)*65536+sum(v['bytes']*2 for v in F['inputs'].values())+16777216;check('complete decode and terminal reserve',S['processing']+forecast<536870912,{'processing':S['processing'],'forecast':forecast});projections=[];pending=[]\n  File \"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/decode-swift-group.py\", line 6, in check\n    if not ok:raise RuntimeError(name)\nRuntimeError: complete decode and terminal reserve\n"
+      "traceback": "Traceback (most recent call last):\n  File \"unavailable\", line 43, in <module>\n    caps=S.setdefault('swift_captures',[]);forecast=F['tool']['bytes']+len(selected)*65536+sum(v['bytes']*2 for v in F['inputs'].values())+16777216;check('complete decode and terminal reserve',S['processing']+forecast<536870912,{'processing':S['processing'],'forecast':forecast});projections=[];pending=[]\n  File \"unavailable\", line 6, in check\n    if not ok:raise RuntimeError(name)\nRuntimeError: complete decode and terminal reserve\n"
     }
   },
-  "no_source_correction_justified_by_this_result": true
+  "no_source_correction_justified_by_this_result": true,
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

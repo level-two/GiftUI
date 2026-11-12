@@ -3,7 +3,7 @@
   "HEAD": "798686cf11a058c5ba1467a8b4b2f94f1b3390fa",
   "inputs": {
     "body": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-1.stdout",
+      "path": "unavailable",
       "bytes": 283670,
       "sha256": "dd2f2dfe3888b0cb3cc029ae60aa274b22b0d075fa9049a01f135b540da2bf2f"
     },
@@ -44,7 +44,7 @@
       "sha256": "ce9e7d4b62c885230f970d831ef84f3d1b3d02bf87de3e809415431777d259c0"
     },
     "prior_closed_ledger": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/ledger.json",
+      "path": "unavailable",
       "bytes": 89951,
       "sha256": "4a2ee064527bda02c5f9a6c9204883fd96e1cebecb6152a2e9313261f600e51f"
     },
@@ -54,22 +54,22 @@
       "sha256": "10fc20b0220a138cda43cdd719e1d7ca5c2690f1a849884925b1bdad3649dbca"
     },
     "group_code": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/decode-selected.py",
+      "path": "unavailable",
       "bytes": 4198,
       "sha256": "f76905a1fb672d3b904cf262bc9e298a147c2dacd94d26dab22f91f8cb784fd3"
     },
     "prior_selected_joins": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-root-site-joins.json",
+      "path": "unavailable",
       "bytes": 43866,
       "sha256": "b6ac8706f82232b9344c86810a9464ea76bc538c7088e60bb03155faa186ea6b"
     },
     "prior_current_captures": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/selected-captures.json",
+      "path": "unavailable",
       "bytes": 13541,
       "sha256": "0bc59bb90146e702bd2fe635d8c3d6fb2e98c8eba6333cf64a2e15900d34e020"
     },
     "prior_origin_assessment": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/origin-assessment.json",
+      "path": "unavailable",
       "bytes": 11423,
       "sha256": "1e17462aa385119c5e4a5f29263c21d50cdee82120c06669f391c314d470953f"
     }
@@ -86,8 +86,9 @@
   "reuse": "A38 exact current initializer full3086line/model31pages, current3ArrayBuffer bodies and payload predicates reused by frozen hashes. A35-A37 constructor/local16/memory bodies and current capacity33/original79/48/6 auth lemmas reused. No prior charges reset or AUTH-only source promotion.",
   "delivery_alias": {
     "path": "/tmp/g35",
-    "target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA39-local/page.py",
-    "prior_target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA38-local/page.py"
+    "target": "unavailable",
+    "prior_target": "unavailable"
   },
-  "predecessor_session": "A38 closed with500483528B processing before final status and known16B request quoting deficit; no retroqualification."
+  "predecessor_session": "A38 closed with500483528B processing before final status and known16B request quoting deficit; no retroqualification.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

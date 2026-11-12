@@ -1371,7 +1371,7 @@
     "Exact source/object/compiler/lower receipts named by compiled-inputs.json and compile-plan.json remain .build/.toolchains local inputs, not committed binary corpora.",
     "Validation2 six receipts and eventual full result/guard/output logs named by final validation records remain local; finite hashes/summaries will be committed."
   ],
-  "excluded_superseded_local_draft": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-result/scope-draft.json",
+  "excluded_superseded_local_draft": "unavailable",
   "self_handling": {
     "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-traversal-realization-result/scope.json",
     "included_in_stage_list": true,
@@ -1380,5 +1380,6 @@
   "selected_rows_bytes": 2773635,
   "source_freeze_sha256": "9760fe9d56e7cdad11b4b8bcf3471b102897254697ed1c4fa6bd9f23222090c1",
   "final_review_sha256": "01ab7b25f12d8751e117e11056012f133535bc738fdfa1672613e2546f910e18",
-  "global_eligibility": "OPEN; unit FAILED, Interaction units UNEXECUTED. Scope and final review do not grant global zeroheap/P08/profile/resource/cold/live acceptance."
+  "global_eligibility": "OPEN; unit FAILED, Interaction units UNEXECUTED. Scope and final review do not grant global zeroheap/P08/profile/resource/cold/live acceptance.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

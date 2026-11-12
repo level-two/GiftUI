@@ -42,7 +42,7 @@
   ],
   "pycache": [
     {
-      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "path": "unavailable",
       "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
     }
   ],
@@ -65,5 +65,6 @@
     }
   ],
   "execution": "source/evidence/proposal reads/writes only; reused existing archived provider disassembly; no new tool/compiler/runtime",
-  "budgets": "none allocated/reset; all historical fixed/exhausted preserved"
+  "budgets": "none allocated/reset; all historical fixed/exhausted preserved",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

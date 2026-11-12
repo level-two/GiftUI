@@ -305,7 +305,7 @@
       "sha256": "6dec467cd9b5fe2edc648befc6c5ec659a0259796eb22f67c69e74b273d802eb"
     },
     {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata48-result/rows.json",
+      "path": "unavailable",
       "bytes": 18276,
       "lines": 351,
       "sha256": "0f0ebe240689adaae3c23032ccb82561c33f1a984bfcfeb8c2727bfb67a591a6"
@@ -334,5 +334,6 @@
       "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-review63-local/extract-providers.py",
       "sha256": "728293cda7461cbc0b0bd9b803e4cb67f375c8e60b214d230e4854130a11d7cc"
     }
-  ]
+  ],
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

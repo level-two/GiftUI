@@ -1,12 +1,7 @@
 {
   "AST_parse": "PASS; controller and probe not imported/executed in review",
   "all_other_functions_unchanged": true,
-  "cache_files": {
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": {
-      "matches_baseline": true,
-      "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-    }
-  },
+  "cache_files": {},
   "cache_membership_matches": true,
   "controller_function_changes_from_e9c7a059": [
     "verify_identity"
@@ -243,5 +238,6 @@
   "review_controller_imports": 0,
   "review_network": 0,
   "review_probe_executions": 0,
-  "reviewed_commit": "046ecbda98021a9ad645462213d772ef60e13a12"
+  "reviewed_commit": "046ecbda98021a9ad645462213d772ef60e13a12",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

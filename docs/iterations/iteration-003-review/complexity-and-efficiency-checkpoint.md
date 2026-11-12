@@ -1,6 +1,8 @@
+> Historical record: local supporting artifact references were removed during repository cleanup. This edited record does not establish current conformance.
+
 # Complexity and efficiency delivery checkpoint
 
-**Current disposition — 7 November.** Four route receipts and both target links pass. Native Static finite-workload NoHeap and charged-entry headroom are reviewed PASS for the exact image and joined predicates. The maintained compiler effect check remains FAIL at `CounterSemanticCodec` lifetime/deallocation; MP-09 treats this as a rejected compiler promise, not an observed allocation. Native Dynamic bookkeeping, Pi Dynamic complete feasible stack/provider/launch, and independent SO-09 exit remain open; P08/R07/T8.1 remain UNMET. See the current [P08 evidence receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md) and [Native assessment review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-native-closure-2026-11-07/native-assessment-review.md).
+**Current disposition — 7 November.** Four route receipts and both target links pass. Native Static finite-workload NoHeap and charged-entry headroom are reviewed PASS for the exact image and joined predicates. The maintained compiler effect check remains FAIL at `CounterSemanticCodec` lifetime/deallocation; MP-09 treats this as a rejected compiler promise, not an observed allocation. Native Dynamic bookkeeping, Pi Dynamic complete feasible stack/provider/launch, and independent SO-09 exit remain open; P08/R07/T8.1 remain UNMET. See the current [P08 evidence receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md) and Native assessment review.
 
 ### Earlier checkpoint summary — before the focused 7 November review
 
@@ -552,7 +554,7 @@ The fixed 11:24–13:24 UTC session expired. No further producer or source varia
 
 ## Preserved earlier visitor-state disposition — 30 October
 
-**Current disposition — visitor-state/graph-control batch NOT ACCEPTED, 30 October; candidates and failures preserved uncommitted.** [Consolidated result and independent review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-visitor-state1-result/README.md) retain all four compiler attempts and exact source bindings. The direct `inout` helper preserves the full emission stream and existing visitors; four finite graph loops preserve vectors/order/count 130 by source equivalence. The complete 42-source entry still rejects negative Host graph validation. The separately checked actual audit rejects the 48-slot geometry-facts initialization before emission, including after one reviewed repair using the actual positive assembly consumer and observation checks. Therefore complete capture/visitor/cleanup eligibility remains unproved; diagnostic movement is not closure. Fresh 492/130 behavior, bounds/refusal/cleanup and the large functional link were held. No new allocation, impossibility, resource or P08 PASS is claimed.
+**Current disposition — visitor-state/graph-control batch NOT ACCEPTED, 30 October; candidates and failures preserved uncommitted.** Consolidated result and independent review retain all four compiler attempts and exact source bindings. The direct `inout` helper preserves the full emission stream and existing visitors; four finite graph loops preserve vectors/order/count 130 by source equivalence. The complete 42-source entry still rejects negative Host graph validation. The separately checked actual audit rejects the 48-slot geometry-facts initialization before emission, including after one reviewed repair using the actual positive assembly consumer and observation checks. Therefore complete capture/visitor/cleanup eligibility remains unproved; diagnostic movement is not closure. Fresh 492/130 behavior, bounds/refusal/cleanup and the large functional link were held. No new allocation, impossibility, resource or P08 PASS is claimed.
 
 This distinct next-day session used the fixed 11:24–13:24 UTC window and durable 16 MiB shared retention/transcript / 512 MiB processing limits; prior expired sessions, failures and accounting uncertainty remain unchanged. Final conservative closeout provision is 6 MiB retained and under 55 MB processed. The historical patch is labeled; canonical current snapshots/final freeze and earlier tested inputs are distinct. Independent review is NOT ACCEPTED; the attempt stops for consolidated mechanism reassessment, without further variants or a receipt-only commit. HEAD remains `169174c9`, index empty, unrelated edits preserved. Host adoption, complete current callee/safety applicability, cold/matched Dynamic evidence, route/resource ledgers and independent P08 exit remain open; existing qualified evidence is not treated as absent.
 
@@ -560,7 +562,7 @@ This distinct next-day session used the fixed 11:24–13:24 UTC window and durab
 
 **Current disposition — owner/root family accepted and committed `169174c9`; subsequent capture mechanism NOT ACCEPTED and left uncommitted, 29 October.** Together with geometry `f65e2081`, this closes two scoped implementation packages. [Owner/root evidence](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-owner-root-qualification1-result/README.md) binds fresh checked 13-source Counter provider, imported nongeneric effect proof, all 688 baseline exports plus two explicit methods, and 2,502 behavioral checks. One nongeneric capacity computation preserves the old generic API by forwarding and removes the unnecessary generic metadata call from accounting; no arbitrary generic heap-free, Package-wide 26-file or Host-adoption claim follows. The rejected generic visibility trial and ABI loss are preserved.
 
-The [unaccepted capture candidate](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/native-static-capture-qualification1-result/README.md) preserves 31,022 checks/1,066 updates and callbacks, both source-attributed bounds traps and a direct captured-prefix effect PASS. Nevertheless the complete 42-input entry still rejects the SAME mutable visitor function-value box, now `{ var CounterPhysicalReportAccumulator }` at CounterProfileStorage377/record379. Concrete arithmetic representation did not close that boundary. CounterProfileStorage.swift and PhysicalReportAccumulatorQualification.swift remain tested-but-uncommitted; the finite failed-candidate archive, snapshots, hashes and independent NOT ACCEPTED verdict are retained without a receipt-only commit. The initial oracle SIL-verifier/capture-guard failure (213,065 bytes read/drained, 131,145 retained, unknown unretained tail) remains failed; no precise compiler-bug or source-alias cause is claimed. Corrected reference-load/store helpers preserve the original reference and all verification. Quiet complete diagnostic is 3,178 bytes; only module-loading remarks were omitted, with authenticated nine-provider/semantic-argument reuse. Semantic diagnostics and verifier checks remain.
+The unaccepted capture candidate preserves 31,022 checks/1,066 updates and callbacks, both source-attributed bounds traps and a direct captured-prefix effect PASS. Nevertheless the complete 42-input entry still rejects the SAME mutable visitor function-value box, now `{ var CounterPhysicalReportAccumulator }` at CounterProfileStorage377/record379. Concrete arithmetic representation did not close that boundary. CounterProfileStorage.swift and PhysicalReportAccumulatorQualification.swift remain tested-but-uncommitted; the finite failed-candidate archive, snapshots, hashes and independent NOT ACCEPTED verdict are retained without a receipt-only commit. The initial oracle SIL-verifier/capture-guard failure (213,065 bytes read/drained, 131,145 retained, unknown unretained tail) remains failed; no precise compiler-bug or source-alias cause is claimed. Corrected reference-load/store helpers preserve the original reference and all verification. Quiet complete diagnostic is 3,178 bytes; only module-loading remarks were omitted, with authenticated nine-provider/semantic-argument reuse. Semantic diagnostics and verifier checks remain.
 
 The current consolidated blocker is the actual mutable capture conversion/forwarding/mutation/cleanup path. Next reassess explicit state passing; any scoped immutable-pointer alternative must prove full lifetime containment, nonescape, exclusive access, reporting order and early-exit cleanup through the actual visitors before the full entry. Preserve visitor/report interfaces unless a private adapter satisfies them; a changed public ownership/callback contract needs upstream review. No further variant is authorized by local oracle counts. Remaining P08 exit obligations include coherent Host candidate adoption/rejection and product bindings, current callee/provider and U03 unsafe-chain/lifetime applicability, strict cold/matched Dynamic evidence, four-route ABI/allocator/construction-plus-IRQ-stack/physical ledgers and independent SO-09 exit. Existing qualified evidence is retained; these open duties are not claims that unexamined evidence is absent.
 
@@ -879,7 +881,7 @@ The entire chain has one immutable deadline: **2026-10-26 22:41:04.994801 UTC**,
 **Terminal prerequisite results and explicit inventory reassessment:** repaired P07 passed 5,914 assertions / zero failures (`tmp5qao517s/macos-static`); matching schema4 passed 428 / zero (`p08-scoped-host-kbqotrkg`). The first focused Counter attempt exited 1 before runtime execution at the driver's unchanged old inventory assertion. Its raw failure and incomplete collection are preserved. Root stopped and obtained independent exact comparison: all 384 original Native labels remain, with precisely 24 distinct codec lifetime additions (12 for the Embedded static branch); no diagnostics or positive/negative pair was removed or weakened. Reviewer also verified 169 P07 / 87 schema4 input hashes still match. Root therefore explicitly approved only the stale inventory constants 202/384 → 214/408, refreshed driver identity, and one fresh focused attempt reusing these prerequisites within the SAME original deadline/output envelope. This is fixture bookkeeping, not another product-code repair or an allocation verdict. Exact constants-only delta must be independently confirmed before launch; any subsequent failure stops and consolidates without automatic repair. No component/full/live producer is authorized before decisive compiled qualification.
 
 **Historical BitwiseCopyable candidate FAIL — preserved:**
-The [independent terminal review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/bitwise-review.md)
+The independent terminal review
 accepts the exact four compiler-checked conformances and functional results, but
 rejects implementation acceptance: current Static builder, destroy and reader-defer
 code bytes are identical to the failed direct-descriptor candidate. The required
@@ -919,7 +921,7 @@ before acceptance. Root owns phase heartbeat; coordinator owns current records a
 sole eventual index. The preceding direct-descriptor FAIL remains unchanged below.
 
 **Historical direct-descriptor terminal disposition — preserved, not acceptance:**
-The same [independent direct-descriptor review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/direct-descriptors-review.md)
+The same independent direct-descriptor review
 confirms that both finite source mechanisms failed the cleanup-inclusive compiled
 objective. The latest seven-file direct-descriptor working tree is frozen and
 uncommitted; failed annotation/layout snapshots and reviews remain intact. No
@@ -1153,7 +1155,7 @@ The conservative selected-package window was 06:46:00–08:46:00 UTC on 2026-10-
 Coordinator interrupted the Strong turn at root's 08:44:32 warning. The worker's
 last command, `boundary.py controls`, completed exit 0 at 07:53:16.212495 UTC
 (chunk `1420e6`); no process remained. It wrote only
-`current-native-static-eligibility62-local/boundary.py` and
+`unavailable` and
 `controls/{result.json,preserved}`. No independent acceptance, init, AUTH,
 acquisition, frozen semantic bundle, proof or experimental ledger followed.
 Aggregate processing/transcript/file accounting remains uncertified.
@@ -1532,7 +1534,7 @@ terminated exit 143 at 15:55:59 UTC, after its 15:51:12 four-hour deadline by
 child; no owned processes remain. Scheduling cause is unproved. The partial
 collection has 139 passed records and one interrupted/running record, no final
 result.json, and no aggregate PASS. Focused Runtime text grows 7,100 bytes and the
-transaction body 836 bytes; no performance/resource claim follows. The [single terminal review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-specialization49-result/final-review.md)
+transaction body 836 bytes; no performance/resource claim follows. The single terminal review
 records acceptance BLOCKED, preserving the scoped focused/source findings. Current source
 remains frozen and uncommitted; no retry, cap extension or accepted-correction
 commit is inferred. Supported prior-complete witness45 reuse is unavailable:
@@ -1574,7 +1576,7 @@ removal remains intact. Both output oracles match after only existing address
 normalization, and Runtime text decreases 764 bytes versus 49. This three-file
 source group is frozen/uncommitted; focused aggregate is intentionally incomplete,
 not a full acceptance result. [Constructor50 proof](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-constructor50-result/README.md)
-now has a [combined source/proof review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA51-result/final-review.md):
+now has a combined source/proof review:
 focused PASS, correction-package/full/commit acceptance pending. No further source
 defect is yet demonstrated. A51 binds the current entry and four component callers,
 Model's exact Static 17-byte metadata key and FixedStorage's DrawingLimits once
@@ -1594,7 +1596,7 @@ No cold/resource or broad Batch A/P08 PASS follows.
 A52 has now joined the exact current Static Model type, descriptor, zero-fill own
 cache and pattern to the accepted conditional metadata allocator consequence; the
 required initializer requests Self metadata before ownership-limit validation, and
-its lifetime wrapper also requests Optional<Model> metadata. The [A52 review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/final-review.md)
+its lifetime wrapper also requests Optional<Model> metadata. The A52 review
 supports this conditional dependency, not observed allocation or universal failure.
 Final processing/transcript are 518,916,147 / 118,207 bytes; recording remains FALSE
 for a finalization-only unprefixed helper-code inspection, with uncertainty explicit
@@ -1604,7 +1606,7 @@ and Semantic/Coordinator nested callbacks/errors remain separate open duties. Ro
 Model53 now passes formatter, matching P07 (5,904 assertions) and focused functional/
 output equivalence (1,736,320 assertions), but FAILS the actual compiled-removal
 objective: current source/recipe identities match and required Self plus
-Optional<Model> requests remain. The [independent Model53 review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-model53-result/final-review.md)
+Optional<Model> requests remain. The independent Model53 review
 confirms functional PASS/objective FAIL; net text grows 300 bytes. Its five-file
 failed snapshots/diff/review remain preserved; the annotation mechanism is stopped
 and constructor50 is carried. Root selected one concrete application-owned Model
@@ -1881,7 +1883,7 @@ Closed ledger totals are 349,129,763 processing bytes, 48,997 counted text bytes
 984.854613 seconds. Postclose administrative reads remain separate; aggregate
 certification is false. Decoder/close child exit 0 is not semantic PASS. One
 proportional independent review accepts the honest STOP with no material correction.
-See [A41 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-result/README.md) and its review. No failure-only commit
+See A41 result and its review. No failure-only commit
 or new numerical amendment is selected. The next decision is a concrete representation
 reassessment using exact source/SIL and necessary current-machine joins, reusing
 applicable closed helpers rather than another eight-body dump. Batch A/B/C/P08 gates
@@ -2058,7 +2060,7 @@ Its conservative budget clock starts at A47 close **08:43:55.456488 UTC** (deadl
 **10:43:55.456488 UTC**) to cover maintenance, while actual authentication must be
 recorded separately. No numerical cap or input-counting exemption is changed.
 Source and committed HEAD remain unchanged; live state,
-unit and Batch B/C gates remain. See [metadata46 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata46-result/README.md).
+unit and Batch B/C gates remain. See metadata46 result.
 
 A43 closed after 2,219.371555 seconds; authoritative final processing is 521,496,153
 bytes, transcript upper 444,298 bytes and shared upper 908,374 bytes. A44 closed at
@@ -2120,7 +2122,7 @@ root `0x5281c → 0x4f918`, metadata call `0x4fc8c`, size argument 82, call `0x4
 to outlined helper `0xbdbdc`, alignment argument 7, then `_swift_allocObject` import.
 Concrete type, complete controlling/helper effects and required-workload feasibility
 remain available but unexamined. This is neither proved allocation nor provider
-absence. The [consolidated result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-result/README.md)
+absence. The consolidated result
 preserves all 26 prior dispositions without promotion: remaining local allocation,
 indirect/witness/metadata/once/error paths; exact live stream identity/persistence
 and provider/window applicability; and gated Batch B duties. Accepted local safety
@@ -2134,7 +2136,7 @@ processing bytes, 77,412 counted transcript bytes and 4,029,281 output-upper byt
 post-finish administration is not exactly accounted, so whole-session qualification
 is **false**, not inferred from conservative reserves. Raw failures are retained.
 No source, build, runtime-provider experiment, image or hardware action occurred.
-The [single grouped substantive review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA31-result/review.md)
+The single grouped substantive review
 accepts the limited conditional finding and STOP/nonclosure after correcting the
 close exit to 1. No further helper retry or accounting-only commit is selected.
 This statement closes the whole-function mechanism. The root's 18:33 UTC method
@@ -2384,7 +2386,7 @@ Required feasibility failures stay current blockers rather than Future Work.
   maintenance authority; synchronous success (exit 0), nonzero (exit 7) and launch
   failure (FileNotFoundError) controls all pass with durable startup/streams/terminal
   records. Absent session ID is not stored; actual completion storage passes.
-  [Raw receipts](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/invocation-output-capture-repair/controls.json).
+  Raw receipts.
   No new runner/driver or production source change; no substantive session started.
 - **Current U02 result:** file-based delivery works; attempt 6 supplies the exact
   56-group / 1,892-site mechanical inventory, not completed semantic attribution.
@@ -2402,7 +2404,7 @@ Required feasibility failures stay current blockers rather than Future Work.
   could not be met. The later approved one-attempt accounting amendment below is
   the current execution authority; attempt 8 remains stopped and unqualified.
 - **Historical U02 semantic9 reviewed, objective unmet:**
-  [single independent review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic9-result/review.md)
+  single independent review
   accepts the constructor-body fact and honest unresolved disposition, not the
   requested Static incoming chain. The helper searched only the exact merged
   `cfCTm` name; wrapper/thunk/relocation incoming edges, predicates and generic
@@ -2420,7 +2422,7 @@ Required feasibility failures stay current blockers rather than Future Work.
   qualification retains that limit; no complete rendered-transcript bound is claimed.
   Pre-auth unused-candidate correction consumed no session and is preserved separately.
 - **Historical U02 semantic10 reviewed, objective unmet:**
-  [review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic10-result/review.md)
+  review
   verifies actual relocation traversal, but not a Static incoming chain to X28.
   The five-module cheapest-first loader left the actual called
   `ObservableRootControl.init` module unloaded; its exact frozen definition exists
@@ -2439,7 +2441,7 @@ Required feasibility failures stay current blockers rather than Future Work.
   entry alone establishes no Static allocation/cost/cold/P08 result; 49 X28 sites
   remain unexamined.
 - **Historical U02 semantic11 STOP:**
-  [review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic11-result/review.md)
+  review
   accepts a guarded STOP, not model examination. The changed predecessor/rooted-call
   method found a two-edge structural candidate to exact frozen X28 `counterTrace`
   allocator site `P08CounterRuntime:0x4c5d0`, line 93444. Decisive context exceeded
@@ -2455,7 +2457,7 @@ Required feasibility failures stay current blockers rather than Future Work.
   then reasons about this same candidate's conditions/arguments. No further graph
   sweep, clipped-condition proof, new runner or human relaunch gate is selected.
 - **Historical U02 semantic12 STOP; delivery-overhead method change:**
-  [review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic12-result/review.md)
+  review
   verifies accounted STOP and extracted 1 / emitted 0 / model-examined 0. The fixed
   decisive packet is 8,471 UTF-8 bytes; 1,811 already counted plus 2,252 reserved
   left only 5,937, a 2,534-byte shortfall. Final processing/output-upper/transcript
@@ -2469,7 +2471,7 @@ Required feasibility failures stay current blockers rather than Future Work.
   no new runner/controller, two-session split or approval packet. All path arguments/
   predicates still receive reasoning together within the original 90-second window.
 - **Historical U02 semantic13 conditional path reviewed PASS:**
-  [review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic13-result/review.md)
+  review
   verifies exact frozen Static-root → outlined wrapper → counterTrace → allocator
   joins, with earlier-callee return/live-ABI-state and visible loop/carry conditions
   explicit. This is the first model-examined incoming path, not unconditional
@@ -2492,7 +2494,7 @@ Required feasibility failures stay current blockers rather than Future Work.
   raw line 999 / `0xbec`, with exact frozen SIL/type/provider joins only where
   supported. No new graph sweep, provider acquisition or image/cold release.
 - **Latest U02 semantic14 typed construction reviewed PASS:**
-  [review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic14-result/review.md)
+  review
   binds the exact SIL specialization at line 401963: unstacked
   `alloc_ref [tail_elems $Any * 2] $_ContiguousArrayStorage<Any>`, two typed Any
   stores (StaticString and the four-owner-identity tuple), print and release.
@@ -2762,8 +2764,8 @@ Required feasibility failures stay current blockers rather than Future Work.
   records 4,386.952708 seconds / 177,104,036 pre-terminal output bytes within four
   hours / 512 MiB; aggregate I/O remains uncertified. All producers are terminal.
 - **U03-17 tiled local source proof reviewed:**
-  [proof and exact target bindings](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-tiled-quiescence7-result/README.md)
-  and [independent review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-tiled-quiescence7-result/review.md)
+  proof and exact target bindings
+  and independent review
   close selected local writer-loan nesting, refusal/cancel/finish/deferred-return,
   idle-and-inactive-before-retirement, bounded emitter arithmetic and backing-last
   predicates under valid ownership and the synchronous writer contract. Ten current
@@ -2776,8 +2778,8 @@ Required feasibility failures stay current blockers rather than Future Work.
   accounting, no production/compiler/runtime/image changes; aggregate I/O remains
   uncertified and bounded projection mistakes are retained once.
 - **Retained linked-writer8 applicability reviewed PASS:**
-  [result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-linked-writer8-result/README.md)
-  and [independent Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-linked-writer8-result/review.md)
+  result
+  and independent Strong review
   bind the historical ELF's actual writer literal `0x2c8b5`, device API and SPIM
   synchronous implementation. Matching current C/provider sources support completion/
   timeout-abort and no-live-payload-consumer return under original valid-source/device
@@ -2821,7 +2823,7 @@ Required feasibility failures stay current blockers rather than Future Work.
 
 ### Current U03 coverage against the existing 18-class matrix
 
-This overlays the [original retained matrix](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-retained-safety2-result/README.md)
+This overlays the original retained matrix
 without rewriting its reviewed historical receipt. Fresh macOS Dynamic registered
 controls now complement retained macOS Static controls; reviewed Pi ARMv6 and nRF add
 compiler-boundary evidence only. Full application/unsafe-chain/runtime duties
@@ -3022,7 +3024,7 @@ proved. This is not missing installed-provider evidence.
 Historical windows retain their actual times: attempts 28–29 record 53.399361
 seconds and windows 13–14 record 102.534628 seconds. They do not create a lifetime
 clock-renewal gate or retroactively relabel individually reviewed findings. The
-[single proportional Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-remaining-batchA29-result/review.md)
+single proportional Strong review
 accepts the honest STOP/nonclosure records. Their original guards and failures
 remain unchanged.
 

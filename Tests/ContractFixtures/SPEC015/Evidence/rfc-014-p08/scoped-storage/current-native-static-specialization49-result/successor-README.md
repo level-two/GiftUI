@@ -1,6 +1,8 @@
+> Historical record: local supporting artifact references were removed during repository cleanup. This edited record does not establish current conformance.
+
 # Specialization49 successor result
 
-The completed root-launched full macOS Static producer passes442/442 statuses across414 commands. Its raw result is `.build/contracts/p08-counter-8vqb1sq8/result.json`, SHA256 `7c437a608b62458844a8467123f09d5f58f5ff72fc8c8bd63366fda18831de35`. The original4h run timed out; its receipts and `final-review.md` remain unchanged. The human-authorized, root-launched12h successor completed exit0 at23:32:37.363910UTC, within its deadline/output envelope.
+The completed root-launched full macOS Static producer passes442/442 statuses across414 commands. Its raw result is `.build/contracts/p08-counter-8vqb1sq8/result.json`, SHA256 `7c437a608b62458844a8467123f09d5f58f5ff72fc8c8bd63366fda18831de35`. The original4h run timed out; its receipts and `unavailable` remain unchanged. The human-authorized, root-launched12h successor completed exit0 at23:32:37.363910UTC, within its deadline/output envelope.
 
 **Transaction removal passes; charged-setup eligibility remains open.** Current full machine bytes/relocations exactly bind the focused proof. The two concrete state mangled-cell requests are removed from exerciseTransactions and its checked transaction specializations. But the SAME Static session constructor calls an opaque library initializer that still requests OwnedKeyState and InteractionState metadata. Exact baseline instructions show these setup requests predate the correction: they were not newly moved there. Required construction/first use remains charged.
 

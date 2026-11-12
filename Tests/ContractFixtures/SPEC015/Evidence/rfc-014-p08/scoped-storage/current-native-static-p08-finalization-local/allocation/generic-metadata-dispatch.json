@@ -16,10 +16,11 @@
     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-objdump",
     "--disassemble",
     "--no-show-raw-insn",
-    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-local/allocation/swift-0x193cc7af8.o"
+    "unavailable"
   ],
   "exit": 0,
   "stdout_bytes": 2933,
   "stdout_sha256": "4e3987603415c94a173469f7f9795045509ffc6e6fb5d6bd35c95bac4e6cfece",
-  "stderr": ""
+  "stderr": "",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

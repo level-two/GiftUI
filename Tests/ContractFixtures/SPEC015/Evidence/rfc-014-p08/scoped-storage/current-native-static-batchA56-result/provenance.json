@@ -93,12 +93,12 @@
       "sha256": "0b1b73168a16d20cfcb3dd283e52af12aa414cdfe57e1720601198d9649b126d"
     },
     "prior_paths": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/findings.json",
+      "path": "unavailable",
       "bytes": 6745,
       "sha256": "ae1e227e6f4b086815612268ff1251420228f65c794f4e47ebf2466903bced0e"
     },
     "prior_review": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-batchA52-result/final-review.md",
+      "path": "unavailable",
       "bytes": 10518,
       "sha256": "b934859f10847bba73369cab80cb152f0068e48b88943f4f2c6aa1bd496072ac"
     },
@@ -113,7 +113,7 @@
       "sha256": "ace2a09d22672332dc1ee2bc6a9e472c05124b13ea87235a1b927d2db1855ae1"
     },
     "provider_metadata": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata48-result/rows.json",
+      "path": "unavailable",
       "bytes": 18276,
       "sha256": "0f0ebe240689adaae3c23032ccb82561c33f1a984bfcfeb8c2727bfb67a591a6"
     },
@@ -378,5 +378,6 @@
     }
   ],
   "reuse": "Accepted current full constructor50 code/symbol/relocation transfer and original79/48/6 frozen controls; no original corpus replay. A51/A52 recordingFALSE not promoted. Sources explicitly SEMANTIC in this new session; provider rows reused only under exact stated premises. No runtime/source action. A55 failed receipt/ledger immutable; A56 corrects required invocation directory before auth. Only task-local path identity is configured; decoder/meter/pager logic unchanged.",
-  "omission_boundary": "Source pages6-8 audit/Dynamic storage and pages11-12,17-19,21-26 unrelated/reused source portions are not asserted newly examined. Accepted owner/retirement/audit lemmas retain exact premises; all captured machine bodies are fully paged. No omitted semantic expansion body is called infeasible."
+  "omission_boundary": "Source pages6-8 audit/Dynamic storage and pages11-12,17-19,21-26 unrelated/reused source portions are not asserted newly examined. Accepted owner/retirement/audit lemmas retain exact premises; all captured machine bodies are fully paged. No omitted semantic expansion body is called infeasible.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

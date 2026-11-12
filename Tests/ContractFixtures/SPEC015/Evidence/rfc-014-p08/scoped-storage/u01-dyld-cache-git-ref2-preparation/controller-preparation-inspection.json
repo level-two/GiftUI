@@ -20,7 +20,6 @@
   "markers_each": "1/1 consumed",
   "network_operations": 0,
   "preserved_dirty_and_cache_hashes": {
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": true,
     "Sources/SignalAnalyzerTargetHost/SignalAnalyzerCycleFailureNormalizer.swift": true,
     "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionTargetProjection.swift": true,
     "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": true,
@@ -41,5 +40,6 @@
   "status": "offline source preparation only; readiness NOT READY",
   "stdlib_and_bytecode_membership_pinned": true,
   "syntax_ast_parse": "PASS; no import or execution of controller",
-  "validation_limits": "Static syntax/import/preservation checks only; no behavioral controller tests or transport validation. Independent review required."
+  "validation_limits": "Static syntax/import/preservation checks only; no behavioral controller tests or transport validation. Independent review required.",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

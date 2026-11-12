@@ -295,6 +295,7 @@
     "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": "9e1687096f4b25c84d71e87e62895b56bdd760baeb87c28a57329a40a78532bb"
   },
   "untracked_pycache": [
-    "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc"
-  ]
+    "unavailable"
+  ],
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

@@ -57,37 +57,37 @@
       "role": "SEMANTIC current maintained source expressly authorized for A42; no A41 AUTH-only retroqualification. Producer accepted Entry40 full input binding."
     },
     "small_body_1": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-1.stdout",
+      "path": "unavailable",
       "bytes": 2991,
       "sha256": "93efb3eca2ed28b2d4dfab3494662db79b2bac4e8be4ced983ab2630091c69f4",
       "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
     },
     "small_body_2": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-2.stdout",
+      "path": "unavailable",
       "bytes": 3667,
       "sha256": "b2927877fe3526707e891857c827a6624d8f63d705c8ce3d50bb72d9813acb70",
       "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
     },
     "small_body_3": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-3.stdout",
+      "path": "unavailable",
       "bytes": 4114,
       "sha256": "9a2030d7c3d71e224217d4c69905fdaf3017364ed3540e3ea7ec09fa17f960b8",
       "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
     },
     "small_body_4": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-4.stdout",
+      "path": "unavailable",
       "bytes": 19136,
       "sha256": "7b385a446644add94fa0310e18c560a4d4ffa8ab50e83fbaa11eb688a874440b",
       "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
     },
     "small_body_5": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-5.stdout",
+      "path": "unavailable",
       "bytes": 51451,
       "sha256": "23669bd0762de95282d12638fa2499b9370e1f8a8e3439736f65b05a645bd9a2",
       "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
     },
     "small_body_6": {
-      "path": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA41-local/selected-6.stdout",
+      "path": "unavailable",
       "bytes": 359,
       "sha256": "0c77a6eff45a5eaedbcffc8ae94ddcf42eca28a09039a7ceb228b4ae66d0a15d",
       "role": "SEMANTIC complete current full object selected body; A41 capture has no qualified semantic conclusion, fresh examination required."
@@ -117,5 +117,6 @@
   "delivery_alias": {
     "path": "/tmp/g35",
     "target": "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-eligibility-batchA42-local/page.py"
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

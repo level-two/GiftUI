@@ -1,5 +1,6 @@
+# Historical excerpt: local file references removed; not intact certification evidence.
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-1.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -14,7 +15,7 @@ Disassembly of section __TEXT,__text:
 193cf0f80:     	stp	x16, x8, [x1]
 193cf0f84:     	ret
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-2.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -26,7 +27,7 @@ Disassembly of section __TEXT,__text:
 193cf0fc0:     	add	x0, x0, #0x8
 193cf0fc4:     	b	0x193ce7e10
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-3.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -5357,7 +5358,7 @@ Disassembly of section __TEXT,__text:
 193cfa9b8:     	bl	0x193cad054
 193cfa9bc:     	bl	0x193cad054
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-4.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -5473,7 +5474,7 @@ Disassembly of section __TEXT,__text:
 193d323b8:     	add	sp, sp, #0x50
 193d323bc:     	retab
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-5.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -5530,7 +5531,7 @@ Disassembly of section __TEXT,__text:
 193d30f00:     	mov	x0, x8
 193d30f04:     	ret
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-6.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -5981,7 +5982,7 @@ Disassembly of section __TEXT,__text:
 193d32bf4:     	brk	#0xc471
 193d32bf8:     	b	0x193d214e8
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-7.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -6168,7 +6169,7 @@ Disassembly of section __TEXT,__text:
 193d1e86c:     	mov	w1, #0x175              ; =373
 193d1e870:     	bl	0x193d1cb5c
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-8.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -6256,7 +6257,7 @@ Disassembly of section __TEXT,__text:
 193d32500:     	mov	w24, #0x1               ; =1
 193d32504:     	b	0x193d324cc <__text+0x10c>
 
-/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-metadata47-local/swift-9.o:	file format mach-o arm64
+unavailable:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 

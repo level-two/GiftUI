@@ -1,3 +1,5 @@
+> Historical record: local supporting artifact references were removed during repository cleanup. This edited record does not establish current conformance.
+
 # Complexity and efficiency assessment receipt — 2026-10-20
 
 **CLOSED — steps 1–3 assessment and grouped invocation repair complete.**
@@ -183,7 +185,7 @@ No undefined-session store was attempted. These are actual tool results, not
 an inference from absence of attribution output. No new reusable runner, script,
 framework abstraction or underlying counter-driver change was introduced.
 
-[Raw grouped controls and orchestration result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/invocation-output-capture-repair/controls.json)
+Raw grouped controls and orchestration result
 retain exact argv/cwd/startup/terminal identities and separate stdout/stderr.
 The child controls completed in 0.02750975 seconds; that is control execution time,
 not end-to-end maintenance duration or a workload speedup.
@@ -235,7 +237,7 @@ new allowance is one session, zero automatic repairs/retries, with these limits:
   session's recovered result.
 - To apply durable capture, permit three invocation-only maintenance files
   (`startup.json`, `stdout.txt`, `terminal.json`, with stderr directed into stdout.txt)
-  under a fresh `invocation-output-capture-repair/u02-new-session/` directory;
+  under a fresh `unavailable` directory;
   at most 64 KiB combined, charged within the same 8 MiB output and processing
   ceilings. They carry no additional semantic input or classification result.
   A pre-existing directory is preserved and stops launch. This explicit output
@@ -276,9 +278,9 @@ evidence interpretation. Under the existing [preflight boundary](../../../Tests/
 those reads were not session proof or a consumed launch. They were discarded as
 authentication evidence. The actual renewed launch began at **2026-10-20T16:27:36Z**.
 
-The [startup](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/invocation-output-capture-repair/u02-new-session/startup.json),
-[captured output](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/invocation-output-capture-repair/u02-new-session/stdout.txt)
-and [terminal receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/invocation-output-capture-repair/u02-new-session/terminal.json)
+The startup,
+captured output
+and terminal receipt
 record an invocation failure: the first long JSON inspection-code delivery used
 a PTY and encountered its canonical input-buffer limit, with BEL output and
 incomplete delivery. Interruption terminated the child. This direct invocation
@@ -331,7 +333,7 @@ outlined-label and excerpt-volume faults. The structural correction recognizes
 literal object labels without assuming a Swift prefix and checks all 1,892 sites /
 822 exact module/caller identities. It does not relax exact joins.
 
-[Attempt 6](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-attribution6-result/README.md)
+Attempt 6
 preserves the exact 56 groups / 1,892 site tuples, all unresolved. Independent
 Strong review accepted this as an authenticated **mechanical inventory**, rejecting
 semantic-completion claims: the script did not interpret enclosing control flow
@@ -340,7 +342,7 @@ evidence. Final semantic files total 4,938,481 bytes. The reported 450,770,941-b
 ledger omits explicit wrapper-forwarding/final-summary charges; the 2.437507625-second
 child time is not semantic-analysis time. Neither is an exact complete qualification.
 
-The subsequent [root semantic7 report](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-semantic7-result/README.md)
+The subsequent root semantic7 report
 reasons about the actual three root bodies. Only two selected external sites lie
 directly in those roots, both X20 `___stack_chk_fail`: Host relocation at raw
 P08CounterRuntime line 92842 / address 4beb4 and Route line 183910 / address 940e0.
@@ -379,7 +381,7 @@ implied by the retained join.
 
 ## U03 retained safety-obligation assessment
 
-The [18-class matrix](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-retained-safety2-result/README.md)
+The 18-class matrix
 maps the original callback/origin, loan, geometry/five-bank/model/root/semantic/
 value/control/activation-span, copy/Optional/escape/exclusivity, reentry/quiescence
 and retirement obligations to exact retained requirement and control identities.
@@ -427,7 +429,7 @@ parent orchestrator; no routine user proceed request is introduced.
 
 ## U03 local callback and retirement proof
 
-The [callback/retirement report](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-callback-retirement1-result/README.md)
+The callback/retirement report
 establishes a narrow conditional local argument, independently reviewed by Strong.
 Retained SIL 3977–3992 loads the stored callback/context/attachment/generation tuple.
 Inspected source constructs sinks with `reportObservableStateRoot` and the scoped
@@ -475,7 +477,7 @@ hardware or contract operation is implied by this retained/source inspection.
 
 ## U03 host retirement and library applicability
 
-The [host-retirement report](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-host-retirement2-result/README.md)
+The host-retirement report
 closes a concrete applicability gap from the previous package. Retained module
 selection pins the original 8,548,218-byte build result with SHA-256
 `6850a3f150938e2a755f2260c94c42d7f103b0110639599a27925ba377b8ecb8`.
@@ -518,7 +520,7 @@ and local predicates with these limits; U03/P08 and strict-cold remain STOP.
 
 ## U03 pipeline cancellation and retirement leaves
 
-The [pipeline leaf report](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-pipeline-retirement3-result/README.md)
+The pipeline leaf report
 follows actual synchronous cancellation/drain/admission and pointer cleanup to
 concrete endpoint/target and cleanup-oracle leaves. Independent Strong review
 confirmed admission clearing, pointer cancellation, synchronous native writer and
@@ -558,7 +560,7 @@ existing contract; a contract/scope choice goes to the parent/Astra advice route
 
 ## U03 concrete counter invariants and resolved leaf bindings
 
-The [counter-invariants report](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-counter-invariants4-result/README.md)
+The counter-invariants report
 and independent Strong review close the two previous local proof gaps without
 speculative code changes. If pipeline shutdown records a failure and marks ownership
 retired, withRoot's nonthrowing deferred finishStoppedActivation runs **inside**
@@ -599,7 +601,7 @@ U03/P08 and complete callee/cold/four-profile gates remain open.
 
 ## U02 allocation slice STOP and method decision
 
-The independent [allocation semantic8 receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-allocation-semantic8-result/README.md)
+The independent allocation semantic8 receipt
 selects the frozen X28 allocObject (50), X42 genericMetadata (20), X48 witnessTable
 (43) and X50 once (205) sites: 318 total. Fresh authentication was reported complete
 with 257,316,229 bytes charged and 145 MiB reserved for final checks. The attempt
@@ -673,7 +675,7 @@ The focused fault-control worker and its pending/unknown tool state remain untou
 
 ## Current P02/P04 producer PASS requalification
 
-The [current producer reconciliation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p02-current-producer-reconciliation1-result/README.md)
+The current producer reconciliation
 changes the actual native producer disposition without another build or source edit.
 Candidate2's exact historical diagnostics concern generated @inlinable transition
 methods returning package-only SignalTransition; current source already has the
@@ -702,7 +704,7 @@ accepted identities rather than rebuilding or rehashing the whole campaign.
 
 ## Current P07 producer PASS requalification
 
-The [P07 reconciliation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-p07-current-producer-reconciliation2-result/README.md)
+The P07 reconciliation
 qualifies the genuine isolated macOS Static correction PASS against current Cycle.swift
 and its exact Campaign11 core receipt. The executor matched 225 unique declared
 inputs and authenticated 258 unique artifact paths. Strong review authenticated
@@ -726,7 +728,7 @@ identities instead of rebuilding or treating archive qualification as fresh exec
 
 ## Current schema-4 and retained counter prerequisites
 
-The [combined Native prerequisite receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-native-final-prerequisite-reconciliation3-result/README.md)
+The combined Native prerequisite receipt
 joins schema-4 activation and retained counter observations to the accepted current
 P02/P04/P07 chain. Schema-4's 87 inputs and counter426's 201 inputs reduce to 264
 unique current paths, all matching. The executor authenticated 997 live artifacts
@@ -758,7 +760,7 @@ worker retains its file/compile ownership; it is not duplicated.
 
 ## U04 conditional diagnostic-window attribution
 
-The [window-attribution report](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u04-diagnostic-windows1-result/README.md)
+The window-attribution report
 and proportional Strong review establish exact conditional ordering: Driver.c tracks
 the whole selected entry, immediately repeats it for reuse and reports afterward.
 Observer begin/initialization emission precedes tracking; end emission/flush follows.
@@ -781,7 +783,7 @@ analysis, U02 continuation or runner is authorized by this attribution package.
 
 ## U04 executed provenance and current cost nontransfer
 
-The [executed-provenance receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u04-executed-provenance2-result/README.md)
+The executed-provenance receipt
 and proportional Strong review close the prior historical provenance gap. The pinned
 archive, run/result and prepared manifest authenticate four actual processes, all
 exit 0, with exact argv and image/observer/runtime controls. Sampled raw ordinary/
@@ -810,7 +812,7 @@ U02 stays STOP; pending fault-control ownership is unchanged.
 
 ## U03 concrete semantic, reader and dispatch bridges
 
-The [counter bridge receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-counter-bridges6-result/README.md)
+The counter bridge receipt
 and one proportional independent Strong review close the local helper/provenance
 conditions for actual macOS Static U03-07/14/15. Review checked original disjoint
 semantic-buffer loans, reader-count/revision/reference retirement, synchronous
@@ -1006,8 +1008,8 @@ callee-and-safety prerequisites; hardware and contract actions need separate aut
 
 ## U03 selected tiled quiescence and backing-release
 
-The [finite read-only proof](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-tiled-quiescence7-result/README.md)
-and its [single independent Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-tiled-quiescence7-result/review.md)
+The finite read-only proof
+and its single independent Strong review
 accept the selected local endpoint/session → pipeline retirement → backing-release
 ordering conditionally on valid private ownership and the synchronous writer contract.
 Ten current sources join actual qualified Pi/nRF module commands/objects. Nine
@@ -1025,7 +1027,7 @@ source/object and accepted synchronous-borrow contract binding within the existi
 linked-image duty. Local invocation order does not establish external conformance.
 No further helper crawl, source fix or component producer rerun is indicated.
 
-[Original accounting](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-tiled-quiescence7-result/accounting.json)
+Original accounting
 records `11:33:21.696663Z` → `11:42:11.491042Z`, 529.794379 seconds and 123,982 output
 bytes before accounting, within one 60-minute / 64 MiB coordination package.
 Projection/path/truncation mistakes are preserved once with corrected decisive
@@ -1043,8 +1045,8 @@ closes the actual selected provider/source join.
 
 ## Retained linked writer and current-source applicability
 
-The [linked-writer8 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-linked-writer8-result/README.md)
-and [single independent Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-linked-writer8-result/review.md)
+The linked-writer8 result
+and single independent Strong review
 close tiled7's unjoined provider description for the actual retained nRF writer and
 matching current source. The earlier “no local successor/external provider missing”
 conclusion was too broad: it reflected fresh cross-only receipts and did not consider
@@ -1078,7 +1080,7 @@ ELF and frozen graph. The next material resource input is an exact current selec
 linked counter image with its source/module/map/ledger/stack applicability under the
 existing R07 / HC-SO-003 / HC-RD-003 gate; this review authorizes no producer or cold run.
 
-[Accounting](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u03-linked-writer8-result/accounting.json)
+Accounting
 records 957.125295 seconds and 120,930 bytes before final accounting within one
 60-minute / 128 MiB coordination package; aggregate I/O/outer metadata is uncertified.
 No source, compiler, workload, image execution, network or hardware change occurred.
@@ -1099,8 +1101,8 @@ An unused candidate was corrected before any helper startup/authentication/evide
 read; its candidate-freeze metadata did not consume a semantic session. The actual
 helper was frozen at `8fc5a7cf39260f07e4d3606b4cdede5893998b2c6e200645c454640088cf70c2`.
 
-The [semantic9 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic9-result/README.md)
-and [single proportional Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic9-result/review.md)
+The semantic9 result
+and single proportional Strong review
 accept a constructor-body fact: conditional on valid entry and the outlined prologue
 returning, its prefix passes metadata/size/alignment arguments to `_swift_allocObject`
 without an intervening branch. Applicable allocator semantics, metadata interpretation
@@ -1149,8 +1151,8 @@ historical consumed attempt remains unchanged. Earlier UNAPPROVED/one-attempt ST
 passages describe historical dispositions, not current relaunch authority. No product,
 heap/analyzer, source/provider acquisition, hardware or downstream gate changes.
 
-The [semantic10 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic10-result/README.md)
-and [single Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic10-result/review.md)
+The semantic10 result
+and single Strong review
 verify a changed parser/control and actual relocation traversal across five loaded
 modules. They still do not establish the requested Static root-to-X28 chain. The
 concrete fault is an invented five-module, cheapest-first expansion: it loaded
@@ -1188,8 +1190,8 @@ method package proceeds under the persistent approval.
 
 ## Semantic11 guarded STOP and grouped correction
 
-The [semantic11 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic11-result/README.md)
-and [single proportional review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic11-result/review.md)
+The semantic11 result
+and single proportional review
 record a real method change: an exact two-edge rooted candidate reaches frozen
 X28 counterTrace allocator site `P08CounterRuntime:0x4c5d0` / line 93444. This is
 structural extraction only. Decisive instruction output could not fit the reserved
@@ -1218,8 +1220,8 @@ fault ownership and every image/current-cost/cold/resource prerequisite remain.
 
 ## Semantic12 STOP and one-session delivery reassessment
 
-The [semantic12 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic12-result/README.md)
-and [single proportional review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic12-result/review.md)
+The semantic12 result
+and single proportional review
 verify the STOP-accounting repair but no semantic proof: extracted 1, emitted 0,
 model-examined 0. The decisive packet needs 8,471 bytes; 1,811 prior counted bytes
 and 2,252 closeout reserve leave 5,937, short by 2,534. Auth/group/close/finish child
@@ -1248,8 +1250,8 @@ unchanged safety/resource gates; separately owned fault execution remains pendin
 
 ## Semantic13 conditional incoming path and next metadata proof
 
-The [semantic13 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic13-result/README.md)
-and [single substantive Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic13-result/review.md)
+The semantic13 result
+and single substantive Strong review
 accept an exact conditional Static-root → outlined wrapper → counterTrace → allocator
 call chain. Earlier callees must return with required live/ABI state, and the visible
 loop/carry conditions must hold. These joins are actual instruction/relocation calls,
@@ -1287,8 +1289,8 @@ current-image/current-cost/resource prerequisites remain unchanged.
 
 ## Semantic14 typed allocation and authorized local correction
 
-The [semantic14 result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic14-result/README.md)
-and [single substantive review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-callee-u02-root-x28-semantic14-result/review.md)
+The semantic14 result
+and single substantive review
 accept exact SIL/machine identity for the selected specialization. SIL line 401963
 constructs `_ContiguousArrayStorage<Any>` using `alloc_ref [tail_elems $Any * 2]`
 without `[stack]`, stores StaticString and the tuple of two ObservableModelOwnerIdentity
@@ -2492,7 +2494,7 @@ selection and retains index/reuse. No new iteration, failed-history rewrite or
 human gate from file scope is introduced.
 
 Final consolidated disposition: sources/producers STOP. The independent
-[direct-descriptor review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/direct-descriptors-review.md)
+direct-descriptor review
 confirms failed compiled removal despite matching P07 5,904 / schema4 428 / focused
 1,736,320 functional assertions and four strict normalized oracle passes. Three
 bank and eager Role/Body origins are removed; actual View cleanup acquisition
@@ -2533,7 +2535,7 @@ conditional allocator finding remain intact; coordinator only records this actua
 selection and retains eventual sole index, with no commit before acceptance.
 
 Terminal outcome of that exact candidate: **FAIL / STOP**, independently recorded
-in [bitwise-review.md](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/current-native-static-p08-finalization-result/allocation/bitwise-review.md).
+in bitwise-review.md.
 All four conformances compiled; P07 5,904 / host 428 / focused 1,736,320 assertions
 and four strict address-only oracle comparisons passed. Actual Static builder,
 destroy and reader-defer code remained byte-identical to the failed direct-descriptor

@@ -1081,7 +1081,7 @@
       "no_symlink": true
     },
     {
-      "path": "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc",
+      "path": "unavailable",
       "bytes": 44198,
       "sha256": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
       "set": "preservation",
@@ -1284,5 +1284,6 @@
     "markers_match": true,
     "cache_membership_match": true,
     "future_result_absent": true
-  }
+  },
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

@@ -2,9 +2,7 @@
   "A_decoder_commands_max": 3,
   "B_launch_enabled": false,
   "absent_paths_verified": 6,
-  "cache_file_sha256": {
-    "/Users/eugene/work/GiftUI/scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26"
-  },
+  "cache_file_sha256": {},
   "complete_loader_entries_verified": 8720,
   "current_collection_boundary": {
     "automatic_source_repairs": 0,
@@ -64,5 +62,6 @@
   },
   "source42_hashes_match": true,
   "strict_cold_eligible": false,
-  "verdict": "PASS_A_only_controller_and_environment_readiness"
+  "verdict": "PASS_A_only_controller_and_environment_readiness",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }

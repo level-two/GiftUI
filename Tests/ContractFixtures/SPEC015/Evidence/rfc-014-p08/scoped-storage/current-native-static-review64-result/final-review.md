@@ -1,8 +1,10 @@
+> Historical record: local supporting artifact references were removed during repository cleanup. This edited record does not establish current conformance.
+
 # Review64 independent substantive review
 
 Verdict: **ACCEPT the finite substantive evidence-only increment.** Review64 repairs the current Error data-applicability gap and proves a current mandatory Static Coordinator bridge/Role metadata dependency, with a concrete own-cache candidate and bounded Fixed/provider/layout consequences. **Complete callee/resource/P08 eligibility and an unconditional or observed allocation violation remain unproved.** No source remedy, exception, runtime action or automatic successor is authorized by this review.
 
-Reviewed the stable [findings](findings.json), [six residual classes](residuals.json), [preservation](preservation.json), [context bound](context-bound.json), [terminal](terminal.json), [scope](scope.json), and their exact selected raw citations. This is the one final independent review. No extraction, compiler/build/full run, runtime capture, helper repair or source/index change was performed by this reviewer.
+Reviewed the stable [findings](findings.json), [six residual classes](residuals.json), [preservation](preservation.json), [context bound](context-bound.json), terminal, [scope](scope.json), and their exact selected raw citations. This is the one final independent review. No extraction, compiler/build/full run, runtime capture, helper repair or source/index change was performed by this reviewer.
 
 ## Identity and current Error applicability
 

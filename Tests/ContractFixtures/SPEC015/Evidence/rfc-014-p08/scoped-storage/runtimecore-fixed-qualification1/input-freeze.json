@@ -284,7 +284,6 @@
   "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "55263448ef5674a2b2c906653a15075ae923d1c314c4ced198956a213d135243",
   "scripts/nrf52840/build.sh": "068a4b5344be51d31e914ebff5c4d3ea573cfcd5377203bf13d7bc1771204e72",
   "scripts/raspberry-pi/build.sh": "cd6845340f64bc18c3dbb8a8803eb8be7a7995f42e70af5ba5e7ee5ae72992ea",
-  "scripts/contracts/__pycache__/p08_layout_facts.cpython-314.pyc": "f478912ac60e24819aced20bf9d35a7080756e7d067ea362afe5311401991f26",
   "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
   "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9",
   "Sources/GiftUIMacros/ObservableStateHostMacro.swift": "e78ffc777fd3f3ea5dbc59befccc2fed294e0e9c002cbedd84c2a7efe8865a19",
@@ -567,5 +566,6 @@
   ".toolchains/p08-serialization-decoder/prefix/lib/libicuuc.78.dylib": "20062b2bd5de7f6ba8dbf053a68c04823d41992bd7783653dce2e574ec92b550",
   ".toolchains/p08-serialization-decoder/prefix/lib/libxml2.16.dylib": "c5cbf100af59b3ea4d38eaae10311140d1fc9534f849ef2ba5691ac7addbd2cb",
   ".toolchains/p08-serialization-decoder/prefix/lib/libzstd.1.5.7.dylib": "94dde7b52917a03b23b96d7ec895a814f246b3f16423bc9d51bf27a224af5625",
-  ".toolchains/p08-serialization-decoder/prefix/lib/libicuuc.78.3.dylib": "20062b2bd5de7f6ba8dbf053a68c04823d41992bd7783653dce2e574ec92b550"
+  ".toolchains/p08-serialization-decoder/prefix/lib/libicuuc.78.3.dylib": "20062b2bd5de7f6ba8dbf053a68c04823d41992bd7783653dce2e574ec92b550",
+  "historical_excerpt_notice": "Local artifact references removed during repository cleanup; this edited record is not intact certification evidence."
 }
