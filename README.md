@@ -77,6 +77,39 @@ Generated SwiftPM state remains under `.build/`. If a restricted environment
 cannot use the user-level compiler cache, point `CLANG_MODULE_CACHE_PATH` and
 `SWIFTPM_MODULECACHE_OVERRIDE` at task-specific directories under `/tmp`.
 
+## Public interface browser
+
+Run the local module reference from the repository root:
+
+```sh
+python3 scripts/api-browser.py --open
+```
+
+Open [localhost:8765](http://127.0.0.1:8765) to select a module and browse its
+types, protocols, functions, properties, initializers, extensions, and macros.
+Search modules or declarations, filter by kind, and expand member groups.
+Enable **Include package API** to inspect the cross-module interfaces used by
+the internal GiftUI layers. Public/open declarations are shown by default.
+Refresh sources after edits; the server re-extracts changed source files.
+
+The browser uses Python 3.9+ and the SwiftParser/SwiftSyntax libraries bundled
+with the selected Swift toolchain. It needs no package build, dependency
+download, or third-party web assets. Set `GIFTUI_SWIFT_EXECUTABLE` to use a
+different installed Swift executable without changing global toolchain selection.
+The helper and compiler cache stay under `.build/api-browser/`.
+
+This is a source interface outline, not a compiler-resolved API/ABI report.
+It preserves conditional branches and documentation comments but does not
+expand inherited, synthesized, or macro-generated API, resolve inferred types,
+or validate public conformances. Modules are discovered under root `Sources/`;
+test/adapter fixture modules and literal target `exclude` paths are excluded.
+It does not document the separate
+SwiftUI reference package or cross-platform compiled variants.
+
+Use `--port <number>` to change the port, `--check` to validate extraction
+without serving, and Ctrl+C to stop. The server binds only to `127.0.0.1`.
+Focused tooling checks: `python3 scripts/api-browser/test_browser.py`.
+
 ## Signal Analyzer reference application
 
 The GiftUI application shares its domain, data, and presentation under

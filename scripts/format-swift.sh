@@ -50,7 +50,7 @@ while IFS= read -r path; do
     Tests/ContractFixtures/*/Evidence/*) ;;
     Package.swift | Sources/*.swift | Tests/*Tests/*.swift | \
       demo/SignalAnalyzer/Package.swift | demo/SignalAnalyzer/Sources/*.swift | \
-      demo/SignalAnalyzer/Tests/*.swift | scripts/raspberry-pi/probe/Package.swift | \
+      demo/SignalAnalyzer/Tests/*.swift | scripts/api-browser/*.swift | scripts/raspberry-pi/probe/Package.swift | \
       scripts/raspberry-pi/probe/Sources/*.swift)
       case "${path}" in
         */Generated/* | */PiCompactGenerated/* | Sources/GiftUIFailureDiagnostics/GiftUIFixedDiagnosticBuffer.swift) ;;

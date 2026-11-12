@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>GiftUI · Public interfaces</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to interface</a>
+  <aside class="sidebar" aria-label="Modules">
+    <header class="brand"><span class="brand-mark" aria-hidden="true">G</span><div><strong>GiftUI</strong><span>INTERFACE EXPLORER</span></div></header>
+    <label class="search-label" for="module-search">Find a module</label>
+    <input id="module-search" type="search" placeholder="Filter modules…" autocomplete="off">
+    <div class="nav-heading"><span>MODULES</span><span id="module-count"></span></div>
+    <nav id="modules" aria-label="Available modules"></nav>
+    <p class="sidebar-foot">Live from your checkout<br><span>Swift source interfaces</span></p>
+  </aside>
+  <main id="content" tabindex="-1">
+    <header class="topbar"><span>GiftUI <span class="slash">/</span> Public interfaces</span><button id="refresh" type="button">Refresh sources</button></header>
+    <div class="workspace">
+      <p class="eyebrow">MODULE REFERENCE</p>
+      <h1 id="module-title">Public interfaces</h1>
+      <p id="module-meta" class="muted">Loading your modules…</p>
+      <p class="scope-note">Source declarations, including conditional branches. Synthesized, inherited, and macro-generated members are not expanded.</p>
+      <section id="dependencies" aria-label="Imported modules"></section>
+      <div class="interface-tools">
+        <label class="search-label" for="symbol-search">Find a declaration</label>
+        <input id="symbol-search" type="search" placeholder="Search types, members, signatures…" autocomplete="off">
+        <label class="search-label" for="kind-filter">Declaration kind</label>
+        <select id="kind-filter"><option value="">All declarations</option><option value="type">Types &amp; protocols</option><option value="extension">Extensions</option><option value="func">Functions</option><option value="macro">Macros</option></select>
+        <label class="package-option"><input id="include-package" type="checkbox"> Include package API</label>
+      </div>
+      <p id="status" role="status" aria-live="polite"></p>
+      <div id="interfaces"></div>
+    </div>
+  </main>
+</body>
+</html>
