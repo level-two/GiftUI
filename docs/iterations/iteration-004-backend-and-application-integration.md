@@ -256,6 +256,29 @@ RFC-016 authoring work is scheduled in iteration 5; use existing approved
 model/observation contracts for iteration-4 integration. No resource or execution
 allowance is reset by the transfer.
 
+The [2026-10-20 improvement sequence](iteration-003-review/complexity-and-efficiency-checkpoint.md)
+assigns step 7 to I4-01–04/I4-07 and step 8's post-extraction comparison to
+I4-04. This is the maintainer-requested delivery breakdown of existing outcomes,
+not a new criterion or activation of this approved iteration. Use FW-038 during
+RFC-013 design, then realize consolidation through approved owner plans:
+
+- Establish one supported external counter/recording-adapter assembly and build
+  path; put reusable framework behavior with its owner and application behavior
+  in the consumer.
+- Map existing checks to owner tests, compiler-negative/lifetime fixtures and
+  cross-module/target integration checks. Record justified duplicates and obsolete
+  investigations before deletion; retain applicable positive twins and causes.
+- Retire redundant counter orchestration, copied analyzer setup and handwritten
+  framework source lists only after supported builds and equivalent coverage pass.
+  Reuse P08 evidence where qualified; finish the exact I4-07 residuals.
+- Compare final memory/stack/heap/flash, timing/acquisition and maintained build
+  paths with the iteration-3 handoff. Measure focused/full cold/warm validation
+  times where comparable; document unavailable measurements and trade-offs.
+
+These outputs evidence I4-AC-001–005/008; they do not select a new public API,
+universal owner abstraction, compiler upgrade or weaker proof. The immediate
+P08 runner-reliability correction is distinct from this broader consolidation.
+
 I4-09 is transferred to iteration 5; no tuple-buffer assessment or replacement
 is required for iteration-4 extraction.
 
@@ -503,11 +526,12 @@ At closure, disposition I4-AC-001–009/012/013 and transferred IT-AC-004–010 
 current evidence. Record I4-AC-010/011 as transferred to I5-AC-001/002, not met.
 Preserve remaining work and triggers, and obtain a human closure decision. Do not infer delivery from transferred scope or passed studies.
 
-The [FW-038 consolidation candidate](../future-work/fw-038-scoped-contract-validation-cost.md)
-records the opportunity to remove parallel build/test infrastructure while
-preserving meaningful coverage. Revision 12 limits its iteration-4 delivery to
-integration dependencies; unrelated optimization remains captured in FW-038.
-Applicable P08 safety and proof obligations remain in force.
+The [FW-038 consolidation record](../future-work/fw-038-scoped-contract-validation-cost.md)
+preserves the 2026-10-15 observation and 2026-10-20 request to place this work in
+the plans. Its assessment and coverage-preserving consolidation now have the
+explicit delivery breakdown above under I4-01–04/I4-07. Exact package/access/test
+design still follows RFC-013 and owner contract gates. Revision 12 governs integration scope;
+applicable P08 safety and proof obligations remain in force.
 
 ## Deferred and Follow-up Work
 

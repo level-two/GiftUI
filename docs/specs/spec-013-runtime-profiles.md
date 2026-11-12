@@ -1347,6 +1347,7 @@ profiles remain in their existing lifecycle or deferred tracks.
 - [Common Coordinator and Cleanup Implementation Design](../implementation-designs/spec-013-common-coordinator-and-cleanup.md)
 - [Storage Audit and Overlay Ownership Implementation Design](../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md)
 - [Static Generation and Capture Lifetime Implementation Design](../implementation-designs/spec-013-static-generation-and-capture-lifetime.md)
+- [Qualified Static Drawing Storage Implementation Design](../implementation-designs/spec-013-qualified-drawing-storage.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)

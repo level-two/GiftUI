@@ -6,10 +6,11 @@ status: captured
 authors:
   - codex
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-20
 source:
   - ADR-040
   - docs/implementation-designs/spec-015-p08-prepared-lending.md
+  - docs/iterations/iteration-003-review/complexity-and-efficiency-checkpoint.md
 related_future_work:
   - FW-038
 related_explorations: []
@@ -54,6 +55,15 @@ and retain the proposal's full preservation and validation requirements first.
 ## Disposition
 
 Captured, not selected for current P08 execution. No source candidate was run.
+
+The [2026-10-20 improvement sequence](../iterations/iteration-003-review/complexity-and-efficiency-checkpoint.md)
+keeps this as a candidate for step 4 if its preceding feasibility decision finds
+the mechanism necessary and explicitly selects it, or for later construction
+cost review during FW-038 consolidation. Planning this conditional route does
+not overturn the ADR-040 decision or grant a source attempt. Define the expected
+complete-path benefit and regression checks before execution; the old design's
+historical stack/RAM limits are not the current ADR-040 counter configuration.
+No saving or analyzer fit is established by the proposal.
 
 ## References
 

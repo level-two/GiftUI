@@ -16,6 +16,7 @@ FW-034 is reserved in the [preparation archive](../iterations/iteration-003-revi
 
 - [FW-040: Compiler-Specialized View Derivation](fw-040-compiler-specialized-view-derivation.md): candidate investigation for a future performance-focused iteration after runtime-derivation conformance, or earlier on a measured resource problem.
 - [FW-042: InlineArray and Span for Fixed Buffer Storage](fw-042-inline-array-and-span-storage-assessment.md): ITERATION-005 I5-01 assessment of tuple-buffer replacement with precise allocation, ownership and lifetime evidence; adoption remains separately gated.
+- [FW-043: Assess Bounded Counter Trace Writing for Linux Dynamic](fw-043-linux-dynamic-bounded-counter-trace.md): candidate resource-proof optimization; deferred until an exact current Pi stdout oracle or supported local ARMv6 runner exists.
 
 - [FW-046: Non-integration Scoped Storage Residuals](fw-046-non-integration-scoped-storage-residuals.md): preserve RFC-015 residuals excluded by evidenced iteration-4 dependency classification; no full conformance or iteration-5 assignment implied.
 

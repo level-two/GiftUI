@@ -12,6 +12,7 @@ source:
   - SPEC-015
   - RFC-013
   - docs/iterations/iteration-004-backend-and-application-integration.md
+  - docs/iterations/iteration-003-review/complexity-and-efficiency-checkpoint.md
 related_future_work:
   - FW-037
   - FW-039
@@ -53,6 +54,42 @@ probes) under `Tests/ContractFixtures/SPEC015/RuntimeDerived`. The Python driver
 builds these outside the root SwiftPM target graph; firmware consumes a derived
 CMake recipe. This reuses framework sources but creates separate application and
 build orchestration responsibilities.
+
+On 2026-10-21, the fresh complete macOS Dynamic counter producer executed 412
+commands in 7,818.613175 seconds (2h10m18.6s), returning exit 0 with 426 passed
+records / 1,736,244 assertions / zero failures. Its [original result](../../.build/contracts/p08-counter-suokgytk/result.json)
+and [invocation/verification](../../.build/contracts/p08-macos-dynamic-counter-continuation2/verification.json)
+retain exact profile/compiler/dependency identities and the one-line Bash launcher
+repair lineage. This is an observed full-corpus wall time on one uncontrolled run,
+not a cold/warm benchmark or demonstrated speedup. Required tests were retained;
+harness optimization remains deferred to the existing iteration-4 investigation.
+
+The subsequent Pi ARMv6 Dynamic counter cross-compilation executed 409 commands
+in 7,551.159423 seconds (2h05m51.2s), exit 0, without target execution. Its
+[original result](../../.build/raspberry-pi/contracts/p08-counter-if5kqahs/result.json)
+and [package handback](../../.build/raspberry-pi/contracts/p08-pi-armv6-profile-continuation1/package-terminal.json)
+retain exact compiler/profile/ABI and source-recipe identities. This separate
+uncontrolled observation adds no runtime-performance comparison or demonstrated
+speedup; required object-emission positive/negative controls were preserved.
+
+The nRF Embedded Static counter subsequently executed 227 commands in
+3,941.184713 seconds (1h05m41.2s), exit 0, retaining 101 scoped positive/negative
+pairs under its applicable Embedded corpus. Its [original result](../../.build/nrf52840/contracts/p08-counter-gqaearak/result.json)
+and [reviewed package](../../.build/nrf52840/contracts/p08-nrf-embedded-profile-continuation1/review.md)
+retain the exact compiler/ABI/source-recipe boundary. This is another uncontrolled
+cross-compilation cost observation, with a different applicable corpus; no runtime
+performance or cross-profile speedup comparison follows.
+
+The 2026-11-06 nRF resume in the [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#current-p08-source-validation--2026-11-06)
+exposed two costs of exact reuse. The collector copies predecessor outputs into
+the new directory before computing identities from existing Swift and JSON
+command arguments. A fresh command's outputs can therefore become additional
+identity entries on resume. Three generated Swift files caused the first
+resume to reject `counter-lowering`. The same mechanism affects the two
+`so07-layout-facts` JSON outputs. Also, the available `so06-carrier` selector
+reruns 104 nRF carrier checks to repair the 52 Static retired-carrier rows.
+P08 uses the existing family selectors and retains all identity and diagnostic
+checks. The narrower reuse opportunity is deferred.
 
 ## Immediate process adoption — 2026-10-31
 
@@ -132,9 +169,13 @@ boundaries and changes to required evidence remain upstream review decisions.
 
 ## Why Infrastructure Consolidation Remains Deferred
 
-The current P08 task must establish the existing lifetime/ownership proof first.
+Broad application/test/package consolidation waits for the iteration-4 entry and
+contract gates. The current P08 task must establish the existing lifetime/ownership proof first.
 Changing its driver structure or accepted evidence during a failed-source repair
 would complicate attribution. Validation cost does not waive any required check.
+The [2026-10-20 checkpoint](../iterations/iteration-003-review/complexity-and-efficiency-checkpoint.md)
+separately places narrow startup/diagnostic/result reliability preparation before
+the next authorized P08 run. It is not a prerequisite to redesign the whole runner.
 
 ## Potential Value
 
@@ -154,17 +195,26 @@ No experiment or implementation is authorized by this capture.
 Revisit after the P08 correctness boundary is recorded and before expanding the
 scoped compiler matrix or scheduling repeated full-profile validation. Any proposed
 optimization must first define evidence equivalence and a bounded measurement.
+Once P08 exits with a complete receipt and a stable source freeze, revisit
+this resume case when I4-04 prepares its comparable focused and full runs.
+Use the retained nRF refusal and carrier selection as reproduction inputs.
+Assess explicit command input/output roles and dependency-aware pair selection
+while preserving exact input identity, tamper rejection, and positive-twin
+diagnostic coverage.
 
 ## Disposition
 
-Captured for remaining infrastructure consolidation. The 2026-10-31 execution
-policy is adopted in iteration 3 without a new criterion or lifecycle promotion.
-The 2026-10-15 request is
-recorded as a consolidation candidate for the existing ITERATION-004 separation
-work. Revisit when RFC-013 package/access and supported build design resumes,
-before maintaining a second counter path through extraction. This capture does
-not amend approved iteration revision 4, authorize immediate P08 deletion, or
-waive its open safety/fit obligations.
+Captured for remaining infrastructure consolidation; the 2026-10-31 execution
+policy is adopted in iteration 3 as recorded above, without a new criterion
+or independent lifecycle promotion. Eugene's
+2026-10-20 instruction to put the improvement steps in the plans schedules this
+assessment and coverage-preserving consolidation within existing ITERATION-004
+I4-01–04/I4-07, with final comparison under I4-04. The
+[iteration delivery breakdown](../iterations/iteration-004-backend-and-application-integration.md#delivery-order-and-gates)
+owns sequencing; this capture preserves rationale and candidate design.
+Reconcile every retained test and supported build path during RFC-013 design
+before maintaining a second counter path through extraction. Adoption needs the
+applicable contracts; no immediate P08 deletion or safety/fit waiver follows.
 
 ## References
 

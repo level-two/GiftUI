@@ -121,3 +121,12 @@ across all four configurations, including applicable target/provider evidence,
 before its adoption and dependent analyzer adoption. Counter feasibility does not
 prove analyzer fit or cadence. Preserve independent review and connected-operation
 authorization requirements. I4 closure must disposition every transferred obligation.
+
+
+## Assessment result
+
+The [bounded freeze assessment](p08-freeze-assessment/assessment.md) verifies four
+retained receipt/input/artifact sets without rerunning them and classifies shared
+safety, composition certification and acceptance-accounting residuals. Iteration-3
+closure is NOT READY for its enumerated retained blockers. Independent acceptance
+of that overall assessment remains pending; no P08 PASS or closure is recorded.

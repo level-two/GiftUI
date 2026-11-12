@@ -25,6 +25,15 @@ This is not a Spec exception or PASS: preserve affected criterion/owner task sta
 P08 FROZEN / UNMET, independent overall review and all other validation obligations.
 
 
+## Bounded freeze assessment — 2026-11-08
+
+The [iteration-wide assessment](../iterations/iteration-003-review/p08-freeze-assessment/assessment.md)
+records verified retained collection identities, shared-safety versus transferred
+certification gaps, nine SO criterion dispositions and the exact closure blockers.
+P08 stays FROZEN / UNMET; overall independent freeze acceptance and retained
+P10/P11/P12/ME-09 closure work remain pending. No full conformance is inferred.
+
+
 ## P08 freeze allocation — 2026-11-08
 
 The [approved P08 freeze](../iterations/iteration-003-review/p08-freeze-and-certification-transfer.md)

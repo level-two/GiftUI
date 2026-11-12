@@ -185,6 +185,45 @@ stack/IRQ/RAM/flash/rooted-allocation portion; do not rebuild it for unrelated d
 
 ## 4. Freeze the P08 exit packet and exact residual handoff
 
+### Current disposition — 2026-11-07
+
+The current-source reconciliation and nine-row evidence matrix are recorded in
+the [integrated SO-09 gap disposition](../progress.md#integrated-so-09-gap-disposition--2026-11-07).
+The [bounded SO-09 preparation review](p08-so09-preparation-review-2026-11-07.md)
+is a historical snapshot; its recommendation to defer substantial Pi analysis
+is superseded by the user's current instruction to continue blocker resolution
+and defer only long campaigns. The active work proceeds through focused current-
+image analysis and bounded launch/accounting probes.
+That record reconciles SO-01's 176 indexed paths, the current physical inventory,
+four complete route receipts, target-link evidence, focused Native owner evidence,
+and the P08-applicable criterion rows. This section is the bounded exit checklist;
+it does not replace the detailed row evidence or constitute the independent SO-09
+exit review.
+
+The present status remains **P08/R07/T8.1 UNMET**. All four registered route
+collections are complete for their recorded checks, and both target links are
+verified, but their applicability remains bounded: Pi and nRF are cross-compile/
+link evidence, while Native runtime evidence does not establish target runtime
+behavior. The accepted I4-07/P09 analyzer factory/owned-return residual remains
+separate. SPEC-011/013/015 remain `implementing`; no Specification transition or
+iteration closure follows.
+
+Remaining P08 evidence owners and decision boundaries:
+
+| Work | Current disposition | Required next result |
+| --- | --- | --- |
+| Native Static finite NoHeap and charged-entry headroom | Scoped independent review PASS for the unchanged exact image and joined source/provider predicates; launch observes 8,340,976 B available vs 2,936,768 B required and 1,734,308 assertions / zero failures. All 18 checked providers compile and controls pass. The compiler annotation check remains FAIL at `CounterSemanticCodec` lifetime/deallocation; MP-09 treats it as a rejected promise, not observed allocation, and the linked finite proof is the NoHeap basis. Debugger authentication remains deferred. | Preserve the exact finite-image/launch predicates and rejected compiler result in the record; no annotation/source workaround or broader process claim |
+| Pi ARMv6 Dynamic mixed A32/Thumb call stack, provider closure, and physical/launch accounting | The earlier symbol-selected graph omitted anonymous/interleaved instructions; full address-indexed audit found 4,166 missing transfers in the original392 spans. The new direct fixedpoint covers 1,355 exact function/map ranges /204,339 A32 records: 9,200 direct calls, 23,695 direct branches, 310 computed-PC records, 340 indirect calls, seven indirect tails and 3,092 PLT/provider records, with zero direct unresolved edges and zero selected-range A32 coverage gaps. The prior40-PC/107-indirect counts and 210,463B frame sum are superseded. The 310 computed-PC targets and 347 indirect destinations remain under analysis. The first SP dataflow draft has 1,083 local CFG candidates, 187 unresolved computed-successor occurrences, 144 terminal/fallthrough frontiers, and four VWT-sized SP writes; `ObservableStateRootStorage<Identity>` is one finite Dynamic specialization under current source, but its Optional metadata size/path join remains open. The 200,815B `scoped-storage` candidate still omits computed successors. Previously reviewed 16 data-table sets (692 entries) and two division-dispatch PCs remain local proofs only. Two read-only SSH queries failed DNS before any remote command; no launch/deployment occurred. The identity-only adapter is prepared and locally checked; Valgrind Massif ARM/Linux support starts at ARMv7 and cannot measure a Pi1 ARMv6 route stack. | Review full-ELF computed/indirect target closure, root stack/SP dataflow and finite VWT-sized reservations, then determine feasible mixed-mode stack/provider/resource bounds. Exact loaded providers, process limits/headroom, complete stack/allocator coverage and valid ARMv6 stack measurement remain unmet. No deployment or hardware action. |
+| Dynamic allocator-bookkeeping report and matched costs | Focused r3 cold/reuse entries each produced 1,734,943 assertions; external replay 381,673 events / 38,104 groups / 255 live. It reports max default-zone capacity 24 MiB and max `size_in_use` 103,968 B, plus separately unioned type-4 ADMIN (596,112 B) and type-2 PTR_REGION extents; intervals are not added to capacity or assigned to profile objects. This satisfies the scoped separate-reporting clause; exact private-byte totals and fit are not claimed. Sampler perturbed the public ledger by +72 requested B and +1 live 64 B versus baseline. The caller-specific `_swift_allocError` edge is source-closed for the finite Counter Canvas callback; no-frame data is corroborating only. Matched cost windows and bounded structural codegen scopes are retained; timing is deferred. | Keep process/default-zone snapshots, typed extents and selected-profile matched costs separate; maintain the explicit private-byte/fit residual. Direct-zone bypass remains a synthetic negative control only; do not broaden into a generic Swift runtime census. |
+| Independent SO-09 exit review | Not complete | Review after current Native/Pi/Dynamic result packets are linked; resolve each of the nine rows or preserve exact remaining blockers |
+
+No repeated route collection or broad repository suite is part of this
+reconciliation. The focused measurements and read-only probes named above are
+authorized current work; they do not alter the application image or imply that
+debugger authentication, deployment, flashing, or full P08 acceptance is
+authorized. New evidence may close only the exact row it directly supports.
+Historical failures, incomplete receipts, and prior budgets remain unchanged.
+
 Reconcile the existing SO-01 D01–D34 caller table/index against current adopted
 symbols and hashes, with an actual per-change necessity/evidence/disposition.
 Carry the final physical inventory, initialized-prefix/backing-last/Optional

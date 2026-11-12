@@ -68,6 +68,7 @@ related_specs:
 related_future_work:
   - FW-038
   - FW-009
+  - FW-043
   - FW-035
   - FW-022
   - FW-030
@@ -96,7 +97,6 @@ target_milestone: MVP
 > The amendment section controls conflicts with the retained baseline realization.
 > Earlier completed evidence applies to `53740a73`, not to this new implementation.
 
-**Current disposition — 2026-10-03:** The maintainer explicitly directed
 > **macOS deployment minimum approved — 2026-11-09.** Eugene directed: “Move
 > the package minimum to macOS 26 and align the governing docs and checks.” The
 > package minimum is macOS 26.0 for both macOS profiles. macOS 15 deployment
@@ -104,6 +104,7 @@ target_milestone: MVP
 > This platform-minimum decision does not change the approved Swift 6.4 project-
 > local compiler baseline or close any P08/P10/iteration gate.
 
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
 [Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
 as `implemented` with approved exceptions for measured timing failures and
@@ -441,7 +442,6 @@ mechanics into portable Presentation or claim connected-hardware conformance.
 
 ## Scope
 
-This Specification covers:
 ### Supported macOS deployment minimum
 
 The macOS Dynamic and Static package configurations require macOS 26.0 or later.
@@ -450,6 +450,7 @@ the same 26.0 minimum; the host SDK/check environment requires Xcode 26 or later
 No macOS 15 compatibility implementation is required.
 Raspberry Pi ARMv6 and nRF52840 targets do not inherit this desktop minimum.
 
+This Specification covers:
 
 - target-host configuration for macOS dynamic, macOS static, Raspberry Pi 1 /
   Linux dynamic, and nRF52840 static;
@@ -1809,6 +1810,13 @@ fact-burst, failure normalization, deterministic mock trace, diagnostic, and
 exact host-fixture alignment.
 
 ## Deferred and Follow-up Work
+
+[FW-043](../future-work/fw-043-linux-dynamic-bounded-counter-trace.md) captures
+a possible Linux Dynamic bounded trace writer. It remains deferred because no
+exact current Pi stdout oracle or local ARMv6 execution path is available; the
+P08 linked proof is retained as frozen, unmet evidence under the
+[approved freeze and certification transfer](../iterations/iteration-003-review/p08-freeze-and-certification-transfer.md).
+This capture does not authorize restarting old-composition certification.
 
 [FW-038](../future-work/fw-038-scoped-contract-validation-cost.md) captures the
 repeated full-source cost of P08 scoped compiler validation. It adds no current

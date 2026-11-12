@@ -15,6 +15,8 @@ related_future_work:
   - FW-032
   - FW-035
   - FW-038
+  - FW-039
+  - FW-040
 approval: "Revision 8: Eugene approved iteration-3 closeout with named P08 S1–S3 gaps unmet and affected iteration-4 reuse blocked on 2026-11-08; docs/iterations/iteration-003-review/p08-unmet-safety-closeout-disposition.md. Revision 7: Eugene approved freezing P08 without PASS and transferring composition-specific certification on 2026-11-08; docs/iterations/iteration-003-review/p08-freeze-and-certification-transfer.md. Revision 6: Eugene approved the analyzer-specific P09–P12 transfer on 2026-11-08; exact instruction and gates: docs/iterations/iteration-003-review/analyzer-delivery-transfer.md. Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
 closure: >-
   Closed by explicit human approval on 2026-11-11 under
@@ -490,10 +492,13 @@ existing task; preserve the current rules, acceptance and delivery sequence.
   required by this iteration or a governing contract remains current work.
 - FW-035 retains generated-graph/interchangeable-frontend questions outside scope.
 - FW-016/FW-030 and EXP-002 feed accepted PROPOSAL-007 and iteration-4 delivery.
-
 - [FW-038](../future-work/fw-038-scoped-contract-validation-cost.md) feeds
   iteration-4 consolidation; the mandatory batch workflow applies immediately
   within the current iteration using existing runners and unchanged coverage.
+- [FW-039](../future-work/fw-039-counter-prepared-lending.md) and
+  [FW-040](../future-work/fw-040-compiler-specialized-view-derivation.md) remain
+  conditional on measured cost and explicit selection through applicable gates.
+  A required resource/correctness failure cannot be deferred to either capture.
 
 ## Revision and Approval History
 

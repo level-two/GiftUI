@@ -9,6 +9,7 @@ created: 2026-10-11
 updated: 2026-11-08
 source:
   - RFC-014
+  - docs/iterations/iteration-003-review/complexity-and-efficiency-checkpoint.md
 related_future_work: []
 related_explorations: []
 related_spikes: []
@@ -31,6 +32,17 @@ justifies comparison. Compiler adoption still needs separate approval.
 
 This follows the approved [revision 12](../iterations/iteration-004-backend-and-application-integration.md);
 earlier broader scheduling statements below are historical. Capture status is unchanged.
+
+## Additional baseline evidence — 2026-11-02
+
+The [P08 focused repair receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#latest-focused-batch-and-maintained-source-validation)
+preserves Swift6.4 warnings about internal setters used by serialized/Embedded
+functions, plus rejected broad CMO attempts (serialization-output termination
+and a duplicate String helper link). Revisit these diagnostics in I4-05 before
+choosing a newer compiler/language mode; no compiler upgrade or broad visibility
+migration is authorized by their capture. The current pinned builds pass.
+The two codec allocation-effect failures remain current P08 obligations and
+are not deferred into this item.
 
 ## Revisit — 2026-10-12
 

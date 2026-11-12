@@ -51,6 +51,14 @@ budgets or permission to grow independent investigations.
 
 ## Current execution policy — 2026-10-31
 
+The [2 November qualification continuation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#qualification-continuation--2026-11-02)
+advances the unchanged tested source batch: prior 103 table-base flows,36 forwarding
+edges and the scoped203-token private once path pass. Capture/index and the
+expanded shared-host/provider proof remain open; both codec effect checks FAIL.
+The complete current known issue list precedes further code correction. No cold
+collection, whole P08 exit or iteration closure follows.
+
+
 Apply the iteration's [mandatory memory rules MR-01–08](../iteration-003-dev-ux-improvement.md#mandatory-memory-ruleset)
 and [batch execution workflow](../iteration-003-dev-ux-improvement.md#mandatory-batch-execution-workflow).
 Inventory a coherent mechanism group, qualify its pattern using applicable
@@ -63,6 +71,16 @@ single current technical disposition, next package and actual remaining allowanc
 Its preparation steps 1–3 are closed; do not replay them. P08 remains open;
 P09–P12 and all owner acceptance/dependency gates remain. Historical checkpoints
 below establish provenance, not new run budgets or per-helper permission gates.
+
+The 2 November bounded collection and focused repair are recorded in the
+[latest receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#latest-focused-batch-and-maintained-source-validation).
+The subsequent five-file semantic-lender/scheduler batch completes32 focused
+validation jobs with no unexpected failures, and independent source review passes.
+Both codec allocation-effect checks still FAIL. Q01–Q05 machine/provider proof,
+whole P08 independent exit and existing cold/resource/iteration gates remain open.
+Necessary execution/evidence resource additions are authorized autonomously by
+the maintainer; application budgets and acceptance criteria are unchanged.
+Compiler future-mode warnings feed [FW-036](../../future-work/fw-036-swift-compiler-upgrade-assessment.md).
 
 ## RFC-014 implementation authorization — historical 2026-10-10
 
@@ -78,13 +96,13 @@ for limitations, particularly actual runtime integration and zero heap.
 Eugene's conditional finalization instruction. The final text consolidates the
 selected design and preserves all implementation acceptance obligations.
 
-**Current: P03 in the [bounded implementation sequence](rfc-014-implementation-plan.md).**
+**Historical 2026-10-10 position: P03 in the [bounded implementation sequence](rfc-014-implementation-plan.md).**
 IH-1 is complete: ADR-035/036/037 accepted, nine Spec amendments approved and nine owner plans
 ready or active. Exactly twelve packages cover IH-2–6, with all 180 criteria mapped, explicit
 footprints/exits and stop rules. No investigation or automatically growing backlog
 is authorized. P01 passed in `bb61d4ef`: [compiler/Foundation receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md).
 P02 passed in `53de09c6`: [declarations/lowering receipt](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md).
-P03 implementation is active; P04–P12 remain pending. Use the sequence's
+At that checkpoint P03 implementation was active and P04–P12 were pending. Use the sequence's
 [complexity, risk and model-routing annotations](rfc-014-implementation-plan.md#complexity-risk-and-model-routing)
 to choose the model for each bounded assignment. Strong models own lifetime,
 identity, resource-proof and adoption decisions; cheaper models can execute the
@@ -92,8 +110,8 @@ listed fixed-input slices. Ratings do not change package scope or approval gates
 Connected authorization, conformance and implemented/iteration-closure decisions
 remain separate gates.
 
-Earlier sections below preserve historical activity dispositions; this section
-and the handoff supersede earlier wording that requires another investigation
+Earlier sections below preserve historical activity dispositions; the current
+checkpoint and the handoff supersede earlier wording that requires another investigation
 before addressing production coverage or complete-image measurements.
 
 ## Baseline and investigation history
@@ -138,9 +156,9 @@ historical inputs; this result does not reopen their budgets or experiments.
 | Work | Current readiness / missing prerequisite |
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
-| I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
+| I3-T02 runtime design, I3-04 / ME-05 | Historical design/review completed; RFC-014 approved, ADR-035/036/037 accepted and owner amendments approved. Use the current implementation sequence for later RFC-015/ADR-039/040 decisions and residual gates. |
 | RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. SPIKE-072 supports contextual module integration and records missing application source families. SPIKE-074 completes final bounded contract/ownership validation. No next investigation. Route actual State/reconciler/owner integration, complete source lowering and resource proof to IH-2–6 after IH-1 RFC/ADR/Spec gates. The handoff preserves all remaining acceptance obligations. |
-| ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
+| ME-06 runtime implementation | Plans are active; P01–P07 package exits recorded, P08 open with grouped qualification repair active. Follow the [complexity/efficiency checkpoint](complexity-and-efficiency-checkpoint.md) for current evidence and prerequisites; P09–P12 depend on their existing gates. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
 

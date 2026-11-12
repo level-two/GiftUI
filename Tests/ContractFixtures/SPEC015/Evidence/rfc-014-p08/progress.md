@@ -12,6 +12,1780 @@ continuation directions below are historical, not authority to resume a frozen
 campaign. No prior allowance is reset and no Spec/task completion is inferred.
 
 
+## Current disposition — 2026-11-08
+
+P08/R07/T8.1 remain UNMET. Four route receipts and both target links pass.
+Native Static finite-workload NoHeap and charged-entry headroom are independently
+reviewed PASS for the exact image and stated predicates; the maintained compiler
+allocation-effect check remains FAIL at `CounterSemanticCodec` lifetime/deallocation
+(a rejected promise, not an observed allocation). The Dynamic allocator-bookkeeping
+reporting clause is separately met for the recorded process/default-zone scope;
+unresolved route coverage and fit are not promoted. Pi Dynamic complete stack,
+provider and target-launch evidence, plus independent overall SO-09 exit, remain
+open. The Native assessment/review and current Pi/Dynamic packets retain exact
+scope and residuals.
+
+Pi offline closure is **frozen / unmet** under the governing freeze. The last retained callback21 graph is independently reviewed at 2,987 exact bodies / 401,948 instruction rows, with no unresolved direct edges. Its 216 machine-guarded tables cover 5,420 entries; 13 conditional typed-domain sites leave 187 computed records unresolved. The once family has 225 targets and the literal census is zero. The nested Stroke callbacks `0x291864`/`0x2918a0` and `submitPayload` `0x581574` remain unresolved. The callback21 batch audit reports no new body/row/caller changes for that batch. These retained graph facts are not a complete target reachability or resource certification. See [callback21 graph review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-provisional-graph-independent-review.md), [batch audit](scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-provisional-batch-audit.json), and the [bounded Pi freeze handoff](scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-freeze-session-handoff.md) with its [independent classification review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-freeze-session-handoff-independent-review.md). The preceding callback17–20 receipts remain preserved as historical checkpoints.
+
+The computed-site review classifies the 200 unresolved rows as 99 application/module Swift, 90 runtime/C/C++, and 11 standard-library entries. A current owner recensus found conditional typed-domain candidates for nine of the 13 overlapping PCs, covering 10 records; the other four PCs remain unadmitted. The open PCs are `0x43d848` and `0x440e20` (new caller arguments not yet joined) plus Raster `0x280bf8` and `0x33e2d0` (no historical incoming-owner set). The five Layout candidates compose the `0x4ee180` `storePlacement` R8 crossing through a passing saved/restored-register certificate. The other 186 rows have no exact retained typed-domain match. See [callback17 computed-site review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback17-computed-independent-review.md), [callback17 overlap receipt](scoped-storage/pi-current-stack-analysis-2026-11-07/callback17-computed-overlap-rebase-review.md), and [callback18 overlap recheck](scoped-storage/pi-current-stack-analysis-2026-11-07/callback18-computed-overlap-rebase-review.md).
+
+Callback18 has an independent conditional review: all 2,955 prior bodies/rows and owner/destination caller sets are unchanged, 28 bodies were added, and the seven new BLX sites remain zero-target. The 19 Raster provider groups and 16 current Stroke-view sites have conditional identity/caller reviews ([provider](scoped-storage/pi-current-stack-analysis-2026-11-07/raster-provider-target-candidate-independent-review.md), [Stroke views](scoped-storage/pi-current-stack-analysis-2026-11-07/raster-stroke-view-provider-candidate-independent-review.md)). Four Storage default-method sites have a conditional target-identity review pass for linked WT+20/WT+28 lookups ([review](scoped-storage/pi-current-stack-analysis-2026-11-07/raster-storage-default-provider-independent-review.md)); two nested Stroke sites remain unproved; and one `submitPayload` callback reads `backend.write` from a borrowed storage value. The selected main's `r3=0` argument does not prove the stored field is nil; that field's owner/install chain remains open. The graph18 review leaves its observable VLA caller census provisional and the print/cast recensus open. See [callback18 review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback18-independent-review.md); callback19 is the current, still-provisional Storage-target expansion.
+
+Callback19 is a separate Storage-target expansion from graph18: 2,987 bodies / 401,948 instruction rows, with all four reviewed default-method sites activated and only four leaf/thunk bodies added. Its independent audit confirms all 2,983 graph18 rows unchanged, no caller-set deltas, and unchanged once/literal/print recensus; the four sites resolve to two exact witness thunks, with no new indirect or computed sites. The later graph20 ledger adds exact owner-specific store frontiers for the five literal routes: 7, 10, 4, 27, and 0 live recognized stores before each callback load; the one `withPath` error-buffer store is after the callback load under the reviewed stack-fail no-return cut. These are local alias counts, not full borrow/reentry closure. The selected Dynamic main passes nil through the sole `p08CounterRoute` scoped-storage call and callback context; the conditional `Control+27592` store is skipped ([route argument](scoped-storage/pi-current-stack-analysis-2026-11-07/selected-route-nil-writer-argument.json), [independent review](scoped-storage/pi-current-stack-analysis-2026-11-07/selected-route-nil-writer-independent-review.md)). The Static C route forwards its external `write` argument, so it remains separate. A four-constructor census finds zero direct store/copy overlaps at `Control+27592`, including the disjoint 185-byte copy at `outer+116` versus the field at `outer+48736`. A follow-up ledger classifies 14 callee effects under explicit API/ownership premises, and the active-Control R8/result-index joins have separate conditional proofs. The foreign context packet proves six memory-slot joins and the callback register handoff (`r3` comes from `r7` at `0x542628`); a separate caller/frame calculation discharges its three specific `r5` halfword stores against callback slots ([independent review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback20-alias-residual-independent-review.md)). The active Control bounds are `[S+2320,S+33240)` Dynamic and `[S+22976,S+53896)` Static; the fresh child Control is `[E-32768,E-1848)`. For four selected scoped paths, reviewed frame nesting proves `E≤S`, yielding minimum gaps of 4,168 B Dynamic and 24,824 B Static. This does not cover alternate roots or prove endpoint lifetime. The four `context+8` capture slots now have zero excluded computed edges; the separate Static route at `0x49bb50` still has 221 unresolved indirect providers in its known-edge trace. The Endpoint Target layout and copy are now exact under the selected VWT: the `Target` field begins at offset 68, size 168, and the generic Session value-copy writes precisely that field without touching the preceding Control word ([layout](scoped-storage/pi-current-stack-analysis-2026-11-07/session-target-field-layout.json), [copy prefix](scoped-storage/pi-current-stack-analysis-2026-11-07/session-value-target-copy.json), [independent review](scoped-storage/pi-current-stack-analysis-2026-11-07/session-target-copy-independent-review.md)). Session suffix ownership, Endpoint output lifetime, the `intoPipeline` receiver-to-`0x581530` chain, and the `0x581574` consumer remain open. See [endpoint Control copy](scoped-storage/pi-current-stack-analysis-2026-11-07/endpoint-target-control-copy.json), [foreign slot review](scoped-storage/pi-current-stack-analysis-2026-11-07/foreign-control-context-slots-independent-review.md), [foreign receiver partial](scoped-storage/pi-current-stack-analysis-2026-11-07/writer-active-foreign-receiver-partial.json), [active Control review](scoped-storage/pi-current-stack-analysis-2026-11-07/writer-active-control-after-request-independent-review.md), [scoped writer flow](scoped-storage/pi-current-stack-analysis-2026-11-07/scoped-writer-context-forwarding.json), [callback19 review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback19-independent-review.md), [constructor census](scoped-storage/pi-current-stack-analysis-2026-11-07/writer-control-constructor-field-census.json), and [callback19 table recensus](scoped-storage/pi-current-stack-analysis-2026-11-07/callback19-computed-overlap-rebase-review.md).
+
+Callback20 remains a conditional computed-domain analysis over graph19: 2,987 bodies / 401,948 rows, with 216 machine-guarded tables / 5,420 entries unchanged. The merged map has 11 conditional owner/domain PCs and 189 unresolved computed records; two unresolved typed application PCs remain within that count. The Request table at `0x4997f8` is separately source-closed for its ten typed cases; its exact aligned-frame proof retains 229 unknown pointer-store alias premises. The two Raster stroke-result sites `0x280bf8` and `0x33e2d0` now have separate conditional typed-domain proofs and an independent return-pair review, but remain outside the graph20 aggregate pending owner/site activation. The lifecycle sites `0x547438` and `0x547a40` have a reviewed four-state domain from the sole selected owner. The owner/caller rebase covers five literal, eight Canvas, nine shared UTF8/pixel, and 18 Raster groups; the companion residual ledger names their remaining per-owner alias, borrow, reentry, and provider predicates instead of treating them as closed. The print/cast recensus delta is now reconciled: `0x38d8a4` reaches the finite selected DrawingError cast path, `0x4c02c4` prints a valid `CleanupAction` enum, and `0x9647f0` only gets/tests the playground hook. These dispositions do not close generic cast, reflection, ARC, or provider costs. See [callback20 computed-domain review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback20-typed-domain-independent-review.md), [operation/lifecycle review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback20-operation-lifecycle-independent-review.md), [alias residual review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback20-alias-residual-independent-review.md), [Raster return-table review](scoped-storage/pi-current-stack-analysis-2026-11-07/raster-stroke-result-tables-independent-review.md), [frame/Endpoint/view/print review](scoped-storage/pi-current-stack-analysis-2026-11-07/callback20-frame-endpoint-forwarding-print-review.md), and [lifecycle/Static receiver review](scoped-storage/pi-current-stack-analysis-2026-11-07/scoped-lifecycle-static-route-independent-review.md). The earlier callback19/18 graphs remain preserved.
+
+The retained callback21 local-frame analyzer outputs remain DRAFT: 2,828/2,987 bodies have a locally closed transfer candidate by default; the SDK `__stack_chk_fail` conditional mode reaches 2,851/2,987 by discharging 23 fail-path fallthroughs. They retain 124 unresolved computed successors and 28 metadata-sized or otherwise unknown SP updates. The largest per-function local-frame candidate is 200,815 B in `counterExerciseScopedStorage`; that is one function’s frame candidate, not the transitive route stack. Print/workspace and Optional/Void subproofs have conditional independent reviews, but the all-prefix aggregate is unreviewed, was not consumed by an analyzer output, and is not an accepted override. The local analyzer source has a retained unverified draft edit for that aggregate; it is not evidence. The SDK provider identity on the Pi remains unverified. See [analyzer](scoped-storage/pi-current-stack-analysis-2026-11-07/analyze-callback21-local-stack.py), [default output](scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-local-stack-dataflow.json), [SDK-conditional output](scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-local-stack-dataflow-sdk-stack-fail-conditional.json), [VLA candidate](scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-vla-prefix-rebase-candidate.json), and [freeze handoff](scoped-storage/pi-current-stack-analysis-2026-11-07/callback21-freeze-session-handoff.md).
+
+Five selected app-literal callback routes retain independently reviewed conditional evidence for literal, argument, consumer, stack-slot, and all-image caller joins ([review receipt](scoped-storage/pi-current-stack-analysis-2026-11-07/five-literal-callback-routes-callback14-review.md)). The callback15 Canvas admission now covers eight rooted sites and 14 targets, with exact nested callback-register joins; conditional borrowing, no-alias, and no-reentry premises remain. The callback15 Stroke packet resolves 22 dispatch sites to 24 exact app witness bodies, and the selected DrawingError cast replay covers 177 A32 instructions and two tryCast frames (208 bytes of local frames), excluding its Error value-witness destroy provider. These are locally reviewed conditional facts, not a whole-route runtime or resource bound. The callback16 seed and graph reviews above preserve those limits.
+
+The callback17 Raster identity batch is conditionally reviewed. A separate capture packet closes the three Storage paths and emitter Storage/Target capture slots against graph17 callers (18 register joins and four memory queries); its independent review passes conditionally. The 19-site provider-target packet is independently reviewed: 61 joins, 13 unique app-method targets, and four exact graph17 owner caller sets pass, with a guarded divide path. These packets establish app-target identity only; they do not close runtime witness-provider execution cost or whole-route fit. The Stroke view packet now has a conditional review for 15 current sinks plus one current header and two prospective nested sites; the current sink metadata/caller joins pass, but nested `0x291864` and `0x2918a0` remain unresolved in graph18. See [capture evidence](scoped-storage/pi-current-stack-analysis-2026-11-07/raster-storage-capture-chains.json), [capture review](scoped-storage/pi-current-stack-analysis-2026-11-07/raster-storage-capture-chains-independent-review.md), [provider-target review](scoped-storage/pi-current-stack-analysis-2026-11-07/raster-provider-target-candidate-independent-review.md), and [Stroke-view review](scoped-storage/pi-current-stack-analysis-2026-11-07/raster-stroke-view-provider-candidate-independent-review.md).
+
+Conditional local recursion evidence recorded before freeze includes four layout recursion families with exact-rank checks at 96,256 B (record measurement), 153,088 B (local measurement), 128,512 B (record placement), and 217,600 B (local placement), plus the two-phase LocalSemantic validation SCC at 41,984 B. These are per-SCC local-frame bounds under typed-source, exact-callee, ABI, stack-slot, and no-interior-entry premises. They exclude transitive callees and do not combine into a whole-route stack fit. These retained facts do not authorize further old-composition analysis.
+
+The Pi 1 target query remains unavailable because the configured host failed DNS. No remote query or deployment occurred in this continuation. The identity-only adapter is prepared, but ARMv6 loaded-provider identity, target headroom, whole-route stack evidence, and the remaining route fit are still open. Valgrind Massif does not support the Pi 1's ARMv6 target, so it cannot supply the missing target stack measurement. The Dynamic error-allocation edge is source-closed only for the admitted finite Counter Canvas callback and fixed inputs; Dynamic-owned private allocator bytes and full-scope fit remain unmeasured.
+
+## Historical P08 source validation snapshot — 2026-11-06
+
+**All four current Counter collections pass: Native Static 466/466, Native Dynamic 450/450, ARMv6 433/433 and nRF 239/239. Verified Pi and nRF images pass. P08 remains UNMET — 6 November.**
+
+Retained changes cover nominal inert/retired host payloads with consuming mutable
+fields, finite Surface/Canvas/Path/Admission/coordinator specialization, the
+existing `disabled` wrapper made visible using the Style/Layout pattern, two
+wait-result case checks, sixteen ordered render presence checks, pointer
+admission and full-surface emitter serialization. Defaults, validation order,
+lifetime unions, cleanup and backing-last ownership remain unchanged. Independent
+source review passed. Seven formerly private setters became module-internal;
+the pinned compiler accepts them with visibility warnings, not a future-language
+compatibility qualification. No compiler flags, contract limits or target changed.
+
+| Actual whole Static observer | Cold events | Requested B | Retained count / B |
+| --- | ---: | ---: | ---: |
+| Original tuple baseline | 342 | 49,125 | 87 / 10,904 |
+| Mutable nominal host payload | 337 | 49,029 | 85 / 10,872 |
+| Grouped opaque boundaries | 305 | 46,744 | 72 / 10,264 |
+| Concrete disabled wrapper | 232 | 30,574 | 64 / 9,640 |
+| Pointer/emitter/render batch | 228 | 29,598 | 63 / 9,368 |
+| Maintained metatype and constructor batch | 176 | 16,890 | 44 / 8,568 |
+| Native Span follow-on | 171 | 16,741 | 41 / 8,520 |
+| Concrete qualified Drawing storage | 159 | 15,569 | 37 / 7,880 |
+| Render and concrete RGBA storage | 37 | 5,824 | 9 / 4,512 |
+| Integrated glyph, report and Canvas visibility family | 134 | 10,697 | 28 / 3,576 |
+| Stroke coverage and full-surface emitter | 0 | 0 | 0 / 0 |
+
+Every observer cold and reuse entry completed 1,734,308 checks; reuse allocation
+count was zero. The Render/RGBA run requests and reserves 5,824 B and retains
+4,512 requested and reserved B. Capture/replay error flags are zero. The prior
+Drawing run reserved 16,080 B and retained 7,936 reserved B, with 113 groups
+and 74 maximum frames. The prior
+constructor run reserved 17,488 B with 8,736 B retained reserved and 129 groups. The prior 228-event run reserved 30,912 B, with 9,536 B retained reserved,
+177 groups and 73 maximum frames.
+The earlier nonzero runs rejected NoHeap for those images. The table includes
+prior stdio events. Current zero observation covers the recorded observer paths.
+The direct-zone blind spot and complete linked allocator/provider reachability
+remain open.
+
+The prior pointer/emitter/render Native Core passes 28 checks / 120 assertions, Runtime 5,914 assertions,
+Host 187 assertions, and actual Counter 1,736,320 assertions. nRF Core passes 27
+cross-compilation checks; Runtime and actual Counter compile. Focused nRF lacks
+supplemental ABI/image controls and supplies no target execution or fit claim.
+Fresh-focused receipts are deliberately not aggregate-complete acceptance.
+Formatting and `git diff --check` pass. This continuation used 26 guarded jobs,
+767.737982 seconds, including preserved initial visibility failures. No long
+campaign, hardware action or commit was performed.
+
+Prior pointer/emitter/render receipts: Native Core
+`.build/contracts/spec-006-rfc-014-swift64/5184d913452a59cc-pv0fusw6/macos-static`,
+Native Runtime `.build/contracts/spec-013-runtime-cycle/tmppsc8iyhk/macos-static`,
+Host `.build/contracts/p08-scoped-host-mzowmejf`, Native actual
+`.build/contracts/p08-counter-72mutm_f`, nRF actual
+`.build/nrf52840/contracts/p08-counter-fnpcza2v`. Whole diagnostic evidence is
+`.build/contracts/p08-native-static-tuple-repair-20261105/observer-residual-result`;
+prior matched observers, snapshots and rejected experiments remain beside it.
+Guard results are existing `p08-opaque-*`, `p08-disabled-*`, `p08-residual-*` JSON
+under `.build/contracts/p08-native-static-visitor-state1`.
+
+Prior 228-event attribution (events / requested B / retained B): body 174 / 23,294 / 4,664;
+Canvas draw 2 / 64 / 16; render 43 / 1,888 / 528; RGBA 7 / 208 / 64;
+glyph 1 / 48 / 0; stdio 1 / 4,096 / 4,096. Pointer admission accounts for all
+four final removed events and 976 requested B. Render origins moved into the
+recursive visitor, with no family-total reduction; one existing 640 B body
+allocation became retained. Do not count parent generic names as separate
+Canvas staging origins. Earlier host, scheduler, path and coordinator origins
+were removed; remaining RGBA and render costs were not eliminated.
+
+MR-01–08 remain mandatory. Applied MP-01 exact-case checks, MP-04 finite
+serialization including constructors/defaults/helpers/cleanup, MP-09 actual
+consumer boundaries and MP-10 independent oracles/grouped failure analysis.
+This maps to existing HC-SO003 / HC-RD003 and SPEC-013 RP-TB003, zero-heap,
+lifetime and linked-resource acceptance; no criterion is narrowed. Changed Core,
+Runtime and Host dependencies were refreshed; unchanged observer controls were
+reused with identity checks. Earlier whole target-fit, Dynamic and ARM evidence
+is not current for these source changes. Full four-profile collection, complete
+lifetime/cold/provider coverage, current target fit and independent exit review
+remain open. Do not launch the full campaign while required cold allocations
+are known to persist.
+
+The metatype A/B/C diagnostics remain as controls. A forces the existing role
+query. B additionally bypasses the root/custom wrappers in the diagnostic
+workspace. C removes the root/custom transfer in the full forwarding chain but
+still has one actual CounterScreen cache request through declaration-role
+forwarding. D covers the matching six Counter forwards and removes the
+CounterScreen cache operands and transfers from the actual 4,786-instruction
+pipeline. Its observer records 220 events / 24,699 requested B and 61 retained
+allocations / 9,304 B. Provider first use moved to a Text cache. D establishes
+eligibility for the scoped source change. Its artifacts remain under
+`metatype-20261106` beside the prior observer.
+
+The maintained eight-file group preserves the checked state path without the
+diagnostic bypass. SemanticRecordExpansion and CounterSemantic expose fixed
+root/custom path forwarding (MP05) and the existing type-dependent role query
+(MP04), preserving role predicates, first failure, identity writes, read loans
+and cleanup. The six Core files expose the actual Text and Button constructors,
+five-child builder/TupleView5, VStack, fixed frame and background. Existing
+closure count, typed failures, defaults, member order and opaque public return
+types are preserved. Independent source review passed. MP09/10 and MR01–08
+require the actual consumer, exact oracles and current physical evidence.
+
+Fresh Native and nRF Core/Runtime and Native Host gates pass. Native actual
+`p08-counter-2_pwmg_u` passes 1,736,320 assertions. nRF actual
+`p08-counter-bcjzccg8` passes focused counter-model compilation. Supplemental
+ABI controls were outside that selection, so target ABI, execution and fit remain
+open. Current cold/reuse evidence is `observer-constructors-result` under
+`.build/contracts/p08-native-static-tuple-repair-20261105`. The existing
+`p08-metatype-*` and `p08-constructors-*` guard records total 23 jobs and
+545.400719 seconds. A successful diagnostic command can retain the allocation
+mechanism it was designed to expose.
+
+**Current follow-on.** Native Span actual `p08-counter-2k_9x79x` passes. Its
+observer records 171 cold events / 16,741 requested B, 41 retained allocations /
+8,520 requested B and zero reuse events. The changed body is excluded from the
+Embedded branch. The existing nRF result awaits final source-hash applicability
+reconciliation. No fresh nRF evidence is attributed to this Span change.
+
+The MP06 qualified Drawing group passes its focused gates. Seven files migrate
+all 19 matching typed references and both constructors to the concrete Counter
+owner. The generic and concrete wrappers share stateless checked operations.
+Lexical `withBase` lends the actual stored field. Source review confirms the
+original field and qualification order, region loans, refusal/cleanup path and
+Dynamic compatibility. [Qualified Drawing design](../../../../../docs/implementation-designs/spec-013-qualified-drawing-storage.md)
+
+The isolated macOS generic/concrete control passes 11 checks including size,
+stride, alignment and direct base address. It runs in a separate process from
+the cold observer. Fresh Native Runtime/Host and Embedded Runtime gates pass.
+Native actual `p08-counter-to94d8hk` passes 1,736,320 assertions. Embedded actual
+`p08-counter-quojdxp_` passes focused counter-model compilation. Supplemental
+ABI, target execution and linked fit remain outside this focused evidence.
+The `p08-drawing-*` guard records total eight jobs and 212.858220 seconds, with
+zero breaches. Current cold/reuse records are in `observer-drawing-result`
+under `.build/contracts/p08-native-static-tuple-repair-20261105`.
+
+The current eleven-file group applies MP04 to the actual preflight and streaming
+visibility closure and MP06 to the Static configured Render and RGBA carriers.
+The configured adapter uses the original workspace address at four Static
+preflight/produce sites. It preserves the cap check and lexical scope. The
+shared renderer retains canonical lookups, visit accounting, snapshot checks,
+foreground handling and one begin/finish or ordered discard/reset. The RGBA
+wrapper and concrete Counter surface share one checked implementation over
+actual fields. The 48,000-byte donor, span loan and emitter stay in their
+original paths. Finish retains the drain flag, active discard clears it, and
+valid draining pixels perform no store. Independent source reviews passed.
+MP09/10 and MR01–08 preserve the actual consumers, independent behavior oracles,
+loans, limits, failure order and linked physical accounting.
+
+Native and nRF Runtime gates pass on their first attempts. Native Host passes.
+The initial Native actual compile (`p08-counter-amcw2g4m`) rejects the private
+responsibility getter required by RasterSurface. The correction exposes the
+internal getter with a private setter. The corrected Native actual
+`p08-counter-guz_9z7g` passes 1,736,320 assertions. nRF actual
+`p08-counter-z8ojqe99` passes focused counter-model compilation before that
+correction. The changed getter is in a Native-only body excluded by the nRF
+profile. This is source applicability for that body. The earlier receipt's
+full-file hashes describe the inputs it actually compiled. Supplemental ABI,
+image, execution and linked fit gates remain open.
+
+The separate Native comparison passes 14 checks, including three RGBA
+size/stride/alignment comparisons and the existing 11 Drawing controls. Existing
+`FullSurfaceRGBA8888BufferTests` and `FullSurfacePayloadEmitterTests` supply
+reference coverage for construction/refusal, pixels, drain and transfer failure.
+The current runs are the registered focused Counter/Runtime gates and the
+separate comparison. The ten `p08-render-rgba-*` guards total 267.694526 seconds
+with zero breaches, including the initial compile failure and correction.
+Current `observer-render-rgba-result` records 37 cold events / 5,824 B and zero
+reuse events, with 1,734,308 assertions per entry and zero capture error flags.
+
+The current grouped source family has three mechanisms. The generated glyph
+borrow prechecks the exact nominal owner size, borrows with a typed `Result`,
+and wraps the result after the borrow. The isolated real Glyph 3 control passes
+eight checks and its emitted Optional metadata call disappears. Unchanged Glyph
+43 takes the next first use in that representative image. The shared emitter
+then regenerates all 300 bitmap, outline and Pi Compact arms. Both catalogues
+and all payload bytes/resource identities match. Two manifests and four existing
+provenance rows reflect generated source identities. The initial comparison
+misread the Pi hash schema and wrote nothing. Its corrected check passed.
+Generation/canonical controls and independent source review pass.
+
+The Canvas producer namespace receives `@usableFromInline`. Matched actual SIL
+had concrete arguments but an effect-only external producer declaration. The
+pinned compiler visibility predicate requires the enclosing nominal to be
+usable from inline for the marked method body to serialize. The single-line
+change preserves the producer body. The Native report uses synchronous writes
+at its four former `putchar` sites. Native functional output matches the prior
+result over all 3,673 lines and 120 SO06 role rows. The comparison normalizes
+only the approved address fields, tokens 4 and 8, and preserves all other
+bytes and order. These checks preserve existing P08 boundaries under MR01–08
+and MP04/06/09/10.
+
+All three current Runtime profiles, ARM Core and Pi doctor pass. Current
+Native `p08-counter-k324n_ra` passes 1,736,320 assertions. nRF
+`p08-counter-ba8k4yf_` and ARM `p08-counter-zqnlzoz8` pass focused target
+compilation. The focused receipts remain aggregate incomplete. The 13
+`p08-residual-family-*` guards total 363.172378 seconds, and two
+`p08-glyph-representative-*` guards total 9.436571 seconds, without breaches.
+
+The retained `observer-residual-family-result` records 134 cold events with
+10,697 requested and 11,312 reserved B. It retains 28 allocations with
+3,576 requested and 3,632 reserved B. Attribution found 112 stroke-view
+metadata events at the opaque `RasterStrokeCoverage.rasterize` boundary and
+22 first-use events for the emitter's existing `Optional<Bool>` metadata
+request. No glyph or stdio events were observed in that image.
+
+The five-file follow-up exposes the seven generic functions in
+`RasterStrokeCoverage.swift` and their required signatures and leaf symbols.
+It adjusts visibility for the fill intersection in `RasterFillCoverage.swift`,
+three stroke header reads in `DrawingOperationSink.swift`, and the canonical
+pixel initializer in `SurfaceValues.swift`. In `FullSurfacePayloadEmitter.swift`,
+enclosing namespace visibility makes the existing inline finish body eligible
+for serialization. Its writer callback, optional result and cleanup remain
+unchanged. Independent source review checked body and evaluation order across
+the group. The group uses the same MP04/09/10 visibility and actual-consumer
+qualification as the preceding work.
+
+Fresh Native Runtime passes 5,914 assertions and Host
+`.build/contracts/p08-scoped-host-ug5zdfl4` passes 187. Runtime cross-compilation
+passes for nRF and ARM. The corresponding Runtime result directories are
+`tmphehrc63q/macos-static`, `tmplxizafc5/nrf52840-embedded` and
+`tmpraq8egi7/raspberry-pi-armv6` under their profile build roots.
+Native `p08-counter-i9n8tykk` passes 1,736,320 assertions. nRF
+`p08-counter-2lo7_arr` passes the selected `counter-model` compile. Its
+target-summary diagnostic reflects omitted supplemental controls. ARM
+`p08-counter-oi0mvrze` passes focused cross-compilation. All three focused
+receipts remain aggregate incomplete. Nine `p08-stroke-emitter-*` guards in
+`.build/contracts/p08-native-static-visitor-state1` exit zero, totaling
+330.512395 seconds with zero breaches.
+
+The current `.build/contracts/p08-native-static-tuple-repair-20261105/observer-stroke-emitter-result`
+records **zero allocation events, requested/reserved bytes and retained
+allocations/bytes** in both cold and reuse windows. Each entry completes
+1,734,308 checks with zero capture/replay error flags. This permits complete
+validation to resume. It supplies a scoped observation for the current image.
+Complete Static NoHeap still requires direct-zone and provider-path coverage
+over the required lifetime, along with refreshed linked stack/RAM/flash/ABI
+evidence, the complete four-profile collection and independent P08 exit review.
+
+The first complete nRF collection, `p08-counter-lf0dsw18`, finished in
+3,452.145784 s with 187 passed, 26 failed and 26 blocked checks. Generated
+Static retired-carrier positives still used the old two-argument tuple
+constructor. The nominal payload mismatch blocked their dependent negatives.
+SO07 layout passed. The independently reviewed Static-only correction changes
+the driver template for both direct and generic fixtures and retains the
+Dynamic constructor. It was applied after the first collection finished.
+
+The first resume, `p08-counter-2rwiho77`, refused `counter-lowering` before
+new compilation because copied generated outputs alter its check identity.
+The corrected resume `p08-counter-7pxb5h5m` passes all 239 checks, with
+106 fresh passes and 133 verified reuses. The guard
+`p08-complete-current-nrf-carrier-prepared-resume` exits zero in 2,310.280051 s
+with no breach. It selects `so06-carrier`, `counter-lowering` and
+`so07-layout-facts` from the original complete collection. SO07 passes again.
+The receipt is complete and successful for verified firmware input. This
+collection cross-compiles the selected Counter host. Linked-image and target
+execution evidence remain separate.
+[FW-038](../../../../../docs/future-work/fw-038-scoped-contract-validation-cost.md#observation--opportunity)
+captures the copied-output identity hazard and coarse rerun cost for review
+after P08 and a stable source freeze.
+
+The first collection used a prospective 10,800 s child limit, a 3 h 15 min
+session window, 320 GiB additional processing allowance with 256 GiB
+conservatively charged, and 2 GiB additional external reserve. The corrected
+resume adds 160 GiB processing with 128 GiB charged. Prior costs, failed
+invocations and product limits carry forward.
+
+Verified nRF firmware passed in 51.778999 s with no guard breach under
+`p08-complete-current-nrf-image-reuse`. The first handoff refused the module
+owner inventory because the resume's execution log omitted reused compiles.
+The reviewed adapter authenticates the 23 reused module recipes against their
+predecessor identities, logs and artifacts. The firmware handoff still requires
+the complete passing collection, the exact 24-owner set and current sources.
+The frozen image is in `.build/nrf52840/contracts/p08-current-image-20261106`.
+Its ELF SHA-256 is
+`23775f91784b2335227ecc14364b847161c021c39e587916ed6f0a5b9b2e4cb5`.
+The linked image reports 255,232 / 262,144 B RAM and 425,400 / 1,048,576 B flash.
+The image gate includes ABI, physical memory and SO08 checks. The current
+resource audit reports main stack 105,456 / 106,496 B, ISR stack 6,672 /
+8,192 B and the same physical RAM and flash fit. All 17 current allocator edges
+are qualified under the recorded source cursor and allocator trap premises.
+The main-stack margin is 1,040 B. The 541 B margin belongs to the prior image.
+Independent `independent-review.json` passes the current hardware-free resource
+proof. It verifies 228 live and frozen source hashes, 1,360 contexts / 1,341
+functions, the scoped stream rank and caller pair, current allocator edges,
+and stack and physical ELF arithmetic. Qualification used about 24.5 s of
+worker analysis, 26.477 s of current IR emission and 0.076 s of independent
+machine checks. Manual review time is separate. Target execution and timing
+evidence are outside this result.
+
+The complete Native Static collector `p08-complete-current-native-counter` in
+`p08-counter-g8ocpi1a` passes all **466/466** checks in 12,373.146837 s, exit 0,
+with no guard breach. The application Mach-O is identical to the focused image
+(SHA-256 `8e9cf62cd434add09b23bd36d566b18164014d4e1ce9a0f5237c0f6bf7dcc47b`).
+The `native-current-proof/artifact-identity.json` rebind verifies all 202 current
+inputs and the complete receipt. Existing observer and linked-image evidence
+retains its original coverage and premises.
+
+The maintained allocation gate `p08-counter-allocation-n1awq6ak` passes the
+positive and allocation-negative controls. The annotated actual entry fails
+with exit 1 and no guard breach. The checker reports an unavailable
+`HostComponentRole(rawValue:)` body at `CounterHostAssembly.swift:154:41`.
+This compiler result establishes a checker coverage gap. The diagnostic does
+not establish an allocation. The zero observer result remains scoped, and
+P08 still requires a complete current linked allocation and resource argument.
+
+The Native source-transfer argument binds the 139 conservative Error origins
+to conditional owner, phase, capacity and cleanup invariants. The integrated
+charged-entry graph has 2,964 functions, 266 indirect joins and zero unknown
+transfers in its qualified scope. It retains all 315 once callback joins and
+five provider predicates. Independent review binds 205 aligned zero-initialized
+tokens disjoint from the 898 prior store spans and two Raster flags. The 205
+initializer entries reach 242 bodies with no external transfer or reentrant once,
+under the selected synchronous thread and no-foreign-write premises. The ARM64
+local SP analysis closes 1,365/1,365
+bodies with zero issues or unbalanced returns. The hash-bound
+`native-domain-review/native-stack-bound.json` gives a conditional
+2,936,752 B charged-entry upper bound, or 2,936,768 B from the canonical
+`_main` call site including its 16 B live frame. Independent arithmetic and
+composition review confirms the rank-weighted local equations, conservative
+96 B provider allowance per activation slot including outlines, and one
+128 B red zone. Canonical usable headroom remains a separate premise.
+Mach-O file size 7,240,776 B, mapped VM
+7,389,184 B and explicit zero fill 147,361 B are linked measurements.
+
+Both canonical LLDB launch attempts resolved the breakpoint but reported no
+entry stop or measurements. The second target was observed stopped while
+the debugger waited. The owned processes were terminated and the second
+attempt exited 143. The retained sandboxed and unsandboxed logs are in
+`native-domain-review`. The read-only `DevToolsSecurity -status` check
+confirmed that Developer Mode was disabled. The authorized enable attempt
+made no change, and the authentication request was canceled at the user's
+direction to defer the debugger work. No third launch was attempted. The
+canonical entry SP, usable headroom and live signal premise remain open.
+The observer's measurements apply to its own process. The Dynamic and ARMv6
+validation queue continues independently.
+
+Fresh macOS Dynamic Core
+`.build/contracts/spec-006-rfc-014-swift64/c79774662aa626be-_yty_k0a/macos-dynamic`
+passes 28 checks and 120 assertions. Dynamic Runtime
+`.build/contracts/spec-013-runtime-cycle/tmpd_a1plqy/macos-dynamic` passes
+5,914 assertions. The complete Dynamic Counter collection passes
+**450/450** in 12,183.870608 s, with 1,736,244 functional assertions, exit 0
+and no guard breach. Receipt `.build/contracts/p08-counter-7f4ij74w` was
+produced under `p08-complete-current-dynamic-counter`.
+
+The matched Native observer under `p08-native-matched-current-20261106`
+passes all six processes and replays in 10.818181 s, with no guard breach.
+Each Dynamic entry checks 1,734,943 assertions and each Static mixed-route
+entry checks 1,735,019. Both repeat the same counts in reuse. Dynamic
+observes 95,811 cold events and 95,150 reuse events in each process, with
+91,936 B cold peak usable storage. The Static mixed route observes
+1,311–1,312 cold events and 914 reuse events. These are the existing C export
+workloads with common controls and distinct reporting paths. Keep those
+observed allocations separate from StaticResourceEntryV1's zero observation.
+
+The independently reviewed `native-domain-review/matched-attribution-current.json`
+separates the Dynamic host storage, trace preparation and metadata. All six
+Dynamic windows observe 338 storage allocations/frees, 525,817 requested and
+620,288 usable B cumulatively, simultaneous peaks of 50,487 requested and
+59,488 usable B, and zero end live storage. Trace preparation contributes
+262 allocations/frees, 30,184 requested and 31,968 usable B cumulatively,
+with 328/352 B live peaks. Metadata has six cold allocations / 192 B, three
+retained / 48 B and zero new reuse allocations. Selected Static Host observes
+zero events in all six windows. Unresolved selected Dynamic object sites are
+zero in the public-route attribution. Client rounding is measured separately
+from private allocator bookkeeping. Requested sizes include headers and
+control, whose individual shares are outside the event measurement. Private
+and bypassed allocator routes are outside the observer's coverage.
+
+Independent `matched-codegen-costs.txt` review measures the same common
+access-wrapper slice on both frozen images. Static/Dynamic each include 21
+function-start spans, totaling 41,892/40,872 B including possible padding.
+The corresponding counts are 1,030/979 BL, 5/5 out-of-span B, 5/4 local
+switch BR, zero BLR and zero direct transfers to named witness bodies.
+Import-stub transfers are 410/395. Named witness extents are 416 B in each
+image. Each image authenticates 25 original objects plus the common driver,
+with six byte-identical originals across profiles. The unspecialized Dynamic
+`intoPipeline` exists outside this slice. This is a structural specialization
+and dispatch comparison. Full invocation counts, transitive effects and
+timing remain outside the slice and retain their existing dispositions.
+
+The first owner replay records four Interaction compile failures and blocks
+link and execution. The Counter RuntimeCore provider lacked the retained
+dispatcher and candidate transaction/coordinator definitions compiled by
+SPEC-011. The isolated 15-file provider correction adds those three exact
+sources to the current 12-file recipe and passes the provider plus all six
+original leaves. The scoped negative rejects the intended Copyable and
+Escapable constraints. The executable passes 215 Interaction, 183 root and
+61 SO03 scoped/owned assertions. Provider warnings about internal setters in
+inlinable code remain retained. The pinned compiler accepts the recipe.
+
+Activation passes its positive compile and four classified negatives.
+The first mixed Host link cannot resolve unrelated schema/workload probes in
+the current Host module. The corrected standalone entry invokes only
+`p08ActivationJoin()` with the same passing joined module and providers.
+Link and execution pass with 48 assertions. Neither diagnostic correction
+changes maintained source or the four Counter images.
+
+The first Native physical-ledger diagnostic fails before measurement when
+its borrowed array is consumed by iteration. Indexed reads in the isolated
+overlay correct that recipe. The corrected guard passes in 57.070597 s,
+with 14 Static and nine Dynamic slot rows, 26 resource fields per profile,
+132,374 B Static and 164,066 B Dynamic checked totals. It passes 2,312
+normal/refusal/overflow stream controls and reverse retirement. These are
+Native diagnostic owner/audit rows, separate from total process and
+private allocator accounting. Source, previous logs and failed outputs
+remain retained.
+
+Pi doctor passes in 4.994045 s. The complete current ARMv6 collection
+`.build/raspberry-pi/contracts/p08-counter-k02awr3h` passes **433/433**
+including 408 scoped checks and 13 reuse labels, in 10,101.211424 s with
+no guard breach. The verified Pi image handoff passes in 2.210700 s without
+a guard breach. The unstripped ELF in
+`.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter`
+has SHA-256
+`ab68b9def74f1db8611ac32d888d795ceec798f70a05ad1ef44278a4d8ca83ce`.
+It verifies ARMv6 hard-float and is a dynamic PIE with interpreter
+`/lib/ld-linux-armhf.so.3`. This is compile/link/ABI evidence. Target execution,
+actual process stack headroom and complete rooted resource fit remain open.
+
+The 7 November bounded current-ELF inspection confirms the exact artifact is
+`counter.elf` in that directory, 18,051,412 B. Current
+`bounded-current-readelf.txt` (271,519 B) records four LOAD segments with
+11,394,348 B file bytes and 11,592,496 B memory bytes; writable LOAD memory is
+1,427,940 B. LOAD zero-fill is 198,148 B, `.bss` is 197,860 B and `.tbss` is
+4 B separately. These sums exclude heap, stack, loader and external providers.
+The ELF selects A32 and Thumb-1, VFPv2 and VFP-register arguments. Its zero-size
+`GNU_STACK` program header provides no process-stack bound.
+
+Declared providers are `libstdc++.so.6`, `libm.so.6`, `libatomic.so.1`,
+`libgcc_s.so.1`, `libc.so.6` and `ld-linux-armhf.so.3`; version prerequisites
+include GLIBC 2.34, libm GLIBC 2.29, GLIBCXX 3.4.29, CXXABI 1.3.11 and
+LIBATOMIC 1.0. RUNPATH includes `/usr/lib/swift_static/linux` and its `armv6`
+subdirectory. Actual selected provider paths/hashes/interposition and transitive
+closure require applicable launch evidence. Main calls `p08CounterRoute()`
+with Dynamic/tiled selection: graph, scoped storage and Dynamic host. The macOS
+Static resource entry is excluded, so its zero observer result does not transfer
+to this ELF. Metadata does not establish rooted allocator reachability. Older
+20261105 prologue/readelf output describes a different image and is not reused.
+
+The inspection used SHA-256 and existing `readelf -h -lW -SW -dW -A -V`, not a
+new parser or stack analyzer. It closes current identity/ABI/linked extents and
+declared launch prerequisites only. Its conservative processing charge is
+72,759,852 B within 80 MiB. The first broader internally captured metadata output
+exceeded a local 128 KiB guard and was discarded; exact length is unavailable.
+The final metadata artifact is retained. Aggregate tool capture is not certified
+against that local forecast; 256 KiB uncertainty stays within the current
+additional 1 MiB control provision. Failures/uncertainty are not erased.
+
+SO-01 identity reconciliation covers all 176 indexed paths. Of these, 103
+match the indexed hashes, 58 changed paths match current tested dependency
+receipt inputs, and 15 changed paths require evidence outside that primary
+receipt set. D26/D31's seven changed Interaction/Activation sources now
+have focused current owner evidence as above. Six build/collection/generation
+files use the corresponding verified image and generation receipts. The
+two changed generated analyzer text-pool files retain the owned compatibility
+disposition under D28–D30. The legacy Static/Dynamic factory integration
+and actual owned return evidence remain the accepted I4-07/P09 residual.
+Shared owned dispatcher and operation-consumer evidence stays in the P08
+matrix. Hash matches establish source identity.
+
+D12/D14–D21 physical custody keeps all fourteen Static loans in order
+`b0–b3, g0–g4, c0, h0, r0, r1, h1`, and the nine Dynamic reservations
+`g0, g1, g3, g4, c0, h0, r0, r1, h1`. The initialized inventory remains
+separate from logical role exchange. Shared retirement consumes storage and
+resets semantic, geometry and then Interaction before backing release.
+Native SO06 execution, nRF compiled SO07 and Pi linked observations retain
+their own applicability.
+
+Remaining P08 closure work:
+
+1. The bounded Native launch probe now observes caller SP, writable stack
+   mapping, thread/signal state, loaded provider UUIDs and typed-throw hook
+   cells at the pre-entry `setbuf` boundary; see the linked launch packet
+   below. The conditional charged-entry bound excludes pre-entry setup and
+   post-entry reporting from a whole-process claim. The maintained checked
+   entry still reports a concrete `CounterSemanticCodec` lifetime/deallocation
+   effect. MP-09 treats it as a rejected compiler promise, not an observed
+   allocation; the linked finite NoHeap argument and charged-entry headroom are
+   independently reviewed PASS for the exact Native Static scope below.
+2. The full-ELF direct fixedpoint now covers 1,355 exact body ranges and 204,339
+   instruction records, with 9,200 direct calls, 23,695 direct branches, 310
+   computed-PC records, 340 indirect calls, seven indirect tails and 3,092
+   PLT/provider records; selected ranges have zero missing A32 coverage and
+   zero unresolved direct edges. This supersedes the previous graph and
+   210,463 B candidate. The 310 computed-PC target sets and 347 indirect
+   destinations remain under analysis; root is recomputing SP effects on the
+   new graph. See the [Pi stack packet](scoped-storage/pi-current-stack-analysis-2026-11-07/whole-route-findings.md).
+   The prepared identity adapter was not invoked after target DNS
+   failed. Valgrind Massif supports ARM/Linux from ARMv7, not Pi 1 ARMv6, so no
+   valid route stack measurement is available. Loaded provider identity, actual
+   Pi limits/headroom and complete feasible stack/allocator coverage remain
+   unmet; the nRF Thumb solver and older Pi prologue samples do not qualify this
+   ELF's complete stack.
+3. The focused Dynamic allocator probe is recorded in
+   [its accounting packet](scoped-storage/dynamic-allocator-private-accounting-2026-11-07/README.md).
+   The scoped SPEC-013 bookkeeping-reporting obligation passes: matched client
+   storage, process/default-zone capacity and typed admin/pointer-region extents
+   are reported separately, with Dynamic-owned private bookkeeping explicitly
+   UNMEASURED. The six-window Dynamic allocation costs and bounded common-access
+   plus Dynamic host structural codegen scopes are retained; cycle-time evidence
+   stays deferred. Source review closes the exact `_swift_allocError` caller for
+   the finite Counter route using its 48x16 frame, bounded path and workspace
+   guards; arbitrary Canvas inputs remain out of scope. Four-configuration
+   linked resource/ABI joins and full-scope fit remain open.
+4. Finish the nine applicable criterion rows, four-route classified lifetime
+   and caller/physical matrix and exact I4-07/P09 residual in the
+   [SO-09 exit packet](scoped-storage/p08-remaining-acceptance-campaign.md#4-freeze-the-p08-exit-packet-and-exact-residual-handoff).
+   Complete independent P08 exit review. Hardware execution and timing
+   retain their existing dispositions.
+
+### Integrated SO-09 gap disposition — 2026-11-07
+
+This is a current-source evidence reconciliation under the existing SO-01–09
+handoff, not a new collection or an independent exit acceptance. SPEC-011/013/015
+remain `implementing`; P08/R07/T8.1 remain UNMET and P09–P12 remain pending.
+ITERATION-003's finite Counter validates the four route/compiler paths and
+lifetime / physical-storage controls needed by the analyzer. It does not yet
+establish complete Native or Pi target stack bounds. The accepted ADR-039 and
+approved S11/S13/S15 amendments remain authority. MR-01–08 and applicable
+MP-01/04/05/06/07/09/10 recipes remain mandatory. No acceptance ceiling changes.
+
+The four complete `result.json` receipts above report both
+`collection_complete=true` and `passed=true`. Direct receipt reconciliation
+finds the following current coverage without rerunning any check:
+
+| Route | Complete checks | Initializer-union / carrier checks | Compile rejection checks with recorded diagnostic expectations | Execution applicability |
+| --- | ---: | ---: | ---: | --- |
+| Native Static `p08-counter-g8ocpi1a` | 466 passed | 104 / 208 | 205 | Native actual Counter and registered runtime / exclusivity controls |
+| Native Dynamic `p08-counter-7f4ij74w` | 450 passed | 104 / 208 | 205 | Native actual Counter and registered runtime / exclusivity controls |
+| Pi ARMv6 `p08-counter-k02awr3h` | 433 passed | 104 / 208 | 204 | Cross-compilation; no target runtime or exclusivity execution |
+| nRF `p08-counter-7pxb5h5m` | 106 passed + 133 verified reused | 52 / 104 | 107 | Embedded Static cross-compilation; no target runtime execution |
+
+The rejection counts above count exit-1 checks, not independent assertions or
+new tests. Every such row records diagnostic expectations. The union and
+carrier families each have equal exit-0/exit-1 populations. Optional, tuple,
+generic and closure erasure families likewise retain positive/negative pairs.
+Both Native collections include five exclusivity checks: four exit-0 and one
+expected exit-minus-6. Receipt `exit_class` fields are not populated; classified
+evidence is the registered family, diagnostic expectation and actual exit,
+including the retained exclusivity marker, not an invented metadata field.
+Embedded omits the unsupported Dynamic/task/async route by its registered
+profile applicability; it does not provide an execution substitute.
+
+**Focused allocation-checker batch — 2026-11-07.** The earlier ordinary Host
+checker stop at `HostComponentRole(rawValue:)` was a conditional-contract
+visibility gap, not an allocation result. The exact isolated correction and
+independent source review are recorded in
+[qualified Host graph result](scoped-storage/p08-qualified-host-graph-2026-11-07/README.md)
+and [review](scoped-storage/p08-qualified-host-graph-2026-11-07/review.md).
+The maintained checker now rebuilds Host with the existing
+`GIFTUI_GRAPH_ENGINE_QUALIFICATION` contract and passes its positive and
+intentional allocation-negative controls. Its actual Static entry remains
+FAIL at the concrete `CounterSemanticCodec` lifetime/deallocation effect in
+`CounterScopedStorage.swift:3212`. A grouped checker rebuild now compiles all
+18 existing checked provider modules and passes positive and allocation-negative
+controls, removing the earlier opaque-provider diagnostic without source or ABI
+changes. The remaining compiler effect is preserved; no unchecked promise or
+runtime allocation inference was added. The linked finite NoHeap argument is
+reviewed PASS for its exact Native Static scope below. Pi mixed-mode
+stack/provider/launch and Dynamic bookkeeping requirements remain active.
+P08/R07/T8.1 remain UNMET.
+
+**Native launch-premises batch — 2026-11-07.** The current frozen Native image
+ran through the exact `_main` `setbuf` boundary under an explicit environment
+with one narrow interposer. The final probe matches the loaded executable by
+path, `MH_EXECUTE`, and arm64 UUID, then records its slide, caller SP, stack
+mapping, thread/signal state, loaded SwiftCore UUID and UUID-gated hook-cell
+values. The observed process had one thread; the checked writable stack region
+provided 8,340,976 conservative bytes below caller SP after reserving one page,
+5,404,208 bytes above the 2,936,768-byte main bound. SwiftCore matched the
+retained UUID and both hook values were null. The unchanged image completed
+1,734,308 assertions with zero failures. Exact outputs, source, hashes,
+limitations, and review are in the [Native launch-premises packet](scoped-storage/native-launch-premises-2026-11-07/README.md)
+and [result](scoped-storage/native-launch-premises-2026-11-07/verified-result.json).
+The injected loader/helper context can warm provider state, so this observation
+does not replace the source-level first-use proof or eager-fixup reconciliation;
+those remain separately linked in the [Native closure audit](scoped-storage/p08-native-closure-2026-11-07/README.md).
+The probe alone does not prove NoHeap; the joined finite workload/provider case
+and independent scoped review are in the [Native assessment](scoped-storage/p08-native-closure-2026-11-07/native-assessment.md)
+and [review](scoped-storage/p08-native-closure-2026-11-07/native-assessment-review.md).
+The compiler check remains FAIL and is not reclassified as an observed runtime
+allocation. This scoped PASS does not close Native Dynamic bookkeeping or P08.
+
+| Criterion | Current P08 evidence and exact residual disposition |
+| --- | --- |
+| IN-SO-001 | Four-profile union/carrier/erasure positives and intended lifetime negatives pass as above. Preserve the Static-only retired-carrier correction and nRF reuse provenance. Full owned analyzer return integration remains the accepted I4-07/P09 residual. |
+| IN-SO-002 | Existing actual Native corpus preserves paired exchanges, unequal sufficient extents, refusal/discard, generation, semantic reuse and independent action/pixel outcomes. Native physical diagnostic adds fourteen Static / nine Dynamic rows and 2,312 stream controls. Target compilation is separate from runtime transcripts. |
+| IN-SO-003 | SO-01's 176 indexed paths are reconciled above; shared owned Interaction/Activation dependencies have current focused evidence. Physical owner facts are preserved. Actual legacy analyzer factory / owned-return integration is explicitly residual, so full-scope criterion closure is not claimed. |
+| RP-SO-001 | Current typed acquisition / reverse-prefix and refusal/overflow controls plus fourteen Static loans and nine Dynamic reservations preserve physical custody. Native diagnostic checked totals 132,374 / 164,066 B are owner/audit totals, not whole-process peaks. Complete Native/Pi frame and provider accounting remains separate. |
+| RP-SO-002 | Both actual Native profiles retain early-return, failed activation/candidate, commit/refusal, quiescence, reuse, Optional moves and backing-last cleanup controls. Focused Interaction 215 / root 183 / scoped-owned 61 and Activation 48 assertions refresh changed shared dependencies. Runtime exclusivity is Native-only evidence. |
+| RP-SO-003 | Four pinned collections and both target links pass. Current nRF stack/IRQ/RAM/flash/rooted-allocation proof passes independently. Native Static finite NoHeap/headroom is reviewed PASS for the exact image/predicates; compiler effect check stays FAIL as a rejected promise. Matched Native Dynamic costs and separate allocator-bookkeeping reporting are recorded; bounded provider-route/fit claims remain scoped. Pi Dynamic complete feasible stack/provider/launch evidence and target identity remain UNMET. |
+| HC-SO-001 | Four registered supplied→pipeline→coordinator→host→retirement compilation chains and their paired constraint/erasure/transfer controls pass, with runtime behavior on Native only. Actual legacy owned-return integration keeps its accepted downstream disposition. |
+| HC-SO-002 | Current Counter owner/host audit, physical, activation and retirement controls preserve first error, validation-before-activation, provenance/capacity refusal and action/semantic/pixel oracles. SO-01 D12/D14–D21 retain initialized inventory versus logical roles and backing-last release. No process-resource claim follows from those rows. |
+| HC-SO-003 | Current four routes, ARMv6/VFP and nRF ABI links are established. nRF replaces its former failing fit with the reviewed current proof. Native/Pi remaining resource/allocation/launch gaps prevent P08/R07/T8.1 acceptance; independent Strong SO-09 exit review has not passed. |
+
+The [SO-01 caller table](scoped-storage/so01-inventory.md) keeps its P/O/R
+necessity dispositions; this reconciliation does not turn historical indexed
+hashes into current compile inputs. D26/D31 use the focused changed-owner
+results; D28–D30 preserve owned analyzer compatibility. The sole accepted
+I4-07/P09 residual is actual legacy Dynamic/Static analyzer dispatcher factory
+model/root/target/alias/owned `ActionModelTargetAccess` integration and actual
+owned returned/copyable positives with scoped-record rejection. Shared owned
+dispatcher / six operation-consumer compatibility remains P08. Current Counter
+cleanup, lifetime, NoHeap and fit remain P08 obligations.
+
+The current Pi image metadata inspection is complete and recorded above. It
+establishes linked extents and declared import requirements, but not all mixed
+A32/Thumb feasible call frames or loaded library behavior. Continue bounded
+local call/provider/stack analysis and focused read-only launch-preparation
+checks; no further image metadata sweep is needed. The Native Static finite
+NoHeap and charged-entry headroom review is PASS for the exact image and source
+predicates; the compiler promise remains FAIL. Dynamic bookkeeping sampling and
+Pi Dynamic stack/provider/launch closure remain active. Debugger authentication remains
+deferred; no current work depends on it. There is no dependency requiring
+another four-profile campaign, owner replay or nRF rebuild. Independent SO-09
+review must keep any unresolved criterion UNMET; it cannot transfer required
+fit or NoHeap to later packages. Existing connected hardware and timing
+dispositions remain unchanged.
+
+The expired 01:29:03.821185 UTC session deadline is preserved. Under the user's
+autonomous prospective resource authority, the evidence-only reconciliation
+window is renewed at 11:08:40.822987 UTC to 14:08:40.822987 UTC on 7 November.
+The sole Meter ledger retains processing consumption 3,233,605,223,709 B and
+limit 3,800,072,978,432 B; capture limit 989,855,744 B; retention limit
+241,659,019,264 B. Existing coordinator reservation 922,746,880 B covers the
+128 MiB reconciliation and prospective 80 MiB Pi inspection provisions. The
+initial 16 MiB reconciliation forecast was too small: three actual receipt sweeps
+read 92,528,379 B. This miss is retained within the unchanged coordinator reserve;
+no own-processing charge or reservation is duplicated. One MiB
+additional conservative external capture coverage is charged; no consumed
+counter, historical failure, uncertainty or product ceiling is reset. No
+compiler, collection, debugger, commit, deploy or flash is launched by this
+reconciliation.
+
+The prior Native child/session and resource provisions remain in the ledger.
+Root prospectively extends the deadline to 22:00:34.912715 UTC and adds 768 GiB
+processing, 256 MiB capture and 8 GiB retention/reserve. The 32 GiB proof
+reconciliation and 12 MiB processing uncertainty charge carry forward. The
+capture reconciliation is now 16 MiB including 4 MiB of current uncertainty.
+After Dynamic terminal, 8 GiB of proof/tool processing was reconciled and
+the queue deadline moved prospectively to 2026-11-07 01:29:03.821185 UTC with
+4 GiB added to the external retention reserve and limit. Current job
+envelopes charge 16 GiB for matched observation, 8 GiB for focused owner
+replay, 2 GiB for physical diagnostics, the existing Pi doctor archive charge,
+384 GiB for complete ARMv6 collection, and 4 GiB each for the verified ARMv6
+image and the three diagnostic corrections. Earlier failures and costs remain
+recorded. Product limits and acceptance criteria are unchanged.
+
+Execution authority remains the user's autonomous continuation/delegation and
+prospective limit-change instruction, without implicit architecture approval.
+The prior continuation added 80 GiB prospectively, with its 22:55:56 UTC
+deadline recorded there. The current dependency chain adds 40 GiB prospectively.
+Consumed counters and earlier exceptions remain recorded. The current Drawing
+continuation prospectively extends the window to 09:03 UTC with 80 GiB
+processing and 2 GiB artifact reserve. The Render/RGBA continuation extends to
+09:35:56 UTC with a further 40 GiB processing and 2 GiB external artifact reserve.
+Earlier counters and exceptions carry forward. Oversized tool-output
+uncertainty received a conservative additional 4 MiB capture charge; no exact
+historical capture-compliance claim is made. Existing rejected forwarding and
+-O diagnostics stay rejected. Historical entries below are evidence only, not
+fresh execution authority. The local checkpoint remains untracked and uncommitted.
+
+### Historical qualification continuation — 2026-11-02
+
+**Endpoint serialization batch delivered — 3 November; P08 remains UNMET.**
+The coherent `OneShotRasterBackendEndpoint` visibility/serialization change covers
+its initializer, configuration, offer, stored defaults and cleanup, plus the
+required nine supporting files in RenderCore, Execution, SurfaceCore, DisplayCore,
+RasterCore and TextResources. The preserved before snapshots and final
+`endpoint-serialization-20261103/visibility-source-footprint-final.json` record
+all ten files; a token comparison confirms only serialization attributes and
+private/internal visibility changes, with algorithms, types, order, capacities
+and defaults preserved. No `@frozen`, equality rewrite or compiler-policy change
+was introduced. Authority remains SPEC-014 startup/offer/cleanup clauses,
+BI-002/010/013/014 and active plan T7.1–T7.3/T8.2, within MR-01–08 and MP04/09/10;
+the supporting owner contracts are unchanged. No lifecycle transition occurred.
+
+Fresh provider chains passed Native, Embedded and ARMv6 hard-float compilation.
+Actual Native42 A/B consumers passed (42.775146/42.923754 s), and the actual
+Embedded42/Tiled consumer passed (32.648163 s). In the concrete Native
+`CounterEndpoint.init(configuration:control:)`, calls fell **21→14** and the
+generic endpoint-initializer call was replaced by concrete checks/copies; two
+value-equality calls remain. This is specialization evidence, not a size or
+allocation claim. Both isolated functional gates passed **1,734,308 assertions,
+zero failures** (14.966748/15.254419 s). All **2,386** output lines match after
+normalizing only the two source-joined address fields in **60** SO06 role rows.
+Owned-file formatting and the repository formatter lint passed.
+
+All seven fresh checked providers also passed. The two affected existing
+codec-effect checks were refreshed once with checked-first imports: **both FAIL**
+at `CounterScopedStorage.swift:3210` because ending `CounterSemanticCodec` lifetime
+can cause deallocation (13.533388/14.070033 s; no guard breach). These are current
+failures, not expected-negative passes or reused old results. The earlier 66-error
+visibility failure, missing protocol failure and three-member failure remain
+retained; explicit mechanism reassessments and bounded corrections did not reset
+costs or allowances. A conservative 154,259 B accounting reconciliation retains
+possible duplicate/overwritten-charge uncertainty.
+
+The frozen image is untouched; its **14/19/30** map and tables **8/18/0** apply
+only to that baseline and do not qualify the modified source. Current-image
+allocation/lifetime/alias/provider/resource and complete P08 qualification remain
+open, as does historical execution FAIL. Root independently checked the ten
+before/after source diffs and recorded hashes; the change is limited to the
+serialization and access visibility described above.
+
+**Current source and callback qualification — 4 November; P08 remains UNMET.**
+The MP01/09/10 matching-source batch replaces twelve full-result equality assertions
+(six each in `CounterHostProbe.swift` and `CounterDynamicHostProbe.swift`) with exact
+configuration-error cases and all three false progress fields. Calls, assertions,
+order and required Equatable conformances are preserved. Root independently reviewed
+both source diffs and the actual-type oracle. Native42 and Embedded42 consumers pass
+(42.414829/32.968719 s); the oracle passes 1,584 comparisons (1.238 s). The functional
+consumer passes 1,734,308 assertions with zero failures (15.418 s), and all 2,386 lines
+match the authenticated prior output after only the established 60 address-row
+normalizations. Owned formatting, repository format lint and owned diff checks pass.
+Both fresh checked-provider codec gates still FAIL at CounterScopedStorage.swift:3210
+(13.775739/14.119570 s), without guard breach; no lifetime exemption is inferred.
+
+The new Native image is `9516a8ef516ad6a902d365b087e0dc305b23ccd93532ca527b1af0e060b974a1`
+under `endpoint-serialization-20261103/rejected-bindings-case/Native/`. Its exact
+source/relocation-joined callback is `4FCF4`: the six derived-result equality calls
+are gone from that consumer. The freshly word-qualified direct closure contains
+133 functions / 16,116 code bytes (`callback-source-join.json`,
+`callback-direct-closure.json`, `callback-bodies.json`). This is codegen and input
+qualification, not callback lifetime acceptance. Earlier 87f4-image constructor,
+149-function closure and numeric maps remain baseline-only.
+
+The preceding baseline-image instruction batch qualified the grouped bitfield,
+Q/V alias, AND.16b and observed MOVI forms with width/unknown/invalidation controls;
+all three actual/unknown/overlap slot controls passed again. Its final callback run
+has zero unsupported operations, but retains 19 unqualified calls and false SP/FP
+and lifetime flags (`vector-init-slot-controls.json`, `vector-init-callback.json`).
+Those results do not transfer execution addresses or returned state to the new image.
+Current source/caller rebinding resolves the optimizer topology change: caller
+`50504` calls ordinary `p08CheckStaticHostJoins` at `4FC34` from `50AF4`, and its
+`4FCE4 BL 4FCF4` is direct. The old outlined forwarder/merged-dispatch aliases and
+callback-slot obligation are obsolete for this image. Their failed-template gates
+remain retained. The prior session4259 terminal output was lost; absent artifacts
+do not establish exact nonexecution, and its input/cost uncertainty is preserved.
+The complete bounded dispatch closure is 138 functions / 16,364 bytes; four missing
+direct bodies were authenticated together. The single actual-caller entry capture
+and callback evaluation passes its execution guard in 1.537579 s, producing
+`rejected-bindings-case/current-direct-callback-evaluation.json` (SHA256
+`74f7fe0405436dd6c93fcd9801a824c6539c5710172d79dc63f5b8816731a410`).
+It evaluates 2,082 contexts with zero unsupported operations and eight unqualified
+calls: six unknown indirects, one generic-metadata provider and one swift_once.
+Tuple-metadata and Equatable mechanisms are absent after the source migration.
+Captured incoming SP is already unknown from the unqualified caller prefix;
+therefore false callback SP/FP/normal-return flags partly inherit that uncertainty
+and do not demonstrate a callback stack defect. Complete lifetime remains false.
+Six 474-byte callback copy source/destination expressions are unknown. The eight
+records are not a naive 19-to-eight proof-coverage metric: the seed and topology
+changed. The exact removal of equality/tuple origins remains source-joined codegen
+evidence. No alias or allocation premise was waived.
+
+The one actual owned42 codec probe added only checked BitwiseCopyable conformance
+to a diagnostic CounterSemanticCodec copy, retaining ~Escapable, representation,
+original lender/API and current CounterScopedStorage. Compilation accepts that
+conformance but still FAILS with the same lifetime-deallocation diagnostic at3210
+(13.619800 s, exit1, no guard breach; `p08-case-codec-bitwise-copyable-once.json/raw`).
+No production change or accepted codec fix follows. The 64 MiB compiler-input
+charge is a conservative provision, not a measured exact compiler-read envelope.
+
+**Compiler-origin comparison delivered — 4 November.**
+The source-first diagnosis found all declared lender/body boundaries already
+borrowing. A retained direct-factory probe had already failed with always-inline
+codec init/factory, so another annotation sequence is not an established fix.
+A stale queued full-chain annotation/borrow candidate briefly changed two fixture
+files; it was canceled without tests and restored byte-for-byte after verifying
+both candidate hashes against the preserved dirty baselines. CounterSemantic is
+restored to13014f888a8fc817657429aae22fca1891fb2c8b9ea648cf28063b4efab04028 and
+CounterScopedStorage to946a8c575113e9cb35548b8fc867b0e98e73660ef3e530a0bd2747200964edc9.
+
+Exactly two standalone diagnostic sources were then compiled with the pinned
+Swift6.4/effects/optimization/target recipe, without GiftUI imports. Their pointer,
+buffer and UInt16 fields, factory and borrowed no-op observer are identical;
+only ~Escapable and its two required result-lifetime annotations differ. Root
+independently reviewed the source diff and both result records/raws. The
+nonescapable variant FAILS with the owned OriginCodec lifetime-deallocation
+diagnostic (1.048811 s); the escapable diagnostic control PASSES (0.389124 s),
+no guard breach, total1.437935 s. Sources are
+`endpoint-serialization-20261103/codec-lifetime-reduction/compiler-origin-{nonescapable,escapable}.swift`;
+exact argv/results are `codec-origin-{nonescapable,escapable}.json/raw` under
+`.build/contracts/p08-native-static-visitor-state1/`. Extra prepared controls were
+not run. This is a narrow compiler restriction association, not proof of its exact
+internal cause, production allocation freedom or a valid escapable replacement.
+
+The immediate next action is targeted compiler-correction assessment against this
+reproducer; no blanket compiler upgrade, source-contract waiver or external issue
+submission is implied. Current source remains unchanged. Caller-prefix memory/
+returned-state, six indirect operands, metadata/once provider effects and complete
+P08 acceptance remain separate UNMET obligations. Strong diagnosis consumed
+1,227,603 B within its precharged4 MiB envelope; oversized-output truncation and
+all prior costs/failures remain recorded without resetting counters.
+
+**Focused changed-source controls delivered — 4 November.**
+The existing instrumented Native47 consumer was rebuilt against the current source
+and candidate-first `endpoint-serialization-20261103/Native-B/providers`; changed
+provider objects were selected consistently at link. Compile/link passed in
+82.600038/0.498668 s. Current instrumented executable
+`rejected-bindings-case/Native/counter-integrated` is 5,347,584 B, SHA256
+`87d0c0fafbcae1043ebf9e1842d47a071e8c42594decbce75ef6648de7b46c39`. Exact source/import/compiler/link argv and object identities
+are in `p08-case-focused-integrated47.json` and `p08-case-focused-integrated-link.json`
+under `.build/contracts/p08-native-static-visitor-state1/`.
+
+All thirteen registered controls match declared outcomes without guard breach
+(48.622864 s; total compile/link/controls 131.721571 s): normal and exclusivity
+positive exit0, exclusivity negative exits−6, and ten facts/index/missing-row/
+double-release negatives exit−5. Individual records/raws share the prefix
+`p08-case-focused-`. The normal summary reports Static/Dynamic independent rows,
+five banks,26totals,audits,mismatch,refusal,faults,surplus/destruction PASS, including
+staticHost=1733216 and dynamicHost=1733140. The exclusivity negative contains the
+expected simultaneous-access/fatal-access-conflict diagnostic. The other ten
+negative raws are empty: these establish registered expected trap outcomes only,
+not independently symbolized per-site diagnostic identities. The entry source
+routes each exact flag to its named guard and exits97 if that guard returns.
+
+No additional source update was demonstrated or made; prior oracle/functional/
+Native42/Embedded42 passes were not repeated. Focused changed-dependent coverage
+is complete at this scope. The larger lifetime/allocation campaign is not yet
+acceptance-ready: actual caller-prefix incoming memory/returned state and eight
+provider/indirect boundaries remain unqualified, and both codec-effect gates still
+fail. These do not forbid unrelated dependency-complete profile checks; none newly
+ready is established here. The next prerequisite is one bounded qualification
+route for that incoming-state/provider group, with a valid codec lifetime argument;
+no existing complete finite recipe has been demonstrated, so broad cold/resource
+campaigns would not resolve the known blockers by repetition. No P08 exit is claimed.
+
+**P08 sequencing consolidation — campaign postponed, 4 November.**
+The existing plan's “Remaining P08” row and P08 exit criteria group the next work
+inside P08/T8.1 (`rfc-014-implementation-plan.md`, lines1102/1135):
+
+- **Implementation first, when justified:** group demonstrated limit, owner-cache,
+  audited-layout and actual-counter changes with their focused schema/field/witness,
+  below/equal/above-limit and behavior checks. No independently ready source task is
+  currently established; delivered source changes stand, and no codec fix is accepted.
+  Do not manufacture edits from residual calls.
+- **Four host/profile routes:** combine registered macOS Dynamic/Static, Pi ARMv6
+  and nRF Embedded actual counter action/text/stroke plus lifetime/activation/failure
+  coverage. Reuse applicable passes and refresh affected checks alongside edits.
+- **Postponed integrated campaign:** batch construction/caller/callback/cleanup,
+  incoming-memory and codec-backing alias, returned-state, provider/allocation/cold
+  evidence with early linked Pi/nRF RAM/stack/allocator/ABI checks. The eight calls,
+  inherited unknown incoming SP and codec failure remain current UNMET blockers,
+  not Future Work or waived acceptance criteria.
+- **Exit:** reconcile complete P08 evidence and obtain separate Strong exit review
+  before P09; this sequencing change authorizes no analyzer migration.
+
+Resume the campaign when justified grouped P08 source work and focused checks are
+stable, or remaining work is established to be evidence-only; schedule one combined
+acceptance batch instead of per-helper corrections. No independently ready source
+batch is currently identified, so none is promised before that acceptance work.
+This documentation update launches no campaign. Scope, acceptance criteria, existing
+source/image applicability, historical execution FAIL and all evidence/accounting
+remain unchanged.
+
+
+
+**Historical pre-tooling administrative closeout — 3 November.** The maintainer
+postponed correction iterations. The consolidated owner-lifetime work is stopped;
+no proof acquisition, model repair, semantic replay, full-corpus run, cold
+collection or acceptance promotion is authorized by this closeout. The Strong
+worker released proof/Meter ownership. Proof session 67450 and bookkeeping
+session 4199 completed with exit 0; no child or session remains active.
+
+The existing selected map remains **57 functions / 63 sites: 14 bounded,
+19 conditional, 30 unknown**, with tables **8 bounded / 18 conditional / 0 unknown**.
+All three Original52 later operands remain unknown. Complete qualification,
+Q01, both codec-effect obligations, whole NoHeap, alias/provider/resource/target
+fit and P08/R07/T8.1 remain UNMET. Source and target artifacts are unchanged.
+
+**Verified partial evidence:** the source/ABI premise inspection identifies
+nested typed field lenders and their conditional lifetime/exclusivity duties;
+it accepts no actual witness ABI or machine projection. The separate frozen
+191-range audit verifies 21,004 B / 5,251 instruction PCs against the current
+image, requested boundaries, retained body hashes and static no-launch records.
+These checks are not an integrated owner-lifetime proof or conformance result.
+The partial review consumed 7,804,129 B, including failed review methods/rereads.
+
+**Collected or diagnostic evidence:** the later 1,451-range static decode exited
+0 without a recorded breach, retaining 5,314,829 B in
+`.build/contracts/p08-native-static-visitor-state1/owner-lifetime-exact-private-closure.raw`.
+Its 191.006723 s is collection time, not workload/cold timing. This bulk raw is
+unnormalized, word-unqualified and semantically unreviewed. Local witness/layout
+and frame-effect equations remain diagnostic/unaccepted. No unfinished model,
+projection, pointee separation or public-witness claim is promoted. The five
+failed controls and all historical failures/withdrawals/uncertainty remain.
+
+Existing artifacts and closeout metadata remain under
+`.build/contracts/p08-native-static-visitor-state1/selected-engine/current-family-fresh/grouped-static-byte-borrows/qualification-batch10/continuation-owner-lifetime-20261103/`.
+`handoff.json` and `accounting-snapshot-closeout.json` completed; no new evidence
+publication was attempted during this bounded closeout. Compact publication,
+integrated proof/review and corrections are deferred. Unfrozen runtime-reference
+research was not integrated. Versioned ABI references are supporting premises,
+not conformance or private-helper/pointee certificates.
+
+The reported closeout snapshot is joint processing **6,318,787,323 /
+6,408,896,512 B**, retention including reservations **957,793,618 /
+1,006,632,960 B**, and capture including provisions **100,802,780 /
+117,440,512 B**. Twenty-four guarded jobs and five failed controls remain recorded.
+No counters, limits or history were reset, and no allowance was added to resume
+analysis. Historical execution compliance remains FAIL. Earlier forecasts and
+active-work descriptions retained below are history, not permission to continue.
+
+The completed [Original52 caller-context batch](scoped-storage/native-static-visitor-state1-result/batch10-qualification-20261102/continuation-20261102/original-owner/README.md)
+passes independent scoped review. The repeated read-only Optional guard excludes
+`51174` only in the checked normal-memory/exclusive-host context. Live `51228`
+host/owner and six field projections are checked. Fresh controller defaults remain
+separate from copied owner payload and returned host state. Exact forwarding
+reaches `E0F64 → 52E2C` with stored callback `4FC3C`; destination/frame/pointee
+preservation is still unjoined. All three Original cleanup operands remain unknown.
+The selected map stays **14 bounded / 19 conditional / 30 unknown**, tables 8/18/0.
+Twelve guarded jobs pass without breaches, totaling 15.5166 s; 33 new exact ranges
+cover 5,612 B. Four affected replays, independent word/field/branch checks and all
+32,768 getter cases pass. Review reads total 26,645,644 B with no review failures;
+cumulative coordinator actual is 541,873,870 B. Validation time is not workload or
+cold timing. Publication retains 63 files / 609,686 B. Pre-next-batch snapshot:
+processing 5,352,116,041 B own + carried reservations under 6,056,574,976 B;
+retention plus reservations 944,017,441 B; capture plus provisions 90,717,065 B.
+All historical execution failures, withdrawals and uncertainty remain.
+
+At the whole-closure refinement, the remaining known forecast is 96 MiB own
+processing + 16 MiB closing/publication, 40 MiB retention and 16 MiB capture.
+The same 96 MiB total review allowance includes 7,804,129 B already read for
+source premises and the 191-range audit; no separate helper reviews were added.
+The prospective carried processing cap is 6,408,896,512 B and capture cap
+117,440,512 B. Coordinator reserve remains 654,311,424 B; retention cap remains
+1,006,632,960 B. The prospective execution window follows the carried ledger;
+each child remains limited to 900 s. Root's current turn provision is 24 MiB
+within its unchanged 58,720,256 B reservation. All usage and failures carry;
+no allowance/counter resets or retrospective compliance claim.
+
+The bounded Astra methodology advice remains conditional and supplies no verified
+contract citation. Its initial broad search violated the 4 MiB read discipline;
+actual payload reads are unknown. Metadata gives a 47,699,629 B candidate-input
+upper bound, now conservatively charged with 1 MiB processing/control allowance.
+The existing 2 MiB own capture-control provision covers 1 MiB adviser + 1 MiB own,
+without duplicate charge. The failed method and uncertainty are preserved in the
+batch's existing failure history; no second advice pass or retrospective cure.
+Actual region/projection/write evidence remains required for acceptance.
+
+**Current concrete action:** one grouped metadata/value-witness propagation task
+across the actual callback, distinguishing scalar instruction gaps from genuine
+provider/alias prerequisites. Routine continuation remains automatic; no broader
+lifetime or source acceptance is inferred from diagnostic equations.
+
+The completed [constructor-projection batch](scoped-storage/native-static-visitor-state1-result/batch10-qualification-20261102/continuation-20261102/constructor-projection/README.md)
+passes independent scoped review. The actual `SP+0x2600` owner, private `x28`
+reconstruction, exact C-copy destinations and all intervening writes bind lifecycle
+0, application 2, phase 0 and quiesce 0 in that constructor cleanup context.
+The actual LDRB/LSL8/CMP200/RET/BEQ sequence skips both stop-delivery calls.
+`A563c` inert and `A5BA4` inert→retired returns preserve the qualified frame/live
+values; dispatches `51330 → A5BA4` and `5134C → A5F1C` are newly bounded.
+The selected map is now **14 bounded / 19 conditional / 30 unknown**, tables
+**8/18/0**. All constructor cleanup targets are bound; A5F1C's body, return,
+pointee effects and resource duties remain open. No Original52 promotion follows.
+
+The trace covers 402 steps / 383 PCs / 170 writes / 10 C copies; five new exact
+ranges total 192 B. Five guarded jobs pass without breaches, totaling 4.5017 s.
+Both affected proof/aggregate replays match; independent words, intervals, returns
+and four actually executed memory controls pass. Reviewer rendering/scaffold
+failures and costs remain preserved without repeating completed replays. Review
+reads total 22,370,004 B; cumulative coordinator actual is 515,228,226 /
+570,425,344 B before the next amendment. Exact versioned Arm/Apple support is
+limited to the bound ordinary C contract; full raw documents stay local, only
+small references are published. No private Swift ABI or foreign allocation claim.
+
+Publication retains 39 files / 618,911 B. Snapshot: joint processing
+5,927,828,987 / 5,972,688,896 B; retention including reserves
+942,698,884 / 1,006,632,960 B; capture including provisions
+87,430,382 / 100,663,296 B. Historical execution FAIL/uncertainty and complete
+qualification UNMET remain. Source, target, full/complex corpus and cold claims
+are unchanged. Subsequent current work uses the same receipt and carried ledger.
+
+The completed [callback frame/range batch](scoped-storage/native-static-visitor-state1-result/batch10-qualification-20261102/continuation-20261102/callback-frames/README.md)
+passes independent scoped review. It covers 23 direct copies plus the 185-byte
+release copy; 76 own-store expressions classify as 30 initial saves, 28 local
+disjoint writes, 12 conditional owner-range writes and 6 unjoined backing writes.
+Eight conditional frame equations, the finite 2/4-slot caller/helper loops,
+14 conditional release bodies and validated result 0/1/none are checked. Actual
+`memmove` is distinguished from `memcpy`; its proven 770-byte self-to-self call
+is byte-preserving under the valid C contract. No whole-callback or backing-alias
+proof follows. All five later cleanup sites and the 12/19/32 site map stay unknown/
+unchanged respectively; the inert predicate was not applied.
+
+All five affected replays match; 13 guarded records/raw hashes and four static
+LLDB no-launch/no-attach scripts verify. Guarded duration totals 15.1703 s,
+not workload/cold timing. The reviewer caller-versus-outlined-loop expectation
+failure and read costs remain preserved; the actual caller zero-init/helper
+ADD16-CMP-RET/backedge pair, including the last iteration, was audited without a
+private flag-ABI assumption. Review logical reads are 40,462,194 B; coordinator
+cumulative actual is 492,858,222 / 536,870,912 B before the next amendment.
+Publication retains 74 files / 1,050,248 B. Snapshot: joint processing
+5,860,079,597 / 5,888,802,816 B; retention including reserves
+941,188,566 / 1,006,632,960 B; capture including provisions
+83,228,882 / 100,663,296 B. All historical failures/uncertainty carry.
+
+**Prior action — completed by the constructor-projection batch above:** establish the actual constructor producer at
+`50838/83C` and `50914/918` (`SP+0x2600`), preserved through `50B14 → E0194`
+(`memcpy` destination `x28+0x714`, length `0x1DA`) and `50B18 → E5020`
+(byte write `x21+0x8EE`), then bind the `50B3C → 512AC` self projection. Only
+then may lifecycle tag 0 at owner+0x6A8 constrain those constructor cleanup paths.
+Loaded owner/backing aliases and other private returns remain separate duties.
+
+The completed [caller-preservation batch](scoped-storage/native-static-visitor-state1-result/batch10-qualification-20261102/continuation-20261102/caller-preservation/README.md)
+passes integrated independent review: 57 functions / 63 sites are 12 bounded /
+19 conditional / 32 unknown. Two first teardown dispatches (`51318`, `52db8`)
+bind `A563c`; five later sites remain unknown after callback returns. No new or
+supplemental indirect sites are added. The 26 tables are 8 bounded /
+18 conditional Native-case nonreachability /
+0 unknown, with zero missing helper inputs or CFG gaps in that selected scope.
+Three retained bodies / 650 instructions calibrate pinned static LLDB against
+LLVM output; all 41 new exact ranges have complete word/PC coverage. No process
+was launched, no new carriers/roots were generated and no alternate return
+certificate was assumed. Uncertified returns still havoc state. One serialization
+failure and one rejected old-image word-mismatch candidate remain preserved.
+The review's 41-versus-44 body-count expectation failure, inherited-epilogue input
+coverage stop and repeated read charges also carry. Independent decoding binds
+all three inherited `dcb84` epilogue words; the 11-body fixed direct/tail closure
+proves `stopDelivery` preserves the needed `x23`/`x24`. Outgoing consumer tails are
+only local frontiers, not return certificates. Conditional cases are distinct from
+numeric bounds passes and unconditional exclusions. The local-tail checker and
+aggregate-format failures remain preserved after their bounded corrections.
+
+Caller-batch guarded validation totals 25.5743 s including failures; this is not
+workload/cold timing. Independent review logical reads total 51,206,477 B,
+including the 27,276,277 B index phase (not added twice). Coordinator cumulative
+actual is 452,396,028 / 469,762,048 B before the next prospective amendment.
+Publication retains 89 files / 1,065,096 B, excluding rejected large artifacts.
+Publication snapshot: joint processing 5,708,630,280 / 5,721,030,656 B; retention
+including reserves 939,016,766 / 1,006,632,960 B; capture including provisions
+79,980,808 / 100,663,296 B. Control envelopes remain conservatively covered and
+uncertain; historical execution compliance stays FAIL. No source, target build,
+full/complex corpus or cold run changed. Full qualification and P08 remain UNMET.
+
+**Prior action — scoped frame results recorded above:** qualify normal-return SP/FP and protected spill bytes
+in `A563c`, across `A5764 → 170b48` and nested `170b70 → 17cab0`, with actual memcpy
+source/destination/length ranges. Then apply demonstrated preservation to the
+related later cleanup callbacks; provider/allocation and wider alias proof stay
+separate. The following integrated operand result is the preserved preceding
+baseline, not the current caller-batch count.
+
+**Prior integrated result — scoped technical review and checker repair PASS,
+3 November. Complete qualification UNMET; historical execution compliance FAIL.**
+The [current operand qualification proof](scoped-storage/native-static-visitor-state1-result/batch10-qualification-20261102/continuation-20261102/static-operands/README.md)
+covers 57 functions / 63 sites: 7 bounded (5 current Native index
+domains and 2 retained Fn/Ctx operands), 16 conditional (15 Native slot-case
+nonreachability candidates and 1 Dynamic geometry arm), 40 unknown (6 indices
+and 34 non-table consumer operands). There are zero unconditional excluded-site
+claims. All 26 table literals/local target sets/base flows pass: 22 five-entry
+and 4 six-entry tables. Their index applicability is 5 bounded / 15 conditional /
+6 unknown, not 26 domain passes. The actual constructor's six tag facts and
+shared committed/hit tag-word exchange pass within the selected Native scope.
+Consuming-copy/alias provenance remains a prerequisite at later consumers;
+normal, refusal, failure and cleanup paths are preserved.
+
+The actual rooted Native producer at `0x1000602a4` writes slot tags 0/1/2/3 at
+`+0x18/+0x38/+0x58/+0x78`, joining the lender's actual loads. No Embedded-style
+producer was matched or used as a seed; Native's 32-byte layout is not a target
+ABI claim. The MR/MP/criterion map below continues to govern the complete group.
+No production source, compiler flags or application limits changed; no complex
+corpus, cold or target run occurred. One Strong owner handled the bounded repair
+and Meter; root owns this receipt/checkpoint/publication, and the existing
+Standard reviewer completed the independent review. Worker ownership is released.
+
+Independent five-script replay matches current normalized results. Architectural
+audit fixes W-register zero-extension, narrow-load masks/sign-extension and
+fails closed on wider-than-modeled-store loads; it changes zero table domains.
+The 72 observed W-width discrepancies are `w9 = -2`; 687 memory-width events
+already hold unknown values. These observations qualify the present claims,
+not the interpreter generally. The scalar/load-model defect is repaired, including
+four-byte LDRSW reads before 64-bit sign-extension and unknown partial scalar reads
+of symbolic pointers. The guarded affected proof and aggregate refresh pass;
+independent focused replay and six semantic checks pass with zero changes across
+all 26 domains and 63 classifications. Actual signed-load representatives were
+checked, but this index traversal visits none; no general signed-path proof is
+claimed. Four unchanged proof passes retain reviewed applicability under identical
+inputs. Before-repair sources/results/full review remain preserved; the focused
+repair review binds the current model/aggregate. No full corpus was rerun.
+
+Corrected guarded children total 60.141871 s; affected repair/aggregate add
+1.880702 s, totaling 62.022573 s. These are child-validation durations, excluding
+manual reasoning/analysis, not cold/workload timing. Integrated and repair reviews
+read 49,984,880 + 15,466,344 B; cumulative coordinator actual is 401,189,551 /
+402,653,184 B. Review control-output envelopes remain conservatively provisioned
+and uncertain, not exact historical compliance certificates. The earlier all-five
+table assertion failed; two assumed-24-byte-stride 4/13 results are withdrawn,
+and the 13/13 provisional result is not current acceptance. The common wrong-seed
+mechanism was reassessed and replaced with the checked producer stores/loads.
+Uncertified alternate returns are conservatively havoced; no unrelated callback
+corpus is treated as covered.
+
+Publication retains 72 compact files / 1,423,519 B. The rejected 90 MB selection
+and 10,985 carriers remain local and excluded from duplication. Publication
+snapshot: joint processing 5,513,006,720 / 5,570,035,712 B; retained local/external
+plus reserves 936,721,922 / 1,006,632,960 B; capture including control provisions
+76,111,406 / 100,663,296 B. All prior charges/failures carry; prospective additions
+do not cure historical excess. Root closeout reads/checks use the existing 16 MiB
+current-turn provision within the unchanged 58,720,256 B root reservation.
+Root closeout verifies all 54 pre-existing tracked source/script/firmware hashes
+unchanged, all 72 published files against their compact manifest/current sources,
+the repaired-model review/hash join, current documentation links and whitespace.
+The index is empty; the checkpoint remains untracked. No maintained Swift changed,
+so no formatter or repository/full-corpus gate was rerun for these proof additions.
+
+**Prior action — superseded by the caller-preservation results above:** qualify alternate `lendStaticSession` at `0x100025d2c`
+through clones `0x10002c7f4` / `0x10002f140` / `0x1000314e8`, proving Native slot-tag
+projection/preservation in registers and saved stack arguments for the six unknown
+indices. The 34 non-table operands, including a distinct Static teardown callback
+seam, stay open; no single helper is claimed to close both groups. Full alias,
+provider/allocation, both codec effect failures, cold eligibility, target fit and
+P08/R07/T8.1 remain unmet. The global 3162-function/627-site inventory is unchanged.
+
+The first successor selector is **rejected, not operand proof**. Ambiguous short
+body matches multiplied across the whole image: 152 source families, 10,985 body
+carriers and a 90,842,456 B selection file. Execution exited zero after
+3,096.145409 s, but bypassed the existing guarded runner and exceeded its 900 s
+child duty. Its final unguarded write caused a measured 61,268,141 B retention
+excess including reserves; the later Meter initialization failure is retained.
+The oversized returned transcript has unknown exact envelope bytes. All artifacts,
+charges and failures remain; no retrospective compliance or accepted operand
+result follows. Prospective resource additions under standing authority retain
+the evidence without resetting usage or changing application limits.
+
+The corrected method is bounded to the existing 152 definitions and 17 known
+typed consumer parents. It uses actual rooted call/relocation/operand context,
+leaves trivial/ambiguous identities unresolved, creates no new body carriers or
+graph roots, and uses the existing guarded runner with durable raw output and
+counts-only control summaries. It does not read/materialize the rejected 90 MB
+selection again. The integrated result and bounded common-cause repair review
+above close the dependency-ready portion; unresolved sites remain explicit.
+
+**Prior continuation batch — scoped exit PASS, independently reviewed.**
+The [current Static host environment proof](scoped-storage/native-static-visitor-state1-result/batch10-qualification-20261102/continuation-20261102/static-host-environment/README.md)
+binds D81b8→55a14→510f8 in the unchanged linked image. Nineteen environment
+writes cover all eighteen callback reads (147 unique bytes); actual constructor
+and host-phase referents reject three Dynamic source twins. Seven grouped
+predicate families preserve conditional early1–5, candidate failure, reuse,
+constructor refusal and deferred cleanup. No universal default/nil or teardown
+exclusion is inferred. This completes local initialized-capture/source-route
+qualification, conditional on valid normal memory; full transitive alias safety
+and Q01 remain open. No production source migration or compilation occurred.
+One Strong owner delivered the proof; a separate Standard reviewer replayed it;
+root owns this receipt/checkpoint and publication. Ownership is released.
+
+| Mechanism / matching sites | Rules, recipes and existing acceptance | Required boundary / retained limits |
+| --- | --- | --- |
+| Static owner construction/defaults, session preparation, all fourteen backing loans, forwarded callback and shared host consumer | MR-01/02/05; MP-04/09; HC-SO-001/002/003, HC-TB-001 | Bind actual image/object/source identities and the fixed capture operands. Prior 36 forwarding edges and nine frame certificates remain conditional inputs; they do not establish full alias safety. |
+| Fixed Static profile predicates, mutation/refusal paths, callback return and retirement | MR-03/04/06/08; MP-07/09/10; HC-SO-002/003, HC-RD-002/003, IT-AC-004/005/008 | Group matching branches and preserve error/cleanup order. No production algorithm, constructor, default, callback or cleanup is changed. Reuse ordinary/negative/ARMv6/Embedded evidence only for its unchanged source/profile/artifact scope. |
+| Linked providers, first use, temporaries and physical resource fit | MR-04/05/07; MP-09/10; HC-SO-003, HC-RD-003, IT-AC-007/008 | No whole-lifetime, allocation, cold or target-fit PASS follows from this proof. Other provider/index/alias duties and both codec effect failures remain mandatory. No target build is invalidated by proof-only additions. |
+
+MP-01/02/03/05/06/08 are not new transformations in this batch: no equality,
+collection, model construction, fact owner, physical workspace or diagnostic
+representation changes. Their existing implemented paths remain in the complete
+acceptance boundary. The actual-entry gate and its historical enforcement controls
+are inspected under MP-09; neither a leaf PASS nor fewer conservative paths
+substitutes for that boundary. Existing counters/failures and numerical application
+limits carry unchanged; necessary evidence resources use standing authorization.
+
+**Validation, preservation and exceptions.** All three unchanged proof scripts
+replay successfully under the independent read-counting/intercepted-write audit:
+source/referent results are byte-identical, and the final result agrees except
+UTC/duration. Successful disassembly children total 1.046939 s; final proof
+analysis 1.052079 s; independent three-script replay 0.187092 s. These are
+validation timings, not workload/cold timings. The expired-window request remains
+failed (-9/raw0, 0.002149 s). Two corrected analysis expectations (19 rather than
+21 stores; candidate descriptor is init-assigned private var rather than let)
+retain their original scripts/results. They changed no source pattern; the
+second correction explicitly audits assignment and same-session bank exchanges.
+No failed production mechanism or consumed historical allowance is reset.
+
+The reviewer charged 26,918,101 read bytes within the existing coordinator
+provision. Its initial oversized tool output has unknown exact envelope bytes;
+a separate conservative 2 MiB capture provision preserves that uncertainty,
+without claiming exact historical compliance. Root hash/control accounting uses
+the existing root provision, with the orientation estimate enlarged to cover
+all three hash sweeps. Publication and final checks stay on the carried ledger;
+no application budget changes. All 54 pre-existing tracked source/script/firmware
+hashes outside this receipt remain unchanged. The image SHA256 remains
+`c30585c4fbfbc4cce7bbdbbdc8e769738888e40b55152901bce9c00341974885`.
+Unchanged ordinary/negative/ABI/target results retain only their previously
+reviewed applicability; none is claimed freshly rerun. No formatter or full
+repository test gate is needed for these proof/document additions.
+
+Publication snapshot: 55 files / 543,183 B retained in the existing continuation
+packet. Joint processing is 5,262,750,814 / 5,368,709,120 B; local/external retention
+plus closing/transcript reserves is 836,854,773 / 872,415,232 B; capture including
+control provisions is 55,563,774 / 67,108,864 B. Later root document/hash/link and
+copy-equality checks use the existing 12 MiB current-batch root processing
+provision (within the unchanged 58,720,256 B root reservation) and existing
+control provision. These are carried/provisioned figures, not exact historical
+compliance certification. The index remains empty and the checkpoint untracked.
+
+The earlier next action (constructor tags and matching bank operands) is now
+covered by the integrated successor disposition above. That disposition governs
+current coverage and the next action; the following inventory remains conservative.
+
+Independent review and root replay close all 103 table-base register flows in the
+prior frontier, using the actual Reference callback and Static-owner predicate
+where required. The storage-session family passes 36/36 forwarding edges, both
+final function/context dispatches and nine normal-return frame certificates;
+there are no unknown private helpers or missing CFG edges. Full capture/alias
+applicability and table index domains remain separate.
+
+Fresh UUID-bound qualification observes all 203 candidate once tokens zero before
+Main. Their 239-function initializer closure has zero imports, indirect calls,
+unresolved direct branches or syscalls. The reviewed private uncontended once
+provider normal path passes under explicit ownership, normal-return and thread
+state conditions. This does not qualify other providers. The tiny observation
+dylib exits before the Counter entry; it is not allocation/cold collection.
+
+The resolved callback reaches a shared host body. Its unpruned direct expansion
+adds 1422 functions and281 indirect sites; the current candidate is 3162 functions,
+627 indirect sites,224 joined operands and zero unresolved direct branches.
+There are 193 unjoined call operands and210 tails, including paths whose existing
+Never or Static predicates still need reconciliation. These are potential paths,
+not confirmed failures.80 of 138 new indirect parents have unique current source
+joins. The current packet groups the remainder by mechanism; fixed Static capture,
+index/target-base, feasible Dynamic/refusal/teardown and runtime/provider proof
+remain open. Both codec lifetime checks still FAIL. No whole NoHeap/P08 exit,
+concrete target fit or iteration completion follows.
+
+### Batch 10 — tested coherent generic-boundary changes
+
+**Latest result: the five-file batch is implemented and its combined validation
+passes, with the two known allocation-effect failures retained. Complete Static
+qualification remains UNMET.** The shared provider failure identified two existing
+`SignalAnalyzerPresetHostInstance` witnesses needing compiler visibility. Both
+were corrected together; four passing RuntimeStatic owners were reused. The
+correction run completes the prepared 32-job boundary without unexpected failures
+or dependent skips (`combined-run-r1.json`, `classified-result.json`).
+
+Fresh Native/Embedded actual42, Native integrated47, strict/integrated links,
+all ordinary observations, exclusivity controls, ten fatal/release controls,
+ARMv6 changed owners/importer and both target ABI checks pass. Every non-address
+field agrees in both full output comparisons. Host exports change1730→1734 with
+no removals; RuntimeStatic313→318 replaces its private field-initializer symbol
+and adds compiler-visible accessors. Ordinary/checked exports agree. No field,
+capacity, algorithm, loan, protocol requirement or error-order change is adopted.
+The actual two codec checks still FAIL at the same lifetime ending; they are
+not expected-negative acceptance.
+
+The stable image is `G/qualification-batch10/Native/counter-static-resource`,
+4,907,560 B. Its base graph is880 functions/67 indirect sites; the joined
+candidate frontier is1,738 functions/346 indirect sites, with222 call operands
+joined and no unresolved direct branches. The owned scheduler closure drops
+55/5 functions/indirect sites to41/1 and has only memcpy/memcmp imports. The
+generic semantic facade has no remaining direct callers in this image; this
+does not by itself prove all possible indirect applicability.
+
+Current proof artifacts establish authenticated destructor/copy targets, fresh
+Canvas/Reference literals, all203 Reference callback-register reaching definitions,
+and103 current object/linked local table literal joins. The conservative
+register-flow pass closes92/103 without assuming private callee preservation;
+eleven callee-saved-register call crossings still need their ABI/preservation
+qualification. The one caller-saved table helper has a complete16-byte audit
+preserving x9. Six nonlocal tails retain their Dynamic/exclusion obligations.
+
+All202 private once tokens are zero in a fresh UUID-bound before-Main process;
+the initializer closure has237 functions, zero imports/indirects/syscalls.
+The read-only probe exits before Main and is not cold/allocation collection.
+`current-once-state-qualified.json` and `current-initializer-family.json` bind
+this evidence to the stable image.
+
+Remaining work is collected by mechanism: two `lendStaticSession` callback
+operands and complete environment applicability; ten conservative Dynamic
+call exclusions plus the nonlocal tails; table index/base and eleven call
+preservation predicates; and transitive runtime/stdio/once/TLS cleanup behavior.
+The codec diagnostic remains a supporting-check failure until the approved
+alternative full-path proof is complete. No whole NoHeap, cold, target fit or
+whole P08 independent acceptance follows. The authorized independent review
+passes this five-file source batch with no actionable findings, independently
+verifying source and output/image hashes (`independent-source-review.json`).
+It does not accept the incomplete machine/provider proof or target fit. A further
+complete-body leaf audit proves four private-helper register/target pairs; the
+conservative table flow still remains92/103 (`current-table-register-flow-v3.json`).
+
+The independent actual-writer audit closes the three BoundedText Never/error-carrier
+VWT exclusions on normal return (`independent-never-exclusion-review.json`),
+including the outlined helpers and save/restore chain. This does not qualify
+`putchar` or its provider. Final formatting lint, governance validation and
+`git diff --check` pass. The [qualification packet](scoped-storage/native-static-visitor-state1-result/batch10-qualification-20261102/README.md)
+collects the current failed checks, proof gaps, source review and reproducible
+command records. Cold collection has not started.
+
+The earlier preparation paragraphs below retain their sequence; they do not
+supersede this completed combined-run result.
+
+The maintainer directs coherent changes before expensive validation. The
+current working tree therefore prepares the remaining semantic-lender and
+scheduler service/completion visibility chains together in four maintained
+files. Existing fields become compiler-visible where serialization requires
+it; existing generic methods become inlinable. Protocol requirements, stored
+fields/types, capacities, algorithm bodies, loan signatures, completion/error
+order and compiler optimization flags remain unchanged. The source script
+checks body identity after removing the visibility/inlining changes.
+
+`G/qualification-batch10/source-batch-plan.json` binds before/after sources.
+Formatting, lint, governance and whitespace checks passed at preparation. The
+combined validation and shared witness correction are now recorded above.
+The batch9 image below remains the earlier frozen baseline.
+
+`G/qualification-batch10/validation-plan.json` prepares one staged, combined
+32-job Native ordinary/checked, actual42/integrated47, behavior/refusal/cleanup,
+Embedded, ARMv6 and ABI/effect validation. Independent failures are collected
+within a valid stage; failed prerequisites stop dependent stages. Unaffected
+providers keep their exact retained artifacts. Broad tests are not run per helper.
+
+The complete validation forecasts up to 34 MB of new retained artifacts against
+about 9.2 MB remaining under the previous evidence-retention cap. Eugene approved
+the 32 MiB extension on 2 November and explicitly authorized autonomous necessary
+resource additions, asking to be involved only when really necessary. The new
+retention cap is 838,860,800 B. This supersedes the earlier time-only renewal
+restriction for future evidence execution-budget additions. All existing
+evidence, counters, failed methods and application acceptance limits carry;
+resource additions do not authorize a waiver, reset or historical compliance claim.
+
+The initial enumerative mapping method was rejected at its processing
+reservation before an evidence file was written. Equivalent short functions
+caused excessive duplicate matches. The failed script and disposition are
+retained; its temporary serialization length was not captured, and no exact
+processing/compliance claim is made for that sizing work. A bounded replacement
+keeps ambiguities unresolved and provides current symbol/instruction guides.
+Those guides alone do not accept relocated targets, contexts or whole NoHeap.
+
+Q01–Q05 stay open. The combined batch validation is followed by proof refresh
+on its stable image.
+Cold collection remains gated by the finite Counter qualification. Broader
+TargetHost integration remains allocated to I4-07 rather than becoming a new
+cold-start prerequisite.
+
+### Latest focused batch and maintained-source validation
+
+**The bounded collection and focused repair batch are tested; complete Static
+qualification remains UNMET. P08/R07/T8.1 and iteration 3 remain open.** The
+latest "Cool, then please go ahead" authorizes the agreed collection, grouped
+repair and validation sequence. Cold collection remains conditional on green
+qualification and has not started. No new independent review is claimed.
+
+The latest producers are under
+`G/qualification-repair-batch9/focused-specialization-maintained`: `plan.json`,
+`test-plan-v3.json`, `checked-effect-plan.json`, `ARMv6-plan-v2.json` and
+`result.json`. `current-qualification-result.json` is the current aggregate;
+its earlier snapshot is preserved separately.
+
+Three maintained files change together. The scheduler checks the
+`.invalidLifecycle` case without comparing generic cycle payloads, retaining
+pacing completion and error order. The Static Canvas facade serializes/inlines
+its typed loan, and its existing metadata field becomes internal
+`@usableFromInline`; field type, storage and ownership are unchanged. Existing
+release/discard methods inline with it; algorithms, refusals and cleanup stay.
+A closure-helper candidate failed checked borrowing and was not adopted.
+
+The matched scheduler completion closure falls from 58 functions/27 indirect
+sites to 10/2. The actual Canvas caller stops calling the opaque generic facade.
+Candidate and maintained images have identical section contents and layout.
+The fresh maintained-image base graph has **879 functions, 67 indirect sites,
+zero unresolved direct branches**, and linked size 4,889,840 B. These scoped
+improvements do not establish complete NoHeap or resource fit.
+
+**Fresh checks:** all three Native owners and the actual 42-source consumer
+pass; all three Embedded owners and the corrected testable-provider consumer
+pass. The complete **47-source integrated control was rebuilt**, linked and
+run. All recorded counts agree: physical492 / graph130 / engineFacts1115 /
+stream2312 / factory96402 / root66 / text550 / borrow16197 /
+remainingBorrow2028 / host5761 / scoped1673 / StaticHost1733216 /
+DynamicHost1733140 / retirement7740 / presence1020. Exclusivity and all ten
+fatal/release controls retain their intended exits; strict ordinary validation
+passes. Both complete output comparisons agree in every non-address field;
+raw and expected streams are preserved. Formatting, lint and whitespace pass.
+
+**Receipt correction:** `batch9-final-integrated-link` reused the slots8
+integrated runtime object. Its earlier run is not fresh constructor validation.
+The new complete 47-source build replaces that claim. Failed missing-object/main
+links and the initial Embedded testability mismatch remain retained failures.
+
+Six complete ARMv6 owners and an imported Canvas/scheduler API probe pass on
+the pinned ARM-only frontier; the probe reports CPUv6/VFPv2/VFP-register ABI.
+The fresh Embedded object reports Cortex-M4/v7E-M/VFPv4-D16/VFP-register ABI.
+The ARM Canvas probe remains generic, not concrete Counter execution. Native
+export deltas retain supported entries, adding metadata accessors/compiler
+cleanup helpers and replacing one private field-initializer symbol. This is
+coordinated-package ABI evidence, not independent binary evolution acceptance.
+
+The prior-image collection binds the 203 Reference byte-loan callback sites
+to the actual validator callback and inventories 202 once tokens/initializers.
+A corrected UUID-based probe observes all 202 tokens zero before Main; Main
+is index1 in that injected process. The initializer closure has 237 functions,
+no imports and no indirect edges. The validator callback closure has 14
+functions, no imports and three local table tails. Further lender expansion
+reaches 1,682 functions/384 indirect sites and exposes the repaired generic
+paths. These prior-image PCs are not relabeled as current proof. Broad CMO and
+Core-lender alternatives were rejected; no compiler-setting or Core-lifetime
+change was adopted.
+
+| Open issue | Current disposition |
+|---|---|
+| Q01 — callback closure | Refresh maintained-image linked bindings and finish actual lender/body/context recursion. The prior 1,682-function graph is an inventory, not final acceptance. |
+| Q02 — index/dispatch predicates | Earlier 97 literal/register joins and both StaticScoped guards retain their original scope. Complete current index/target-base applicability and retirement exclusion remain open. |
+| Q03 — allocation/refusal paths | Finish feasible Static/Dynamic, metadata, refusal and teardown classification. Reduced generic closures do not establish zero heap; this collection establishes no normal allocation counterexample. |
+| Q04 — provider first use/cleanup | Rebind the new image and close once, metadata/witness, pthread/dispatch, TLS/refcount and stdio cleanup paths. Before-Main observations are not cold/allocation measurements. |
+| Q05 — effect checks | Both fresh checks still FAIL at `CounterScopedStorage.swift:3210` ending `CounterSemanticCodec` lifetime after fresh checked-provider builds. Triviality controls do not waive this or complete the alternative proof. |
+
+Full lifetime allocation, stack/RAM/flash/target fit, ordinary TargetHost
+compatibility, independent review, the broad P10 gate and P09–P12 dependencies
+remain. Continue maintained-image callback/index/provider qualification; cold
+collection follows automatically only when all prerequisites are green.
+Future-mode compiler warnings feed existing
+[FW-036](../../../../../docs/future-work/fw-036-swift-compiler-upgrade-assessment.md);
+current acceptance failures are retained here.
+
+### Earlier constructor-repair receipt — prior image
+
+The following counts and records retain their earlier-image scope. The latest
+section above governs the active image and corrects integrated object reuse.
+
+**Active: the finite constructor repair passes focused integrated and target
+checks; complete Static qualification remains open.** Eugene explicitly asked
+to apply fixes in a batch, test and continue to the next tasks, then said
+"Please proceed." This supersedes the earlier hold before corrections. It
+does not waive the cold prerequisite, Specification criteria, target limits
+or connected-action authorization. No cold collection or target execution has
+been performed by this batch. P08/R07/T8.1 remain open.
+
+The batch is `G/qualification-repair-batch9`, where G is defined below. Its
+`batch-plan.json`, `adoption.json`, `maintained-final-plan.json` and
+`final-test-plan.json` bind the source, commands and actual maintained-path
+Native/Embedded artifacts. The first literal-nil-only alternative compiled on
+both profiles but left 70 indirect sites; it is retained and was not adopted.
+The adopted change qualifies the whole two-slot constructor family together:
+explicit empty storage plus targeted inlining through the private slots and
+candidate/committed/hit initializers. Capacities, fields, checked operations,
+copy/swap/reset algorithms and lifetimes are unchanged. No unchecked allocation
+promise or new storage architecture is introduced.
+
+The actual final strict image's base graph has 881 conservatively direct-reachable functions,
+67 indirect sites instead of 70, and no unresolved direct branch immediate.
+Its linked size remains 4,889,520 bytes. This is three fewer indirect calls,
+not complete path closure or a stack/heap/physical-fit result. All 28 remaining
+indirect-parent functions have current source-object matches; relocated data,
+caller predicates and callback target sets still require their stated evidence.
+
+The refreshed result is `G/qualification-repair-batch9/current-qualification-result.json`.
+The strict image and adopted source still match their producer/adoption hashes
+after formatting. Expanding the four freshly chained destructor targets gives
+889 conservative functions, with no unresolved direct immediate. Of the 16
+indirect calls, four have these constant bindings and 12 still need complete
+context qualification. All 50 local table sites now have current object/linked
+literal target joins and table-register reaching-definition joins. Both actual
+StaticScoped tables have closed unsigned 0...13 guards, including the formerly
+unresolved long-range table register. These results do not certify the remaining
+per-site index/target-base predicates or the nonlocal value-witness tail.
+
+Following the actual Canvas callback literals and captured body packets exposes
+a larger candidate graph: 1,269 functions, 221 indirect calls and 98 indirect
+tails, with no unresolved direct immediate. This is still not complete recursive
+callback closure. All 25 additional indirect-parent functions uniquely match
+their current source-object extents, bringing that inventory to 53 parents.
+The 203 newly exposed Reference byte-loan calls are one coherent family:
+102 Outline and 101 Bitmap calls use x22, copied from the incoming callback x2,
+and have exactly two direct TextResourceValidator caller sites. Their actual
+callback/context chains still need qualification; prior typed-Never body
+evidence is retained at its demonstrated scope.
+
+In this expansion all 97 local table literal joins pass. All 97 table-register
+definition joins also pass after qualifying the complete 16-byte private helper
+at `0x1000dda1c`: it stores x8, loads w10, compares w10 and returns, preserving
+x9 across the nine reported calls. The initial conservative 96/97 result is
+retained; no foreign ABI preservation assumption was introduced. Index and
+target-base predicates remain separate. The expanded graph also exposes 202
+`swift_once` call sites. Their initializer callbacks and first-use behavior
+remain in scope; observing entry bodies or running ordinary controls does not
+qualify them automatically.
+
+### Completed batch checks
+
+- Actual maintained-path 42-source Native and Embedded module/object builds pass.
+  The Embedded object retains ARM/v7E-M/Cortex-M4/VFP-register ABI evidence.
+- The final integrated ordinary image preserves all recorded behavior checks,
+  including StaticHost 1,733,216, DynamicHost 1,733,140, the prior physical/graph/
+  accounting/host/text/borrow/factory/retirement controls and remainingBorrow 2028.
+  Exclusivity positive/negative and all ten fatal/double-release controls retain
+  their intended exits; the negative exits are not ordinary success results.
+- The new actual generic reference-identity control passes against both the
+  original and adopted modules: exactly ten destructions after copy, replacement,
+  refusal, reset and exchange, plus nine invalid-capacity refusals. These classes
+  deliberately allocate; this is an ownership/behavior control, not Static heap
+  measurement.
+- Both full ordinary streams contain 4,771 lines. The 120 changed lines are
+  physical role-address observations: all 240 address fields have one common
+  translation, and every other field and line agrees. Raw/expected streams were
+  not rewritten or normalized. The source-bound field classification and its
+  earlier rejected token-count calibration are retained.
+- The actual codec passes compiler-checked `BitwiseCopyable` field qualification
+  in Native and Embedded. The owning-reference negative rejects its intended
+  stored field. This conformance exists only in the qualification fixture;
+  production codec declarations and lifetime dependencies are unchanged. Both
+  actual allocation-effect entry checks still reject the same codec lifetime
+  ending and remain FAIL, not expected-negative acceptance. The minimal checked
+  bitwise nonescapable descriptor also retains that rejection.
+- ARMv6 checks pass for three fresh complete owner modules, the actual changed
+  defining file, the imported reference consumer and hard-float ABI. All twelve
+  reused ARM module hashes and the 6.4/Bookworm pin file match. The unchanged
+  doctor evidence is reused without another 1.8 GB archive read. This is scoped
+  hardware-free qualification, not a complete Pi application or target run.
+- Repository maintained-Swift formatting, format lint and `git diff --check`
+  pass. The broad P10 repository/profile acceptance gate has not been substituted
+  for these scoped checks. The fresh ARM owner warnings about existential syntax
+  and inlinable setter visibility are retained in
+  `ARMv6-warning-classification.json`; no unrelated library edits were adopted.
+
+### Continued complete-path qualification
+
+The C provider-state fixture validates loaded UUIDs and readable/executable
+segment bounds, observes the selected cells and static stdout backing, and
+exits before Main. It does not call the Counter entry, prewarm a profile helper,
+or start allocation/cold collection. The current 38-word result records zero
+Swift throw and libc memory hooks, static FILE/extra backing, empty initial
+stdio buffers, recursive mutex initializer signature, cookie/stream identity,
+and six actual provider/export/callback bindings. The `dispatch_once_f` SDK
+macro initially exposed a local inline wrapper; its retained observation is
+not used as the exported implementation binding. The current fixture selects
+the declared export explicitly.
+
+The updated bounds fixture also checks the pinned FILE layout, alignment and
+complete readable mutex/orientation extent, rather than only its signature
+word. Its before-Main result passes with 38 words/status 511 and zero hooks.
+It exits before the profile entry and is not a cold or allocation census.
+
+Fresh cache body slices join those observed UUIDs to errno, mutex, once, stdout
+callback and flush code. Selected indirect-symbol/ordinal reads also establish
+that the stdout callback calls `write$NOCANCEL`; the public `write` body is not
+silently substituted for it. Provider body/path and first-use/cleanup acceptance
+remain open until all relevant conditions are accounted for.
+
+Two coherent lender candidates were qualified as overlays: targeted inlining
+across the existing typed-error lending chain, and nonthrowing inner storage
+borrows carrying an explicit typed outcome. Both Core modules, the actual
+42-source Native consumer and strict link compiled for each candidate. Both
+retained the witness lookups; inlining also increased conservative indirect
+sites to 309. Neither candidate was adopted, and all original Core/Counter
+source hashes still match. No third lender change is justified by those
+results. The overlays, commands, failures and dispositions are retained.
+
+Fresh instruction windows place the inspected witness lookups on error/trap
+branches, including the unexpected-error erasure path. Their conservative
+reachability and empty caches do not establish a normal Static allocation.
+The role-index helpers are also bound to the current private CMP#7/return
+instruction bodies. Complete guard/callback applicability remains a separate
+obligation; no required refusal or cleanup path has been removed.
+
+### Remaining qualification issues after this repair
+
+| Issue | Current disposition |
+|---|---|
+| Q01 — indirect dispatch | Four constant destructor bindings are refreshed. The expanded candidate graph contains 221 calls, including the shared 203-call Native Reference family. Complete recursive callback/context bindings, unchanged BoundedText applicability, foreign-root lending and justified Dynamic exclusions remain open; candidate Canvas packet bindings are not whole-profile acceptance. |
+| Q02 — table/index domains | All 97 expanded local literal and table-definition joins pass; both StaticScoped index guards are closed. The remaining per-site index/target-base predicates and the nonlocal tail's caller exclusion are still open. |
+| Q03 — allocation/refusal predicates | Error/trap placement is localized; no normal Static allocation counterexample is established. Complete feasible-path classification, including required refusals and teardown, remains open. |
+| Q04 — provider first use/cleanup | Before-Main state, full static backing and exact `write$NOCANCEL` are bound. The expanded 202 once-call sites' initializer callbacks and transitive pthread/dispatch/runtime metadata, refcount, TLS and cleanup closure remain open. |
+| Q05 — supporting allocation-effect checks | Both checks still fail at codec lifetime ending. Checked nonowning-field controls pass; the approved alternative complete-path proof has not yet been established. |
+
+Cold collection remains ineligible. P08/R07/T8.1, full lifetime allocation,
+stack/RAM/flash/target fit and normal TargetHost compatibility remain open;
+P09–P12 retain their dependency gates. No Specification exception, lifecycle
+approval, commit, deployment or flash is inferred. Continue the Native shared
+callback/context family at its two actual validator call sites, with BoundedText
+applicability, foreign-root lending and first-use initializers, then complete
+the caller/index/predicate/provider proof in this receipt. Cold collection follows
+automatically only when its prerequisites are green.
+
+The whole-module SIL diagnostic terminated with signal 25 and no accepted body
+output. Its exact cause is not established solely by that signal under the
+file-size guard. A conservative union-of-addresses graph reached its 6,000-node
+bound and is not a complete or sufficiently precise proof. Both results and all
+raw artifacts are retained; neither is accepted, retried blindly or used to
+expand the normative scope. Work continues through the actual selected caller,
+index, metadata and provider paths using the existing exact methods. No
+acceptance limit, lifetime rule or golden is weakened.
+
+## Preserved strict Static qualification — 2026-11-01
+
+**Result: UNMET; cold collection is not eligible. No product corrections,
+compiler rebuilds or runtime/cold executions were performed.** Eugene requested
+qualification, a consolidated issue list before corrections, and automatic cold
+collection only if qualification is green. That instruction governs this result;
+earlier automatic implementation continuation does not authorize corrections
+before presenting these findings. The accepted byte-borrow batch below retains
+its demonstrated scope. P08/R07/T8.1 remain open.
+
+The result is `G/strict-current-qualification-result.json`, where G is defined
+below. Its scope is the current Native strict Main, including `setbuf`, the
+Graph/StaticScoped/StaticHost roots, required refusals, operations, retirement
+and the final diagnostic summary. It is a path qualification, not full P08
+conformance or an independently accepted package exit.
+
+Fresh checks authenticate all 23 latest frozen inputs, the current executable
+against its link record and all 25 linked object hashes. The conservative
+direct graph has 878 functions and no unresolved direct branch immediate.
+Four current chained destructor targets are bound to actual pointer cells;
+their incremental closure adds eight functions, for 886 in this bounded graph.
+All 29 original indirect-parent functions have source-object candidates.
+All 13 current cache headers and 20 selected provider bodies match; the 24
+import names and declared library ordinals match retained provider resolution.
+These results do not establish transitive provider or complete indirect closure.
+
+### Consolidated findings before correction
+
+| ID | Disposition | Issue and required evidence |
+| --- | --- | --- |
+| Q01 | Unmet | Complete callback/indirect dispatch closure is missing for the current image. Its conservative graph contains 19 indirect call sites; four have fresh constant destructor targets, while 15 still require complete caller/operand/target applicability or justified Static exclusions. Source-object matching alone does not bind callbacks. Include newly admitted callback bodies and teardown; retain accepted matched byte-family proofs at their existing scope. |
+| Q02 | Unmet | Finite table/index domains are incomplete. There are 51 indirect tail sites. Forty-nine historical table sites match current source-function/instruction offsets; fresh literal/relocation/index bounds do not follow from that correspondence. Two historical table-or-tail sites have no certified table join. Callback-expanded domains also require current qualification. |
+| Q03 | Unmet | Allocation and error/refusal candidates lack complete feasible-path predicates. The conservative graph reaches one `swift_allocError`, 27 `swift_allocObject` and two Array allocation-buffer sites. This does not show that those sites execute in Static. The retained immutable Static owner/source invariant matches the current source, but cannot exclude unrelated error/provider paths. Required refusal and cleanup branches remain in scope. `malloc_size` is a size query, not itself evidence of allocation. |
+| Q04 | Unmet | Foreign-provider first-use and cleanup closure is incomplete. Verified entry slices and export identities do not prove transitive metadata/witness/once/refcount, stdio, TLS/exclusivity, stack-fallback, direct-zone or VM behavior throughout the charged lifetime. No new cache/provider mismatch was found. |
+| Q05 | Supporting checks fail | Both authenticated current allocation-effect checks reject ending `CounterSemanticCodec` lifetime at `CounterScopedStorage.swift:3210`. The corrected checked-frontier global check has the same failure; its intermediate ordinary-provider shadowing error remains historical. This conservative compiler rejection is not a measured allocation, and is not an exclusive normative veto if the approved alternative complete-path proof is established. |
+
+The underlying records are `G/strict-current-proof-actual-main.json`,
+`strict-current-qualification-inputs-and-sites.json`,
+`strict-current-constant-metadata-joins-v2.json`,
+`strict-current-constant-target-incremental-closure.json`,
+`strict-current-indirect-parent-object-joins.json`,
+`strict-current-table-source-applicability.json`,
+`strict-current-provider-applicability.json` and
+`strict-current-import-provider-joins.json`. The initial constant-thunk
+selector's empty result is retained separately; it selected at most 48-byte
+functions, whereas all four actual thunks are 52 bytes. No product or proof
+input was corrected to obtain the subsequent exact pointer joins.
+
+No new feasible allocating path was demonstrated. The result is nevertheless
+not green: current callback/path and provider obligations remain unresolved.
+Dependent cold collection was not launched. Existing four-route allocation,
+target stack/RAM/flash fit and full normal TargetHost compatibility remain
+separate open obligations; this result neither reruns nor waives them.
+Findings are presented together before any correction, as requested.
+
+## Completed grouped Static byte-access batch — 2026-11-01
+
+**Status — the grouped remaining Static byte-borrow batch meets its exit and has independent review acceptance for implementation, integrated behavior, coordinated-package ABI and the matched Native/Embedded facility scope. P08 remains OPEN.** The checkpoint is the one current execution/allowance summary; this is the one package receipt. Earlier entries below are historical evidence, not fresh execution authority.
+
+Eugene explicitly directs larger coherent batches and automatic continuation, including prospective execution-limit changes when needed. The complete known queue, failures, review and artifacts stay charged; no historical allowance or exhausted campaign resets. Specification acceptance limits, architecture and connected-hardware authorization remain unchanged. Strong owns implementation/Meter analysis; Luna6Medium runs routine compilers/tests; Sol6.1Medium independently reviews; AstraMedium advises on actual contract questions. No routine continuation approval is requested.
+
+B is `.build/contracts/p08-native-static-visitor-state1`. G is `B/selected-engine/current-family-fresh/grouped-static-byte-borrows`. Earlier nonthrow-byte-repair evidence remains the BoundedText baseline. Existing run.py/Meter and package receipt are reused; no new controller, evidence schema or per-helper budget is introduced.
+
+**Delivered implementation and retained contracts.** The batch covers Diagnostic and all three actual nonthrowing consumers; Reference102 bitmap +102 outline and PiCompact96 payload branches; concrete validator façades; and Counter/NRF raster consumers. It reuses the delivered BoundedText pattern. Existing rethrows APIs/protocol requirement, storage/layout, payload bytes, query/error order and borrow lifetime remain. One typed-Failure kernel serves each existing byte algorithm; concrete Static routes select Never. No stored borrower, extra owner, new protocol requirement, runtime cast or Core→Reference dependency was added.
+
+| Matching mechanism and sites | Existing criteria / rules / recipes | Current evidence and limit |
+| --- | --- | --- |
+| All15 typed-slot instantiations/19physical positions: reservation/default construction, installation, borrow/facts, fault prefixes, refusal, sessions and retirement | RP-TB-001–004; HC-TB-001; HC-SO-001–003; HC-015; MR-01–08; MP-04/06/07/09/10 | One owner/inventory/session/unwind policy; Static physical dispatch and automatic same-owner factory fallback inside backing loans. Direct release still requires idle; manual release followed by enclosing fallback is safe. Embedded finish-before-deinitialize remains. Complete current ordinary corpus and108factory scenarios pass; no full allocation/cold/resource claim. |
+| G2reference scratch and G3drawing wrapper constructor/getters/borrow/cleanup | RP-TB-002/003; HC-TB-001; MR-02/04/05/07/08; MP-04/06/09/10 | Canonical64Optional backing preserved; concrete inout inspection bodies directly checked, finite RuntimeStatic serialization reviewed as body/default/layout preserving. First/middle/last presence/refusal/copy controls pass. Three effect guards extend to canonical allocation flags; ordinary compiled tokens are unchanged. |
+| Generic Host constructors, nine ordered stages, Graph/Policy bridges, ledger/begun state, runtime comparisons and actual Counter consumers | HC-008/015; HC-SO-002/003; IT-AC-004/005/006/008; MR-01–08; MP-04/05/06/07/09/10 | Fresh defining/imported four-callee checks pass. Independent512mask old/new policy, all runtime/text errors, repeated-call refusal, query/ledger/workspace traces, actualCounter layout and90private-field equality controls pass:5761checks. Ledger replacement cannot reopen validation. No generic unchecked allocation promise. |
+| Root model/default/failable construction and Text validation/manifest/Reference callbacks and consumers | HC-TB-001; HC-SO-002; SPEC-005 TR-003/004/007/008/009/010/011; MR-01–08; MP-01/02/03/04/05/06/07/09/10 | Prior root/Text mechanisms retained; current integrated root66/Text550 pass. Both guarded zero-payload callbacks, generic facade, independent old policy and structural controls remain. New full-lifetime/allocation/resource acceptance is not inferred from those leaf results. |
+| Changed Native/Embedded language, provider/target, ABI and integrated boundaries | HC-RD-001/003; HC-SO-001–003; RP-TB-004; IT-AC-004/005/006/008; MR-04/05/07/08; MP-09/10 | Native common+10 fresh controls PASS and398 retained semantic claims. Earlier20-module/214-row Embedded results have independently reviewed semantic applicability to the unchanged lifetime slice under current provider/actual42-object refresh; no new language aggregate is claimed. Prior BoundedText byte-helper ABI added one export without removals; earlier private-initializer delta remains explicit. Whole lifetime/allocator/cold/firmware/resource/foreign-provider duties remain open. |
+| Diagnostic kernel, all three actual consumers, constructors/refusal, public throw and nonthrow callbacks | SPEC-005 text/borrow contracts; SPEC-013 forbidden facilities; MR-01–08; MP-04/06/07/08/09/10 | One typed-Failure kernel, unchanged public/package rethrows signature and storage. Presentation bridge, WaveformGeometry and NRF ModelWriter migrate together. Actual Native/imported/Embedded boundaries and independent 2028-check oracle pass. |
+| Reference bitmap102/outline102 and PiCompact96 payload branches, façades, validation and generated provenance | SPEC-005 raster payload/provenance/selection contracts, including unchanged protocol requirement at line510; MR-01–08; MP-04/05/06/07/09/10 | One typed kernel per existing dispatcher, concrete Never route and the existing validation engines. All300 payload arrays equal frozen before data; all7 registered outputs reproduce byte-for-byte. Public throwing behavior and invalid/unavailable/valid-empty behavior remain. |
+| RasterGlyphCoverage and concrete Counter/NRF glyph consumers; actual generic NRF session | HC-RD-003; HC-SO-002/003; RP-TB-004; MR-01–08; MP-04/05/06/07/09/10 | Ordered preparation and shared byte-count/pixel inspector replace the rejected higher-order borrowing operation. No stored callback, new owner, protocol requirement or Core→Reference dependency. Existing per-glyph/tile query/loan boundary remains. The actual specialized NRF payload path is qualified within the matched scope; global heap/cold/resource closure stays open. |
+| Source-generation reader and complete affected Native/Embedded/ARMv6/provider/consumer boundaries | SPEC-005 generation/bounds/payload contracts; HC-RD-001/003; MR-04/05/07/08; MP-09/10 | Existing reader recognizes adopted nominal UInt8 fields; fixed1911/13195 counts and all11 provenance/SHA guards stay. Real missing/extra controls reach the count guard; nondata hex passes. Actual12-owner ARMv6 closure/importer/ABI pass; full target fit/cold acceptance remains open. |
+
+**Integrated ordinary and callback acceptance.** The integrated ordinary image passes all previous observations: physical492 /graph130 /engineFacts1115 /stream2312 /factory96402 /root66 /Text550 /borrow16197 /Host5761 /scoped1673 /StaticHost1733216 /DynamicHost1733140 /retirement7740 /presence1020, plus **remainingBorrow2028**. Full782,441 B normal output is retained. The new independent oracle covers100 Diagnostic cases and all300 frozen-before payload arrays, callback/result/throw identity, nested loans, invalid/unavailable inputs and three valid-ID mutated-record refusals. Three throwing and three async callback negatives have intended primary sites7:31,10:73,13:73, with positive/public-throw twins. Exclusivity positive and -6 negative match required markers; ten fatal/double-release controls exit-5/raw0. Trap PCs/platform frees are unmeasured.
+
+**Shared Core algorithm and borrowing.** Core preparation keeps the original ordered validation/query/refusal block and pixel algorithm token-identical. The higher-order borrower shape failed on both Native and Embedded and was reassessed before replacement with immediate Rect+record preparation, the known concrete loan, and shared inspection/rendering. NRF preparation remains inside each original tile visit. There are no new owning fields or session/cleanup changes; the temporary preparation value contributes to still-open stack/resource acceptance.
+
+**Complete affected target/provider boundaries.** Fresh Native/Embedded Core and actual10-source BackendIntegration owners pass; current Native42 production and Embedded42 object pass. The actual nRF root now selects the fresh Domain module after current Core/Reference, ahead of the old aggregate. Its ARM/v7E-M/cortex-m4/VFP-register ABI passes. The full NRF golden transcript matches all306,792 B, SHA-256 `38c2bf62917e58745b079c14bd338a724dc2272e877cad658b1a5e8437de775c`.
+
+The project-local Swift6.4/Bookworm doctor passes. All12 ARMv6 owner modules, the actual imported byte-path probe and ABI pass using the sole fresh ARM prefix with no Native/nRF fallback. Probe object6,140 B has ARM machine, CPUv6 and VFP-register hard-float; Cortex-M4 is not a Pi attribute. Artifacts remain under `.build/raspberry-pi/`. This is hardware-free target qualification, not a complete application/firmware, stack/RAM/flash or remote-run claim. The inspected Pi application session is Dynamic/Reference; it does not establish Static/PiCompact application closure.
+
+**Generation, provenance and real gate controls.** Both generators use the existing logical FontTools venv and reproduce all7 registered outputs byte-for-byte; all300 adopted payload arrays/hashes remain. The shared invocation bug had resolved the venv Python and swiftc symlinks to Xcode Python/swift-driver. Correct logical executables restore their environment/mode without installation, network or toolchain changes. Checker arguments and owned current provenance rows are corrected; all prior failures remain.
+
+The existing source-generation checker counted only legacy tuple literals despite already adopted nominal fields. Its anchored nominal UInt8 reader preserves fixed1911/13195 byte counts and all11 input/tool/provenance/SHA guards. Real temporary roots reconcile their own manifests and all11 provenance rows: missing1910 and extra1912 fail the intended count guard; unrelated hex1911 passes. No product Swift, payload, golden or gate limit was changed to pass these controls.
+
+**Matched facility and generic session.** The matched Native and actual Embedded payload paths are qualified. current-matched-family-facility-proof.json and current-Native-typed-payload-body-proof.json bind two Native Never façades, two typed storage definitions forwarding Failure and three optimized generated dispatchers. Four full SIL bodies are counted; the fifth requested standalone closure was not emitted and is not claimed. The actual Static NRF session specialization binds its tile storage, display transport and Reference metrics/raster. Exact sections cover all2,004 session bytes and3,864 bitmap-kernel bytes without gaps, including jump-table/literal context, relocations and the concrete60-byte source callback. The callback/context/register bindings support the matched optimized payload route; no new protocol requirement or SPI amendment is needed there. The initial30-byte kernel disassembly remains a coverageFAIL artifact. Public throwing implementations stay linked; this is not global binary absence or whole-path heap/cold/resource conformance. The old881→1329 graph remains historical input.
+
+**ABI and temporary cost.** Independent checked/ordinary pairs agree at Reference901 and RasterCore374. Domain594 and Backend346 use the same ordinary artifact/flags where no distinct qualified macro variant exists; they are not represented as two independent twins. Core365→374 adds9 exports, Domain593→594 adds1, Backend346 is unchanged. Reference1085→901 is bound to the exact pre-batch Pi-tuple baseline:384 internal Pi tuple-accessor symbols, two tuple-metadata symbols and one compiler closure retire as private nominal storage replaces those helpers. Supported public/package rethrows APIs and old generated dispatcher entry symbols remain. This qualifies a coordinated package rebuild, not independently versioned binary evolution or exact baseline export equality. The preparation value's Native VWT measures size35/stride36/alignment4; no persistent owner-field layout changes. Complete nested stack/RAM/flash fit remains unmeasured.
+
+**Lifetime evidence applicability.** Independent review verifies unchanged owner/session/lifetime signatures and bodies outside concrete glyph workflows; the Core guard/query/refusal block and pixel tail are token-identical. CounterNativeRaster and NRF sink each change only one positionedGlyph body, retaining its original loan boundary. Current producer/consumer compilation plus these exact deltas support scoped semantic applicability of earlier Native398+10 and Embedded214 results. They do not establish freshly executed408/214 aggregates or exact historical collection resumes.
+
+**Effect/compatibility gaps.** Both allocation-effect checks remain genuine FAIL/UNMET at CounterScopedStorage3210 ending CounterSemanticCodec lifetime. The intermediate HostAssembly292 unavailable-initializer error came from an ordinary Core producer shadowing the checked one; the exact CAPABILITY/GRAPH_ENGINE/STARTUP qualification recipe restores the known Codec result. No unchecked promise or compiler/toolchain change substitutes for it. Full normal SwiftPM TargetHost compatibility remains FAIL/unmet from unchanged I4-07 View/State/Canvas errors.
+
+**Execution accounting.** **Carried execution limits and exceptions.** Processing4,831,838,208 B (4608MiB), retention805,306,368 B (768MiB), captured output67,108,864 B (64MiB) are prospective whole-batch amendments under Eugene’s authority. Processing includes the mandatory Pi doctor archive-read charge1,822,092,498 B ONCE, bound by `slots8-pi-doctor-archive-inputs-charged`; neither the pass nor charge was repeated. Existing provisions are root58,720,256 B, reviewer385,875,968 B and adviser16,777,216 B, already included in joint processing; their actual usage is not added twice.
+
+Source proof closeout before final review/document/Git costs: own3,379,671,229 B /joint3,841,044,669 B; retention576,845,545 B. Hard guard capture42,385,853 B includes historical carry33,641,104 B and new read accounting. A separate524,288 B external control provision gives42,910,141 B total provisioned coverage. Frozen raw baseline5,646,237 B is not added again. Later costs remain on B/ledger.json.
+
+The historical carry includes8,388,608 B uncertainty. The actual prior8MiB breach (known minimum12,879,023 B including the lost7,300,559 B bypass transcript), uncertified history, duplicate audit reads and conditional32MiB reconciliation UNMET remain permanent. Later40MiB acceptance and automatic64MiB amendment do not grant retrospective compliance, reconstruct the transcript or prune failures.
+
+The final administrative window is prospectively renewed to1November19:38:34–21:38:34 UTC under standing7200-second renewal and Eugene’s automatic-limit authority. The prior16:26:31.228025–18:26:31.228025 window and all consumption remain historical; no backdating occurred. The first final Git attempt returned -9/raw0 for an expired fixed session deadline and has no accepted Git result. Index/checkpoint queries were not launched then. Preserve that attempt; use fresh final admin record names under the renewed window. Product code and validation artifacts did not change during final record/review/document closeout. Earlier thread-idle expiry and18-minute preparation exception remain historical; neither backdating nor counter resets occurred. The obsolete32768-line guard caused a retained failure; its prospective replacement derives from the live byte cap while preserving bounded reads/drain accounting.
+
+Independent final review accepts the matched scope after correcting the compact callback join: the immediate inspector thunk differs from the captured pixel callback. The erased adapter's nonzero error-store branch remains present and is excluded only by the verified caller/callback r8 predicate. The prior inaccurate record is preserved; corrected current-matched-family-facility-proof.json is8,995 B, SHA-256 eecc31427907421e79b98f5cd8061c09effe8fff322e49635fc1c2c83daeac5a. Reviewer cumulative reads308,820,226/385,875,968 B remain within the already charged provision.
+
+**Remaining acceptance:** global Static path/indirect/index/foreign-provider closure; complete charged lifetime and first-use/cold four-route allocation acceptance; actual stack/RAM/flash/target fit including the preparation temporary; full normal TargetHost compatibility; P08/R07/T8.1. No representative, ordinary, object or ABI pass waives these criteria.
+
+**Current proof references.** G/integrated-current-plan.json and integrated-family-main-postformat-freeze.json bind the integrated phase; the earlier map records17 family source inputs. G/current-grouped-root-composition.json separately binds the composed NRF root; the final whole-family freeze explicitly binds both that root and the separately maintained ordinary Main. G/invocation-generator-reproduction.json, invocation-source-freeze-verification.json and armv6-prefix-bindings.json bind current generation/target applicability. G/callback-negative-site-classification.json and generation-checker-controls-reconciled.json retain the real negative controls. The final whole-batch records are G/current-matched-family-facility-proof.json, current-provider-ABI-result.json, current-Native-typed-payload-body-proof.json, current-lifetime-language-applicability.json, final-whole-family-source-freeze.json and current-batch-child-timings.json. The final freeze explicitly includes the separately maintained ordinary Main, current source-generation checker and provenance TSV; the earlier17-family source attribution and separate composed-root record must not be confused with the final explicit ordinary-Main binding. The ordinary-Main binding uses compiler argv, root-held unchanged source and the executed2028 gate. Existing current generation/callback/ARM bindings remain unchanged.
+
+**Validation time.** The implementation/validation phase executed103 child records totaling309.7940034866333 s, including failed attempts, expected negatives and analysis commands; skipped jobs have no fabricated durations. Records remain under B/slots8-*.json and G/current-batch-child-timings.json. These are validation costs, not runtime performance or cold evidence.
+
+**Single next action:** qualify the current strict Static root’s remaining indirect/index domains and provider first-use/retirement paths as one package before cold collection. This grouped byte-borrow batch is complete; its broader P08 acceptance gaps remain explicit. No helper-level approval packet or automatic commit is requested; the local checkpoint stays untracked.
+
+## Prior implementation evidence — retained inputs
+
+The following records describe earlier images and counters. Reuse only the applicability established above or by the final independent review. Their old execution instructions and allowances are historical, not current authorization.
+
+**Delivered source.** Profile-specific physical operations retain the same owner, typed storage, acquisition inventory, role/session semantics and reverse-prefix bookkeeping. Factory fallback is immediate and automatic before backing ends; inert owner deinit accepts reserved/released only with acquired0 and rejects live state. RuntimeStatic only exposes the finite required specialization chain. Host groups existing ledger/begun control under its existing nongeneric guard, with a non-resetting private compatibility facade and all original policy/error ordering. Independent Host inputs obtain a real audit while the actual scoped owner/backing remain alive; no obsolete zero-argument preset audit or fabricated physical audit is used.
+
+Mechanism reassessments and all failures are retained in the existing .build/contracts/p08-native-static-visitor-state1 records. Optional-presence/attribute-only dispatch and caller-syntax trials were not multiplied without qualification. Bounded mandatory SIL distinguished aggregate/Span ownership from direct inout projections. Semantic reference @frozen/Bitwise, codec marker, forced lender inline and final descriptor reconstruction trials did not qualify the complete owner and were restored: SemanticRuntimeRecords originalSHA d9f4165a09778f97e99189f0da57a92aae44c98e9b1dae1c7baf312651ccdda4; CounterSemantic original13014f888a8fc817657429aae22fca1891fb2c8b9ea648cf28063b4efab04028; CanvasSemanticPayload original34d65b79df71cf6600d94cfe21630318e8821fb21788dc520328160f44334bab. No new physical owner, raw Optional rebinding or cleanup-responsibility transfer was adopted.
+
+**Executed ordinary/lifetime result, independently reviewed.** source-freeze3 binds46sources and current image5,187,736 B (SHA71b50de4 prefix) to the successful object/link. Ordinary exit0/raw782,407 B: physical492, graph130, engineFacts1115, stream2312, factory96402, root66, Text550, Host5761, scoped1673, StaticHost1733216, DynamicHost1733140, retirement7740, presence1020. The108factory scenarios cover Static14/Dynamic9 acquisition before/after faults with retry, default/surplus, uninitialized return, implicit/manual-plus-fallback and repeated sessions. Test-only scoped witnesses observe actual install/destruction identities and reverse order, actual Native Optionalnil under live backing, then owner-deinit entry before backing-deinit entry. They do not measure platformfree or unrelated model-destructor counts. Actual semantic layouts exercise first/middle/last occupied-cell refusal and copy independence; mask7 is enforced.
+
+Same image exclusivity positive exit0/raw33 and negativeSIGABRT-6/raw1428 match both Simultaneous accesses/Fatal access conflict. Eight fatal and two direct double-release controls exitSIGTRAP-5/raw0 with no return97; trapPCs are unobserved. The original pattern-based exclusivity reads failed object ownership lowering despite typecheck; the final borrowing nil-comparison helper preserves the actual global read inside the original modify window. ScopedSHA cffa9632a10c600ca956b798672a397175c92135dc272c8c5bf9db2a5c2182e0 differed from ordinaryfreeze3 only in three inactive qualification guards. qualification-delta-applicability.json records that ordinary-token correspondence. CurrentScopedSHA946a8c575113e9cb35548b8fc867b0e98e73660ef3e530a0bd2747200964edc9 additionally replaces the Embedded-only noncopyable hostPlan pattern with a borrowed nil predicate; embedded-hostplan-predicate-applicability.json and the retained before/patch bind that delta and unchanged Native compiled tokens. No unchanged normal pass was rerun.
+
+**Classified language evidence.** Native408 partitions104union/208active-retired carrier/64erasure/32specific rows. Retained-source/compiler/generator/flag/import/lifetime-signature review establishes398semantic claims after current common compilation; all49lifetime signatures and accepted9a24eff7 predicates remain. Fresh current common and the ten changed positive/negative rows pass (host-backing, dynamic-host-backing, arbitrary-factory, static-overlap, async), with primary errors at appended sites. native-language1/result.json is11/11 including common, aggregate_complete=false; no historical Collector resume is fabricated.
+
+Embedded language-family-registry and embedded-language2-{plan,result}.json now bind all214labels:107full-IRGen positives /107intended negatives. Original session3111 exits0 with CORPUS_COMPLETE; language_corpus_complete/passed=true while collection_complete remainsfalse for the whole package. Independent review verifies inventory/order, expected full-source hashes, every changed appendage, actual target argv, raw hashes, primary diagnostic sites, positive-twin ordering and output lifecycle. Identical copied prefixes and deleted successful control objects are producer-hash-bound; the reviewer does not claim independent rehash of every such byte. No failed output or preexisting object was removed. Future106successful compiler-only objects were hashed/recorded before the maintained scoped_variant cleanup; first/prior/common/link/ABI artifacts remain.
+
+**Affected target feasibility.** Fresh current20module closure PASS, with native source/order/import recipes adapted to authenticated Embedded armv7em-none-none-eabi/Cortex-M4F hard-float flags. No Native Swift module is reused as a target module. The authenticated current handoff defines RuntimeStatic8 (excludes unchanged legacyStaticGeneratedProfileMetadata) and Reference7 (includesPiCompact). Wrong whole-directory Static compilation failed and was retained. Reference7 first hit the self-selected3M file guard during serialization; its canonical-owner retry under a prospective6M forecast passed, retaining failed output. Modules/cache total18,460,712 B at completion, within a carried32MB target provision; earlier Text target/source reservations remain charged. typed-slots2/Embedded-current-owner-revision-plan.json/outcome.json and .build/nrf52840/contracts/p08-native-static-visitor-state1-slots2 bind the result. This is module-only feasibility, not Counter target execution, firmware/ELF/VFP, hardware or stack/RAM/flash proof.
+
+**Current actual Counter target and strict Static functional boundary.** Authenticated Presentation/Table and the enable-testing target importer closure compile. The Embedded owner’s deinit made pattern matching noncopyable hostPlan an illegal partial consume; hostPlan == nil preserves its borrowed guard and order. The current42-source common module-only64M /object-only16M commands pass: module50,866,056 B (SHA14f1220d…); object2,853,668 B (SHA546706b2…). Independent streamed hashes also verify the retained first positive ELF.o2,784,220 B (SHAde831062…). Earlier combined/module serialization SIGXFSZ attempts remain failed. Both first and actual common ELF records verify ARM/v7E-M/cortex-m4/VFPv4-D16 and VFP-register calling convention. No Native module import prefix is reused for the target. Records: B/slots3-embedded-common7-{module64,object16}.json; B/slots4-embedded-common-object-ABI.{json,raw}; P/Embedded-common-object-ABI-result.json, where B=.build/contracts/p08-native-static-visitor-state1 and P=B/selected-engine/current-family-fresh/typed-slots2.
+
+The existing --static-resource-entry-v1 Main links the authenticated current common object plus24lower objects. Its separate4,870,360 B image passes1,734,308checks /zero failures. This is functional validation, not normal firmware or cold/zero-heap/resource evidence. B/slots3-current-static-resource-{link,functional}.json and P/static-resource-current/batch-plan.json retain the exact artifact. The strict root calls Graph +StaticScoped +StaticHost; the old diagnostic C export calls the mixed route, and the observer demonstrates a direct-zone callback bypass.
+
+**Reviewed current rooted mapping: UNMET.** P/static-resource-current/rooted-current/proof-integrated-current.json (9,372 B; SHAab3c4a82f6f651817fd984ce11e9b3aeac4287c55bebb5bf70bdc4e8698c65aa) and analysis-freeze.json retain the integrated result. Main inlines the exported entry: the actual _main/Main.main setup→Graph→StaticScoped→StaticHost→summary closure contains881functions, not the868-node exported-symbol calibration. Independent review hashes the strict image19514499… and all25objects (14,377,552 B combined), verifies every881body hash/direct target, all4chained-fixup metadata joins,49source-section/ADDEND/linked-literal target sets,24current cache export/reexport paths and20live provider byte slices. Its initial tuple-order comparison was corrected to compare the deliberately sorted unique target sets; the original failed analysis is retained and no proof input changed. Table targets do not prove index bounds; constant pointers do not resolve other callbacks.
+
+Targeted provider access is available through the current Cryptex cache. Headers/export tries, UUIDs, mappings and selected body bytes are retained without cache-wide extraction/hash. Actual OS SwiftCore UUID83794FB3-DE9B-3D23-AB5E-2C1D5D30F134 is distinct from compiler6.4. Current path/override resolution is not retroactive observation of prior loaded UUIDs. Missing standalone dylib files therefore are not a blocker. Dynamic-array allocation-symbol reachability and refusal/error branches still need feasible caller predicates; neither is claimed an actual Static allocation counterexample. Unresolved14BLR/2tail targets,49index domains and deeper runtime/stdio/stack-fallback first-use/cleanup conditions prevent complete path and cold eligibility. All five lifecycle groups are represented conservatively, not closed.
+
+**Grouped semantic-closure evidence — frozen pending repair.** Reuse that exact881graph and identities to qualify shared owner/tag/index/callback/refusal mechanisms through actual module/consumer boundaries, then inspect only reachable runtime/stdio/allocator/direct-zone/VM first-use and retirement bodies. Group all49index domains/14BLRs/2tails and allocation/refusal predicates together. Do not rebuild the graph, repeat unchanged tests, change source/annotations, relink, launch an observer/cold workload or add a controller/schema. Preserve all acceptance gaps; a reachable allocator is decisive FAIL, an unresolved condition remains UNMET. Prior nRF evidence transfers only its demonstrated method. A future cold adapter must preserve the complete strict entry and charged setup/lifetime, separately from the mixed behavior control.
+
+Current semantic qualification extends the accepted881graph incrementally to1,329functions, with99BR/20BLR sites before exclusions. Five actual lender/consumer target sets are joined; the prioritized metadata tail names DynamicInteractionCandidateStorage<SemanticCompleteIdentity> and lies behind the actual Dynamic case, so it is not a Static allocation counterexample under the qualified immutable-Static invariant. Six non-Dynamic operands remain the targeted provenance group: three StaticTwo constructor callbacks, two BoundedText unsafe-byte/value-witness callbacks and the foreign-root scoped callback. Index domains and provider first-use/cleanup remain separate obligations.
+
+A selective same42source/module/provider/production-flag SIL diagnostic is part of this integrated batch. B/slots5-actual-common-selected-SIL.json records exit0/time41.930006s/raw157 B but no matched function bodies: coverage FAIL. Its plural sil-print-functions option treats the comma-joined value as one substring. Existing pass scheduling was observed; primary Swift PassManager documentation corroborates plural versus singular semantics without claiming the pinned binary source revision was verified. P/static-resource-current/rooted-current/actual-common-selected-SIL-selector-correction.json retains the cause. The corrected singular17exact-name plan B/slots5-actual-common-selected-SIL-exact.json exits0/time42.118427s/raw237,683 B; complete capture/operand coverage is being checked. Each attempt retains its1,876,008B module and2,851,696B object. All old output, failed coverage and charges carry; no source-D/annotation variant, clipping, all-pass dump or blind third selector trial is authorized. Luna owns routine compilation, Strong interpretation, with no overlapping Meter.
+
+**ABI correction and boundary.** Earlier443/1443/1709/306 export cardinalities are withdrawn: splitting nm at its last whitespace token collapsed valid names containing spaces. Full-name parsing of all eight retained nm outputs gives exact current checked/ordinary equality: Text451 / RuntimeCore1469 / Host1730 / RuntimeStatic309. A read-only Mach-O nlist64 reader, checked against localSDK layout and calibrated exactly to those current nm names, compares authenticated before objects without another nm execution. slots2-before-current-macho-symbol-analysis3.json/raw records Text451→451 no delta; Core1467→1469 adds matcher and test-only oracle; Host1719→1730 adds11 serialization/control/compiler helpers; Static300→309 adds10 and removes one compiler-generated initializer for formerly private qualification. The corresponding internal initializer/accessors replace it after visibility serialization. Defaults, bodies and stored layout remain unchanged; source/coordinated-package compatibility is supported, exact baseline-symbol equality and independently versioned binary compatibility are not claimed. Before hashes match text4-qualified4Text7663854…, fresh12Corec355fe75…, defaults31Host72e9a256…, factory3Static5acf1fb… producer records. Two failed read-only analysis attempts are retained; the final reader preserves full symbol names. No verifier or production ABI shim was added.
+
+**Allocation proof remains open; approved continuation route is preserved.** final-canonical-actual-result.json binds current actual-owned/global42 checks, both FAIL at CounterSemanticCodec ending lifetime3210 (raw2403/2736 B). Its tiny construction/borrowing-observer/destruction case fails without closure capture; marker/inline diagnostic copies fail too. typed-slots2/CompilerLifetimeDescriptorReproducer.swift uses only pointer/count fields: borrowed input and ordinary local construction PASS; local lifetime-dependent construction FAIL454 B; matched pre-performance SIL has0/1destroy_value. These are rejected compiler promises, not measured allocations, universal impossibility or a proven compiler bug. [Swift6.4 source](https://github.com/swiftlang/swift/blob/swift-6.4.0-RELEASE/lib/SIL/Utils/InstructionUtils.cpp#L473) conservatively classifies destroy_value releasing, with a trivial-noescape function exception; the installed binary's exact source revision beyond release version is unverified. No unchecked generic promise, warmed substitute or lifetime weakening replaces the failure. SPEC-013's linked rooted allocator/cold acceptance remains available after refreshed current provenance/safety/complete-path prerequisites. Keep the maintained gate verifier and strict manifest checks; Native398semantic reuse is not a fabricated complete Counter receipt. Do not restart exhausted historical controllers or change the pinned toolchain implicitly.
+
+**Exceptions, accounting and next action.** The avoidable fatal-argv error reran782,407 B of normal output and remains a failed fatal invocation; all corrected fatal controls subsequently passed. Former4MiB forecasts failed and are historical. The explicitly approved8MiB cap carries every prior output byte. Diagnostic-positive permanent retention was an agent-added restriction; committed scoped_variant compiles then removes future successful diagnostic-only objects. The prospective correction retained every already-produced object/failure and charged live peak, generation/hash processing and output. No768MiB approval, cleanup exemption, verifier change or prior-artifact pruning occurred.
+
+All earlier numerical consumption carries into the current rooted-map closeout below. Luna’s53monitor opens were conservatively charged at final-size upper8,599,992 B plus10,922 B ledger inspection; Strong’s1,150,511 B preflight was charged once. The later1MiB conservative inspection and exact1,829,656 B timing read were charged at the next sole-producer boundary. Reviewer cumulative charges include every duplicate read, failed independent analysis and conservative uncertainty charge. No allowance is silently reused. The current authorized automatic time-only deadline is21:01:03UTC; only Strong owns the semantic Meter/analysis producer, Luna routine tests, and the independent reviewer performs no producer/ledger writes.
+
+Validation time:214unique child records,107exit0/107expectedexit1, sum4,513.584s. First start17:50:20.891892UTC /last end19:30:01.141071UTC spans99m40.2s including intervening prerequisite work. Common module17.470636s/object34.288564s/ABI0.048154s; first positive31.357307s. Prior ordinary family138children/963.387854s remains a separate recorded phase. Projectlocal formatter1.511327s/lint1.416483s pass with established applicability; no later maintained Swift delta invalidates them. Fresh gitdiffcheckPASS, all12protected paths unchanged, indexempty; no commit/deploy/flash. No full repository matrix or unchanged runtime rerun was launched.
+
+Current rooted-map closeout at20:19:23UTC: own processing1,156,156,969 B, joint1,483,312,681 B, retention445,200,623 B, raw5,110,320 B (analysis raw delta426,389 B). Independent integrated review conservatively charges32MiB, cumulative251,475,287/251,658,240 B; no review capacity is silently reset. The complete next semantic batch forecasts+80MiB own processing/+12MiB retention/at most512KiB raw, prospective16MiB growth of that existing coordinator provision and1MiB bookkeeping: joint1,585,024,553 B, retention458,832,111 B and raw5,634,608 B fit current global caps. Sole producer must guard actual consumption and expand the existing reviewer provision to268,435,456 B before new review reads. A missed dispatch to an idle worker was corrected with an explicit follow-up; no producer had begun, and no clock or resource consumption was reset.
+
+## Preserved earlier P08 entries — historical
+
 Current P08 boundary — **retained counter426 PASS; controller readiness PASS; collection unused 0/1**.
 The [retained macOS Static result](scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/README.md)
 and [independent result review](scoped-storage/current-callee-p02-prerequisite-candidate2/validation-result/retained-evidence-counter426-requalification1-result/independent-review.md)

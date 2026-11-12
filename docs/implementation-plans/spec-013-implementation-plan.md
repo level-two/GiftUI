@@ -6,12 +6,13 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-11-08
+updated: 2026-11-09
 related_design_notes:
   - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
   - ../implementation-designs/spec-013-static-generation-and-capture-lifetime.md
+  - ../implementation-designs/spec-013-qualified-drawing-storage.md
 conformance_report: ../conformance/spec-013-conformance.md
 related_future_work: []
 related_explorations: []

@@ -6,9 +6,10 @@ status: captured
 authors:
   - codex
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-20
 source:
   - ADR-035
+  - docs/iterations/iteration-003-review/complexity-and-efficiency-checkpoint.md
 related_future_work:
   - FW-035
 related_explorations: []
@@ -75,6 +76,13 @@ planning, not a prerequisite for current scope.
   RAM or flash budget problem; use the normal change process if it blocks scope.
 
 ## Disposition
+
+The [2026-10-20 improvement sequence](../iterations/iteration-003-review/complexity-and-efficiency-checkpoint.md)
+places this under step 8's selective follow-up, not mandatory P08 or iteration-4
+implementation. Compare the final runtime baseline first; invoke the earlier
+trigger only when profiling identifies a material traversal/temporary/invariant
+cost. Report expected runtime/stack benefit together with flash/RAM, compiler and
+maintenance trade-offs. The immediate checkpoint does not launch a Spike.
 
 Captured; no iteration assigned. The proposed next step is an Exploration with a
 bounded Spike if implementation evidence is needed. Compare representative fixed
