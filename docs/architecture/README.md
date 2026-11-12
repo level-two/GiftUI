@@ -17,6 +17,14 @@ active tree or through a recorded durable tagged baseline under the
 
 See [Documentation Rules](../engineering/DOCUMENTATION_RULES.md).
 
+## Module and interface reference
+
+[Module dependencies and interfaces](module-dependencies-and-interfaces.md)
+maps the root package's GiftUI targets, cross-module types and methods, and
+call/data-flow directions. It is a descriptive working-tree source snapshot;
+its implementation details do not replace accepted ADRs or approved
+Specifications, or establish conformance.
+
 ## Accepted runtime derivation architecture
 
 On 2026-10-10, [ADR-035](../adrs/adr-035-runtime-derived-records-and-exact-identity.md),
