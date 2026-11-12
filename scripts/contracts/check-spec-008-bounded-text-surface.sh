@@ -13,7 +13,7 @@ export SWIFTPM_MODULECACHE_OVERRIDE="${temporary_root}/swiftpm-module-cache"
 
 swift build --package-path "${PROJECT_ROOT}" --target GiftUI >/dev/null
 module_dir="$(swift build --package-path "${PROJECT_ROOT}" --show-bin-path)/Modules"
-compiler="$(xcrun --find swiftc)"
+compiler="${GIFTUI_SWIFTC_EXECUTABLE:-$(xcrun --find swiftc)}"
 sdk="$(xcrun --sdk macosx --show-sdk-path)"
 
 while IFS=$'\t' read -r id expectation entry patterns; do

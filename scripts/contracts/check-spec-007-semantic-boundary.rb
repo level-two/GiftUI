@@ -13,7 +13,7 @@ def fail_check(message)
 end
 
 source = ROOT.join("Sources/GiftUISemanticCore/SemanticLayoutView.swift").read
-view = source[/package protocol SemanticLayoutView \{(.*?)\n\}/m, 1]
+view = source[/package protocol SemanticLayoutView(?:\s*:\s*~Escapable)?\s*\{(.*?)\n\}/m, 1]
 fail_check("SemanticLayoutView declaration is missing") unless view
 
 required = [
@@ -22,8 +22,12 @@ required = [
   "var scopeCount: UInt16 { get }",
   "func primitive(at identity: Identity) -> SemanticLayoutPrimitive?",
   "func childCount(of identity: Identity) -> UInt16?",
+  "func child(of identity: Identity, at index: UInt16) -> Identity?",
   "func modifierCount(of identity: Identity) -> UInt16?",
+  "func modifierScope(of identity: Identity, at index: UInt16) -> Identity?",
+  "func modifier(",
   "func textScalarCount(of identity: Identity) -> UInt16?",
+  "func textScalar(of identity: Identity, at index: UInt16) -> UInt32?",
 ]
 required.each do |declaration|
   fail_check("layout view lacks #{declaration}") unless view.include?(declaration)
@@ -34,7 +38,8 @@ end
 end
 fail_check("layout view exposes an unrestricted existential") if view.match?(/\bany\s+/)
 
-adapter = source[/package struct SemanticLayoutResultSink<Storage>:(.*?)\n\}/m, 1]
+adapter_source = ROOT.join("Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift").read
+adapter = adapter_source[/package struct SemanticLayoutResultSink<Storage>:(.*?)\n\}/m, 1]
 fail_check("semantic result adapter is missing") unless adapter
 %w[Array Dictionary Set AnyHashable].each do |name|
   fail_check("adapter owns forbidden #{name} storage") if adapter.match?(/\b#{name}\b/)

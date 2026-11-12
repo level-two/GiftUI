@@ -46,7 +46,7 @@ end
 %w[
   firstFailureSurvivesLaterFailureAndSuccessUntilConsumed
   eachEnclosingOperationConsumesAndClearsBeforeDerivation
-  boundSetterStoresExactFirstFailureForCoordinatorConsumption
+  stateSeedAndOwnerFailureUseTheCurrentSchemaAndResultSlotContracts
   sinkFailureStoresSamePackageFailureBeforeReturning
   failureOutsideCycleRoutesDirectlyToOwnerAdapter
   mutationResultSlotIsBoundedInlineStateOnly
@@ -57,4 +57,4 @@ end
 forbidden = /\b(?:Model|Fact|Candidate|String|Array|ContiguousArray|Dictionary|Set|Any|any|Mirror|Task|actor|async|await|throw|fatalError|GiftUISemanticCore|GiftUILayout|GiftUIInteraction|GiftUIRenderCore|GiftUIRuntime|GiftUIBackend|GiftUIPlatform|GiftUIFailureCore)\b/
 fail_check("mutation slot retains a payload, history, or prohibited owner") if source.match?(forbidden)
 
-puts "SPEC-010 mutation result slot passed: bound setters and sink failures retain the first exact cycle-local error through synchronous consumption, with direct inactive-cycle routing."
+puts "SPEC-010 mutation result slot passed: state seed, first cycle-local error, sink disposition, synchronous consumption, and direct inactive-cycle routing are covered."

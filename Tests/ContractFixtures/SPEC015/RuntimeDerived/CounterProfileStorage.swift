@@ -131,7 +131,7 @@ typealias CounterStaticRootStorage = StaticObservableRootAdapter<CounterOwnedMod
 /// independently borrowed registration fields to the common checked factories.
 struct CounterStaticRootStorage: ~Copyable {
     private var ownership: ObservableModelOwnership
-    private var models: InlineArray<2, CounterOwnedModel?> = [nil, nil]
+    private var models: InlineArray<2, CounterOwnedModel?>
     private var identities: InlineArray<2, SemanticCompleteIdentity?> = [nil, nil]
     private var registration = ObservableStateRootControl()
     private let schema: UInt16
@@ -143,6 +143,7 @@ struct CounterStaticRootStorage: ~Copyable {
         guard let ownership = ObservableModelOwnership(identity: identity, modelLimit: modelLimit,
             claimLimit: claimLimit, pinLimit: pinLimit, captureLimit: captureLimit ?? (needsCapture ? 1 : 0))
         else { return nil }
+        self.models = [nil, nil]
         self.ownership = consume ownership
         self.schema = schema
         self.needsCapture = needsCapture
@@ -239,9 +240,9 @@ struct CounterStaticWorkspaceBacking {
     var plan: InlineArray<112, UInt8> = .init(repeating: 0)
     var measurement: CounterGeometryMeasurement {
         .init(layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, drawing: counterDrawingLimits,
-            layoutBytes: UInt64(scopes.count + text.count + MemoryLayout<StaticCounterGeometry>.size - MemoryLayout<QualifiedRender>.size - MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.size),
+            layoutBytes: UInt64(scopes.count + text.count + MemoryLayout<StaticCounterGeometry>.size - MemoryLayout<QualifiedRender>.size - MemoryLayout<StaticCounterRecordDrawingWorkspace>.size),
             renderBytes: UInt64(MemoryLayout<QualifiedRender>.size), pathBytes: UInt64(path.count),
-            planBytes: UInt64(plan.count + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.size))
+            planBytes: UInt64(plan.count + MemoryLayout<StaticCounterRecordDrawingWorkspace>.size))
     }
     mutating func withGeometry(_ body: (consuming StaticCounterGeometry) -> Int) -> Int {
         withUnsafeMutableBytes(of: &scopes) { s in
@@ -391,7 +392,10 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
         preflightIndex += 1
     }
     var reported = CounterPhysicalReportAccumulator()
-    func emitRegions(_ reported: inout CounterPhysicalReportAccumulator) {
+    func emitRegions(
+        _ reported: inout CounterPhysicalReportAccumulator,
+        geometryRegions: borrowing GR
+    ) {
         func record(_ region: CounterStorageRegion) {
             reported.record(family: region.family, chargedBytes: region.chargedBytes) { _, _ in
                 report(region)
@@ -476,7 +480,7 @@ where G: CounterGeometry & ~Copyable & ~Escapable, C: CounterCandidateBacking & 
         if let factoryDescriptorRegion { record(factoryDescriptorRegion) }
         record(.inline(family: 25, size: MemoryLayout<RuntimeCompletePipelineResult<RuntimeOwnerFailure>?>.size, stride: MemoryLayout<RuntimeCompletePipelineResult<RuntimeOwnerFailure>?>.stride, alignment: MemoryLayout<RuntimeCompletePipelineResult<RuntimeOwnerFailure>?>.alignment))
     }
-    emitRegions(&reported)
+    emitRegions(&reported, geometryRegions: geometryRegions)
     guard !reported.overflow else { return .invalid(.arithmeticOverflow) }
     var comparisonIndex = 0
     while comparisonIndex < 26 { precondition(reported[comparisonIndex] == CounterFamilyValueIndexAccess.get(values, at: comparisonIndex), "physical region audit mismatch")
@@ -662,8 +666,8 @@ struct CounterPhysicalAccountingEngine {
     // inaccessible physical headroom remains measured in the backing regions.
     guard counterRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .insufficientStorage }
     let keys = interactionFacts.measurement
-    let keyLimits = identityCapacities
-    let semanticLimits = semantic.limits
+    let _ = identityCapacities
+    let _ = semantic.limits
     guard let recordBytes = semantic.records.bytes, let pathBytes = semantic.paths.bytes,
         let payloadBytes = semantic.payloads.bytes, let scalarBytes = semantic.scalars.bytes,
         let canvasBytes = CounterExtent.elements(count: canvasCount, stride: MemoryLayout<CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>.stride, alignment: MemoryLayout<CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>.alignment).bytes else { return .arithmeticOverflow }

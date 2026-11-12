@@ -13,7 +13,20 @@ import GiftUIDrawing
 import GiftUIHostConfiguration
 @main
 enum VisitorStateQualification {
+    @MainActor
     static func main() {
+        #if GIFTUI_COUNTER_NATIVE_EXCLUSIVITY
+        if let mode = CommandLine.arguments.dropFirst().first, mode == "--native-exclusivity-positive" || mode == "--native-exclusivity-negative" {
+            precondition(counterScopedNativeExclusivity(negative: mode == "--native-exclusivity-negative") == 1)
+            if mode == "--native-exclusivity-negative" { print("NATIVE EXCLUSIVITY GUARD ABSENT"); exit(97) }
+            print("Native exclusivity positive PASS")
+            return
+        }
+        #endif
+        if let mode = CommandLine.arguments.dropFirst().first, mode == "--double-static-release" || mode == "--double-dynamic-release" {
+            p08CounterFactoryDoubleReleaseQualification(dynamic: mode == "--double-dynamic-release")
+            print("DOUBLE RELEASE GUARD ABSENT"); exit(97)
+        }
         if let mode = CommandLine.arguments.dropFirst().first, mode.hasPrefix("--facts-") { selectedFactsFatal(mode); print("FACTS GUARD ABSENT"); exit(97) }
         if CommandLine.arguments.dropFirst().first == "--missing-row-fatal" {
             p08CounterPhysicalFactsMissingRowsFatal()
@@ -26,6 +39,23 @@ enum VisitorStateQualification {
         let engineFactsChecks = selectedEngineFactsControls()
         let streamChecks = p08CounterAccountingStreamQualification()
         let factoryChecks = p08FactoryDefaultQualification()
+        let rootChecks = p08CounterRootInitializationQualification()
+        let textChecks = p08TextValidationQualification()
+        let borrowChecks = p08BoundedTextBorrowQualification()
+        let remainingBorrowChecks = p08RemainingStaticByteBorrowQualification()
+        let hostChecks = p08HostValidationQualification()
+        let retirementChecks = p08CounterFactoryRetirementQualification()
+        let scopedChecks = counterExerciseScopedStorage()
+        let staticHostChecks = p08CounterHost()
+        let dynamicHostChecks = p08CounterDynamicHost()
+        let presenceChecks = p08CounterReferencePresenceQualificationCount()
+        precondition(rootChecks > 14)
+        precondition(textChecks == 550)
+        precondition(borrowChecks == 16197)
+        precondition(remainingBorrowChecks == 2028)
+        precondition(hostChecks == 5761)
+        precondition(retirementChecks > 0 && presenceChecks >= 3)
+        precondition(scopedChecks > 0 && staticHostChecks > 0 && dynamicHostChecks > 0)
         precondition(factoryChecks > 96000)
         precondition(streamChecks > 0)
         precondition(p08PhysicalIDEqualityQualification() == 196)
@@ -36,7 +66,7 @@ enum VisitorStateQualification {
         let checks = p08CounterPhysicalFactsQualification()
         precondition(checks == 492)
         print(
-            "physical facts Static/Dynamic independent rows, five banks, 26 totals, audits, mismatch, refusal, faults, surplus, destruction PASS checks=\(checks) graph=\(graphChecks) engineFacts=\(engineFactsChecks) stream=\(streamChecks) factory=\(factoryChecks)"
+            "physical facts Static/Dynamic independent rows, five banks, 26 totals, audits, mismatch, refusal, faults, surplus, destruction PASS checks=\(checks) graph=\(graphChecks) engineFacts=\(engineFactsChecks) stream=\(streamChecks) factory=\(factoryChecks) root=\(rootChecks) text=\(textChecks) borrow=\(borrowChecks) remainingBorrow=\(remainingBorrowChecks) host=\(hostChecks) scoped=\(scopedChecks) staticHost=\(staticHostChecks) dynamicHost=\(dynamicHostChecks) retirement=\(retirementChecks) presence=\(presenceChecks)"
         )
     }
 }

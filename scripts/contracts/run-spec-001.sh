@@ -82,7 +82,9 @@ if [[ -d "${source_paths[0]}" && -d "${source_paths[1]}" && -d "${source_paths[2
 else
     source_identity="missing"
 fi
-compiler_identity="$(swiftc --version 2>/dev/null | tr '\n' ' ')"
+swift_driver="${GIFTUI_SWIFT_EXECUTABLE:-$(command -v swift)}"
+compiler="${GIFTUI_SWIFTC_EXECUTABLE:-$(dirname "${swift_driver}")/swiftc}"
+compiler_identity="$("${compiler}" --version 2>/dev/null | tr '\n' ' ')"
 [[ -n "${compiler_identity}" ]] || compiler_identity="missing"
 sdk_identity="missing"
 if [[ "${profile}" == macos-* ]]; then
@@ -108,7 +110,10 @@ reference_args=()
 if [[ "${GIFTUI_SHARED_REFERENCE_ALREADY_TESTED:-0}" == 1 ]]; then
     reference_args=(--skip 'macOS.*ReferenceRuns')
 fi
-swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+swiftpm_scratch="${staging_report_dir}/swiftpm"
+"${swift_driver}" test --disable-sandbox --scratch-path "${swiftpm_scratch}" \
+    --cache-path "${PROJECT_ROOT}/.build" \
+    --skip-update \
     -Xswiftc -DGIFTUI_DYNAMIC_PROFILE ${reference_args[@]+"${reference_args[@]}"} --filter 'SignalAnalyzer|dynamicProduction|dynamicPi|rawFramebufferTouches' | tee "${staging_report_dir}/reference-tests.log"
 if [[ "${GIFTUI_SHARED_REFERENCE_ALREADY_TESTED:-0}" == 1 ]]; then
     python3 "${SCRIPT_DIR}/current-spec-001-reference-traces.py" verify "${GIFTUI_SHARED_REFERENCE_TRACES:?current reference traces required}"
@@ -124,7 +129,8 @@ if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"
     product="SignalAnalyzerMacOSDynamic"
     [[ "${profile}" == "macos-static" ]] && product="SignalAnalyzerMacOSStatic"
-    binary_dir="$(swift build --disable-sandbox --show-bin-path)"
+    binary_dir="$("${swift_driver}" build --disable-sandbox --scratch-path "${swiftpm_scratch}" \
+        --cache-path "${PROJECT_ROOT}/.build" --skip-update --show-bin-path)"
     artifact="${binary_dir}/${product}"
     artifact_identity="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
     cp "${spec015_report_dir}/semantic.tsv" \
@@ -135,7 +141,7 @@ if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
         printf 'evidence_kind=%s\n' "${evidence_kind}"
         printf 'repository_revision=%s\nrepository_dirty=%s\n' "${revision}" "${dirty}"
         printf 'source_identity=%s\nfixture_identity=%s\n' "${source_identity}" "${fixture_identity}"
-        giftui_artifact_toolchain_metadata "${profile}" "${PROJECT_ROOT}"
+        giftui_artifact_toolchain_metadata "${profile}" "${PROJECT_ROOT}" "${compiler}"
         printf 'target_triple=%s\noptimization=%s\n' "${target_triple}" "${optimization}"
         printf 'invocation=%s\ncommand_identity=%s\n' "${invocation}" "${command_identity}"
         printf 'artifact_path=%s\nartifact_identity=%s\n' "${artifact}" "${artifact_identity}"
@@ -176,7 +182,7 @@ if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
         printf 'evidence_kind=%s\n' "${evidence_kind}"
         printf 'repository_revision=%s\nrepository_dirty=%s\n' "${revision}" "${dirty}"
         printf 'source_identity=%s\nfixture_identity=%s\n' "${source_identity}" "${fixture_identity}"
-        giftui_artifact_toolchain_metadata "${profile}" "${PROJECT_ROOT}"
+        giftui_artifact_toolchain_metadata "${profile}" "${PROJECT_ROOT}" "${compiler}"
         printf 'target_triple=%s\noptimization=%s\n' "${target_triple}" "${optimization}"
         printf 'invocation=%s\ncommand_identity=%s\n' "${invocation}" "${command_identity}"
         printf 'artifact_path=%s\nartifact_identity=%s\n' "${artifact}" "${artifact_identity}"
@@ -231,7 +237,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
         printf 'evidence_kind=%s\n' "${evidence_kind}"
         printf 'repository_revision=%s\nrepository_dirty=%s\n' "${revision}" "${dirty}"
         printf 'source_identity=%s\nfixture_identity=%s\n' "${source_identity}" "${fixture_identity}"
-        giftui_artifact_toolchain_metadata "${profile}" "${PROJECT_ROOT}"
+        giftui_artifact_toolchain_metadata "${profile}" "${PROJECT_ROOT}" "${compiler}"
         printf 'target_triple=%s\noptimization=%s\n' "${target_triple}" "${optimization}"
         printf 'invocation=%s\ncommand_identity=%s\n' "${invocation}" "${command_identity}"
         printf 'artifact_path=%s\nartifact_identity=%s\n' "${artifact}" "${artifact_identity}"

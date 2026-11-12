@@ -1,40 +1,45 @@
 import GiftUI
 
 struct Leaf: View {
-    var body: Never { fatalError() }
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    { fatalError() }
 }
 
 @ViewBuilder
-func zero() -> some View {}
+func zero() -> some View<_GiftUIEmptyReadDomain> {}
 
 @ViewBuilder
-func one() -> some View {
-    Leaf()
-}
-
-@ViewBuilder
-func two() -> some View {
-    Leaf()
-    Leaf()
-}
-
-@ViewBuilder
-func three() -> some View {
-    Leaf()
-    Leaf()
+func one() -> some View<_GiftUIEmptyReadDomain> {
     Leaf()
 }
 
 @ViewBuilder
-func four() -> some View {
-    Leaf()
-    Leaf()
+func two() -> some View<_GiftUIEmptyReadDomain> {
     Leaf()
     Leaf()
 }
 
 @ViewBuilder
-func five() -> some View {
+func three() -> some View<_GiftUIEmptyReadDomain> {
+    Leaf()
+    Leaf()
+    Leaf()
+}
+
+@ViewBuilder
+func four() -> some View<_GiftUIEmptyReadDomain> {
+    Leaf()
+    Leaf()
+    Leaf()
+    Leaf()
+}
+
+@ViewBuilder
+func five() -> some View<_GiftUIEmptyReadDomain> {
     Leaf()
     Leaf()
     Leaf()

@@ -66,7 +66,7 @@ probe_fragments = [
   "BoundedText(\"�\")",
   "BoundedText(Int32.min)",
   "BoundedText(Int32.max)",
-  "Text(oversized)._giftUITraverse(&visitor)",
+  "Text<_GiftUIEmptyReadDomain>(oversized)._giftUITraverse(&visitor)",
 ]
 probe_fragments.each do |fragment|
   fail_check("profile probe lacks #{fragment}") unless PROBE.include?(fragment)

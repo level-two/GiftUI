@@ -3,27 +3,47 @@ import GiftUIFailureCore
 import GiftUIRuntimeCore
 import GiftUITextResources
 
+@usableFromInline
 package struct CheckedMVPHostConfigurationValidator<Graph, Policy>:
     MVPHostConfigurationValidator, ~Copyable
 where
     Graph: HostComponentGraphView,
     Policy: MVPHostResidualPolicyTable
 {
+    @usableFromInline
     package let structuralConfiguration: HostStructuralConfiguration
+    @usableFromInline
     package let runtimeProfileValidation: RuntimeProfileValidationResult
+    @usableFromInline
     package let componentGraph: Graph
+    @usableFromInline
     package let textResourceValidation: TextResourceValidationResult
+    @usableFromInline
     package let selectedTextRasterRealization: RasterRealizationID
+    @usableFromInline
     package let capabilityRequirement: RasterPresentationRequirement
+    @usableFromInline
     package let capabilityContributions: RasterPresentationContributions
+    @usableFromInline
     package var capabilityWorkspace: RasterPresentationResolverWorkspace
+    @usableFromInline
     package let endpoint: HostEndpointConfiguration
+    @usableFromInline
     package let actionAndModel: HostActionModelConfiguration
+    @usableFromInline
     package let inputAndWake: HostInputWakeConfiguration
+    @usableFromInline
     package let residualPolicyTable: Policy
-    package private(set) var validationAccessLedger: HostValidationAccessLedger
-    private var stateGuard: HostValidationStateGuard
+    // The compatibility ledger facade preserves its private setter. Both
+    // one-shot and stage state stay under the existing nongeneric guard.
+    package private(set) var validationAccessLedger: HostValidationAccessLedger {
+        @inlinable get { stateGuard.ledgerValue() }
+        set { stateGuard.replaceLedger(newValue) }
+    }
+    @usableFromInline
+    var stateGuard: HostValidationStateGuard
 
+    @inlinable
     package init(
         structuralConfiguration: HostStructuralConfiguration,
         runtimeProfileValidation: RuntimeProfileValidationResult,
@@ -50,28 +70,28 @@ where
         self.actionAndModel = actionAndModel
         self.inputAndWake = inputAndWake
         self.residualPolicyTable = consume residualPolicyTable
-        validationAccessLedger = HostValidationAccessLedger()
         stateGuard = HostValidationStateGuard()
     }
 
+    @inlinable
     package mutating func validate() -> HostValidationResult {
         if let repeated = stateGuard.begin() { return repeated }
-        guard enter(.graph) else { return orderViolation() }
+        guard stateGuard.enter(.graph) else { return orderViolation() }
         if let error = HostComponentGraphValidation.validate(componentGraph) {
             return .invalid(stage: .graph, error: error)
         }
-        guard enter(.runtimeProfile) else { return orderViolation() }
+        guard stateGuard.enter(.runtimeProfile) else { return orderViolation() }
         if let error = validateRuntimeProfile() {
             return .invalid(stage: .runtimeProfile, error: error)
         }
-        guard enter(.textResources) else { return orderViolation() }
+        guard stateGuard.enter(.textResources) else { return orderViolation() }
         if case .invalid(let error) = textResourceValidation {
             return .invalid(
                 stage: .textResources,
                 error: .invalidTextResources(error)
             )
         }
-        guard enter(.workload) else { return orderViolation() }
+        guard stateGuard.enter(.workload) else { return orderViolation() }
         if let error = validateWorkload() {
             return .invalid(
                 stage: .workload,
@@ -79,7 +99,7 @@ where
             )
         }
 
-        guard enter(.capability) else { return orderViolation() }
+        guard stateGuard.enter(.capability) else { return orderViolation() }
         let effective: EffectiveRasterPresentation
         switch RasterPresentationResolver.resolve(
             requirement: capabilityRequirement,
@@ -94,7 +114,7 @@ where
                 error: .capabilityUnavailable(error)
             )
         }
-        guard enter(.endpoint) else { return orderViolation() }
+        guard stateGuard.enter(.endpoint) else { return orderViolation() }
         if let error = HostEndpointStartupValidation.validateInert(
             endpoint,
             effectivePresentation: effective,
@@ -105,21 +125,21 @@ where
                 error: error
             )
         }
-        guard enter(.actionAndModel) else { return orderViolation() }
+        guard stateGuard.enter(.actionAndModel) else { return orderViolation() }
         if let error = HostApplicationStartupValidation.validateActionAndModel(
             actionAndModel,
             structural: structuralConfiguration
         ) {
             return .invalid(stage: .actionAndModel, error: error)
         }
-        guard enter(.inputAndWake) else { return orderViolation() }
+        guard stateGuard.enter(.inputAndWake) else { return orderViolation() }
         if let error = HostApplicationStartupValidation.validateInputAndWake(
             inputAndWake,
             structural: structuralConfiguration
         ) {
             return .invalid(stage: .inputAndWake, error: error)
         }
-        guard enter(.policy) else { return orderViolation() }
+        guard stateGuard.enter(.policy) else { return orderViolation() }
         guard HostResidualPolicyTableValidation.validate(residualPolicyTable)
         else {
             return .invalid(stage: .policy, error: .incompleteFailurePolicy)
@@ -159,15 +179,13 @@ where
         )
     }
 
-    private mutating func enter(_ stage: HostValidationStage) -> Bool {
-        validationAccessLedger.enter(stage)
-    }
-
-    private func orderViolation() -> HostValidationResult {
+    @inlinable
+    func orderViolation() -> HostValidationResult {
         .invalid(stage: .graph, error: .invariantViolation)
     }
 
-    private borrowing func validateRuntimeProfile() -> HostConfigurationError? {
+    @inlinable
+    borrowing func validateRuntimeProfile() -> HostConfigurationError? {
         let configuration = structuralConfiguration
         let validatedAudit: RuntimeStorageAudit
         switch runtimeProfileValidation {
@@ -184,15 +202,16 @@ where
         guard configuration.profile == expectedProfile,
             validatedAudit.profile == expectedProfile
         else { return .profileMismatch }
-        guard validatedAudit == configuration.runtimeAudit,
-            validatedAudit.limits == configuration.runtimeLimits
+        guard validatedAudit.matchesForHostStartup(configuration.runtimeAudit),
+            validatedAudit.limits.matchesForHostStartup(configuration.runtimeLimits)
         else {
             return .invalidRuntimeProfile(.invariantViolation)
         }
         return nil
     }
 
-    private borrowing func validateWorkload() -> HostConfigurationError? {
+    @inlinable
+    borrowing func validateWorkload() -> HostConfigurationError? {
         let configuration = structuralConfiguration
         return SignalAnalyzerWorkloadStartupValidation.validate(
             configuration: configuration

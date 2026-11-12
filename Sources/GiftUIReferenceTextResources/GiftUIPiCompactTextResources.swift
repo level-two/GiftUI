@@ -18,7 +18,10 @@ package struct GiftUIPiCompactTextMetricsView: CanonicalTextMetricsView {
         at index: UInt16,
         in instance: FontInstanceID
     ) -> ScalarGlyphMappingRecord? {
-        guard instance == _GiftUIPiCompactGeneratedCatalogue.instanceID else {
+        guard
+            TextResourceValidator.instancesMatch(
+                instance, _GiftUIPiCompactGeneratedCatalogue.instanceID)
+        else {
             return nil
         }
         return _GiftUIPiCompactGeneratedCatalogue.mapping(at: index)
@@ -28,7 +31,9 @@ package struct GiftUIPiCompactTextMetricsView: CanonicalTextMetricsView {
         for glyph: GlyphID,
         in instance: FontInstanceID
     ) -> GlyphMetrics? {
-        guard instance == _GiftUIPiCompactGeneratedCatalogue.instanceID,
+        guard
+            TextResourceValidator.instancesMatch(
+                instance, _GiftUIPiCompactGeneratedCatalogue.instanceID),
             glyph.rawValue < _GiftUIPiCompactGeneratedCatalogue.glyphCount
         else { return nil }
         return _GiftUIPiCompactGeneratedCatalogue.metrics(for: glyph)
@@ -71,10 +76,27 @@ package struct GiftUIPiCompactTextRasterView: TextRasterResourceView {
         realization: RasterRealizationID,
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
+        try withPayloadStorage(for: record, realization: realization, body)
+    }
+
+    package func withNonthrowingPayload<Result>(
+        for record: GlyphRasterRecord,
+        realization: RasterRealizationID,
+        _ body: (UnsafeRawBufferPointer) -> Result
+    ) -> Result? {
+        withPayloadStorage(for: record, realization: realization, body)
+    }
+
+    @usableFromInline
+    internal func withPayloadStorage<Result, Failure: Error>(
+        for record: GlyphRasterRecord,
+        realization: RasterRealizationID,
+        _ body: (UnsafeRawBufferPointer) throws(Failure) -> Result
+    ) throws(Failure) -> Result? {
         guard realization.rawValue == 0,
             record == self.record(for: record.glyph, realization: realization)
         else { return nil }
-        return try _GiftUIPiCompactGeneratedBitmapPayload.withRecordBytes(
+        return try _GiftUIPiCompactGeneratedBitmapPayload.withRecordBytesStorage(
             for: record.glyph,
             expectedByteCount: record.byteCount,
             body

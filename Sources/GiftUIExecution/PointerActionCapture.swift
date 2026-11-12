@@ -3,10 +3,16 @@ import GiftUI
 @usableFromInline
 package struct PointerActionCapture<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
-    @usableFromInline internal private(set) var captured: CapturedAction<Identity>?
+    // Explicit Optional spelling avoids an implicit generic stored-default thunk.
+    // The initializer below initializes the same canonical Optional type directly.
+    // swift-format-ignore: UseShorthandTypeNames
+    @usableFromInline internal private(set) var captured: Optional<CapturedAction<Identity>>
 
     @inlinable
-    package init() {}
+    @inline(__always)
+    package init() {
+        captured = nil
+    }
 
     @inlinable
     package var current: CapturedAction<Identity>? {
@@ -20,6 +26,7 @@ where Identity: Equatable & Sendable {
         self.captured = captured
     }
 
+    @inlinable
     mutating func captureDown<ActionView>(
         at point: Point,
         actionView: borrowing ActionView
@@ -40,10 +47,12 @@ where Identity: Equatable & Sendable {
         return true
     }
 
+    @inlinable
     mutating func cancelForMovement() {
         captured = nil
     }
 
+    @inlinable
     mutating func release<ActionView>(
         at point: Point,
         provenanceValid: Bool,

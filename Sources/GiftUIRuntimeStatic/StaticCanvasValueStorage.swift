@@ -2,12 +2,17 @@ import GiftUI
 import GiftUIDrawing
 
 /// The host supplies its bounded inline entries before activation.
+@usableFromInline
 package struct StaticCanvasValueStorage: ~Copyable {
-    private var metadata = CanvasStagedMetadata()
+    // Let concrete callers specialize the loan without capturing a borrowed table.
+    @usableFromInline
+    internal var metadata = CanvasStagedMetadata()
     #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
         @_noAllocation
     #endif
     package init() {}
+    @inlinable
+    @inline(__always)
     package mutating func withLifetime<
         Identity: Equatable & Sendable, Table: CanvasValueTable, Result
     >(

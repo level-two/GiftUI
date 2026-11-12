@@ -2,7 +2,11 @@ import GiftUIExecution
 import GiftUIInteraction
 
 private struct StaticTwoInteractionSlots<Element> {
-    private var values: InlineArray<2, Element?> = .init(repeating: nil)
+    private var values: InlineArray<2, Element?>
+
+    // Keep the finite empty initialization in the concrete storage consumer.
+    @inline(__always)
+    init() { values = [nil, nil] }
     subscript(index: UInt16) -> Element? {
         borrowing get { index < 2 ? values[Int(index)] : nil }
         set { if index < 2 { values[Int(index)] = newValue } }
@@ -17,6 +21,7 @@ where Identity: Equatable & Sendable {
     package private(set) var count: UInt16 = 0
     private var slots = StaticTwoInteractionSlots<InteractionCandidateRecord<Identity>>()
 
+    @inline(__always)
     package init?(capacity: UInt16) {
         guard capacity > 0, capacity <= 2 else { return nil }
         self.capacity = capacity
@@ -60,6 +65,7 @@ where Identity: Equatable & Sendable {
     package private(set) var count: UInt16 = 0
     private var slots = StaticTwoInteractionSlots<BoundActionRecord<Identity>>()
 
+    @inline(__always)
     package init?(capacity: UInt16) {
         guard capacity > 0, capacity <= 2 else { return nil }
         self.capacity = capacity
@@ -100,6 +106,7 @@ where Identity: Equatable & Sendable {
     package private(set) var count: UInt16 = 0
     private var slots = StaticTwoInteractionSlots<InteractionHitRegion<Identity>>()
 
+    @inline(__always)
     package init?(capacity: UInt16) {
         guard capacity > 0, capacity <= 2 else { return nil }
         self.capacity = capacity

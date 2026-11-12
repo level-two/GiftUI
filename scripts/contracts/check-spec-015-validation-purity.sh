@@ -12,7 +12,7 @@ fail() {
 }
 
 expected_stages='graph runtimeProfile textResources workload capability endpoint actionAndModel inputAndWake policy '
-actual_stages="$(sed -n 's/.*guard enter(\.\([A-Za-z]*\)).*/\1/p' "${VALIDATOR}" | tr '\n' ' ')"
+actual_stages="$(sed -nE 's/.*guard ([A-Za-z][A-Za-z0-9]*\.)?enter\(\.([A-Za-z]+)\).*/\2/p' "${VALIDATOR}" | tr '\n' ' ')"
 [[ "${actual_stages}" == "${expected_stages}" ]] ||
     fail "unexpected validation stage order: ${actual_stages}"
 

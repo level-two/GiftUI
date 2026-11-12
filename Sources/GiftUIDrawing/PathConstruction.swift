@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIRenderCore
 
+@usableFromInline
 package protocol LivePathStorage {
     var maximumPointCount: UInt16 { get }
     var maximumSubpathCount: UInt16 { get }
@@ -17,18 +18,24 @@ package protocol LivePathStorage {
     mutating func reset()
 }
 
+@usableFromInline
 package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
-    package private(set) var storage: Storage
+    @usableFromInline
+    package internal(set) var storage: Storage
+    @inlinable
     package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
         body(&storage)
     }
-    package private(set) var isActive: Bool
+    @usableFromInline
+    package internal(set) var isActive: Bool
 
+    @inlinable
     package init(storage: Storage) {
         self.storage = storage
         isActive = true
     }
 
+    @inlinable
     package mutating func move(to point: Point) throws(DrawingError) {
         guard isActive else { throw DrawingError.invalidScope }
         if storage.subpathCount == 0 {
@@ -66,6 +73,7 @@ package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
         }
     }
 
+    @inlinable
     package mutating func addLine(to point: Point) throws(DrawingError) {
         guard isActive else { throw DrawingError.invalidScope }
         guard storage.subpathCount > 0 else {
@@ -85,12 +93,14 @@ package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
         }
     }
 
+    @inlinable
     package mutating func reset() {
         storage.reset()
         isActive = false
     }
 
-    private func requireCapacity(
+    @inlinable
+    internal func requireCapacity(
         pointDemand: UInt16,
         subpathDemand: UInt16
     ) throws(DrawingError) {

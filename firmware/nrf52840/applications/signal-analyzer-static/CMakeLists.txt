@@ -157,11 +157,13 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUILayout/LayoutSemanticValidation.swift"
     "${giftui_project_root}/Sources/GiftUILayout/LayoutEngine.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/ExecutionValues.swift"
+    "${giftui_project_root}/Sources/GiftUIExecution/ObservableTargetGeneration.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/IdentityAllocators.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/PointerActionCapture.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/FrameHandoffValues.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/AdmissionValues.swift"
     "${giftui_project_root}/Sources/GiftUIInteraction/InteractionValues.swift"
+    "${giftui_project_root}/Sources/GiftUIInteraction/InteractionFailurePrecedence.swift"
     "${giftui_project_root}/Sources/GiftUIInteraction/InteractionStorage.swift"
     "${giftui_project_root}/Sources/GiftUIInteraction/InteractionState.swift"
     "${giftui_project_root}/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift"
@@ -171,6 +173,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift"
     "${giftui_project_root}/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift"
     "${giftui_project_root}/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift"
+    "${giftui_project_root}/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift"
     "${giftui_project_root}/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift"
     "${giftui_project_root}/Sources/GiftUIRuntimeCore/RuntimeFocusedFailureState.swift"
     "${giftui_project_root}/Sources/GiftUIObservableState/ObservableStateProtocols.swift"
@@ -358,6 +361,8 @@ endif()
 set(giftui_swift_compile_flags
     -parse-as-library -Osize -package-name GiftUI -DGIFTUI_NRF_EMBEDDED
     -enable-experimental-feature Embedded
+    "SHELL:-enable-experimental-feature LifetimeDependence"
+    "SHELL:-enable-experimental-feature Lifetimes"
     "SHELL:-Xfrontend -function-sections"
     "SHELL:-Xfrontend -disable-stack-protector"
     "SHELL:-Xcc -mfloat-abi=hard"

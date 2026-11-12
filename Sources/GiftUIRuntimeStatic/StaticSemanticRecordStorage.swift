@@ -7,11 +7,15 @@ private func initialStaticSemanticMetadata() -> InlineArray<2, SemanticRecordBan
     return [seed, seed]
 }
 
+@usableFromInline
 package struct StaticSemanticRecordStorage: ~Copyable {
-    private var metadata: InlineArray<2, SemanticRecordBankMetadata> =
+    @usableFromInline
+    internal var metadata: InlineArray<2, SemanticRecordBankMetadata> =
         initialStaticSemanticMetadata()
-    private let limits: SemanticRecordLimits
-    private let owner: SemanticRecordOwnerIdentity
+    @usableFromInline
+    internal let limits: SemanticRecordLimits
+    @usableFromInline
+    internal let owner: SemanticRecordOwnerIdentity
     #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
         @_noAllocation
     #endif
@@ -29,6 +33,8 @@ package struct StaticSemanticRecordStorage: ~Copyable {
     #endif
     package var storageOwner: SemanticRecordOwnerIdentity { owner }
 
+    @inlinable
+    @inline(__always)
     package mutating func withLifetime<Result>(
         configuredLimits: SemanticRecordLimits? = nil,
         records: inout MutableSpan<SemanticRuntimeRecord>,

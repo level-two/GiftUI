@@ -18,6 +18,7 @@ package struct ExecutionWakeReasons: OptionSet, Equatable, Sendable {
     package static let presentationPending = Self(rawValue: 0x04)
 }
 
+@usableFromInline
 package protocol ExecutionWakeRequester {
     mutating func requestWake(for reasons: ExecutionWakeReasons)
 }

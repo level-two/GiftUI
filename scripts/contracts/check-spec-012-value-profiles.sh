@@ -13,6 +13,7 @@ fail() {
 
 profile=""
 output_root=""
+compiler_baseline="historical"
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile)
@@ -25,6 +26,11 @@ while [[ $# -gt 0 ]]; do
             output_root="$2"
             shift 2
             ;;
+        --compiler-baseline)
+            [[ $# -ge 2 && ( "$2" == historical || "$2" == rfc-014 ) ]] || fail '--compiler-baseline requires historical or rfc-014'
+            compiler_baseline="$2"
+            shift 2
+            ;;
         *) fail "unknown option: $1" ;;
     esac
 done
@@ -33,6 +39,13 @@ case "${profile}" in
     "") fail '--profile is required' ;;
     *) fail "unknown profile: ${profile}" ;;
 esac
+
+if [[ "${compiler_baseline}" == rfc-014 ]]; then
+    case "${profile}" in
+        macos-dynamic | macos-static) ;;
+        *) fail 'RFC-014 compiler baseline selection is only supported for macOS profiles here' ;;
+    esac
+fi
 
 temporary_root=""
 if [[ -z "${output_root}" ]]; then
@@ -60,7 +73,14 @@ optimization=""
 flags=()
 case "${profile}" in
     macos-dynamic | macos-static)
-        compiler="$(xcrun --find swiftc)"
+        if [[ "${compiler_baseline}" == rfc-014 ]]; then
+            # shellcheck source=compiler-baseline.sh
+            source "${SCRIPT_DIR}/compiler-baseline.sh"
+            giftui_rfc014_select_compiler "${PROJECT_ROOT}" "${profile}"
+            compiler="${GIFTUI_CONTRACT_SWIFTC}"
+        else
+            compiler="$(xcrun --find swiftc)"
+        fi
         sdk="$(xcrun --sdk macosx --show-sdk-path)"
         target="arm64-apple-macosx26.0"
         optimization="-O -whole-module-optimization"
@@ -96,8 +116,8 @@ flags+=(
 )
 
 compiler_version="$("${compiler}" --version | tr '\n' ' ')"
-printf 'profile\t%s\ncompiler\t%s\ncompiler_sha256\t%s\ncompiler_version\t%s\ntarget\t%s\noptimization\t%s\n' \
-    "${profile}" "${compiler}" "$(shasum -a 256 "${compiler}" | awk '{print $1}')" \
+printf 'profile\t%s\nbaseline\t%s\ncompiler\t%s\ncompiler_sha256\t%s\ncompiler_version\t%s\ntarget\t%s\noptimization\t%s\n' \
+    "${profile}" "${compiler_baseline}" "${compiler}" "$(shasum -a 256 "${compiler}" | awk '{print $1}')" \
     "${compiler_version}" "${target}" "${optimization}" >"${output_root}/identity.tsv"
 
 module_dir="${output_root}/modules"

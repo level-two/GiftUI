@@ -15,15 +15,19 @@ required_visitor = [
   "mutating func visitStatefulCustomView<",
   "Declaration: View & _GiftUIObservableStateHost",
   "_ declaration: borrowing Declaration",
-  "body: (borrowing Declaration) -> Declaration.Body",
+  "body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)",
+  "throws(_GiftUIAccessFailure) -> Declaration.Body",
+  "where Declaration.Domain == Domain, Declaration.Body.Domain == Domain",
 ]
 missing_visitor = required_visitor.reject { |fragment| declarations.include?(fragment) }
 fail_check("SPEC-006 visitor signature differs: #{missing_visitor.inspect}") unless missing_visitor.empty?
 
 required_generation = [
-  "func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>",
-  "visitor.visitStatefulCustomView(self) { declaration in",
-  "declaration.body",
+  "func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>",
+  "where Visitor.Domain == Domain",
+  "visitor.visitStatefulCustomView(self) {",
+  "(declaration: borrowing Self, read: borrowing _GiftUIFrameRead<Domain>)",
+  "try declaration._giftUIEvaluate(read: read)",
 ]
 missing_generation = required_generation.reject { |fragment| macro.include?(fragment) }
 fail_check("generated traversal witness differs: #{missing_generation.inspect}") unless missing_generation.empty?

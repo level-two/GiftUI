@@ -6,6 +6,7 @@ require "pathname"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
 INPUT = ROOT.join("Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv")
+HIERARCHY_INPUT = ROOT.join("Tests/ContractFixtures/SPEC001/hierarchy-shape-cases.tsv")
 GENERATED_DIR = ROOT.join("Tests/ContractFixtures/SPEC015/Generated")
 SWIFT_OUTPUT = ROOT.join("Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift")
 NRF_MODEL_OUTPUT = ROOT.join("Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModelDescriptor.generated.swift")
@@ -64,8 +65,9 @@ values = parse_descriptor(INPUT, "workload descriptor")
 names = %w[macos_dynamic macos_static raspberry_pi_dynamic nrf52840_static]
 presets = names.to_h { |name| [name, preset(values, "preset.#{name}")] }
 descriptor_hash = Digest::SHA256.hexdigest(INPUT.read)
-# Legacy type-role witness identity; no expanded occurrence descriptor is read.
-static_root_identity = descriptor_hash[0, 8].to_i(16)
+# The Static root identity is bound to the fixed hierarchy descriptor, not to
+# the independent scalar workload descriptor.
+static_root_identity = Digest::SHA256.hexdigest(HIERARCHY_INPUT.read)[0, 8].to_i(16)
 fail_generation("generated Static root identity is zero") if static_root_identity.zero?
 
 ordinary = integer(values, "render.maximum_operations")

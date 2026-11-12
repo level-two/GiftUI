@@ -33,8 +33,10 @@ compiler="$(dirname "${swift_driver}")/swiftc"
 sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
 scratch="${output}/swiftpm"
 
-build=("${swift_driver}" build --disable-sandbox --package-path "${PROJECT_ROOT}" \
-    --scratch-path "${scratch}" --destination "${GIFTUI_PI_STATIC_DESTINATION}" \
+build=("${swift_driver}" build --disable-sandbox --build-system native \
+    --package-path "${PROJECT_ROOT}" \
+    --cache-path "${PROJECT_ROOT}/.build" --scratch-path "${scratch}" --skip-update \
+    --destination "${GIFTUI_PI_STATIC_DESTINATION}" \
     --configuration release --target GiftUIRenderLowering --static-swift-stdlib \
     -Xswiftc -whole-module-optimization -Xswiftc -DGIFTUI_DYNAMIC_PROFILE)
 record_command "${build[@]}"

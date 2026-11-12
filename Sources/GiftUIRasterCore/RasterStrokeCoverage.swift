@@ -2,6 +2,7 @@ import GiftUI
 import GiftUIRenderCore
 import GiftUISurfaceCore
 
+@usableFromInline
 package enum RasterStrokeResult: Equatable, Sendable {
     case completed(pixelCount: UInt32)
     case invalidGeometry
@@ -10,8 +11,10 @@ package enum RasterStrokeResult: Equatable, Sendable {
     case replacementRefused
 }
 
+@usableFromInline
 package enum RasterStrokeCoverage {
-    private typealias Wide = Int128
+    @usableFromInline
+    internal typealias Wide = Int128
     private typealias Magnitude = UInt128
 
     private static func unsignedDivmod(
@@ -62,6 +65,7 @@ package enum RasterStrokeCoverage {
     private static let bevelScale: Wide = 1 << 31
     private static let bevelScaleSquared: Magnitude = 1 << 62
 
+    @inlinable
     package static func rasterize<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke,
         descriptor: RasterSurfaceDescriptor,
@@ -150,7 +154,8 @@ package enum RasterStrokeCoverage {
         return .completed(pixelCount: replaced)
     }
 
-    private static func isOrthogonal<Stroke: StraightLineStrokeView>(
+    @inlinable
+    internal static func isOrthogonal<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke,
         header: StraightLineStrokeHeader
     ) -> Bool {
@@ -178,7 +183,8 @@ package enum RasterStrokeCoverage {
         return true
     }
 
-    private static func rasterizeUnitOrthogonal<Stroke: StraightLineStrokeView>(
+    @inlinable
+    internal static func rasterizeUnitOrthogonal<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke,
         header: StraightLineStrokeHeader,
         covered: Rect,
@@ -277,19 +283,22 @@ package enum RasterStrokeCoverage {
         return .completed(pixelCount: replaced)
     }
 
-    private enum CoverageResult {
+    @usableFromInline
+    internal enum CoverageResult {
         case covered
         case notCovered
         case invalidStroke
         case arithmeticOverflow
     }
 
-    private enum ValidationResult {
+    @usableFromInline
+    internal enum ValidationResult {
         case valid
         case invalidStroke
     }
 
-    private static func nextPotentialRange<Stroke: StraightLineStrokeView>(
+    @inlinable
+    internal static func nextPotentialRange<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke,
         header: StraightLineStrokeHeader,
         y: Int32,
@@ -345,7 +354,8 @@ package enum RasterStrokeCoverage {
         return bestStart < maximumX ? (bestStart, bestEnd) : nil
     }
 
-    private static func validate<Stroke: StraightLineStrokeView>(
+    @inlinable
+    internal static func validate<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke,
         header: StraightLineStrokeHeader
     ) -> ValidationResult {
@@ -379,7 +389,8 @@ package enum RasterStrokeCoverage {
         return expectedFirstPoint == header.pointCount ? .valid : .invalidStroke
     }
 
-    private static func covers<Stroke: StraightLineStrokeView>(
+    @inlinable
+    internal static func covers<Stroke: StraightLineStrokeView>(
         _ pixel: Point,
         stroke: borrowing Stroke,
         header: StraightLineStrokeHeader
@@ -415,7 +426,8 @@ package enum RasterStrokeCoverage {
         return .notCovered
     }
 
-    private static func subpathCovers<Stroke: StraightLineStrokeView>(
+    @inlinable
+    internal static func subpathCovers<Stroke: StraightLineStrokeView>(
         centerX: Wide,
         centerY: Wide,
         width: Wide,
@@ -503,7 +515,8 @@ package enum RasterStrokeCoverage {
         return .notCovered
     }
 
-    private static func segmentCovers(
+    @usableFromInline
+    internal static func segmentCovers(
         centerX: Wide,
         centerY: Wide,
         first: Point,
@@ -534,7 +547,8 @@ package enum RasterStrokeCoverage {
         )
     }
 
-    private static func diskCovers(
+    @usableFromInline
+    internal static func diskCovers(
         centerX: Wide,
         centerY: Wide,
         center: Point,
@@ -547,7 +561,8 @@ package enum RasterStrokeCoverage {
         return Magnitude(distanceSquared) <= widthMagnitude * widthMagnitude
     }
 
-    private static func joinCovers(
+    @usableFromInline
+    internal static func joinCovers(
         centerX: Wide,
         centerY: Wide,
         previous: Point,
@@ -871,7 +886,8 @@ package enum RasterStrokeCoverage {
         }
     }
 
-    private static func contains(_ outer: Rect, _ inner: Rect) -> Bool {
+    @usableFromInline
+    internal static func contains(_ outer: Rect, _ inner: Rect) -> Bool {
         inner.minX >= outer.minX && inner.minY >= outer.minY
             && inner.maxX <= outer.maxX && inner.maxY <= outer.maxY
     }

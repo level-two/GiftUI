@@ -275,12 +275,14 @@ for route in ('static', 'dynamic'):
                        'var host = SignalAnalyzerPresetHostInstances.' + factory + '(report: assembly.report, owner: owner)!\n'
                        'precondition(host.activate() == .active)\nreturn consume host')
         retired_type = host_state + specialization
+        retired_case = ('.retired(.init(storage: pipeline.retireQuiescedStorage(), span: activationSpan))'
+                        if route == 'static' else '.retired(pipeline.retireQuiescedStorage(), activationSpan)')
         retired_body = (prefix + 'let selectedModels = supplied.borrowedModels()\nlet selectedRoot = supplied.borrowedRoot()\nlet selectedControl = supplied.borrowedControl()\n'
                         'let binding = CounterExecutionBinding(models: selectedModels, root: selectedRoot, scopedControl: selectedControl.borrowed(), audit: assembly.report.storageAudit)!\n'
                         'let pipeline = supplied.intoPipeline(limits: assembly.report.storageAudit.limits, endpointConfiguration: assembly.endpoint)\n'
                         'var coordinator = ' + coordinator + specialization + '(binding: binding, admission: CounterAdmission(control: selectedControl.pointer, limits: assembly.report.storageAudit.limits.execution), opportunity: pipeline)\n'
                         'coordinator.quiesce()\nlet extracted = coordinator.takeQuiescedOpportunity()\nswitch consume extracted {\n'
-                        'case .some(let pipeline): return .retired(pipeline.retireQuiescedStorage(), activationSpan)\n'
+                        'case .some(let pipeline): return ' + retired_case + '\n'
                         'case .none: preconditionFailure("quiesced opportunity missing")\n}')
         for phase, result, body in (('active-host', active_type, active_body), ('retired-optional', retired_type, retired_body)):
             for origin in origins:

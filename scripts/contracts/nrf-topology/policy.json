@@ -100,7 +100,7 @@
   "source_hashes": {
     "Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift": "c21ec7f17548c511a61e36e13000787b07a02746ad1720f70736d05dceb93b2d",
     "Sources/SignalAnalyzerPresentation/SignalAnalyzerLayoutConstraints.swift": "22eed0e3ed059faec49a7b32e02527b620996f55803f02721fc17e9b22b533fd",
-    "Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift": "288e7f302fe604d9f8a504cd1eeae9f631e5ef2e5b12acf7f883d4e736a2b992",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift": "7289edfa4c2b6007e31588c10ae2c923edb286eeb2a452e83826d7d9f32c1c37",
     "Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift": "aa678d815356fb3a73b496f44a2494a29b3f8d0e8a2e68dc973946657a65ee8e"
   },
   "projection_sources": {

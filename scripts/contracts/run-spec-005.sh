@@ -364,9 +364,11 @@ run_preflight() {
     "${SCRIPT_DIR}/check-spec-005-assembly-lifecycle.rb" >>"${log_path}" 2>&1
     command -v swift >/dev/null || fail 'swift is missing'
     record_command giftui_swiftpm --package-path "${PROJECT_ROOT}" \
-        --cache-root "${report_dir}/build" -- package dump-package
+        --cache-root "${report_dir}/build" --disable-sandbox --skip-update \
+        -- package dump-package
     giftui_swiftpm --package-path "${PROJECT_ROOT}" \
-        --cache-root "${report_dir}/build" -- package dump-package \
+        --cache-root "${report_dir}/build" --disable-sandbox --skip-update \
+        -- package dump-package \
         >"${package_json}" 2>>"${log_path}"
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" \
@@ -612,10 +614,12 @@ run_macos() {
 
     local compiler compiler_version sdk_path sdk_version profile_flag module_dir
     local text_scan giftui_scan
-    compiler="$(xcrun --find swiftc)"
+    compiler="${PROJECT_ROOT}/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc"
+    [[ -x "${compiler}" ]] ||
+        fail "approved project-local Swift 6.4 compiler is missing: ${compiler}"
     compiler_version="$("${compiler}" --version 2>&1)"
-    require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
-    require_exact_fragment "${compiler_version}" 'swiftlang-6.3.3.1.3' 'macOS compiler build'
+    require_exact_fragment "${compiler_version}" 'Apple Swift version 6.4 (swift-6.4-RELEASE)' \
+        'approved macOS compiler'
     sdk_path="$(xcrun --sdk macosx --show-sdk-path)"
     sdk_version="$(xcrun --sdk macosx --show-sdk-version)"
     [[ -d "${sdk_path}" ]] || fail "macOS SDK is missing: ${sdk_path}"
@@ -737,6 +741,7 @@ run_raspberry_pi() {
     local -a command=(
         "${swift_driver}" build --package-path "${PROJECT_ROOT}"
         --scratch-path "${report_dir}/build/swiftpm"
+        --build-system native
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
         --configuration release --target GiftUITextResources --static-swift-stdlib
         -Xswiftc -whole-module-optimization
@@ -768,6 +773,7 @@ run_raspberry_pi() {
     local -a reference_command=(
         "${swift_driver}" build --package-path "${PROJECT_ROOT}"
         --scratch-path "${report_dir}/build/swiftpm"
+        --build-system native
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
         --configuration release --target GiftUIReferenceTextResources
         --static-swift-stdlib -Xswiftc -whole-module-optimization

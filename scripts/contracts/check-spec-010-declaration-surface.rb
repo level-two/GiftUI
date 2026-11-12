@@ -10,9 +10,13 @@ def fail_check(message)
 end
 
 required = [
-  "@propertyWrapper\npublic struct State<Value: _GiftUIObservableReference>",
-  "public init(wrappedValue: Value)",
-  "public var wrappedValue: Value",
+  "public protocol _GiftUIModelSchema",
+  "associatedtype Seed",
+  "@propertyWrapper\npublic struct State<Schema: _GiftUIModelSchema>",
+  "public init(seed: Schema.Seed)",
+  "public init(candidate: _GiftUIModelKey<Schema>)",
+  "public var wrappedValue: _GiftUIModelKey<Schema>?",
+  "package func _giftUIKey() throws(_GiftUIAccessFailure) -> _GiftUIModelKey<Schema>",
   "public enum _GiftUIObservableChangeReportOutcome: UInt8, Equatable, Sendable",
   "public struct _GiftUIObservableChangeSink: ~Copyable",
   "public var attachment: _GiftUIObservationAttachment",

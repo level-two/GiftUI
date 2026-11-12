@@ -101,11 +101,18 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout 
     // Rejected physical input must never reach the coordinator's admission queue.
     let firstRevision = control.pointee.runtime.committedPresentation!
     counterCorpusExpect(control.pointee.inputGate.inputIsEligible)
-    for (source, revision, malformed, reason) in [
-        (InputSourceID(rawValue: 1), Optional(firstRevision), false, HostNormalizedInputRejection.unknownSource),
-        (InputSourceID(rawValue: 0), nil, false, .stalePresentation),
-        (InputSourceID(rawValue: 0), Optional(firstRevision), true, .malformed),
-    ] {
+    let rejectedInputs:
+        InlineArray<3, (InputSourceID, PresentationRevision?, Bool, HostNormalizedInputRejection)> =
+            [
+                (
+                    InputSourceID(rawValue: 1), Optional(firstRevision), false,
+                    HostNormalizedInputRejection.unknownSource
+                ),
+                (InputSourceID(rawValue: 0), nil, false, .stalePresentation),
+                (InputSourceID(rawValue: 0), Optional(firstRevision), true, .malformed),
+            ]
+    for index in 0 ..< 3 {
+        let (source, revision, malformed, reason) = rejectedInputs[index]
         let rejected = control.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: source, observedPresentationRevision: revision, isMalformed: malformed, priorPhysicalSequenceIsComplete: true, to: &admission)
         counterCorpusExpect(rejected == .dropped(reason))
         counterCorpusExpect(control.pointee.runtime.admission.pointerCount == 0)

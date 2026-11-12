@@ -12,6 +12,9 @@ if [[ -z "${GIFTUI_VALIDATION_LOCK_OWNER:-}" ]]; then
 fi
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC015"
 REPORT_ROOT="${GIFTUI_CONTRACT_REPORT_DIR:-${PROJECT_ROOT}/.build/spec-015}"
+swift_executable="${GIFTUI_SWIFT_EXECUTABLE:-$(command -v swift)}"
+swiftc_executable="${GIFTUI_SWIFTC_EXECUTABLE:-$(dirname "${swift_executable}")/swiftc}"
+swiftpm_scratch="${REPORT_ROOT}/swiftpm"
 export CLANG_MODULE_CACHE_PATH="${PROJECT_ROOT}/.build/clang-module-cache"
 mkdir -p "${CLANG_MODULE_CACHE_PATH}"
 
@@ -87,12 +90,13 @@ reference_args=()
 if [[ "${GIFTUI_SHARED_REFERENCE_ALREADY_TESTED:-0}" == 1 ]]; then
     reference_args=(--skip 'macOS.*ReferenceRuns')
 fi
-run_check swift test --disable-sandbox \
-    --scratch-path "${PROJECT_ROOT}/.build" \
+run_check "${swift_executable}" test --disable-sandbox \
+    --scratch-path "${swiftpm_scratch}" \
+    --cache-path "${PROJECT_ROOT}/.build" \
     -Xswiftc -DGIFTUI_DYNAMIC_PROFILE \
     ${reference_args[@]+"${reference_args[@]}"} --filter GiftUIHostConfigurationTests
 input_identity="$(shasum -a 256 "${FIXTURE_ROOT}"/*.tsv | shasum -a 256 | awk '{print $1}')"
-compiler_identity="$(swiftc --version 2>/dev/null | tr '\n' ' ')"
+compiler_identity="$("${swiftc_executable}" --version 2>/dev/null | tr '\n' ' ')"
 command_hash="$(printf '%s' "scripts/contracts/run-spec-015.sh --profile ${profile}" | shasum -a 256 | awk '{print $1}')"
 output="${REPORT_ROOT}/report.tsv"
 {
@@ -124,9 +128,11 @@ if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
     scripts/raspberry-pi/build.sh --product "${product}" >"${build_log}" 2>&1
     artifact="${PROJECT_ROOT}/.build/raspberry-pi/artifacts/${product}"
     [[ -x "${artifact}" ]] || { printf 'missing ARMv6 preset executable: %s\n' "${artifact}" >&2; exit 1; }
-    swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+    "${swift_executable}" build --disable-sandbox --scratch-path "${swiftpm_scratch}" \
+        --cache-path "${PROJECT_ROOT}/.build" \
         --product "${product}" >>"${build_log}" 2>&1
-    binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
+    binary_dir="$("${swift_executable}" build --disable-sandbox --scratch-path "${swiftpm_scratch}" \
+        --cache-path "${PROJECT_ROOT}/.build" --show-bin-path)"
     semantic_report="${REPORT_ROOT}/semantic.tsv"
     "${binary_dir}/${product}" >"${semantic_report}"
     grep -Fq $'status=complete' "${semantic_report}" || {
@@ -155,9 +161,11 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     build_log="${REPORT_ROOT}/build.log"
     run_check scripts/nrf52840/doctor.sh
     scripts/nrf52840/build.sh --application signal-analyzer-static >"${build_log}" 2>&1
-    swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+    "${swift_executable}" build --disable-sandbox --scratch-path "${swiftpm_scratch}" \
+        --cache-path "${PROJECT_ROOT}/.build" \
         --product "${product}" >>"${build_log}" 2>&1
-    binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
+    binary_dir="$("${swift_executable}" build --disable-sandbox --scratch-path "${swiftpm_scratch}" \
+        --cache-path "${PROJECT_ROOT}/.build" --show-bin-path)"
     semantic_report="${REPORT_ROOT}/semantic.tsv"
     "${binary_dir}/${product}" >"${semantic_report}"
     grep -Fq $'status=complete' "${semantic_report}" || {
@@ -211,9 +219,11 @@ fi
 
 if [[ -n "${product}" ]]; then
     build_log="${REPORT_ROOT}/build.log"
-    swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+    "${swift_executable}" build --disable-sandbox --scratch-path "${swiftpm_scratch}" \
+        --cache-path "${PROJECT_ROOT}/.build" \
         --product "${product}" >"${build_log}" 2>&1
-    binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
+    binary_dir="$("${swift_executable}" build --disable-sandbox --scratch-path "${swiftpm_scratch}" \
+        --cache-path "${PROJECT_ROOT}/.build" --show-bin-path)"
     artifact="${binary_dir}/${product}"
     [[ -x "${artifact}" ]] || { printf 'missing preset executable: %s\n' "${artifact}" >&2; exit 1; }
     semantic_report="${REPORT_ROOT}/semantic.tsv"

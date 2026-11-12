@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIRenderCore
 
+@usableFromInline
 package protocol RasterSurface {
     var descriptor: RasterSurfaceDescriptor { get }
     var writableCapacityBytes: UInt32 { get }

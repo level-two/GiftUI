@@ -36,7 +36,7 @@ package enum StaticSignalAnalyzerNRFUTF8TextPool {
         at start: UInt16,
         in region: UnsafeMutableRawBufferPointer
     ) -> UInt16? {
-        return text.withUTF8 { bytes in
+        return text.withNonthrowingUTF8 { bytes in
             appendBytes(bytes, at: start, in: region)
         }
     }

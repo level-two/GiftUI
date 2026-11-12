@@ -86,11 +86,11 @@ extension CounterStaticWorkspaceBacking: CounterStorageRegionSource {
         // Scoped typed descriptor values have their own alignment below.
         visit(.elements(count: scopes.count, family: 12, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment))
         visit(.elements(count: text.count, family: 12, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment)) // Layout owns the render overlay.
-        visit(.inline(family: 12, chargedBytes: MemoryLayout<StaticCounterGeometry>.size - MemoryLayout<QualifiedRender>.size - MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.size, kind: .metadataPadding, size: MemoryLayout<StaticCounterGeometry>.size, stride: MemoryLayout<StaticCounterGeometry>.stride, alignment: MemoryLayout<StaticCounterGeometry>.alignment))
+        visit(.inline(family: 12, chargedBytes: MemoryLayout<StaticCounterGeometry>.size - MemoryLayout<QualifiedRender>.size - MemoryLayout<StaticCounterRecordDrawingWorkspace>.size, kind: .metadataPadding, size: MemoryLayout<StaticCounterGeometry>.size, stride: MemoryLayout<StaticCounterGeometry>.stride, alignment: MemoryLayout<StaticCounterGeometry>.alignment))
         visit(.inline(family: 13, size: MemoryLayout<QualifiedRender>.size, stride: MemoryLayout<QualifiedRender>.stride, alignment: MemoryLayout<QualifiedRender>.alignment))
         visit(.elements(count: path.count, family: 15, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment))
         visit(.elements(count: plan.count, family: 16, size: MemoryLayout<UInt8>.size, stride: MemoryLayout<UInt8>.stride, alignment: MemoryLayout<UInt8>.alignment))
-        visit(.inline(family: 16, size: MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.size, stride: MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.stride, alignment: MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.alignment))
+        visit(.inline(family: 16, size: MemoryLayout<StaticCounterRecordDrawingWorkspace>.size, stride: MemoryLayout<StaticCounterRecordDrawingWorkspace>.stride, alignment: MemoryLayout<StaticCounterRecordDrawingWorkspace>.alignment))
     }
 }
 

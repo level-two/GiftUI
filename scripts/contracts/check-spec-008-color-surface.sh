@@ -8,7 +8,7 @@ FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC008"
 
 swift build --package-path "${PROJECT_ROOT}" --target GiftUI >/dev/null
 module_dir="$(swift build --package-path "${PROJECT_ROOT}" --show-bin-path)/Modules"
-compiler="$(xcrun --find swiftc)"
+compiler="${GIFTUI_SWIFTC_EXECUTABLE:-$(xcrun --find swiftc)}"
 sdk="$(xcrun --sdk macosx --show-sdk-path)"
 temporary_root="$(mktemp -d "${TMPDIR:-/tmp}/giftui-spec008-color.XXXXXX")"
 trap 'rm -rf "${temporary_root}"' EXIT

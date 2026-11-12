@@ -31,6 +31,16 @@ private struct CompileProbeRegions: StaticProfileStorageRegions, ~Copyable {
     private var planByte: UInt8 = 0
     var byteCounts: RuntimeStorageByteCounts {
         RuntimeStorageByteCounts(
+            semanticCandidatePathBytes: 0,
+            semanticPublishedPathBytes: 0,
+            semanticCandidatePayloadBytes: 0,
+            semanticPublishedPayloadBytes: 0,
+            identityMatchWorkspaceBytes: 0,
+            interactionCandidateIdentityBytes: 0,
+            interactionCommittedIdentityBytes: 0,
+            modelMetadataBytes: 0,
+            modelOwnerBytes: 0,
+            framePinBytes: 0,
             semanticCandidateBytes: 1,
             semanticPublishedBytes: 1,
             layoutCandidateBytes: 1,
@@ -125,6 +135,9 @@ private struct CompileProbeRegions: StaticProfileStorageRegions, ~Copyable {
 private struct CompileProbeMetadata:
     RuntimeStaticCanvasAuditMetadata, StaticCanvasCallableTable
 {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias CaptureStorage = CompileProbeCapture
+
     let callableCaseCount: UInt16 = 1
     let declaredEntryCount: UInt16 = 1
     let maximumDeclaredID: UInt16 = 1
@@ -141,12 +154,14 @@ private struct CompileProbeMetadata:
         id: UInt16,
         captures: borrowing CompileProbeCapture,
         context: inout GraphicsContext,
-        size: Size
+        size: Size,
+        read: borrowing _GiftUIFrameRead<Domain>
     ) throws(DrawingError) {
         guard id == 1 else { throw .invariantViolation }
         _ = captures.color
         _ = captures.scalar
         _ = size
+        _ = read
     }
 }
 
@@ -226,6 +241,20 @@ public func spec013StaticBindingProbe() -> UInt32 {
 
 private func compileProbeLimits() -> RuntimeProfileLimits? {
     RuntimeProfileLimits(
+        records: RuntimeRecordLimits(
+            maximumPathEntries: 1,
+            maximumPathDepth: 1,
+            maximumPathChildFanout: 1,
+            maximumPayloadBytesPerBank: 1,
+            maximumIdentityComponentsPerKey: 1,
+            maximumInteractionIdentityComponents: 1
+        ),
+        models: RuntimeModelLimits(
+            maximumModelSlots: 1,
+            maximumOwningTickets: 1,
+            maximumFramePins: 1,
+            maximumModelCaptureBanks: 1
+        ),
         semantic: SemanticExpansionLimits(
             maximumDepth: 1,
             maximumSemanticNodes: 1,

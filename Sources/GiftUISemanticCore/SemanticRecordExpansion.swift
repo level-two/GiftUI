@@ -69,8 +69,8 @@ package struct SemanticPayloadWriter: ~Copyable, ~Escapable {
         _ value: consuming SemanticRecordPayload, kind: SemanticRuntimeRecord.Kind,
         chainIndex: UInt16 = 0
     ) -> SemanticExpansionError? {
-        let empty: InlineArray<0, UInt32> = .init(repeating: 0)
-        return store(consume value, kind: kind, chainIndex: chainIndex, text: empty.span)
+        let empty = Span<UInt32>()
+        return store(consume value, kind: kind, chainIndex: chainIndex, text: empty)
     }
 
     /// Canvas reserves its dense typed slot only after every canonical guard.
@@ -91,9 +91,9 @@ package struct SemanticPayloadWriter: ~Copyable, ~Escapable {
             owner: owner, bank: bankNumber, revision: bank.metadata.pointee.revision,
             ordinal: record)
         if let failure = reserve(bank.metadata.pointee.payloads, reference) { return failure }
-        let empty: InlineArray<0, UInt32> = .init(repeating: 0)
+        let empty = Span<UInt32>()
         bank.commitStore(
-            .canvas, kind: .pendingCanvas, chainIndex: 0, text: empty.span,
+            .canvas, kind: .pendingCanvas, chainIndex: 0, text: empty,
             additionalBytes: additionalBytes)
         return nil
     }
@@ -133,11 +133,13 @@ package struct SemanticRecordWorkspaceState {
         output = identity
         return nil
     }
-    @usableFromInline
+    @inlinable
+    @inline(__always)
     package mutating func enterRoot<D: View>(_ declaration: D.Type, identity: inout Identity?)
         -> SemanticExpansionError?
     { enter(.init(kind: .root), identity: &identity) }
-    @usableFromInline
+    @inlinable
+    @inline(__always)
     package mutating func enterCustomBody<D: View>(_ declaration: D.Type, identity: inout Identity?)
         -> SemanticExpansionError?
     { enter(.init(kind: .customBody), identity: &identity) }
@@ -203,12 +205,16 @@ struct RecordWorkspace<Roles: SemanticDeclarationRoles>: SemanticExpansionWorksp
     @usableFromInline var maximumIdentities: UInt16 { state.maximumIdentities }
     @usableFromInline var isExpanding: Bool { state.isExpanding }
     @usableFromInline mutating func beginExpansion() -> Bool { state.beginExpansion() }
-    @usableFromInline mutating func enterRoot<D: View>(
+    @inlinable
+    @inline(__always)
+    mutating func enterRoot<D: View>(
         _ declaration: D.Type, identity: inout Identity?
     ) -> SemanticExpansionError? {
         state.enterRoot(declaration, identity: &identity)
     }
-    @usableFromInline mutating func enterCustomBody<D: View>(
+    @inlinable
+    @inline(__always)
+    mutating func enterCustomBody<D: View>(
         _ declaration: D.Type, identity: inout Identity?
     ) -> SemanticExpansionError? {
         state.enterCustomBody(declaration, identity: &identity)
@@ -253,7 +259,7 @@ where TraversalIdentity == SemanticCompleteIdentity {
         StateBinding.Domain == Domain, StateBinding.Identity == TraversalIdentity,
         StateBinding.Failure == TraversalBindingFailure
 
-    @_lifetime(copy sink, copy codec, copy stateBinding)
+    @_lifetime(copy sink, borrow codec, copy stateBinding)
     static func make(
         attempt: SemanticExpansionAttempt, workspace: SemanticRecordWorkspaceState,
         sink: consuming SemanticRecordSinkState, codec: borrowing Codec,

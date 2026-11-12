@@ -1,5 +1,6 @@
 import GiftUI
 
+@usableFromInline
 enum InputSequenceValidation: UInt8, Equatable, Sendable {
     case accepted = 0
     case consumedWhileCancelled = 1
@@ -38,6 +39,7 @@ package struct TargetInputSequenceGate: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 struct InputSourceSequenceState: Equatable, Sendable {
     enum Mode: UInt8, Equatable, Sendable {
         case synchronized = 0
@@ -53,6 +55,7 @@ struct InputSourceSequenceState: Equatable, Sendable {
     #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
         @_noAllocation
     #endif
+    @usableFromInline
     init() {}
 
     // Preserve the original synthesized memberwise entry and its defaults.
@@ -64,6 +67,7 @@ struct InputSourceSequenceState: Equatable, Sendable {
         self.ordinal = ordinal
     }
 
+    @usableFromInline
     mutating func validate(
         phase: PointerPhase,
         sequence proposedSequence: PointerSequenceID,
@@ -89,6 +93,7 @@ struct InputSourceSequenceState: Equatable, Sendable {
         }
     }
 
+    @usableFromInline
     mutating func cancelCurrentSequence() {
         if mode == .active {
             mode = .cancelled

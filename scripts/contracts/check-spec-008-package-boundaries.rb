@@ -44,11 +44,17 @@ prohibited = /(?:Runtime|Execution|Failure|Capabilities|Backend|Raster|Reference
 end
 
 joiners = SOURCES.glob("*/*.swift").select do |path|
-  imports = path.each_line.each_with_object([]) do |line, values|
+  contents = path.read
+  imports = contents.each_line.each_with_object([]) do |line, values|
     import = line[/\Aimport\s+(\w+)/, 1]
     values << import if import
   end
-  imports.include?("GiftUISemanticCore") && imports.include?("GiftUILayout")
+  # Merely importing both modules is not a rendering join: runtime owners also
+  # validate independent semantic and layout capacities. The SPEC-008 join is
+  # the paired borrowed-view producer that correlates semantic identities with
+  # resolved layout records.
+  imports.include?("GiftUISemanticCore") && imports.include?("GiftUILayout") &&
+    contents.include?("SemanticRenderView") && contents.include?("ResolvedRenderLayoutView")
 end
 approved_joiners = %w[
   GiftUIDrawing GiftUIRenderLowering GiftUIRuntimeCore GiftUIRuntimeDynamic
@@ -59,11 +65,12 @@ approved_projections = %w[
   SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFResolvedLayout.swift
 ]
 # Composition may borrow both views; production traversal still has one owner.
-fail_check("semantic/layout join exists outside approved producers or projections") unless
-  !joiners.empty? && joiners.all? do |path|
+approved_joiner_set = !joiners.empty? && joiners.all? { |path|
     approved_joiners.any? { |target| path.to_s.include?("/#{target}/") } ||
       approved_projections.include?(path.relative_path_from(SOURCES).to_s)
-  end
+  }
+fail_check("semantic/layout join exists outside approved producers or projections") unless
+  approved_joiner_set
 
 consumer_directories = SOURCES.children.select do |path|
   path.directory? && path.basename.to_s.match?(/(?:Backend|Raster|Platform|Driver)/)

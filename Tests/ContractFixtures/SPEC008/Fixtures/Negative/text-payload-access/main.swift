@@ -1,4 +1,4 @@
 import GiftUI
 
-let text = Text("private")
+let text = Text<_GiftUIEmptyReadDomain>("private")
 _ = text._giftUITextPayload

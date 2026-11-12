@@ -46,6 +46,8 @@ fi
 
 report_dir="${GIFTUI_CONTRACT_REPORT_DIR:?missing report staging directory}"
 run_id="${GIFTUI_CONTRACT_RUN_ID:?missing report run identity}"
+swift_executable="${GIFTUI_SWIFT_EXECUTABLE:-$(command -v swift)}"
+swiftpm_scratch="${report_dir}/swiftpm"
 mkdir -p "${report_dir}"
 revision="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
 dirty=false
@@ -73,13 +75,17 @@ run_check ruby "${SCRIPT_DIR}/check-spec-011-declaration-surface.rb"
 run_check ruby "${SCRIPT_DIR}/check-spec-011-migration.rb"
 run_check ruby "${SCRIPT_DIR}/check-spec-011-integration-audit.rb"
 
-run_check swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+run_check "${swift_executable}" test --disable-sandbox \
+    --scratch-path "${swiftpm_scratch}" --cache-path "${PROJECT_ROOT}/.build" \
     --filter GiftUIInteractionTests
-run_check swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+run_check "${swift_executable}" test --disable-sandbox \
+    --scratch-path "${swiftpm_scratch}" --cache-path "${PROJECT_ROOT}/.build" \
     --filter GiftUIInteractionFailureAdapterTests
-run_check swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+run_check "${swift_executable}" test --disable-sandbox \
+    --scratch-path "${swiftpm_scratch}" --cache-path "${PROJECT_ROOT}/.build" \
     --filter RuntimeInteraction
-run_check swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+run_check "${swift_executable}" test --disable-sandbox \
+    --scratch-path "${swiftpm_scratch}" --cache-path "${PROJECT_ROOT}/.build" \
     --filter 'ProfileDifferentialTests|UnequalInteractionStoreCapacity'
 
 case "${profile}" in

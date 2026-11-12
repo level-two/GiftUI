@@ -3,6 +3,7 @@ import GiftUICapabilities
 import GiftUIFailureCore
 import GiftUISurfaceCore
 
+@usableFromInline
 package struct DisplayReservationID: Equatable, Hashable, Sendable {
     package let rawValue: UInt32
 
@@ -11,6 +12,7 @@ package struct DisplayReservationID: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package enum DisplayReservationResult: Equatable, Sendable {
     case reserved(DisplayReservationID)
     case backpressured
@@ -19,6 +21,7 @@ package enum DisplayReservationResult: Equatable, Sendable {
     case failure(DisplayTargetError)
 }
 
+@usableFromInline
 package enum DisplayTransferResult: Equatable, Sendable {
     case completed
     case failureBeforeAcceptance(DisplayTargetError)
@@ -36,6 +39,7 @@ package enum DisplayTargetError: UInt8, Equatable, Sendable {
     case invariantViolation = 6
 }
 
+@usableFromInline
 package protocol DisplayPayloadWriter {
     var capacityBytes: UInt32 { get }
     var writtenBytes: UInt32 { get }
@@ -66,6 +70,7 @@ extension DisplayPayloadWriter {
     }
 }
 
+@usableFromInline
 package protocol DisplayTarget {
     associatedtype Writer: DisplayPayloadWriter
 

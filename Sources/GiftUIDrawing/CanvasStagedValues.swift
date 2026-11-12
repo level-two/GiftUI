@@ -159,6 +159,7 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
         throw .invariantViolation
     }
     @inlinable
+    @inline(__always)
     package borrowing func release(at identity: Identity) {
         for index in 0 ..< count where entries[Int(index)]?.identity == identity {
             guard entries[Int(index)]?.value != nil else { return }
@@ -168,6 +169,7 @@ package struct CanvasStagedValues<Identity: Equatable & Sendable, Table: CanvasV
         }
     }
     @inlinable
+    @inline(__always)
     package borrowing func discard() {
         for index in 0 ..< count {
             if let identity = entries[Int(index)]?.identity { release(at: identity) }

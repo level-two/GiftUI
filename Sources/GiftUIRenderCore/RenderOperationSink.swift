@@ -1,3 +1,4 @@
+@usableFromInline
 package protocol RenderOperationSink {
     var capacity: RenderSinkCapacity { get }
 

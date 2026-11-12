@@ -1,9 +1,14 @@
+@usableFromInline
 package struct RasterPayloadLimits: Equatable, Sendable {
+    @usableFromInline
     package let maximumRasterBytes: UInt32
+    @usableFromInline
     package let maximumPayloadBytes: UInt32
+    @usableFromInline
     package let maximumRegionsPerPayload: UInt16
     package let maximumRegionSubmissionsPerFrame: UInt32
     package let maximumTileVisitsPerFrame: UInt32
+    @usableFromInline
     package let maximumInFlightPayloads: UInt8
     package let maximumGlyphRasterBytes: UInt32
     package let maximumStrokeWorkspaceBytes: UInt32
@@ -47,11 +52,13 @@ package struct RasterPayloadLimits: Equatable, Sendable {
     }
 
     #if GIFTUI_STARTUP_QUALIFICATION
+        @usableFromInline
         package var maximumInFlightBytes: UInt32 {
             @_noAllocation
             get { maximumPayloadBytes * UInt32(maximumInFlightPayloads) }
         }
     #else
+        @usableFromInline
         package var maximumInFlightBytes: UInt32 {
             maximumPayloadBytes * UInt32(maximumInFlightPayloads)
         }

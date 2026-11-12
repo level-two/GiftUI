@@ -15,7 +15,7 @@ def fail_check(message)
 end
 
 semantic_path = ROOT.join("Sources/GiftUISemanticCore/SemanticRenderView.swift")
-semantic_adapter_path = ROOT.join("Sources/GiftUISemanticCore/SemanticLayoutView.swift")
+semantic_adapter_path = ROOT.join("Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift")
 layout_path = ROOT.join("Sources/GiftUILayout/ResolvedRenderLayoutView.swift")
 semantic = semantic_path.read
 semantic_adapter = semantic_adapter_path.read

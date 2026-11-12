@@ -21,10 +21,15 @@ public struct _GiftUIPaddingInsetsPayload: _GiftUISemanticModifierPayload,
 public struct _GiftUIFixedFramePayload: _GiftUISemanticModifierPayload,
     Equatable, Sendable
 {
+    @usableFromInline
     package let width: GeometryScalar?
+    @usableFromInline
     package let height: GeometryScalar?
+    @usableFromInline
     package let alignment: Alignment
 
+    @inlinable
+    @inline(__always)
     package init(
         width: GeometryScalar?,
         height: GeometryScalar?,
@@ -75,6 +80,13 @@ struct GiftUILayoutModifiedContent<
     @usableFromInline
     let payload: Payload
 
+    @inlinable
+    @inline(__always)
+    init(content: Content, payload: Payload) {
+        self.content = content
+        self.payload = payload
+    }
+
     @usableFromInline
     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure)
         -> Never
@@ -112,6 +124,8 @@ public extension View {
         )
     }
 
+    @inlinable
+    @inline(__always)
     func frame(
         width: GeometryScalar? = nil,
         height: GeometryScalar? = nil,

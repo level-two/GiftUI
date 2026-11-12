@@ -29,6 +29,7 @@ package enum HostOpportunityBeginResult: Equatable, Sendable {
     case rejected(HostWakePacingError)
 }
 
+@usableFromInline
 package struct HostWakePacingController: Sendable {
     private let minimumFrameIntervalMicroseconds: UInt64
     private let maximumFactServiceLatencyMicroseconds: UInt64
@@ -148,6 +149,7 @@ package struct HostWakePacingController: Sendable {
         }
     }
 
+    @usableFromInline
     package mutating func completeOpportunity(
         at timestampMicroseconds: UInt64
     ) -> HostWakePacingError? {

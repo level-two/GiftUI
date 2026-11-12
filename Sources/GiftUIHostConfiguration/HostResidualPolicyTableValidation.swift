@@ -1,6 +1,8 @@
 import GiftUIFailureCore
 
+@usableFromInline
 package enum HostResidualPolicyTableValidation {
+    @inlinable
     package static func validate<Table>(
         _ table: borrowing Table
     ) -> Bool where Table: MVPHostResidualPolicyTable {
@@ -17,6 +19,7 @@ package enum HostResidualPolicyTableValidation {
     #if GIFTUI_STARTUP_QUALIFICATION
         @_noAllocation
     #endif
+    @usableFromInline
     package static func expectedRow(
         for context: HostResidualPolicyContext
     ) -> (

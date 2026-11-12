@@ -1,13 +1,22 @@
 import GiftUI
 
+@usableFromInline
 package struct TextResourceDigest: Equatable, Hashable, Sendable {
+    @usableFromInline
     package let word0: UInt32
+    @usableFromInline
     package let word1: UInt32
+    @usableFromInline
     package let word2: UInt32
+    @usableFromInline
     package let word3: UInt32
+    @usableFromInline
     package let word4: UInt32
+    @usableFromInline
     package let word5: UInt32
+    @usableFromInline
     package let word6: UInt32
+    @usableFromInline
     package let word7: UInt32
 
     package init(
@@ -31,9 +40,12 @@ package struct TextResourceDigest: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct FontResourceID: RawRepresentable, Equatable, Hashable, Sendable {
+    @usableFromInline
     package let rawValue: TextResourceDigest
 
+    @usableFromInline
     package init(rawValue: TextResourceDigest) {
         self.rawValue = rawValue
     }
@@ -41,7 +53,9 @@ package struct FontResourceID: RawRepresentable, Equatable, Hashable, Sendable {
 
 @usableFromInline
 package struct FontInstanceID: Equatable, Hashable, Sendable {
+    @usableFromInline
     package let resource: FontResourceID
+    @usableFromInline
     package let instanceIndex: UInt16
 
     package init(resource: FontResourceID, instanceIndex: UInt16) {
@@ -61,11 +75,14 @@ package struct GlyphID: RawRepresentable, Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct RasterRealizationID:
     RawRepresentable, Equatable, Hashable, Sendable
 {
+    @usableFromInline
     package let rawValue: UInt16
 
+    @usableFromInline
     package init(rawValue: UInt16) {
         self.rawValue = rawValue
     }
@@ -124,6 +141,7 @@ package struct FontInstanceDescriptor: Equatable, Sendable {
     @usableFromInline
     package let lineMetrics: FontLineMetrics
     package let replacementGlyph: GlyphID
+    @usableFromInline
     package let glyphCount: UInt16
     package let mappingCount: UInt16
 
@@ -142,6 +160,7 @@ package struct FontInstanceDescriptor: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct RasterRealizationDescriptor: Equatable, Sendable {
     package let id: RasterRealizationID
     package let instance: FontInstanceID
@@ -170,6 +189,7 @@ package struct RasterRealizationDescriptor: Equatable, Sendable {
 @usableFromInline
 package struct TextResourceDescriptor: Equatable, Sendable {
     package let schemaVersion: UInt16
+    @usableFromInline
     package let resource: FontResourceID
     @usableFromInline
     package let instanceCount: UInt16
@@ -208,6 +228,7 @@ package struct ScalarGlyphMappingRecord: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct GlyphRasterRecord: Equatable, Sendable {
     package let glyph: GlyphID
     package let offset: UInt32
@@ -251,6 +272,7 @@ package protocol CanonicalTextMetricsView {
     ) -> GlyphMetrics?
 }
 
+@usableFromInline
 package protocol TextRasterResourceView {
     var descriptor: TextResourceDescriptor { get }
     func realization(at index: UInt16) -> RasterRealizationDescriptor?
@@ -290,28 +312,162 @@ package enum TextResourceValidationError: UInt8, Equatable, Sendable {
     case integrityMismatch = 8
 }
 
+@usableFromInline
 package enum TextResourceValidationResult: Equatable, Sendable {
     case valid
     case invalid(TextResourceValidationError)
 }
 
 package enum TextResourceValidator {
-    @inlinable
-    @inline(__always)
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    package static func instancesMatch(_ lhs: FontInstanceID, _ rhs: FontInstanceID) -> Bool {
+        lhs == rhs
+    }
+
     package static func validate<M, R>(
         _ resourcePackage: borrowing TextResourcePackage<M, R>,
         requiring requiredRealization: RasterRealizationID
     ) -> TextResourceValidationResult
     where M: CanonicalTextMetricsView, R: TextRasterResourceView {
-        let metricsDescriptor = resourcePackage.metrics.descriptor
-        let rasterDescriptor = resourcePackage.raster.descriptor
-        var predicates = _TextResourceValidationPredicates()
+        var engine = TextResourceValidationEngine(requiring: requiredRealization)
+        while true {
+            switch engine.request() {
+            case .metricsDescriptor: engine.acceptDescriptor(resourcePackage.metrics.descriptor)
+            case .rasterDescriptor: engine.acceptDescriptor(resourcePackage.raster.descriptor)
+            case .instance(let index):
+                engine.acceptInstance(resourcePackage.metrics.instance(at: index))
+            case .mapping(let index, let instance):
+                engine.acceptMapping(resourcePackage.metrics.mapping(at: index, in: instance))
+            case .metrics(let glyph, let instance):
+                engine.acceptMetrics(resourcePackage.metrics.metrics(for: glyph, in: instance))
+            case .realization(let index):
+                engine.acceptRealization(resourcePackage.raster.realization(at: index))
+            case .available(let id):
+                engine.acceptAvailability(resourcePackage.raster.isPayloadAvailable(for: id))
+            case .record(let glyph, let id):
+                engine.acceptRecord(resourcePackage.raster.record(for: glyph, realization: id))
+            case .payload(let record, let id):
+                let borrowed: Bool? = resourcePackage.raster.withPayload(
+                    for: record, realization: id
+                ) { bytes in
+                    engine.acceptPayloadBytes(bytes)
+                    return true
+                }
+                engine.finishPayload(borrowed)
+            case .manifest: engine.acceptManifest(canonicalManifestDigest(of: resourcePackage))
+            case .finished: return engine.result()
+            }
+        }
 
+    }
+}
+
+// One bounded policy engine owns validation state. Adapters only perform the
+// ordered synchronous queries requested here; no resource borrow is retained.
+internal struct TextResourceValidationEngine {
+    internal enum Request {
+        case metricsDescriptor, rasterDescriptor
+        case instance(UInt16)
+        case mapping(UInt16, FontInstanceID)
+        case metrics(GlyphID, FontInstanceID)
+        case realization(UInt16)
+        case available(RasterRealizationID)
+        case record(GlyphID, RasterRealizationID)
+        case payload(GlyphRasterRecord, RasterRealizationID)
+        case manifest, finished
+    }
+    private enum Phase {
+        case metricsDescriptor, rasterDescriptor, instance, mapping, mappingTail
+        case metrics, metricsTail, instanceTail, realization, requiredAvailable
+        case available, record, recordMetrics, payload, recordTail
+        case realizationTail, availabilityTail, manifest, done
+    }
+    private var phase: Phase = .metricsDescriptor
+    private var predicates = _TextResourceValidationPredicates()
+    private var metricsDescriptor: TextResourceDescriptor?
+    private var rasterDescriptor: TextResourceDescriptor?
+    private let requiredRealization: RasterRealizationID
+    private var canonicalInstance: FontInstanceDescriptor?
+    private var instance: FontInstanceDescriptor?
+    private var realization: RasterRealizationDescriptor?
+    private var record: GlyphRasterRecord?
+    private var glyphMetrics: GlyphMetrics?
+    private var instanceOrdinal: UInt16 = 0
+    private var mappingOrdinal: UInt16 = 0
+    private var glyphOrdinal: UInt16 = 0
+    private var realizationOrdinal: UInt16 = 0
+    private var recordOrdinal: UInt16 = 0
+    private var precedingScalar: UInt32?
+    private var anyAvailablePayload = false
+    private var requiredIsCatalogued = false
+    private var requiredIsAvailable = false
+    private var isAvailable = false
+    private var expectedOffset: UInt32 = 0
+    private var payloadSHA256 = _TextResourceSHA256()
+    private var payloadBytesBorrowed: UInt32 = 0
+    private var invocationCount: UInt8 = 0
+
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal init(requiring realization: RasterRealizationID) {
+        requiredRealization = realization
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal func request() -> Request {
+        switch phase {
+        case .metricsDescriptor: return .metricsDescriptor
+        case .rasterDescriptor: return .rasterDescriptor
+        case .instance: return .instance(instanceOrdinal)
+        case .instanceTail: return .instance(metricsDescriptor!.instanceCount)
+        case .mapping: return .mapping(mappingOrdinal, instance!.id)
+        case .mappingTail: return .mapping(instance!.mappingCount, instance!.id)
+        case .metrics: return .metrics(GlyphID(rawValue: glyphOrdinal), instance!.id)
+        case .metricsTail: return .metrics(GlyphID(rawValue: instance!.glyphCount), instance!.id)
+        case .realization: return .realization(realizationOrdinal)
+        case .realizationTail: return .realization(metricsDescriptor!.realizationCount)
+        case .requiredAvailable, .available: return .available(realization!.id)
+        case .availabilityTail:
+            return .available(RasterRealizationID(rawValue: metricsDescriptor!.realizationCount))
+        case .record: return .record(GlyphID(rawValue: recordOrdinal), realization!.id)
+        case .recordTail:
+            return .record(GlyphID(rawValue: realization!.glyphCount), realization!.id)
+        case .recordMetrics:
+            return .metrics(GlyphID(rawValue: recordOrdinal), canonicalInstance!.id)
+        case .payload: return .payload(record!, realization!.id)
+        case .manifest: return .manifest
+        case .done: return .finished
+        }
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal func result() -> TextResourceValidationResult {
+        precondition(phase == .done)
+        return predicates.result
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptDescriptor(_ descriptor: TextResourceDescriptor) {
+        if phase == .metricsDescriptor {
+            metricsDescriptor = descriptor
+            phase = .rasterDescriptor
+            return
+        }
+        precondition(phase == .rasterDescriptor)
+        rasterDescriptor = descriptor
+        let metricsDescriptor = self.metricsDescriptor!
+        let rasterDescriptor = descriptor
         predicates.unsupportedSchema =
             metricsDescriptor.schemaVersion != 1
             || rasterDescriptor.schemaVersion != 1
         predicates.capacityExceeded =
-            !isWithinCapacity(
+            !TextResourceValidator.isWithinCapacity(
                 instanceCount: metricsDescriptor.instanceCount,
                 glyphCount: 0,
                 mappingCount: 0,
@@ -320,7 +476,7 @@ package enum TextResourceValidator {
                     metricsDescriptor.canonicalManifestByteCount,
                 payloadByteCount: 0
             )
-            || !isWithinCapacity(
+            || !TextResourceValidator.isWithinCapacity(
                 instanceCount: rasterDescriptor.instanceCount,
                 glyphCount: 0,
                 mappingCount: 0,
@@ -342,369 +498,464 @@ package enum TextResourceValidator {
             || metricsDescriptor.canonicalManifestByteCount
                 != rasterDescriptor.canonicalManifestByteCount
         predicates.incompatibleViews = metricsDescriptor != rasterDescriptor
-
-        var canonicalInstance: FontInstanceDescriptor?
-        let instanceTraversalCount =
-            metricsDescriptor.instanceCount > 1
-            ? UInt16(1) : metricsDescriptor.instanceCount
-        var instanceOrdinal: UInt16 = 0
-        while instanceOrdinal < instanceTraversalCount {
-            guard
-                let instance = resourcePackage.metrics.instance(
-                    at: instanceOrdinal
-                )
-            else {
-                predicates.invalidCount = true
-                instanceOrdinal += 1
-                continue
-            }
-            if canonicalInstance != nil {
-                predicates.invalidIdentity = true
-            } else {
-                canonicalInstance = instance
-            }
-            predicates.capacityExceeded =
-                predicates.capacityExceeded
-                || !isWithinCapacity(
-                    instanceCount: 1,
-                    glyphCount: instance.glyphCount,
-                    mappingCount: instance.mappingCount,
-                    realizationCount: 1,
-                    canonicalManifestByteCount: 1,
-                    payloadByteCount: 0
-                )
-            predicates.invalidCount =
-                predicates.invalidCount
-                || instance.glyphCount == 0
-                || instance.mappingCount == 0
-            predicates.invalidIdentity =
-                predicates.invalidIdentity
-                || instance.id.resource != metricsDescriptor.resource
-                || instance.id.instanceIndex != instanceOrdinal
-                || instance.replacementGlyph.rawValue >= instance.glyphCount
-
-            let line = instance.lineMetrics
-            var lineSum = GeometryArithmetic.add(line.ascent, line.descent)
-            if let partial = lineSum {
-                lineSum = GeometryArithmetic.add(partial, line.lineGap)
-            }
-            predicates.malformedMetrics =
-                predicates.malformedMetrics
-                || line.ascent <= 0
-                || line.descent < 0
-                || line.lineGap < 0
-                || lineSum == nil
-                || lineSum == 0
-
-            let mappingTraversalCount =
-                instance.mappingCount > 256
-                ? UInt16(256) : instance.mappingCount
-            var mappingOrdinal: UInt16 = 0
-            var precedingScalar: UInt32?
-            while mappingOrdinal < mappingTraversalCount {
-                guard
-                    let mapping = resourcePackage.metrics.mapping(
-                        at: mappingOrdinal,
-                        in: instance.id
-                    )
-                else {
-                    predicates.invalidCount = true
-                    mappingOrdinal += 1
-                    continue
-                }
-                predicates.malformedMapping =
-                    predicates.malformedMapping
-                    || !isValidUnicodeScalar(mapping.scalarValue)
-                    || mapping.scalarValue == 0x0a
-                    || mapping.scalarValue == 0x0d
-                    || mapping.glyph.rawValue >= instance.glyphCount
-                if let precedingScalar,
-                    mapping.scalarValue <= precedingScalar
-                {
-                    predicates.malformedMapping = true
-                }
-                precedingScalar = mapping.scalarValue
-                mappingOrdinal += 1
-            }
-            if instance.mappingCount <= 256,
-                resourcePackage.metrics.mapping(
-                    at: instance.mappingCount,
-                    in: instance.id
-                ) != nil
-            {
-                predicates.invalidCount = true
-            }
-
-            let glyphTraversalCount =
-                instance.glyphCount > 256
-                ? UInt16(256) : instance.glyphCount
-            var glyphOrdinal: UInt16 = 0
-            while glyphOrdinal < glyphTraversalCount {
-                let glyph = GlyphID(rawValue: glyphOrdinal)
-                guard
-                    let glyphMetrics = resourcePackage.metrics.metrics(
-                        for: glyph,
-                        in: instance.id
-                    )
-                else {
-                    predicates.invalidCount = true
-                    glyphOrdinal += 1
-                    continue
-                }
-                predicates.malformedMetrics =
-                    predicates.malformedMetrics
-                    || glyphMetrics.advanceX < 0
-                    || GeometryArithmetic.add(
-                        glyphMetrics.offsetX,
-                        glyphMetrics.inkSize.width
-                    ) == nil
-                    || GeometryArithmetic.add(
-                        glyphMetrics.offsetY,
-                        glyphMetrics.inkSize.height
-                    ) == nil
-                glyphOrdinal += 1
-            }
-            if instance.glyphCount <= 256,
-                resourcePackage.metrics.metrics(
-                    for: GlyphID(rawValue: instance.glyphCount),
-                    in: instance.id
-                ) != nil
-            {
-                predicates.invalidCount = true
-            }
-            instanceOrdinal += 1
+        nextInstance()
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func nextInstance() {
+        let descriptor = metricsDescriptor!
+        if instanceOrdinal < min(descriptor.instanceCount, 1) {
+            phase = .instance
+        } else if descriptor.instanceCount <= 1 {
+            phase = .instanceTail
+        } else {
+            nextRealization()
         }
-        if metricsDescriptor.instanceCount <= 1,
-            resourcePackage.metrics.instance(
-                at: metricsDescriptor.instanceCount
-            ) != nil
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptInstance(_ value: FontInstanceDescriptor?) {
+        if phase == .instanceTail {
+            if case .some = value { predicates.invalidCount = true }
+            nextRealization()
+            return
+        }
+        precondition(phase == .instance)
+        guard let instance = value else {
+            predicates.invalidCount = true
+            instanceOrdinal += 1
+            nextInstance()
+            return
+        }
+        self.instance = instance
+        let metricsDescriptor = self.metricsDescriptor!
+        if case .some = canonicalInstance {
+            predicates.invalidIdentity = true
+        } else {
+            canonicalInstance = instance
+        }
+        predicates.capacityExceeded =
+            predicates.capacityExceeded
+            || !TextResourceValidator.isWithinCapacity(
+                instanceCount: 1,
+                glyphCount: instance.glyphCount,
+                mappingCount: instance.mappingCount,
+                realizationCount: 1,
+                canonicalManifestByteCount: 1,
+                payloadByteCount: 0
+            )
+        predicates.invalidCount =
+            predicates.invalidCount
+            || instance.glyphCount == 0
+            || instance.mappingCount == 0
+        predicates.invalidIdentity =
+            predicates.invalidIdentity
+            || instance.id.resource != metricsDescriptor.resource
+            || instance.id.instanceIndex != instanceOrdinal
+            || instance.replacementGlyph.rawValue >= instance.glyphCount
+
+        let line = instance.lineMetrics
+        var lineSum = GeometryArithmetic.add(line.ascent, line.descent)
+        if let partial = lineSum {
+            lineSum = GeometryArithmetic.add(partial, line.lineGap)
+        }
+        let malformedLineMetrics: Bool
+        if predicates.malformedMetrics
+            || line.ascent <= 0
+            || line.descent < 0
+            || line.lineGap < 0
         {
+            malformedLineMetrics = true
+        } else if case .none = lineSum {
+            malformedLineMetrics = true
+        } else {
+            malformedLineMetrics = lineSum == 0
+        }
+        predicates.malformedMetrics = malformedLineMetrics
+        mappingOrdinal = 0
+        precedingScalar = nil
+        nextMapping()
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func nextMapping() {
+        if mappingOrdinal < min(instance!.mappingCount, 256) {
+            phase = .mapping
+        } else if instance!.mappingCount <= 256 {
+            phase = .mappingTail
+        } else {
+            glyphOrdinal = 0
+            nextMetrics()
+        }
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptMapping(_ value: ScalarGlyphMappingRecord?) {
+        if phase == .mappingTail {
+            if case .some = value { predicates.invalidCount = true }
+            glyphOrdinal = 0
+            nextMetrics()
+            return
+        }
+        precondition(phase == .mapping)
+        if let mapping = value {
+            let instance = self.instance!
+            predicates.malformedMapping =
+                predicates.malformedMapping
+                || !TextResourceValidator.isValidUnicodeScalar(mapping.scalarValue)
+                || mapping.scalarValue == 0x0a
+                || mapping.scalarValue == 0x0d
+                || mapping.glyph.rawValue >= instance.glyphCount
+            if let precedingScalar,
+                mapping.scalarValue <= precedingScalar
+            {
+                predicates.malformedMapping = true
+            }
+            precedingScalar = mapping.scalarValue
+        } else {
             predicates.invalidCount = true
         }
-
-        let realizationTraversalCount =
-            metricsDescriptor.realizationCount > 2
-            ? UInt16(2) : metricsDescriptor.realizationCount
-        var realizationOrdinal: UInt16 = 0
-        var anyAvailablePayload = false
-        var requiredIsCatalogued = false
-        var requiredIsAvailable = false
-        while realizationOrdinal < realizationTraversalCount {
-            guard
-                let realization = resourcePackage.raster.realization(
-                    at: realizationOrdinal
-                )
-            else {
-                predicates.invalidCount = true
-                realizationOrdinal += 1
-                continue
-            }
-            if realization.id == requiredRealization {
-                requiredIsCatalogued = true
-            }
-            if realization.id == requiredRealization {
-                requiredIsAvailable = resourcePackage.raster
-                    .isPayloadAvailable(for: realization.id)
-            }
-            let isAvailable = resourcePackage.raster.isPayloadAvailable(
-                for: realization.id
-            )
-            anyAvailablePayload = anyAvailablePayload || isAvailable
-            predicates.capacityExceeded =
-                predicates.capacityExceeded
-                || !isWithinCapacity(
-                    instanceCount: 1,
-                    glyphCount: realization.glyphCount,
-                    mappingCount: 0,
-                    realizationCount: 1,
-                    canonicalManifestByteCount: 1,
-                    payloadByteCount: realization.payloadByteCount
-                )
-            predicates.invalidCount =
-                predicates.invalidCount
-                || realization.glyphCount == 0
-            predicates.invalidIdentity =
-                predicates.invalidIdentity
-                || realization.id.rawValue != realizationOrdinal
-                || realization.instance.resource != rasterDescriptor.resource
-                || realization.instance.instanceIndex != 0
-            if let canonicalInstance {
-                predicates.incompatibleViews =
-                    predicates.incompatibleViews
-                    || realization.instance != canonicalInstance.id
-                    || realization.glyphCount != canonicalInstance.glyphCount
+        mappingOrdinal += 1
+        nextMapping()
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func nextMetrics() {
+        if glyphOrdinal < min(instance!.glyphCount, 256) {
+            phase = .metrics
+        } else if instance!.glyphCount <= 256 {
+            phase = .metricsTail
+        } else {
+            instanceOrdinal += 1
+            nextInstance()
+        }
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptMetrics(_ value: GlyphMetrics?) {
+        if phase == .recordMetrics {
+            glyphMetrics = value
+            finishRecordMetrics()
+            return
+        }
+        if phase == .metricsTail {
+            if case .some = value { predicates.invalidCount = true }
+            instanceOrdinal += 1
+            nextInstance()
+            return
+        }
+        precondition(phase == .metrics)
+        if let glyphMetrics = value {
+            let malformedGlyphMetrics: Bool
+            if predicates.malformedMetrics || glyphMetrics.advanceX < 0 {
+                malformedGlyphMetrics = true
+            } else if case .none = GeometryArithmetic.add(
+                glyphMetrics.offsetX,
+                glyphMetrics.inkSize.width
+            ) {
+                malformedGlyphMetrics = true
+            } else if case .none = GeometryArithmetic.add(
+                glyphMetrics.offsetY,
+                glyphMetrics.inkSize.height
+            ) {
+                malformedGlyphMetrics = true
             } else {
-                predicates.incompatibleViews = true
+                malformedGlyphMetrics = false
             }
-
-            let recordTraversalCount =
-                realization.glyphCount > 256
-                ? UInt16(256) : realization.glyphCount
-            var recordOrdinal: UInt16 = 0
-            var expectedOffset: UInt32 = 0
-            var payloadSHA256 = _TextResourceSHA256()
-            var payloadBytesBorrowed: UInt32 = 0
-            while recordOrdinal < recordTraversalCount {
-                let glyph = GlyphID(rawValue: recordOrdinal)
-                guard
-                    let record = resourcePackage.raster.record(
-                        for: glyph,
-                        realization: realization.id
+            predicates.malformedMetrics = malformedGlyphMetrics
+        } else {
+            predicates.invalidCount = true
+        }
+        glyphOrdinal += 1
+        nextMetrics()
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func nextRealization() {
+        let descriptor = metricsDescriptor!
+        if realizationOrdinal < min(descriptor.realizationCount, 2) {
+            phase = .realization
+        } else if descriptor.realizationCount <= 2 {
+            phase = .realizationTail
+        } else {
+            phase = .availabilityTail
+        }
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptRealization(_ value: RasterRealizationDescriptor?) {
+        if phase == .realizationTail {
+            if case .some = value { predicates.invalidCount = true }
+            phase = .availabilityTail
+            return
+        }
+        precondition(phase == .realization)
+        guard let realization = value else {
+            predicates.invalidCount = true
+            realizationOrdinal += 1
+            nextRealization()
+            return
+        }
+        self.realization = realization
+        if realization.id == requiredRealization {
+            requiredIsCatalogued = true
+            phase = .requiredAvailable
+        } else {
+            phase = .available
+        }
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptAvailability(_ value: Bool) {
+        if phase == .requiredAvailable {
+            requiredIsAvailable = value
+            phase = .available
+            return
+        }
+        if phase == .availabilityTail {
+            if value { predicates.invalidIdentity = true }
+            predicates.incompatibleViews =
+                predicates.incompatibleViews
+                || !anyAvailablePayload
+                || !requiredIsCatalogued
+                || !requiredIsAvailable
+            phase = .manifest
+            return
+        }
+        precondition(phase == .available)
+        isAvailable = value
+        let isAvailable = value
+        let realization = self.realization!
+        let rasterDescriptor = self.rasterDescriptor!
+        anyAvailablePayload = anyAvailablePayload || isAvailable
+        predicates.capacityExceeded =
+            predicates.capacityExceeded
+            || !TextResourceValidator.isWithinCapacity(
+                instanceCount: 1,
+                glyphCount: realization.glyphCount,
+                mappingCount: 0,
+                realizationCount: 1,
+                canonicalManifestByteCount: 1,
+                payloadByteCount: realization.payloadByteCount
+            )
+        predicates.invalidCount =
+            predicates.invalidCount
+            || realization.glyphCount == 0
+        predicates.invalidIdentity =
+            predicates.invalidIdentity
+            || realization.id.rawValue != realizationOrdinal
+            || realization.instance.resource != rasterDescriptor.resource
+            || realization.instance.instanceIndex != 0
+        if let canonicalInstance {
+            predicates.incompatibleViews =
+                predicates.incompatibleViews
+                || realization.instance != canonicalInstance.id
+                || realization.glyphCount != canonicalInstance.glyphCount
+        } else {
+            predicates.incompatibleViews = true
+        }
+        recordOrdinal = 0
+        expectedOffset = 0
+        payloadSHA256 = _TextResourceSHA256()
+        payloadBytesBorrowed = 0
+        nextRecord()
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func nextRecord() {
+        if recordOrdinal < min(realization!.glyphCount, 256) {
+            phase = .record
+        } else if realization!.glyphCount <= 256 {
+            phase = .recordTail
+        } else {
+            finishRealization()
+        }
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptRecord(_ value: GlyphRasterRecord?) {
+        if phase == .recordTail {
+            if case .some = value { predicates.invalidCount = true }
+            finishRealization()
+            return
+        }
+        precondition(phase == .record)
+        guard let record = value else {
+            predicates.invalidCount = true
+            recordOrdinal += 1
+            nextRecord()
+            return
+        }
+        self.record = record
+        let glyph = GlyphID(rawValue: recordOrdinal)
+        let realization = self.realization!
+        predicates.invalidIdentity =
+            predicates.invalidIdentity
+            || record.glyph != glyph
+        let end = record.offset.addingReportingOverflow(record.byteCount)
+        predicates.malformedRasterRecord =
+            predicates.malformedRasterRecord
+            || record.offset != expectedOffset
+            || end.overflow
+            || (!end.overflow
+                && end.partialValue > realization.payloadByteCount)
+        if !end.overflow {
+            expectedOffset = end.partialValue
+        }
+        if case .some = canonicalInstance {
+            phase = .recordMetrics
+        } else {
+            glyphMetrics = nil
+            finishRecordMetrics()
+        }
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func finishRecordMetrics() {
+        let glyphMetrics = self.glyphMetrics
+        let record = self.record!
+        let realization = self.realization!
+        if case .none = glyphMetrics {
+            predicates.incompatibleViews = true
+        }
+        if let glyphMetrics {
+            let dimensionsMatch =
+                glyphMetrics.inkSize.width
+                == Int32(record.pixelWidth)
+                && glyphMetrics.inkSize.height
+                    == Int32(record.pixelHeight)
+            switch realization.kind {
+            case .monochromeBitmap1:
+                let expectedRowBytes =
+                    (UInt32(record.pixelWidth) + 7) / 8
+                let expectedByteCount =
+                    expectedRowBytes
+                    .multipliedReportingOverflow(
+                        by: UInt32(record.pixelHeight)
                     )
-                else {
-                    predicates.invalidCount = true
-                    recordOrdinal += 1
-                    continue
-                }
-                predicates.invalidIdentity =
-                    predicates.invalidIdentity
-                    || record.glyph != glyph
-                let end = record.offset.addingReportingOverflow(record.byteCount)
                 predicates.malformedRasterRecord =
                     predicates.malformedRasterRecord
-                    || record.offset != expectedOffset
-                    || end.overflow
-                    || (!end.overflow
-                        && end.partialValue > realization.payloadByteCount)
-                if !end.overflow {
-                    expectedOffset = end.partialValue
-                }
-
-                let glyphMetrics: GlyphMetrics?
-                if let canonicalInstance {
-                    glyphMetrics = resourcePackage.metrics.metrics(
-                        for: glyph,
-                        in: canonicalInstance.id
-                    )
-                } else {
-                    glyphMetrics = nil
-                }
-                if glyphMetrics == nil {
-                    predicates.incompatibleViews = true
-                }
-                if let glyphMetrics {
-                    let dimensionsMatch =
-                        glyphMetrics.inkSize.width
-                        == Int32(record.pixelWidth)
-                        && glyphMetrics.inkSize.height
-                            == Int32(record.pixelHeight)
-                    switch realization.kind {
-                    case .monochromeBitmap1:
-                        let expectedRowBytes =
-                            (UInt32(record.pixelWidth) + 7) / 8
-                        let expectedByteCount =
-                            expectedRowBytes
-                            .multipliedReportingOverflow(
-                                by: UInt32(record.pixelHeight)
-                            )
-                        predicates.malformedRasterRecord =
-                            predicates.malformedRasterRecord
-                            || !dimensionsMatch
-                            || UInt32(record.rowByteCount) != expectedRowBytes
-                            || expectedByteCount.overflow
-                            || (!expectedByteCount.overflow
-                                && expectedByteCount.partialValue
-                                    != record.byteCount)
-                    case .packagedOutline:
-                        predicates.malformedRasterRecord =
-                            predicates.malformedRasterRecord
-                            || !dimensionsMatch
-                            || record.rowByteCount != 0
-                    }
-                }
-
-                if isAvailable {
-                    var invocationCount: UInt8 = 0
-                    let borrowed: Bool? = resourcePackage.raster.withPayload(
-                        for: record,
-                        realization: realization.id
-                    ) { bytes in
-                        invocationCount &+= 1
-                        if UInt32(exactly: bytes.count) != record.byteCount {
-                            predicates.incompatibleViews = true
-                        }
-                        if let count = UInt32(exactly: bytes.count) {
-                            let total =
-                                payloadBytesBorrowed
-                                .addingReportingOverflow(count)
-                            if total.overflow {
-                                predicates.capacityExceeded = true
-                            } else {
-                                payloadBytesBorrowed = total.partialValue
-                            }
-                        } else {
-                            predicates.capacityExceeded = true
-                        }
-                        for byte in bytes {
-                            payloadSHA256.update(with: byte)
-                        }
-                        if let glyphMetrics {
-                            switch realization.kind {
-                            case .monochromeBitmap1:
-                                if !isStructurallyValidMonochromeBitmap(
-                                    record: record,
-                                    metrics: glyphMetrics,
-                                    bytes: bytes
-                                ) {
-                                    predicates.malformedRasterRecord = true
-                                }
-                            case .packagedOutline:
-                                if !isStructurallyValidPackagedOutline(
-                                    record: record,
-                                    metrics: glyphMetrics,
-                                    bytes: bytes
-                                ) {
-                                    predicates.malformedRasterRecord = true
-                                }
-                            }
-                        }
-                        return true
-                    }
-                    if borrowed != true || invocationCount != 1 {
-                        predicates.incompatibleViews = true
-                    }
-                }
-                recordOrdinal += 1
+                    || !dimensionsMatch
+                    || UInt32(record.rowByteCount) != expectedRowBytes
+                    || expectedByteCount.overflow
+                    || (!expectedByteCount.overflow
+                        && expectedByteCount.partialValue
+                            != record.byteCount)
+            case .packagedOutline:
+                predicates.malformedRasterRecord =
+                    predicates.malformedRasterRecord
+                    || !dimensionsMatch
+                    || record.rowByteCount != 0
             }
-            if realization.glyphCount <= 256,
-                resourcePackage.raster.record(
-                    for: GlyphID(rawValue: realization.glyphCount),
-                    realization: realization.id
-                ) != nil
-            {
-                predicates.invalidCount = true
+        }
+        if isAvailable {
+            invocationCount = 0
+            phase = .payload
+        } else {
+            recordOrdinal += 1
+            nextRecord()
+        }
+    }
+    // Each callback is consumed synchronously. Only scalar hash/validation
+    // state survives it, never the borrowed payload or its address.
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptPayloadBytes(_ bytes: UnsafeRawBufferPointer) {
+        precondition(phase == .payload)
+        let record = self.record!
+        let realization = self.realization!
+        let glyphMetrics = self.glyphMetrics
+        if invocationCount < 2 {
+            invocationCount += 1
+        }
+        if UInt32(exactly: bytes.count) != record.byteCount {
+            predicates.incompatibleViews = true
+        }
+        if let count = UInt32(exactly: bytes.count) {
+            let total =
+                payloadBytesBorrowed
+                .addingReportingOverflow(count)
+            if total.overflow {
+                predicates.capacityExceeded = true
+            } else {
+                payloadBytesBorrowed = total.partialValue
             }
-            predicates.malformedRasterRecord =
-                predicates.malformedRasterRecord
-                || expectedOffset != realization.payloadByteCount
-            if isAvailable {
-                predicates.integrityMismatch =
-                    predicates.integrityMismatch
-                    || payloadSHA256.finalize() != realization.payloadDigest
+        } else {
+            predicates.capacityExceeded = true
+        }
+        for byte in bytes {
+            payloadSHA256.update(with: byte)
+        }
+        if let glyphMetrics {
+            switch realization.kind {
+            case .monochromeBitmap1:
+                if !TextResourceValidator.isStructurallyValidMonochromeBitmap(
+                    record: record,
+                    metrics: glyphMetrics,
+                    bytes: bytes
+                ) {
+                    predicates.malformedRasterRecord = true
+                }
+            case .packagedOutline:
+                if !TextResourceValidator.isStructurallyValidPackagedOutline(
+                    record: record,
+                    metrics: glyphMetrics,
+                    bytes: bytes
+                ) {
+                    predicates.malformedRasterRecord = true
+                }
             }
-            realizationOrdinal += 1
         }
-        if metricsDescriptor.realizationCount <= 2,
-            resourcePackage.raster.realization(
-                at: metricsDescriptor.realizationCount
-            ) != nil
-        {
-            predicates.invalidCount = true
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func finishPayload(_ borrowed: Bool?) {
+        precondition(phase == .payload)
+        if borrowed != true || invocationCount != 1 {
+            predicates.incompatibleViews = true
         }
-        if resourcePackage.raster.isPayloadAvailable(
-            for: RasterRealizationID(
-                rawValue: metricsDescriptor.realizationCount
-            )
-        ) {
-            predicates.invalidIdentity = true
+        recordOrdinal += 1
+        nextRecord()
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func finishRealization() {
+        let realization = self.realization!
+        predicates.malformedRasterRecord =
+            predicates.malformedRasterRecord
+            || expectedOffset != realization.payloadByteCount
+        if isAvailable {
+            predicates.integrityMismatch =
+                predicates.integrityMismatch
+                || payloadSHA256.finalize() != realization.payloadDigest
         }
-        predicates.incompatibleViews =
-            predicates.incompatibleViews
-            || !anyAvailablePayload
-            || !requiredIsCatalogued
-            || !requiredIsAvailable
-
-        if let manifest = canonicalManifestDigest(of: resourcePackage) {
+        realizationOrdinal += 1
+        nextRealization()
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptManifest(
+        _ manifest: (byteCount: UInt32, digest: TextResourceDigest)?
+    ) {
+        precondition(phase == .manifest)
+        let metricsDescriptor = self.metricsDescriptor!
+        if let manifest {
             predicates.capacityExceeded =
                 predicates.capacityExceeded
                 || manifest.byteCount > 16_384
@@ -716,8 +967,7 @@ package enum TextResourceValidator {
         } else {
             predicates.invalidCount = true
         }
-
-        return predicates.result
+        phase = .done
     }
 }
 
@@ -1061,162 +1311,24 @@ package extension TextResourceValidator {
         _ body: (UInt8) -> Void
     ) -> UInt32?
     where M: CanonicalTextMetricsView, R: TextRasterResourceView {
-        var byteCount: UInt32 = 0
-
-        @inline(__always)
-        func emit(_ byte: UInt8) {
-            body(byte)
-            byteCount &+= 1
-        }
-
-        @inline(__always)
-        func emitUInt16(_ value: UInt16) {
-            emit(UInt8(truncatingIfNeeded: value >> 8))
-            emit(UInt8(truncatingIfNeeded: value))
-        }
-
-        @inline(__always)
-        func emitUInt32(_ value: UInt32) {
-            emit(UInt8(truncatingIfNeeded: value >> 24))
-            emit(UInt8(truncatingIfNeeded: value >> 16))
-            emit(UInt8(truncatingIfNeeded: value >> 8))
-            emit(UInt8(truncatingIfNeeded: value))
-        }
-
-        @inline(__always)
-        func emitInt32(_ value: Int32) {
-            emitUInt32(UInt32(bitPattern: value))
-        }
-
-        @inline(__always)
-        func emitDigest(_ digest: TextResourceDigest) {
-            emitUInt32(digest.word0)
-            emitUInt32(digest.word1)
-            emitUInt32(digest.word2)
-            emitUInt32(digest.word3)
-            emitUInt32(digest.word4)
-            emitUInt32(digest.word5)
-            emitUInt32(digest.word6)
-            emitUInt32(digest.word7)
-        }
-
-        emit(0x47) // G
-        emit(0x69) // i
-        emit(0x66) // f
-        emit(0x74) // t
-        emit(0x55) // U
-        emit(0x49) // I
-        emit(0x54) // T
-        emit(0x65) // e
-        emit(0x78) // x
-        emit(0x74) // t
-        emit(0x52) // R
-        emit(0x65) // e
-        emit(0x73) // s
-        emit(0x6f) // o
-        emit(0x75) // u
-        emit(0x72) // r
-        emit(0x63) // c
-        emit(0x65) // e
-        emit(0x73) // s
-        emit(0x2f) // /
-        emit(0x76) // v
-        emit(0x31) // 1
-
-        let descriptor = resourcePackage.metrics.descriptor
-        emitUInt16(descriptor.schemaVersion)
-        emitUInt16(descriptor.instanceCount)
-
-        var instanceOrdinal: UInt32 = 0
-        while instanceOrdinal < UInt32(descriptor.instanceCount) {
-            let index = UInt16(instanceOrdinal)
-            guard let instance = resourcePackage.metrics.instance(at: index) else {
-                return nil
+        var engine = TextResourceManifestEngine(hashing: false)
+        while true {
+            switch engine.request() {
+            case .byte(let byte): body(byte)
+            case .descriptor: engine.acceptDescriptor(resourcePackage.metrics.descriptor)
+            case .instance(let index):
+                engine.acceptInstance(resourcePackage.metrics.instance(at: index))
+            case .mapping(let index, let instance):
+                engine.acceptMapping(resourcePackage.metrics.mapping(at: index, in: instance))
+            case .metrics(let glyph, let instance):
+                engine.acceptMetrics(resourcePackage.metrics.metrics(for: glyph, in: instance))
+            case .realization(let index):
+                engine.acceptRealization(resourcePackage.raster.realization(at: index))
+            case .record(let glyph, let id):
+                engine.acceptRecord(resourcePackage.raster.record(for: glyph, realization: id))
+            case .finished: return engine.byteCount()
             }
-            emitUInt16(instance.id.instanceIndex)
-            emitInt32(instance.lineMetrics.ascent)
-            emitInt32(instance.lineMetrics.descent)
-            emitInt32(instance.lineMetrics.lineGap)
-            emitUInt16(instance.replacementGlyph.rawValue)
-            emitUInt16(instance.glyphCount)
-            emitUInt16(instance.mappingCount)
-
-            var mappingOrdinal: UInt32 = 0
-            while mappingOrdinal < UInt32(instance.mappingCount) {
-                guard
-                    let mapping = resourcePackage.metrics.mapping(
-                        at: UInt16(mappingOrdinal),
-                        in: instance.id
-                    )
-                else {
-                    return nil
-                }
-                emitUInt32(mapping.scalarValue)
-                emitUInt16(mapping.glyph.rawValue)
-                mappingOrdinal += 1
-            }
-
-            var glyphOrdinal: UInt32 = 0
-            while glyphOrdinal < UInt32(instance.glyphCount) {
-                let glyph = GlyphID(rawValue: UInt16(glyphOrdinal))
-                guard
-                    let metrics = resourcePackage.metrics.metrics(
-                        for: glyph,
-                        in: instance.id
-                    )
-                else {
-                    return nil
-                }
-                emitUInt16(glyph.rawValue)
-                emitInt32(metrics.advanceX)
-                emitInt32(metrics.offsetX)
-                emitInt32(metrics.offsetY)
-                emitInt32(metrics.inkSize.width)
-                emitInt32(metrics.inkSize.height)
-                glyphOrdinal += 1
-            }
-            instanceOrdinal += 1
         }
-
-        emitUInt16(descriptor.realizationCount)
-        var realizationOrdinal: UInt32 = 0
-        while realizationOrdinal < UInt32(descriptor.realizationCount) {
-            guard
-                let realization = resourcePackage.raster.realization(
-                    at: UInt16(realizationOrdinal)
-                )
-            else {
-                return nil
-            }
-            emitUInt16(realization.id.rawValue)
-            emitUInt16(realization.instance.instanceIndex)
-            emit(realization.kind.rawValue)
-            emitUInt16(realization.glyphCount)
-            emitUInt32(realization.payloadByteCount)
-            emitDigest(realization.payloadDigest)
-
-            var glyphOrdinal: UInt32 = 0
-            while glyphOrdinal < UInt32(realization.glyphCount) {
-                let glyph = GlyphID(rawValue: UInt16(glyphOrdinal))
-                guard
-                    let record = resourcePackage.raster.record(
-                        for: glyph,
-                        realization: realization.id
-                    )
-                else {
-                    return nil
-                }
-                emitUInt16(record.glyph.rawValue)
-                emitUInt32(record.offset)
-                emitUInt32(record.byteCount)
-                emitUInt16(record.rowByteCount)
-                emitUInt16(record.pixelWidth)
-                emitUInt16(record.pixelHeight)
-                glyphOrdinal += 1
-            }
-            realizationOrdinal += 1
-        }
-        return byteCount
     }
 
     /// Reconstructs and hashes the canonical manifest in one streaming pass.
@@ -1224,16 +1336,24 @@ package extension TextResourceValidator {
         of resourcePackage: borrowing TextResourcePackage<M, R>
     ) -> (byteCount: UInt32, digest: TextResourceDigest)?
     where M: CanonicalTextMetricsView, R: TextRasterResourceView {
-        var sha256 = _TextResourceSHA256()
-        guard
-            let byteCount = forEachCanonicalManifestByte(
-                in: resourcePackage,
-                { sha256.update(with: $0) }
-            )
-        else {
-            return nil
+        var engine = TextResourceManifestEngine(hashing: true)
+        while true {
+            switch engine.request() {
+            case .byte: break
+            case .descriptor: engine.acceptDescriptor(resourcePackage.metrics.descriptor)
+            case .instance(let index):
+                engine.acceptInstance(resourcePackage.metrics.instance(at: index))
+            case .mapping(let index, let instance):
+                engine.acceptMapping(resourcePackage.metrics.mapping(at: index, in: instance))
+            case .metrics(let glyph, let instance):
+                engine.acceptMetrics(resourcePackage.metrics.metrics(for: glyph, in: instance))
+            case .realization(let index):
+                engine.acceptRealization(resourcePackage.raster.realization(at: index))
+            case .record(let glyph, let id):
+                engine.acceptRecord(resourcePackage.raster.record(for: glyph, realization: id))
+            case .finished: return engine.digest()
+            }
         }
-        return (byteCount, sha256.finalize())
     }
 
     /// Hashes exact borrowed bytes without depending on their address or on
@@ -1246,6 +1366,312 @@ package extension TextResourceValidator {
             sha256.update(with: byte)
         }
         return sha256.finalize()
+    }
+}
+
+// This independent full traversal deliberately does not reuse the validator's
+// capped scan. Its pending emission holds one scalar, never a resource borrow.
+internal struct TextResourceManifestEngine {
+    internal enum Request {
+        case byte(UInt8)
+        case descriptor
+        case instance(UInt16)
+        case mapping(UInt16, FontInstanceID)
+        case metrics(GlyphID, FontInstanceID)
+        case realization(UInt16)
+        case record(GlyphID, RasterRealizationID)
+        case finished
+    }
+    private enum Phase {
+        case header, descriptor, descriptorFields, instance, instanceFields
+        case mapping, mappingFields, metrics, metricsFields
+        case realizationCount, realization, realizationFields, record, recordFields, done
+    }
+    private var phase: Phase = .header
+    private var field: UInt8 = 0
+    private var pending: UInt32 = 0
+    private var pendingBytes: UInt8 = 0
+    private var descriptor: TextResourceDescriptor?
+    private var instance: FontInstanceDescriptor?
+    private var mapping: ScalarGlyphMappingRecord?
+    private var metrics: GlyphMetrics?
+    private var realization: RasterRealizationDescriptor?
+    private var record: GlyphRasterRecord?
+    private var instanceOrdinal: UInt32 = 0
+    private var mappingOrdinal: UInt32 = 0
+    private var glyphOrdinal: UInt32 = 0
+    private var realizationOrdinal: UInt32 = 0
+    private var failed = false
+    private var count: UInt32 = 0
+    private let hashing: Bool
+    private var sha256 = _TextResourceSHA256()
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal init(hashing: Bool) { self.hashing = hashing }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func emit(_ value: UInt32, bytes: UInt8) {
+        pending = value
+        pendingBytes = bytes
+        field += 1
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func request() -> Request {
+        while true {
+            if pendingBytes != 0 {
+                pendingBytes -= 1
+                let byte = UInt8(truncatingIfNeeded: pending >> (UInt32(pendingBytes) * 8))
+                count &+= 1
+                if hashing { sha256.update(with: byte) }
+                return .byte(byte)
+            }
+            switch phase {
+            case .header:
+                let byte: UInt8
+                switch field {
+                case 0: byte = 71
+                case 1: byte = 105
+                case 2: byte = 102
+                case 3: byte = 116
+                case 4: byte = 85
+                case 5: byte = 73
+                case 6: byte = 84
+                case 7: byte = 101
+                case 8: byte = 120
+                case 9: byte = 116
+                case 10: byte = 82
+                case 11: byte = 101
+                case 12: byte = 115
+                case 13: byte = 111
+                case 14: byte = 117
+                case 15: byte = 114
+                case 16: byte = 99
+                case 17: byte = 101
+                case 18: byte = 115
+                case 19: byte = 47
+                case 20: byte = 118
+                case 21: byte = 49
+                default:
+                    phase = .descriptor
+                    field = 0
+                    continue
+                }
+                field += 1
+                count &+= 1
+                if hashing { sha256.update(with: byte) }
+                return .byte(byte)
+            case .descriptor: return .descriptor
+            case .descriptorFields:
+                switch field {
+                case 0: emit(UInt32(descriptor!.schemaVersion), bytes: 2)
+                case 1: emit(UInt32(descriptor!.instanceCount), bytes: 2)
+                default:
+                    field = 0
+                    phase = .instance
+                }
+            case .instance:
+                if instanceOrdinal < UInt32(descriptor!.instanceCount) {
+                    return .instance(UInt16(instanceOrdinal))
+                }
+                phase = .realizationCount
+                field = 0
+            case .instanceFields:
+                let value = instance!
+                switch field {
+                case 0: emit(UInt32(value.id.instanceIndex), bytes: 2)
+                case 1: emit(UInt32(bitPattern: value.lineMetrics.ascent), bytes: 4)
+                case 2: emit(UInt32(bitPattern: value.lineMetrics.descent), bytes: 4)
+                case 3: emit(UInt32(bitPattern: value.lineMetrics.lineGap), bytes: 4)
+                case 4: emit(UInt32(value.replacementGlyph.rawValue), bytes: 2)
+                case 5: emit(UInt32(value.glyphCount), bytes: 2)
+                case 6: emit(UInt32(value.mappingCount), bytes: 2)
+                default:
+                    field = 0
+                    mappingOrdinal = 0
+                    phase = .mapping
+                }
+            case .mapping:
+                if mappingOrdinal < UInt32(instance!.mappingCount) {
+                    return .mapping(UInt16(mappingOrdinal), instance!.id)
+                }
+                glyphOrdinal = 0
+                phase = .metrics
+            case .mappingFields:
+                switch field {
+                case 0: emit(mapping!.scalarValue, bytes: 4)
+                case 1: emit(UInt32(mapping!.glyph.rawValue), bytes: 2)
+                default:
+                    mappingOrdinal += 1
+                    field = 0
+                    phase = .mapping
+                }
+            case .metrics:
+                if glyphOrdinal < UInt32(instance!.glyphCount) {
+                    return .metrics(GlyphID(rawValue: UInt16(glyphOrdinal)), instance!.id)
+                }
+                instanceOrdinal += 1
+                phase = .instance
+            case .metricsFields:
+                let value = metrics!
+                switch field {
+                case 0: emit(glyphOrdinal, bytes: 2)
+                case 1: emit(UInt32(bitPattern: value.advanceX), bytes: 4)
+                case 2: emit(UInt32(bitPattern: value.offsetX), bytes: 4)
+                case 3: emit(UInt32(bitPattern: value.offsetY), bytes: 4)
+                case 4: emit(UInt32(bitPattern: value.inkSize.width), bytes: 4)
+                case 5: emit(UInt32(bitPattern: value.inkSize.height), bytes: 4)
+                default:
+                    glyphOrdinal += 1
+                    field = 0
+                    phase = .metrics
+                }
+            case .realizationCount:
+                emit(UInt32(descriptor!.realizationCount), bytes: 2)
+                field = 0
+                phase = .realization
+            case .realization:
+                if realizationOrdinal < UInt32(descriptor!.realizationCount) {
+                    return .realization(UInt16(realizationOrdinal))
+                }
+                phase = .done
+            case .realizationFields:
+                let value = realization!
+                switch field {
+                case 0: emit(UInt32(value.id.rawValue), bytes: 2)
+                case 1: emit(UInt32(value.instance.instanceIndex), bytes: 2)
+                case 2: emit(UInt32(value.kind.rawValue), bytes: 1)
+                case 3: emit(UInt32(value.glyphCount), bytes: 2)
+                case 4: emit(value.payloadByteCount, bytes: 4)
+                case 5: emit(value.payloadDigest.word0, bytes: 4)
+                case 6: emit(value.payloadDigest.word1, bytes: 4)
+                case 7: emit(value.payloadDigest.word2, bytes: 4)
+                case 8: emit(value.payloadDigest.word3, bytes: 4)
+                case 9: emit(value.payloadDigest.word4, bytes: 4)
+                case 10: emit(value.payloadDigest.word5, bytes: 4)
+                case 11: emit(value.payloadDigest.word6, bytes: 4)
+                case 12: emit(value.payloadDigest.word7, bytes: 4)
+                default:
+                    glyphOrdinal = 0
+                    field = 0
+                    phase = .record
+                }
+            case .record:
+                if glyphOrdinal < UInt32(realization!.glyphCount) {
+                    return .record(GlyphID(rawValue: UInt16(glyphOrdinal)), realization!.id)
+                }
+                realizationOrdinal += 1
+                phase = .realization
+            case .recordFields:
+                let value = record!
+                switch field {
+                case 0: emit(UInt32(value.glyph.rawValue), bytes: 2)
+                case 1: emit(value.offset, bytes: 4)
+                case 2: emit(value.byteCount, bytes: 4)
+                case 3: emit(UInt32(value.rowByteCount), bytes: 2)
+                case 4: emit(UInt32(value.pixelWidth), bytes: 2)
+                case 5: emit(UInt32(value.pixelHeight), bytes: 2)
+                default:
+                    glyphOrdinal += 1
+                    field = 0
+                    phase = .record
+                }
+            case .done: return .finished
+            }
+        }
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptDescriptor(_ value: TextResourceDescriptor) {
+        precondition(phase == .descriptor)
+        descriptor = value
+        phase = .descriptorFields
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptInstance(_ value: FontInstanceDescriptor?) {
+        precondition(phase == .instance)
+        guard let value else {
+            fail()
+            return
+        }
+        instance = value
+        phase = .instanceFields
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptMapping(_ value: ScalarGlyphMappingRecord?) {
+        precondition(phase == .mapping)
+        guard let value else {
+            fail()
+            return
+        }
+        mapping = value
+        phase = .mappingFields
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptMetrics(_ value: GlyphMetrics?) {
+        precondition(phase == .metrics)
+        guard let value else {
+            fail()
+            return
+        }
+        metrics = value
+        phase = .metricsFields
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptRealization(_ value: RasterRealizationDescriptor?) {
+        precondition(phase == .realization)
+        guard let value else {
+            fail()
+            return
+        }
+        realization = value
+        phase = .realizationFields
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func acceptRecord(_ value: GlyphRasterRecord?) {
+        precondition(phase == .record)
+        guard let value else {
+            fail()
+            return
+        }
+        record = value
+        phase = .recordFields
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    private mutating func fail() {
+        failed = true
+        phase = .done
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal func byteCount() -> UInt32? {
+        precondition(phase == .done)
+        return failed ? nil : count
+    }
+    #if GIFTUI_TEXT_ENGINE_QUALIFICATION
+        @_noAllocation
+    #endif
+    internal mutating func digest() -> (byteCount: UInt32, digest: TextResourceDigest)? {
+        precondition(phase == .done && hashing)
+        guard !failed else { return nil }
+        return (count, sha256.finalize())
     }
 }
 

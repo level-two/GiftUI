@@ -5,6 +5,9 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 PROBE="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC013/Instrumentation/StaticProfileCompileProbe.swift"
+# Use the approved, project-local RFC-014 compiler baseline for the macOS
+# package-test and direct compiler probes. Do not inherit Xcode's Swift version.
+source "${SCRIPT_DIR}/compiler-baseline.sh"
 
 fail() {
     printf 'SPEC-013 Static profile check failed: %s\n' "$*" >&2
@@ -107,14 +110,19 @@ check_static_allocation_path() {
 }
 
 if [[ "${profile}" == "macos-static" ]]; then
-    command=(swift test --disable-sandbox
+    giftui_rfc014_select_compiler "${PROJECT_ROOT}" macos-static
+    swiftc="${GIFTUI_CONTRACT_SWIFTC}"
+    swift="${swiftc%swiftc}swift"
+    [[ -x "${swift}" ]] || fail "project-local Swift driver is missing: ${swift}"
+    export PATH="$(dirname "${swift}"):${PATH}"
+    command=(swift test --disable-sandbox --skip-update
         --package-path "${PROJECT_ROOT}"
         --scratch-path "${output_root}/swiftpm"
         --cache-path "${PROJECT_ROOT}/.build"
         -Xswiftc -DGIFTUI_STATIC_PROFILE
         --filter GiftUIRuntimeStaticTests)
     run_command "${command[@]}" >/dev/null
-    compiler="$(xcrun --find swiftc)"
+    compiler="${swiftc}"
     sdk="$(xcrun --sdk macosx --show-sdk-path)"
     ir="${output_root}/static-profile-layouts.ll"
     run_command "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk}" \
@@ -159,6 +167,8 @@ mkdir -p "${module_dir}"
 flags=(
     -target "${GIFTUI_NRF_SWIFT_TARGET}"
     -enable-experimental-feature Embedded
+    -enable-experimental-feature LifetimeDependence
+    -enable-experimental-feature Lifetimes
     -Osize -whole-module-optimization -DGIFTUI_STATIC_PROFILE
     -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
     -Xcc -fshort-enums -Xcc -fno-pic -Xcc -fno-pie

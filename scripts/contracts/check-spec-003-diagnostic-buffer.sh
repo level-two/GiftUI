@@ -5,6 +5,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 BUILD_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-003/diagnostic-buffer"
+swift_executable="${GIFTUI_SWIFT_EXECUTABLE:-swift}"
 
 ruby "${SCRIPT_DIR}/generate-spec-003-diagnostic-buffer.rb" --check
 rm -rf "${BUILD_ROOT}"
@@ -14,7 +15,10 @@ export CLANG_MODULE_CACHE_PATH="${BUILD_ROOT}/clang-cache"
 export SWIFTPM_MODULECACHE_OVERRIDE="${BUILD_ROOT}/swiftpm-cache"
 
 for capacity in ZERO 8 16 64; do
-    swift test \
+    "${swift_executable}" test \
+        --disable-sandbox \
+        --skip-update \
+        --cache-path "${PROJECT_ROOT}/.build" \
         --package-path "${PROJECT_ROOT}" \
         --scratch-path "${BUILD_ROOT}/capacity-${capacity}" \
         --filter GiftUIFailureDiagnosticsTests \
@@ -23,7 +27,10 @@ done
 
 conflict_log="${BUILD_ROOT}/conflicting-selection.log"
 set +e
-swift build \
+"${swift_executable}" build \
+    --disable-sandbox \
+    --skip-update \
+    --cache-path "${PROJECT_ROOT}/.build" \
     --package-path "${PROJECT_ROOT}" \
     --scratch-path "${BUILD_ROOT}/conflicting-selection" \
     --target GiftUIFailureDiagnostics \

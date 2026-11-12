@@ -15,7 +15,6 @@ required_fragments = [
   "mutating func visitCustomView<Declaration: View>(",
   "mutating func visitStatefulCustomView<",
   "Declaration: View & _GiftUIObservableStateHost",
-  "body: (borrowing Declaration) -> Declaration.Body",
   "mutating func visitEmpty()",
   "mutating func visitFixed<A: View, B: View>(",
   "mutating func visitConditionalFirst<First: View, Second: View>(",
@@ -36,6 +35,12 @@ required_fragments.each do |fragment|
   failures << "missing traversal fragment: #{fragment}" unless source.include?(fragment)
 end
 
+unless source.match?(
+  /body:\s*\(borrowing _GiftUIFrameRead<Domain>\)\s*throws\(_GiftUIAccessFailure\)\s*->\s*Declaration\.Body/
+)
+  failures << "custom-view body accessor differs from the approved borrowed-read contract"
+end
+
 if source.scan(/mutating func visitPrimitive</).length != 2
   failures << "expected exactly leaf and primitive-with-content visitor requirements"
 end
@@ -48,11 +53,11 @@ if source.match?(/extension _GiftUISemanticTraversalVisitor/)
   failures << "traversal visitor must not supply a default compatibility hook"
 end
 
-if source.scan(/func _giftUITraverse</).length != 9
-  failures << "expected one View requirement/default and seven wrapper traversal witnesses"
+if source.scan(/func _giftUITraverse</).length != 10
+  failures << "expected one View requirement, default, Never witness, and seven wrapper traversal witnesses"
 end
 
-if source.scan(/func _giftUITraverse<Visitor:/).length != 9
+if source.scan(/func _giftUITraverse<Visitor:/).length != 10
   failures << "a second traversal requirement or witness spelling is present"
 end
 
@@ -70,7 +75,14 @@ allowed_source_paths = [
   "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
   "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
   "Sources/GiftUISemanticCore/SemanticRenderView.swift",
-  "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift"
+  "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift",
+  "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+  "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+  "Sources/GiftUIMacros/CanvasWitnessLowering.swift",
+  "Sources/GiftUISemanticCore/SemanticLayoutResultSink.swift",
+  "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+  "Sources/GiftUISemanticCore/SemanticRenderResultStorage.swift",
+  "Sources/GiftUISemanticCore/SemanticStandardPayload.swift"
 ]
 storage = File.read(File.join(root, "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift"))
 failures << "Dynamic storage acquired traversal ownership" if storage.match?(/func _giftUITraverse\b/)

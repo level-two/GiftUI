@@ -1,14 +1,22 @@
 import GiftUI
 import GiftUICapabilities
 
+@usableFromInline
 package struct CanonicalEncodedPixel: Equatable, Sendable {
+    @usableFromInline
     package let encoding: CanonicalPixelEncoding
+    @usableFromInline
     package let byteCount: UInt8
+    @usableFromInline
     package let byte0: UInt8
+    @usableFromInline
     package let byte1: UInt8
+    @usableFromInline
     package let byte2: UInt8
+    @usableFromInline
     package let byte3: UInt8
 
+    @usableFromInline
     package init(color: Color, encoding: CanonicalPixelEncoding) {
         self.encoding = encoding
         switch encoding {
@@ -43,15 +51,23 @@ package struct CanonicalEncodedPixel: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct RasterSurfaceDescriptor: Equatable, Sendable {
+    @usableFromInline
     package let bounds: Rect
+    @usableFromInline
     package let encoding: CanonicalPixelEncoding
+    @usableFromInline
     package let bytesPerRow: UInt32
+    @usableFromInline
     package let realization: RasterRealizationKind
+    @usableFromInline
     package let regionWidth: UInt16
+    @usableFromInline
     package let regionHeight: UInt16
 
     #if GIFTUI_STARTUP_QUALIFICATION
+        @usableFromInline
         package var capabilityExtent: CapabilityExtent {
             @_noAllocation
             get {
@@ -62,6 +78,7 @@ package struct RasterSurfaceDescriptor: Equatable, Sendable {
             }
         }
     #else
+        @usableFromInline
         package var capabilityExtent: CapabilityExtent {
             CapabilityExtent(
                 width: UInt16(bounds.size.width),

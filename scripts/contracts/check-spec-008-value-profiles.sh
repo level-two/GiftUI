@@ -63,7 +63,7 @@ optimization=""
 flags=()
 case "${profile}" in
     macos-dynamic | macos-static)
-        compiler="$(xcrun --find swiftc)"
+        compiler="${GIFTUI_SWIFTC_EXECUTABLE:-$(xcrun --find swiftc)}"
         sdk="$(xcrun --sdk macosx --show-sdk-path)"
         target="arm64-apple-macosx26.0"
         optimization="-O -whole-module-optimization"

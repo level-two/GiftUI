@@ -314,10 +314,10 @@ run_macos() {
         "${module_dir}/GiftUI.swiftinterface" \
         "${module_dir}/GiftUI.package.swiftinterface" >>"${log_path}" 2>&1
 
-    record_command "${swift_driver}" package dump-package
+    record_command "${swift_driver}" package --disable-sandbox dump-package
     CLANG_MODULE_CACHE_PATH="${report_dir}/build/clang-cache" \
         SWIFTPM_MODULECACHE_OVERRIDE="${report_dir}/build/swiftpm-cache" \
-        "${swift_driver}" package dump-package >"${report_dir}/package.json" 2>>"${log_path}"
+        "${swift_driver}" package --disable-sandbox dump-package >"${report_dir}/package.json" 2>>"${log_path}"
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" \
         <"${report_dir}/package.json" >>"${log_path}" 2>&1
@@ -503,8 +503,13 @@ run_raspberry_pi() {
     fi
     [[ -x "${compiler}" ]] || fail 'pinned Raspberry Pi Swift compiler is missing; run scripts/raspberry-pi/setup-toolchain.sh'
     giftui_pi_require_sdk
-    record_command "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh"
-    "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh" >>"${log_path}" 2>&1
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        record_command "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh" --swift-bin "${compiler}"
+        "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh" --swift-bin "${compiler}" >>"${log_path}" 2>&1
+    else
+        record_command "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh"
+        "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh" >>"${log_path}" 2>&1
+    fi
     compiler_version="$("${compiler}" --version 2>&1)"
     require_exact_fragment "${compiler_version}" "Swift version ${GIFTUI_PI_SWIFT_VERSION}" 'Raspberry Pi compiler'
     grep -Fq "\"target\":\"${GIFTUI_PI_TARGET}\"" "${GIFTUI_PI_STATIC_DESTINATION}" ||
@@ -533,7 +538,7 @@ run_raspberry_pi() {
     # the historical and RFC-014 checks both build the same Foundation scope.
     local -a foundation_selection=(--target GiftUI)
     local -a command=(
-        "${compiler}" build --package-path "${PROJECT_ROOT}"
+        "${compiler}" build --disable-sandbox --package-path "${PROJECT_ROOT}"
         --scratch-path "${build_dir}/swiftpm"
         --cache-path "${PROJECT_ROOT}/.build" --skip-update
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"

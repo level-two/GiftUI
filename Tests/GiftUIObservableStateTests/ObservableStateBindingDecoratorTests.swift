@@ -1,221 +1,145 @@
 import GiftUI
+import GiftUIExecution
 import Testing
 
 @testable import GiftUIObservableState
 
-private final class FixtureBoundModel: _GiftUIObservableReference {
-    var value: UInt16
-
-    init(value: UInt16) {
-        self.value = value
-    }
-
-    func _giftUIAttachChangeSink(
-        _ sink: consuming _GiftUIObservableChangeSink
-    ) -> _GiftUIObservationAttachment? {
-        sink.attachment
-    }
-
-    func _giftUIDetachChangeSink(
-        _ attachment: _GiftUIObservationAttachment
-    ) {}
+private struct FixtureBoundSeed {
+    let value: UInt16
 }
 
-private final class FixtureModelBox<Model> {
-    var model: Model?
+private enum FixtureBoundSchema: _GiftUIModelSchema {
+    typealias Seed = FixtureBoundSeed
+}
+
+private struct FixtureBoundModel: ~Copyable, ObservableStateModel {
+    typealias Schema = FixtureBoundSchema
+
+    private var sink: _GiftUIObservableChangeSink?
+
+    static func materialize(_ seed: FixtureBoundSeed) -> Self {
+        Self(value: seed.value, sink: nil)
+    }
+
+    let value: UInt16
+
+    var isEmptyReplacement: Bool { false }
+
+    mutating func attach(
+        _ sink: consuming _GiftUIObservableChangeSink
+    ) -> _GiftUIObservationAttachment? {
+        let attachment = sink.attachment
+        self.sink = consume sink
+        return attachment
+    }
+
+    mutating func detach(_ attachment: _GiftUIObservationAttachment) -> Bool {
+        guard sink?.attachment == attachment else { return false }
+        sink = nil
+        return true
+    }
+
+    mutating func reportChange() -> _GiftUIObservableChangeReportOutcome {
+        sink?.reportChange() ?? .coalesced
+    }
+}
+
+private enum FixtureBoundDomain: _GiftUIReadDomain {
+    typealias Slot = UInt8
 }
 
 @ObservableStateHost
 private struct FixtureStatefulHost: View {
-    @State private var first = FixtureBoundModel(value: 3)
-    @State private var second = FixtureBoundModel(value: 5)
+    typealias Domain = FixtureBoundDomain
 
-    var body: EmptyView {
+    @State<FixtureBoundSchema> private var first: _GiftUIModelKey<FixtureBoundSchema>?
+    @State<FixtureBoundSchema> private var second: _GiftUIModelKey<FixtureBoundSchema>?
+
+    init() {
+        _first = State<FixtureBoundSchema>(seed: FixtureBoundSeed(value: 3))
+        _second = State<FixtureBoundSchema>(seed: FixtureBoundSeed(value: 5))
+    }
+
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> EmptyView<Domain>
+    {
         EmptyView()
     }
-
-    func values() -> (UInt16, UInt16) {
-        (first.value, second.value)
-    }
 }
 
-private struct FixtureBindingReconciler: ObservableStateReconciler {
-    typealias StructuralIdentity = UInt16
+private func withFixtureRoot<Result>(
+    modelLimit: UInt16,
+    _ body: (
+        borrowing ObservableModelScope<FixtureBoundModel, FixtureBoundSchema>,
+        borrowing ObservableStateRootScope<FixtureBoundModel, UInt16>
+    ) throws(ObservableStateError) -> Result
+) throws(ObservableStateError) -> Result {
+    var namespace = ObservableModelOwnerNamespace()
+    guard
+        var ownership = ObservableModelOwnership(
+            identity: try namespace.issue(), modelLimit: modelLimit, captureLimit: 0
+        )
+    else { throw .ownerCapacityExhausted }
 
-    var ordinals: [UInt16] = []
-    var identities: [UInt16] = []
-    var failureOrdinal: UInt16?
-    var failure: ObservableStateError = .incompatibleAssociation
-    var success: ObservableStateOperational = .preserved
-
-    mutating func beginCandidate() -> ObservableStateResult {
-        .success(.candidateStarted)
-    }
-
-    mutating func encounter<Model: _GiftUIObservableReference>(
-        structuralIdentity: UInt16,
-        declarationOrdinal: UInt16,
-        state: inout State<Model>
-    ) -> ObservableStateResult {
-        ordinals.append(declarationOrdinal)
-        identities.append(structuralIdentity)
-        if failureOrdinal == declarationOrdinal {
-            return .failure(failure)
+    var backing = InlineArray<2, FixtureBoundModel?>.init { _ in nil }
+    var models = backing.mutableSpan
+    return try withObservableModelScope(
+        ownership: &ownership, models: &models, schema: 7, needsCapture: false
+    ) { scope in
+        var rootStorage = ObservableStateRootStorage<UInt16>()
+        return try scope.withRoot(storage: &rootStorage) { root in
+            try body(scope, root)
         }
-
-        let box = FixtureModelBox<Model>()
-        guard
-            let initial = state._giftUIBind(
-                read: { box.model! },
-                replace: { box.model = $0 }
-            )
-        else {
-            return .failure(.invariantViolation)
-        }
-        box.model = initial
-        return .success(success)
-    }
-
-    mutating func finishCandidate(
-        _ disposition: ObservableStateCandidateDisposition
-    ) -> ObservableStateResult {
-        disposition == .publish
-            ? .success(.associationsCommitted)
-            : .success(.candidateDiscarded)
     }
 }
 
 @Test
-func decoratorBindsLexicallyOnOneTransientCopyBeforeOneBodyCall() {
-    let original = FixtureStatefulHost()
-    var decorator = ObservableStateBindingDecorator(
-        reconciler: FixtureBindingReconciler()
-    )
-    var bodyCalls: UInt16 = 0
-    var observedValues: (UInt16, UInt16)?
-
-    let result = decorator.withBoundDeclaration(
-        original,
-        structuralIdentity: 13
-    ) { declaration in
-        bodyCalls += 1
-        observedValues = declaration.values()
+func scopedRootBindsEveryDeclarationBeforeCallingTheBody() throws {
+    var bodyCalls = 0
+    try withFixtureRoot(modelLimit: 2) { scope, root in
+        try scope.withFrame {
+            try scope.withDiscovery {
+                #expect(root.beginCandidate() == .success(.candidateStarted))
+            }
+            let result = try root.withBoundDeclaration(
+                FixtureStatefulHost(), identity: 13
+            ) { _ in
+                bodyCalls += 1
+                return true
+            }
+            #expect(result)
+            try scope.withDiscovery {
+                #expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
+            }
+        }
     }
-
-    #expect(result == .success(.unchanged))
-    #expect(decorator.reconciler.ordinals == [0, 1])
-    #expect(decorator.reconciler.identities == [13, 13])
     #expect(bodyCalls == 1)
-    #expect(observedValues?.0 == 3)
-    #expect(observedValues?.1 == 5)
 }
 
 @Test
-func decoratorAcceptsBothExactEncounterSuccesses() {
-    for success in [ObservableStateOperational.materialized, .preserved] {
-        var decorator = ObservableStateBindingDecorator(
-            reconciler: FixtureBindingReconciler(success: success)
-        )
-        var bodyCalls: UInt16 = 0
-
-        #expect(
-            decorator.withBoundDeclaration(
-                FixtureStatefulHost(),
-                structuralIdentity: 21
-            ) { _ in
-                bodyCalls += 1
-            } == .success(.unchanged)
-        )
-        #expect(bodyCalls == 1)
+func capacityBindingFailureSuppressesBodyAndDiscardsCandidate() throws {
+    var bodyCalls = 0
+    try withFixtureRoot(modelLimit: 1) { scope, root in
+        try scope.withFrame {
+            try scope.withDiscovery {
+                #expect(root.beginCandidate() == .success(.candidateStarted))
+            }
+            do {
+                _ = try root.withBoundDeclaration(
+                    FixtureStatefulHost(), identity: 21
+                ) { _ in
+                    bodyCalls += 1
+                    return true
+                }
+                Issue.record("the second declaration should exceed the model limit")
+            } catch {
+                #expect(error == .modelCapacityExhausted)
+            }
+            #expect(bodyCalls == 0)
+            try scope.withDiscovery {
+                #expect(root.finishCandidate(.discard) == .success(.candidateDiscarded))
+            }
+        }
     }
-}
-
-@Test
-func decoratorStopsAtFirstBindingFailureAndSuppressesBody() {
-    var decorator = ObservableStateBindingDecorator(
-        reconciler: FixtureBindingReconciler(failureOrdinal: 0)
-    )
-    var bodyCalls: UInt16 = 0
-
-    let result = decorator.withBoundDeclaration(
-        FixtureStatefulHost(),
-        structuralIdentity: 34
-    ) { _ in
-        bodyCalls += 1
-    }
-
-    #expect(result == .failure(.incompatibleAssociation))
-    #expect(decorator.reconciler.ordinals == [0])
-    #expect(bodyCalls == 0)
-}
-
-@Test
-func decoratorPreservesLaterBindingFailureAndSuppressesBody() {
-    var decorator = ObservableStateBindingDecorator(
-        reconciler: FixtureBindingReconciler(failureOrdinal: 1)
-    )
-    var bodyCalls: UInt16 = 0
-
-    let result = decorator.withBoundDeclaration(
-        FixtureStatefulHost(),
-        structuralIdentity: 55
-    ) { _ in
-        bodyCalls += 1
-    }
-
-    #expect(result == .failure(.incompatibleAssociation))
-    #expect(decorator.reconciler.ordinals == [0, 1])
-    #expect(bodyCalls == 0)
-}
-
-@Test
-func decoratorSuppressesBodyForEveryCandidateBindingFailure() {
-    let failures: [ObservableStateError] = [
-        .locationCapacityExhausted,
-        .registrationCapacityExhausted,
-        .associationStagingCapacityExhausted,
-        .duplicateOwner,
-        .incompatibleAssociation,
-        .staleAttachment,
-        .invariantViolation,
-    ]
-
-    for failure in failures {
-        var decorator = ObservableStateBindingDecorator(
-            reconciler: FixtureBindingReconciler(
-                failureOrdinal: 0,
-                failure: failure
-            )
-        )
-        var bodyCalls: UInt16 = 0
-
-        #expect(
-            decorator.withBoundDeclaration(
-                FixtureStatefulHost(),
-                structuralIdentity: 73
-            ) { _ in
-                bodyCalls += 1
-            } == .failure(failure)
-        )
-        #expect(bodyCalls == 0)
-    }
-}
-
-@Test
-func unexpectedEncounterSuccessFailsClosedBeforeBody() {
-    var decorator = ObservableStateBindingDecorator(
-        reconciler: FixtureBindingReconciler(success: .coalesced)
-    )
-    var bodyCalls: UInt16 = 0
-
-    let result = decorator.withBoundDeclaration(
-        FixtureStatefulHost(),
-        structuralIdentity: 89
-    ) { _ in
-        bodyCalls += 1
-    }
-
-    #expect(result == .failure(.invariantViolation))
-    #expect(decorator.reconciler.ordinals == [0])
     #expect(bodyCalls == 0)
 }

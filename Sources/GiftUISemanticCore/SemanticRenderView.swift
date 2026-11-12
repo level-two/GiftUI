@@ -1,5 +1,6 @@
 import GiftUI
 
+@usableFromInline
 package enum SemanticRenderScope: Equatable, Sendable {
     case structural
     case clipBoundary
@@ -10,6 +11,7 @@ package enum SemanticRenderScope: Equatable, Sendable {
 
 }
 
+@usableFromInline
 package protocol SemanticRenderView: ~Escapable {
     associatedtype Identity: Equatable, Sendable
 

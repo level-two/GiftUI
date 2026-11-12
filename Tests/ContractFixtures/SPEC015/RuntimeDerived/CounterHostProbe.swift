@@ -1,14 +1,15 @@
-import P08CounterTable
-import P08CounterSchema
 import GiftUI
 import GiftUIDrawing
 import GiftUIInteraction
-@testable import GiftUIExecution
-@testable import GiftUIHostConfiguration
 import GiftUIObservableState
-@testable import GiftUIRuntimeCore
 import GiftUIRuntimeStatic
 import GiftUISemanticCore
+import P08CounterSchema
+import P08CounterTable
+
+@testable import GiftUIExecution
+@testable import GiftUIHostConfiguration
+@testable import GiftUIRuntimeCore
 
 @inline(never)
 func counterCheckRejectedBindings<Geometry, Candidate, Committed, Hits>(
@@ -22,49 +23,135 @@ func counterCheckRejectedBindings<Geometry, Candidate, Committed, Hits>(
     audit: RuntimeStorageAudit, report: HostAssemblyReport,
     expected: CounterJoinSnapshot, foreignExpected: CounterJoinSnapshot
 ) -> Int
-where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+where
+    Geometry: CounterGeometry & ~Copyable & ~Escapable,
+    Candidate: CounterCandidateBacking & ~Copyable & ~Escapable,
+    Committed: CounterCommittedBacking & ~Copyable & ~Escapable,
+    Hits: CounterHitBacking & ~Copyable & ~Escapable,
+    Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity,
+    Hits.Identity == SemanticCompleteIdentity
+{
     var joinChecks = 0
-    let rejected0 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: report)
-    precondition(rejected0 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
+    let rejected0 = owner.constructRuntimeAndEndpoint(
+        models: models, root: root, control: foreignControl, audit: audit, report: report)
+    let p08RejectedBinding0: Bool
+    if case .failure(.configuration(.invalidWakeIntegration), let progress) = rejected0 {
+        p08RejectedBinding0 =
+            !progress.runtimeConstructed
+            && !progress.observationInstalled && !progress.sourceStarted
+    } else {
+        p08RejectedBinding0 = false
+    }
+    precondition(p08RejectedBinding0)
     precondition(owner.constructions == 0 && owner.activationStep == 0)
-    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    precondition(
+        counterJoinSnapshot(pointer) == expected
+            && counterJoinSnapshot(foreignControl) == foreignExpected)
     joinChecks += 3
-    let rejected1 = owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: report)
-    precondition(rejected1 == .failure(.configuration(.invalidModelTarget), progress: .init()))
+    let rejected1 = owner.constructRuntimeAndEndpoint(
+        models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: report)
+    let p08RejectedBinding1: Bool
+    if case .failure(.configuration(.invalidModelTarget), let progress) = rejected1 {
+        p08RejectedBinding1 =
+            !progress.runtimeConstructed
+            && !progress.observationInstalled && !progress.sourceStarted
+    } else {
+        p08RejectedBinding1 = false
+    }
+    precondition(p08RejectedBinding1)
     precondition(owner.constructions == 0 && owner.activationStep == 0)
-    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    precondition(
+        counterJoinSnapshot(pointer) == expected
+            && counterJoinSnapshot(foreignControl) == foreignExpected)
     joinChecks += 3
-    let rejected2 = owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: report)
-    precondition(rejected2 == .failure(.configuration(.invalidModelTarget), progress: .init()))
+    let rejected2 = owner.constructRuntimeAndEndpoint(
+        models: models, root: foreignRoot, control: pointer, audit: audit, report: report)
+    let p08RejectedBinding2: Bool
+    if case .failure(.configuration(.invalidModelTarget), let progress) = rejected2 {
+        p08RejectedBinding2 =
+            !progress.runtimeConstructed
+            && !progress.observationInstalled && !progress.sourceStarted
+    } else {
+        p08RejectedBinding2 = false
+    }
+    precondition(p08RejectedBinding2)
     precondition(owner.constructions == 0 && owner.activationStep == 0)
-    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    precondition(
+        counterJoinSnapshot(pointer) == expected
+            && counterJoinSnapshot(foreignControl) == foreignExpected)
     joinChecks += 3
-    let rejected3 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .dynamic), report: report)
-    precondition(rejected3 == .failure(.configuration(.profileMismatch), progress: .init()))
+    let rejected3 = owner.constructRuntimeAndEndpoint(
+        models: models, root: root, control: pointer,
+        audit: counterJoinAudit(audit, profile: .dynamic), report: report)
+    let p08RejectedBinding3: Bool
+    if case .failure(.configuration(.profileMismatch), let progress) = rejected3 {
+        p08RejectedBinding3 =
+            !progress.runtimeConstructed
+            && !progress.observationInstalled && !progress.sourceStarted
+    } else {
+        p08RejectedBinding3 = false
+    }
+    precondition(p08RejectedBinding3)
     precondition(owner.constructions == 0 && owner.activationStep == 0)
-    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    precondition(
+        counterJoinSnapshot(pointer) == expected
+            && counterJoinSnapshot(foreignControl) == foreignExpected)
     joinChecks += 3
-    let rejected4 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: report)
-    precondition(rejected4 == .failure(.configuration(.invalidWorkload), progress: .init()))
+    let rejected4 = owner.constructRuntimeAndEndpoint(
+        models: models, root: root, control: pointer,
+        audit: counterJoinAudit(audit, profile: audit.profile), report: report)
+    let p08RejectedBinding4: Bool
+    if case .failure(.configuration(.invalidWorkload), let progress) = rejected4 {
+        p08RejectedBinding4 =
+            !progress.runtimeConstructed
+            && !progress.observationInstalled && !progress.sourceStarted
+    } else {
+        p08RejectedBinding4 = false
+    }
+    precondition(p08RejectedBinding4)
     precondition(owner.constructions == 0 && owner.activationStep == 0)
-    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    precondition(
+        counterJoinSnapshot(pointer) == expected
+            && counterJoinSnapshot(foreignControl) == foreignExpected)
     joinChecks += 3
-    let rejected5 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(report))
-    precondition(rejected5 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
+    let rejected5 = owner.constructRuntimeAndEndpoint(
+        models: models, root: root, control: pointer, audit: audit,
+        report: counterJoinReport(report))
+    let p08RejectedBinding5: Bool
+    if case .failure(.configuration(.invalidWakeIntegration), let progress) = rejected5 {
+        p08RejectedBinding5 =
+            !progress.runtimeConstructed
+            && !progress.observationInstalled && !progress.sourceStarted
+    } else {
+        p08RejectedBinding5 = false
+    }
+    precondition(p08RejectedBinding5)
     precondition(owner.constructions == 0 && owner.activationStep == 0)
-    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+    precondition(
+        counterJoinSnapshot(pointer) == expected
+            && counterJoinSnapshot(foreignControl) == foreignExpected)
     joinChecks += 3
     return joinChecks
 }
 
 @inline(never)
 func counterRunHostLifecycle<Geometry, Candidate, Committed, Hits>(
-    host: inout SignalAnalyzerPresetHostInstance<CounterHostOwner<Geometry, Candidate, Committed, Hits>>,
+    host:
+        inout SignalAnalyzerPresetHostInstance<
+            CounterHostOwner<Geometry, Candidate, Committed, Hits>
+        >,
     control pointer: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport,
     failAfterRuntime: Bool, joinChecks: Int
 ) -> Int
-where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
-    let p08ExactCase63: Bool;
+where
+    Geometry: CounterGeometry & ~Copyable & ~Escapable,
+    Candidate: CounterCandidateBacking & ~Copyable & ~Escapable,
+    Committed: CounterCommittedBacking & ~Copyable & ~Escapable,
+    Hits: CounterHitBacking & ~Copyable & ~Escapable,
+    Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity,
+    Hits.Identity == SemanticCompleteIdentity
+{
+    let p08ExactCase63: Bool
     if case .valid = host.lifecycleState {
         if host.owner.constructions == 0 {
             if pointer.pointee.finalized == 0 {
@@ -77,17 +164,19 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         }
     } else {
         p08ExactCase63 = false
-    }; precondition(p08ExactCase63)
-    let p08ExactCase64: Bool;
+    }
+    precondition(p08ExactCase63)
+    let p08ExactCase64: Bool
     if case .invalidLifecycle = host.runOpportunity() {
         p08ExactCase64 = true
     } else {
         p08ExactCase64 = false
-    }; precondition(p08ExactCase64)
+    }
+    precondition(p08ExactCase64)
     var count = 2 + joinChecks
     let activation = host.activate()
     if failAfterRuntime || pointer.pointee.idleQuiesceMode != 0 {
-        let p08ExactCase65: Bool;
+        let p08ExactCase65: Bool
         if case .failure(.configuration(.arithmeticOverflow)) = activation {
             if case .failed = host.lifecycleState {
                 p08ExactCase65 = true
@@ -96,16 +185,22 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             }
         } else {
             p08ExactCase65 = false
-        }; precondition(p08ExactCase65)
+        }
+        precondition(p08ExactCase65)
         let failedStep: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
         precondition(host.owner.activationStep == failedStep && host.owner.constructions == 1)
-        precondition(pointer.pointee.teardowns == 1 && pointer.pointee.finalized == (failedStep < 3 ? 0 : failedStep < 5 ? 1 : 2))
-        precondition(pointer.pointee.runtime.unavailable && !pointer.pointee.inputGate.inputIsEligible)
+        precondition(
+            pointer.pointee.teardowns == 1
+                && pointer.pointee.finalized == (failedStep < 3 ? 0 : failedStep < 5 ? 1 : 2))
+        precondition(
+            pointer.pointee.runtime.unavailable && !pointer.pointee.inputGate.inputIsEligible)
         precondition(pointer.pointee.runtime.admission.pendingStateCount == 0)
-        precondition(pointer.pointee.observationsInstalled == (failedStep >= 4 ? 1 : 0) && pointer.pointee.observationsDetached == (failedStep >= 4 ? 1 : 0))
+        precondition(
+            pointer.pointee.observationsInstalled == (failedStep >= 4 ? 1 : 0)
+                && pointer.pointee.observationsDetached == (failedStep >= 4 ? 1 : 0))
         count += 6
     } else {
-        let p08ExactCase66: Bool;
+        let p08ExactCase66: Bool
         if case .active = activation {
             if host.owner.activationStep == 7 {
                 if host.owner.constructions == 1 {
@@ -118,24 +213,37 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             }
         } else {
             p08ExactCase66 = false
-        }; precondition(p08ExactCase66)
-        precondition(pointer.pointee.finalized == 2 && pointer.pointee.commits == 1 && pointer.pointee.committedRecords == 2)
+        }
+        precondition(p08ExactCase66)
+        precondition(
+            pointer.pointee.finalized == 2 && pointer.pointee.commits == 1
+                && pointer.pointee.committedRecords == 2)
         precondition(pointer.pointee.runtime.admission.pendingStateCount == 1)
         let wakeControl = CounterHostControl(pointer: pointer)
-        guard case .wait(untilMicroseconds: 250000) = counterServiceHost(at: 0, host: &host, control: wakeControl) else { preconditionFailure("counter actual wake pacing") }
-        guard case .cycle(.admittedWork, .cycle(.success)) = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter actual paced wake") }
-        precondition(pointer.pointee.finalized == 3 && pointer.pointee.runtime.admission.pendingStateCount == 0)
-        guard case .noWork = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter no idle polling") }
+        guard
+            case .wait(untilMicroseconds: 250000) = counterServiceHost(
+                at: 0, host: &host, control: wakeControl)
+        else { preconditionFailure("counter actual wake pacing") }
+        guard
+            case .cycle(.admittedWork, .cycle(.success)) = counterServiceHost(
+                at: 250000, host: &host, control: wakeControl)
+        else { preconditionFailure("counter actual paced wake") }
+        precondition(
+            pointer.pointee.finalized == 3
+                && pointer.pointee.runtime.admission.pendingStateCount == 0)
+        guard case .noWork = counterServiceHost(at: 250000, host: &host, control: wakeControl)
+        else { preconditionFailure("counter no idle polling") }
         count += 7 + counterHostCorpus(host: &host, control: pointer)
     }
-    let p08ExactCase67: Bool;
+    let p08ExactCase67: Bool
     if case .failure(.invariant) = host.activate() {
         if host.owner.constructions == 1 { p08ExactCase67 = true } else { p08ExactCase67 = false }
     } else {
         p08ExactCase67 = false
-    }; precondition(p08ExactCase67)
+    }
+    precondition(p08ExactCase67)
     host.teardown()
-    let p08ExactCase68: Bool;
+    let p08ExactCase68: Bool
     if case .quiescent = host.lifecycleState {
         if !host.controller.assemblyReportRuntimeUseIsValid {
             if host.owner.teardownStep == 8 {
@@ -148,10 +256,13 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         }
     } else {
         p08ExactCase68 = false
-    }; precondition(p08ExactCase68)
-    precondition(pointer.pointee.teardowns == 1 && pointer.pointee.committedRecords == 0 && !pointer.pointee.hasRoot)
+    }
+    precondition(p08ExactCase68)
+    precondition(
+        pointer.pointee.teardowns == 1 && pointer.pointee.committedRecords == 0
+            && !pointer.pointee.hasRoot)
     host.teardown()
-    let p08ExactCase69: Bool;
+    let p08ExactCase69: Bool
     if host.owner.teardownStep == 8 {
         if case .invalidLifecycle = host.runOpportunity() {
             p08ExactCase69 = true
@@ -160,32 +271,42 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         }
     } else {
         p08ExactCase69 = false
-    }; precondition(p08ExactCase69)
+    }
+    precondition(p08ExactCase69)
     precondition(host.assemblyReport == report)
     let selectedFailure: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
     let expectedApplication = selectedFailure == 1 ? 0 : 1
     let expectedObservation = selectedFailure == 0 || selectedFailure >= 4 ? 1 : 0
     let expectedCallback = selectedFailure == 0 || selectedFailure >= 6 ? 1 : 0
     precondition(pointer.pointee.applicationConstructions == expectedApplication)
-    precondition(pointer.pointee.applicationCallbacks == expectedCallback && pointer.pointee.reentrantApplicationRejections == expectedCallback)
-    precondition(pointer.pointee.observationsInstalled == expectedObservation && pointer.pointee.observationsDetached == expectedObservation)
+    precondition(
+        pointer.pointee.applicationCallbacks == expectedCallback
+            && pointer.pointee.reentrantApplicationRejections == expectedCallback)
+    precondition(
+        pointer.pointee.observationsInstalled == expectedObservation
+            && pointer.pointee.observationsDetached == expectedObservation)
     precondition(pointer.pointee.stoppedApplicationChecks >= expectedApplication)
     var stoppedAdmission = CounterAdmission(borrowing: pointer)
-    let p08ExactCase70: Bool;
+    let p08ExactCase70: Bool
     if case .unavailable = stoppedAdmission.submit(stateChange: 9).result {
         p08ExactCase70 = true
     } else {
         p08ExactCase70 = false
-    }; precondition(p08ExactCase70)
+    }
+    precondition(p08ExactCase70)
     precondition(pointer.pointee.runtime.admission.pendingStateCount == 0)
     precondition(!pointer.pointee.inputGate.inputIsEligible)
-    let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
-    let p08ExactCase71: Bool;
+    let rejectedInput = pointer.pointee.inputGate.submit(
+        phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0),
+        observedPresentationRevision: pointer.pointee.runtime.committedPresentation,
+        isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
+    let p08ExactCase71: Bool
     if case .sourceQuiesced(.inputUnavailable) = rejectedInput {
         p08ExactCase71 = true
     } else {
         p08ExactCase71 = false
-    }; precondition(p08ExactCase71)
+    }
+    precondition(p08ExactCase71)
     return count + 13
 }
 
@@ -199,40 +320,50 @@ private struct CounterOwnedSchedulerHost: MVPHostInstance {
     mutating func activate() -> HostActivationResult<ActivationFailure> { .active }
     mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         calls += 1
-        return .cycle(.failure(.init(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle), .execution(.capacityExhausted), nil))
+        return .cycle(
+            .failure(
+                .init(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle),
+                .execution(.capacityExhausted), nil))
     }
     mutating func teardown() { lifecycleState = .quiescent }
 }
 func counterOwnedSchedulerCompatibility(_ report: HostAssemblyReport) -> Int {
     var instance = CounterOwnedSchedulerHost(assemblyReport: report)
-    var scheduler = HostScheduledOpportunityController(assemblyReport: report, initialFrameOriginMicroseconds: 0)
-    let p08ExactCase72: Bool;
+    var scheduler = HostScheduledOpportunityController(
+        assemblyReport: report, initialFrameOriginMicroseconds: 0)
+    let p08ExactCase72: Bool
     if case .success(.requestWake) = scheduler.recordAcceptedFact(at: 1) {
         p08ExactCase72 = true
     } else {
         p08ExactCase72 = false
-    }; precondition(p08ExactCase72)
-    let p08ExactCase73: Bool;
+    }
+    precondition(p08ExactCase72)
+    let p08ExactCase73: Bool
     if case .success(.coalesced) = scheduler.record(.semanticDirty, at: 1) {
         p08ExactCase73 = true
     } else {
         p08ExactCase73 = false
-    }; precondition(p08ExactCase73)
-    guard case .wait(untilMicroseconds: 250000) = scheduler.service(at: 1, instance: &instance) else { preconditionFailure("owned pacing") }
-    guard case .cycle(_, .cycle(.failure(_, .execution(.capacityExhausted), nil))) = scheduler.service(at: 250000, instance: &instance) else { preconditionFailure("owned exact failure") }
+    }
+    precondition(p08ExactCase73)
+    guard case .wait(untilMicroseconds: 250000) = scheduler.service(at: 1, instance: &instance)
+    else { preconditionFailure("owned pacing") }
+    guard
+        case .cycle(_, .cycle(.failure(_, .execution(.capacityExhausted), nil))) =
+            scheduler.service(at: 250000, instance: &instance)
+    else { preconditionFailure("owned exact failure") }
     instance.teardown()
-    let p08ExactCase74: Bool;
+    let p08ExactCase74: Bool
     if case .rejected(.invalidLifecycle, pacing: nil) = scheduler.service(
         at: 500000, instance: &instance)
     {
         p08ExactCase74 = true
     } else {
         p08ExactCase74 = false
-    }; precondition(p08ExactCase74)
+    }
+    precondition(p08ExactCase74)
     precondition(instance.calls == 1)
     return 6
 }
-
 
 // Test snapshots observe both live controls without issuing owner work.
 struct CounterJoinSnapshot: Equatable {
@@ -253,48 +384,125 @@ struct CounterJoinSnapshot: Equatable {
 }
 func counterJoinSnapshot(_ control: UnsafeMutablePointer<CounterControl>) -> CounterJoinSnapshot {
     #if !hasFeature(Embedded)
-    let endpoints = control.pointee.backend.constructedEndpoints
+        let endpoints = control.pointee.backend.constructedEndpoints
     #else
-    let endpoints = 0
+        let endpoints = 0
     #endif
-    return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.runtime.admission.pointerCount, stateCount: control.pointee.runtime.admission.pendingStateCount, completion: control.pointee.runtime.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
+    return .init(
+        requests: control.pointee.wake?.requester.requestCount,
+        reasons: control.pointee.wake?.accumulatedReasons,
+        outstanding: control.pointee.wake?.wakeOutstanding,
+        hostRequests: control.pointee.hostWakeRequests,
+        factRecords: control.pointee.acceptedFactWakeRecords,
+        firstFact: control.pointee.wakeFirstFactMicroseconds,
+        clock: control.pointee.wakeClockMicroseconds,
+        pointerCount: control.pointee.runtime.admission.pointerCount,
+        stateCount: control.pointee.runtime.admission.pendingStateCount,
+        completion: control.pointee.runtime.admission.pendingCompletion, endpoints: endpoints,
+        applications: control.pointee.applicationConstructions,
+        finalized: control.pointee.finalized, applied: control.pointee.applied)
 }
-func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+func counterForeignJoinScope(
+    _ body: (
+        borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+        borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+        UnsafeMutablePointer<CounterControl>
+    ) -> Int
+) -> Int {
     var namespace = ObservableModelOwnerNamespace()
     do throws(ObservableStateError) {
         let identity = try namespace.issue()
         precondition(identity.rawValue == 0)
-        var backing = CounterStaticRootStorage(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
+        var backing = CounterStaticRootStorage(
+            identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4,
+            pinLimit: 2, captureLimit: 0)!
         var foreign = CounterControl()
         return counterForeignJoinScope(backing: &backing, foreign: &foreign, body)
     } catch { preconditionFailure("counter foreign live scope") }
 }
-func counterJoinAudit(_ audit: RuntimeStorageAudit, profile: RuntimeProfileKind) -> RuntimeStorageAudit {
-    let bytes = RuntimeStorageByteCounts(semanticCandidatePathBytes: audit.semanticCandidatePathBytes, semanticPublishedPathBytes: audit.semanticPublishedPathBytes, semanticCandidatePayloadBytes: audit.semanticCandidatePayloadBytes, semanticPublishedPayloadBytes: audit.semanticPublishedPayloadBytes, identityMatchWorkspaceBytes: audit.identityMatchWorkspaceBytes, interactionCandidateIdentityBytes: audit.interactionCandidateIdentityBytes, interactionCommittedIdentityBytes: audit.interactionCommittedIdentityBytes, modelMetadataBytes: audit.modelMetadataBytes, modelOwnerBytes: audit.modelOwnerBytes, framePinBytes: audit.framePinBytes, semanticCandidateBytes: audit.semanticCandidateBytes, semanticPublishedBytes: audit.semanticPublishedBytes, layoutCandidateBytes: audit.layoutCandidateBytes, renderWorkspaceBytes: audit.renderWorkspaceBytes, canvasCallableBytes: audit.canvasCallableBytes, pathWorkspaceBytes: audit.pathWorkspaceBytes, drawingPlanBytes: audit.drawingPlanBytes, observableLiveBytes: audit.observableLiveBytes, observableCandidateBytes: audit.observableCandidateBytes, interactionCandidateBytes: audit.interactionCandidateBytes, interactionCommittedBytes: audit.interactionCommittedBytes, admissionQueueBytes: audit.admissionQueueBytes, sealedBatchBytes: audit.sealedBatchBytes, pointerStateBytes: audit.pointerStateBytes, coordinatorStateBytes: audit.coordinatorStateBytes + 1, failureStateBytes: audit.failureStateBytes)
-    guard case .valid(let changed) = RuntimeStorageAudit.checked(profile: profile, limits: profile == audit.profile ? audit.limits : counterActualLimits(profile), byteCounts: bytes) else { preconditionFailure("counter candidate audit") }
+func counterJoinAudit(_ audit: RuntimeStorageAudit, profile: RuntimeProfileKind)
+    -> RuntimeStorageAudit
+{
+    let bytes = RuntimeStorageByteCounts(
+        semanticCandidatePathBytes: audit.semanticCandidatePathBytes,
+        semanticPublishedPathBytes: audit.semanticPublishedPathBytes,
+        semanticCandidatePayloadBytes: audit.semanticCandidatePayloadBytes,
+        semanticPublishedPayloadBytes: audit.semanticPublishedPayloadBytes,
+        identityMatchWorkspaceBytes: audit.identityMatchWorkspaceBytes,
+        interactionCandidateIdentityBytes: audit.interactionCandidateIdentityBytes,
+        interactionCommittedIdentityBytes: audit.interactionCommittedIdentityBytes,
+        modelMetadataBytes: audit.modelMetadataBytes, modelOwnerBytes: audit.modelOwnerBytes,
+        framePinBytes: audit.framePinBytes, semanticCandidateBytes: audit.semanticCandidateBytes,
+        semanticPublishedBytes: audit.semanticPublishedBytes,
+        layoutCandidateBytes: audit.layoutCandidateBytes,
+        renderWorkspaceBytes: audit.renderWorkspaceBytes,
+        canvasCallableBytes: audit.canvasCallableBytes,
+        pathWorkspaceBytes: audit.pathWorkspaceBytes, drawingPlanBytes: audit.drawingPlanBytes,
+        observableLiveBytes: audit.observableLiveBytes,
+        observableCandidateBytes: audit.observableCandidateBytes,
+        interactionCandidateBytes: audit.interactionCandidateBytes,
+        interactionCommittedBytes: audit.interactionCommittedBytes,
+        admissionQueueBytes: audit.admissionQueueBytes, sealedBatchBytes: audit.sealedBatchBytes,
+        pointerStateBytes: audit.pointerStateBytes,
+        coordinatorStateBytes: audit.coordinatorStateBytes + 1,
+        failureStateBytes: audit.failureStateBytes)
+    guard
+        case .valid(let changed) = RuntimeStorageAudit.checked(
+            profile: profile,
+            limits: profile == audit.profile ? audit.limits : counterActualLimits(profile),
+            byteCounts: bytes)
+    else { preconditionFailure("counter candidate audit") }
     return changed
 }
 func counterJoinReport(_ report: HostAssemblyReport) -> HostAssemblyReport {
-    .init(kind: report.kind, profile: report.profile, storageAudit: report.storageAudit, capabilitySnapshot: report.capabilitySnapshot, effectivePresentation: report.effectivePresentation, drawingPlanOperationLimit: report.drawingPlanOperationLimit, minimumSinkOperationCapacity: report.minimumSinkOperationCapacity, cardinality: report.cardinality, minimumFrameIntervalMicroseconds: report.minimumFrameIntervalMicroseconds + 1, maximumFactServiceLatencyMicroseconds: report.maximumFactServiceLatencyMicroseconds, minimumAcceptedTransitionSpacingMicroseconds: report.minimumAcceptedTransitionSpacingMicroseconds, maximumCompactFactsPerServiceWindow: report.maximumCompactFactsPerServiceWindow, maximumRetryableRefusals: report.maximumRetryableRefusals)
+    .init(
+        kind: report.kind, profile: report.profile, storageAudit: report.storageAudit,
+        capabilitySnapshot: report.capabilitySnapshot,
+        effectivePresentation: report.effectivePresentation,
+        drawingPlanOperationLimit: report.drawingPlanOperationLimit,
+        minimumSinkOperationCapacity: report.minimumSinkOperationCapacity,
+        cardinality: report.cardinality,
+        minimumFrameIntervalMicroseconds: report.minimumFrameIntervalMicroseconds + 1,
+        maximumFactServiceLatencyMicroseconds: report.maximumFactServiceLatencyMicroseconds,
+        minimumAcceptedTransitionSpacingMicroseconds: report
+            .minimumAcceptedTransitionSpacingMicroseconds,
+        maximumCompactFactsPerServiceWindow: report.maximumCompactFactsPerServiceWindow,
+        maximumRetryableRefusals: report.maximumRetryableRefusals)
 }
 
 // The caller lends two distinct fully initialized stored objects. This operation
 // neither constructs nor copies a complete foreign Control across its callback.
-func counterForeignJoinScope(backing: inout CounterStaticRootStorage, foreign: inout CounterControl,
-    _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+func counterForeignJoinScope(
+    backing: inout CounterStaticRootStorage, foreign: inout CounterControl,
+    _ body: (
+        borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+        borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+        UnsafeMutablePointer<CounterControl>
+    ) -> Int
+) -> Int {
     do throws(ObservableStateError) {
-        return try backing.withLifetime(limits: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!) { (models, root) throws(ObservableStateError) in
+        return try backing.withLifetime(
+            limits: .init(
+                maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!
+        ) { (models, root) throws(ObservableStateError) in
             withUnsafeMutablePointer(to: &foreign) { body(models, root, $0) }
         }
     } catch { preconditionFailure("counter foreign live scope") }
 }
 
-func counterForeignJoinScope(backing: UnsafeMutablePointer<CounterStaticRootStorage>?, foreign: UnsafeMutablePointer<CounterControl>?,
-    _ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+func counterForeignJoinScope(
+    backing: UnsafeMutablePointer<CounterStaticRootStorage>?,
+    foreign: UnsafeMutablePointer<CounterControl>?,
+    _ body: (
+        borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
+        borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
+        UnsafeMutablePointer<CounterControl>
+    ) -> Int
+) -> Int {
     #if hasFeature(Embedded)
-    guard let backing, let foreign else { preconditionFailure("missing donor foreign lenders") }
-    return counterForeignJoinScope(backing: &backing.pointee, foreign: &foreign.pointee, body)
+        guard let backing, let foreign else { preconditionFailure("missing donor foreign lenders") }
+        return counterForeignJoinScope(backing: &backing.pointee, foreign: &foreign.pointee, body)
     #else
-    return counterForeignJoinScope(body)
+        return counterForeignJoinScope(body)
     #endif
 }

@@ -2228,721 +2228,627 @@ enum _GiftUIReferenceGeneratedBitmapPayload {
         expectedByteCount: UInt32,
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
+        try withRecordBytesStorage(for: glyph, expectedByteCount: expectedByteCount, body)
+    }
+
+    static func withRecordBytesStorage<Result, Failure: Error>(
+        for glyph: GlyphID,
+        expectedByteCount: UInt32,
+        _ body: (UnsafeRawBufferPointer) throws(Failure) -> Result
+    ) throws(Failure) -> Result? {
         switch glyph.rawValue {
         case 0:
-            return try withUnsafeBytes(of: glyph0) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph0Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph0, body)
+            return .some(result)
         case 1:
-            return try withUnsafeBytes(of: glyph1) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph1Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph1, body)
+            return .some(result)
         case 2:
-            return try withUnsafeBytes(of: glyph2) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph2Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph2, body)
+            return .some(result)
         case 3:
-            return try withUnsafeBytes(of: glyph3) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph3Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph3, body)
+            return .some(result)
         case 4:
-            return try withUnsafeBytes(of: glyph4) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph4Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph4, body)
+            return .some(result)
         case 5:
-            return try withUnsafeBytes(of: glyph5) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph5Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph5, body)
+            return .some(result)
         case 6:
-            return try withUnsafeBytes(of: glyph6) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph6Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph6, body)
+            return .some(result)
         case 7:
-            return try withUnsafeBytes(of: glyph7) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph7Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph7, body)
+            return .some(result)
         case 8:
-            return try withUnsafeBytes(of: glyph8) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph8Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph8, body)
+            return .some(result)
         case 9:
-            return try withUnsafeBytes(of: glyph9) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph9Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph9, body)
+            return .some(result)
         case 10:
-            return try withUnsafeBytes(of: glyph10) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph10Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph10, body)
+            return .some(result)
         case 11:
-            return try withUnsafeBytes(of: glyph11) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph11Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph11, body)
+            return .some(result)
         case 12:
-            return try withUnsafeBytes(of: glyph12) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph12Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph12, body)
+            return .some(result)
         case 13:
-            return try withUnsafeBytes(of: glyph13) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph13Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph13, body)
+            return .some(result)
         case 14:
-            return try withUnsafeBytes(of: glyph14) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph14Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph14, body)
+            return .some(result)
         case 15:
-            return try withUnsafeBytes(of: glyph15) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph15Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph15, body)
+            return .some(result)
         case 16:
-            return try withUnsafeBytes(of: glyph16) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph16Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph16, body)
+            return .some(result)
         case 17:
-            return try withUnsafeBytes(of: glyph17) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph17Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph17, body)
+            return .some(result)
         case 18:
-            return try withUnsafeBytes(of: glyph18) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph18Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph18, body)
+            return .some(result)
         case 19:
-            return try withUnsafeBytes(of: glyph19) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph19Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph19, body)
+            return .some(result)
         case 20:
-            return try withUnsafeBytes(of: glyph20) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph20Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph20, body)
+            return .some(result)
         case 21:
-            return try withUnsafeBytes(of: glyph21) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph21Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph21, body)
+            return .some(result)
         case 22:
-            return try withUnsafeBytes(of: glyph22) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph22Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph22, body)
+            return .some(result)
         case 23:
-            return try withUnsafeBytes(of: glyph23) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph23Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph23, body)
+            return .some(result)
         case 24:
-            return try withUnsafeBytes(of: glyph24) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph24Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph24, body)
+            return .some(result)
         case 25:
-            return try withUnsafeBytes(of: glyph25) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph25Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph25, body)
+            return .some(result)
         case 26:
-            return try withUnsafeBytes(of: glyph26) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph26Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph26, body)
+            return .some(result)
         case 27:
-            return try withUnsafeBytes(of: glyph27) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph27Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph27, body)
+            return .some(result)
         case 28:
-            return try withUnsafeBytes(of: glyph28) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph28Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph28, body)
+            return .some(result)
         case 29:
-            return try withUnsafeBytes(of: glyph29) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph29Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph29, body)
+            return .some(result)
         case 30:
-            return try withUnsafeBytes(of: glyph30) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph30Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph30, body)
+            return .some(result)
         case 31:
-            return try withUnsafeBytes(of: glyph31) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph31Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph31, body)
+            return .some(result)
         case 32:
-            return try withUnsafeBytes(of: glyph32) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph32Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph32, body)
+            return .some(result)
         case 33:
-            return try withUnsafeBytes(of: glyph33) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph33Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph33, body)
+            return .some(result)
         case 34:
-            return try withUnsafeBytes(of: glyph34) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph34Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph34, body)
+            return .some(result)
         case 35:
-            return try withUnsafeBytes(of: glyph35) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph35Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph35, body)
+            return .some(result)
         case 36:
-            return try withUnsafeBytes(of: glyph36) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph36Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph36, body)
+            return .some(result)
         case 37:
-            return try withUnsafeBytes(of: glyph37) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph37Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph37, body)
+            return .some(result)
         case 38:
-            return try withUnsafeBytes(of: glyph38) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph38Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph38, body)
+            return .some(result)
         case 39:
-            return try withUnsafeBytes(of: glyph39) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph39Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph39, body)
+            return .some(result)
         case 40:
-            return try withUnsafeBytes(of: glyph40) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph40Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph40, body)
+            return .some(result)
         case 41:
-            return try withUnsafeBytes(of: glyph41) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph41Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph41, body)
+            return .some(result)
         case 42:
-            return try withUnsafeBytes(of: glyph42) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph42Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph42, body)
+            return .some(result)
         case 43:
-            return try withUnsafeBytes(of: glyph43) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph43Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph43, body)
+            return .some(result)
         case 44:
-            return try withUnsafeBytes(of: glyph44) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph44Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph44, body)
+            return .some(result)
         case 45:
-            return try withUnsafeBytes(of: glyph45) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph45Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph45, body)
+            return .some(result)
         case 46:
-            return try withUnsafeBytes(of: glyph46) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph46Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph46, body)
+            return .some(result)
         case 47:
-            return try withUnsafeBytes(of: glyph47) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph47Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph47, body)
+            return .some(result)
         case 48:
-            return try withUnsafeBytes(of: glyph48) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph48Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph48, body)
+            return .some(result)
         case 49:
-            return try withUnsafeBytes(of: glyph49) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph49Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph49, body)
+            return .some(result)
         case 50:
-            return try withUnsafeBytes(of: glyph50) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph50Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph50, body)
+            return .some(result)
         case 51:
-            return try withUnsafeBytes(of: glyph51) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph51Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph51, body)
+            return .some(result)
         case 52:
-            return try withUnsafeBytes(of: glyph52) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph52Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph52, body)
+            return .some(result)
         case 53:
-            return try withUnsafeBytes(of: glyph53) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph53Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph53, body)
+            return .some(result)
         case 54:
-            return try withUnsafeBytes(of: glyph54) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph54Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph54, body)
+            return .some(result)
         case 55:
-            return try withUnsafeBytes(of: glyph55) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph55Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph55, body)
+            return .some(result)
         case 56:
-            return try withUnsafeBytes(of: glyph56) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph56Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph56, body)
+            return .some(result)
         case 57:
-            return try withUnsafeBytes(of: glyph57) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph57Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph57, body)
+            return .some(result)
         case 58:
-            return try withUnsafeBytes(of: glyph58) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph58Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph58, body)
+            return .some(result)
         case 59:
-            return try withUnsafeBytes(of: glyph59) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph59Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph59, body)
+            return .some(result)
         case 60:
-            return try withUnsafeBytes(of: glyph60) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph60Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph60, body)
+            return .some(result)
         case 61:
-            return try withUnsafeBytes(of: glyph61) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph61Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph61, body)
+            return .some(result)
         case 62:
-            return try withUnsafeBytes(of: glyph62) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph62Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph62, body)
+            return .some(result)
         case 63:
-            return try withUnsafeBytes(of: glyph63) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph63Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph63, body)
+            return .some(result)
         case 64:
-            return try withUnsafeBytes(of: glyph64) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph64Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph64, body)
+            return .some(result)
         case 65:
-            return try withUnsafeBytes(of: glyph65) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph65Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph65, body)
+            return .some(result)
         case 66:
-            return try withUnsafeBytes(of: glyph66) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph66Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph66, body)
+            return .some(result)
         case 67:
-            return try withUnsafeBytes(of: glyph67) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph67Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph67, body)
+            return .some(result)
         case 68:
-            return try withUnsafeBytes(of: glyph68) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph68Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph68, body)
+            return .some(result)
         case 69:
-            return try withUnsafeBytes(of: glyph69) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph69Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph69, body)
+            return .some(result)
         case 70:
-            return try withUnsafeBytes(of: glyph70) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph70Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph70, body)
+            return .some(result)
         case 71:
-            return try withUnsafeBytes(of: glyph71) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph71Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph71, body)
+            return .some(result)
         case 72:
-            return try withUnsafeBytes(of: glyph72) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph72Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph72, body)
+            return .some(result)
         case 73:
-            return try withUnsafeBytes(of: glyph73) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph73Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph73, body)
+            return .some(result)
         case 74:
-            return try withUnsafeBytes(of: glyph74) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph74Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph74, body)
+            return .some(result)
         case 75:
-            return try withUnsafeBytes(of: glyph75) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph75Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph75, body)
+            return .some(result)
         case 76:
-            return try withUnsafeBytes(of: glyph76) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph76Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph76, body)
+            return .some(result)
         case 77:
-            return try withUnsafeBytes(of: glyph77) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph77Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph77, body)
+            return .some(result)
         case 78:
-            return try withUnsafeBytes(of: glyph78) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph78Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph78, body)
+            return .some(result)
         case 79:
-            return try withUnsafeBytes(of: glyph79) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph79Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph79, body)
+            return .some(result)
         case 80:
-            return try withUnsafeBytes(of: glyph80) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph80Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph80, body)
+            return .some(result)
         case 81:
-            return try withUnsafeBytes(of: glyph81) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph81Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph81, body)
+            return .some(result)
         case 82:
-            return try withUnsafeBytes(of: glyph82) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph82Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph82, body)
+            return .some(result)
         case 83:
-            return try withUnsafeBytes(of: glyph83) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph83Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph83, body)
+            return .some(result)
         case 84:
-            return try withUnsafeBytes(of: glyph84) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph84Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph84, body)
+            return .some(result)
         case 85:
-            return try withUnsafeBytes(of: glyph85) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph85Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph85, body)
+            return .some(result)
         case 86:
-            return try withUnsafeBytes(of: glyph86) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph86Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph86, body)
+            return .some(result)
         case 87:
-            return try withUnsafeBytes(of: glyph87) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph87Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph87, body)
+            return .some(result)
         case 88:
-            return try withUnsafeBytes(of: glyph88) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph88Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph88, body)
+            return .some(result)
         case 89:
-            return try withUnsafeBytes(of: glyph89) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph89Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph89, body)
+            return .some(result)
         case 90:
-            return try withUnsafeBytes(of: glyph90) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph90Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph90, body)
+            return .some(result)
         case 91:
-            return try withUnsafeBytes(of: glyph91) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph91Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph91, body)
+            return .some(result)
         case 92:
-            return try withUnsafeBytes(of: glyph92) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph92Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph92, body)
+            return .some(result)
         case 93:
-            return try withUnsafeBytes(of: glyph93) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph93Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph93, body)
+            return .some(result)
         case 94:
-            return try withUnsafeBytes(of: glyph94) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph94Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph94, body)
+            return .some(result)
         case 95:
-            return try withUnsafeBytes(of: glyph95) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph95Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph95, body)
+            return .some(result)
         case 96:
-            return try withUnsafeBytes(of: glyph96) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph96Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph96, body)
+            return .some(result)
         case 97:
-            return try withUnsafeBytes(of: glyph97) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph97Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph97, body)
+            return .some(result)
         case 98:
-            return try withUnsafeBytes(of: glyph98) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph98Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph98, body)
+            return .some(result)
         case 99:
-            return try withUnsafeBytes(of: glyph99) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph99Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph99, body)
+            return .some(result)
         case 100:
-            return try withUnsafeBytes(of: glyph100) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph100Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph100, body)
+            return .some(result)
         case 101:
-            return try withUnsafeBytes(of: glyph101) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph101Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph101, body)
+            return .some(result)
         default: return nil
         }
     }

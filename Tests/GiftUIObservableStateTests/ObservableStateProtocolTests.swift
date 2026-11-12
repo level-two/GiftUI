@@ -23,6 +23,10 @@ private struct FixtureModel: _GiftUIObservableReference {
     ) {}
 }
 
+private enum FixtureModelSchema: _GiftUIModelSchema {
+    typealias Seed = FixtureModel
+}
+
 private struct FixtureReconciler: ObservableStateReconciler {
     var lastIdentity: FixtureStructuralIdentity?
     var lastOrdinal: UInt16?
@@ -32,7 +36,7 @@ private struct FixtureReconciler: ObservableStateReconciler {
         .success(.candidateStarted)
     }
 
-    mutating func encounter<Model: _GiftUIObservableReference>(
+    mutating func encounter<Model: _GiftUIModelSchema>(
         structuralIdentity: FixtureStructuralIdentity,
         declarationOrdinal: UInt16,
         state: inout State<Model>
@@ -149,7 +153,7 @@ private struct FixtureRuntimeBookkeeping: Equatable, Sendable {
 func reconcilerPreservesTypedStructuralIdentityAndExactResults() {
     let identity = FixtureStructuralIdentity(component: 3, role: 5)
     var reconciler = FixtureReconciler()
-    var state = State(wrappedValue: FixtureModel(token: 8))
+    var state = State<FixtureModelSchema>(seed: FixtureModel(token: 8))
 
     #expect(reconciler.beginCandidate() == .success(.candidateStarted))
     #expect(

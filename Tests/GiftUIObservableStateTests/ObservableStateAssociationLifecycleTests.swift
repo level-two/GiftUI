@@ -28,6 +28,10 @@ private final class FixtureAssociationModel: _GiftUIObservableReference {
     }
 }
 
+private enum FixtureAssociationSchema: _GiftUIModelSchema {
+    typealias Seed = FixtureAssociationModel
+}
+
 private final class FixtureAssociationModelBox {
     var model: FixtureAssociationModel?
 }
@@ -48,7 +52,7 @@ private struct FixtureAssociationSlot {
     }
 
     mutating func encounter(
-        _ state: inout State<FixtureAssociationModel>,
+        _ state: inout State<FixtureAssociationSchema>,
         structuralIdentity: UInt16,
         declarationOrdinal: UInt16,
         discriminator: UInt16,
@@ -65,15 +69,10 @@ private struct FixtureAssociationSlot {
                 || result == .success(.preserved)
         else { return result }
 
-        let box = FixtureAssociationModelBox()
-        guard
-            let initializer = state._giftUIBind(
-                read: { box.model! },
-                replace: { box.model = $0 }
-            )
-        else {
+        guard case .seed(let initializer)? = state._giftUIInitial else {
             return .failure(.invariantViolation)
         }
+        let box = FixtureAssociationModelBox()
 
         switch result {
         case .success(.preserved):
@@ -146,7 +145,7 @@ private struct FixtureAssociationSlot {
 func firstEncounterMaterializesAndPublishedEncounterPreservesIdentity() {
     var slot = FixtureAssociationSlot()
     let first = FixtureAssociationModel(identity: 1)
-    var firstState = State(wrappedValue: first)
+    var firstState = State<FixtureAssociationSchema>(seed: first)
 
     #expect(slot.prepareCandidate() == nil)
     #expect(
@@ -164,7 +163,7 @@ func firstEncounterMaterializesAndPublishedEncounterPreservesIdentity() {
     #expect(slot.lifecycle.admitsReport)
 
     let repeatedInitializer = FixtureAssociationModel(identity: 2)
-    var repeatedState = State(wrappedValue: repeatedInitializer)
+    var repeatedState = State<FixtureAssociationSchema>(seed: repeatedInitializer)
     #expect(slot.prepareCandidate() == nil)
     #expect(
         slot.encounter(
@@ -175,7 +174,12 @@ func firstEncounterMaterializesAndPublishedEncounterPreservesIdentity() {
         ) == .success(.preserved)
     )
     #expect(repeatedInitializer.attachCount == 0)
-    #expect(repeatedState.wrappedValue === first)
+    #expect(repeatedState.wrappedValue == nil)
+    if case .seed(let seed)? = repeatedState._giftUIInitial {
+        #expect(seed === repeatedInitializer)
+    } else {
+        Issue.record("the repeated declaration should retain its inert seed")
+    }
     slot.finish(.publish)
     #expect(slot.liveModel === first)
 }
@@ -186,8 +190,8 @@ func declarationOrdinalDistinguishesLocationsAndIncompatibleTypeFailsClosed() {
     var secondSlot = FixtureAssociationSlot()
     let first = FixtureAssociationModel(identity: 3)
     let second = FixtureAssociationModel(identity: 4)
-    var firstState = State(wrappedValue: first)
-    var secondState = State(wrappedValue: second)
+    var firstState = State<FixtureAssociationSchema>(seed: first)
+    var secondState = State<FixtureAssociationSchema>(seed: second)
 
     #expect(firstSlot.prepareCandidate() == nil)
     #expect(secondSlot.prepareCandidate() == nil)
@@ -213,7 +217,7 @@ func declarationOrdinalDistinguishesLocationsAndIncompatibleTypeFailsClosed() {
     #expect(secondSlot.liveModel === second)
 
     let incompatible = FixtureAssociationModel(identity: 5)
-    var incompatibleState = State(wrappedValue: incompatible)
+    var incompatibleState = State<FixtureAssociationSchema>(seed: incompatible)
     #expect(firstSlot.prepareCandidate() == nil)
     #expect(
         firstSlot.encounter(
@@ -234,7 +238,7 @@ func duplicateOwnershipFailsBeforeAttachmentAndPreservesOriginalOwner() {
     var originalSlot = FixtureAssociationSlot()
     var duplicateSlot = FixtureAssociationSlot()
     let shared = FixtureAssociationModel(identity: 6)
-    var originalState = State(wrappedValue: shared)
+    var originalState = State<FixtureAssociationSchema>(seed: shared)
 
     #expect(originalSlot.prepareCandidate() == nil)
     #expect(
@@ -247,7 +251,7 @@ func duplicateOwnershipFailsBeforeAttachmentAndPreservesOriginalOwner() {
     )
     originalSlot.finish(.publish)
 
-    var duplicateState = State(wrappedValue: shared)
+    var duplicateState = State<FixtureAssociationSchema>(seed: shared)
     #expect(duplicateSlot.prepareCandidate() == nil)
     #expect(
         duplicateSlot.encounter(
@@ -268,7 +272,7 @@ func duplicateOwnershipFailsBeforeAttachmentAndPreservesOriginalOwner() {
 func removalPublishesRetirementAndReinsertionCreatesFreshState() {
     var slot = FixtureAssociationSlot()
     let original = FixtureAssociationModel(identity: 7)
-    var originalState = State(wrappedValue: original)
+    var originalState = State<FixtureAssociationSchema>(seed: original)
 
     #expect(slot.prepareCandidate() == nil)
     #expect(
@@ -290,7 +294,7 @@ func removalPublishesRetirementAndReinsertionCreatesFreshState() {
     #expect(original.applicationStopCount == 0)
 
     let replacement = FixtureAssociationModel(identity: 8)
-    var replacementState = State(wrappedValue: replacement)
+    var replacementState = State<FixtureAssociationSchema>(seed: replacement)
     #expect(slot.prepareCandidate() == nil)
     #expect(
         slot.encounter(
@@ -309,7 +313,7 @@ func removalPublishesRetirementAndReinsertionCreatesFreshState() {
 func discardedDerivationPreservesLiveAndDetachesCandidateOnlyState() {
     var liveSlot = FixtureAssociationSlot()
     let live = FixtureAssociationModel(identity: 9)
-    var liveState = State(wrappedValue: live)
+    var liveState = State<FixtureAssociationSchema>(seed: live)
     #expect(liveSlot.prepareCandidate() == nil)
     #expect(
         liveSlot.encounter(
@@ -328,7 +332,7 @@ func discardedDerivationPreservesLiveAndDetachesCandidateOnlyState() {
 
     var candidateSlot = FixtureAssociationSlot()
     let candidate = FixtureAssociationModel(identity: 10)
-    var candidateState = State(wrappedValue: candidate)
+    var candidateState = State<FixtureAssociationSchema>(seed: candidate)
     #expect(candidateSlot.prepareCandidate() == nil)
     #expect(
         candidateSlot.encounter(
@@ -347,7 +351,7 @@ func discardedDerivationPreservesLiveAndDetachesCandidateOnlyState() {
 func shutdownDetachesInstalledSinkOnceAndPermanentlyClosesTheSlot() {
     var slot = FixtureAssociationSlot()
     let model = FixtureAssociationModel(identity: 11)
-    var state = State(wrappedValue: model)
+    var state = State<FixtureAssociationSchema>(seed: model)
     #expect(slot.prepareCandidate() == nil)
     #expect(
         slot.encounter(
@@ -368,8 +372,8 @@ func shutdownDetachesInstalledSinkOnceAndPermanentlyClosesTheSlot() {
     #expect(!slot.lifecycle.admitsReport)
     #expect(slot.prepareCandidate() == .invalidPhaseSafetyNotProven)
 
-    var laterState = State(
-        wrappedValue: FixtureAssociationModel(identity: 12)
+    var laterState = State<FixtureAssociationSchema>(
+        seed: FixtureAssociationModel(identity: 12)
     )
     #expect(
         slot.encounter(

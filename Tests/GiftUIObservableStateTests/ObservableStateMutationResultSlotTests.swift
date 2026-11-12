@@ -22,6 +22,10 @@ private final class MutationSlotModel: _GiftUIObservableReference {
     ) {}
 }
 
+private enum MutationSlotSchema: _GiftUIModelSchema {
+    typealias Seed = MutationSlotModel
+}
+
 private final class MutationSlotBox {
     var slot = ObservableStateMutationResultSlot()
     var nextResult: ObservableStateResult = .success(.replaced)
@@ -65,23 +69,22 @@ func eachEnclosingOperationConsumesAndClearsBeforeDerivation() {
 }
 
 @Test
-func boundSetterStoresExactFirstFailureForCoordinatorConsumption() {
+func stateSeedAndOwnerFailureUseTheCurrentSchemaAndResultSlotContracts() {
     let initial = MutationSlotModel(identity: 1)
-    let live = MutationSlotModel(identity: 2)
     let box = MutationSlotBox()
-    var state = State(wrappedValue: initial)
-    _ = state._giftUIBind(
-        read: { live },
-        replace: { _ in
-            _ = box.slot.record(box.nextResult)
-        }
-    )
+    let state = State<MutationSlotSchema>(seed: initial)
+    guard case .seed(let seed)? = state._giftUIInitial else {
+        Issue.record("the state should retain its typed initializer seed")
+        return
+    }
+    #expect(seed === initial)
+    #expect(state.wrappedValue == nil)
     #expect(box.slot.beginCycle(phase: .mutating) == nil)
 
     box.nextResult = .failure(.incompatibleAssociation)
-    state.wrappedValue = MutationSlotModel(identity: 3)
+    _ = box.slot.record(box.nextResult)
     box.nextResult = .success(.replaced)
-    state.wrappedValue = MutationSlotModel(identity: 4)
+    _ = box.slot.record(box.nextResult)
 
     #expect(box.slot.pendingFailure == .incompatibleAssociation)
     #expect(box.slot.consumeAfterOperation() == .incompatibleAssociation)

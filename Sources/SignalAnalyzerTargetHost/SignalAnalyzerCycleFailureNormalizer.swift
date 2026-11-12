@@ -156,6 +156,8 @@ package enum SignalAnalyzerCycleFailureNormalizer {
             }
         case .drawing(let error):
             switch error {
+            case .invalidModelAccess:
+                fact(.invalidIdentity, .rendering, .activeCycle, .contained)
             case .invalidValue, .invalidPathState:
                 fact(.invalidValue, .rendering, .activeCycle, .contained)
             case .arithmeticOverflow:

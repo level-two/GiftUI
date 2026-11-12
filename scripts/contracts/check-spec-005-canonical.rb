@@ -16,9 +16,8 @@ required_fragments = [
   "static func canonicalManifestDigest<M, R>",
   "static func sha256(",
   "private struct _TextResourceSHA256",
-  "UInt32(bitPattern: value)",
-  "emitUInt32(digest.word0)",
-  "emitUInt32(digest.word7)",
+  "internal struct TextResourceManifestEngine",
+  "UInt8(truncatingIfNeeded: pending >> (UInt32(pendingBytes) * 8))",
   "while round < 64",
   "let messageBitCount = totalByteCount &* 8",
 ].freeze
@@ -26,9 +25,25 @@ required_fragments.each do |fragment|
   fail_check("missing #{fragment}") unless source.include?(fragment)
 end
 
+%w[
+  lineMetrics.ascent lineMetrics.descent lineMetrics.lineGap
+  advanceX offsetX offsetY inkSize.width inkSize.height
+].each do |field|
+  fail_check("signed canonical field lacks bit-preserving emission: #{field}") unless
+    source.include?("emit(UInt32(bitPattern: value.#{field}), bytes: 4)")
+end
+(0..7).each do |word|
+  fail_check("payload digest lacks canonical word #{word}") unless
+    source.include?("emit(value.payloadDigest.word#{word}, bytes: 4)")
+end
+
 prefix = "GiftUITextResources/v1".bytes
-emitted_prefix = source.scan(/emit\(0x([0-9a-f]{2})\) \/\//).flatten.map { |hex| hex.to_i(16) }
-unless emitted_prefix.take(prefix.length) == prefix
+header = source[/case \.header:(.*?)case \.descriptor:/m, 1]
+fail_check("canonical manifest header is missing") unless header
+emitted_prefix = header.scan(/case ([0-9]+): byte = ([0-9]+)/).map do |ordinal, byte|
+  [ordinal.to_i, byte.to_i]
+end
+unless emitted_prefix == prefix.each_with_index.map { |byte, ordinal| [ordinal, byte] }
   fail_check("schema prefix is not emitted as the exact 22 literal UTF-8 bytes")
 end
 

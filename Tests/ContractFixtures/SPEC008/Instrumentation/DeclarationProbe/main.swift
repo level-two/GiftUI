@@ -15,28 +15,27 @@ private struct ProbeResult {
 }
 
 private struct DeclarationVisitor: _GiftUISemanticTraversalVisitor {
+    typealias Domain = _GiftUIEmptyReadDomain
+
     var bodyEvaluationCount: UInt32 = 0
     var primitiveVisitCount: UInt32 = 0
     var modifierVisitCount: UInt32 = 0
 
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
-        body: () -> Declaration.Body
-    ) {
-        bodyEvaluationCount &+= 1
-        let evaluatedBody = body()
-        evaluatedBody._giftUITraverse(&self)
+        body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        _ = body
     }
 
     mutating func visitStatefulCustomView<
         Declaration: View & _GiftUIObservableStateHost
     >(
         _ declaration: borrowing Declaration,
-        body: (borrowing Declaration) -> Declaration.Body
-    ) {
-        bodyEvaluationCount &+= 1
-        let evaluatedBody = body(declaration)
-        evaluatedBody._giftUITraverse(&self)
+        body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)
+            throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        _ = body
     }
 
     mutating func visitEmpty() {}
@@ -44,20 +43,20 @@ private struct DeclarationVisitor: _GiftUISemanticTraversalVisitor {
     mutating func visitFixed<A: View, B: View>(
         _ a: borrowing A,
         _ b: borrowing B
-    ) {}
+    ) where A.Domain == Domain, B.Domain == Domain {}
 
     mutating func visitFixed<A: View, B: View, C: View>(
         _ a: borrowing A,
         _ b: borrowing B,
         _ c: borrowing C
-    ) {}
+    ) where A.Domain == Domain, B.Domain == Domain, C.Domain == Domain {}
 
     mutating func visitFixed<A: View, B: View, C: View, D: View>(
         _ a: borrowing A,
         _ b: borrowing B,
         _ c: borrowing C,
         _ d: borrowing D
-    ) {}
+    ) where A.Domain == Domain, B.Domain == Domain, C.Domain == Domain, D.Domain == Domain {}
 
     mutating func visitFixed<A: View, B: View, C: View, D: View, E: View>(
         _ a: borrowing A,
@@ -65,23 +64,28 @@ private struct DeclarationVisitor: _GiftUISemanticTraversalVisitor {
         _ c: borrowing C,
         _ d: borrowing D,
         _ e: borrowing E
-    ) {}
+    )
+    where
+        A.Domain == Domain, B.Domain == Domain, C.Domain == Domain, D.Domain == Domain,
+        E.Domain == Domain
+    {}
 
     mutating func visitConditionalFirst<First: View, Second: View>(
         _ content: borrowing First,
         second: Second.Type
-    ) {}
+    ) where First.Domain == Domain, Second.Domain == Domain {}
 
     mutating func visitConditionalSecond<First: View, Second: View>(
         first: First.Type,
         _ content: borrowing Second
-    ) {}
+    ) where First.Domain == Domain, Second.Domain == Domain {}
 
-    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type) {}
+    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type)
+    where Content.Domain == Domain {}
 
     mutating func visitOptionalPresent<Content: View>(
         _ content: borrowing Content
-    ) {}
+    ) where Content.Domain == Domain {}
 
     mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
         _ payload: borrowing Payload
@@ -95,7 +99,7 @@ private struct DeclarationVisitor: _GiftUISemanticTraversalVisitor {
     >(
         content: borrowing Content,
         payload: borrowing Payload
-    ) {
+    ) where Content.Domain == Domain {
         primitiveVisitCount &+= 1
         content._giftUITraverse(&self)
     }
@@ -110,7 +114,7 @@ private struct DeclarationVisitor: _GiftUISemanticTraversalVisitor {
     >(
         content: borrowing Content,
         payload: borrowing Payload
-    ) {
+    ) where Content.Domain == Domain {
         content._giftUITraverse(&self)
     }
 
@@ -120,7 +124,7 @@ private struct DeclarationVisitor: _GiftUISemanticTraversalVisitor {
     >(
         content: borrowing Content,
         payload: borrowing Payload
-    ) {
+    ) where Content.Domain == Domain {
         content._giftUITraverse(&self)
         modifierVisitCount &+= 1
     }
@@ -130,7 +134,8 @@ private struct DeclarationVisitor: _GiftUISemanticTraversalVisitor {
 private func matches(_ text: BoundedText?, _ expected: StaticString) -> Bool {
     guard let text else { return false }
     return expected.withUTF8Buffer { expectedBuffer in
-        let expectedCount = expectedBuffer.last == 0
+        let expectedCount =
+            expectedBuffer.last == 0
             ? expectedBuffer.count - 1
             : expectedBuffer.count
         guard text.utf8ByteCount == UInt16(expectedCount) else { return false }
@@ -185,12 +190,12 @@ private func exerciseDeclarations() -> ProbeResult {
     check(matches(BoundedText(Int32.max), "2147483647"))
 
     var visitor = DeclarationVisitor()
-    let declaration = Text("styled")
+    let declaration = Text<_GiftUIEmptyReadDomain>("styled")
         .foregroundStyle(.red)
         .background(.blue)
         .foregroundStyle(.green)
     declaration._giftUITraverse(&visitor)
-    Text(oversized)._giftUITraverse(&visitor)
+    Text<_GiftUIEmptyReadDomain>(oversized)._giftUITraverse(&visitor)
 
     return ProbeResult(
         caseCount: caseCount,

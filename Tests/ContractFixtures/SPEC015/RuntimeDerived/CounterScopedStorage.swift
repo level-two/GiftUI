@@ -81,6 +81,13 @@ fileprivate struct P08AcquisitionFault {
     let afterInstall: Bool
 }
 
+
+fileprivate struct P08AcquisitionFaultQuery {
+    let fault: P08AcquisitionFault?
+    func before(_ id: P08PhysicalID) -> Bool { fault?.id == id && fault?.completed == 0 && fault?.afterInstall == false }
+    func after(_ id: P08PhysicalID) -> Bool { fault?.id == id && fault?.afterInstall == true }
+}
+
 // Native slots remain pinned by their enclosing typed Optional borrows. Embedded
 // descriptors name separately bound T objects, never an old Optional aggregate.
 fileprivate struct P08PaddedReservation<T> {
@@ -300,7 +307,7 @@ fileprivate struct P08StaticSlots {
     let g0: P08TypedSlot<StaticCounterLayoutWorkspace>
     let g1: P08TypedSlot<StaticCounterResolvedLayoutStorage>
     let g2: P08TypedSlot<InlineArray<64, SemanticRecordReference?>>
-    let g3: P08TypedSlot<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>
+    let g3: P08TypedSlot<StaticCounterRecordDrawingWorkspace>
     let g4: P08TypedSlot<QualifiedRender>
     let c0: P08TypedSlot<CounterStaticCandidate>
     let h0: P08TypedSlot<CounterStaticHits>
@@ -363,28 +370,19 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             precondition(entry.id != other.id)
         }
         P08InitializedEntryIndexAccess.set(&inventory, at: acquired, to: entry); acquired += 1
+        #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+        p08RetirementWitness?.pointee.installed(entry)
+        #endif
     }
     private func validateReservations() -> Bool {
-        var ranges: InlineArray<14, (UInt, Int, Int, Int)?> = .init(repeating: nil)
-        var count = 0
         switch slots {
-        case .static(let s):
-            ranges[count] = s.b0.reservationRange; count += 1
-            ranges[count] = s.b1.reservationRange; count += 1
-            ranges[count] = s.b2.reservationRange; count += 1
-            ranges[count] = s.b3.reservationRange; count += 1
-            ranges[count] = s.g0.reservationRange; count += 1
-            ranges[count] = s.g1.reservationRange; count += 1
-            ranges[count] = s.g2.reservationRange; count += 1
-            ranges[count] = s.g3.reservationRange; count += 1
-            ranges[count] = s.g4.reservationRange; count += 1
-            ranges[count] = s.c0.reservationRange; count += 1
-            ranges[count] = s.h0.reservationRange; count += 1
-            ranges[count] = s.r0.reservationRange; count += 1
-            ranges[count] = s.r1.reservationRange; count += 1
-            ranges[count] = s.h1.reservationRange; count += 1
+        case .static: return validateStaticReservations()
         #if !hasFeature(Embedded)
         case .dynamic(let s):
+
+        var ranges: InlineArray<14, (UInt, Int, Int, Int)?> = .init(repeating: nil)
+        var count = 0
+
             ranges[count] = s.g0.reservationRange; count += 1
             ranges[count] = s.g1.reservationRange; count += 1
             ranges[count] = s.g3.reservationRange; count += 1
@@ -394,297 +392,38 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             ranges[count] = s.r0.reservationRange; count += 1
             ranges[count] = s.r1.reservationRange; count += 1
             ranges[count] = s.h1.reservationRange; count += 1
+
+            return validateReservationRanges(ranges, count: count)
         #endif
         }
-        for index in 0..<count {
-            let (start, extent, alignment, required) = ranges[index]!
-            guard extent >= required, required > 0, alignment > 0, start % UInt(alignment) == 0 else { return false }
-            let end = start.addingReportingOverflow(UInt(extent))
-            guard !end.overflow else { return false }
-            for earlier in 0..<index {
-                let (other, bytes, _, _) = ranges[earlier]!
-                let otherEnd = other.addingReportingOverflow(UInt(bytes))
-                guard !otherEnd.overflow, end.partialValue <= other || otherEnd.partialValue <= start else { return false }
-            }
-        }
-        return true
     }
     private func validateCapacities() -> Bool {
         capacities[0] >= 2 && capacities[1] >= 2 && capacities[2] >= 2 &&
             capacities[2] == capacities[3] && capacities[1] == capacities[4]
     }
     fileprivate mutating func initialize(fault: P08AcquisitionFault? = nil) -> P08BackingInitializationFailure? {
-        let p08ExactCase20: Bool;
-        if case .reserved = lifecycle {
-            if acquired == 0 { p08ExactCase20 = true } else { p08ExactCase20 = false }
-        } else {
-            p08ExactCase20 = false
-        }; precondition(p08ExactCase20)
-        destroyed = 0; destruction = .init(repeating: nil)
-        guard identity != 0, validateCapacities() else { return .invalidCapacity }
+        if let failure = prepareInitialization() { return failure }
         guard validateReservations() else { return .invalidReservation }
-        func before(_ id: P08PhysicalID) -> Bool { fault?.id == id && fault?.completed == 0 && fault?.afterInstall == false }
-        func after(_ id: P08PhysicalID) -> Bool { fault?.id == id && fault?.afterInstall == true }
-        var failure: P08BackingInitializationFailure?
+        let failure: P08BackingInitializationFailure?
         switch slots {
-        case .static(let s):
-            if case .none = failure {
-                if before(.b0) { failure = .injected(.b0, 0) } else {
-                    let count = fault?.id == .b0 && fault?.afterInstall == false ? fault!.completed : s.b0.count
-                    if case .embedded = s.b0 {
-                        guard count >= 0 && count <= s.b0.count else { preconditionFailure("invalid acquisition fault") }
-                        s.b0.initialize(upTo: count)
-                        record(s.b0.facts(id: .b0, initialized: count))
-                        if count != s.b0.count { failure = .injected(.b0, count) }
-                    } else {
-                        precondition(count == s.b0.count)
-                        s.b0.initialize(upTo: count); record(s.b0.facts(id: .b0, initialized: count))
-                    }
-                    if after(.b0) { failure = .injected(.b0, count) }
-                }
-            }
-            if case .none = failure {
-                if before(.b1) { failure = .injected(.b1, 0) } else {
-                    let count = fault?.id == .b1 && fault?.afterInstall == false ? fault!.completed : s.b1.count
-                    if case .embedded = s.b1 {
-                        guard count >= 0 && count <= s.b1.count else { preconditionFailure("invalid acquisition fault") }
-                        s.b1.initialize(upTo: count)
-                        record(s.b1.facts(id: .b1, initialized: count))
-                        if count != s.b1.count { failure = .injected(.b1, count) }
-                    } else {
-                        precondition(count == s.b1.count)
-                        s.b1.initialize(upTo: count); record(s.b1.facts(id: .b1, initialized: count))
-                    }
-                    if after(.b1) { failure = .injected(.b1, count) }
-                }
-            }
-            if case .none = failure {
-                if before(.b2) { failure = .injected(.b2, 0) } else {
-                    let count = fault?.id == .b2 && fault?.afterInstall == false ? fault!.completed : s.b2.count
-                    if case .embedded = s.b2 {
-                        guard count >= 0 && count <= s.b2.count else { preconditionFailure("invalid acquisition fault") }
-                        s.b2.initialize(upTo: count)
-                        record(s.b2.facts(id: .b2, initialized: count))
-                        if count != s.b2.count { failure = .injected(.b2, count) }
-                    } else {
-                        precondition(count == s.b2.count)
-                        s.b2.initialize(upTo: count); record(s.b2.facts(id: .b2, initialized: count))
-                    }
-                    if after(.b2) { failure = .injected(.b2, count) }
-                }
-            }
-            if case .none = failure {
-                if before(.b3) { failure = .injected(.b3, 0) } else {
-                    let count = fault?.id == .b3 && fault?.afterInstall == false ? fault!.completed : s.b3.count
-                    if case .embedded = s.b3 {
-                        guard count >= 0 && count <= s.b3.count else { preconditionFailure("invalid acquisition fault") }
-                        s.b3.initialize(upTo: count)
-                        record(s.b3.facts(id: .b3, initialized: count))
-                        if count != s.b3.count { failure = .injected(.b3, count) }
-                    } else {
-                        precondition(count == s.b3.count)
-                        s.b3.initialize(upTo: count); record(s.b3.facts(id: .b3, initialized: count))
-                    }
-                    if after(.b3) { failure = .injected(.b3, count) }
-                }
-            }
-            if case .none = failure {
-                if before(.g0) { failure = .injected(.g0, 0) }
-                else if let object = s.b0.withBorrow({ scopes in s.b1.withBorrow { text in StaticCounterLayoutWorkspace(scopes: scopes, text: text) } }) {
-                    s.g0.install(consume object); record(s.g0.facts(id: .g0))
-                    if after(.g0) { failure = .injected(.g0, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.g1) { failure = .injected(.g1, 0) }
-                else if let object = s.b0.withBorrow({ scopes in s.b1.withBorrow { text in StaticCounterResolvedLayoutStorage(scopes: scopes, text: text) } }) {
-                    s.g1.install(consume object); record(s.g1.facts(id: .g1))
-                    if after(.g1) { failure = .injected(.g1, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.g2) { failure = .injected(.g2, 0) }
-                else if let object = .some(InlineArray<64, SemanticRecordReference?>(repeating: nil)) {
-                    s.g2.install(consume object); record(s.g2.facts(id: .g2))
-                    if after(.g2) { failure = .injected(.g2, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.g3) { failure = .injected(.g3, 0) }
-                else if let object = s.b2.withBorrow({ path in s.b3.withBorrow { plan in StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits).map { StaticRecordDrawingWorkspace(base: $0) } } }) {
-                    s.g3.install(consume object); record(s.g3.facts(id: .g3))
-                    if after(.g3) { failure = .injected(.g3, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.g4) { failure = .injected(.g4, 0) }
-                else if let object = s.b1.withBorrow({ text in StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity).map { QualifiedRender(base: $0) } }) {
-                    s.g4.install(consume object); record(s.g4.facts(id: .g4))
-                    if after(.g4) { failure = .injected(.g4, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.c0) { failure = .injected(.c0, 0) }
-                else if let object = CounterStaticCandidate(capacity: capacities[0]) {
-                    s.c0.install(consume object); record(s.c0.facts(id: .c0))
-                    if after(.c0) { failure = .injected(.c0, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.h0) { failure = .injected(.h0, 0) }
-                else if let object = CounterStaticHits(capacity: capacities[1]) {
-                    s.h0.install(consume object); record(s.h0.facts(id: .h0))
-                    if after(.h0) { failure = .injected(.h0, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.r0) { failure = .injected(.r0, 0) }
-                else if let object = CounterStaticCommitted(capacity: capacities[2]) {
-                    s.r0.install(consume object); record(s.r0.facts(id: .r0))
-                    if after(.r0) { failure = .injected(.r0, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.r1) { failure = .injected(.r1, 0) }
-                else if let object = CounterStaticCommitted(capacity: capacities[3]) {
-                    s.r1.install(consume object); record(s.r1.facts(id: .r1))
-                    if after(.r1) { failure = .injected(.r1, 1) }
-                } else { failure = .constructor }
-            }
-            if case .none = failure {
-                if before(.h1) { failure = .injected(.h1, 0) }
-                else if let object = CounterStaticHits(capacity: capacities[4]) {
-                    s.h1.install(consume object); record(s.h1.facts(id: .h1))
-                    if after(.h1) { failure = .injected(.h1, 1) }
-                } else { failure = .constructor }
-            }
+        case .static(let s): failure = initializeStaticObjects(s, fault: fault)
         #if !hasFeature(Embedded)
-        case .dynamic(let s):
-                if case .none = failure {
-                    if before(.g0) {
-                        failure = .injected(.g0, 0)
-                    } else {
-                        let object = DynamicLayoutWorkspace(limits: counterLayoutLimits, maximumSemanticRecords: 126)
-                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
-                    s.g0.install(consume object); record(s.g0.facts(id: .g0, payloadBytes: retainedPayloadBytes))
-                    if after(.g0) { failure = .injected(.g0, 1) }
-                }
-            }
-                if case .none = failure {
-                    if before(.g1) {
-                        failure = .injected(.g1, 0)
-                    } else {
-                        let object = DynamicResolvedLayoutStorage(limits: counterLayoutLimits)
-                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
-                    s.g1.install(consume object); record(s.g1.facts(id: .g1, payloadBytes: retainedPayloadBytes))
-                    if after(.g1) { failure = .injected(.g1, 1) }
-                }
-            }
-                if case .none = failure {
-                    if before(.g3) {
-                        failure = .injected(.g3, 0)
-                    } else {
-                        let object = DynamicDrawingPlanWorkspace(capacity: counterDrawingLimits)
-                    let retainedPayloadBytes = Int(object.livePathReservedPayloadBytes + object.planReservedPayloadBytes)
-                    s.g3.install(consume object); record(s.g3.facts(id: .g3, payloadBytes: retainedPayloadBytes))
-                    if after(.g3) { failure = .injected(.g3, 1) }
-                }
-            }
-                if case .none = failure {
-                    if before(.g4) {
-                        failure = .injected(.g4, 0)
-                    } else {
-                        let object = DynamicRenderWorkspace(capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity)
-                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
-                    s.g4.install(consume object); record(s.g4.facts(id: .g4, payloadBytes: retainedPayloadBytes))
-                    if after(.g4) { failure = .injected(.g4, 1) }
-                }
-            }
-                if case .none = failure {
-                    if before(.c0) {
-                        failure = .injected(.c0, 0)
-                    } else {
-                        let object = CounterDynamicCandidate(capacity: capacities[0])
-                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
-                    s.c0.install(consume object); record(s.c0.facts(id: .c0, payloadBytes: retainedPayloadBytes))
-                    if after(.c0) { failure = .injected(.c0, 1) }
-                }
-            }
-                if case .none = failure {
-                    if before(.h0) {
-                        failure = .injected(.h0, 0)
-                    } else {
-                        let object = CounterDynamicHits(capacity: capacities[1])
-                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
-                    s.h0.install(consume object); record(s.h0.facts(id: .h0, payloadBytes: retainedPayloadBytes))
-                    if after(.h0) { failure = .injected(.h0, 1) }
-                }
-            }
-                if case .none = failure {
-                    if before(.r0) {
-                        failure = .injected(.r0, 0)
-                    } else {
-                        let object = CounterDynamicCommitted(capacity: capacities[2])
-                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
-                    s.r0.install(consume object); record(s.r0.facts(id: .r0, payloadBytes: retainedPayloadBytes))
-                    if after(.r0) { failure = .injected(.r0, 1) }
-                }
-            }
-                if case .none = failure {
-                    if before(.r1) {
-                        failure = .injected(.r1, 0)
-                    } else {
-                        let object = CounterDynamicCommitted(capacity: capacities[3])
-                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
-                    s.r1.install(consume object); record(s.r1.facts(id: .r1, payloadBytes: retainedPayloadBytes))
-                    if after(.r1) { failure = .injected(.r1, 1) }
-                }
-            }
-                if case .none = failure {
-                    if before(.h1) {
-                        failure = .injected(.h1, 0)
-                    } else {
-                        let object = CounterDynamicHits(capacity: capacities[4])
-                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
-                    s.h1.install(consume object); record(s.h1.facts(id: .h1, payloadBytes: retainedPayloadBytes))
-                    if after(.h1) { failure = .injected(.h1, 1) }
-                }
-            }
+        case .dynamic(let s): failure = initializeDynamicObjects(s, fault: fault)
         #endif
         }
         if let failure { destroyPrefix(); return failure }
-        lifecycle = .idle
+        completeInitialization()
         return nil
     }
     private mutating func destroyPrefix() {
-        while acquired > 0 {
-            acquired -= 1
-            let entry = P08InitializedEntryIndexAccess.get(inventory, at: acquired)!
+        while let entry = nextEntryForDestruction() {
             destroyOriginal(entry)
-            P08InitializedEntryIndexAccess.set(&destruction, at: destroyed, to: entry); destroyed += 1
-            P08InitializedEntryIndexAccess.set(&inventory, at: acquired, to: nil)
+            recordDestruction(entry)
         }
-        lifecycle = .reserved
     }
     private borrowing func destroyOriginal(_ entry: P08InitializedEntry) {
         switch slots {
-        case .static(let s):
-            switch entry.id {
-            case .b0: s.b0.destroy(count: entry.count)
-            case .b1: s.b1.destroy(count: entry.count)
-            case .b2: s.b2.destroy(count: entry.count)
-            case .b3: s.b3.destroy(count: entry.count)
-            case .g0: s.g0.destroy()
-            case .g1: s.g1.destroy()
-            case .g2: s.g2.destroy()
-            case .g3: s.g3.destroy()
-            case .g4: s.g4.destroy()
-            case .c0: s.c0.destroy()
-            case .h0: s.h0.destroy()
-            case .r0: s.r0.destroy()
-            case .r1: s.r1.destroy()
-            case .h1: s.h1.destroy()
-            }
+        case .static: destroyStaticOriginal(entry)
         #if !hasFeature(Embedded)
         case .dynamic(let s):
             switch entry.id {
@@ -699,6 +438,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             case .h1: s.h1.destroy()
             default: preconditionFailure("Dynamic inventory contains Static region")
             }
+
         #endif
         }
     }
@@ -722,39 +462,18 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
         destroyPrefix(); lifecycle = .released
     }
     deinit {
-        precondition(lifecycle != .active)
-        if case .idle = lifecycle {
-            requireEmpty()
-            var remaining = acquired
-            while remaining > 0 { remaining -= 1; destroyOriginal(P08InitializedEntryIndexAccess.get(inventory, at: remaining)!) }
-        } else { precondition(acquired == 0) }
+        precondition(acquired == 0)
+        switch lifecycle {
+        case .reserved, .released: break
+        case .idle, .active: preconditionFailure("physical owner destroyed before structured retirement")
+        }
+        #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+        p08RetirementWitness?.pointee.ownerEnded(identity)
+        #endif
     }
     fileprivate func requireEmpty() {
         switch slots {
-        case .static(let s):
-            s.g0.withBorrow { precondition($0.pointee.scopeCount == 0 && $0.pointee.textLineCount == 0 && $0.pointee.positionedGlyphCount == 0) }
-            s.g2.withBorrow { p in
-                for index in 0 ..< 64 {
-                    let p08Presence19: Bool;
-                    if case .none = p.pointee[index] {
-                        p08Presence19 = true
-                    } else {
-                        p08Presence19 = false
-                    }; precondition(p08Presence19)
-                }
-            }
-            s.g3.withBorrow { pointer in
-                precondition(!pointer.pointee.isActive)
-                pointer.pointee.withBase { base in
-                    precondition(base.strokeCount == 0 && base.pointCount == 0 && base.subpathCount == 0 && base.normalizedStrokeOperationCount == 0)
-                }
-            }
-            s.g4.withBorrow { precondition(!$0.pointee.isActive) }
-            s.c0.withBorrow { precondition($0.pointee.count == 0) }
-            s.h0.withBorrow { precondition($0.pointee.count == 0) }
-            s.r0.withBorrow { precondition($0.pointee.count == 0) }
-            s.r1.withBorrow { precondition($0.pointee.count == 0) }
-            s.h1.withBorrow { precondition($0.pointee.count == 0) }
+        case .static: requireStaticEmpty()
         #if !hasFeature(Embedded)
         case .dynamic(let s):
             s.g3.withBorrow { precondition(!$0.pointee.isActive && $0.pointee.strokeCount == 0 && $0.pointee.pointCount == 0 && $0.pointee.subpathCount == 0) }
@@ -764,6 +483,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             s.r0.withBorrow { precondition($0.pointee.count == 0) }
             s.r1.withBorrow { precondition($0.pointee.count == 0) }
             s.h1.withBorrow { precondition($0.pointee.count == 0) }
+
         #endif
         }
     }
@@ -1041,7 +761,7 @@ fileprivate struct P08StaticGeometryDescriptor {
     let g0: UnsafeMutablePointer<StaticCounterLayoutWorkspace>
     let g1: UnsafeMutablePointer<StaticCounterResolvedLayoutStorage>
     let g2: UnsafeMutablePointer<InlineArray<64, SemanticRecordReference?>>
-    let g3: UnsafeMutablePointer<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>
+    let g3: UnsafeMutablePointer<StaticCounterRecordDrawingWorkspace>
     let g4: UnsafeMutablePointer<QualifiedRender>
     let byteCounts: InlineArray<4, Int>
 }
@@ -1084,7 +804,7 @@ fileprivate struct P08GeometryAccess: ~Copyable, ~Escapable, CounterGeometry {
                 renderWorkspace: d.g4.pointee.structuralCapacity, drawing: d.g3.pointee.capacity,
                 layoutBytes: UInt64(d.byteCounts[0] + d.byteCounts[1] + MemoryLayout<StaticCounterLayoutWorkspace>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>>.stride),
                 renderBytes: UInt64(MemoryLayout<QualifiedRender>.stride), pathBytes: UInt64(d.byteCounts[2]),
-                planBytes: UInt64(d.byteCounts[3] + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.stride))
+                planBytes: UInt64(d.byteCounts[3] + MemoryLayout<StaticCounterRecordDrawingWorkspace>.stride))
         #if !hasFeature(Embedded)
         case .dynamic(let d):
             let layoutInline: UInt64 = UInt64(MemoryLayout<DynamicLayoutWorkspace>.stride + MemoryLayout<DynamicResolvedLayoutStorage>.stride)
@@ -1108,6 +828,27 @@ fileprivate struct P08GeometryAccess: ~Copyable, ~Escapable, CounterGeometry {
         switch descriptor {
         case .static(let d):
             d.g2.pointee = .init(repeating: nil)
+            #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+            if let reference = bank.reference(at: 0) {
+                precondition(p08StaticReferencesAreEmpty(&d.g2.pointee))
+                let referencePresenceCases: InlineArray<3, (Int, UInt8)> = [(0, UInt8(1)), (32, UInt8(2)), (63, UInt8(4))]
+                for referencePresenceOrdinal in 0..<3 {
+                    let (position, bit) = referencePresenceCases[referencePresenceOrdinal]
+                    d.g2.pointee[position] = reference
+                    precondition(!p08StaticReferencesAreEmpty(&d.g2.pointee))
+                    precondition(d.g2.pointee[position] == reference)
+                    d.g2.pointee[position] = nil
+                    precondition(p08StaticReferencesAreEmpty(&d.g2.pointee))
+                    p08ReferencePresenceMask |= bit
+                    p08ReferencePresenceChecks += 3
+                }
+                d.g2.pointee[0] = reference
+                let copied = d.g2.pointee
+                d.g2.pointee[0] = nil
+                precondition(copied[0] == reference && p08StaticReferencesAreEmpty(&d.g2.pointee))
+                p08ReferencePresenceChecks += 1
+            }
+            #endif
                     for index: UInt16 in 0..<bank.recordCount { d.g2.pointee[Int(index)] = bank.reference(at: index) }
                     return GiftUILayout.layout(semantic: LocalSemantic(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 120)!, limits: limits.layout, workspace: &d.g0.pointee, sink: &d.g1.pointee)
         #if !hasFeature(Embedded)
@@ -1132,7 +873,7 @@ fileprivate struct P08GeometryAccess: ~Copyable, ~Escapable, CounterGeometry {
         switch descriptor {
         case .static(let d):
             let layout = QualifiedLayout(base: d.g1.pointee.renderView, references: d.g2.pointee)
-                    let result = withCounterRenderLimits(&d.g4.pointee, limits: limits) { bounded in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: d.g3.pointee, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &bounded) }
+                    let result = withCounterStaticRenderLimits(&d.g4.pointee, limits: limits) { bounded in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: d.g3.pointee, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &bounded) }
                     if case .success(let header) = result {
                         guard header.operationCount >= d.g3.pointee.summary.normalizedStrokeOperationCount,
                             header.operationCount - d.g3.pointee.summary.normalizedStrokeOperationCount <= limits.maximumOrdinaryRenderOperations else { return .failure(.capacityExhausted) }
@@ -1153,7 +894,7 @@ fileprivate struct P08GeometryAccess: ~Copyable, ~Escapable, CounterGeometry {
         switch descriptor {
         case .static(let d):
             let layout = QualifiedLayout(base: d.g1.pointee.renderView, references: d.g2.pointee)
-                    return withCounterRenderLimits(&d.g4.pointee, limits: limits) { bounded in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: d.g3.pointee, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &bounded, sink: &sink) }
+                    return withCounterStaticRenderLimits(&d.g4.pointee, limits: limits) { bounded in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: d.g3.pointee, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &bounded, sink: &sink) }
         #if !hasFeature(Embedded)
         case .dynamic(let d):
             return withCounterRenderLimits(&d.g4.pointee, limits: limits) { bounded in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: d.g1.pointee.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: d.g3.pointee, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &bounded, sink: &sink) }
@@ -1280,7 +1021,7 @@ fileprivate func p08ConstructStaticStorageSession(token: borrowing P08SessionLif
     g0: UnsafeMutablePointer<StaticCounterLayoutWorkspace>,
     g1: UnsafeMutablePointer<StaticCounterResolvedLayoutStorage>,
     g2: UnsafeMutablePointer<InlineArray<64, SemanticRecordReference?>>,
-    g3: UnsafeMutablePointer<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>,
+    g3: UnsafeMutablePointer<StaticCounterRecordDrawingWorkspace>,
     g4: UnsafeMutablePointer<QualifiedRender>,
     c0: UnsafeMutablePointer<CounterStaticCandidate>,
     h0: UnsafeMutablePointer<CounterStaticHits>,
@@ -1408,17 +1149,438 @@ extension P08TypedBackingOwner {
 
 extension P08TypedBackingOwner {
     fileprivate mutating func withStorage<Result>(transcript: UnsafeMutablePointer<P08RoleTranscript>? = nil, _ body: (consuming P08StorageSession) -> Result) -> Result {
+        requireIdleForSession()
+        requireEmpty()
+        beginSession()
+        let prepared = prepareSession()
+        let result: Result
+        switch slots {
+        case .static(let s): result = lendStaticSession(s, prepared: prepared, transcript: transcript, body)
+        #if !hasFeature(Embedded)
+        case .dynamic(let s): result = lendDynamicSession(s, prepared: prepared, transcript: transcript, body)
+        #endif
+        }
+        requireEmpty()
+        endSession()
+        return result
+    }
+}
+extension P08TypedBackingOwner {
+
+    private func staticSlots() -> P08StaticSlots {
+        switch slots {
+        case .static(let value): return value
+        #if !hasFeature(Embedded)
+        case .dynamic: preconditionFailure("Static dispatch requires Static physical slots")
+        #endif
+        }
+    }
+    private func validateStaticReservations() -> Bool {
+
+        var ranges: InlineArray<14, (UInt, Int, Int, Int)?> = .init(repeating: nil)
+        var count = 0
+        let s = staticSlots()
+
+            ranges[count] = s.b0.reservationRange; count += 1
+            ranges[count] = s.b1.reservationRange; count += 1
+            ranges[count] = s.b2.reservationRange; count += 1
+            ranges[count] = s.b3.reservationRange; count += 1
+            ranges[count] = s.g0.reservationRange; count += 1
+            ranges[count] = s.g1.reservationRange; count += 1
+            ranges[count] = s.g2.reservationRange; count += 1
+            ranges[count] = s.g3.reservationRange; count += 1
+            ranges[count] = s.g4.reservationRange; count += 1
+            ranges[count] = s.c0.reservationRange; count += 1
+            ranges[count] = s.h0.reservationRange; count += 1
+            ranges[count] = s.r0.reservationRange; count += 1
+            ranges[count] = s.r1.reservationRange; count += 1
+            ranges[count] = s.h1.reservationRange; count += 1
+        return validateReservationRanges(ranges, count: count)
+    }
+    private func validateReservationRanges(_ ranges: borrowing InlineArray<14, (UInt, Int, Int, Int)?>, count: Int) -> Bool {
+
+        for index in 0..<count {
+            let (start, extent, alignment, required) = ranges[index]!
+            guard extent >= required, required > 0, alignment > 0, start % UInt(alignment) == 0 else { return false }
+            let end = start.addingReportingOverflow(UInt(extent))
+            guard !end.overflow else { return false }
+            for earlier in 0..<index {
+                let (other, bytes, _, _) = ranges[earlier]!
+                let otherEnd = other.addingReportingOverflow(UInt(bytes))
+                guard !otherEnd.overflow, end.partialValue <= other || otherEnd.partialValue <= start else { return false }
+            }
+        }
+        return true
+
+    }
+
+    private mutating func prepareInitialization() -> P08BackingInitializationFailure? {
+
+        let p08ExactCase20: Bool;
+        if case .reserved = lifecycle {
+            if acquired == 0 { p08ExactCase20 = true } else { p08ExactCase20 = false }
+        } else {
+            p08ExactCase20 = false
+        }; precondition(p08ExactCase20)
+        destroyed = 0; destruction = .init(repeating: nil)
+        guard identity != 0, validateCapacities() else { return .invalidCapacity }
+        return nil
+    }
+    private mutating func completeInitialization() { lifecycle = .idle }
+    private mutating func initializeStaticObjects(_ s: P08StaticSlots, fault: P08AcquisitionFault?) -> P08BackingInitializationFailure? {
+        let query = P08AcquisitionFaultQuery(fault: fault)
+        var failure: P08BackingInitializationFailure?
+
+            if case .none = failure {
+                if query.before(.b0) { failure = .injected(.b0, 0) } else {
+                    let count = fault?.id == .b0 && fault?.afterInstall == false ? fault!.completed : s.b0.count
+                    if case .embedded = s.b0 {
+                        guard count >= 0 && count <= s.b0.count else { preconditionFailure("invalid acquisition fault") }
+                        s.b0.initialize(upTo: count)
+                        record(s.b0.facts(id: .b0, initialized: count))
+                        if count != s.b0.count { failure = .injected(.b0, count) }
+                    } else {
+                        precondition(count == s.b0.count)
+                        s.b0.initialize(upTo: count); record(s.b0.facts(id: .b0, initialized: count))
+                    }
+                    if query.after(.b0) { failure = .injected(.b0, count) }
+                }
+            }
+            if case .none = failure {
+                if query.before(.b1) { failure = .injected(.b1, 0) } else {
+                    let count = fault?.id == .b1 && fault?.afterInstall == false ? fault!.completed : s.b1.count
+                    if case .embedded = s.b1 {
+                        guard count >= 0 && count <= s.b1.count else { preconditionFailure("invalid acquisition fault") }
+                        s.b1.initialize(upTo: count)
+                        record(s.b1.facts(id: .b1, initialized: count))
+                        if count != s.b1.count { failure = .injected(.b1, count) }
+                    } else {
+                        precondition(count == s.b1.count)
+                        s.b1.initialize(upTo: count); record(s.b1.facts(id: .b1, initialized: count))
+                    }
+                    if query.after(.b1) { failure = .injected(.b1, count) }
+                }
+            }
+            if case .none = failure {
+                if query.before(.b2) { failure = .injected(.b2, 0) } else {
+                    let count = fault?.id == .b2 && fault?.afterInstall == false ? fault!.completed : s.b2.count
+                    if case .embedded = s.b2 {
+                        guard count >= 0 && count <= s.b2.count else { preconditionFailure("invalid acquisition fault") }
+                        s.b2.initialize(upTo: count)
+                        record(s.b2.facts(id: .b2, initialized: count))
+                        if count != s.b2.count { failure = .injected(.b2, count) }
+                    } else {
+                        precondition(count == s.b2.count)
+                        s.b2.initialize(upTo: count); record(s.b2.facts(id: .b2, initialized: count))
+                    }
+                    if query.after(.b2) { failure = .injected(.b2, count) }
+                }
+            }
+            if case .none = failure {
+                if query.before(.b3) { failure = .injected(.b3, 0) } else {
+                    let count = fault?.id == .b3 && fault?.afterInstall == false ? fault!.completed : s.b3.count
+                    if case .embedded = s.b3 {
+                        guard count >= 0 && count <= s.b3.count else { preconditionFailure("invalid acquisition fault") }
+                        s.b3.initialize(upTo: count)
+                        record(s.b3.facts(id: .b3, initialized: count))
+                        if count != s.b3.count { failure = .injected(.b3, count) }
+                    } else {
+                        precondition(count == s.b3.count)
+                        s.b3.initialize(upTo: count); record(s.b3.facts(id: .b3, initialized: count))
+                    }
+                    if query.after(.b3) { failure = .injected(.b3, count) }
+                }
+            }
+            if case .none = failure {
+                if query.before(.g0) { failure = .injected(.g0, 0) }
+                else if let object = s.b0.withBorrow({ scopes in s.b1.withBorrow { text in StaticCounterLayoutWorkspace(scopes: scopes, text: text) } }) {
+                    s.g0.install(consume object); record(s.g0.facts(id: .g0))
+                    if query.after(.g0) { failure = .injected(.g0, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.g1) { failure = .injected(.g1, 0) }
+                else if let object = s.b0.withBorrow({ scopes in s.b1.withBorrow { text in StaticCounterResolvedLayoutStorage(scopes: scopes, text: text) } }) {
+                    s.g1.install(consume object); record(s.g1.facts(id: .g1))
+                    if query.after(.g1) { failure = .injected(.g1, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.g2) { failure = .injected(.g2, 0) }
+                else if let object = .some(InlineArray<64, SemanticRecordReference?>(repeating: nil)) {
+                    s.g2.install(consume object); record(s.g2.facts(id: .g2))
+                    if query.after(.g2) { failure = .injected(.g2, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.g3) { failure = .injected(.g3, 0) }
+                else if let object = s.b2.withBorrow({ path in s.b3.withBorrow { plan in p08MakeStaticRecordDrawingWorkspace(path: path, plan: plan) } }) {
+                    s.g3.install(consume object); record(s.g3.facts(id: .g3))
+                    if query.after(.g3) { failure = .injected(.g3, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.g4) { failure = .injected(.g4, 0) }
+                else if let object = s.b1.withBorrow({ text in p08MakeQualifiedRender(text: text) }) {
+                    s.g4.install(consume object); record(s.g4.facts(id: .g4))
+                    if query.after(.g4) { failure = .injected(.g4, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.c0) { failure = .injected(.c0, 0) }
+                else if let object = CounterStaticCandidate(capacity: capacities[0]) {
+                    s.c0.install(consume object); record(s.c0.facts(id: .c0))
+                    if query.after(.c0) { failure = .injected(.c0, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.h0) { failure = .injected(.h0, 0) }
+                else if let object = CounterStaticHits(capacity: capacities[1]) {
+                    s.h0.install(consume object); record(s.h0.facts(id: .h0))
+                    if query.after(.h0) { failure = .injected(.h0, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.r0) { failure = .injected(.r0, 0) }
+                else if let object = CounterStaticCommitted(capacity: capacities[2]) {
+                    s.r0.install(consume object); record(s.r0.facts(id: .r0))
+                    if query.after(.r0) { failure = .injected(.r0, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.r1) { failure = .injected(.r1, 0) }
+                else if let object = CounterStaticCommitted(capacity: capacities[3]) {
+                    s.r1.install(consume object); record(s.r1.facts(id: .r1))
+                    if query.after(.r1) { failure = .injected(.r1, 1) }
+                } else { failure = .constructor }
+            }
+            if case .none = failure {
+                if query.before(.h1) { failure = .injected(.h1, 0) }
+                else if let object = CounterStaticHits(capacity: capacities[4]) {
+                    s.h1.install(consume object); record(s.h1.facts(id: .h1))
+                    if query.after(.h1) { failure = .injected(.h1, 1) }
+                } else { failure = .constructor }
+            }
+        return failure
+    }
+    #if !hasFeature(Embedded)
+    private mutating func initializeDynamicObjects(_ s: P08DynamicSlots, fault: P08AcquisitionFault?) -> P08BackingInitializationFailure? {
+        let query = P08AcquisitionFaultQuery(fault: fault)
+        var failure: P08BackingInitializationFailure?
+
+                if case .none = failure {
+                    if query.before(.g0) {
+                        failure = .injected(.g0, 0)
+                    } else {
+                        let object = DynamicLayoutWorkspace(limits: counterLayoutLimits, maximumSemanticRecords: 126)
+                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
+                    s.g0.install(consume object); record(s.g0.facts(id: .g0, payloadBytes: retainedPayloadBytes))
+                    if query.after(.g0) { failure = .injected(.g0, 1) }
+                }
+            }
+                if case .none = failure {
+                    if query.before(.g1) {
+                        failure = .injected(.g1, 0)
+                    } else {
+                        let object = DynamicResolvedLayoutStorage(limits: counterLayoutLimits)
+                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
+                    s.g1.install(consume object); record(s.g1.facts(id: .g1, payloadBytes: retainedPayloadBytes))
+                    if query.after(.g1) { failure = .injected(.g1, 1) }
+                }
+            }
+                if case .none = failure {
+                    if query.before(.g3) {
+                        failure = .injected(.g3, 0)
+                    } else {
+                        let object = DynamicDrawingPlanWorkspace(capacity: counterDrawingLimits)
+                    let retainedPayloadBytes = Int(object.livePathReservedPayloadBytes + object.planReservedPayloadBytes)
+                    s.g3.install(consume object); record(s.g3.facts(id: .g3, payloadBytes: retainedPayloadBytes))
+                    if query.after(.g3) { failure = .injected(.g3, 1) }
+                }
+            }
+                if case .none = failure {
+                    if query.before(.g4) {
+                        failure = .injected(.g4, 0)
+                    } else {
+                        let object = DynamicRenderWorkspace(capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity)
+                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
+                    s.g4.install(consume object); record(s.g4.facts(id: .g4, payloadBytes: retainedPayloadBytes))
+                    if query.after(.g4) { failure = .injected(.g4, 1) }
+                }
+            }
+                if case .none = failure {
+                    if query.before(.c0) {
+                        failure = .injected(.c0, 0)
+                    } else {
+                        let object = CounterDynamicCandidate(capacity: capacities[0])
+                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
+                    s.c0.install(consume object); record(s.c0.facts(id: .c0, payloadBytes: retainedPayloadBytes))
+                    if query.after(.c0) { failure = .injected(.c0, 1) }
+                }
+            }
+                if case .none = failure {
+                    if query.before(.h0) {
+                        failure = .injected(.h0, 0)
+                    } else {
+                        let object = CounterDynamicHits(capacity: capacities[1])
+                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
+                    s.h0.install(consume object); record(s.h0.facts(id: .h0, payloadBytes: retainedPayloadBytes))
+                    if query.after(.h0) { failure = .injected(.h0, 1) }
+                }
+            }
+                if case .none = failure {
+                    if query.before(.r0) {
+                        failure = .injected(.r0, 0)
+                    } else {
+                        let object = CounterDynamicCommitted(capacity: capacities[2])
+                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
+                    s.r0.install(consume object); record(s.r0.facts(id: .r0, payloadBytes: retainedPayloadBytes))
+                    if query.after(.r0) { failure = .injected(.r0, 1) }
+                }
+            }
+                if case .none = failure {
+                    if query.before(.r1) {
+                        failure = .injected(.r1, 0)
+                    } else {
+                        let object = CounterDynamicCommitted(capacity: capacities[3])
+                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
+                    s.r1.install(consume object); record(s.r1.facts(id: .r1, payloadBytes: retainedPayloadBytes))
+                    if query.after(.r1) { failure = .injected(.r1, 1) }
+                }
+            }
+                if case .none = failure {
+                    if query.before(.h1) {
+                        failure = .injected(.h1, 0)
+                    } else {
+                        let object = CounterDynamicHits(capacity: capacities[4])
+                    let retainedPayloadBytes = Int(object.reservedPayloadBytes)
+                    s.h1.install(consume object); record(s.h1.facts(id: .h1, payloadBytes: retainedPayloadBytes))
+                    if query.after(.h1) { failure = .injected(.h1, 1) }
+                }
+            }
+        return failure
+    }
+    #endif
+    fileprivate mutating func initializeStatic(fault: P08AcquisitionFault? = nil) -> P08BackingInitializationFailure? {
+        if let failure = prepareInitialization() { return failure }
+        guard validateStaticReservations() else { return .invalidReservation }
+        let failure = initializeStaticObjects(staticSlots(), fault: fault)
+        if let failure { destroyStaticPrefix(); return failure }
+        completeInitialization()
+        return nil
+    }
+
+    private borrowing func destroyStaticOriginal(_ entry: P08InitializedEntry) {
+        let s = staticSlots()
+
+            switch entry.id {
+            case .b0: s.b0.destroy(count: entry.count)
+            case .b1: s.b1.destroy(count: entry.count)
+            case .b2: s.b2.destroy(count: entry.count)
+            case .b3: s.b3.destroy(count: entry.count)
+            case .g0: s.g0.destroy()
+            case .g1: s.g1.destroy()
+            case .g2: s.g2.destroy()
+            case .g3: s.g3.destroy()
+            case .g4: s.g4.destroy()
+            case .c0: s.c0.destroy()
+            case .h0: s.h0.destroy()
+            case .r0: s.r0.destroy()
+            case .r1: s.r1.destroy()
+            case .h1: s.h1.destroy()
+            }
+
+    }
+    private mutating func nextEntryForDestruction() -> P08InitializedEntry? {
+        guard acquired > 0 else { lifecycle = .reserved; return nil }
+        acquired -= 1
+        return P08InitializedEntryIndexAccess.get(inventory, at: acquired)!
+    }
+    private mutating func recordDestruction(_ entry: P08InitializedEntry) {
+        P08InitializedEntryIndexAccess.set(&destruction, at: destroyed, to: entry)
+        destroyed += 1
+        P08InitializedEntryIndexAccess.set(&inventory, at: acquired, to: nil)
+        #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+        p08RetirementWitness?.pointee.destroyed(entry)
+        #endif
+    }
+    private mutating func destroyStaticPrefix() {
+        while let entry = nextEntryForDestruction() {
+            destroyStaticOriginal(entry)
+            recordDestruction(entry)
+        }
+    }
+
+    #if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF || GIFTUI_COUNTER_ALLOCATION_GATE
+    @_noAllocation
+    #endif
+    fileprivate func requireStaticEmpty() {
+        let s = staticSlots()
+
+            s.g0.withBorrow { precondition($0.pointee.scopeCount == 0 && $0.pointee.textLineCount == 0 && $0.pointee.positionedGlyphCount == 0) }
+            s.g2.withBorrow { pointer in
+                precondition(p08StaticReferencesAreEmpty(&pointer.pointee))
+            }
+            s.g3.withBorrow { pointer in
+                precondition(p08StaticDrawingIsEmpty(&pointer.pointee))
+            }
+            s.g4.withBorrow { precondition(!$0.pointee.isActive) }
+            s.c0.withBorrow { precondition($0.pointee.count == 0) }
+            s.h0.withBorrow { precondition($0.pointee.count == 0) }
+            s.r0.withBorrow { precondition($0.pointee.count == 0) }
+            s.r1.withBorrow { precondition($0.pointee.count == 0) }
+            s.h1.withBorrow { precondition($0.pointee.count == 0) }
+
+    }
+    fileprivate mutating func releaseStatic() {
+        let isIdle: Bool
+        if case .idle = lifecycle { isIdle = true } else { isIdle = false }
+        precondition(isIdle)
+        requireStaticEmpty()
+        destroyStaticPrefix()
+        lifecycle = .released
+    }
+    fileprivate mutating func finishStaticReservation() {
+        if case .idle = lifecycle { releaseStatic() }
+        else {
+            let released: Bool
+            if case .released = lifecycle { released = acquired == 0 } else { released = false }
+            precondition(released)
+        }
+    }
+    fileprivate mutating func finishStaticMetadataReservation() -> Bool {
+        switch lifecycle {
+        case .reserved, .released: return acquired == 0
+        case .idle: finishStaticReservation(); return true
+        case .active: return false
+        }
+    }
+
+    private func requireIdleForSession() {
+
         let p08ExactCase23: Bool;
         if case .idle = lifecycle {
             if validateCapacities() { p08ExactCase23 = true } else { p08ExactCase23 = false }
         } else {
             p08ExactCase23 = false
         }; precondition(p08ExactCase23)
-        requireEmpty()
+    }
+    private mutating func beginSession() {
         let next = serial.addingReportingOverflow(1); precondition(!next.overflow)
         serial = next.partialValue; lifecycle = .active
+    }
+    private mutating func endSession() { lifecycle = .idle }
+    fileprivate mutating func withStaticStorage<Result>(transcript: UnsafeMutablePointer<P08RoleTranscript>? = nil, _ body: (consuming P08StorageSession) -> Result) -> Result {
+        requireIdleForSession()
+        requireStaticEmpty()
+        beginSession()
+        let result = lendStaticSession(staticSlots(), prepared: prepareSession(), transcript: transcript, body)
+        requireStaticEmpty()
+        endSession()
+        return result
+    }
+    private borrowing func lendStaticSession<Result>(_ s: P08StaticSlots, prepared: P08SessionPreparation, transcript: UnsafeMutablePointer<P08RoleTranscript>?, _ body: (consuming P08StorageSession) -> Result) -> Result {
         let ownerIdentity = identity; let sessionSerial = serial
-        let prepared = prepareSession()
         let b0Address = prepared.b0Address
         let b1Address = prepared.b1Address
         let b2Address = prepared.b2Address
@@ -1440,8 +1602,7 @@ extension P08TypedBackingOwner {
         let h1Entry = prepared.h1Entry
         let configuration = prepared.configuration
         let result: Result
-        switch slots {
-        case .static(let s):
+
             let b0Slot = s.b0
             let b1Slot = s.b1
             let b2Slot = s.b2
@@ -1491,8 +1652,33 @@ extension P08TypedBackingOwner {
                 }
                 }
                 }
-        #if !hasFeature(Embedded)
-        case .dynamic(let s):
+        return result
+    }
+    #if !hasFeature(Embedded)
+    private borrowing func lendDynamicSession<Result>(_ s: P08DynamicSlots, prepared: P08SessionPreparation, transcript: UnsafeMutablePointer<P08RoleTranscript>?, _ body: (consuming P08StorageSession) -> Result) -> Result {
+        let ownerIdentity = identity; let sessionSerial = serial
+        let _ = prepared.b0Address
+        let _ = prepared.b1Address
+        let _ = prepared.b2Address
+        let _ = prepared.b3Address
+        let g0Address = prepared.g0Address
+        let g1Address = prepared.g1Address
+        let _ = prepared.g2Address
+        let g3Address = prepared.g3Address
+        let g4Address = prepared.g4Address
+        let c0Address = prepared.c0Address
+        let h0Address = prepared.h0Address
+        let r0Address = prepared.r0Address
+        let r1Address = prepared.r1Address
+        let h1Address = prepared.h1Address
+        let c0Entry = prepared.c0Entry
+        let h0Entry = prepared.h0Entry
+        let r0Entry = prepared.r0Entry
+        let r1Entry = prepared.r1Entry
+        let h1Entry = prepared.h1Entry
+        let configuration = prepared.configuration
+        let result: Result
+
             let g0Slot = s.g0
             let g1Slot = s.g1
             let g3Slot = s.g3
@@ -1525,12 +1711,16 @@ extension P08TypedBackingOwner {
                 }
                 }
                 }
-        #endif
-        }
-        // Capability/token/pointee borrows end before reaccessing the actual owner.
-        requireEmpty(); lifecycle = .idle
         return result
     }
+    #endif
+
+}
+fileprivate func initializeP08StaticBacking(_ backing: inout P08TypedBackingOwner) -> P08BackingInitializationFailure? {
+    backing.initializeStatic()
+}
+fileprivate func withP08StaticStorage<Result>(backing: inout P08TypedBackingOwner, _ body: (consuming P08StorageSession) -> Result) -> Result {
+    backing.withStaticStorage(body)
 }
 fileprivate func withP08Storage<Result>(backing: inout P08TypedBackingOwner,
     _ body: (consuming P08StorageSession) -> Result) -> Result {
@@ -1561,13 +1751,16 @@ fileprivate struct P08StaticReservation: ~Copyable {
     var g0: StaticCounterLayoutWorkspace? = nil
     var g1: StaticCounterResolvedLayoutStorage? = nil
     var g2: InlineArray<64, SemanticRecordReference?>? = nil
-    var g3: StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>? = nil
+    var g3: StaticCounterRecordDrawingWorkspace? = nil
     var g4: P08StaticRenderReservation = .init()
     var c0: CounterStaticCandidate? = nil
     var h0: CounterStaticHits? = nil
     var r0: CounterStaticCommitted? = nil
     var r1: P08PaddedReservation<CounterStaticCommitted> = .init()
     var h1: CounterStaticHits? = nil
+    #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+    deinit { p08RetirementWitness?.pointee.backingEnded(dynamic: false) }
+    #endif
 }
 fileprivate func withP08StaticReservation<Result>(surplus: Bool = false, capacities: InlineArray<5, UInt16> = [2, 2, 2, 2, 2], _ body: (inout P08TypedBackingOwner) -> Result) -> Result {
     precondition(MemoryLayout<P08StaticRenderReservation>.size == MemoryLayout<P08StaticRenderReservation>.stride)
@@ -1596,6 +1789,15 @@ fileprivate func withP08StaticReservation<Result>(surplus: Bool = false, capacit
         withP08R1Reservation(r1Reservation, surplus: surplus) { r1 in
         withUnsafeMutablePointer(to: &reservation.h1) { h1 in
             var owner = P08TypedBackingOwner(slots: .static(.init(b0: .scopes(b0), b1: .text(b1), b2: .path(b2), b3: .plan(b3), g0: .native(g0), g1: .native(g1), g2: .native(g2), g3: .native(g3), g4: .native(g4), c0: .native(c0), h0: .native(h0), r0: .native(r0), r1: r1, h1: .native(h1))), identity: UInt(bitPattern: b0), capacities: capacities)
+            #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+            owner.p08BeginRetirementObservation()
+            #endif
+            defer {
+                precondition(owner.finishStaticMetadataReservation())
+                #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+                owner.p08ObserveRetirement()
+                #endif
+            }
             return body(&owner)
         }
         }
@@ -1625,6 +1827,9 @@ fileprivate struct P08DynamicReservation: ~Copyable {
     var r0: CounterDynamicCommitted? = nil
     var r1: P08PaddedReservation<CounterDynamicCommitted> = .init()
     var h1: CounterDynamicHits? = nil
+    #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+    deinit { p08RetirementWitness?.pointee.backingEnded(dynamic: true) }
+    #endif
 }
 fileprivate func withP08DynamicReservation<Result>(surplus: Bool = false, capacities: InlineArray<5, UInt16> = [2, 2, 2, 2, 2], _ body: (inout P08TypedBackingOwner) -> Result) -> Result {
     var reservation = P08DynamicReservation()
@@ -1639,6 +1844,15 @@ fileprivate func withP08DynamicReservation<Result>(surplus: Bool = false, capaci
         withP08R1Reservation(r1Reservation, surplus: surplus) { r1 in
         withUnsafeMutablePointer(to: &reservation.h1) { h1 in
             var owner = P08TypedBackingOwner(slots: .dynamic(.init(g0: .native(g0), g1: .native(g1), g3: .native(g3), g4: .native(g4), c0: .native(c0), h0: .native(h0), r0: .native(r0), r1: r1, h1: .native(h1))), identity: UInt(bitPattern: g0), capacities: capacities)
+            #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+            owner.p08BeginRetirementObservation()
+            #endif
+            defer {
+                precondition(owner.finishMetadataReservation())
+                #if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+                owner.p08ObserveRetirement()
+                #endif
+            }
             return body(&owner)
         }
         }
@@ -1742,7 +1956,7 @@ fileprivate struct P08EmbeddedOuter: ~Copyable {
             g0: .embedded(counterEmbeddedField(bytes, StaticCounterLayoutWorkspace.self, region: layout.regions[13]!), layout.regions[13]!.extent),
             g1: .embedded(counterEmbeddedField(bytes, StaticCounterResolvedLayoutStorage.self, region: layout.regions[14]!), layout.regions[14]!.extent),
             g2: .embedded(counterEmbeddedField(bytes, InlineArray<64, SemanticRecordReference?>.self, region: layout.regions[15]!), layout.regions[15]!.extent),
-            g3: .embedded(counterEmbeddedField(bytes, StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>.self, region: layout.regions[16]!), layout.regions[16]!.extent),
+            g3: .embedded(counterEmbeddedField(bytes, StaticCounterRecordDrawingWorkspace.self, region: layout.regions[16]!), layout.regions[16]!.extent),
             g4: .embedded(counterEmbeddedField(bytes, QualifiedRender.self, region: layout.regions[17]!), layout.regions[17]!.extent),
             c0: .embedded(counterEmbeddedField(bytes, CounterStaticCandidate.self, region: layout.regions[18]!), layout.regions[18]!.extent),
             h0: .embedded(counterEmbeddedField(bytes, CounterStaticHits.self, region: layout.regions[19]!), layout.regions[19]!.extent),
@@ -2984,14 +3198,14 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
         withP08EntriesFieldBuffer(&outer.canvasBacking) { entries in
             withP08StaticReservation { owner in
                                                         let p08Presence24: Bool;
-                                                        if case .none = initializeP08Backing(&owner)
+                                                        if case .none = initializeP08StaticBacking(&owner)
                                                         {
                                                             p08Presence24 = true
                                                         } else {
                                                             p08Presence24 = false
                                                         }; precondition(p08Presence24)
-                                                        defer { owner.finishReservation() }
-                                                        let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<CounterStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
+                                                        defer { owner.finishStaticReservation() }
+                                                        let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<CounterStaticRootStorage>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticCounterRecordDrawingWorkspace?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
                 let view = P08StaticOuterView(limits: limits, root: root, semantic: semantic, records: records, paths: paths, payloads: payloads, scalars: scalars, canvas: canvas, entries: entries, control: control, outerMetadataBytes: metadata)
                 defer { CounterControl.requireVacantRuntimeSlot(at: control) }
                 return body(&owner, view, semanticCodec)
@@ -3417,7 +3631,7 @@ fileprivate func p08RunPreparedStaticHost(owner: inout P08TypedBackingOwner, fac
                         do throws(DrawingError) {
                             var entries = MutableSpan(_unsafeStart: entriesBacking.baseAddress!, count: entriesBacking.count)
                             try canvasStorage.pointee.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: facts.limits.staticCanvas!) { values in
-                                checks = withP08Storage(backing: &owner) { session in
+                                checks = withP08StaticStorage(backing: &owner) { session in
                                     runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), semanticCodec: copy semanticCodec, values: values.borrowedValues(), control: control, facts: &facts, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse, baseline: baseline)
                                 }
                             }
@@ -3445,10 +3659,15 @@ fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borr
 #if !hasFeature(Embedded)
 package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
     var models = ObservableModelOwnerNamespace(); var semantics = SemanticRecordOwnerNamespace()
-    do {
+    do throws(ObservableStateError) {
         var checks = 0
         for scenario: UInt8 in 0...8 {
-            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer, semanticCodec in
+            let modelOwner = try models.issue()
+            let semanticOwner: SemanticRecordOwnerIdentity
+            do throws(SemanticExpansionError) {
+                semanticOwner = try semantics.issue()
+            } catch { preconditionFailure("counter host identities") }
+            checks += withP08SelectedStatic(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: nil) { owner, outer, semanticCodec in
                 outer.control.pointee.terminalRetry = scenario == 2
                 outer.control.pointee.idleQuiesceMode = scenario >= 3 ? scenario - 1 : 0
                 #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
@@ -3458,7 +3677,12 @@ package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: Unsaf
             }
         }
         let firstModel = try models.issue(), secondModel = try models.issue()
-        let firstSemantic = try semantics.issue(), secondSemantic = try semantics.issue()
+        let firstSemantic: SemanticRecordOwnerIdentity
+        let secondSemantic: SemanticRecordOwnerIdentity
+        do throws(SemanticExpansionError) {
+            firstSemantic = try semantics.issue()
+            secondSemantic = try semantics.issue()
+        } catch { preconditionFailure("counter host identities") }
         precondition(firstModel != secondModel && firstSemantic != secondSemantic)
         counterTrace("reuse.namespaces", (firstModel, secondModel, firstSemantic, secondSemantic))
         var transcript = P08HostReuseTranscript()
@@ -3469,16 +3693,16 @@ package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: Unsaf
                 let address = UInt(bitPattern: control)
                 p08RequireFreshControl(control)
                 var count = runP08StaticHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, write: write, reuse: transcript)
-                owner.requireEmpty()
+                owner.requireStaticEmpty()
                 p08RequireRetiredControl(control)
                 outer.reconstruct(modelOwner: secondModel, semanticOwner: secondSemantic)
                 precondition(UInt(bitPattern: control) == address)
                 count += runP08StaticHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, write: write, reuse: transcript)
-                owner.requireEmpty()
+                owner.requireStaticEmpty()
                 p08RequireSameInventory(owner.originalInventory(), original)
                 p08RequireRetiredControl(control)
                 transcript.pointee.endRetainedObservations()
-                owner.release()
+                owner.releaseStatic()
                 precondition(transcript.pointee.hosts == 2)
                 count += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
                 p08ReuseLabel("static", "inventory-two-hosts"); p08ReuseLabel("static", "control-same-address"); p08ReuseLabel("static", "cleanup-backing-last")
@@ -3716,8 +3940,12 @@ package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> I
     p08CheckGraphDefinition()
     var modelOwners = ObservableModelOwnerNamespace()
     var semanticOwners = SemanticRecordOwnerNamespace()
-    do {
-        return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+    let modelOwner: ObservableModelOwnerIdentity
+    do throws(ObservableStateError) {
+        modelOwner = try modelOwners.issue()
+    } catch { preconditionFailure("counter graph profile identities") }
+    do throws(SemanticExpansionError) {
+        return withP08SelectedStatic(modelOwner: modelOwner, semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
         return p08CheckGraphSelection(owner: owner, outer: outer)
 
         }
@@ -3732,8 +3960,12 @@ package func p08ActualVisitorAuditEffectProof() -> Int {
     p08CheckGraphDefinition()
     var modelOwners = ObservableModelOwnerNamespace()
     var semanticOwners = SemanticRecordOwnerNamespace()
-    do {
-        return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+    let modelOwner: ObservableModelOwnerIdentity
+    do throws(ObservableStateError) {
+        modelOwner = try modelOwners.issue()
+    } catch { preconditionFailure("counter graph profile identities") }
+    do throws(SemanticExpansionError) {
+        return withP08SelectedStatic(modelOwner: modelOwner, semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
             let physicalAudit = outer.auditStatic(owner: owner, report: { _ in })
             guard case .valid(let audit) = physicalAudit else {
                 preconditionFailure("counter graph audit")
@@ -4132,11 +4364,13 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
     // Native typed arrays acquire whole T values. Embedded additionally acquires
     // every possible UInt8 prefix; all faults remain original-prefix unwind.
     #if !hasFeature(Embedded)
-    for index in 0..<14 { for after in [false, true] {
+    for index in 0..<14 { for afterOrdinal in 0..<2 {
+        let after = afterOrdinal != 0
+
         let fault = P08AcquisitionFault(id: staticIDs[index]!, completed: 0, afterInstall: after)
         checks += withP08StaticReservation { owner in
                         let p08Presence46: Bool;
-                        if case .some = owner.initialize(fault: fault) {
+                        if case .some = owner.initializeStatic(fault: fault) {
                             p08Presence46 = true
                         } else {
                             p08Presence46 = false
@@ -4155,7 +4389,7 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
         let capacities = invalidCapacityCases[capacityIndex]
         checks += withP08StaticReservation(capacities: capacities) { owner in
                     let p08ExactCase41: Bool;
-                    if case .some(.invalidCapacity) = owner.initialize() {
+                    if case .some(.invalidCapacity) = owner.initializeStatic() {
                         p08ExactCase41 = true
                     } else {
                         p08ExactCase41 = false
@@ -4174,7 +4408,7 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
     }
     checks += withP08StaticReservation { owner in
                 let p08Presence48: Bool;
-                if case .none = owner.initialize() {
+                if case .none = owner.initializeStatic() {
                     p08Presence48 = true
                 } else {
                     p08Presence48 = false
@@ -4183,7 +4417,7 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
                 var count = 0
         for _ in 0..<3 {
             var transcript = P08RoleTranscript()
-            count += withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in
+            count += withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStaticStorage(transcript: pointer) { session in
                 var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }
                 return holder.exercise()
             } }
@@ -4191,13 +4425,15 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
             let current = owner.originalInventory()
             for index in 0..<14 { precondition(current[index]!.address == original[index]!.address && current[index]!.retainedBytes == original[index]!.retainedBytes) }
         }
-        owner.release()
+        owner.releaseStatic()
         return count + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
     }
-    for surplus in [false, true] {
+    for surplusOrdinal in 0..<2 {
+        let surplus = surplusOrdinal != 0
+
         checks += withP08StaticReservation(surplus: surplus) { owner in
                     let p08Presence49: Bool;
-                    if case .none = owner.initialize() {
+                    if case .none = owner.initializeStatic() {
                         p08Presence49 = true
                     } else {
                         p08Presence49 = false
@@ -4207,8 +4443,8 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
             precondition(left.retainedBytes <= right.retainedBytes)
             if surplus { precondition(left.retainedBytes < right.retainedBytes) }
             var transcript = P08RoleTranscript()
-            let count = withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
-            owner.release()
+            let count = withUnsafeMutablePointer(to: &transcript) { pointer in owner.withStaticStorage(transcript: pointer) { session in var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise() } }
+            owner.releaseStatic()
             return count + p08VerifyRoleTranscript(transcript) + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
         }
         if includeDynamicValidation {
@@ -4230,18 +4466,30 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
     }
     #endif
     var models = ObservableModelOwnerNamespace(); var semantics = SemanticRecordOwnerNamespace()
-    do {
+    do throws(ObservableStateError) {
 
         for early: UInt8 in 1...5 {
-            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer, semanticCodec in runP08StaticHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, early: early, write: write) }
+            let modelOwner = try models.issue()
+            let semanticOwner: SemanticRecordOwnerIdentity
+            do throws(SemanticExpansionError) {
+                semanticOwner = try semantics.issue()
+            } catch { preconditionFailure("scoped corpus identities") }
+            checks += withP08SelectedStatic(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: nil) { owner, outer, semanticCodec in runP08StaticHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, early: early, write: write) }
         }
         for raw: UInt8 in 0...10 {
-            checks += withP08SelectedStatic(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: nil) { owner, outer, semanticCodec in runP08StaticHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write) }
+            let modelOwner = try models.issue()
+            let semanticOwner: SemanticRecordOwnerIdentity
+            do throws(SemanticExpansionError) {
+                semanticOwner = try semantics.issue()
+            } catch { preconditionFailure("scoped corpus identities") }
+            checks += withP08SelectedStatic(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: nil) { owner, outer, semanticCodec in runP08StaticHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!, write: write) }
         }
         #if !hasFeature(Embedded)
         if includeDynamicValidation {
             let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]
-            for index in 0..<9 { for after in [false, true] {
+            for index in 0..<9 { for afterOrdinal in 0..<2 {
+                let after = afterOrdinal != 0
+
                 let fault = P08AcquisitionFault(id: dynamicIDs[index]!, completed: 0, afterInstall: after)
                             checks += withP08DynamicReservation { owner in
                                 let p08Presence51: Bool;
@@ -4281,8 +4529,22 @@ private func counterExerciseScopedStorage(includeDynamicValidation: Bool, backin
                 }
                 owner.release(); return count + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 9)
             }
-            for early: UInt8 in 1...5 { checks += withP08SelectedDynamic(modelOwner: try models.issue(), semanticOwner: try semantics.issue()) { owner, outer, semanticCodec in runP08DynamicHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, early: early) } }
-            for raw: UInt8 in 0...10 { checks += withP08SelectedDynamic(modelOwner: try models.issue(), semanticOwner: try semantics.issue()) { owner, outer, semanticCodec in runP08DynamicHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!) } }
+            for early: UInt8 in 1...5 {
+                let modelOwner = try models.issue()
+                let semanticOwner: SemanticRecordOwnerIdentity
+                do throws(SemanticExpansionError) {
+                    semanticOwner = try semantics.issue()
+                } catch { preconditionFailure("scoped corpus identities") }
+                checks += withP08SelectedDynamic(modelOwner: modelOwner, semanticOwner: semanticOwner) { owner, outer, semanticCodec in runP08DynamicHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, early: early) }
+            }
+            for raw: UInt8 in 0...10 {
+                let modelOwner = try models.issue()
+                let semanticOwner: SemanticRecordOwnerIdentity
+                do throws(SemanticExpansionError) {
+                    semanticOwner = try semantics.issue()
+                } catch { preconditionFailure("scoped corpus identities") }
+                checks += withP08SelectedDynamic(modelOwner: modelOwner, semanticOwner: semanticOwner) { owner, outer, semanticCodec in runP08DynamicHost(owner: &owner, outer: outer, semanticCodec: semanticCodec, failAfterRuntime: false, candidateFailure: RuntimeCompletePipelineStage(rawValue: raw)!) }
+            }
         }
         #endif
     } catch { preconditionFailure("scoped corpus identities") }
@@ -4309,37 +4571,61 @@ fileprivate struct P08SessionOnlyCleanup: ~Copyable, ~Escapable {
 @MainActor fileprivate var p08NativeExclusivityOwner: P08TypedBackingOwner? = nil
 @inline(never)
     @MainActor fileprivate func p08ReadNativeExclusiveOwner() -> Bool {
-        if case .some = p08NativeExclusivityOwner { return true }; return false
+        p08NativeOwnerIsPresent(p08NativeExclusivityOwner)
+    }
+    @inline(never)
+    fileprivate func p08NativeOwnerIsPresent(_ owner: borrowing P08TypedBackingOwner?) -> Bool {
+        owner != nil
     }
     @MainActor package func counterScopedNativeExclusivity(negative: Bool) -> Int {
         let p08Presence53: Bool;
-        if case .none = p08NativeExclusivityOwner {
+        if !p08NativeOwnerIsPresent(p08NativeExclusivityOwner) {
             p08Presence53 = true
         } else {
             p08Presence53 = false
         }; precondition(p08Presence53)
         func exercise(_ owner: inout P08TypedBackingOwner) -> Int {
             let p08Presence54: Bool;
+            #if GIFTUI_COUNTER_ROUTE_DYNAMIC
             if case .none = owner.initialize() {
                 p08Presence54 = true
             } else {
                 p08Presence54 = false
             }; precondition(p08Presence54)
+            #else
+            if case .none = owner.initializeStatic() {
+                p08Presence54 = true
+            } else {
+                p08Presence54 = false
+            }; precondition(p08Presence54)
+            #endif
             p08NativeExclusivityOwner = consume owner
             if !negative { precondition(p08ReadNativeExclusiveOwner()) }
+        #if GIFTUI_COUNTER_ROUTE_DYNAMIC
         let checks = withP08Storage(backing: &p08NativeExclusivityOwner!) { session in
             var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }
             if negative { precondition(p08ReadNativeExclusiveOwner()) }
             return 1
         }
+        #else
+        let checks = withP08StaticStorage(backing: &p08NativeExclusivityOwner!) { session in
+            var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }
+            if negative { precondition(p08ReadNativeExclusiveOwner()) }
+            return 1
+        }
+        #endif
         owner = p08NativeExclusivityOwner.take()!
             let p08Presence55: Bool;
-            if case .none = p08NativeExclusivityOwner {
+            if !p08NativeOwnerIsPresent(p08NativeExclusivityOwner) {
                 p08Presence55 = true
             } else {
                 p08Presence55 = false
             }; precondition(p08Presence55)
+            #if GIFTUI_COUNTER_ROUTE_DYNAMIC
             owner.release()
+            #else
+            owner.releaseStatic()
+            #endif
             return checks
     }
     #if GIFTUI_COUNTER_ROUTE_DYNAMIC
@@ -4510,7 +4796,7 @@ fileprivate func p08PrepareMetadata(_ p: borrowing P08MetadataPointers,
 }
 @inline(never)
 fileprivate func p08FinishMetadataOwner(_ owner: inout P08TypedBackingOwner) -> Bool {
-    owner.finishMetadataReservation()
+    owner.finishStaticMetadataReservation()
 }
 @inline(never)
 fileprivate func p08DestroyMetadataForeignControl(_ pointer: UnsafeMutablePointer<CounterControl>) {
@@ -4688,7 +4974,7 @@ fileprivate func p08RunMetadataCase(_ plan: P08EmbeddedCasePlan, pointers p: bor
 @inline(never)
 fileprivate func p08RunMetadataInvalid(owner: inout P08TypedBackingOwner,
     original: inout InlineArray<14, P08InitializedEntry?>) -> Int {
-    let invalid = owner.initialize() == .invalidReservation
+    let invalid = owner.initializeStatic() == .invalidReservation
     precondition(invalid)
     original = owner.originalInventory()
         for index in 0 ..< 14 {
@@ -4704,14 +4990,14 @@ fileprivate func p08RunMetadataFault(owner: inout P08TypedBackingOwner,
     let ids: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
     let fault = P08AcquisitionFault(id: id, completed: completed, afterInstall: after)
         let failed: Bool;
-        if case .some = owner.initialize(fault: fault) { failed = true } else { failed = false }
+        if case .some = owner.initializeStatic(fault: fault) { failed = true } else { failed = false }
         precondition(failed)
         return p08VerifyFault(owner, fault: fault, ids: ids, objects: 14)
 }
 @inline(never)
 fileprivate func p08RunMetadataGraph(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter) -> Int {
         let initialized: Bool;
-        if case .none = initializeP08Backing(&owner) {
+        if case .none = initializeP08StaticBacking(&owner) {
             initialized = true
         } else {
             initialized = false
@@ -4726,7 +5012,7 @@ fileprivate func p08RunMetadataHost(_ plan: P08EmbeddedCasePlan,
     foreignRoot: UnsafeMutablePointer<CounterStaticRootStorage>,
     foreignControl: UnsafeMutablePointer<CounterControl>, write: CounterTiledPixelWrite?) -> Int {
         let initialized: Bool;
-        if case .none = initializeP08Backing(&owner) {
+        if case .none = initializeP08StaticBacking(&owner) {
             initialized = true
         } else {
             initialized = false
@@ -4739,7 +5025,7 @@ fileprivate func p08RunMetadataHost(_ plan: P08EmbeddedCasePlan,
 @inline(never)
 fileprivate func p08InitializeMetadataHostBacking(_ owner: inout P08TypedBackingOwner) {
         let initialized: Bool;
-        if case .none = initializeP08Backing(&owner) {
+        if case .none = initializeP08StaticBacking(&owner) {
             initialized = true
         } else {
             initialized = false
@@ -4753,7 +5039,7 @@ fileprivate func p08CaptureMetadataHostInventory(_ owner: inout P08TypedBackingO
 }
 @inline(never)
 fileprivate func p08RequireMetadataHostEmpty(_ owner: inout P08TypedBackingOwner) {
-    owner.requireEmpty()
+    owner.requireStaticEmpty()
 }
 @inline(never)
 fileprivate func p08RequireMetadataHostRetired(_ control: UnsafeMutablePointer<CounterControl>) {
@@ -4762,7 +5048,7 @@ fileprivate func p08RequireMetadataHostRetired(_ control: UnsafeMutablePointer<C
 @inline(never)
 fileprivate func p08InstallEmbeddedHostPlan(owner: inout P08TypedBackingOwner,
     outer: inout P08EmbeddedOuter, write: CounterTiledPixelWrite?, plan: P08EmbeddedCasePlan?) {
-        let vacant: Bool; if case .none = outer.hostPlan { vacant = true } else { vacant = false };
+        let vacant = outer.hostPlan == nil
         precondition(vacant)
         let view = p08MetadataOuterView(outer)
         if let plan {
@@ -4856,7 +5142,7 @@ fileprivate func p08FinishMetadataTwoHosts(owner: inout P08TypedBackingOwner,
     p08RequireMetadataHostEmpty(&owner)
     p08RequireSameInventory(owner.originalInventory(), original)
     p08RequireMetadataHostRetired(control); transcript.pointee.endRetainedObservations()
-    owner.release()
+    owner.releaseStatic()
     precondition(transcript.pointee.hosts == 2)
     let checks = p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
     p08ReuseLabel("static", "inventory-two-hosts"); p08ReuseLabel("static", "control-same-address"); p08ReuseLabel("static", "cleanup-backing-last")
@@ -4866,7 +5152,7 @@ fileprivate func p08FinishMetadataTwoHosts(owner: inout P08TypedBackingOwner,
 fileprivate func p08RunMetadataExchange(owner: inout P08TypedBackingOwner, outer: inout P08EmbeddedOuter,
     original: inout InlineArray<14, P08InitializedEntry?>, surplus: Int) -> Int {
         let initialized: Bool;
-        if case .none = initializeP08Backing(&owner) {
+        if case .none = initializeP08StaticBacking(&owner) {
             initialized = true
         } else {
             initialized = false
@@ -4882,12 +5168,12 @@ fileprivate func p08RunMetadataExchange(owner: inout P08TypedBackingOwner, outer
     }
     var transcript = P08RoleTranscript()
     var checks = withUnsafeMutablePointer(to: &transcript) { pointer in
-        owner.withStorage(transcript: pointer) { session in
+        owner.withStaticStorage(transcript: pointer) { session in
             var holder = P08SessionOnlyCleanup(session: session); defer { holder.finish() }; return holder.exercise()
         }
     }
     checks += p08VerifyRoleTranscript(transcript)
-    owner.release()
+    owner.releaseStatic()
     return checks + p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
 }
 fileprivate func p08EmbeddedGraph(custody: inout P08CallerCustody) -> Int {
@@ -4914,12 +5200,19 @@ fileprivate func p08EmbeddedScoped(custody: inout P08CallerCustody, write: Count
     var models = ObservableModelOwnerNamespace(), semantics = SemanticRecordOwnerNamespace()
     do {
         var checks = 0
-        for surplus in [0, 64] { checks += custody.run(.exchange(surplus), model: try models.issue(), semantic: try semantics.issue()) }
+        for surplusOrdinal in 0..<2 {
+            let surplus = surplusOrdinal * 64
+            checks += custody.run(.exchange(surplus), model: try models.issue(), semantic: try semantics.issue())
+        }
         checks += custody.run(.invalidExtent, model: try models.issue(), semantic: try semantics.issue())
-        for index in 0..<14 { for after in [false, true] {
+        for index in 0..<14 { for afterOrdinal in 0..<2 {
+            let after = afterOrdinal != 0
+
             checks += custody.run(.fault(ids[index]!, 0, after), model: try models.issue(), semantic: try semantics.issue())
         } }
-        for (id, count) in [(P08PhysicalID.b0,1024), (.b1,1056), (.b2,20), (.b3,112)] {
+        let byteFaultCases: InlineArray<4, (P08PhysicalID, Int)> = [(P08PhysicalID.b0,1024), (.b1,1056), (.b2,20), (.b3,112)]
+        for byteFaultOrdinal in 0..<4 {
+            let (id, count) = byteFaultCases[byteFaultOrdinal]
             for prefix in 1..<count { checks += custody.run(.fault(id, prefix, false), model: try models.issue(), semantic: try semantics.issue()) }
         }
         for early: UInt8 in 1...5 { checks += custody.run(.early(early), model: try models.issue(), semantic: try semantics.issue(), write: write) }
@@ -5150,18 +5443,20 @@ package func p08CounterPhysicalFactsQualification() -> Int {
                 dynamicOwner.requireEmpty(); dynamicOwner.release()
                 return p08VerifyDestruction(dynamicOwner.destructionTranscript(), original: dynamicOriginal, expectedCount: 9) + 4
             }
-            owner.requireEmpty(); owner.release()
+            owner.requireStaticEmpty(); owner.releaseStatic()
             count += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
             return count + 5
         }
     } catch { preconditionFailure("physical facts namespaces") }
-    for surplus in [false, true] {
+    for surplusOrdinal in 0..<2 {
+        let surplus = surplusOrdinal != 0
+
         checks += withP08StaticReservation(surplus: surplus) { owner in
-            precondition(owner.initialize() == nil)
+            precondition(owner.initializeStatic() == nil)
             let original = owner.originalInventory(), reference = owner.originalPhysicalFactsForQualification()
             p08RequireSamePhysicalFacts(owner.physicalFacts(), reference)
             p08RequireSamePhysicalFacts(owner.staticPhysicalFacts(), reference)
-            owner.requireEmpty(); owner.release()
+            owner.requireStaticEmpty(); owner.releaseStatic()
             return p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14) + 2
         }
         checks += withP08DynamicReservation(surplus: surplus) { owner in
@@ -5174,14 +5469,18 @@ package func p08CounterPhysicalFactsQualification() -> Int {
     }
     let staticIDs: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
     let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]
-    for index in 0..<14 { for after in [false, true] {
+    for index in 0..<14 { for afterOrdinal in 0..<2 {
+        let after = afterOrdinal != 0
+
         let fault = P08AcquisitionFault(id: staticIDs[index]!, completed: 0, afterInstall: after)
         checks += withP08StaticReservation { owner in
-            precondition(owner.initialize(fault: fault) != nil)
+            precondition(owner.initializeStatic(fault: fault) != nil)
             return p08VerifyFault(owner, fault: fault, ids: staticIDs, objects: 14)
         }
     } }
-    for index in 0..<9 { for after in [false, true] {
+    for index in 0..<9 { for afterOrdinal in 0..<2 {
+        let after = afterOrdinal != 0
+
         let fault = P08AcquisitionFault(id: dynamicIDs[index]!, completed: 0, afterInstall: after)
         checks += withP08DynamicReservation { owner in
             precondition(owner.initialize(fault: fault) != nil)
@@ -5191,7 +5490,7 @@ package func p08CounterPhysicalFactsQualification() -> Int {
     let invalid: InlineArray<5, InlineArray<5, UInt16>> = [[1,2,2,2,2], [2,1,2,2,1], [2,2,1,1,2], [2,2,2,1,2], [2,2,2,2,1]]
     for index in 0..<5 {
         checks += withP08StaticReservation(capacities: invalid[index]) { owner in
-            guard case .some(.invalidCapacity) = owner.initialize() else { preconditionFailure("Static capacity refusal") }
+            guard case .some(.invalidCapacity) = owner.initializeStatic() else { preconditionFailure("Static capacity refusal") }
             return 1
         }
         checks += withP08DynamicReservation(capacities: invalid[index]) { owner in
@@ -5269,8 +5568,12 @@ package func p08ActualOwnedPhysicalAuditEffectProof() -> RuntimeProfileValidatio
     p08CheckGraphDefinition()
     var modelOwners = ObservableModelOwnerNamespace()
     var semanticOwners = SemanticRecordOwnerNamespace()
-    do {
-        return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
+    let modelOwner: ObservableModelOwnerIdentity
+    do throws(ObservableStateError) {
+        modelOwner = try modelOwners.issue()
+    } catch { preconditionFailure("counter physical audit namespace") }
+    do throws(SemanticExpansionError) {
+        return withP08SelectedStatic(modelOwner: modelOwner, semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, semanticCodec in
             outer.auditStatic(owner: owner, report: { _ in })
         }
     } catch { preconditionFailure("counter physical audit namespace") }
@@ -5449,10 +5752,253 @@ package func p08CounterAccountingStreamQualification() -> Int {
                 count += p08VerifyDestruction(dynamicOwner.destructionTranscript(), original: original, expectedCount: 9)
                 return count
             }
-            owner.requireEmpty(); owner.release()
+            owner.requireStaticEmpty(); owner.releaseStatic()
             checks += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
             return checks
         }
     } catch { preconditionFailure("accounting stream namespace") }
+}
+#endif
+
+fileprivate func p08MakeStaticRecordDrawingWorkspace(path: UnsafeMutableRawBufferPointer, plan: UnsafeMutableRawBufferPointer) -> StaticCounterRecordDrawingWorkspace? {
+    guard let base = StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits) else { return nil }
+    return StaticCounterRecordDrawingWorkspace(base: base)
+}
+fileprivate func p08MakeQualifiedRender(text: UnsafeMutableRawBufferPointer) -> QualifiedRender? {
+    guard let base = StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity) else { return nil }
+    return QualifiedRender(base: base)
+}
+
+// Inspect the canonical backing by address; no aggregate or span value is formed.
+#if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF || GIFTUI_COUNTER_ALLOCATION_GATE
+@_noAllocation
+#endif
+fileprivate func p08StaticReferencesAreEmpty(_ references: inout InlineArray<64, SemanticRecordReference?>) -> Bool {
+    if case .some = references[0] { return false }
+    if case .some = references[1] { return false }
+    if case .some = references[2] { return false }
+    if case .some = references[3] { return false }
+    if case .some = references[4] { return false }
+    if case .some = references[5] { return false }
+    if case .some = references[6] { return false }
+    if case .some = references[7] { return false }
+    if case .some = references[8] { return false }
+    if case .some = references[9] { return false }
+    if case .some = references[10] { return false }
+    if case .some = references[11] { return false }
+    if case .some = references[12] { return false }
+    if case .some = references[13] { return false }
+    if case .some = references[14] { return false }
+    if case .some = references[15] { return false }
+    if case .some = references[16] { return false }
+    if case .some = references[17] { return false }
+    if case .some = references[18] { return false }
+    if case .some = references[19] { return false }
+    if case .some = references[20] { return false }
+    if case .some = references[21] { return false }
+    if case .some = references[22] { return false }
+    if case .some = references[23] { return false }
+    if case .some = references[24] { return false }
+    if case .some = references[25] { return false }
+    if case .some = references[26] { return false }
+    if case .some = references[27] { return false }
+    if case .some = references[28] { return false }
+    if case .some = references[29] { return false }
+    if case .some = references[30] { return false }
+    if case .some = references[31] { return false }
+    if case .some = references[32] { return false }
+    if case .some = references[33] { return false }
+    if case .some = references[34] { return false }
+    if case .some = references[35] { return false }
+    if case .some = references[36] { return false }
+    if case .some = references[37] { return false }
+    if case .some = references[38] { return false }
+    if case .some = references[39] { return false }
+    if case .some = references[40] { return false }
+    if case .some = references[41] { return false }
+    if case .some = references[42] { return false }
+    if case .some = references[43] { return false }
+    if case .some = references[44] { return false }
+    if case .some = references[45] { return false }
+    if case .some = references[46] { return false }
+    if case .some = references[47] { return false }
+    if case .some = references[48] { return false }
+    if case .some = references[49] { return false }
+    if case .some = references[50] { return false }
+    if case .some = references[51] { return false }
+    if case .some = references[52] { return false }
+    if case .some = references[53] { return false }
+    if case .some = references[54] { return false }
+    if case .some = references[55] { return false }
+    if case .some = references[56] { return false }
+    if case .some = references[57] { return false }
+    if case .some = references[58] { return false }
+    if case .some = references[59] { return false }
+    if case .some = references[60] { return false }
+    if case .some = references[61] { return false }
+    if case .some = references[62] { return false }
+    if case .some = references[63] { return false }
+    return true
+}
+
+#if GIFTUI_COUNTER_FAMILY_EFFECT_PROOF || GIFTUI_COUNTER_ALLOCATION_GATE
+@_noAllocation
+#endif
+fileprivate func p08StaticDrawingIsEmpty(_ workspace: inout StaticCounterRecordDrawingWorkspace) -> Bool {
+    guard !workspace.isActive else { return false }
+    return workspace.withBase { base in
+        base.strokeCount == 0 && base.pointCount == 0 && base.subpathCount == 0 && base.normalizedStrokeOperationCount == 0
+    }
+}
+
+
+#if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+// This synchronous test context owns only scalar observations. No capability,
+// owner, workspace borrow, or backing pointer is retained after a factory call.
+nonisolated(unsafe) fileprivate var p08RetirementWitness: UnsafeMutablePointer<P08RetirementWitness>?
+nonisolated(unsafe) fileprivate var p08ReferencePresenceMask: UInt8 = 0
+nonisolated(unsafe) fileprivate var p08ReferencePresenceChecks = 0
+fileprivate struct P08RetirementWitness {
+    var entries: InlineArray<14, P08InitializedEntry?> = .init(repeating: nil)
+    var live = 0
+    var installs = 0
+    var destructions = 0
+    var phase: UInt8 = 0
+    var identity: UInt = 0
+    var dynamic = false
+    var checks = 0
+    mutating func began(_ identity: UInt) { precondition(phase == 0); self.identity = identity; phase = 1; checks += 1 }
+    mutating func installed(_ entry: P08InitializedEntry) {
+        precondition(phase == 1 && live < 14)
+        let staticIDs: InlineArray<14, P08PhysicalID?> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
+        let dynamicIDs: InlineArray<14, P08PhysicalID?> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1, nil, nil, nil, nil, nil]
+        precondition(entry.id == (dynamic ? dynamicIDs[live] : staticIDs[live])!)
+        entries[live] = entry; live += 1; installs += 1; checks += 2
+    }
+    mutating func destroyed(_ entry: P08InitializedEntry) {
+        precondition(phase == 1 && live > 0)
+        live -= 1
+        let expected = entries[live]!
+        precondition(entry.id == expected.id && entry.address == expected.address && entry.count == expected.count)
+        precondition(entry.size == expected.size && entry.stride == expected.stride && entry.alignment == expected.alignment && entry.retainedBytes == expected.retainedBytes)
+        entries[live] = nil; destructions += 1; checks += 2
+    }
+    mutating func retired(_ identity: UInt) {
+        precondition(phase == 1 && self.identity == identity && live == 0 && installs == destructions)
+        phase = 2; checks += 1
+    }
+    mutating func ownerEnded(_ identity: UInt) {
+        precondition(phase == 2 && self.identity == identity && live == 0)
+        phase = 3; checks += 1
+    }
+    mutating func backingEnded(dynamic: Bool) {
+        precondition(phase == 3 && self.dynamic == dynamic && live == 0)
+        phase = 4; checks += 1
+    }
+}
+extension P08TypedBackingOwner {
+    fileprivate borrowing func p08BeginRetirementObservation() { p08RetirementWitness?.pointee.began(identity) }
+    fileprivate borrowing func p08ObserveRetirement() {
+        guard p08RetirementWitness != nil else { return }
+        precondition(acquired == 0 && validateReservations())
+        // validateReservations reads every actual Native Optional cell and the
+        // padded slot while their original typed backing borrows are still live.
+        p08RetirementWitness!.pointee.retired(identity)
+    }
+}
+package func p08CounterReferencePresenceQualificationCount() -> Int {
+    precondition(p08ReferencePresenceMask == 7)
+    return p08ReferencePresenceChecks
+}
+package func p08CounterFactoryRetirementQualification() -> Int {
+    precondition(p08RetirementWitness == nil)
+    let staticIDs: InlineArray<14, P08PhysicalID> = [.b0, .b1, .b2, .b3, .g0, .g1, .g2, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
+    let dynamicIDs: InlineArray<9, P08PhysicalID> = [.g0, .g1, .g3, .g4, .c0, .h0, .r0, .r1, .h1]
+    var checks = 0
+    var factories = 0
+    for dynamicOrdinal in 0..<2 {
+        let dynamic = dynamicOrdinal != 0
+        for surplusOrdinal in 0..<2 {
+            let surplus = surplusOrdinal != 0
+
+        let count = dynamic ? 9 : 14
+        // Uninitialized return, implicit retirement, explicit release followed
+        // by fallback, repeated sessions, and every before/after fault + retry.
+        for scenario in 0..<(4 + count * 2) {
+            var witness = P08RetirementWitness(dynamic: dynamic)
+            withUnsafeMutablePointer(to: &witness) { pointer in
+                p08RetirementWitness = pointer
+                defer { p08RetirementWitness = nil }
+                func exercise(_ owner: inout P08TypedBackingOwner) {
+                    if scenario == 0 { return }
+                    if scenario >= 4 {
+                        let ordinal = (scenario - 4) / 2
+                        let id = dynamic ? dynamicIDs[ordinal] : staticIDs[ordinal]
+                        let fault = P08AcquisitionFault(id: id, completed: 0, afterInstall: (scenario - 4) % 2 == 1)
+                        if dynamic { precondition(owner.initialize(fault: fault) != nil) }
+                        else { precondition(owner.initializeStatic(fault: fault) != nil) }
+                    }
+                    if dynamic { precondition(owner.initialize() == nil) }
+                    else { precondition(owner.initializeStatic() == nil) }
+                    if scenario == 2 {
+                        if dynamic { owner.release() } else { owner.releaseStatic() }
+                    } else if scenario == 3 {
+                        for _ in 0..<2 {
+                            if dynamic {
+                                _ = owner.withStorage { session in
+                                    var cleanup = P08SessionOnlyCleanup(session: session)
+                                    defer { cleanup.finish() }
+                                    return cleanup.exercise()
+                                }
+                            } else {
+                                _ = owner.withStaticStorage { session in
+                                    var cleanup = P08SessionOnlyCleanup(session: session)
+                                    defer { cleanup.finish() }
+                                    return cleanup.exercise()
+                                }
+                            }
+                        }
+                    }
+                }
+                if dynamic { withP08DynamicReservation(surplus: surplus, exercise) }
+                else { withP08StaticReservation(surplus: surplus, exercise) }
+            }
+            precondition(witness.phase == 4 && witness.live == 0 && witness.installs == witness.destructions)
+            checks += witness.checks + 1; factories += 1
+        }
+    } }
+    precondition(factories == 108)
+    return checks
+}
+package func p08CounterFactoryDoubleReleaseQualification(dynamic: Bool) {
+    if dynamic {
+        withP08DynamicReservation { owner in
+            precondition(owner.initialize() == nil)
+            owner.release()
+            owner.release()
+        }
+    } else {
+        withP08StaticReservation { owner in
+            precondition(owner.initializeStatic() == nil)
+            owner.releaseStatic()
+            owner.releaseStatic()
+        }
+    }
+}
+
+#endif
+
+#if GIFTUI_HOST_AUDIT_COMPARISON_ORACLE && !hasFeature(Embedded)
+package func p08WithCounterHostQualificationAudit<Result>(_ body: (RuntimeStorageAudit) -> Result) -> Result {
+    var modelOwners = ObservableModelOwnerNamespace()
+    var semanticOwners = SemanticRecordOwnerNamespace()
+    do {
+        return withP08SelectedStatic(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: nil) { owner, outer, _ in
+            switch outer.auditStatic(owner: owner, report: { _ in }) {
+            case .valid(let audit): return body(audit)
+            case .invalid: preconditionFailure("Counter qualification physical audit")
+            }
+        }
+    } catch { preconditionFailure("Counter qualification namespaces") }
 }
 #endif

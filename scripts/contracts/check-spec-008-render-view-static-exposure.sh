@@ -10,9 +10,15 @@ trap 'rm -rf "$TEMPORARY_DIRECTORY"' EXIT
 export CLANG_MODULE_CACHE_PATH="$TEMPORARY_DIRECTORY/clang-module-cache"
 export SWIFTPM_MODULECACHE_OVERRIDE="$TEMPORARY_DIRECTORY/swiftpm-module-cache"
 
-swift build --disable-sandbox -c release --target GiftUIRenderLowering >/dev/null
-BIN_PATH="$(swift build --disable-sandbox -c release --show-bin-path)"
-COMPILER="$(xcrun --find swiftc)"
+SWIFT_DRIVER="${GIFTUI_SWIFT_EXECUTABLE:-$(command -v swift)}"
+SWIFTPM_SCRATCH="$TEMPORARY_DIRECTORY/swiftpm"
+"$SWIFT_DRIVER" build --disable-sandbox --build-system native \
+    --cache-path "$PROJECT_ROOT/.build" --scratch-path "$SWIFTPM_SCRATCH" \
+    -c release --target GiftUIRenderLowering >/dev/null
+BIN_PATH="$("$SWIFT_DRIVER" build --disable-sandbox --build-system native \
+    --cache-path "$PROJECT_ROOT/.build" --scratch-path "$SWIFTPM_SCRATCH" \
+    -c release --show-bin-path)"
+COMPILER="${GIFTUI_SWIFTC_EXECUTABLE:-$(xcrun --find swiftc)}"
 SDK="$(xcrun --sdk macosx --show-sdk-path)"
 SIL="$TEMPORARY_DIRECTORY/render-view-borrow.sil"
 IR="$TEMPORARY_DIRECTORY/render-view-borrow.ll"

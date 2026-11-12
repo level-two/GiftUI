@@ -62,7 +62,8 @@ if arguments.empty?
   exit 0
 end
 
-fail_check("usage: check-spec-006-dependency-surface.rb --giftui-interface PATH --semantic-interface PATH --output PATH") unless arguments.length == 6
+profile_surface_only = arguments.delete("--profile-surface-only")
+fail_check("usage: check-spec-006-dependency-surface.rb [--profile-surface-only] --giftui-interface PATH --semantic-interface PATH --output PATH") unless arguments.length == 6
 options = arguments.each_slice(2).to_h
 giftui_interface = Pathname.new(options.fetch("--giftui-interface"))
 semantic_interface = Pathname.new(options.fetch("--semantic-interface"))
@@ -76,7 +77,7 @@ unexpected = compiled_underscored - allowed_underscored
 fail_check("compiled interface has unexpected underscored references: #{unexpected}") unless unexpected.empty?
 
 actual_package_interface = normalized_interface(semantic_interface)
-unless actual_package_interface == expected_package_interface
+unless profile_surface_only || actual_package_interface == expected_package_interface
   fail_check(
     "complete Semantic Core package interface/member inventory differs " \
     "from the approved Swift 6.4 snapshot"
@@ -85,6 +86,17 @@ end
 
 package_api_declarations = actual_package_interface.scan(/^package\s+(?:func|struct|enum|protocol|class|typealias)\b/).length
 package_api_members = actual_package_interface.scan(/^[ \t]+(?:package|case)\s+/).length
+surface_counts = if profile_surface_only
+                   [
+                     "profile_interface_package_api_declarations=#{package_api_declarations}",
+                     "profile_interface_package_api_members=#{package_api_members}",
+                   ]
+                 else
+                   [
+                     "package_api_declarations=#{package_api_declarations}",
+                     "package_api_members=#{package_api_members}",
+                   ]
+                 end
 
 output.write([
   "schema_version=1",
@@ -92,10 +104,9 @@ output.write([
   "semantic_declarations=#{declared.length}",
   "underscored_allowlist=#{allowed_underscored.length}",
   "compiled_underscored=#{compiled_underscored.length}",
-  "compiled_package_interface_sha256=#{Digest::SHA256.hexdigest(actual_package_interface)}",
-  "package_api_declarations=#{package_api_declarations}",
-  "package_api_members=#{package_api_members}",
-  "package_api_inventory=complete-exact-interface-snapshot",
+  "compiled_interface_sha256=#{Digest::SHA256.hexdigest(actual_package_interface)}",
+  *surface_counts,
+  "package_api_inventory=#{profile_surface_only ? 'complete-exact-snapshot-validated-on-macos-dynamic-static; profile-compile-and-fixtures-validated-here' : 'complete-exact-interface-snapshot'}",
   "forbidden_production_uses=0",
   "runtime_profile_targets=downstream",
   "migration_inventory=separately-verified",

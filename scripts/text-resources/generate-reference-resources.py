@@ -312,17 +312,24 @@ def emit_payload(type_name: str, payload: bytes, records: Sequence[dict]) -> str
         "        expectedByteCount: UInt32,",
         "        _ body: (UnsafeRawBufferPointer) throws -> Result",
         "    ) rethrows -> Result? {",
+        "        try withRecordBytesStorage(for: glyph, expectedByteCount: expectedByteCount, body)",
+        "    }",
+        "",
+        "    static func withRecordBytesStorage<Result, Failure: Error>(",
+        "        for glyph: GlyphID,",
+        "        expectedByteCount: UInt32,",
+        "        _ body: (UnsafeRawBufferPointer) throws(Failure) -> Result",
+        "    ) throws(Failure) -> Result? {",
         "        switch glyph.rawValue {",
     ])
     for record in records:
         lines.extend([
             f"        case {record['glyph']}:",
-            f"            return try withUnsafeBytes(of: glyph{record['glyph']}) {{ bytes in",
-            "                guard UInt32(exactly: bytes.count) == expectedByteCount else {",
-            "                    return nil",
-            "                }",
-            "                return try body(bytes)",
+            f"            guard UInt32(exactly: MemoryLayout<Glyph{record['glyph']}Bytes>.size) == expectedByteCount else {{",
+            "                return nil",
             "            }",
+            f"            let result: Result = try withUnsafeBytes(of: glyph{record['glyph']}, body)",
+            "            return .some(result)",
         ])
     lines.extend(["        default: return nil", "        }", "    }", "}", ""])
     return "\n".join(lines)

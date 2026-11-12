@@ -228,7 +228,9 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
             let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: capacity, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
             precondition(HostEndpointStartupValidation.validateConstructedProjection(candidate, equals: configuration) == (capacity == 800 ? nil : .invalidEndpointDescriptor)); control.pointee.backend.projectionControls += 1
         }
-        for shared in [true,false] {
+        for sharedOrdinal in 0..<2 {
+            let shared = sharedOrdinal == 0
+
             let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: 800, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: shared ? 2 : 1, endpointAndDisplayShareHealthOwner: shared)
                 let p08ExactCase85: Bool;
                 if case .some(.invalidEndpointDescriptor) =

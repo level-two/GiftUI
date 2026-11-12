@@ -1,15 +1,26 @@
 import GiftUI
 
 struct StyledCustomView: View {
-    var body: some View {
-        Text("status")
-            .foregroundStyle(.green)
-            .background(.black)
-            .foregroundStyle(.white)
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    {
+        fatalError("style public surface fixture is compile-only")
+    }
+
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+        _ visitor: inout Visitor
+    ) where Visitor.Domain == Domain {
+        visitor.visitEmpty()
     }
 }
 
 func requireView<Content: View>(_: Content) {}
 
 requireView(StyledCustomView())
-requireView(Text(BoundedText(42)).background(Color(red: 1, green: 2, blue: 3)))
+requireView(
+    Text<_GiftUIEmptyReadDomain>(BoundedText(42))
+        .background(Color(red: 1, green: 2, blue: 3))
+)

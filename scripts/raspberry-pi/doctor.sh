@@ -10,13 +10,15 @@ SCRIPT_DIR="$(
 source "${SCRIPT_DIR}/common.sh"
 
 run_probe=0
+host_swift_override=""
 
 usage() {
     cat <<'USAGE'
-Usage: scripts/raspberry-pi/doctor.sh [--probe]
+Usage: scripts/raspberry-pi/doctor.sh [--probe] [--swift-bin <path>]
 
 Checks the pinned macOS host compiler and project-local ARMv6 SDK. With
 --probe, also cross-compiles a small static Linux executable.
+--swift-bin selects the compiler used for this check, overriding local.env.
 USAGE
 }
 
@@ -24,6 +26,11 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --probe)
             run_probe=1
+            ;;
+        --swift-bin)
+            [[ $# -ge 2 && -n "$2" ]] || giftui_pi_error '--swift-bin requires a path'
+            host_swift_override="$2"
+            shift
             ;;
         -h | --help)
             usage
@@ -49,8 +56,8 @@ check() {
     fi
 }
 
-host_swift="$(giftui_pi_host_swift)"
-host_version="$(giftui_pi_host_swift_version_line)"
+host_swift="${host_swift_override:-$(giftui_pi_host_swift)}"
+host_version="$("${host_swift}" --version | sed -n '/Swift version/{p;q;}')"
 
 check "running on macOS" test "$(uname -s)" = "Darwin"
 check "host Swift executable exists" test -x "${host_swift}"

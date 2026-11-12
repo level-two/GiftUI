@@ -12,7 +12,7 @@ def fail_check(message)
 end
 
 source = SOURCE.read
-fail_check("owner value imports differ") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUIExecution]
+fail_check("owner value imports differ") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUI]
 
 required_declarations = %w[
   ObservableStateLimits ObservableStateError ObservableStateOperational

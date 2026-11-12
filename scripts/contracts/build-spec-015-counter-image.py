@@ -64,11 +64,49 @@ if args.profile == 'nrf52840-embedded':
     core_commands = [line for line in (core_path / 'commands.txt').read_text().splitlines()
                      if '-module-name GiftUI ' in line and '-emit-module' in line]
     assert len(core_commands) == 1
-    commands = [core_commands[0], *receipt['commands']]
+    commands = [shlex.split(command) for command in (core_commands[0], *receipt['commands'])]
+    # The command log records execution. A checked resume also carries module
+    # recipes whose artifacts and logs were verified and copied by the collector.
+    if receipt.get('prior_collection'):
+        predecessor = receipt['prior_collection']
+        prior_base = (ROOT / predecessor['path']).resolve()
+        assert prior_base.is_relative_to(target_root) and prior_base != base
+        prior_path = prior_base / 'result.json'
+        assert digest(prior_path) == predecessor['sha256']
+        prior = json.loads(prior_path.read_text())
+        assert prior['collection_schema'] == receipt['collection_schema'] == 2
+        assert prior['collection_complete'] is True
+        for key in ('profile', 'selected_host_profile', 'raster_realization', 'compiler_sha256',
+                    'runtime_receipt_sha256', 'host_receipt_sha256', 'core_receipt_sha256',
+                    'macro_tool_sha256', 'swift_syntax_sha256'):
+            assert prior[key] == receipt[key], 'reused module recipe drift: ' + key
+        prior_checks = {check['name']: check for check in prior['checks']}
+        assert len(prior_checks) == len(prior['checks'])
+        for check in receipt['checks']:
+            if check['status'] != 'reused':
+                continue
+            identity = check['identity']
+            parts = identity.get('command', [])
+            if '-emit-module' not in parts or '-emit-object' not in parts:
+                continue
+            previous = prior_checks[check['name']]
+            assert check['provenance'] == str(prior_path)
+            assert previous['identity'] == identity and identity['diagnostic'] is None
+            assert previous['passed'] is True and previous['exit'] == check['exit'] == 0
+            assert previous['status'] == check['prior_status']
+            assert pathlib.Path(parts[0]) == compiler
+            owner = parts[parts.index('-module-name') + 1]
+            assert parts[parts.index('-o') + 1] == '${OUT}/' + owner + '.o'
+            assert parts[parts.index('-emit-module-path') + 1] == '${OUT}/' + owner + '.swiftmodule'
+            log = check['name'] + '.log'
+            assert check['log_sha256'] == previous['log_sha256'] == receipt['artifacts'][log]['sha256']
+            for name in (log, owner + '.o', owner + '.swiftmodule'):
+                assert receipt['artifacts'][name] == prior['artifacts'][name]
+                assert digest(prior_base / name) == prior['artifacts'][name]['sha256']
+            commands.append([part.replace('${OUT}', str(base)) for part in parts])
     owners = {}
     source_hashes = {}
-    for command in commands:
-        parts = shlex.split(command)
+    for parts in commands:
         if '-emit-module' not in parts or '-emit-object' not in parts:
             continue  # Failed negative controls are not image inputs.
         owner = parts[parts.index('-module-name') + 1]
@@ -85,6 +123,7 @@ if args.profile == 'nrf52840-embedded':
             source_hashes[name] = expected
         owners[owner] = sources
     assert len(owners) == 24 and 'P08CounterRuntime' in owners
+    assert set(objects) == {core_path / 'GiftUI.o', *(base / (owner + '.o') for owner in owners if owner != 'GiftUI')}
     imports = {}
     for owner, sources in owners.items():
         dependencies = set()
@@ -93,6 +132,12 @@ if args.profile == 'nrf52840-embedded':
                 continue  # The existing Dynamic-only file is wholly inactive.
             text = source.read_text().replace(
                 '#if !hasFeature(Embedded)\nimport GiftUIRuntimeDynamic\n#endif', '')
+            # The Native Static exclusivity probe imports Darwin only in this
+            # explicitly non-Embedded macOS branch. Keep unguarded or differently
+            # guarded imports visible to the dependency check below.
+            text = re.sub(
+                r'^#if os\(macOS\) && !GIFTUI_COUNTER_ROUTE_DYNAMIC && !hasFeature\(Embedded\)\n'
+                r'[ \t]*import Darwin\n#endif(?:\n|$)', '', text, flags=re.M)
             dependencies.update(re.findall(r'^\s*(?:@[^\n]+?\s+)?import\s+(\w+)', text, re.M))
         assert dependencies <= owners.keys(), (owner, dependencies - owners.keys())
         imports[owner] = sorted(dependencies)

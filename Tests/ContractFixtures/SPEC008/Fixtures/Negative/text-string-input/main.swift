@@ -1,4 +1,4 @@
 import GiftUI
 
 let dynamic = String("unbounded")
-_ = Text(dynamic)
+_ = Text<_GiftUIEmptyReadDomain>(dynamic)

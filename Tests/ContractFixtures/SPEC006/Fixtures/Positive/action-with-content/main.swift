@@ -11,6 +11,7 @@ private struct FixtureActionPayload: _GiftUISemanticActionPayload {
 }
 
 private struct FixtureActionContainer<Content: View>: View {
+    typealias Domain = Content.Domain
     typealias Body = Never
 
     let content: Content
@@ -21,27 +22,29 @@ private struct FixtureActionContainer<Content: View>: View {
         payload = FixtureActionPayload(_giftUIAction: action)
     }
 
-    var body: Never {
-        fatalError("action container bodies are unreachable")
-    }
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    { fatalError("action container bodies are unreachable") }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(content: content, payload: payload)
     }
 }
 
 private struct FixtureActionLeaf: View, _GiftUISemanticActionPayload {
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
     let _giftUIAction: FixtureAction
 
-    var body: Never {
-        fatalError("action leaf bodies are unreachable")
-    }
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    { fatalError("action leaf bodies are unreachable") }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(self)
     }
 }

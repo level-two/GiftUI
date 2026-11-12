@@ -68,7 +68,11 @@ invocation_id="${report_dir##*/}"
 mkdir -p \
     "${report_dir}/logs" \
     "${report_dir}/swiftpm-cache" \
+    "${report_dir}/manifest-cache" \
     "${report_dir}/clang-cache"
+export CLANG_MODULE_CACHE_PATH="${report_dir}/clang-cache"
+export SWIFTPM_MODULECACHE_OVERRIDE="${report_dir}/swiftpm-cache"
+export SWIFTPM_TESTS_MODULECACHE="${report_dir}/manifest-cache"
 results_path="${report_dir}/results.tsv"
 metadata_path="${report_dir}/metadata.txt"
 : >"${results_path}"
@@ -149,8 +153,23 @@ if ! command -v swift >/dev/null 2>&1; then
     printf 'error: Swift is not available on PATH\n' >&2
     exit 1
 fi
-printf 'swift_executable=%s\nswift_version=%s\n' \
-    "$(command -v swift)" "$(swift --version | head -n 1)" >>"${metadata_path}"
+selected_swift="${GIFTUI_SWIFT_EXECUTABLE:-$(command -v swift)}"
+selected_swiftc="${GIFTUI_SWIFTC_EXECUTABLE:-}"
+if [[ -z "${selected_swiftc}" ]]; then
+    sibling_swiftc="$(dirname "${selected_swift}")/swiftc"
+    if [[ -x "${sibling_swiftc}" ]]; then
+        selected_swiftc="${sibling_swiftc}"
+    elif command -v swiftc >/dev/null 2>&1; then
+        selected_swiftc="$(command -v swiftc)"
+    fi
+fi
+export GIFTUI_SWIFT_EXECUTABLE="${selected_swift}"
+if [[ -n "${selected_swiftc}" ]]; then
+    export GIFTUI_SWIFTC_EXECUTABLE="${selected_swiftc}"
+fi
+printf 'swift_executable=%s\nswiftc_executable=%s\nswift_version=%s\n' \
+    "${selected_swift}" "${selected_swiftc:-not-selected}" \
+    "$("${selected_swift}" --version | head -n 1)" >>"${metadata_path}"
 run_check spec-002-compiler-baseline python3 "${PROJECT_ROOT}/scripts/contracts/check-spec-002-compiler-baseline.py"
 run_check driver-registry "${PROJECT_ROOT}/scripts/contracts/check-driver-registry.rb"
 run_check nrf-topology python3 "${PROJECT_ROOT}/scripts/contracts/check-spec-001-nrf-topology.py"
@@ -170,6 +189,7 @@ run_check root-tests giftui_swiftpm \
     --package-path "${PROJECT_ROOT}" \
     --scratch-path "${report_dir}/swiftpm" \
     --cache-path "${PROJECT_ROOT}/.build" \
+    --disable-sandbox \
     --skip-update \
     --cache-root "${report_dir}" \
     --swift-flag -DGIFTUI_DYNAMIC_PROFILE \

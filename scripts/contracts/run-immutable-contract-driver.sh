@@ -21,20 +21,25 @@ done
 spec_slug="$(printf '%s' "${spec}" | tr '[:upper:]' '[:lower:]')"
 report_root="${PROJECT_ROOT}/.build/contract-reports/${spec_slug}"
 driver_arguments=(--profile "${profile}")
+compiler_input=""
 if [[ "${compiler_baseline}" == rfc-014 ]]; then
     source "${SCRIPT_DIR}/compiler-baseline.sh"
     giftui_rfc014_select_compiler "${PROJECT_ROOT}" "${profile}"
+    compiler_input="${GIFTUI_CONTRACT_SWIFTC}"
     report_root+="/rfc-014"
     driver_arguments+=(--compiler-baseline rfc-014)
+elif [[ "${spec}" == "SPEC-010" && ( "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ) ]]; then
+    # The full SPEC-010 macOS profile compiles the current RFC-014 lifetime API.
+    source "${SCRIPT_DIR}/compiler-baseline.sh"
+    giftui_rfc014_select_compiler "${PROJECT_ROOT}" "${profile}"
+    compiler_input="${GIFTUI_CONTRACT_SWIFTC}"
 fi
 revision="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
 mkdir -p "${report_root}"
 preflight_inventory="${report_root}/.input-${profile}-$$.tsv"
 {
     git -C "${PROJECT_ROOT}" ls-files
-    if [[ "${compiler_baseline}" == rfc-014 ]]; then
-        printf '%s\n' "${GIFTUI_CONTRACT_SWIFTC}"
-    fi
+    [[ -z "${compiler_input}" ]] || printf '%s\n' "${compiler_input}"
     printf '%s\n' \
         "scripts/contracts/report-input-identity.rb" \
         "scripts/contracts/publish-contract-report.rb" \

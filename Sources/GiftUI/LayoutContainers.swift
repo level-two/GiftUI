@@ -1,9 +1,13 @@
 public struct _GiftUIVStackPayload: _GiftUISemanticPrimitivePayload,
     Equatable, Sendable
 {
+    @usableFromInline
     package let alignment: HorizontalAlignment
+    @usableFromInline
     package let spacing: GeometryScalar
 
+    @inlinable
+    @inline(__always)
     package init(alignment: HorizontalAlignment, spacing: GeometryScalar) {
         self.alignment = alignment
         self.spacing = spacing
@@ -51,6 +55,8 @@ public struct VStack<Content: View>: View {
     @usableFromInline
     package let payload: _GiftUIVStackPayload
 
+    @inlinable
+    @inline(__always)
     public init(
         alignment: HorizontalAlignment = .center,
         spacing: GeometryScalar = 0,

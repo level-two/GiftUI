@@ -87,23 +87,23 @@ struct StaticCounterGeometry: CounterGeometry {
     borrowing func storageMeasurement() -> CounterGeometryMeasurement {
         .init(layout: LayoutLimits(maximumScopes: workspace.maximumScopes, maximumDepth: workspace.maximumDepth, maximumTextScalars: workspace.maximumTextScalars, maximumTextLines: workspace.maximumTextLines, maximumPositionedGlyphs: workspace.maximumPositionedGlyphs)!,
             render: render.capacity, renderWorkspace: render.structuralCapacity, drawing: plan.capacity,
-            layoutBytes: UInt64(scopeRegionBytes + textRegionBytes + MemoryLayout<Self>.size - MemoryLayout<QualifiedRender>.size - MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.size),
+            layoutBytes: UInt64(scopeRegionBytes + textRegionBytes + MemoryLayout<Self>.size - MemoryLayout<QualifiedRender>.size - MemoryLayout<StaticCounterRecordDrawingWorkspace>.size),
             renderBytes: UInt64(MemoryLayout<QualifiedRender>.size),
             pathBytes: UInt64(pathRegionBytes),
-            planBytes: UInt64(planRegionBytes + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>>.size))
+            planBytes: UInt64(planRegionBytes + MemoryLayout<StaticCounterRecordDrawingWorkspace>.size))
     }
 
     var workspace: StaticCounterLayoutWorkspace
     var resolved: StaticCounterResolvedLayoutStorage
     var references: InlineArray<64, SemanticRecordReference?> = .init(repeating: nil)
-    var plan: StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>
+    var plan: StaticCounterRecordDrawingWorkspace
     var render: QualifiedRender
     init(scopes: UnsafeMutableRawBufferPointer, text: UnsafeMutableRawBufferPointer, path: UnsafeMutableRawBufferPointer, plan: UnsafeMutableRawBufferPointer) {
         scopeRegionBytes = scopes.count; textRegionBytes = text.count
         pathRegionBytes = path.count; planRegionBytes = plan.count
         workspace = StaticCounterLayoutWorkspace(scopes: scopes, text: text)!
         resolved = StaticCounterResolvedLayoutStorage(scopes: scopes, text: text)!
-        self.plan = StaticRecordDrawingWorkspace(base: StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits)!)
+        self.plan = StaticCounterRecordDrawingWorkspace(base: StaticCounterDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: counterDrawingLimits)!)
         render = QualifiedRender(base: StaticCounterRenderWorkspace(region: text, capacity: counterRenderLimits, structuralCapacity: counterRenderCapacity)!)
     }
     var view: QualifiedLayout { QualifiedLayout(base: resolved.renderView, references: references) }
@@ -118,7 +118,7 @@ struct StaticCounterGeometry: CounterGeometry {
     }
     mutating func preflight(_ bank: borrowing SemanticRecordView, limits: RuntimeProfileLimits) -> RenderProductionResult {
         let layout = view
-        let result = withCounterRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &render) }
+        let result = withCounterStaticRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &render) }
         if case .success(let header) = result {
             guard header.operationCount >= plan.summary.normalizedStrokeOperationCount,
                 header.operationCount - plan.summary.normalizedStrokeOperationCount <= limits.maximumOrdinaryRenderOperations else { return .failure(.capacityExhausted) }
@@ -127,7 +127,7 @@ struct StaticCounterGeometry: CounterGeometry {
     }
     mutating func produce<S: DrawingOperationSink>(_ bank: borrowing SemanticRecordView, header: RenderPlanHeader, sink: inout S, limits: RuntimeProfileLimits) -> RenderProductionResult {
         let layout = view
-        return withCounterRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &render, sink: &sink) }
+        return withCounterStaticRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: counterSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &render, sink: &sink) }
     }
     func verifyPlan(canvas: SemanticRecordReference, value: UInt8) -> Int { counterVerifyPlan(plan, canvas: canvas, bounds: view.bounds(of: canvas)!, value: value) }
     func bounds(_ record: SemanticRecordReference) -> Rect? { view.bounds(of: record) }
@@ -136,6 +136,40 @@ struct StaticCounterGeometry: CounterGeometry {
     mutating func resetPlan() { plan.discard(); plan.reset() }
     mutating func resetRender() { render.reset() }
     mutating func reset() { resetRender(); resetPlan(); resetLayout() }
+}
+
+// The configured view borrows the original workspace only during this call.
+@inline(__always)
+func withCounterStaticRenderLimits(
+    _ base: inout QualifiedRender,
+    limits: RuntimeProfileLimits,
+    _ body: (inout CounterConfiguredStaticRender) -> RenderProductionResult
+) -> RenderProductionResult {
+    precondition(counterRenderWorkspaceCovers(base.structuralCapacity, limits.renderWorkspace))
+    return withUnsafeMutablePointer(to: &base) { pointer in
+        var configured = CounterConfiguredStaticRender(
+            base: pointer,
+            capacity: limits.render,
+            structuralCapacity: limits.renderWorkspace
+        )
+        return body(&configured)
+    }
+}
+
+struct CounterConfiguredStaticRender: RenderProductionWorkspace {
+    typealias Identity = QualifiedRender.Identity
+    fileprivate let base: UnsafeMutablePointer<QualifiedRender>
+    let capacity: RenderLimits
+    let structuralCapacity: RenderWorkspaceCapacity
+
+    var isActive: Bool { base.pointee.isActive }
+    var currentForeground: Color? { base.pointee.currentForeground }
+    mutating func acquire() -> Bool { base.pointee.acquire() }
+    mutating func visitSemanticScope(at ordinal: UInt16) -> RenderWorkspaceVisit { base.pointee.visitSemanticScope(at: ordinal) }
+    mutating func visitLayoutScope(at ordinal: UInt16) -> RenderWorkspaceVisit { base.pointee.visitLayoutScope(at: ordinal) }
+    mutating func pushForeground(_ color: Color) -> Bool { base.pointee.pushForeground(color) }
+    mutating func popForeground() -> Bool { base.pointee.popForeground() }
+    mutating func reset() { base.pointee.reset() }
 }
 
 // The pointer is created and destroyed inside this callback; the result is only

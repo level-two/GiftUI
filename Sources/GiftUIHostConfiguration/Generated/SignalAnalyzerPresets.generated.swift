@@ -283,7 +283,7 @@ package static func nrf52840Static() -> GeneratedSignalAnalyzerPreset {
             ),
             staticRoot: profile == .static
                 ? GeneratedSignalAnalyzerStaticRootDescriptor(
-                    structuralIdentity: 593822181,
+                    structuralIdentity: 1410692621,
                     declarationOrdinal: 0,
                     modelStorageSlots: 2,
                     locationCapacity: 1,

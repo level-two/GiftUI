@@ -6070,9 +6070,75 @@ struct CounterRGBAStorage: FullSurfaceRGBA8888Storage {
     @inlinable
     @inline(__always)
     borrowing func withBytes<R>(_ body: (UnsafeRawBufferPointer) throws -> R) rethrows -> R {
-        try withUnsafeBytes(of: &control.pointee.backend.surface, body)
+        let bytes = control.pointee.backend.surface.span
+        return try bytes.withUnsafeBytes(body)
     }
 }
+struct CounterNativeRGBASurface: FullSurfaceReadableRaster {
+    let descriptor: RasterSurfaceDescriptor
+    private var storage: CounterRGBAStorage
+    private(set) var presentationResponsibilityAccepted = false
+    private var drainedValidationFailure = false
+    private var activeHeader: RenderPlanHeader?
+
+    @inline(__always)
+    var writableCapacityBytes: UInt32 { storage.capacityBytes }
+
+    @inline(__always)
+    init?(descriptor: RasterSurfaceDescriptor, storage: consuming CounterRGBAStorage) {
+        guard FullSurfaceRGBA8888Operations.validate(descriptor: descriptor, storage: storage)
+        else { return nil }
+        self.descriptor = descriptor
+        self.storage = storage
+    }
+
+    @inline(__always)
+    mutating func beginFrame(_ header: RenderPlanHeader) -> Bool {
+        FullSurfaceRGBA8888Operations.beginFrame(
+            header, descriptor: descriptor, activeHeader: &activeHeader,
+            presentationResponsibilityAccepted: &presentationResponsibilityAccepted,
+            drainedValidationFailure: &drainedValidationFailure)
+    }
+
+    @inline(__always)
+    mutating func replacePixel(at point: Point, with pixel: CanonicalEncodedPixel) -> Bool {
+        FullSurfaceRGBA8888Operations.replacePixel(
+            at: point, with: pixel, descriptor: descriptor, storage: &storage,
+            activeHeader: activeHeader,
+            presentationResponsibilityAccepted: presentationResponsibilityAccepted,
+            drainedValidationFailure: &drainedValidationFailure)
+    }
+
+    @inline(__always)
+    mutating func finishFrame() -> Bool {
+        FullSurfaceRGBA8888Operations.finishFrame(
+            activeHeader: &activeHeader,
+            presentationResponsibilityAccepted: &presentationResponsibilityAccepted)
+    }
+
+    @inline(__always)
+    mutating func discardFrame() {
+        FullSurfaceRGBA8888Operations.discardFrame(
+            activeHeader: &activeHeader,
+            presentationResponsibilityAccepted: &presentationResponsibilityAccepted,
+            drainedValidationFailure: &drainedValidationFailure)
+    }
+
+    @inline(__always)
+    mutating func acceptPresentationResponsibility() -> Bool {
+        FullSurfaceRGBA8888Operations.acceptPresentationResponsibility(
+            activeHeader: activeHeader,
+            presentationResponsibilityAccepted: &presentationResponsibilityAccepted)
+    }
+
+    @inline(__always)
+    borrowing func withBytes<Result>(
+        _ body: (UnsafeRawBufferPointer) throws -> Result
+    ) rethrows -> Result {
+        try storage.withBytes(body)
+    }
+}
+
 struct CounterNativePayloadWriter: DisplayPayloadWriter {
     let control: UnsafeMutablePointer<CounterControl>
     let capacityBytes: UInt32 = 48000
@@ -6159,7 +6225,7 @@ struct CounterNativeRasterAdapter: RasterOfferSessionSink {
     let descriptor: RasterSurfaceDescriptor
     let payloadLimits: RasterPayloadLimits
     var target: CounterNativeDisplayTarget
-    var surface: FullSurfaceRGBA8888Buffer<CounterRGBAStorage>
+    var surface: CounterNativeRGBASurface
     var recording = CounterRenderSink()
     var failure: RasterBackendError?
     var retainedProducerError: RenderProductionError?
@@ -6175,7 +6241,7 @@ struct CounterNativeRasterAdapter: RasterOfferSessionSink {
         ) {
             descriptor = configuration.descriptor; payloadLimits = configuration.payloadLimits
         target = CounterNativeDisplayTarget(control: control, configuration: configuration)
-        surface = FullSurfaceRGBA8888Buffer(descriptor: descriptor, storage: CounterRGBAStorage(control: control))!
+        surface = CounterNativeRGBASurface(descriptor: descriptor, storage: CounterRGBAStorage(control: control))!
     }
         mutating func retainProducerError(_ error: RenderProductionError) {
             if case .none = retainedProducerError { retainedProducerError = error }
@@ -6221,7 +6287,27 @@ struct CounterNativeRasterAdapter: RasterOfferSessionSink {
         }
     mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool {
         guard let header = recording.header, let glyphHeader else { return reject(.malformedStream) }
-        let result = RasterGlyphCoverage.rasterize(glyph, operation: glyphHeader, metrics: GiftUIReferenceTextMetricsView(), raster: GiftUIReferenceTextRasterView(), realization: GiftUIReferenceTextRasterView().realization(at: 0)!, descriptor: descriptor, damageBounds: header.damageBounds) { point, pixel in surface.replacePixel(at: point, with: pixel) }
+        let result: RasterGlyphResult
+        let raster = GiftUIReferenceTextRasterView()
+        let realization = raster.realization(at: 0)!
+        switch RasterGlyphCoverage.preparePayload(
+            glyph, operation: glyphHeader, metrics: GiftUIReferenceTextMetricsView(),
+            raster: raster, realization: realization, descriptor: descriptor,
+            damageBounds: header.damageBounds
+        ) {
+        case .ready(let inkBounds, let record):
+            result = raster.withNonthrowingPayload(for: record, realization: realization.id) { bytes in
+                RasterGlyphCoverage.rasterizePreparedPayload(
+                    inkBounds: inkBounds, record: record, bytes: bytes,
+                    operation: glyphHeader, descriptor: descriptor,
+                    damageBounds: header.damageBounds
+                ) { point, pixel in surface.replacePixel(at: point, with: pixel) }
+            } ?? .incompatibleResource
+        case .empty: result = .completed(pixelCount: 0, payloadBytes: 0)
+        case .incompatibleResource: result = .incompatibleResource
+        case .invalidGeometry: result = .invalidGeometry
+        case .arithmeticOverflow: result = .arithmeticOverflow
+        }
         guard case .completed = result else { return reject(.rasterizationFailure) }
         return recording.positionedGlyph(glyph)
     }
@@ -6285,7 +6371,9 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
             precondition(HostEndpointStartupValidation.validateConstructedProjection(candidate, equals: configuration) == (capacity == 48000 ? nil : .invalidEndpointDescriptor))
             control.pointee.backend.projectionControls += 1
         }
-        for shared in [true, false] {
+        for sharedOrdinal in 0..<2 {
+            let shared = sharedOrdinal == 0
+
             let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: constructed.surfaceWritableCapacityBytes, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: shared ? 2 : 1, endpointAndDisplayShareHealthOwner: shared)
                 let p08ExactCase84: Bool;
                 if case .some(.invalidEndpointDescriptor) =

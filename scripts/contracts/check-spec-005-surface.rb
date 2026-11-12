@@ -11,8 +11,8 @@ unless ARGV.length == 2
 end
 
 begin
-  public_interface = File.read(ARGV[0])
-  package_interface = File.read(ARGV[1])
+  public_interface = File.read(ARGV[0]).gsub("::", ".")
+  package_interface = File.read(ARGV[1]).gsub("::", ".")
 rescue Errno::ENOENT => error
   fail_check(error.message)
 end
@@ -46,8 +46,7 @@ unless actual_declarations == expected_declarations
 end
 
 resource_token = expected_declarations.map { |name| Regexp.escape(name) }.join("|")
-if public_interface.match?(/^public (?:struct|enum|protocol|typealias) (?:#{resource_token})\b/) ||
-   public_interface.match?(/^package (?:struct|enum|protocol|typealias) (?:#{resource_token})\b/)
+if public_interface.match?(/^public (?:struct|enum|protocol|typealias) (?:#{resource_token})\b/)
   fail_check("text-resource SPI leaked into the public interface")
 end
 

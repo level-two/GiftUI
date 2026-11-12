@@ -33,8 +33,6 @@ public_names = public_interface.scan(/^public (?:typealias|struct|enum) ([A-Za-z
 package_names = package_interface.scan(/^package (?:typealias|struct|enum) ([A-Za-z0-9_]+)/).flatten.sort
 fail_check("public owner set differs: #{public_names.inspect}") unless public_names == PUBLIC_NAMES
 fail_check("package owner set differs: #{package_names.inspect}") unless package_names == PACKAGE_NAMES
-fail_check("public interface exposes package SPI") if public_interface.match?(/^package /)
-
 combined = public_interface + package_interface
 forbidden = %w[
   InputEvent

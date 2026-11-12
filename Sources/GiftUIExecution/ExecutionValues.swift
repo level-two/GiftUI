@@ -29,10 +29,16 @@ package struct CandidateFrameID: Equatable, Hashable, Sendable {
 
 @usableFromInline
 package struct ActionGeneration: Equatable, Hashable, Sendable {
+    @usableFromInline
     package let rawValue: UInt32
 
+    @inlinable
     package init(rawValue: UInt32) {
         self.rawValue = rawValue
+    }
+    @inlinable
+    package static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.rawValue == rhs.rawValue
     }
 }
 
@@ -47,9 +53,13 @@ package enum ExecutionPhase: UInt8, Equatable, Sendable {
     case finalizing = 6
 }
 
+@usableFromInline
 package struct ExecutionLimits: Equatable, Sendable {
+    @usableFromInline
     package let maximumInputEvents: UInt16
+    @usableFromInline
     package let maximumStateChangeFacts: UInt16
+    @usableFromInline
     package let maximumCompletionFacts: UInt16
     package let maximumSemanticActions: UInt16
     package let maximumActiveInputSources: UInt16

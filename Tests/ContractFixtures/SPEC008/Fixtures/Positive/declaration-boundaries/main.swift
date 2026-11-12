@@ -23,19 +23,27 @@ let integers = [
 ]
 
 struct DeclarationBoundaryCustomView: View {
-    var body: some View {
-        Text(replacement)
-            .foregroundStyle(.gray)
-            .background(.black)
-            .foregroundStyle(.white)
+    typealias Domain = _GiftUIEmptyReadDomain
+    typealias Body = Never
+
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    {
+        fatalError("declaration boundary fixture is compile-only")
+    }
+
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
+        _ visitor: inout Visitor
+    ) where Visitor.Domain == Domain {
+        visitor.visitEmpty()
     }
 }
 
 func requireView<Content: View>(_: Content) {}
 
 requireView(DeclarationBoundaryCustomView())
-requireView(Text(maximum))
-requireView(Text(oversizedLiteral))
+requireView(Text<_GiftUIEmptyReadDomain>(maximum))
+requireView(Text<_GiftUIEmptyReadDomain>(oversizedLiteral))
 _ = empty
 _ = oversized
 _ = malformed

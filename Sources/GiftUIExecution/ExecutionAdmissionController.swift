@@ -1,5 +1,6 @@
 import GiftUI
 
+@usableFromInline
 protocol ExecutionPendingAdmissionStorage {
     associatedtype StateChangeFact: Sendable
     associatedtype CompletionFact: Sendable
@@ -20,22 +21,35 @@ protocol ExecutionPendingAdmissionStorage {
     )
 }
 
+@usableFromInline
 struct SingleSourceExecutionAdmissionState<Storage>: ExecutionAdmissionSink
 where Storage: ExecutionPendingAdmissionStorage {
-    private let limits: ExecutionLimits
-    private(set) var context: ExecutionContext
-    private(set) var committedPresentationRevision: PresentationRevision?
-    private(set) var isQuiescent: Bool
-    private(set) var storage: Storage
-    private(set) var isSealClosed: Bool = false
-    private(set) var didDeferAfterSeal: Bool = false
-    private var trackedSource: InputSourceID?
-    private var sourceSequence = InputSourceSequenceState()
+    @usableFromInline
+    internal let limits: ExecutionLimits
+    @usableFromInline
+    internal var context: ExecutionContext
+    @usableFromInline
+    internal var committedPresentationRevision: PresentationRevision?
+    @usableFromInline
+    internal var isQuiescent: Bool
+    @usableFromInline
+    internal var storage: Storage
+    @usableFromInline
+    internal var isSealClosed: Bool = false
+    @usableFromInline
+    internal var didDeferAfterSeal: Bool = false
+    @usableFromInline
+    internal var trackedSource: InputSourceID?
+    @usableFromInline
+    internal var sourceSequence = InputSourceSequenceState()
 
+    @inlinable
+    @inline(__always)
     static var pointerStateStorageBytes: Int {
         MemoryLayout<InputSourceID?>.size + MemoryLayout<InputSourceSequenceState>.size
     }
 
+    @inlinable
     init(
         limits: ExecutionLimits,
         context: ExecutionContext,
@@ -53,6 +67,7 @@ where Storage: ExecutionPendingAdmissionStorage {
 
     // The serialized containing coordinator supplies its current publication and
     // phase before producer admission; pointer-order state remains owned here.
+    @inlinable
     mutating func synchronize(
         context: ExecutionContext,
         committedPresentationRevision: PresentationRevision?,
@@ -66,10 +81,13 @@ where Storage: ExecutionPendingAdmissionStorage {
         isQuiescent = isQuiescent || quiescent
     }
 
+    @inlinable
     mutating func closeAdmissionSeal() {
         isSealClosed = true
     }
 
+    @inlinable
+    @inline(__always)
     mutating func submit(
         pointer: NormalizedPointerEvent
     ) -> ExecutionAdmissionOutcome {
@@ -120,6 +138,7 @@ where Storage: ExecutionPendingAdmissionStorage {
         return outcome(.queued)
     }
 
+    @inlinable
     mutating func submit(
         stateChange: Storage.StateChangeFact
     ) -> ExecutionAdmissionOutcome {
@@ -137,6 +156,7 @@ where Storage: ExecutionPendingAdmissionStorage {
         return outcome(.queued)
     }
 
+    @inlinable
     mutating func submit(
         completion: Storage.CompletionFact
     ) -> ExecutionAdmissionOutcome {
@@ -156,17 +176,21 @@ where Storage: ExecutionPendingAdmissionStorage {
         return outcome(.queued)
     }
 
+    @inlinable
     mutating func quiesce() {
         isQuiescent = true
     }
 
-    private mutating func recordQueuedWork() {
+    @inlinable
+    internal mutating func recordQueuedWork() {
         if isSealClosed {
             didDeferAfterSeal = true
         }
     }
 
-    private mutating func cancel(_ pointer: NormalizedPointerEvent) {
+    @inlinable
+    @inline(__always)
+    internal mutating func cancel(_ pointer: NormalizedPointerEvent) {
         if trackedSource == pointer.source {
             sourceSequence.cancelCurrentSequence()
         }
@@ -176,7 +200,8 @@ where Storage: ExecutionPendingAdmissionStorage {
         )
     }
 
-    private func outcome(
+    @inlinable
+    internal func outcome(
         _ result: ExecutionAdmissionResult
     ) -> ExecutionAdmissionOutcome {
         ExecutionAdmissionOutcome(result: result, context: context)
@@ -185,6 +210,7 @@ where Storage: ExecutionPendingAdmissionStorage {
 
 // Existing callers retain the same wake-owning controller. The state is also
 // usable inside a containing runtime with one canonical wake owner.
+@usableFromInline
 struct SingleSourceExecutionAdmissionController<Storage, Requester>: ExecutionAdmissionSink
 where Storage: ExecutionPendingAdmissionStorage, Requester: ExecutionWakeRequester & Sendable {
     private var state: SingleSourceExecutionAdmissionState<Storage>
@@ -195,6 +221,8 @@ where Storage: ExecutionPendingAdmissionStorage, Requester: ExecutionWakeRequest
     var storage: Storage { state.storage }
     var isSealClosed: Bool { state.isSealClosed }
     var didDeferAfterSeal: Bool { state.didDeferAfterSeal }
+    @inlinable
+    @inline(__always)
     static var pointerStateStorageBytes: Int {
         SingleSourceExecutionAdmissionState<Storage>.pointerStateStorageBytes
     }
@@ -221,12 +249,15 @@ where Storage: ExecutionPendingAdmissionStorage, Requester: ExecutionWakeRequest
         wakeAccumulator.takeAtIdleOpportunity(phase: .idle) ?? []
     }
     mutating func closeAdmissionSeal() { state.closeAdmissionSeal() }
+    @usableFromInline
     mutating func submit(pointer: NormalizedPointerEvent) -> ExecutionAdmissionOutcome {
         record(state.submit(pointer: pointer))
     }
+    @usableFromInline
     mutating func submit(stateChange: Storage.StateChangeFact) -> ExecutionAdmissionOutcome {
         record(state.submit(stateChange: stateChange))
     }
+    @usableFromInline
     mutating func submit(completion: Storage.CompletionFact) -> ExecutionAdmissionOutcome {
         record(state.submit(completion: completion))
     }

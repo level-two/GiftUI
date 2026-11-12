@@ -3,12 +3,12 @@
 # Called after successful artifact construction. Keep native checks distinct
 # from the compiler and SDK selected by the artifact's build entry point.
 giftui_artifact_toolchain_metadata() (
-    local profile="$1" root="$2" compiler sdk sdk_hash
+    local profile="$1" root="$2" selected_compiler="${3:-}" compiler sdk sdk_hash
     printf 'native_check_compiler_path=%s\n' "$(command -v swiftc)"
     printf 'native_check_compiler_identity=%s\n' "$(swiftc --version 2>&1 | tr '\n' ' ')"
     case "${profile}" in
         macos-dynamic | macos-static)
-            compiler="$(command -v swiftc)"
+            compiler="${selected_compiler:-$(command -v swiftc)}"
             sdk="$(xcrun --sdk macosx --show-sdk-path)"
             sdk_hash="$(xcrun --sdk macosx --show-sdk-version)"
             ;;

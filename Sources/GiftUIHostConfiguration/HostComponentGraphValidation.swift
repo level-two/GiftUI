@@ -1,12 +1,15 @@
+@usableFromInline
 package enum HostComponentGraphValidation {
     package static let requiredRoleCount: UInt8 = 18
     private static let validRoleMask: UInt32 = (1 << requiredRoleCount) - 1
 
+    @usableFromInline
     package enum Request {
         case count
         case record(UInt8)
         case finished
     }
+    @usableFromInline
     package struct Engine {
         private enum Phase { case initialCount, missingCount, ordered, scan, done }
         private var phase: Phase = .initialCount
@@ -17,10 +20,12 @@ package enum HostComponentGraphValidation {
         #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
             @_noAllocation
         #endif
+        @usableFromInline
         package init() {}
         #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
             @_noAllocation
         #endif
+        @usableFromInline
         package func request() -> Request {
             switch phase {
             case .initialCount, .missingCount: return .count
@@ -31,6 +36,7 @@ package enum HostComponentGraphValidation {
         #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
             @_noAllocation
         #endif
+        @usableFromInline
         package func result() -> HostConfigurationError? {
             let finished: Bool
             if case .done = phase { finished = true } else { finished = false }
@@ -40,6 +46,7 @@ package enum HostComponentGraphValidation {
         #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
             @_noAllocation
         #endif
+        @usableFromInline
         package mutating func acceptCount(_ count: UInt8) {
             switch phase {
             case .initialCount:
@@ -53,6 +60,7 @@ package enum HostComponentGraphValidation {
         #if GIFTUI_GRAPH_ENGINE_QUALIFICATION
             @_noAllocation
         #endif
+        @usableFromInline
         package mutating func acceptRecord(_ record: HostComponentRecord?) {
             switch phase {
             case .ordered:
@@ -124,6 +132,7 @@ package enum HostComponentGraphValidation {
         }
     }
 
+    @inlinable
     package static func validate<Graph>(_ graph: borrowing Graph) -> HostConfigurationError?
     where Graph: HostComponentGraphView {
         var engine = Engine()

@@ -2,8 +2,9 @@ import GiftUIExecution
 
 /// Compatibility with the retained pre-cutover profile binding. The current
 /// scoped activation passes its concrete binding directly to the coordinator.
-package struct DynamicRuntimeExecutionBindingAdapter: DynamicExecutionProfileBinding {
+package struct DynamicRuntimeExecutionBindingAdapter: ~Escapable, DynamicExecutionProfileBinding {
     private let binding: UnsafeMutablePointer<DynamicRuntimeProfileBinding>
+
     package init(binding: UnsafeMutablePointer<DynamicRuntimeProfileBinding>) {
         self.binding = binding
     }
@@ -14,9 +15,10 @@ package struct DynamicRuntimeExecutionBindingAdapter: DynamicExecutionProfileBin
 
 package extension DynamicRuntimeExecutionCoordinator
 where Binding == DynamicRuntimeExecutionBindingAdapter {
-    @_lifetime(copy admission, copy opportunity)
+    @_lifetime(borrow binding)
     init(
-        binding: UnsafeMutablePointer<DynamicRuntimeProfileBinding>, admission: consuming Admission,
+        binding: borrowing UnsafeMutablePointer<DynamicRuntimeProfileBinding>,
+        admission: consuming Admission,
         opportunity: consuming Opportunity
     ) {
         self.init(

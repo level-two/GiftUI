@@ -150,13 +150,28 @@ package struct StaticSignalAnalyzerNRFEmbeddedRasterSink: DrawingOperationSink {
             damageBounds: header.damageBounds,
             workspace: &workspace,
             { damage, replace in
-                switch RasterGlyphCoverage.rasterize(
-                    glyph, operation: glyphHeader,
-                    metrics: metrics, raster: raster,
-                    realization: realization,
-                    descriptor: descriptor,
-                    damageBounds: damage, replace
+                let result: RasterGlyphResult
+                switch RasterGlyphCoverage.preparePayload(
+                    glyph, operation: glyphHeader, metrics: metrics, raster: raster,
+                    realization: realization, descriptor: descriptor, damageBounds: damage
                 ) {
+                case .ready(let inkBounds, let record):
+                    result =
+                        raster.withNonthrowingPayload(
+                            for: record, realization: realization.id
+                        ) { bytes in
+                            RasterGlyphCoverage.rasterizePreparedPayload(
+                                inkBounds: inkBounds, record: record, bytes: bytes,
+                                operation: glyphHeader, descriptor: descriptor,
+                                damageBounds: damage, replace
+                            )
+                        } ?? .incompatibleResource
+                case .empty: result = .completed(pixelCount: 0, payloadBytes: 0)
+                case .incompatibleResource: result = .incompatibleResource
+                case .invalidGeometry: result = .invalidGeometry
+                case .arithmeticOverflow: result = .arithmeticOverflow
+                }
+                switch result {
                 case .completed(let count, _):
                     let next = pixels.addingReportingOverflow(count)
                     guard !next.overflow else { return false }

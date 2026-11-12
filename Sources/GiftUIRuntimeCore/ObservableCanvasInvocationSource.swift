@@ -19,6 +19,8 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
     internal var table: Table
 
     @_lifetime(copy models, copy values)
+    @inlinable
+    @inline(__always)
     package init(
         models: consuming ObservableModelScope<Model, Schema>,
         values: consuming CanvasStagedValues<Identity, Table>, table: consuming Table
@@ -27,9 +29,11 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
         self.values = consume values
         self.table = consume table
     }
-    @usableFromInline
+    @inlinable
+    @inline(__always)
     package var canvasOccurrenceCount: UInt16 { values.count }
-    @usableFromInline
+    @inlinable
+    @inline(__always)
     package func canvasIdentity(at index: UInt16) -> Identity? { values.identity(at: index) }
     @inline(__always)
     @inlinable
@@ -49,6 +53,7 @@ where Table.Domain.Slot == ObservableModelReadSlot<Model> {
         } catch { throw DrawingError(accessFailure: error) }
         if let failure { throw failure }
     }
-    @usableFromInline
+    @inlinable
+    @inline(__always)
     package mutating func releaseCanvas(at identity: Identity) { values.release(at: identity) }
 }

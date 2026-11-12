@@ -1,3 +1,4 @@
+@usableFromInline
 package protocol ExecutionOpportunityRunner: ~Copyable, ~Escapable {
     associatedtype OwnerFailure: Equatable & Sendable
 

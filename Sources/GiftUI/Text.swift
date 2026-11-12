@@ -8,6 +8,8 @@ public struct _GiftUITextPayload: _GiftUISemanticPrimitivePayload, Equatable, Se
     @usableFromInline
     package let content: _GiftUITextContent
 
+    @inlinable
+    @inline(__always)
     package init(content: _GiftUITextContent) {
         self.content = content
     }
@@ -20,6 +22,8 @@ public struct Text<D: _GiftUIReadDomain>: View {
     @usableFromInline
     package let _giftUITextPayload: _GiftUITextPayload
 
+    @inlinable
+    @inline(__always)
     public init(_ content: StaticString) {
         if let admitted = BoundedText(content) {
             _giftUITextPayload = _GiftUITextPayload(content: .admitted(admitted))
@@ -28,6 +32,8 @@ public struct Text<D: _GiftUIReadDomain>: View {
         }
     }
 
+    @inlinable
+    @inline(__always)
     public init(_ content: BoundedText) {
         _giftUITextPayload = _GiftUITextPayload(content: .admitted(content))
     }

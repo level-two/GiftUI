@@ -40,6 +40,9 @@ where
     CanvasTable: StaticCanvasCallableTable,
     Coverage: StaticCanvasCoverageMetadata
 {
+    package typealias Domain = CanvasTable.Domain
+    package typealias CaptureStorage = CanvasTable.CaptureStorage
+
     package let observableSlots: Slots
     package let actionSpecialization: StaticActionSpecialization<Action>
     package var canvasTable: CanvasTable
@@ -99,15 +102,17 @@ where
 
     package mutating func invoke(
         id: UInt16,
-        captures: borrowing CanvasTable.CaptureStorage,
+        captures: borrowing CaptureStorage,
         context: inout GraphicsContext,
-        size: Size
+        size: Size,
+        read: borrowing _GiftUIFrameRead<Domain>
     ) throws(DrawingError) {
         try canvasTable.invoke(
             id: id,
             captures: captures,
             context: &context,
-            size: size
+            size: size,
+            read: read
         )
     }
 

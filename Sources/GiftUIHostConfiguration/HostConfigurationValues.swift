@@ -81,6 +81,7 @@ package struct HostComponentRoleSet: OptionSet, Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct HostComponentRecord: Equatable, Sendable {
     package let role: HostComponentRole
     package let dependencies: HostComponentRoleSet
@@ -94,18 +95,27 @@ package struct HostComponentRecord: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package protocol HostComponentGraphView: ~Copyable {
     var count: UInt8 { get }
     borrowing func record(at index: UInt8) -> HostComponentRecord?
 }
 
+@usableFromInline
 package struct HostPacingPolicy: Equatable, Sendable {
+    @usableFromInline
     package let minimumFrameIntervalMicroseconds: UInt32
+    @usableFromInline
     package let maximumFactServiceLatencyMicroseconds: UInt32
+    @usableFromInline
     package let minimumAcceptedTransitionSpacingMicroseconds: UInt32
+    @usableFromInline
     package let maximumTransitionFactsPerServiceWindow: UInt16
+    @usableFromInline
     package let maximumBootstrapFactsPerServiceWindow: UInt8
+    @usableFromInline
     package let maximumActionInducedFactsPerServiceWindow: UInt8
+    @usableFromInline
     package let maximumRetryableRefusals: UInt8
 
     #if GIFTUI_STARTUP_QUALIFICATION
@@ -150,6 +160,7 @@ package struct HostPacingPolicy: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct SignalAnalyzerHostCardinality: Equatable, Sendable {
     package let actionCaseCount: UInt16
     package let rootModelLocationCount: UInt16
@@ -179,6 +190,7 @@ package struct SignalAnalyzerHostCardinality: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct SignalAnalyzerDrawingWorkload: Equatable, Sendable {
     package let canvasOccurrences: UInt16
     package let maximumLivePathPoints: UInt16
@@ -186,6 +198,7 @@ package struct SignalAnalyzerDrawingWorkload: Equatable, Sendable {
     package let submittedStrokes: UInt16
     package let snapshottedPoints: UInt16
     package let snapshottedSubpaths: UInt16
+    @usableFromInline
     package let normalizedStrokeOperations: UInt16
     package let greatestLineWidth: GeometryScalar
     package let staticCallableCases: UInt16?
@@ -213,6 +226,7 @@ package struct SignalAnalyzerDrawingWorkload: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
     package let schemaVersion: UInt16
     package let requiredPathEntries: UInt32
@@ -229,10 +243,12 @@ package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
     package let maximumRenderTraversalDepth: UInt16
     package let renderTextLineCount: UInt16
     package let positionedGlyphCount: UInt16
+    @usableFromInline
     package let ordinaryRenderOperations: UInt16
     package let inputEventsPerOpportunity: UInt16
     package let semanticActionsPerOpportunity: UInt16
     package let completionFactsPerOpportunity: UInt16
+    @usableFromInline
     package let drawing: SignalAnalyzerDrawingWorkload
 
     #if GIFTUI_STARTUP_QUALIFICATION
@@ -272,13 +288,21 @@ package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct HostStructuralConfiguration: Equatable, Sendable {
+    @usableFromInline
     package let kind: MVPHostKind
+    @usableFromInline
     package let profile: RuntimeProfileKind
+    @usableFromInline
     package let runtimeLimits: RuntimeProfileLimits
+    @usableFromInline
     package let runtimeAudit: RuntimeStorageAudit
+    @usableFromInline
     package let cardinality: SignalAnalyzerHostCardinality
+    @usableFromInline
     package let workload: SignalAnalyzerHostWorkload
+    @usableFromInline
     package let pacing: HostPacingPolicy
 
     #if GIFTUI_STARTUP_QUALIFICATION
@@ -303,6 +327,7 @@ package struct HostStructuralConfiguration: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct HostActionModelConfiguration: Equatable, Sendable {
     package let firstActionCode: UInt16
     package let lastActionCode: UInt16
@@ -364,6 +389,7 @@ package struct HostActionModelConfiguration: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct HostInputWakeConfiguration: Equatable, Sendable {
     package let normalizedInputSourceCount: UInt16
     package let targetLocalPresentationGateCount: UInt8
@@ -390,6 +416,7 @@ package struct HostInputWakeConfiguration: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct HostEndpointConfiguration: Equatable, Sendable {
     package let effectivePresentation: EffectiveRasterPresentation
     package let descriptor: RasterSurfaceDescriptor

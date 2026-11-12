@@ -90,7 +90,7 @@ func counterDeriveEmbeddedLayout(r1Surplus: Int = 0,
     guard state.append(StaticCounterLayoutWorkspace.self, count: 1, visit: visit) else { return nil }
     guard state.append(StaticCounterResolvedLayoutStorage.self, count: 1, visit: visit) else { return nil }
     guard state.append(InlineArray<64, SemanticRecordReference?>.self, count: 1, visit: visit) else { return nil }
-    guard state.append(StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>.self, count: 1, visit: visit) else { return nil }
+    guard state.append(StaticCounterRecordDrawingWorkspace.self, count: 1, visit: visit) else { return nil }
     guard state.append(QualifiedRender.self, count: 1, visit: visit) else { return nil }
     guard state.append(CounterStaticCandidate.self, count: 1, visit: visit) else { return nil }
     guard state.append(CounterStaticHits.self, count: 1, visit: visit) else { return nil }

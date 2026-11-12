@@ -148,6 +148,7 @@ build_arguments=(
     --destination "${destination}"
     --configuration "${configuration}"
     --product "${product}"
+    --build-system native
 )
 if [[ "${link_static}" -eq 1 ]]; then
     build_arguments+=(--static-swift-stdlib)
@@ -168,6 +169,7 @@ binary_directory="$(
         --scratch-path "${scratch_path}" \
         --destination "${destination}" \
         --configuration "${configuration}" \
+        --build-system native \
         --show-bin-path
 )"
 binary_path="${binary_directory}/${product}"

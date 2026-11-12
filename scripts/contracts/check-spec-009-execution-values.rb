@@ -5,6 +5,7 @@ require "pathname"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
 SOURCE = ROOT.join("Sources/GiftUIExecution/ExecutionValues.swift")
+TARGET_GENERATION_SOURCE = ROOT.join("Sources/GiftUIExecution/ObservableTargetGeneration.swift")
 
 def fail_check(message)
   warn "SPEC-009 execution value check failed: #{message}"
@@ -12,7 +13,8 @@ def fail_check(message)
 end
 
 source = SOURCE.read
-imports = source.scan(/^import (\w+)$/).flatten
+target_generation = TARGET_GENERATION_SOURCE.read
+imports = (source + "\n" + target_generation).scan(/^import (\w+)$/).flatten.uniq.sort
 fail_check("execution value imports differ") unless imports == %w[GiftUI GiftUIRenderCore]
 
 identities = %w[
@@ -21,7 +23,8 @@ identities = %w[
 ]
 identities.each do |name|
   declaration = "package struct #{name}: Equatable, Hashable, Sendable"
-  fail_check("#{name} declaration differs") unless source.include?(declaration)
+  declaration_source = name == "ObservableTargetGeneration" ? target_generation : source
+  fail_check("#{name} declaration differs") unless declaration_source.include?(declaration)
 end
 
 required_fragments = [
@@ -41,7 +44,8 @@ required_fragments.each do |fragment|
 end
 
 identity_bodies = identities.map do |name|
-  source[/package struct #{name}:.*?^}/m]
+  declaration_source = name == "ObservableTargetGeneration" ? target_generation : source
+  declaration_source[/package struct #{name}:.*?^}/m]
 end
 fail_check("an identity declaration is missing") if identity_bodies.any?(&:nil?)
 identity_bodies.each do |body|

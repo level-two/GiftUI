@@ -26,11 +26,13 @@ required_package_fragments = [
   "import CompilerPluginSupport",
   ".package(\n            url: \"https://github.com/swiftlang/swift-syntax.git\",\n            exact: \"603.0.2\"",
   ".macro(\n            name: \"GiftUIMacros\"",
-  ".target(name: \"GiftUI\", dependencies: [\"GiftUIMacros\"])",
 ]
 missing_package = required_package_fragments.reject { |fragment| package.include?(fragment) }
 fail_check("package declaration differs: #{missing_package.inspect}") unless missing_package.empty?
 fail_check("macro target became a product") if package.match?(/\.library\([^\n]*GiftUIMacros/)
+unless package.match?(/\.target\(\s*name:\s*"GiftUI",\s*dependencies:\s*\[\s*"GiftUIMacros"\s*\]/m)
+  fail_check("GiftUI must name exactly the host-only macro build dependency")
+end
 
 pin = resolved.fetch("pins").find { |candidate| candidate["identity"] == "swift-syntax" }
 fail_check("swift-syntax pin is missing") unless pin
@@ -41,6 +43,8 @@ fail_check("macro target type differs") unless macro_graph.fetch("type") == "mac
 fail_check("macro target has internal runtime edges") unless macro_graph.fetch("dependencies").empty?
 expected_external = %w[
   SwiftCompilerPlugin@swift-syntax
+  SwiftParser@swift-syntax
+  SwiftOperators@swift-syntax
   SwiftDiagnostics@swift-syntax
   SwiftSyntax@swift-syntax
   SwiftSyntaxBuilder@swift-syntax
@@ -94,7 +98,17 @@ required_generation = [
 missing_generation = required_generation.reject { |fragment| macro_source.include?(fragment) }
 fail_check("macro generation differs: #{missing_generation.inspect}") unless missing_generation.empty?
 
-forbidden = /import\s+(?:GiftUI|GiftUIRuntime|GiftUIInteraction|Foundation|Observation)|\b(?:Any|Mirror|TaskLocal)\b/
+# Foundation is used by host-only source tooling and is not linked into GiftUI
+# products. SPEC-010 forbids runtime/application dependencies here, not the
+# host SDK's Foundation module.
+forbidden = /^\s*import\s+(?:GiftUI|GiftUIRuntime|GiftUIInteraction|Observation)\b|\b(?:Any|Mirror|TaskLocal)\b/m
 fail_check("macro target contains a forbidden target/runtime mechanism") if macro_source.match?(forbidden)
+
+foundation_imports = macro_sources.select do |path|
+  File.read(path).match?(/^import Foundation\s*$/)
+end.map { |path| File.basename(path) }.sort
+unless foundation_imports == %w[FiniteSourceLowering.swift GiftUIMacros.swift]
+  fail_check("Foundation imports escaped the host-only lowering CLI: #{foundation_imports.inspect}")
+end
 
 puts "SPEC-010 target boundary passed: pinned host-only macro, exact observable owner graph, and bounded deterministic generation."

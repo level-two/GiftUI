@@ -5,6 +5,7 @@ import GiftUISemanticCore
 import GiftUITextResources
 
 extension RenderProducer {
+    @inlinable
     static func stream<Semantic, Layout, Metrics, Workspace, Sink>(
         preflight: RenderPreflightSummary,
         semantic: borrowing Semantic,
@@ -42,6 +43,7 @@ extension RenderProducer {
         )
     }
 
+    @inlinable
     static func stream<
         Semantic, Layout, Metrics, Workspace, Extension, Sink
     >(
@@ -77,7 +79,7 @@ extension RenderProducer {
         else {
             return .failure(.invariantViolation)
         }
-        guard workspace.currentForeground == nil,
+        guard case .none = workspace.currentForeground,
             workspace.pushForeground(rootForeground),
             workspace.currentForeground == rootForeground
         else {
@@ -106,8 +108,8 @@ extension RenderProducer {
                 == preflight.header.positionedGlyphCount,
             state.extensionOperationCount
                 == preflight.extensionOperationCount,
-            semantic.semanticIdentity(at: semantic.semanticScopeCount) == nil,
-            layout.layoutIdentity(at: layout.layoutScopeCount) == nil,
+            case .none = semantic.semanticIdentity(at: semantic.semanticScopeCount),
+            case .none = layout.layoutIdentity(at: layout.layoutScopeCount),
             damageMatches(
                 preflight.header.damageBounds,
                 layout: layout,
@@ -123,7 +125,7 @@ extension RenderProducer {
             sink.discard()
             return .failure(.invariantViolation)
         }
-        guard workspace.popForeground(), workspace.currentForeground == nil else {
+        guard workspace.popForeground(), case .none = workspace.currentForeground else {
             sink.discard()
             return .failure(.invariantViolation)
         }
@@ -141,7 +143,8 @@ extension RenderProducer {
         return .success(preflight.header)
     }
 
-    private static func damageMatches<Layout>(
+    @inlinable
+    static func damageMatches<Layout>(
         _ expected: Rect,
         layout: borrowing Layout,
         surfaceBounds: Rect,
@@ -156,7 +159,8 @@ extension RenderProducer {
         }
     }
 
-    private static func snapshotsMatch<Semantic, Layout>(
+    @inlinable
+    static func snapshotsMatch<Semantic, Layout>(
         _ preflight: RenderPreflightSummary,
         semantic: borrowing Semantic,
         layout: borrowing Layout
@@ -174,11 +178,19 @@ extension RenderProducer {
     }
 }
 
-private struct RenderStreamingState {
+@usableFromInline
+internal struct RenderStreamingState {
+    @usableFromInline
     var operationCount: UInt16 = 0
+    @usableFromInline
     var positionedGlyphCount: UInt16 = 0
+    @usableFromInline
     var extensionOperationCount: UInt16 = 0
 
+    @inlinable
+    init() {}
+
+    @inlinable
     mutating func stream<
         Semantic, Layout, Metrics, Workspace, Extension, Sink
     >(
@@ -319,7 +331,7 @@ private struct RenderStreamingState {
             }
             childIndex += 1
         }
-        guard semantic.child(of: identity, at: childCount) == nil else {
+        guard case .none = semantic.child(of: identity, at: childCount) else {
             return .invariantViolation
         }
         if overridesForeground {
@@ -334,7 +346,8 @@ private struct RenderStreamingState {
         return nil
     }
 
-    private mutating func streamText<Layout, Metrics, Sink>(
+    @inlinable
+    mutating func streamText<Layout, Metrics, Sink>(
         identity: Layout.Identity,
         layout: borrowing Layout,
         textMetrics: borrowing Metrics,
@@ -415,7 +428,7 @@ private struct RenderStreamingState {
                 lineGlyphIndex += 1
             }
             if emitsGroup {
-                guard lineInstance != nil,
+                guard case .some = lineInstance,
                     sink.endPositionedGlyphs(),
                     incrementOperation(),
                     incrementGlyphs(by: line.glyphCount)
@@ -425,13 +438,16 @@ private struct RenderStreamingState {
             }
             lineIndex += 1
         }
-        guard layout.textLine(of: identity, at: lineCount) == nil else {
+        guard case .none = layout.textLine(of: identity, at: lineCount),
+            case .none = layout.glyph(of: identity, at: glyphIndex)
+        else {
             return false
         }
-        return layout.glyph(of: identity, at: glyphIndex) == nil
+        return true
     }
 
-    private func compatible<Metrics>(
+    @inlinable
+    func compatible<Metrics>(
         instance: FontInstanceID,
         glyph: GlyphID,
         textMetrics: borrowing Metrics
@@ -441,21 +457,23 @@ private struct RenderStreamingState {
             let descriptor = textMetrics.instance(at: instance.instanceIndex),
             descriptor.id == instance,
             glyph.rawValue < descriptor.glyphCount,
-            textMetrics.metrics(for: glyph, in: instance) != nil
+            case .some = textMetrics.metrics(for: glyph, in: instance)
         else {
             return false
         }
         return true
     }
 
-    private mutating func incrementOperation() -> Bool {
+    @inlinable
+    mutating func incrementOperation() -> Bool {
         let result = operationCount.addingReportingOverflow(1)
         guard !result.overflow else { return false }
         operationCount = result.partialValue
         return true
     }
 
-    private mutating func incrementGlyphs(by count: UInt16) -> Bool {
+    @inlinable
+    mutating func incrementGlyphs(by count: UInt16) -> Bool {
         let result = positionedGlyphCount.addingReportingOverflow(count)
         guard !result.overflow else { return false }
         positionedGlyphCount = result.partialValue
@@ -463,9 +481,14 @@ private struct RenderStreamingState {
     }
 }
 
-private struct EmptyRenderStreamingExtension<Identity, Sink>:
+@usableFromInline
+internal struct EmptyRenderStreamingExtension<Identity, Sink>:
     RenderStreamingExtension
 where Identity: Equatable & Sendable, Sink: RenderOperationSink {
+    @inlinable
+    init() {}
+
+    @inlinable
     mutating func visit(
         scope _: SemanticRenderScope,
         identity _: Identity,
@@ -476,6 +499,7 @@ where Identity: Equatable & Sendable, Sink: RenderOperationSink {
         .success(RenderExtensionVisit(operationCount: 0))
     }
 
+    @inlinable
     mutating func complete() -> RenderExtensionCompletionResult {
         .success
     }

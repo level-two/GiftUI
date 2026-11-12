@@ -7,7 +7,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC010/Fixtures/Negative/sink-copy/main.swift"
 PATTERNS="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC010/Fixtures/Negative/sink-copy/expected-diagnostic-patterns.txt"
 REPORT_DIR="${PROJECT_ROOT}/.build/contract-generated/spec-010/compiler-negative/sink-copy"
-COMPILER="$(xcrun --find swiftc)"
+COMPILER="${GIFTUI_CONTRACT_SWIFTC:-${PROJECT_ROOT}/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc}"
 SDK="$(xcrun --sdk macosx --show-sdk-path)"
 
 rm -rf "${REPORT_DIR}"
@@ -21,6 +21,8 @@ set +e
     -target arm64-apple-macosx26.0 \
     -sdk "${SDK}" \
     -language-mode 6 \
+    -enable-experimental-feature LifetimeDependence \
+    -enable-experimental-feature Lifetimes \
     -package-name GiftUI \
     -parse-as-library \
     -module-name GiftUI \

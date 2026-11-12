@@ -116,12 +116,14 @@ package enum GeometryArithmetic {
     }
 }
 
+@usableFromInline
 package enum PointerPhase: UInt8, Equatable, Sendable {
     case down = 0
     case move = 1
     case up = 2
 }
 
+@usableFromInline
 package struct InputSourceID: Equatable, Hashable, Sendable {
     package let rawValue: UInt16
 
@@ -133,6 +135,7 @@ package struct InputSourceID: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct PointerSequenceID: Equatable, Hashable, Sendable {
     package let rawValue: UInt32
 
@@ -141,6 +144,7 @@ package struct PointerSequenceID: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct InputOrdinal: Equatable, Hashable, Sendable {
     package let rawValue: UInt32
 
@@ -158,12 +162,18 @@ package struct PresentationRevision: Equatable, Hashable, Sendable {
     }
 }
 
+@usableFromInline
 package struct NormalizedPointerEvent: Equatable, Sendable {
+    @usableFromInline
     package let phase: PointerPhase
     package let position: Point
+    @usableFromInline
     package let source: InputSourceID
+    @usableFromInline
     package let sequence: PointerSequenceID
+    @usableFromInline
     package let ordinal: InputOrdinal
+    @usableFromInline
     package let presentationRevision: PresentationRevision
 
     package init(

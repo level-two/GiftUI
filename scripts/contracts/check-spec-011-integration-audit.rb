@@ -16,6 +16,7 @@ def fail_check(message)
 end
 
 approved_consumers = %w[
+  GiftUIHostConfiguration
   GiftUIHostConfigurationTests
   GiftUIInteractionFailureAdapterFixture
   GiftUIInteractionFailureAdapterTests

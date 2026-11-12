@@ -16,8 +16,12 @@ source = SOURCE.read
 tests = TEST.read
 fail_check("pointer capture imports differ") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUI]
 
+capture_declaration = source.match(
+  /(?:@usableFromInline\s+)?(?:internal\s+)?private\(set\)\s+var captured:\s*(?:CapturedAction<Identity>\?|Optional<CapturedAction<Identity>>)/
+)
+fail_check("capture state must remain internal and privately settable") unless capture_declaration
+
 required = [
-  "private(set) var captured: CapturedAction<Identity>?",
   "captured = nil",
   "actionView.hit(at: point)",
   "actionView.generation(for: identity)",

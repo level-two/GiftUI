@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import pathlib
+import re
 import shlex
 import subprocess
 import tempfile
@@ -12,10 +13,24 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 ROUTE = 'Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift'
 ENTRY = 'package func p08CounterStaticResourceEntryV1() -> Int {'
 ANNOTATION = '#if GIFTUI_COUNTER_ALLOCATION_GATE\n@_noAllocation\n#endif\n'
+PROVIDER_QUALIFICATIONS = {
+    'GIFTUI_' + name + '_QUALIFICATION' for name in (
+        'ACCOUNTING', 'CAPABILITY', 'FACTORY_INITIALIZATION', 'GEOMETRY',
+        'GRAPH_ENGINE', 'LIMITS', 'NAMESPACE', 'OWNER_ROOT',
+        'SEMANTIC_READONLY', 'STARTUP', 'TEXT_ENGINE')
+}
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--counter-build', required=True, type=pathlib.Path)
+parser.add_argument('--rebuild-host', action='store_true',
+                    help='freshly compile the recorded Host module; keep every lower dependency pinned')
+parser.add_argument('--qualify-host-graph', action='store_true',
+                    help='rebuild Host with its existing checked component-graph allocation contracts')
+parser.add_argument('--qualify-providers', action='store_true',
+                    help='rebuild the existing checked provider dependency group before checking the entry')
 parser.add_argument('--output', type=pathlib.Path, help='fresh exclusive output under .build')
 args = parser.parse_args()
+if args.qualify_host_graph:
+    args.rebuild_host = True
 parent = ROOT / '.build/contracts'
 parent.mkdir(parents=True, exist_ok=True)
 if args.output:
@@ -94,6 +109,14 @@ try:
     require(len(swift_inputs) == 42 and ROOT / ROUTE in swift_inputs,
             'unexpected actual Counter module source closure')
     fresh_sources = {str(p.relative_to(ROOT)) for p in swift_inputs}
+    host_recipe = None
+    if args.rebuild_host:
+        host_recipe = next(shlex.split(c) for c in recipe_data['commands']
+                           if '-module-name GiftUIHostConfiguration ' in c and '-emit-object' in c)
+        host_sources = {str(pathlib.Path(p).relative_to(ROOT))
+                        for p in host_recipe if p.endswith('.swift')}
+        require(len(host_sources) == 23, 'unexpected Host module source closure')
+        fresh_sources |= host_sources
     prior = authenticate(base / 'result.json', fresh_sources=fresh_sources)
     require(prior.get('passed') is True and prior.get('collection_complete') is True,
             'a complete passing Counter receipt is required')
@@ -117,6 +140,8 @@ try:
             if '-module-name' not in parts or '-emit-module' not in parts:
                 continue
             module = parts[parts.index('-module-name') + 1]
+            if args.rebuild_host and module == 'GiftUIHostConfiguration':
+                continue
             if not (module.startswith('GiftUI') or module in ('P08CounterTable', 'P08CounterPresentation')):
                 continue
             for value in parts:
@@ -149,6 +174,79 @@ try:
     require((ROOT / ROUTE).read_text().count(ANNOTATION + ENTRY) == 1,
             'the exact actual entry must carry the selected conditional annotation')
     record['candidate_source_hashes'] = {name: digest(ROOT / name) for name in sorted(fresh_sources)}
+    if args.qualify_providers:
+        provider_recipes = {}
+        core_commands = core_path.parent / 'commands.txt'
+        record['core_commands_sha256'] = digest(core_commands)
+        core_recipes = [line for line in core_commands.read_text().splitlines()
+                        if '-module-name GiftUI ' in line and '-emit-object' in line]
+        require(len(core_recipes) == 1, 'expected one recorded GiftUI core producer')
+        # Later recipes describe the actual Counter's selected owner closure.
+        for receipt in (dict(commands=core_recipes), runtime, host, prior):
+            for command in receipt['commands']:
+                parts = shlex.split(command)
+                if '-module-name' in parts and '-emit-object' in parts and '-emit-module-path' in parts:
+                    name = parts[parts.index('-module-name') + 1]
+                    if name.startswith('GiftUI'):
+                        provider_recipes[name] = parts
+        selected = {}
+        for name, parts in provider_recipes.items():
+            sources = [pathlib.Path(p) for p in parts if p.endswith('.swift')]
+            source_text = '\n'.join(p.read_text() for p in sources)
+            definitions = sorted(set(re.findall(r'#if (GIFTUI_\w+_QUALIFICATION)', source_text)))
+            require(set(definitions) <= PROVIDER_QUALIFICATIONS,
+                    name + ': unreviewed provider qualification family')
+            if definitions:
+                selected[name] = dict(recipe=parts, sources=sources, definitions=definitions,
+                                      imports=set(re.findall(r'^import (\w+)', source_text, re.M)))
+        record['qualified_providers'] = []
+        pending = dict(selected)
+        while pending:
+            ready = sorted(name for name, item in pending.items()
+                           if not (item['imports'] & pending.keys()))
+            require(bool(ready), 'checked provider dependency cycle')
+            for name in ready:
+                item = pending.pop(name)
+                parts = item['recipe']
+                command = [parts[0], '-I', str(out), '-experimental-performance-annotations']
+                for definition in item['definitions']:
+                    command += ['-D', definition]
+                command += parts[1:]
+                for flag, path in [('-module-cache-path', out / 'cache'),
+                                   ('-emit-module-path', out / (name + '.swiftmodule')),
+                                   ('-o', out / (name + '.o'))]:
+                    require(flag in command, name + ': missing recipe flag ' + flag)
+                    command[command.index(flag) + 1] = str(path)
+                result = run('qualify-' + name, command)
+                require(result.returncode == 0, name + ': checked provider compilation failed')
+                record['qualified_providers'].append(dict(
+                    module=name, definitions=item['definitions'],
+                    sources={str(p.relative_to(ROOT)): digest(p) for p in item['sources']},
+                    artifacts={suffix: digest(out / (name + suffix))
+                               for suffix in ('.o', '.swiftmodule')}))
+                save()
+    elif host_recipe is not None:
+        rebuilt = [host_recipe[0], '-I', str(out), *host_recipe[1:]]
+        if args.qualify_host_graph:
+            # Check the existing conditional contracts in their defining module;
+            # do not import unchecked promises or change the production recipe.
+            definitions = ['GIFTUI_GRAPH_ENGINE_QUALIFICATION']
+            qualification_flags = ['-experimental-performance-annotations']
+            for definition in definitions:
+                qualification_flags += ['-D', definition]
+            rebuilt[1:1] = qualification_flags
+            record['host_qualification_definitions'] = definitions
+        for flag, path in [('-module-cache-path', out / 'cache'),
+                           ('-emit-module-path', out / 'GiftUIHostConfiguration.swiftmodule'),
+                           ('-o', out / 'GiftUIHostConfiguration.o')]:
+            rebuilt[rebuilt.index(flag) + 1] = str(path)
+        result = run('rebuild-host', rebuilt)
+        require(result.returncode == 0, 'Host module rebuild failed')
+        record['rebuilt_host'] = dict(
+            sources={name: digest(ROOT / name) for name in sorted(host_sources)},
+            artifacts={name: dict(sha256=digest(out / name), bytes=(out / name).stat().st_size)
+                       for name in ('GiftUIHostConfiguration.o', 'GiftUIHostConfiguration.swiftmodule')},
+            reused_functional_pass=False)
     require('-Osize' in recipe and '-whole-module-optimization' in recipe,
             'expected optimized whole-module recipe')
     fixtures = ROOT / 'Tests/ContractFixtures/SPEC015/AllocationGate'
@@ -170,6 +268,8 @@ try:
     record['controls_passed'] = True
     actual = [recipe[0], '-experimental-performance-annotations', '-D',
               'GIFTUI_COUNTER_ALLOCATION_GATE', *recipe[1:]]
+    if host_recipe is not None or args.qualify_providers:
+        actual[1:1] = ['-I', str(out)]
     for flag, path in [('-module-cache-path', out / 'cache'),
                        ('-emit-module-path', out / 'P08CounterRuntime.swiftmodule'),
                        ('-o', out / 'P08CounterRuntime.o')]:

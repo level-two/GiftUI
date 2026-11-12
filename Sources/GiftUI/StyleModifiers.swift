@@ -15,6 +15,8 @@ public struct _GiftUIBackgroundPayload: _GiftUISemanticModifierPayload,
     @usableFromInline
     package let color: Color
 
+    @inlinable
+    @inline(__always)
     package init(color: Color) {
         self.color = color
     }
@@ -33,6 +35,13 @@ struct GiftUIModifiedContent<Content: View, Payload: _GiftUISemanticModifierPayl
     let content: Content
     @usableFromInline
     let payload: Payload
+
+    @inlinable
+    @inline(__always)
+    init(content: Content, payload: Payload) {
+        self.content = content
+        self.payload = payload
+    }
 
     @usableFromInline
     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure)
@@ -60,6 +69,8 @@ public extension View {
         )
     }
 
+    @inlinable
+    @inline(__always)
     func background(_ color: Color) -> some View<Domain> {
         GiftUIModifiedContent(
             content: self,

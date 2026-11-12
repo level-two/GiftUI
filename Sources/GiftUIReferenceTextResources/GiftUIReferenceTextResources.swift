@@ -20,7 +20,10 @@ package struct GiftUIReferenceTextMetricsView: CanonicalTextMetricsView {
         at index: UInt16,
         in instance: FontInstanceID
     ) -> ScalarGlyphMappingRecord? {
-        guard instance == _GiftUIReferenceGeneratedCatalogue.instanceID else {
+        guard
+            TextResourceValidator.instancesMatch(
+                instance, _GiftUIReferenceGeneratedCatalogue.instanceID)
+        else {
             return nil
         }
         return _GiftUIReferenceGeneratedCatalogue.mapping(at: index)
@@ -30,7 +33,9 @@ package struct GiftUIReferenceTextMetricsView: CanonicalTextMetricsView {
         for glyph: GlyphID,
         in instance: FontInstanceID
     ) -> GlyphMetrics? {
-        guard instance == _GiftUIReferenceGeneratedCatalogue.instanceID,
+        guard
+            TextResourceValidator.instancesMatch(
+                instance, _GiftUIReferenceGeneratedCatalogue.instanceID),
             glyph.rawValue < _GiftUIReferenceGeneratedCatalogue.glyphCount
         else {
             return nil
@@ -98,6 +103,23 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
         realization: RasterRealizationID,
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
+        try withPayloadStorage(for: record, realization: realization, body)
+    }
+
+    package func withNonthrowingPayload<Result>(
+        for record: GlyphRasterRecord,
+        realization: RasterRealizationID,
+        _ body: (UnsafeRawBufferPointer) -> Result
+    ) -> Result? {
+        withPayloadStorage(for: record, realization: realization, body)
+    }
+
+    @usableFromInline
+    internal func withPayloadStorage<Result, Failure: Error>(
+        for record: GlyphRasterRecord,
+        realization: RasterRealizationID,
+        _ body: (UnsafeRawBufferPointer) throws(Failure) -> Result
+    ) throws(Failure) -> Result? {
         let cataloguedRealization = self.realization(at: realization.rawValue)
         let cataloguedRecord = self.record(
             for: record.glyph,
@@ -111,7 +133,12 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
                 guard record == cataloguedRecord,
                     realization == cataloguedRealization?.id
                 else { return nil }
-                return try _GiftUIReferenceGeneratedBitmapPayload.withRecordBytes(
+                // A catalogued empty payload still makes exactly one borrow.
+                // Its byte sequence has no backing address to expose.
+                if record.byteCount == 0 {
+                    return try body(UnsafeRawBufferPointer(start: nil, count: 0))
+                }
+                return try _GiftUIReferenceGeneratedBitmapPayload.withRecordBytesStorage(
                     for: record.glyph,
                     expectedByteCount: record.byteCount,
                     body
@@ -124,7 +151,12 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
                 guard record == cataloguedRecord,
                     realization == cataloguedRealization?.id
                 else { return nil }
-                return try _GiftUIReferenceGeneratedOutlinePayload.withRecordBytes(
+                // A catalogued empty payload still makes exactly one borrow.
+                // Its byte sequence has no backing address to expose.
+                if record.byteCount == 0 {
+                    return try body(UnsafeRawBufferPointer(start: nil, count: 0))
+                }
+                return try _GiftUIReferenceGeneratedOutlinePayload.withRecordBytesStorage(
                     for: record.glyph,
                     expectedByteCount: record.byteCount,
                     body
@@ -177,3 +209,6 @@ package enum GiftUIReferenceTextResources {
         }
     #endif
 }
+
+// Concrete adapters share both policy engines with the generic API. Only query
+// dispatch is specialized for the actual immutable Reference package.

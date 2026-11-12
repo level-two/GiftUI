@@ -41,6 +41,15 @@ case "$profile" in
     *) fail "unknown profile: $profile" ;;
 esac
 
+if [[ "$profile" == macos-* ]]; then
+    approved_host_toolchain="${PROJECT_ROOT}/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin"
+    [[ -x "${approved_host_toolchain}/swift" && -x "${approved_host_toolchain}/swiftc" ]] ||
+        fail "approved RFC-014 host toolchain is missing: ${approved_host_toolchain}"
+    export GIFTUI_SWIFT_EXECUTABLE="${approved_host_toolchain}/swift"
+    export GIFTUI_SWIFTC_EXECUTABLE="${approved_host_toolchain}/swiftc"
+    export PATH="${approved_host_toolchain}:${PATH}"
+fi
+
 declared_inputs() {
     {
         find "$PROJECT_ROOT/Sources/GiftUI" \
@@ -195,15 +204,16 @@ record_compiler() {
 record_macos_identity() {
     [[ "$(uname -s)" == "Darwin" && "$(uname -m)" == "arm64" ]] ||
         fail 'macOS profiles require an arm64 macOS host'
-    compiler="$(xcrun --find swiftc)"
+    compiler="${GIFTUI_SWIFTC_EXECUTABLE:-$(xcrun --find swiftc)}"
     version="$("$compiler" --version 2>&1)"
-    [[ "$version" == *'Apple Swift version 6.3.3'* && "$version" == *'swiftlang-6.3.3.1.3'* ]] ||
-        fail 'macOS compiler identity differs from SPEC-002'
+    [[ "$version" == *'Apple Swift version 6.4 (swift-6.4-RELEASE)'* ]] ||
+        fail 'macOS compiler identity differs from the approved RFC-014 baseline'
     sdk="$(xcrun --sdk macosx --show-sdk-path)"
     [[ -d "$sdk" ]] || fail "macOS SDK is missing: $sdk"
     profile_flag=-DGIFTUI_STATIC_PROFILE
     [[ "$profile" != "macos-dynamic" ]] || profile_flag=-DGIFTUI_DYNAMIC_PROFILE
     record_compiler "$compiler"
+    printf 'compiler_baseline=approved-rfc-014\n' >>"$metadata_path"
     record_command xcrun --sdk macosx --show-sdk-path
     printf 'target=arm64-apple-macosx26.0\nsdk_path=%s\n' "$sdk" >>"$metadata_path"
     printf 'optimization=-O -whole-module-optimization\nprofile_flag=%s\n' \

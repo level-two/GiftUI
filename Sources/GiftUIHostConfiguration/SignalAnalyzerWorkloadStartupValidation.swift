@@ -7,10 +7,12 @@ import GiftUIRenderLowering
 import GiftUIRuntimeCore
 import GiftUISemanticCore
 
+@usableFromInline
 package enum SignalAnalyzerWorkloadStartupValidation {
     #if GIFTUI_STARTUP_QUALIFICATION
         @_noAllocation
     #endif
+    @usableFromInline
     package static func validate(
         configuration: HostStructuralConfiguration
     ) -> HostConfigurationError? {

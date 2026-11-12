@@ -718,7 +718,7 @@ run_complete_semantic_suite_macos() {
 
     local filter='GiftUIFailureCoreTests|GiftUIFailureDiagnosticsTests|GiftUIFoundationFailureAdapterTests|GiftUICapabilityFailureAdapterTests'
     local -a command=(
-        "${swift_driver}" test --disable-sandbox --skip-update
+        "${swift_driver}" test --disable-sandbox --skip-update --build-system native
         --cache-path "${PROJECT_ROOT}/.build"
         --package-path "${PROJECT_ROOT}"
         --scratch-path "${suite_dir}"

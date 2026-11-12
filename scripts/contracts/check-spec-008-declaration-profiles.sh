@@ -79,7 +79,7 @@ fixture_flags=()
 
 case "${profile}" in
     macos-dynamic | macos-static)
-        compiler="$(xcrun --find swiftc)"
+        compiler="${GIFTUI_SWIFTC_EXECUTABLE:-$(xcrun --find swiftc)}"
         sdk="$(xcrun --sdk macosx --show-sdk-path)"
         profile_flag=-DGIFTUI_DYNAMIC_PROFILE
         extension=dylib
@@ -89,6 +89,8 @@ case "${profile}" in
         fi
         fixture_flags=(
             -target arm64-apple-macosx26.0 -sdk "${sdk}"
+            -enable-experimental-feature LifetimeDependence
+            -enable-experimental-feature Lifetimes
             -O -whole-module-optimization "${profile_flag}" -language-mode 6
         )
         module_command=("${compiler}" "${fixture_flags[@]}" -parse-as-library \
@@ -115,6 +117,8 @@ case "${profile}" in
             -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr"
             -Xcc -march=armv6 -Xcc -mfpu=vfp -Xcc -mfloat-abi=hard
             -Xcc -D_FILE_OFFSET_BITS=64 -Xcc -fPIC
+            -enable-experimental-feature LifetimeDependence
+            -enable-experimental-feature Lifetimes
             -DGIFTUI_DYNAMIC_PROFILE -language-mode 6
         )
         run_command "${compiler}" "${fixture_flags[@]}" \
@@ -129,6 +133,8 @@ case "${profile}" in
         fixture_flags=(
             -target "${GIFTUI_NRF_SWIFT_TARGET}"
             -enable-experimental-feature Embedded
+            -enable-experimental-feature LifetimeDependence
+            -enable-experimental-feature Lifetimes
             -Osize -whole-module-optimization -DGIFTUI_STATIC_PROFILE
             -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
             -language-mode 6

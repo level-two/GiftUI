@@ -120,18 +120,54 @@ extension CounterExecutionBinding {
 
 // Internal storage for the existing scoped host role, retaining every actual
 // supplied backing scope through inert, active and retired states.
+// These case payloads keep their two lifetime dependencies together at
+// construction, transfer and destruction.
+struct CounterHostInertPayload<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+    // Mutable storage permits consuming extraction on the pinned compiler.
+    var supplied: CounterHostSupplied<Geometry, Candidate, Committed, Hits>
+    let span: Span<UInt8>
+
+    @_lifetime(copy supplied, copy span)
+    @inline(__always)
+    init(supplied: consuming CounterHostSupplied<Geometry, Candidate, Committed, Hits>, span: Span<UInt8>) {
+        self.supplied = consume supplied
+        self.span = span
+    }
+
+    @_lifetime(copy self)
+    @inline(__always)
+    consuming func takeSupplied() -> CounterHostSupplied<Geometry, Candidate, Committed, Hits> {
+        consume supplied
+    }
+}
+
+struct CounterHostRetiredPayload<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable
+where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+    var storage: CounterRetiredStorage<Geometry, Candidate, Committed, Hits>
+    let span: Span<UInt8>
+
+    @_lifetime(copy storage, copy span)
+    @inline(__always)
+    init(storage: consuming CounterRetiredStorage<Geometry, Candidate, Committed, Hits>, span: Span<UInt8>) {
+        self.storage = consume storage
+        self.span = span
+    }
+}
+
+
 enum CounterHostState<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable
 where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCandidateBacking & ~Copyable & ~Escapable, Committed: CounterCommittedBacking & ~Copyable & ~Escapable, Hits: CounterHitBacking & ~Copyable & ~Escapable, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
-    case inert(CounterHostSupplied<Geometry, Candidate, Committed, Hits>, Span<UInt8>)
+    case inert(CounterHostInertPayload<Geometry, Candidate, Committed, Hits>)
     case active(CounterHostCoordinator<Geometry, Candidate, Committed, Hits>, ObservableModelTicket<CounterModelSchema>?, Span<UInt8>)
-    case retired(CounterRetiredStorage<Geometry, Candidate, Committed, Hits>, Span<UInt8>)
+    case retired(CounterHostRetiredPayload<Geometry, Candidate, Committed, Hits>)
     @_lifetime(copy supplied, copy activationSpan)
     init(supplied: consuming CounterHostSupplied<Geometry, Candidate, Committed, Hits>, activationSpan: Span<UInt8>) {
-        self = .inert(consume supplied, activationSpan)
+        self = .inert(.init(supplied: consume supplied, span: activationSpan))
     }
     var controlPointer: UnsafeMutablePointer<CounterControl> {
         switch self {
-        case .inert(let supplied, _): supplied.controlPointer
+        case .inert(let payload): payload.supplied.controlPointer
         case .active(let coordinator, _, _): coordinator.opportunity.control
         case .retired: preconditionFailure("retired counter control")
         }
@@ -140,7 +176,9 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     @inline(never)
     mutating func activate(assembly: CounterHostAssembly) -> HostConfigurationError? {
         switch consume self {
-        case .inert(let supplied, let span):
+        case .inert(let payload):
+            let span = payload.span
+            let supplied = payload.takeSupplied()
             precondition(span.count == 1 && span[0] == 1)
             let construction = CounterConstructionInputs.canonical
             let models = supplied.borrowedModels(selection: construction.root)
@@ -149,7 +187,7 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             let audit = construction.root.audit(supplied.audit)
             let report = assembly.report
             if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: counterStaticHostKind, profile: .static, models: models, root: root, control: control.pointer, audit: audit, report: report) {
-                self = .inert(consume supplied, span)
+                self = .inert(.init(supplied: consume supplied, span: span))
                 return error
             }
             let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), scopedControl: control.borrowed(), audit: audit)!
@@ -157,15 +195,15 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             let coordinator = CounterHostCoordinator<Geometry, Candidate, Committed, Hits>(binding: binding, admission: CounterAdmission(control: construction.admission.control(control.pointer), limits: construction.admission.audit(audit).limits.execution), opportunity: pipeline)
             self = .active(consume coordinator, nil, span)
         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
-        case .retired(let storage, let span): self = .retired(consume storage, span); preconditionFailure("retired host")
+        case .retired(let payload): self = .retired(consume payload); preconditionFailure("retired host")
         }
         return nil
     }
     @_lifetime(self: copy self)
     mutating func activate(assembly: CounterHostAssembly, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostConfigurationError? {
         switch self {
-        case .inert(let supplied, _):
-            if let error = counterBindingJoinError(expectedModels: supplied.borrowedModels(), expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: counterStaticHostKind, profile: .static, models: models, root: root, control: control, audit: audit, report: report) { return error }
+        case .inert(let payload):
+            if let error = counterBindingJoinError(expectedModels: payload.supplied.borrowedModels(), expectedControl: payload.supplied.controlPointer, expectedAudit: payload.supplied.audit, expectedReport: assembly.report, kind: counterStaticHostKind, profile: .static, models: models, root: root, control: control, audit: audit, report: report) { return error }
         case .active: return .invariantViolation
         case .retired: return .invariantViolation
         }
@@ -189,8 +227,8 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
                 self = .active(consume coordinator, cache, span)
                 return true
             } catch { self = .active(consume coordinator, nil, span); return false }
-        case .inert(let supplied, let span): self = .inert(consume supplied, span); return false
-        case .retired(let storage, let span): self = .retired(consume storage, span); return false
+        case .inert(let payload): self = .inert(consume payload); return false
+        case .retired(let payload): self = .retired(consume payload); return false
         }
     }
     @_lifetime(self: copy self)
@@ -200,8 +238,8 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             let outcome = coordinator.submit(stateChange: value)
             self = .active(consume coordinator, consume cache, span)
             return outcome.result == .queued
-        case .inert(let supplied, let span): self = .inert(consume supplied, span); return false
-        case .retired(let storage, let span): self = .retired(consume storage, span); return false
+        case .inert(let payload): self = .inert(consume payload); return false
+        case .retired(let payload): self = .retired(consume payload); return false
         }
     }
     @inline(never)
@@ -240,8 +278,8 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             let result = coordinator.runOpportunity()
             self = .active(consume coordinator, consume cache, span)
             return result
-        case .inert(let supplied, let span): self = .inert(consume supplied, span); preconditionFailure("inactive host")
-        case .retired(let storage, let span): self = .retired(consume storage, span); preconditionFailure("retired host")
+        case .inert(let payload): self = .inert(consume payload); preconditionFailure("inactive host")
+        case .retired(let payload): self = .retired(consume payload); preconditionFailure("retired host")
         }
     }
     @_lifetime(self: copy self)
@@ -255,8 +293,8 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             coordinator.quiesce()
             precondition(coordinator.isQuiescent)
             self = .active(consume coordinator, nil, span)
-        case .inert(let supplied, let span): self = .inert(consume supplied, span)
-        case .retired(let storage, let span): self = .retired(consume storage, span)
+        case .inert(let payload): self = .inert(consume payload)
+        case .retired(let payload): self = .retired(consume payload)
         }
     }
     @_lifetime(self: copy self)
@@ -271,24 +309,30 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
             }; precondition(p08Presence67)
             let extracted = coordinator.takeQuiescedOpportunity()
             switch consume extracted {
-            case .some(let pipeline): self = .retired(pipeline.retireQuiescedStorage(), span)
+            case .some(let pipeline):
+                self = .retired(.init(storage: pipeline.retireQuiescedStorage(), span: span))
             case .none: preconditionFailure("quiesced counter opportunity missing")
             }
-        case .inert(let supplied, let span): self = .retired(supplied.retireInertStorage(), span)
-        case .retired(let storage, let span): self = .retired(consume storage, span)
+        case .inert(let payload):
+            let span = payload.span
+            let supplied = payload.takeSupplied()
+            let storage = supplied.retireInertStorage()
+            self = .retired(.init(storage: consume storage, span: span))
+        case .retired(let payload):
+            self = .retired(consume payload)
         }
     }
     @_lifetime(self: copy self)
     mutating func resetProfileStorage() {
         switch consume self {
-        case .retired(var storage, let span):
-            storage.resetAfterQuiescence()
-            self = .retired(consume storage, span)
+        case .retired(var payload):
+            payload.storage.resetAfterQuiescence()
+            self = .retired(consume payload)
         case .active(let coordinator, let cache, let span):
             self = .active(consume coordinator, consume cache, span)
             preconditionFailure("platform owners must release before profile reset")
-        case .inert(let supplied, let span):
-            self = .inert(consume supplied, span)
+        case .inert(let payload):
+            self = .inert(consume payload)
             preconditionFailure("platform owners must release before profile reset")
         }
     }

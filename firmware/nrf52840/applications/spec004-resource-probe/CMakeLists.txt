@@ -34,7 +34,7 @@ if(NOT CONFIG_FP_HARDABI)
     message(FATAL_ERROR "SPEC-004 requires the Cortex-M4F hard-float ABI")
 endif()
 target_compile_options(app_swift PRIVATE
-    -parse-as-library -Osize
+    -parse-as-library -package-name GiftUI -Osize
     -enable-experimental-feature Embedded
     "SHELL:-Xfrontend -function-sections"
     "SHELL:-Xfrontend -disable-stack-protector"

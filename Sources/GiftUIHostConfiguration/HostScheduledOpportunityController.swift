@@ -1,5 +1,6 @@
 import GiftUIExecution
 
+@usableFromInline
 package enum HostScheduledOpportunityError: UInt8, Error, Equatable, Sendable {
     case invalidLifecycle = 0
     case assemblyReportMismatch = 1
@@ -8,6 +9,7 @@ package enum HostScheduledOpportunityError: UInt8, Error, Equatable, Sendable {
     case invalidCompletion = 4
 }
 
+@usableFromInline
 package enum HostScheduledOpportunityResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
 {
     case noWork
@@ -18,6 +20,7 @@ package enum HostScheduledOpportunityResult<OwnerFailure: Equatable & Sendable>:
 
 // Begin and complete are separate short borrows when the instance's callbacks
 // record new work into this same containing scheduler.
+@usableFromInline
 package enum HostScheduledOpportunityBeginResult: Equatable, Sendable {
     case noWork
     case wait(untilMicroseconds: UInt64)
@@ -25,9 +28,12 @@ package enum HostScheduledOpportunityBeginResult: Equatable, Sendable {
     case rejected(HostScheduledOpportunityError, pacing: HostWakePacingError?)
 }
 
+@usableFromInline
 package struct HostScheduledOpportunityController: Sendable {
+    @usableFromInline
     package let assemblyReport: HostAssemblyReport
-    private var pacing: HostWakePacingController
+    @usableFromInline
+    internal var pacing: HostWakePacingController
 
     package init(
         assemblyReport: HostAssemblyReport,
@@ -64,6 +70,7 @@ package struct HostScheduledOpportunityController: Sendable {
         pacing.record(reasons, at: timestampMicroseconds)
     }
 
+    @usableFromInline
     package mutating func begin(
         at timestampMicroseconds: UInt64,
         lifecycleState: MVPHostLifecycleState,
@@ -85,6 +92,7 @@ package struct HostScheduledOpportunityController: Sendable {
         }
     }
 
+    @inlinable
     @inline(__always)
     package mutating func complete<OwnerFailure: Equatable & Sendable>(
         at timestampMicroseconds: UInt64,
@@ -95,12 +103,13 @@ package struct HostScheduledOpportunityController: Sendable {
         guard completionError == nil else {
             return .rejected(.invalidCompletion, pacing: completionError)
         }
-        guard result != .invalidLifecycle else {
+        if case .invalidLifecycle = result {
             return .rejected(.invalidRuntimeResult, pacing: nil)
         }
         return .cycle(reasons: reasons, result: result)
     }
 
+    @inlinable
     @inline(__always)
     package mutating func service<Instance: MVPHostInstance & ~Copyable & ~Escapable>(
         at timestampMicroseconds: UInt64,

@@ -15,7 +15,7 @@ required_fragments = [
   ") -> TupleView5<A, B, C, D, E>",
   "public static func buildEither<A: View, B: View>(",
   "public static func buildOptional<Content: View>(",
-  "public struct EmptyView: View",
+  "public struct EmptyView<D: _GiftUIReadDomain>: View",
   "public struct TupleView<A: View, B: View>: View",
   "public struct TupleView3<A: View, B: View, C: View>: View",
   "public struct TupleView4<A: View, B: View, C: View, D: View>: View",
@@ -47,7 +47,8 @@ forbidden_patterns.each do |pattern, message|
   failures << message if source.match?(pattern)
 end
 
-unless source.scan(/package init\b/).length == 8
+wrapper_source = source[source.index("public struct EmptyView")..]
+unless wrapper_source && wrapper_source.scan(/package init\b/).length == 8
   failures << "expected exactly eight package wrapper initializers"
 end
 

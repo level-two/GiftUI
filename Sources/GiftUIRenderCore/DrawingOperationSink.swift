@@ -2,7 +2,9 @@ import GiftUI
 
 @usableFromInline
 package struct SubpathRange: Equatable, Sendable {
+    @usableFromInline
     package let firstPoint: UInt16
+    @usableFromInline
     package let pointCount: UInt16
 
     package init?(firstPoint: UInt16, pointCount: UInt16) {
@@ -16,13 +18,21 @@ package struct SubpathRange: Equatable, Sendable {
 
 @usableFromInline
 package struct StraightLineStrokeHeader: Equatable, Sendable {
+    @usableFromInline
     package let color: Color
+    @usableFromInline
     package let lineWidth: GeometryScalar
+    @usableFromInline
     package let lineCap: LineCap
+    @usableFromInline
     package let lineJoin: LineJoin
+    @usableFromInline
     package let surfaceOrigin: Point
+    @usableFromInline
     package let inheritedClip: Rect
+    @usableFromInline
     package let pointCount: UInt16
+    @usableFromInline
     package let subpathCount: UInt16
 
     package init(
@@ -46,12 +56,14 @@ package struct StraightLineStrokeHeader: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package protocol StraightLineStrokeView {
     var header: StraightLineStrokeHeader { get }
     func point(at index: UInt16) -> Point?
     func subpath(at index: UInt16) -> SubpathRange?
 }
 
+@usableFromInline
 package protocol DrawingOperationSink: RenderOperationSink {
     mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke

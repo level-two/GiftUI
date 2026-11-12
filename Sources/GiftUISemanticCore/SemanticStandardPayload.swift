@@ -73,7 +73,7 @@ package enum SemanticStandardPayloadCodec {
             case .admitted(let text):
                 // BoundedText has already checked UTF-8. Decode into bounded
                 // owned scalar scratch, then atomically preflight/copy the pool.
-                text.withUTF8 { bytes in
+                text.withNonthrowingUTF8 { bytes in
                     var index = 0
                     while index < bytes.count {
                         let lead = bytes[index]

@@ -15,6 +15,7 @@ package enum CounterRoles: SemanticDeclarationRoles {
     @inlinable
     @inline(__always)
     static func matches<V, Sample>(_ type: V.Type, _ sample: Sample) -> Bool { V.self == Sample.self }
+    @inline(__always)
     package static func role<V>(of type: V.Type) -> SemanticRecordingRole? {
         if V.self == CounterAction.self { return .init(rawValue: 6) }
         if V.self == CounterScreen<CounterDomain>.self { return .init(rawValue: 1) }
@@ -151,11 +152,14 @@ struct CounterRecordWorkspace: SemanticExpansionWorkspace {
     var maximumIdentities: UInt16 { state.maximumIdentities }
     var isExpanding: Bool { state.isExpanding }
     mutating func beginExpansion() -> Bool { state.beginExpansion() }
+    @inline(__always)
     mutating func enterRoot<D: View>(_ declaration: D.Type, identity: inout Identity?) -> SemanticExpansionError? { state.enterRoot(declaration, identity: &identity) }
+    @inline(__always)
     mutating func enterCustomBody<D: View>(_ declaration: D.Type, identity: inout Identity?) -> SemanticExpansionError? { state.enterCustomBody(declaration, identity: &identity) }
     mutating func enterFixedChild(_ index: UInt8, identity: inout Identity?) -> SemanticExpansionError? { state.enterFixedChild(index, identity: &identity) }
     mutating func enterConditionalBranch(_ index: UInt8, identity: inout Identity?) -> SemanticExpansionError? { state.enterConditionalBranch(index, identity: &identity) }
     mutating func enterOptionalPresence(identity: inout Identity?) -> SemanticExpansionError? { state.enterOptionalPresence(identity: &identity) }
+    @inline(__always)
     mutating func enterDeclarationRole<D>(_ declaration: D.Type, identity: inout Identity?) -> SemanticExpansionError? { state.enterDeclarationRole(declaration, roles: CounterRoles.self, identity: &identity) }
     mutating func leavePathComponent() { state.leavePathComponent() }
     mutating func completeExpansion() { state.completeExpansion() }
@@ -203,11 +207,14 @@ struct CounterSemanticTraversal: SemanticRecordTraversalRealization, ~Copyable, 
     mutating func discardTraversalForOwnerFailure() { attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink) }
     mutating func failTraversal(_ error: SemanticExpansionError) -> SemanticExpansionError { attempt.fail(error, workspace: &workspace, sink: &sink) }
     mutating func succeedTraversal() -> SemanticExpansionResult { attempt.succeed(workspace: &workspace, sink: &sink) }
+    @inline(__always)
     mutating func enterTraversalRoot<D: View>(_ declaration: D.Type, identity: inout TraversalIdentity?) -> SemanticExpansionError? { attempt.enterRoot(declaration, workspace: &workspace, identity: &identity) }
+    @inline(__always)
     mutating func enterTraversalCustomBody<D: View>(_ declaration: D.Type, identity: inout TraversalIdentity?) -> SemanticExpansionError? { attempt.enterCustomBody(declaration, workspace: &workspace, identity: &identity) }
     mutating func enterTraversalFixedChild(_ index: UInt8, identity: inout TraversalIdentity?) -> SemanticExpansionError? { attempt.enterFixedChild(index, workspace: &workspace, identity: &identity) }
     mutating func enterTraversalConditionalBranch(_ index: UInt8, identity: inout TraversalIdentity?) -> SemanticExpansionError? { attempt.enterConditionalBranch(index, workspace: &workspace, identity: &identity) }
     mutating func enterTraversalOptionalPresence(identity: inout TraversalIdentity?) -> SemanticExpansionError? { attempt.enterOptionalPresence(workspace: &workspace, identity: &identity) }
+    @inline(__always)
     mutating func enterTraversalDeclarationRole<D>(_ declaration: D.Type, identity: inout TraversalIdentity?) -> SemanticExpansionError? { attempt.enterDeclarationRole(declaration, workspace: &workspace, identity: &identity) }
     mutating func leaveTraversalPathComponent() -> SemanticExpansionError? { attempt.leavePathComponent(workspace: &workspace) }
     mutating func stageTraversalStructuralOccurrence(identity: borrowing TraversalIdentity) -> SemanticExpansionError? { attempt.stageStructuralOccurrence(identity: identity, workspace: &workspace, sink: &sink) }

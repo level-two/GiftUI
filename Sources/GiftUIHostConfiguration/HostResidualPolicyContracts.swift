@@ -1,5 +1,6 @@
 import GiftUIFailureCore
 
+@usableFromInline
 package protocol MVPHostResidualPolicyTable: ~Copyable {
     var fatalHookIsAvailable: Bool { get }
     borrowing func allowed(
@@ -13,6 +14,7 @@ package protocol MVPHostResidualPolicyTable: ~Copyable {
 package protocol MVPHostResidualPolicy: GiftUIResidualFailurePolicy
 where Context == HostResidualPolicyContext {}
 
+@usableFromInline
 package enum HostResidualPolicyContext: UInt8, Equatable, Sendable {
     case startupValidation = 0
     case activation = 1

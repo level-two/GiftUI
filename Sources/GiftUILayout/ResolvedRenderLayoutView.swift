@@ -3,10 +3,13 @@ import GiftUITextResources
 
 @usableFromInline
 package struct ResolvedRenderTextLine: Equatable, Sendable {
+    @usableFromInline
     package let lineIndex: UInt16
     package let bounds: Rect
     package let baseline: Point
+    @usableFromInline
     package let clip: Rect
+    @usableFromInline
     package let glyphCount: UInt16
 
     package init(
@@ -26,11 +29,17 @@ package struct ResolvedRenderTextLine: Equatable, Sendable {
 
 @usableFromInline
 package struct ResolvedRenderGlyph: Equatable, Sendable {
+    @usableFromInline
     package let lineIndex: UInt16
+    @usableFromInline
     package let glyphIndex: UInt16
+    @usableFromInline
     package let instance: FontInstanceID
+    @usableFromInline
     package let glyph: GlyphID
+    @usableFromInline
     package let baseline: Point
+    @usableFromInline
     package let clip: Rect
 
     package init(

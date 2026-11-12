@@ -42,7 +42,7 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
                     let value = value(
                         at: ordinal, variant: variant, model: model, capture: capture
                     ),
-                    let count = value.withUTF8({ bytes in
+                    let count = value.withNonthrowingUTF8({ bytes in
                         pool.appendBytes(bytes, at: used, in: region)
                     }),
                     table.storeScope(

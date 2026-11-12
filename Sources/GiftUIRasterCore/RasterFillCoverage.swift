@@ -9,6 +9,7 @@ package enum RasterFillResult: Equatable, Sendable {
     case replacementRefused
 }
 
+@usableFromInline
 package enum RasterFillCoverage {
     package static func rasterize(
         _ operation: FillRectOperation,
@@ -55,6 +56,7 @@ package enum RasterFillCoverage {
         return .completed(pixelCount: pixelCount.partialValue)
     }
 
+    @usableFromInline
     package static func intersection(
         _ first: Rect,
         _ second: Rect,

@@ -135,7 +135,20 @@ package struct SignalAnalyzerDiagnostic: Equatable, Sendable {
     package func withUTF8<Result>(
         _ body: (UnsafeBufferPointer<UInt8>) throws -> Result
     ) rethrows -> Result {
-        try withUnsafeBytes(of: storage) { rawBytes in
+        try withUTF8Storage(body)
+    }
+
+    package func withNonthrowingUTF8<Result>(
+        _ body: (UnsafeBufferPointer<UInt8>) -> Result
+    ) -> Result {
+        withUTF8Storage(body)
+    }
+
+    private func withUTF8Storage<Result, Failure: Error>(
+        _ body: (UnsafeBufferPointer<UInt8>) throws(Failure) -> Result
+    ) throws(Failure) -> Result {
+        try withUnsafeBytes(of: storage) {
+            (rawBytes: UnsafeRawBufferPointer) throws(Failure) -> Result in
             let bytes = rawBytes.bindMemory(to: UInt8.self)
             return try body(
                 UnsafeBufferPointer(start: bytes.baseAddress, count: Int(count))

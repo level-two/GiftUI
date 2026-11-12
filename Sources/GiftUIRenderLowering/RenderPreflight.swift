@@ -4,21 +4,42 @@ import GiftUIRenderCore
 import GiftUISemanticCore
 import GiftUITextResources
 
+@usableFromInline
 package enum RenderProducer {}
 
-struct RenderPreflightSummary {
+@usableFromInline
+internal struct RenderPreflightSummary {
+    @usableFromInline
     let header: RenderPlanHeader
+    @usableFromInline
     let semanticSnapshotVersion: UInt32
+    @usableFromInline
     let layoutSnapshotVersion: UInt32
+    @usableFromInline
     let extensionOperationCount: UInt16
+
+    @inlinable
+    init(
+        header: RenderPlanHeader,
+        semanticSnapshotVersion: UInt32,
+        layoutSnapshotVersion: UInt32,
+        extensionOperationCount: UInt16
+    ) {
+        self.header = header
+        self.semanticSnapshotVersion = semanticSnapshotVersion
+        self.layoutSnapshotVersion = layoutSnapshotVersion
+        self.extensionOperationCount = extensionOperationCount
+    }
 }
 
-enum RenderPreflightResult {
+@usableFromInline
+internal enum RenderPreflightResult {
     case success(RenderPreflightSummary)
     case failure(RenderProductionError)
 }
 
 extension RenderProducer {
+    @inlinable
     static func preflight<Semantic, Layout, Metrics, Workspace, Sink>(
         semantic: borrowing Semantic,
         layout: borrowing Layout,
@@ -63,6 +84,7 @@ extension RenderProducer {
         return result
     }
 
+    @inlinable
     package static func preflight<
         Semantic, Layout, Metrics, Workspace, Extension
     >(
@@ -123,6 +145,7 @@ extension RenderProducer {
         return .success(summary.header)
     }
 
+    @inlinable
     static func preflightTraversal<
         Semantic, Layout, Metrics, Workspace, Extension
     >(
@@ -167,7 +190,7 @@ extension RenderProducer {
         else {
             return .failure(.capacityExhausted)
         }
-        guard mappedRoot != nil else {
+        guard case .some = mappedRoot else {
             return .failure(.invariantViolation)
         }
 
@@ -191,8 +214,8 @@ extension RenderProducer {
 
         guard state.semanticVisitCount == semantic.semanticScopeCount,
             state.layoutVisitCount == layout.layoutScopeCount,
-            semantic.semanticIdentity(at: semantic.semanticScopeCount) == nil,
-            layout.layoutIdentity(at: layout.layoutScopeCount) == nil
+            case .none = semantic.semanticIdentity(at: semantic.semanticScopeCount),
+            case .none = layout.layoutIdentity(at: layout.layoutScopeCount)
         else {
             return .failure(.invariantViolation)
         }
@@ -235,17 +258,34 @@ extension RenderProducer {
     }
 }
 
-private struct RenderPreflightState {
+@usableFromInline
+internal struct RenderPreflightState {
+    @usableFromInline
     let limits: RenderLimits
+    @usableFromInline
     let structuralCapacity: RenderWorkspaceCapacity
+    @usableFromInline
     var operationCount: UInt16 = 0
+    @usableFromInline
     var positionedGlyphCount: UInt16 = 0
+    @usableFromInline
     var maximumObservedClipDepth: UInt16 = 1
+    @usableFromInline
     var semanticVisitCount: UInt16 = 0
+    @usableFromInline
     var layoutVisitCount: UInt16 = 0
+    @usableFromInline
     var textLineCount: UInt16 = 0
+    @usableFromInline
     var extensionOperationCount: UInt16 = 0
 
+    @inlinable
+    init(limits: RenderLimits, structuralCapacity: RenderWorkspaceCapacity) {
+        self.limits = limits
+        self.structuralCapacity = structuralCapacity
+    }
+
+    @inlinable
     mutating func visit<Semantic, Layout, Metrics, Workspace, Extension>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
@@ -394,13 +434,14 @@ private struct RenderPreflightState {
             }
             childIndex += 1
         }
-        guard semantic.child(of: identity, at: childCount) == nil else {
+        guard case .none = semantic.child(of: identity, at: childCount) else {
             return .invariantViolation
         }
         return nil
     }
 
-    private mutating func validateText<Layout, Metrics>(
+    @inlinable
+    mutating func validateText<Layout, Metrics>(
         identity: Layout.Identity,
         layout: borrowing Layout,
         textMetrics: borrowing Metrics,
@@ -490,15 +531,16 @@ private struct RenderPreflightState {
 
             lineIndex += 1
         }
-        guard layout.textLine(of: identity, at: lineCount) == nil,
-            layout.glyph(of: identity, at: glyphIndex) == nil
+        guard case .none = layout.textLine(of: identity, at: lineCount),
+            case .none = layout.glyph(of: identity, at: glyphIndex)
         else {
             return .invariantViolation
         }
         return nil
     }
 
-    private func isCompatible<Metrics>(
+    @inlinable
+    func isCompatible<Metrics>(
         instance: FontInstanceID,
         glyph: GlyphID,
         textMetrics: borrowing Metrics
@@ -508,18 +550,20 @@ private struct RenderPreflightState {
             let descriptor = textMetrics.instance(at: instance.instanceIndex),
             descriptor.id == instance,
             glyph.rawValue < descriptor.glyphCount,
-            textMetrics.metrics(for: glyph, in: instance) != nil
+            case .some = textMetrics.metrics(for: glyph, in: instance)
         else {
             return false
         }
         return true
     }
 
-    private mutating func reserveOperation() -> RenderProductionError? {
+    @inlinable
+    mutating func reserveOperation() -> RenderProductionError? {
         reserveOperations(1)
     }
 
-    private mutating func reserveOperations(
+    @inlinable
+    mutating func reserveOperations(
         _ count: UInt16
     ) -> RenderProductionError? {
         let next = operationCount.addingReportingOverflow(count)
@@ -532,7 +576,8 @@ private struct RenderPreflightState {
         return nil
     }
 
-    private mutating func observeClipDepth(
+    @inlinable
+    mutating func observeClipDepth(
         _ depth: UInt16
     ) -> RenderProductionError? {
         guard depth <= limits.maximumClipDepth else {
@@ -542,14 +587,20 @@ private struct RenderPreflightState {
         return nil
     }
 
-    private func incremented(_ value: UInt16) -> UInt16? {
+    @inlinable
+    func incremented(_ value: UInt16) -> UInt16? {
         let result = value.addingReportingOverflow(1)
         return result.overflow ? nil : result.partialValue
     }
 }
 
-private struct EmptyRenderPreflightExtension<Identity>: RenderPreflightExtension
+@usableFromInline
+internal struct EmptyRenderPreflightExtension<Identity>: RenderPreflightExtension
 where Identity: Equatable & Sendable {
+    @inlinable
+    init() {}
+
+    @inlinable
     mutating func visit(
         scope _: SemanticRenderScope,
         identity _: Identity,
@@ -559,6 +610,7 @@ where Identity: Equatable & Sendable {
         .success(RenderExtensionVisit(operationCount: 0))
     }
 
+    @inlinable
     mutating func complete() -> RenderExtensionCompletionResult {
         .success
     }

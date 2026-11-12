@@ -9,6 +9,7 @@ package enum AdmissionKind: UInt8, Equatable, Sendable {
     case presentationRecovery = 5
 }
 
+@usableFromInline
 package enum ExecutionAdmissionResult: UInt8, Equatable, Sendable {
     case queued = 0
     case capacityRefused = 1
@@ -17,10 +18,12 @@ package enum ExecutionAdmissionResult: UInt8, Equatable, Sendable {
     case invalidProvenance = 4
 }
 
+@usableFromInline
 package struct ExecutionAdmissionOutcome: Equatable, Sendable {
     package let result: ExecutionAdmissionResult
     package let context: ExecutionContext
 
+    @usableFromInline
     package init(
         result: ExecutionAdmissionResult,
         context: ExecutionContext
@@ -30,6 +33,7 @@ package struct ExecutionAdmissionOutcome: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package protocol ExecutionAdmissionSink: ~Copyable, ~Escapable {
     associatedtype StateChangeFact: Sendable
     associatedtype CompletionFact: Sendable
@@ -72,6 +76,7 @@ package struct AdmissionSummary: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package protocol ExecutionActionView {
     associatedtype Identity: Equatable, Sendable
 
@@ -90,5 +95,9 @@ where Identity: Equatable & Sendable {
     package init(identity: Identity, generation: ActionGeneration) {
         self.identity = identity
         self.generation = generation
+    }
+    @inlinable
+    package static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.identity == rhs.identity && lhs.generation == rhs.generation
     }
 }

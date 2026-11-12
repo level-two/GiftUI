@@ -23,7 +23,7 @@ func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> In
             let id = GlyphID(rawValue: ids[ordinal])
             let glyph = metrics.metrics(for: id, in: instance)!
             let record = raster.record(for: id, realization: .init(rawValue: 0))!
-            let accessed = raster.withPayload(for: record, realization: .init(rawValue: 0)) { bytes in
+            let accessed = raster.withNonthrowingPayload(for: record, realization: .init(rawValue: 0)) { bytes in
                 for row in 0..<Int(record.pixelHeight) {
                     for column in 0..<Int(record.pixelWidth) {
                         let bit = bytes[row * Int(record.rowByteCount) + column / 8] & UInt8(0x80 >> (column % 8))

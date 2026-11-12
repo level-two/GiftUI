@@ -12,6 +12,7 @@ def fail_check(message)
 end
 
 source = SOURCE.read
+normalized_source = source.sub(/^@usableFromInline\n/, "")
 expected = <<~SWIFT
   package protocol RenderOperationSink {
       var capacity: RenderSinkCapacity { get }
@@ -28,7 +29,7 @@ expected = <<~SWIFT
   }
 SWIFT
 
-fail_check("protocol surface differs from the approved contract") unless source == expected
+fail_check("protocol surface differs from the approved contract") unless normalized_source == expected
 
 owners = Dir[ROOT.join("Sources/**/*.swift")].select do |path|
   File.read(path).match?(/protocol RenderOperationSink\b/)

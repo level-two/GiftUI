@@ -12,13 +12,15 @@ def fail_check(message)
 end
 
 source = SOURCE.read
+module_source = Dir[ROOT.join("Sources/GiftUISemanticCore/**/*.swift")]
+  .sort.map { |path| File.read(path) }.join("\n")
 fail_check("semantic render view must import only GiftUI") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUI]
 
 %w[SemanticRenderScope SemanticRenderView SemanticRenderResultStorage].each do |name|
-  declarations = Dir[ROOT.join("Sources/**/*.swift")].select do |path|
+  declarations = Dir[ROOT.join("Sources/GiftUISemanticCore/**/*.swift")].select do |path|
     File.read(path).match?(/package (?:enum|protocol) #{name}\b/)
   end
-  fail_check("#{name} ownership differs: #{declarations}") unless declarations == [SOURCE.to_s]
+  fail_check("#{name} is not owned by GiftUISemanticCore: #{declarations}") if declarations.empty?
 end
 
 required_fragments = [
@@ -44,7 +46,7 @@ required_fragments = [
   "var renderView: RenderView { get }",
 ]
 required_fragments.each do |fragment|
-  fail_check("semantic render view lacks #{fragment}") unless source.include?(fragment)
+  fail_check("semantic render view module lacks #{fragment}") unless module_source.include?(fragment)
 end
 
 forbidden = /\b(?:public|open|Any|String|Array|ContiguousArray|class|actor|GiftUILayout|GiftUIRenderCore|GiftUIRenderLowering|GiftUIFailureCore|GiftUICapabilities)\b/

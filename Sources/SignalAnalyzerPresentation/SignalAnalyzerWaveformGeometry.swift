@@ -78,7 +78,7 @@ package enum SignalAnalyzerWaveformGeometry {
     }
 
     package static func formattedSeconds(_ duration: Duration) -> BoundedText {
-        SignalAnalyzerTimelineFormatting.seconds(duration).withUTF8 { bytes in
+        SignalAnalyzerTimelineFormatting.seconds(duration).withNonthrowingUTF8 { bytes in
             BoundedText(utf8: bytes)!
         }
     }

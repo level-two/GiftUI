@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-source = File.read(File.expand_path("../../Sources/GiftUI/DeclarativeView.swift", __dir__))
+root = File.expand_path("../..", __dir__)
+declaration = File.read(File.join(root, "Sources/GiftUI/DeclarativeView.swift"))
+builder_sources = %w[Button.swift LayoutContainers.swift].map do |name|
+  File.read(File.join(root, "Sources/GiftUI", name))
+end.join("\n")
 
 def fail_check(message)
   warn "SPEC-006 action/view surface check failed: #{message}"
@@ -11,15 +15,20 @@ end
 required = [
   "public protocol GiftUIAction: RawRepresentable, Equatable, Sendable",
   "where RawValue == UInt16 {}",
-  "public protocol View",
+  "public protocol View<Domain>",
+  "associatedtype Domain: _GiftUIReadDomain",
   "associatedtype Body: View",
-  "@ViewBuilder",
-  "func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>",
-  "visitor.visitCustomView(self) { body }",
+  "func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)",
+  "throws(_GiftUIAccessFailure) -> Body",
+  "func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>",
+  "where Visitor.Domain == Domain",
+  "visitor.visitCustomView(self) {",
+  "_giftUIEvaluate(read: read)",
   "extension Never: View",
   "public typealias Body = Never",
 ]
-missing = required.reject { |fragment| source.include?(fragment) }
+missing = required.reject { |fragment| declaration.include?(fragment) }
+missing << "@ViewBuilder" unless builder_sources.include?("@ViewBuilder")
 fail_check("missing exact fragments #{missing.inspect}") unless missing.empty?
 
 forbidden = {
@@ -29,7 +38,7 @@ forbidden = {
   /\bViewVisitor\b|\b_visit\b/ => "proof-of-concept traversal compatibility",
 }
 forbidden.each do |pattern, label|
-  fail_check("surface contains #{label}") if source.match?(pattern)
+  fail_check("surface contains #{label}") if declaration.match?(pattern)
 end
 
 puts "SPEC-006 action/view surface passed: UInt16 action domain and default custom traversal witness."

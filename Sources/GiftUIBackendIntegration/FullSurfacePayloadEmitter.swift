@@ -5,6 +5,7 @@ import GiftUIRasterCore
 import GiftUIRenderCore
 import GiftUISurfaceCore
 
+@usableFromInline
 package enum FullSurfaceEmissionResult: Equatable, Sendable {
     case completed(responsibilityTransferred: Bool)
     case invalidGeometry
@@ -14,7 +15,10 @@ package enum FullSurfaceEmissionResult: Equatable, Sendable {
     case frameEnd(DisplayTransferResult)
 }
 
+@usableFromInline
 package enum FullSurfacePayloadEmitter {
+    @inlinable
+    @inline(__always)
     package static func finish<Surface, Target>(
         surface: inout Surface,
         header: RenderPlanHeader,
@@ -134,7 +138,9 @@ package enum FullSurfacePayloadEmitter {
         }
     }
 
-    private static func finishFrame<Surface, Target>(
+    @inlinable
+    @inline(__always)
+    internal static func finishFrame<Surface, Target>(
         surface: inout Surface,
         reservation: DisplayReservationID,
         target: inout Target,
@@ -159,7 +165,9 @@ package enum FullSurfacePayloadEmitter {
         }
     }
 
-    private static func contains(_ outer: Rect, _ inner: Rect) -> Bool {
+    @inlinable
+    @inline(__always)
+    internal static func contains(_ outer: Rect, _ inner: Rect) -> Bool {
         inner.minX >= outer.minX && inner.minY >= outer.minY
             && inner.maxX <= outer.maxX && inner.maxY <= outer.maxY
     }

@@ -7,10 +7,12 @@ import GiftUIRenderCore
 import GiftUISurfaceCore
 import GiftUITextResources
 
+@usableFromInline
 package protocol RasterFrameEnvelopeValidator {
     borrowing func accepts(_ provenance: FrameProvenance) -> Bool
 }
 
+@usableFromInline
 package protocol RasterOfferSessionSink: RasterFrameSink {
     var isIdleForOffer: Bool { get }
     var streamCompleted: Bool { get }
@@ -29,6 +31,7 @@ package protocol RasterOfferSessionSink: RasterFrameSink {
     borrowing func health() -> GiftUIOperationalHealth
 }
 
+@usableFromInline
 package struct OneShotRasterBackendEndpoint<
     Sink,
     TextMetrics,
@@ -41,21 +44,36 @@ where
     TextRaster: TextRasterResourceView,
     EnvelopeValidator: RasterFrameEnvelopeValidator
 {
+    @usableFromInline
     package let effectivePresentation: EffectiveRasterPresentation
+    @usableFromInline
     package let descriptor: RasterSurfaceDescriptor
+    @usableFromInline
     package let payloadLimits: RasterPayloadLimits
+    @usableFromInline
     package let textMetrics: TextMetrics
+    @usableFromInline
     package let textRaster: TextRaster
+    @usableFromInline
     package let textRasterRealization: RasterRealizationID
-    package private(set) var sink: Sink
-    package private(set) var bodyCallCount: UInt32 = 0
-    package private(set) var reservationCallCount: UInt32 = 0
-    package private(set) var lastDisplayError: DisplayTargetError?
-    package private(set) var retainedProducerError: RenderProductionError?
+    @usableFromInline
+    package internal(set) var sink: Sink
+    @usableFromInline
+    package internal(set) var bodyCallCount: UInt32 = 0
+    @usableFromInline
+    package internal(set) var reservationCallCount: UInt32 = 0
+    @usableFromInline
+    package internal(set) var lastDisplayError: DisplayTargetError?
+    @usableFromInline
+    package internal(set) var retainedProducerError: RenderProductionError?
 
-    private var envelopeValidator: EnvelopeValidator
-    private var offerActive = false
+    @usableFromInline
+    internal var envelopeValidator: EnvelopeValidator
+    @usableFromInline
+    internal var offerActive = false
 
+    @inlinable
+    @inline(__always)
     package init?(
         effectivePresentation: EffectiveRasterPresentation,
         descriptor: RasterSurfaceDescriptor,
@@ -88,6 +106,8 @@ where
 
     /// Rebinds a reusable endpoint to the next candidate only while no
     /// raster offer owns its sink or payload region.
+    @inlinable
+    @inline(__always)
     package mutating func replaceEnvelopeValidator(
         _ validator: consuming EnvelopeValidator
     ) -> Bool {
@@ -96,6 +116,8 @@ where
         return true
     }
 
+    @inlinable
+    @inline(__always)
     package mutating func offer(
         provenance: FrameProvenance,
         body: (inout Sink) -> FrameStreamResult
@@ -152,15 +174,21 @@ where
         return resolve(streamResult)
     }
 
+    @inlinable
+    @inline(__always)
     package borrowing func health() -> GiftUIOperationalHealth {
         sink.health()
     }
 
-    private func failed(_ failure: FrameOfferFailure) -> FrameOfferResult {
+    @inlinable
+    @inline(__always)
+    internal func failed(_ failure: FrameOfferFailure) -> FrameOfferResult {
         FrameOfferResult(disposition: .failed, failure: failure)!
     }
 
-    private mutating func resolve(
+    @inlinable
+    @inline(__always)
+    internal mutating func resolve(
         _ streamResult: FrameStreamResult
     ) -> FrameOfferResult {
         if sink.presentationResponsibilityAccepted {
@@ -200,7 +228,9 @@ where
         }
     }
 
-    private static func configurationMatches(
+    @inlinable
+    @inline(__always)
+    internal static func configurationMatches(
         _ effective: EffectiveRasterPresentation,
         descriptor: RasterSurfaceDescriptor,
         payloadLimits: RasterPayloadLimits

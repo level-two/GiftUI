@@ -5,18 +5,33 @@ package struct DisabledSemanticPayload: _GiftUISemanticModifierPayload,
     @usableFromInline
     package let isDisabled: Bool
 
+    @inlinable
+    @inline(__always)
     package init(isDisabled: Bool) {
         self.isDisabled = isDisabled
     }
 }
 
-private struct GiftUIDisabledContent<Content: View>: View {
+@usableFromInline
+struct GiftUIDisabledContent<Content: View>: View {
+    @usableFromInline
     typealias Domain = Content.Domain
+    @usableFromInline
     typealias Body = Never
 
+    @usableFromInline
     let content: Content
+    @usableFromInline
     let payload: DisabledSemanticPayload
 
+    @inlinable
+    @inline(__always)
+    init(content: Content, payload: DisabledSemanticPayload) {
+        self.content = content
+        self.payload = payload
+    }
+
+    @usableFromInline
     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure)
         -> Never
     {
@@ -35,6 +50,8 @@ private struct GiftUIDisabledContent<Content: View>: View {
 }
 
 public extension View {
+    @inlinable
+    @inline(__always)
     func disabled(_ disabled: Bool) -> some View<Domain> {
         GiftUIDisabledContent(
             content: self,

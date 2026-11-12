@@ -5,6 +5,7 @@ import GiftUIRenderLowering
 import GiftUISemanticCore
 import GiftUITextResources
 
+@usableFromInline
 package enum CanvasRenderProducer {
     @inlinable
     @inline(__always)
@@ -102,16 +103,35 @@ package enum CanvasRenderProducer {
     }
 }
 
-private struct CanvasPreflightExtension<Plan>: RenderPreflightExtension
+@usableFromInline
+internal struct CanvasPreflightExtension<Plan>: RenderPreflightExtension
 where Plan: DrawingPlanView {
+    @usableFromInline
     typealias Identity = Plan.Identity
 
+    @usableFromInline
     let drawingPlan: Plan
-    private(set) var canvasOccurrenceCount: UInt16 = 0
-    private(set) var strokeCount: UInt16 = 0
-    private(set) var pointCount: UInt16 = 0
-    private(set) var subpathCount: UInt16 = 0
+    @usableFromInline
+    var canvasOccurrenceCount: UInt16
+    @usableFromInline
+    var strokeCount: UInt16
+    @usableFromInline
+    var pointCount: UInt16
+    @usableFromInline
+    var subpathCount: UInt16
 
+    @inlinable
+    @inline(__always)
+    init(drawingPlan: Plan) {
+        self.drawingPlan = drawingPlan
+        canvasOccurrenceCount = 0
+        strokeCount = 0
+        pointCount = 0
+        subpathCount = 0
+    }
+
+    @inlinable
+    @inline(__always)
     var summary: DrawingPlanSummary {
         DrawingPlanSummary(
             canvasOccurrenceCount: canvasOccurrenceCount,
@@ -200,13 +220,17 @@ where Plan: DrawingPlanView {
         return .success(RenderExtensionVisit(operationCount: canvasStrokeCount))
     }
 
+    @inlinable
+    @inline(__always)
     mutating func complete() -> RenderExtensionCompletionResult {
         summary == drawingPlan.summary
             ? .success
             : .failure(.invariantViolation)
     }
 
-    private func validatePoints(
+    @inlinable
+    @inline(__always)
+    internal func validatePoints(
         canvas: Identity,
         stroke: UInt16,
         count: UInt16
@@ -229,7 +253,9 @@ where Plan: DrawingPlanView {
         ) == nil
     }
 
-    private func validateSubpaths(
+    @inlinable
+    @inline(__always)
+    internal func validateSubpaths(
         canvas: Identity,
         stroke: UInt16,
         pointCount: UInt16,
@@ -263,18 +289,25 @@ where Plan: DrawingPlanView {
             ) == nil
     }
 
-    private func checkedAdd(_ lhs: UInt16, _ rhs: UInt16) -> UInt16? {
+    @inlinable
+    @inline(__always)
+    internal func checkedAdd(_ lhs: UInt16, _ rhs: UInt16) -> UInt16? {
         let result = lhs.addingReportingOverflow(rhs)
         return result.overflow ? nil : result.partialValue
     }
 }
 
-private struct CanvasStreamingExtension<Plan, Sink>: RenderStreamingExtension
+@usableFromInline
+internal struct CanvasStreamingExtension<Plan, Sink>: RenderStreamingExtension
 where Plan: DrawingPlanView, Sink: DrawingOperationSink {
+    @usableFromInline
     typealias Identity = Plan.Identity
 
-    private var validation: CanvasPreflightExtension<Plan>
+    @usableFromInline
+    var validation: CanvasPreflightExtension<Plan>
 
+    @inlinable
+    @inline(__always)
     init(drawingPlan: Plan) {
         validation = CanvasPreflightExtension(drawingPlan: drawingPlan)
     }
@@ -321,22 +354,44 @@ where Plan: DrawingPlanView, Sink: DrawingOperationSink {
         return result
     }
 
+    @inlinable
+    @inline(__always)
     mutating func complete() -> RenderExtensionCompletionResult {
         validation.complete()
     }
 }
 
-private struct CanvasStreamingStrokeView<Plan>: StraightLineStrokeView
+@usableFromInline
+internal struct CanvasStreamingStrokeView<Plan>: StraightLineStrokeView
 where Plan: DrawingPlanView {
+    @usableFromInline
     let drawingPlan: Plan
+    @usableFromInline
     let canvas: Plan.Identity
+    @usableFromInline
     let stroke: UInt16
+    @usableFromInline
     let header: StraightLineStrokeHeader
 
+    @inlinable
+    @inline(__always)
+    init(
+        drawingPlan: Plan, canvas: Plan.Identity, stroke: UInt16, header: StraightLineStrokeHeader
+    ) {
+        self.drawingPlan = drawingPlan
+        self.canvas = canvas
+        self.stroke = stroke
+        self.header = header
+    }
+
+    @inlinable
+    @inline(__always)
     func point(at index: UInt16) -> Point? {
         drawingPlan.point(of: canvas, stroke: stroke, at: index)
     }
 
+    @inlinable
+    @inline(__always)
     func subpath(at index: UInt16) -> SubpathRange? {
         drawingPlan.subpath(of: canvas, stroke: stroke, at: index)
     }

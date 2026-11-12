@@ -1,5 +1,6 @@
 import GiftUIRenderCore
 
+@usableFromInline
 package struct FrameProvenance: Equatable, Sendable {
     package let cycle: RunCycleID
     package let semanticRevision: SemanticRevision
@@ -16,6 +17,7 @@ package struct FrameProvenance: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum FrameOfferDisposition: UInt8, Equatable, Sendable {
     case accepted = 0
     case backpressured = 1
@@ -31,6 +33,7 @@ package enum LogicalFrameDisposition: UInt8, Equatable, Sendable {
     case aborted = 2
 }
 
+@usableFromInline
 package enum FrameStreamResult: UInt8, Equatable, Sendable {
     case complete = 0
     case producerFailed = 1
@@ -39,10 +42,12 @@ package enum FrameStreamResult: UInt8, Equatable, Sendable {
     case contractViolation = 4
 }
 
+@usableFromInline
 package struct FrameOfferResult: Equatable, Sendable {
     package let disposition: FrameOfferDisposition
     package let failure: FrameOfferFailure?
 
+    @usableFromInline
     package init?(
         disposition: FrameOfferDisposition,
         failure: FrameOfferFailure?
@@ -67,6 +72,7 @@ package enum FrameRefusalOrigin: UInt8, Equatable, Sendable {
     case endpoint = 1
 }
 
+@usableFromInline
 package protocol SynchronousFrameEndpoint {
     associatedtype Sink: RenderOperationSink
 

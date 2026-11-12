@@ -270,7 +270,17 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     } else {
         p08ExactCase95 = false
     }; expect(p08ExactCase95)
-    expect(counterServiceHost(at: timestamp + 249999, host: &host, control: access) == .wait(untilMicroseconds: timestamp + 250000))
+    do {
+        let service = counterServiceHost(at: timestamp + 249999, host: &host, control: access)
+        let expectedDeadline = timestamp + 250000
+        let matchesExpectedWait: Bool
+        if case .wait(let deadline) = service {
+            matchesExpectedWait = deadline == expectedDeadline
+        } else {
+            matchesExpectedWait = false
+        }
+        expect(matchesExpectedWait)
+    }
     timestamp += 250000
     guard case .cycle(let reasons, .cycle(.success(let coalesced))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter coalesced reason service") }
     expect(coalesced.admission.inputEventCount == 2 && coalesced.admission.stateChangeFactCount == 2 && coalesced.admission.completionFactCount == 1 && coalesced.admission.semanticActionCount == 0)
@@ -323,7 +333,17 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     expect(control.pointee.admissionController!.didDeferAfterSeal)
     expect(control.pointee.lateCallbackObservedActive && control.pointee.lateCallbackDidNotRunRuntime)
     expect(control.pointee.wake!.wakeOutstanding && control.pointee.wake!.requester.requestCount == beforeLate + 1)
-    expect(counterServiceHost(at: timestamp, host: &host, control: access) == .wait(untilMicroseconds: timestamp + 250000))
+    do {
+        let service = counterServiceHost(at: timestamp, host: &host, control: access)
+        let expectedDeadline = timestamp + 250000
+        let matchesExpectedWait: Bool
+        if case .wait(let deadline) = service {
+            matchesExpectedWait = deadline == expectedDeadline
+        } else {
+            matchesExpectedWait = false
+        }
+        expect(matchesExpectedWait)
+    }
     timestamp += 250000
     guard case .cycle(.admittedWork, .cycle(.success(let later))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter next paced callback seal") }
     expect(later.admission.completionFactCount == 1 && later.admission.stateChangeFactCount == 0)

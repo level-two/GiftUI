@@ -5,6 +5,7 @@ import GiftUILayout
 @usableFromInline
 package enum CanvasPlanProducer {
     @inlinable
+    @inline(__always)
     package static func derive<Source, Layout, Workspace>(
         source: inout Source,
         layout: borrowing Layout,
@@ -105,6 +106,7 @@ package enum CanvasPlanProducer {
     }
 
     @inlinable
+    @inline(__always)
     internal static func validateOccurrences<Source, Layout>(
         source: borrowing Source,
         layout: borrowing Layout,
@@ -143,6 +145,7 @@ package enum CanvasPlanProducer {
     }
 
     @inlinable
+    @inline(__always)
     internal static func fail<Source, Workspace>(
         _ error: DrawingProductionError,
         source: inout Source,
@@ -177,7 +180,8 @@ package enum CanvasPlanProducer {
         return .failure(error)
     }
 
-    @usableFromInline
+    @inlinable
+    @inline(__always)
     internal static func productionError(
         for error: DrawingError
     ) -> DrawingProductionError {

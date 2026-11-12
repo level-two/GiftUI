@@ -41,8 +41,11 @@ required.each do |fragment|
   fail_check("failure matrix lacks #{fragment}") unless tests.include?(fragment)
 end
 
-owner_branch = source[/if let bindingFailure = traversal\.bindingFailure.*?^\s*}/m]
-fail_check("owner-failure branch is missing") unless owner_branch
-fail_check("owner failure is converted to semantic failure") if owner_branch.include?("SemanticExpansionError") || owner_branch.include?(".semanticFailure")
+finish_body = source[/package mutating func finishBody<.*?^    }/m]
+fail_check("body finish does not preserve binding failures") unless finish_body&.include?("case .bindingFailure(let error): bindingFailure = error")
+fail_check("owner failure is converted to semantic failure") if finish_body&.include?("case .bindingFailure(let error): stop(")
+finalize = source[/package mutating func finalizeExpansion\(\).*?^    }/m]
+fail_check("owner failure does not discard the staged candidate") unless finalize&.include?("discardTraversalForOwnerFailure()")
+fail_check("owner failure does not remain a typed binding failure") unless finalize&.include?("return .bindingFailure(failure)")
 
 puts "SPEC-006 stateful binding failures passed: 12 exact owner errors, early/late injection, atomic discard, and no semantic substitution."

@@ -125,3 +125,55 @@ package func p08CounterModel() -> Int {
     } catch { preconditionFailure("counter model failed: \(error)") }
     return checks
 }
+
+#if GIFTUI_PHYSICAL_FACTS_QUALIFICATION && !hasFeature(Embedded)
+// Ordinary controls for the actual Native owner. These do not instrument model
+// destruction or establish allocation eligibility of its complete caller.
+package func p08CounterRootInitializationQualification() -> Int {
+    var checks = 0
+    do throws(ObservableStateError) {
+        var namespace = ObservableModelOwnerNamespace()
+        let identity = try namespace.issue()
+        let invalid: InlineArray<7, InlineArray<4, UInt16>> = [
+            [0, 4, 2, 0], [3, 4, 2, 0], [2, 0, 2, 0], [2, 5, 2, 0],
+            [2, 4, 0, 0], [2, 4, 3, 0], [2, 4, 2, 2],
+        ]
+        for index in 0..<7 {
+            let limits = invalid[index]
+            switch CounterStaticRootStorage(identity: identity, schema: 1, needsCapture: false,
+                modelLimit: limits[0], claimLimit: limits[1], pinLimit: limits[2], captureLimit: limits[3]) {
+            case .none: checks += 1
+            case .some: preconditionFailure("invalid root construction accepted")
+            }
+        }
+        var owner = CounterStaticRootStorage(identity: identity, schema: 1, needsCapture: false)!
+        let original = owner.storageLayout
+        for _ in 0..<2 {
+            checks += try owner.withLifetime { (models, _) throws(ObservableStateError) in
+                try counterScopedModel(models)
+            }
+            precondition(owner.storageLayout.owner == original.owner)
+            precondition(owner.storageLayout.modelBytes == original.modelBytes)
+            checks += 2
+        }
+        var stale: _GiftUIModelKey<CounterModelSchema>?
+        try owner.withLifetime { (models, _) throws(ObservableStateError) in
+            let ticket = try models.materialize(CounterOwnedModel(value: 7))
+            stale = ticket.key
+            // Leave the initialized model and its independent claim to the
+            // existing scope cleanup, then reuse this same physical owner.
+        }
+        try owner.withLifetime { (models, _) throws(ObservableStateError) in
+            if case .failure(.staleModel) = models.mutate(stale!, mutation: .reset, report: { .dirtied }) {
+                checks += 1
+            } else { preconditionFailure("previous activation key accepted") }
+            var first = try models.materialize(CounterOwnedModel(value: 1))
+            var second = try models.materialize(CounterOwnedModel(value: 2))
+            try models.release(&second)
+            try models.release(&first)
+            checks += 2
+        }
+    } catch { preconditionFailure("counter root initialization failed: \(error)") }
+    return checks
+}
+#endif

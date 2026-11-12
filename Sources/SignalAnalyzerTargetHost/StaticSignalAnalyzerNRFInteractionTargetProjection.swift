@@ -19,7 +19,7 @@ package struct StaticSignalAnalyzerNRFInteractionTargetProjection:
         return .success(.candidateStarted)
     }
 
-    package mutating func encounter<Model: _GiftUIObservableReference>(
+    package mutating func encounter<Model: _GiftUIModelSchema>(
         structuralIdentity: UInt32, declarationOrdinal: UInt16, state: inout State<Model>
     ) -> ObservableStateResult {
         // This projection does not own a model or materialize State values.

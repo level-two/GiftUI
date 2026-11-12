@@ -1312,7 +1312,7 @@ print(label, value)
         let low = BoundedText(Int32(value % 1_000_000_000))
         if value >= 1_000_000_000 {
             counterTraceWriteUnsigned(value / 1_000_000_000)
-            for _ in Int(low.utf8ByteCount) ..< 9 { _ = putchar(48) }
+            for _ in Int(low.utf8ByteCount) ..< 9 { counterTraceWrite("0") }
         }
         counterTraceWrite(low)
     }
@@ -1931,15 +1931,28 @@ print(label, value)
         counterTraceWrite(")")
     }
 
+    // Synchronous fragment writes keep the existing trace bytes without
+    // first-use stdio buffering inside the charged Static entry.
+    private func counterTraceWriteBytes(_ base: UnsafePointer<UInt8>?, count: Int) {
+        guard let base else { return }
+        var offset = 0
+        while offset < count {
+            let written = Darwin.write(STDOUT_FILENO, base.advanced(by: offset), count - offset)
+            if written > 0 { offset += written }
+            else if written < 0 && errno == EINTR { continue }
+            else { return }
+        }
+    }
+
     private func counterTraceWrite(_ text: StaticString) {
         text.withUTF8Buffer { bytes in
-            for byte in bytes { _ = putchar(Int32(byte)) }
+            counterTraceWriteBytes(bytes.baseAddress, count: bytes.count)
         }
     }
 
     private func counterTraceWrite(_ text: BoundedText) {
-        text.withUTF8 { bytes in
-            for byte in bytes { _ = putchar(Int32(byte)) }
+        text.withNonthrowingUTF8 { bytes in
+            counterTraceWriteBytes(bytes.baseAddress, count: bytes.count)
         }
     }
 
@@ -1947,7 +1960,7 @@ print(label, value)
         let low = BoundedText(Int32(value % 1_000_000_000))
         if value >= 1_000_000_000 {
             counterTraceWrite(BoundedText(Int32(value / 1_000_000_000)))
-            for _ in Int(low.utf8ByteCount) ..< 9 { _ = putchar(48) }
+            for _ in Int(low.utf8ByteCount) ..< 9 { counterTraceWrite("0") }
         }
         counterTraceWrite(low)
     }

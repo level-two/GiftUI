@@ -52,6 +52,8 @@ exercise = """
 private struct InlineMutationOwner: RuntimeCompletePipelineOwner {
     typealias OwnerFailure = SignalAnalyzerCycleOwnerFailure
     let applied: Bool
+    var presentationIntentState: PresentationIntentState { .pending }
+    var hasAllocatedCandidateFrame: Bool { false }
     var finalizations: UInt32 = 0
     mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure> { .advanced }
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure> {
@@ -85,15 +87,25 @@ probe.write_text(header + ''.join(f'@_cdecl("size_{name}")\npublic func size_{na
     for name, shape, limit in shapes) + exercise)
 rows = ['profile\tshape\tstride\tceiling\n']
 for profile, swiftc, extra in [
-    ('macos', 'swiftc', []),
-    ('raspberry-pi-armv6', str(Path(pi['toolchain-bin-dir']) / 'swiftc'), pi['extra-swiftc-flags'] + [item for flag in pi['extra-cc-flags'] for item in ['-Xcc', flag]]),
+    ('macos', str(root / '.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc'), [
+        '-enable-experimental-feature', 'LifetimeDependence',
+        '-enable-experimental-feature', 'Lifetimes']),
+    ('raspberry-pi-armv6', str(Path(pi['toolchain-bin-dir']) / 'swiftc'), pi['extra-swiftc-flags'] + [
+        '-enable-experimental-feature', 'LifetimeDependence',
+        '-enable-experimental-feature', 'Lifetimes'] + [item for flag in pi['extra-cc-flags'] for item in ['-Xcc', flag]]),
     ('nrf52840-embedded', compiler, ['-target', 'armv7em-none-none-eabi',
-        '-enable-experimental-feature', 'Embedded', '-DGIFTUI_NRF_EMBEDDED',
+        '-enable-experimental-feature', 'Embedded',
+        '-enable-experimental-feature', 'LifetimeDependence',
+        '-enable-experimental-feature', 'Lifetimes', '-DGIFTUI_NRF_EMBEDDED',
         '-Xcc', '-mfloat-abi=hard', '-Xcc', '-mcpu=cortex-m4', '-Xcc', '-mfpu=fpv4-sp-d16'])]:
     selected_profile = 'macos' if args.profile and args.profile.startswith('macos-') else args.profile
     if selected_profile and selected_profile != profile: continue
     directory = output / profile
     directory.mkdir(exist_ok=True)
+    os.environ['CLANG_MODULE_CACHE_PATH'] = str(directory / 'module-cache')
+    os.environ['SWIFTPM_MODULECACHE_OVERRIDE'] = str(directory / 'swiftpm-module-cache')
+    Path(os.environ['CLANG_MODULE_CACHE_PATH']).mkdir(exist_ok=True)
+    Path(os.environ['SWIFTPM_MODULECACHE_OVERRIDE']).mkdir(exist_ok=True)
     flags = ['-Osize', '-whole-module-optimization', '-package-name', 'GiftUI',
         '-parse-as-library', '-I', str(directory), *extra]
     pending = set(modules)

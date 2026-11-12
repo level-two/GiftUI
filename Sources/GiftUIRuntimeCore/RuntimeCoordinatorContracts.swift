@@ -7,6 +7,7 @@ import GiftUIObservableState
 import GiftUIRenderCore
 import GiftUISemanticCore
 
+@usableFromInline
 package protocol GiftUIRuntimeProfileCoordinator:
     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
 {
@@ -23,6 +24,7 @@ package protocol GiftUIRuntimeProfileCoordinator:
 
 /// A concrete factory supplies this retained audit only after validating the
 /// same owners whose scopes are lent to the execution opportunity.
+@usableFromInline
 package protocol RuntimeAuditedExecutionProfileBinding: ~Copyable, ~Escapable {
     associatedtype Endpoint: SynchronousFrameEndpoint
     where Endpoint.Sink: DrawingOperationSink
@@ -31,6 +33,7 @@ package protocol RuntimeAuditedExecutionProfileBinding: ~Copyable, ~Escapable {
 
 /// Internal cleanup of resources retained by the consumed opportunity. The
 /// execution protocol stays independent of runtime storage and teardown.
+@usableFromInline
 package protocol RuntimeOpportunityQuiescence: ~Copyable, ~Escapable {
     var isOpportunityQuiescent: Bool { get }
     mutating func quiesceOpportunity()

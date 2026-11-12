@@ -23,6 +23,10 @@ mkdir -p "${output}" "${output}/module-cache"
 output="$(cd "${output}" && pwd -P)"
 export CLANG_MODULE_CACHE_PATH="${output}/module-cache"
 export SWIFTPM_MODULECACHE_OVERRIDE="${output}/module-cache"
+swift_driver="${GIFTUI_SWIFT_EXECUTABLE:-$(command -v swift)}"
+[[ -x "${swift_driver}" ]] || fail "Swift driver is not executable: ${swift_driver}"
+swift_compiler="${GIFTUI_SWIFTC_EXECUTABLE:-$(dirname "${swift_driver}")/swiftc}"
+[[ -x "${swift_compiler}" ]] || fail "Swift compiler is not executable: ${swift_compiler}"
 commands="${output}/commands.txt"
 log="${output}/run.log"
 : >"${commands}"
@@ -34,8 +38,10 @@ record_command() {
 }
 
 for suite in GiftUISurfaceCoreTests GiftUIRasterCoreTests GiftUIDisplayCoreTests GiftUIBackendIntegrationTests; do
-    command=(swift test --disable-sandbox --package-path "${PROJECT_ROOT}" \
+    command=(env "SWIFT_EXEC=${swift_compiler}" "${swift_driver}" test \
+        --build-system native --disable-sandbox --package-path "${PROJECT_ROOT}" \
         --scratch-path "${output}/swiftpm" --cache-path "${PROJECT_ROOT}/.build" \
+        --skip-update \
         -Xswiftc "${profile_flag}" \
         --filter "${suite}")
     record_command "${command[@]}"

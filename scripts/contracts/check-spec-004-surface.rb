@@ -43,6 +43,8 @@ end
 fail_check("expected one public interface path") unless ARGV.length == 1
 begin
   interface = File.read(ARGV.fetch(0))
+    .gsub("GiftUICapabilities::", "GiftUICapabilities.")
+    .gsub("Swift::", "Swift.")
 rescue Errno::ENOENT => error
   fail_check(error.message)
 end
@@ -54,8 +56,12 @@ snapshot = interface[/public struct CapabilitySnapshot .*?^}/m]
 fail_check("CapabilitySnapshot declaration is missing") unless snapshot
 snapshot_fields = snapshot.scan(/^  public let ([A-Za-z0-9_]+):/).flatten
 fail_check("public catalogue differs: #{snapshot_fields.inspect}") unless snapshot_fields == ["rasterPresentation"]
+snapshot_initializers = [
+  "public init(rasterPresentation: GiftUICapabilities.EffectiveRasterPresentation?)",
+  "public init(rasterPresentation: GiftUICapabilities::EffectiveRasterPresentation?)",
+]
 fail_check("snapshot initializer is missing") unless
-  snapshot.include?("public init(rasterPresentation: GiftUICapabilities.EffectiveRasterPresentation?)")
+  snapshot_initializers.any? { |initializer| snapshot.include?(initializer) }
 
 required_t12_fragments = [
   "case synchronousBorrowedOneShot",

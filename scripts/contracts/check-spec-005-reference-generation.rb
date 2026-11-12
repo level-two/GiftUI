@@ -128,7 +128,7 @@ fail_check("generated raster-record row count differs") unless catalogue.scan(/c
 }.each do |name, byte_count|
   payload_source = GENERATED_ROOT.join(name).read
   fail_check("generated payload byte count differs: #{name}") unless
-    payload_source.scan(/0x[0-9a-f]{2} as UInt8/).length == byte_count
+    payload_source.scan(/^[ \t]*let byte\d+: UInt8 = 0x[0-9a-f]{2}[ \t]*$/).length == byte_count
 end
 
 puts "SPEC-005 reference generation check passed: exact source, license, provenance, pins, tables, payloads, and identity."

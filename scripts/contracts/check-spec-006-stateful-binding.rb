@@ -5,7 +5,7 @@ require "pathname"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
 SOURCE = ROOT.join("Sources/GiftUISemanticCore/GiftUISemanticCore.swift")
-DECORATOR = ROOT.join("Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift")
+DECORATOR = ROOT.join("Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift")
 TEST = ROOT.join("Tests/GiftUISemanticCoreTests/SemanticExpansionTraversalTests.swift")
 
 def fail_check(message)
@@ -27,13 +27,16 @@ required_source = [
   "attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)",
   "bindingFailure = error",
   "attempt.stageBodyEvaluation(",
-  "evaluatedBody = body(boundDeclaration)",
 ]
 required_source.each do |fragment|
   fail_check("Semantic Core lacks #{fragment}") unless source.include?(fragment)
 end
 
-fail_check("observable owner does not supply the downward hook") unless decorator.include?("extension ObservableStateBindingDecorator: SemanticStatefulBinding")
+fail_check("observable owner does not implement the downward hook") unless decorator.include?("package struct ObservableSemanticBodyBinding<") && decorator.include?("SemanticStatefulBinding")
+fail_check("stateful bridge does not bind before evaluating the body") unless decorator.include?("root.withBoundDeclaration(declaration, identity: structuralIdentity)")
+fail_check("stateful bridge does not stage the body after binding") unless decorator.include?("if let failure = beforeBody() { return .semanticFailure(failure) }")
+fail_check("stateful bridge does not evaluate the bound declaration in the model read scope") unless decorator.include?("try body(bound, read)")
+fail_check("Semantic Core does not route stateful traversal through the bridge") unless source.include?("stateBinding.evaluateStateful(")
 fail_check("stateful fixture is not macro generated") unless tests.include?("@ObservableStateHost")
 fail_check("stateful fixture lacks lexical binding transcript") unless tests.include?('["bind:0", "bind:1", "body"]')
 fail_check("stateful fixture does not compare ordinary semantics") unless tests.include?("ordinarySink.committedEvents.map(\\.kind)")

@@ -4,973 +4,2230 @@ import GiftUITextResources
 enum _GiftUIPiCompactGeneratedBitmapPayload {
     static let byteCount: UInt32 = 1344
     static let digest = TextResourceDigest(word0: 0x78f17115, word1: 0xde401a8e, word2: 0x236583f7, word3: 0x351cf562, word4: 0x4b003371, word5: 0x44a0e475, word6: 0x8235904e, word7: 0x7e0e5e00)
-    static let glyph0 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph1 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph2 = (
-        0x00 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph3 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x7e as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x7e as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph4 = (
-        0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x7c as UInt8, 0x92 as UInt8, 0x90 as UInt8, 0x90 as UInt8, 0x7c as UInt8, 0x12 as UInt8, 0x12 as UInt8, 0x92 as UInt8, 0x7c as UInt8, 0x10 as UInt8, 0x10 as UInt8,
-    )
-    static let glyph5 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x64 as UInt8, 0x94 as UInt8, 0x68 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x2c as UInt8, 0x52 as UInt8, 0x4c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph6 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x18 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x18 as UInt8, 0x30 as UInt8, 0x4a as UInt8, 0x44 as UInt8, 0x44 as UInt8, 0x44 as UInt8, 0x3a as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph7 = (
-        0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph8 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x10 as UInt8, 0x08 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph9 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x20 as UInt8, 0x10 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph10 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x24 as UInt8, 0x18 as UInt8, 0x7e as UInt8, 0x18 as UInt8, 0x24 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph11 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x7c as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph12 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph13 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph14 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph15 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph16 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x46 as UInt8, 0x4a as UInt8, 0x52 as UInt8, 0x62 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph17 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x08 as UInt8, 0x18 as UInt8, 0x28 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x3e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph18 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x02 as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x40 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph19 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x02 as UInt8, 0x1c as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph20 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x02 as UInt8, 0x06 as UInt8, 0x0a as UInt8, 0x12 as UInt8, 0x22 as UInt8, 0x42 as UInt8, 0x7e as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph21 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x7c as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph22 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x1c as UInt8, 0x20 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph23 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph24 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph25 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3e as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x04 as UInt8, 0x38 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph26 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph27 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph28 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x40 as UInt8, 0x20 as UInt8, 0x10 as UInt8, 0x08 as UInt8, 0x04 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph29 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph30 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x40 as UInt8, 0x20 as UInt8, 0x10 as UInt8, 0x08 as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x40 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph31 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x00 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph32 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7c as UInt8, 0x82 as UInt8, 0x9e as UInt8, 0xa2 as UInt8, 0xa2 as UInt8, 0xa2 as UInt8, 0xa6 as UInt8, 0x9a as UInt8, 0x80 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph33 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7e as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph34 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph35 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph36 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x78 as UInt8, 0x44 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x44 as UInt8, 0x78 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph37 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x78 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph38 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x78 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph39 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x4e as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph40 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7e as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph41 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x38 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x38 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph42 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x0e as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x44 as UInt8, 0x44 as UInt8, 0x38 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph43 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x44 as UInt8, 0x48 as UInt8, 0x50 as UInt8, 0x60 as UInt8, 0x60 as UInt8, 0x50 as UInt8, 0x48 as UInt8, 0x44 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph44 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph45 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x82 as UInt8, 0xc6 as UInt8, 0xaa as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph46 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x62 as UInt8, 0x52 as UInt8, 0x4a as UInt8, 0x46 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph47 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph48 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7c as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph49 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x4a as UInt8, 0x3c as UInt8, 0x02 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph50 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7c as UInt8, 0x50 as UInt8, 0x48 as UInt8, 0x44 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph51 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x3c as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph52 = (
-        0x00 as UInt8, 0x00 as UInt8, 0xfe as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph53 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph54 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x18 as UInt8, 0x18 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph55 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0xaa as UInt8, 0xc6 as UInt8, 0x82 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph56 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x18 as UInt8, 0x18 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph57 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x44 as UInt8, 0x44 as UInt8, 0x28 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph58 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph59 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x38 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x38 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph60 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x20 as UInt8, 0x20 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph61 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x38 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x38 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph62 = (
-        0x00 as UInt8, 0x10 as UInt8, 0x28 as UInt8, 0x44 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph63 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x00 as UInt8,
-    )
-    static let glyph64 = (
-        0x10 as UInt8, 0x08 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph65 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x02 as UInt8, 0x3e as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph66 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph67 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph68 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x3e as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph69 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7e as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph70 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x0e as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x7c as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph71 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x3e as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3e as UInt8, 0x02 as UInt8, 0x3c as UInt8,
-    )
-    static let glyph72 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph73 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x30 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x38 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph74 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x00 as UInt8, 0x0c as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x04 as UInt8, 0x44 as UInt8, 0x44 as UInt8, 0x38 as UInt8,
-    )
-    static let glyph75 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x42 as UInt8, 0x44 as UInt8, 0x48 as UInt8, 0x70 as UInt8, 0x48 as UInt8, 0x44 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph76 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x30 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x38 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph77 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0xfc as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph78 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph79 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x3c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph80 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x7c as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x7c as UInt8, 0x40 as UInt8, 0x40 as UInt8,
-    )
-    static let glyph81 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x3e as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3e as UInt8, 0x02 as UInt8, 0x02 as UInt8,
-    )
-    static let glyph82 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x5e as UInt8, 0x60 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph83 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x3e as UInt8, 0x40 as UInt8, 0x40 as UInt8, 0x3c as UInt8, 0x02 as UInt8, 0x02 as UInt8, 0x7c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph84 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x7c as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x0e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph85 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph86 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x18 as UInt8, 0x18 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph87 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x82 as UInt8, 0x82 as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x92 as UInt8, 0x7c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph88 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x24 as UInt8, 0x18 as UInt8, 0x24 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph89 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x42 as UInt8, 0x3e as UInt8, 0x02 as UInt8, 0x3c as UInt8,
-    )
-    static let glyph90 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x7e as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x40 as UInt8, 0x7e as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph91 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x0c as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x20 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x0c as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph92 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x10 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph93 = (
-        0x00 as UInt8, 0x00 as UInt8, 0x30 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x04 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x08 as UInt8, 0x30 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph94 = (
-        0x00 as UInt8, 0x62 as UInt8, 0x92 as UInt8, 0x8c as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
-    static let glyph95 = (
-        0x00 as UInt8, 0x18 as UInt8, 0x24 as UInt8, 0x24 as UInt8, 0x18 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8, 0x00 as UInt8,
-    )
+    private struct Glyph0Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph0 = Glyph0Bytes()
+    private struct Glyph1Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x10
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x10
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph1 = Glyph1Bytes()
+    private struct Glyph2Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x24
+        let byte2: UInt8 = 0x24
+        let byte3: UInt8 = 0x24
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph2 = Glyph2Bytes()
+    private struct Glyph3Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x24
+        let byte3: UInt8 = 0x24
+        let byte4: UInt8 = 0x24
+        let byte5: UInt8 = 0x7e
+        let byte6: UInt8 = 0x24
+        let byte7: UInt8 = 0x24
+        let byte8: UInt8 = 0x7e
+        let byte9: UInt8 = 0x24
+        let byte10: UInt8 = 0x24
+        let byte11: UInt8 = 0x24
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph3 = Glyph3Bytes()
+    private struct Glyph4Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x10
+        let byte2: UInt8 = 0x10
+        let byte3: UInt8 = 0x7c
+        let byte4: UInt8 = 0x92
+        let byte5: UInt8 = 0x90
+        let byte6: UInt8 = 0x90
+        let byte7: UInt8 = 0x7c
+        let byte8: UInt8 = 0x12
+        let byte9: UInt8 = 0x12
+        let byte10: UInt8 = 0x92
+        let byte11: UInt8 = 0x7c
+        let byte12: UInt8 = 0x10
+        let byte13: UInt8 = 0x10
+    }
+    private static let glyph4 = Glyph4Bytes()
+    private struct Glyph5Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x64
+        let byte3: UInt8 = 0x94
+        let byte4: UInt8 = 0x68
+        let byte5: UInt8 = 0x08
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x20
+        let byte9: UInt8 = 0x2c
+        let byte10: UInt8 = 0x52
+        let byte11: UInt8 = 0x4c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph5 = Glyph5Bytes()
+    private struct Glyph6Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x18
+        let byte3: UInt8 = 0x24
+        let byte4: UInt8 = 0x24
+        let byte5: UInt8 = 0x18
+        let byte6: UInt8 = 0x30
+        let byte7: UInt8 = 0x4a
+        let byte8: UInt8 = 0x44
+        let byte9: UInt8 = 0x44
+        let byte10: UInt8 = 0x44
+        let byte11: UInt8 = 0x3a
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph6 = Glyph6Bytes()
+    private struct Glyph7Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x10
+        let byte2: UInt8 = 0x10
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph7 = Glyph7Bytes()
+    private struct Glyph8Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x08
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x20
+        let byte5: UInt8 = 0x20
+        let byte6: UInt8 = 0x20
+        let byte7: UInt8 = 0x20
+        let byte8: UInt8 = 0x20
+        let byte9: UInt8 = 0x20
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x08
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph8 = Glyph8Bytes()
+    private struct Glyph9Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x20
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x08
+        let byte5: UInt8 = 0x08
+        let byte6: UInt8 = 0x08
+        let byte7: UInt8 = 0x08
+        let byte8: UInt8 = 0x08
+        let byte9: UInt8 = 0x08
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x20
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph9 = Glyph9Bytes()
+    private struct Glyph10Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x24
+        let byte6: UInt8 = 0x18
+        let byte7: UInt8 = 0x7e
+        let byte8: UInt8 = 0x18
+        let byte9: UInt8 = 0x24
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph10 = Glyph10Bytes()
+    private struct Glyph11Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x7c
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph11 = Glyph11Bytes()
+    private struct Glyph12Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x20
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph12 = Glyph12Bytes()
+    private struct Glyph13Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x7e
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph13 = Glyph13Bytes()
+    private struct Glyph14Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph14 = Glyph14Bytes()
+    private struct Glyph15Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x04
+        let byte3: UInt8 = 0x04
+        let byte4: UInt8 = 0x08
+        let byte5: UInt8 = 0x08
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x20
+        let byte9: UInt8 = 0x20
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x40
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph15 = Glyph15Bytes()
+    private struct Glyph16Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x46
+        let byte6: UInt8 = 0x4a
+        let byte7: UInt8 = 0x52
+        let byte8: UInt8 = 0x62
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph16 = Glyph16Bytes()
+    private struct Glyph17Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x08
+        let byte3: UInt8 = 0x18
+        let byte4: UInt8 = 0x28
+        let byte5: UInt8 = 0x08
+        let byte6: UInt8 = 0x08
+        let byte7: UInt8 = 0x08
+        let byte8: UInt8 = 0x08
+        let byte9: UInt8 = 0x08
+        let byte10: UInt8 = 0x08
+        let byte11: UInt8 = 0x3e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph17 = Glyph17Bytes()
+    private struct Glyph18Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x02
+        let byte6: UInt8 = 0x04
+        let byte7: UInt8 = 0x08
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x20
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x7e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph18 = Glyph18Bytes()
+    private struct Glyph19Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x02
+        let byte6: UInt8 = 0x1c
+        let byte7: UInt8 = 0x02
+        let byte8: UInt8 = 0x02
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph19 = Glyph19Bytes()
+    private struct Glyph20Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x02
+        let byte3: UInt8 = 0x06
+        let byte4: UInt8 = 0x0a
+        let byte5: UInt8 = 0x12
+        let byte6: UInt8 = 0x22
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x7e
+        let byte9: UInt8 = 0x02
+        let byte10: UInt8 = 0x02
+        let byte11: UInt8 = 0x02
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph20 = Glyph20Bytes()
+    private struct Glyph21Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7e
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x40
+        let byte6: UInt8 = 0x7c
+        let byte7: UInt8 = 0x02
+        let byte8: UInt8 = 0x02
+        let byte9: UInt8 = 0x02
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph21 = Glyph21Bytes()
+    private struct Glyph22Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x1c
+        let byte3: UInt8 = 0x20
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x40
+        let byte6: UInt8 = 0x7c
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph22 = Glyph22Bytes()
+    private struct Glyph23Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7e
+        let byte3: UInt8 = 0x02
+        let byte4: UInt8 = 0x02
+        let byte5: UInt8 = 0x04
+        let byte6: UInt8 = 0x04
+        let byte7: UInt8 = 0x08
+        let byte8: UInt8 = 0x08
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph23 = Glyph23Bytes()
+    private struct Glyph24Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x3c
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph24 = Glyph24Bytes()
+    private struct Glyph25Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x3e
+        let byte8: UInt8 = 0x02
+        let byte9: UInt8 = 0x02
+        let byte10: UInt8 = 0x04
+        let byte11: UInt8 = 0x38
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph25 = Glyph25Bytes()
+    private struct Glyph26Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph26 = Glyph26Bytes()
+    private struct Glyph27Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x20
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph27 = Glyph27Bytes()
+    private struct Glyph28Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x04
+        let byte4: UInt8 = 0x08
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x20
+        let byte7: UInt8 = 0x40
+        let byte8: UInt8 = 0x20
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x08
+        let byte11: UInt8 = 0x04
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph28 = Glyph28Bytes()
+    private struct Glyph29Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x7e
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x7e
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph29 = Glyph29Bytes()
+    private struct Glyph30Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x20
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x08
+        let byte7: UInt8 = 0x04
+        let byte8: UInt8 = 0x08
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x20
+        let byte11: UInt8 = 0x40
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph30 = Glyph30Bytes()
+    private struct Glyph31Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x04
+        let byte7: UInt8 = 0x08
+        let byte8: UInt8 = 0x08
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x08
+        let byte11: UInt8 = 0x08
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph31 = Glyph31Bytes()
+    private struct Glyph32Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7c
+        let byte3: UInt8 = 0x82
+        let byte4: UInt8 = 0x9e
+        let byte5: UInt8 = 0xa2
+        let byte6: UInt8 = 0xa2
+        let byte7: UInt8 = 0xa2
+        let byte8: UInt8 = 0xa6
+        let byte9: UInt8 = 0x9a
+        let byte10: UInt8 = 0x80
+        let byte11: UInt8 = 0x7e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph32 = Glyph32Bytes()
+    private struct Glyph33Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x7e
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph33 = Glyph33Bytes()
+    private struct Glyph34Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x7c
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x7c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph34 = Glyph34Bytes()
+    private struct Glyph35Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x40
+        let byte6: UInt8 = 0x40
+        let byte7: UInt8 = 0x40
+        let byte8: UInt8 = 0x40
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph35 = Glyph35Bytes()
+    private struct Glyph36Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x78
+        let byte3: UInt8 = 0x44
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x44
+        let byte11: UInt8 = 0x78
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph36 = Glyph36Bytes()
+    private struct Glyph37Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7e
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x40
+        let byte6: UInt8 = 0x78
+        let byte7: UInt8 = 0x40
+        let byte8: UInt8 = 0x40
+        let byte9: UInt8 = 0x40
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x7e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph37 = Glyph37Bytes()
+    private struct Glyph38Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7e
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x40
+        let byte6: UInt8 = 0x78
+        let byte7: UInt8 = 0x40
+        let byte8: UInt8 = 0x40
+        let byte9: UInt8 = 0x40
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x40
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph38 = Glyph38Bytes()
+    private struct Glyph39Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x40
+        let byte6: UInt8 = 0x40
+        let byte7: UInt8 = 0x4e
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph39 = Glyph39Bytes()
+    private struct Glyph40Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x42
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x7e
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph40 = Glyph40Bytes()
+    private struct Glyph41Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x38
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x10
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x38
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph41 = Glyph41Bytes()
+    private struct Glyph42Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x0e
+        let byte3: UInt8 = 0x04
+        let byte4: UInt8 = 0x04
+        let byte5: UInt8 = 0x04
+        let byte6: UInt8 = 0x04
+        let byte7: UInt8 = 0x04
+        let byte8: UInt8 = 0x04
+        let byte9: UInt8 = 0x44
+        let byte10: UInt8 = 0x44
+        let byte11: UInt8 = 0x38
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph42 = Glyph42Bytes()
+    private struct Glyph43Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x42
+        let byte3: UInt8 = 0x44
+        let byte4: UInt8 = 0x48
+        let byte5: UInt8 = 0x50
+        let byte6: UInt8 = 0x60
+        let byte7: UInt8 = 0x60
+        let byte8: UInt8 = 0x50
+        let byte9: UInt8 = 0x48
+        let byte10: UInt8 = 0x44
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph43 = Glyph43Bytes()
+    private struct Glyph44Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x40
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x40
+        let byte6: UInt8 = 0x40
+        let byte7: UInt8 = 0x40
+        let byte8: UInt8 = 0x40
+        let byte9: UInt8 = 0x40
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x7e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph44 = Glyph44Bytes()
+    private struct Glyph45Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x82
+        let byte3: UInt8 = 0xc6
+        let byte4: UInt8 = 0xaa
+        let byte5: UInt8 = 0x92
+        let byte6: UInt8 = 0x92
+        let byte7: UInt8 = 0x82
+        let byte8: UInt8 = 0x82
+        let byte9: UInt8 = 0x82
+        let byte10: UInt8 = 0x82
+        let byte11: UInt8 = 0x82
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph45 = Glyph45Bytes()
+    private struct Glyph46Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x42
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x62
+        let byte6: UInt8 = 0x52
+        let byte7: UInt8 = 0x4a
+        let byte8: UInt8 = 0x46
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph46 = Glyph46Bytes()
+    private struct Glyph47Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph47 = Glyph47Bytes()
+    private struct Glyph48Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x7c
+        let byte8: UInt8 = 0x40
+        let byte9: UInt8 = 0x40
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x40
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph48 = Glyph48Bytes()
+    private struct Glyph49Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x4a
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x02
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph49 = Glyph49Bytes()
+    private struct Glyph50Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x7c
+        let byte8: UInt8 = 0x50
+        let byte9: UInt8 = 0x48
+        let byte10: UInt8 = 0x44
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph50 = Glyph50Bytes()
+    private struct Glyph51Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x3c
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x40
+        let byte6: UInt8 = 0x3c
+        let byte7: UInt8 = 0x02
+        let byte8: UInt8 = 0x02
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph51 = Glyph51Bytes()
+    private struct Glyph52Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0xfe
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x10
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph52 = Glyph52Bytes()
+    private struct Glyph53Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x42
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph53 = Glyph53Bytes()
+    private struct Glyph54Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x42
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x42
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x24
+        let byte8: UInt8 = 0x24
+        let byte9: UInt8 = 0x24
+        let byte10: UInt8 = 0x18
+        let byte11: UInt8 = 0x18
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph54 = Glyph54Bytes()
+    private struct Glyph55Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x82
+        let byte3: UInt8 = 0x82
+        let byte4: UInt8 = 0x82
+        let byte5: UInt8 = 0x82
+        let byte6: UInt8 = 0x82
+        let byte7: UInt8 = 0x92
+        let byte8: UInt8 = 0x92
+        let byte9: UInt8 = 0xaa
+        let byte10: UInt8 = 0xc6
+        let byte11: UInt8 = 0x82
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph55 = Glyph55Bytes()
+    private struct Glyph56Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x42
+        let byte3: UInt8 = 0x42
+        let byte4: UInt8 = 0x24
+        let byte5: UInt8 = 0x24
+        let byte6: UInt8 = 0x18
+        let byte7: UInt8 = 0x18
+        let byte8: UInt8 = 0x24
+        let byte9: UInt8 = 0x24
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph56 = Glyph56Bytes()
+    private struct Glyph57Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x82
+        let byte3: UInt8 = 0x82
+        let byte4: UInt8 = 0x44
+        let byte5: UInt8 = 0x44
+        let byte6: UInt8 = 0x28
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph57 = Glyph57Bytes()
+    private struct Glyph58Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x7e
+        let byte3: UInt8 = 0x02
+        let byte4: UInt8 = 0x02
+        let byte5: UInt8 = 0x04
+        let byte6: UInt8 = 0x08
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x20
+        let byte9: UInt8 = 0x40
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x7e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph58 = Glyph58Bytes()
+    private struct Glyph59Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x38
+        let byte3: UInt8 = 0x20
+        let byte4: UInt8 = 0x20
+        let byte5: UInt8 = 0x20
+        let byte6: UInt8 = 0x20
+        let byte7: UInt8 = 0x20
+        let byte8: UInt8 = 0x20
+        let byte9: UInt8 = 0x20
+        let byte10: UInt8 = 0x20
+        let byte11: UInt8 = 0x38
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph59 = Glyph59Bytes()
+    private struct Glyph60Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x40
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x20
+        let byte5: UInt8 = 0x20
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x08
+        let byte9: UInt8 = 0x08
+        let byte10: UInt8 = 0x04
+        let byte11: UInt8 = 0x04
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph60 = Glyph60Bytes()
+    private struct Glyph61Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x38
+        let byte3: UInt8 = 0x08
+        let byte4: UInt8 = 0x08
+        let byte5: UInt8 = 0x08
+        let byte6: UInt8 = 0x08
+        let byte7: UInt8 = 0x08
+        let byte8: UInt8 = 0x08
+        let byte9: UInt8 = 0x08
+        let byte10: UInt8 = 0x08
+        let byte11: UInt8 = 0x38
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph61 = Glyph61Bytes()
+    private struct Glyph62Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x10
+        let byte2: UInt8 = 0x28
+        let byte3: UInt8 = 0x44
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph62 = Glyph62Bytes()
+    private struct Glyph63Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x7e
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph63 = Glyph63Bytes()
+    private struct Glyph64Bytes {
+        let byte0: UInt8 = 0x10
+        let byte1: UInt8 = 0x08
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph64 = Glyph64Bytes()
+    private struct Glyph65Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x3c
+        let byte6: UInt8 = 0x02
+        let byte7: UInt8 = 0x3e
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph65 = Glyph65Bytes()
+    private struct Glyph66Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x40
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x7c
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x7c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph66 = Glyph66Bytes()
+    private struct Glyph67Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x3c
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x40
+        let byte8: UInt8 = 0x40
+        let byte9: UInt8 = 0x40
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph67 = Glyph67Bytes()
+    private struct Glyph68Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x02
+        let byte3: UInt8 = 0x02
+        let byte4: UInt8 = 0x02
+        let byte5: UInt8 = 0x3e
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph68 = Glyph68Bytes()
+    private struct Glyph69Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x3c
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x7e
+        let byte9: UInt8 = 0x40
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph69 = Glyph69Bytes()
+    private struct Glyph70Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x0e
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x10
+        let byte5: UInt8 = 0x7c
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph70 = Glyph70Bytes()
+    private struct Glyph71Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x3e
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3e
+        let byte12: UInt8 = 0x02
+        let byte13: UInt8 = 0x3c
+    }
+    private static let glyph71 = Glyph71Bytes()
+    private struct Glyph72Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x40
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x7c
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph72 = Glyph72Bytes()
+    private struct Glyph73Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x10
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x30
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x38
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph73 = Glyph73Bytes()
+    private struct Glyph74Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x04
+        let byte3: UInt8 = 0x04
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x0c
+        let byte6: UInt8 = 0x04
+        let byte7: UInt8 = 0x04
+        let byte8: UInt8 = 0x04
+        let byte9: UInt8 = 0x04
+        let byte10: UInt8 = 0x04
+        let byte11: UInt8 = 0x44
+        let byte12: UInt8 = 0x44
+        let byte13: UInt8 = 0x38
+    }
+    private static let glyph74 = Glyph74Bytes()
+    private struct Glyph75Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x40
+        let byte3: UInt8 = 0x40
+        let byte4: UInt8 = 0x40
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x44
+        let byte7: UInt8 = 0x48
+        let byte8: UInt8 = 0x70
+        let byte9: UInt8 = 0x48
+        let byte10: UInt8 = 0x44
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph75 = Glyph75Bytes()
+    private struct Glyph76Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x30
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x10
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x38
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph76 = Glyph76Bytes()
+    private struct Glyph77Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0xfc
+        let byte6: UInt8 = 0x92
+        let byte7: UInt8 = 0x92
+        let byte8: UInt8 = 0x92
+        let byte9: UInt8 = 0x92
+        let byte10: UInt8 = 0x92
+        let byte11: UInt8 = 0x92
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph77 = Glyph77Bytes()
+    private struct Glyph78Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x7c
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph78 = Glyph78Bytes()
+    private struct Glyph79Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x3c
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph79 = Glyph79Bytes()
+    private struct Glyph80Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x7c
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x7c
+        let byte12: UInt8 = 0x40
+        let byte13: UInt8 = 0x40
+    }
+    private static let glyph80 = Glyph80Bytes()
+    private struct Glyph81Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x3e
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3e
+        let byte12: UInt8 = 0x02
+        let byte13: UInt8 = 0x02
+    }
+    private static let glyph81 = Glyph81Bytes()
+    private struct Glyph82Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x5e
+        let byte6: UInt8 = 0x60
+        let byte7: UInt8 = 0x40
+        let byte8: UInt8 = 0x40
+        let byte9: UInt8 = 0x40
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x40
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph82 = Glyph82Bytes()
+    private struct Glyph83Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x3e
+        let byte6: UInt8 = 0x40
+        let byte7: UInt8 = 0x40
+        let byte8: UInt8 = 0x3c
+        let byte9: UInt8 = 0x02
+        let byte10: UInt8 = 0x02
+        let byte11: UInt8 = 0x7c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph83 = Glyph83Bytes()
+    private struct Glyph84Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x10
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x10
+        let byte5: UInt8 = 0x7c
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x0e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph84 = Glyph84Bytes()
+    private struct Glyph85Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph85 = Glyph85Bytes()
+    private struct Glyph86Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x24
+        let byte9: UInt8 = 0x24
+        let byte10: UInt8 = 0x18
+        let byte11: UInt8 = 0x18
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph86 = Glyph86Bytes()
+    private struct Glyph87Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x82
+        let byte6: UInt8 = 0x82
+        let byte7: UInt8 = 0x92
+        let byte8: UInt8 = 0x92
+        let byte9: UInt8 = 0x92
+        let byte10: UInt8 = 0x92
+        let byte11: UInt8 = 0x7c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph87 = Glyph87Bytes()
+    private struct Glyph88Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x24
+        let byte8: UInt8 = 0x18
+        let byte9: UInt8 = 0x24
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x42
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph88 = Glyph88Bytes()
+    private struct Glyph89Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x42
+        let byte6: UInt8 = 0x42
+        let byte7: UInt8 = 0x42
+        let byte8: UInt8 = 0x42
+        let byte9: UInt8 = 0x42
+        let byte10: UInt8 = 0x42
+        let byte11: UInt8 = 0x3e
+        let byte12: UInt8 = 0x02
+        let byte13: UInt8 = 0x3c
+    }
+    private static let glyph89 = Glyph89Bytes()
+    private struct Glyph90Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x00
+        let byte3: UInt8 = 0x00
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x7e
+        let byte6: UInt8 = 0x04
+        let byte7: UInt8 = 0x08
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x20
+        let byte10: UInt8 = 0x40
+        let byte11: UInt8 = 0x7e
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph90 = Glyph90Bytes()
+    private struct Glyph91Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x0c
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x10
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x20
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x0c
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph91 = Glyph91Bytes()
+    private struct Glyph92Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x10
+        let byte3: UInt8 = 0x10
+        let byte4: UInt8 = 0x10
+        let byte5: UInt8 = 0x10
+        let byte6: UInt8 = 0x10
+        let byte7: UInt8 = 0x10
+        let byte8: UInt8 = 0x10
+        let byte9: UInt8 = 0x10
+        let byte10: UInt8 = 0x10
+        let byte11: UInt8 = 0x10
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph92 = Glyph92Bytes()
+    private struct Glyph93Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x00
+        let byte2: UInt8 = 0x30
+        let byte3: UInt8 = 0x08
+        let byte4: UInt8 = 0x08
+        let byte5: UInt8 = 0x08
+        let byte6: UInt8 = 0x04
+        let byte7: UInt8 = 0x08
+        let byte8: UInt8 = 0x08
+        let byte9: UInt8 = 0x08
+        let byte10: UInt8 = 0x08
+        let byte11: UInt8 = 0x30
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph93 = Glyph93Bytes()
+    private struct Glyph94Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x62
+        let byte2: UInt8 = 0x92
+        let byte3: UInt8 = 0x8c
+        let byte4: UInt8 = 0x00
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph94 = Glyph94Bytes()
+    private struct Glyph95Bytes {
+        let byte0: UInt8 = 0x00
+        let byte1: UInt8 = 0x18
+        let byte2: UInt8 = 0x24
+        let byte3: UInt8 = 0x24
+        let byte4: UInt8 = 0x18
+        let byte5: UInt8 = 0x00
+        let byte6: UInt8 = 0x00
+        let byte7: UInt8 = 0x00
+        let byte8: UInt8 = 0x00
+        let byte9: UInt8 = 0x00
+        let byte10: UInt8 = 0x00
+        let byte11: UInt8 = 0x00
+        let byte12: UInt8 = 0x00
+        let byte13: UInt8 = 0x00
+    }
+    private static let glyph95 = Glyph95Bytes()
 
+    @inline(__always)
     static func withRecordBytes<Result>(
         for glyph: GlyphID,
         expectedByteCount: UInt32,
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
+        try withRecordBytesStorage(for: glyph, expectedByteCount: expectedByteCount, body)
+    }
+
+    static func withRecordBytesStorage<Result, Failure: Error>(
+        for glyph: GlyphID,
+        expectedByteCount: UInt32,
+        _ body: (UnsafeRawBufferPointer) throws(Failure) -> Result
+    ) throws(Failure) -> Result? {
         switch glyph.rawValue {
         case 0:
-            return try withUnsafeBytes(of: glyph0) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph0Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph0, body)
+            return .some(result)
         case 1:
-            return try withUnsafeBytes(of: glyph1) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph1Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph1, body)
+            return .some(result)
         case 2:
-            return try withUnsafeBytes(of: glyph2) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph2Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph2, body)
+            return .some(result)
         case 3:
-            return try withUnsafeBytes(of: glyph3) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph3Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph3, body)
+            return .some(result)
         case 4:
-            return try withUnsafeBytes(of: glyph4) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph4Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph4, body)
+            return .some(result)
         case 5:
-            return try withUnsafeBytes(of: glyph5) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph5Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph5, body)
+            return .some(result)
         case 6:
-            return try withUnsafeBytes(of: glyph6) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph6Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph6, body)
+            return .some(result)
         case 7:
-            return try withUnsafeBytes(of: glyph7) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph7Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph7, body)
+            return .some(result)
         case 8:
-            return try withUnsafeBytes(of: glyph8) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph8Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph8, body)
+            return .some(result)
         case 9:
-            return try withUnsafeBytes(of: glyph9) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph9Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph9, body)
+            return .some(result)
         case 10:
-            return try withUnsafeBytes(of: glyph10) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph10Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph10, body)
+            return .some(result)
         case 11:
-            return try withUnsafeBytes(of: glyph11) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph11Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph11, body)
+            return .some(result)
         case 12:
-            return try withUnsafeBytes(of: glyph12) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph12Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph12, body)
+            return .some(result)
         case 13:
-            return try withUnsafeBytes(of: glyph13) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph13Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph13, body)
+            return .some(result)
         case 14:
-            return try withUnsafeBytes(of: glyph14) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph14Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph14, body)
+            return .some(result)
         case 15:
-            return try withUnsafeBytes(of: glyph15) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph15Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph15, body)
+            return .some(result)
         case 16:
-            return try withUnsafeBytes(of: glyph16) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph16Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph16, body)
+            return .some(result)
         case 17:
-            return try withUnsafeBytes(of: glyph17) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph17Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph17, body)
+            return .some(result)
         case 18:
-            return try withUnsafeBytes(of: glyph18) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph18Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph18, body)
+            return .some(result)
         case 19:
-            return try withUnsafeBytes(of: glyph19) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph19Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph19, body)
+            return .some(result)
         case 20:
-            return try withUnsafeBytes(of: glyph20) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph20Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph20, body)
+            return .some(result)
         case 21:
-            return try withUnsafeBytes(of: glyph21) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph21Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph21, body)
+            return .some(result)
         case 22:
-            return try withUnsafeBytes(of: glyph22) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph22Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph22, body)
+            return .some(result)
         case 23:
-            return try withUnsafeBytes(of: glyph23) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph23Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph23, body)
+            return .some(result)
         case 24:
-            return try withUnsafeBytes(of: glyph24) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph24Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph24, body)
+            return .some(result)
         case 25:
-            return try withUnsafeBytes(of: glyph25) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph25Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph25, body)
+            return .some(result)
         case 26:
-            return try withUnsafeBytes(of: glyph26) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph26Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph26, body)
+            return .some(result)
         case 27:
-            return try withUnsafeBytes(of: glyph27) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph27Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph27, body)
+            return .some(result)
         case 28:
-            return try withUnsafeBytes(of: glyph28) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph28Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph28, body)
+            return .some(result)
         case 29:
-            return try withUnsafeBytes(of: glyph29) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph29Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph29, body)
+            return .some(result)
         case 30:
-            return try withUnsafeBytes(of: glyph30) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph30Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph30, body)
+            return .some(result)
         case 31:
-            return try withUnsafeBytes(of: glyph31) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph31Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph31, body)
+            return .some(result)
         case 32:
-            return try withUnsafeBytes(of: glyph32) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph32Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph32, body)
+            return .some(result)
         case 33:
-            return try withUnsafeBytes(of: glyph33) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph33Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph33, body)
+            return .some(result)
         case 34:
-            return try withUnsafeBytes(of: glyph34) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph34Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph34, body)
+            return .some(result)
         case 35:
-            return try withUnsafeBytes(of: glyph35) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph35Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph35, body)
+            return .some(result)
         case 36:
-            return try withUnsafeBytes(of: glyph36) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph36Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph36, body)
+            return .some(result)
         case 37:
-            return try withUnsafeBytes(of: glyph37) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph37Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph37, body)
+            return .some(result)
         case 38:
-            return try withUnsafeBytes(of: glyph38) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph38Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph38, body)
+            return .some(result)
         case 39:
-            return try withUnsafeBytes(of: glyph39) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph39Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph39, body)
+            return .some(result)
         case 40:
-            return try withUnsafeBytes(of: glyph40) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph40Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph40, body)
+            return .some(result)
         case 41:
-            return try withUnsafeBytes(of: glyph41) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph41Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph41, body)
+            return .some(result)
         case 42:
-            return try withUnsafeBytes(of: glyph42) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph42Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph42, body)
+            return .some(result)
         case 43:
-            return try withUnsafeBytes(of: glyph43) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph43Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph43, body)
+            return .some(result)
         case 44:
-            return try withUnsafeBytes(of: glyph44) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph44Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph44, body)
+            return .some(result)
         case 45:
-            return try withUnsafeBytes(of: glyph45) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph45Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph45, body)
+            return .some(result)
         case 46:
-            return try withUnsafeBytes(of: glyph46) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph46Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph46, body)
+            return .some(result)
         case 47:
-            return try withUnsafeBytes(of: glyph47) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph47Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph47, body)
+            return .some(result)
         case 48:
-            return try withUnsafeBytes(of: glyph48) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph48Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph48, body)
+            return .some(result)
         case 49:
-            return try withUnsafeBytes(of: glyph49) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph49Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph49, body)
+            return .some(result)
         case 50:
-            return try withUnsafeBytes(of: glyph50) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph50Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph50, body)
+            return .some(result)
         case 51:
-            return try withUnsafeBytes(of: glyph51) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph51Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph51, body)
+            return .some(result)
         case 52:
-            return try withUnsafeBytes(of: glyph52) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph52Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph52, body)
+            return .some(result)
         case 53:
-            return try withUnsafeBytes(of: glyph53) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph53Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph53, body)
+            return .some(result)
         case 54:
-            return try withUnsafeBytes(of: glyph54) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph54Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph54, body)
+            return .some(result)
         case 55:
-            return try withUnsafeBytes(of: glyph55) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph55Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph55, body)
+            return .some(result)
         case 56:
-            return try withUnsafeBytes(of: glyph56) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph56Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph56, body)
+            return .some(result)
         case 57:
-            return try withUnsafeBytes(of: glyph57) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph57Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph57, body)
+            return .some(result)
         case 58:
-            return try withUnsafeBytes(of: glyph58) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph58Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph58, body)
+            return .some(result)
         case 59:
-            return try withUnsafeBytes(of: glyph59) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph59Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph59, body)
+            return .some(result)
         case 60:
-            return try withUnsafeBytes(of: glyph60) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph60Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph60, body)
+            return .some(result)
         case 61:
-            return try withUnsafeBytes(of: glyph61) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph61Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph61, body)
+            return .some(result)
         case 62:
-            return try withUnsafeBytes(of: glyph62) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph62Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph62, body)
+            return .some(result)
         case 63:
-            return try withUnsafeBytes(of: glyph63) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph63Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph63, body)
+            return .some(result)
         case 64:
-            return try withUnsafeBytes(of: glyph64) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph64Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph64, body)
+            return .some(result)
         case 65:
-            return try withUnsafeBytes(of: glyph65) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph65Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph65, body)
+            return .some(result)
         case 66:
-            return try withUnsafeBytes(of: glyph66) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph66Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph66, body)
+            return .some(result)
         case 67:
-            return try withUnsafeBytes(of: glyph67) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph67Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph67, body)
+            return .some(result)
         case 68:
-            return try withUnsafeBytes(of: glyph68) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph68Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph68, body)
+            return .some(result)
         case 69:
-            return try withUnsafeBytes(of: glyph69) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph69Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph69, body)
+            return .some(result)
         case 70:
-            return try withUnsafeBytes(of: glyph70) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph70Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph70, body)
+            return .some(result)
         case 71:
-            return try withUnsafeBytes(of: glyph71) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph71Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph71, body)
+            return .some(result)
         case 72:
-            return try withUnsafeBytes(of: glyph72) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph72Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph72, body)
+            return .some(result)
         case 73:
-            return try withUnsafeBytes(of: glyph73) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph73Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph73, body)
+            return .some(result)
         case 74:
-            return try withUnsafeBytes(of: glyph74) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph74Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph74, body)
+            return .some(result)
         case 75:
-            return try withUnsafeBytes(of: glyph75) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph75Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph75, body)
+            return .some(result)
         case 76:
-            return try withUnsafeBytes(of: glyph76) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph76Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph76, body)
+            return .some(result)
         case 77:
-            return try withUnsafeBytes(of: glyph77) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph77Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph77, body)
+            return .some(result)
         case 78:
-            return try withUnsafeBytes(of: glyph78) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph78Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph78, body)
+            return .some(result)
         case 79:
-            return try withUnsafeBytes(of: glyph79) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph79Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph79, body)
+            return .some(result)
         case 80:
-            return try withUnsafeBytes(of: glyph80) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph80Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph80, body)
+            return .some(result)
         case 81:
-            return try withUnsafeBytes(of: glyph81) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph81Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph81, body)
+            return .some(result)
         case 82:
-            return try withUnsafeBytes(of: glyph82) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph82Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph82, body)
+            return .some(result)
         case 83:
-            return try withUnsafeBytes(of: glyph83) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph83Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph83, body)
+            return .some(result)
         case 84:
-            return try withUnsafeBytes(of: glyph84) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph84Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph84, body)
+            return .some(result)
         case 85:
-            return try withUnsafeBytes(of: glyph85) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph85Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph85, body)
+            return .some(result)
         case 86:
-            return try withUnsafeBytes(of: glyph86) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph86Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph86, body)
+            return .some(result)
         case 87:
-            return try withUnsafeBytes(of: glyph87) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph87Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph87, body)
+            return .some(result)
         case 88:
-            return try withUnsafeBytes(of: glyph88) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph88Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph88, body)
+            return .some(result)
         case 89:
-            return try withUnsafeBytes(of: glyph89) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph89Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph89, body)
+            return .some(result)
         case 90:
-            return try withUnsafeBytes(of: glyph90) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph90Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph90, body)
+            return .some(result)
         case 91:
-            return try withUnsafeBytes(of: glyph91) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph91Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph91, body)
+            return .some(result)
         case 92:
-            return try withUnsafeBytes(of: glyph92) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph92Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph92, body)
+            return .some(result)
         case 93:
-            return try withUnsafeBytes(of: glyph93) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph93Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph93, body)
+            return .some(result)
         case 94:
-            return try withUnsafeBytes(of: glyph94) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph94Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph94, body)
+            return .some(result)
         case 95:
-            return try withUnsafeBytes(of: glyph95) { bytes in
-                guard UInt32(exactly: bytes.count) == expectedByteCount else {
-                    return nil
-                }
-                return try body(bytes)
+            guard UInt32(exactly: MemoryLayout<Glyph95Bytes>.size) == expectedByteCount else {
+                return nil
             }
+            let result: Result = try withUnsafeBytes(of: glyph95, body)
+            return .some(result)
         default: return nil
         }
     }

@@ -1,11 +1,18 @@
 @usableFromInline
 package struct DrawingPlanSummary: Equatable, Sendable {
+    @usableFromInline
     package let canvasOccurrenceCount: UInt16
+    @usableFromInline
     package let strokeCount: UInt16
+    @usableFromInline
     package let pointCount: UInt16
+    @usableFromInline
     package let subpathCount: UInt16
+    @usableFromInline
     package let normalizedStrokeOperationCount: UInt16
 
+    @inlinable
+    @inline(__always)
     package init(
         canvasOccurrenceCount: UInt16,
         strokeCount: UInt16,

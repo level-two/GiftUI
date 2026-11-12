@@ -20,6 +20,14 @@ package enum RasterGlyphPayloadAccessResult<Result> {
     case arithmeticOverflow
 }
 
+package enum RasterGlyphPayloadPreparation {
+    case ready(inkBounds: Rect, record: GlyphRasterRecord)
+    case empty
+    case incompatibleResource
+    case invalidGeometry
+    case arithmeticOverflow
+}
+
 package enum RasterGlyphCoverage {
     @inlinable
     @inline(__always)
@@ -84,6 +92,36 @@ package enum RasterGlyphCoverage {
             UnsafeRawBufferPointer
         ) -> Result
     ) -> RasterGlyphPayloadAccessResult<Result> {
+        switch preparePayload(
+            glyph, operation: operation, metrics: metrics, raster: raster,
+            realization: realization, descriptor: descriptor, damageBounds: damageBounds
+        ) {
+        case .ready(let inkBounds, let record):
+            let result = raster.withPayload(for: record, realization: realization.id) { bytes in
+                inspectPayload(inkBounds, record, bytes, body)
+            }
+            return result ?? .incompatibleResource
+        case .empty: return .empty
+        case .incompatibleResource: return .incompatibleResource
+        case .invalidGeometry: return .invalidGeometry
+        case .arithmeticOverflow: return .arithmeticOverflow
+        }
+    }
+
+    @inlinable
+    @inline(__always)
+    package static func preparePayload<
+        Metrics: CanonicalTextMetricsView,
+        Raster: TextRasterResourceView
+    >(
+        _ glyph: PositionedGlyph,
+        operation: PositionedGlyphOperationHeader,
+        metrics: borrowing Metrics,
+        raster: borrowing Raster,
+        realization: RasterRealizationDescriptor,
+        descriptor: RasterSurfaceDescriptor,
+        damageBounds: Rect
+    ) -> RasterGlyphPayloadPreparation {
         guard operation.instance == realization.instance,
             metrics.descriptor == raster.descriptor,
             metrics.descriptor.resource == operation.instance.resource,
@@ -150,16 +188,48 @@ package enum RasterGlyphCoverage {
             return .empty
         }
 
-        let result: RasterGlyphPayloadAccessResult<Result>? = raster.withPayload(
-            for: record,
-            realization: realization.id
-        ) { bytes in
-            guard bytes.count == Int(record.byteCount) else {
-                return .incompatibleResource
-            }
-            return .payload(body(inkBounds, record, bytes))
+        return .ready(inkBounds: inkBounds, record: record)
+    }
+
+    @inlinable
+    @inline(__always)
+    package static func inspectPayload<Result>(
+        _ inkBounds: Rect,
+        _ record: GlyphRasterRecord,
+        _ bytes: UnsafeRawBufferPointer,
+        _ body: (Rect, GlyphRasterRecord, UnsafeRawBufferPointer) -> Result
+    ) -> RasterGlyphPayloadAccessResult<Result> {
+        guard bytes.count == Int(record.byteCount) else {
+            return .incompatibleResource
         }
-        return result ?? .incompatibleResource
+        return .payload(body(inkBounds, record, bytes))
+    }
+
+    @inlinable
+    @inline(__always)
+    package static func rasterizePreparedPayload(
+        inkBounds: Rect,
+        record: GlyphRasterRecord,
+        bytes: UnsafeRawBufferPointer,
+        operation: PositionedGlyphOperationHeader,
+        descriptor: RasterSurfaceDescriptor,
+        damageBounds: Rect,
+        _ replace: (Point, CanonicalEncodedPixel) -> Bool
+    ) -> RasterGlyphResult {
+        let access = inspectPayload(inkBounds, record, bytes) { inkBounds, record, bytes in
+            rasterizeValidatedPayload(
+                inkBounds: inkBounds, record: record, bytes: bytes,
+                operation: operation, descriptor: descriptor,
+                damageBounds: damageBounds, replace
+            )
+        }
+        switch access {
+        case .payload(let result): return result
+        case .empty: return .completed(pixelCount: 0, payloadBytes: 0)
+        case .incompatibleResource: return .incompatibleResource
+        case .invalidGeometry: return .invalidGeometry
+        case .arithmeticOverflow: return .arithmeticOverflow
+        }
     }
 
     package static func rasterizeValidatedPayload(

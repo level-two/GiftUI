@@ -168,7 +168,9 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
 
 @usableFromInline
 package struct RuntimeStorageAudit: Equatable, Sendable {
+    @usableFromInline
     package let profile: RuntimeProfileKind
+    @usableFromInline
     package let limits: RuntimeProfileLimits
     package let semanticCandidatePathBytes: UInt32
     package let semanticPublishedPathBytes: UInt32
@@ -402,10 +404,117 @@ package enum RuntimeProfileValidationResult: Equatable, Sendable {
     case invalid(RuntimeProfileValidationError)
 }
 
+extension RuntimeStorageAudit {
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    @usableFromInline
+    package func matchesForHostStartup(_ other: Self) -> Bool {
+        profile == other.profile
+            && limits.matchesForHostStartup(other.limits)
+            && semanticCandidatePathBytes == other.semanticCandidatePathBytes
+            && semanticPublishedPathBytes == other.semanticPublishedPathBytes
+            && semanticCandidatePayloadBytes == other.semanticCandidatePayloadBytes
+            && semanticPublishedPayloadBytes == other.semanticPublishedPayloadBytes
+            && identityMatchWorkspaceBytes == other.identityMatchWorkspaceBytes
+            && interactionCandidateIdentityBytes == other.interactionCandidateIdentityBytes
+            && interactionCommittedIdentityBytes == other.interactionCommittedIdentityBytes
+            && modelMetadataBytes == other.modelMetadataBytes
+            && modelOwnerBytes == other.modelOwnerBytes
+            && framePinBytes == other.framePinBytes
+            && semanticCandidateBytes == other.semanticCandidateBytes
+            && semanticPublishedBytes == other.semanticPublishedBytes
+            && layoutCandidateBytes == other.layoutCandidateBytes
+            && renderWorkspaceBytes == other.renderWorkspaceBytes
+            && canvasCallableBytes == other.canvasCallableBytes
+            && pathWorkspaceBytes == other.pathWorkspaceBytes
+            && drawingPlanBytes == other.drawingPlanBytes
+            && observableLiveBytes == other.observableLiveBytes
+            && observableCandidateBytes == other.observableCandidateBytes
+            && interactionCandidateBytes == other.interactionCandidateBytes
+            && interactionCommittedBytes == other.interactionCommittedBytes
+            && admissionQueueBytes == other.admissionQueueBytes
+            && sealedBatchBytes == other.sealedBatchBytes
+            && pointerStateBytes == other.pointerStateBytes
+            && coordinatorStateBytes == other.coordinatorStateBytes
+            && failureStateBytes == other.failureStateBytes
+            && totalProfileBytes == other.totalProfileBytes
+    }
+
+    #if GIFTUI_HOST_AUDIT_COMPARISON_ORACLE
+        // Defining-module qualification can construct single-field negatives
+        // without exposing the private audit constructor or returning fake audits.
+        package func qualifyHostStartupEquality(_ differentLimits: RuntimeProfileLimits) -> Int {
+            precondition(limits != differentLimits)
+            var checks = 0
+            for field in -1 ..< 29 {
+                let byteCounts = RuntimeStorageByteCounts(
+                    semanticCandidatePathBytes: field == 2
+                        ? semanticCandidatePathBytes ^ 1 : semanticCandidatePathBytes,
+                    semanticPublishedPathBytes: field == 3
+                        ? semanticPublishedPathBytes ^ 1 : semanticPublishedPathBytes,
+                    semanticCandidatePayloadBytes: field == 4
+                        ? semanticCandidatePayloadBytes ^ 1 : semanticCandidatePayloadBytes,
+                    semanticPublishedPayloadBytes: field == 5
+                        ? semanticPublishedPayloadBytes ^ 1 : semanticPublishedPayloadBytes,
+                    identityMatchWorkspaceBytes: field == 6
+                        ? identityMatchWorkspaceBytes ^ 1 : identityMatchWorkspaceBytes,
+                    interactionCandidateIdentityBytes: field == 7
+                        ? interactionCandidateIdentityBytes ^ 1 : interactionCandidateIdentityBytes,
+                    interactionCommittedIdentityBytes: field == 8
+                        ? interactionCommittedIdentityBytes ^ 1 : interactionCommittedIdentityBytes,
+                    modelMetadataBytes: field == 9 ? modelMetadataBytes ^ 1 : modelMetadataBytes,
+                    modelOwnerBytes: field == 10 ? modelOwnerBytes ^ 1 : modelOwnerBytes,
+                    framePinBytes: field == 11 ? framePinBytes ^ 1 : framePinBytes,
+                    semanticCandidateBytes: field == 12
+                        ? semanticCandidateBytes ^ 1 : semanticCandidateBytes,
+                    semanticPublishedBytes: field == 13
+                        ? semanticPublishedBytes ^ 1 : semanticPublishedBytes,
+                    layoutCandidateBytes: field == 14
+                        ? layoutCandidateBytes ^ 1 : layoutCandidateBytes,
+                    renderWorkspaceBytes: field == 15
+                        ? renderWorkspaceBytes ^ 1 : renderWorkspaceBytes,
+                    canvasCallableBytes: field == 16
+                        ? canvasCallableBytes ^ 1 : canvasCallableBytes,
+                    pathWorkspaceBytes: field == 17 ? pathWorkspaceBytes ^ 1 : pathWorkspaceBytes,
+                    drawingPlanBytes: field == 18 ? drawingPlanBytes ^ 1 : drawingPlanBytes,
+                    observableLiveBytes: field == 19
+                        ? observableLiveBytes ^ 1 : observableLiveBytes,
+                    observableCandidateBytes: field == 20
+                        ? observableCandidateBytes ^ 1 : observableCandidateBytes,
+                    interactionCandidateBytes: field == 21
+                        ? interactionCandidateBytes ^ 1 : interactionCandidateBytes,
+                    interactionCommittedBytes: field == 22
+                        ? interactionCommittedBytes ^ 1 : interactionCommittedBytes,
+                    admissionQueueBytes: field == 23
+                        ? admissionQueueBytes ^ 1 : admissionQueueBytes,
+                    sealedBatchBytes: field == 24 ? sealedBatchBytes ^ 1 : sealedBatchBytes,
+                    pointerStateBytes: field == 25 ? pointerStateBytes ^ 1 : pointerStateBytes,
+                    coordinatorStateBytes: field == 26
+                        ? coordinatorStateBytes ^ 1 : coordinatorStateBytes,
+                    failureStateBytes: field == 27 ? failureStateBytes ^ 1 : failureStateBytes
+                )
+                let changed = Self(
+                    profile: field == 0 ? (profile == .static ? .dynamic : .static) : profile,
+                    limits: field == 1 ? differentLimits : limits,
+                    byteCounts: byteCounts,
+                    totalProfileBytes: field == 28 ? totalProfileBytes ^ 1 : totalProfileBytes
+                )
+                precondition(matchesForHostStartup(changed) == (self == changed))
+                precondition(changed.matchesForHostStartup(self) == (changed == self))
+                precondition(matchesForHostStartup(changed) == (field == -1))
+                checks += 3
+            }
+            return checks
+        }
+    #endif
+}
+
 extension RuntimeProfileLimits {
     #if GIFTUI_STARTUP_QUALIFICATION
         @_noAllocation
     #endif
+    @usableFromInline
     package func matchesForHostStartup(_ other: Self) -> Bool {
         guard records.maximumPathEntries == other.records.maximumPathEntries,
             records.maximumPathDepth == other.records.maximumPathDepth,

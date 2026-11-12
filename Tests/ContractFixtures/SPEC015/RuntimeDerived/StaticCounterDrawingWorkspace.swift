@@ -2,6 +2,138 @@
 import GiftUI
 import GiftUIDrawing
 import GiftUIRenderCore
+import GiftUIRuntimeStatic
+import GiftUISemanticCore
+
+/// The Static Counter stores the same qualified Drawing fields concretely.
+struct StaticCounterRecordDrawingWorkspace: DrawingPlanConstructionWorkspace {
+    typealias Identity = SemanticRecordReference
+
+    private var base: StaticCounterDrawingWorkspace
+    private var qualification: SemanticRecordReference?
+
+    @inline(__always)
+    init(base: consuming StaticCounterDrawingWorkspace) {
+        self.base = consume base
+    }
+
+    @inline(__always)
+    mutating func withBase<Result>(_ body: (inout StaticCounterDrawingWorkspace) -> Result) -> Result {
+        body(&base)
+    }
+
+    @inline(__always)
+    var capacity: DrawingLimits { base.capacity }
+    @inline(__always)
+    var isActive: Bool { base.isActive }
+    @inline(__always)
+    var summary: DrawingPlanSummary { base.summary }
+
+    @inline(__always)
+    mutating func acquire() -> Bool {
+        StaticRecordDrawingQualification.acquire(base: &base, qualification: &qualification)
+    }
+
+    @inline(__always)
+    mutating func withCanvasContext<Result>(
+        identity: Identity, surfaceOrigin: Point, inheritedClip: Rect,
+        _ body: (inout GraphicsContext) throws(DrawingError) -> Result
+    ) throws(DrawingError) -> Result {
+        try StaticRecordDrawingQualification.withCanvasContext(
+            base: &base, qualification: &qualification, identity: identity,
+            surfaceOrigin: surfaceOrigin, inheritedClip: inheritedClip, body)
+    }
+
+    @inline(__always)
+    mutating func seal(canvasOccurrenceCount: UInt16) -> DrawingPlanResult {
+        base.seal(canvasOccurrenceCount: canvasOccurrenceCount)
+    }
+
+    @inline(__always)
+    mutating func discard() {
+        StaticRecordDrawingQualification.discard(base: &base, qualification: &qualification)
+    }
+
+    @inline(__always)
+    mutating func reset() {
+        StaticRecordDrawingQualification.reset(base: &base, qualification: &qualification)
+    }
+
+    @inline(__always)
+    func strokeCount(of canvas: Identity) -> UInt16? {
+        matches(canvas) ? base.strokeCount(of: canvas.ordinal) : nil
+    }
+
+    @inline(__always)
+    func strokeHeader(of canvas: Identity, at index: UInt16) -> StraightLineStrokeHeader? {
+        matches(canvas) ? base.strokeHeader(of: canvas.ordinal, at: index) : nil
+    }
+
+    @inline(__always)
+    func point(of canvas: Identity, stroke: UInt16, at index: UInt16) -> Point? {
+        matches(canvas) ? base.point(of: canvas.ordinal, stroke: stroke, at: index) : nil
+    }
+
+    @inline(__always)
+    func subpath(of canvas: Identity, stroke: UInt16, at index: UInt16) -> SubpathRange? {
+        matches(canvas) ? base.subpath(of: canvas.ordinal, stroke: stroke, at: index) : nil
+    }
+
+    @inline(__always)
+    private func matches(_ reference: Identity) -> Bool {
+        StaticRecordDrawingQualification.matches(qualification, reference)
+    }
+
+    #if os(macOS)
+    fileprivate mutating func hasDirectBaseLoan() -> Bool {
+        withUnsafeMutablePointer(to: &self) { workspace in
+            let directAddress = withUnsafeMutablePointer(to: &workspace.pointee.base) {
+                UInt(bitPattern: $0)
+            }
+            return workspace.pointee.withBase { base in
+                withUnsafeMutablePointer(to: &base) { UInt(bitPattern: $0) == directAddress }
+            }
+        }
+    }
+    #endif
+}
+
+#if os(macOS)
+/// A separate functional entry may call this control before exiting.
+package func p08CounterQualifiedDrawingWorkspaceControl() -> Int {
+    typealias Generic = StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>
+    typealias Concrete = StaticCounterRecordDrawingWorkspace
+    precondition(MemoryLayout<Generic>.size == MemoryLayout<Concrete>.size)
+    precondition(MemoryLayout<Generic>.stride == MemoryLayout<Concrete>.stride)
+    precondition(MemoryLayout<Generic>.alignment == MemoryLayout<Concrete>.alignment)
+
+    var path: InlineArray<20, UInt8> = .init(repeating: 0)
+    var plan: InlineArray<112, UInt8> = .init(repeating: 0)
+    withUnsafeMutableBytes(of: &path) { pathRegion in
+        withUnsafeMutableBytes(of: &plan) { planRegion in
+            let expected: DrawingPlanResult
+            do {
+                var generic = Generic(base: StaticCounterDrawingWorkspace(
+                    pathRegion: pathRegion, planRegion: planRegion, capacity: counterDrawingLimits)!)
+                precondition(generic.acquire())
+                precondition(!generic.acquire())
+                expected = generic.seal(canvasOccurrenceCount: 0)
+                guard case .success = expected else { preconditionFailure("generic drawing control") }
+                generic.reset()
+            }
+            var concrete = Concrete(base: StaticCounterDrawingWorkspace(
+                pathRegion: pathRegion, planRegion: planRegion, capacity: counterDrawingLimits)!)
+            precondition(concrete.hasDirectBaseLoan())
+            precondition(concrete.acquire())
+            precondition(!concrete.acquire())
+            precondition(concrete.seal(canvasOccurrenceCount: 0) == expected)
+            concrete.reset()
+            precondition(!concrete.isActive)
+        }
+    }
+    return 11
+}
+#endif
 
 /// Scoped GraphicsContext bridge over the counter-owned fixed Drawing regions.
 package struct StaticCounterDrawingWorkspace:

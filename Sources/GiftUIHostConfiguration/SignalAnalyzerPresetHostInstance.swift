@@ -75,6 +75,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
         self.invariantFailure = invariantFailure
     }
 
+    @usableFromInline
     package var lifecycleState: MVPHostLifecycleState {
         controller.lifecycleState
     }
@@ -85,6 +86,7 @@ where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
         controller.activate(owner: &owner, invariantFailure: invariantFailure)
     }
 
+    @usableFromInline
     package mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         guard lifecycleState == .active else { return .invalidLifecycle }
         return .cycle(owner.runOpportunity())

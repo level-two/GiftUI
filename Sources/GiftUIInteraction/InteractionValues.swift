@@ -5,9 +5,13 @@ import GiftUIExecution
 package struct BoundedApplicationAction: Equatable, Hashable, Sendable {
     @usableFromInline package let code: UInt16
 
-    @usableFromInline
+    @inlinable
     package init(code: UInt16) {
         self.code = code
+    }
+    @inlinable
+    package static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.code == rhs.code
     }
 }
 

@@ -4,7 +4,15 @@ package struct ButtonSemanticPayload<Action: GiftUIAction, Label: View>:
 {
     @usableFromInline
     package let label: Label
+    @usableFromInline
     package let action: Action
+
+    @inlinable
+    @inline(__always)
+    init(label: Label, action: Action) {
+        self.label = label
+        self.action = action
+    }
 
     @usableFromInline
     package var _giftUIAction: Action {
@@ -19,6 +27,17 @@ public struct Button<Action: GiftUIAction, Label: View>: View {
     @usableFromInline
     package let _giftUIButtonPayload: ButtonSemanticPayload<Action, Label>
 
+    @inlinable
+    @inline(__always)
+    public init(action: Action, @ViewBuilder label: () -> Label) {
+        _giftUIButtonPayload = ButtonSemanticPayload(
+            label: label(),
+            action: action
+        )
+    }
+
+    @inlinable
+    @inline(__always)
     public init(action: Action, @ViewBuilder label: () throws(_GiftUIAccessFailure) -> Label)
         throws(_GiftUIAccessFailure)
     {
@@ -45,5 +64,19 @@ public struct Button<Action: GiftUIAction, Label: View>: View {
             content: _giftUIButtonPayload.label,
             payload: _giftUIButtonPayload
         )
+    }
+}
+
+public extension Button where Label == Text<_GiftUIEmptyReadDomain> {
+    @inlinable
+    @inline(__always)
+    init(_ title: StaticString, action: Action) {
+        self.init(action: action) { Text<_GiftUIEmptyReadDomain>(title) }
+    }
+
+    @inlinable
+    @inline(__always)
+    init(_ title: BoundedText, action: Action) {
+        self.init(action: action) { Text<_GiftUIEmptyReadDomain>(title) }
     }
 }

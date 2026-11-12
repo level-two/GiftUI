@@ -1,9 +1,13 @@
 import GiftUI
 import GiftUIRenderCore
 
+@usableFromInline
 package struct RenderLimits: Equatable, Sendable {
+    @usableFromInline
     package let maximumOperations: UInt16
+    @usableFromInline
     package let maximumPositionedGlyphs: UInt16
+    @usableFromInline
     package let maximumClipDepth: UInt16
 
     #if GIFTUI_GEOMETRY_QUALIFICATION
@@ -26,10 +30,15 @@ package struct RenderLimits: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package struct RenderWorkspaceCapacity: Equatable, Sendable {
+    @usableFromInline
     package let maximumSemanticScopes: UInt16
+    @usableFromInline
     package let maximumLayoutScopes: UInt16
+    @usableFromInline
     package let maximumTraversalDepth: UInt16
+    @usableFromInline
     package let maximumTextLines: UInt16
 
     #if GIFTUI_GEOMETRY_QUALIFICATION
@@ -55,17 +64,20 @@ package struct RenderWorkspaceCapacity: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum RenderProductionResult: Equatable, Sendable {
     case success(RenderPlanHeader)
     case failure(RenderProductionError)
 }
 
+@usableFromInline
 package enum RenderWorkspaceVisit: UInt8, Equatable, Sendable {
     case first = 0
     case repeated = 1
     case invalid = 2
 }
 
+@usableFromInline
 package protocol RenderProductionWorkspace {
     associatedtype Identity: Equatable, Sendable
 

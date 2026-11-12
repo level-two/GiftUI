@@ -3,10 +3,12 @@ import GiftUIRasterCore
 import GiftUISurfaceCore
 import GiftUITextResources
 
+@usableFromInline
 package enum HostEndpointStartupValidation {
     #if GIFTUI_STARTUP_QUALIFICATION
         @_noAllocation
     #endif
+    @usableFromInline
     package static func validateInert(
         _ endpoint: HostEndpointConfiguration,
         effectivePresentation: EffectiveRasterPresentation,

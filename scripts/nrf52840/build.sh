@@ -80,7 +80,7 @@ giftui_nrf_note "building ${application} for ${GIFTUI_NRF_BOARD}"
     "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}" \
     "-DDTC=$(giftui_nrf_dtc)" \
     -DUSE_CCACHE=0 \
-    "${counter_cmake_arguments[@]}"
+    ${counter_cmake_arguments[@]+"${counter_cmake_arguments[@]}"}
 
 elf="${build_dir}/zephyr/zephyr.elf"
 hex="${build_dir}/zephyr/zephyr.hex"

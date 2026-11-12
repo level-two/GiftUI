@@ -218,6 +218,8 @@ public enum ViewBuilder {
         TupleView4(a, b, c, d)
     }
 
+    @inlinable
+    @inline(__always)
     public static func buildBlock<A: View, B: View, C: View, D: View, E: View>(
         _ a: A,
         _ b: B,
@@ -370,6 +372,8 @@ where A.Domain == B.Domain, A.Domain == C.Domain, A.Domain == D.Domain, A.Domain
     @usableFromInline
     package let e: E
 
+    @inlinable
+    @inline(__always)
     package init(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E) {
         self.a = a
         self.b = b

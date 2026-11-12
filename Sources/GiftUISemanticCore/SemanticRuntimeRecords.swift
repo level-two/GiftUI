@@ -15,11 +15,14 @@ package struct SemanticPathComponent: Equatable, Sendable {
     }
     @usableFromInline
     package let kind: Kind
+    @usableFromInline
     package let ordinal: UInt8
+    @usableFromInline
     package let role: UInt16
+    @usableFromInline
     package let modifier: UInt16
 
-    @usableFromInline
+    @inlinable
     #if GIFTUI_FACTORY_INITIALIZATION_QUALIFICATION
         @_noAllocation
     #endif
@@ -29,7 +32,7 @@ package struct SemanticPathComponent: Equatable, Sendable {
         self.role = role
         self.modifier = modifier
     }
-    @usableFromInline
+    @inlinable
     package var isValid: Bool {
         switch kind {
         case .fixedChild: ordinal < 5 && role == 0 && modifier == 0
@@ -37,6 +40,12 @@ package struct SemanticPathComponent: Equatable, Sendable {
         case .declarationRole: ordinal == 0 && role != 0
         default: ordinal == 0 && role == 0 && modifier == 0
         }
+    }
+
+    @inlinable
+    package static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.kind == rhs.kind && lhs.ordinal == rhs.ordinal
+            && lhs.role == rhs.role && lhs.modifier == rhs.modifier
     }
 }
 
@@ -56,18 +65,19 @@ package struct SemanticCompleteIdentity: Equatable, Sendable {
     package static func capacityForAccounting() -> UInt16 {
         capacity
     }
-    private var components: InlineArray<34, SemanticPathComponent> = .init(
+    @usableFromInline
+    internal private(set) var components: InlineArray<34, SemanticPathComponent> = .init(
         repeating: .init(kind: .root))
     @usableFromInline
     package private(set) var count: UInt16 = 0
-    @usableFromInline
+    @inlinable
     package init() {}
-    @usableFromInline
+    @inlinable
     package func component(at index: UInt16) -> SemanticPathComponent? {
         guard index < count else { return nil }
         return components[Int(index)]
     }
-    @usableFromInline
+    @inlinable
     package mutating func append(_ component: SemanticPathComponent) -> Bool {
         guard count < Self.capacity, component.isValid, (count == 0) == (component.kind == .root)
         else { return false }
@@ -75,11 +85,12 @@ package struct SemanticCompleteIdentity: Equatable, Sendable {
         count += 1
         return true
     }
+    @inlinable
     package mutating func removeLast() {
         precondition(count > 0)
         count -= 1
     }
-    @usableFromInline
+    @inlinable
     package static func == (lhs: Self, rhs: Self) -> Bool {
         guard lhs.count == rhs.count else { return false }
         var i: UInt16 = 0

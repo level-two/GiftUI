@@ -14,7 +14,7 @@ package enum StaticSignalAnalyzerNRFTextPoolWriter {
         guard region.count == table.regionByteCount,
             start <= table.maximumScalarCount
         else { return nil }
-        return text.withUTF8 { bytes in
+        return text.withNonthrowingUTF8 { bytes in
             var count: UInt16 = 0
             for byte in bytes where byte & 0xC0 != 0x80 {
                 guard count < table.maximumScalarCount - start else { return nil }

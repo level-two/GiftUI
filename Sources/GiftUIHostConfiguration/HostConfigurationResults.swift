@@ -4,6 +4,7 @@ import GiftUIFailureCore
 import GiftUIRuntimeCore
 import GiftUITextResources
 
+@usableFromInline
 package enum HostValidationStage: UInt8, Equatable, Sendable {
     case graph = 0
     case runtimeProfile = 1
@@ -58,6 +59,7 @@ package struct HostAssemblyReport: Equatable, Sendable {
     #if GIFTUI_STARTUP_QUALIFICATION
         @_noAllocation
     #endif
+    @usableFromInline
     init(
         kind: MVPHostKind, profile: RuntimeProfileKind, storageAudit: RuntimeStorageAudit,
         capabilitySnapshot: CapabilitySnapshot, effectivePresentation: EffectiveRasterPresentation,
@@ -84,11 +86,13 @@ package struct HostAssemblyReport: Equatable, Sendable {
     }
 }
 
+@usableFromInline
 package enum HostValidationResult: Equatable, Sendable {
     case valid(HostAssemblyReport)
     case invalid(stage: HostValidationStage, error: HostConfigurationError)
 }
 
+@usableFromInline
 package struct HostValidationAccessLedger: Equatable, Sendable {
     package private(set) var accessedStages: UInt16 = 0
     package private(set) var accessCount: UInt8 = 0
@@ -135,11 +139,13 @@ package enum HostActivationResult<Failure: Equatable & Sendable>:
     case failure(Failure)
 }
 
+@usableFromInline
 package enum HostOpportunityResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
     case cycle(RunCycleResult<OwnerFailure>)
     case invalidLifecycle
 }
 
+@usableFromInline
 package protocol MVPHostInstance: ~Copyable, ~Escapable {
     associatedtype ActivationFailure: Equatable & Sendable
     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
@@ -166,17 +172,40 @@ package protocol MVPHostConfigurationValidator: ~Copyable {
     mutating func validate() -> HostValidationResult
 }
 
+@usableFromInline
 struct HostValidationStateGuard: ~Copyable {
+    private var accessLedger = HostValidationAccessLedger()
     private var hasBegun = false
 
     #if GIFTUI_STARTUP_QUALIFICATION
         @_noAllocation
     #endif
+    @usableFromInline
+    func ledgerValue() -> HostValidationAccessLedger { accessLedger }
+
+    // Replacing the compatibility ledger must never reopen a begun validator.
+    mutating func replaceLedger(_ ledger: HostValidationAccessLedger) {
+        accessLedger = ledger
+    }
+
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    @usableFromInline
+    mutating func enter(_ stage: HostValidationStage) -> Bool {
+        accessLedger.enter(stage)
+    }
+
+    #if GIFTUI_STARTUP_QUALIFICATION
+        @_noAllocation
+    #endif
+    @usableFromInline
     init() {}
 
     #if GIFTUI_STARTUP_QUALIFICATION
         @_noAllocation
     #endif
+    @usableFromInline
     mutating func begin() -> HostValidationResult? {
         guard !hasBegun else {
             return .invalid(stage: .graph, error: .invariantViolation)

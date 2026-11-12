@@ -59,19 +59,33 @@ end
   fail_check("association matrix lacks #{fragment}") unless association.include?(fragment)
 end
 
-binding_failures = %w[
-  locationCapacityExhausted registrationCapacityExhausted
-  associationStagingCapacityExhausted duplicateOwner incompatibleAssociation
-  staleAttachment invariantViolation
-]
-binding_failures.each do |failure|
-  fail_check("body-suppression matrix lacks #{failure}") unless binding.include?(".#{failure}")
+success_path = binding[/func scopedRootBindsEveryDeclarationBeforeCallingTheBody\(\)(.*?)(?=\n@Test|\z)/m, 1]
+fail_check("scoped-root success path is missing") unless success_path
+[
+  "root.withBoundDeclaration(",
+  "bodyCalls += 1",
+  "#expect(result)",
+  "#expect(bodyCalls == 1)",
+  "root.finishCandidate(.publish)",
+].each do |fragment|
+  fail_check("scoped-root success path lacks #{fragment}") unless success_path.include?(fragment)
 end
-fail_check("body-suppression matrix lacks zero-body assertion") unless binding.include?(
-  "decoratorSuppressesBodyForEveryCandidateBindingFailure"
-) && binding.include?("#expect(bodyCalls == 0)")
+
+capacity_failure = binding[/func capacityBindingFailureSuppressesBodyAndDiscardsCandidate\(\)(.*?)(?=\n@Test|\z)/m, 1]
+fail_check("scoped-root capacity-failure path is missing") unless capacity_failure
+[
+  "root.withBoundDeclaration(",
+  ".modelCapacityExhausted",
+  "#expect(bodyCalls == 0)",
+  "root.finishCandidate(.discard)",
+].each do |fragment|
+  fail_check("scoped-root capacity-failure path lacks #{fragment}") unless capacity_failure.include?(fragment)
+end
+fail_check("binding fixture must use the package-internal root scope") unless
+  binding.include?("ObservableStateRootScope<FixtureBoundModel, UInt16>") &&
+    binding.include?("scope.withRoot(storage: &rootStorage)")
 
 forbidden = /\b(?:Array|ContiguousArray|Dictionary|Set|Any|any|Mirror|Task|actor|async|await|throw|fatalError|GiftUIFailureCore|GiftUIRuntime|GiftUIBackend|GiftUIPlatform)\b/
 fail_check("registration lifecycle selects storage or a prohibited owner") if route.match?(forbidden)
 
-puts "SPEC-010 reconciliation faults passed: reservation, association, attachment, detach, finish, and body-suppression seams are covered."
+puts "SPEC-010 reconciliation faults passed: lifecycle and association matrices plus scoped-root success, capacity failure, body suppression, and candidate discard are covered."
